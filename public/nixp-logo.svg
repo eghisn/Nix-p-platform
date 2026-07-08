@@ -1,0 +1,8 @@
+<svg width="192" height="64" viewBox="0 0 192 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">NIXP logo</title>
+  <rect x="2" y="2" width="188" height="60" rx="0" fill="#F6F3EA" stroke="#111111" stroke-width="4"/>
+  <path d="M24 46V18H34.8L49.6 35.6V18H61.2V46H50.4L35.6 28.4V46H24Z" fill="#111111"/>
+  <path d="M70.4 46V18H82.4V46H70.4Z" fill="#111111"/>
+  <path d="M88.7 46L101.1 31.5L89.5 18H104L108.8 24.3L113.6 18H128L116.4 31.5L128.8 46H114.1L108.8 39L103.5 46H88.7Z" fill="#111111"/>
+  <path d="M135.7 46V18H160.1C166.9 18 171.6 22.4 171.6 28.7C171.6 35.2 166.9 39.8 160.1 39.8H147.7V46H135.7ZM147.7 31.1H157.7C159.1 31.1 160.1 30.1 160.1 28.7C160.1 27.4 159.1 26.5 157.7 26.5H147.7V31.1Z" fill="#111111"/>
+</svg>

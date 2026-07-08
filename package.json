@@ -1,0 +1,14 @@
+{
+  "name": "nixp-website-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/dev-server.mjs dist"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
