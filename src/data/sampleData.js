@@ -114,7 +114,7 @@ const recordRows = [
     "format": "CD",
     "qty": 1,
     "price": 250000,
-    "image": "/public/covers/nxp-2026-cd-0012-nine-inch-nails-hesitation-marks.jpg",
+    "image": "/public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg",
     "condition": "Used Good"
   },
   {
@@ -147,7 +147,7 @@ const recordRows = [
     "format": "Vinyl",
     "qty": 1,
     "price": 568000,
-    "image": "/public/covers/nxp-2026-vnl-0005-gilla-band-the-early-years.jpg",
+    "image": "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
     "condition": "New-Sealed"
   },
   {
@@ -158,7 +158,7 @@ const recordRows = [
     "format": "CD",
     "qty": 1,
     "price": 285000,
-    "image": "/public/covers/nxp-2026-cd-0001-meshuggah-chaosphere.jpg",
+    "image": "/public/uploads/products/nxp-2026-cd-0001-chaosphere-cover-425412532019-r-jpg-1783885419677.jpg",
     "condition": "Used Good"
   },
   {
@@ -455,7 +455,7 @@ const recordRows = [
     "format": "Vinyl",
     "qty": 1,
     "price": 900000,
-    "image": "/public/covers/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code.jpg",
+    "image": "/public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg",
     "condition": "New-Sealed"
   },
   {
@@ -514,6 +514,51 @@ const recordRows = [
     "condition": "New-Sealed"
   }
 ];
+
+const recordLabels = {
+  "nxp-2026-vnl-0006": "Alter",
+  "nxp-2026-cd-0015": "Nuclear Blast",
+  "nxp-2026-cst-0005": "Cav Empt",
+  "nxp-2026-cd-0010": "Warner Bros. Records / Sargent House",
+  "nxp-2026-cd-0011": "ISO Records / Columbia",
+  "nxp-2026-cd-0012": "The Null Corporation / Columbia",
+  "nxp-2026-cd-0016": "Load Records",
+  "nxp-2026-vnl-0004": "Rough Trade Records",
+  "nxp-2026-vnl-0005": "Rough Trade Records",
+  "nxp-2026-cd-0001": "Nuclear Blast",
+  "nxp-2026-cd-0002": "Maverick",
+  "nxp-2026-cd-0003": "Freestyle Dust / Virgin",
+  "nxp-2026-cd-0004": "Freestyle Dust / Parlophone",
+  "nxp-2026-cd-0005": "Dress Up / Interscope",
+  "nxp-2026-cd-0006": "Maverick / Warner Bros.",
+  "nxp-2026-cd-0007": "True Panther",
+  "nxp-2026-cd-0008": "A24 Music",
+  "nxp-2026-cd-0009": "Transgressive / Future Classic",
+  "nxp-2026-cst-0001": "Nothing Records / Interscope",
+  "nxp-2026-cst-0002": "Undying Music",
+  "nxp-2026-cst-0004": "Maverick / Warner Bros.",
+  "nxp-2026-cst-0006": "XL Recordings",
+  "nxp-2026-vnl-0001": "Warp Records",
+  "nxp-2026-vnl-0002": "A-Zap",
+  "nxp-2026-vnl-0003": "Warp Records",
+  "nxp-2026-cd-0013": "Innocent Records / Contra-Disc",
+  "nxp-2026-cd-0014": "Orange Cliff Records",
+  "nxp-2026-cd-0017": "ISO Records / Columbia",
+  "nxp-2026-cd-0018": "RCA",
+  "nxp-2026-cd-0019": "Domino",
+  "nxp-2026-cd-0020": "Creation Records",
+  "nxp-2026-cd-0021": "Avalanche Recordings / Daymare Recordings",
+  "nxp-2026-cd-0022": "Sacred Bones Records",
+  "nxp-2026-cst-0007": "P2",
+  "nxp-2026-cst-0008": "Trouble In Mind",
+  "nxp-2026-cst-0009": "XL Recordings",
+  "nxp-2026-vnl-0007": "Brainfeeder",
+  "nxp-2026-vnl-0008": "PAN",
+  "nxp-2026-vnl-0009": "Domino",
+  "nxp-2026-vnl-0010": "XL Recordings",
+  "nxp-2026-vnl-0011": "Stroom",
+  "nxp-2026-vnl-0012": "XL Recordings"
+};
 
 export const products = [
   ...recordRows.map((row) => record(row)),
@@ -606,7 +651,7 @@ function record(row) {
     qty: row.qty,
     price: row.price,
     year: 2026,
-    label: "NIXP Selection",
+    label: recordLabels[row.id] || row.label || "NIXP Selection",
     image: row.image || recordImage,
     tags: [displayFormat, row.sku],
     description: `${row.artist} - ${row.title}. ${displayFormat} from the current NIXP records selection.`,

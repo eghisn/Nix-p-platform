@@ -158,10 +158,20 @@ async function homePage() {
 }
 
 async function recordsPage() {
-  const records = await catalogService.listRecords(state.recordsFilter);
+  const labelFilter = new URLSearchParams(location.search).get("label") || "";
+  const records = await catalogService.listRecords(state.recordsFilter, labelFilter);
   const filters = ["All", "Vinyl", "CD", "Cassette"];
   return `
     <section class="section shop-section">
+      ${
+        labelFilter
+          ? `<div class="active-label-filter">
+              <span>Record Label</span>
+              <strong>${escapeHtml(labelFilter)}</strong>
+              <a href="/records" data-link>Clear</a>
+            </div>`
+          : ""
+      }
       <div class="toolbar" role="group" aria-label="Record format filters">
         ${filters
           .map(
@@ -287,7 +297,7 @@ async function productDetailMarkup(product) {
               ? `<div><dt>Material</dt><dd>${product.material}</dd></div>
                  <div><dt>Color</dt><dd>${product.color}</dd></div>`
               : `<div><dt>Format</dt><dd>${displayFormat} / ${conditionLabel}</dd></div>
-                 <div><dt>Label</dt><dd>${product.label}</dd></div>
+                 <div><dt>Label</dt><dd>${recordLabelMarkup(product)}</dd></div>
                  <div><dt>Year</dt><dd>${product.year}</dd></div>
                  <div><dt>Notes</dt><dd>${product.details.join(" / ")}</dd></div>`
           }
@@ -564,7 +574,7 @@ async function searchOverlay() {
     ...products.map((product) => ({
       type: product.category,
       title: product.title,
-      meta: `${product.artist} / ${product.displayFormat || product.format}`,
+      meta: `${product.artist} / ${product.displayFormat || product.format}${product.label ? ` / ${product.label}` : ""}`,
       href: `/product/${product.id}`
     })),
     ...artists.map((artist) => ({
@@ -1253,6 +1263,11 @@ function filterItems(items, scope, fields) {
   const query = String(state.adminSearch[scope] || "").trim().toLowerCase();
   if (!query) return items;
   return items.filter((item) => fields(item).join(" ").toLowerCase().includes(query));
+}
+
+function recordLabelMarkup(product) {
+  if (product.category !== "Records" || !product.label) return escapeHtml(product.label || "-");
+  return `<a class="record-label-link" href="/records?label=${encodeURIComponent(product.label)}" data-link>${escapeHtml(product.label)}</a>`;
 }
 
 function sortItems(items, key, sorters) {

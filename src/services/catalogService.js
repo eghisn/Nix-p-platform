@@ -21,10 +21,12 @@ export const catalogService = {
   async getProduct(id, options = {}) {
     return adminStore.getProduct(id, options);
   },
-  async listRecords(format = "All") {
+  async listRecords(format = "All", label = "") {
     return adminStore.listProducts().filter((product) => {
       const isRecord = product.category === "Records";
-      return format === "All" ? isRecord : isRecord && product.format === format;
+      const matchesFormat = format === "All" || product.format === format;
+      const matchesLabel = !label || product.label === label;
+      return isRecord && matchesFormat && matchesLabel;
     });
   },
   async listApparel(type = "All Apparel") {

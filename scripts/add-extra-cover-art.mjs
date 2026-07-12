@@ -7,11 +7,6 @@ const coverDir = path.join(root, "public", "covers");
 
 const covers = [
   {
-    id: "nxp-2026-vnl-0005",
-    url: "https://coverartarchive.org/release/6dd28914-1317-4a24-8a4f-66aea141af8c/front",
-    file: "nxp-2026-vnl-0005-gilla-band-the-early-years.jpg"
-  },
-  {
     id: "nxp-2026-cd-0002",
     url: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c0/48/bf/c048bf00-8caa-8019-047a-0132772dbe08/s06.uyepfrmn.jpg/1200x1200bb.jpg",
     file: "nxp-2026-cd-0002-team-sleep-maverick.jpg"

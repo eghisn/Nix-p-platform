@@ -131,6 +131,10 @@ export function productCard(product, { hrefFor } = {}) {
   const meta = product.condition ? `${product.displayFormat || product.format}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
   const href = hrefFor ? hrefFor(product) : `/product/${product.id}`;
+  const labelLink =
+    product.category === "Records" && product.label
+      ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(product.label)}" data-link>${product.label}</a>`
+      : "";
 
   return `
     <article class="product-card">
@@ -142,6 +146,7 @@ export function productCard(product, { hrefFor } = {}) {
       <div class="product-meta">
         <p>${product.artist}</p>
         <h2><a href="${href}" data-link>${product.title}</a></h2>
+        ${labelLink}
         <div class="row-between">
           <span>${meta}</span>
           <strong>${idr.format(product.price)}</strong>
