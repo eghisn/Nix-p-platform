@@ -26,4 +26,57 @@ if (existsSync(dataModule)) {
   await writeFile(dataModule, sanitized);
 }
 
+const indexHtml = await readFile(`${dist}/index.html`, "utf8");
+const publicStorePath = `${dist}/public/data/public-store.json`;
+const publicStore = existsSync(publicStorePath) ? JSON.parse(await readFile(publicStorePath, "utf8")) : null;
+const staticRoutes = [
+  "records",
+  "objects",
+  "apparel",
+  "publishing",
+  "artists",
+  "blog",
+  "request-item",
+  "about",
+  "contact",
+  "shipping-returns",
+  "cart",
+  "login",
+  "admin",
+  "admin/editor",
+  "admin/products",
+  "admin/media",
+  "admin/artists",
+  "admin/collections",
+  "admin/requests",
+  "admin/inventory",
+  "admin/orders",
+  "admin/cashflow",
+  "admin/reports",
+  "admin/preview"
+];
+
+function slugify(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+for (const product of publicStore?.products || []) {
+  staticRoutes.push(`product/${product.id}`);
+  staticRoutes.push(`admin/preview/product/${product.id}`);
+}
+
+for (const artist of publicStore?.artists || []) {
+  staticRoutes.push(`artists/${slugify(artist.name)}`);
+}
+
+for (const route of [...new Set(staticRoutes)]) {
+  const routeDir = `${dist}/${route}`;
+  await mkdir(routeDir, { recursive: true });
+  await writeFile(`${routeDir}/index.html`, indexHtml);
+}
+
 console.log("Built NIXP prototype to dist/");
