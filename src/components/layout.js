@@ -34,9 +34,14 @@ const idr = new Intl.NumberFormat("id-ID", {
 export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverlay = "") {
   const isAdmin = path.startsWith("/admin") && !path.startsWith("/admin/preview");
   const isFinance = path.startsWith("/finance");
+  const loginWorkspace =
+    path === "/login" && typeof location !== "undefined"
+      ? new URLSearchParams(location.search).get("workspace")
+      : "";
   const isPrivate = isAdmin || isFinance || path === "/login";
-  const privateLinks = isFinance ? financeLinks : adminLinks;
-  const logoHref = isFinance ? "/finance" : isAdmin ? "/admin" : "/";
+  const isFinanceShell = isFinance || loginWorkspace === "finance";
+  const privateLinks = isFinanceShell ? financeLinks : adminLinks;
+  const logoHref = isFinanceShell ? "/finance" : isAdmin ? "/admin" : "/";
 
   return `
     <header class="site-header">

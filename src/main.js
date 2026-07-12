@@ -84,7 +84,9 @@ async function render() {
               ? artistProductsPage
               : routes[path] || notFoundPage;
   const content = await view(path);
-  document.body.classList.toggle("page-lock", path === "/about" || path === "/contact");
+  const isLoginView = path === "/login" || (requiredWorkspace && !hasWorkspaceAccess(requiredWorkspace));
+  document.body.classList.toggle("page-lock", path === "/about" || path === "/contact" || isLoginView);
+  document.body.classList.toggle("login-lock", isLoginView);
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
   app.innerHTML = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
   bindEvents();
@@ -610,18 +612,18 @@ function loginPage(workspaceOrPath = "admin", nextPath = null) {
       ? "finance"
       : "admin";
   const next = nextPath || params.get("next") || (workspace === "finance" ? "/finance" : "/admin");
-  const workspaceLabel = workspace === "finance" ? "Finance Platform" : "Admin Platform";
+  const workspaceLabel = workspace === "finance" ? "NIXP Finance" : "NIXP Admin";
   return `
-    ${pageHero({
-      eyebrow: "Private",
-      title: `${workspaceLabel} Login`,
-      text: "Local prototype login. Credentials are checked by the local server and are not stored in the browser bundle."
-    })}
-    <section class="section login-panel">
-      <form data-login-form data-workspace="${escapeAttr(workspace)}" data-next="${escapeAttr(next)}">
+    <section class="section private-entry">
+      <div class="private-entry-copy">
+        <p class="eyebrow">Private</p>
+        <h1>${workspaceLabel}</h1>
+        <p>Sign in to continue.</p>
+      </div>
+      <form class="private-entry-form" data-login-form data-workspace="${escapeAttr(workspace)}" data-next="${escapeAttr(next)}">
         <label>Username<input name="username" type="text" autocomplete="username" /></label>
         <label>Password<input name="password" type="password" autocomplete="current-password" /></label>
-        <button class="button button-dark" type="submit">Enter ${workspace === "finance" ? "finance" : "admin"}</button>
+        <button class="button button-dark" type="submit">Enter ${workspace === "finance" ? "Finance" : "Admin"}</button>
         <p class="form-message" data-login-message></p>
       </form>
     </section>

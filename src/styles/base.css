@@ -349,6 +349,12 @@ body.page-lock {
   overflow: hidden;
 }
 
+body.login-lock main {
+  min-height: calc(100vh - var(--header-h) - var(--footer-h));
+  display: grid;
+  align-items: center;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -1095,7 +1101,6 @@ p {
 
 .request-form,
 .status-panel,
-.login-panel form,
 .metric,
 .table-wrap,
 .chart {
@@ -1103,8 +1108,7 @@ p {
   background: transparent;
 }
 
-.request-form,
-.login-panel form {
+.request-form {
   display: grid;
   gap: 16px;
   padding: 22px;
@@ -1612,8 +1616,64 @@ tr:last-child td {
   color: var(--muted);
 }
 
-.login-panel {
-  max-width: 520px;
+.private-entry {
+  width: min(100%, 1040px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: clamp(36px, 8vw, 110px);
+  align-items: end;
+  padding-block: clamp(42px, 8vw, 108px);
+}
+
+.private-entry-copy {
+  max-width: 580px;
+}
+
+.private-entry-copy h1 {
+  margin: 0;
+  font-size: clamp(52px, 8vw, 120px);
+  font-weight: 400;
+  line-height: 0.88;
+}
+
+.private-entry-copy p:not(.eyebrow) {
+  max-width: 420px;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.private-entry-form {
+  display: grid;
+  gap: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.private-entry-form input {
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  padding: 10px 12px;
+  color: var(--ink);
+}
+
+.private-entry-form input:focus {
+  outline: 1px solid var(--ink);
+  outline-offset: -1px;
+}
+
+.private-entry-form .button {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.form-message {
+  min-height: 18px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .site-footer {
@@ -1753,6 +1813,7 @@ tr:last-child td {
   .metric-grid,
   .report-grid,
   .form-layout,
+  .private-entry,
   .info-grid,
   .info-copy,
   .contact-layout,
@@ -1765,6 +1826,16 @@ tr:last-child td {
   .site-footer {
     gap: 12px;
     padding-block: 16px;
+  }
+
+  .private-entry {
+    align-content: center;
+    align-items: stretch;
+    gap: 34px;
+  }
+
+  .private-entry-copy h1 {
+    font-size: clamp(46px, 15vw, 76px);
   }
 
   .footer-right {
