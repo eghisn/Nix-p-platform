@@ -1,11 +1,15 @@
 import { createServer } from "node:http";
+import { randomBytes, timingSafeEqual } from "node:crypto";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { createReadStream, existsSync } from "node:fs";
 import { basename, extname, join, normalize, resolve } from "node:path";
 
 const rootArg = process.argv[2] || ".";
 const root = resolve(process.cwd(), rootArg);
+await loadLocalEnv(join(root, ".env.local"));
+await loadLocalEnv(join(root, ".env"));
 const port = Number(process.env.PORT || 4173);
+const sessions = new Map();
 
 const types = {
   ".css": "text/css; charset=utf-8",
@@ -56,6 +60,95 @@ function json(res, status, payload) {
   res.end(JSON.stringify(payload));
 }
 
+async function loadLocalEnv(filePath) {
+  if (!existsSync(filePath)) return;
+  const source = await readFile(filePath, "utf8");
+  for (const line of source.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const match = trimmed.match(/^([A-Za-z_][A-Za-z0-9_]*)=(.*)$/);
+    if (!match || process.env[match[1]] !== undefined) continue;
+    process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, "");
+  }
+}
+
+function parseCookies(req) {
+  return Object.fromEntries(
+    String(req.headers.cookie || "")
+      .split(";")
+      .map((cookie) => cookie.trim())
+      .filter(Boolean)
+      .map((cookie) => {
+        const index = cookie.indexOf("=");
+        return index === -1 ? [cookie, ""] : [cookie.slice(0, index), decodeURIComponent(cookie.slice(index + 1))];
+      })
+  );
+}
+
+function safeEqual(left, right) {
+  const leftBuffer = Buffer.from(String(left || ""));
+  const rightBuffer = Buffer.from(String(right || ""));
+  return leftBuffer.length === rightBuffer.length && timingSafeEqual(leftBuffer, rightBuffer);
+}
+
+function credentialsForWorkspace(workspace) {
+  if (workspace === "admin") {
+    return {
+      username: process.env.NIXP_ADMIN_USERNAME,
+      password: process.env.NIXP_ADMIN_PASSWORD
+    };
+  }
+  if (workspace === "finance") {
+    return {
+      username: process.env.NIXP_FINANCE_USERNAME,
+      password: process.env.NIXP_FINANCE_PASSWORD
+    };
+  }
+  return null;
+}
+
+function clientAddress(req) {
+  const forwardedFor = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  const address = forwardedFor || req.socket.remoteAddress || "";
+  return address.replace(/^::ffff:/, "");
+}
+
+function allowedByAllowlist(req) {
+  const allowlist = String(process.env.NIXP_AUTH_ALLOWLIST || "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  if (!allowlist.length) return true;
+  const address = clientAddress(req);
+  return allowlist.includes(address) || (address === "::1" && allowlist.includes("127.0.0.1"));
+}
+
+function sessionFromRequest(req) {
+  const token = parseCookies(req).nixp_session;
+  if (!token) return null;
+  const session = sessions.get(token);
+  if (!session || session.expiresAt <= Date.now()) {
+    sessions.delete(token);
+    return null;
+  }
+  return session;
+}
+
+function requireWorkspace(req, workspace) {
+  const session = sessionFromRequest(req);
+  if (!session) return false;
+  if (workspace === "admin") return session.workspace === "admin";
+  if (workspace === "finance") return session.workspace === "finance";
+  return false;
+}
+
+function setSessionCookie(res, token, maxAgeSeconds) {
+  res.setHeader(
+    "set-cookie",
+    `nixp_session=${encodeURIComponent(token)}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${maxAgeSeconds}`
+  );
+}
+
 function slugify(value) {
   return String(value || "")
     .trim()
@@ -67,7 +160,61 @@ function slugify(value) {
 async function handleApi(req, res) {
   const url = new URL(req.url || "/", `http://localhost:${port}`);
 
+  if (url.pathname === "/api/auth/session" && req.method === "GET") {
+    const session = sessionFromRequest(req);
+    json(res, 200, {
+      authenticated: Boolean(session),
+      workspace: session?.workspace || null,
+      username: session?.username || null
+    });
+    return true;
+  }
+
+  if (url.pathname === "/api/auth/login" && req.method === "POST") {
+    if (!allowedByAllowlist(req)) {
+      json(res, 403, { ok: false, error: "This device is not allowed to access this workspace" });
+      return true;
+    }
+
+    const payload = JSON.parse(await readBody(req));
+    const workspace = String(payload.workspace || "").trim().toLowerCase();
+    const credentials = credentialsForWorkspace(workspace);
+    const configured = Boolean(credentials?.username && credentials?.password);
+    const valid =
+      configured &&
+      safeEqual(payload.username, credentials.username) &&
+      safeEqual(payload.password, credentials.password);
+
+    if (!valid) {
+      json(res, 401, { ok: false, error: configured ? "Invalid credentials" : "Workspace login is not configured" });
+      return true;
+    }
+
+    const token = randomBytes(32).toString("hex");
+    const maxAgeSeconds = 60 * 60 * 8;
+    sessions.set(token, {
+      workspace,
+      username: credentials.username,
+      expiresAt: Date.now() + maxAgeSeconds * 1000
+    });
+    setSessionCookie(res, token, maxAgeSeconds);
+    json(res, 200, { ok: true, workspace, username: credentials.username });
+    return true;
+  }
+
+  if (url.pathname === "/api/auth/logout" && req.method === "POST") {
+    const token = parseCookies(req).nixp_session;
+    if (token) sessions.delete(token);
+    setSessionCookie(res, "", 0);
+    json(res, 200, { ok: true });
+    return true;
+  }
+
   if (url.pathname === "/api/admin/store" && req.method === "POST") {
+    if (!requireWorkspace(req, "admin")) {
+      json(res, 401, { ok: false, error: "Admin login required" });
+      return true;
+    }
     const payload = JSON.parse(await readBody(req));
     const dataDir = join(root, "public", "data");
     await mkdir(dataDir, { recursive: true });
@@ -77,6 +224,10 @@ async function handleApi(req, res) {
   }
 
   if (url.pathname === "/api/admin/upload" && req.method === "POST") {
+    if (!requireWorkspace(req, "admin")) {
+      json(res, 401, { ok: false, error: "Admin login required" });
+      return true;
+    }
     const payload = JSON.parse(await readBody(req));
     const match = String(payload.dataUrl || "").match(/^data:(image\/(?:png|jpeg|jpg|webp));base64,(.+)$/);
     if (!match) {

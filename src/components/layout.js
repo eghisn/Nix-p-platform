@@ -20,6 +20,11 @@ const adminLinks = [
   ["Preview", "/admin/preview"]
 ];
 
+const financeLinks = [
+  ["Cashflow", "/finance"],
+  ["Reports", "/finance/cashflow"]
+];
+
 const idr = new Intl.NumberFormat("id-ID", {
   style: "currency",
   currency: "IDR",
@@ -27,16 +32,19 @@ const idr = new Intl.NumberFormat("id-ID", {
 });
 
 export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverlay = "") {
-  const isAdmin = (path.startsWith("/admin") && !path.startsWith("/admin/preview")) || path === "/login";
-  const logoHref = isAdmin ? "/admin" : "/";
+  const isAdmin = path.startsWith("/admin") && !path.startsWith("/admin/preview");
+  const isFinance = path.startsWith("/finance");
+  const isPrivate = isAdmin || isFinance || path === "/login";
+  const privateLinks = isFinance ? financeLinks : adminLinks;
+  const logoHref = isFinance ? "/finance" : isAdmin ? "/admin" : "/";
 
   return `
     <header class="site-header">
       <button class="nav-toggle" type="button" aria-label="Toggle navigation" data-nav-toggle>Menu</button>
       <nav class="site-nav site-nav-left" data-nav-left>
         ${
-          isAdmin
-            ? adminLinks.map(([label, href]) => navLink(label, href, path)).join("")
+          isPrivate
+            ? privateLinks.map(([label, href]) => navLink(label, href, path)).join("")
             : leftPublicLinks.map(([label, href]) => navLink(label, href, path)).join("")
         }
       </nav>
@@ -45,7 +53,7 @@ export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverl
       </a>
       <nav class="site-nav site-nav-right" data-nav-right>
         ${
-          isAdmin
+          isPrivate
             ? `<a href="/" data-link>Public site</a>`
             : `${rightPublicLinks.map(([label, href]) => navLink(label, href, path)).join("")}
               <button class="cart-trigger" type="button" data-cart-open>Cart <span>${cartCount}</span></button>

@@ -42,6 +42,8 @@ const staticRoutes = [
   "shipping-returns",
   "cart",
   "login",
+  "finance",
+  "finance/cashflow",
   "admin",
   "admin/editor",
   "admin/products",

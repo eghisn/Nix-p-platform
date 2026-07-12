@@ -19,6 +19,12 @@ const state = {
   searchOpen: false,
   selectedSizes: {},
   zoomedProductId: null,
+  auth: {
+    loaded: false,
+    authenticated: false,
+    workspace: null,
+    username: null
+  },
   adminEditingProductId: null,
   adminSearch: {},
   adminSort: {
@@ -45,6 +51,8 @@ const routes = {
   "/shipping-returns": shippingReturnsPage,
   "/cart": cartPage,
   "/login": loginPage,
+  "/finance": cashflowPage,
+  "/finance/cashflow": cashflowPage,
   "/admin": adminDashboardPage,
   "/admin/editor": adminEditorPage,
   "/admin/products": adminProductsPage,
@@ -61,15 +69,20 @@ const routes = {
 
 async function render() {
   const path = normalizePath(location.pathname);
-  const view = isProtectedWorkspaceRoute(path) && !isLocalEditorHost()
-    ? privateWorkspacePage
-    : path.startsWith("/product/")
-    ? productDetailPage
-    : path.startsWith("/admin/preview/product/")
-      ? previewProductDetailPage
-    : path.startsWith("/artists/")
-      ? artistProductsPage
-      : routes[path] || notFoundPage;
+  await loadAuthSession();
+  const requiredWorkspace = workspaceForPath(path);
+  const view =
+    requiredWorkspace && !isLocalEditorHost()
+      ? privateWorkspacePage
+      : requiredWorkspace && !hasWorkspaceAccess(requiredWorkspace)
+        ? () => loginPage(requiredWorkspace, path)
+        : path.startsWith("/product/")
+          ? productDetailPage
+          : path.startsWith("/admin/preview/product/")
+            ? previewProductDetailPage
+            : path.startsWith("/artists/")
+              ? artistProductsPage
+              : routes[path] || notFoundPage;
   const content = await view(path);
   document.body.classList.toggle("page-lock", path === "/about" || path === "/contact");
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
@@ -77,8 +90,29 @@ async function render() {
   bindEvents();
 }
 
-function isProtectedWorkspaceRoute(path) {
-  return path === "/login" || path.startsWith("/admin");
+async function loadAuthSession({ force = false } = {}) {
+  if (state.auth.loaded && !force) return state.auth;
+  if (!isLocalEditorHost()) {
+    state.auth = { loaded: true, authenticated: false, workspace: null, username: null };
+    return state.auth;
+  }
+  try {
+    const response = await fetch("/api/auth/session", { cache: "no-store" });
+    state.auth = { loaded: true, ...(await response.json()) };
+  } catch {
+    state.auth = { loaded: true, authenticated: false, workspace: null, username: null };
+  }
+  return state.auth;
+}
+
+function workspaceForPath(path) {
+  if (path.startsWith("/finance") || path === "/admin/cashflow") return "finance";
+  if (path.startsWith("/admin")) return "admin";
+  return null;
+}
+
+function hasWorkspaceAccess(workspace) {
+  return state.auth.authenticated && state.auth.workspace === workspace;
 }
 
 function isLocalEditorHost() {
@@ -558,18 +592,27 @@ async function searchOverlay() {
   `;
 }
 
-function loginPage() {
+function loginPage(workspaceOrPath = "admin", nextPath = null) {
+  const params = new URLSearchParams(location.search);
+  const workspace = ["admin", "finance"].includes(workspaceOrPath)
+    ? workspaceOrPath
+    : params.get("workspace") === "finance"
+      ? "finance"
+      : "admin";
+  const next = nextPath || params.get("next") || (workspace === "finance" ? "/finance" : "/admin");
+  const workspaceLabel = workspace === "finance" ? "Finance Platform" : "Admin Platform";
   return `
     ${pageHero({
       eyebrow: "Private",
-      title: "Login",
-      text: "Admin authentication placeholder. Supabase Auth can connect here later."
+      title: `${workspaceLabel} Login`,
+      text: "Local prototype login. Credentials are checked by the local server and are not stored in the browser bundle."
     })}
     <section class="section login-panel">
-      <form>
-        <label>Email:<input type="email" value="admin@nixp.local" /></label>
-        <label>Password:<input type="password" value="prototype" /></label>
-        <a class="button button-dark" href="/admin" data-link>Enter admin</a>
+      <form data-login-form data-workspace="${escapeAttr(workspace)}" data-next="${escapeAttr(next)}">
+        <label>Username<input name="username" type="text" autocomplete="username" /></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" /></label>
+        <button class="button button-dark" type="submit">Enter ${workspace === "finance" ? "finance" : "admin"}</button>
+        <p class="form-message" data-login-message></p>
       </form>
     </section>
   `;
@@ -1101,7 +1144,12 @@ async function reportsPage() {
 }
 
 function adminHero(title, text) {
-  return pageHero({ eyebrow: "NIXP Admin", title, text });
+  const workspace = workspaceForPath(normalizePath(location.pathname));
+  const label = workspace === "finance" ? "NIXP Finance" : "NIXP Admin";
+  const session = state.auth.authenticated
+    ? ` Signed in as ${escapeHtml(state.auth.username || workspace)}. <button class="link-button" type="button" data-auth-logout>Logout</button>`
+    : "";
+  return pageHero({ eyebrow: label, title, text: `${text}${session}` });
 }
 
 function metric(label, value) {
@@ -1247,6 +1295,41 @@ function notFoundPage() {
 }
 
 function bindEvents() {
+  document.querySelector("[data-login-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const message = form.querySelector("[data-login-message]");
+    const data = Object.fromEntries(new FormData(form).entries());
+    message.textContent = "Checking login...";
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          workspace: form.dataset.workspace,
+          username: data.username,
+          password: data.password
+        })
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || "Login failed");
+      state.auth = { loaded: true, authenticated: true, workspace: payload.workspace, username: payload.username };
+      history.pushState({}, "", form.dataset.next || (payload.workspace === "finance" ? "/finance" : "/admin"));
+      render();
+    } catch (error) {
+      message.textContent = error instanceof Error ? error.message : "Login failed";
+    }
+  });
+
+  document.querySelectorAll("[data-auth-logout]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      await fetch("/api/auth/logout", { method: "POST" });
+      state.auth = { loaded: true, authenticated: false, workspace: null, username: null };
+      history.pushState({}, "", "/");
+      render();
+    });
+  });
+
   document.querySelectorAll("[data-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       const href = link.getAttribute("href");

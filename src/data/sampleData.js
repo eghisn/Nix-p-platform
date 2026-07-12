@@ -584,35 +584,13 @@ export const products = [
   }
 ];
 
-export const inventory = products.map((product, index) => ({
-  sku: product.sku || `NIXP-${product.id.toUpperCase()}`,
-  productId: product.id,
-  location: product.category === "Records" ? `${product.format} Shelf` : "Shop Floor",
-  stock: product.qty || 1,
-  lowStockAt: 1,
-  status: (product.qty || 1) > 0 ? "In stock" : "Sold out",
-  sort: index
-}));
+export const inventory = [];
 
-export const orders = [
-  { id: "ORD-1042", customer: "Pim S.", channel: "Website", status: "Paid", date: "2026-07-01", total: 1540000, items: ["nxp-2026-vnl-0004", "nxp-2026-vnl-0005", "pub-001"] },
-  { id: "ORD-1043", customer: "Daniel K.", channel: "Instagram", status: "Packing", date: "2026-07-02", total: 415000, items: ["nxp-2026-cd-0015"] },
-  { id: "ORD-1044", customer: "Ari T.", channel: "Website", status: "Shipped", date: "2026-07-03", total: 1450000, items: ["app-001"] },
-  { id: "ORD-1045", customer: "Mei L.", channel: "Walk-in", status: "Closed", date: "2026-07-06", total: 640000, items: [, "pub-001"] }
-];
+export const orders = [];
 
-export const requestItems = [
-  { id: "REQ-030", artistName: "Arca", itemName: "Any available title", format: "Vinyl", email: "sample@nixp.local", whatsapp: "+62 821 2287 6289", notes: "Customer prefers a clean copy.", status: "Searching" },
-  { id: "REQ-031", artistName: "Panda Bear", itemName: "Any available title", format: "CD", email: "collector@nixp.local", whatsapp: "+62 821 2287 6289", notes: "Notify if a copy appears.", status: "Searching" }
-];
+export const requestItems = [];
 
-export const cashflow = [
-  { month: "Mar", revenue: 4280000, expenses: 2160000, net: 2120000 },
-  { month: "Apr", revenue: 5120000, expenses: 2840000, net: 2280000 },
-  { month: "May", revenue: 4860000, expenses: 2400000, net: 2460000 },
-  { month: "Jun", revenue: 6340000, expenses: 3120000, net: 3220000 },
-  { month: "Jul", revenue: 2980000, expenses: 1410000, net: 1570000 }
-];
+export const cashflow = [];
 
 function record(row) {
   const displayFormat = row.format === "Vinyl" ? "Vinyl 12\"" : row.format;

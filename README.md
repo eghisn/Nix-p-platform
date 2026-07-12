@@ -53,9 +53,30 @@ The prototype editor is file-backed when it runs through `npm run dev`.
 - Uploaded product images are written to `public/uploads/products/`.
 - Commit both the JSON file and uploaded image files before pushing to GitHub/Vercel.
 - Static builds on Vercel cannot write these files at runtime; Supabase Storage and database tables should replace the local write API when production credentials are ready.
+- Local admin and finance routes require operator login through the local dev server. Put credentials in `.env.local`; never commit that file.
 
 If the seed data changes and you need to regenerate the local snapshot:
 
 ```bash
 npm run seed:admin
 ```
+
+## Private workspace plan
+
+- `nix-p.com`: public storefront, deployed from GitHub to Vercel.
+- `admin.nix-p.com`: private website/admin editor, required login.
+- `finance.nix-p.com`: private cashflow/finance workspace, required login.
+
+For production, use Vercel environment variables for secrets and Supabase Auth for login. Store products, inventory, orders, requests, cashflow, and uploads in Supabase with RLS enabled. Keep `service_role` keys server-only and never expose them in client JavaScript.
+
+Local credentials are read from:
+
+```bash
+NIXP_ADMIN_USERNAME=
+NIXP_ADMIN_PASSWORD=
+NIXP_FINANCE_USERNAME=
+NIXP_FINANCE_PASSWORD=
+NIXP_AUTH_ALLOWLIST=
+```
+
+`NIXP_AUTH_ALLOWLIST` is optional and accepts comma-separated IP addresses for local prototype access control.

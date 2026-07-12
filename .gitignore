@@ -19,3 +19,9 @@ NIXP_BACKUP/
 *.xlsx
 *.numbers
 *.zip
+public/data/admin-store.json
+exports/supabase/admin-store.snapshot.json
+exports/supabase/cashflow.json
+exports/supabase/inventory.json
+exports/supabase/orders.json
+exports/supabase/requests.json
