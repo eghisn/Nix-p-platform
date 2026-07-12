@@ -1201,7 +1201,7 @@ function sizeInventoryFields(product = {}) {
         ${sizeOptions
           .map((label) => {
             const saved = savedSizes.get(label);
-            const quantity = Number(saved?.quantity ?? saved?.qty ?? (saved ? (saved.soldOut ? 0 : 1) : 0));
+            const quantity = saved ? Number(saved.quantity ?? saved.qty ?? (saved.soldOut ? 0 : 1)) : "";
             return `
               <label>${label}
                 <input name="sizeQty:${label}" type="number" min="0" step="1" value="${escapeAttr(quantity)}" />

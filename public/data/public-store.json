@@ -34,36 +34,6 @@
     {
       "publishStatus": "Published",
       "visibility": "Public",
-      "updatedAt": "2026-07-11",
-      "id": "obj-001",
-      "sku": "NXP-2026-OBJ-0001",
-      "title": "Listening Stone No. 4",
-      "artist": "NIXP Objects",
-      "format": "Object",
-      "category": "Objects",
-      "price": 950000,
-      "year": 2026,
-      "label": "Object Series",
-      "image": "/public/nixp-product-example-paper.png",
-      "tags": [
-        "ceramic",
-        "edition of 20"
-      ],
-      "description": "A small ceramic listening object made to sit beside records, books, and speakers.",
-      "details": [
-        "SKU: NXP-2026-OBJ-0001",
-        "Ceramic",
-        "Edition of 20",
-        "Made in Jakarta"
-      ],
-      "sizes": [],
-      "collection": "Object Series",
-      "color": "",
-      "material": ""
-    },
-    {
-      "publishStatus": "Published",
-      "visibility": "Public",
       "updatedAt": "2026-07-12",
       "id": "nxp-2026-obj-0002-preform",
       "sku": "NXP-2026-OBJ-0002",
@@ -86,36 +56,6 @@
         "Brass Ring"
       ],
       "sizes": [
-        {
-          "label": "S",
-          "quantity": 0,
-          "soldOut": true
-        },
-        {
-          "label": "M",
-          "quantity": 0,
-          "soldOut": true
-        },
-        {
-          "label": "L",
-          "quantity": 0,
-          "soldOut": true
-        },
-        {
-          "label": "XL",
-          "quantity": 0,
-          "soldOut": true
-        },
-        {
-          "label": "XXL",
-          "quantity": 0,
-          "soldOut": true
-        },
-        {
-          "label": "7",
-          "quantity": 0,
-          "soldOut": true
-        },
         {
           "label": "9",
           "quantity": 4,

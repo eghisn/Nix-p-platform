@@ -4,6 +4,7 @@ const STORAGE_KEY = "nixp-admin-store-v1";
 const STORE_VERSION = "uniform-display-product-photos-2026-07-12";
 const ADMIN_STORE_PATH = "/public/data/admin-store.json";
 const PUBLIC_STORE_PATH = "/public/data/public-store.json";
+const REMOVED_PRODUCT_IDS = new Set(["obj-001"]);
 
 let activeStore = null;
 
@@ -93,8 +94,12 @@ function writeStore(store) {
 }
 
 function mergeStore(seeded, saved, { publicOnly = false } = {}) {
-  const savedProducts = (saved.products || []).map(withDefaults);
-  const seededProducts = seeded.products.map(withDefaults);
+  const savedProducts = (saved.products || [])
+    .filter((product) => !REMOVED_PRODUCT_IDS.has(product.id))
+    .map(withDefaults);
+  const seededProducts = seeded.products
+    .filter((product) => !REMOVED_PRODUCT_IDS.has(product.id))
+    .map(withDefaults);
   const mergedProducts = [
     ...savedProducts.map((product) => {
       const seedProduct = seededProducts.find((item) => item.id === product.id);
@@ -127,10 +132,14 @@ function collectSizes(data) {
     .filter(([key]) => key.startsWith("sizeQty:"))
     .map(([key, value]) => {
       const label = key.replace("sizeQty:", "");
-      const quantity = Math.max(0, Number(value || 0));
+      const rawValue = String(value ?? "").trim();
+      if (rawValue === "") return null;
+      const parsedQuantity = Number(rawValue);
+      if (!Number.isFinite(parsedQuantity)) return null;
+      const quantity = Math.max(0, parsedQuantity);
       return { label, quantity, soldOut: quantity <= 0 };
     })
-    .filter((size) => size.label);
+    .filter((size) => size?.label);
 }
 
 async function persistStore(store) {
@@ -184,6 +193,7 @@ async function migrateBrowserStore(fileStore, browserStore) {
   let changed = false;
 
   for (const browserProduct of browserStore.products || []) {
+    if (REMOVED_PRODUCT_IDS.has(browserProduct.id)) continue;
     const existingIndex = merged.products.findIndex((product) => product.id === browserProduct.id);
     const existing = existingIndex >= 0 ? merged.products[existingIndex] : null;
     const hasBrowserUpload = String(browserProduct.image || "").startsWith("data:image/");
