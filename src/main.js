@@ -1,4 +1,5 @@
 import { requestStatuses } from "./data/sampleData.js";
+import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 
@@ -17,7 +18,17 @@ const state = {
   cartOpen: false,
   searchOpen: false,
   selectedSizes: {},
-  zoomedProductId: null
+  zoomedProductId: null,
+  adminEditingProductId: null,
+  adminSearch: {},
+  adminSort: {
+    products: "artist",
+    artists: "name",
+    collections: "sort",
+    requests: "status",
+    orders: "date",
+    preview: "artist"
+  }
 };
 
 const routes = {
@@ -35,21 +46,31 @@ const routes = {
   "/cart": cartPage,
   "/login": loginPage,
   "/admin": adminDashboardPage,
+  "/admin/editor": adminEditorPage,
+  "/admin/products": adminProductsPage,
+  "/admin/media": adminMediaPage,
+  "/admin/artists": adminArtistsPage,
+  "/admin/collections": adminCollectionsPage,
+  "/admin/requests": adminRequestsPage,
   "/admin/inventory": inventoryPage,
   "/admin/orders": ordersPage,
   "/admin/cashflow": cashflowPage,
-  "/admin/reports": reportsPage
+  "/admin/reports": reportsPage,
+  "/admin/preview": adminPreviewPage
 };
 
 async function render() {
   const path = normalizePath(location.pathname);
   const view = path.startsWith("/product/")
     ? productDetailPage
+    : path.startsWith("/admin/preview/product/")
+      ? previewProductDetailPage
     : path.startsWith("/artists/")
       ? artistProductsPage
       : routes[path] || notFoundPage;
   const content = await view(path);
   document.body.classList.toggle("page-lock", path === "/about" || path === "/contact");
+  document.body.classList.toggle("preview-lock", path === "/admin/preview");
   app.innerHTML = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
   bindEvents();
 }
@@ -61,13 +82,14 @@ function normalizePath(path) {
 
 async function homePage() {
   const products = await catalogService.listProducts();
-  const slides = Array.from({ length: 10 }, (_, index) => products[index % products.length]);
-  const marqueeSlides = [...slides, ...slides];
+  const featured = products.filter((product) => product.image && !product.image.includes("nixp-product-example"));
+  const slides = featured.length ? featured : products;
+  const loopSlides = [...slides, ...slides];
   return `
     <section class="home-slider" aria-label="Product slider">
       <div class="slider-viewport">
         <div class="slider-track">
-          ${marqueeSlides
+          ${loopSlides
           .map(
             (product, index) => `
               <article class="slide">
@@ -76,7 +98,7 @@ async function homePage() {
                     <img src="${product.image}" alt="${product.title}" />
                   </figure>
                   <div class="slide-caption">
-                    <span>${String((index % 10) + 1).padStart(2, "0")}</span>
+                    <span>${String((index % slides.length) + 1).padStart(2, "0")}</span>
                     <strong>${product.artist}</strong>
                     <em>${product.title}</em>
                   </div>
@@ -144,15 +166,20 @@ async function productDetailPage(path) {
   const id = decodeURIComponent(path.replace("/product/", ""));
   const product = await catalogService.getProduct(id);
   if (!product) return notFoundPage();
+  return productDetailMarkup(product);
+}
 
+async function productDetailMarkup(product) {
   const related = (await catalogService.listProducts())
     .filter((item) => item.category === product.category && item.id !== product.id)
     .slice(0, 4);
   const displayFormat = product.displayFormat || product.format;
+  const conditionLabel = product.condition || "Available";
   const isApparel = product.category === "Apparel";
+  const isSizedProduct = (product.category === "Apparel" || product.category === "Objects") && product.sizes?.length;
   const selectedSize =
     state.selectedSizes[product.id] ||
-    product.sizes?.find((size) => !size.soldOut)?.label ||
+    product.sizes?.find((size) => !isSizeSoldOut(size))?.label ||
     "";
 
   return `
@@ -181,7 +208,7 @@ async function productDetailPage(path) {
         <div class="detail-price">${money.format(product.price)}</div>
         <p>${product.description}</p>
         ${
-          isApparel
+          isSizedProduct
             ? `<div class="size-picker" aria-label="Available sizes">
                 ${product.sizes
                   .map(
@@ -190,9 +217,9 @@ async function productDetailPage(path) {
                         type="button"
                         data-size-option="${product.id}"
                         data-size-value="${size.label}"
-                        ${size.soldOut ? "disabled" : ""}
+                        ${isSizeSoldOut(size) ? "disabled" : ""}
                         class="${[
-                          size.soldOut ? "is-sold-out" : "",
+                          isSizeSoldOut(size) ? "is-sold-out" : "",
                           selectedSize === size.label ? "is-selected" : ""
                         ]
                           .filter(Boolean)
@@ -215,7 +242,7 @@ async function productDetailPage(path) {
             isApparel
               ? `<div><dt>Material</dt><dd>${product.material}</dd></div>
                  <div><dt>Color</dt><dd>${product.color}</dd></div>`
-              : `<div><dt>Format</dt><dd>${displayFormat}</dd></div>
+              : `<div><dt>Format</dt><dd>${displayFormat} / ${conditionLabel}</dd></div>
                  <div><dt>Label</dt><dd>${product.label}</dd></div>
                  <div><dt>Year</dt><dd>${product.year}</dd></div>
                  <div><dt>Notes</dt><dd>${product.details.join(" / ")}</dd></div>`
@@ -363,7 +390,7 @@ function aboutPage() {
         <h1>About</h1>
         <div class="editorial-copy">
           <p>NIXP is an extension of Nix Powell, bringing together records, CDs, cassettes, books and selected objects shaped by years of listening, collecting and making.</p>
-          <p>Operating from Aesthetic Pleasure Gallery in Jakarta, NIXP functions as both a record store and listening space, with a selection that moves across contemporary music, experimental publishing and independent culture without separating them into disciplines.</p>
+          <p>Operating from Aesthetic Pleasure Gallery in Jakarta, <strong>NIXP is a place for sound, objects and printed matter to gather, following the traces between image, memory and whatever refuses to stay in one form.</strong></p>
         </div>
       </div>
     </section>
@@ -544,17 +571,401 @@ async function adminDashboardPage() {
     catalogService.listOrders(),
     catalogService.listRequests()
   ]);
+  const products = await catalogService.listAllProducts();
   const stockUnits = inventory.reduce((sum, item) => sum + item.stock, 0);
   const orderValue = orders.reduce((sum, order) => sum + order.total, 0);
   return `
     ${adminHero("Admin Dashboard", "Operations snapshot for catalog, stock, orders, requests, and shop health.")}
     <section class="section metric-grid">
+      ${metric("Products", products.length)}
+      ${metric("Drafts", products.filter((product) => product.publishStatus !== "Published").length)}
       ${metric("Stock units", stockUnits)}
       ${metric("Open orders", orders.filter((order) => order.status !== "Closed").length)}
       ${metric("Requests", requests.length)}
       ${metric("Order value", money.format(orderValue))}
     </section>
   `;
+}
+
+async function adminEditorPage() {
+  const [products, artists, collections, requests, orders] = await Promise.all([
+    catalogService.listAllProducts(),
+    catalogService.listAdminArtists(),
+    catalogService.listCollections(),
+    catalogService.listRequests(),
+    catalogService.listOrders()
+  ]);
+  const drafts = products.filter((product) => product.publishStatus !== "Published").length;
+  return `
+    ${adminHero("NIXP Editor", "One workspace for products, images, artists, collections, requests, orders, drafts, and previews.")}
+    <section class="section editor-command">
+      ${metric("Products", products.length)}
+      ${metric("Drafts", drafts)}
+      ${metric("Requests", requests.length)}
+      ${metric("Orders", orders.length)}
+      <nav class="editor-tabs" aria-label="Editor sections">
+        <a href="#editor-products">Products</a>
+        <a href="#editor-media">Images</a>
+        <a href="#editor-artists">Artists</a>
+        <a href="#editor-collections">Collections</a>
+        <a href="#editor-requests">Requests</a>
+        <a href="#editor-orders">Orders</a>
+        <a href="#editor-preview">Preview</a>
+      </nav>
+    </section>
+    <section class="section editor-section" id="editor-products">
+      <div class="editor-section-head">
+        <span>01</span>
+        <h2>Products</h2>
+        <p>Create product drafts, publish finished listings, and archive old items.</p>
+      </div>
+      ${await adminProductsPage({ embedded: true })}
+    </section>
+    <section class="section editor-section" id="editor-media">
+      <div class="editor-section-head">
+        <span>02</span>
+        <h2>Images</h2>
+        <p>Upload or replace product images before they move into Supabase Storage.</p>
+      </div>
+      ${await adminMediaPage({ embedded: true })}
+    </section>
+    <section class="section editor-section" id="editor-artists">
+      <div class="editor-section-head">
+        <span>03</span>
+        <h2>Artists</h2>
+        <p>Manage the artist index and editorial metadata.</p>
+      </div>
+      ${await adminArtistsPage({ embedded: true })}
+    </section>
+    <section class="section editor-section" id="editor-collections">
+      <div class="editor-section-head">
+        <span>04</span>
+        <h2>Collections</h2>
+        <p>Organize categories, shelves, drops, and campaign groupings.</p>
+      </div>
+      ${await adminCollectionsPage({ embedded: true })}
+    </section>
+    <section class="section editor-section" id="editor-requests">
+      <div class="editor-section-head">
+        <span>05</span>
+        <h2>Requests</h2>
+        <p>Move request items from new lead to closed conversation.</p>
+      </div>
+      ${await adminRequestsPage({ embedded: true })}
+    </section>
+    <section class="section editor-section" id="editor-orders">
+      <div class="editor-section-head">
+        <span>06</span>
+        <h2>Orders</h2>
+        <p>Review carts and update order statuses.</p>
+      </div>
+      ${await ordersPage({ embedded: true })}
+    </section>
+    <section class="section editor-section" id="editor-preview">
+      <div class="editor-section-head">
+        <span>07</span>
+        <h2>Preview</h2>
+        <p>Open draft previews before publishing them to the public storefront.</p>
+      </div>
+      ${await adminPreviewPage({ embedded: true })}
+    </section>
+  `;
+}
+
+async function adminProductsPage({ embedded = false } = {}) {
+  const products = await catalogService.listAllProducts();
+  const visibleProducts = sortItems(
+    filterItems(products, "products", (item) => [
+      item.sku,
+      item.artist,
+      item.title,
+      item.format,
+      item.condition,
+      item.category,
+      item.publishStatus,
+      item.price
+    ]),
+    state.adminSort.products,
+    {
+      artist: (item) => item.artist,
+      product: (item) => item.title,
+      title: (item) => item.title,
+      sku: (item) => item.sku,
+      category: (item) => item.category,
+      format: (item) => item.format,
+      condition: (item) => item.condition || "",
+      price: (item) => item.price,
+      status: (item) => item.publishStatus,
+      updated: (item) => item.updatedAt || ""
+    }
+  );
+  const editing = state.adminEditingProductId
+    ? products.find((product) => product.id === state.adminEditingProductId)
+    : null;
+  const product = editing || {};
+  const productCategory = product.category || "Records";
+  return `
+    ${embedded ? "" : adminHero("Products", "Create product drafts, upload images, publish items, and keep the storefront clean.")}
+    <div class="admin-workspace">
+      <form class="admin-panel admin-product-form" data-admin-product-form>
+        <div class="admin-panel-head">
+          <h2>${editing ? "Edit product" : "New product"}</h2>
+          ${editing ? `<button class="button button-outline" type="button" data-admin-new-product>New</button>` : ""}
+        </div>
+        <div class="admin-form-grid">
+          ${input("id", "ID", product.id || "", "Leave blank for auto ID")}
+          ${input("sku", "SKU", product.sku || "", "NXP-2026-APP-0002")}
+          ${input("title", "Title", product.title || "", "Item title")}
+          ${select("category", "Category", ["Records", "Objects", "Apparel", "Publishing"], product.category || "Records")}
+          <div class="admin-record-fields" data-admin-record-fields ${productCategory === "Apparel" || productCategory === "Objects" ? "hidden" : ""}>
+            ${input("artist", "Artist", product.artist || "", "Artist / maker")}
+            ${input("format", "Format", product.format || "", "Vinyl, CD, Book")}
+            ${input("displayFormat", "Display format", product.displayFormat || "", "Vinyl 12&quot;")}
+          </div>
+          <div class="admin-product-fields" data-admin-product-fields ${productCategory === "Apparel" || productCategory === "Objects" ? "" : "hidden"}>
+            ${input("collection", "Collection", product.collection || product.label || "", "NIXP Apparel")}
+            ${input("color", "Color", product.color || "", "Black")}
+            ${input("material", "Material", product.material || "", "Knit cotton blend")}
+            <div data-admin-apparel-field ${productCategory === "Apparel" ? "" : "hidden"}>
+              ${input("apparelType", "Apparel type", product.apparelType || "", "Tops, Bottoms, Accessories")}
+            </div>
+            ${sizeInventoryFields(product)}
+          </div>
+          ${input("condition", "Condition", product.condition || "", "New, Used, Unsealed")}
+          ${input("price", "Price IDR", product.price || "", "640000", "number")}
+          ${input("year", "Year", product.year || new Date().getFullYear(), "2026", "number")}
+          ${input("label", "Label", product.label || "", "NIXP Selection")}
+          ${input("qty", "Quantity", product.qty || 1, "1", "number")}
+          ${input("tags", "Tags", product.tags?.join(", ") || "", "new, vinyl, jakarta")}
+          ${input("details", "Details", product.details?.join(", ") || "", "Format, condition, notes")}
+          ${select("publishStatus", "Status", ["Published", "Draft", "Archived"], product.publishStatus || "Published")}
+          ${select("visibility", "Visibility", ["Public", "Hidden"], product.visibility || "Public")}
+        </div>
+        <label>Description<textarea name="description" rows="4">${escapeHtml(product.description || "")}</textarea></label>
+        <label>Image URL<input name="image" value="${escapeAttr(product.image || "")}" placeholder="/public/example.png or uploaded data URL" /></label>
+        <label>Upload image<input name="imageFile" type="file" accept="image/*" /></label>
+        <div class="admin-form-actions">
+          <button class="button button-dark" type="submit">Save product</button>
+          ${editing ? `<a class="button button-outline" href="/admin/preview/product/${product.id}" data-link>Preview</a>` : ""}
+        </div>
+      </form>
+
+      <div class="admin-panel">
+        <div class="admin-panel-head">
+          <h2>Catalog</h2>
+          <span>${visibleProducts.length} / ${products.length} items</span>
+        </div>
+        ${adminListControls("products", "Search SKU, product, category, format, condition", [
+          ["status", "Status"],
+          ["sku", "SKU"],
+          ["product", "Product"],
+          ["category", "Category"],
+          ["format", "Format"],
+          ["condition", "Condition"],
+          ["price", "Selling price"],
+          ["updated:desc", "Updated newest"],
+          ["updated", "Updated oldest"],
+          ["artist", "Artist"],
+          ["title", "Album / title"],
+        ])}
+        ${table(
+          [
+            sortHeader("products", "status", "Status"),
+            sortHeader("products", "sku", "SKU"),
+            sortHeader("products", "product", "Product"),
+            sortHeader("products", "category", "Category"),
+            sortHeader("products", "format", "Format"),
+            sortHeader("products", "condition", "Condition"),
+            sortHeader("products", "price", "Selling Price"),
+            sortHeader("products", "updated", "Updated"),
+            "Actions"
+          ],
+          visibleProducts.map((item) => [
+            statusPill(item.publishStatus),
+            escapeHtml(item.sku || "-"),
+            `<strong>${escapeHtml(item.title)}</strong><br><small>${escapeHtml(item.artist)}</small>`,
+            escapeHtml(item.category || "-"),
+            item.displayFormat || item.format,
+            item.condition || "-",
+            money.format(item.price || 0),
+            item.updatedAt || "-",
+            `<button class="link-button" type="button" data-admin-edit-product="${item.id}">Edit</button>
+             <button class="link-button" type="button" data-admin-product-status="${item.id}" data-status="${item.publishStatus === "Published" ? "Draft" : "Published"}">${item.publishStatus === "Published" ? "Unpublish" : "Publish"}</button>`
+          ])
+        )}
+      </div>
+    </div>
+  `;
+}
+
+async function adminMediaPage({ embedded = false } = {}) {
+  const products = await catalogService.listAllProducts();
+  return `
+    ${embedded ? "" : adminHero("Media", "Upload or replace product images. Uploaded images are stored in the prototype admin data until Supabase Storage is connected.")}
+    <div class="admin-workspace admin-workspace-single">
+      <form class="admin-panel" data-admin-media-form>
+        <label>Product
+          <select name="productId">
+            ${products.map((product) => `<option value="${product.id}">${escapeHtml(product.artist)} / ${escapeHtml(product.title)}</option>`).join("")}
+          </select>
+        </label>
+        <label>Image URL<input name="image" placeholder="/public/new-image.png" /></label>
+        <label>Upload image<input name="imageFile" type="file" accept="image/*" /></label>
+        <button class="button button-dark" type="submit">Update image</button>
+      </form>
+      <div class="admin-media-grid">
+        ${products
+          .map(
+            (product) => `
+              <article class="admin-media-card">
+                <img src="${product.image}" alt="${escapeAttr(product.title)}" />
+                <strong>${escapeHtml(product.title)}</strong>
+                <span>${escapeHtml(product.artist)} / ${product.publishStatus}</span>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function adminArtistsPage({ embedded = false } = {}) {
+  const artists = await catalogService.listAdminArtists();
+  const visibleArtists = sortItems(
+    filterItems(artists, "artists", (artist) => [artist.name, artist.status, artist.bio]),
+    state.adminSort.artists,
+    {
+      name: (artist) => artist.name,
+      status: (artist) => artist.status,
+      sort: (artist) => artist.sort
+    }
+  );
+  return `
+    ${embedded ? "" : adminHero("Artists", "Manage artist names and editorial notes for the public artist index.")}
+    <div class="admin-workspace">
+      <form class="admin-panel" data-admin-artist-form>
+        ${input("name", "Artist name", "", "Artist / maker")}
+        <label>Bio<textarea name="bio" rows="4"></textarea></label>
+        ${select("status", "Status", ["Draft", "Published", "Archived"], "Published")}
+        <button class="button button-dark" type="submit">Save artist</button>
+      </form>
+      <div class="admin-panel">
+        ${adminListControls("artists", "Search artists", [
+          ["name", "Artist"],
+          ["status", "Status"],
+          ["sort", "Sort"]
+        ])}
+        ${table(
+          ["Artist", "Status", "Bio"],
+          visibleArtists.map((artist) => [escapeHtml(artist.name), statusPill(artist.status), escapeHtml(artist.bio || "-")])
+        )}
+      </div>
+    </div>
+  `;
+}
+
+async function adminCollectionsPage({ embedded = false } = {}) {
+  const collections = await catalogService.listCollections();
+  const visibleCollections = sortItems(
+    filterItems(collections, "collections", (collection) => [
+      collection.title,
+      collection.type,
+      collection.status,
+      collection.sort
+    ]),
+    state.adminSort.collections,
+    {
+      title: (collection) => collection.title,
+      type: (collection) => collection.type,
+      status: (collection) => collection.status,
+      sort: (collection) => collection.sort
+    }
+  );
+  return `
+    ${embedded ? "" : adminHero("Collections", "Manage categories, campaign groupings, and editorial shelves.")}
+    <div class="admin-workspace">
+      <form class="admin-panel" data-admin-collection-form>
+        ${input("title", "Collection title", "", "Records")}
+        ${select("type", "Type", ["Category", "Campaign", "Shelf", "Drop"], "Category")}
+        ${select("status", "Status", ["Draft", "Published", "Archived"], "Published")}
+        ${input("sort", "Sort", collections.length + 1, "1", "number")}
+        <button class="button button-dark" type="submit">Save collection</button>
+      </form>
+      <div class="admin-panel">
+        ${adminListControls("collections", "Search collections", [
+          ["sort", "Sort"],
+          ["title", "Title"],
+          ["type", "Type"],
+          ["status", "Status"]
+        ])}
+        ${table(
+          ["Title", "Type", "Status", "Sort"],
+          visibleCollections.map((collection) => [
+            escapeHtml(collection.title),
+            collection.type,
+            statusPill(collection.status),
+            collection.sort
+          ])
+        )}
+      </div>
+    </div>
+  `;
+}
+
+async function adminRequestsPage({ embedded = false } = {}) {
+  const requests = await catalogService.listRequests();
+  const visibleRequests = sortItems(
+    filterItems(requests, "requests", (request) => [
+      request.id,
+      request.artistName,
+      request.itemName,
+      request.format,
+      request.email,
+      request.status
+    ]),
+    state.adminSort.requests,
+    {
+      id: (request) => request.id,
+      artist: (request) => request.artistName,
+      item: (request) => request.itemName,
+      format: (request) => request.format,
+      status: (request) => request.status
+    }
+  );
+  return `
+    ${embedded ? "" : adminHero("Request Inbox", "Track customer item requests from new lead to closed conversation.")}
+    <div>
+      ${adminListControls("requests", "Search requests", [
+        ["status", "Status"],
+        ["artist", "Artist"],
+        ["item", "Item"],
+        ["format", "Format"],
+        ["id", "Request ID"]
+      ])}
+      ${table(
+        ["Request", "Customer", "Item", "Notes", "Status"],
+        visibleRequests.map((request) => [
+          request.id,
+          `${escapeHtml(request.email)}<br><small>${escapeHtml(request.whatsapp || "-")}</small>`,
+          `<strong>${escapeHtml(request.artistName)}</strong><br>${escapeHtml(request.itemName)} / ${request.format}`,
+          escapeHtml(request.notes || "-"),
+          statusSelect("request", request.id, request.status, requestStatuses)
+        ])
+      )}
+    </div>
+  `;
+}
+
+async function adminPreviewPage({ embedded = false } = {}) {
+  return `<div class="admin-home-preview">${await homePage()}</div>`;
+}
+
+async function previewProductDetailPage(path) {
+  const id = decodeURIComponent(path.replace("/admin/preview/product/", ""));
+  const product = await catalogService.getProduct(id, { includeDrafts: true });
+  if (!product) return notFoundPage();
+  return productDetailMarkup(product);
 }
 
 async function inventoryPage() {
@@ -577,23 +988,49 @@ async function inventoryPage() {
   `;
 }
 
-async function ordersPage() {
+async function ordersPage({ embedded = false } = {}) {
   const orders = await catalogService.listOrders();
+  const visibleOrders = sortItems(
+    filterItems(orders, "orders", (order) => [
+      order.id,
+      order.customer,
+      order.channel,
+      order.status,
+      order.date,
+      order.total,
+      order.products.map((product) => `${product.sku} ${product.artist} ${product.title}`).join(" ")
+    ]),
+    state.adminSort.orders,
+    {
+      date: (order) => order.date,
+      customer: (order) => order.customer,
+      status: (order) => order.status,
+      total: (order) => order.total,
+      id: (order) => order.id
+    }
+  );
   return `
-    ${adminHero("Orders", "Sample order workflow across web, social, and walk-in channels.")}
-    <section class="section">
+    ${embedded ? "" : adminHero("Orders", "Sample order workflow across web, social, and walk-in channels.")}
+    <div>
+      ${adminListControls("orders", "Search orders, SKU, artist, album", [
+        ["date", "Date"],
+        ["customer", "Customer"],
+        ["status", "Status"],
+        ["total", "Total"],
+        ["id", "Order ID"]
+      ])}
       ${table(
         ["Order", "Customer", "Channel", "Items", "Status", "Total"],
-        orders.map((order) => [
+        visibleOrders.map((order) => [
           order.id,
           order.customer,
           order.channel,
           order.products.map((product) => product.title).join(", "),
-          order.status,
+          statusSelect("order", order.id, order.status, ["New", "Paid", "Packing", "Shipped", "Closed", "Refunded"]),
           money.format(order.total)
         ])
       )}
-    </section>
+    </div>
   `;
 }
 
@@ -649,6 +1086,134 @@ function adminHero(title, text) {
 
 function metric(label, value) {
   return `<article class="metric"><span>${label}</span><strong>${value}</strong></article>`;
+}
+
+function input(name, label, value = "", placeholder = "", type = "text") {
+  return `
+    <label>${label}
+      <input name="${name}" type="${type}" value="${escapeAttr(value)}" placeholder="${placeholder}" />
+    </label>
+  `;
+}
+
+function select(name, label, options, value = "") {
+  return `
+    <label>${label}
+      <select name="${name}">
+        ${options.map((option) => `<option ${option === value ? "selected" : ""}>${option}</option>`).join("")}
+      </select>
+    </label>
+  `;
+}
+
+function statusPill(status) {
+  return `<span class="status ${String(status).toLowerCase().replaceAll(" ", "-")}">${status}</span>`;
+}
+
+function statusSelect(type, id, value, options) {
+  return `
+    <select class="status-select" data-admin-status="${type}" data-id="${id}">
+      ${options.map((option) => `<option ${option === value ? "selected" : ""}>${option}</option>`).join("")}
+    </select>
+  `;
+}
+
+function isSizeSoldOut(size) {
+  const quantity = Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1));
+  return size.soldOut || quantity <= 0;
+}
+
+function sizeInventoryFields(product = {}) {
+  const sizeOptions = ["S", "M", "L", "XL", "XXL", "7", "9", "11"];
+  const savedSizes = new Map((product.sizes || []).map((size) => [size.label, size]));
+  return `
+    <fieldset class="admin-size-fieldset">
+      <legend>Size quantity</legend>
+      <div class="admin-size-grid">
+        ${sizeOptions
+          .map((label) => {
+            const saved = savedSizes.get(label);
+            const quantity = Number(saved?.quantity ?? saved?.qty ?? (saved ? (saved.soldOut ? 0 : 1) : 0));
+            return `
+              <label>${label}
+                <input name="sizeQty:${label}" type="number" min="0" step="1" value="${escapeAttr(quantity)}" />
+              </label>
+            `;
+          })
+          .join("")}
+      </div>
+    </fieldset>
+  `;
+}
+
+function sortHeader(scope, key, label) {
+  const current = state.adminSort[scope] || "";
+  const activeKey = current.replace(":desc", "");
+  const isActive = activeKey === key;
+  const direction = current.endsWith(":desc") ? "desc" : "asc";
+  const marker = isActive ? (direction === "desc" ? "↓" : "↑") : "";
+  return `<button class="table-sort-button ${isActive ? "is-active" : ""}" type="button" data-scope="${scope}" data-admin-sort-button="${key}">${label}${marker ? ` ${marker}` : ""}</button>`;
+}
+
+function adminListControls(scope, placeholder, sortOptions) {
+  return `
+    <div class="admin-list-tools" data-admin-list-tools="${scope}">
+      <label class="admin-search">
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <circle cx="10.5" cy="10.5" r="6.5"></circle>
+          <path d="M15.5 15.5L21 21"></path>
+        </svg>
+        <input
+          type="search"
+          value="${escapeAttr(state.adminSearch[scope] || "")}"
+          placeholder="${placeholder}"
+          data-admin-search="${scope}"
+        />
+      </label>
+      <label class="admin-sort">Sort
+        <select data-admin-sort="${scope}">
+          ${sortOptions
+            .map(([value, label]) => `<option value="${value}" ${state.adminSort[scope] === value ? "selected" : ""}>${label}</option>`)
+            .join("")}
+        </select>
+      </label>
+    </div>
+  `;
+}
+
+function filterItems(items, scope, fields) {
+  const query = String(state.adminSearch[scope] || "").trim().toLowerCase();
+  if (!query) return items;
+  return items.filter((item) => fields(item).join(" ").toLowerCase().includes(query));
+}
+
+function sortItems(items, key, sorters) {
+  const rawKey = String(key || "");
+  const isDesc = rawKey.endsWith(":desc");
+  const sortKey = rawKey.replace(":desc", "");
+  const sorter = sorters[sortKey] || sorters.title || sorters.name || ((item) => item.id);
+  return [...items].sort((a, b) => {
+    const av = sorter(a);
+    const bv = sorter(b);
+    const result =
+      typeof av === "number" && typeof bv === "number"
+        ? av - bv
+        : String(av || "").localeCompare(String(bv || ""), undefined, { numeric: true });
+    return isDesc ? -result : result;
+  });
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function escapeAttr(value) {
+  return escapeHtml(value);
 }
 
 function notFoundPage() {
@@ -750,6 +1315,117 @@ function bindEvents() {
     });
   });
 
+  document.querySelector("[data-admin-new-product]")?.addEventListener("click", () => {
+    state.adminEditingProductId = null;
+    render();
+  });
+
+  document.querySelectorAll("[data-admin-edit-product]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.adminEditingProductId = button.dataset.adminEditProduct;
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  document.querySelectorAll("[data-admin-product-status]").forEach((button) => {
+    button.addEventListener("click", () => {
+      adminStore.updateProductStatus(button.dataset.adminProductStatus, button.dataset.status);
+      render();
+    });
+  });
+
+  document.querySelectorAll("[data-admin-search]").forEach((input) => {
+    input.addEventListener("input", async () => {
+      const scope = input.dataset.adminSearch;
+      state.adminSearch[scope] = input.value;
+      await render();
+      const nextInput = document.querySelector(`[data-admin-search="${scope}"]`);
+      nextInput?.focus();
+      nextInput?.setSelectionRange(nextInput.value.length, nextInput.value.length);
+    });
+  });
+
+  document.querySelectorAll("[data-admin-sort]").forEach((selectEl) => {
+    selectEl.addEventListener("change", async () => {
+    state.adminSort[selectEl.dataset.adminSort] = selectEl.value;
+      await render();
+    });
+  });
+
+  document.querySelectorAll("[data-admin-sort-button]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const scope = button.dataset.scope;
+      const key = button.dataset.adminSortButton;
+      const current = state.adminSort[scope];
+      state.adminSort[scope] = current === key ? `${key}:desc` : key;
+      await render();
+    });
+  });
+
+  document.querySelector("[data-admin-product-form] select[name='category']")?.addEventListener("change", (event) => {
+    const form = event.currentTarget.closest("[data-admin-product-form]");
+    const isProductCategory = event.currentTarget.value === "Apparel" || event.currentTarget.value === "Objects";
+    form.querySelector("[data-admin-record-fields]").hidden = isProductCategory;
+    form.querySelector("[data-admin-product-fields]").hidden = !isProductCategory;
+    form.querySelector("[data-admin-apparel-field]").hidden = event.currentTarget.value !== "Apparel";
+    if (isProductCategory) {
+      form.elements.artist.value ||= event.currentTarget.value === "Objects" ? "NIXP Objects" : "NIXP Apparel";
+      form.elements.format.value = event.currentTarget.value.replace(/s$/, "");
+      form.elements.displayFormat.value = "";
+    }
+  });
+
+  document.querySelector("[data-admin-product-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    const file = form.elements.imageFile?.files?.[0];
+    if (file) data.image = await adminStore.uploadProductImage(file, data);
+    const saved = await adminStore.saveProduct(data);
+    state.adminEditingProductId = saved.id;
+    render();
+  });
+
+  document.querySelector("[data-admin-media-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    const product = await catalogService.getProduct(data.productId, { includeDrafts: true });
+    const file = form.elements.imageFile?.files?.[0];
+    await adminStore.saveProduct({
+      ...product,
+      image: file ? await adminStore.uploadProductImage(file, product) : data.image || product.image
+    });
+    render();
+  });
+
+  document.querySelector("[data-admin-artist-form]")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    adminStore.saveArtist(Object.fromEntries(new FormData(event.currentTarget).entries()));
+    event.currentTarget.reset();
+    render();
+  });
+
+  document.querySelector("[data-admin-collection-form]")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    adminStore.saveCollection(Object.fromEntries(new FormData(event.currentTarget).entries()));
+    event.currentTarget.reset();
+    render();
+  });
+
+  document.querySelectorAll("[data-admin-status]").forEach((selectEl) => {
+    selectEl.addEventListener("change", () => {
+      if (selectEl.dataset.adminStatus === "request") {
+        adminStore.updateRequestStatus(selectEl.dataset.id, selectEl.value);
+      }
+      if (selectEl.dataset.adminStatus === "order") {
+        adminStore.updateOrderStatus(selectEl.dataset.id, selectEl.value);
+      }
+      render();
+    });
+  });
+
   document.querySelector("[data-request-form]")?.addEventListener("submit", (event) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -817,4 +1493,4 @@ function bindSearch() {
 }
 
 window.addEventListener("popstate", render);
-render();
+adminStore.initialize().then(render);

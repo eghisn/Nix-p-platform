@@ -1,0 +1,30 @@
+[
+  {
+    "id": "records",
+    "title": "Records",
+    "type": "Category",
+    "status": "Published",
+    "sort": 1
+  },
+  {
+    "id": "objects",
+    "title": "Objects",
+    "type": "Category",
+    "status": "Published",
+    "sort": 2
+  },
+  {
+    "id": "apparel",
+    "title": "Apparel",
+    "type": "Category",
+    "status": "Published",
+    "sort": 3
+  },
+  {
+    "id": "publishing",
+    "title": "Publishing",
+    "type": "Category",
+    "status": "Published",
+    "sort": 4
+  }
+]

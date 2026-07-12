@@ -1,50 +1,70 @@
-import { artistNames, cashflow, inventory, orders, products, requestItems } from "../data/sampleData.js";
+import { adminStore } from "./adminStore.js";
 
 // Replace this module with Supabase queries when the project receives credentials.
+const hiddenPublicArtists = new Set(["motorith", "nixp publishing", "publishing", "sample artist", "tida lek"]);
+
 export const catalogService = {
-  async listProducts() {
-    return products;
+  async listProducts(options = {}) {
+    return adminStore.listProducts(options);
+  },
+  async listAllProducts() {
+    return adminStore.listProducts({ includeDrafts: true });
   },
   async listProductsByCategory(category) {
-    return products.filter((product) => product.category === category);
+    return adminStore.listProducts().filter((product) => product.category === category);
   },
   async listProductsByArtist(artistName) {
-    return products.filter((product) => product.artist.toLowerCase() === artistName.toLowerCase());
+    return adminStore
+      .listProducts()
+      .filter((product) => product.artist.toLowerCase() === artistName.toLowerCase());
   },
-  async getProduct(id) {
-    return products.find((product) => product.id === id);
+  async getProduct(id, options = {}) {
+    return adminStore.getProduct(id, options);
   },
   async listRecords(format = "All") {
-    return products.filter((product) => {
+    return adminStore.listProducts().filter((product) => {
       const isRecord = product.category === "Records";
       return format === "All" ? isRecord : isRecord && product.format === format;
     });
   },
   async listApparel(type = "All Apparel") {
-    return products.filter((product) => {
+    return adminStore.listProducts().filter((product) => {
       const isApparel = product.category === "Apparel";
       return type === "All Apparel" ? isApparel : isApparel && product.apparelType === type;
     });
   },
   async listArtists() {
-    return [...new Set(artistNames)].sort((a, b) => a.localeCompare(b));
+    return adminStore
+      .getSnapshot()
+      .artists.filter((artist) => artist.status === "Published")
+      .filter((artist) => !hiddenPublicArtists.has(artist.name.trim().toLowerCase()))
+      .map((artist) => artist.name)
+      .sort((a, b) => a.localeCompare(b));
+  },
+  async listAdminArtists() {
+    return adminStore.getSnapshot().artists;
+  },
+  async listCollections() {
+    return adminStore.getSnapshot().collections;
   },
   async listInventory() {
-    return inventory.map((item) => ({
+    const products = adminStore.listProducts({ includeDrafts: true });
+    return adminStore.getSnapshot().inventory.map((item) => ({
       ...item,
       product: products.find((product) => product.id === item.productId)
     }));
   },
   async listOrders() {
-    return orders.map((order) => ({
+    const products = adminStore.listProducts({ includeDrafts: true });
+    return adminStore.getSnapshot().orders.map((order) => ({
       ...order,
       products: order.items.map((id) => products.find((product) => product.id === id)).filter(Boolean)
     }));
   },
   async listRequests() {
-    return requestItems;
+    return adminStore.getSnapshot().requests;
   },
   async listCashflow() {
-    return cashflow;
+    return adminStore.getSnapshot().cashflow;
   }
 };

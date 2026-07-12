@@ -1,0 +1,1584 @@
+[
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-12",
+    "id": "nxp-2026-obj-0002-preform",
+    "sku": "NXP-2026-OBJ-0002",
+    "title": "Preform",
+    "artist": "Cold Metal Breathes Too",
+    "category": "Objects",
+    "format": "Object",
+    "displayFormat": "",
+    "apparelType": "",
+    "condition": "",
+    "price": 480000,
+    "year": 2026,
+    "label": "Nix Powell",
+    "collection": "Cold Metal Breathes Too",
+    "color": "Palladio",
+    "material": "White Brass",
+    "image": "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg",
+    "tags": [],
+    "details": [
+      "Brass Ring"
+    ],
+    "sizes": [
+      {
+        "label": "S",
+        "quantity": 0,
+        "soldOut": true
+      },
+      {
+        "label": "M",
+        "quantity": 0,
+        "soldOut": true
+      },
+      {
+        "label": "L",
+        "quantity": 0,
+        "soldOut": true
+      },
+      {
+        "label": "XL",
+        "quantity": 0,
+        "soldOut": true
+      },
+      {
+        "label": "XXL",
+        "quantity": 0,
+        "soldOut": true
+      },
+      {
+        "label": "7",
+        "quantity": 0,
+        "soldOut": true
+      },
+      {
+        "label": "9",
+        "quantity": 4,
+        "soldOut": false
+      },
+      {
+        "label": "11",
+        "quantity": 5,
+        "soldOut": false
+      }
+    ],
+    "description": "PREFORM RINGNIX POWELL \"PREFORM\" RING IN BRASS\nTHESE JEWELLERY PIECES ARE CRAFTED WITH THE INDIVIDUAL HANDWORK OF THE ARTISAN, MAKING EACH PIECE UNIQUE.\nWHITE BRASS WITH A BRUSHED PALLADIUM FINISH\n\n\nCOLOR: PALLADIO\nMATERIAL: 100% BRASS",
+    "qty": 1
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0006",
+    "sku": "NXP-2026-VNL-0006",
+    "title": "First Burning Attraction",
+    "artist": "Damien Dubrovnik",
+    "condition": "Used Good",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 470000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0006"
+    ],
+    "description": "Damien Dubrovnik - First Burning Attraction. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0006",
+      "Format: Vinyl 12\"",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0015",
+    "sku": "NXP-2026-CD-0015",
+    "title": "Obzen",
+    "artist": "Meshuggah",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 415000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0015"
+    ],
+    "description": "Meshuggah - Obzen. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0015",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cst-0005",
+    "sku": "NXP-2026-CST-0005",
+    "title": "Into The Boiling Darks",
+    "artist": "Rezzett",
+    "condition": "New-Sealed",
+    "format": "Cassette",
+    "displayFormat": "Cassette",
+    "category": "Records",
+    "qty": 1,
+    "price": 260000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cst-0005-rezzett-into-the-boiling-darks.jpg",
+    "tags": [
+      "Cassette",
+      "NXP-2026-CST-0005"
+    ],
+    "description": "Rezzet - Untitled Selection. Cassette from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CST-0005",
+      "Format: Cassette",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0010",
+    "sku": "NXP-2026-CD-0010",
+    "title": "Noctourniquet",
+    "artist": "The Mars Volta",
+    "condition": "New-Sealed",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 180000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0010-the-mars-volta-noctourniquet.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0010"
+    ],
+    "description": "The Mars Volta - Noctourniquet. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0010",
+      "Format: CD",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0011",
+    "sku": "NXP-2026-CD-0011",
+    "title": "Blackstar",
+    "artist": "David Bowie",
+    "condition": "Used Excellent",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 250000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0011"
+    ],
+    "description": "David Bowie - Blackstar. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0011",
+      "Format: CD",
+      "Condition: Used Excellent"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0012",
+    "sku": "NXP-2026-CD-0012",
+    "title": "Hesitation Marks",
+    "artist": "Nine Inch Nails",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 250000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0012-nine-inch-nails-hesitation-marks.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0012"
+    ],
+    "description": "Nine Inch Nails - Hesitation Marks. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0012",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0016",
+    "sku": "NXP-2026-CD-0016",
+    "title": "Earthly Delights",
+    "artist": "Lightning Bolt",
+    "condition": "Used Excellent",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 350000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0016-lightning-bolt-earthly-delights.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0016"
+    ],
+    "description": "Lightning Bolt - Earthly Delights. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0016",
+      "Format: CD",
+      "Condition: Used Excellent"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0004",
+    "sku": "NXP-2026-VNL-0004",
+    "title": "The Talkies",
+    "artist": "Girl Band",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 700000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0004"
+    ],
+    "description": "Girl Band - The Talkies. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0004",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0005",
+    "sku": "NXP-2026-VNL-0005",
+    "title": "The Early Years",
+    "artist": "Gilla Band",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 568000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0005-gilla-band-the-early-years.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0005"
+    ],
+    "description": "Gilla Band - The Early Years. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0005",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0001",
+    "sku": "NXP-2026-CD-0001",
+    "title": "Chaosphere",
+    "artist": "Meshuggah",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 285000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0001-meshuggah-chaosphere.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0001"
+    ],
+    "description": "Meshuggah - Chaosphere. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0001",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0002",
+    "sku": "NXP-2026-CD-0002",
+    "title": "Maverick",
+    "artist": "Team Sleep",
+    "condition": "Used Excellent",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 235000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0002-team-sleep-maverick.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0002"
+    ],
+    "description": "Team Sleep - Maverick. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0002",
+      "Format: CD",
+      "Condition: Used Excellent"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0003",
+    "sku": "NXP-2026-CD-0003",
+    "title": "Come With Us",
+    "artist": "The Chemical Brothers",
+    "condition": "Used Excellent",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 150000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0003-the-chemical-brothers-come-with-us.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0003"
+    ],
+    "description": "The Chemical Brothers - Untitled Selection. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0003",
+      "Format: CD",
+      "Condition: Used Excellent"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0004",
+    "sku": "NXP-2026-CD-0004",
+    "title": "Further",
+    "artist": "The Chemical Brothers",
+    "condition": "Used Excellent",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 150000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0004"
+    ],
+    "description": "The Chemical Brothers - Untitled Selection. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0004",
+      "Format: CD",
+      "Condition: Used Excellent"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0005",
+    "sku": "NXP-2026-CD-0005",
+    "title": "It's Blitz!",
+    "artist": "Yeah Yeah Yeahs",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 147000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0005"
+    ],
+    "description": "Yeah Yeah Yeahs - Untitled Selection. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0005",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0006",
+    "sku": "NXP-2026-CD-0006",
+    "title": "Reloaded",
+    "artist": "Various Artists",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 150000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0006-matrix-reloaded.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0006"
+    ],
+    "description": "Various Artists - Reloaded. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0006",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0007",
+    "sku": "NXP-2026-CD-0007",
+    "title": "Pirouette",
+    "artist": "Model Actriz",
+    "condition": "New-Sealed",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 480000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0007"
+    ],
+    "description": "Model Actriz - Pirouette. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0007",
+      "Format: CD",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0008",
+    "sku": "NXP-2026-CD-0008",
+    "title": "Marty Supreme",
+    "artist": "Daniel Lopatin",
+    "condition": "New-Sealed",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 500000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0008-daniel-lopatin-marty-supreme.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0008"
+    ],
+    "description": "Daniel Lopatin - Marty Supreme. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0008",
+      "Format: CD",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0009",
+    "sku": "NXP-2026-CD-0009",
+    "title": "Sophie",
+    "artist": "Sophie",
+    "condition": "New-Sealed",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 450000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0009-sophie-sophie.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0009"
+    ],
+    "description": "Sophie - Sophie. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0009",
+      "Format: CD",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cst-0001",
+    "sku": "NXP-2026-CST-0001",
+    "title": "Things Falling Apart",
+    "artist": "Nine Inch Nails",
+    "condition": "Used Good",
+    "format": "Cassette",
+    "displayFormat": "Cassette",
+    "category": "Records",
+    "qty": 1,
+    "price": 180000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg",
+    "tags": [
+      "Cassette",
+      "NXP-2026-CST-0001"
+    ],
+    "description": "Nine Inch Nails - Things Falling Apart. Cassette from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CST-0001",
+      "Format: Cassette",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cst-0002",
+    "sku": "NXP-2026-CST-0002",
+    "title": "Tear From The red",
+    "artist": "Poison The Well",
+    "condition": "Used Excellent",
+    "format": "Cassette",
+    "displayFormat": "Cassette",
+    "category": "Records",
+    "qty": 1,
+    "price": 197000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg",
+    "tags": [
+      "Cassette",
+      "NXP-2026-CST-0002"
+    ],
+    "description": "Poison The Well - Tear From The red. Cassette from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CST-0002",
+      "Format: Cassette",
+      "Condition: Used Excellent"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cst-0004",
+    "sku": "NXP-2026-CST-0004",
+    "title": "Reloaded",
+    "artist": "Various Artists",
+    "condition": "Used Good",
+    "format": "Cassette",
+    "displayFormat": "Cassette",
+    "category": "Records",
+    "qty": 2,
+    "price": 100000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cst-0004-matrix-reloaded.jpg",
+    "tags": [
+      "Cassette",
+      "NXP-2026-CST-0004"
+    ],
+    "description": "Various Artists - Reloaded. Cassette from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CST-0004",
+      "Format: Cassette",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cst-0006",
+    "sku": "NXP-2026-CST-0006",
+    "title": "The Fat Of The Land",
+    "artist": "Prodigy",
+    "condition": "Used Good",
+    "format": "Cassette",
+    "displayFormat": "Cassette",
+    "category": "Records",
+    "qty": 1,
+    "price": 150000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg",
+    "tags": [
+      "Cassette",
+      "NXP-2026-CST-0006"
+    ],
+    "description": "Prodigy - The Fat Of The Land. Cassette from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CST-0006",
+      "Format: Cassette",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0001",
+    "sku": "NXP-2026-VNL-0001",
+    "title": "Kammerkonzert",
+    "artist": "Squarepusher",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 950000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0001-squarepusher-kammerkonzert.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0001"
+    ],
+    "description": "Squarepusher - Kammerkonzert. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0001",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0002",
+    "sku": "NXP-2026-VNL-0002",
+    "title": "3+5",
+    "artist": "Melt Banana",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 820000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0002"
+    ],
+    "description": "Melt Banana - 3+5. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0002",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0003",
+    "sku": "NXP-2026-VNL-0003",
+    "title": "Endlessness",
+    "artist": "Nala Sinephro",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 900000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0003-nala-sinephro-endlessness.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0003"
+    ],
+    "description": "Nala Sinephro - Endlessness. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0003",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0013",
+    "sku": "NXP-2026-CD-0013",
+    "title": "Senyawa with Kazuhisa Uchihashi",
+    "artist": "Senyawa, Kazuhisa Uchihashi",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 250000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0013"
+    ],
+    "description": "Senyawa, Kazuhisa Uchihashi - Untitled Selection. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0013",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0014",
+    "sku": "NXP-2026-CD-0014",
+    "title": "Crimson Eyes",
+    "artist": "Sigmun",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 50000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0014"
+    ],
+    "description": "Sigmun - Crimson Eyes. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0014",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0017",
+    "sku": "NXP-2026-CD-0017",
+    "title": "The Next Day",
+    "artist": "David Bowie",
+    "condition": "New-Sealed",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 200000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0017-david-bowie-the-next-day.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0017"
+    ],
+    "description": "David Bowie - The Next Day. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0017",
+      "Format: CD",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0018",
+    "sku": "NXP-2026-CD-0018",
+    "title": "Antenna",
+    "artist": "Cave In",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 170000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0018"
+    ],
+    "description": "Cave In - Antenna. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0018",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0019",
+    "sku": "NXP-2026-CD-0019",
+    "title": "Merriweather Post Pavilion",
+    "artist": "Animal Collective",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 200000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0019-animal-collective-merriweather-post-pavilion.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0019"
+    ],
+    "description": "Animal Collective - Merriweather Post Pavilion. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0019",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0020",
+    "sku": "NXP-2026-CD-0020",
+    "title": "Isn't Anything",
+    "artist": "My Bloody Valentine",
+    "condition": "Used Good",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 200000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0020"
+    ],
+    "description": "My Bloody Valentine - Isn't Anything. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0020",
+      "Format: CD",
+      "Condition: Used Good"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0021",
+    "sku": "NXP-2026-CD-0021",
+    "title": "Knights of The Black Table",
+    "artist": "JK Flesh, Gothtrad",
+    "condition": "Used Excellent",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 250000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0021-jk-flesh-gothtrad-knights-of-the-black-table.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0021"
+    ],
+    "description": "JK Flesh, Gothtrad - Knights of The Black Table. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0021",
+      "Format: CD",
+      "Condition: Used Excellent"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cd-0022",
+    "sku": "NXP-2026-CD-0022",
+    "title": "Criminal",
+    "artist": "Soft Moon",
+    "condition": "Used Excellent",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 250000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cd-0022-soft-moon-criminal.jpg",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0022"
+    ],
+    "description": "Soft Moon - Criminal. CD from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CD-0022",
+      "Format: CD",
+      "Condition: Used Excellent"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cst-0007",
+    "sku": "NXP-2026-CST-0007",
+    "title": "Interstellar Overtrove",
+    "artist": "Behold The Arctopus",
+    "condition": "Used Excellent",
+    "format": "Cassette",
+    "displayFormat": "Cassette",
+    "category": "Records",
+    "qty": 1,
+    "price": 190000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg",
+    "tags": [
+      "Cassette",
+      "NXP-2026-CST-0007"
+    ],
+    "description": "Behold The Arctopus - Interstellar Overtrove. Cassette from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CST-0007",
+      "Format: Cassette",
+      "Condition: Used Excellent"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cst-0008",
+    "sku": "NXP-2026-CST-0008",
+    "title": "Wish Defense",
+    "artist": "FACS",
+    "condition": "New-Sealed",
+    "format": "Cassette",
+    "displayFormat": "Cassette",
+    "category": "Records",
+    "qty": 1,
+    "price": 450000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
+    "tags": [
+      "Cassette",
+      "NXP-2026-CST-0008"
+    ],
+    "description": "FACS - Wish Defense. Cassette from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CST-0008",
+      "Format: Cassette",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-cst-0009",
+    "sku": "NXP-2026-CST-0009",
+    "title": "I Hear You",
+    "artist": "Peggy Gou",
+    "condition": "New-Sealed",
+    "format": "Cassette",
+    "displayFormat": "Cassette",
+    "category": "Records",
+    "qty": 1,
+    "price": 450000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg",
+    "tags": [
+      "Cassette",
+      "NXP-2026-CST-0009"
+    ],
+    "description": "Peggy Gou - I Hear You. Cassette from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-CST-0009",
+      "Format: Cassette",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0007",
+    "sku": "NXP-2026-VNL-0007",
+    "title": "Love Heart Cheat Code",
+    "artist": "Hiatus Kaiyote",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 900000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0007"
+    ],
+    "description": "Hiatus Kaiyote - Love Heart Cheat Code. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0007",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0008",
+    "sku": "NXP-2026-VNL-0008",
+    "title": "&&&&&",
+    "artist": "Arca",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 700000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0008-arca-.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0008"
+    ],
+    "description": "Arca - &&&&&. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0008",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0009",
+    "sku": "NXP-2026-VNL-0009",
+    "title": "Buoys",
+    "artist": "Panda Bear",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 550000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0009"
+    ],
+    "description": "Panda Bear - Buoys. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0009",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0010",
+    "sku": "NXP-2026-VNL-0010",
+    "title": "Turn The Page",
+    "artist": "Overmono & The Streets Turn The Page",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 550000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0010"
+    ],
+    "description": "Overmono & The Streets Turn The Page - Turn The Page. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0010",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0011",
+    "sku": "NXP-2026-VNL-0011",
+    "title": "Duori",
+    "artist": "Heith & Tarawangsawelas",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 1000000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0011"
+    ],
+    "description": "Heith & Tarawangsawelas - Duori. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0011",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "nxp-2026-vnl-0012",
+    "sku": "NXP-2026-VNL-0012",
+    "title": "SickElixir",
+    "artist": "Blawan",
+    "condition": "New-Sealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 950000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "image": "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0012"
+    ],
+    "description": "Blawan - SickElixir. Vinyl 12\" from the current NIXP records selection.",
+    "details": [
+      "SKU: NXP-2026-VNL-0012",
+      "Format: Vinyl 12\"",
+      "Condition: New-Sealed"
+    ],
+    "sizes": [],
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "app-001",
+    "sku": "NXP-2023-APP-0001",
+    "title": "Crewneck Sweatshirt",
+    "artist": "Motorith",
+    "format": "Apparel",
+    "category": "Apparel",
+    "apparelType": "Tops",
+    "price": 500000,
+    "year": 2023,
+    "label": "Motorith",
+    "image": "/public/display-photos/motorith-crewneck-sweatshirt-2023.png",
+    "tags": [
+      "crewneck",
+      "sweatshirt",
+      "black"
+    ],
+    "material": "Cotton fleece",
+    "color": "Black",
+    "sizes": [
+      {
+        "label": "S",
+        "quantity": 0,
+        "soldOut": true
+      },
+      {
+        "label": "M",
+        "quantity": 1,
+        "soldOut": false
+      },
+      {
+        "label": "L",
+        "quantity": 1,
+        "soldOut": false
+      },
+      {
+        "label": "XL",
+        "quantity": 1,
+        "soldOut": false
+      },
+      {
+        "label": "XXL",
+        "quantity": 0,
+        "soldOut": true
+      }
+    ],
+    "description": "Motorith crewneck sweatshirt from 2023 with front and sleeve artwork.",
+    "details": [
+      "SKU: NXP-2023-APP-0001",
+      "Cotton fleece",
+      "Black"
+    ],
+    "collection": "Motorith"
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-12",
+    "id": "app-002",
+    "sku": "NXP-2026-APP-0002",
+    "title": "Flesh Knitsweater",
+    "artist": "NIXP Apparel",
+    "format": "Apparel",
+    "category": "Apparel",
+    "apparelType": "Tops",
+    "price": 650000,
+    "year": 2026,
+    "label": "NIXP Apparel",
+    "collection": "NIXP Apparel",
+    "image": "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
+    "tags": [
+      "knitsweater",
+      "apparel"
+    ],
+    "material": "Knit cotton blend",
+    "color": "Black",
+    "sizes": [
+      {
+        "label": "S",
+        "quantity": 1,
+        "soldOut": false
+      },
+      {
+        "label": "M",
+        "quantity": 1,
+        "soldOut": false
+      },
+      {
+        "label": "L",
+        "quantity": 1,
+        "soldOut": false
+      },
+      {
+        "label": "XL",
+        "quantity": 1,
+        "soldOut": false
+      }
+    ],
+    "description": "Flesh Knitsweater apparel item.",
+    "details": [
+      "SKU: NXP-2026-APP-0002",
+      "Knit sweater",
+      "Black"
+    ],
+    "displayFormat": "",
+    "condition": "",
+    "qty": 1
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-11",
+    "id": "pub-001",
+    "sku": "NXP-2026-PUB-0001",
+    "title": "Index 01: Jakarta Independent Sound",
+    "artist": "NIXP Publishing",
+    "format": "Magazine",
+    "category": "Publishing",
+    "price": 250000,
+    "year": 2026,
+    "label": "NIXP Publishing",
+    "image": "/public/nixp-product-example-paper.png",
+    "tags": [
+      "interviews",
+      "photography"
+    ],
+    "description": "The first NIXP publishing index: interviews, photography, release notes, and shop fragments.",
+    "details": [
+      "SKU: NXP-2026-PUB-0001",
+      "80 pages",
+      "Offset printed",
+      "First issue"
+    ],
+    "sizes": [],
+    "collection": "NIXP Publishing",
+    "color": "",
+    "material": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-12",
+    "id": "nxp-2026-cd-0023",
+    "sku": "NXP-2026-CD-0023",
+    "title": "Tranquilizer",
+    "artist": "Oneohtrix Point Never",
+    "condition": "Used Excellence",
+    "format": "CD",
+    "displayFormat": "CD",
+    "category": "Records",
+    "qty": 1,
+    "price": 300000,
+    "year": 2026,
+    "label": "NIXP Selection",
+    "tags": [
+      "CD",
+      "NXP-2026-CD-0023"
+    ],
+    "details": [
+      "SKU: NXP-2026-CD-0023",
+      "Format: CD",
+      "Condition: Used Excellence"
+    ],
+    "sizes": [],
+    "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
+  }
+]

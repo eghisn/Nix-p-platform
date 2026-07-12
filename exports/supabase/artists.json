@@ -1,0 +1,268 @@
+[
+  {
+    "id": "animal-collective",
+    "name": "Animal Collective",
+    "bio": "",
+    "status": "Published",
+    "sort": 1
+  },
+  {
+    "id": "arca",
+    "name": "Arca",
+    "bio": "",
+    "status": "Published",
+    "sort": 2
+  },
+  {
+    "id": "behold-the-arctopus",
+    "name": "Behold The Arctopus",
+    "bio": "",
+    "status": "Published",
+    "sort": 3
+  },
+  {
+    "id": "blawan",
+    "name": "Blawan",
+    "bio": "",
+    "status": "Published",
+    "sort": 4
+  },
+  {
+    "id": "cave-in",
+    "name": "Cave In",
+    "bio": "",
+    "status": "Published",
+    "sort": 5
+  },
+  {
+    "id": "damien-dubrovnik",
+    "name": "Damien Dubrovnik",
+    "bio": "",
+    "status": "Published",
+    "sort": 6
+  },
+  {
+    "id": "daniel-lopatin",
+    "name": "Daniel Lopatin",
+    "bio": "",
+    "status": "Published",
+    "sort": 7
+  },
+  {
+    "id": "david-bowie",
+    "name": "David Bowie",
+    "bio": "",
+    "status": "Published",
+    "sort": 8
+  },
+  {
+    "id": "facs",
+    "name": "FACS",
+    "bio": "",
+    "status": "Published",
+    "sort": 9
+  },
+  {
+    "id": "gilla-band",
+    "name": "Gilla Band",
+    "bio": "",
+    "status": "Published",
+    "sort": 10
+  },
+  {
+    "id": "girl-band",
+    "name": "Girl Band",
+    "bio": "",
+    "status": "Published",
+    "sort": 11
+  },
+  {
+    "id": "heith-tarawangsawelas",
+    "name": "Heith & Tarawangsawelas",
+    "bio": "",
+    "status": "Published",
+    "sort": 12
+  },
+  {
+    "id": "hiatus-kaiyote",
+    "name": "Hiatus Kaiyote",
+    "bio": "",
+    "status": "Published",
+    "sort": 13
+  },
+  {
+    "id": "jk-flesh-gothtrad",
+    "name": "JK Flesh, Gothtrad",
+    "bio": "",
+    "status": "Published",
+    "sort": 14
+  },
+  {
+    "id": "lightning-bolt",
+    "name": "Lightning Bolt",
+    "bio": "",
+    "status": "Published",
+    "sort": 15
+  },
+  {
+    "id": "melt-banana",
+    "name": "Melt Banana",
+    "bio": "",
+    "status": "Published",
+    "sort": 16
+  },
+  {
+    "id": "meshuggah",
+    "name": "Meshuggah",
+    "bio": "",
+    "status": "Published",
+    "sort": 17
+  },
+  {
+    "id": "model-actriz",
+    "name": "Model Actriz",
+    "bio": "",
+    "status": "Published",
+    "sort": 18
+  },
+  {
+    "id": "my-bloody-valentine",
+    "name": "My Bloody Valentine",
+    "bio": "",
+    "status": "Published",
+    "sort": 19
+  },
+  {
+    "id": "nala-sinephro",
+    "name": "Nala Sinephro",
+    "bio": "",
+    "status": "Published",
+    "sort": 20
+  },
+  {
+    "id": "nine-inch-nails",
+    "name": "Nine Inch Nails",
+    "bio": "",
+    "status": "Published",
+    "sort": 21
+  },
+  {
+    "id": "oneohtrix-point-never",
+    "name": "Oneohtrix Point Never",
+    "bio": "",
+    "status": "Published",
+    "sort": 22
+  },
+  {
+    "id": "overmono-the-streets-turn-the-page",
+    "name": "Overmono & The Streets Turn The Page",
+    "bio": "",
+    "status": "Published",
+    "sort": 23
+  },
+  {
+    "id": "panda-bear",
+    "name": "Panda Bear",
+    "bio": "",
+    "status": "Published",
+    "sort": 24
+  },
+  {
+    "id": "peggy-gou",
+    "name": "Peggy Gou",
+    "bio": "",
+    "status": "Published",
+    "sort": 25
+  },
+  {
+    "id": "poison-the-well",
+    "name": "Poison The Well",
+    "bio": "",
+    "status": "Published",
+    "sort": 26
+  },
+  {
+    "id": "prodigy",
+    "name": "Prodigy",
+    "bio": "",
+    "status": "Published",
+    "sort": 27
+  },
+  {
+    "id": "rezzet",
+    "name": "Rezzet",
+    "bio": "",
+    "status": "Published",
+    "sort": 28
+  },
+  {
+    "id": "senyawa-kazuhisa-uchihashi",
+    "name": "Senyawa, Kazuhisa Uchihashi",
+    "bio": "",
+    "status": "Published",
+    "sort": 29
+  },
+  {
+    "id": "sigmun",
+    "name": "Sigmun",
+    "bio": "",
+    "status": "Published",
+    "sort": 30
+  },
+  {
+    "id": "soft-moon",
+    "name": "Soft Moon",
+    "bio": "",
+    "status": "Published",
+    "sort": 31
+  },
+  {
+    "id": "sophie",
+    "name": "Sophie",
+    "bio": "",
+    "status": "Published",
+    "sort": 32
+  },
+  {
+    "id": "squarepusher",
+    "name": "Squarepusher",
+    "bio": "",
+    "status": "Published",
+    "sort": 33
+  },
+  {
+    "id": "team-sleep",
+    "name": "Team Sleep",
+    "bio": "",
+    "status": "Published",
+    "sort": 34
+  },
+  {
+    "id": "the-chemical-brothers",
+    "name": "The Chemical Brothers",
+    "bio": "",
+    "status": "Published",
+    "sort": 35
+  },
+  {
+    "id": "the-mars-volta",
+    "name": "The Mars Volta",
+    "bio": "",
+    "status": "Published",
+    "sort": 36
+  },
+  {
+    "id": "various-artists",
+    "name": "Various Artists",
+    "bio": "",
+    "status": "Published",
+    "sort": 37
+  },
+  {
+    "id": "yeah-yeah-yeahs",
+    "name": "Yeah Yeah Yeahs",
+    "bio": "",
+    "status": "Published",
+    "sort": 38
+  }
+]

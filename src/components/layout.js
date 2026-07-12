@@ -13,10 +13,11 @@ const rightPublicLinks = [
 
 const adminLinks = [
   ["Dashboard", "/admin"],
-  ["Inventory", "/admin/inventory"],
+  ["Editor", "/admin/editor"],
+  ["Products", "/admin/products"],
+  ["Requests", "/admin/requests"],
   ["Orders", "/admin/orders"],
-  ["Cashflow", "/admin/cashflow"],
-  ["Reports", "/admin/reports"]
+  ["Preview", "/admin/preview"]
 ];
 
 const idr = new Intl.NumberFormat("id-ID", {
@@ -26,7 +27,7 @@ const idr = new Intl.NumberFormat("id-ID", {
 });
 
 export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverlay = "") {
-  const isAdmin = path.startsWith("/admin") || path === "/login";
+  const isAdmin = (path.startsWith("/admin") && !path.startsWith("/admin/preview")) || path === "/login";
   const logoHref = isAdmin ? "/admin" : "/";
 
   return `
@@ -106,32 +107,33 @@ export function pageHero({ eyebrow, title, text, actionHref, actionLabel }) {
   `;
 }
 
-export function productGrid(products) {
+export function productGrid(products, options = {}) {
   if (!products.length) {
     return `<p class="empty-state">No products match this view yet.</p>`;
   }
 
   return `
     <div class="product-grid">
-      ${products.map(productCard).join("")}
+      ${products.map((product) => productCard(product, options)).join("")}
     </div>
   `;
 }
 
-export function productCard(product) {
+export function productCard(product, { hrefFor } = {}) {
   const meta = product.condition ? `${product.displayFormat || product.format}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
+  const href = hrefFor ? hrefFor(product) : `/product/${product.id}`;
 
   return `
     <article class="product-card">
-      <a class="product-link" href="/product/${product.id}" data-link aria-label="View ${product.title}">
+      <a class="product-link" href="${href}" data-link aria-label="View ${product.title}">
         <figure class="${artClass}">
           <img src="${product.image}" alt="${product.title}" />
         </figure>
       </a>
       <div class="product-meta">
         <p>${product.artist}</p>
-        <h2><a href="/product/${product.id}" data-link>${product.title}</a></h2>
+        <h2><a href="${href}" data-link>${product.title}</a></h2>
         <div class="row-between">
           <span>${meta}</span>
           <strong>${idr.format(product.price)}</strong>

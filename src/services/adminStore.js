@@ -1,0 +1,364 @@
+import { artistNames, cashflow, inventory, orders, products, requestItems } from "../data/sampleData.js";
+
+const STORAGE_KEY = "nixp-admin-store-v1";
+const STORE_VERSION = "uniform-display-product-photos-2026-07-12";
+const FILE_STORE_PATH = "/public/data/admin-store.json";
+
+let activeStore = null;
+
+const defaultCollections = [
+  { id: "records", title: "Records", type: "Category", status: "Published", sort: 1 },
+  { id: "objects", title: "Objects", type: "Category", status: "Published", sort: 2 },
+  { id: "apparel", title: "Apparel", type: "Category", status: "Published", sort: 3 },
+  { id: "publishing", title: "Publishing", type: "Category", status: "Published", sort: 4 }
+];
+
+function clone(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
+function withDefaults(product) {
+  return {
+    publishStatus: "Published",
+    visibility: "Public",
+    updatedAt: "2026-07-11",
+    ...product,
+    tags: product.tags || [],
+    details: product.details || [],
+    sizes: normalizeSizes(product.sizes || []),
+    collection: product.collection || product.label || "",
+    color: product.color || "",
+    material: product.material || ""
+  };
+}
+
+function normalizeSizes(sizes) {
+  return sizes
+    .map((size) => {
+      const quantity = Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1));
+      return {
+        label: String(size.label || "").trim(),
+        quantity,
+        soldOut: quantity <= 0
+      };
+    })
+    .filter((size) => size.label);
+}
+
+function seed() {
+  return {
+    version: STORE_VERSION,
+    products: products.map(withDefaults),
+    artists: [...new Set(artistNames)].sort((a, b) => a.localeCompare(b)).map((name, index) => ({
+      id: slugify(name),
+      name,
+      bio: "",
+      status: "Published",
+      sort: index + 1
+    })),
+    collections: defaultCollections,
+    requests: clone(requestItems),
+    orders: clone(orders),
+    cashflow: clone(cashflow),
+    inventory: clone(inventory)
+  };
+}
+
+function readStore() {
+  const seeded = seed();
+  if (activeStore) return mergeStore(seeded, activeStore);
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    if (!saved) return seeded;
+    if (saved.version !== STORE_VERSION) return seeded;
+    return mergeStore(seeded, saved);
+  } catch {
+    return seeded;
+  }
+}
+
+function writeStore(store) {
+  activeStore = store;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+  return persistStore(store);
+}
+
+function mergeStore(seeded, saved) {
+  const savedProducts = (saved.products || []).map(withDefaults);
+  const seededProducts = seeded.products.map(withDefaults);
+  const mergedProducts = [
+    ...savedProducts.map((product) => {
+      const seedProduct = seededProducts.find((item) => item.id === product.id);
+      if (
+        seedProduct?.image?.startsWith("/public/display-photos/") &&
+        (!product.image || product.image === "/public/nixp-product-example-paper.png")
+      ) {
+        return { ...product, image: seedProduct.image };
+      }
+      return product;
+    }),
+    ...seededProducts.filter((seedProduct) => !savedProducts.some((product) => product.id === seedProduct.id))
+  ];
+  return {
+    ...seeded,
+    ...saved,
+    version: STORE_VERSION,
+    products: mergedProducts,
+    artists: saved.artists || seeded.artists,
+    collections: saved.collections || seeded.collections,
+    requests: saved.requests || seeded.requests,
+    orders: saved.orders || seeded.orders,
+    cashflow: saved.cashflow || seeded.cashflow,
+    inventory: saved.inventory || seeded.inventory
+  };
+}
+
+function collectSizes(data) {
+  return Object.entries(data)
+    .filter(([key]) => key.startsWith("sizeQty:"))
+    .map(([key, value]) => {
+      const label = key.replace("sizeQty:", "");
+      const quantity = Math.max(0, Number(value || 0));
+      return { label, quantity, soldOut: quantity <= 0 };
+    })
+    .filter((size) => size.label);
+}
+
+async function persistStore(store) {
+  try {
+    const response = await fetch("/api/admin/store", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ store })
+    });
+    if (!response.ok) throw new Error("Store save failed");
+    return true;
+  } catch {
+    // Static previews cannot write files. localStorage remains the fallback.
+    return false;
+  }
+}
+
+async function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function uploadDataUrlImage(dataUrl, product, fileName = "product-upload.png") {
+  try {
+    const response = await fetch("/api/admin/upload", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        dataUrl,
+        fileName,
+        sku: product.sku || product.id,
+        title: product.title
+      })
+    });
+    if (!response.ok) throw new Error("Upload failed");
+    const payload = await response.json();
+    if (payload.image) return payload.image;
+  } catch {
+    return dataUrl;
+  }
+  return dataUrl;
+}
+
+async function migrateBrowserStore(fileStore, browserStore) {
+  if (!browserStore || browserStore.version !== STORE_VERSION) return fileStore;
+  const merged = mergeStore(seed(), fileStore);
+  let changed = false;
+
+  for (const browserProduct of browserStore.products || []) {
+    const existingIndex = merged.products.findIndex((product) => product.id === browserProduct.id);
+    const existing = existingIndex >= 0 ? merged.products[existingIndex] : null;
+    const hasBrowserUpload = String(browserProduct.image || "").startsWith("data:image/");
+    const isMissingFromFile = !existing;
+    const hasDifferentUsefulImage =
+      browserProduct.image &&
+      browserProduct.image !== existing?.image &&
+      existing?.image === "/public/nixp-product-example-paper.png";
+
+    if (!isMissingFromFile && !hasBrowserUpload && !hasDifferentUsefulImage) continue;
+
+    const migratedProduct = withDefaults({
+      ...existing,
+      ...browserProduct,
+      image: hasBrowserUpload
+        ? await uploadDataUrlImage(browserProduct.image, browserProduct, `${browserProduct.sku || browserProduct.id}.png`)
+        : browserProduct.image || existing?.image
+    });
+
+    if (existingIndex >= 0) {
+      merged.products[existingIndex] = migratedProduct;
+    } else {
+      merged.products = [migratedProduct, ...merged.products];
+    }
+    changed = true;
+  }
+
+  if (changed) await writeStore(merged);
+  return merged;
+}
+
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+export function slugify(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+export const adminStore = {
+  async initialize() {
+    let browserStore = null;
+    try {
+      browserStore = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    } catch {
+      browserStore = null;
+    }
+
+    try {
+      const response = await fetch(`${FILE_STORE_PATH}?v=${Date.now()}`, { cache: "no-store" });
+      if (!response.ok) throw new Error("No file store");
+      activeStore = await migrateBrowserStore(mergeStore(seed(), await response.json()), browserStore);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+    } catch {
+      activeStore = readStore();
+    }
+  },
+  getSnapshot() {
+    return readStore();
+  },
+  async uploadProductImage(file, product) {
+    return uploadDataUrlImage(await fileToDataUrl(file), product, file.name);
+  },
+  listProducts({ includeDrafts = false } = {}) {
+    const items = readStore().products;
+    return includeDrafts ? items : items.filter((product) => product.publishStatus === "Published");
+  },
+  getProduct(id, { includeDrafts = false } = {}) {
+    return this.listProducts({ includeDrafts }).find((product) => product.id === id);
+  },
+  async saveProduct(data) {
+    const store = readStore();
+    const category = data.category || "Records";
+    const isProductCategory = category === "Apparel" || category === "Objects";
+    const id = data.id?.trim() || slugify(`${data.sku || data.artist}-${data.title}`) || `item-${Date.now()}`;
+    const existing = store.products.find((product) => product.id === id);
+    const collection = data.collection?.trim() || data.label?.trim() || existing?.collection || "";
+    const fallbackMaker = category === "Objects" ? "NIXP Objects" : category === "Apparel" ? "NIXP Apparel" : "NIXP";
+    const format = isProductCategory ? category.replace(/s$/, "") : data.format?.trim();
+    const product = withDefaults({
+      ...existing,
+      id,
+      sku: data.sku?.trim() || existing?.sku || id.toUpperCase(),
+      title: data.title?.trim() || "Untitled Item",
+      artist: isProductCategory ? collection || fallbackMaker : data.artist?.trim() || fallbackMaker,
+      category,
+      format: format || category || "Object",
+      displayFormat: isProductCategory
+        ? data.displayFormat?.trim() || ""
+        : data.displayFormat?.trim() || data.format?.trim() || category || "Object",
+      apparelType: data.apparelType?.trim() || "",
+      condition: data.condition?.trim() || "",
+      price: Number(data.price || 0),
+      year: Number(data.year || new Date().getFullYear()),
+      label: data.label?.trim() || collection || "NIXP Selection",
+      collection,
+      color: data.color?.trim() || "",
+      material: data.material?.trim() || "",
+      image: data.image?.trim() || existing?.image || "/public/nixp-product-example-paper.png",
+      tags: splitList(data.tags),
+      details: splitList(data.details),
+      sizes: isProductCategory ? collectSizes(data) : existing?.sizes || [],
+      description: data.description?.trim() || "",
+      qty: Number(data.qty || 1),
+      publishStatus: data.publishStatus || "Published",
+      visibility: data.visibility || "Public",
+      updatedAt: today()
+    });
+    const nextProducts = existing
+      ? store.products.map((item) => (item.id === id ? product : item))
+      : [product, ...store.products];
+    await writeStore({ ...store, products: nextProducts });
+    return product;
+  },
+  updateProductStatus(id, publishStatus) {
+    const store = readStore();
+    return writeStore({
+      ...store,
+      products: store.products.map((product) =>
+        product.id === id ? { ...product, publishStatus, updatedAt: today() } : product
+      )
+    });
+  },
+  saveArtist(data) {
+    const store = readStore();
+    const name = data.name?.trim();
+    if (!name) return;
+    const id = data.id || slugify(name);
+    const artist = {
+      id,
+      name,
+      bio: data.bio?.trim() || "",
+      status: data.status || "Published",
+      sort: Number(data.sort || store.artists.length + 1)
+    };
+    const exists = store.artists.some((item) => item.id === id);
+    return writeStore({
+      ...store,
+      artists: exists ? store.artists.map((item) => (item.id === id ? artist : item)) : [...store.artists, artist]
+    });
+  },
+  saveCollection(data) {
+    const store = readStore();
+    const title = data.title?.trim();
+    if (!title) return;
+    const id = data.id || slugify(title);
+    const collection = {
+      id,
+      title,
+      type: data.type || "Category",
+      status: data.status || "Draft",
+      sort: Number(data.sort || store.collections.length + 1)
+    };
+    const exists = store.collections.some((item) => item.id === id);
+    return writeStore({
+      ...store,
+      collections: exists
+        ? store.collections.map((item) => (item.id === id ? collection : item))
+        : [...store.collections, collection]
+    });
+  },
+  updateRequestStatus(id, status) {
+    const store = readStore();
+    return writeStore({
+      ...store,
+      requests: store.requests.map((request) => (request.id === id ? { ...request, status } : request))
+    });
+  },
+  updateOrderStatus(id, status) {
+    const store = readStore();
+    return writeStore({
+      ...store,
+      orders: store.orders.map((order) => (order.id === id ? { ...order, status } : order))
+    });
+  }
+};
+
+function splitList(value) {
+  return String(value || "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}

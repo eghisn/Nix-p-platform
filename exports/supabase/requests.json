@@ -1,0 +1,22 @@
+[
+  {
+    "id": "REQ-030",
+    "artistName": "Arca",
+    "itemName": "Any available title",
+    "format": "Vinyl",
+    "email": "sample@nixp.local",
+    "whatsapp": "+62 821 2287 6289",
+    "notes": "Customer prefers a clean copy.",
+    "status": "Searching"
+  },
+  {
+    "id": "REQ-031",
+    "artistName": "Panda Bear",
+    "itemName": "Any available title",
+    "format": "CD",
+    "email": "collector@nixp.local",
+    "whatsapp": "+62 821 2287 6289",
+    "notes": "Notify if a copy appears.",
+    "status": "Searching"
+  }
+]

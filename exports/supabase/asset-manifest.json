@@ -1,0 +1,277 @@
+{
+  "generatedAt": "2026-07-12T14:15:25.696Z",
+  "coverImages": [
+    {
+      "productId": "nxp-2026-vnl-0006",
+      "sku": "NXP-2026-VNL-0006",
+      "image": "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0015",
+      "sku": "NXP-2026-CD-0015",
+      "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg"
+    },
+    {
+      "productId": "nxp-2026-cst-0005",
+      "sku": "NXP-2026-CST-0005",
+      "image": "/public/covers/nxp-2026-cst-0005-rezzett-into-the-boiling-darks.jpg",
+      "localPath": "public/covers/nxp-2026-cst-0005-rezzett-into-the-boiling-darks.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0010",
+      "sku": "NXP-2026-CD-0010",
+      "image": "/public/covers/nxp-2026-cd-0010-the-mars-volta-noctourniquet.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0010-the-mars-volta-noctourniquet.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0011",
+      "sku": "NXP-2026-CD-0011",
+      "image": "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif",
+      "localPath": "public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif"
+    },
+    {
+      "productId": "nxp-2026-cd-0012",
+      "sku": "NXP-2026-CD-0012",
+      "image": "/public/covers/nxp-2026-cd-0012-nine-inch-nails-hesitation-marks.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0012-nine-inch-nails-hesitation-marks.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0016",
+      "sku": "NXP-2026-CD-0016",
+      "image": "/public/covers/nxp-2026-cd-0016-lightning-bolt-earthly-delights.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0016-lightning-bolt-earthly-delights.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0004",
+      "sku": "NXP-2026-VNL-0004",
+      "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0005",
+      "sku": "NXP-2026-VNL-0005",
+      "image": "/public/covers/nxp-2026-vnl-0005-gilla-band-the-early-years.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0005-gilla-band-the-early-years.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0001",
+      "sku": "NXP-2026-CD-0001",
+      "image": "/public/covers/nxp-2026-cd-0001-meshuggah-chaosphere.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0001-meshuggah-chaosphere.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0002",
+      "sku": "NXP-2026-CD-0002",
+      "image": "/public/covers/nxp-2026-cd-0002-team-sleep-maverick.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0002-team-sleep-maverick.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0003",
+      "sku": "NXP-2026-CD-0003",
+      "image": "/public/covers/nxp-2026-cd-0003-the-chemical-brothers-come-with-us.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0003-the-chemical-brothers-come-with-us.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0004",
+      "sku": "NXP-2026-CD-0004",
+      "image": "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0005",
+      "sku": "NXP-2026-CD-0005",
+      "image": "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0006",
+      "sku": "NXP-2026-CD-0006",
+      "image": "/public/covers/nxp-2026-cd-0006-matrix-reloaded.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0006-matrix-reloaded.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0007",
+      "sku": "NXP-2026-CD-0007",
+      "image": "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0008",
+      "sku": "NXP-2026-CD-0008",
+      "image": "/public/covers/nxp-2026-cd-0008-daniel-lopatin-marty-supreme.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0008-daniel-lopatin-marty-supreme.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0009",
+      "sku": "NXP-2026-CD-0009",
+      "image": "/public/covers/nxp-2026-cd-0009-sophie-sophie.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0009-sophie-sophie.jpg"
+    },
+    {
+      "productId": "nxp-2026-cst-0001",
+      "sku": "NXP-2026-CST-0001",
+      "image": "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg",
+      "localPath": "public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg"
+    },
+    {
+      "productId": "nxp-2026-cst-0002",
+      "sku": "NXP-2026-CST-0002",
+      "image": "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg",
+      "localPath": "public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg"
+    },
+    {
+      "productId": "nxp-2026-cst-0004",
+      "sku": "NXP-2026-CST-0004",
+      "image": "/public/covers/nxp-2026-cst-0004-matrix-reloaded.jpg",
+      "localPath": "public/covers/nxp-2026-cst-0004-matrix-reloaded.jpg"
+    },
+    {
+      "productId": "nxp-2026-cst-0006",
+      "sku": "NXP-2026-CST-0006",
+      "image": "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg",
+      "localPath": "public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0001",
+      "sku": "NXP-2026-VNL-0001",
+      "image": "/public/covers/nxp-2026-vnl-0001-squarepusher-kammerkonzert.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0001-squarepusher-kammerkonzert.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0002",
+      "sku": "NXP-2026-VNL-0002",
+      "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0003",
+      "sku": "NXP-2026-VNL-0003",
+      "image": "/public/covers/nxp-2026-vnl-0003-nala-sinephro-endlessness.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0003-nala-sinephro-endlessness.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0013",
+      "sku": "NXP-2026-CD-0013",
+      "image": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0014",
+      "sku": "NXP-2026-CD-0014",
+      "image": "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0017",
+      "sku": "NXP-2026-CD-0017",
+      "image": "/public/covers/nxp-2026-cd-0017-david-bowie-the-next-day.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0017-david-bowie-the-next-day.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0018",
+      "sku": "NXP-2026-CD-0018",
+      "image": "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0019",
+      "sku": "NXP-2026-CD-0019",
+      "image": "/public/covers/nxp-2026-cd-0019-animal-collective-merriweather-post-pavilion.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0019-animal-collective-merriweather-post-pavilion.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0020",
+      "sku": "NXP-2026-CD-0020",
+      "image": "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0021",
+      "sku": "NXP-2026-CD-0021",
+      "image": "/public/covers/nxp-2026-cd-0021-jk-flesh-gothtrad-knights-of-the-black-table.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0021-jk-flesh-gothtrad-knights-of-the-black-table.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0022",
+      "sku": "NXP-2026-CD-0022",
+      "image": "/public/covers/nxp-2026-cd-0022-soft-moon-criminal.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0022-soft-moon-criminal.jpg"
+    },
+    {
+      "productId": "nxp-2026-cst-0007",
+      "sku": "NXP-2026-CST-0007",
+      "image": "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg",
+      "localPath": "public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg"
+    },
+    {
+      "productId": "nxp-2026-cst-0008",
+      "sku": "NXP-2026-CST-0008",
+      "image": "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
+      "localPath": "public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg"
+    },
+    {
+      "productId": "nxp-2026-cst-0009",
+      "sku": "NXP-2026-CST-0009",
+      "image": "/public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg",
+      "localPath": "public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0007",
+      "sku": "NXP-2026-VNL-0007",
+      "image": "/public/covers/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0008",
+      "sku": "NXP-2026-VNL-0008",
+      "image": "/public/covers/nxp-2026-vnl-0008-arca-.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0008-arca-.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0009",
+      "sku": "NXP-2026-VNL-0009",
+      "image": "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0010",
+      "sku": "NXP-2026-VNL-0010",
+      "image": "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png",
+      "localPath": "public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png"
+    },
+    {
+      "productId": "nxp-2026-vnl-0011",
+      "sku": "NXP-2026-VNL-0011",
+      "image": "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0012",
+      "sku": "NXP-2026-VNL-0012",
+      "image": "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
+      "localPath": "public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0023",
+      "sku": "NXP-2026-CD-0023",
+      "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
+    }
+  ],
+  "uploadedProductImages": [
+    {
+      "productId": "nxp-2026-obj-0002-preform",
+      "sku": "NXP-2026-OBJ-0002",
+      "image": "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg",
+      "localPath": "public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg"
+    },
+    {
+      "productId": "app-002",
+      "sku": "NXP-2026-APP-0002",
+      "image": "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
+      "localPath": "public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg"
+    }
+  ]
+}
