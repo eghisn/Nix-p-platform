@@ -61,7 +61,9 @@ const routes = {
 
 async function render() {
   const path = normalizePath(location.pathname);
-  const view = path.startsWith("/product/")
+  const view = isProtectedWorkspaceRoute(path) && !isLocalEditorHost()
+    ? privateWorkspacePage
+    : path.startsWith("/product/")
     ? productDetailPage
     : path.startsWith("/admin/preview/product/")
       ? previewProductDetailPage
@@ -73,6 +75,14 @@ async function render() {
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
   app.innerHTML = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
   bindEvents();
+}
+
+function isProtectedWorkspaceRoute(path) {
+  return path === "/login" || path.startsWith("/admin");
+}
+
+function isLocalEditorHost() {
+  return ["localhost", "127.0.0.1", ""].includes(location.hostname);
 }
 
 function normalizePath(path) {
@@ -562,6 +572,16 @@ function loginPage() {
         <a class="button button-dark" href="/admin" data-link>Enter admin</a>
       </form>
     </section>
+  `;
+}
+
+function privateWorkspacePage() {
+  return `
+    ${pageHero({
+      eyebrow: "Private Workspace",
+      title: "NIXP Admin Is Not Public",
+      text: "Admin and finance tools are intentionally disabled on the public storefront until authenticated subdomains are connected."
+    })}
   `;
 }
 

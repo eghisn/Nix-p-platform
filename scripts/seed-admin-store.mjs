@@ -68,8 +68,20 @@ const store = {
   inventory: clone(inventory)
 };
 
+const publicStore = {
+  version: STORE_VERSION,
+  products: store.products.filter((product) => product.publishStatus === "Published" && product.visibility !== "Hidden"),
+  artists: store.artists.filter((artist) => artist.status === "Published"),
+  collections: store.collections.filter((collection) => collection.status === "Published"),
+  requests: [],
+  orders: [],
+  cashflow: [],
+  inventory: []
+};
+
 const outputDir = join(process.cwd(), "public", "data");
 await mkdir(outputDir, { recursive: true });
 await writeFile(join(outputDir, "admin-store.json"), `${JSON.stringify(store, null, 2)}\n`);
+await writeFile(join(outputDir, "public-store.json"), `${JSON.stringify(publicStore, null, 2)}\n`);
 
-console.log("Seeded public/data/admin-store.json");
+console.log("Seeded public/data/admin-store.json and public/data/public-store.json");

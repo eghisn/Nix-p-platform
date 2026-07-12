@@ -2,7 +2,8 @@ import { artistNames, cashflow, inventory, orders, products, requestItems } from
 
 const STORAGE_KEY = "nixp-admin-store-v1";
 const STORE_VERSION = "uniform-display-product-photos-2026-07-12";
-const FILE_STORE_PATH = "/public/data/admin-store.json";
+const ADMIN_STORE_PATH = "/public/data/admin-store.json";
+const PUBLIC_STORE_PATH = "/public/data/public-store.json";
 
 let activeStore = null;
 
@@ -45,7 +46,12 @@ function normalizeSizes(sizes) {
     .filter((size) => size.label);
 }
 
-function seed() {
+function isLocalEditorRuntime() {
+  if (typeof location === "undefined") return true;
+  return ["localhost", "127.0.0.1", ""].includes(location.hostname);
+}
+
+function seed({ publicOnly = !isLocalEditorRuntime() } = {}) {
   return {
     version: STORE_VERSION,
     products: products.map(withDefaults),
@@ -57,33 +63,36 @@ function seed() {
       sort: index + 1
     })),
     collections: defaultCollections,
-    requests: clone(requestItems),
-    orders: clone(orders),
-    cashflow: clone(cashflow),
-    inventory: clone(inventory)
+    requests: publicOnly ? [] : clone(requestItems),
+    orders: publicOnly ? [] : clone(orders),
+    cashflow: publicOnly ? [] : clone(cashflow),
+    inventory: publicOnly ? [] : clone(inventory)
   };
 }
 
 function readStore() {
-  const seeded = seed();
-  if (activeStore) return mergeStore(seeded, activeStore);
+  const publicOnly = !isLocalEditorRuntime();
+  const seeded = seed({ publicOnly });
+  if (activeStore) return mergeStore(seeded, activeStore, { publicOnly });
+  if (publicOnly) return seeded;
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
     if (!saved) return seeded;
     if (saved.version !== STORE_VERSION) return seeded;
-    return mergeStore(seeded, saved);
+    return mergeStore(seeded, saved, { publicOnly });
   } catch {
     return seeded;
   }
 }
 
 function writeStore(store) {
+  if (!isLocalEditorRuntime()) return false;
   activeStore = store;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
   return persistStore(store);
 }
 
-function mergeStore(seeded, saved) {
+function mergeStore(seeded, saved, { publicOnly = false } = {}) {
   const savedProducts = (saved.products || []).map(withDefaults);
   const seededProducts = seeded.products.map(withDefaults);
   const mergedProducts = [
@@ -106,10 +115,10 @@ function mergeStore(seeded, saved) {
     products: mergedProducts,
     artists: saved.artists || seeded.artists,
     collections: saved.collections || seeded.collections,
-    requests: saved.requests || seeded.requests,
-    orders: saved.orders || seeded.orders,
-    cashflow: saved.cashflow || seeded.cashflow,
-    inventory: saved.inventory || seeded.inventory
+    requests: publicOnly ? [] : saved.requests || seeded.requests,
+    orders: publicOnly ? [] : saved.orders || seeded.orders,
+    cashflow: publicOnly ? [] : saved.cashflow || seeded.cashflow,
+    inventory: publicOnly ? [] : saved.inventory || seeded.inventory
   };
 }
 
@@ -220,18 +229,25 @@ export function slugify(value) {
 
 export const adminStore = {
   async initialize() {
+    const publicOnly = !isLocalEditorRuntime();
     let browserStore = null;
-    try {
-      browserStore = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-    } catch {
-      browserStore = null;
+    if (!publicOnly) {
+      try {
+        browserStore = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+      } catch {
+        browserStore = null;
+      }
     }
 
     try {
-      const response = await fetch(`${FILE_STORE_PATH}?v=${Date.now()}`, { cache: "no-store" });
+      const filePath = publicOnly ? PUBLIC_STORE_PATH : ADMIN_STORE_PATH;
+      const response = await fetch(`${filePath}?v=${Date.now()}`, { cache: "no-store" });
       if (!response.ok) throw new Error("No file store");
-      activeStore = await migrateBrowserStore(mergeStore(seed(), await response.json()), browserStore);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+      activeStore = await migrateBrowserStore(
+        mergeStore(seed({ publicOnly }), await response.json(), { publicOnly }),
+        browserStore
+      );
+      if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
     } catch {
       activeStore = readStore();
     }
