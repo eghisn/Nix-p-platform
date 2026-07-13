@@ -166,7 +166,7 @@ const recordRows = [
     "id": "nxp-2026-cd-0002",
     "sku": "NXP-2026-CD-0002",
     "artist": "Team Sleep",
-    "title": "Maverick",
+    "title": "Self Titled",
     "format": "CD",
     "qty": 1,
     "price": 235000,
@@ -573,6 +573,66 @@ const recordLabels = {
   "nxp-2026-cd-0023": "Warp Records"
 };
 
+const recordYears = {
+  "nxp-2026-vnl-0006": 2013,
+  "nxp-2026-cd-0015": 2008,
+  "nxp-2026-cst-0005": 2025,
+  "nxp-2026-cd-0010": 2012,
+  "nxp-2026-cd-0011": 2016,
+  "nxp-2026-cd-0012": 2013,
+  "nxp-2026-cd-0016": 2009,
+  "nxp-2026-vnl-0004": 2019,
+  "nxp-2026-vnl-0005": 2025,
+  "nxp-2026-cd-0001": 1998,
+  "nxp-2026-cd-0002": 2005,
+  "nxp-2026-cd-0003": 2002,
+  "nxp-2026-cd-0004": 2010,
+  "nxp-2026-cd-0005": 2009,
+  "nxp-2026-cd-0006": 2003,
+  "nxp-2026-cd-0007": 2025,
+  "nxp-2026-cd-0008": 2025,
+  "nxp-2026-cd-0009": 2024,
+  "nxp-2026-cst-0001": 2000,
+  "nxp-2026-cst-0002": 2002,
+  "nxp-2026-cst-0004": 2003,
+  "nxp-2026-cst-0006": 1997,
+  "nxp-2026-vnl-0001": 2026,
+  "nxp-2026-vnl-0002": 2024,
+  "nxp-2026-vnl-0003": 2024,
+  "nxp-2026-cd-0013": 2012,
+  "nxp-2026-cd-0014": 2015,
+  "nxp-2026-cd-0017": 2013,
+  "nxp-2026-cd-0018": 2003,
+  "nxp-2026-cd-0019": 2009,
+  "nxp-2026-cd-0020": 1988,
+  "nxp-2026-cd-0021": 2019,
+  "nxp-2026-cd-0022": 2018,
+  "nxp-2026-cst-0007": 2023,
+  "nxp-2026-cst-0008": 2025,
+  "nxp-2026-cst-0009": 2024,
+  "nxp-2026-vnl-0007": 2024,
+  "nxp-2026-vnl-0008": 2013,
+  "nxp-2026-vnl-0009": 2019,
+  "nxp-2026-vnl-0010": 2024,
+  "nxp-2026-vnl-0011": 2026,
+  "nxp-2026-vnl-0012": 2025,
+  "nxp-2026-cd-0023": 2025
+};
+
+const recordMockups = {
+  "nxp-2026-vnl-0001": "/public/mockups/nxp-2026-vnl-0001-squarepusher-kammerkonzert-vinyl.jpg",
+  "nxp-2026-vnl-0002": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
+  "nxp-2026-vnl-0003": "/public/mockups/nxp-2026-vnl-0003-nala-sinephro-endlessness-vinyl.jpg",
+  "nxp-2026-vnl-0004": "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg",
+  "nxp-2026-vnl-0005": "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg",
+  "nxp-2026-vnl-0007": "/public/mockups/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code-vinyl.jpg",
+  "nxp-2026-vnl-0008": "/public/mockups/nxp-2026-vnl-0008-arca-and-and-and-and-and-vinyl.jpg",
+  "nxp-2026-vnl-0009": "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg",
+  "nxp-2026-vnl-0010": "/public/mockups/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-vinyl.jpg",
+  "nxp-2026-vnl-0011": "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg",
+  "nxp-2026-vnl-0012": "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg"
+};
+
 export const products = [
   ...recordRows.map((row) => record(row)),
   {
@@ -683,6 +743,8 @@ export const cashflow = [];
 
 function record(row) {
   const displayFormat = row.format === "Vinyl" ? "Vinyl 12\"" : row.format;
+  const image = row.image || recordImage;
+  const mockup = row.condition === "New-Sealed" && row.format === "Vinyl" ? recordMockups[row.id] : null;
   return {
     id: row.id,
     sku: row.sku,
@@ -694,10 +756,10 @@ function record(row) {
     category: "Records",
     qty: row.qty,
     price: row.price,
-    year: 2026,
+    year: recordYears[row.id] || 2026,
     label: recordLabels[row.id] || row.label || "NIXP Selection",
-    image: row.image || recordImage,
-    images: [row.image || recordImage],
+    image,
+    images: mockup ? [image, mockup] : [image],
     tags: [displayFormat, row.sku],
     description: `${row.artist} - ${row.title}. ${displayFormat} from the current NIXP records selection.`,
     details: [`SKU: ${row.sku}`, `Format: ${displayFormat}`, `Condition: ${row.condition || "Available"}`]

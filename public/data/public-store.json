@@ -1,5 +1,5 @@
 {
-  "version": "uniform-display-product-photos-2026-07-12",
+  "version": null,
   "products": [
     {
       "publishStatus": "Published",
@@ -339,7 +339,7 @@
       "category": "Records",
       "qty": 1,
       "price": 470000,
-      "year": 2026,
+      "year": 2013,
       "label": "Alter",
       "image": "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg",
       "tags": [
@@ -374,7 +374,7 @@
       "category": "Records",
       "qty": 1,
       "price": 415000,
-      "year": 2026,
+      "year": 2008,
       "label": "Nuclear Blast",
       "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg",
       "tags": [
@@ -409,7 +409,7 @@
       "category": "Records",
       "qty": 1,
       "price": 260000,
-      "year": 2026,
+      "year": 2025,
       "label": "Cav Empt",
       "image": "/public/covers/nxp-2026-cst-0005-rezzett-into-the-boiling-darks.jpg",
       "tags": [
@@ -445,7 +445,7 @@
       "category": "Records",
       "qty": 1,
       "price": 180000,
-      "year": 2026,
+      "year": 2012,
       "label": "Warner Bros. Records / Sargent House",
       "image": "/public/covers/nxp-2026-cd-0010-the-mars-volta-noctourniquet.jpg",
       "tags": [
@@ -482,7 +482,7 @@
       "category": "Records",
       "qty": 1,
       "price": 250000,
-      "year": 2026,
+      "year": 2016,
       "label": "ISO Records / Columbia",
       "image": "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif",
       "tags": [
@@ -517,7 +517,7 @@
       "category": "Records",
       "qty": 1,
       "price": 250000,
-      "year": 2026,
+      "year": 2013,
       "label": "The Null Corporation / Columbia",
       "image": "/public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg",
       "tags": [
@@ -553,7 +553,7 @@
       "category": "Records",
       "qty": 1,
       "price": 350000,
-      "year": 2026,
+      "year": 2009,
       "label": "Load Records",
       "image": "/public/covers/nxp-2026-cd-0016-lightning-bolt-earthly-delights.jpg",
       "tags": [
@@ -588,7 +588,7 @@
       "category": "Records",
       "qty": 1,
       "price": 700000,
-      "year": 2026,
+      "year": 2019,
       "label": "Rough Trade Records",
       "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
       "tags": [
@@ -606,7 +606,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg"
+        "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+        "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
       ]
     },
     {
@@ -623,7 +624,7 @@
       "category": "Records",
       "qty": 1,
       "price": 568000,
-      "year": 2026,
+      "year": 2025,
       "label": "Rough Trade Records",
       "image": "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
       "tags": [
@@ -642,7 +643,8 @@
       "material": "",
       "apparelType": "",
       "images": [
-        "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg"
+        "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
+        "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg"
       ]
     },
     {
@@ -659,7 +661,7 @@
       "category": "Records",
       "qty": 1,
       "price": 285000,
-      "year": 2026,
+      "year": 1998,
       "label": "Nuclear Blast",
       "image": "/public/uploads/products/nxp-2026-cd-0001-chaosphere-cover-425412532019-r-jpg-1783885419677.jpg",
       "tags": [
@@ -687,7 +689,7 @@
       "updatedAt": "2026-07-11",
       "id": "nxp-2026-cd-0002",
       "sku": "NXP-2026-CD-0002",
-      "title": "Maverick",
+      "title": "Self Titled",
       "artist": "Team Sleep",
       "condition": "Used Excellent",
       "format": "CD",
@@ -695,14 +697,14 @@
       "category": "Records",
       "qty": 1,
       "price": 235000,
-      "year": 2026,
+      "year": 2005,
       "label": "Maverick",
       "image": "/public/covers/nxp-2026-cd-0002-team-sleep-maverick.jpg",
       "tags": [
         "CD",
         "NXP-2026-CD-0002"
       ],
-      "description": "Team Sleep - Maverick. CD from the current NIXP records selection.",
+      "description": "Team Sleep - Self Titled. CD from the current NIXP records selection.",
       "details": [
         "SKU: NXP-2026-CD-0002",
         "Format: CD",
@@ -730,7 +732,7 @@
       "category": "Records",
       "qty": 1,
       "price": 150000,
-      "year": 2026,
+      "year": 2002,
       "label": "Freestyle Dust / Virgin",
       "image": "/public/covers/nxp-2026-cd-0003-the-chemical-brothers-come-with-us.jpg",
       "tags": [
@@ -765,7 +767,7 @@
       "category": "Records",
       "qty": 1,
       "price": 150000,
-      "year": 2026,
+      "year": 2010,
       "label": "Freestyle Dust / Parlophone",
       "image": "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg",
       "tags": [
@@ -800,7 +802,7 @@
       "category": "Records",
       "qty": 1,
       "price": 147000,
-      "year": 2026,
+      "year": 2009,
       "label": "Dress Up / Interscope",
       "image": "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg",
       "tags": [
@@ -835,7 +837,7 @@
       "category": "Records",
       "qty": 1,
       "price": 150000,
-      "year": 2026,
+      "year": 2003,
       "label": "Maverick / Warner Bros.",
       "image": "/public/covers/nxp-2026-cd-0006-matrix-reloaded.jpg",
       "tags": [
@@ -870,7 +872,7 @@
       "category": "Records",
       "qty": 1,
       "price": 480000,
-      "year": 2026,
+      "year": 2025,
       "label": "True Panther",
       "image": "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
       "tags": [
@@ -906,7 +908,7 @@
       "category": "Records",
       "qty": 1,
       "price": 500000,
-      "year": 2026,
+      "year": 2025,
       "label": "A24 Music",
       "image": "/public/covers/nxp-2026-cd-0008-daniel-lopatin-marty-supreme.jpg",
       "tags": [
@@ -942,7 +944,7 @@
       "category": "Records",
       "qty": 1,
       "price": 450000,
-      "year": 2026,
+      "year": 2024,
       "label": "Transgressive / Future Classic",
       "image": "/public/covers/nxp-2026-cd-0009-sophie-sophie.jpg",
       "tags": [
@@ -978,7 +980,7 @@
       "category": "Records",
       "qty": 1,
       "price": 180000,
-      "year": 2026,
+      "year": 2000,
       "label": "Nothing Records / Interscope",
       "image": "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg",
       "tags": [
@@ -1013,7 +1015,7 @@
       "category": "Records",
       "qty": 1,
       "price": 197000,
-      "year": 2026,
+      "year": 2002,
       "label": "Undying Music",
       "image": "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg",
       "tags": [
@@ -1048,7 +1050,7 @@
       "category": "Records",
       "qty": 2,
       "price": 100000,
-      "year": 2026,
+      "year": 2003,
       "label": "Maverick / Warner Bros.",
       "image": "/public/covers/nxp-2026-cst-0004-matrix-reloaded.jpg",
       "tags": [
@@ -1083,7 +1085,7 @@
       "category": "Records",
       "qty": 1,
       "price": 150000,
-      "year": 2026,
+      "year": 1997,
       "label": "XL Recordings",
       "image": "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg",
       "tags": [
@@ -1136,7 +1138,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-vnl-0001-squarepusher-kammerkonzert.jpg"
+        "/public/covers/nxp-2026-vnl-0001-squarepusher-kammerkonzert.jpg",
+        "/public/mockups/nxp-2026-vnl-0001-squarepusher-kammerkonzert-vinyl.jpg"
       ]
     },
     {
@@ -1153,7 +1156,7 @@
       "category": "Records",
       "qty": 1,
       "price": 820000,
-      "year": 2026,
+      "year": 2024,
       "label": "A-Zap",
       "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
       "tags": [
@@ -1171,7 +1174,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg"
+        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+        "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
       ]
     },
     {
@@ -1188,7 +1192,7 @@
       "category": "Records",
       "qty": 1,
       "price": 900000,
-      "year": 2026,
+      "year": 2024,
       "label": "Warp Records",
       "image": "/public/covers/nxp-2026-vnl-0003-nala-sinephro-endlessness.jpg",
       "tags": [
@@ -1206,7 +1210,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-vnl-0003-nala-sinephro-endlessness.jpg"
+        "/public/covers/nxp-2026-vnl-0003-nala-sinephro-endlessness.jpg",
+        "/public/mockups/nxp-2026-vnl-0003-nala-sinephro-endlessness-vinyl.jpg"
       ]
     },
     {
@@ -1223,7 +1228,7 @@
       "category": "Records",
       "qty": 1,
       "price": 250000,
-      "year": 2026,
+      "year": 2012,
       "label": "Innocent Records / Contra-Disc",
       "image": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi.jpg",
       "tags": [
@@ -1258,7 +1263,7 @@
       "category": "Records",
       "qty": 1,
       "price": 50000,
-      "year": 2026,
+      "year": 2015,
       "label": "Orange Cliff Records",
       "image": "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg",
       "tags": [
@@ -1293,7 +1298,7 @@
       "category": "Records",
       "qty": 1,
       "price": 200000,
-      "year": 2026,
+      "year": 2013,
       "label": "ISO Records / Columbia",
       "image": "/public/covers/nxp-2026-cd-0017-david-bowie-the-next-day.jpg",
       "tags": [
@@ -1330,7 +1335,7 @@
       "category": "Records",
       "qty": 1,
       "price": 170000,
-      "year": 2026,
+      "year": 2003,
       "label": "RCA",
       "image": "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg",
       "tags": [
@@ -1365,7 +1370,7 @@
       "category": "Records",
       "qty": 1,
       "price": 200000,
-      "year": 2026,
+      "year": 2009,
       "label": "Domino",
       "image": "/public/covers/nxp-2026-cd-0019-animal-collective-merriweather-post-pavilion.jpg",
       "tags": [
@@ -1400,7 +1405,7 @@
       "category": "Records",
       "qty": 1,
       "price": 200000,
-      "year": 2026,
+      "year": 1988,
       "label": "Creation Records",
       "image": "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg",
       "tags": [
@@ -1435,7 +1440,7 @@
       "category": "Records",
       "qty": 1,
       "price": 250000,
-      "year": 2026,
+      "year": 2019,
       "label": "Avalanche Recordings / Daymare Recordings",
       "image": "/public/covers/nxp-2026-cd-0021-jk-flesh-gothtrad-knights-of-the-black-table.jpg",
       "tags": [
@@ -1470,7 +1475,7 @@
       "category": "Records",
       "qty": 1,
       "price": 250000,
-      "year": 2026,
+      "year": 2018,
       "label": "Sacred Bones Records",
       "image": "/public/covers/nxp-2026-cd-0022-soft-moon-criminal.jpg",
       "tags": [
@@ -1505,7 +1510,7 @@
       "category": "Records",
       "qty": 1,
       "price": 190000,
-      "year": 2026,
+      "year": 2023,
       "label": "P2",
       "image": "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg",
       "tags": [
@@ -1540,7 +1545,7 @@
       "category": "Records",
       "qty": 1,
       "price": 450000,
-      "year": 2026,
+      "year": 2025,
       "label": "Trouble In Mind",
       "image": "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
       "tags": [
@@ -1576,7 +1581,7 @@
       "category": "Records",
       "qty": 1,
       "price": 450000,
-      "year": 2026,
+      "year": 2024,
       "label": "XL Recordings",
       "image": "/public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg",
       "tags": [
@@ -1612,7 +1617,7 @@
       "category": "Records",
       "qty": 1,
       "price": 900000,
-      "year": 2026,
+      "year": 2024,
       "label": "Brainfeeder",
       "image": "/public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg",
       "tags": [
@@ -1631,7 +1636,8 @@
       "material": "",
       "apparelType": "",
       "images": [
-        "/public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg"
+        "/public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg",
+        "/public/mockups/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code-vinyl.jpg"
       ]
     },
     {
@@ -1648,7 +1654,7 @@
       "category": "Records",
       "qty": 1,
       "price": 700000,
-      "year": 2026,
+      "year": 2013,
       "label": "PAN",
       "image": "/public/covers/nxp-2026-vnl-0008-arca-.jpg",
       "tags": [
@@ -1666,7 +1672,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-vnl-0008-arca-.jpg"
+        "/public/covers/nxp-2026-vnl-0008-arca-.jpg",
+        "/public/mockups/nxp-2026-vnl-0008-arca-and-and-and-and-and-vinyl.jpg"
       ]
     },
     {
@@ -1683,7 +1690,7 @@
       "category": "Records",
       "qty": 1,
       "price": 550000,
-      "year": 2026,
+      "year": 2019,
       "label": "Domino",
       "image": "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
       "tags": [
@@ -1701,7 +1708,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg"
+        "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
+        "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg"
       ]
     },
     {
@@ -1718,7 +1726,7 @@
       "category": "Records",
       "qty": 1,
       "price": 550000,
-      "year": 2026,
+      "year": 2024,
       "label": "XL Recordings",
       "image": "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png",
       "tags": [
@@ -1736,7 +1744,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png"
+        "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png",
+        "/public/mockups/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-vinyl.jpg"
       ]
     },
     {
@@ -1771,7 +1780,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg"
+        "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
+        "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg"
       ]
     },
     {
@@ -1788,7 +1798,7 @@
       "category": "Records",
       "qty": 1,
       "price": 950000,
-      "year": 2026,
+      "year": 2025,
       "label": "XL Recordings",
       "image": "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
       "tags": [
@@ -1806,7 +1816,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg"
+        "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
+        "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg"
       ]
     },
     {
@@ -1979,7 +1990,7 @@
       "category": "Records",
       "qty": 1,
       "price": 300000,
-      "year": 2026,
+      "year": 2025,
       "label": "Warp Records",
       "tags": [
         "CD",

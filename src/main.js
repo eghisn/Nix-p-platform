@@ -41,7 +41,7 @@ const routes = {
   "/": homePage,
   "/records": recordsPage,
   "/objects": categoryPage("Objects", "Objects", "Objects and editions made for rooms, shelves, and listening rituals."),
-  "/apparel": apparelPage,
+  "/apparel": () => apparelPage(),
   "/accessories": () => apparelPage("Accessories"),
   "/accesories": () => apparelPage("Accessories"),
   "/publishing": categoryPage("Publishing", "Publishing", "Printed matter, books, magazines, and text-led editions."),
@@ -87,7 +87,7 @@ async function render() {
               : routes[path] || notFoundPage;
   const content = await view(path);
   const isLoginView = path === "/login" || (requiredWorkspace && !hasWorkspaceAccess(requiredWorkspace));
-  document.body.classList.toggle("page-lock", path === "/about" || path === "/contact" || isLoginView);
+  document.body.classList.toggle("page-lock", path === "/" || path === "/about" || path === "/contact" || isLoginView);
   document.body.classList.toggle("login-lock", isLoginView);
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
   app.innerHTML = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
