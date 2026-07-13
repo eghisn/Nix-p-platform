@@ -813,12 +813,7 @@ async function adminProductsPage({ embedded = false } = {}) {
         </div>
         <label>Description<textarea name="description" rows="4">${escapeHtml(product.description || "")}</textarea></label>
         <label>Image URL<input name="image" value="${escapeAttr(product.image || "")}" placeholder="/public/example.png or uploaded data URL" /></label>
-        <label>Upload gallery<input name="imageFile" type="file" accept="image/*" multiple /></label>
-        ${
-          productImages(product).length
-            ? `<p class="admin-form-note">Current gallery: ${productImages(product).length} image${productImages(product).length === 1 ? "" : "s"}</p>`
-            : ""
-        }
+        ${galleryUploadFields(product)}
         <div class="admin-form-actions">
           <button class="button button-dark" type="submit">Save product</button>
           ${editing ? `<a class="button button-outline" href="/admin/preview/product/${product.id}" data-link>Preview</a>` : ""}
@@ -885,7 +880,7 @@ async function adminMediaPage({ embedded = false } = {}) {
           </select>
         </label>
         <label>Image URL<input name="image" placeholder="/public/new-image.png" /></label>
-        <label>Upload gallery<input name="imageFile" type="file" accept="image/*" multiple /></label>
+        ${galleryUploadFields({}, "New gallery images")}
         <button class="button button-dark" type="submit">Update images</button>
       </form>
       <div class="admin-media-grid">
@@ -1282,6 +1277,34 @@ function productImages(product) {
   return [...new Set(images)].slice(0, 5);
 }
 
+function galleryUploadFields(product = {}, title = "Upload gallery") {
+  const currentImages = productImages(product);
+  return `
+    <fieldset class="admin-gallery-fieldset">
+      <legend>${title}</legend>
+      <div class="admin-gallery-slots">
+        ${Array.from({ length: 5 }, (_, index) => {
+          const slot = index + 1;
+          const currentImage = currentImages[index] || "";
+          return `
+            <label>
+              <span>${slot}</span>
+              <input name="imageFile${slot}" type="file" accept="image/*" />
+              ${currentImage ? `<em>${escapeHtml(currentImage)}</em>` : ""}
+            </label>
+          `;
+        }).join("")}
+      </div>
+      <p class="admin-form-note">Upload 1-5 images. Public product pages show them in this order.</p>
+    </fieldset>
+  `;
+}
+
+function galleryFilesFromForm(form) {
+  return Array.from({ length: 5 }, (_, index) => form.elements[`imageFile${index + 1}`]?.files?.[0])
+    .filter(Boolean);
+}
+
 function sortItems(items, key, sorters) {
   const rawKey = String(key || "");
   const isDesc = rawKey.endsWith(":desc");
@@ -1510,15 +1533,12 @@ function bindEvents() {
     event.preventDefault();
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
-    const files = Array.from(form.elements.imageFile?.files || []);
-    if (files.length > 5) {
-      alert("Upload up to 5 product images.");
-      return;
-    }
+    const files = galleryFilesFromForm(form);
     if (files.length) {
       const uploads = await adminStore.uploadProductImages(files, data);
-      data.images = uploads;
-      data.image = uploads[0];
+      const gallery = uploads.slice(0, 5);
+      data.images = gallery;
+      data.image = gallery[0];
     }
     const saved = await adminStore.saveProduct(data);
     state.adminEditingProductId = saved.id;
@@ -1530,11 +1550,7 @@ function bindEvents() {
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
     const product = await catalogService.getProduct(data.productId, { includeDrafts: true });
-    const files = Array.from(form.elements.imageFile?.files || []);
-    if (files.length > 5) {
-      alert("Upload up to 5 product images.");
-      return;
-    }
+    const files = galleryFilesFromForm(form);
     const uploads = files.length ? await adminStore.uploadProductImages(files, product) : [];
     const images = [
       data.image,

@@ -97,6 +97,53 @@
   text-transform: uppercase;
 }
 
+.admin-gallery-fieldset {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--line);
+  margin: 0;
+  padding: 14px;
+}
+
+.admin-gallery-fieldset legend {
+  padding-inline: 6px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.admin-gallery-slots {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-gallery-slots label {
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-gallery-slots label span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  aspect-ratio: 1;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+}
+
+.admin-gallery-slots label em {
+  grid-column: 2;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-style: normal;
+  text-overflow: ellipsis;
+  text-transform: none;
+  white-space: nowrap;
+}
+
 .admin-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
