@@ -343,6 +343,19 @@ export const adminStore = {
   getSnapshot() {
     return readStore();
   },
+  async deployStore() {
+    const response = await fetch("/api/admin/deploy", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        store: readStore(),
+        message: `Deploy NIXP catalog ${new Date().toISOString()}`
+      })
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Deploy failed. Please check Vercel and GitHub settings.");
+    return payload;
+  },
   async uploadProductImage(file, product) {
     return uploadDataUrlImage(await fileToDataUrl(file), product, file.name);
   },

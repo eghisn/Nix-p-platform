@@ -106,6 +106,34 @@
   letter-spacing: 0.08em;
 }
 
+.editor-deploy-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 14px;
+  align-items: center;
+  border: 1px solid var(--ink);
+  padding: 12px;
+}
+
+.editor-deploy-panel strong,
+.editor-deploy-panel span {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 780;
+  text-transform: uppercase;
+}
+
+.editor-deploy-panel span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.64rem;
+}
+
+.editor-deploy-panel .admin-form-note {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
 .admin-form-note {
   margin: -4px 0 4px;
   color: var(--muted);

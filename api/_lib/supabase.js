@@ -69,14 +69,17 @@ export async function verifiedPrices(ids = []) {
 }
 
 export async function saveStore(store) {
-  await Promise.all(TABLES.map((table) => supabaseFetch(`${table}?id=not.is.null`, { method: "DELETE", service: true, prefer: "return=minimal" })));
-  await upsert("products", (store.products || []).map(toProductRow));
-  await upsert("artists", (store.artists || []).map(toRawRow));
-  await upsert("collections", (store.collections || []).map(toRawRow));
-  await upsert("requests", (store.requests || []).map(toRawRow));
-  await upsert("orders", (store.orders || []).map(toRawRow));
-  await upsert("cashflow", (store.cashflow || []).map(toRawRow));
-  await upsert("inventory", (store.inventory || []).map(toRawRow));
+  const rowsByTable = {
+    products: (store.products || []).map(toProductRow),
+    artists: (store.artists || []).map(toRawRow),
+    collections: (store.collections || []).map(toRawRow),
+    requests: (store.requests || []).map(toRawRow),
+    orders: (store.orders || []).map(toRawRow),
+    cashflow: (store.cashflow || []).map(toRawRow),
+    inventory: (store.inventory || []).map(toRawRow)
+  };
+  for (const table of TABLES) await upsert(table, rowsByTable[table]);
+  for (const table of TABLES) await deleteMissingRows(table, rowsByTable[table]);
 }
 
 async function upsert(table, rows) {
@@ -87,6 +90,14 @@ async function upsert(table, rows) {
     service: true,
     prefer: "resolution=merge-duplicates,return=minimal"
   });
+}
+
+async function deleteMissingRows(table, rows) {
+  const ids = rows.map((row) => String(row.id)).filter(Boolean);
+  const filter = ids.length
+    ? `id=not.in.(${ids.map((id) => `"${id.replaceAll('"', '\\"')}"`).join(",")})`
+    : "id=not.is.null";
+  return supabaseFetch(`${table}?${filter}`, { method: "DELETE", service: true, prefer: "return=minimal" });
 }
 
 function fromRawRow(row) {

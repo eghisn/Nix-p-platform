@@ -689,6 +689,14 @@ async function adminEditorPage() {
       ${metric("Drafts", drafts)}
       ${metric("Requests", requests.length)}
       ${metric("Orders", orders.length)}
+      <form class="editor-deploy-panel" data-admin-deploy-form>
+        <div>
+          <strong>Deploy</strong>
+          <span>Save Supabase, commit GitHub, trigger Vercel.</span>
+        </div>
+        <button class="button button-dark" type="submit">Deploy</button>
+        <p class="admin-form-note" data-admin-form-message aria-live="polite"></p>
+      </form>
       <nav class="editor-tabs" aria-label="Editor sections">
         <a href="#editor-products">Products</a>
         <a href="#editor-media">Images</a>
@@ -1609,6 +1617,23 @@ function bindEvents() {
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Could not save product.", "error");
       submitButton.disabled = false;
+    }
+  });
+
+  document.querySelector("[data-admin-deploy-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector("button");
+    button.disabled = true;
+    setFormMessage(form, "Deploying...");
+    try {
+      const result = await adminStore.deployStore();
+      const sha = result.github?.commitSha ? ` Commit ${result.github.commitSha.slice(0, 7)}.` : "";
+      setFormMessage(form, `${result.message || "Deploy started."}${sha}`, "success");
+    } catch (error) {
+      setFormMessage(form, error instanceof Error ? error.message : "Deploy failed.", "error");
+    } finally {
+      button.disabled = false;
     }
   });
 
