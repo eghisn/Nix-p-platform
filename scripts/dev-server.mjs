@@ -219,6 +219,17 @@ async function handleApi(req, res) {
     const dataDir = join(root, "public", "data");
     await mkdir(dataDir, { recursive: true });
     await writeFile(join(dataDir, "admin-store.json"), JSON.stringify(payload.store, null, 2) + "\n");
+    const publicStore = {
+      ...payload.store,
+      products: (payload.store.products || []).filter(
+        (product) => product.publishStatus === "Published" && product.visibility !== "Hidden"
+      ),
+      requests: [],
+      orders: [],
+      cashflow: [],
+      inventory: []
+    };
+    await writeFile(join(dataDir, "public-store.json"), JSON.stringify(publicStore, null, 2) + "\n");
     json(res, 200, { ok: true, path: "/public/data/admin-store.json" });
     return true;
   }

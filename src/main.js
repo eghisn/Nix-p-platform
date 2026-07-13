@@ -232,6 +232,7 @@ async function productDetailMarkup(product) {
   const displayFormat = product.displayFormat || product.format;
   const conditionLabel = product.condition || "Available";
   const isApparel = product.category === "Apparel";
+  const galleryImages = productImages(product);
   const isSizedProduct = (product.category === "Apparel" || product.category === "Objects") && product.sizes?.length;
   const selectedSize =
     state.selectedSizes[product.id] ||
@@ -241,21 +242,15 @@ async function productDetailMarkup(product) {
   return `
     <section class="product-detail">
       <div class="detail-gallery">
-        <button
-          class="zoom-trigger ${state.zoomedProductId === product.id ? "is-zoomed" : ""}"
-          type="button"
-          data-product-zoom="${product.id}"
-          aria-label="Zoom ${product.title}"
-          aria-pressed="${state.zoomedProductId === product.id ? "true" : "false"}"
-        >
-          <figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""}">
-            <img src="${product.image}" alt="${product.title}" />
-          </figure>
-        </button>
-        <div class="detail-thumbs">
-          <figure class="product-art ${isApparel ? "product-art-apparel" : ""}"><img src="${product.image}" alt="${product.title} detail A" /></figure>
-          <figure class="product-art ${isApparel ? "product-art-apparel" : ""}"><img src="${product.image}" alt="${product.title} detail B" /></figure>
-        </div>
+        ${galleryImages
+          .map(
+            (image, index) => `
+              <figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""}">
+                <img src="${image}" alt="${product.title}${galleryImages.length > 1 ? ` image ${index + 1}` : ""}" />
+              </figure>
+            `
+          )
+          .join("")}
       </div>
       <aside class="detail-copy">
         <a class="back-link" href="/${product.category.toLowerCase()}" data-link>${product.category}</a>
@@ -818,7 +813,12 @@ async function adminProductsPage({ embedded = false } = {}) {
         </div>
         <label>Description<textarea name="description" rows="4">${escapeHtml(product.description || "")}</textarea></label>
         <label>Image URL<input name="image" value="${escapeAttr(product.image || "")}" placeholder="/public/example.png or uploaded data URL" /></label>
-        <label>Upload image<input name="imageFile" type="file" accept="image/*" /></label>
+        <label>Upload gallery<input name="imageFile" type="file" accept="image/*" multiple /></label>
+        ${
+          productImages(product).length
+            ? `<p class="admin-form-note">Current gallery: ${productImages(product).length} image${productImages(product).length === 1 ? "" : "s"}</p>`
+            : ""
+        }
         <div class="admin-form-actions">
           <button class="button button-dark" type="submit">Save product</button>
           ${editing ? `<a class="button button-outline" href="/admin/preview/product/${product.id}" data-link>Preview</a>` : ""}
@@ -885,8 +885,8 @@ async function adminMediaPage({ embedded = false } = {}) {
           </select>
         </label>
         <label>Image URL<input name="image" placeholder="/public/new-image.png" /></label>
-        <label>Upload image<input name="imageFile" type="file" accept="image/*" /></label>
-        <button class="button button-dark" type="submit">Update image</button>
+        <label>Upload gallery<input name="imageFile" type="file" accept="image/*" multiple /></label>
+        <button class="button button-dark" type="submit">Update images</button>
       </form>
       <div class="admin-media-grid">
         ${products
@@ -1272,6 +1272,16 @@ function recordLabelMarkup(product) {
   return `<a class="record-label-link" href="/records?label=${encodeURIComponent(product.label)}" data-link>${escapeHtml(product.label)}</a>`;
 }
 
+function productImages(product) {
+  const images = [
+    ...(Array.isArray(product.images) ? product.images : []),
+    product.image
+  ]
+    .map((image) => String(image || "").trim())
+    .filter(Boolean);
+  return [...new Set(images)].slice(0, 5);
+}
+
 function sortItems(items, key, sorters) {
   const rawKey = String(key || "");
   const isDesc = rawKey.endsWith(":desc");
@@ -1500,8 +1510,16 @@ function bindEvents() {
     event.preventDefault();
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
-    const file = form.elements.imageFile?.files?.[0];
-    if (file) data.image = await adminStore.uploadProductImage(file, data);
+    const files = Array.from(form.elements.imageFile?.files || []);
+    if (files.length > 5) {
+      alert("Upload up to 5 product images.");
+      return;
+    }
+    if (files.length) {
+      const uploads = await adminStore.uploadProductImages(files, data);
+      data.images = uploads;
+      data.image = uploads[0];
+    }
     const saved = await adminStore.saveProduct(data);
     state.adminEditingProductId = saved.id;
     render();
@@ -1512,10 +1530,24 @@ function bindEvents() {
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
     const product = await catalogService.getProduct(data.productId, { includeDrafts: true });
-    const file = form.elements.imageFile?.files?.[0];
+    const files = Array.from(form.elements.imageFile?.files || []);
+    if (files.length > 5) {
+      alert("Upload up to 5 product images.");
+      return;
+    }
+    const uploads = files.length ? await adminStore.uploadProductImages(files, product) : [];
+    const images = [
+      data.image,
+      ...productImages(product),
+      ...uploads
+    ]
+      .map((image) => String(image || "").trim())
+      .filter(Boolean);
+    const gallery = [...new Set(images)].slice(0, 5);
     await adminStore.saveProduct({
       ...product,
-      image: file ? await adminStore.uploadProductImage(file, product) : data.image || product.image
+      image: gallery[0] || product.image,
+      images: gallery
     });
     render();
   });

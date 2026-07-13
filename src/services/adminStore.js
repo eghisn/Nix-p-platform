@@ -25,13 +25,25 @@ function withDefaults(product) {
     visibility: "Public",
     updatedAt: "2026-07-11",
     ...product,
+    image: product.image || product.images?.[0] || "/public/nixp-product-example-paper.png",
     tags: product.tags || [],
     details: product.details || [],
     sizes: normalizeSizes(product.sizes || []),
+    images: normalizeImages(product),
     collection: product.collection || product.label || "",
     color: product.color || "",
     material: product.material || ""
   };
+}
+
+function normalizeImages(product = {}) {
+  const urls = [
+    ...(Array.isArray(product.images) ? product.images : []),
+    product.image
+  ]
+    .map((image) => String(image || "").trim())
+    .filter(Boolean);
+  return [...new Set(urls)];
 }
 
 function normalizeSizes(sizes) {
@@ -268,6 +280,13 @@ export const adminStore = {
   async uploadProductImage(file, product) {
     return uploadDataUrlImage(await fileToDataUrl(file), product, file.name);
   },
+  async uploadProductImages(files, product) {
+    const uploads = [];
+    for (const file of Array.from(files || [])) {
+      uploads.push(await this.uploadProductImage(file, product));
+    }
+    return uploads;
+  },
   listProducts({ includeDrafts = false } = {}) {
     const items = readStore().products;
     return includeDrafts ? items : items.filter((product) => product.publishStatus === "Published");
@@ -303,7 +322,16 @@ export const adminStore = {
       collection,
       color: data.color?.trim() || "",
       material: data.material?.trim() || "",
-      image: data.image?.trim() || existing?.image || "/public/nixp-product-example-paper.png",
+      image:
+        data.image?.trim() ||
+        data.images?.[0] ||
+        existing?.image ||
+        existing?.images?.[0] ||
+        "/public/nixp-product-example-paper.png",
+      images: normalizeImages({
+        images: data.images || existing?.images,
+        image: data.image?.trim() || data.images?.[0] || existing?.image
+      }),
       tags: splitList(data.tags),
       details: splitList(data.details),
       sizes: isProductCategory ? collectSizes(data) : existing?.sizes || [],

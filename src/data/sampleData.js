@@ -592,6 +592,7 @@ export const products = [
     color: "Palladio",
     material: "White Brass",
     image: "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg",
+    images: ["/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg"],
     tags: [],
     details: ["Brass Ring"],
     sizes: [
@@ -614,6 +615,7 @@ export const products = [
     year: 2023,
     label: "Motorith",
     image: apparelImage,
+    images: [apparelImage],
     tags: ["crewneck", "sweatshirt", "black"],
     material: "Cotton fleece",
     color: "Black",
@@ -640,6 +642,7 @@ export const products = [
     label: "NIXP Apparel",
     collection: "NIXP Apparel",
     image: "/public/nixp-product-example-paper.png",
+    images: ["/public/nixp-product-example-paper.png"],
     tags: ["knitsweater", "apparel"],
     material: "Knit cotton blend",
     color: "Black",
@@ -663,6 +666,7 @@ export const products = [
     year: 2026,
     label: "NIXP Publishing",
     image: recordImage,
+    images: [recordImage],
     tags: ["interviews", "photography"],
     description: "The first NIXP publishing index: interviews, photography, release notes, and shop fragments.",
     details: ["SKU: NXP-2026-PUB-0001", "80 pages", "Offset printed", "First issue"]
@@ -693,6 +697,7 @@ function record(row) {
     year: 2026,
     label: recordLabels[row.id] || row.label || "NIXP Selection",
     image: row.image || recordImage,
+    images: [row.image || recordImage],
     tags: [displayFormat, row.sku],
     description: `${row.artist} - ${row.title}. ${displayFormat} from the current NIXP records selection.`,
     details: [`SKU: ${row.sku}`, `Format: ${displayFormat}`, `Condition: ${row.condition || "Available"}`]
