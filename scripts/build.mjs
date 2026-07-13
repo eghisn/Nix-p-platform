@@ -33,6 +33,8 @@ const staticRoutes = [
   "records",
   "objects",
   "apparel",
+  "accessories",
+  "accesories",
   "publishing",
   "artists",
   "blog",
