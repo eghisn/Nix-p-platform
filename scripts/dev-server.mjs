@@ -10,6 +10,7 @@ await loadLocalEnv(join(root, ".env.local"));
 await loadLocalEnv(join(root, ".env"));
 const port = Number(process.env.PORT || 4173);
 const sessions = new Map();
+const maxBodyBytes = 100 * 1024 * 1024;
 
 const types = {
   ".css": "text/css; charset=utf-8",
@@ -45,9 +46,9 @@ function readBody(req) {
     let body = "";
     req.on("data", (chunk) => {
       body += chunk;
-      if (body.length > 30_000_000) {
+      if (body.length > maxBodyBytes) {
         req.destroy();
-        rejectBody(new Error("Request body too large"));
+        rejectBody(new Error("Request body too large. Upload one smaller image at a time."));
       }
     });
     req.on("end", () => resolveBody(body));

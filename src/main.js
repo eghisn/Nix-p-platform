@@ -42,6 +42,8 @@ const routes = {
   "/records": recordsPage,
   "/objects": categoryPage("Objects", "Objects", "Objects and editions made for rooms, shelves, and listening rituals."),
   "/apparel": apparelPage,
+  "/accessories": () => apparelPage("Accessories"),
+  "/accesories": () => apparelPage("Accessories"),
   "/publishing": categoryPage("Publishing", "Publishing", "Printed matter, books, magazines, and text-led editions."),
   "/artists": artistsPage,
   "/blog": blogPage,
@@ -197,8 +199,9 @@ function categoryPage(category, title, text) {
   };
 }
 
-async function apparelPage() {
-  const apparel = await catalogService.listApparel(state.apparelFilter);
+async function apparelPage(filter = state.apparelFilter) {
+  const activeFilter = filter || "All Apparel";
+  const apparel = await catalogService.listApparel(activeFilter);
   const filters = ["All Apparel", "Tops", "Bottoms", "Accessories"];
   return `
     <section class="section shop-section">
@@ -206,7 +209,7 @@ async function apparelPage() {
         ${filters
           .map(
             (filter) => `
-              <button class="chip ${state.apparelFilter === filter ? "is-active" : ""}" type="button" data-apparel-filter="${filter}">
+              <button class="chip ${activeFilter === filter ? "is-active" : ""}" type="button" data-apparel-filter="${filter}">
                 ${filter}
               </button>
             `
@@ -797,7 +800,7 @@ async function adminProductsPage({ embedded = false } = {}) {
             ${input("color", "Color", product.color || "", "Black")}
             ${input("material", "Material", product.material || "", "Knit cotton blend")}
             <div data-admin-apparel-field ${productCategory === "Apparel" ? "" : "hidden"}>
-              ${input("apparelType", "Apparel type", product.apparelType || "", "Tops, Bottoms, Accessories")}
+              ${select("apparelType", "Apparel type", ["", "Tops", "Bottoms", "Accessories"], product.apparelType === "Accesories" ? "Accessories" : product.apparelType || "")}
             </div>
             ${sizeInventoryFields(product)}
           </div>
@@ -814,6 +817,7 @@ async function adminProductsPage({ embedded = false } = {}) {
         <label>Description<textarea name="description" rows="4">${escapeHtml(product.description || "")}</textarea></label>
         <label>Image URL<input name="image" value="${escapeAttr(product.image || "")}" placeholder="/public/example.png or uploaded data URL" /></label>
         ${galleryUploadFields(product)}
+        <p class="admin-form-note" data-admin-form-message aria-live="polite"></p>
         <div class="admin-form-actions">
           <button class="button button-dark" type="submit">Save product</button>
           ${editing ? `<a class="button button-outline" href="/admin/preview/product/${product.id}" data-link>Preview</a>` : ""}
@@ -881,6 +885,7 @@ async function adminMediaPage({ embedded = false } = {}) {
         </label>
         <label>Image URL<input name="image" placeholder="/public/new-image.png" /></label>
         ${galleryUploadFields({}, "New gallery images")}
+        <p class="admin-form-note" data-admin-form-message aria-live="polite"></p>
         <button class="button button-dark" type="submit">Update images</button>
       </form>
       <div class="admin-media-grid">
@@ -1301,8 +1306,32 @@ function galleryUploadFields(product = {}, title = "Upload gallery") {
 }
 
 function galleryFilesFromForm(form) {
-  return Array.from({ length: 5 }, (_, index) => form.elements[`imageFile${index + 1}`]?.files?.[0])
-    .filter(Boolean);
+  return Array.from({ length: 5 }, (_, index) => ({
+    index,
+    file: form.elements[`imageFile${index + 1}`]?.files?.[0]
+  })).filter((slot) => slot.file);
+}
+
+async function uploadGallerySlots(form, product = {}) {
+  const slots = galleryFilesFromForm(form);
+  const currentImages = productImages(product).slice(0, 5);
+  if (!slots.length) return currentImages;
+
+  for (const slot of slots) {
+    currentImages[slot.index] = await adminStore.uploadProductImage(slot.file, product);
+  }
+
+  return currentImages
+    .map((image) => String(image || "").trim())
+    .filter(Boolean)
+    .slice(0, 5);
+}
+
+function setFormMessage(form, message, tone = "") {
+  const target = form.querySelector("[data-admin-form-message]");
+  if (!target) return;
+  target.textContent = message;
+  target.dataset.tone = tone;
 }
 
 function sortItems(items, key, sorters) {
@@ -1532,40 +1561,59 @@ function bindEvents() {
   document.querySelector("[data-admin-product-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
-    const files = galleryFilesFromForm(form);
-    if (files.length) {
-      const uploads = await adminStore.uploadProductImages(files, data);
-      const gallery = uploads.slice(0, 5);
-      data.images = gallery;
-      data.image = gallery[0];
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    setFormMessage(form, "Saving product...");
+    try {
+      const data = Object.fromEntries(new FormData(form).entries());
+      const existing = state.adminEditingProductId
+        ? await catalogService.getProduct(state.adminEditingProductId, { includeDrafts: true })
+        : {};
+      const baseGallery = productImages({
+        ...existing,
+        image: data.image?.trim() || existing?.image
+      });
+      const gallery = await uploadGallerySlots(form, { ...data, images: baseGallery });
+      if (gallery.length) {
+        data.images = gallery;
+        data.image = gallery[0];
+      }
+      const saved = await adminStore.saveProduct(data);
+      state.adminEditingProductId = saved.id;
+      setFormMessage(form, "Saved.", "success");
+      await render();
+    } catch (error) {
+      setFormMessage(form, error instanceof Error ? error.message : "Could not save product.", "error");
+      submitButton.disabled = false;
     }
-    const saved = await adminStore.saveProduct(data);
-    state.adminEditingProductId = saved.id;
-    render();
   });
 
   document.querySelector("[data-admin-media-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
-    const product = await catalogService.getProduct(data.productId, { includeDrafts: true });
-    const files = galleryFilesFromForm(form);
-    const uploads = files.length ? await adminStore.uploadProductImages(files, product) : [];
-    const images = [
-      data.image,
-      ...productImages(product),
-      ...uploads
-    ]
-      .map((image) => String(image || "").trim())
-      .filter(Boolean);
-    const gallery = [...new Set(images)].slice(0, 5);
-    await adminStore.saveProduct({
-      ...product,
-      image: gallery[0] || product.image,
-      images: gallery
-    });
-    render();
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    setFormMessage(form, "Updating images...");
+    try {
+      const data = Object.fromEntries(new FormData(form).entries());
+      const product = await catalogService.getProduct(data.productId, { includeDrafts: true });
+      if (!product) throw new Error("Product was not found.");
+      const baseGallery = productImages({
+        ...product,
+        image: data.image?.trim() || product.image
+      });
+      const gallery = await uploadGallerySlots(form, { ...product, images: baseGallery });
+      await adminStore.saveProduct({
+        ...product,
+        image: gallery[0] || product.image,
+        images: gallery
+      });
+      setFormMessage(form, "Images updated.", "success");
+      await render();
+    } catch (error) {
+      setFormMessage(form, error instanceof Error ? error.message : "Could not update images.", "error");
+      submitButton.disabled = false;
+    }
   });
 
   document.querySelector("[data-admin-artist-form]")?.addEventListener("submit", (event) => {

@@ -4,6 +4,288 @@
     {
       "publishStatus": "Published",
       "visibility": "Public",
+      "updatedAt": "2026-07-13",
+      "id": "nxp-2026-app-0009-lattice-cap",
+      "sku": "NXP-2026-APP-0009",
+      "title": "Lattice Cap",
+      "artist": "Cold Metal Breathes Too",
+      "category": "Apparel",
+      "format": "Apparel",
+      "displayFormat": "",
+      "apparelType": "Accessories",
+      "condition": "",
+      "price": 320000,
+      "year": 2025,
+      "label": "Nix Powell",
+      "collection": "Cold Metal Breathes Too",
+      "color": "Black",
+      "material": "Cotton",
+      "image": "/public/uploads/products/nxp-2026-app-0009-lattice-cap-np-cap-front-stcsm-jpg-1783939928060.jpg",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0009-lattice-cap-np-cap-front-stcsm-jpg-1783939928060.jpg",
+        "/public/uploads/products/nxp-2026-app-0009-lattice-cap-np-cap-side-stcsm-jpg-1783939928071.jpg",
+        "/public/uploads/products/nxp-2026-app-0009-lattice-cap-dsc08850-jpg-1783939928194.jpg"
+      ],
+      "tags": [],
+      "details": [],
+      "sizes": [],
+      "description": "LATTICE CAP - COLD METAL BREATHES TOO POLO CAP IN BLACK\n\n\nCOLOR: BLACK\nMATERIAL: 100% COTTON\nLATTICE ART EMBROIDERED ON FRONT\nADJUSTABLE BACK STRAP.",
+      "qty": 10
+    },
+    {
+      "publishStatus": "Published",
+      "visibility": "Public",
+      "updatedAt": "2026-07-13",
+      "id": "nxp-2026-app-0007-cold-metal-breathes-too-t-shirt",
+      "sku": "NXP-2026-APP-0007",
+      "title": "Cold Metal Breathes Too T-shirt",
+      "artist": "Cold Metal Breathes Too",
+      "category": "Apparel",
+      "format": "Apparel",
+      "displayFormat": "",
+      "apparelType": "Tops",
+      "condition": "",
+      "price": 350000,
+      "year": 2025,
+      "label": "Nix Powell",
+      "collection": "Cold Metal Breathes Too",
+      "color": "Black",
+      "material": "Heavy Cotton 16s 320GSM",
+      "image": "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-front-stcsm-jpg-1783937571772.jpg",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-front-stcsm-jpg-1783937571772.jpg",
+        "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-back-stcsm-jpg-1783937571873.jpg",
+        "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-details-front-stcsm-jpg-1783937572128.jpg",
+        "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-details-back-stcsm-jpg-1783937572294.jpg",
+        "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-dsc08715-jpg-1783940012639.jpg"
+      ],
+      "tags": [],
+      "details": [],
+      "sizes": [
+        {
+          "label": "S",
+          "quantity": 3,
+          "soldOut": false
+        },
+        {
+          "label": "M",
+          "quantity": 1,
+          "soldOut": false
+        },
+        {
+          "label": "L",
+          "quantity": 8,
+          "soldOut": false
+        },
+        {
+          "label": "XL",
+          "quantity": 2,
+          "soldOut": false
+        }
+      ],
+      "description": "COLD METAL BREATHES TOO BLACK T-SHIRT\n16s 320GSM\n\n\nCOLD METAL BREATHES TOO ART SCREENPRINTED ON FRONT",
+      "qty": 20
+    },
+    {
+      "publishStatus": "Published",
+      "visibility": "Public",
+      "updatedAt": "2026-07-13",
+      "id": "nxp-2026-app-0006-paranoiac-odyssey-t-shirt",
+      "sku": "NXP-2026-APP-0006",
+      "title": "Paranoiac Odyssey T-shirt",
+      "artist": "Paranoiac Odyssey",
+      "category": "Apparel",
+      "format": "Apparel",
+      "displayFormat": "",
+      "apparelType": "Tops",
+      "condition": "",
+      "price": 350000,
+      "year": 2024,
+      "label": "Nix Powell",
+      "collection": "Paranoiac Odyssey",
+      "color": "White",
+      "material": "Heavy Cotton 16s 265GSM",
+      "image": "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-hires-white-jpg-1783937379401.jpg",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-hires-white-jpg-1783937379401.jpg",
+        "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-jhnh9858j-jpg-1783937379437.jpg",
+        "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-jhnh9854j-jpg-1783937379569.jpg",
+        "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-jhnh9862j-jpg-1783937379741.jpg",
+        "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-jhnh9863j-jpg-1783937380090.jpg"
+      ],
+      "tags": [],
+      "details": [],
+      "sizes": [
+        {
+          "label": "S",
+          "quantity": 2,
+          "soldOut": false
+        },
+        {
+          "label": "M",
+          "quantity": 1,
+          "soldOut": false
+        },
+        {
+          "label": "L",
+          "quantity": 0,
+          "soldOut": true
+        },
+        {
+          "label": "XL",
+          "quantity": 3,
+          "soldOut": false
+        }
+      ],
+      "description": "",
+      "qty": 6
+    },
+    {
+      "publishStatus": "Published",
+      "visibility": "Public",
+      "updatedAt": "2026-07-13",
+      "id": "nxp-2026-app-0005-osculum-nylon-black-polo-cap",
+      "sku": "NXP-2026-APP-0005",
+      "title": "Osculum Nylon Black Polo Cap",
+      "artist": "Cold Metal Breathes Too",
+      "category": "Apparel",
+      "format": "Apparel",
+      "displayFormat": "",
+      "apparelType": "Accessories",
+      "condition": "",
+      "price": 320000,
+      "year": 2026,
+      "label": "Nix Powell",
+      "collection": "Cold Metal Breathes Too",
+      "color": "Black",
+      "material": "Nylon",
+      "image": "/public/uploads/products/nxp-2026-app-0005-osculum-nylon-black-polo-cap-dsc08768j-jpg-1783937171860.jpg",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0005-osculum-nylon-black-polo-cap-dsc08768j-jpg-1783937171860.jpg",
+        "/public/uploads/products/nxp-2026-app-0005-osculum-nylon-black-polo-cap-dsc08771j-jpg-1783937171868.jpg",
+        "/public/uploads/products/nxp-2026-app-0005-osculum-nylon-black-polo-cap-dsc08776j-jpg-1783937171873.jpg",
+        "/public/uploads/products/nxp-2026-app-0005-osculum-nylon-black-polo-cap-dsc08769j-jpg-1783937171894.jpg",
+        "/public/uploads/products/nxp-2026-app-0005-osculum-nylon-black-polo-cap-dsc08803-jpg-1783940033662.jpg"
+      ],
+      "tags": [],
+      "details": [],
+      "sizes": [],
+      "description": "Round crown\nCurved brim\nFront art embroidery\nSide art embroidery\nFive-part construction\nAdjustable strap at rear\n100% Nylon\nColor: Black",
+      "qty": 13
+    },
+    {
+      "publishStatus": "Published",
+      "visibility": "Public",
+      "updatedAt": "2026-07-13",
+      "id": "nxp-2026-app-0004-mesh-black-longsleeve",
+      "sku": "NXP-2026-APP-0004",
+      "title": "Mesh Black Longsleeve",
+      "artist": "Cold Metal Breathes Too",
+      "category": "Apparel",
+      "format": "Apparel",
+      "displayFormat": "",
+      "apparelType": "Tops",
+      "condition": "",
+      "price": 380000,
+      "year": 2026,
+      "label": "Nix Powell",
+      "collection": "Cold Metal Breathes Too",
+      "color": "Black",
+      "material": "Heavy Cotton 16s 250GSM",
+      "image": "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08839j-jpg-1783936997925.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08615-jpg-1783940071226.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08635-jpg-1783940071368.jpg"
+      ],
+      "tags": [],
+      "details": [],
+      "sizes": [
+        {
+          "label": "S",
+          "quantity": 1,
+          "soldOut": false
+        },
+        {
+          "label": "M",
+          "quantity": 4,
+          "soldOut": false
+        },
+        {
+          "label": "L",
+          "quantity": 6,
+          "soldOut": false
+        },
+        {
+          "label": "XL",
+          "quantity": 4,
+          "soldOut": false
+        }
+      ],
+      "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
+      "qty": 15
+    },
+    {
+      "publishStatus": "Published",
+      "visibility": "Public",
+      "updatedAt": "2026-07-13",
+      "id": "nxp-2026-app-0003-preform-tee",
+      "sku": "NXP-2026-APP-0003",
+      "title": "Preform Tee",
+      "artist": "Cold Metal Breathes Too",
+      "category": "Apparel",
+      "format": "Apparel",
+      "displayFormat": "",
+      "apparelType": "Tops",
+      "condition": "",
+      "price": 350000,
+      "year": 2026,
+      "label": "Nix Powell",
+      "collection": "Cold Metal Breathes Too",
+      "color": "Red",
+      "material": "Cotton Combed 20s",
+      "image": "/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08833j-jpg-1783936858741.jpg",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08833j-jpg-1783936858741.jpg",
+        "/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08835j-jpg-1783936858745.jpg",
+        "/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08656-jpg-1783939977234.jpg"
+      ],
+      "tags": [],
+      "details": [],
+      "sizes": [
+        {
+          "label": "S",
+          "quantity": 2,
+          "soldOut": false
+        },
+        {
+          "label": "M",
+          "quantity": 3,
+          "soldOut": false
+        },
+        {
+          "label": "L",
+          "quantity": 8,
+          "soldOut": false
+        },
+        {
+          "label": "XL",
+          "quantity": 5,
+          "soldOut": false
+        },
+        {
+          "label": "XXL",
+          "quantity": 3,
+          "soldOut": false
+        }
+      ],
+      "description": "PREFORM RED T-SHIRT\n20s 200GSM\n\nPREFORM ART SCREENPRINTED ON FRONT",
+      "qty": 21
+    },
+    {
+      "publishStatus": "Published",
+      "visibility": "Public",
       "updatedAt": "2026-07-12",
       "id": "nxp-2026-obj-0002-preform",
       "sku": "NXP-2026-OBJ-0002",
@@ -145,7 +427,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-cst-0005-rezzett-into-the-boiling-darks.jpg"
+        "/public/covers/nxp-2026-cst-0005-rezzett-into-the-boiling-darks.jpg",
+        "/public/mockups/nxp-2026-cst-0005-rezzett-into-the-boiling-darks-cassette.jpg"
       ]
     },
     {
@@ -180,7 +463,9 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-cd-0010-the-mars-volta-noctourniquet.jpg"
+        "/public/covers/nxp-2026-cd-0010-the-mars-volta-noctourniquet.jpg",
+        "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-a.jpg",
+        "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-b.jpg"
       ]
     },
     {
@@ -221,7 +506,7 @@
     {
       "publishStatus": "Published",
       "visibility": "Public",
-      "updatedAt": "2026-07-11",
+      "updatedAt": "2026-07-12",
       "id": "nxp-2026-cd-0012",
       "sku": "NXP-2026-CD-0012",
       "title": "Hesitation Marks",
@@ -249,6 +534,7 @@
       "collection": "NIXP Selection",
       "color": "",
       "material": "",
+      "apparelType": "",
       "images": [
         "/public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg"
       ]
@@ -326,7 +612,7 @@
     {
       "publishStatus": "Published",
       "visibility": "Public",
-      "updatedAt": "2026-07-11",
+      "updatedAt": "2026-07-12",
       "id": "nxp-2026-vnl-0005",
       "sku": "NXP-2026-VNL-0005",
       "title": "The Early Years",
@@ -354,6 +640,7 @@
       "collection": "NIXP Selection",
       "color": "",
       "material": "",
+      "apparelType": "",
       "images": [
         "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg"
       ]
@@ -361,7 +648,7 @@
     {
       "publishStatus": "Published",
       "visibility": "Public",
-      "updatedAt": "2026-07-11",
+      "updatedAt": "2026-07-12",
       "id": "nxp-2026-cd-0001",
       "sku": "NXP-2026-CD-0001",
       "title": "Chaosphere",
@@ -389,6 +676,7 @@
       "collection": "NIXP Selection",
       "color": "",
       "material": "",
+      "apparelType": "",
       "images": [
         "/public/uploads/products/nxp-2026-cd-0001-chaosphere-cover-425412532019-r-jpg-1783885419677.jpg"
       ]
@@ -600,7 +888,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg"
+        "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
+        "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png"
       ]
     },
     {
@@ -635,7 +924,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-cd-0008-daniel-lopatin-marty-supreme.jpg"
+        "/public/covers/nxp-2026-cd-0008-daniel-lopatin-marty-supreme.jpg",
+        "/public/mockups/nxp-2026-cd-0008-daniel-lopatin-marty-supreme-cd.jpg"
       ]
     },
     {
@@ -670,7 +960,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-cd-0009-sophie-sophie.jpg"
+        "/public/covers/nxp-2026-cd-0009-sophie-sophie.jpg",
+        "/public/mockups/nxp-2026-cd-0009-sophie-sophie-cd-b.jpg"
       ]
     },
     {
@@ -1020,7 +1311,9 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-cd-0017-david-bowie-the-next-day.jpg"
+        "/public/covers/nxp-2026-cd-0017-david-bowie-the-next-day.jpg",
+        "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-a.jpg",
+        "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-b.jpg"
       ]
     },
     {
@@ -1265,7 +1558,8 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg"
+        "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
+        "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg"
       ]
     },
     {
@@ -1300,13 +1594,14 @@
       "color": "",
       "material": "",
       "images": [
-        "/public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg"
+        "/public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg",
+        "/public/mockups/nxp-2026-cst-0009-peggy-gou-i-hear-you-cassette.jpg"
       ]
     },
     {
       "publishStatus": "Published",
       "visibility": "Public",
-      "updatedAt": "2026-07-11",
+      "updatedAt": "2026-07-12",
       "id": "nxp-2026-vnl-0007",
       "sku": "NXP-2026-VNL-0007",
       "title": "Love Heart Cheat Code",
@@ -1334,6 +1629,7 @@
       "collection": "NIXP Selection",
       "color": "",
       "material": "",
+      "apparelType": "",
       "images": [
         "/public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg"
       ]
@@ -1516,7 +1812,7 @@
     {
       "publishStatus": "Published",
       "visibility": "Public",
-      "updatedAt": "2026-07-11",
+      "updatedAt": "2026-07-13",
       "id": "app-001",
       "sku": "NXP-2023-APP-0001",
       "title": "Crewneck Sweatshirt",
@@ -1570,13 +1866,18 @@
       ],
       "collection": "Motorith",
       "images": [
-        "/public/display-photos/motorith-crewneck-sweatshirt-2023.png"
-      ]
+        "/public/display-photos/motorith-crewneck-sweatshirt-2023.png",
+        "/public/uploads/products/nxp-2023-app-0001-crewneck-sweatshirt-dsc08739-jpg-1783940116533.jpg",
+        "/public/uploads/products/nxp-2023-app-0001-crewneck-sweatshirt-dsc08745-jpg-1783940116734.jpg"
+      ],
+      "displayFormat": "",
+      "condition": "",
+      "qty": 1
     },
     {
       "publishStatus": "Published",
       "visibility": "Public",
-      "updatedAt": "2026-07-12",
+      "updatedAt": "2026-07-13",
       "id": "app-002",
       "sku": "NXP-2026-APP-0002",
       "title": "Flesh Knitsweater",
@@ -1627,7 +1928,8 @@
       "condition": "",
       "qty": 1,
       "images": [
-        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg"
+        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
+        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08676-jpg-1783940136800.jpg"
       ]
     },
     {

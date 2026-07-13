@@ -97,6 +97,14 @@
   text-transform: uppercase;
 }
 
+.admin-form-note[data-tone="success"] {
+  color: #186f3d;
+}
+
+.admin-form-note[data-tone="error"] {
+  color: #b00020;
+}
+
 .admin-gallery-fieldset {
   display: grid;
   gap: 12px;

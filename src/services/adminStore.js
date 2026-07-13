@@ -64,6 +64,14 @@ function isLocalEditorRuntime() {
   return ["localhost", "127.0.0.1", ""].includes(location.hostname);
 }
 
+function normalizeApparelType(value) {
+  const type = String(value || "").trim().toLowerCase();
+  if (type === "accesories" || type === "accessory") return "Accessories";
+  if (type === "tops" || type === "top") return "Tops";
+  if (type === "bottoms" || type === "bottom") return "Bottoms";
+  return String(value || "").trim();
+}
+
 function seed({ publicOnly = !isLocalEditorRuntime() } = {}) {
   return {
     version: STORE_VERSION,
@@ -98,11 +106,23 @@ function readStore() {
   }
 }
 
-function writeStore(store) {
+async function writeStore(store) {
   if (!isLocalEditorRuntime()) return false;
+  const previousActiveStore = activeStore;
+  const previousSavedStore = localStorage.getItem(STORAGE_KEY);
   activeStore = store;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
-  return persistStore(store);
+  try {
+    return await persistStore(store);
+  } catch (error) {
+    activeStore = previousActiveStore;
+    if (previousSavedStore === null) {
+      localStorage.removeItem(STORAGE_KEY);
+    } else {
+      localStorage.setItem(STORAGE_KEY, previousSavedStore);
+    }
+    throw error;
+  }
 }
 
 function mergeStore(seeded, saved, { publicOnly = false } = {}) {
@@ -161,10 +181,20 @@ async function persistStore(store) {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ store })
     });
-    if (!response.ok) throw new Error("Store save failed");
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Store save failed. Please log in to admin and try again.");
     return true;
-  } catch {
+  } catch (error) {
     // Static previews cannot write files. localStorage remains the fallback.
+    if (typeof location !== "undefined" && location.protocol === "file:") return false;
+    throw error;
+  }
+}
+
+async function writeStoreBestEffort(store) {
+  try {
+    return await writeStore(store);
+  } catch {
     return false;
   }
 }
@@ -179,24 +209,20 @@ async function fileToDataUrl(file) {
 }
 
 async function uploadDataUrlImage(dataUrl, product, fileName = "product-upload.png") {
-  try {
-    const response = await fetch("/api/admin/upload", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        dataUrl,
-        fileName,
-        sku: product.sku || product.id,
-        title: product.title
-      })
-    });
-    if (!response.ok) throw new Error("Upload failed");
-    const payload = await response.json();
-    if (payload.image) return payload.image;
-  } catch {
-    return dataUrl;
-  }
-  return dataUrl;
+  const response = await fetch("/api/admin/upload", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      dataUrl,
+      fileName,
+      sku: product.sku || product.id,
+      title: product.title
+    })
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || "Upload failed. Please log in to admin and try again.");
+  if (!payload.image) throw new Error("Upload finished without an image URL.");
+  return payload.image;
 }
 
 async function migrateBrowserStore(fileStore, browserStore) {
@@ -233,7 +259,7 @@ async function migrateBrowserStore(fileStore, browserStore) {
     changed = true;
   }
 
-  if (changed) await writeStore(merged);
+  if (changed) await writeStoreBestEffort(merged);
   return merged;
 }
 
@@ -314,7 +340,7 @@ export const adminStore = {
       displayFormat: isProductCategory
         ? data.displayFormat?.trim() || ""
         : data.displayFormat?.trim() || data.format?.trim() || category || "Object",
-      apparelType: data.apparelType?.trim() || "",
+      apparelType: normalizeApparelType(data.apparelType),
       condition: data.condition?.trim() || "",
       price: Number(data.price || 0),
       year: Number(data.year || new Date().getFullYear()),

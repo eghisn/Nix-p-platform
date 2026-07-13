@@ -3,6 +3,14 @@ import { adminStore } from "./adminStore.js";
 // Replace this module with Supabase queries when the project receives credentials.
 const hiddenPublicArtists = new Set(["motorith", "nixp publishing", "publishing", "sample artist", "tida lek"]);
 
+function normalizeApparelType(value) {
+  const type = String(value || "").trim().toLowerCase();
+  if (type === "accesories" || type === "accessory") return "Accessories";
+  if (type === "tops" || type === "top") return "Tops";
+  if (type === "bottoms" || type === "bottom") return "Bottoms";
+  return String(value || "").trim();
+}
+
 export const catalogService = {
   async listProducts(options = {}) {
     return adminStore.listProducts(options);
@@ -32,7 +40,7 @@ export const catalogService = {
   async listApparel(type = "All Apparel") {
     return adminStore.listProducts().filter((product) => {
       const isApparel = product.category === "Apparel";
-      return type === "All Apparel" ? isApparel : isApparel && product.apparelType === type;
+      return type === "All Apparel" ? isApparel : isApparel && normalizeApparelType(product.apparelType) === type;
     });
   },
   async listArtists() {
