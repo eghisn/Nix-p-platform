@@ -429,6 +429,13 @@
       "images": [
         "/public/covers/nxp-2026-cst-0005-rezzett-into-the-boiling-darks.jpg",
         "/public/mockups/nxp-2026-cst-0005-rezzett-into-the-boiling-darks-cassette.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-cst-0005-rezzett-into-the-boiling-darks-cassette.jpg",
+          "credit": "Cav Empt",
+          "url": "https://www.cavempt.com/"
+        }
       ]
     },
     {
@@ -466,6 +473,18 @@
         "/public/covers/nxp-2026-cd-0010-the-mars-volta-noctourniquet.jpg",
         "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-a.jpg",
         "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-b.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-a.jpg",
+          "credit": "The Mars Volta / product listing",
+          "url": "https://themarsvoltaofficial.com/"
+        },
+        {
+          "image": "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-b.jpg",
+          "credit": "The Mars Volta / product listing",
+          "url": "https://themarsvoltaofficial.com/"
+        }
       ]
     },
     {
@@ -608,6 +627,13 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
         "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg",
+          "credit": "Gilla Band Bandcamp",
+          "url": "https://gillaband.bandcamp.com/album/the-talkies"
+        }
       ]
     },
     {
@@ -645,6 +671,13 @@
       "images": [
         "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
         "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg",
+          "credit": "Gilla Band Bandcamp",
+          "url": "https://gillaband.bandcamp.com/album/the-early-years"
+        }
       ]
     },
     {
@@ -892,6 +925,13 @@
       "images": [
         "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
         "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png",
+          "credit": "True Panther",
+          "url": "https://truepanther.com/"
+        }
       ]
     },
     {
@@ -928,6 +968,13 @@
       "images": [
         "/public/covers/nxp-2026-cd-0008-daniel-lopatin-marty-supreme.jpg",
         "/public/mockups/nxp-2026-cd-0008-daniel-lopatin-marty-supreme-cd.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-cd-0008-daniel-lopatin-marty-supreme-cd.jpg",
+          "credit": "A24 Music",
+          "url": "https://a24music.com/"
+        }
       ]
     },
     {
@@ -964,6 +1011,13 @@
       "images": [
         "/public/covers/nxp-2026-cd-0009-sophie-sophie.jpg",
         "/public/mockups/nxp-2026-cd-0009-sophie-sophie-cd-b.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-cd-0009-sophie-sophie-cd-b.jpg",
+          "credit": "Transgressive Records",
+          "url": "https://transgressiverecords.com/"
+        }
       ]
     },
     {
@@ -1140,6 +1194,13 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0001-squarepusher-kammerkonzert.jpg",
         "/public/mockups/nxp-2026-vnl-0001-squarepusher-kammerkonzert-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0001-squarepusher-kammerkonzert-vinyl.jpg",
+          "credit": "Squarepusher Bandcamp",
+          "url": "https://squarepusher.bandcamp.com/"
+        }
       ]
     },
     {
@@ -1176,6 +1237,13 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
         "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
+          "credit": "Turntable Lab",
+          "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp"
+        }
       ]
     },
     {
@@ -1212,6 +1280,13 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0003-nala-sinephro-endlessness.jpg",
         "/public/mockups/nxp-2026-vnl-0003-nala-sinephro-endlessness-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0003-nala-sinephro-endlessness-vinyl.jpg",
+          "credit": "Nala Sinephro Bandcamp",
+          "url": "https://nalasinephro.bandcamp.com/album/endlessness"
+        }
       ]
     },
     {
@@ -1319,6 +1394,18 @@
         "/public/covers/nxp-2026-cd-0017-david-bowie-the-next-day.jpg",
         "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-a.jpg",
         "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-b.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-a.jpg",
+          "credit": "David Bowie official store",
+          "url": "https://shop.davidbowie.com/"
+        },
+        {
+          "image": "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-b.jpg",
+          "credit": "David Bowie official store",
+          "url": "https://shop.davidbowie.com/"
+        }
       ]
     },
     {
@@ -1565,6 +1652,13 @@
       "images": [
         "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
         "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg",
+          "credit": "Trouble In Mind Records",
+          "url": "https://troubleinmindrecs.com/"
+        }
       ]
     },
     {
@@ -1601,6 +1695,13 @@
       "images": [
         "/public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg",
         "/public/mockups/nxp-2026-cst-0009-peggy-gou-i-hear-you-cassette.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-cst-0009-peggy-gou-i-hear-you-cassette.jpg",
+          "credit": "XL Recordings",
+          "url": "https://xlrecordings.com/"
+        }
       ]
     },
     {
@@ -1638,6 +1739,13 @@
       "images": [
         "/public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg",
         "/public/mockups/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code-vinyl.jpg",
+          "credit": "Hiatus Kaiyote Bandcamp",
+          "url": "https://hiatuskaiyote.bandcamp.com/merch"
+        }
       ]
     },
     {
@@ -1674,6 +1782,13 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0008-arca-.jpg",
         "/public/mockups/nxp-2026-vnl-0008-arca-and-and-and-and-and-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0008-arca-and-and-and-and-and-vinyl.jpg",
+          "credit": "Arca Bandcamp",
+          "url": "https://arca1000000.bandcamp.com/"
+        }
       ]
     },
     {
@@ -1710,6 +1825,13 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
         "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg",
+          "credit": "Domino",
+          "url": "https://www.dominomusic.com/releases/panda-bear/buoys/deluxe-lp"
+        }
       ]
     },
     {
@@ -1746,6 +1868,13 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png",
         "/public/mockups/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-vinyl.jpg",
+          "credit": "Overmono Bandcamp",
+          "url": "https://overmono.bandcamp.com/album/turn-the-page"
+        }
       ]
     },
     {
@@ -1782,6 +1911,13 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
         "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg",
+          "credit": "Meditations",
+          "url": "https://meditations.jp/products/heith-tarawangsawelas-duori-lp"
+        }
       ]
     },
     {
@@ -1818,6 +1954,13 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
         "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg",
+          "credit": "Turntable Lab",
+          "url": "https://www.turntablelab.com/products/blawan-sickelixir-vinyl-lp"
+        }
       ]
     },
     {

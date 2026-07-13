@@ -2,6 +2,20 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "admin.nix-p.com" }],
+      "destination": "/admin",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "finance.nix-p.com" }],
+      "destination": "/finance",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/:path*",

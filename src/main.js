@@ -74,7 +74,7 @@ async function render() {
   await loadAuthSession();
   const requiredWorkspace = workspaceForPath(path);
   const view =
-    requiredWorkspace && !isLocalEditorHost()
+    requiredWorkspace && !isWorkspaceRuntime(requiredWorkspace)
       ? privateWorkspacePage
       : requiredWorkspace && !hasWorkspaceAccess(requiredWorkspace)
         ? () => loginPage(requiredWorkspace, path)
@@ -113,6 +113,17 @@ function workspaceForPath(path) {
   if (path.startsWith("/finance") || path === "/admin/cashflow") return "finance";
   if (path.startsWith("/admin")) return "admin";
   return null;
+}
+
+function workspaceForHost() {
+  const host = location.hostname.toLowerCase();
+  if (host === "admin.nix-p.com") return "admin";
+  if (host === "finance.nix-p.com") return "finance";
+  return null;
+}
+
+function isWorkspaceRuntime(workspace) {
+  return isLocalEditorHost() || workspaceForHost() === workspace;
 }
 
 function hasWorkspaceAccess(workspace) {
@@ -250,6 +261,7 @@ async function productDetailMarkup(product) {
             (image, index) => `
               <figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""}">
                 <img src="${image}" alt="${product.title}${galleryImages.length > 1 ? ` image ${index + 1}` : ""}" />
+                ${imageCreditMarkup(product, image)}
               </figure>
             `
           )
@@ -509,15 +521,18 @@ async function cartSummary() {
     map.set(id, (map.get(id) || 0) + 1);
     return map;
   }, new Map());
+  const serverPrices = await adminStore.verifyPrices([...counts.keys()]);
+  const priceById = new Map(serverPrices.map((item) => [item.id, Number(item.price || 0)]));
   const rows = [...counts.entries()]
     .map(([id, quantity]) => {
       const product = products.find((item) => item.id === id);
+      const price = priceById.has(id) ? priceById.get(id) : product?.price;
       return product
         ? {
             id,
-            product,
+            product: { ...product, price },
             quantity,
-            lineTotal: product.price * quantity
+            lineTotal: price * quantity
           }
         : null;
     })
@@ -604,11 +619,9 @@ async function searchOverlay() {
 
 function loginPage(workspaceOrPath = "admin", nextPath = null) {
   const params = new URLSearchParams(location.search);
-  const workspace = ["admin", "finance"].includes(workspaceOrPath)
-    ? workspaceOrPath
-    : params.get("workspace") === "finance"
-      ? "finance"
-      : "admin";
+  const hostWorkspace = workspaceForHost();
+  const requestedWorkspace = params.get("workspace") === "finance" ? "finance" : "admin";
+  const workspace = ["admin", "finance"].includes(workspaceOrPath) ? workspaceOrPath : hostWorkspace || requestedWorkspace;
   const next = nextPath || params.get("next") || (workspace === "finance" ? "/finance" : "/admin");
   const workspaceLabel = workspace === "finance" ? "NIXP Finance" : "NIXP Admin";
   return `
@@ -1282,6 +1295,16 @@ function productImages(product) {
   return [...new Set(images)].slice(0, 5);
 }
 
+function imageCreditMarkup(product, image) {
+  const credits = Array.isArray(product.imageCredits) ? product.imageCredits : [];
+  const credit = credits.find((item) => item.image === image || item.src === image);
+  if (!credit?.credit) return "";
+  const text = `Courtesy: ${escapeHtml(credit.credit)}`;
+  return credit.url
+    ? `<figcaption class="image-credit"><a href="${escapeAttr(credit.url)}" target="_blank" rel="noreferrer">${text}</a></figcaption>`
+    : `<figcaption class="image-credit">${text}</figcaption>`;
+}
+
 function galleryUploadFields(product = {}, title = "Upload gallery") {
   const currentImages = productImages(product);
   return `
@@ -1393,6 +1416,7 @@ function bindEvents() {
       const payload = await response.json();
       if (!response.ok) throw new Error(payload.error || "Login failed");
       state.auth = { loaded: true, authenticated: true, workspace: payload.workspace, username: payload.username };
+      await adminStore.refresh();
       history.pushState({}, "", form.dataset.next || (payload.workspace === "finance" ? "/finance" : "/admin"));
       render();
     } catch (error) {

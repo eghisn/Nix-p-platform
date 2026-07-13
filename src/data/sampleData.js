@@ -633,6 +633,20 @@ const recordMockups = {
   "nxp-2026-vnl-0012": "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg"
 };
 
+const recordImageCredits = {
+  "nxp-2026-vnl-0001": { credit: "Squarepusher Bandcamp", url: "https://squarepusher.bandcamp.com/" },
+  "nxp-2026-vnl-0002": { credit: "Turntable Lab", url: "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp" },
+  "nxp-2026-vnl-0003": { credit: "Nala Sinephro Bandcamp", url: "https://nalasinephro.bandcamp.com/album/endlessness" },
+  "nxp-2026-vnl-0004": { credit: "Gilla Band Bandcamp", url: "https://gillaband.bandcamp.com/album/the-talkies" },
+  "nxp-2026-vnl-0005": { credit: "Gilla Band Bandcamp", url: "https://gillaband.bandcamp.com/album/the-early-years" },
+  "nxp-2026-vnl-0007": { credit: "Hiatus Kaiyote Bandcamp", url: "https://hiatuskaiyote.bandcamp.com/merch" },
+  "nxp-2026-vnl-0008": { credit: "Arca Bandcamp", url: "https://arca1000000.bandcamp.com/" },
+  "nxp-2026-vnl-0009": { credit: "Domino", url: "https://www.dominomusic.com/releases/panda-bear/buoys/deluxe-lp" },
+  "nxp-2026-vnl-0010": { credit: "Overmono Bandcamp", url: "https://overmono.bandcamp.com/album/turn-the-page" },
+  "nxp-2026-vnl-0011": { credit: "Meditations", url: "https://meditations.jp/products/heith-tarawangsawelas-duori-lp" },
+  "nxp-2026-vnl-0012": { credit: "Turntable Lab", url: "https://www.turntablelab.com/products/blawan-sickelixir-vinyl-lp" }
+};
+
 export const products = [
   ...recordRows.map((row) => record(row)),
   {
@@ -760,6 +774,7 @@ function record(row) {
     label: recordLabels[row.id] || row.label || "NIXP Selection",
     image,
     images: mockup ? [image, mockup] : [image],
+    imageCredits: mockup && recordImageCredits[row.id] ? [{ image: mockup, ...recordImageCredits[row.id] }] : [],
     tags: [displayFormat, row.sku],
     description: `${row.artist} - ${row.title}. ${displayFormat} from the current NIXP records selection.`,
     details: [`SKU: ${row.sku}`, `Format: ${displayFormat}`, `Condition: ${row.condition || "Available"}`]

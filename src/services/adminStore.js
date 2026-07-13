@@ -64,6 +64,18 @@ function isLocalEditorRuntime() {
   return ["localhost", "127.0.0.1", ""].includes(location.hostname);
 }
 
+function privateWorkspaceFromHost() {
+  if (typeof location === "undefined") return "";
+  const host = location.hostname.toLowerCase();
+  if (host === "admin.nix-p.com") return "admin";
+  if (host === "finance.nix-p.com") return "finance";
+  return "";
+}
+
+function canUsePrivateStore() {
+  return isLocalEditorRuntime() || Boolean(privateWorkspaceFromHost());
+}
+
 function normalizeApparelType(value) {
   const type = String(value || "").trim().toLowerCase();
   if (type === "accesories" || type === "accessory") return "Accessories";
@@ -107,7 +119,7 @@ function readStore() {
 }
 
 async function writeStore(store) {
-  if (!isLocalEditorRuntime()) return false;
+  if (!canUsePrivateStore()) return false;
   const previousActiveStore = activeStore;
   const previousSavedStore = localStorage.getItem(STORAGE_KEY);
   activeStore = store;
@@ -277,7 +289,7 @@ export function slugify(value) {
 
 export const adminStore = {
   async initialize() {
-    const publicOnly = !isLocalEditorRuntime();
+    const publicOnly = !canUsePrivateStore();
     let browserStore = null;
     if (!publicOnly) {
       try {
@@ -289,15 +301,43 @@ export const adminStore = {
 
     try {
       const filePath = publicOnly ? PUBLIC_STORE_PATH : ADMIN_STORE_PATH;
-      const response = await fetch(`${filePath}?v=${Date.now()}`, { cache: "no-store" });
-      if (!response.ok) throw new Error("No file store");
+      const apiScope = publicOnly ? "public" : "admin";
+      const response = await fetch(`/api/catalog?scope=${apiScope}&v=${Date.now()}`, { cache: "no-store" });
+      if (response.ok) {
+        const payload = await response.json();
+        if (payload.store) {
+          activeStore = mergeStore(seed({ publicOnly }), payload.store, { publicOnly });
+          if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+          return;
+        }
+      }
+      const fileResponse = await fetch(`${filePath}?v=${Date.now()}`, { cache: "no-store" });
+      if (!fileResponse.ok) throw new Error("No file store");
       activeStore = await migrateBrowserStore(
-        mergeStore(seed({ publicOnly }), await response.json(), { publicOnly }),
+        mergeStore(seed({ publicOnly }), await fileResponse.json(), { publicOnly }),
         browserStore
       );
       if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
     } catch {
       activeStore = readStore();
+    }
+  },
+  async refresh() {
+    activeStore = null;
+    return this.initialize();
+  },
+  async verifyPrices(ids) {
+    try {
+      const response = await fetch("/api/prices", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ ids })
+      });
+      if (!response.ok) throw new Error("Price API unavailable");
+      const payload = await response.json();
+      return payload.prices || [];
+    } catch {
+      return [];
     }
   },
   getSnapshot() {

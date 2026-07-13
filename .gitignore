@@ -13,6 +13,8 @@ backups/
 NIXP_BACKUP/
 *_backup/
 *_BACKUP/
+exports/backup-*/
+scripts/tmp/
 *.csv
 *.tsv
 *.xls
