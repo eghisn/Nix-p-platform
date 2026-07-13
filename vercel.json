@@ -19,14 +19,15 @@
       "has": [{ "type": "host", "value": "admin.nix-p.com" }],
       "destination": "/admin",
       "permanent": false
-    }
-  ],
-  "rewrites": [
+    },
     {
       "source": "/",
       "has": [{ "type": "host", "value": "finance.nix-p.com" }],
-      "destination": "/api/finance-app?financePath=/"
-    },
+      "destination": "/finance",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
     {
       "source": "/login",
       "has": [{ "type": "host", "value": "finance.nix-p.com" }],
@@ -38,12 +39,12 @@
       "destination": "/api/finance-app?financePath=/logout"
     },
     {
-      "source": "/index.html",
+      "source": "/finance",
       "has": [{ "type": "host", "value": "finance.nix-p.com" }],
       "destination": "/api/finance-app?financePath=/"
     },
     {
-      "source": "/finance",
+      "source": "/index.html",
       "has": [{ "type": "host", "value": "finance.nix-p.com" }],
       "destination": "/api/finance-app?financePath=/"
     },
