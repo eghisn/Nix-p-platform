@@ -4,7 +4,7 @@ const STORAGE_KEY = "nixp-admin-store-v1";
 const STORE_VERSION = "uniform-display-product-photos-2026-07-12";
 const ADMIN_STORE_PATH = "/public/data/admin-store.json";
 const PUBLIC_STORE_PATH = "/public/data/public-store.json";
-const REMOVED_PRODUCT_IDS = new Set(["obj-001"]);
+const REMOVED_PRODUCT_IDS = new Set(["obj-001", "pub-002"]);
 
 let activeStore = null;
 

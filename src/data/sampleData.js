@@ -30,6 +30,7 @@ export const artistNames = [
   "My Bloody Valentine",
   "Nala Sinephro",
   "Nine Inch Nails",
+  "Oneohtrix Point Never",
   "Overmono & The Streets Turn The Page",
   "Panda Bear",
   "Peggy Gou",
@@ -512,6 +513,17 @@ const recordRows = [
     "price": 950000,
     "image": "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
     "condition": "New-Sealed"
+  },
+  {
+    "id": "nxp-2026-cd-0023",
+    "sku": "NXP-2026-CD-0023",
+    "artist": "Oneohtrix Point Never",
+    "title": "Tranquilizer",
+    "format": "CD",
+    "qty": 1,
+    "price": 300000,
+    "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg",
+    "condition": "Used Excellence"
   }
 ];
 
@@ -557,11 +569,39 @@ const recordLabels = {
   "nxp-2026-vnl-0009": "Domino",
   "nxp-2026-vnl-0010": "XL Recordings",
   "nxp-2026-vnl-0011": "Stroom",
-  "nxp-2026-vnl-0012": "XL Recordings"
+  "nxp-2026-vnl-0012": "XL Recordings",
+  "nxp-2026-cd-0023": "Warp Records"
 };
 
 export const products = [
   ...recordRows.map((row) => record(row)),
+  {
+    id: "nxp-2026-obj-0002-preform",
+    sku: "NXP-2026-OBJ-0002",
+    title: "Preform",
+    artist: "Cold Metal Breathes Too",
+    format: "Object",
+    displayFormat: "",
+    category: "Objects",
+    apparelType: "",
+    condition: "",
+    price: 480000,
+    year: 2026,
+    label: "Nix Powell",
+    collection: "Cold Metal Breathes Too",
+    color: "Palladio",
+    material: "White Brass",
+    image: "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg",
+    tags: [],
+    details: ["Brass Ring"],
+    sizes: [
+      { label: "9", quantity: 4, soldOut: false },
+      { label: "11", quantity: 5, soldOut: false }
+    ],
+    description:
+      "PREFORM RINGNIX POWELL \"PREFORM\" RING IN BRASS\nTHESE JEWELLERY PIECES ARE CRAFTED WITH THE INDIVIDUAL HANDWORK OF THE ARTISAN, MAKING EACH PIECE UNIQUE.\nWHITE BRASS WITH A BRUSHED PALLADIUM FINISH\n\n\nCOLOR: PALLADIO\nMATERIAL: 100% BRASS",
+    qty: 1
+  },
   {
     id: "app-001",
     sku: "NXP-2023-APP-0001",

@@ -4,36 +4,6 @@
     {
       "publishStatus": "Published",
       "visibility": "Public",
-      "updatedAt": "2026-07-11",
-      "id": "pub-002",
-      "sku": "NXP-2025-PUB-0002",
-      "title": "Rooms for Listening",
-      "artist": "Tida Lek",
-      "format": "Book",
-      "category": "Publishing",
-      "price": 390000,
-      "year": 2025,
-      "label": "Quiet Shelf",
-      "image": "/public/nixp-product-example-paper.png",
-      "tags": [
-        "essay",
-        "design"
-      ],
-      "description": "Essays and images about domestic rooms, private listening, and the architecture of shelves.",
-      "details": [
-        "SKU: NXP-2025-PUB-0002",
-        "Softcover book",
-        "120 pages",
-        "English language"
-      ],
-      "sizes": [],
-      "collection": "Quiet Shelf",
-      "color": "",
-      "material": ""
-    },
-    {
-      "publishStatus": "Published",
-      "visibility": "Public",
       "updatedAt": "2026-07-12",
       "id": "nxp-2026-obj-0002-preform",
       "sku": "NXP-2026-OBJ-0002",
