@@ -1,0 +1,2510 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NIXP Finance</title>
+  <style>
+    :root {
+      --dark: #292929;
+      --light: #f1f1f1;
+      --font: "Founder Grotesk", "Founders Grotesk", "Founders Grotesk Text", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--light);
+      color: var(--dark);
+      font-family: var(--font);
+    }
+
+    body {
+      font-size: 16px;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 228px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 16px;
+      border-right: 1px solid var(--dark);
+      background: var(--light);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .brand {
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--dark);
+    }
+
+    .brand-mark {
+      width: 142px;
+      height: auto;
+      display: block;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    .brand h1 {
+      font-size: 28px;
+      line-height: 0.95;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .brand p,
+    .tiny {
+      margin-top: 10px;
+      font-size: 10px;
+      line-height: 1.45;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: grid;
+      gap: 4px;
+    }
+
+    .nav button {
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 7px 9px;
+      border: 1px solid transparent;
+      border-radius: 0;
+      background: transparent;
+      color: var(--dark);
+      text-align: left;
+      font-size: 10px;
+      line-height: 1.15;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .nav button.active,
+    .nav button:hover {
+      border-color: var(--dark);
+      background: var(--dark);
+      color: var(--light);
+    }
+
+    .sidebar-foot {
+      margin-top: auto;
+      display: grid;
+      gap: 10px;
+    }
+
+    .main {
+      min-width: 0;
+      padding: 24px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--dark);
+      align-items: start;
+    }
+
+    .kicker {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .page-title {
+      font-size: clamp(28px, 4.4vw, 58px);
+      line-height: 0.94;
+      font-weight: 700;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .button {
+      min-height: 34px;
+      padding: 8px 11px;
+      border: 1px solid var(--dark);
+      background: var(--light);
+      color: var(--dark);
+      font-size: 10px;
+      line-height: 1.1;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .button.primary,
+    .button:hover {
+      background: var(--dark);
+      color: var(--light);
+    }
+
+    .button[hidden] {
+      display: none;
+    }
+
+    .button.mini {
+      min-height: 27px;
+      padding: 6px 8px;
+      font-size: 8px;
+    }
+
+    .migration-banner {
+      display: none;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--dark);
+      border-bottom: 0;
+      padding: 12px 16px;
+      background: var(--dark);
+      color: var(--light);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .migration-banner.visible {
+      display: flex;
+    }
+
+    .migration-banner .button {
+      border-color: var(--light);
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    .workspace {
+      min-width: 0;
+      display: grid;
+      gap: 18px;
+      padding-top: 22px;
+    }
+
+    .view {
+      min-width: 0;
+      display: none;
+      gap: 18px;
+    }
+
+    .view.active {
+      display: grid;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      min-width: 0;
+      min-height: 112px;
+      padding: 14px;
+      border: 1px solid var(--dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .metric span {
+      font-size: 10px;
+      line-height: 1.25;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      font-size: clamp(20px, 2.4vw, 32px);
+      line-height: 1;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .split {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      min-width: 0;
+      border: 1px solid var(--dark);
+      background: var(--light);
+    }
+
+    .panel-head {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--dark);
+    }
+
+    .panel-head h2,
+    .panel-head small {
+      font-size: 10px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .panel-tools {
+      margin-left: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+      padding: 14px 12px;
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 10px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 9px;
+      line-height: 1.25;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 38px;
+      padding: 9px 10px;
+      border: 1px solid var(--dark);
+      border-radius: 0;
+      background: var(--light);
+      color: var(--dark);
+      outline: none;
+      font-size: 13px;
+    }
+
+    textarea {
+      min-height: 72px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid var(--dark);
+      outline-offset: 1px;
+    }
+
+    .table-wrap {
+      max-width: 100%;
+      overflow: auto;
+      max-height: 580px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 860px;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    th,
+    td {
+      padding: 10px 9px;
+      border-bottom: 1px solid var(--dark);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    tfoot td {
+      position: sticky;
+      bottom: 0;
+      z-index: 2;
+      border-top: 1px solid var(--dark);
+      border-bottom: 0;
+      background: var(--light);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--dark);
+      color: var(--light);
+      font-size: 9px;
+      line-height: 1.25;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    th[data-sort-key] {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .money {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .row-actions {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .link-button {
+      border: 1px solid var(--dark);
+      background: var(--light);
+      color: var(--dark);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      min-height: 28px;
+    }
+
+    .empty {
+      padding: 28px 12px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border-bottom: 1px solid var(--dark);
+    }
+
+    .pnl-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .bars {
+      display: grid;
+      gap: 10px;
+      padding: 12px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr) 150px;
+      gap: 10px;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .bar-track {
+      height: 18px;
+      border: 1px solid var(--dark);
+      background: var(--light);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      min-width: 2px;
+      background: var(--dark);
+    }
+
+    .notice {
+      padding: 12px;
+      border: 1px solid var(--dark);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1040px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--dark);
+      }
+
+      .nav {
+        grid-template-columns: repeat(5, minmax(118px, 1fr));
+        overflow-x: auto;
+      }
+
+      .sidebar-foot {
+        margin-top: 0;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics,
+      .pnl-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .main,
+      .sidebar {
+        padding: 16px 14px;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .page-title {
+        font-size: 32px;
+      }
+
+      .brand h1 {
+        font-size: 26px;
+      }
+
+      .brand-mark {
+        width: 124px;
+      }
+
+      .nav,
+      .metrics,
+      .pnl-grid,
+      .fields,
+      .filters {
+        grid-template-columns: 1fr;
+        overflow-x: visible;
+      }
+
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="migration-banner" id="migrationBanner">
+    <span id="migrationStatus">Old file mode detected. Copy this data to the protected login version.</span>
+    <button class="button" type="button" id="migrationBtn">Migrate data</button>
+  </div>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img class="brand-mark" src="assets/nixp-logo.png?v=2" alt="NIXP logo">
+      </div>
+      <nav class="nav" aria-label="Main views">
+        <button class="active" type="button" data-view="dashboard"><span>Main dashboard</span><span>01</span></button>
+        <button type="button" data-view="sales"><span>Daily sales</span><span>02</span></button>
+        <button type="button" data-view="expenses"><span>Expenses</span><span>03</span></button>
+        <button type="button" data-view="inventory"><span>Inventory purchases</span><span>04</span></button>
+        <button type="button" data-view="stock"><span>Inventory</span><span>05</span></button>
+        <button type="button" data-view="pnl"><span>Monthly P&amp;L</span><span>06</span></button>
+        <button type="button" data-view="ownerDue"><span>Owner due</span><span>07</span></button>
+      </nav>
+      <div class="sidebar-foot">
+        <p class="tiny" id="saveStatus">Saved locally</p>
+        <p class="tiny">Built for yearly use. Export JSON regularly for long-term backup.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="kicker">Cash flow year <span id="activeYearLabel"></span></p>
+          <h2 class="page-title" id="viewTitle">Main Dashboard</h2>
+        </div>
+        <div class="actions">
+          <button class="button primary" type="button" id="addGeneralBtn">Add income/outcome</button>
+          <button class="button" type="button" id="exportAllBtn">Export CSV</button>
+          <button class="button" type="button" id="importBtn">Import JSON</button>
+          <button class="button" type="button" id="clearBtn">Clear data</button>
+          <button class="button" type="button" id="logoutBtn">Logout</button>
+          <input type="file" id="importFile" accept="application/json" hidden>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="view active" id="dashboardView">
+          <div class="metrics">
+            <article class="metric"><span>Total income</span><strong id="dashIncome">Rp 0</strong></article>
+            <article class="metric"><span>Total outcome</span><strong id="dashOutcome">Rp 0</strong></article>
+            <article class="metric"><span>Net cash flow</span><strong id="dashNet">Rp 0</strong></article>
+            <article class="metric"><span>Investor</span><strong id="dashInvestor">Rp 0</strong></article>
+          </div>
+          <div class="split">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Pencatatan umum</h2>
+                <small>Income / outcome</small>
+              </div>
+              <form id="generalForm"></form>
+            </section>
+            <section class="panel">
+              <div class="panel-head">
+                <h2>All cash flow ledger</h2>
+                <small id="generalCount">0 entries</small>
+              </div>
+              <div class="filters">
+                <div class="field">
+                  <label for="yearFilter">Year</label>
+                  <input id="yearFilter" type="number" min="2000" max="2100">
+                </div>
+                <div class="field">
+                  <label for="dashboardTypeFilter">Type</label>
+                  <select id="dashboardTypeFilter">
+                    <option value="">All</option>
+                    <option>Income</option>
+                    <option>Outcome</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="dashboardCategoryFilter">Category</label>
+                  <select id="dashboardCategoryFilter">
+                    <option value="">All</option>
+                    <option>Investor</option>
+                    <option>Sales</option>
+                    <option>Sales COGS</option>
+                    <option>Inventory</option>
+                    <option>Operations</option>
+                    <option>Owner Reimbursement</option>
+                    <option>Owner Personal Use / Reimbursement Due</option>
+                    <option>Loan</option>
+                    <option>Owner Capital</option>
+                    <option>Bank</option>
+                    <option>Rent</option>
+                    <option>Salary</option>
+                    <option>Marketing</option>
+                    <option>Utilities</option>
+                    <option>Logistics</option>
+                    <option>Software</option>
+                    <option>Tax</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="dashboardSearch">Search</label>
+                  <input id="dashboardSearch" type="search" placeholder="Source, invoice, SKU, artist, note">
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-sort-section="dashboard" data-sort-key="date">Date</th>
+                      <th data-sort-section="dashboard" data-sort-key="source">Source</th>
+                      <th data-sort-section="dashboard" data-sort-key="reference">Reference</th>
+                      <th data-sort-section="dashboard" data-sort-key="type">Type</th>
+                      <th data-sort-section="dashboard" data-sort-key="category">Category</th>
+                      <th data-sort-section="dashboard" data-sort-key="item">Item</th>
+                      <th class="money" data-sort-section="dashboard" data-sort-key="qty">Qty</th>
+                      <th class="money" data-sort-section="dashboard" data-sort-key="amount">Amount</th>
+                      <th data-sort-section="dashboard" data-sort-key="paymentMethod">Payment</th>
+                      <th data-sort-section="dashboard" data-sort-key="notes">Notes</th>
+                      <th class="row-actions">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="generalBody"></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="salesView">
+          <div class="split">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Daily sales input</h2>
+                <small>Product revenue</small>
+              </div>
+              <form id="salesForm"></form>
+            </section>
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Sales ledger</h2>
+                <small id="salesCount">0 entries</small>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-sort-section="sales" data-sort-key="date">Date</th>
+                      <th data-sort-section="sales" data-sort-key="invoice">Invoice</th>
+                      <th data-sort-section="sales" data-sort-key="category">Category</th>
+                      <th data-sort-section="sales" data-sort-key="sku">SKU</th>
+                      <th class="money" data-sort-section="sales" data-sort-key="qty">Qty</th>
+                      <th class="money" data-sort-section="sales" data-sort-key="revenue">Revenue</th>
+                      <th class="money" data-sort-section="sales" data-sort-key="discount">Discount %</th>
+                      <th data-sort-section="sales" data-sort-key="discountContext">Discount Context</th>
+                      <th class="money" data-sort-section="sales" data-sort-key="cogs">COGS</th>
+                      <th class="money" data-sort-section="sales" data-sort-key="grossProfit">Gross profit</th>
+                      <th data-sort-section="sales" data-sort-key="paymentMethod">Payment</th>
+                      <th class="row-actions">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="salesBody"></tbody>
+                  <tfoot id="salesTotals"></tfoot>
+                </table>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="expensesView">
+          <div class="split">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Expense input</h2>
+                <small>Fixed / variable</small>
+              </div>
+              <form id="expenseForm"></form>
+            </section>
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Expense ledger</h2>
+                <small id="expenseCount">0 entries</small>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-sort-section="expenses" data-sort-key="date">Date</th>
+                      <th data-sort-section="expenses" data-sort-key="expense">Expense</th>
+                      <th data-sort-section="expenses" data-sort-key="category">Category</th>
+                      <th data-sort-section="expenses" data-sort-key="vendor">Vendor</th>
+                      <th class="money" data-sort-section="expenses" data-sort-key="amount">Amount</th>
+                      <th data-sort-section="expenses" data-sort-key="costType">Fixed / Variable</th>
+                      <th data-sort-section="expenses" data-sort-key="paymentMethod">Payment Method</th>
+                      <th data-sort-section="expenses" data-sort-key="notes">Notes</th>
+                      <th class="row-actions">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="expenseBody"></tbody>
+                  <tfoot id="expenseTotals"></tfoot>
+                </table>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="ownerDueView">
+          <div class="metrics">
+            <article class="metric"><span>Owner personal use</span><strong id="ownerDueTotal">Rp 0</strong></article>
+            <article class="metric"><span>Already repaid</span><strong id="ownerRepaidTotal">Rp 0</strong></article>
+            <article class="metric"><span>Amount to repay</span><strong id="ownerRemainingTotal">Rp 0</strong></article>
+            <article class="metric"><span>Transactions</span><strong id="ownerDueCount">0</strong></article>
+          </div>
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Owner reimbursement tracker</h2>
+              <small>Company money used personally</small>
+            </div>
+            <div class="filters">
+              <div class="field">
+                <label for="ownerDueYearFilter">Year</label>
+                <input id="ownerDueYearFilter" type="number" min="2000" max="2100">
+              </div>
+              <div class="field full">
+                <p class="tiny">Use expense category "Owner Personal Use / Reimbursement Due" for company money used personally. When paid back, record it as Income with category "Owner Reimbursement" in Main Dashboard.</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Expense</th>
+                    <th>Vendor</th>
+                    <th class="money">Amount</th>
+                    <th>Payment Method</th>
+                    <th>Notes</th>
+                    <th class="row-actions">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="ownerDueBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="inventoryView">
+          <div class="split">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Inventory purchase</h2>
+                <small>Stock in</small>
+              </div>
+              <form id="inventoryForm"></form>
+            </section>
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Purchase ledger</h2>
+                <small id="inventoryCount">0 entries</small>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-sort-section="inventory" data-sort-key="date">Date</th>
+                      <th data-sort-section="inventory" data-sort-key="supplier">Supplier</th>
+                      <th data-sort-section="inventory" data-sort-key="category">Category</th>
+                      <th data-sort-section="inventory" data-sort-key="source">Source</th>
+                      <th data-sort-section="inventory" data-sort-key="itemType">Item Type</th>
+                      <th data-sort-section="inventory" data-sort-key="itemCondition">Item Condition</th>
+                      <th data-sort-section="inventory" data-sort-key="sku">SKU</th>
+                      <th data-sort-section="inventory" data-sort-key="artistName">Artist Name</th>
+                      <th class="money" data-sort-section="inventory" data-sort-key="qty">Qty</th>
+                      <th class="money" data-sort-section="inventory" data-sort-key="unitCost">Unit cost</th>
+                      <th class="money" data-sort-section="inventory" data-sort-key="totalCost">Total</th>
+                      <th class="money" data-sort-section="inventory" data-sort-key="cashflowImpact">Cashflow Impact</th>
+                      <th data-sort-section="inventory" data-sort-key="paymentMethod">Payment</th>
+                      <th class="row-actions">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inventoryBody"></tbody>
+                  <tfoot id="inventoryTotals"></tfoot>
+                </table>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="stockView">
+          <div class="split">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Inventory stock</h2>
+                <small>Catalog record</small>
+              </div>
+              <form id="stockForm"></form>
+            </section>
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Stock ledger</h2>
+                <small id="stockCount">0 entries</small>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-sort-section="stock" data-sort-key="sku">SKU</th>
+                      <th data-sort-section="stock" data-sort-key="item">Item</th>
+                      <th data-sort-section="stock" data-sort-key="itemCondition">Item Condition</th>
+                      <th data-sort-section="stock" data-sort-key="artist">Artist</th>
+                      <th data-sort-section="stock" data-sort-key="title">Title</th>
+                      <th data-sort-section="stock" data-sort-key="source">Source</th>
+                      <th data-sort-section="stock" data-sort-key="acquisitionMonth">Acquisition Month</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="qty">Quantity</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="costBasis">Cost Basis</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="sellingPrice">Selling Price</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="soldPrice">Sold Price</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="grossProfit">Gross Profit</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="margin">Margin (%)</th>
+                      <th class="row-actions">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="stockBody"></tbody>
+                  <tfoot id="stockTotals"></tfoot>
+                </table>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="pnlView">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Monthly P&amp;L</h2>
+              <small id="pnlMonthLabel">Selected month</small>
+            </div>
+            <div class="filters">
+              <div class="field">
+                <label for="pnlMonth">Month</label>
+                <input id="pnlMonth" type="month">
+              </div>
+              <div class="field full">
+                <p class="tiny">P&amp;L uses sales revenue minus COGS, expenses, and inventory purchases for the selected month.</p>
+              </div>
+            </div>
+          </section>
+          <div class="pnl-grid">
+            <article class="metric"><span>Revenue</span><strong id="pnlRevenue">Rp 0</strong></article>
+            <article class="metric"><span>COGS</span><strong id="pnlCogs">Rp 0</strong></article>
+            <article class="metric"><span>Gross profit</span><strong id="pnlGross">Rp 0</strong></article>
+            <article class="metric"><span>Expenses</span><strong id="pnlExpenses">Rp 0</strong></article>
+            <article class="metric"><span>Net profit</span><strong id="pnlNet">Rp 0</strong></article>
+          </div>
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Profit structure</h2>
+              <small>Selected month</small>
+            </div>
+            <div class="bars" id="pnlBars"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "nixp-cashflow-web-v1";
+    const migratedServerState = window.__NIXP_FINANCE_STATE__;
+    if (location.protocol === "file:") {
+      queueFileMigrationSetup();
+    }
+    const today = new Date();
+    const todayISO = today.toISOString().slice(0, 10);
+    const currentYear = today.getFullYear().toString();
+    const currentMonth = today.toISOString().slice(0, 7);
+    const paymentMethods = ["Cash", "Bank Transfer", "Debit Card", "Credit Card", "QRIS", "E-Wallet", "Marketplace"];
+    const inventorySources = ["Business Purchase", "Personal Collection", "Consignment", "Founder Purchase / Awaiting Reimbursement"];
+    const itemTypes = ["Vinyl", "CD", "Cassette", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap", "Object"];
+    const itemConditions = ["New-Sealed", "New-Unsealed", "Used Excellent", "Used Good"];
+    const ownerDueCategory = "Owner Personal Use / Reimbursement Due";
+    const ownerReimbursementCategory = "Owner Reimbursement";
+
+    const state = loadState();
+    const sortState = {
+      dashboard: { key: "date", direction: "asc" },
+      sales: { key: "date", direction: "asc" },
+      expenses: { key: "date", direction: "asc" },
+      inventory: { key: "date", direction: "asc" },
+      stock: { key: "acquisitionMonth", direction: "asc" }
+    };
+    const sortFields = {
+      dashboard: {
+        date: { type: "date", value: item => item.date },
+        source: { type: "text", value: item => item.source },
+        reference: { type: "text", value: item => item.reference },
+        type: { type: "text", value: item => item.type },
+        category: { type: "text", value: item => item.category },
+        item: { type: "text", value: item => item.item },
+        qty: { type: "number", value: item => item.qty },
+        amount: { type: "number", value: item => item.amount },
+        paymentMethod: { type: "text", value: item => item.paymentMethod },
+        notes: { type: "text", value: item => item.notes }
+      },
+      sales: {
+        date: { type: "date", value: item => item.date },
+        invoice: { type: "text", value: item => item.invoice },
+        category: { type: "text", value: item => item.category },
+        sku: { type: "text", value: item => item.sku },
+        qty: { type: "number", value: item => item.qty },
+        revenue: { type: "number", value: item => item.revenue },
+        discount: { type: "number", value: item => item.discount },
+        discountContext: { type: "text", value: item => item.discountContext },
+        cogs: { type: "number", value: item => item.cogs },
+        grossProfit: { type: "number", value: item => item.grossProfit },
+        paymentMethod: { type: "text", value: item => item.paymentMethod }
+      },
+      expenses: {
+        date: { type: "date", value: item => item.date },
+        expense: { type: "text", value: item => item.expense },
+        category: { type: "text", value: item => item.category },
+        vendor: { type: "text", value: item => item.vendor },
+        amount: { type: "number", value: item => item.amount },
+        costType: { type: "text", value: item => item.costType },
+        paymentMethod: { type: "text", value: item => item.paymentMethod },
+        notes: { type: "text", value: item => item.notes }
+      },
+      inventory: {
+        date: { type: "date", value: item => item.date },
+        supplier: { type: "text", value: item => item.supplier },
+        category: { type: "text", value: item => item.category },
+        source: { type: "text", value: item => item.source },
+        itemType: { type: "text", value: item => item.itemType },
+        itemCondition: { type: "text", value: item => item.itemCondition },
+        sku: { type: "text", value: item => item.sku },
+        artistName: { type: "text", value: item => item.artistName },
+        qty: { type: "number", value: item => item.qty },
+        unitCost: { type: "number", value: item => item.unitCost },
+        totalCost: { type: "number", value: item => item.totalCost },
+        cashflowImpact: { type: "number", value: item => inventoryCashflow(item) },
+        paymentMethod: { type: "text", value: item => item.paymentMethod }
+      },
+      stock: {
+        sku: { type: "text", value: item => item.sku },
+        item: { type: "text", value: item => item.item },
+        itemCondition: { type: "text", value: item => item.itemCondition },
+        artist: { type: "text", value: item => item.artist },
+        title: { type: "text", value: item => item.title },
+        source: { type: "text", value: item => item.source },
+        acquisitionMonth: { type: "date", value: item => item.acquisitionMonth },
+        qty: { type: "number", value: item => item.qty },
+        costBasis: { type: "number", value: item => item.costBasis },
+        sellingPrice: { type: "number", value: item => item.sellingPrice },
+        soldPrice: { type: "number", value: item => item.soldPrice },
+        grossProfit: { type: "number", value: item => item.grossProfit },
+        margin: { type: "number", value: item => item.margin }
+      }
+    };
+    const el = {
+      viewTitle: document.getElementById("viewTitle"),
+      saveStatus: document.getElementById("saveStatus"),
+      activeYearLabel: document.getElementById("activeYearLabel"),
+      generalForm: document.getElementById("generalForm"),
+      salesForm: document.getElementById("salesForm"),
+      expenseForm: document.getElementById("expenseForm"),
+      inventoryForm: document.getElementById("inventoryForm"),
+      stockForm: document.getElementById("stockForm"),
+      generalBody: document.getElementById("generalBody"),
+      salesBody: document.getElementById("salesBody"),
+      salesTotals: document.getElementById("salesTotals"),
+      expenseBody: document.getElementById("expenseBody"),
+      expenseTotals: document.getElementById("expenseTotals"),
+      inventoryBody: document.getElementById("inventoryBody"),
+      inventoryTotals: document.getElementById("inventoryTotals"),
+      stockBody: document.getElementById("stockBody"),
+      stockTotals: document.getElementById("stockTotals"),
+      ownerDueBody: document.getElementById("ownerDueBody"),
+      yearFilter: document.getElementById("yearFilter"),
+      ownerDueYearFilter: document.getElementById("ownerDueYearFilter"),
+      dashboardTypeFilter: document.getElementById("dashboardTypeFilter"),
+      dashboardCategoryFilter: document.getElementById("dashboardCategoryFilter"),
+      dashboardSearch: document.getElementById("dashboardSearch"),
+      pnlMonth: document.getElementById("pnlMonth"),
+      importFile: document.getElementById("importFile")
+    };
+
+    el.yearFilter.value = currentYear;
+    el.ownerDueYearFilter.value = currentYear;
+    el.pnlMonth.value = currentMonth;
+
+    buildForms();
+    attachExportControls();
+    bindEvents();
+    commitState();
+
+    function loadState() {
+      if (migratedServerState && Array.isArray(migratedServerState.general) && Array.isArray(migratedServerState.sales) && Array.isArray(migratedServerState.expenses) && Array.isArray(migratedServerState.inventory)) {
+        try {
+          migratedServerState.inventoryStock = Array.isArray(migratedServerState.inventoryStock) ? migratedServerState.inventoryStock : [];
+          window.localStorage.setItem(STORAGE_KEY, JSON.stringify(migratedServerState));
+        } catch (error) {
+          console.warn("Could not mirror migrated NIXP data", error);
+        }
+        return migratedServerState;
+      }
+      try {
+        const stored = JSON.parse(window.localStorage.getItem(STORAGE_KEY));
+        if (stored && Array.isArray(stored.general) && Array.isArray(stored.sales) && Array.isArray(stored.expenses) && Array.isArray(stored.inventory)) {
+          if (!Array.isArray(stored.inventoryStock)) stored.inventoryStock = [];
+          return stored;
+        }
+      } catch (error) {
+        console.warn("Could not load NIXP data", error);
+      }
+      return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
+    }
+
+    function saveState() {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        persistServerState();
+        el.saveStatus.textContent = "Saved locally";
+      } catch (error) {
+        console.warn("Could not save NIXP data", error);
+        el.saveStatus.textContent = "Storage blocked. Export CSV.";
+      }
+    }
+
+    function migrateFileStorageToProtectedServer() {
+      try {
+        const raw = window.localStorage.getItem(STORAGE_KEY);
+        const status = document.getElementById("migrationStatus");
+        if (!raw) {
+          if (status) status.textContent = "No old finance data found in this browser profile.";
+          return;
+        }
+        const state = JSON.parse(raw);
+        if (!state || !Array.isArray(state.general) || !Array.isArray(state.sales) || !Array.isArray(state.expenses) || !Array.isArray(state.inventory)) {
+          if (status) status.textContent = "Old finance data was found but is not valid.";
+          return;
+        }
+        if (status) status.textContent = "Migrating finance data to protected server...";
+        fetch("http://127.0.0.1:8093/api/migrate", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ state })
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error("Migration failed");
+            if (status) {
+              status.textContent = `Migrated ${state.general.length} cashflow, ${state.sales.length} sales, ${state.expenses.length} expenses, ${state.inventory.length} inventory purchase, and ${(state.inventoryStock || []).length} stock rows. Open the protected login version.`;
+            }
+          })
+          .catch(() => {
+            if (status) status.textContent = "Migration failed. Make sure the protected local server is running at 127.0.0.1:8093.";
+          });
+      } catch (error) {
+        console.warn("Could not migrate NIXP finance data", error);
+      }
+    }
+
+    function queueFileMigrationSetup() {
+      window.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("migrationBanner")?.classList.add("visible");
+        document.getElementById("migrationBtn")?.addEventListener("click", migrateFileStorageToProtectedServer);
+      });
+      setTimeout(migrateFileStorageToProtectedServer, 800);
+    }
+
+    function persistServerState() {
+      if (location.protocol !== "http:" && location.protocol !== "https:") return;
+      fetch("/api/state", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ state })
+      }).catch(() => {});
+    }
+
+    function uid() {
+      return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+    }
+
+    function numeric(value) {
+      const clean = String(value ?? "0").replace(/\./g, "").replace(",", ".");
+      return Number.parseFloat(clean) || 0;
+    }
+
+    function rupiah(value) {
+      return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0
+      }).format(Number(value || 0));
+    }
+
+    function yearOf(date) {
+      return String(date || "").slice(0, 4);
+    }
+
+    function monthOf(date) {
+      return String(date || "").slice(0, 7);
+    }
+
+    function buildForms() {
+      el.generalForm.innerHTML = `
+        <div class="fields">
+          ${field("Date", "date", "date", todayISO, true)}
+          ${field("Invoice", "invoice", "text", "", false, "INV / reference")}
+          ${selectField("Type", "type", ["Income", "Outcome"], true, "Income")}
+          ${selectField("Category", "category", ["Investor", "Sales", "Operations", ownerReimbursementCategory, "Loan", "Owner Capital", "Bank", "Other"], true, "Investor")}
+          ${field("SKU / Note", "sku", "text", "", false, "SKU or short note")}
+          ${field("Qty", "qty", "number", "1", false, "", "0.01")}
+          ${field("Amount", "amount", "number", "", true, "0", "1")}
+          ${selectField("Payment Method", "paymentMethod", paymentMethods, true, "Bank Transfer")}
+          ${textArea("Notes", "notes", "Additional details")}
+        </div>
+        <button class="button primary" type="submit">Save income / outcome</button>
+      `;
+
+      el.salesForm.innerHTML = `
+        <div class="fields">
+          ${field("Date", "date", "date", todayISO, true)}
+          ${field("Invoice", "invoice", "text", "", true, "INV-001")}
+          ${selectField("Category", "category", ["Retail", "Wholesale", "Marketplace", "Service", "Other"], true, "Retail")}
+          ${field("SKU", "sku", "text", "", true, "SKU-001")}
+          ${field("Qty", "qty", "number", "1", true, "", "0.01")}
+          ${field("Revenue", "revenue", "number", "", true, "0", "1")}
+          ${field("Discount %", "discount", "number", "0", false, "0", "0.01")}
+          ${field("Discount Context", "discountContext", "text", "", false, "Promo, friend price, bundle")}
+          ${field("COGS", "cogs", "number", "", true, "0", "1")}
+          ${selectField("Payment Method", "paymentMethod", paymentMethods, true, "Bank Transfer")}
+        </div>
+        <input type="hidden" name="editId" value="">
+        <div class="form-actions">
+          <button class="button primary" type="submit" id="salesSubmitBtn">Save sale</button>
+          <button class="button" type="button" id="cancelSalesEditBtn" hidden>Cancel edit</button>
+        </div>
+      `;
+
+      el.expenseForm.innerHTML = `
+        <div class="fields">
+          ${field("Date", "date", "date", todayISO, true)}
+          ${field("Expense", "expense", "text", "", true, "Rent, ads, salary")}
+          ${selectField("Category", "category", ["Rent", "Salary", "Marketing", "Production", "Utilities", "Logistics", "Software", "Tax", "Operations", ownerDueCategory, "Other"], true, "Operations")}
+          ${field("Vendor", "vendor", "text", "", false, "Vendor / supplier")}
+          ${field("Amount", "amount", "number", "", true, "0", "1")}
+          ${selectField("Fixed / Variable", "costType", ["Fixed", "Variable"], true, "Variable")}
+          ${selectField("Payment Method", "paymentMethod", paymentMethods, true, "Bank Transfer")}
+          ${textArea("Notes", "notes", "Additional details")}
+        </div>
+        <input type="hidden" name="editId" value="">
+        <div class="form-actions">
+          <button class="button primary" type="submit" id="expenseSubmitBtn">Save expense</button>
+          <button class="button" type="button" id="cancelExpenseEditBtn" hidden>Cancel edit</button>
+        </div>
+      `;
+
+      el.inventoryForm.innerHTML = `
+        <div class="fields">
+          ${field("Date", "date", "date", todayISO, true)}
+          ${field("Supplier", "supplier", "text", "", true, "Supplier name")}
+          ${selectField("Category", "category", ["Retail", "Wholesale", "Marketplace", "Raw Material", "Packaging", "Other"], true, "Retail")}
+          ${selectField("Source", "source", inventorySources, true, "Business Purchase")}
+          ${selectField("Item Type", "itemType", itemTypes, true, "Vinyl")}
+          ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
+          ${field("SKU", "sku", "text", "", true, "SKU-001")}
+          ${field("Artist Name", "artistName", "text", "", false, "Artist / creator")}
+          ${field("Qty", "qty", "number", "1", true, "", "0.01")}
+          ${field("Unit Cost", "unitCost", "number", "", true, "0", "1")}
+          ${field("Cashflow Impact", "cashflowImpact", "number", "", false, "Blank = total cost. Use 0 for owner contribution.", "1")}
+          ${selectField("Payment Method", "paymentMethod", paymentMethods, true, "Bank Transfer")}
+        </div>
+        <input type="hidden" name="editId" value="">
+        <div class="form-actions">
+          <button class="button primary" type="submit" id="inventorySubmitBtn">Save purchase</button>
+          <button class="button" type="button" id="cancelInventoryEditBtn" hidden>Cancel edit</button>
+        </div>
+      `;
+
+      el.stockForm.innerHTML = `
+        <div class="fields">
+          ${field("SKU", "sku", "text", "", true, "SKU-001")}
+          ${selectField("Item", "item", itemTypes, true, "Vinyl")}
+          ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
+          ${field("Artist", "artist", "text", "", false, "Artist name")}
+          ${field("Title", "title", "text", "", false, "Artwork / item title")}
+          ${selectField("Source", "source", inventorySources, true, "Business Purchase")}
+          ${field("Acquisition Month", "acquisitionMonth", "month", currentMonth, true)}
+          ${field("Quantity", "qty", "number", "1", true, "", "0.01")}
+          ${field("Cost Basis", "costBasis", "number", "", true, "0", "1")}
+          ${field("Selling Price", "sellingPrice", "number", "", false, "0", "1")}
+          ${field("Sold Price", "soldPrice", "number", "", false, "0", "1")}
+        </div>
+        <input type="hidden" name="editId" value="">
+        <div class="form-actions">
+          <button class="button primary" type="submit" id="stockSubmitBtn">Save stock item</button>
+          <button class="button" type="button" id="cancelStockEditBtn" hidden>Cancel edit</button>
+        </div>
+      `;
+    }
+
+    function field(label, name, type, value, required, placeholder = "", step = "") {
+      return `
+        <div class="field">
+          <label>${label}</label>
+          <input name="${name}" type="${type}" value="${value}" placeholder="${placeholder}" ${required ? "required" : ""} ${step ? `step="${step}"` : ""}>
+        </div>
+      `;
+    }
+
+    function textArea(label, name, placeholder) {
+      return `
+        <div class="field full">
+          <label>${label}</label>
+          <textarea name="${name}" placeholder="${placeholder}"></textarea>
+        </div>
+      `;
+    }
+
+    function selectField(label, name, options, required, selected) {
+      return `
+        <div class="field">
+          <label>${label}</label>
+          <select name="${name}" ${required ? "required" : ""}>
+            ${options.map(option => `<option ${option === selected ? "selected" : ""}>${option}</option>`).join("")}
+          </select>
+        </div>
+      `;
+    }
+
+    function attachExportControls() {
+      const sections = [
+        ["dashboard", "Main Dashboard"],
+        ["sales", "Daily Sales"],
+        ["expenses", "Expenses"],
+        ["ownerDue", "Owner Due"],
+        ["inventory", "Inventory Purchases"],
+        ["stock", "Inventory"],
+        ["pnl", "Monthly P&L"]
+      ];
+
+      sections.forEach(([section, label]) => {
+        const view = document.getElementById(section + "View");
+        if (!view) return;
+        const panel = section === "pnl" ? document.getElementById("pnlBars")?.closest(".panel") : view.querySelector("table")?.closest(".panel");
+        const head = panel?.querySelector(".panel-head");
+        if (!head || head.querySelector(".panel-tools")) return;
+        head.insertAdjacentHTML("beforeend", `
+          <div class="panel-tools" aria-label="${label} export tools">
+            <button class="button mini" type="button" data-export-action="copy" data-export-section="${section}">Copy table</button>
+            <button class="button mini" type="button" data-export-action="csv" data-export-section="${section}">Sheet CSV</button>
+            <button class="button mini" type="button" data-export-action="txt" data-export-section="${section}">Docs TXT</button>
+            <button class="button mini" type="button" data-export-action="jpg" data-export-section="${section}">JPEG</button>
+          </div>
+        `);
+      });
+    }
+
+    function bindEvents() {
+      document.querySelectorAll(".nav button").forEach(button => {
+        button.addEventListener("click", () => showView(button.dataset.view));
+      });
+
+      document.querySelectorAll("th[data-sort-key]").forEach(header => {
+        header.setAttribute("role", "button");
+        header.setAttribute("tabindex", "0");
+        header.setAttribute("title", "Click to sort");
+        header.addEventListener("click", () => setTableSort(header.dataset.sortSection, header.dataset.sortKey));
+        header.addEventListener("keydown", event => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setTableSort(header.dataset.sortSection, header.dataset.sortKey);
+          }
+        });
+      });
+
+      document.getElementById("addGeneralBtn").addEventListener("click", () => showView("dashboard"));
+      document.getElementById("exportAllBtn").addEventListener("click", exportCSV);
+      document.getElementById("importBtn").addEventListener("click", () => el.importFile.click());
+      document.getElementById("clearBtn").addEventListener("click", clearData);
+      document.getElementById("logoutBtn").addEventListener("click", logout);
+      el.importFile.addEventListener("change", importJSON);
+      document.getElementById("cancelSalesEditBtn").addEventListener("click", () => {
+        resetForm(el.salesForm);
+        resetSalesEditMode();
+      });
+      document.getElementById("cancelExpenseEditBtn").addEventListener("click", () => {
+        resetForm(el.expenseForm);
+        resetExpenseEditMode();
+      });
+      document.getElementById("cancelInventoryEditBtn").addEventListener("click", () => {
+        resetForm(el.inventoryForm);
+        resetInventoryEditMode();
+      });
+      document.getElementById("cancelStockEditBtn").addEventListener("click", () => {
+        resetForm(el.stockForm);
+        resetStockEditMode();
+      });
+
+      [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.pnlMonth].forEach(input => {
+        input.addEventListener("input", render);
+      });
+
+      el.generalForm.addEventListener("submit", event => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(el.generalForm));
+        state.general.push({
+          id: uid(),
+          date: data.date,
+          invoice: data.invoice.trim(),
+          type: data.type,
+          category: data.category,
+          sku: data.sku.trim(),
+          qty: numeric(data.qty),
+          amount: numeric(data.amount),
+          paymentMethod: data.paymentMethod,
+          notes: data.notes.trim()
+        });
+        resetForm(el.generalForm);
+        commitState();
+      });
+
+      el.salesForm.addEventListener("submit", event => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(el.salesForm));
+        const sale = salesPayload(data);
+        const editId = data.editId;
+        if (editId) {
+          const index = state.sales.findIndex(item => item.id === editId);
+          if (index >= 0) state.sales[index] = { ...sale, id: editId };
+        } else {
+          state.sales.push({ ...sale, id: uid() });
+        }
+        resetForm(el.salesForm);
+        resetSalesEditMode();
+        resetTableSort("sales");
+        commitState();
+      });
+
+      el.expenseForm.addEventListener("submit", event => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(el.expenseForm));
+        const expense = expensePayload(data);
+        const editId = data.editId;
+        if (editId) {
+          const index = state.expenses.findIndex(item => item.id === editId);
+          if (index >= 0) state.expenses[index] = { ...expense, id: editId };
+        } else {
+          state.expenses.push({ ...expense, id: uid() });
+        }
+        resetForm(el.expenseForm);
+        resetExpenseEditMode();
+        resetTableSort("expenses");
+        commitState();
+      });
+
+      el.inventoryForm.addEventListener("submit", event => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(el.inventoryForm));
+        const purchase = inventoryPayload(data);
+        const editId = data.editId;
+        let savedPurchase = null;
+        if (editId) {
+          const index = state.inventory.findIndex(item => item.id === editId);
+          if (index >= 0) {
+            savedPurchase = { ...purchase, id: editId };
+            state.inventory[index] = savedPurchase;
+          }
+        } else {
+          savedPurchase = { ...purchase, id: uid() };
+          state.inventory.push(savedPurchase);
+        }
+        if (savedPurchase) syncStockFromPurchase(savedPurchase);
+        resetForm(el.inventoryForm);
+        resetInventoryEditMode();
+        commitState();
+      });
+
+      el.stockForm.addEventListener("submit", event => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(el.stockForm));
+        const editId = data.editId;
+        if (editId) {
+          const index = state.inventoryStock.findIndex(item => item.id === editId);
+          if (index >= 0) {
+            state.inventoryStock[index] = stockPayload(data, state.inventoryStock[index]);
+          }
+        } else {
+          state.inventoryStock.push(stockPayload(data, { id: uid() }));
+        }
+        resetForm(el.stockForm);
+        resetStockEditMode();
+        commitState();
+      });
+
+      document.addEventListener("click", event => {
+        const exportTarget = event.target.closest("[data-export-action]");
+        if (exportTarget) {
+          handleSectionExport(exportTarget.dataset.exportAction, exportTarget.dataset.exportSection);
+          return;
+        }
+
+        const editTarget = event.target.closest("[data-edit]");
+        if (editTarget) {
+          const [section, id] = editTarget.dataset.edit.split(":");
+          if (section === "sales") startSalesEdit(id);
+          if (section === "expenses") startExpenseEdit(id);
+          if (section === "inventory") startInventoryEdit(id);
+          if (section === "inventoryStock") startStockEdit(id);
+          return;
+        }
+
+        const target = event.target.closest("[data-delete]");
+        if (!target) return;
+        const [section, id] = target.dataset.delete.split(":");
+        if (!confirm("Delete this entry?")) return;
+        state[section] = state[section].filter(item => item.id !== id);
+        if (section === "inventory") {
+          state.inventoryStock = state.inventoryStock.filter(item => item.purchaseId !== id);
+        }
+        commitState();
+      });
+    }
+
+    function resetForm(form) {
+      form.reset();
+      const dateInput = form.querySelector("[name=date]");
+      const qtyInput = form.querySelector("[name=qty]");
+      if (dateInput) dateInput.value = todayISO;
+      if (qtyInput) qtyInput.value = "1";
+    }
+
+    function commitState() {
+      normalizeDerivedData();
+      syncAllInventoryPurchases();
+      saveState();
+      render();
+    }
+
+    function normalizeDerivedData() {
+      state.sales = state.sales.map(item => {
+        const revenue = numeric(item.revenue);
+        const cogs = numeric(item.cogs);
+        return { ...item, qty: numeric(item.qty), revenue, discount: numeric(item.discount), discountContext: item.discountContext || "", cogs, grossProfit: revenue - cogs };
+      });
+
+      state.expenses = state.expenses.map(item => ({ ...item, amount: numeric(item.amount) }));
+
+      state.inventory = state.inventory.map(item => {
+        const qty = numeric(item.qty);
+        const unitCost = numeric(item.unitCost);
+        const totalCost = qty * unitCost;
+        const itemType = itemTypes.includes(item.itemType) ? item.itemType : "Vinyl";
+        const itemCondition = itemConditions.includes(item.itemCondition) ? item.itemCondition : "New-Sealed";
+        return {
+          ...item,
+          itemType,
+          itemCondition,
+          qty,
+          unitCost,
+          totalCost,
+          cashflowImpact: item.cashflowImpact === undefined ? totalCost : numeric(item.cashflowImpact)
+        };
+      });
+
+      state.inventoryStock = state.inventoryStock.map(item => recalculateStock(item));
+    }
+
+    function salesPayload(data) {
+      const revenue = numeric(data.revenue);
+      const cogs = numeric(data.cogs);
+      return {
+        date: data.date,
+        invoice: data.invoice.trim(),
+        category: data.category,
+        sku: data.sku.trim(),
+        qty: numeric(data.qty),
+        revenue,
+        discount: numeric(data.discount),
+        discountContext: data.discountContext.trim(),
+        cogs,
+        grossProfit: revenue - cogs,
+        paymentMethod: data.paymentMethod
+      };
+    }
+
+    function expensePayload(data) {
+      return {
+        date: data.date,
+        expense: data.expense.trim(),
+        category: data.category,
+        vendor: data.vendor.trim(),
+        amount: numeric(data.amount),
+        costType: data.costType,
+        paymentMethod: data.paymentMethod,
+        notes: data.notes.trim()
+      };
+    }
+
+    function inventoryPayload(data) {
+      const qty = numeric(data.qty);
+      const unitCost = numeric(data.unitCost);
+      const totalCost = qty * unitCost;
+      const cashflowImpact = String(data.cashflowImpact ?? "").trim() === "" ? totalCost : numeric(data.cashflowImpact);
+      return {
+        date: data.date,
+        supplier: data.supplier.trim(),
+        category: data.category,
+        source: data.source,
+        itemType: data.itemType,
+        itemCondition: data.itemCondition,
+        sku: data.sku.trim(),
+        artistName: data.artistName.trim(),
+        qty,
+        unitCost,
+        totalCost,
+        cashflowImpact,
+        paymentMethod: data.paymentMethod
+      };
+    }
+
+    function stockPayload(data, existing = {}) {
+      return recalculateStock({
+        id: existing.id || uid(),
+        purchaseId: existing.purchaseId,
+        sku: data.sku.trim(),
+        item: data.item,
+        itemCondition: data.itemCondition,
+        artist: data.artist.trim(),
+        title: data.title.trim(),
+        source: data.source,
+        acquisitionMonth: data.acquisitionMonth,
+        qty: numeric(data.qty),
+        costBasis: numeric(data.costBasis),
+        sellingPrice: numeric(data.sellingPrice),
+        soldPrice: numeric(data.soldPrice)
+      });
+    }
+
+    function syncAllInventoryPurchases() {
+      state.inventory.forEach(syncStockFromPurchase);
+    }
+
+    function syncStockFromPurchase(purchase) {
+      if (!purchase?.id) return;
+      const index = state.inventoryStock.findIndex(item => item.purchaseId === purchase.id);
+      if (isRawMaterialPurchase(purchase)) {
+        if (index >= 0) state.inventoryStock.splice(index, 1);
+        return;
+      }
+      const existing = index >= 0 ? state.inventoryStock[index] : {};
+      const synced = recalculateStock({
+        ...existing,
+        id: existing.id || uid(),
+        purchaseId: purchase.id,
+        sku: purchase.sku,
+        item: purchase.itemType || existing.item || purchase.category || "Vinyl",
+        itemCondition: purchase.itemCondition || existing.itemCondition || "New-Sealed",
+        artist: purchase.artistName || existing.artist || "",
+        title: existing.title || "",
+        source: purchase.source || existing.source || "Business Purchase",
+        acquisitionMonth: monthOf(purchase.date) || existing.acquisitionMonth || currentMonth,
+        qty: numeric(purchase.qty) || numeric(existing.qty) || 1,
+        costBasis: numeric(purchase.totalCost),
+        sellingPrice: numeric(existing.sellingPrice),
+        soldPrice: numeric(existing.soldPrice)
+      });
+      if (index >= 0) {
+        state.inventoryStock[index] = synced;
+      } else {
+        state.inventoryStock.push(synced);
+      }
+    }
+
+    function isRawMaterialPurchase(item) {
+      return String(item?.category || "").toLowerCase() === "raw material";
+    }
+
+    function recalculateStock(item) {
+      const qty = numeric(item.qty) || 1;
+      const costBasis = numeric(item.costBasis);
+      const soldPrice = numeric(item.soldPrice);
+      const grossProfit = soldPrice > 0 ? soldPrice - costBasis : 0;
+      return {
+        ...item,
+        qty,
+        itemCondition: itemConditions.includes(item.itemCondition) ? item.itemCondition : "New-Sealed",
+        costBasis,
+        sellingPrice: numeric(item.sellingPrice),
+        soldPrice,
+        grossProfit,
+        margin: soldPrice > 0 ? grossProfit / soldPrice * 100 : 0
+      };
+    }
+
+    function startSalesEdit(id) {
+      const item = state.sales.find(entry => entry.id === id);
+      if (!item) return;
+      showView("sales");
+      setFormValue(el.salesForm, "editId", item.id);
+      setFormValue(el.salesForm, "date", item.date);
+      setFormValue(el.salesForm, "invoice", item.invoice);
+      setFormValue(el.salesForm, "category", item.category || "Retail");
+      setFormValue(el.salesForm, "sku", item.sku);
+      setFormValue(el.salesForm, "qty", item.qty);
+      setFormValue(el.salesForm, "revenue", item.revenue);
+      setFormValue(el.salesForm, "discount", item.discount || 0);
+      setFormValue(el.salesForm, "discountContext", item.discountContext || "");
+      setFormValue(el.salesForm, "cogs", item.cogs);
+      setFormValue(el.salesForm, "paymentMethod", item.paymentMethod || "Bank Transfer");
+      document.getElementById("salesSubmitBtn").textContent = "Update sale";
+      document.getElementById("cancelSalesEditBtn").hidden = false;
+      el.salesForm.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function resetSalesEditMode() {
+      setFormValue(el.salesForm, "editId", "");
+      document.getElementById("salesSubmitBtn").textContent = "Save sale";
+      document.getElementById("cancelSalesEditBtn").hidden = true;
+    }
+
+    function startExpenseEdit(id) {
+      const item = state.expenses.find(entry => entry.id === id);
+      if (!item) return;
+      showView("expenses");
+      setFormValue(el.expenseForm, "editId", item.id);
+      setFormValue(el.expenseForm, "date", item.date);
+      setFormValue(el.expenseForm, "expense", item.expense);
+      setFormValue(el.expenseForm, "category", item.category || "Operations");
+      setFormValue(el.expenseForm, "vendor", item.vendor);
+      setFormValue(el.expenseForm, "amount", item.amount);
+      setFormValue(el.expenseForm, "costType", item.costType || "Variable");
+      setFormValue(el.expenseForm, "paymentMethod", item.paymentMethod || "Bank Transfer");
+      setFormValue(el.expenseForm, "notes", item.notes);
+      document.getElementById("expenseSubmitBtn").textContent = "Update expense";
+      document.getElementById("cancelExpenseEditBtn").hidden = false;
+      el.expenseForm.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function resetExpenseEditMode() {
+      setFormValue(el.expenseForm, "editId", "");
+      document.getElementById("expenseSubmitBtn").textContent = "Save expense";
+      document.getElementById("cancelExpenseEditBtn").hidden = true;
+    }
+
+    function startInventoryEdit(id) {
+      const item = state.inventory.find(entry => entry.id === id);
+      if (!item) return;
+      showView("inventory");
+      setFormValue(el.inventoryForm, "editId", item.id);
+      setFormValue(el.inventoryForm, "date", item.date);
+      setFormValue(el.inventoryForm, "supplier", item.supplier);
+      setFormValue(el.inventoryForm, "category", item.category || "Retail");
+      setFormValue(el.inventoryForm, "source", item.source || "Business Purchase");
+      setFormValue(el.inventoryForm, "itemType", item.itemType || "Vinyl");
+      setFormValue(el.inventoryForm, "itemCondition", item.itemCondition || "New-Sealed");
+      setFormValue(el.inventoryForm, "sku", item.sku);
+      setFormValue(el.inventoryForm, "artistName", item.artistName);
+      setFormValue(el.inventoryForm, "qty", item.qty);
+      setFormValue(el.inventoryForm, "unitCost", item.unitCost);
+      setFormValue(el.inventoryForm, "cashflowImpact", inventoryCashflow(item));
+      setFormValue(el.inventoryForm, "paymentMethod", item.paymentMethod || "Bank Transfer");
+      document.getElementById("inventorySubmitBtn").textContent = "Update purchase";
+      document.getElementById("cancelInventoryEditBtn").hidden = false;
+      el.inventoryForm.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function setFormValue(form, name, value) {
+      const field = form.querySelector(`[name="${name}"]`);
+      if (field) field.value = value ?? "";
+    }
+
+    function resetInventoryEditMode() {
+      setFormValue(el.inventoryForm, "editId", "");
+      document.getElementById("inventorySubmitBtn").textContent = "Save purchase";
+      document.getElementById("cancelInventoryEditBtn").hidden = true;
+    }
+
+    function startStockEdit(id) {
+      const item = state.inventoryStock.find(entry => entry.id === id);
+      if (!item) return;
+      showView("stock");
+      setFormValue(el.stockForm, "editId", item.id);
+      setFormValue(el.stockForm, "sku", item.sku);
+      setFormValue(el.stockForm, "item", item.item);
+      setFormValue(el.stockForm, "itemCondition", item.itemCondition || "New-Sealed");
+      setFormValue(el.stockForm, "artist", item.artist);
+      setFormValue(el.stockForm, "title", item.title);
+      setFormValue(el.stockForm, "source", item.source || "Business Purchase");
+      setFormValue(el.stockForm, "acquisitionMonth", item.acquisitionMonth || currentMonth);
+      setFormValue(el.stockForm, "qty", item.qty || 1);
+      setFormValue(el.stockForm, "costBasis", item.costBasis);
+      setFormValue(el.stockForm, "sellingPrice", item.sellingPrice);
+      setFormValue(el.stockForm, "soldPrice", item.soldPrice);
+      document.getElementById("stockSubmitBtn").textContent = "Update stock item";
+      document.getElementById("cancelStockEditBtn").hidden = false;
+      el.stockForm.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function resetStockEditMode() {
+      setFormValue(el.stockForm, "editId", "");
+      document.getElementById("stockSubmitBtn").textContent = "Save stock item";
+      document.getElementById("cancelStockEditBtn").hidden = true;
+    }
+
+    function showView(view) {
+      document.querySelectorAll(".nav button").forEach(button => button.classList.toggle("active", button.dataset.view === view));
+      document.querySelectorAll(".view").forEach(section => section.classList.remove("active"));
+      document.getElementById(view + "View").classList.add("active");
+      el.viewTitle.textContent = {
+        dashboard: "Main Dashboard",
+        sales: "Daily Sales",
+        expenses: "Expenses",
+        ownerDue: "Owner Due",
+        inventory: "Inventory Purchases",
+        stock: "Inventory",
+        pnl: "Monthly P&L"
+      }[view];
+      render();
+    }
+
+    function setTableSort(section, key) {
+      const current = sortState[section] || { key, direction: "asc" };
+      const direction = current.key === key && current.direction === "asc" ? "desc" : "asc";
+      sortState[section] = { key, direction };
+      render();
+    }
+
+    function resetTableSort(section) {
+      const defaultKey = section === "stock" ? "acquisitionMonth" : "date";
+      sortState[section] = { key: defaultKey, direction: "asc" };
+    }
+
+    function render() {
+      renderSortIndicators();
+      renderDashboard();
+      renderSales();
+      renderExpenses();
+      renderOwnerDue();
+      renderInventory();
+      renderStock();
+      renderPnl();
+    }
+
+    function renderSortIndicators() {
+      document.querySelectorAll("th[data-sort-key]").forEach(header => {
+        const section = header.dataset.sortSection;
+        const active = sortState[section]?.key === header.dataset.sortKey;
+        const direction = sortState[section]?.direction || "asc";
+        header.dataset.sortIndicator = active ? ` ${direction.toUpperCase()}` : "";
+        header.setAttribute("aria-sort", active ? (direction === "asc" ? "ascending" : "descending") : "none");
+      });
+    }
+
+    function sortRows(section, rows) {
+      const current = sortState[section];
+      const field = sortFields[section]?.[current?.key];
+      if (!field) return [...rows].sort(byDateAsc);
+      const direction = current.direction === "desc" ? -1 : 1;
+      return [...rows].sort((a, b) => {
+        const primary = compareSortValues(field.value(a), field.value(b), field.type);
+        if (primary !== 0) return primary * direction;
+        const fallback = compareSortValues(a.date || a.acquisitionMonth || "", b.date || b.acquisitionMonth || "", "date");
+        if (fallback !== 0) return fallback;
+        return compareSortValues(a.sku || a.invoice || a.expense || "", b.sku || b.invoice || b.expense || "", "text");
+      });
+    }
+
+    function compareSortValues(a, b, type) {
+      if (type === "number") {
+        return numeric(a) - numeric(b);
+      }
+      return String(a ?? "").localeCompare(String(b ?? ""), undefined, { numeric: true, sensitivity: "base" });
+    }
+
+    function selectedYear() {
+      return el.yearFilter.value || currentYear;
+    }
+
+    function renderDashboard() {
+      const year = selectedYear();
+      el.activeYearLabel.textContent = year;
+      const type = el.dashboardTypeFilter.value;
+      const category = el.dashboardCategoryFilter.value;
+      const search = el.dashboardSearch.value.trim().toLowerCase();
+
+      const generalYear = state.general.filter(item => yearOf(item.date) === year);
+      const salesYear = state.sales.filter(item => yearOf(item.date) === year);
+      const expensesYear = state.expenses.filter(item => yearOf(item.date) === year);
+      const inventoryYear = state.inventory.filter(item => yearOf(item.date) === year && !isRawMaterialPurchase(item));
+
+      const generalIncome = generalYear.filter(item => item.type === "Income").reduce((total, item) => total + numeric(item.amount), 0);
+      const generalOutcome = generalYear.filter(item => item.type === "Outcome").reduce((total, item) => total + numeric(item.amount), 0);
+      const salesIncome = salesYear.reduce((total, item) => total + numeric(item.revenue), 0);
+      const salesCogs = salesYear.reduce((total, item) => total + numeric(item.cogs), 0);
+      const expenseTotal = expensesYear.reduce((total, item) => total + numeric(item.amount), 0);
+      const inventoryTotal = inventoryYear.reduce((total, item) => total + inventoryCashflow(item), 0);
+      const income = generalIncome + salesIncome;
+      const outcome = generalOutcome + salesCogs + expenseTotal + inventoryTotal;
+      const investor = generalYear.filter(item => item.category === "Investor").reduce((total, item) => total + numeric(item.amount), 0);
+
+      document.getElementById("dashIncome").textContent = rupiah(income);
+      document.getElementById("dashOutcome").textContent = rupiah(outcome);
+      document.getElementById("dashNet").textContent = rupiah(income - outcome);
+      document.getElementById("dashInvestor").textContent = rupiah(investor);
+
+      const rows = buildDashboardRows()
+        .filter(item => yearOf(item.date) === year)
+        .filter(item => !type || item.type === type)
+        .filter(item => !category || item.category === category)
+        .filter(item => !search || [item.source, item.reference, item.category, item.item, item.notes].join(" ").toLowerCase().includes(search));
+      const sortedRows = sortRows("dashboard", rows);
+      document.getElementById("generalCount").textContent = rows.length + " entries";
+      el.generalBody.innerHTML = sortedRows.length ? sortedRows.map(item => `
+        <tr>
+          <td>${escapeHTML(item.date)}</td>
+          <td>${escapeHTML(item.source)}</td>
+          <td>${escapeHTML(item.reference)}</td>
+          <td>${escapeHTML(item.type)}</td>
+          <td>${escapeHTML(item.category)}</td>
+          <td>${escapeHTML(item.item)}</td>
+          <td class="money">${item.qty}</td>
+          <td class="money">${rupiah(item.amount)}</td>
+          <td>${escapeHTML(item.paymentMethod)}</td>
+          <td>${escapeHTML(item.notes)}</td>
+          <td class="row-actions">${deleteButton(item.section, item.id)}</td>
+        </tr>
+      `).join("") : emptyRow(11, "No cash flow entries yet.");
+    }
+
+    function renderSales() {
+      const rows = sortRows("sales", state.sales);
+      document.getElementById("salesCount").textContent = rows.length + " entries";
+      el.salesBody.innerHTML = rows.length ? rows.map(item => `
+        <tr>
+          <td>${escapeHTML(item.date)}</td>
+          <td>${escapeHTML(item.invoice)}</td>
+          <td>${escapeHTML(item.category)}</td>
+          <td>${escapeHTML(item.sku)}</td>
+          <td class="money">${item.qty}</td>
+          <td class="money">${rupiah(item.revenue)}</td>
+          <td class="money">${formatPercent(item.discount)}</td>
+          <td>${escapeHTML(item.discountContext)}</td>
+          <td class="money">${rupiah(item.cogs)}</td>
+          <td class="money">${rupiah(item.grossProfit)}</td>
+          <td>${escapeHTML(item.paymentMethod)}</td>
+          <td class="row-actions">${editButton("sales", item.id)} ${deleteButton("sales", item.id)}</td>
+        </tr>
+      `).join("") : emptyRow(12, "No sales entries yet.");
+      const totals = rows.reduce((total, item) => ({
+        qty: total.qty + numeric(item.qty),
+        revenue: total.revenue + numeric(item.revenue),
+        cogs: total.cogs + numeric(item.cogs),
+        grossProfit: total.grossProfit + numeric(item.grossProfit)
+      }), { qty: 0, revenue: 0, cogs: 0, grossProfit: 0 });
+      el.salesTotals.innerHTML = `
+        <tr>
+          <td colspan="4">Total</td>
+          <td class="money">${totals.qty}</td>
+          <td class="money">${rupiah(totals.revenue)}</td>
+          <td></td>
+          <td></td>
+          <td class="money">${rupiah(totals.cogs)}</td>
+          <td class="money">${rupiah(totals.grossProfit)}</td>
+          <td></td>
+          <td></td>
+        </tr>
+      `;
+    }
+
+    function renderExpenses() {
+      const rows = sortRows("expenses", state.expenses);
+      document.getElementById("expenseCount").textContent = rows.length + " entries";
+      el.expenseBody.innerHTML = rows.length ? rows.map(item => `
+        <tr>
+          <td>${escapeHTML(item.date)}</td>
+          <td>${escapeHTML(item.expense)}</td>
+          <td>${escapeHTML(item.category)}</td>
+          <td>${escapeHTML(item.vendor)}</td>
+          <td class="money">${rupiah(item.amount)}</td>
+          <td>${escapeHTML(item.costType)}</td>
+          <td>${escapeHTML(item.paymentMethod)}</td>
+          <td>${escapeHTML(item.notes)}</td>
+          <td class="row-actions">${editButton("expenses", item.id)} ${deleteButton("expenses", item.id)}</td>
+        </tr>
+      `).join("") : emptyRow(9, "No expenses entries yet.");
+      const totalAmount = rows.reduce((total, item) => total + numeric(item.amount), 0);
+      el.expenseTotals.innerHTML = `
+        <tr>
+          <td colspan="4">Total</td>
+          <td class="money">${rupiah(totalAmount)}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      `;
+    }
+
+    function renderOwnerDue() {
+      const year = el.ownerDueYearFilter.value || currentYear;
+      const dueRows = state.expenses
+        .filter(item => item.category === ownerDueCategory)
+        .filter(item => yearOf(item.date) === year)
+        .sort(byDateAsc);
+      const totalDue = dueRows.reduce((total, item) => total + numeric(item.amount), 0);
+      const totalRepaid = state.general
+        .filter(item => item.type === "Income")
+        .filter(item => item.category === ownerReimbursementCategory)
+        .filter(item => yearOf(item.date) === year)
+        .reduce((total, item) => total + numeric(item.amount), 0);
+      const remaining = totalDue - totalRepaid;
+
+      document.getElementById("ownerDueTotal").textContent = rupiah(totalDue);
+      document.getElementById("ownerRepaidTotal").textContent = rupiah(totalRepaid);
+      document.getElementById("ownerRemainingTotal").textContent = rupiah(remaining);
+      document.getElementById("ownerDueCount").textContent = dueRows.length;
+      el.ownerDueBody.innerHTML = dueRows.length ? dueRows.map(item => `
+        <tr>
+          <td>${escapeHTML(item.date)}</td>
+          <td>${escapeHTML(item.expense)}</td>
+          <td>${escapeHTML(item.vendor)}</td>
+          <td class="money">${rupiah(item.amount)}</td>
+          <td>${escapeHTML(item.paymentMethod)}</td>
+          <td>${escapeHTML(item.notes)}</td>
+          <td class="row-actions">${editButton("expenses", item.id)} ${deleteButton("expenses", item.id)}</td>
+        </tr>
+      `).join("") : emptyRow(7, "No owner reimbursement due entries yet.");
+    }
+
+    function renderInventory() {
+      const rows = sortRows("inventory", state.inventory);
+      document.getElementById("inventoryCount").textContent = rows.length + " entries";
+      el.inventoryBody.innerHTML = rows.length ? rows.map(item => `
+        <tr>
+          <td>${escapeHTML(item.date)}</td>
+          <td>${escapeHTML(item.supplier)}</td>
+          <td>${escapeHTML(item.category)}</td>
+          <td>${escapeHTML(item.source)}</td>
+          <td>${escapeHTML(item.itemType || "")}</td>
+          <td>${escapeHTML(item.itemCondition || "New-Sealed")}</td>
+          <td>${escapeHTML(item.sku)}</td>
+          <td>${escapeHTML(item.artistName)}</td>
+          <td class="money">${item.qty}</td>
+          <td class="money">${rupiah(item.unitCost)}</td>
+          <td class="money">${rupiah(item.totalCost)}</td>
+          <td class="money">${rupiah(inventoryCashflow(item))}</td>
+          <td>${escapeHTML(item.paymentMethod)}</td>
+          <td class="row-actions">${editButton("inventory", item.id)} ${deleteButton("inventory", item.id)}</td>
+        </tr>
+      `).join("") : emptyRow(14, "No inventory purchases yet.");
+      const totals = rows.reduce((total, item) => ({
+        qty: total.qty + numeric(item.qty),
+        unitCost: total.unitCost + numeric(item.unitCost),
+        totalCost: total.totalCost + numeric(item.totalCost),
+        cashflowImpact: total.cashflowImpact + inventoryCashflow(item)
+      }), { qty: 0, unitCost: 0, totalCost: 0, cashflowImpact: 0 });
+      el.inventoryTotals.innerHTML = `
+        <tr>
+          <td colspan="8">Total</td>
+          <td class="money">${totals.qty}</td>
+          <td class="money">${rupiah(totals.unitCost)}</td>
+          <td class="money">${rupiah(totals.totalCost)}</td>
+          <td class="money">${rupiah(totals.cashflowImpact)}</td>
+          <td></td>
+          <td></td>
+        </tr>
+      `;
+    }
+
+    function renderStock() {
+      const rows = sortRows("stock", state.inventoryStock);
+      document.getElementById("stockCount").textContent = rows.length + " entries";
+      el.stockBody.innerHTML = rows.length ? rows.map(item => `
+        <tr>
+          <td>${escapeHTML(item.sku)}</td>
+          <td>${escapeHTML(item.item)}</td>
+          <td>${escapeHTML(item.itemCondition || "New-Sealed")}</td>
+          <td>${escapeHTML(item.artist)}</td>
+          <td>${escapeHTML(item.title)}</td>
+          <td>${escapeHTML(item.source)}</td>
+          <td>${escapeHTML(item.acquisitionMonth)}</td>
+          <td class="money">${numeric(item.qty)}</td>
+          <td class="money">${rupiah(item.costBasis)}</td>
+          <td class="money">${rupiah(item.sellingPrice)}</td>
+          <td class="money">${rupiah(item.soldPrice)}</td>
+          <td class="money">${rupiah(item.grossProfit)}</td>
+          <td class="money">${formatMargin(item.margin)}</td>
+          <td class="row-actions">${editButton("inventoryStock", item.id)} ${deleteButton("inventoryStock", item.id)}</td>
+        </tr>
+      `).join("") : emptyRow(14, "No inventory stock recorded yet.");
+      const totals = rows.reduce((total, item) => ({
+        qty: total.qty + numeric(item.qty),
+        costBasis: total.costBasis + numeric(item.costBasis),
+        sellingPrice: total.sellingPrice + numeric(item.sellingPrice),
+        soldPrice: total.soldPrice + numeric(item.soldPrice),
+        grossProfit: total.grossProfit + numeric(item.grossProfit)
+      }), { qty: 0, costBasis: 0, sellingPrice: 0, soldPrice: 0, grossProfit: 0 });
+      const margin = totals.soldPrice > 0 ? totals.grossProfit / totals.soldPrice * 100 : 0;
+      el.stockTotals.innerHTML = `
+        <tr>
+          <td colspan="7">Total</td>
+          <td class="money">${totals.qty}</td>
+          <td class="money">${rupiah(totals.costBasis)}</td>
+          <td class="money">${rupiah(totals.sellingPrice)}</td>
+          <td class="money">${rupiah(totals.soldPrice)}</td>
+          <td class="money">${rupiah(totals.grossProfit)}</td>
+          <td class="money">${formatMargin(margin)}</td>
+          <td></td>
+        </tr>
+      `;
+    }
+
+    function renderPnl() {
+      const month = el.pnlMonth.value || currentMonth;
+      const sales = state.sales.filter(item => monthOf(item.date) === month);
+      const expenses = state.expenses.filter(item => monthOf(item.date) === month);
+      const inventory = state.inventory.filter(item => monthOf(item.date) === month && !isRawMaterialPurchase(item));
+      const revenue = sales.reduce((total, item) => total + numeric(item.revenue), 0);
+      const cogs = sales.reduce((total, item) => total + numeric(item.cogs), 0);
+      const gross = revenue - cogs;
+      const expenseTotal = expenses.reduce((total, item) => total + numeric(item.amount), 0);
+      const inventoryTotal = inventory.reduce((total, item) => total + inventoryCashflow(item), 0);
+      const net = gross - expenseTotal - inventoryTotal;
+
+      document.getElementById("pnlMonthLabel").textContent = month;
+      document.getElementById("pnlRevenue").textContent = rupiah(revenue);
+      document.getElementById("pnlCogs").textContent = rupiah(cogs);
+      document.getElementById("pnlGross").textContent = rupiah(gross);
+      document.getElementById("pnlExpenses").textContent = rupiah(expenseTotal + inventoryTotal);
+      document.getElementById("pnlNet").textContent = rupiah(net);
+      renderBars([
+        ["Revenue", revenue],
+        ["COGS", cogs],
+        ["Gross Profit", gross],
+        ["Expenses", expenseTotal],
+        ["Inventory", inventoryTotal],
+        ["Net Profit", net]
+      ]);
+    }
+
+    function renderBars(items) {
+      const max = Math.max(...items.map(([, value]) => Math.abs(value)), 1);
+      document.getElementById("pnlBars").innerHTML = items.map(([label, value]) => `
+        <div class="bar-row">
+          <span>${escapeHTML(label)}</span>
+          <span class="bar-track"><span class="bar-fill" style="width:${Math.max(2, Math.abs(value) / max * 100)}%"></span></span>
+          <span class="money">${rupiah(value)}</span>
+        </div>
+      `).join("");
+    }
+
+    function buildDashboardRows() {
+      const generalRows = state.general.map(item => ({
+        section: "general",
+        id: item.id,
+        date: item.date,
+        source: "General",
+        reference: item.invoice,
+        type: item.type,
+        category: item.category,
+        item: item.sku,
+        qty: item.qty,
+        amount: item.amount,
+        paymentMethod: item.paymentMethod,
+        notes: item.notes
+      }));
+
+      const salesRows = state.sales.flatMap(item => {
+        const rows = [{
+          section: "sales",
+          id: item.id,
+          date: item.date,
+          source: "Daily Sales",
+          reference: item.invoice,
+          type: "Income",
+          category: "Sales",
+          item: item.sku,
+          qty: item.qty,
+          amount: item.revenue,
+          paymentMethod: item.paymentMethod,
+          notes: [
+            "Revenue",
+            numeric(item.discount) ? `Discount: ${formatPercent(item.discount)}` : "",
+            item.discountContext ? `Context: ${item.discountContext}` : "",
+            `Gross profit: ${rupiah(item.grossProfit)}`
+          ].filter(Boolean).join(" / ")
+        }];
+        if (numeric(item.cogs) > 0) {
+          rows.push({
+            section: "sales",
+            id: item.id,
+            date: item.date,
+            source: "Daily Sales",
+            reference: item.invoice,
+            type: "Outcome",
+            category: "Sales COGS",
+            item: item.sku,
+            qty: item.qty,
+            amount: item.cogs,
+            paymentMethod: item.paymentMethod,
+            notes: "COGS from sales entry"
+          });
+        }
+        return rows;
+      });
+
+      const expenseRows = state.expenses.map(item => ({
+        section: "expenses",
+        id: item.id,
+        date: item.date,
+        source: "Expenses",
+        reference: item.vendor,
+        type: "Outcome",
+        category: item.category,
+        item: item.expense,
+        qty: "",
+        amount: item.amount,
+        paymentMethod: item.paymentMethod,
+        notes: [item.costType, item.notes].filter(Boolean).join(" / ")
+      }));
+
+      const inventoryRows = state.inventory.filter(item => !isRawMaterialPurchase(item)).map(item => ({
+        section: "inventory",
+        id: item.id,
+        date: item.date,
+        source: "Inventory Purchases",
+        reference: item.supplier,
+        type: "Outcome",
+        category: "Inventory",
+        item: [item.sku, item.artistName].filter(Boolean).join(" / "),
+        qty: item.qty,
+        amount: inventoryCashflow(item),
+        paymentMethod: item.paymentMethod,
+        notes: `Item type: ${item.itemType || "Vinyl"} / Source: ${item.source || "Business Purchase"} / Total cost: ${rupiah(item.totalCost)} / Unit cost: ${rupiah(item.unitCost)}`
+      }));
+
+      return [...generalRows, ...salesRows, ...expenseRows, ...inventoryRows];
+    }
+
+    function exportCSV() {
+      const rows = [
+        ["Section", "Date/Month", "Invoice/Supplier/Vendor", "Type", "Category/Source", "Item", "Item Condition", "Artist Name", "Title", "Qty", "Income", "Outcome", "Discount (%)", "Discount Context", "Cashflow Impact", "Cost Basis", "Selling Price", "Sold Price", "Gross Profit", "Margin (%)", "Fixed/Variable", "Payment Method", "Notes"],
+        ...[...state.general].sort(byDateAsc).map(item => ["General", item.date, item.invoice, item.type, item.category, item.sku, "", "", "", item.qty, item.type === "Income" ? item.amount : "", item.type === "Outcome" ? item.amount : "", "", "", "", "", "", "", "", "", "", item.paymentMethod, item.notes]),
+        ...[...state.sales].sort(byDateAsc).map(item => ["Sales", item.date, item.invoice, "Income", item.category, item.sku, "", "", "", item.qty, item.revenue, item.cogs, item.discount, item.discountContext, "", "", "", "", item.grossProfit, "", "", item.paymentMethod, "Gross profit: " + item.grossProfit]),
+        ...[...state.expenses].sort(byDateAsc).map(item => ["Expenses", item.date, item.vendor, "Outcome", item.category, item.expense, "", "", "", "", "", item.amount, "", "", "", "", "", "", "", "", item.costType, item.paymentMethod, item.notes]),
+        ...[...state.inventory].sort(byDateAsc).map(item => ["Inventory Purchase", item.date, item.supplier, "Outcome", item.source || "Business Purchase", item.itemType || "Vinyl", item.itemCondition || "New-Sealed", item.artistName || "", "SKU: " + item.sku, item.qty, "", item.totalCost, "", "", inventoryCashflow(item), "", "", "", "", "", "", item.paymentMethod, "Unit cost: " + item.unitCost]),
+        ...[...state.inventoryStock].sort((a, b) => String(a.acquisitionMonth).localeCompare(String(b.acquisitionMonth))).map(item => ["Inventory Stock", item.acquisitionMonth, "", "", item.source, item.item, item.itemCondition || "New-Sealed", item.artist, item.title, item.qty, "", "", "", "", "", item.costBasis, item.sellingPrice, item.soldPrice, item.grossProfit, formatMargin(item.margin), "", "", "SKU: " + item.sku])
+      ];
+      download("nixp-cashflow.csv", rows.map(row => row.map(cell => `"${String(cell ?? "").replace(/"/g, '""')}"`).join(",")).join("\n"), "text/csv;charset=utf-8");
+      download("nixp-cashflow-backup.json", JSON.stringify(state, null, 2), "application/json");
+    }
+
+    async function handleSectionExport(action, section) {
+      const data = getSectionExportData(section);
+      if (!data.rows.length) {
+        alert("No data available to export yet.");
+        return;
+      }
+      const filename = "nixp-" + data.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      if (action === "copy") {
+        await copyMatrix(data);
+        return;
+      }
+      if (action === "csv") {
+        download(filename + ".csv", matrixToCSV(data.rows), "text/csv;charset=utf-8");
+        return;
+      }
+      if (action === "txt") {
+        download(filename + ".txt", data.name + "\n\n" + matrixToMarkdown(data.rows), "text/plain;charset=utf-8");
+        return;
+      }
+      if (action === "jpg") {
+        exportMatrixJPEG(data.rows, data.name, filename + ".jpg");
+      }
+    }
+
+    function getSectionExportData(section) {
+      const names = {
+        dashboard: "Main Dashboard",
+        sales: "Daily Sales",
+        expenses: "Expenses",
+        ownerDue: "Owner Due",
+        inventory: "Inventory Purchases",
+        stock: "Inventory",
+        pnl: "Monthly P&L"
+      };
+      if (section === "pnl") return { name: names.pnl, rows: pnlExportRows() };
+      const table = document.querySelector("#" + section + "View table");
+      return { name: names[section] || "NIXP Export", rows: table ? tableToMatrix(table) : [] };
+    }
+
+    function tableToMatrix(table) {
+      const headerCells = Array.from(table.querySelectorAll("thead tr:last-child th"));
+      const header = expandCells(headerCells);
+      const includedIndexes = header.map((text, index) => text.toLowerCase() === "action" ? -1 : index).filter(index => index >= 0);
+      const rows = [includedIndexes.map(index => header[index] || "")];
+      table.querySelectorAll("tbody tr, tfoot tr").forEach(row => {
+        if (row.querySelector(".empty")) return;
+        const expanded = expandCells(Array.from(row.children));
+        rows.push(includedIndexes.map(index => expanded[index] || ""));
+      });
+      return rows.filter(row => row.some(cell => String(cell).trim()));
+    }
+
+    function expandCells(cells) {
+      const output = [];
+      cells.forEach(cell => {
+        const span = Number(cell.getAttribute("colspan")) || 1;
+        const text = cell.innerText.replace(/\s+/g, " ").trim();
+        output.push(text);
+        for (let index = 1; index < span; index += 1) output.push("");
+      });
+      return output;
+    }
+
+    function pnlExportRows() {
+      const rows = [["Monthly P&L Metric", "Value"]];
+      document.querySelectorAll("#pnlView .metric").forEach(metric => {
+        rows.push([
+          metric.querySelector("span")?.innerText.trim() || "",
+          metric.querySelector("strong")?.innerText.trim() || ""
+        ]);
+      });
+      rows.push(["", ""]);
+      rows.push(["Profit Structure", "Amount"]);
+      document.querySelectorAll("#pnlBars .bar-row").forEach(row => {
+        const labels = row.querySelectorAll("span");
+        rows.push([
+          labels[0]?.innerText.trim() || "",
+          labels[2]?.innerText.trim() || ""
+        ]);
+      });
+      return rows;
+    }
+
+    async function copyMatrix(data) {
+      const tsv = matrixToTSV(data.rows);
+      const html = `<table>${data.rows.map((row, rowIndex) => `<tr>${row.map(cell => rowIndex === 0 ? `<th>${escapeHTML(cell)}</th>` : `<td>${escapeHTML(cell)}</td>`).join("")}</tr>`).join("")}</table>`;
+      try {
+        if (window.ClipboardItem && navigator.clipboard?.write) {
+          await navigator.clipboard.write([new ClipboardItem({
+            "text/html": new Blob([html], { type: "text/html" }),
+            "text/plain": new Blob([tsv], { type: "text/plain" })
+          })]);
+        } else if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(tsv);
+        } else {
+          fallbackCopy(tsv);
+        }
+        el.saveStatus.textContent = "Copied " + data.name + " table";
+      } catch (error) {
+        fallbackCopy(tsv);
+        el.saveStatus.textContent = "Copied " + data.name + " table";
+      }
+    }
+
+    function fallbackCopy(text) {
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand("copy");
+      area.remove();
+    }
+
+    function matrixToTSV(rows) {
+      return rows.map(row => row.map(cell => String(cell ?? "").replace(/\t/g, " ")).join("\t")).join("\n");
+    }
+
+    function matrixToCSV(rows) {
+      return rows.map(row => row.map(cell => `"${String(cell ?? "").replace(/"/g, '""')}"`).join(",")).join("\n");
+    }
+
+    function matrixToMarkdown(rows) {
+      if (!rows.length) return "";
+      const header = rows[0];
+      const divider = header.map(() => "---");
+      return [header, divider, ...rows.slice(1)].map(row => "| " + row.map(cell => String(cell ?? "").replace(/\|/g, "/")).join(" | ") + " |").join("\n");
+    }
+
+    function exportMatrixJPEG(rows, title, filename) {
+      const padding = 18;
+      const rowHeight = 34;
+      const titleHeight = 52;
+      const columns = Math.max(...rows.map(row => row.length), 1);
+      const widths = Array.from({ length: columns }, (_, column) => {
+        const longest = Math.max(...rows.map(row => String(row[column] ?? "").length), 8);
+        return Math.min(230, Math.max(96, longest * 7 + 24));
+      });
+      const width = Math.min(6000, widths.reduce((total, value) => total + value, 0) + padding * 2);
+      const height = titleHeight + rows.length * rowHeight + padding;
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const context = canvas.getContext("2d");
+      context.fillStyle = "#f1f1f1";
+      context.fillRect(0, 0, width, height);
+      context.fillStyle = "#292929";
+      context.font = "700 20px Arial";
+      context.fillText(title, padding, 32);
+      let y = titleHeight;
+      rows.forEach((row, rowIndex) => {
+        let x = padding;
+        const isHeader = rowIndex === 0;
+        context.fillStyle = isHeader ? "#292929" : "#f1f1f1";
+        context.fillRect(padding, y, width - padding * 2, rowHeight);
+        context.strokeStyle = "#292929";
+        context.strokeRect(padding, y, width - padding * 2, rowHeight);
+        row.forEach((cell, column) => {
+          const cellWidth = widths[column] || 120;
+          context.strokeStyle = "#292929";
+          context.strokeRect(x, y, cellWidth, rowHeight);
+          context.fillStyle = isHeader ? "#f1f1f1" : "#292929";
+          context.font = isHeader ? "700 10px Arial" : "400 11px Arial";
+          context.fillText(trimForCanvas(context, String(cell ?? ""), cellWidth - 12), x + 7, y + 21);
+          x += cellWidth;
+        });
+        y += rowHeight;
+      });
+      canvas.toBlob(blob => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      }, "image/jpeg", 0.92);
+    }
+
+    function trimForCanvas(context, text, maxWidth) {
+      if (context.measureText(text).width <= maxWidth) return text;
+      let trimmed = text;
+      while (trimmed.length > 1 && context.measureText(trimmed + "...").width > maxWidth) {
+        trimmed = trimmed.slice(0, -1);
+      }
+      return trimmed + "...";
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const imported = JSON.parse(reader.result);
+          if (!imported.general || !imported.sales || !imported.expenses || !imported.inventory) {
+            throw new Error("Invalid backup");
+          }
+          state.general = imported.general;
+          state.sales = imported.sales;
+          state.expenses = imported.expenses;
+          state.inventory = imported.inventory;
+          state.inventoryStock = Array.isArray(imported.inventoryStock) ? imported.inventoryStock : [];
+          commitState();
+          el.saveStatus.textContent = "Imported backup";
+        } catch (error) {
+          alert("Could not import this JSON backup.");
+        } finally {
+          event.target.value = "";
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function clearData() {
+      if (!confirm("Clear all NIXP cash flow data from this browser? Export first if you need a backup.")) return;
+      state.general = [];
+      state.sales = [];
+      state.expenses = [];
+      state.inventory = [];
+      state.inventoryStock = [];
+      commitState();
+    }
+
+    function logout() {
+      const form = document.createElement("form");
+      form.method = "post";
+      form.action = "/logout";
+      document.body.appendChild(form);
+      form.submit();
+    }
+
+    function download(filename, content, type) {
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function byDateAsc(a, b) {
+      const dateOrder = String(a.date).localeCompare(String(b.date));
+      if (dateOrder !== 0) return dateOrder;
+      return String(a.id || "").localeCompare(String(b.id || ""));
+    }
+
+    function inventoryCashflow(item) {
+      return item && item.cashflowImpact !== undefined ? numeric(item.cashflowImpact) : numeric(item.totalCost);
+    }
+
+    function formatMargin(value) {
+      return Number.isFinite(Number(value)) ? Number(value).toFixed(1) + "%" : "0.0%";
+    }
+
+    function formatPercent(value) {
+      return Number.isFinite(Number(value)) ? Number(value).toFixed(2).replace(/\.00$/, "") + "%" : "0%";
+    }
+
+    function deleteButton(section, id) {
+      return `<button class="link-button" type="button" data-delete="${section}:${id}">Delete</button>`;
+    }
+
+    function editButton(section, id) {
+      return `<button class="link-button" type="button" data-edit="${section}:${id}">Edit</button>`;
+    }
+
+    function emptyRow(columns, message) {
+      return `<tr><td colspan="${columns}" class="empty">${message}</td></tr>`;
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[char]));
+    }
+  </script>
+</body>
+</html>

@@ -2,21 +2,51 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
+  "functions": {
+    "api/finance-app.js": {
+      "includeFiles": "apps/finance/**"
+    },
+    "api/state.js": {
+      "includeFiles": "apps/finance/finance-state.json"
+    },
+    "api/migrate.js": {
+      "includeFiles": "apps/finance/finance-state.json"
+    }
+  },
   "redirects": [
     {
       "source": "/",
       "has": [{ "type": "host", "value": "admin.nix-p.com" }],
       "destination": "/admin",
       "permanent": false
-    },
-    {
-      "source": "/",
-      "has": [{ "type": "host", "value": "finance.nix-p.com" }],
-      "destination": "/finance",
-      "permanent": false
     }
   ],
   "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "finance.nix-p.com" }],
+      "destination": "/api/finance-app?financePath=/"
+    },
+    {
+      "source": "/login",
+      "has": [{ "type": "host", "value": "finance.nix-p.com" }],
+      "destination": "/api/finance-app?financePath=/login"
+    },
+    {
+      "source": "/logout",
+      "has": [{ "type": "host", "value": "finance.nix-p.com" }],
+      "destination": "/api/finance-app?financePath=/logout"
+    },
+    {
+      "source": "/index.html",
+      "has": [{ "type": "host", "value": "finance.nix-p.com" }],
+      "destination": "/api/finance-app?financePath=/"
+    },
+    {
+      "source": "/finance",
+      "has": [{ "type": "host", "value": "finance.nix-p.com" }],
+      "destination": "/api/finance-app?financePath=/"
+    },
     {
       "source": "/:path*",
       "destination": "/index.html"
