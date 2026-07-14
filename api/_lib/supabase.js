@@ -1,4 +1,5 @@
 const TABLES = ["products", "artists", "collections", "requests", "orders", "cashflow", "inventory"];
+const REQUIRED_STORE_ARRAYS = ["products", "artists", "collections", "requests", "orders", "cashflow", "inventory"];
 
 export function isSupabaseConfigured({ requireServiceRole = false } = {}) {
   return Boolean(
@@ -69,6 +70,8 @@ export async function verifiedPrices(ids = []) {
 }
 
 export async function saveStore(store) {
+  validateStore(store);
+  await backupStore("admin-store", store);
   const rowsByTable = {
     products: (store.products || []).map(toProductRow),
     artists: (store.artists || []).map(toRawRow),
@@ -79,7 +82,6 @@ export async function saveStore(store) {
     inventory: (store.inventory || []).map(toRawRow)
   };
   for (const table of TABLES) await upsert(table, rowsByTable[table]);
-  for (const table of TABLES) await deleteMissingRows(table, rowsByTable[table]);
 }
 
 async function upsert(table, rows) {
@@ -99,12 +101,22 @@ export async function upsertRawRows(table, items) {
   return upsert(table, rows);
 }
 
-async function deleteMissingRows(table, rows) {
-  const ids = rows.map((row) => String(row.id)).filter(Boolean);
-  const filter = ids.length
-    ? `id=not.in.(${ids.map((id) => `"${id.replaceAll('"', '\\"')}"`).join(",")})`
-    : "id=not.is.null";
-  return supabaseFetch(`${table}?${filter}`, { method: "DELETE", service: true, prefer: "return=minimal" });
+export async function backupStore(source, raw) {
+  const id = `${source}-${new Date().toISOString().replace(/[^0-9]/g, "")}-${Math.random().toString(36).slice(2, 8)}`;
+  return supabaseFetch("store_backups", {
+    method: "POST",
+    service: true,
+    body: [{ id, source, raw }],
+    prefer: "return=minimal"
+  });
+}
+
+function validateStore(store) {
+  for (const key of REQUIRED_STORE_ARRAYS) {
+    if (!Array.isArray(store?.[key])) {
+      throw new Error(`Store save blocked: missing ${key} array.`);
+    }
+  }
 }
 
 function fromRawRow(row) {

@@ -1,4 +1,5 @@
 import { json } from "./_lib/auth.js";
+import { readFinanceState, writeFinanceState } from "./_lib/financeState.js";
 import { isSupabaseConfigured, supabaseFetch, upsertRawRows } from "./_lib/supabase.js";
 
 export default async function handler(req, res) {
@@ -26,6 +27,7 @@ export default async function handler(req, res) {
     const order = buildOrder(body.customer || {}, lines, total);
     await upsertRawRows("orders", order);
     await Promise.all(lines.map((line) => reserveStock(line)));
+    await appendFinanceSale(order);
 
     return json(res, 200, {
       ok: true,
@@ -40,6 +42,32 @@ export default async function handler(req, res) {
     const status = Number(error?.statusCode || 500);
     return json(res, status, { ok: false, error: error instanceof Error ? error.message : "Checkout failed." });
   }
+}
+
+async function appendFinanceSale(order) {
+  const state = await readFinanceState();
+  const existingSales = Array.isArray(state.sales) ? state.sales : [];
+  if (existingSales.some((sale) => sale.invoice === order.id)) return;
+  await writeFinanceState({
+    ...state,
+    sales: [
+      ...existingSales,
+      {
+        id: `sale-${order.id}`,
+        date: order.date,
+        invoice: order.id,
+        category: "Retail",
+        sku: order.lineItems.map((item) => item.sku).join(", "),
+        qty: order.lineItems.reduce((sum, item) => sum + Number(item.quantity || 0), 0),
+        revenue: order.total,
+        discount: 0,
+        discountContext: "",
+        cogs: 0,
+        grossProfit: order.total,
+        paymentMethod: "Pending"
+      }
+    ]
+  });
 }
 
 function parseBody(body) {

@@ -1,8 +1,5 @@
-import { readFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
-import { join } from "node:path";
-
 const STATE_KEY = "main";
+const EMPTY_FINANCE_STATE = { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
 
 export function isFinanceState(value) {
   return (
@@ -15,20 +12,41 @@ export function isFinanceState(value) {
 }
 
 export async function readFinanceState() {
-  const remote = await readRemoteState().catch(() => null);
+  const remote = await readRemoteState().catch((error) => {
+    if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) throw error;
+    return null;
+  });
   if (isFinanceState(remote)) return normalizeFinanceState(remote);
-  return readSeedState();
+  return normalizeFinanceState(EMPTY_FINANCE_STATE);
 }
 
 export async function writeFinanceState(state) {
   if (!isFinanceState(state)) throw new Error("Invalid finance state.");
   const normalized = normalizeFinanceState(state);
+  await backupFinanceState(normalized);
   await supabaseFetch("finance_state?on_conflict=key", {
     method: "POST",
     body: [{ key: STATE_KEY, state: normalized }],
     prefer: "resolution=merge-duplicates,return=minimal"
   });
   return normalized;
+}
+
+async function backupFinanceState(nextState) {
+  const previousState = await readRemoteState().catch(() => null);
+  const id = `finance-state-${new Date().toISOString().replace(/[^0-9]/g, "")}-${Math.random().toString(36).slice(2, 8)}`;
+  return supabaseFetch("store_backups", {
+    method: "POST",
+    body: [{
+      id,
+      source: "finance-state",
+      raw: {
+        previous: isFinanceState(previousState) ? normalizeFinanceState(previousState) : null,
+        next: nextState
+      }
+    }],
+    prefer: "return=minimal"
+  });
 }
 
 export function normalizeFinanceState(state) {
@@ -44,13 +62,6 @@ export function normalizeFinanceState(state) {
 async function readRemoteState() {
   const rows = await supabaseFetch(`finance_state?select=state&key=eq.${STATE_KEY}&limit=1`);
   return rows?.[0]?.state || null;
-}
-
-async function readSeedState() {
-  const seedPath = join(process.cwd(), "apps", "finance", "finance-state.json");
-  if (!existsSync(seedPath)) return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
-  const seed = JSON.parse(await readFile(seedPath, "utf8"));
-  return normalizeFinanceState(seed);
 }
 
 async function supabaseFetch(path, options = {}) {

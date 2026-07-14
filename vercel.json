@@ -4,13 +4,7 @@
   "cleanUrls": true,
   "functions": {
     "api/finance-app.js": {
-      "includeFiles": "apps/finance/**"
-    },
-    "api/state.js": {
-      "includeFiles": "apps/finance/finance-state.json"
-    },
-    "api/migrate.js": {
-      "includeFiles": "apps/finance/finance-state.json"
+      "includeFiles": "apps/finance/index.html"
     }
   },
   "redirects": [
