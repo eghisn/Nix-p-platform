@@ -80,7 +80,7 @@ export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverl
         <a href="/contact" data-link>Contact</a>
       </nav>
       <nav class="footer-right" aria-label="Social links">
-        <a href="https://www.instagram.com/nixp" aria-label="Instagram">
+        <a href="https://www.instagram.com/nixp.archive/?hl=en" aria-label="Instagram">
           <svg aria-hidden="true" viewBox="0 0 24 24">
             <rect x="4" y="4" width="16" height="16" rx="4"></rect>
             <circle cx="12" cy="12" r="3.5"></circle>
