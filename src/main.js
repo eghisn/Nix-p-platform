@@ -16,6 +16,8 @@ const state = {
   cart: JSON.parse(localStorage.getItem("nixp-cart") || "[]"),
   requests: [],
   cartOpen: false,
+  checkoutMessage: "",
+  checkoutTone: "",
   searchOpen: false,
   selectedSizes: {},
   zoomedProductId: null,
@@ -511,6 +513,24 @@ async function cartPage() {
           : `<p class="empty-state">Your cart is empty.</p>`
       }
       <div class="cart-total"><span>Total</span><strong>${money.format(total)}</strong></div>
+      ${
+        rows.length
+          ? `
+            <form class="checkout-form" data-checkout-form>
+              <div class="admin-form-grid">
+                ${input("name", "Name")}
+                ${input("email", "Email", "", "name@email.com", "email")}
+                ${input("whatsapp", "WhatsApp")}
+                <label class="admin-form-span">Notes<textarea name="notes" rows="3" placeholder="Delivery, pickup, or payment notes"></textarea></label>
+              </div>
+              <div class="admin-form-actions">
+                <button class="button button-dark" type="submit">Submit order</button>
+                <p class="admin-form-note" data-tone="${escapeAttr(state.checkoutTone)}">${escapeHtml(state.checkoutMessage)}</p>
+              </div>
+            </form>
+          `
+          : ""
+      }
     </section>
   `;
 }
@@ -1527,6 +1547,43 @@ function bindEvents() {
       localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
       render();
     });
+  });
+
+  document.querySelector("[data-checkout-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const customer = Object.fromEntries(new FormData(form).entries());
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    state.checkoutMessage = "Verifying official prices...";
+    state.checkoutTone = "";
+    await render();
+    try {
+      const counts = state.cart.reduce((map, id) => {
+        map.set(id, (map.get(id) || 0) + 1);
+        return map;
+      }, new Map());
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          items: [...counts.entries()].map(([id, quantity]) => ({ id, quantity })),
+          customer
+        })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Checkout failed.");
+      state.cart = [];
+      localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
+      state.checkoutMessage = `Order ${payload.order.id} submitted at ${money.format(payload.order.total)}.`;
+      state.checkoutTone = "success";
+      await adminStore.refresh();
+      await render();
+    } catch (error) {
+      state.checkoutMessage = error instanceof Error ? error.message : "Checkout failed.";
+      state.checkoutTone = "error";
+      await render();
+    }
   });
 
   document.querySelector("[data-admin-new-product]")?.addEventListener("click", () => {

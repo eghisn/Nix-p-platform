@@ -1690,6 +1690,18 @@ tr:last-child td {
   gap: 14px;
 }
 
+.checkout-form {
+  display: grid;
+  gap: 18px;
+  border-top: 1px solid var(--line);
+  margin-top: 18px;
+  padding-top: 24px;
+}
+
+.admin-form-span {
+  grid-column: 1 / -1;
+}
+
 .cart-row {
   display: grid;
   grid-template-columns: 180px 1fr 150px;

@@ -11,7 +11,7 @@ function apiKey({ service = false } = {}) {
   return service ? process.env.SUPABASE_SERVICE_ROLE_KEY : process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY;
 }
 
-async function supabaseFetch(path, options = {}) {
+export async function supabaseFetch(path, options = {}) {
   const key = apiKey({ service: options.service });
   if (!process.env.SUPABASE_URL || !key) {
     throw new Error("Supabase runtime environment variables are not configured.");
@@ -90,6 +90,13 @@ async function upsert(table, rows) {
     service: true,
     prefer: "resolution=merge-duplicates,return=minimal"
   });
+}
+
+export async function upsertRawRows(table, items) {
+  if (!TABLES.includes(table)) throw new Error("Unsupported table.");
+  const rows = (Array.isArray(items) ? items : [items]).map(toRawRow);
+  if (!rows.length) return [];
+  return upsert(table, rows);
 }
 
 async function deleteMissingRows(table, rows) {
