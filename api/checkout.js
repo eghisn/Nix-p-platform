@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    const body = parseBody(req.body);
     if (containsClientPrice(body)) {
       return json(res, 400, { ok: false, error: "Checkout prices must be verified by the server." });
     }
@@ -37,7 +37,18 @@ export default async function handler(req, res) {
       }
     });
   } catch (error) {
-    return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Checkout failed." });
+    const status = Number(error?.statusCode || 500);
+    return json(res, status, { ok: false, error: error instanceof Error ? error.message : "Checkout failed." });
+  }
+}
+
+function parseBody(body) {
+  try {
+    return typeof body === "string" ? JSON.parse(body || "{}") : body || {};
+  } catch {
+    const error = new Error("Invalid checkout payload.");
+    error.statusCode = 400;
+    throw error;
   }
 }
 
