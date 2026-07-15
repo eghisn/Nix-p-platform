@@ -52,7 +52,7 @@ export async function loadStore({ privateScope = false } = {}) {
   ]);
   return {
     version: "supabase-live-2026-07-13",
-    products: products.map(fromProductRow),
+    products: products.map((row) => fromProductRow(row, { privateScope })),
     artists: artists.map(fromRawRow),
     collections: collections.map(fromRawRow),
     requests: requests.map(fromRawRow),
@@ -123,9 +123,10 @@ function fromRawRow(row) {
   return row.raw || row;
 }
 
-function fromProductRow(row) {
-  return {
-    ...(row.raw || {}),
+function fromProductRow(row, { privateScope = false } = {}) {
+  const { shipping, ...raw } = row.raw || {};
+  const product = {
+    ...raw,
     id: row.id,
     sku: row.sku,
     title: row.title,
@@ -153,6 +154,8 @@ function fromProductRow(row) {
     visibility: row.visibility,
     updatedAt: row.updated_at
   };
+  if (privateScope) product.shipping = shipping || null;
+  return product;
 }
 
 function toRawRow(item) {

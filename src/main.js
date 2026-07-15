@@ -1030,6 +1030,7 @@ async function adminProductsPage({ embedded = false } = {}) {
           ${input("tags", "Tags", product.tags?.join(", ") || "", "new, vinyl, jakarta")}
           ${input("relatedArtists", "Related artists", product.relatedArtists?.join(", ") || "", "SOPHIE, FKA twigs, Bjork")}
           ${input("details", "Details", product.details?.join(", ") || "", "Format, condition, notes")}
+          ${shippingAttributeFields(product)}
           ${select("publishStatus", "Status", ["Published", "Draft", "Archived"], product.publishStatus || "Published")}
           ${select("visibility", "Visibility", ["Public", "Hidden"], product.visibility || "Public")}
         </div>
@@ -1395,6 +1396,29 @@ function input(name, label, value = "", placeholder = "", type = "text") {
     <label>${label}
       <input name="${name}" type="${type}" value="${escapeAttr(value)}" placeholder="${placeholder}" />
     </label>
+  `;
+}
+
+function shippingAttributeFields(product = {}) {
+  const shipping = product.shipping || {};
+  return `
+    <fieldset class="admin-size-fieldset admin-form-span">
+      <legend>Shipping attributes</legend>
+      <div class="admin-size-grid">
+        ${input("shippingWeightGrams", "Weight (grams)", shipping.weightGrams ?? "", "Measured packed item weight", "number")}
+        ${input("shippingLengthCm", "Length (cm)", shipping.lengthCm ?? "", "Measured package length", "number")}
+        ${input("shippingWidthCm", "Width (cm)", shipping.widthCm ?? "", "Measured package width", "number")}
+        ${input("shippingHeightCm", "Height (cm)", shipping.heightCm ?? "", "Measured package height", "number")}
+      </div>
+      <label>Measurement status
+        <select name="shippingStatus">
+          ${["needs_measurement", "verified", "format_reference"].map((status) => `<option ${status === (shipping.status || "needs_measurement") ? "selected" : ""}>${status}</option>`).join("")}
+        </select>
+      </label>
+      <label>Measurement source
+        <input name="shippingSource" value="${escapeAttr(shipping.source || "")}" placeholder="Scale / ruler / official product page URL" />
+      </label>
+    </fieldset>
   `;
 }
 

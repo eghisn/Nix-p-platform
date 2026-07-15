@@ -41,12 +41,32 @@ function withDefaults(product) {
     collection: product.collection || product.label || "",
     color: product.color || "",
     material: product.material || "",
-    qty: Number(product.qty ?? 1)
+    qty: Number(product.qty ?? 1),
+    shipping: normalizeShipping(product.shipping)
   };
 }
 
 function normalizeList(value) {
   return Array.isArray(value) ? value.map((item) => String(item || "").trim()).filter(Boolean) : [];
+}
+
+function nullableNumber(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? Math.max(0, parsed) : null;
+}
+
+function normalizeShipping(shipping = {}) {
+  const data = shipping || {};
+  return {
+    weightGrams: nullableNumber(data.weightGrams),
+    lengthCm: nullableNumber(data.lengthCm),
+    widthCm: nullableNumber(data.widthCm),
+    heightCm: nullableNumber(data.heightCm),
+    status: data.status || "needs_measurement",
+    source: String(data.source || "").trim(),
+    updatedAt: data.updatedAt || ""
+  };
 }
 
 function hasHomeSlideSort(product) {
@@ -451,6 +471,15 @@ export const adminStore = {
       sizes: isProductCategory ? collectSizes(data) : existing?.sizes || [],
       description: data.description?.trim() || "",
       qty: Math.max(0, Number(data.qty ?? 1) || 0),
+      shipping: normalizeShipping({
+        weightGrams: data.shippingWeightGrams,
+        lengthCm: data.shippingLengthCm,
+        widthCm: data.shippingWidthCm,
+        heightCm: data.shippingHeightCm,
+        status: data.shippingStatus || existing?.shipping?.status || "needs_measurement",
+        source: data.shippingSource?.trim() || existing?.shipping?.source || "",
+        updatedAt: today()
+      }),
       publishStatus: data.publishStatus || "Published",
       visibility: data.visibility || "Public",
       updatedAt: today()
