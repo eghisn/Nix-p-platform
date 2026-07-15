@@ -30,7 +30,7 @@
       "details": [],
       "sizes": [],
       "description": "LATTICE CAP - COLD METAL BREATHES TOO POLO CAP IN BLACK\n\n\nCOLOR: BLACK\nMATERIAL: 100% COTTON\nLATTICE ART EMBROIDERED ON FRONT\nADJUSTABLE BACK STRAP.",
-      "qty": 10
+      "qty": 1
     },
     {
       "publishStatus": "Published",
@@ -84,7 +84,7 @@
         }
       ],
       "description": "COLD METAL BREATHES TOO BLACK T-SHIRT\n16s 320GSM\n\n\nCOLD METAL BREATHES TOO ART SCREENPRINTED ON FRONT",
-      "qty": 20
+      "qty": 1
     },
     {
       "publishStatus": "Published",
@@ -138,7 +138,7 @@
         }
       ],
       "description": "",
-      "qty": 6
+      "qty": 1
     },
     {
       "publishStatus": "Published",
@@ -191,7 +191,7 @@
         }
       ],
       "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
-      "qty": 15
+      "qty": 1
     },
     {
       "publishStatus": "Published",
@@ -248,7 +248,7 @@
         }
       ],
       "description": "PREFORM RED T-SHIRT\n20s 200GSM\n\nPREFORM ART SCREENPRINTED ON FRONT",
-      "qty": 21
+      "qty": 1
     },
     {
       "publishStatus": "Published",
@@ -2450,7 +2450,8 @@
       "material": "",
       "images": [
         "/public/nixp-product-example-paper.png"
-      ]
+      ],
+      "qty": 1
     },
     {
       "publishStatus": "Published",

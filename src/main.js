@@ -14,7 +14,7 @@ const state = {
   recordsFilter: "All",
   homeCollectionFilter: "recent-releases",
   apparelFilter: "All Apparel",
-  cart: JSON.parse(localStorage.getItem("nixp-cart") || "[]"),
+  cart: readCart(),
   requests: [],
   cartOpen: false,
   checkoutMessage: "",
@@ -39,6 +39,32 @@ const state = {
     preview: "artist"
   }
 };
+
+function readCart() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem("nixp-cart") || "[]");
+    if (!Array.isArray(parsed)) return [];
+    return parsed.map((id) => String(id || "").trim()).filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+function persistCart() {
+  localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
+}
+
+function cartItemQuantity(id) {
+  return state.cart.filter((itemId) => itemId === id).length;
+}
+
+function setCartItemQuantity(id, quantity) {
+  const cleanId = String(id || "").trim();
+  const cleanQuantity = Math.max(0, Math.floor(Number(quantity) || 0));
+  state.cart = state.cart.filter((itemId) => itemId !== cleanId);
+  state.cart.push(...Array.from({ length: cleanQuantity }, () => cleanId));
+  persistCart();
+}
 
 const homeCollectionOptions = [
   ["recent-releases", "Recent Releases"],
@@ -563,6 +589,7 @@ async function cartPage() {
                   <article class="cart-row">
                     <span>${row.product.artist}</span>
                     <strong>${row.product.title} <small>x${row.quantity}</small></strong>
+                    ${cartQuantityControl(row)}
                     <span>${money.format(row.lineTotal)}</span>
                   </article>
                 `
@@ -602,23 +629,45 @@ async function cartSummary() {
   const serverPrices = await adminStore.verifyPrices([...counts.keys()]);
   const priceById = new Map(serverPrices.map((item) => [item.id, Number(item.price || 0)]));
   const rows = [...counts.entries()]
-    .map(([id, quantity]) => {
+    .map(([id, requestedQuantity]) => {
       const product = products.find((item) => item.id === id);
       const price = priceById.has(id) ? priceById.get(id) : product?.price;
+      const stock = Math.max(0, Math.floor(Number(product?.qty ?? 1) || 0));
+      const quantity = Math.min(requestedQuantity, stock);
       return product
         ? {
             id,
             product: { ...product, price },
+            stock,
             quantity,
             lineTotal: price * quantity
           }
         : null;
     })
-    .filter(Boolean);
+    .filter((row) => row && row.quantity > 0);
+  const nextCart = rows.flatMap((row) => Array.from({ length: row.quantity }, () => row.id));
+  if (nextCart.join("|") !== state.cart.join("|")) {
+    state.cart = nextCart;
+    persistCart();
+  }
   return {
     rows,
     total: rows.reduce((sum, row) => sum + row.lineTotal, 0)
   };
+}
+
+function cartQuantityControl(row) {
+  const max = Math.max(0, Number(row.stock || 0));
+  const decreaseDisabled = row.quantity <= 1 ? "disabled" : "";
+  const increaseDisabled = row.quantity >= max ? "disabled" : "";
+  return `
+    <div class="cart-quantity" aria-label="Quantity for ${escapeAttr(row.product.title)}">
+      <button type="button" data-cart-quantity-step="${row.id}" data-delta="-1" ${decreaseDisabled}>-</button>
+      <input type="number" min="1" max="${max}" value="${row.quantity}" data-cart-quantity="${row.id}" aria-label="Quantity" />
+      <button type="button" data-cart-quantity-step="${row.id}" data-delta="1" ${increaseDisabled}>+</button>
+      <small>${max} available</small>
+    </div>
+  `;
 }
 
 async function cartDrawer() {
@@ -643,6 +692,7 @@ async function cartDrawer() {
                           <strong>${row.product.title}</strong>
                           <span>${row.product.format} / ${row.product.artist}</span>
                           <small>${row.quantity} x ${money.format(row.product.price)}</small>
+                          ${cartQuantityControl(row)}
                         </div>
                         <button type="button" aria-label="Remove ${row.product.title}" data-remove-cart="${row.id}">Remove</button>
                       </article>
@@ -901,7 +951,8 @@ async function adminProductsPage({ embedded = false } = {}) {
       item.condition,
       item.category,
       item.publishStatus,
-      item.price
+      item.price,
+      item.qty
     ]),
     state.adminSort.products,
     {
@@ -912,6 +963,7 @@ async function adminProductsPage({ embedded = false } = {}) {
       category: (item) => item.category,
       format: (item) => item.format,
       condition: (item) => item.condition || "",
+      qty: (item) => Number(item.qty || 0),
       price: (item) => item.price,
       status: (item) => item.publishStatus,
       updated: (item) => item.updatedAt || ""
@@ -953,7 +1005,7 @@ async function adminProductsPage({ embedded = false } = {}) {
           ${input("price", "Price IDR", product.price || "", "640000", "number")}
           ${input("year", "Year", product.year || new Date().getFullYear(), "2026", "number")}
           ${input("label", "Label", product.label || "", "NIXP Selection")}
-          ${input("qty", "Quantity", product.qty || 1, "1", "number")}
+          ${input("qty", "Quantity", product.qty ?? 1, "1", "number")}
           ${input("tags", "Tags", product.tags?.join(", ") || "", "new, vinyl, jakarta")}
           ${input("relatedArtists", "Related artists", product.relatedArtists?.join(", ") || "", "SOPHIE, FKA twigs, Bjork")}
           ${input("details", "Details", product.details?.join(", ") || "", "Format, condition, notes")}
@@ -982,6 +1034,7 @@ async function adminProductsPage({ embedded = false } = {}) {
           ["category", "Category"],
           ["format", "Format"],
           ["condition", "Condition"],
+          ["qty", "Quantity"],
           ["price", "Selling price"],
           ["updated:desc", "Updated newest"],
           ["updated", "Updated oldest"],
@@ -996,6 +1049,7 @@ async function adminProductsPage({ embedded = false } = {}) {
             sortHeader("products", "category", "Category"),
             sortHeader("products", "format", "Format"),
             sortHeader("products", "condition", "Condition"),
+            sortHeader("products", "qty", "Quantity"),
             sortHeader("products", "price", "Selling Price"),
             sortHeader("products", "updated", "Updated"),
             "Actions"
@@ -1007,6 +1061,7 @@ async function adminProductsPage({ embedded = false } = {}) {
             escapeHtml(item.category || "-"),
             item.displayFormat || item.format,
             item.condition || "-",
+            Number(item.qty || 0).toString(),
             money.format(item.price || 0),
             item.updatedAt || "-",
             `<button class="link-button" type="button" data-admin-edit-product="${item.id}">Edit</button>
@@ -1672,19 +1727,42 @@ function bindEvents() {
   });
 
   document.querySelectorAll("[data-add-cart]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.cart.push(button.dataset.addCart);
-      localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
+    button.addEventListener("click", async () => {
+      const product = await catalogService.getProduct(button.dataset.addCart);
+      const stock = Math.max(0, Math.floor(Number(product?.qty ?? 1) || 0));
+      const currentQuantity = cartItemQuantity(button.dataset.addCart);
+      if (stock > 0 && currentQuantity < stock) {
+        state.cart.push(button.dataset.addCart);
+        persistCart();
+      }
       state.cartOpen = true;
+      render();
+    });
+  });
+
+  document.querySelectorAll("[data-cart-quantity-step]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.cartQuantityStep;
+      const input = document.querySelector(`[data-cart-quantity="${CSS.escape(id)}"]`);
+      const max = Math.max(1, Number(input?.max || 1));
+      const nextQuantity = Math.min(max, Math.max(1, cartItemQuantity(id) + Number(button.dataset.delta || 0)));
+      setCartItemQuantity(id, nextQuantity);
+      render();
+    });
+  });
+
+  document.querySelectorAll("[data-cart-quantity]").forEach((input) => {
+    input.addEventListener("change", () => {
+      const max = Math.max(1, Number(input.max || 1));
+      const nextQuantity = Math.min(max, Math.max(1, Math.floor(Number(input.value) || 1)));
+      setCartItemQuantity(input.dataset.cartQuantity, nextQuantity);
       render();
     });
   });
 
   document.querySelectorAll("[data-remove-cart]").forEach((button) => {
     button.addEventListener("click", () => {
-      const index = state.cart.indexOf(button.dataset.removeCart);
-      if (index >= 0) state.cart.splice(index, 1);
-      localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
+      setCartItemQuantity(button.dataset.removeCart, 0);
       render();
     });
   });
@@ -1699,22 +1777,19 @@ function bindEvents() {
     state.checkoutTone = "";
     await render();
     try {
-      const counts = state.cart.reduce((map, id) => {
-        map.set(id, (map.get(id) || 0) + 1);
-        return map;
-      }, new Map());
+      const { rows } = await cartSummary();
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-          items: [...counts.entries()].map(([id, quantity]) => ({ id, quantity })),
+          items: rows.map((row) => ({ id: row.id, quantity: row.quantity })),
           customer
         })
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(payload.error || "Checkout failed.");
       state.cart = [];
-      localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
+      persistCart();
       state.checkoutMessage = `Order ${payload.order.id} submitted at ${money.format(payload.order.total)}.`;
       state.checkoutTone = "success";
       await adminStore.refresh();

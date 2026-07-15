@@ -40,7 +40,8 @@ function withDefaults(product) {
     homeSlideSort: hasHomeSlideSort(product) ? Number(product.homeSlideSort) : null,
     collection: product.collection || product.label || "",
     color: product.color || "",
-    material: product.material || ""
+    material: product.material || "",
+    qty: Number(product.qty ?? 1)
   };
 }
 
@@ -449,7 +450,7 @@ export const adminStore = {
       details: splitList(data.details),
       sizes: isProductCategory ? collectSizes(data) : existing?.sizes || [],
       description: data.description?.trim() || "",
-      qty: Number(data.qty || 1),
+      qty: Math.max(0, Number(data.qty ?? 1) || 0),
       publishStatus: data.publishStatus || "Published",
       visibility: data.visibility || "Public",
       updatedAt: today()

@@ -1801,7 +1801,7 @@ tr:last-child td {
 
 .cart-row {
   display: grid;
-  grid-template-columns: 180px 1fr 150px;
+  grid-template-columns: 180px 1fr 150px 150px;
   gap: 4px 18px;
   align-items: center;
   border-top: 1px solid var(--line);
@@ -1811,6 +1811,56 @@ tr:last-child td {
 .cart-row small {
   color: var(--muted);
   font-size: 14px;
+}
+
+.cart-quantity {
+  display: grid;
+  grid-template-columns: 32px 58px 32px;
+  gap: 6px;
+  align-items: center;
+  justify-content: start;
+}
+
+.cart-quantity button,
+.cart-quantity input {
+  width: 100%;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 760;
+  text-align: center;
+}
+
+.cart-quantity button {
+  cursor: pointer;
+}
+
+.cart-quantity button:disabled {
+  cursor: not-allowed;
+  color: var(--muted);
+  opacity: 0.42;
+}
+
+.cart-quantity input {
+  -moz-appearance: textfield;
+}
+
+.cart-quantity input::-webkit-outer-spin-button,
+.cart-quantity input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.cart-quantity small {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .cart-total {
