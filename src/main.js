@@ -12,6 +12,7 @@ const money = new Intl.NumberFormat("id-ID", {
 
 const state = {
   recordsFilter: "All",
+  homeCollectionFilter: "recent-releases",
   apparelFilter: "All Apparel",
   cart: JSON.parse(localStorage.getItem("nixp-cart") || "[]"),
   requests: [],
@@ -38,6 +39,14 @@ const state = {
     preview: "artist"
   }
 };
+
+const homeCollectionOptions = [
+  ["recent-releases", "Recent Releases"],
+  ["nixp-selection", "NIXP Selection"],
+  ["back-in-stock", "Back in Stock"],
+  ["limited-pressing", "Limited Pressing"],
+  ["private-collection", "Private Collection"]
+];
 
 const routes = {
   "/": homePage,
@@ -143,40 +152,77 @@ function normalizePath(path) {
 
 async function homePage() {
   const products = await catalogService.listProducts();
-  const featured = products.filter((product) => product.image && !product.image.includes("nixp-product-example"));
+  const selectedCollection = homeCollectionOptions.some(([id]) => id === state.homeCollectionFilter)
+    ? state.homeCollectionFilter
+    : homeCollectionOptions[0][0];
+  const collectionProducts = products
+    .filter((product) => homeCollectionMatch(product, selectedCollection))
+    .sort((a, b) => {
+      const sortA = hasHomeSlideSort(a) ? Number(a.homeSlideSort) : 9999;
+      const sortB = hasHomeSlideSort(b) ? Number(b.homeSlideSort) : 9999;
+      return sortA - sortB || String(a.artist || "").localeCompare(String(b.artist || ""));
+    });
+  const featured = collectionProducts.filter((product) => product.image && !product.image.includes("nixp-product-example"));
   const slides = featured.length ? featured : products;
   const loopSlides = [...slides, ...slides];
   return `
     <section class="home-slider" aria-label="Product slider">
-      <div class="slider-viewport">
-        <div class="slider-track">
-          ${loopSlides
+      <div class="home-collections" role="group" aria-label="Home collections">
+        ${homeCollectionOptions
           .map(
-            (product, index) => `
-              <article class="slide">
-                <a href="/product/${product.id}" data-link>
-                  <figure class="product-art slide-art">
-                    <img src="${product.image}" alt="${product.title}" />
-                  </figure>
-                  <div class="slide-caption">
-                    <span>${String((index % slides.length) + 1).padStart(2, "0")}</span>
-                    <strong>${product.artist}</strong>
-                    <em>${product.title}</em>
-                  </div>
-                </a>
-              </article>
+            ([id, label]) => `
+              <button class="home-collection-button ${selectedCollection === id ? "is-active" : ""}" type="button" data-home-collection="${id}">
+                ${label}
+              </button>
             `
           )
           .join("")}
-        </div>
+      </div>
+      <div class="slider-viewport">
+        ${
+          featured.length || selectedCollection !== "private-collection"
+            ? `<div class="slider-track">
+                ${loopSlides
+                  .map(
+                    (product, index) => `
+                      <article class="slide">
+                        <a href="/product/${product.id}" data-link>
+                          <figure class="product-art slide-art">
+                            <img src="${product.image}" alt="${product.title}" />
+                          </figure>
+                          <div class="slide-caption">
+                            <span>${String((index % slides.length) + 1).padStart(2, "0")}</span>
+                            <strong>${product.artist}</strong>
+                            <em>${product.title}</em>
+                          </div>
+                        </a>
+                      </article>
+                    `
+                  )
+                  .join("")}
+              </div>`
+            : `<div class="home-slider-empty"><span>Private Collection</span><strong>Open for future bid-only pieces.</strong></div>`
+        }
       </div>
     </section>
   `;
 }
 
+function homeCollectionMatch(product, collectionId) {
+  return Array.isArray(product.homeCollections) && product.homeCollections.includes(collectionId);
+}
+
+function hasHomeSlideSort(product) {
+  return product.homeSlideSort !== null && product.homeSlideSort !== undefined && product.homeSlideSort !== "" && Number.isFinite(Number(product.homeSlideSort));
+}
+
 async function recordsPage() {
   const labelFilter = new URLSearchParams(location.search).get("label") || "";
-  const records = await catalogService.listRecords(state.recordsFilter, labelFilter);
+  const artistTagFilter = new URLSearchParams(location.search).get("artistTag") || "";
+  const availableArtistNames = inventoryArtistNames(await catalogService.listProducts());
+  const records = (await catalogService.listRecords(state.recordsFilter, labelFilter)).filter((product) =>
+    artistTagFilter ? productRelatedArtists(product).some((artist) => artist.toLowerCase() === artistTagFilter.toLowerCase()) : true
+  );
   const filters = ["All", "Vinyl", "CD", "Cassette"];
   return `
     <section class="section shop-section">
@@ -185,6 +231,15 @@ async function recordsPage() {
           ? `<div class="active-label-filter">
               <span>Record Label</span>
               <strong>${escapeHtml(labelFilter)}</strong>
+              <a href="/records" data-link>Clear</a>
+            </div>`
+          : ""
+      }
+      ${
+        artistTagFilter
+          ? `<div class="active-label-filter">
+              <span>Related Artist</span>
+              <strong>${escapeHtml(artistTagFilter)}</strong>
               <a href="/records" data-link>Clear</a>
             </div>`
           : ""
@@ -200,7 +255,7 @@ async function recordsPage() {
           )
           .join("")}
       </div>
-      ${productGrid(records)}
+      ${productGrid(records, { availableArtistNames })}
     </section>
   `;
 }
@@ -242,7 +297,9 @@ async function productDetailPage(path) {
 }
 
 async function productDetailMarkup(product) {
-  const related = (await catalogService.listProducts())
+  const allProducts = await catalogService.listProducts();
+  const availableArtistNames = inventoryArtistNames(allProducts);
+  const related = allProducts
     .filter((item) => item.category === product.category && item.id !== product.id)
     .slice(0, 4);
   const displayFormat = product.displayFormat || product.format;
@@ -316,11 +373,12 @@ async function productDetailMarkup(product) {
                  <div><dt>Notes</dt><dd>${product.details.join(" / ")}</dd></div>`
           }
         </dl>
+        ${recordRelatedArtistsMarkup(product, availableArtistNames)}
       </aside>
     </section>
     ${
       related.length
-        ? `<section class="section shop-section">${productGrid(related)}</section>`
+        ? `<section class="section shop-section">${productGrid(related, { availableArtistNames })}</section>`
         : ""
     }
   `;
@@ -719,6 +777,7 @@ async function adminEditorPage() {
       </form>
       <nav class="editor-tabs" aria-label="Editor sections">
         <a href="#editor-products">Products</a>
+        <a href="#editor-home-slider">Home Slider</a>
         <a href="#editor-media">Images</a>
         <a href="#editor-artists">Artists</a>
         <a href="#editor-collections">Collections</a>
@@ -735,9 +794,17 @@ async function adminEditorPage() {
       </div>
       ${await adminProductsPage({ embedded: true })}
     </section>
-    <section class="section editor-section" id="editor-media">
+    <section class="section editor-section" id="editor-home-slider">
       <div class="editor-section-head">
         <span>02</span>
+        <h2>Home Slider</h2>
+        <p>Edit homepage collection tabs and slider order. Use Deploy above after saving to publish it live.</p>
+      </div>
+      ${await adminHomeSliderPage({ embedded: true })}
+    </section>
+    <section class="section editor-section" id="editor-media">
+      <div class="editor-section-head">
+        <span>03</span>
         <h2>Images</h2>
         <p>Upload or replace product images before they move into Supabase Storage.</p>
       </div>
@@ -745,7 +812,7 @@ async function adminEditorPage() {
     </section>
     <section class="section editor-section" id="editor-artists">
       <div class="editor-section-head">
-        <span>03</span>
+        <span>04</span>
         <h2>Artists</h2>
         <p>Manage the artist index and editorial metadata.</p>
       </div>
@@ -753,7 +820,7 @@ async function adminEditorPage() {
     </section>
     <section class="section editor-section" id="editor-collections">
       <div class="editor-section-head">
-        <span>04</span>
+        <span>05</span>
         <h2>Collections</h2>
         <p>Organize categories, shelves, drops, and campaign groupings.</p>
       </div>
@@ -761,7 +828,7 @@ async function adminEditorPage() {
     </section>
     <section class="section editor-section" id="editor-requests">
       <div class="editor-section-head">
-        <span>05</span>
+        <span>06</span>
         <h2>Requests</h2>
         <p>Move request items from new lead to closed conversation.</p>
       </div>
@@ -769,7 +836,7 @@ async function adminEditorPage() {
     </section>
     <section class="section editor-section" id="editor-orders">
       <div class="editor-section-head">
-        <span>06</span>
+        <span>07</span>
         <h2>Orders</h2>
         <p>Review carts and update order statuses.</p>
       </div>
@@ -777,12 +844,49 @@ async function adminEditorPage() {
     </section>
     <section class="section editor-section" id="editor-preview">
       <div class="editor-section-head">
-        <span>07</span>
+        <span>08</span>
         <h2>Preview</h2>
         <p>Open draft previews before publishing them to the public storefront.</p>
       </div>
       ${await adminPreviewPage({ embedded: true })}
     </section>
+  `;
+}
+
+async function adminHomeSliderPage({ embedded = false } = {}) {
+  const products = await catalogService.listAllProducts();
+  const visibleProducts = sortItems(
+    products.filter((product) => product.category === "Records" || hasHomeSlideSort(product)),
+    "homeSlideSort",
+    {
+      homeSlideSort: (item) => (hasHomeSlideSort(item) ? Number(item.homeSlideSort) : 9999),
+      title: (item) => item.title
+    }
+  );
+  return `
+    ${embedded ? "" : adminHero("Home Slider", "Edit homepage collection tabs and slider order.")}
+    <form class="admin-panel admin-home-slider-form" data-admin-home-slider-form>
+      ${table(
+        ["Use", "Order", "Product", ...homeCollectionOptions.map(([, label]) => label)],
+        visibleProducts.map((product, index) => {
+          const sortValue = hasHomeSlideSort(product) ? Number(product.homeSlideSort) : index + 1;
+          const collections = Array.isArray(product.homeCollections) ? product.homeCollections : [];
+          return [
+            `<input type="checkbox" name="homeSlide:${escapeAttr(product.id)}" ${hasHomeSlideSort(product) ? "checked" : ""} />`,
+            `<input class="admin-order-input" type="number" min="1" step="1" name="homeSlideSort:${escapeAttr(product.id)}" value="${escapeAttr(sortValue)}" />`,
+            `<strong>${escapeHtml(product.artist)}</strong><br><small>${escapeHtml(product.title)} / ${escapeHtml(product.displayFormat || product.format)}</small>`,
+            ...homeCollectionOptions.map(
+              ([id]) =>
+                `<input type="checkbox" name="homeCollection:${escapeAttr(product.id)}:${id}" ${collections.includes(id) ? "checked" : ""} />`
+            )
+          ];
+        })
+      )}
+      <div class="admin-form-actions">
+        <button class="button button-dark" type="submit">Save slider</button>
+        <p class="admin-form-note" data-admin-form-message aria-live="polite"></p>
+      </div>
+    </form>
   `;
 }
 
@@ -851,6 +955,7 @@ async function adminProductsPage({ embedded = false } = {}) {
           ${input("label", "Label", product.label || "", "NIXP Selection")}
           ${input("qty", "Quantity", product.qty || 1, "1", "number")}
           ${input("tags", "Tags", product.tags?.join(", ") || "", "new, vinyl, jakarta")}
+          ${input("relatedArtists", "Related artists", product.relatedArtists?.join(", ") || "", "SOPHIE, FKA twigs, Bjork")}
           ${input("details", "Details", product.details?.join(", ") || "", "Format, condition, notes")}
           ${select("publishStatus", "Status", ["Published", "Draft", "Archived"], product.publishStatus || "Published")}
           ${select("visibility", "Visibility", ["Public", "Hidden"], product.visibility || "Public")}
@@ -1313,6 +1418,34 @@ function recordLabelMarkup(product) {
   return `<a class="record-label-link" href="/records?label=${encodeURIComponent(product.label)}" data-link>${escapeHtml(product.label)}</a>`;
 }
 
+function productRelatedArtists(product) {
+  return Array.isArray(product.relatedArtists)
+    ? product.relatedArtists.map((artist) => String(artist || "").trim()).filter(Boolean)
+    : [];
+}
+
+function inventoryArtistNames(products) {
+  return new Set(products.map((product) => String(product.artist || "").trim().toLowerCase()).filter(Boolean));
+}
+
+function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
+  if (product.category !== "Records") return "";
+  const artists = productRelatedArtists(product);
+  if (!artists.length) return "";
+  return `
+    <p class="related-artist-heading">Related Artists</p>
+    <div class="related-artist-tags" aria-label="Related artists">
+      ${artists
+        .map((artist) =>
+          availableArtistNames.has(artist.toLowerCase())
+            ? `<a href="/records?artistTag=${encodeURIComponent(artist)}" data-link>${escapeHtml(artist)}</a>`
+            : `<span>${escapeHtml(artist)}</span>`
+        )
+        .join("")}
+    </div>
+  `;
+}
+
 function productImages(product) {
   const images = [
     ...(Array.isArray(product.images) ? product.images : []),
@@ -1510,6 +1643,13 @@ function bindEvents() {
     });
   });
 
+  document.querySelectorAll("[data-home-collection]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.homeCollectionFilter = button.dataset.homeCollection;
+      render();
+    });
+  });
+
   document.querySelectorAll("[data-apparel-filter]").forEach((button) => {
     button.addEventListener("click", () => {
       state.apparelFilter = button.dataset.apparelFilter;
@@ -1690,6 +1830,22 @@ function bindEvents() {
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Deploy failed.", "error");
     } finally {
+      button.disabled = false;
+    }
+  });
+
+  document.querySelector("[data-admin-home-slider-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector("button");
+    button.disabled = true;
+    setFormMessage(form, "Saving slider...");
+    try {
+      await adminStore.saveHomeSlider(Object.fromEntries(new FormData(form).entries()));
+      setFormMessage(form, "Slider saved. Use Deploy to publish it live.", "success");
+      await render();
+    } catch (error) {
+      setFormMessage(form, error instanceof Error ? error.message : "Could not save slider.", "error");
       button.disabled = false;
     }
   });

@@ -1,7 +1,7 @@
 import { artistNames, cashflow, inventory, orders, products, requestItems } from "../data/sampleData.js";
 
 const STORAGE_KEY = "nixp-admin-store-v1";
-const STORE_VERSION = "uniform-display-product-photos-2026-07-12";
+const STORE_VERSION = "home-slider-related-artists-2026-07-15";
 const ADMIN_STORE_PATH = "/public/data/admin-store.json";
 const PUBLIC_STORE_PATH = "/public/data/public-store.json";
 const REMOVED_PRODUCT_IDS = new Set(["obj-001", "pub-002"]);
@@ -12,7 +12,12 @@ const defaultCollections = [
   { id: "records", title: "Records", type: "Category", status: "Published", sort: 1 },
   { id: "objects", title: "Objects", type: "Category", status: "Published", sort: 2 },
   { id: "apparel", title: "Apparel", type: "Category", status: "Published", sort: 3 },
-  { id: "publishing", title: "Publishing", type: "Category", status: "Published", sort: 4 }
+  { id: "publishing", title: "Publishing", type: "Category", status: "Published", sort: 4 },
+  { id: "recent-releases", title: "Recent Releases", type: "Home", status: "Published", sort: 10 },
+  { id: "nixp-selection", title: "NIXP Selection", type: "Home", status: "Published", sort: 11 },
+  { id: "back-in-stock", title: "Back in Stock", type: "Home", status: "Published", sort: 12 },
+  { id: "limited-pressing", title: "Limited Pressing", type: "Home", status: "Published", sort: 13 },
+  { id: "private-collection", title: "Private Collection", type: "Home", status: "Published", sort: 14 }
 ];
 
 function clone(value) {
@@ -30,10 +35,21 @@ function withDefaults(product) {
     details: product.details || [],
     sizes: normalizeSizes(product.sizes || []),
     images: normalizeImages(product),
+    relatedArtists: normalizeList(product.relatedArtists),
+    homeCollections: normalizeList(product.homeCollections),
+    homeSlideSort: hasHomeSlideSort(product) ? Number(product.homeSlideSort) : null,
     collection: product.collection || product.label || "",
     color: product.color || "",
     material: product.material || ""
   };
+}
+
+function normalizeList(value) {
+  return Array.isArray(value) ? value.map((item) => String(item || "").trim()).filter(Boolean) : [];
+}
+
+function hasHomeSlideSort(product) {
+  return product.homeSlideSort !== null && product.homeSlideSort !== undefined && product.homeSlideSort !== "" && Number.isFinite(Number(product.homeSlideSort));
 }
 
 function normalizeImages(product = {}) {
@@ -356,6 +372,21 @@ export const adminStore = {
     if (!response.ok) throw new Error(payload.error || "Deploy failed. Please check Vercel and GitHub settings.");
     return payload;
   },
+  async saveHomeSlider(data) {
+    const store = readStore();
+    const collectionIds = ["recent-releases", "nixp-selection", "back-in-stock", "limited-pressing", "private-collection"];
+    const nextProducts = store.products.map((product) => {
+      const include = data[`homeSlide:${product.id}`] === "on";
+      const rawSort = Number(data[`homeSlideSort:${product.id}`]);
+      return {
+        ...product,
+        homeSlideSort: include && Number.isFinite(rawSort) ? rawSort : null,
+        homeCollections: collectionIds.filter((id) => data[`homeCollection:${product.id}:${id}`] === "on"),
+        updatedAt: today()
+      };
+    });
+    return writeStore({ ...store, products: nextProducts });
+  },
   async uploadProductImage(file, product) {
     return uploadDataUrlImage(await fileToDataUrl(file), product, file.name);
   },
@@ -412,6 +443,9 @@ export const adminStore = {
         image: data.image?.trim() || data.images?.[0] || existing?.image
       }),
       tags: splitList(data.tags),
+      relatedArtists: splitList(data.relatedArtists),
+      homeCollections: existing?.homeCollections || [],
+      homeSlideSort: existing?.homeSlideSort ?? null,
       details: splitList(data.details),
       sizes: isProductCategory ? collectSizes(data) : existing?.sizes || [],
       description: data.description?.trim() || "",

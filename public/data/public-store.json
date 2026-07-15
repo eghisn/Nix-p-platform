@@ -1,5 +1,5 @@
 {
-  "version": null,
+  "version": "home-slider-related-artists-2026-07-15",
   "products": [
     {
       "publishStatus": "Published",
@@ -325,7 +325,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Puce Mary",
+        "Croatian Amor",
+        "Lust For Youth"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 1
     },
     {
       "publishStatus": "Published",
@@ -360,7 +367,16 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Gojira",
+        "Car Bomb",
+        "Tesseract"
+      ],
+      "homeCollections": [
+        "back-in-stock"
+      ],
+      "homeSlideSort": 2
     },
     {
       "publishStatus": "Published",
@@ -403,7 +419,18 @@
           "credit": "Cav Empt",
           "url": "https://www.cavempt.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Actress",
+        "Huerco S.",
+        "Kassem Mosse"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 3
     },
     {
       "publishStatus": "Published",
@@ -452,7 +479,14 @@
           "credit": "The Mars Volta / product listing",
           "url": "https://themarsvoltaofficial.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "At The Drive-In",
+        "Omar Rodriguez-Lopez",
+        "Antemasque"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 4
     },
     {
       "publishStatus": "Published",
@@ -487,7 +521,16 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif"
-      ]
+      ],
+      "relatedArtists": [
+        "Scott Walker",
+        "Nine Inch Nails",
+        "Brian Eno"
+      ],
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "homeSlideSort": 5
     },
     {
       "publishStatus": "Published",
@@ -523,7 +566,14 @@
       "apparelType": "",
       "images": [
         "/public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Trent Reznor and Atticus Ross",
+        "How to Destroy Angels",
+        "Ministry"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 6
     },
     {
       "publishStatus": "Published",
@@ -558,7 +608,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0016-lightning-bolt-earthly-delights.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Hella",
+        "Melt-Banana",
+        "Black Pus"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 7
     },
     {
       "publishStatus": "Published",
@@ -601,7 +658,16 @@
           "credit": "Gilla Band Bandcamp",
           "url": "https://gillaband.bandcamp.com/album/the-talkies"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "The Murder Capital",
+        "Shame",
+        "Squid"
+      ],
+      "homeCollections": [
+        "limited-pressing"
+      ],
+      "homeSlideSort": 8
     },
     {
       "publishStatus": "Published",
@@ -645,7 +711,17 @@
           "credit": "Gilla Band Bandcamp",
           "url": "https://gillaband.bandcamp.com/album/the-early-years"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "The Murder Capital",
+        "Shame",
+        "Squid"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 9
     },
     {
       "publishStatus": "Published",
@@ -681,7 +757,16 @@
       "apparelType": "",
       "images": [
         "/public/uploads/products/nxp-2026-cd-0001-chaosphere-cover-425412532019-r-jpg-1783885419677.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Gojira",
+        "Car Bomb",
+        "Tesseract"
+      ],
+      "homeCollections": [
+        "back-in-stock"
+      ],
+      "homeSlideSort": 10
     },
     {
       "publishStatus": "Published",
@@ -716,7 +801,16 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0002-team-sleep-maverick.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Deftones",
+        "Crosses",
+        "Palms"
+      ],
+      "homeCollections": [
+        "back-in-stock"
+      ],
+      "homeSlideSort": 11
     },
     {
       "publishStatus": "Published",
@@ -751,7 +845,16 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0003-the-chemical-brothers-come-with-us.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Fatboy Slim",
+        "The Prodigy",
+        "The Crystal Method"
+      ],
+      "homeCollections": [
+        "back-in-stock"
+      ],
+      "homeSlideSort": 12
     },
     {
       "publishStatus": "Published",
@@ -786,7 +889,16 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Fatboy Slim",
+        "The Prodigy",
+        "Underworld"
+      ],
+      "homeCollections": [
+        "back-in-stock"
+      ],
+      "homeSlideSort": 13
     },
     {
       "publishStatus": "Published",
@@ -821,7 +933,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "The Strokes",
+        "TV On The Radio",
+        "The Rapture"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 14
     },
     {
       "publishStatus": "Published",
@@ -856,7 +975,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0006-matrix-reloaded.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Don Davis",
+        "Juno Reactor",
+        "Rob Dougan"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 15
     },
     {
       "publishStatus": "Published",
@@ -899,7 +1025,17 @@
           "credit": "True Panther",
           "url": "https://truepanther.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Gilla Band",
+        "Daughters",
+        "The Armed"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection"
+      ],
+      "homeSlideSort": 16
     },
     {
       "publishStatus": "Published",
@@ -942,7 +1078,17 @@
           "credit": "A24 Music",
           "url": "https://a24music.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Oneohtrix Point Never",
+        "Tim Hecker",
+        "Arca"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection"
+      ],
+      "homeSlideSort": 17
     },
     {
       "publishStatus": "Published",
@@ -985,7 +1131,17 @@
           "credit": "Transgressive Records",
           "url": "https://transgressiverecords.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Arca",
+        "A. G. Cook",
+        "Charli XCX"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection"
+      ],
+      "homeSlideSort": 18
     },
     {
       "publishStatus": "Published",
@@ -1020,7 +1176,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Trent Reznor and Atticus Ross",
+        "How to Destroy Angels",
+        "Ministry"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 19
     },
     {
       "publishStatus": "Published",
@@ -1055,7 +1218,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Thursday",
+        "Glassjaw",
+        "From Autumn to Ashes"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 20
     },
     {
       "publishStatus": "Published",
@@ -1090,7 +1260,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cst-0004-matrix-reloaded.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Don Davis",
+        "Juno Reactor",
+        "Rob Dougan"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 21
     },
     {
       "publishStatus": "Published",
@@ -1125,7 +1302,16 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "The Chemical Brothers",
+        "The Crystal Method",
+        "Fatboy Slim"
+      ],
+      "homeCollections": [
+        "back-in-stock"
+      ],
+      "homeSlideSort": 22
     },
     {
       "publishStatus": "Published",
@@ -1168,7 +1354,18 @@
           "credit": "Squarepusher Bandcamp",
           "url": "https://squarepusher.bandcamp.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Aphex Twin",
+        "Autechre",
+        "u-Ziq"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 23
     },
     {
       "publishStatus": "Published",
@@ -1211,7 +1408,17 @@
           "credit": "Turntable Lab",
           "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Lightning Bolt",
+        "Hella",
+        "Boredoms"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 24
     },
     {
       "publishStatus": "Published",
@@ -1254,7 +1461,18 @@
           "credit": "Nala Sinephro Bandcamp",
           "url": "https://nalasinephro.bandcamp.com/album/endlessness"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Floating Points",
+        "Shabaka Hutchings",
+        "Sam Gendel"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 25
     },
     {
       "publishStatus": "Published",
@@ -1289,7 +1507,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Keiji Haino",
+        "Otomo Yoshihide",
+        "Rully Shabara"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 26
     },
     {
       "publishStatus": "Published",
@@ -1324,7 +1549,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Mooner",
+        "The Sigit",
+        "White Shoes & The Couples Company"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 27
     },
     {
       "publishStatus": "Published",
@@ -1373,7 +1605,14 @@
           "credit": "David Bowie official store",
           "url": "https://shop.davidbowie.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Scott Walker",
+        "Brian Eno",
+        "Iggy Pop"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 28
     },
     {
       "publishStatus": "Published",
@@ -1408,7 +1647,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Converge",
+        "Isis",
+        "Botch"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 29
     },
     {
       "publishStatus": "Published",
@@ -1443,7 +1689,16 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0019-animal-collective-merriweather-post-pavilion.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Panda Bear",
+        "Avey Tare",
+        "Boards of Canada"
+      ],
+      "homeCollections": [
+        "back-in-stock"
+      ],
+      "homeSlideSort": 30
     },
     {
       "publishStatus": "Published",
@@ -1478,7 +1733,16 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Slowdive",
+        "Ride",
+        "Cocteau Twins"
+      ],
+      "homeCollections": [
+        "back-in-stock"
+      ],
+      "homeSlideSort": 31
     },
     {
       "publishStatus": "Published",
@@ -1513,7 +1777,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0021-jk-flesh-gothtrad-knights-of-the-black-table.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Godflesh",
+        "Justin Broadrick",
+        "Scorn"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 32
     },
     {
       "publishStatus": "Published",
@@ -1548,7 +1819,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0022-soft-moon-criminal.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Cold Cave",
+        "Drab Majesty",
+        "TR/ST"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 33
     },
     {
       "publishStatus": "Published",
@@ -1583,7 +1861,14 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Dysrhythmia",
+        "Krallice",
+        "Orthrelm"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": 34
     },
     {
       "publishStatus": "Published",
@@ -1626,7 +1911,17 @@
           "credit": "Trouble In Mind Records",
           "url": "https://troubleinmindrecs.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Disappears",
+        "Preoccupations",
+        "Ought"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 35
     },
     {
       "publishStatus": "Published",
@@ -1669,7 +1964,17 @@
           "credit": "XL Recordings",
           "url": "https://xlrecordings.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "DJ Koze",
+        "Jayda G",
+        "Honey Dijon"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 36
     },
     {
       "publishStatus": "Published",
@@ -1713,7 +2018,17 @@
           "credit": "Hiatus Kaiyote Bandcamp",
           "url": "https://hiatuskaiyote.bandcamp.com/merch"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Nai Palm",
+        "Moonchild",
+        "Thundercat"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 37
     },
     {
       "publishStatus": "Published",
@@ -1756,7 +2071,17 @@
           "credit": "Arca Bandcamp",
           "url": "https://arca1000000.bandcamp.com/"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "SOPHIE",
+        "FKA twigs",
+        "Bjork"
+      ],
+      "homeCollections": [
+        "nixp-selection",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 38
     },
     {
       "publishStatus": "Published",
@@ -1799,7 +2124,16 @@
           "credit": "Domino",
           "url": "https://www.dominomusic.com/releases/panda-bear/buoys/deluxe-lp"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Animal Collective",
+        "Avey Tare",
+        "Deakin"
+      ],
+      "homeCollections": [
+        "limited-pressing"
+      ],
+      "homeSlideSort": 39
     },
     {
       "publishStatus": "Published",
@@ -1842,7 +2176,17 @@
           "credit": "Overmono Bandcamp",
           "url": "https://overmono.bandcamp.com/album/turn-the-page"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Joy Orbison",
+        "Bicep",
+        "The Streets"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 40
     },
     {
       "publishStatus": "Published",
@@ -1885,7 +2229,18 @@
           "credit": "Meditations",
           "url": "https://meditations.jp/products/heith-tarawangsawelas-duori-lp"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Jon Hassell",
+        "Tarawangsawelas",
+        "Heith"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 41
     },
     {
       "publishStatus": "Published",
@@ -1928,7 +2283,18 @@
           "credit": "Turntable Lab",
           "url": "https://www.turntablelab.com/products/blawan-sickelixir-vinyl-lp"
         }
-      ]
+      ],
+      "relatedArtists": [
+        "Karenn",
+        "Pariah",
+        "Surgeon"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection",
+        "limited-pressing"
+      ],
+      "homeSlideSort": 42
     },
     {
       "publishStatus": "Published",
@@ -2118,7 +2484,17 @@
       "material": "",
       "images": [
         "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
-      ]
+      ],
+      "relatedArtists": [
+        "Tim Hecker",
+        "Arca",
+        "Daniel Lopatin"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection"
+      ],
+      "homeSlideSort": 43
     }
   ],
   "artists": [
@@ -2417,6 +2793,41 @@
       "type": "Category",
       "status": "Published",
       "sort": 4
+    },
+    {
+      "id": "recent-releases",
+      "title": "Recent Releases",
+      "type": "Home",
+      "status": "Published",
+      "sort": 10
+    },
+    {
+      "id": "nixp-selection",
+      "title": "NIXP Selection",
+      "type": "Home",
+      "status": "Published",
+      "sort": 11
+    },
+    {
+      "id": "back-in-stock",
+      "title": "Back in Stock",
+      "type": "Home",
+      "status": "Published",
+      "sort": 12
+    },
+    {
+      "id": "limited-pressing",
+      "title": "Limited Pressing",
+      "type": "Home",
+      "status": "Published",
+      "sort": 13
+    },
+    {
+      "id": "private-collection",
+      "title": "Private Collection",
+      "type": "Home",
+      "status": "Published",
+      "sort": 14
     }
   ],
   "requests": [],

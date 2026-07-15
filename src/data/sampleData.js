@@ -619,6 +619,86 @@ const recordYears = {
   "nxp-2026-cd-0023": 2025
 };
 
+const recordRelatedArtists = {
+  "nxp-2026-vnl-0006": ["Puce Mary", "Croatian Amor", "Lust For Youth"],
+  "nxp-2026-cd-0015": ["Gojira", "Car Bomb", "Tesseract"],
+  "nxp-2026-cst-0005": ["Actress", "Huerco S.", "Kassem Mosse"],
+  "nxp-2026-cd-0010": ["At The Drive-In", "Omar Rodriguez-Lopez", "Antemasque"],
+  "nxp-2026-cd-0011": ["Scott Walker", "Nine Inch Nails", "Brian Eno"],
+  "nxp-2026-cd-0012": ["Trent Reznor and Atticus Ross", "How to Destroy Angels", "Ministry"],
+  "nxp-2026-cd-0016": ["Hella", "Melt-Banana", "Black Pus"],
+  "nxp-2026-vnl-0004": ["The Murder Capital", "Shame", "Squid"],
+  "nxp-2026-vnl-0005": ["The Murder Capital", "Shame", "Squid"],
+  "nxp-2026-cd-0001": ["Gojira", "Car Bomb", "Tesseract"],
+  "nxp-2026-cd-0002": ["Deftones", "Crosses", "Palms"],
+  "nxp-2026-cd-0003": ["Fatboy Slim", "The Prodigy", "The Crystal Method"],
+  "nxp-2026-cd-0004": ["Fatboy Slim", "The Prodigy", "Underworld"],
+  "nxp-2026-cd-0005": ["The Strokes", "TV On The Radio", "The Rapture"],
+  "nxp-2026-cd-0006": ["Don Davis", "Juno Reactor", "Rob Dougan"],
+  "nxp-2026-cd-0007": ["Gilla Band", "Daughters", "The Armed"],
+  "nxp-2026-cd-0008": ["Oneohtrix Point Never", "Tim Hecker", "Arca"],
+  "nxp-2026-cd-0009": ["Arca", "A. G. Cook", "Charli XCX"],
+  "nxp-2026-cst-0001": ["Trent Reznor and Atticus Ross", "How to Destroy Angels", "Ministry"],
+  "nxp-2026-cst-0002": ["Thursday", "Glassjaw", "From Autumn to Ashes"],
+  "nxp-2026-cst-0004": ["Don Davis", "Juno Reactor", "Rob Dougan"],
+  "nxp-2026-cst-0006": ["The Chemical Brothers", "The Crystal Method", "Fatboy Slim"],
+  "nxp-2026-vnl-0001": ["Aphex Twin", "Autechre", "u-Ziq"],
+  "nxp-2026-vnl-0002": ["Lightning Bolt", "Hella", "Boredoms"],
+  "nxp-2026-vnl-0003": ["Floating Points", "Shabaka Hutchings", "Sam Gendel"],
+  "nxp-2026-cd-0013": ["Keiji Haino", "Otomo Yoshihide", "Rully Shabara"],
+  "nxp-2026-cd-0014": ["Mooner", "The Sigit", "White Shoes & The Couples Company"],
+  "nxp-2026-cd-0017": ["Scott Walker", "Brian Eno", "Iggy Pop"],
+  "nxp-2026-cd-0018": ["Converge", "Isis", "Botch"],
+  "nxp-2026-cd-0019": ["Panda Bear", "Avey Tare", "Boards of Canada"],
+  "nxp-2026-cd-0020": ["Slowdive", "Ride", "Cocteau Twins"],
+  "nxp-2026-cd-0021": ["Godflesh", "Justin Broadrick", "Scorn"],
+  "nxp-2026-cd-0022": ["Cold Cave", "Drab Majesty", "TR/ST"],
+  "nxp-2026-cst-0007": ["Dysrhythmia", "Krallice", "Orthrelm"],
+  "nxp-2026-cst-0008": ["Disappears", "Preoccupations", "Ought"],
+  "nxp-2026-cst-0009": ["DJ Koze", "Jayda G", "Honey Dijon"],
+  "nxp-2026-vnl-0007": ["Nai Palm", "Moonchild", "Thundercat"],
+  "nxp-2026-vnl-0008": ["SOPHIE", "FKA twigs", "Bjork"],
+  "nxp-2026-vnl-0009": ["Animal Collective", "Avey Tare", "Deakin"],
+  "nxp-2026-vnl-0010": ["Joy Orbison", "Bicep", "The Streets"],
+  "nxp-2026-vnl-0011": ["Jon Hassell", "Tarawangsawelas", "Heith"],
+  "nxp-2026-vnl-0012": ["Karenn", "Pariah", "Surgeon"],
+  "nxp-2026-cd-0023": ["Tim Hecker", "Arca", "Daniel Lopatin"]
+};
+
+const nixpSelectionIds = new Set([
+  "nxp-2026-cst-0005",
+  "nxp-2026-cd-0011",
+  "nxp-2026-cd-0007",
+  "nxp-2026-cd-0008",
+  "nxp-2026-cd-0009",
+  "nxp-2026-vnl-0001",
+  "nxp-2026-vnl-0003",
+  "nxp-2026-vnl-0008",
+  "nxp-2026-vnl-0011",
+  "nxp-2026-vnl-0012",
+  "nxp-2026-cd-0023"
+]);
+
+const backInStockIds = new Set([
+  "nxp-2026-cd-0015",
+  "nxp-2026-cd-0001",
+  "nxp-2026-cd-0002",
+  "nxp-2026-cd-0003",
+  "nxp-2026-cd-0004",
+  "nxp-2026-cst-0006",
+  "nxp-2026-cd-0019",
+  "nxp-2026-cd-0020"
+]);
+
+function recordHomeCollections(row) {
+  const collections = [];
+  if (Number(recordYears[row.id] || row.year || 0) >= 2024) collections.push("recent-releases");
+  if (nixpSelectionIds.has(row.id)) collections.push("nixp-selection");
+  if (backInStockIds.has(row.id)) collections.push("back-in-stock");
+  if (row.condition === "New-Sealed" && ["Vinyl", "Cassette"].includes(row.format)) collections.push("limited-pressing");
+  return collections;
+}
+
 const recordMockups = {
   "nxp-2026-vnl-0001": "/public/mockups/nxp-2026-vnl-0001-squarepusher-kammerkonzert-vinyl.jpg",
   "nxp-2026-vnl-0002": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
@@ -776,6 +856,9 @@ function record(row) {
     images: mockup ? [image, mockup] : [image],
     imageCredits: mockup && recordImageCredits[row.id] ? [{ image: mockup, ...recordImageCredits[row.id] }] : [],
     tags: [displayFormat, row.sku],
+    relatedArtists: recordRelatedArtists[row.id] || [],
+    homeCollections: recordHomeCollections(row),
+    homeSlideSort: recordRows.findIndex((item) => item.id === row.id) + 1,
     description: `${row.artist} - ${row.title}. ${displayFormat} from the current NIXP records selection.`,
     details: [`SKU: ${row.sku}`, `Format: ${displayFormat}`, `Condition: ${row.condition || "Available"}`]
   };

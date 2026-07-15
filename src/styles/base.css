@@ -578,7 +578,8 @@ img {
 
 .home-slider {
   display: grid;
-  place-items: center;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-items: center;
   min-height: calc(100vh - var(--header-h) - var(--footer-h));
   max-width: none;
   margin-inline: auto;
@@ -586,10 +587,63 @@ img {
   padding: 0 var(--page-pad);
 }
 
+.home-collections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-self: end;
+  gap: 8px;
+  width: 100%;
+  padding-top: clamp(18px, 3vh, 42px);
+  padding-bottom: clamp(12px, 2vh, 24px);
+}
+
+.home-collection-button {
+  min-height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  padding: 8px 13px;
+  font-size: 10px;
+  font-weight: 760;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.home-collection-button.is-active,
+.home-collection-button:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .slider-viewport {
   position: relative;
   overflow: hidden;
   width: 100%;
+}
+
+.home-slider-empty {
+  display: grid;
+  place-items: center;
+  min-height: clamp(260px, 46vh, 520px);
+  border: 1px dashed var(--line);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.home-slider-empty span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 760;
+}
+
+.home-slider-empty strong {
+  max-width: 32ch;
+  font-size: clamp(20px, 3vw, 42px);
+  line-height: 0.95;
 }
 
 .slider-viewport::before,
@@ -701,7 +755,7 @@ img {
 .admin-home-preview .slider-track {
   align-items: center;
   gap: clamp(26px, 3vw, 54px);
-  animation-duration: 115s;
+  animation-duration: 95s;
 }
 
 .admin-home-preview .slide {
@@ -1688,6 +1742,49 @@ tr:last-child td {
 .cart-view {
   display: grid;
   gap: 14px;
+}
+
+.related-artist-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.related-artist-heading {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 760;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.related-artist-tags a,
+.related-artist-tags span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 9px;
+  font-size: 10px;
+  font-weight: 760;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.related-artist-tags span {
+  color: var(--muted);
+}
+
+.related-artist-tags a:hover {
+  border-color: var(--ink);
+}
+
+.related-artist-tags-card {
+  margin: 8px 0 2px;
+}
+
+.admin-order-input {
+  width: 74px;
 }
 
 .checkout-form {

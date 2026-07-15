@@ -124,15 +124,18 @@ export function productGrid(products, options = {}) {
   if (!products.length) {
     return `<p class="empty-state">No products match this view yet.</p>`;
   }
+  const availableArtistNames =
+    options.availableArtistNames ||
+    new Set(products.map((product) => String(product.artist || "").trim().toLowerCase()).filter(Boolean));
 
   return `
     <div class="product-grid">
-      ${products.map((product) => productCard(product, options)).join("")}
+      ${products.map((product) => productCard(product, { ...options, availableArtistNames })).join("")}
     </div>
   `;
 }
 
-export function productCard(product, { hrefFor } = {}) {
+export function productCard(product, { hrefFor, availableArtistNames } = {}) {
   const meta = product.condition ? `${product.displayFormat || product.format}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
   const href = hrefFor ? hrefFor(product) : `/product/${product.id}`;
@@ -152,6 +155,7 @@ export function productCard(product, { hrefFor } = {}) {
         <p>${product.artist}</p>
         <h2><a href="${href}" data-link>${product.title}</a></h2>
         ${labelLink}
+        ${recordArtistTags(product, availableArtistNames)}
         <div class="row-between">
           <span>${meta}</span>
           <strong>${idr.format(product.price)}</strong>
@@ -160,6 +164,33 @@ export function productCard(product, { hrefFor } = {}) {
       </div>
     </article>
   `;
+}
+
+function recordArtistTags(product, availableArtistNames = new Set()) {
+  if (product.category !== "Records" || !Array.isArray(product.relatedArtists) || !product.relatedArtists.length) return "";
+  return `
+    <div class="related-artist-tags related-artist-tags-card" aria-label="Related artists">
+      ${product.relatedArtists
+        .map((artist) => String(artist || "").trim())
+        .filter(Boolean)
+        .slice(0, 3)
+        .map((artist) =>
+          availableArtistNames.has(artist.toLowerCase())
+            ? `<a href="/records?artistTag=${encodeURIComponent(artist)}" data-link>${escapeHtml(artist)}</a>`
+            : `<span>${escapeHtml(artist)}</span>`
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 export function table(headers, rows) {
