@@ -595,6 +595,7 @@ img {
   gap: 8px;
   width: 100%;
   padding-block: 0;
+  transform: translateY(clamp(52px, 7.5vh, 82px));
 }
 
 .home-collection-button {
