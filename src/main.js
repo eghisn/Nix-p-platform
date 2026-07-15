@@ -54,15 +54,30 @@ function persistCart() {
   localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
 }
 
-function cartItemQuantity(id) {
-  return state.cart.filter((itemId) => itemId === id).length;
+function cartKey(productId, size = "") {
+  const cleanId = String(productId || "").trim();
+  const cleanSize = String(size || "").trim();
+  return cleanSize ? `${cleanId}::${encodeURIComponent(cleanSize)}` : cleanId;
 }
 
-function setCartItemQuantity(id, quantity) {
-  const cleanId = String(id || "").trim();
+function parseCartKey(key) {
+  const [productId, encodedSize = ""] = String(key || "").split("::");
+  return {
+    key: String(key || "").trim(),
+    productId,
+    size: encodedSize ? decodeURIComponent(encodedSize) : ""
+  };
+}
+
+function cartItemQuantity(key) {
+  return state.cart.filter((itemKey) => itemKey === key).length;
+}
+
+function setCartItemQuantity(key, quantity) {
+  const cleanKey = String(key || "").trim();
   const cleanQuantity = Math.max(0, Math.floor(Number(quantity) || 0));
-  state.cart = state.cart.filter((itemId) => itemId !== cleanId);
-  state.cart.push(...Array.from({ length: cleanQuantity }, () => cleanId));
+  state.cart = state.cart.filter((itemKey) => itemKey !== cleanKey);
+  state.cart.push(...Array.from({ length: cleanQuantity }, () => cleanKey));
   persistCart();
 }
 
@@ -588,7 +603,7 @@ async function cartPage() {
                 (row) => `
                   <article class="cart-row">
                     <span>${row.product.artist}</span>
-                    <strong>${row.product.title} <small>x${row.quantity}</small></strong>
+                    <strong>${row.product.title}${row.size ? ` <small>/ ${escapeHtml(row.size)}</small>` : ""} <small>x${row.quantity}</small></strong>
                     ${cartQuantityControl(row)}
                     <span>${money.format(row.lineTotal)}</span>
                   </article>
@@ -622,22 +637,28 @@ async function cartPage() {
 
 async function cartSummary() {
   const products = await catalogService.listProducts();
-  const counts = state.cart.reduce((map, id) => {
-    map.set(id, (map.get(id) || 0) + 1);
+  const counts = state.cart.reduce((map, key) => {
+    map.set(key, (map.get(key) || 0) + 1);
     return map;
   }, new Map());
-  const serverPrices = await adminStore.verifyPrices([...counts.keys()]);
+  const productIds = [...new Set([...counts.keys()].map((key) => parseCartKey(key).productId))];
+  const serverPrices = await adminStore.verifyPrices(productIds);
   const priceById = new Map(serverPrices.map((item) => [item.id, Number(item.price || 0)]));
   const rows = [...counts.entries()]
-    .map(([id, requestedQuantity]) => {
-      const product = products.find((item) => item.id === id);
-      const price = priceById.has(id) ? priceById.get(id) : product?.price;
-      const stock = Math.max(0, Math.floor(Number(product?.qty ?? 1) || 0));
+    .map(([key, requestedQuantity]) => {
+      const parsed = parseCartKey(key);
+      const product = products.find((item) => item.id === parsed.productId);
+      const size = parsed.size || defaultAvailableSize(product);
+      const nextKey = size ? cartKey(parsed.productId, size) : parsed.productId;
+      const price = priceById.has(parsed.productId) ? priceById.get(parsed.productId) : product?.price;
+      const stock = productStock(product, size);
       const quantity = Math.min(requestedQuantity, stock);
       return product
         ? {
-            id,
+            id: nextKey,
+            productId: parsed.productId,
             product: { ...product, price },
+            size,
             stock,
             quantity,
             lineTotal: price * quantity
@@ -661,10 +682,10 @@ function cartQuantityControl(row) {
   const decreaseDisabled = row.quantity <= 1 ? "disabled" : "";
   const increaseDisabled = row.quantity >= max ? "disabled" : "";
   return `
-    <div class="cart-quantity" aria-label="Quantity for ${escapeAttr(row.product.title)}">
-      <button type="button" data-cart-quantity-step="${row.id}" data-delta="-1" ${decreaseDisabled}>-</button>
-      <input type="number" min="1" max="${max}" value="${row.quantity}" data-cart-quantity="${row.id}" aria-label="Quantity" />
-      <button type="button" data-cart-quantity-step="${row.id}" data-delta="1" ${increaseDisabled}>+</button>
+    <div class="cart-quantity" aria-label="Quantity for ${escapeAttr(row.product.title)}${row.size ? ` size ${escapeAttr(row.size)}` : ""}">
+      <button type="button" data-cart-quantity-step="${escapeAttr(row.id)}" data-delta="-1" ${decreaseDisabled}>-</button>
+      <input type="number" min="1" max="${max}" value="${row.quantity}" data-cart-quantity="${escapeAttr(row.id)}" aria-label="Quantity" />
+      <button type="button" data-cart-quantity-step="${escapeAttr(row.id)}" data-delta="1" ${increaseDisabled}>+</button>
       <small>${max} available</small>
     </div>
   `;
@@ -690,7 +711,7 @@ async function cartDrawer() {
                         <img class="drawer-thumb" src="${row.product.image}" alt="${row.product.title}" />
                         <div>
                           <strong>${row.product.title}</strong>
-                          <span>${row.product.format} / ${row.product.artist}</span>
+                          <span>${row.product.format} / ${row.product.artist}${row.size ? ` / ${escapeHtml(row.size)}` : ""}</span>
                           <small>${row.quantity} x ${money.format(row.product.price)}</small>
                           ${cartQuantityControl(row)}
                         </div>
@@ -1404,6 +1425,21 @@ function isSizeSoldOut(size) {
   return size.soldOut || quantity <= 0;
 }
 
+function defaultAvailableSize(product) {
+  if (!product?.sizes?.length) return "";
+  return product.sizes.find((size) => !isSizeSoldOut(size))?.label || "";
+}
+
+function productStock(product, size = "") {
+  if (!product) return 0;
+  if (product.sizes?.length) {
+    const selected = product.sizes.find((item) => item.label === size);
+    if (!selected) return 0;
+    return Math.max(0, Math.floor(Number(selected.quantity ?? selected.qty ?? (selected.soldOut ? 0 : 1)) || 0));
+  }
+  return Math.max(0, Math.floor(Number(product.qty ?? 1) || 0));
+}
+
 function sizeInventoryFields(product = {}) {
   const sizeOptions = ["S", "M", "L", "XL", "XXL", "7", "9", "11"];
   const savedSizes = new Map((product.sizes || []).map((size) => [size.label, size]));
@@ -1729,10 +1765,12 @@ function bindEvents() {
   document.querySelectorAll("[data-add-cart]").forEach((button) => {
     button.addEventListener("click", async () => {
       const product = await catalogService.getProduct(button.dataset.addCart);
-      const stock = Math.max(0, Math.floor(Number(product?.qty ?? 1) || 0));
-      const currentQuantity = cartItemQuantity(button.dataset.addCart);
+      const selectedSize = product?.sizes?.length ? state.selectedSizes[product.id] || defaultAvailableSize(product) : "";
+      const key = cartKey(button.dataset.addCart, selectedSize);
+      const stock = productStock(product, selectedSize);
+      const currentQuantity = cartItemQuantity(key);
       if (stock > 0 && currentQuantity < stock) {
-        state.cart.push(button.dataset.addCart);
+        state.cart.push(key);
         persistCart();
       }
       state.cartOpen = true;
@@ -1782,7 +1820,7 @@ function bindEvents() {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-          items: rows.map((row) => ({ id: row.id, quantity: row.quantity })),
+          items: rows.map((row) => ({ id: row.productId, size: row.size, quantity: row.quantity })),
           customer
         })
       });

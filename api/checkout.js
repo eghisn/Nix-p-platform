@@ -57,7 +57,7 @@ async function appendFinanceSale(order) {
         date: order.date,
         invoice: order.id,
         category: "Retail",
-        sku: order.lineItems.map((item) => item.sku).join(", "),
+        sku: order.lineItems.map((item) => (item.size ? `${item.sku}/${item.size}` : item.sku)).join(", "),
         qty: order.lineItems.reduce((sum, item) => sum + Number(item.quantity || 0), 0),
         revenue: order.total,
         discount: 0,
@@ -93,11 +93,17 @@ function normalizeItems(items) {
   const counts = new Map();
   for (const item of Array.isArray(items) ? items : []) {
     const id = typeof item === "string" ? item : String(item?.id || "");
+    const size = typeof item === "string" ? "" : String(item?.size || "").trim();
     const quantity = typeof item === "string" ? 1 : Number(item?.quantity || 1);
     if (!id || !Number.isFinite(quantity) || quantity <= 0) continue;
-    counts.set(id, (counts.get(id) || 0) + Math.min(20, Math.floor(quantity)));
+    const key = `${id}::${size}`;
+    counts.set(key, {
+      id,
+      size,
+      quantity: (counts.get(key)?.quantity || 0) + Math.min(20, Math.floor(quantity))
+    });
   }
-  return [...counts.entries()].map(([id, quantity]) => ({ id, quantity }));
+  return [...counts.values()];
 }
 
 async function loadProducts(ids) {
@@ -109,16 +115,20 @@ async function loadProducts(ids) {
 
 function buildLine(item, product) {
   if (!product) return { ...item, error: "One or more cart items are no longer available." };
-  const stock = Number(product.qty || 0);
+  const stock = productStock(product, item.size);
   if (product.publish_status !== "Published" || product.visibility !== "Public") {
     return { ...item, product, error: `${product.title} is not available.` };
   }
+  if (hasSizes(product) && !item.size) {
+    return { ...item, product, error: `Please select a size for ${product.title}.` };
+  }
   if (stock < item.quantity) {
-    return { ...item, product, error: `${product.title} has only ${Math.max(0, stock)} available.` };
+    return { ...item, product, error: `${product.title}${item.size ? ` / ${item.size}` : ""} has only ${Math.max(0, stock)} available.` };
   }
   const unitPrice = Number(product.price || 0);
   return {
     id: item.id,
+    size: item.size,
     quantity: item.quantity,
     product,
     unitPrice,
@@ -150,6 +160,7 @@ function buildOrder(customer, lines, total) {
       sku: line.product.sku,
       artist: line.product.artist,
       title: line.product.title,
+      size: line.size,
       quantity: line.quantity,
       unitPrice: line.unitPrice,
       lineTotal: line.lineTotal
@@ -162,6 +173,28 @@ function buildOrder(customer, lines, total) {
 
 async function reserveStock(line) {
   const raw = line.product.raw || {};
+  if (hasSizes(line.product)) {
+    const currentSizes = Array.isArray(line.product.sizes) ? line.product.sizes : [];
+    const nextSizes = currentSizes.map((size) => {
+      if (String(size.label || "") !== line.size) return size;
+      const quantity = Math.max(0, Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1)) - line.quantity);
+      return { ...size, quantity, soldOut: quantity <= 0 };
+    });
+    return supabaseFetch(`products?id=eq.${encodeURIComponent(line.id)}`, {
+      method: "PATCH",
+      service: true,
+      body: {
+        sizes: nextSizes,
+        raw: {
+          ...raw,
+          sizes: nextSizes,
+          updatedAt: new Date().toISOString().slice(0, 10)
+        },
+        updated_at: new Date().toISOString().slice(0, 10)
+      },
+      prefer: "return=minimal"
+    });
+  }
   const nextQty = Math.max(0, Number(line.product.qty || raw.qty || 0) - line.quantity);
   return supabaseFetch(`products?id=eq.${encodeURIComponent(line.id)}`, {
     method: "PATCH",
@@ -177,4 +210,17 @@ async function reserveStock(line) {
     },
     prefer: "return=minimal"
   });
+}
+
+function hasSizes(product) {
+  return Array.isArray(product?.sizes) && product.sizes.length > 0;
+}
+
+function productStock(product, size = "") {
+  if (hasSizes(product)) {
+    const selected = product.sizes.find((item) => String(item.label || "") === size);
+    if (!selected) return 0;
+    return Math.max(0, Math.floor(Number(selected.quantity ?? selected.qty ?? (selected.soldOut ? 0 : 1)) || 0));
+  }
+  return Math.max(0, Math.floor(Number(product.qty || 0) || 0));
 }
