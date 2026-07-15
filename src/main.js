@@ -1438,7 +1438,7 @@ function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
       ${artists
         .map((artist) =>
           availableArtistNames.has(artist.toLowerCase())
-            ? `<a href="/records?artistTag=${encodeURIComponent(artist)}" data-link>${escapeHtml(artist)}</a>`
+            ? `<a href="/artists/${encodeURIComponent(artist)}" data-link>${escapeHtml(artist)}</a>`
             : `<span>${escapeHtml(artist)}</span>`
         )
         .join("")}

@@ -176,7 +176,7 @@ function recordArtistTags(product, availableArtistNames = new Set()) {
         .slice(0, 3)
         .map((artist) =>
           availableArtistNames.has(artist.toLowerCase())
-            ? `<a href="/records?artistTag=${encodeURIComponent(artist)}" data-link>${escapeHtml(artist)}</a>`
+            ? `<a href="/artists/${encodeURIComponent(artist)}" data-link>${escapeHtml(artist)}</a>`
             : `<span>${escapeHtml(artist)}</span>`
         )
         .join("")}
