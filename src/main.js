@@ -381,7 +381,6 @@ async function productDetailMarkup(product) {
         <h1>${product.title}</h1>
         <div class="detail-price">${money.format(product.price)}</div>
         <p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>
-        ${product.descriptionSource ? `<p class="product-editorial-source">Source: ${escapeHtml(product.descriptionSource)}</p>` : ""}
         ${productReviewMarkup(product)}
         ${
           isSizedProduct
