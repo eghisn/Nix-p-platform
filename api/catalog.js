@@ -91,7 +91,7 @@ function isTrustedOrigin(req) {
 async function sendRequestEmail(request) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.REQUEST_EMAIL_FROM;
-  const to = process.env.REQUEST_NOTIFICATION_TO || "contact@nix-p.com";
+  const to = process.env.REQUEST_NOTIFICATION_TO || "egihisni@nix-p.com";
   if (!apiKey || !from) return { delivered: false, reason: "email-not-configured" };
 
   const response = await fetch("https://api.resend.com/emails", {
