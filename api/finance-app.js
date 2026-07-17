@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { clearSession, createSession, getSession, validLogin } from "./_lib/auth.js";
-import { readFinanceState } from "./_lib/financeState.js";
+import { readFinanceStateWithVersion } from "./_lib/financeState.js";
 
 export default async function handler(req, res) {
   const url = new URL(req.url || "/", "https://finance.nix-p.com");
@@ -13,10 +13,10 @@ export default async function handler(req, res) {
   if (!session || !["finance", "admin"].includes(session.workspace)) return redirect(res, "/login");
 
   const htmlPath = join(process.cwd(), "apps", "finance", "index.html");
-  const state = await readFinanceState();
+  const snapshot = await readFinanceStateWithVersion();
   const html = (await readFile(htmlPath, "utf8")).replace(
     "<script>",
-    `<script>window.__NIXP_FINANCE_STATE__=${JSON.stringify(state).replace(/</g, "\\u003c")};</script>\n  <script>`
+    `<script>window.__NIXP_FINANCE_STATE__=${JSON.stringify(snapshot.state).replace(/</g, "\\u003c")};window.__NIXP_FINANCE_UPDATED_AT__=${JSON.stringify(snapshot.updatedAt)};</script>\n  <script>`
   );
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");

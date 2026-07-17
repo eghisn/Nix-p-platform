@@ -934,6 +934,9 @@
   <script>
     const STORAGE_KEY = "nixp-cashflow-web-v1";
     const migratedServerState = window.__NIXP_FINANCE_STATE__;
+    let financeStateUpdatedAt = window.__NIXP_FINANCE_UPDATED_AT__ || null;
+    let financeSavePending = false;
+    let financeSaveConflict = false;
     const hasServerState = migratedServerState && Array.isArray(migratedServerState.general) && Array.isArray(migratedServerState.sales) && Array.isArray(migratedServerState.expenses) && Array.isArray(migratedServerState.inventory);
     const usesLocalFileStorage = location.protocol === "file:";
     if (location.protocol === "file:") {
@@ -1060,7 +1063,13 @@
     buildForms();
     attachExportControls();
     bindEvents();
-    commitState();
+    normalizeDerivedData();
+    render();
+    if (!usesLocalFileStorage) {
+      window.setInterval(() => {
+        refreshServerState().catch(() => {});
+      }, 20000);
+    }
 
     function loadState() {
       if (hasServerState) {
@@ -1139,18 +1148,45 @@
 
     function persistServerState() {
       if (location.protocol !== "http:" && location.protocol !== "https:") return;
+      financeSavePending = true;
       fetch("/api/state", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ state })
+        body: JSON.stringify({ state, updatedAt: financeStateUpdatedAt })
       })
-        .then((response) => {
-          if (!response.ok) throw new Error("Unable to save finance state");
+        .then(async (response) => {
+          const payload = await response.json().catch(() => ({}));
+          if (response.status === 409) {
+            financeSaveConflict = true;
+            throw new Error(payload.error || "Finance data changed on the server. Refresh before saving again.");
+          }
+          if (!response.ok) throw new Error(payload.error || "Unable to save finance state");
+          financeStateUpdatedAt = payload.updatedAt || financeStateUpdatedAt;
           el.saveStatus.textContent = "Saved to protected server";
         })
-        .catch(() => {
-          el.saveStatus.textContent = "Save failed. Changes were not synced.";
+        .catch((error) => {
+          el.saveStatus.textContent = error.message || "Save failed. Changes were not synced.";
+        })
+        .finally(() => {
+          financeSavePending = false;
         });
+    }
+
+    async function refreshServerState() {
+      if (financeSavePending || financeSaveConflict) return;
+      const response = await fetch("/api/state", { headers: { accept: "application/json" }, cache: "no-store" });
+      if (!response.ok) return;
+      const payload = await response.json().catch(() => ({}));
+      if (!payload.state || !payload.updatedAt || payload.updatedAt === financeStateUpdatedAt) return;
+      state.general = Array.isArray(payload.state.general) ? payload.state.general : [];
+      state.sales = Array.isArray(payload.state.sales) ? payload.state.sales : [];
+      state.expenses = Array.isArray(payload.state.expenses) ? payload.state.expenses : [];
+      state.inventory = Array.isArray(payload.state.inventory) ? payload.state.inventory : [];
+      state.inventoryStock = Array.isArray(payload.state.inventoryStock) ? payload.state.inventoryStock : [];
+      financeStateUpdatedAt = payload.updatedAt;
+      normalizeDerivedData();
+      render();
+      el.saveStatus.textContent = "Updated from storefront";
     }
 
     function uid() {
@@ -1509,7 +1545,6 @@
 
     function commitState() {
       normalizeDerivedData();
-      syncAllInventoryPurchases();
       saveState();
       render();
     }

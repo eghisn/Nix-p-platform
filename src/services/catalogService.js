@@ -16,6 +16,7 @@ export const catalogService = {
     return adminStore.listProducts(options);
   },
   async listAllProducts() {
+    await adminStore.refreshPrivateStore();
     return adminStore.listProducts({ includeDrafts: true });
   },
   async listProductsByCategory(category) {
@@ -58,6 +59,7 @@ export const catalogService = {
     return adminStore.getSnapshot().collections;
   },
   async listInventory() {
+    await adminStore.refreshPrivateStore();
     const products = adminStore.listProducts({ includeDrafts: true });
     return adminStore.getSnapshot().inventory.map((item) => ({
       ...item,
@@ -65,6 +67,7 @@ export const catalogService = {
     }));
   },
   async listOrders() {
+    await adminStore.refreshOrders();
     const products = adminStore.listProducts({ includeDrafts: true });
     return adminStore.getSnapshot().orders.map((order) => ({
       ...order,

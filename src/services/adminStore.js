@@ -7,6 +7,7 @@ const PUBLIC_STORE_PATH = "/public/data/public-store.json";
 const REMOVED_PRODUCT_IDS = new Set(["obj-001", "pub-002"]);
 
 let activeStore = null;
+let privateStoreRefresh = null;
 
 const defaultCollections = [
   { id: "records", title: "Records", type: "Category", status: "Published", sort: 1 },
@@ -397,15 +398,30 @@ export const adminStore = {
     return this.initialize();
   },
   async refreshRequests() {
-    if (!canUsePrivateStore()) return this.getSnapshot().requests;
-    const response = await fetch(`/api/catalog?scope=admin&requests=${Date.now()}`, { cache: "no-store" });
-    if (!response.ok) throw new Error("Could not refresh requests. Please log in to admin and try again.");
-    const payload = await response.json();
-    if (!Array.isArray(payload.store?.requests)) return this.getSnapshot().requests;
-    const current = readStore();
-    activeStore = { ...current, requests: payload.store.requests };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
-    return activeStore.requests;
+    await this.refreshPrivateStore();
+    return this.getSnapshot().requests;
+  },
+  async refreshOrders() {
+    await this.refreshPrivateStore();
+    return this.getSnapshot().orders;
+  },
+  async refreshPrivateStore() {
+    if (!canUsePrivateStore()) return this.getSnapshot();
+    if (privateStoreRefresh) return privateStoreRefresh;
+    privateStoreRefresh = (async () => {
+      const response = await fetch(`/api/catalog?scope=admin&v=${Date.now()}`, { cache: "no-store" });
+      if (!response.ok) throw new Error("Could not refresh admin data. Please log in to admin and try again.");
+      const payload = await response.json();
+      if (!payload.store) return this.getSnapshot();
+      activeStore = mergeStore(seed({ publicOnly: false }), payload.store, { publicOnly: false });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+      return activeStore;
+    })();
+    try {
+      return await privateStoreRefresh;
+    } finally {
+      privateStoreRefresh = null;
+    }
   },
   async verifyPrices(ids) {
     try {

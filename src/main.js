@@ -19,6 +19,7 @@ const state = {
   cartOpen: false,
   checkoutMessage: "",
   checkoutTone: "",
+  checkoutOrderToken: "",
   requestNotice: "",
   requestNoticeTone: "",
   searchOpen: false,
@@ -82,7 +83,13 @@ function setCartItemQuantity(key, quantity) {
   const cleanQuantity = Math.max(0, Math.floor(Number(quantity) || 0));
   state.cart = state.cart.filter((itemKey) => itemKey !== cleanKey);
   state.cart.push(...Array.from({ length: cleanQuantity }, () => cleanKey));
+  state.checkoutOrderToken = "";
   persistCart();
+}
+
+function createCheckoutOrderToken() {
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
 }
 
 const homeCollectionOptions = [
@@ -691,6 +698,7 @@ async function cartSummary() {
   const nextCart = rows.flatMap((row) => Array.from({ length: row.quantity }, () => row.id));
   if (nextCart.join("|") !== state.cart.join("|")) {
     state.cart = nextCart;
+    state.checkoutOrderToken = "";
     persistCart();
   }
   return {
@@ -1865,6 +1873,7 @@ function bindEvents() {
       const currentQuantity = cartItemQuantity(key);
       if (stock > 0 && currentQuantity < stock) {
         state.cart.push(key);
+        state.checkoutOrderToken = "";
         persistCart();
       }
       state.cartOpen = true;
@@ -1910,17 +1919,21 @@ function bindEvents() {
     await render();
     try {
       const { rows } = await cartSummary();
+      const orderId = state.checkoutOrderToken || createCheckoutOrderToken();
+      state.checkoutOrderToken = orderId;
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           items: rows.map((row) => ({ id: row.productId, size: row.size, quantity: row.quantity })),
-          customer
+          customer,
+          orderId
         })
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(payload.error || "Checkout failed.");
       state.cart = [];
+      state.checkoutOrderToken = "";
       persistCart();
       state.checkoutMessage = `Order ${payload.order.id} submitted at ${money.format(payload.order.total)}.`;
       state.checkoutTone = "success";

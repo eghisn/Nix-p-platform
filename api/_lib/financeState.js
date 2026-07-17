@@ -14,23 +14,42 @@ export function isFinanceState(value) {
 }
 
 export async function readFinanceState() {
-  const remote = await readRemoteState().catch((error) => {
+  return (await readFinanceStateWithVersion()).state;
+}
+
+export async function readFinanceStateWithVersion() {
+  const remote = await readRemoteStateWithVersion().catch((error) => {
     if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) throw error;
     return null;
   });
-  if (isFinanceState(remote)) return normalizeFinanceState(remote);
-  return normalizeFinanceState(EMPTY_FINANCE_STATE);
+  if (isFinanceState(remote?.state)) {
+    return { state: normalizeFinanceState(remote.state), updatedAt: remote.updatedAt || null };
+  }
+  return { state: normalizeFinanceState(EMPTY_FINANCE_STATE), updatedAt: null };
 }
 
-export async function writeFinanceState(state, { syncCatalog = true } = {}) {
+export async function writeFinanceState(state, { syncCatalog = true, expectedUpdatedAt = null } = {}) {
   if (!isFinanceState(state)) throw new Error("Invalid finance state.");
   const normalized = normalizeFinanceState(state);
   await backupFinanceState(normalized);
-  await supabaseFetch("finance_state?on_conflict=key", {
-    method: "POST",
-    body: [{ key: STATE_KEY, state: normalized }],
-    prefer: "resolution=merge-duplicates,return=minimal"
-  });
+  if (expectedUpdatedAt) {
+    const rows = await supabaseFetch(`finance_state?key=eq.${STATE_KEY}&updated_at=eq.${encodeURIComponent(expectedUpdatedAt)}`, {
+      method: "PATCH",
+      body: { state: normalized },
+      prefer: "return=representation"
+    });
+    if (!Array.isArray(rows) || !rows.length) {
+      const error = new Error("Finance data changed on the server. Refresh before saving again.");
+      error.statusCode = 409;
+      throw error;
+    }
+  } else {
+    await supabaseFetch("finance_state?on_conflict=key", {
+      method: "POST",
+      body: [{ key: STATE_KEY, state: normalized }],
+      prefer: "resolution=merge-duplicates,return=minimal"
+    });
+  }
   if (syncCatalog) await syncFinanceInventoryToCatalog(normalized);
   return normalized;
 }
@@ -285,8 +304,13 @@ function today() {
 }
 
 async function readRemoteState() {
-  const rows = await supabaseFetch(`finance_state?select=state&key=eq.${STATE_KEY}&limit=1`);
-  return rows?.[0]?.state || null;
+  return (await readRemoteStateWithVersion())?.state || null;
+}
+
+async function readRemoteStateWithVersion() {
+  const rows = await supabaseFetch(`finance_state?select=state,updated_at&key=eq.${STATE_KEY}&limit=1`);
+  const row = rows?.[0];
+  return row ? { state: row.state, updatedAt: row.updated_at || null } : null;
 }
 
 async function supabaseFetch(path, options = {}) {
