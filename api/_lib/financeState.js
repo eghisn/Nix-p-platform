@@ -105,32 +105,49 @@ async function syncFinanceInventoryToCatalog(state) {
 }
 
 export async function syncAdminProductInventory(product) {
-  if (!product?.sku) return;
+  return syncAdminCatalogInventory([product]);
+}
+
+// Apply a full Admin catalog deployment in one state write. Writing each product
+// individually would allow concurrent writes to overwrite one another.
+export async function syncAdminCatalogInventory(products = []) {
+  const catalogProducts = (Array.isArray(products) ? products : [products]).filter((product) => product?.sku);
+  if (!catalogProducts.length) return;
   const current = normalizeFinanceState((await readRemoteState().catch(() => null)) || EMPTY_FINANCE_STATE);
-  const sku = String(product.sku).trim();
-  const key = sku.toLowerCase();
-  const quantity = Array.isArray(product.sizes) && product.sizes.length
-    ? product.sizes.reduce((sum, size) => sum + normalizedQuantity(size.quantity ?? size.qty), 0)
-    : normalizedQuantity(product.qty);
-  const index = current.inventoryStock.findIndex((item) => String(item?.sku || "").trim().toLowerCase() === key);
-  const existing = index >= 0 ? current.inventoryStock[index] : {};
-  const nextStock = recalculateStock({
-    ...existing,
-    id: existing.id || `catalog-${product.id}`,
-    sku,
-    item: financeItemForProduct(product),
-    itemCondition: product.condition || existing.itemCondition || "New-Sealed",
-    artist: product.artist || existing.artist || "",
-    title: product.title || existing.title || "",
-    source: existing.source || "Admin editor",
-    acquisitionMonth: existing.acquisitionMonth || new Date().toISOString().slice(0, 7),
-    qty: quantity,
-    costBasis: Number(existing.costBasis || 0),
-    sellingPrice: Number(existing.sellingPrice || product.price || 0),
-    soldPrice: Number(existing.soldPrice || 0)
-  });
-  if (index >= 0) current.inventoryStock[index] = nextStock;
-  else current.inventoryStock.push(nextStock);
+  const existingIndexes = new Map(
+    current.inventoryStock.map((item, index) => [String(item?.sku || "").trim().toLowerCase(), index])
+  );
+
+  for (const product of catalogProducts) {
+    const sku = String(product.sku).trim();
+    const key = sku.toLowerCase();
+    const index = existingIndexes.get(key);
+    const existing = index === undefined ? {} : current.inventoryStock[index];
+    const quantity = Array.isArray(product.sizes) && product.sizes.length
+      ? product.sizes.reduce((sum, size) => sum + normalizedQuantity(size.quantity ?? size.qty), 0)
+      : normalizedQuantity(product.qty);
+    const nextStock = recalculateStock({
+      ...existing,
+      id: existing.id || `catalog-${product.id}`,
+      sku,
+      item: financeItemForProduct(product),
+      itemCondition: product.condition || existing.itemCondition || "New-Sealed",
+      artist: product.artist || existing.artist || "",
+      title: product.title || existing.title || "",
+      source: existing.source || "Admin editor",
+      acquisitionMonth: existing.acquisitionMonth || new Date().toISOString().slice(0, 7),
+      qty: quantity,
+      costBasis: Number(existing.costBasis || 0),
+      sellingPrice: Number(existing.sellingPrice || product.price || 0),
+      soldPrice: Number(existing.soldPrice || 0)
+    });
+    if (index === undefined) {
+      existingIndexes.set(key, current.inventoryStock.length);
+      current.inventoryStock.push(nextStock);
+    } else {
+      current.inventoryStock[index] = nextStock;
+    }
+  }
   await writeFinanceState(current, { syncCatalog: false });
 }
 

@@ -14,7 +14,9 @@ export default async function handler(req, res) {
     return json(res, 400, { ok: false, error: "Deploy requires a complete admin store payload." });
   }
   try {
-    await saveStore(store);
+    // A deploy can introduce products that were not individually saved in this
+    // browser session, so synchronize the complete Admin catalog with Finance.
+    await saveStore(store, { syncCatalogProducts: true });
     if (!isGitHubDeployConfigured()) {
       return json(res, 200, {
         ok: true,
