@@ -1,3 +1,5 @@
+import { syncAdminProductInventory } from "./financeState.js";
+
 const TABLES = ["products", "artists", "collections", "requests", "orders", "cashflow", "inventory"];
 const REQUIRED_STORE_ARRAYS = ["products", "artists", "collections", "requests", "orders", "cashflow", "inventory"];
 
@@ -69,7 +71,7 @@ export async function verifiedPrices(ids = []) {
   return supabaseFetch(`products?select=id,price,qty,publish_status,visibility&id=in.(${inList})`);
 }
 
-export async function saveStore(store) {
+export async function saveStore(store, { inventoryProduct = null } = {}) {
   validateStore(store);
   await backupStore("admin-store", store);
   const rowsByTable = {
@@ -82,6 +84,7 @@ export async function saveStore(store) {
     inventory: (store.inventory || []).map(toRawRow)
   };
   for (const table of TABLES) await upsert(table, rowsByTable[table]);
+  if (inventoryProduct) await syncAdminProductInventory(inventoryProduct);
 }
 
 async function upsert(table, rows) {

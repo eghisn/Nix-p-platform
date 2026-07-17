@@ -1083,8 +1083,8 @@
 
     function saveState() {
       if (!usesLocalFileStorage) {
+        el.saveStatus.textContent = "Saving to protected server...";
         persistServerState();
-        el.saveStatus.textContent = "Saved to protected server";
         return;
       }
       try {
@@ -1143,7 +1143,14 @@
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ state })
-      }).catch(() => {});
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("Unable to save finance state");
+          el.saveStatus.textContent = "Saved to protected server";
+        })
+        .catch(() => {
+          el.saveStatus.textContent = "Save failed. Changes were not synced.";
+        });
     }
 
     function uid() {

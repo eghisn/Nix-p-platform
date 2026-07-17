@@ -1,5 +1,7 @@
 const STATE_KEY = "main";
 const EMPTY_FINANCE_STATE = { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
+const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
+const APPAREL_TYPES = new Set(["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap"]);
 
 export function isFinanceState(value) {
   return (
@@ -20,7 +22,7 @@ export async function readFinanceState() {
   return normalizeFinanceState(EMPTY_FINANCE_STATE);
 }
 
-export async function writeFinanceState(state) {
+export async function writeFinanceState(state, { syncCatalog = true } = {}) {
   if (!isFinanceState(state)) throw new Error("Invalid finance state.");
   const normalized = normalizeFinanceState(state);
   await backupFinanceState(normalized);
@@ -29,7 +31,88 @@ export async function writeFinanceState(state) {
     body: [{ key: STATE_KEY, state: normalized }],
     prefer: "resolution=merge-duplicates,return=minimal"
   });
+  if (syncCatalog) await syncFinanceInventoryToCatalog(normalized);
   return normalized;
+}
+
+// Finance is the source of truth for SKU stock; incomplete finance entries stay private drafts in the catalog.
+async function syncFinanceInventoryToCatalog(state) {
+  const stockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
+  if (!stockRows.length && !(state.inventory || []).length) return;
+
+  const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
+  const existingRows = skus.length
+    ? await supabaseFetch(`products?select=*&sku=in.(${skuList(skus)})`)
+    : [];
+  const existingBySku = new Map(existingRows.map((row) => [String(row.sku || "").trim().toLowerCase(), row]));
+  const productRows = [];
+  const productIdBySku = new Map();
+
+  for (const stock of stockRows) {
+    const sku = String(stock.sku).trim();
+    const key = sku.toLowerCase();
+    const existing = existingBySku.get(key);
+    const quantity = normalizedQuantity(stock.qty);
+    if (existing) {
+      const raw = { ...(existing.raw || {}), qty: quantity, updatedAt: today(), financeStockId: stock.id || null };
+      productRows.push({ ...existing, qty: quantity, updated_at: today(), raw });
+      productIdBySku.set(key, existing.id);
+      continue;
+    }
+    const product = draftProductFromFinanceStock(stock, quantity);
+    productRows.push(product);
+    productIdBySku.set(key, product.id);
+  }
+
+  if (productRows.length) {
+    await supabaseFetch("products?on_conflict=id", {
+      method: "POST",
+      body: productRows,
+      prefer: "resolution=merge-duplicates,return=minimal"
+    });
+  }
+
+  const inventoryRows = [
+    ...(state.inventory || []).map((item) => financeInventoryRow(item, productIdBySku)),
+    ...stockRows.map((item) => financeStockRow(item, productIdBySku))
+  ];
+  if (inventoryRows.length) {
+    await supabaseFetch("inventory?on_conflict=id", {
+      method: "POST",
+      body: inventoryRows,
+      prefer: "resolution=merge-duplicates,return=minimal"
+    });
+  }
+}
+
+export async function syncAdminProductInventory(product) {
+  if (!product?.sku) return;
+  const current = normalizeFinanceState((await readRemoteState().catch(() => null)) || EMPTY_FINANCE_STATE);
+  const sku = String(product.sku).trim();
+  const key = sku.toLowerCase();
+  const quantity = Array.isArray(product.sizes) && product.sizes.length
+    ? product.sizes.reduce((sum, size) => sum + normalizedQuantity(size.quantity ?? size.qty), 0)
+    : normalizedQuantity(product.qty);
+  const index = current.inventoryStock.findIndex((item) => String(item?.sku || "").trim().toLowerCase() === key);
+  const existing = index >= 0 ? current.inventoryStock[index] : {};
+  const nextStock = recalculateStock({
+    ...existing,
+    id: existing.id || `catalog-${product.id}`,
+    sku,
+    item: financeItemForProduct(product),
+    itemCondition: product.condition || existing.itemCondition || "New-Sealed",
+    artist: product.artist || existing.artist || "",
+    title: product.title || existing.title || "",
+    source: existing.source || "Admin editor",
+    acquisitionMonth: existing.acquisitionMonth || new Date().toISOString().slice(0, 7),
+    qty: quantity,
+    costBasis: Number(existing.costBasis || 0),
+    sellingPrice: Number(existing.sellingPrice || product.price || 0),
+    soldPrice: Number(existing.soldPrice || 0)
+  });
+  if (index >= 0) current.inventoryStock[index] = nextStock;
+  else current.inventoryStock.push(nextStock);
+  await writeFinanceState(current, { syncCatalog: false });
 }
 
 async function backupFinanceState(nextState) {
@@ -57,6 +140,148 @@ export function normalizeFinanceState(state) {
     inventory: Array.isArray(state.inventory) ? state.inventory : [],
     inventoryStock: Array.isArray(state.inventoryStock) ? state.inventoryStock : []
   };
+}
+
+function draftProductFromFinanceStock(stock, quantity) {
+  const item = String(stock.item || "Vinyl").trim();
+  const category = RECORD_FORMATS.has(item) ? "Records" : APPAREL_TYPES.has(item) ? "Apparel" : "Objects";
+  const id = `finance-${slugify(stock.sku)}`;
+  const product = {
+    id,
+    sku: String(stock.sku).trim(),
+    title: String(stock.title || "Untitled inventory item").trim(),
+    artist: String(stock.artist || "NIXP").trim(),
+    category,
+    format: category === "Records" ? item : category === "Apparel" ? "Apparel" : "Object",
+    displayFormat: category === "Records" ? item : "",
+    apparelType: category === "Apparel" ? "Accessories" : "",
+    condition: String(stock.itemCondition || "").trim(),
+    price: 0,
+    year: new Date().getFullYear(),
+    label: "",
+    collection: "",
+    color: "",
+    material: "",
+    image: "",
+    images: [],
+    imageCredits: [],
+    tags: [],
+    details: ["Created from finance inventory. Complete this draft in NIXP Admin before publishing."],
+    sizes: [],
+    description: "",
+    qty: quantity,
+    publishStatus: "Draft",
+    visibility: "Private",
+    updatedAt: today(),
+    financeStockId: stock.id || null
+  };
+  return {
+    id,
+    sku: product.sku,
+    title: product.title,
+    artist: product.artist,
+    category: product.category,
+    format: product.format,
+    display_format: product.displayFormat,
+    apparel_type: product.apparelType,
+    condition: product.condition,
+    price: product.price,
+    year: product.year,
+    label: product.label,
+    collection: product.collection,
+    color: product.color,
+    material: product.material,
+    image: product.image,
+    images: product.images,
+    image_credits: product.imageCredits,
+    tags: product.tags,
+    details: product.details,
+    sizes: product.sizes,
+    description: product.description,
+    qty: product.qty,
+    publish_status: product.publishStatus,
+    visibility: product.visibility,
+    updated_at: product.updatedAt,
+    raw: product
+  };
+}
+
+function financeInventoryRow(item, productIdBySku) {
+  const sku = String(item?.sku || "").trim();
+  return {
+    id: `finance-purchase-${item.id}`,
+    name: null,
+    title: item.itemType || "Inventory purchase",
+    status: "Synced",
+    sort: 0,
+    raw: {
+      ...item,
+      id: `finance-purchase-${item.id}`,
+      productId: productIdBySku.get(sku.toLowerCase()) || null,
+      origin: "finance-purchase",
+      updatedAt: today()
+    }
+  };
+}
+
+function financeStockRow(item, productIdBySku) {
+  const sku = String(item?.sku || "").trim();
+  const productId = productIdBySku.get(sku.toLowerCase()) || null;
+  return {
+    id: productId || `finance-stock-${item.id || slugify(sku)}`,
+    name: null,
+    title: item.title || item.item || "Inventory stock",
+    status: "Synced",
+    sort: 0,
+    raw: {
+      ...item,
+      id: productId || `finance-stock-${item.id || slugify(sku)}`,
+      productId,
+      origin: "finance-stock",
+      updatedAt: today()
+    }
+  };
+}
+
+function financeItemForProduct(product) {
+  if (product.category === "Records") return product.format || "Vinyl";
+  if (product.category === "Apparel") return product.apparelType === "Accessories" ? "Cap" : product.title || "Apparel";
+  return "Object";
+}
+
+function recalculateStock(item) {
+  const quantity = normalizedQuantity(item.qty);
+  const costBasis = Number(item.costBasis || 0);
+  const soldPrice = Number(item.soldPrice || 0);
+  return {
+    ...item,
+    qty: quantity,
+    costBasis,
+    sellingPrice: Number(item.sellingPrice || 0),
+    soldPrice,
+    grossProfit: soldPrice > 0 ? soldPrice - costBasis : 0,
+    margin: soldPrice > 0 ? ((soldPrice - costBasis) / soldPrice) * 100 : 0
+  };
+}
+
+function normalizedQuantity(value) {
+  return Math.max(0, Math.floor(Number(value) || 0));
+}
+
+function skuList(values) {
+  return values.map((value) => `"${String(value).replaceAll('"', '\\"')}"`).join(",");
+}
+
+function slugify(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "") || "inventory-item";
+}
+
+function today() {
+  return new Date().toISOString().slice(0, 10);
 }
 
 async function readRemoteState() {

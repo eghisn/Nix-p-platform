@@ -638,6 +638,12 @@ html {
   transform: translateY(3px);
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 160ms;
+  animation-timing-function: ease;
+}
+
 .home-collections {
   display: flex;
   flex-wrap: wrap;
@@ -1655,11 +1661,13 @@ tr:last-child td {
   line-height: 1;
 }
 
-.search-hint {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 760;
-  text-transform: uppercase;
+.request-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .search-results {

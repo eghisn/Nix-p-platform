@@ -709,7 +709,7 @@ const backInStockIds = new Set([
 
 function recordHomeCollections(row) {
   const collections = [];
-  if (Number(recordYears[row.id] || row.year || 0) >= 2024) collections.push("recent-releases");
+  if ([2025, 2026].includes(Number(recordYears[row.id] || row.year || 0))) collections.push("recent-releases");
   if (nixpSelectionIds.has(row.id)) collections.push("nixp-selection");
   if (backInStockIds.has(row.id)) collections.push("back-in-stock");
   if (row.condition === "New-Sealed" && ["Vinyl", "Cassette"].includes(row.format)) collections.push("limited-pressing");

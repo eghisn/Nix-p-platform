@@ -211,6 +211,39 @@ async function handleApi(req, res) {
     return true;
   }
 
+  if (url.pathname === "/api/catalog" && req.method === "POST") {
+    if (url.searchParams.get("action") !== "request-item") {
+      json(res, 404, { ok: false, error: "Unknown catalog action." });
+      return true;
+    }
+    const payload = JSON.parse(await readBody(req));
+    const artistName = String(payload.artistName || "").trim().slice(0, 160);
+    const itemName = String(payload.itemName || "").trim().slice(0, 160);
+    const format = String(payload.format || "").trim().slice(0, 48);
+    if (!artistName || !itemName || !format || String(payload.company || "").trim()) {
+      json(res, 400, { ok: false, error: "Artist, item title, and format are required." });
+      return true;
+    }
+    const dataDir = join(root, "public", "data");
+    await mkdir(dataDir, { recursive: true });
+    const storePath = join(dataDir, "admin-store.json");
+    const store = existsSync(storePath) ? JSON.parse(await readFile(storePath, "utf8")) : { products: [], artists: [], collections: [], requests: [], orders: [], cashflow: [], inventory: [] };
+    const request = {
+      id: `request-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      artistName,
+      itemName,
+      format,
+      whatsapp: String(payload.whatsapp || "").trim().slice(0, 48),
+      notes: String(payload.notes || "").trim().slice(0, 2000),
+      status: "New",
+      createdAt: new Date().toISOString()
+    };
+    store.requests = [request, ...(Array.isArray(store.requests) ? store.requests : [])];
+    await writeFile(storePath, JSON.stringify(store, null, 2) + "\n");
+    json(res, 201, { ok: true, request, notification: { delivered: false, reason: "local-preview" } });
+    return true;
+  }
+
   if (url.pathname === "/api/admin/store" && req.method === "POST") {
     if (!requireWorkspace(req, "admin")) {
       json(res, 401, { ok: false, error: "Admin login required" });

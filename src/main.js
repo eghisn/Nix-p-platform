@@ -19,6 +19,8 @@ const state = {
   cartOpen: false,
   checkoutMessage: "",
   checkoutTone: "",
+  requestNotice: "",
+  requestNoticeTone: "",
   searchOpen: false,
   selectedSizes: {},
   zoomedProductId: null,
@@ -145,13 +147,19 @@ async function render({ preserveScroll = false } = {}) {
   document.body.classList.toggle("page-lock", path === "/" || path === "/about" || path === "/contact" || isLoginView);
   document.body.classList.toggle("login-lock", isLoginView);
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
-  app.classList.add("is-rendering");
-  app.innerHTML = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
-  bindEvents();
-  requestAnimationFrame(() => {
-    app.classList.remove("is-rendering");
-    if (preserveScroll) window.scrollTo({ top: previousScrollTop, behavior: "auto" });
-  });
+  const markup = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
+  const commit = () => {
+    app.innerHTML = markup;
+    bindEvents();
+  };
+  if (document.startViewTransition) {
+    document.startViewTransition(commit);
+  } else {
+    app.classList.add("is-rendering");
+    commit();
+    requestAnimationFrame(() => app.classList.remove("is-rendering"));
+  }
+  if (preserveScroll) window.scrollTo({ top: previousScrollTop, behavior: "auto" });
 }
 
 async function loadAuthSession({ force = false } = {}) {
@@ -258,6 +266,9 @@ async function homePage() {
 }
 
 function homeCollectionMatch(product, collectionId) {
+  if (collectionId === "recent-releases") {
+    return product.category === "Records" && ["Vinyl", "CD", "Cassette"].includes(product.format) && [2025, 2026].includes(Number(product.year));
+  }
   return Array.isArray(product.homeCollections) && product.homeCollections.includes(collectionId);
 }
 
@@ -532,10 +543,11 @@ async function requestItemPage() {
               .join("")}
           </select>
         </label>
-        <label>Email:<input type="email" name="email" required /></label>
         <label>WhatsApp:<input name="whatsapp" /></label>
         <label>Notes:<textarea name="notes" rows="5"></textarea></label>
+        <input class="request-honeypot" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <button class="button button-dark" type="submit">Submit request</button>
+        ${state.requestNotice ? `<p class="form-message ${state.requestNoticeTone === "error" ? "is-error" : "is-success"}">${escapeHtml(state.requestNotice)}</p>` : ""}
       </form>
       <aside class="status-panel">
         <p class="eyebrow">Request status</p>
@@ -766,8 +778,7 @@ async function searchOverlay() {
           <label for="site-search">Search</label>
           <button type="button" data-search-close>Close</button>
         </div>
-        <input id="site-search" type="search" autocomplete="off" placeholder="Type at least 3 letters" data-search-input />
-        <div class="search-hint" data-search-hint>Suggestions appear after the first 3 letters.</div>
+        <input id="site-search" type="search" autocomplete="off" placeholder="Search" data-search-input />
         <div class="search-results" data-search-results></div>
         <script type="application/json" data-search-data>${JSON.stringify(suggestions).replace(/</g, "\\u003c")}</script>
       </aside>
@@ -1788,19 +1799,16 @@ function bindEvents() {
   });
 
   document.querySelector("[data-cart-open]")?.addEventListener("click", () => {
-    state.cartOpen = true;
-    render();
+    setCartOpen(true);
   });
 
   document.querySelector("[data-search-open]")?.addEventListener("click", () => {
-    state.searchOpen = true;
-    render();
+    setSearchOpen(true);
   });
 
   document.querySelectorAll("[data-search-close]").forEach((button) => {
     button.addEventListener("click", () => {
-      state.searchOpen = false;
-      render();
+      setSearchOpen(false);
     });
   });
 
@@ -1808,8 +1816,7 @@ function bindEvents() {
 
   document.querySelectorAll("[data-cart-close]").forEach((button) => {
     button.addEventListener("click", () => {
-      state.cartOpen = false;
-      render();
+      setCartOpen(false);
     });
   });
 
@@ -2110,28 +2117,50 @@ function bindEvents() {
     });
   });
 
-  document.querySelector("[data-request-form]")?.addEventListener("submit", (event) => {
+  document.querySelector("[data-request-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    state.requests.push({
-      id: `REQ-${String(100 + state.requests.length)}`,
-      artistName: form.get("artistName"),
-      itemName: form.get("itemName"),
-      format: form.get("format"),
-      email: form.get("email"),
-      whatsapp: form.get("whatsapp"),
-      notes: form.get("notes"),
-      status: "New"
-    });
-    event.currentTarget.reset();
-    render();
+    const formElement = event.currentTarget;
+    const button = formElement.querySelector('button[type="submit"]');
+    button.disabled = true;
+    state.requestNotice = "Submitting request...";
+    state.requestNoticeTone = "";
+    await render({ preserveScroll: true });
+    try {
+      const response = await fetch("/api/catalog?action=request-item", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(formElement).entries()))
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Request could not be submitted.");
+      state.requests = [payload.request, ...state.requests.filter((item) => item.id !== payload.request.id)];
+      state.requestNotice = payload.notification?.delivered
+        ? "Request submitted. NIXP has been notified."
+        : "Request submitted successfully.";
+      state.requestNoticeTone = "success";
+      await render({ preserveScroll: true });
+    } catch (error) {
+      state.requestNotice = error instanceof Error ? error.message : "Request could not be submitted.";
+      state.requestNoticeTone = "error";
+      await render({ preserveScroll: true });
+    }
   });
+}
+
+function setCartOpen(isOpen) {
+  state.cartOpen = isOpen;
+  document.querySelector("[data-cart-overlay]")?.classList.toggle("is-open", isOpen);
+}
+
+function setSearchOpen(isOpen) {
+  state.searchOpen = isOpen;
+  document.querySelector("[data-search-overlay]")?.classList.toggle("is-open", isOpen);
+  if (isOpen) setTimeout(() => document.querySelector("[data-search-input]")?.focus(), 0);
 }
 
 function bindSearch() {
   const input = document.querySelector("[data-search-input]");
   const results = document.querySelector("[data-search-results]");
-  const hint = document.querySelector("[data-search-hint]");
   const dataEl = document.querySelector("[data-search-data]");
   if (!input || !results || !dataEl) return;
 
@@ -2140,7 +2169,6 @@ function bindSearch() {
     const query = input.value.trim().toLowerCase();
     if (query.length < 3) {
       results.innerHTML = "";
-      hint.textContent = "Suggestions appear after the first 3 letters.";
       return;
     }
 
@@ -2148,7 +2176,6 @@ function bindSearch() {
       .filter((item) => `${item.title} ${item.meta} ${item.type}`.toLowerCase().includes(query))
       .slice(0, 8);
 
-    hint.textContent = matches.length ? `${matches.length} suggestion${matches.length > 1 ? "s" : ""}` : "No suggestions found.";
     results.innerHTML = matches
       .map(
         (item) => `
@@ -2164,7 +2191,7 @@ function bindSearch() {
     results.querySelectorAll("[data-link]").forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
-        state.searchOpen = false;
+        setSearchOpen(false);
         history.pushState({}, "", link.getAttribute("href"));
         render();
         window.scrollTo({ top: 0, behavior: "smooth" });

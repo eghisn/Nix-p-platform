@@ -20,12 +20,14 @@ const defaultCollections = [
   { id: "private-collection", title: "Private Collection", type: "Home", status: "Published", sort: 14 }
 ];
 
+const RECENT_RELEASE_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
+
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
 function withDefaults(product) {
-  return {
+  const defaults = {
     publishStatus: "Published",
     visibility: "Public",
     updatedAt: "2026-07-11",
@@ -48,6 +50,25 @@ function withDefaults(product) {
     qty: Number(product.qty ?? 1),
     shipping: normalizeShipping(product.shipping)
   };
+  return {
+    ...defaults,
+    homeCollections: normalizeHomeCollections(defaults)
+  };
+}
+
+function isRecentRelease(product = {}) {
+  return (
+    product.category === "Records" &&
+    RECENT_RELEASE_FORMATS.has(String(product.format || "").trim()) &&
+    [2025, 2026].includes(Number(product.year))
+  );
+}
+
+function normalizeHomeCollections(product, values = product.homeCollections) {
+  const collections = new Set(normalizeList(values));
+  if (isRecentRelease(product)) collections.add("recent-releases");
+  else collections.delete("recent-releases");
+  return [...collections];
 }
 
 function normalizeList(value) {
@@ -159,14 +180,14 @@ function readStore() {
   }
 }
 
-async function writeStore(store) {
+async function writeStore(store, { inventoryProduct = null } = {}) {
   if (!canUsePrivateStore()) return false;
   const previousActiveStore = activeStore;
   const previousSavedStore = localStorage.getItem(STORAGE_KEY);
   activeStore = store;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
   try {
-    return await persistStore(store);
+    return await persistStore(store, { inventoryProduct });
   } catch (error) {
     activeStore = previousActiveStore;
     if (previousSavedStore === null) {
@@ -234,12 +255,12 @@ function collectSizes(data) {
     .filter((size) => size?.label);
 }
 
-async function persistStore(store) {
+async function persistStore(store, { inventoryProduct = null } = {}) {
   try {
     const response = await fetch("/api/admin/store", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ store })
+      body: JSON.stringify({ store, inventoryProduct })
     });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(payload.error || "Store save failed. Please log in to admin and try again.");
@@ -422,7 +443,10 @@ export const adminStore = {
       return {
         ...product,
         homeSlideSort: include && Number.isFinite(rawSort) ? rawSort : null,
-        homeCollections: collectionIds.filter((id) => data[`homeCollection:${product.id}:${id}`] === "on"),
+        homeCollections: normalizeHomeCollections(
+          product,
+          collectionIds.filter((id) => data[`homeCollection:${product.id}:${id}`] === "on")
+        ),
         updatedAt: today()
       };
     });
@@ -522,7 +546,30 @@ export const adminStore = {
         sort: nextArtists.length + 1
       });
     }
-    await writeStore({ ...store, products: nextProducts, artists: nextArtists });
+    const inventoryId = product.id;
+    const existingInventory = store.inventory.find((item) => item.productId === product.id || item.id === inventoryId);
+    const inventoryEntry = {
+      ...existingInventory,
+      id: existingInventory?.id || inventoryId,
+      productId: product.id,
+      sku: product.sku,
+      artist: product.artist,
+      title: product.title,
+      category: product.category,
+      format: product.format,
+      condition: product.condition,
+      quantity: product.qty,
+      sizes: product.sizes,
+      source: "Admin editor",
+      updatedAt: today()
+    };
+    const nextInventory = existingInventory
+      ? store.inventory.map((item) => (item.id === existingInventory.id ? inventoryEntry : item))
+      : [inventoryEntry, ...store.inventory];
+    await writeStore(
+      { ...store, products: nextProducts, artists: nextArtists, inventory: nextInventory },
+      { inventoryProduct: product }
+    );
     return product;
   },
   updateProductStatus(id, publishStatus) {
