@@ -1,6 +1,6 @@
 function githubConfig() {
   return {
-    token: process.env.GITHUB_TOKEN,
+    token: process.env.GITHUB_DEPLOY_TOKEN || process.env.GITHUB_TOKEN,
     repository: process.env.GITHUB_REPOSITORY || "eghisn/Nix-p-platform",
     branch: process.env.GITHUB_BRANCH || "main"
   };
@@ -12,7 +12,7 @@ export function isGitHubDeployConfigured() {
 
 async function githubFetch(path, options = {}) {
   const { token } = githubConfig();
-  if (!token) throw new Error("GitHub deploy token is not configured.");
+  if (!token) throw new Error("GitHub deploy token is not configured. Set GITHUB_DEPLOY_TOKEN or GITHUB_TOKEN in Vercel.");
   const response = await fetch(`https://api.github.com${path}`, {
     method: options.method || "GET",
     headers: {

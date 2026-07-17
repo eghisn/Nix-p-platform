@@ -2299,6 +2299,48 @@
     {
       "publishStatus": "Published",
       "visibility": "Public",
+      "updatedAt": "2026-07-17",
+      "id": "nxp-2026-vnl-0013-self-titled",
+      "sku": "NXP-2026-VNL-0013",
+      "title": "Self Titled",
+      "artist": "Giant Swan",
+      "condition": "New-Unsealed",
+      "format": "Vinyl",
+      "displayFormat": "Vinyl 12\"",
+      "category": "Records",
+      "qty": 1,
+      "price": 500000,
+      "year": 2019,
+      "label": "Keck",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0013-1784281689333-a2998490938-10.jpg",
+      "tags": [
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0013"
+      ],
+      "description": "Giant Swan - Self Titled. Vinyl 12\" from the current NIXP records selection.",
+      "details": [
+        "SKU: NXP-2026-VNL-0013",
+        "Format: Vinyl 12\"",
+        "Condition: New-Unsealed"
+      ],
+      "sizes": [],
+      "collection": "Keck",
+      "color": "",
+      "material": "",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0013-1784281689333-a2998490938-10.jpg"
+      ],
+      "imageCredits": [],
+      "relatedArtists": [
+        "Blawan",
+        "Tzusing"
+      ],
+      "homeCollections": [],
+      "homeSlideSort": null
+    },
+    {
+      "publishStatus": "Published",
+      "visibility": "Public",
       "updatedAt": "2026-07-13",
       "id": "app-001",
       "sku": "NXP-2023-APP-0001",

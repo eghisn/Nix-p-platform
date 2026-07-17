@@ -17,6 +17,7 @@ export const artistNames = [
   "Daniel Lopatin",
   "David Bowie",
   "FACS",
+  "Giant Swan",
   "Gilla Band",
   "Girl Band",
   "Heith & Tarawangsawelas",
@@ -515,6 +516,17 @@ const recordRows = [
     "condition": "New-Sealed"
   },
   {
+    "id": "nxp-2026-vnl-0013-self-titled",
+    "sku": "NXP-2026-VNL-0013",
+    "artist": "Giant Swan",
+    "title": "Self Titled",
+    "format": "Vinyl",
+    "qty": 1,
+    "price": 500000,
+    "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0013-1784281689333-a2998490938-10.jpg",
+    "condition": "New-Unsealed"
+  },
+  {
     "id": "nxp-2026-cd-0023",
     "sku": "NXP-2026-CD-0023",
     "artist": "Oneohtrix Point Never",
@@ -570,6 +582,7 @@ const recordLabels = {
   "nxp-2026-vnl-0010": "XL Recordings",
   "nxp-2026-vnl-0011": "Stroom",
   "nxp-2026-vnl-0012": "XL Recordings",
+  "nxp-2026-vnl-0013-self-titled": "Keck",
   "nxp-2026-cd-0023": "Warp Records"
 };
 
@@ -616,6 +629,7 @@ const recordYears = {
   "nxp-2026-vnl-0010": 2024,
   "nxp-2026-vnl-0011": 2026,
   "nxp-2026-vnl-0012": 2025,
+  "nxp-2026-vnl-0013-self-titled": 2019,
   "nxp-2026-cd-0023": 2025
 };
 
@@ -662,6 +676,7 @@ const recordRelatedArtists = {
   "nxp-2026-vnl-0010": ["Joy Orbison", "Bicep", "The Streets"],
   "nxp-2026-vnl-0011": ["Jon Hassell", "Tarawangsawelas", "Heith"],
   "nxp-2026-vnl-0012": ["Karenn", "Pariah", "Surgeon"],
+  "nxp-2026-vnl-0013-self-titled": ["Blawan", "Tzusing"],
   "nxp-2026-cd-0023": ["Tim Hecker", "Arca", "Daniel Lopatin"]
 };
 

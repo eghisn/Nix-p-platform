@@ -8,9 +8,6 @@ export default async function handler(req, res) {
   if (!isSupabaseConfigured({ requireServiceRole: true })) {
     return json(res, 503, { ok: false, error: "Supabase service role is not configured." });
   }
-  if (!isGitHubDeployConfigured()) {
-    return json(res, 503, { ok: false, error: "GitHub deploy token is not configured." });
-  }
   const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
   const store = body.store || {};
   if (!Array.isArray(store.products) || !Array.isArray(store.artists) || !Array.isArray(store.collections)) {
@@ -18,6 +15,13 @@ export default async function handler(req, res) {
   }
   try {
     await saveStore(store);
+    if (!isGitHubDeployConfigured()) {
+      return json(res, 200, {
+        ok: true,
+        message: "Saved to Supabase. GitHub commit skipped because GITHUB_DEPLOY_TOKEN or GITHUB_TOKEN is not configured.",
+        github: { skipped: true, reason: "missing_token" }
+      });
+    }
     const github = await commitPublicStore(store, { message: body.message });
     json(res, 200, {
       ok: true,
