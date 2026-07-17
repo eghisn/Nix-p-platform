@@ -27,3 +27,6 @@ exports/supabase/cashflow.json
 exports/supabase/inventory.json
 exports/supabase/orders.json
 exports/supabase/requests.json
+
+.vercel
+.env*
