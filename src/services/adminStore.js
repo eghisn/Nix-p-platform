@@ -146,7 +146,7 @@ function normalizeApparelType(value) {
   return String(value || "").trim();
 }
 
-function seed({ publicOnly = !isLocalEditorRuntime() } = {}) {
+function seed({ publicOnly = !canUsePrivateStore() } = {}) {
   return {
     version: STORE_VERSION,
     products: products.map(withDefaults),
@@ -166,7 +166,8 @@ function seed({ publicOnly = !isLocalEditorRuntime() } = {}) {
 }
 
 function readStore() {
-  const publicOnly = !isLocalEditorRuntime();
+  // Both local editors and the authenticated admin/finance subdomains need the private store.
+  const publicOnly = !canUsePrivateStore();
   const seeded = seed({ publicOnly });
   if (activeStore) return mergeStore(seeded, activeStore, { publicOnly });
   if (publicOnly) return seeded;
