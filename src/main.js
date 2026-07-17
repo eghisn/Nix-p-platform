@@ -1067,16 +1067,18 @@ async function adminProductsPage({ embedded = false } = {}) {
           ${input("label", "Label", product.label || "", "NIXP Selection")}
           ${input("qty", "Quantity", product.qty ?? 1, "1", "number")}
           ${input("tags", "Tags", product.tags?.join(", ") || "", "new, vinyl, jakarta")}
-          ${input("relatedArtists", "Related artists", product.relatedArtists?.join(", ") || "", "SOPHIE, FKA twigs, Bjork")}
+          <div data-admin-record-editorial-field ${productCategory === "Records" ? "" : "hidden"}>
+            ${input("relatedArtists", "Related artists", product.relatedArtists?.join(", ") || "", "SOPHIE, FKA twigs, Bjork")}
+          </div>
           ${input("details", "Details", product.details?.join(", ") || "", "Format, condition, notes")}
           ${shippingAttributeFields(product)}
           ${select("publishStatus", "Status", ["Published", "Draft", "Archived"], product.publishStatus || "Published")}
           ${select("visibility", "Visibility", ["Public", "Hidden"], product.visibility || "Public")}
         </div>
         <label>Description<textarea name="description" rows="4">${escapeHtml(product.description || "")}</textarea></label>
-        <label>Description source<input name="descriptionSource" value="${escapeAttr(product.descriptionSource || "")}" placeholder="Official artist / label / release page" /></label>
-        <label>Review quote<textarea name="reviewQuote" rows="3" placeholder="Optional short quote, under 25 words">${escapeHtml(product.reviewQuote || "")}</textarea></label>
-        <div class="admin-form-grid">
+        <label data-admin-record-editorial-field ${productCategory === "Records" ? "" : "hidden"}>Description source<input name="descriptionSource" value="${escapeAttr(product.descriptionSource || "")}" placeholder="Official artist / label / release page" /></label>
+        <label data-admin-record-editorial-field ${productCategory === "Records" ? "" : "hidden"}>Review quote<textarea name="reviewQuote" rows="3" placeholder="Optional short quote, under 25 words">${escapeHtml(product.reviewQuote || "")}</textarea></label>
+        <div class="admin-form-grid" data-admin-record-editorial-field ${productCategory === "Records" ? "" : "hidden"}>
           ${input("reviewSource", "Review source", product.reviewSource || "", "Pitchfork, The Quietus, The Wire")}
           ${input("reviewUrl", "Review source URL", product.reviewUrl || "", "https://...")}
         </div>
@@ -2002,6 +2004,9 @@ function bindEvents() {
     form.querySelector("[data-admin-record-fields]").hidden = isProductCategory;
     form.querySelector("[data-admin-product-fields]").hidden = !isProductCategory;
     form.querySelector("[data-admin-apparel-field]").hidden = event.currentTarget.value !== "Apparel";
+    form.querySelectorAll("[data-admin-record-editorial-field]").forEach((field) => {
+      field.hidden = event.currentTarget.value !== "Records";
+    });
     if (isProductCategory) {
       form.elements.artist.value ||= event.currentTarget.value === "Objects" ? "NIXP Objects" : "NIXP Apparel";
       form.elements.format.value = event.currentTarget.value.replace(/s$/, "");

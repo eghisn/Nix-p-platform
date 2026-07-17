@@ -501,6 +501,7 @@ export const adminStore = {
     const store = readStore();
     const category = data.category || "Records";
     const isProductCategory = category === "Apparel" || category === "Objects";
+    const isRecord = category === "Records";
     const id = data.id?.trim() || slugify(`${data.sku || data.artist}-${data.title}`) || `item-${Date.now()}`;
     const existing = store.products.find((product) => product.id === id);
     const collection = data.collection?.trim() || data.label?.trim() || existing?.collection || "";
@@ -536,16 +537,16 @@ export const adminStore = {
         image: data.image?.trim() || data.images?.[0] || existing?.image
       }),
       tags: splitList(data.tags),
-      relatedArtists: splitList(data.relatedArtists),
+      relatedArtists: isRecord ? splitList(data.relatedArtists) : [],
       homeCollections: existing?.homeCollections || [],
       homeSlideSort: existing?.homeSlideSort ?? null,
       details: splitList(data.details),
       sizes: isProductCategory ? collectSizes(data) : existing?.sizes || [],
       description: data.description?.trim() || "",
-      descriptionSource: data.descriptionSource?.trim() || existing?.descriptionSource || "",
-      reviewQuote: data.reviewQuote?.trim() || existing?.reviewQuote || "",
-      reviewSource: data.reviewSource?.trim() || existing?.reviewSource || "",
-      reviewUrl: data.reviewUrl?.trim() || existing?.reviewUrl || "",
+      descriptionSource: isRecord ? data.descriptionSource?.trim() || existing?.descriptionSource || "" : "",
+      reviewQuote: isRecord ? data.reviewQuote?.trim() || existing?.reviewQuote || "" : "",
+      reviewSource: isRecord ? data.reviewSource?.trim() || existing?.reviewSource || "" : "",
+      reviewUrl: isRecord ? data.reviewUrl?.trim() || existing?.reviewUrl || "" : "",
       qty: Math.max(0, Number(data.qty ?? 1) || 0),
       shipping: normalizeShipping({
         weightGrams: data.shippingWeightGrams,
