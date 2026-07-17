@@ -1,5 +1,6 @@
 import { getSession, json } from "./_lib/auth.js";
 import { isSupabaseConfigured, loadStore, upsertRawRows } from "./_lib/supabase.js";
+import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
   if (!isSupabaseConfigured()) return json(res, 503, { ok: false, error: "Supabase is not configured." });
@@ -92,8 +93,14 @@ async function sendRequestEmail(request) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.REQUEST_EMAIL_FROM;
   const to = process.env.REQUEST_NOTIFICATION_TO || "egihisni@nix-p.com";
-  if (!apiKey || !from) return { delivered: false, reason: "email-not-configured" };
+  if (apiKey && from) return sendWithResend({ apiKey, from, to, request });
+  if (process.env.GMAIL_SMTP_USER && process.env.GMAIL_SMTP_APP_PASSWORD) {
+    return sendWithGoogleWorkspace({ from, to, request });
+  }
+  return { delivered: false, reason: "email-not-configured" };
+}
 
+async function sendWithResend({ apiKey, from, to, request }) {
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -112,6 +119,28 @@ async function sendRequestEmail(request) {
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(payload?.message || "Request notification could not be delivered.");
   return { delivered: true, id: payload.id || null };
+}
+
+async function sendWithGoogleWorkspace({ from, to, request }) {
+  const user = process.env.GMAIL_SMTP_USER;
+  const transporter = nodemailer.createTransport({
+    host: process.env.GMAIL_SMTP_HOST || "smtp.gmail.com",
+    port: Number(process.env.GMAIL_SMTP_PORT || 465),
+    secure: Number(process.env.GMAIL_SMTP_PORT || 465) === 465,
+    auth: {
+      user,
+      pass: process.env.GMAIL_SMTP_APP_PASSWORD
+    }
+  });
+  const result = await transporter.sendMail({
+    from: from || `NIXP <${user}>`,
+    to,
+    replyTo: request.email,
+    subject: `NIXP request item: ${request.artistName} - ${request.itemName}`,
+    text: requestEmailText(request),
+    html: requestEmailHtml(request)
+  });
+  return { delivered: true, id: result.messageId || null };
 }
 
 function requestEmailText(request) {
