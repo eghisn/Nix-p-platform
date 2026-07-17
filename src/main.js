@@ -29,6 +29,8 @@ const state = {
     username: null
   },
   adminEditingProductId: null,
+  adminNotice: "",
+  adminNoticeTone: "",
   adminSearch: {},
   adminSort: {
     products: "artist",
@@ -121,7 +123,8 @@ const routes = {
   "/admin/preview": adminPreviewPage
 };
 
-async function render() {
+async function render({ preserveScroll = false } = {}) {
+  const previousScrollTop = preserveScroll ? window.scrollY : 0;
   const path = normalizePath(location.pathname);
   await loadAuthSession();
   const requiredWorkspace = workspaceForPath(path);
@@ -142,8 +145,13 @@ async function render() {
   document.body.classList.toggle("page-lock", path === "/" || path === "/about" || path === "/contact" || isLoginView);
   document.body.classList.toggle("login-lock", isLoginView);
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
+  app.classList.add("is-rendering");
   app.innerHTML = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
   bindEvents();
+  requestAnimationFrame(() => {
+    app.classList.remove("is-rendering");
+    if (preserveScroll) window.scrollTo({ top: previousScrollTop, behavior: "auto" });
+  });
 }
 
 async function loadAuthSession({ force = false } = {}) {
@@ -372,7 +380,9 @@ async function productDetailMarkup(product) {
         <p class="eyebrow">${product.artist}</p>
         <h1>${product.title}</h1>
         <div class="detail-price">${money.format(product.price)}</div>
-        <p>${product.description}</p>
+        <p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>
+        ${product.descriptionSource ? `<p class="product-editorial-source">Source: ${escapeHtml(product.descriptionSource)}</p>` : ""}
+        ${productReviewMarkup(product)}
         ${
           isSizedProduct
             ? `<div class="size-picker" aria-label="Available sizes">
@@ -831,6 +841,15 @@ async function adminEditorPage() {
     catalogService.listOrders()
   ]);
   const drafts = products.filter((product) => product.publishStatus !== "Published").length;
+  let deployStatus = null;
+  try {
+    deployStatus = await adminStore.deployStatus();
+  } catch (error) {
+    deployStatus = {
+      ready: false,
+      error: error instanceof Error ? error.message : "Deploy status unavailable."
+    };
+  }
   return `
     ${adminHero("NIXP Editor", "One workspace for products, images, artists, collections, requests, orders, drafts, and previews.")}
     <section class="section editor-command">
@@ -844,6 +863,7 @@ async function adminEditorPage() {
           <span>Save Supabase, commit GitHub, trigger Vercel.</span>
         </div>
         <button class="button button-dark" type="submit">Deploy</button>
+        ${deployStatusMarkup(deployStatus)}
         <p class="admin-form-note" data-admin-form-message aria-live="polite"></p>
       </form>
       <nav class="editor-tabs" aria-label="Editor sections">
@@ -1022,7 +1042,7 @@ async function adminProductsPage({ embedded = false } = {}) {
             </div>
             ${sizeInventoryFields(product)}
           </div>
-          ${input("condition", "Condition", product.condition || "", "New, Used, Unsealed")}
+          ${select("condition", "Condition", ["", "New-Sealed", "New-Unsealed", "Used Mint", "Used Excellent", "Used Excellence", "Used Good", "Used Fair", "Used Poor"], product.condition || "")}
           ${input("price", "Price IDR", product.price || "", "640000", "number")}
           ${input("year", "Year", product.year || new Date().getFullYear(), "2026", "number")}
           ${input("label", "Label", product.label || "", "NIXP Selection")}
@@ -1035,9 +1055,15 @@ async function adminProductsPage({ embedded = false } = {}) {
           ${select("visibility", "Visibility", ["Public", "Hidden"], product.visibility || "Public")}
         </div>
         <label>Description<textarea name="description" rows="4">${escapeHtml(product.description || "")}</textarea></label>
+        <label>Description source<input name="descriptionSource" value="${escapeAttr(product.descriptionSource || "")}" placeholder="Official artist / label / release page" /></label>
+        <label>Review quote<textarea name="reviewQuote" rows="3" placeholder="Optional short quote, under 25 words">${escapeHtml(product.reviewQuote || "")}</textarea></label>
+        <div class="admin-form-grid">
+          ${input("reviewSource", "Review source", product.reviewSource || "", "Pitchfork, The Quietus, The Wire")}
+          ${input("reviewUrl", "Review source URL", product.reviewUrl || "", "https://...")}
+        </div>
         <label>Image URL<input name="image" value="${escapeAttr(product.image || "")}" placeholder="/public/example.png or uploaded data URL" /></label>
         ${galleryUploadFields(product)}
-        <p class="admin-form-note" data-admin-form-message aria-live="polite"></p>
+        <p class="admin-form-note" data-admin-form-message data-tone="${escapeAttr(state.adminNoticeTone)}" aria-live="polite">${escapeHtml(state.adminNotice)}</p>
         <div class="admin-form-actions">
           <button class="button button-dark" type="submit">Save product</button>
           ${editing ? `<a class="button button-outline" href="/admin/preview/product/${product.id}" data-link>Preview</a>` : ""}
@@ -1561,6 +1587,28 @@ function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
   `;
 }
 
+function safeExternalUrl(value) {
+  try {
+    const url = new URL(String(value || ""), location.origin);
+    return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+  } catch {
+    return "";
+  }
+}
+
+function productReviewMarkup(product) {
+  const quote = String(product.reviewQuote || "").trim();
+  if (!quote) return "";
+  const source = String(product.reviewSource || "").trim();
+  const url = safeExternalUrl(product.reviewUrl);
+  const sourceMarkup = source
+    ? url
+      ? `<a href="${escapeAttr(url)}" target="_blank" rel="noreferrer">${escapeHtml(source)}</a>`
+      : escapeHtml(source)
+    : "Sourced review";
+  return `<blockquote class="product-review"><p>“${escapeHtml(quote)}”</p><cite>${sourceMarkup}</cite></blockquote>`;
+}
+
 function productImages(product) {
   const images = [
     ...(Array.isArray(product.images) ? product.images : []),
@@ -1631,6 +1679,21 @@ function setFormMessage(form, message, tone = "") {
   if (!target) return;
   target.textContent = message;
   target.dataset.tone = tone;
+}
+
+function deployStatusMarkup(status) {
+  if (!status) return "";
+  if (status.error) {
+    return `<p class="deploy-status" data-tone="error">${escapeHtml(status.error)}</p>`;
+  }
+  const missing = [...(status.supabase?.missing || []), ...(status.github?.missing || [])];
+  const repository = status.github?.repository || "eghisn/Nix-p-platform";
+  const branch = status.github?.branch || "main";
+  if (status.ready) {
+    return `<p class="deploy-status" data-tone="success">Ready: Supabase + GitHub ${escapeHtml(repository)} / ${escapeHtml(branch)}.</p>`;
+  }
+  const missingText = missing.length ? missing.join(", ") : "deployment configuration";
+  return `<p class="deploy-status" data-tone="warning">Needs Vercel env: ${escapeHtml(missingText)}.</p>`;
 }
 
 function sortItems(items, key, sorters) {
@@ -1754,7 +1817,7 @@ function bindEvents() {
   document.querySelectorAll("[data-record-filter]").forEach((button) => {
     button.addEventListener("click", () => {
       state.recordsFilter = button.dataset.recordFilter;
-      render();
+      render({ preserveScroll: true });
     });
   });
 
@@ -1855,17 +1918,19 @@ function bindEvents() {
       state.checkoutMessage = `Order ${payload.order.id} submitted at ${money.format(payload.order.total)}.`;
       state.checkoutTone = "success";
       await adminStore.refresh();
-      await render();
+      await render({ preserveScroll: true });
     } catch (error) {
       state.checkoutMessage = error instanceof Error ? error.message : "Checkout failed.";
       state.checkoutTone = "error";
-      await render();
+      await render({ preserveScroll: true });
     }
   });
 
   document.querySelector("[data-admin-new-product]")?.addEventListener("click", () => {
     state.adminEditingProductId = null;
-    render();
+    state.adminNotice = "";
+    state.adminNoticeTone = "";
+    render({ preserveScroll: true });
   });
 
   document.querySelectorAll("[data-admin-edit-product]").forEach((button) => {
@@ -1879,7 +1944,7 @@ function bindEvents() {
   document.querySelectorAll("[data-admin-product-status]").forEach((button) => {
     button.addEventListener("click", () => {
       adminStore.updateProductStatus(button.dataset.adminProductStatus, button.dataset.status);
-      render();
+      render({ preserveScroll: true });
     });
   });
 
@@ -1887,7 +1952,7 @@ function bindEvents() {
     input.addEventListener("input", async () => {
       const scope = input.dataset.adminSearch;
       state.adminSearch[scope] = input.value;
-      await render();
+      await render({ preserveScroll: true });
       const nextInput = document.querySelector(`[data-admin-search="${scope}"]`);
       nextInput?.focus();
       nextInput?.setSelectionRange(nextInput.value.length, nextInput.value.length);
@@ -1897,7 +1962,7 @@ function bindEvents() {
   document.querySelectorAll("[data-admin-sort]").forEach((selectEl) => {
     selectEl.addEventListener("change", async () => {
     state.adminSort[selectEl.dataset.adminSort] = selectEl.value;
-      await render();
+      await render({ preserveScroll: true });
     });
   });
 
@@ -1907,7 +1972,7 @@ function bindEvents() {
       const key = button.dataset.adminSortButton;
       const current = state.adminSort[scope];
       state.adminSort[scope] = current === key ? `${key}:desc` : key;
-      await render();
+      await render({ preserveScroll: true });
     });
   });
 
@@ -1928,6 +1993,7 @@ function bindEvents() {
     event.preventDefault();
     const form = event.currentTarget;
     const submitButton = form.querySelector('button[type="submit"]');
+    const wasEditing = Boolean(state.adminEditingProductId);
     submitButton.disabled = true;
     setFormMessage(form, "Saving product...");
     try {
@@ -1945,11 +2011,14 @@ function bindEvents() {
         data.image = gallery[0];
       }
       const saved = await adminStore.saveProduct(data);
-      state.adminEditingProductId = saved.id;
-      setFormMessage(form, "Saved.", "success");
-      await render();
+      state.adminEditingProductId = wasEditing ? saved.id : null;
+      state.adminNotice = wasEditing ? "Product updated successfully." : "Product saved successfully. Ready for a new product.";
+      state.adminNoticeTone = "success";
+      await render({ preserveScroll: true });
     } catch (error) {
-      setFormMessage(form, error instanceof Error ? error.message : "Could not save product.", "error");
+      state.adminNotice = error instanceof Error ? error.message : "Could not save product.";
+      state.adminNoticeTone = "error";
+      setFormMessage(form, state.adminNotice, "error");
       submitButton.disabled = false;
     }
   });
@@ -1963,7 +2032,8 @@ function bindEvents() {
     try {
       const result = await adminStore.deployStore();
       const sha = result.github?.commitSha ? ` Commit ${result.github.commitSha.slice(0, 7)}.` : "";
-      setFormMessage(form, `${result.message || "Deploy started."}${sha}`, "success");
+      const tone = result.github?.skipped ? "warning" : "success";
+      setFormMessage(form, `${result.message || "Deploy started."}${sha}`, tone);
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Deploy failed.", "error");
     } finally {
@@ -1980,7 +2050,7 @@ function bindEvents() {
     try {
       await adminStore.saveHomeSlider(Object.fromEntries(new FormData(form).entries()));
       setFormMessage(form, "Slider saved. Use Deploy to publish it live.", "success");
-      await render();
+      await render({ preserveScroll: true });
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Could not save slider.", "error");
       button.disabled = false;
@@ -2008,7 +2078,7 @@ function bindEvents() {
         images: gallery
       });
       setFormMessage(form, "Images updated.", "success");
-      await render();
+      await render({ preserveScroll: true });
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Could not update images.", "error");
       submitButton.disabled = false;

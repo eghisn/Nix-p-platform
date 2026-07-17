@@ -89,6 +89,12 @@
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.82);
   padding: 18px;
+  contain: layout paint;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.admin-panel:focus-within {
+  border-color: rgba(41, 41, 41, 0.42);
 }
 
 .admin-panel-head {
@@ -134,6 +140,27 @@
   margin: 0;
 }
 
+.deploy-status {
+  grid-column: 1 / -1;
+  margin: -2px 0 0;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.deploy-status[data-tone="success"] {
+  color: #186f3d;
+}
+
+.deploy-status[data-tone="warning"] {
+  color: #9a5b00;
+}
+
+.deploy-status[data-tone="error"] {
+  color: #b00020;
+}
+
 .admin-form-note {
   margin: -4px 0 4px;
   color: var(--muted);
@@ -148,6 +175,10 @@
 
 .admin-form-note[data-tone="error"] {
   color: #b00020;
+}
+
+.admin-form-note[data-tone="warning"] {
+  color: #9a5b00;
 }
 
 .admin-gallery-fieldset {
@@ -238,6 +269,13 @@
 
 .admin-panel textarea {
   resize: vertical;
+}
+
+.admin-panel input:focus,
+.admin-panel select:focus,
+.admin-panel textarea:focus {
+  outline: 2px solid rgba(41, 41, 41, 0.22);
+  outline-offset: 1px;
 }
 
 .admin-size-fieldset {
@@ -585,6 +623,19 @@ img {
   margin-inline: auto;
   overflow: hidden;
   padding: 0 var(--page-pad);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#app {
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+#app.is-rendering {
+  opacity: 0.72;
+  transform: translateY(3px);
 }
 
 .home-collections {
@@ -1777,6 +1828,38 @@ tr:last-child td {
 
 .related-artist-tags a:hover {
   border-color: var(--ink);
+}
+
+.product-review {
+  margin: 4px 0 0;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.product-editorial-source {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.product-review p {
+  margin: 0 0 7px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.product-review cite {
+  color: var(--muted);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.product-review cite a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .related-artist-tags-card {

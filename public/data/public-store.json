@@ -509,7 +509,11 @@
         "CD",
         "NXP-2026-CD-0011"
       ],
-      "description": "David Bowie - Blackstar. CD from the current NIXP records selection.",
+      "description": "David Bowie's 2016 Blackstar is a Columbia studio album that folds exploratory jazz, coded drama and alienation into a final act of reinvention.",
+      "descriptionSource": "Pitchfork",
+      "reviewQuote": "Exploratory jazz and the echos of various mad men soundtrack his free fall.",
+      "reviewSource": "Pitchfork",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/21332-blackstar/",
       "details": [
         "SKU: NXP-2026-CD-0011",
         "Format: CD",
@@ -921,7 +925,11 @@
         "CD",
         "NXP-2026-CD-0005"
       ],
-      "description": "Yeah Yeah Yeahs - Untitled Selection. CD from the current NIXP records selection.",
+      "description": "Yeah Yeah Yeahs' 2009 It's Blitz! recombines rock, synths and dance-floor instincts into a bracing, emotionally open third album.",
+      "descriptionSource": "Pitchfork",
+      "reviewQuote": "YYYs make the dreaded ‘mature album’ work by taking familiar shapes and tools and recombining them in ways that are bracing and unexpected.",
+      "reviewSource": "Pitchfork",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/12855-its-blitz/",
       "details": [
         "SKU: NXP-2026-CD-0005",
         "Format: CD",
@@ -1441,7 +1449,11 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0003"
       ],
-      "description": "Nala Sinephro - Endlessness. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Nala Sinephro's 2024 Endlessness centers on an evolving arpeggio, bringing harp, piano, modular synths and London's jazz community into one continuous field.",
+      "descriptionSource": "Pitchfork",
+      "reviewQuote": "It feels like a feat of physics.",
+      "reviewSource": "Pitchfork",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/nala-sinephro-endlessness/",
       "details": [
         "SKU: NXP-2026-VNL-0003",
         "Format: Vinyl 12\"",
@@ -2317,7 +2329,11 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0013"
       ],
-      "description": "Giant Swan - Self Titled. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Giant Swan's self-titled debut is a 2019 Keck LP by Bristol duo Robin Stewart and Harry Wright, built from rugged electronics, improvised pressure and physical club energy.",
+      "descriptionSource": "Giant Swan Bandcamp / The Wire",
+      "reviewQuote": "A statement that changes with each recipient, centered around tolerance, inclusion, self-sufficiency and TRUST.",
+      "reviewSource": "Turntable Lab, quoted from Giant Swan",
+      "reviewUrl": "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp",
       "details": [
         "SKU: NXP-2026-VNL-0013",
         "Format: Vinyl 12\"",
@@ -2328,9 +2344,16 @@
       "color": "",
       "material": "",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0013-1784281689333-a2998490938-10.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0013-1784281689333-a2998490938-10.jpg",
+        "/public/mockups/nxp-2026-vnl-0013-giant-swan-self-titled-vinyl.jpg"
       ],
-      "imageCredits": [],
+      "imageCredits": [
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0013-giant-swan-self-titled-vinyl.jpg",
+          "credit": "Turntable Lab",
+          "url": "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp"
+        }
+      ],
       "relatedArtists": [
         "Blawan",
         "Tzusing"
@@ -2515,6 +2538,11 @@
         "CD",
         "NXP-2026-CD-0023"
       ],
+      "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
+      "descriptionSource": "Pitchfork",
+      "reviewQuote": "The most immediately pleasurable Oneohtrix Point Never album in some time.",
+      "reviewSource": "Pitchfork",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
       "details": [
         "SKU: NXP-2026-CD-0023",
         "Format: CD",

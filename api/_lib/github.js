@@ -10,6 +10,17 @@ export function isGitHubDeployConfigured() {
   return Boolean(githubConfig().token);
 }
 
+export function githubDeployStatus() {
+  const config = githubConfig();
+  return {
+    configured: Boolean(config.token),
+    repository: config.repository,
+    branch: config.branch,
+    required: ["GITHUB_DEPLOY_TOKEN", "GITHUB_REPOSITORY", "GITHUB_BRANCH"],
+    missing: config.token ? [] : ["GITHUB_DEPLOY_TOKEN"]
+  };
+}
+
 async function githubFetch(path, options = {}) {
   const { token } = githubConfig();
   if (!token) throw new Error("GitHub deploy token is not configured. Set GITHUB_DEPLOY_TOKEN or GITHUB_TOKEN in Vercel.");

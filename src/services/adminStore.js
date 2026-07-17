@@ -36,6 +36,10 @@ function withDefaults(product) {
     sizes: normalizeSizes(product.sizes || []),
     images: normalizeImages(product),
     relatedArtists: normalizeList(product.relatedArtists),
+    descriptionSource: String(product.descriptionSource || "").trim(),
+    reviewQuote: String(product.reviewQuote || "").trim(),
+    reviewSource: String(product.reviewSource || "").trim(),
+    reviewUrl: String(product.reviewUrl || "").trim(),
     homeCollections: normalizeList(product.homeCollections),
     homeSlideSort: hasHomeSlideSort(product) ? Number(product.homeSlideSort) : null,
     collection: product.collection || product.label || "",
@@ -393,6 +397,15 @@ export const adminStore = {
     if (!response.ok) throw new Error(payload.error || "Deploy failed. Please check Vercel and GitHub settings.");
     return payload;
   },
+  async deployStatus() {
+    const response = await fetch("/api/admin/deploy-status", {
+      method: "GET",
+      headers: { accept: "application/json" }
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Deploy status unavailable.");
+    return payload;
+  },
   async saveHomeSlider(data) {
     const store = readStore();
     const collectionIds = ["recent-releases", "nixp-selection", "back-in-stock", "limited-pressing", "private-collection"];
@@ -470,6 +483,10 @@ export const adminStore = {
       details: splitList(data.details),
       sizes: isProductCategory ? collectSizes(data) : existing?.sizes || [],
       description: data.description?.trim() || "",
+      descriptionSource: data.descriptionSource?.trim() || existing?.descriptionSource || "",
+      reviewQuote: data.reviewQuote?.trim() || existing?.reviewQuote || "",
+      reviewSource: data.reviewSource?.trim() || existing?.reviewSource || "",
+      reviewUrl: data.reviewUrl?.trim() || existing?.reviewUrl || "",
       qty: Math.max(0, Number(data.qty ?? 1) || 0),
       shipping: normalizeShipping({
         weightGrams: data.shippingWeightGrams,
@@ -487,7 +504,18 @@ export const adminStore = {
     const nextProducts = existing
       ? store.products.map((item) => (item.id === id ? product : item))
       : [product, ...store.products];
-    await writeStore({ ...store, products: nextProducts });
+    const nextArtists = [...store.artists];
+    const recordArtist = category === "Records" ? data.artist?.trim() : "";
+    if (recordArtist && !nextArtists.some((artist) => artist.name.toLowerCase() === recordArtist.toLowerCase())) {
+      nextArtists.push({
+        id: slugify(recordArtist),
+        name: recordArtist,
+        bio: "",
+        status: "Published",
+        sort: nextArtists.length + 1
+      });
+    }
+    await writeStore({ ...store, products: nextProducts, artists: nextArtists });
     return product;
   },
   updateProductStatus(id, publishStatus) {

@@ -725,7 +725,8 @@ const recordMockups = {
   "nxp-2026-vnl-0009": "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg",
   "nxp-2026-vnl-0010": "/public/mockups/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-vinyl.jpg",
   "nxp-2026-vnl-0011": "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg",
-  "nxp-2026-vnl-0012": "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg"
+  "nxp-2026-vnl-0012": "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg",
+  "nxp-2026-vnl-0013-self-titled": "/public/mockups/nxp-2026-vnl-0013-giant-swan-self-titled-vinyl.jpg"
 };
 
 const recordImageCredits = {
@@ -739,7 +740,46 @@ const recordImageCredits = {
   "nxp-2026-vnl-0009": { credit: "Domino", url: "https://www.dominomusic.com/releases/panda-bear/buoys/deluxe-lp" },
   "nxp-2026-vnl-0010": { credit: "Overmono Bandcamp", url: "https://overmono.bandcamp.com/album/turn-the-page" },
   "nxp-2026-vnl-0011": { credit: "Meditations", url: "https://meditations.jp/products/heith-tarawangsawelas-duori-lp" },
-  "nxp-2026-vnl-0012": { credit: "Turntable Lab", url: "https://www.turntablelab.com/products/blawan-sickelixir-vinyl-lp" }
+  "nxp-2026-vnl-0012": { credit: "Turntable Lab", url: "https://www.turntablelab.com/products/blawan-sickelixir-vinyl-lp" },
+  "nxp-2026-vnl-0013-self-titled": { credit: "Turntable Lab", url: "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp" }
+};
+
+const recordEditorial = {
+  "nxp-2026-cd-0011": {
+    description: "David Bowie's 2016 Blackstar is a Columbia studio album that folds exploratory jazz, coded drama and alienation into a final act of reinvention.",
+    descriptionSource: "Pitchfork",
+    reviewQuote: "Exploratory jazz and the echos of various mad men soundtrack his free fall.",
+    reviewSource: "Pitchfork",
+    reviewUrl: "https://pitchfork.com/reviews/albums/21332-blackstar/"
+  },
+  "nxp-2026-cd-0005": {
+    description: "Yeah Yeah Yeahs' 2009 It's Blitz! recombines rock, synths and dance-floor instincts into a bracing, emotionally open third album.",
+    descriptionSource: "Pitchfork",
+    reviewQuote: "YYYs make the dreaded ‘mature album’ work by taking familiar shapes and tools and recombining them in ways that are bracing and unexpected.",
+    reviewSource: "Pitchfork",
+    reviewUrl: "https://pitchfork.com/reviews/albums/12855-its-blitz/"
+  },
+  "nxp-2026-vnl-0003": {
+    description: "Nala Sinephro's 2024 Endlessness centers on an evolving arpeggio, bringing harp, piano, modular synths and London's jazz community into one continuous field.",
+    descriptionSource: "Pitchfork",
+    reviewQuote: "It feels like a feat of physics.",
+    reviewSource: "Pitchfork",
+    reviewUrl: "https://pitchfork.com/reviews/albums/nala-sinephro-endlessness/"
+  },
+  "nxp-2026-cd-0023": {
+    description: "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
+    descriptionSource: "Pitchfork",
+    reviewQuote: "The most immediately pleasurable Oneohtrix Point Never album in some time.",
+    reviewSource: "Pitchfork",
+    reviewUrl: "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/"
+  },
+  "nxp-2026-vnl-0013-self-titled": {
+    description: "Giant Swan's self-titled debut is a 2019 Keck LP by Bristol duo Robin Stewart and Harry Wright, built from rugged electronics, improvised pressure and physical club energy.",
+    descriptionSource: "Giant Swan Bandcamp / The Wire",
+    reviewQuote: "A statement that changes with each recipient, centered around tolerance, inclusion, self-sufficiency and TRUST.",
+    reviewSource: "Turntable Lab, quoted from Giant Swan",
+    reviewUrl: "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp"
+  }
 };
 
 export const products = [
@@ -853,7 +893,7 @@ export const cashflow = [];
 function record(row) {
   const displayFormat = row.format === "Vinyl" ? "Vinyl 12\"" : row.format;
   const image = row.image || recordImage;
-  const mockup = row.condition === "New-Sealed" && row.format === "Vinyl" ? recordMockups[row.id] : null;
+  const mockup = ["New-Sealed", "New-Unsealed"].includes(row.condition) && row.format === "Vinyl" ? recordMockups[row.id] : null;
   return {
     id: row.id,
     sku: row.sku,
@@ -874,7 +914,11 @@ function record(row) {
     relatedArtists: recordRelatedArtists[row.id] || [],
     homeCollections: recordHomeCollections(row),
     homeSlideSort: recordRows.findIndex((item) => item.id === row.id) + 1,
-    description: `${row.artist} - ${row.title}. ${displayFormat} from the current NIXP records selection.`,
+    description: recordEditorial[row.id]?.description || `${row.artist} - ${row.title}. ${displayFormat} from the current NIXP records selection.`,
+    descriptionSource: recordEditorial[row.id]?.descriptionSource || "",
+    reviewQuote: recordEditorial[row.id]?.reviewQuote || "",
+    reviewSource: recordEditorial[row.id]?.reviewSource || "",
+    reviewUrl: recordEditorial[row.id]?.reviewUrl || "",
     details: [`SKU: ${row.sku}`, `Format: ${displayFormat}`, `Condition: ${row.condition || "Available"}`]
   };
 }
