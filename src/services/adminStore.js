@@ -188,13 +188,20 @@ function mergeStore(seeded, saved, { publicOnly = false } = {}) {
   const mergedProducts = [
     ...savedProducts.map((product) => {
       const seedProduct = seededProducts.find((item) => item.id === product.id);
+      const mergedProduct = { ...product };
+      const editorialFields = ["description", "descriptionSource", "reviewQuote", "reviewSource", "reviewUrl"];
+      for (const field of editorialFields) {
+        const savedValue = String(product[field] || "").trim();
+        const isGenericDescription = field === "description" && savedValue.includes("current NIXP records selection");
+        if ((!savedValue || isGenericDescription) && seedProduct?.[field]) mergedProduct[field] = seedProduct[field];
+      }
       if (
         seedProduct?.image?.startsWith("/public/display-photos/") &&
         (!product.image || product.image === "/public/nixp-product-example-paper.png")
       ) {
-        return { ...product, image: seedProduct.image };
+        mergedProduct.image = seedProduct.image;
       }
-      return product;
+      return mergedProduct;
     }),
     ...seededProducts.filter((seedProduct) => !savedProducts.some((product) => product.id === seedProduct.id))
   ];

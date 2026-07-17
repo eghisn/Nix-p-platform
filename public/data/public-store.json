@@ -313,7 +313,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0006"
       ],
-      "description": "Damien Dubrovnik - First Burning Attraction. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
       "details": [
         "SKU: NXP-2026-VNL-0006",
         "Format: Vinyl 12\"",
@@ -332,7 +332,11 @@
         "Lust For Youth"
       ],
       "homeCollections": [],
-      "homeSlideSort": 1
+      "homeSlideSort": 1,
+      "descriptionSource": "The Quietus",
+      "reviewQuote": "richer, more refined approach to texture",
+      "reviewSource": "The Quietus (quoted)",
+      "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview"
     },
     {
       "publishStatus": "Published",
@@ -355,7 +359,7 @@
         "CD",
         "NXP-2026-CD-0015"
       ],
-      "description": "Meshuggah - Obzen. CD from the current NIXP records selection.",
+      "description": "Meshuggah's 2008 Nuclear Blast album obZen compresses technical precision, polyrhythmic weight and brooding reflection into one of the band's defining records.",
       "details": [
         "SKU: NXP-2026-CD-0015",
         "Format: CD",
@@ -376,7 +380,11 @@
       "homeCollections": [
         "back-in-stock"
       ],
-      "homeSlideSort": 2
+      "homeSlideSort": 2,
+      "descriptionSource": "AllMusic / Pitchfork",
+      "reviewQuote": "magic combination of its earlier freneticism",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/"
     },
     {
       "publishStatus": "Published",
@@ -399,7 +407,7 @@
         "Cassette",
         "NXP-2026-CST-0005"
       ],
-      "description": "Rezzet - Untitled Selection. Cassette from the current NIXP records selection.",
+      "description": "Rezzett's Into The Boiling Darks is a 2026 twenty-one-track set of warped, tactile electronic music from the London producer known for distressed rhythms and murky dance-floor pressure.",
       "details": [
         "SKU: NXP-2026-CST-0005",
         "Format: Cassette",
@@ -430,7 +438,11 @@
         "nixp-selection",
         "limited-pressing"
       ],
-      "homeSlideSort": 3
+      "homeSlideSort": 3,
+      "descriptionSource": "Spotify release listing / The Guardian",
+      "reviewQuote": "distressed dancefloor classics",
+      "reviewSource": "The Guardian (quoted from Rezzett review)",
+      "reviewUrl": "https://www.theguardian.com/music/2018/dec/21/rezzett-rezzett-review-distressed-dancefloor-classics"
     },
     {
       "publishStatus": "Published",
@@ -453,7 +465,7 @@
         "CD",
         "NXP-2026-CD-0010"
       ],
-      "description": "The Mars Volta - Noctourniquet. CD from the current NIXP records selection.",
+      "description": "The Mars Volta's 2012 Noctourniquet pares the band's prog-rock excess into a tighter, electronic-tinged record of restless rhythms, fractured guitars and surreal vocals.",
       "details": [
         "SKU: NXP-2026-CD-0010",
         "Format: CD",
@@ -486,7 +498,11 @@
         "Antemasque"
       ],
       "homeCollections": [],
-      "homeSlideSort": 4
+      "homeSlideSort": 4,
+      "descriptionSource": "AllMusic / Sputnikmusic",
+      "reviewQuote": "more progressive atmosphere",
+      "reviewSource": "Sputnikmusic (quoted)",
+      "reviewUrl": "https://www.sputnikmusic.com/review/49058/The-Mars-Volta-Noctourniquet/"
     },
     {
       "publishStatus": "Published",
@@ -509,10 +525,10 @@
         "CD",
         "NXP-2026-CD-0011"
       ],
-      "description": "David Bowie's 2016 Blackstar is a Columbia studio album that folds exploratory jazz, coded drama and alienation into a final act of reinvention.",
+      "description": "David Bowie's 2016 Blackstar folds exploratory jazz, coded drama and alienation into a final act of reinvention, recorded with a New York jazz ensemble.",
       "descriptionSource": "Pitchfork",
-      "reviewQuote": "Exploratory jazz and the echos of various mad men soundtrack his free fall.",
-      "reviewSource": "Pitchfork",
+      "reviewQuote": "exploratory jazz and the echoes of various mad men",
+      "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/21332-blackstar/",
       "details": [
         "SKU: NXP-2026-CD-0011",
@@ -557,7 +573,7 @@
         "CD",
         "NXP-2026-CD-0012"
       ],
-      "description": "Nine Inch Nails - Hesitation Marks. CD from the current NIXP records selection.",
+      "description": "Nine Inch Nails' 2013 Hesitation Marks is a skeletal, spare return to electronic tension, balancing jagged digital detail with Trent Reznor's industrial songwriting.",
       "details": [
         "SKU: NXP-2026-CD-0012",
         "Format: CD",
@@ -577,7 +593,11 @@
         "Ministry"
       ],
       "homeCollections": [],
-      "homeSlideSort": 6
+      "homeSlideSort": 6,
+      "descriptionSource": "Pitchfork / The Quietus",
+      "reviewQuote": "most explicitly electronic album in years",
+      "reviewSource": "The Quietus (quoted)",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/nine-inch-nails-hesitation-marks-review/"
     },
     {
       "publishStatus": "Published",
@@ -600,7 +620,7 @@
         "CD",
         "NXP-2026-CD-0016"
       ],
-      "description": "Lightning Bolt - Earthly Delights. CD from the current NIXP records selection.",
+      "description": "Lightning Bolt's 2009 Earthly Delights is a blast of Brian Chippendale's drums and vocals with Brian Gibson's bass, extending the duo's stripped-down attack into longer, louder forms.",
       "details": [
         "SKU: NXP-2026-CD-0016",
         "Format: CD",
@@ -619,7 +639,11 @@
         "Black Pus"
       ],
       "homeCollections": [],
-      "homeSlideSort": 7
+      "homeSlideSort": 7,
+      "descriptionSource": "AllMusic",
+      "reviewQuote": "pummeling thunder",
+      "reviewSource": "AllMusic (quoted)",
+      "reviewUrl": "https://www.allmusic.com/album/earthly-delights-mw0000832395"
     },
     {
       "publishStatus": "Published",
@@ -642,7 +666,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0004"
       ],
-      "description": "Girl Band - The Talkies. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Girl Band's 2019 Rough Trade album The Talkies turns Dublin post-punk into a physical study in distortion, repetition, panic and ecstatic release.",
       "details": [
         "SKU: NXP-2026-VNL-0004",
         "Format: Vinyl 12\"",
@@ -671,7 +695,11 @@
       "homeCollections": [
         "limited-pressing"
       ],
-      "homeSlideSort": 8
+      "homeSlideSort": 8,
+      "descriptionSource": "Pitchfork",
+      "reviewQuote": "pure, visceral panic",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/"
     },
     {
       "publishStatus": "Published",
@@ -694,7 +722,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0005"
       ],
-      "description": "Gilla Band - The Early Years. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Gilla Band's The Early Years gathers the Dublin band's formative recordings, tracing the movement from noisy post-punk structures toward their later, more fractured industrial sound.",
       "details": [
         "SKU: NXP-2026-VNL-0005",
         "Format: Vinyl 12\"",
@@ -725,7 +753,11 @@
         "recent-releases",
         "limited-pressing"
       ],
-      "homeSlideSort": 9
+      "homeSlideSort": 9,
+      "descriptionSource": "Gilla Band Bandcamp / The Guardian",
+      "reviewQuote": "full of sound and fury",
+      "reviewSource": "The Guardian (quoted from Gilla Band feature)",
+      "reviewUrl": "https://www.theguardian.com/music/2022/oct/06/gilla-band-most-normal-interview"
     },
     {
       "publishStatus": "Published",
@@ -748,7 +780,7 @@
         "CD",
         "NXP-2026-CD-0001"
       ],
-      "description": "Meshuggah - Chaosphere. CD from the current NIXP records selection.",
+      "description": "Meshuggah's 1998 Chaosphere is a landmark of extreme, rhythm-led metal, built from downtuned guitars, machine-like drumming and tightly interlocked polyrhythms.",
       "details": [
         "SKU: NXP-2026-CD-0001",
         "Format: CD",
@@ -770,7 +802,11 @@
       "homeCollections": [
         "back-in-stock"
       ],
-      "homeSlideSort": 10
+      "homeSlideSort": 10,
+      "descriptionSource": "AllMusic",
+      "reviewQuote": "a landmark of extreme metal",
+      "reviewSource": "AllMusic (quoted)",
+      "reviewUrl": "https://www.allmusic.com/album/chaosphere-mw0000045171"
     },
     {
       "publishStatus": "Published",
@@ -793,7 +829,7 @@
         "CD",
         "NXP-2026-CD-0002"
       ],
-      "description": "Team Sleep - Self Titled. CD from the current NIXP records selection.",
+      "description": "Team Sleep's 2005 self-titled album is Chino Moreno's atmospheric side project with Deftones collaborators and guests, using dream-pop, electronics and slow-burn guitar space.",
       "details": [
         "SKU: NXP-2026-CD-0002",
         "Format: CD",
@@ -814,7 +850,11 @@
       "homeCollections": [
         "back-in-stock"
       ],
-      "homeSlideSort": 11
+      "homeSlideSort": 11,
+      "descriptionSource": "Sputnikmusic",
+      "reviewQuote": "fit with the music very well",
+      "reviewSource": "Sputnikmusic (quoted)",
+      "reviewUrl": "https://www.sputnikmusic.com/review/2272/Team-Sleep-Team-Sleep/"
     },
     {
       "publishStatus": "Published",
@@ -837,7 +877,7 @@
         "CD",
         "NXP-2026-CD-0003"
       ],
-      "description": "The Chemical Brothers - Untitled Selection. CD from the current NIXP records selection.",
+      "description": "The Chemical Brothers' 2002 Come With Us pairs big-beat propulsion with strings, keyboards, congas and psychedelic studio detail on a sleek early-2000s dance record.",
       "details": [
         "SKU: NXP-2026-CD-0003",
         "Format: CD",
@@ -858,7 +898,11 @@
       "homeCollections": [
         "back-in-stock"
       ],
-      "homeSlideSort": 12
+      "homeSlideSort": 12,
+      "descriptionSource": "Pitchfork",
+      "reviewQuote": "rapid, heart-pounding conga workout",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/1417-come-with-us/"
     },
     {
       "publishStatus": "Published",
@@ -881,7 +925,7 @@
         "CD",
         "NXP-2026-CD-0004"
       ],
-      "description": "The Chemical Brothers - Untitled Selection. CD from the current NIXP records selection.",
+      "description": "The Chemical Brothers' 2010 Further is a sequence of electronic songs designed as an audio-visual experience, balancing psychedelic repetition with the duo's club-scale impact.",
       "details": [
         "SKU: NXP-2026-CD-0004",
         "Format: CD",
@@ -902,7 +946,11 @@
       "homeCollections": [
         "back-in-stock"
       ],
-      "homeSlideSort": 13
+      "homeSlideSort": 13,
+      "descriptionSource": "The Guardian",
+      "reviewQuote": "audio-visual experience",
+      "reviewSource": "The Guardian (quoted)",
+      "reviewUrl": "https://www.theguardian.com/music/2010/may/21/the-chemical-brothers-review"
     },
     {
       "publishStatus": "Published",
@@ -927,8 +975,8 @@
       ],
       "description": "Yeah Yeah Yeahs' 2009 It's Blitz! recombines rock, synths and dance-floor instincts into a bracing, emotionally open third album.",
       "descriptionSource": "Pitchfork",
-      "reviewQuote": "YYYs make the dreaded ‘mature album’ work by taking familiar shapes and tools and recombining them in ways that are bracing and unexpected.",
-      "reviewSource": "Pitchfork",
+      "reviewQuote": "familiar shapes and tools",
+      "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/12855-its-blitz/",
       "details": [
         "SKU: NXP-2026-CD-0005",
@@ -971,7 +1019,7 @@
         "CD",
         "NXP-2026-CD-0006"
       ],
-      "description": "Various Artists - Reloaded. CD from the current NIXP records selection.",
+      "description": "The Matrix Reloaded soundtrack is a 2003 compilation of industrial, nu-metal, dark dance and film-score music, connecting artists such as Marilyn Manson, Deftones and Rob Zombie to the sequel.",
       "details": [
         "SKU: NXP-2026-CD-0006",
         "Format: CD",
@@ -990,7 +1038,11 @@
         "Rob Dougan"
       ],
       "homeCollections": [],
-      "homeSlideSort": 15
+      "homeSlideSort": 15,
+      "descriptionSource": "AllMusic",
+      "reviewQuote": "industrial, aggro-nu-metal, and dark dance music",
+      "reviewSource": "AllMusic (quoted)",
+      "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069"
     },
     {
       "publishStatus": "Published",
@@ -1013,7 +1065,7 @@
         "CD",
         "NXP-2026-CD-0007"
       ],
-      "description": "Model Actriz - Pirouette. CD from the current NIXP records selection.",
+      "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
       "details": [
         "SKU: NXP-2026-CD-0007",
         "Format: CD",
@@ -1043,7 +1095,11 @@
         "recent-releases",
         "nixp-selection"
       ],
-      "homeSlideSort": 16
+      "homeSlideSort": 16,
+      "descriptionSource": "Pitchfork / The Guardian",
+      "reviewQuote": "savor their own powerlessness",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/"
     },
     {
       "publishStatus": "Published",
@@ -1066,7 +1122,7 @@
         "CD",
         "NXP-2026-CD-0008"
       ],
-      "description": "Daniel Lopatin - Marty Supreme. CD from the current NIXP records selection.",
+      "description": "Daniel Lopatin's 2025 Marty Supreme score uses bright percussion, synth layers and restless momentum to mirror the film's competitive table-tennis world.",
       "details": [
         "SKU: NXP-2026-CD-0008",
         "Format: CD",
@@ -1096,7 +1152,11 @@
         "recent-releases",
         "nixp-selection"
       ],
-      "homeSlideSort": 17
+      "homeSlideSort": 17,
+      "descriptionSource": "Associated Press",
+      "reviewQuote": "propulsive score",
+      "reviewSource": "Associated Press (quoted)",
+      "reviewUrl": "https://apnews.com/article/cf0213e446ab505003c7d338c7ad9270"
     },
     {
       "publishStatus": "Published",
@@ -1119,7 +1179,7 @@
         "CD",
         "NXP-2026-CD-0009"
       ],
-      "description": "Sophie - Sophie. CD from the current NIXP records selection.",
+      "description": "Sophie's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping her bright pop abstraction and industrial edges in conversation.",
       "details": [
         "SKU: NXP-2026-CD-0009",
         "Format: CD",
@@ -1149,7 +1209,11 @@
         "recent-releases",
         "nixp-selection"
       ],
-      "homeSlideSort": 18
+      "homeSlideSort": 18,
+      "descriptionSource": "Associated Press / Pitchfork",
+      "reviewQuote": "still sounds like the future of pop music",
+      "reviewSource": "Associated Press (quoted)",
+      "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3"
     },
     {
       "publishStatus": "Published",
@@ -1172,7 +1236,7 @@
         "Cassette",
         "NXP-2026-CST-0001"
       ],
-      "description": "Nine Inch Nails - Things Falling Apart. Cassette from the current NIXP records selection.",
+      "description": "Nine Inch Nails' 2000 Things Falling Apart is a remix companion to The Fragile, rebuilding its industrial songs through altered rhythms, harsher electronics and new production perspectives.",
       "details": [
         "SKU: NXP-2026-CST-0001",
         "Format: Cassette",
@@ -1191,7 +1255,11 @@
         "Ministry"
       ],
       "homeCollections": [],
-      "homeSlideSort": 19
+      "homeSlideSort": 19,
+      "descriptionSource": "Pitchfork / AllMusic",
+      "reviewQuote": "a completely different beast",
+      "reviewSource": "AllMusic (quoted)",
+      "reviewUrl": "https://www.allmusic.com/album/things-falling-apart-mw0000101953"
     },
     {
       "publishStatus": "Published",
@@ -1214,7 +1282,7 @@
         "Cassette",
         "NXP-2026-CST-0002"
       ],
-      "description": "Poison The Well - Tear From The red. Cassette from the current NIXP records selection.",
+      "description": "Poison the Well's 2002 Tear From the Red captures the Florida band's transition from hardcore extremity toward a more melodic, emotionally expansive form of metalcore.",
       "details": [
         "SKU: NXP-2026-CST-0002",
         "Format: Cassette",
@@ -1233,7 +1301,11 @@
         "From Autumn to Ashes"
       ],
       "homeCollections": [],
-      "homeSlideSort": 20
+      "homeSlideSort": 20,
+      "descriptionSource": "Sputnikmusic",
+      "reviewQuote": "most accessible album",
+      "reviewSource": "Sputnikmusic (quoted)",
+      "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/"
     },
     {
       "publishStatus": "Published",
@@ -1256,7 +1328,7 @@
         "Cassette",
         "NXP-2026-CST-0004"
       ],
-      "description": "Various Artists - Reloaded. Cassette from the current NIXP records selection.",
+      "description": "The Matrix Reloaded soundtrack's cassette edition presents the same 2003 compilation of industrial, aggro-nu-metal, dark dance and score material assembled for the film's sequel.",
       "details": [
         "SKU: NXP-2026-CST-0004",
         "Format: Cassette",
@@ -1275,7 +1347,11 @@
         "Rob Dougan"
       ],
       "homeCollections": [],
-      "homeSlideSort": 21
+      "homeSlideSort": 21,
+      "descriptionSource": "AllMusic",
+      "reviewQuote": "industrial, aggro-nu-metal, and dark dance music",
+      "reviewSource": "AllMusic (quoted)",
+      "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069"
     },
     {
       "publishStatus": "Published",
@@ -1298,7 +1374,7 @@
         "Cassette",
         "NXP-2026-CST-0006"
       ],
-      "description": "Prodigy - The Fat Of The Land. Cassette from the current NIXP records selection.",
+      "description": "The Prodigy's 1997 The Fat of the Land is a global breakbeat landmark, combining punk abrasion, rave production and hard-edged vocal hooks into a chart-topping set.",
       "details": [
         "SKU: NXP-2026-CST-0006",
         "Format: Cassette",
@@ -1319,7 +1395,11 @@
       "homeCollections": [
         "back-in-stock"
       ],
-      "homeSlideSort": 22
+      "homeSlideSort": 22,
+      "descriptionSource": "Pitchfork",
+      "reviewQuote": "a Jenga of drums",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/the-prodigy-the-fat-of-the-land/"
     },
     {
       "publishStatus": "Published",
@@ -1342,7 +1422,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0001"
       ],
-      "description": "Squarepusher - Kammerkonzert. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Squarepusher's 2026 Kammerkonzert places Thomas Jenkinson's drum programming and bass imagination inside a virtual chamber ensemble shaped by jazz and contemporary composition.",
       "details": [
         "SKU: NXP-2026-VNL-0001",
         "Format: Vinyl 12\"",
@@ -1373,7 +1453,11 @@
         "nixp-selection",
         "limited-pressing"
       ],
-      "homeSlideSort": 23
+      "homeSlideSort": 23,
+      "descriptionSource": "The Quietus",
+      "reviewQuote": "flagrant showcase for his ear and skill",
+      "reviewSource": "The Quietus (quoted)",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/squarepusher-kammerkonzert-review/"
     },
     {
       "publishStatus": "Published",
@@ -1396,7 +1480,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0002"
       ],
-      "description": "Melt Banana - 3+5. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
       "details": [
         "SKU: NXP-2026-VNL-0002",
         "Format: Vinyl 12\"",
@@ -1426,7 +1510,11 @@
         "recent-releases",
         "limited-pressing"
       ],
-      "homeSlideSort": 24
+      "homeSlideSort": 24,
+      "descriptionSource": "The Quietus / AllMusic",
+      "reviewQuote": "frantic sensibilities",
+      "reviewSource": "The Quietus (quoted)",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/"
     },
     {
       "publishStatus": "Published",
@@ -1449,10 +1537,10 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0003"
       ],
-      "description": "Nala Sinephro's 2024 Endlessness centers on an evolving arpeggio, bringing harp, piano, modular synths and London's jazz community into one continuous field.",
+      "description": "Nala Sinephro's 2024 Endlessness centers on evolving arpeggios, bringing harp, piano, modular synths and London's jazz community into one continuous field.",
       "descriptionSource": "Pitchfork",
-      "reviewQuote": "It feels like a feat of physics.",
-      "reviewSource": "Pitchfork",
+      "reviewQuote": "a feat of physics",
+      "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/nala-sinephro-endlessness/",
       "details": [
         "SKU: NXP-2026-VNL-0003",
@@ -1507,7 +1595,7 @@
         "CD",
         "NXP-2026-CD-0013"
       ],
-      "description": "Senyawa, Kazuhisa Uchihashi - Untitled Selection. CD from the current NIXP records selection.",
+      "description": "Senyawa and Kazuhisa Uchihashi's 2012 collaboration joins Rully Shabara and Wukir Suryadi's vocal and percussive practice with the Japanese improviser's prepared and electric guitar.",
       "details": [
         "SKU: NXP-2026-CD-0013",
         "Format: CD",
@@ -1526,7 +1614,11 @@
         "Rully Shabara"
       ],
       "homeCollections": [],
-      "homeSlideSort": 26
+      "homeSlideSort": 26,
+      "descriptionSource": "The Wire / Innocent Records",
+      "reviewQuote": "Japanese guitar improv great",
+      "reviewSource": "The Wire (quoted)",
+      "reviewUrl": "https://escholarship.org/content/qt49b8n6x2/qt49b8n6x2_noSplash_c4fedc01d7808f9361783420c843047c.pdf"
     },
     {
       "publishStatus": "Published",
@@ -1549,7 +1641,7 @@
         "CD",
         "NXP-2026-CD-0014"
       ],
-      "description": "Sigmun - Crimson Eyes. CD from the current NIXP records selection.",
+      "description": "Sigmun's 2015 Crimson Eyes is the Indonesian quartet's debut, arranging slow-burning stoner and psychedelic rock around heavy riffs, dark surreal imagery and long-form dynamics.",
       "details": [
         "SKU: NXP-2026-CD-0014",
         "Format: CD",
@@ -1568,7 +1660,11 @@
         "White Shoes & The Couples Company"
       ],
       "homeCollections": [],
-      "homeSlideSort": 27
+      "homeSlideSort": 27,
+      "descriptionSource": "Deathrockstar / Superlive",
+      "reviewQuote": "a proof of continuation, not a beginning",
+      "reviewSource": "Deathrockstar (quoted, translated)",
+      "reviewUrl": "https://www.deathrockstar.club/review-album-sigmun-crimson-eyes/"
     },
     {
       "publishStatus": "Published",
@@ -1591,7 +1687,7 @@
         "CD",
         "NXP-2026-CD-0017"
       ],
-      "description": "David Bowie - The Next Day. CD from the current NIXP records selection.",
+      "description": "David Bowie's 2013 The Next Day is a surprise return after a decade away, using hard-edged rock, art-pop echoes and self-reference without becoming a simple nostalgia record.",
       "details": [
         "SKU: NXP-2026-CD-0017",
         "Format: CD",
@@ -1624,7 +1720,11 @@
         "Iggy Pop"
       ],
       "homeCollections": [],
-      "homeSlideSort": 28
+      "homeSlideSort": 28,
+      "descriptionSource": "Pitchfork",
+      "reviewQuote": "a cunning act of sleight of hand",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/17855-david-bowie-the-next-day/"
     },
     {
       "publishStatus": "Published",
@@ -1647,7 +1747,7 @@
         "CD",
         "NXP-2026-CD-0018"
       ],
-      "description": "Cave In - Antenna. CD from the current NIXP records selection.",
+      "description": "Cave In's 2003 Antenna moves the Massachusetts band's experimental metal toward concise hooks and major-label scale while keeping its guitars intelligently warped.",
       "details": [
         "SKU: NXP-2026-CD-0018",
         "Format: CD",
@@ -1666,7 +1766,11 @@
         "Botch"
       ],
       "homeCollections": [],
-      "homeSlideSort": 29
+      "homeSlideSort": 29,
+      "descriptionSource": "AllMusic / Pitchfork",
+      "reviewQuote": "intelligently warped sound",
+      "reviewSource": "AllMusic (quoted)",
+      "reviewUrl": "https://www.allmusic.com/album/antenna-mw0000021409"
     },
     {
       "publishStatus": "Published",
@@ -1689,7 +1793,7 @@
         "CD",
         "NXP-2026-CD-0019"
       ],
-      "description": "Animal Collective - Merriweather Post Pavilion. CD from the current NIXP records selection.",
+      "description": "Animal Collective's 2009 Merriweather Post Pavilion refines the group's layered vocals, ecstatic electronics and organic percussion into an unusually immediate kind of psychedelic pop.",
       "details": [
         "SKU: NXP-2026-CD-0019",
         "Format: CD",
@@ -1710,7 +1814,11 @@
       "homeCollections": [
         "back-in-stock"
       ],
-      "homeSlideSort": 30
+      "homeSlideSort": 30,
+      "descriptionSource": "Pitchfork",
+      "reviewQuote": "new kind of electronic pop",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/12518-merriweather-post-pavilion/"
     },
     {
       "publishStatus": "Published",
@@ -1733,7 +1841,7 @@
         "CD",
         "NXP-2026-CD-0020"
       ],
-      "description": "My Bloody Valentine - Isn't Anything. CD from the current NIXP records selection.",
+      "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
       "details": [
         "SKU: NXP-2026-CD-0020",
         "Format: CD",
@@ -1754,7 +1862,11 @@
       "homeCollections": [
         "back-in-stock"
       ],
-      "homeSlideSort": 31
+      "homeSlideSort": 31,
+      "descriptionSource": "The Quietus / AllMusic",
+      "reviewQuote": "livid, lurid and lucid",
+      "reviewSource": "The Quietus (quoted)",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/"
     },
     {
       "publishStatus": "Published",
@@ -1777,7 +1889,7 @@
         "CD",
         "NXP-2026-CD-0021"
       ],
-      "description": "JK Flesh, Gothtrad - Knights of The Black Table. CD from the current NIXP records selection.",
+      "description": "JK Flesh and Goth-Trad's 2019 Knights of the Black Table is an industrial-bass collaboration where Justin Broadrick's metal pressure meets Goth-Trad's stripped, dub-informed electronics.",
       "details": [
         "SKU: NXP-2026-CD-0021",
         "Format: CD",
@@ -1796,7 +1908,11 @@
         "Scorn"
       ],
       "homeCollections": [],
-      "homeSlideSort": 32
+      "homeSlideSort": 32,
+      "descriptionSource": "Resident Advisor",
+      "reviewQuote": "slanted techno and industrial bass",
+      "reviewSource": "Resident Advisor (quoted)",
+      "reviewUrl": "https://ra.co/reviews/23726"
     },
     {
       "publishStatus": "Published",
@@ -1819,7 +1935,7 @@
         "CD",
         "NXP-2026-CD-0022"
       ],
-      "description": "Soft Moon - Criminal. CD from the current NIXP records selection.",
+      "description": "The Soft Moon's 2018 Criminal is Luis Vasquez's stark industrial-rock record, turning isolation, mechanical rhythm and cold-wave atmosphere into a confessional late-period statement.",
       "details": [
         "SKU: NXP-2026-CD-0022",
         "Format: CD",
@@ -1838,7 +1954,11 @@
         "TR/ST"
       ],
       "homeCollections": [],
-      "homeSlideSort": 33
+      "homeSlideSort": 33,
+      "descriptionSource": "AllMusic / Sacred Bones",
+      "reviewQuote": "confessional industrial rock",
+      "reviewSource": "AllMusic (quoted)",
+      "reviewUrl": "https://www.allmusic.com/album/criminal-mw0003185357"
     },
     {
       "publishStatus": "Published",
@@ -1861,7 +1981,7 @@
         "Cassette",
         "NXP-2026-CST-0007"
       ],
-      "description": "Behold The Arctopus - Interstellar Overtrove. Cassette from the current NIXP records selection.",
+      "description": "Behold... The Arctopus's 2023 Interstellar Overtrove is an instrumental experiment in avant-garde jazz, jazz fusion and technical metal, performed with electronic drums, Warr guitar and guitar synth.",
       "details": [
         "SKU: NXP-2026-CST-0007",
         "Format: Cassette",
@@ -1880,7 +2000,11 @@
         "Orthrelm"
       ],
       "homeCollections": [],
-      "homeSlideSort": 34
+      "homeSlideSort": 34,
+      "descriptionSource": "The Progressive Subway",
+      "reviewQuote": "decidedly another non-metal experiment",
+      "reviewSource": "The Progressive Subway (quoted)",
+      "reviewUrl": "https://theprogressivesubway.com/2023/09/27/review-behold-the-arctopus-interstellar-overtrove/"
     },
     {
       "publishStatus": "Published",
@@ -1903,7 +2027,7 @@
         "Cassette",
         "NXP-2026-CST-0008"
       ],
-      "description": "FACS - Wish Defense. Cassette from the current NIXP records selection.",
+      "description": "FACS' 2025 Wish Defense is brooding post-punk with wiry guitars, hypnotic drums and dirty bass, and the final recording made by Steve Albini at Electrical Audio.",
       "details": [
         "SKU: NXP-2026-CST-0008",
         "Format: Cassette",
@@ -1933,7 +2057,11 @@
         "recent-releases",
         "limited-pressing"
       ],
-      "homeSlideSort": 35
+      "homeSlideSort": 35,
+      "descriptionSource": "New Noise Magazine",
+      "reviewQuote": "a cavernous uneasiness",
+      "reviewSource": "New Noise Magazine (quoted)",
+      "reviewUrl": "https://newnoisemagazine.com/reviews/album-review-facs-wish-defense/"
     },
     {
       "publishStatus": "Published",
@@ -1956,7 +2084,7 @@
         "Cassette",
         "NXP-2026-CST-0009"
       ],
-      "description": "Peggy Gou - I Hear You. Cassette from the current NIXP records selection.",
+      "description": "Peggy Gou's 2024 I Hear You brings house foundations, disco gloss and pop-minded hooks together in a concise debut designed for both headphones and the dance floor.",
       "details": [
         "SKU: NXP-2026-CST-0009",
         "Format: Cassette",
@@ -1986,7 +2114,11 @@
         "recent-releases",
         "limited-pressing"
       ],
-      "homeSlideSort": 36
+      "homeSlideSort": 36,
+      "descriptionSource": "Pitchfork / NME",
+      "reviewQuote": "crowd-pleasing anthems come naturally",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/peggy-gou-i-hear-you/"
     },
     {
       "publishStatus": "Published",
@@ -2009,7 +2141,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0007"
       ],
-      "description": "Hiatus Kaiyote - Love Heart Cheat Code. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Hiatus Kaiyote's 2024 Love Heart Cheat Code expands the Melbourne group's future-soul vocabulary with jazz harmony, elastic rhythm and Nai Palm's intimate vocal writing.",
       "details": [
         "SKU: NXP-2026-VNL-0007",
         "Format: Vinyl 12\"",
@@ -2040,7 +2172,11 @@
         "recent-releases",
         "limited-pressing"
       ],
-      "homeSlideSort": 37
+      "homeSlideSort": 37,
+      "descriptionSource": "Slant / Exclaim",
+      "reviewQuote": "a celebration of musical connection",
+      "reviewSource": "Exclaim (quoted)",
+      "reviewUrl": "https://exclaim.ca/music/article/hiatus-kaiyote-love-heart-cheat-code-album-review"
     },
     {
       "publishStatus": "Published",
@@ -2063,7 +2199,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0008"
       ],
-      "description": "Arca - &&&&&. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Arca's 2013 &&&&& is a continuous twenty-five-minute mixtape that mutates grime, trap, glitch and dub into a slippery, multi-layered vision of electronic music.",
       "details": [
         "SKU: NXP-2026-VNL-0008",
         "Format: Vinyl 12\"",
@@ -2093,7 +2229,11 @@
         "nixp-selection",
         "limited-pressing"
       ],
-      "homeSlideSort": 38
+      "homeSlideSort": 38,
+      "descriptionSource": "Pitchfork / PAN",
+      "reviewQuote": "unfathomably skillful and multi-layered",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/arca-andandandandand/"
     },
     {
       "publishStatus": "Published",
@@ -2116,7 +2256,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0009"
       ],
-      "description": "Panda Bear - Buoys. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Panda Bear's 2019 Buoys strips Noah Lennox's songwriting toward acoustic guitar, sparse digital production and voice, creating a direct and solitary Domino album.",
       "details": [
         "SKU: NXP-2026-VNL-0009",
         "Format: Vinyl 12\"",
@@ -2145,7 +2285,11 @@
       "homeCollections": [
         "limited-pressing"
       ],
-      "homeSlideSort": 39
+      "homeSlideSort": 39,
+      "descriptionSource": "Pitchfork / The Guardian",
+      "reviewQuote": "unusually unified listen",
+      "reviewSource": "Pitchfork (quoted)",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/panda-bear-buoys/"
     },
     {
       "publishStatus": "Published",
@@ -2168,7 +2312,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0010"
       ],
-      "description": "Overmono & The Streets Turn The Page - Turn The Page. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Overmono's 2024 XL rework of The Streets' Turn The Page translates the 2002 original into a glitchy, club-ready UK dance track and long-running live favorite.",
       "details": [
         "SKU: NXP-2026-VNL-0010",
         "Format: Vinyl 12\"",
@@ -2198,7 +2342,11 @@
         "recent-releases",
         "limited-pressing"
       ],
-      "homeSlideSort": 40
+      "homeSlideSort": 40,
+      "descriptionSource": "Pitchfork / The Guardian",
+      "reviewQuote": "glitchy techno banger",
+      "reviewSource": "Rolling Stone UK (quoted)",
+      "reviewUrl": "https://www.rollingstone.co.uk/music/overmono-london-roundhouse-live-review-good-lies-33786/"
     },
     {
       "publishStatus": "Published",
@@ -2221,7 +2369,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0011"
       ],
-      "description": "Heith & Tarawangsawelas - Duori. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Heith and Tarawangsawelas' 2026 Duori documents a long-distance collaboration shaped by Sundanese ritual, jaipong club culture, low-fidelity exchange and electronic sound design.",
       "details": [
         "SKU: NXP-2026-VNL-0011",
         "Format: Vinyl 12\"",
@@ -2252,7 +2400,11 @@
         "nixp-selection",
         "limited-pressing"
       ],
-      "homeSlideSort": 41
+      "homeSlideSort": 41,
+      "descriptionSource": "Mindies / STROOM",
+      "reviewQuote": "a digital magical realism",
+      "reviewSource": "Mindies (quoted, translated)",
+      "reviewUrl": "https://www.mindies.es/review/heith-tarawangsawelas-duori-critica-de-su-disco-conjunto/"
     },
     {
       "publishStatus": "Published",
@@ -2275,7 +2427,7 @@
         "Vinyl 12\"",
         "NXP-2026-VNL-0012"
       ],
-      "description": "Blawan - SickElixir. Vinyl 12\" from the current NIXP records selection.",
+      "description": "Blawan's 2025 SickElixir balances industrial abrasion with dance-floor pleasure, turning modular percussion, distorted voices and mutated techno into an unusually entrancing second album.",
       "details": [
         "SKU: NXP-2026-VNL-0012",
         "Format: Vinyl 12\"",
@@ -2306,7 +2458,11 @@
         "nixp-selection",
         "limited-pressing"
       ],
-      "homeSlideSort": 42
+      "homeSlideSort": 42,
+      "descriptionSource": "The FADER / Resident Advisor",
+      "reviewQuote": "grotesque, gorgeous dance music",
+      "reviewSource": "The FADER (quoted)",
+      "reviewUrl": "https://www.thefader.com/2025/10/10/blawan-sickelixir-review"
     },
     {
       "publishStatus": "Published",
@@ -2331,7 +2487,7 @@
       ],
       "description": "Giant Swan's self-titled debut is a 2019 Keck LP by Bristol duo Robin Stewart and Harry Wright, built from rugged electronics, improvised pressure and physical club energy.",
       "descriptionSource": "Giant Swan Bandcamp / The Wire",
-      "reviewQuote": "A statement that changes with each recipient, centered around tolerance, inclusion, self-sufficiency and TRUST.",
+      "reviewQuote": "a statement that changes with each recipient",
       "reviewSource": "Turntable Lab, quoted from Giant Swan",
       "reviewUrl": "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp",
       "details": [
@@ -2540,8 +2696,8 @@
       ],
       "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
       "descriptionSource": "Pitchfork",
-      "reviewQuote": "The most immediately pleasurable Oneohtrix Point Never album in some time.",
-      "reviewSource": "Pitchfork",
+      "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
+      "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
       "details": [
         "SKU: NXP-2026-CD-0023",

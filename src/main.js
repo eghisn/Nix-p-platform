@@ -1606,7 +1606,7 @@ function productReviewMarkup(product) {
       ? `<a href="${escapeAttr(url)}" target="_blank" rel="noreferrer">${escapeHtml(source)}</a>`
       : escapeHtml(source)
     : "Sourced review";
-  return `<blockquote class="product-review"><p>“${escapeHtml(quote)}”</p><cite>${sourceMarkup}</cite></blockquote>`;
+  return `<blockquote class="product-review"><p>"${escapeHtml(quote)}"</p><cite>${sourceMarkup}</cite></blockquote>`;
 }
 
 function productImages(product) {

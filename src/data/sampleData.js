@@ -1,3 +1,5 @@
+import { recordEditorial } from "./recordEditorial.js";
+
 export const requestStatuses = [
   "New",
   "Searching",
@@ -744,7 +746,8 @@ const recordImageCredits = {
   "nxp-2026-vnl-0013-self-titled": { credit: "Turntable Lab", url: "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp" }
 };
 
-const recordEditorial = {
+/* Legacy editorial snapshot retained only for historical reference.
+const recordEditorialLegacy = {
   "nxp-2026-cd-0011": {
     description: "David Bowie's 2016 Blackstar is a Columbia studio album that folds exploratory jazz, coded drama and alienation into a final act of reinvention.",
     descriptionSource: "Pitchfork",
@@ -781,6 +784,7 @@ const recordEditorial = {
     reviewUrl: "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp"
   }
 };
+*/
 
 export const products = [
   ...recordRows.map((row) => record(row)),

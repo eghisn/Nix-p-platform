@@ -1838,7 +1838,7 @@ tr:last-child td {
 
 .product-editorial-source {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 760;
   text-transform: uppercase;
 }
@@ -1851,7 +1851,7 @@ tr:last-child td {
 
 .product-review cite {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 8px;
   font-style: normal;
   font-weight: 760;
   text-transform: uppercase;
