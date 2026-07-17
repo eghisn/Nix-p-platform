@@ -1065,6 +1065,7 @@
     bindEvents();
     normalizeDerivedData();
     render();
+    el.saveStatus.textContent = usesLocalFileStorage ? "Saved locally" : "Loaded from protected server";
     if (!usesLocalFileStorage) {
       window.setInterval(() => {
         refreshServerState().catch(() => {});
