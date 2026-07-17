@@ -47,10 +47,11 @@ function normalizeRequest(body) {
   const artistName = cleanText(body.artistName, 160);
   const itemName = cleanText(body.itemName, 160);
   const format = cleanText(body.format, 48);
+  const email = cleanText(body.email, 254).toLowerCase();
   const whatsapp = cleanText(body.whatsapp, 48);
   const notes = cleanText(body.notes, 2000);
-  if (!artistName || !itemName || !format) {
-    const error = new Error("Artist, item title, and format are required.");
+  if (!artistName || !itemName || !format || !isEmail(email)) {
+    const error = new Error("Artist, item title, format, and a valid email are required.");
     error.statusCode = 400;
     throw error;
   }
@@ -59,6 +60,7 @@ function normalizeRequest(body) {
     artistName,
     itemName,
     format,
+    email,
     whatsapp,
     notes,
     status: "New",
@@ -68,6 +70,10 @@ function normalizeRequest(body) {
 
 function cleanText(value, limit) {
   return String(value || "").trim().replace(/\s+/g, " ").slice(0, limit);
+}
+
+function isEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
 function isTrustedOrigin(req) {
@@ -113,6 +119,7 @@ function requestEmailText(request) {
     `Artist: ${request.artistName}`,
     `Title / item: ${request.itemName}`,
     `Format: ${request.format}`,
+    `Email: ${request.email}`,
     `WhatsApp: ${request.whatsapp || "Not provided"}`,
     `Notes: ${request.notes || "None"}`,
     `Request ID: ${request.id}`
@@ -120,7 +127,7 @@ function requestEmailText(request) {
 }
 
 function requestEmailHtml(request) {
-  return `<h1>New NIXP request item</h1><p><strong>Artist:</strong> ${escapeHtml(request.artistName)}<br><strong>Title / item:</strong> ${escapeHtml(request.itemName)}<br><strong>Format:</strong> ${escapeHtml(request.format)}<br><strong>WhatsApp:</strong> ${escapeHtml(request.whatsapp || "Not provided")}<br><strong>Notes:</strong> ${escapeHtml(request.notes || "None")}<br><strong>Request ID:</strong> ${escapeHtml(request.id)}</p>`;
+  return `<h1>New NIXP request item</h1><p><strong>Artist:</strong> ${escapeHtml(request.artistName)}<br><strong>Title / item:</strong> ${escapeHtml(request.itemName)}<br><strong>Format:</strong> ${escapeHtml(request.format)}<br><strong>Email:</strong> ${escapeHtml(request.email)}<br><strong>WhatsApp:</strong> ${escapeHtml(request.whatsapp || "Not provided")}<br><strong>Notes:</strong> ${escapeHtml(request.notes || "None")}<br><strong>Request ID:</strong> ${escapeHtml(request.id)}</p>`;
 }
 
 function escapeHtml(value) {

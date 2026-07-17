@@ -543,6 +543,7 @@ async function requestItemPage() {
               .join("")}
           </select>
         </label>
+        <label>Email:<input name="email" type="email" autocomplete="email" required /></label>
         <label>WhatsApp:<input name="whatsapp" /></label>
         <label>Notes:<textarea name="notes" rows="5"></textarea></label>
         <input class="request-honeypot" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />

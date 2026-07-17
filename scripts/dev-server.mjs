@@ -220,8 +220,9 @@ async function handleApi(req, res) {
     const artistName = String(payload.artistName || "").trim().slice(0, 160);
     const itemName = String(payload.itemName || "").trim().slice(0, 160);
     const format = String(payload.format || "").trim().slice(0, 48);
-    if (!artistName || !itemName || !format || String(payload.company || "").trim()) {
-      json(res, 400, { ok: false, error: "Artist, item title, and format are required." });
+    const email = String(payload.email || "").trim().toLowerCase().slice(0, 254);
+    if (!artistName || !itemName || !format || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || String(payload.company || "").trim()) {
+      json(res, 400, { ok: false, error: "Artist, item title, format, and a valid email are required." });
       return true;
     }
     const dataDir = join(root, "public", "data");
@@ -233,6 +234,7 @@ async function handleApi(req, res) {
       artistName,
       itemName,
       format,
+      email,
       whatsapp: String(payload.whatsapp || "").trim().slice(0, 48),
       notes: String(payload.notes || "").trim().slice(0, 2000),
       status: "New",
