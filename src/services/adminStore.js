@@ -395,6 +395,17 @@ export const adminStore = {
     activeStore = null;
     return this.initialize();
   },
+  async refreshRequests() {
+    if (!canUsePrivateStore()) return this.getSnapshot().requests;
+    const response = await fetch(`/api/catalog?scope=admin&requests=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error("Could not refresh requests. Please log in to admin and try again.");
+    const payload = await response.json();
+    if (!Array.isArray(payload.store?.requests)) return this.getSnapshot().requests;
+    const current = readStore();
+    activeStore = { ...current, requests: payload.store.requests };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+    return activeStore.requests;
+  },
   async verifyPrices(ids) {
     try {
       const response = await fetch("/api/prices", {

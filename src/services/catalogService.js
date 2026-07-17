@@ -72,6 +72,7 @@ export const catalogService = {
     }));
   },
   async listRequests() {
+    await adminStore.refreshRequests();
     return adminStore.getSnapshot().requests;
   },
   async listCashflow() {
