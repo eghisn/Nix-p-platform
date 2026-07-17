@@ -880,10 +880,10 @@
                       <th data-sort-section="stock" data-sort-key="source">Source</th>
                       <th data-sort-section="stock" data-sort-key="acquisitionMonth">Acquisition Month</th>
                       <th class="money" data-sort-section="stock" data-sort-key="qty">Quantity</th>
-                      <th class="money" data-sort-section="stock" data-sort-key="costBasis">Cost Basis</th>
-                      <th class="money" data-sort-section="stock" data-sort-key="sellingPrice">Selling Price</th>
-                      <th class="money" data-sort-section="stock" data-sort-key="soldPrice">Sold Price</th>
-                      <th class="money" data-sort-section="stock" data-sort-key="grossProfit">Gross Profit</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="costBasis">Unit Cost Basis</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="sellingPrice">Unit Selling Price</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="soldPrice">Unit Sold Price</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="grossProfit">Unit Gross Profit</th>
                       <th class="money" data-sort-section="stock" data-sort-key="margin">Margin (%)</th>
                       <th class="row-actions">Action</th>
                     </tr>
@@ -1301,9 +1301,9 @@
           ${selectField("Source", "source", inventorySources, true, "Business Purchase")}
           ${field("Acquisition Month", "acquisitionMonth", "month", currentMonth, true)}
           ${field("Quantity", "qty", "number", "1", true, "", "0.01")}
-          ${field("Cost Basis", "costBasis", "number", "", true, "0", "1")}
-          ${field("Selling Price", "sellingPrice", "number", "", false, "0", "1")}
-          ${field("Sold Price", "soldPrice", "number", "", false, "0", "1")}
+          ${field("Unit Cost Basis", "costBasis", "number", "", true, "0", "1")}
+          ${field("Unit Selling Price", "sellingPrice", "number", "", false, "0", "1")}
+          ${field("Unit Sold Price", "soldPrice", "number", "", false, "0", "1")}
         </div>
         <input type="hidden" name="editId" value="">
         <div class="form-actions">
@@ -1690,7 +1690,7 @@
     }
 
     function recalculateStock(item) {
-      const qty = numeric(item.qty) || 1;
+      const qty = item.qty === undefined || item.qty === null || item.qty === "" ? 1 : numeric(item.qty);
       const costBasis = numeric(item.costBasis);
       const soldPrice = numeric(item.soldPrice);
       const grossProfit = soldPrice > 0 ? soldPrice - costBasis : 0;
@@ -2102,17 +2102,20 @@
           <td class="row-actions">${editButton("inventoryStock", item.id)} ${deleteButton("inventoryStock", item.id)}</td>
         </tr>
       `).join("") : emptyRow(14, "No inventory stock recorded yet.");
-      const totals = rows.reduce((total, item) => ({
-        qty: total.qty + numeric(item.qty),
-        costBasis: total.costBasis + numeric(item.costBasis),
-        sellingPrice: total.sellingPrice + numeric(item.sellingPrice),
-        soldPrice: total.soldPrice + numeric(item.soldPrice),
-        grossProfit: total.grossProfit + numeric(item.grossProfit)
-      }), { qty: 0, costBasis: 0, sellingPrice: 0, soldPrice: 0, grossProfit: 0 });
+      const totals = rows.reduce((total, item) => {
+        const qty = numeric(item.qty);
+        return {
+          qty: total.qty + qty,
+          costBasis: total.costBasis + qty * numeric(item.costBasis),
+          sellingPrice: total.sellingPrice + qty * numeric(item.sellingPrice),
+          soldPrice: total.soldPrice + qty * numeric(item.soldPrice),
+          grossProfit: total.grossProfit + qty * numeric(item.grossProfit)
+        };
+      }, { qty: 0, costBasis: 0, sellingPrice: 0, soldPrice: 0, grossProfit: 0 });
       const margin = totals.soldPrice > 0 ? totals.grossProfit / totals.soldPrice * 100 : 0;
       el.stockTotals.innerHTML = `
         <tr>
-          <td colspan="7">Total</td>
+          <td colspan="7">Total value (quantity x unit)</td>
           <td class="money">${totals.qty}</td>
           <td class="money">${rupiah(totals.costBasis)}</td>
           <td class="money">${rupiah(totals.sellingPrice)}</td>
