@@ -103,6 +103,7 @@ async function sendRequestEmail(request) {
     body: JSON.stringify({
       from,
       to: [to],
+      reply_to: request.email,
       subject: `NIXP request item: ${request.artistName} - ${request.itemName}`,
       text: requestEmailText(request),
       html: requestEmailHtml(request)
