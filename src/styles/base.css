@@ -2165,6 +2165,7 @@ tr:last-child td {
 
 @media (max-width: 860px) {
   :root {
+    --page-pad: clamp(22px, 7.2vw, 34px);
     --header-h: 70px;
     --footer-h: 112px;
   }
@@ -2224,31 +2225,63 @@ tr:last-child td {
   }
 
   .home-slider {
+    grid-template-rows: auto auto auto;
+    align-content: center;
+    gap: clamp(14px, 2.6vh, 24px);
     min-height: calc(100vh - var(--header-h) - var(--footer-h));
-    padding-top: 0;
+    padding-top: clamp(22px, 4vh, 36px);
+    padding-bottom: 16px;
+  }
+
+  .home-collections {
+    align-self: end;
+    justify-content: center;
+    gap: 8px;
+    transform: none;
+  }
+
+  .home-collection-button {
+    min-height: 31px;
+    padding: 8px 12px;
+    font-size: 9px;
+  }
+
+  .slider-viewport {
+    align-self: start;
   }
 
   .slider-track {
-    gap: 22px;
+    gap: 18px;
   }
 
   .slide {
-    flex-basis: min(78vw, 340px);
-    width: min(78vw, 340px);
+    flex-basis: min(74vw, 318px);
+    width: min(74vw, 318px);
   }
 
   .slide {
     max-width: none;
   }
 
+  .slide a {
+    gap: 12px;
+  }
+
   .slide-caption {
     grid-template-columns: 34px 1fr;
+    gap: 10px 14px;
+    padding-top: 10px;
   }
 
   .slide-caption em {
     grid-column: 2;
     justify-self: start;
     text-align: left;
+  }
+
+  .slider-scrollbar {
+    margin-top: 0;
+    transform: none;
   }
 
   .section,
