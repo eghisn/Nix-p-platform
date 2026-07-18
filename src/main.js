@@ -2245,6 +2245,7 @@ function bindHomeSlider() {
   let touchActive = false;
   let controlActive = false;
   let controlPointerId = null;
+  let controlValue = 0;
   let pointerId = null;
   let pointerStartX = 0;
   let pointerStartScroll = 0;
@@ -2264,14 +2265,11 @@ function bindHomeSlider() {
     if (viewport.scrollLeft >= width) viewport.scrollLeft -= width;
     if (viewport.scrollLeft < 0) viewport.scrollLeft += width;
   };
-  const syncControl = () => {
+  const renderControl = () => {
     if (!controlRail || !controlThumb) return;
-    const width = loopWidth();
-    if (!width) return;
-    const value = Math.round((viewport.scrollLeft / width) * 1000) % 1000;
     const travel = Math.max(controlRail.clientWidth - controlThumb.offsetWidth, 0);
-    controlThumb.style.transform = `translateX(${(value / 1000) * travel}px)`;
-    controlRail.setAttribute("aria-valuenow", String(value));
+    controlThumb.style.transform = `translateX(${(controlValue / 1000) * travel}px)`;
+    controlRail.setAttribute("aria-valuenow", String(controlValue));
   };
   const tick = (now) => {
     const elapsed = Math.min(now - lastFrame, 80);
@@ -2282,7 +2280,6 @@ function bindHomeSlider() {
       viewport.scrollLeft += (width / 95_000) * elapsed;
       normalizeLoopPosition();
     }
-    syncControl();
     frameId = requestAnimationFrame(tick);
   };
   const onPointerDown = (event) => {
@@ -2318,7 +2315,6 @@ function bindHomeSlider() {
   };
   const onScroll = () => {
     normalizeLoopPosition();
-    syncControl();
   };
   const onTouchStart = () => {
     touchActive = true;
@@ -2333,6 +2329,8 @@ function bindHomeSlider() {
     const rect = controlRail.getBoundingClientRect();
     const travel = Math.max(rect.width - controlThumb.offsetWidth, 1);
     const ratio = Math.min(Math.max((clientX - rect.left - controlThumb.offsetWidth / 2) / travel, 0), 1);
+    controlValue = Math.round(ratio * 1000);
+    renderControl();
     viewport.scrollLeft = ratio * width;
     pause(1_500);
   };
@@ -2394,6 +2392,7 @@ function bindHomeSlider() {
   controlRail?.addEventListener("keydown", onControlKeyDown);
   previousButton?.addEventListener("click", onPreviousButtonClick);
   nextButton?.addEventListener("click", onNextButtonClick);
+  renderControl();
   frameId = requestAnimationFrame(tick);
 
   homeSliderCleanup = () => {
