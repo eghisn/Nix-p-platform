@@ -272,8 +272,12 @@ async function homePage() {
       </div>
       ${
         featured.length || selectedCollection !== "private-collection"
-          ? `<div class="slider-scrubber-wrap">
-              <input class="slider-scrubber" type="range" min="0" max="1000" step="1" value="0" aria-label="Browse slider" data-home-slider-control />
+          ? `<div class="slider-scrollbar" aria-label="Catalogue navigation">
+              <button class="slider-scroll-button" type="button" aria-label="Previous catalogue items" data-home-slider-previous>&larr;</button>
+              <div class="slider-scroll-rail" data-home-slider-control role="slider" aria-label="Browse catalogue" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0" tabindex="0">
+                <span class="slider-scroll-thumb" data-home-slider-thumb></span>
+              </div>
+              <button class="slider-scroll-button" type="button" aria-label="Next catalogue items" data-home-slider-next>&rarr;</button>
             </div>`
           : ""
       }
@@ -2228,7 +2232,10 @@ function bindHomeSlider() {
 
   const viewport = document.querySelector("[data-home-slider-viewport]");
   const track = document.querySelector("[data-home-slider-track]");
-  const control = document.querySelector("[data-home-slider-control]");
+  const controlRail = document.querySelector("[data-home-slider-control]");
+  const controlThumb = document.querySelector("[data-home-slider-thumb]");
+  const previousButton = document.querySelector("[data-home-slider-previous]");
+  const nextButton = document.querySelector("[data-home-slider-next]");
   if (!viewport || !track) return;
 
   let frameId = 0;
@@ -2237,6 +2244,7 @@ function bindHomeSlider() {
   let mouseDragging = false;
   let touchActive = false;
   let controlActive = false;
+  let controlPointerId = null;
   let pointerId = null;
   let pointerStartX = 0;
   let pointerStartScroll = 0;
@@ -2257,10 +2265,13 @@ function bindHomeSlider() {
     if (viewport.scrollLeft < 0) viewport.scrollLeft += width;
   };
   const syncControl = () => {
-    if (!control) return;
+    if (!controlRail || !controlThumb) return;
     const width = loopWidth();
     if (!width) return;
-    control.value = String(Math.round((viewport.scrollLeft / width) * 1000) % 1000);
+    const value = Math.round((viewport.scrollLeft / width) * 1000) % 1000;
+    const travel = Math.max(controlRail.clientWidth - controlThumb.offsetWidth, 0);
+    controlThumb.style.transform = `translateX(${(value / 1000) * travel}px)`;
+    controlRail.setAttribute("aria-valuenow", String(value));
   };
   const tick = (now) => {
     const elapsed = Math.min(now - lastFrame, 80);
@@ -2316,19 +2327,48 @@ function bindHomeSlider() {
     touchActive = false;
     pause(1_500);
   };
-  const onControlInput = () => {
+  const setControlPosition = (clientX) => {
     const width = loopWidth();
-    if (!width || !control) return;
-    viewport.scrollLeft = (Number(control.value) / 1000) * width;
+    if (!width || !controlRail || !controlThumb) return;
+    const rect = controlRail.getBoundingClientRect();
+    const travel = Math.max(rect.width - controlThumb.offsetWidth, 1);
+    const ratio = Math.min(Math.max((clientX - rect.left - controlThumb.offsetWidth / 2) / travel, 0), 1);
+    viewport.scrollLeft = ratio * width;
     pause(1_500);
   };
-  const onControlStart = () => {
+  const onControlPointerDown = (event) => {
+    if (event.button !== 0 || !controlRail) return;
     controlActive = true;
+    controlPointerId = event.pointerId;
+    controlRail.setPointerCapture?.(controlPointerId);
+    setControlPosition(event.clientX);
   };
-  const onControlEnd = () => {
+  const onControlPointerMove = (event) => {
+    if (!controlActive || event.pointerId !== controlPointerId) return;
+    setControlPosition(event.clientX);
+  };
+  const onControlPointerEnd = (event) => {
+    if (!controlActive || (event && event.pointerId !== controlPointerId)) return;
     controlActive = false;
+    controlPointerId = null;
     pause(1_500);
   };
+  const nudgeSlider = (direction) => {
+    viewport.scrollBy({ left: direction * viewport.clientWidth * 0.82, behavior: "smooth" });
+    pause(2_000);
+  };
+  const onControlKeyDown = (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      nudgeSlider(-1);
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      nudgeSlider(1);
+    }
+  };
+  const onPreviousButtonClick = () => nudgeSlider(-1);
+  const onNextButtonClick = () => nudgeSlider(1);
   const onMouseEnter = () => {
     hovering = true;
   };
@@ -2347,10 +2387,13 @@ function bindHomeSlider() {
   viewport.addEventListener("touchstart", onTouchStart, { passive: true });
   viewport.addEventListener("touchend", onTouchEnd, { passive: true });
   viewport.addEventListener("touchcancel", onTouchEnd, { passive: true });
-  control?.addEventListener("input", onControlInput);
-  control?.addEventListener("pointerdown", onControlStart);
-  control?.addEventListener("pointerup", onControlEnd);
-  control?.addEventListener("pointercancel", onControlEnd);
+  controlRail?.addEventListener("pointerdown", onControlPointerDown);
+  controlRail?.addEventListener("pointermove", onControlPointerMove);
+  controlRail?.addEventListener("pointerup", onControlPointerEnd);
+  controlRail?.addEventListener("pointercancel", onControlPointerEnd);
+  controlRail?.addEventListener("keydown", onControlKeyDown);
+  previousButton?.addEventListener("click", onPreviousButtonClick);
+  nextButton?.addEventListener("click", onNextButtonClick);
   frameId = requestAnimationFrame(tick);
 
   homeSliderCleanup = () => {
@@ -2366,10 +2409,13 @@ function bindHomeSlider() {
     viewport.removeEventListener("touchstart", onTouchStart);
     viewport.removeEventListener("touchend", onTouchEnd);
     viewport.removeEventListener("touchcancel", onTouchEnd);
-    control?.removeEventListener("input", onControlInput);
-    control?.removeEventListener("pointerdown", onControlStart);
-    control?.removeEventListener("pointerup", onControlEnd);
-    control?.removeEventListener("pointercancel", onControlEnd);
+    controlRail?.removeEventListener("pointerdown", onControlPointerDown);
+    controlRail?.removeEventListener("pointermove", onControlPointerMove);
+    controlRail?.removeEventListener("pointerup", onControlPointerEnd);
+    controlRail?.removeEventListener("pointercancel", onControlPointerEnd);
+    controlRail?.removeEventListener("keydown", onControlKeyDown);
+    previousButton?.removeEventListener("click", onPreviousButtonClick);
+    nextButton?.removeEventListener("click", onNextButtonClick);
   };
 }
 
