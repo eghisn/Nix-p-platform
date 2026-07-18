@@ -211,6 +211,36 @@ async function handleApi(req, res) {
     return true;
   }
 
+  if (url.pathname === "/api/catalog" && req.method === "GET") {
+    const scope = url.searchParams.get("scope") || "public";
+    const session = sessionFromRequest(req);
+    if (scope === "admin" && session?.workspace !== "admin") {
+      json(res, 401, { ok: false, error: "Admin login required" });
+      return true;
+    }
+    const storePath = join(root, "public", "data", "admin-store.json");
+    const store = existsSync(storePath)
+      ? JSON.parse(await readFile(storePath, "utf8"))
+      : { products: [], artists: [], collections: [], requests: [], orders: [], cashflow: [], inventory: [] };
+    const privateScope = scope === "admin";
+    json(res, 200, {
+      ok: true,
+      store: privateScope
+        ? store
+        : {
+            ...store,
+            products: (store.products || []).filter(
+              (product) => product.publishStatus === "Published" && product.visibility !== "Hidden"
+            ),
+            requests: [],
+            orders: [],
+            cashflow: [],
+            inventory: []
+          }
+    });
+    return true;
+  }
+
   if (url.pathname === "/api/catalog" && req.method === "POST") {
     if (url.searchParams.get("action") !== "request-item") {
       json(res, 404, { ok: false, error: "Unknown catalog action." });

@@ -537,7 +537,9 @@ function blogPage() {
 }
 
 async function requestItemPage() {
-  const requests = [...(await catalogService.listRequests()), ...state.requests];
+  // The public page never needs the private request inbox. Keep only the
+  // visitor's in-session confirmation after a successful submission.
+  const requests = state.requests;
   return `
     <section class="section form-layout">
       <form class="request-form" data-request-form>
@@ -1823,8 +1825,11 @@ function bindEvents() {
     });
   });
 
-  document.querySelector("[data-nav-toggle]")?.addEventListener("click", () => {
-    document.querySelector(".site-header")?.classList.toggle("is-open");
+  document.querySelector("[data-nav-toggle]")?.addEventListener("click", (event) => {
+    const header = document.querySelector(".site-header");
+    const isOpen = header?.classList.toggle("is-open") || false;
+    event.currentTarget.setAttribute("aria-expanded", String(isOpen));
+    event.currentTarget.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
   });
 
   document.querySelector("[data-cart-open]")?.addEventListener("click", () => {

@@ -590,6 +590,20 @@ img {
   display: none;
 }
 
+.nav-toggle-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.nav-toggle-dots i {
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
 .cart-trigger span {
   display: inline-block;
   min-width: 14px;
@@ -2096,6 +2110,11 @@ tr:last-child td {
 
   .nav-toggle {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    min-height: 30px;
+    padding: 0;
   }
 
   .site-nav {
@@ -2122,6 +2141,10 @@ tr:last-child td {
 
   .site-nav-right a {
     display: none;
+  }
+
+  .site-header.is-open .site-nav-right a {
+    display: inline-flex;
   }
 
   .home-slider {
