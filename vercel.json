@@ -23,6 +23,18 @@
   ],
   "rewrites": [
     {
+      "source": "/api/payments/midtrans-token",
+      "destination": "/api/checkout?commerceAction=midtrans-token"
+    },
+    {
+      "source": "/api/webhooks/midtrans",
+      "destination": "/api/checkout?commerceAction=midtrans-webhook"
+    },
+    {
+      "source": "/api/admin/orders",
+      "destination": "/api/admin/store?commerceAction=orders"
+    },
+    {
       "source": "/login",
       "has": [{ "type": "host", "value": "finance.nix-p.com" }],
       "destination": "/api/finance-app?financePath=/login"

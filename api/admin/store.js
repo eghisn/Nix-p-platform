@@ -1,7 +1,9 @@
 import { json, requireWorkspace } from "../_lib/auth.js";
 import { isSupabaseConfigured, saveStore } from "../_lib/supabase.js";
+import { handleAdminOrders } from "../_lib/commerceHandlers.js";
 
 export default async function handler(req, res) {
+  if (new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("commerceAction") === "orders") return handleAdminOrders(req, res);
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
   if (!requireWorkspace(req, res, "admin")) return;
   if (!isSupabaseConfigured({ requireServiceRole: true })) {

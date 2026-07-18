@@ -1,9 +1,13 @@
 import { json } from "./_lib/auth.js";
 import { expirePendingOrders, normalizeShippingAddress } from "./_lib/commerce.js";
+import { handleMidtransToken, handleMidtransWebhook } from "./_lib/commerceHandlers.js";
 import { sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 
 export default async function handler(req, res) {
+  const action = new URL(req.url || "/", "https://nix-p.com").searchParams.get("commerceAction");
+  if (action === "midtrans-token") return handleMidtransToken(req, res);
+  if (action === "midtrans-webhook") return handleMidtransWebhook(req, res);
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
   if (!isSupabaseConfigured({ requireServiceRole: true })) {
     return json(res, 503, { ok: false, error: "Checkout is not configured." });
