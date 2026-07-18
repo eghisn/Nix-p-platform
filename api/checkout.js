@@ -1,4 +1,5 @@
 import { json } from "./_lib/auth.js";
+import { expirePendingOrders, normalizeShippingAddress } from "./_lib/commerce.js";
 import { sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 
@@ -18,10 +19,20 @@ export default async function handler(req, res) {
 
     const orderId = normalizeOrderId(body.orderId);
     const customer = normalizeCustomer(body.customer);
-    const order = await supabaseFetch("rpc/submit_store_order", {
+    const commerceV2Enabled = process.env.NIXP_COMMERCE_V2_ENABLED === "true";
+    // The existing manual-order path remains live until Midtrans and the cron
+    // secret are configured. The new workflow is enabled only by Vercel env.
+    if (commerceV2Enabled) await expirePendingOrders();
+    const order = await supabaseFetch(commerceV2Enabled ? "rpc/create_checkout_order" : "rpc/submit_store_order", {
       method: "POST",
       service: true,
-      body: {
+      body: commerceV2Enabled ? {
+        p_order_id: orderId,
+        p_customer: customer,
+        p_items: items,
+        p_shipping_address: normalizeShippingAddress(body.shippingAddress),
+        p_shipping_method: cleanText(body.shippingMethod, 80) || null
+      } : {
         p_order_id: orderId,
         p_customer: customer,
         p_items: items
@@ -39,6 +50,10 @@ export default async function handler(req, res) {
       order: {
         id: order.id,
         status: order.status,
+        paymentStatus: order.paymentStatus || null,
+        fulfillmentStatus: order.fulfillmentStatus || null,
+        shippingStatus: order.shippingStatus || null,
+        paymentExpiresAt: order.paymentExpiresAt || null,
         total: order.total,
         items: order.items
       }

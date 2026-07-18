@@ -1341,6 +1341,9 @@ async function ordersPage({ embedded = false } = {}) {
       order.customer,
       order.channel,
       order.status,
+      order.paymentStatus,
+      order.fulfillmentStatus,
+      order.shippingStatus,
       order.date,
       order.total,
       order.products.map((product) => `${product.sku} ${product.artist} ${product.title}`).join(" ")
@@ -1355,23 +1358,25 @@ async function ordersPage({ embedded = false } = {}) {
     }
   );
   return `
-    ${embedded ? "" : adminHero("Orders", "Sample order workflow across web, social, and walk-in channels.")}
+    ${embedded ? "" : adminHero("Orders", "Payment, fulfillment, shipping, and action-required order operations.")}
     <div>
       ${adminListControls("orders", "Search orders, SKU, artist, album", [
         ["date", "Date"],
         ["customer", "Customer"],
-        ["status", "Status"],
+        ["status", "Order status"],
         ["total", "Total"],
         ["id", "Order ID"]
       ])}
       ${table(
-        ["Order", "Customer", "Channel", "Items", "Status", "Total"],
+        ["Order", "Customer", "Items", "Payment", "Fulfillment", "Shipping", "Action required", "Total"],
         visibleOrders.map((order) => [
           order.id,
           order.customer,
-          order.channel,
           order.products.map((product) => product.title).join(", "),
-          statusSelect("order", order.id, order.status, ["New", "Paid", "Packing", "Shipped", "Closed", "Refunded"]),
+          statusBadge(order.paymentStatus || order.status || "-"),
+          statusBadge(order.fulfillmentStatus || "Unfulfilled"),
+          statusBadge(order.shippingStatus || "Not Required"),
+          escapeHtml(orderActionRequired(order)),
           money.format(order.total)
         ])
       )}
@@ -1444,6 +1449,19 @@ function input(name, label, value = "", placeholder = "", type = "text") {
       <input name="${name}" type="${type}" value="${escapeAttr(value)}" placeholder="${placeholder}" />
     </label>
   `;
+}
+
+function orderActionRequired(order) {
+  const payment = String(order.paymentStatus || "").toLowerCase();
+  const fulfillment = String(order.fulfillmentStatus || "").toLowerCase();
+  const shipping = String(order.shippingStatus || "").toLowerCase();
+  if (payment === "pending" || payment === "unpaid") return "Awaiting payment";
+  if (payment === "refund pending") return "Refund required";
+  if (fulfillment === "processing" || fulfillment === "stock reserved") return "Pack order";
+  if (fulfillment === "packed" && shipping === "awaiting pickup") return "Hand to courier";
+  if (shipping === "delivery failed") return "Delivery follow-up";
+  if (shipping === "quote sent" || shipping === "awaiting quote") return "Send shipping quote";
+  return "-";
 }
 
 function shippingAttributeFields(product = {}) {
@@ -1937,7 +1955,9 @@ function bindEvents() {
       state.cart = [];
       state.checkoutOrderToken = "";
       persistCart();
-      state.checkoutMessage = `Order ${payload.order.id} submitted at ${money.format(payload.order.total)}.`;
+      state.checkoutMessage = payload.order.paymentExpiresAt
+        ? `Order ${payload.order.id} reserved until ${new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit" }).format(new Date(payload.order.paymentExpiresAt))}. Payment will be confirmed securely before NIXP processes the order.`
+        : `Order ${payload.order.id} submitted at ${money.format(payload.order.total)}.`;
       state.checkoutTone = "success";
       await adminStore.refresh();
       await render({ preserveScroll: true });

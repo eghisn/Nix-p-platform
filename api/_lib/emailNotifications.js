@@ -23,6 +23,24 @@ export async function sendOrderNotification(order, customer = {}) {
   });
 }
 
+export async function sendOrderPaymentNotification(order) {
+  const customer = order?.customer || {};
+  return sendNotificationEmail({
+    subject: `NIXP payment verified: ${order?.public_reference || order?.id}`,
+    replyTo: customer.email,
+    text: [
+      "NIXP payment verified",
+      `Order: ${order?.public_reference || order?.id}`,
+      `Official total: ${rupiah(order?.grand_total)}`,
+      `Payment: ${order?.payment_status}`,
+      `Fulfillment: ${order?.fulfillment_status}`,
+      `Shipping: ${order?.shipping_status}`
+    ].join("\n"),
+    html: `<h1>NIXP payment verified</h1><p><strong>Order:</strong> ${escapeHtml(order?.public_reference || order?.id)}<br><strong>Official total:</strong> ${escapeHtml(rupiah(order?.grand_total))}<br><strong>Payment:</strong> ${escapeHtml(order?.payment_status)}<br><strong>Fulfillment:</strong> ${escapeHtml(order?.fulfillment_status)}<br><strong>Shipping:</strong> ${escapeHtml(order?.shipping_status)}</p>`,
+    idempotencyKey: `paid-order-notification-${order?.id}`
+  });
+}
+
 async function sendNotificationEmail({ subject, replyTo, text, html, idempotencyKey }) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.NIXP_EMAIL_FROM || process.env.REQUEST_EMAIL_FROM || DEFAULT_FROM;
