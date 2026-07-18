@@ -2251,6 +2251,12 @@ function bindHomeSlider() {
   let pointerStartScroll = 0;
   let didDrag = false;
   let hovering = false;
+  let touchResetTimer = 0;
+  let autoScrollLeft = viewport.scrollLeft;
+  let applyingAutoScroll = false;
+  const supportsHoverPause =
+    typeof window.matchMedia !== "function" ||
+    (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !window.matchMedia("(max-width: 860px)").matches);
 
   const loopWidth = () => {
     const gap = Number.parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || "0") || 0;
@@ -2259,11 +2265,20 @@ function bindHomeSlider() {
   const pause = (delay = 0) => {
     pausedUntil = Math.max(pausedUntil, performance.now() + delay);
   };
-  const normalizeLoopPosition = () => {
+  const applyAutoScroll = () => {
+    applyingAutoScroll = true;
+    viewport.scrollLeft = autoScrollLeft;
+    requestAnimationFrame(() => {
+      applyingAutoScroll = false;
+    });
+  };
+  const normalizeLoopPosition = (syncFromViewport = false) => {
     const width = loopWidth();
     if (!width) return;
-    if (viewport.scrollLeft >= width) viewport.scrollLeft -= width;
-    if (viewport.scrollLeft < 0) viewport.scrollLeft += width;
+    if (syncFromViewport) autoScrollLeft = viewport.scrollLeft;
+    if (autoScrollLeft >= width) autoScrollLeft -= width;
+    if (autoScrollLeft < 0) autoScrollLeft += width;
+    applyAutoScroll();
   };
   const renderControl = () => {
     if (!controlRail || !controlThumb) return;
@@ -2277,7 +2292,7 @@ function bindHomeSlider() {
     const width = loopWidth();
     if (!mouseDragging && !touchActive && !controlActive && !hovering && now >= pausedUntil && width > 0) {
       // Keep the existing 95 second loop speed while using native scroll for swipe support.
-      viewport.scrollLeft += (width / 95_000) * elapsed;
+      autoScrollLeft += (width / 95_000) * elapsed;
       normalizeLoopPosition();
     }
     frameId = requestAnimationFrame(tick);
@@ -2297,7 +2312,7 @@ function bindHomeSlider() {
     if (!mouseDragging || event.pointerId !== pointerId) return;
     const distance = event.clientX - pointerStartX;
     if (Math.abs(distance) > 4) didDrag = true;
-    viewport.scrollLeft = pointerStartScroll - distance;
+    autoScrollLeft = pointerStartScroll - distance;
     normalizeLoopPosition();
   };
   const stopDrag = (event) => {
@@ -2314,13 +2329,18 @@ function bindHomeSlider() {
     didDrag = false;
   };
   const onScroll = () => {
-    normalizeLoopPosition();
+    if (!applyingAutoScroll) normalizeLoopPosition(true);
   };
   const onTouchStart = () => {
     touchActive = true;
+    window.clearTimeout(touchResetTimer);
+    touchResetTimer = window.setTimeout(() => {
+      touchActive = false;
+    }, 1_200);
   };
   const onTouchEnd = () => {
     touchActive = false;
+    window.clearTimeout(touchResetTimer);
     pause(1_500);
   };
   const setControlPosition = (clientX) => {
@@ -2331,7 +2351,8 @@ function bindHomeSlider() {
     const ratio = Math.min(Math.max((clientX - rect.left - controlThumb.offsetWidth / 2) / travel, 0), 1);
     controlValue = Math.round(ratio * 1000);
     renderControl();
-    viewport.scrollLeft = ratio * width;
+    autoScrollLeft = ratio * width;
+    normalizeLoopPosition();
     pause(1_500);
   };
   const onControlPointerDown = (event) => {
@@ -2352,7 +2373,11 @@ function bindHomeSlider() {
     pause(1_500);
   };
   const nudgeSlider = (direction) => {
-    viewport.scrollBy({ left: direction * viewport.clientWidth * 0.82, behavior: "smooth" });
+    const width = loopWidth();
+    autoScrollLeft = viewport.scrollLeft + direction * viewport.clientWidth * 0.82;
+    if (width && autoScrollLeft >= width) autoScrollLeft -= width;
+    if (width && autoScrollLeft < 0) autoScrollLeft += width;
+    viewport.scrollTo({ left: autoScrollLeft, behavior: "smooth" });
     pause(2_000);
   };
   const onControlKeyDown = (event) => {
@@ -2368,9 +2393,11 @@ function bindHomeSlider() {
   const onPreviousButtonClick = () => nudgeSlider(-1);
   const onNextButtonClick = () => nudgeSlider(1);
   const onMouseEnter = () => {
+    if (!supportsHoverPause) return;
     hovering = true;
   };
   const onMouseLeave = () => {
+    if (!supportsHoverPause) return;
     hovering = false;
   };
 
@@ -2397,6 +2424,7 @@ function bindHomeSlider() {
 
   homeSliderCleanup = () => {
     cancelAnimationFrame(frameId);
+    window.clearTimeout(touchResetTimer);
     viewport.removeEventListener("pointerdown", onPointerDown);
     viewport.removeEventListener("pointermove", onPointerMove);
     viewport.removeEventListener("pointerup", stopDrag);
