@@ -1,6 +1,6 @@
 import { getSession, json } from "./_lib/auth.js";
+import { sendRequestNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, loadStore, upsertRawRows } from "./_lib/supabase.js";
-import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
   if (!isSupabaseConfigured()) return json(res, 503, { ok: false, error: "Supabase is not configured." });
@@ -27,10 +27,11 @@ async function handleRequestItem(req, res) {
   if (String(body.company || "").trim()) return json(res, 400, { ok: false, error: "Request could not be submitted." });
   const request = normalizeRequest(body);
   await upsertRawRows("requests", request);
-  const notification = await sendRequestEmail(request).catch((error) => ({
+  const notification = await sendRequestNotification(request).catch((error) => ({
     delivered: false,
     error: error instanceof Error ? error.message : "Notification delivery failed."
   }));
+  if (!notification.delivered) console.warn("Request notification not delivered", { requestId: request.id, reason: notification.reason || notification.error || "unknown" });
   return json(res, 201, { ok: true, request, notification });
 }
 
@@ -87,79 +88,4 @@ function isTrustedOrigin(req) {
     "http://localhost:4174",
     "http://127.0.0.1:4174"
   ].includes(origin);
-}
-
-async function sendRequestEmail(request) {
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.REQUEST_EMAIL_FROM;
-  const to = process.env.REQUEST_NOTIFICATION_TO || "egihisni@nix-p.com";
-  if (apiKey && from) return sendWithResend({ apiKey, from, to, request });
-  if (process.env.GMAIL_SMTP_USER && process.env.GMAIL_SMTP_APP_PASSWORD) {
-    return sendWithGoogleWorkspace({ from, to, request });
-  }
-  return { delivered: false, reason: "email-not-configured" };
-}
-
-async function sendWithResend({ apiKey, from, to, request }) {
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${apiKey}`,
-      "content-type": "application/json"
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: request.email,
-      subject: `NIXP request item: ${request.artistName} - ${request.itemName}`,
-      text: requestEmailText(request),
-      html: requestEmailHtml(request)
-    })
-  });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(payload?.message || "Request notification could not be delivered.");
-  return { delivered: true, id: payload.id || null };
-}
-
-async function sendWithGoogleWorkspace({ from, to, request }) {
-  const user = process.env.GMAIL_SMTP_USER;
-  const transporter = nodemailer.createTransport({
-    host: process.env.GMAIL_SMTP_HOST || "smtp.gmail.com",
-    port: Number(process.env.GMAIL_SMTP_PORT || 465),
-    secure: Number(process.env.GMAIL_SMTP_PORT || 465) === 465,
-    auth: {
-      user,
-      pass: process.env.GMAIL_SMTP_APP_PASSWORD
-    }
-  });
-  const result = await transporter.sendMail({
-    from: from || `NIXP <${user}>`,
-    to,
-    replyTo: request.email,
-    subject: `NIXP request item: ${request.artistName} - ${request.itemName}`,
-    text: requestEmailText(request),
-    html: requestEmailHtml(request)
-  });
-  return { delivered: true, id: result.messageId || null };
-}
-
-function requestEmailText(request) {
-  return [
-    "New NIXP request item",
-    `Artist: ${request.artistName}`,
-    `Title / item: ${request.itemName}`,
-    `Format: ${request.format}`,
-    `Email: ${request.email}`,
-    `WhatsApp: ${request.whatsapp || "Not provided"}`,
-    `Notes: ${request.notes || "None"}`,
-    `Request ID: ${request.id}`
-  ].join("\n");
-}
-
-function requestEmailHtml(request) {
-  return `<h1>New NIXP request item</h1><p><strong>Artist:</strong> ${escapeHtml(request.artistName)}<br><strong>Title / item:</strong> ${escapeHtml(request.itemName)}<br><strong>Format:</strong> ${escapeHtml(request.format)}<br><strong>Email:</strong> ${escapeHtml(request.email)}<br><strong>WhatsApp:</strong> ${escapeHtml(request.whatsapp || "Not provided")}<br><strong>Notes:</strong> ${escapeHtml(request.notes || "None")}<br><strong>Request ID:</strong> ${escapeHtml(request.id)}</p>`;
-}
-
-function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
 }

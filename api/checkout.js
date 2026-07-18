@@ -1,4 +1,5 @@
 import { json } from "./_lib/auth.js";
+import { sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 
 export default async function handler(req, res) {
@@ -16,18 +17,25 @@ export default async function handler(req, res) {
     if (!items.length) return json(res, 400, { ok: false, error: "Cart is empty." });
 
     const orderId = normalizeOrderId(body.orderId);
+    const customer = normalizeCustomer(body.customer);
     const order = await supabaseFetch("rpc/submit_store_order", {
       method: "POST",
       service: true,
       body: {
         p_order_id: orderId,
-        p_customer: normalizeCustomer(body.customer),
+        p_customer: customer,
         p_items: items
       }
     });
+    const notification = await sendOrderNotification(order, customer).catch((error) => ({
+      delivered: false,
+      error: error instanceof Error ? error.message : "Notification delivery failed."
+    }));
+    if (!notification.delivered) console.warn("Order notification not delivered", { orderId: order.id, reason: notification.reason || notification.error || "unknown" });
 
     return json(res, 200, {
       ok: true,
+      notification,
       order: {
         id: order.id,
         status: order.status,
