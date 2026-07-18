@@ -4,6 +4,8 @@ import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 
 const app = document.querySelector("#app");
+let homeSliderCleanup = null;
+let priceCache = { expiresAt: 0, prices: new Map() };
 const money = new Intl.NumberFormat("id-ID", {
   style: "currency",
   currency: "IDR",
@@ -242,10 +244,10 @@ async function homePage() {
           )
           .join("")}
       </div>
-      <div class="slider-viewport">
+      <div class="slider-viewport" data-home-slider-viewport aria-roledescription="carousel" aria-label="Automatic product slider. Drag or swipe to browse.">
         ${
           featured.length || selectedCollection !== "private-collection"
-            ? `<div class="slider-track">
+            ? `<div class="slider-track" data-home-slider-track>
                 ${loopSlides
                   .map(
                     (product, index) => `
@@ -673,7 +675,7 @@ async function cartSummary() {
     return map;
   }, new Map());
   const productIds = [...new Set([...counts.keys()].map((key) => parseCartKey(key).productId))];
-  const serverPrices = await adminStore.verifyPrices(productIds);
+  const serverPrices = await verifiedCartPrices(productIds);
   const priceById = new Map(serverPrices.map((item) => [item.id, Number(item.price || 0)]));
   const rows = [...counts.entries()]
     .map(([key, requestedQuantity]) => {
@@ -707,6 +709,22 @@ async function cartSummary() {
     rows,
     total: rows.reduce((sum, row) => sum + row.lineTotal, 0)
   };
+}
+
+async function verifiedCartPrices(productIds) {
+  if (!productIds.length) return [];
+
+  const now = Date.now();
+  const missingIds = productIds.filter((id) => !priceCache.prices.has(id) || priceCache.expiresAt <= now);
+  if (missingIds.length) {
+    const verified = await adminStore.verifyPrices(missingIds);
+    for (const item of verified) priceCache.prices.set(item.id, Number(item.price || 0));
+    priceCache.expiresAt = now + 15_000;
+  }
+
+  return productIds
+    .filter((id) => priceCache.prices.has(id))
+    .map((id) => ({ id, price: priceCache.prices.get(id) }));
 }
 
 function cartQuantityControl(row) {
@@ -1777,6 +1795,7 @@ function notFoundPage() {
 }
 
 function bindEvents() {
+  bindHomeSlider();
   document.querySelector("[data-login-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -1820,8 +1839,8 @@ function bindEvents() {
       event.preventDefault();
       state.zoomedProductId = null;
       history.pushState({}, "", href);
+      window.scrollTo({ top: 0, behavior: "auto" });
       render();
-      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
 
@@ -1983,8 +2002,8 @@ function bindEvents() {
   document.querySelectorAll("[data-admin-edit-product]").forEach((button) => {
     button.addEventListener("click", () => {
       state.adminEditingProductId = button.dataset.adminEditProduct;
+      window.scrollTo({ top: 0, behavior: "auto" });
       render();
-      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
 
@@ -2196,6 +2215,110 @@ function setCartOpen(isOpen) {
   document.querySelector("[data-cart-overlay]")?.classList.toggle("is-open", isOpen);
 }
 
+function bindHomeSlider() {
+  homeSliderCleanup?.();
+  homeSliderCleanup = null;
+
+  const viewport = document.querySelector("[data-home-slider-viewport]");
+  const track = document.querySelector("[data-home-slider-track]");
+  if (!viewport || !track || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let frameId = 0;
+  let lastFrame = performance.now();
+  let pausedUntil = 0;
+  let dragging = false;
+  let pointerId = null;
+  let pointerStartX = 0;
+  let pointerStartScroll = 0;
+  let didDrag = false;
+  let hovering = false;
+
+  const loopWidth = () => {
+    const gap = Number.parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || "0") || 0;
+    return track.scrollWidth / 2 + gap / 2;
+  };
+  const pause = (delay = 0) => {
+    pausedUntil = Math.max(pausedUntil, performance.now() + delay);
+  };
+  const normalizeLoopPosition = () => {
+    const width = loopWidth();
+    if (!width) return;
+    if (viewport.scrollLeft >= width) viewport.scrollLeft -= width;
+    if (viewport.scrollLeft < 0) viewport.scrollLeft += width;
+  };
+  const tick = (now) => {
+    const elapsed = Math.min(now - lastFrame, 80);
+    lastFrame = now;
+    const width = loopWidth();
+    if (!dragging && !hovering && now >= pausedUntil && width > 0) {
+      // Keep the existing 95 second loop speed while using native scroll for swipe support.
+      viewport.scrollLeft += (width / 95_000) * elapsed;
+      normalizeLoopPosition();
+    }
+    frameId = requestAnimationFrame(tick);
+  };
+  const onPointerDown = (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    dragging = true;
+    didDrag = false;
+    pointerId = event.pointerId;
+    pointerStartX = event.clientX;
+    pointerStartScroll = viewport.scrollLeft;
+    pause();
+    viewport.classList.add("is-dragging");
+    viewport.setPointerCapture?.(pointerId);
+  };
+  const onPointerMove = (event) => {
+    if (!dragging || event.pointerId !== pointerId) return;
+    const distance = event.clientX - pointerStartX;
+    if (Math.abs(distance) > 4) didDrag = true;
+    viewport.scrollLeft = pointerStartScroll - distance;
+    normalizeLoopPosition();
+  };
+  const stopDrag = (event) => {
+    if (!dragging || (event && event.pointerId !== pointerId)) return;
+    dragging = false;
+    pointerId = null;
+    viewport.classList.remove("is-dragging");
+    pause(1_500);
+  };
+  const preventClickAfterDrag = (event) => {
+    if (!didDrag) return;
+    event.preventDefault();
+    event.stopPropagation();
+    didDrag = false;
+  };
+  const onScroll = () => normalizeLoopPosition();
+  const onMouseEnter = () => {
+    hovering = true;
+  };
+  const onMouseLeave = () => {
+    hovering = false;
+  };
+
+  viewport.addEventListener("pointerdown", onPointerDown);
+  viewport.addEventListener("pointermove", onPointerMove);
+  viewport.addEventListener("pointerup", stopDrag);
+  viewport.addEventListener("pointercancel", stopDrag);
+  viewport.addEventListener("click", preventClickAfterDrag, true);
+  viewport.addEventListener("mouseenter", onMouseEnter);
+  viewport.addEventListener("mouseleave", onMouseLeave);
+  viewport.addEventListener("scroll", onScroll, { passive: true });
+  frameId = requestAnimationFrame(tick);
+
+  homeSliderCleanup = () => {
+    cancelAnimationFrame(frameId);
+    viewport.removeEventListener("pointerdown", onPointerDown);
+    viewport.removeEventListener("pointermove", onPointerMove);
+    viewport.removeEventListener("pointerup", stopDrag);
+    viewport.removeEventListener("pointercancel", stopDrag);
+    viewport.removeEventListener("click", preventClickAfterDrag, true);
+    viewport.removeEventListener("mouseenter", onMouseEnter);
+    viewport.removeEventListener("mouseleave", onMouseLeave);
+    viewport.removeEventListener("scroll", onScroll);
+  };
+}
+
 function setSearchOpen(isOpen) {
   state.searchOpen = isOpen;
   document.querySelector("[data-search-overlay]")?.classList.toggle("is-open", isOpen);
@@ -2237,8 +2360,8 @@ function bindSearch() {
         event.preventDefault();
         setSearchOpen(false);
         history.pushState({}, "", link.getAttribute("href"));
+        window.scrollTo({ top: 0, behavior: "auto" });
         render();
-        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     });
   };

@@ -707,8 +707,22 @@ html {
 
 .slider-viewport {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
+  cursor: grab;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y;
+}
+
+.slider-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-viewport.is-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .home-slider-empty {
@@ -755,12 +769,6 @@ html {
   max-width: none;
   margin-inline: 0;
   gap: clamp(18px, 2.4vw, 42px);
-  animation: sliderMove 95s linear infinite;
-  will-change: transform;
-}
-
-.slider-track:hover {
-  animation-play-state: paused;
 }
 
 .slide {
@@ -791,16 +799,6 @@ html {
   font-style: normal;
   font-weight: 760;
   text-transform: uppercase;
-}
-
-@keyframes sliderMove {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(calc(-50% - clamp(9px, 1.2vw, 21px)));
-  }
 }
 
 .slide-caption em {
@@ -2168,8 +2166,12 @@ tr:last-child td {
   }
 
   .slider-track {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px;
+  }
+
+  .slide {
+    flex-basis: min(78vw, 340px);
+    width: min(78vw, 340px);
   }
 
   .slide {

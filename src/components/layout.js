@@ -150,7 +150,7 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
     <article class="product-card">
       <a class="product-link" href="${href}" data-link aria-label="View ${product.title}">
         <figure class="${artClass}">
-          <img src="${product.image}" alt="${product.title}" />
+          <img src="${product.image}" alt="${product.title}" loading="lazy" decoding="async" />
         </figure>
       </a>
       <div class="product-meta">
