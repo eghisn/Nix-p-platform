@@ -270,6 +270,13 @@ async function homePage() {
             : `<div class="home-slider-empty"><span>Private Collection</span><strong>Open for future bid-only pieces.</strong></div>`
         }
       </div>
+      ${
+        featured.length || selectedCollection !== "private-collection"
+          ? `<div class="slider-scrubber-wrap">
+              <input class="slider-scrubber" type="range" min="0" max="1000" step="1" value="0" aria-label="Browse slider" data-home-slider-control />
+            </div>`
+          : ""
+      }
     </section>
   `;
 }
@@ -2221,12 +2228,15 @@ function bindHomeSlider() {
 
   const viewport = document.querySelector("[data-home-slider-viewport]");
   const track = document.querySelector("[data-home-slider-track]");
-  if (!viewport || !track || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const control = document.querySelector("[data-home-slider-control]");
+  if (!viewport || !track) return;
 
   let frameId = 0;
   let lastFrame = performance.now();
   let pausedUntil = 0;
-  let dragging = false;
+  let mouseDragging = false;
+  let touchActive = false;
+  let controlActive = false;
   let pointerId = null;
   let pointerStartX = 0;
   let pointerStartScroll = 0;
@@ -2246,20 +2256,27 @@ function bindHomeSlider() {
     if (viewport.scrollLeft >= width) viewport.scrollLeft -= width;
     if (viewport.scrollLeft < 0) viewport.scrollLeft += width;
   };
+  const syncControl = () => {
+    if (!control) return;
+    const width = loopWidth();
+    if (!width) return;
+    control.value = String(Math.round((viewport.scrollLeft / width) * 1000) % 1000);
+  };
   const tick = (now) => {
     const elapsed = Math.min(now - lastFrame, 80);
     lastFrame = now;
     const width = loopWidth();
-    if (!dragging && !hovering && now >= pausedUntil && width > 0) {
+    if (!mouseDragging && !touchActive && !controlActive && !hovering && now >= pausedUntil && width > 0) {
       // Keep the existing 95 second loop speed while using native scroll for swipe support.
       viewport.scrollLeft += (width / 95_000) * elapsed;
       normalizeLoopPosition();
     }
+    syncControl();
     frameId = requestAnimationFrame(tick);
   };
   const onPointerDown = (event) => {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
-    dragging = true;
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    mouseDragging = true;
     didDrag = false;
     pointerId = event.pointerId;
     pointerStartX = event.clientX;
@@ -2269,15 +2286,15 @@ function bindHomeSlider() {
     viewport.setPointerCapture?.(pointerId);
   };
   const onPointerMove = (event) => {
-    if (!dragging || event.pointerId !== pointerId) return;
+    if (!mouseDragging || event.pointerId !== pointerId) return;
     const distance = event.clientX - pointerStartX;
     if (Math.abs(distance) > 4) didDrag = true;
     viewport.scrollLeft = pointerStartScroll - distance;
     normalizeLoopPosition();
   };
   const stopDrag = (event) => {
-    if (!dragging || (event && event.pointerId !== pointerId)) return;
-    dragging = false;
+    if (!mouseDragging || (event && event.pointerId !== pointerId)) return;
+    mouseDragging = false;
     pointerId = null;
     viewport.classList.remove("is-dragging");
     pause(1_500);
@@ -2288,7 +2305,30 @@ function bindHomeSlider() {
     event.stopPropagation();
     didDrag = false;
   };
-  const onScroll = () => normalizeLoopPosition();
+  const onScroll = () => {
+    normalizeLoopPosition();
+    syncControl();
+  };
+  const onTouchStart = () => {
+    touchActive = true;
+  };
+  const onTouchEnd = () => {
+    touchActive = false;
+    pause(1_500);
+  };
+  const onControlInput = () => {
+    const width = loopWidth();
+    if (!width || !control) return;
+    viewport.scrollLeft = (Number(control.value) / 1000) * width;
+    pause(1_500);
+  };
+  const onControlStart = () => {
+    controlActive = true;
+  };
+  const onControlEnd = () => {
+    controlActive = false;
+    pause(1_500);
+  };
   const onMouseEnter = () => {
     hovering = true;
   };
@@ -2304,6 +2344,13 @@ function bindHomeSlider() {
   viewport.addEventListener("mouseenter", onMouseEnter);
   viewport.addEventListener("mouseleave", onMouseLeave);
   viewport.addEventListener("scroll", onScroll, { passive: true });
+  viewport.addEventListener("touchstart", onTouchStart, { passive: true });
+  viewport.addEventListener("touchend", onTouchEnd, { passive: true });
+  viewport.addEventListener("touchcancel", onTouchEnd, { passive: true });
+  control?.addEventListener("input", onControlInput);
+  control?.addEventListener("pointerdown", onControlStart);
+  control?.addEventListener("pointerup", onControlEnd);
+  control?.addEventListener("pointercancel", onControlEnd);
   frameId = requestAnimationFrame(tick);
 
   homeSliderCleanup = () => {
@@ -2316,6 +2363,13 @@ function bindHomeSlider() {
     viewport.removeEventListener("mouseenter", onMouseEnter);
     viewport.removeEventListener("mouseleave", onMouseLeave);
     viewport.removeEventListener("scroll", onScroll);
+    viewport.removeEventListener("touchstart", onTouchStart);
+    viewport.removeEventListener("touchend", onTouchEnd);
+    viewport.removeEventListener("touchcancel", onTouchEnd);
+    control?.removeEventListener("input", onControlInput);
+    control?.removeEventListener("pointerdown", onControlStart);
+    control?.removeEventListener("pointerup", onControlEnd);
+    control?.removeEventListener("pointercancel", onControlEnd);
   };
 }
 
