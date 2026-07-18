@@ -46,7 +46,7 @@ export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverl
   return `
     <header class="site-header">
       <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
-        <span class="nav-toggle-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="nav-toggle-mark" aria-hidden="true"><i></i><i></i><i></i></span>
       </button>
       <nav class="site-nav site-nav-left" data-nav-left>
         ${
