@@ -2330,6 +2330,10 @@ function bindHomeSlider() {
   let pointerStartScroll = 0;
   let didDrag = false;
   let suppressClickUntil = 0;
+  let pendingProductHref = "";
+  let pendingProductX = 0;
+  let pendingProductY = 0;
+  let pendingProductScrollLeft = 0;
   let hovering = false;
   let touchResetTimer = 0;
   let autoScrollLeft = viewport.scrollLeft;
@@ -2388,6 +2392,14 @@ function bindHomeSlider() {
     viewport.classList.add("is-dragging");
     viewport.setPointerCapture?.(pointerId);
   };
+  const onProductPointerDown = (event) => {
+    const productLink = event.target?.closest?.('a[href^="/product/"]');
+    pendingProductHref = productLink?.getAttribute("href") || "";
+    pendingProductX = event.clientX;
+    pendingProductY = event.clientY;
+    pendingProductScrollLeft = viewport.scrollLeft;
+    if (pendingProductHref) pause(1_200);
+  };
   const onPointerMove = (event) => {
     if (!mouseDragging || event.pointerId !== pointerId) return;
     const distance = event.clientX - pointerStartX;
@@ -2402,6 +2414,20 @@ function bindHomeSlider() {
     viewport.classList.remove("is-dragging");
     if (didDrag) suppressClickUntil = performance.now() + 350;
     pause(1_500);
+  };
+  const onProductPointerUp = (event) => {
+    if (!pendingProductHref || controlActive) return;
+    const moved =
+      Math.abs(event.clientX - pendingProductX) > 10 ||
+      Math.abs(event.clientY - pendingProductY) > 10 ||
+      Math.abs(viewport.scrollLeft - pendingProductScrollLeft) > 10;
+    const href = pendingProductHref;
+    pendingProductHref = "";
+    if (moved || didDrag) return;
+    event.preventDefault();
+    event.stopPropagation();
+    suppressClickUntil = performance.now() + 500;
+    navigateInternal(href);
   };
   const preventClickAfterDrag = (event) => {
     const productLink = event.target?.closest?.('a[href^="/product/"]');
@@ -2496,8 +2522,10 @@ function bindHomeSlider() {
   };
 
   viewport.addEventListener("pointerdown", onPointerDown);
+  viewport.addEventListener("pointerdown", onProductPointerDown, true);
   viewport.addEventListener("pointermove", onPointerMove);
   viewport.addEventListener("pointerup", stopDrag);
+  viewport.addEventListener("pointerup", onProductPointerUp, true);
   viewport.addEventListener("pointercancel", stopDrag);
   viewport.addEventListener("click", preventClickAfterDrag, true);
   viewport.addEventListener("mouseenter", onMouseEnter);
@@ -2520,8 +2548,10 @@ function bindHomeSlider() {
     cancelAnimationFrame(frameId);
     window.clearTimeout(touchResetTimer);
     viewport.removeEventListener("pointerdown", onPointerDown);
+    viewport.removeEventListener("pointerdown", onProductPointerDown, true);
     viewport.removeEventListener("pointermove", onPointerMove);
     viewport.removeEventListener("pointerup", stopDrag);
+    viewport.removeEventListener("pointerup", onProductPointerUp, true);
     viewport.removeEventListener("pointercancel", stopDrag);
     viewport.removeEventListener("click", preventClickAfterDrag, true);
     viewport.removeEventListener("mouseenter", onMouseEnter);
