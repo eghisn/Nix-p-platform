@@ -1824,6 +1824,15 @@ function setFormMessage(form, message, tone = "") {
   target.dataset.tone = tone;
 }
 
+function navigateInternal(href, { preserveScroll = false } = {}) {
+  if (!href || href.startsWith("http") || href.startsWith("mailto:")) return false;
+  state.zoomedProductId = null;
+  history.pushState({}, "", href);
+  if (!preserveScroll) window.scrollTo({ top: 0, behavior: "auto" });
+  render({ preserveScroll });
+  return true;
+}
+
 function deployStatusMarkup(status) {
   if (!status) return "";
   if (status.error) {
@@ -1921,10 +1930,7 @@ function bindEvents() {
       const href = link.getAttribute("href");
       if (!href || href.startsWith("http") || href.startsWith("mailto:")) return;
       event.preventDefault();
-      state.zoomedProductId = null;
-      history.pushState({}, "", href);
-      window.scrollTo({ top: 0, behavior: "auto" });
-      render();
+      navigateInternal(href);
     });
   });
 
@@ -2398,9 +2404,13 @@ function bindHomeSlider() {
     pause(1_500);
   };
   const preventClickAfterDrag = (event) => {
-    if (event.target?.closest?.('a[href^="/product/"]')) {
+    const productLink = event.target?.closest?.('a[href^="/product/"]');
+    if (productLink && (!didDrag || performance.now() > suppressClickUntil)) {
+      event.preventDefault();
+      event.stopPropagation();
       didDrag = false;
       suppressClickUntil = 0;
+      navigateInternal(productLink.getAttribute("href"));
       return;
     }
     if (!didDrag || performance.now() > suppressClickUntil) {

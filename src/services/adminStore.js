@@ -8,6 +8,7 @@ const REMOVED_PRODUCT_IDS = new Set(["obj-001", "pub-002"]);
 
 let activeStore = null;
 let privateStoreRefresh = null;
+let privateStoreRefreshedAt = 0;
 
 const defaultCollections = [
   { id: "records", title: "Records", type: "Category", status: "Published", sort: 1 },
@@ -427,6 +428,7 @@ export const adminStore = {
         const payload = await response.json();
         if (payload.store) {
           activeStore = mergeStore(seed({ publicOnly }), payload.store, { publicOnly });
+          privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
           if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
           return;
         }
@@ -437,6 +439,7 @@ export const adminStore = {
         mergeStore(seed({ publicOnly }), await fileResponse.json(), { publicOnly }),
         browserStore
       );
+      privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
       if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
     } catch {
       activeStore = readStore();
@@ -444,6 +447,7 @@ export const adminStore = {
   },
   async refresh() {
     activeStore = null;
+    privateStoreRefreshedAt = 0;
     return this.initialize();
   },
   async refreshRequests() {
@@ -454,8 +458,9 @@ export const adminStore = {
     await this.refreshPrivateStore();
     return this.getSnapshot().orders;
   },
-  async refreshPrivateStore() {
+  async refreshPrivateStore({ force = false } = {}) {
     if (!canUsePrivateStore()) return this.getSnapshot();
+    if (!force && activeStore && Date.now() - privateStoreRefreshedAt < 30_000) return this.getSnapshot();
     if (privateStoreRefresh) return privateStoreRefresh;
     privateStoreRefresh = (async () => {
       const response = await fetch(`/api/catalog?scope=admin&v=${Date.now()}`, { cache: "no-store" });
@@ -463,6 +468,7 @@ export const adminStore = {
       const payload = await response.json();
       if (!payload.store) return this.getSnapshot();
       activeStore = mergeStore(seed({ publicOnly: false }), payload.store, { publicOnly: false });
+      privateStoreRefreshedAt = Date.now();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
       return activeStore;
     })();
