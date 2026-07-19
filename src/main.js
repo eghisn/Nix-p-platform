@@ -2398,6 +2398,11 @@ function bindHomeSlider() {
     pause(1_500);
   };
   const preventClickAfterDrag = (event) => {
+    if (event.target?.closest?.('a[href^="/product/"]')) {
+      didDrag = false;
+      suppressClickUntil = 0;
+      return;
+    }
     if (!didDrag || performance.now() > suppressClickUntil) {
       didDrag = false;
       return;
