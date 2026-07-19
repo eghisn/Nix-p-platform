@@ -2333,7 +2333,6 @@ function bindHomeSlider() {
   let pendingProductHref = "";
   let pendingProductX = 0;
   let pendingProductY = 0;
-  let pendingProductScrollLeft = 0;
   let hovering = false;
   let touchResetTimer = 0;
   let autoScrollLeft = viewport.scrollLeft;
@@ -2397,7 +2396,6 @@ function bindHomeSlider() {
     pendingProductHref = productLink?.getAttribute("href") || "";
     pendingProductX = event.clientX;
     pendingProductY = event.clientY;
-    pendingProductScrollLeft = viewport.scrollLeft;
     if (pendingProductHref) pause(1_200);
   };
   const onPointerMove = (event) => {
@@ -2419,8 +2417,7 @@ function bindHomeSlider() {
     if (!pendingProductHref || controlActive) return;
     const moved =
       Math.abs(event.clientX - pendingProductX) > 10 ||
-      Math.abs(event.clientY - pendingProductY) > 10 ||
-      Math.abs(viewport.scrollLeft - pendingProductScrollLeft) > 10;
+      Math.abs(event.clientY - pendingProductY) > 10;
     const href = pendingProductHref;
     pendingProductHref = "";
     if (moved || didDrag) return;
