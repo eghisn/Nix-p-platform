@@ -122,6 +122,13 @@ function normalizeSizes(sizes) {
     .filter((size) => size.label);
 }
 
+function productStock(product = {}) {
+  if (Array.isArray(product.sizes) && product.sizes.length) {
+    return product.sizes.reduce((sum, size) => sum + (Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1)) || 0), 0);
+  }
+  return Math.max(0, Number(product.qty ?? 0) || 0);
+}
+
 function isLocalEditorRuntime() {
   if (typeof location === "undefined") return true;
   return ["localhost", "127.0.0.1", ""].includes(location.hostname);
@@ -587,6 +594,7 @@ export const adminStore = {
       category: product.category,
       format: product.format,
       condition: product.condition,
+      stock: productStock(product),
       quantity: product.qty,
       sizes: product.sizes,
       source: "Admin editor",

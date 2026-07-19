@@ -161,8 +161,11 @@ async function render({ preserveScroll = false } = {}) {
     app.innerHTML = markup;
     bindEvents();
   };
-  if (document.startViewTransition) {
+  const privateRoute = Boolean(requiredWorkspace);
+  if (document.startViewTransition && !privateRoute) {
     document.startViewTransition(commit);
+  } else if (privateRoute) {
+    commit();
   } else {
     app.classList.add("is-rendering");
     commit();
@@ -173,7 +176,7 @@ async function render({ preserveScroll = false } = {}) {
 
 async function loadAuthSession({ force = false } = {}) {
   if (state.auth.loaded && !force) return state.auth;
-  if (!isLocalEditorHost()) {
+  if (!isLocalEditorHost() && !workspaceForHost()) {
     state.auth = { loaded: true, authenticated: false, workspace: null, username: null };
     return state.auth;
   }
@@ -868,8 +871,8 @@ async function adminDashboardPage() {
     catalogService.listRequests()
   ]);
   const products = await catalogService.listAllProducts();
-  const stockUnits = inventory.reduce((sum, item) => sum + item.stock, 0);
-  const orderValue = orders.reduce((sum, order) => sum + order.total, 0);
+  const stockUnits = inventory.reduce((sum, item) => sum + numericValue(item.stock), 0);
+  const orderValue = orders.reduce((sum, order) => sum + numericValue(order.total), 0);
   return `
     ${adminHero("Admin Dashboard", "Operations snapshot for catalog, stock, orders, requests, and shop health.")}
     <section class="section metric-grid">
@@ -901,6 +904,25 @@ async function adminEditorPage() {
       error: error instanceof Error ? error.message : "Deploy status unavailable."
     };
   }
+  const [
+    productsSection,
+    homeSliderSection,
+    mediaSection,
+    artistsSection,
+    collectionsSection,
+    requestsSection,
+    ordersSection,
+    previewSection
+  ] = await Promise.all([
+    adminProductsPage({ embedded: true }),
+    adminHomeSliderPage({ embedded: true }),
+    adminMediaPage({ embedded: true }),
+    adminArtistsPage({ embedded: true }),
+    adminCollectionsPage({ embedded: true }),
+    adminRequestsPage({ embedded: true }),
+    ordersPage({ embedded: true }),
+    adminPreviewPage({ embedded: true })
+  ]);
   return `
     ${adminHero("NIXP Editor", "One workspace for products, images, artists, collections, requests, orders, drafts, and previews.")}
     <section class="section editor-command">
@@ -934,7 +956,7 @@ async function adminEditorPage() {
         <h2>Products</h2>
         <p>Create product drafts, publish finished listings, and archive old items.</p>
       </div>
-      ${await adminProductsPage({ embedded: true })}
+      ${productsSection}
     </section>
     <section class="section editor-section" id="editor-home-slider">
       <div class="editor-section-head">
@@ -942,7 +964,7 @@ async function adminEditorPage() {
         <h2>Home Slider</h2>
         <p>Edit homepage collection tabs and slider order. Use Deploy above after saving to publish it live.</p>
       </div>
-      ${await adminHomeSliderPage({ embedded: true })}
+      ${homeSliderSection}
     </section>
     <section class="section editor-section" id="editor-media">
       <div class="editor-section-head">
@@ -950,7 +972,7 @@ async function adminEditorPage() {
         <h2>Images</h2>
         <p>Upload or replace product images before they move into Supabase Storage.</p>
       </div>
-      ${await adminMediaPage({ embedded: true })}
+      ${mediaSection}
     </section>
     <section class="section editor-section" id="editor-artists">
       <div class="editor-section-head">
@@ -958,7 +980,7 @@ async function adminEditorPage() {
         <h2>Artists</h2>
         <p>Manage the artist index and editorial metadata.</p>
       </div>
-      ${await adminArtistsPage({ embedded: true })}
+      ${artistsSection}
     </section>
     <section class="section editor-section" id="editor-collections">
       <div class="editor-section-head">
@@ -966,7 +988,7 @@ async function adminEditorPage() {
         <h2>Collections</h2>
         <p>Organize categories, shelves, drops, and campaign groupings.</p>
       </div>
-      ${await adminCollectionsPage({ embedded: true })}
+      ${collectionsSection}
     </section>
     <section class="section editor-section" id="editor-requests">
       <div class="editor-section-head">
@@ -974,7 +996,7 @@ async function adminEditorPage() {
         <h2>Requests</h2>
         <p>Move request items from new lead to closed conversation.</p>
       </div>
-      ${await adminRequestsPage({ embedded: true })}
+      ${requestsSection}
     </section>
     <section class="section editor-section" id="editor-orders">
       <div class="editor-section-head">
@@ -982,7 +1004,7 @@ async function adminEditorPage() {
         <h2>Orders</h2>
         <p>Review carts and update order statuses.</p>
       </div>
-      ${await ordersPage({ embedded: true })}
+      ${ordersSection}
     </section>
     <section class="section editor-section" id="editor-preview">
       <div class="editor-section-head">
@@ -990,7 +1012,7 @@ async function adminEditorPage() {
         <h2>Preview</h2>
         <p>Open draft previews before publishing them to the public storefront.</p>
       </div>
-      ${await adminPreviewPage({ embedded: true })}
+      ${previewSection}
     </section>
   `;
 }
@@ -1473,6 +1495,11 @@ function adminHero(title, text) {
 
 function metric(label, value) {
   return `<article class="metric"><span>${label}</span><strong>${value}</strong></article>`;
+}
+
+function numericValue(value, fallback = 0) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : fallback;
 }
 
 function input(name, label, value = "", placeholder = "", type = "text") {

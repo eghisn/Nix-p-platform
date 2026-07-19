@@ -11,6 +11,28 @@ function normalizeApparelType(value) {
   return String(value || "").trim();
 }
 
+function numericQuantity(value) {
+  const quantity = Number(value);
+  return Number.isFinite(quantity) ? Math.max(0, Math.floor(quantity)) : null;
+}
+
+function sizeQuantity(sizes) {
+  if (!Array.isArray(sizes) || !sizes.length) return null;
+  return sizes.reduce((sum, size) => sum + (numericQuantity(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1)) ?? 0), 0);
+}
+
+function inventoryStock(item, product) {
+  return (
+    numericQuantity(item.stock) ??
+    numericQuantity(item.quantity) ??
+    numericQuantity(item.qty) ??
+    sizeQuantity(item.sizes) ??
+    sizeQuantity(product?.sizes) ??
+    numericQuantity(product?.qty) ??
+    0
+  );
+}
+
 export const catalogService = {
   async listProducts(options = {}) {
     return adminStore.listProducts(options);
@@ -64,6 +86,11 @@ export const catalogService = {
     return adminStore.getSnapshot().inventory.map((item) => ({
       ...item,
       product: products.find((product) => product.id === item.productId)
+    })).map((item) => ({
+      ...item,
+      stock: inventoryStock(item, item.product),
+      lowStockAt: numericQuantity(item.lowStockAt) ?? 1,
+      status: item.status || "In stock"
     }));
   },
   async listOrders() {
