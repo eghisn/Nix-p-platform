@@ -83,10 +83,11 @@ async function syncFinanceInventoryToCatalog(state) {
     productIdBySku.set(key, product.id);
   }
 
-  if (productRows.length) {
+  const uniqueProductRows = dedupeRows(productRows);
+  if (uniqueProductRows.length) {
     await supabaseFetch("products?on_conflict=id", {
       method: "POST",
-      body: productRows,
+      body: uniqueProductRows,
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
@@ -95,10 +96,11 @@ async function syncFinanceInventoryToCatalog(state) {
     ...(state.inventory || []).map((item) => financeInventoryRow(item, productIdBySku)),
     ...stockRows.map((item) => financeStockRow(item, productIdBySku))
   ];
-  if (inventoryRows.length) {
+  const uniqueInventoryRows = dedupeRows(inventoryRows);
+  if (uniqueInventoryRows.length) {
     await supabaseFetch("inventory?on_conflict=id", {
       method: "POST",
-      body: inventoryRows,
+      body: uniqueInventoryRows,
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
@@ -244,20 +246,30 @@ function draftProductFromFinanceStock(stock, quantity) {
 
 function financeInventoryRow(item, productIdBySku) {
   const sku = String(item?.sku || "").trim();
+  const rowId = `finance-purchase-${item.id || sku || slugify(item.itemType || item.title || item.date)}`;
   return {
-    id: `finance-purchase-${item.id}`,
+    id: rowId,
     name: null,
     title: item.itemType || "Inventory purchase",
     status: "Synced",
     sort: 0,
     raw: {
       ...item,
-      id: `finance-purchase-${item.id}`,
+      id: rowId,
       productId: productIdBySku.get(sku.toLowerCase()) || null,
       origin: "finance-purchase",
       updatedAt: today()
     }
   };
+}
+
+function dedupeRows(rows = []) {
+  const byId = new Map();
+  for (const row of rows) {
+    if (!row?.id) continue;
+    byId.set(String(row.id), row);
+  }
+  return [...byId.values()];
 }
 
 function financeStockRow(item, productIdBySku) {

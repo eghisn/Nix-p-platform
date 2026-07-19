@@ -76,14 +76,14 @@ export async function saveStore(store, { inventoryProduct = null, syncCatalogPro
   await backupStore("admin-store", store);
   const rowsByTable = {
     products: (store.products || []).map(toProductRow),
-    artists: (store.artists || []).map(toRawRow),
-    collections: (store.collections || []).map(toRawRow),
-    requests: (store.requests || []).map(toRawRow),
-    orders: (store.orders || []).map(toRawRow),
-    cashflow: (store.cashflow || []).map(toRawRow),
-    inventory: (store.inventory || []).map(toRawRow)
+    artists: (store.artists || []).map((item, index) => toRawRow(item, "artists", index)),
+    collections: (store.collections || []).map((item, index) => toRawRow(item, "collections", index)),
+    requests: (store.requests || []).map((item, index) => toRawRow(item, "requests", index)),
+    orders: (store.orders || []).map((item, index) => toRawRow(item, "orders", index)),
+    cashflow: (store.cashflow || []).map((item, index) => toRawRow(item, "cashflow", index)),
+    inventory: (store.inventory || []).map((item, index) => toRawRow(item, "inventory", index))
   };
-  for (const table of TABLES) await upsert(table, rowsByTable[table]);
+  for (const table of TABLES) await upsert(table, dedupeRows(rowsByTable[table]));
   if (syncCatalogProducts) await syncAdminCatalogInventory(store.products || []);
   else if (inventoryProduct) await syncAdminProductInventory(inventoryProduct);
 }
@@ -100,9 +100,9 @@ async function upsert(table, rows) {
 
 export async function upsertRawRows(table, items) {
   if (!TABLES.includes(table)) throw new Error("Unsupported table.");
-  const rows = (Array.isArray(items) ? items : [items]).map(toRawRow);
+  const rows = (Array.isArray(items) ? items : [items]).map((item, index) => toRawRow(item, table, index));
   if (!rows.length) return [];
-  return upsert(table, rows);
+  return upsert(table, dedupeRows(rows));
 }
 
 export async function backupStore(source, raw) {
@@ -162,15 +162,42 @@ function fromProductRow(row, { privateScope = false } = {}) {
   return product;
 }
 
-function toRawRow(item) {
+function toRawRow(item, table = "items", index = 0) {
+  const id = rawRowId(item, table, index);
   return {
-    id: String(item.id),
+    id,
     name: item.name || null,
     title: item.title || null,
     status: item.status || null,
     sort: Number(item.sort || 0),
-    raw: item
+    raw: { ...item, id }
   };
+}
+
+function rawRowId(item = {}, table = "items", index = 0) {
+  const explicit = String(item.id || "").trim();
+  if (explicit) return explicit;
+  const candidates = [
+    item.productId,
+    item.sku,
+    item.orderNumber,
+    item.email,
+    item.month,
+    item.date,
+    item.title,
+    item.name
+  ];
+  const source = candidates.map((value) => String(value || "").trim()).find(Boolean) || `row-${index + 1}`;
+  return `${table}-${slugify(source)}`;
+}
+
+function dedupeRows(rows = []) {
+  const byId = new Map();
+  for (const row of rows) {
+    if (!row?.id) continue;
+    byId.set(row.id, row);
+  }
+  return [...byId.values()];
 }
 
 function toProductRow(product) {
@@ -203,6 +230,14 @@ function toProductRow(product) {
     updated_at: product.updatedAt || new Date().toISOString().slice(0, 10),
     raw: product
   };
+}
+
+function slugify(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "") || "row";
 }
 
 export async function uploadImage({ dataUrl, fileName, sku, title }) {

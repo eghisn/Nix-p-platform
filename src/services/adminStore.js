@@ -110,16 +110,18 @@ function normalizeImages(product = {}) {
 }
 
 function normalizeSizes(sizes) {
-  return sizes
-    .map((size) => {
-      const quantity = Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1));
-      return {
-        label: String(size.label || "").trim(),
-        quantity,
-        soldOut: quantity <= 0
-      };
-    })
-    .filter((size) => size.label);
+  const byLabel = new Map();
+  for (const size of Array.isArray(sizes) ? sizes : []) {
+    const label = String(size.label || "").trim();
+    if (!label) continue;
+    const quantity = Math.max(0, Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1)) || 0);
+    byLabel.set(label.toLowerCase(), {
+      label,
+      quantity,
+      soldOut: quantity <= 0
+    });
+  }
+  return [...byLabel.values()];
 }
 
 function productStock(product = {}) {
@@ -191,12 +193,13 @@ function readStore() {
 
 async function writeStore(store, { inventoryProduct = null } = {}) {
   if (!canUsePrivateStore()) return false;
+  const normalizedStore = normalizeStoreForSave(store);
   const previousActiveStore = activeStore;
   const previousSavedStore = localStorage.getItem(STORAGE_KEY);
-  activeStore = store;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+  activeStore = normalizedStore;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(normalizedStore));
   try {
-    return await persistStore(store, { inventoryProduct });
+    return await persistStore(normalizedStore, { inventoryProduct });
   } catch (error) {
     activeStore = previousActiveStore;
     if (previousSavedStore === null) {
@@ -206,6 +209,45 @@ async function writeStore(store, { inventoryProduct = null } = {}) {
     }
     throw error;
   }
+}
+
+function normalizeStoreForSave(store) {
+  return {
+    ...store,
+    products: dedupeStoreArray(store.products || [], "products").map(withDefaults),
+    artists: dedupeStoreArray(store.artists || [], "artists"),
+    collections: dedupeStoreArray(store.collections || [], "collections"),
+    requests: dedupeStoreArray(store.requests || [], "requests"),
+    orders: dedupeStoreArray(store.orders || [], "orders"),
+    cashflow: dedupeStoreArray(store.cashflow || [], "cashflow"),
+    inventory: dedupeStoreArray(store.inventory || [], "inventory")
+  };
+}
+
+function dedupeStoreArray(items, table) {
+  const byId = new Map();
+  for (const [index, item] of (Array.isArray(items) ? items : []).entries()) {
+    const id = storeRowId(item, table, index);
+    byId.set(id, { ...item, id });
+  }
+  return [...byId.values()];
+}
+
+function storeRowId(item = {}, table = "items", index = 0) {
+  const explicit = String(item.id || "").trim();
+  if (explicit && explicit !== "undefined") return explicit;
+  const candidates = [
+    item.productId,
+    item.sku,
+    item.orderNumber,
+    item.email,
+    item.month,
+    item.date,
+    item.title,
+    item.name
+  ];
+  const source = candidates.map((value) => String(value || "").trim()).find(Boolean) || `row-${index + 1}`;
+  return `${table}-${slugify(source)}`;
 }
 
 function mergeStore(seeded, saved, { publicOnly = false } = {}) {

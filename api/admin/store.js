@@ -14,6 +14,10 @@ export default async function handler(req, res) {
     await saveStore(body.store || {}, { inventoryProduct: body.inventoryProduct || null });
     json(res, 200, { ok: true, path: "supabase://public" });
   } catch (error) {
-    json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Store save failed" });
+    const message = error instanceof Error ? error.message : "Store save failed";
+    const friendlyMessage = message.toLowerCase().includes("on conflict do update")
+      ? "Store save blocked by duplicate row IDs. Refresh the admin editor and save again."
+      : message;
+    json(res, 500, { ok: false, error: friendlyMessage });
   }
 }
