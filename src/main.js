@@ -1854,9 +1854,9 @@ function bindEvents() {
       const payload = await response.json();
       if (!response.ok) throw new Error(payload.error || "Login failed");
       state.auth = { loaded: true, authenticated: true, workspace: payload.workspace, username: payload.username };
-      await adminStore.refresh();
       history.pushState({}, "", form.dataset.next || (payload.workspace === "finance" ? "/finance" : "/admin"));
-      render();
+      await render();
+      adminStore.refresh().catch(() => {});
     } catch (error) {
       message.textContent = error instanceof Error ? error.message : "Login failed";
     }
