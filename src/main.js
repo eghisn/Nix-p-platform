@@ -600,8 +600,9 @@ function aboutPage() {
       <div class="editorial-shell">
         <h1>About</h1>
         <div class="editorial-copy">
-          <p>NIXP is an extension of Nix Powell, bringing together records, CDs, cassettes, books and selected objects shaped by years of listening, collecting and making.</p>
-          <p>Operating from Aesthetic Pleasure Gallery in Jakarta, <strong>NIXP is a place for sound, objects and printed matter to gather, following the traces between image, memory and whatever refuses to stay in one form.</strong></p>
+          <p>NIXP is an extension of Nix Powell, built around a growing catalogue of records, tapes, discs, printed matter, and objects selected through personal taste, research, and repeat listening.</p>
+          <p>The focus moves across experimental music, heavy music, electronic music, contemporary composition, independent publishing, and their surrounding edges.</p>
+          <p>Based online and operating from Aesthetic Pleasure Gallery, Grand Wijaya Center, Jakarta.</p>
         </div>
       </div>
     </section>
