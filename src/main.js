@@ -151,7 +151,12 @@ async function render({ preserveScroll = false } = {}) {
             : path.startsWith("/artists/")
               ? artistProductsPage
               : routes[path] || notFoundPage;
-  const content = await view(path);
+  let content = "";
+  try {
+    content = await view(path);
+  } catch (error) {
+    content = routeErrorPage(requiredWorkspace, error);
+  }
   const isLoginView = path === "/login" || (requiredWorkspace && !hasWorkspaceAccess(requiredWorkspace));
   document.body.classList.toggle("page-lock", path === "/" || path === "/about" || path === "/contact" || isLoginView);
   document.body.classList.toggle("login-lock", isLoginView);
@@ -172,6 +177,22 @@ async function render({ preserveScroll = false } = {}) {
     requestAnimationFrame(() => app.classList.remove("is-rendering"));
   }
   if (preserveScroll) window.scrollTo({ top: previousScrollTop, behavior: "auto" });
+}
+
+function routeErrorPage(workspace, error) {
+  const title = workspace ? "Workspace Could Not Load" : "Page Could Not Load";
+  const message = error instanceof Error ? error.message : "Please refresh and try again.";
+  return `
+    ${workspace ? adminHero(title, "The route opened, but one section could not finish loading.") : ""}
+    <section class="section">
+      <div class="admin-panel admin-section-error">
+        <div class="admin-panel-head">
+          <h2>${escapeHtml(title)}</h2>
+        </div>
+        <p class="admin-form-note" data-tone="error">${escapeHtml(message)}</p>
+      </div>
+    </section>
+  `;
 }
 
 async function loadAuthSession({ force = false } = {}) {
@@ -888,11 +909,11 @@ async function adminDashboardPage() {
 
 async function adminEditorPage() {
   const [products, artists, collections, requests, orders] = await Promise.all([
-    catalogService.listAllProducts(),
-    catalogService.listAdminArtists(),
-    catalogService.listCollections(),
-    catalogService.listRequests(),
-    catalogService.listOrders()
+    safeAdminValue(catalogService.listAllProducts(), []),
+    safeAdminValue(catalogService.listAdminArtists(), []),
+    safeAdminValue(catalogService.listCollections(), []),
+    safeAdminValue(catalogService.listRequests(), []),
+    safeAdminValue(catalogService.listOrders(), [])
   ]);
   const drafts = products.filter((product) => product.publishStatus !== "Published").length;
   let deployStatus = null;
@@ -914,14 +935,14 @@ async function adminEditorPage() {
     ordersSection,
     previewSection
   ] = await Promise.all([
-    adminProductsPage({ embedded: true }),
-    adminHomeSliderPage({ embedded: true }),
-    adminMediaPage({ embedded: true }),
-    adminArtistsPage({ embedded: true }),
-    adminCollectionsPage({ embedded: true }),
-    adminRequestsPage({ embedded: true }),
-    ordersPage({ embedded: true }),
-    adminPreviewPage({ embedded: true })
+    safeAdminSection("Products", () => adminProductsPage({ embedded: true })),
+    safeAdminSection("Home Slider", () => adminHomeSliderPage({ embedded: true })),
+    safeAdminSection("Images", () => adminMediaPage({ embedded: true })),
+    safeAdminSection("Artists", () => adminArtistsPage({ embedded: true })),
+    safeAdminSection("Collections", () => adminCollectionsPage({ embedded: true })),
+    safeAdminSection("Requests", () => adminRequestsPage({ embedded: true })),
+    safeAdminSection("Orders", () => ordersPage({ embedded: true })),
+    safeAdminSection("Preview", () => adminPreviewPage({ embedded: true }))
   ]);
   return `
     ${adminHero("NIXP Editor", "One workspace for products, images, artists, collections, requests, orders, drafts, and previews.")}
@@ -1015,6 +1036,30 @@ async function adminEditorPage() {
       ${previewSection}
     </section>
   `;
+}
+
+async function safeAdminValue(promise, fallback) {
+  try {
+    return await promise;
+  } catch {
+    return fallback;
+  }
+}
+
+async function safeAdminSection(label, loader) {
+  try {
+    return await loader();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "This editor section could not load.";
+    return `
+      <div class="admin-panel admin-section-error">
+        <div class="admin-panel-head">
+          <h2>${escapeHtml(label)}</h2>
+        </div>
+        <p class="admin-form-note" data-tone="error">${escapeHtml(message)}</p>
+      </div>
+    `;
+  }
 }
 
 async function adminHomeSliderPage({ embedded = false } = {}) {
@@ -2278,6 +2323,7 @@ function bindHomeSlider() {
   let pointerStartX = 0;
   let pointerStartScroll = 0;
   let didDrag = false;
+  let suppressClickUntil = 0;
   let hovering = false;
   let touchResetTimer = 0;
   let autoScrollLeft = viewport.scrollLeft;
@@ -2339,7 +2385,7 @@ function bindHomeSlider() {
   const onPointerMove = (event) => {
     if (!mouseDragging || event.pointerId !== pointerId) return;
     const distance = event.clientX - pointerStartX;
-    if (Math.abs(distance) > 4) didDrag = true;
+    if (Math.abs(distance) > 12) didDrag = true;
     autoScrollLeft = pointerStartScroll - distance;
     normalizeLoopPosition();
   };
@@ -2348,13 +2394,18 @@ function bindHomeSlider() {
     mouseDragging = false;
     pointerId = null;
     viewport.classList.remove("is-dragging");
+    if (didDrag) suppressClickUntil = performance.now() + 350;
     pause(1_500);
   };
   const preventClickAfterDrag = (event) => {
-    if (!didDrag) return;
+    if (!didDrag || performance.now() > suppressClickUntil) {
+      didDrag = false;
+      return;
+    }
     event.preventDefault();
     event.stopPropagation();
     didDrag = false;
+    suppressClickUntil = 0;
   };
   const onScroll = () => {
     if (!applyingAutoScroll) normalizeLoopPosition(true);
