@@ -2722,6 +2722,88 @@
         "nixp-selection"
       ],
       "homeSlideSort": 43
+    },
+    {
+      "id": "nxp-2026-cd-0024-antemasque",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0024",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0024"
+      ],
+      "year": 2014,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0024-antemasque.jpg",
+      "label": "Nadie Sound",
+      "price": 300000,
+      "sizes": [],
+      "title": "Antemasque",
+      "artist": "Antemasque",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0024-antemasque.jpg",
+        "/public/mockups/nxp-2026-cd-0024-antemasque-cd-front.jpg",
+        "/public/mockups/nxp-2026-cd-0024-antemasque-cd-disc.jpg",
+        "/public/mockups/nxp-2026-cd-0024-antemasque-cd-package.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-CD-0024",
+        "Format: CD",
+        "Condition: Used Excellent"
+      ],
+      "category": "Records",
+      "material": "",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://www.theguardian.com/music/2014/nov/23/antemasque-album-review-cedric-bixler-zavala-omar-rodriguez-lopez",
+      "updatedAt": "2026-07-19",
+      "collection": "Nadie Sound",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Antemasque's 2014 self-titled album is the debut full-length from Cedric Bixler-Zavala and Omar Rodriguez-Lopez's post-Mars Volta project, joined in the studio by Dave Elitch and Flea, tightening their post-hardcore and prog history into direct, uptempo rock.",
+      "reviewQuote": "a more straightforward rock album",
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-cd-0024-antemasque.jpg",
+          "credit": "Apple Music / Nadie Sound artwork",
+          "url": "https://music.apple.com/us/album/antemasque/1443624940"
+        },
+        {
+          "image": "/public/mockups/nxp-2026-cd-0024-antemasque-cd-front.jpg",
+          "credit": "Discogs release r6310531 image",
+          "url": "https://www.discogs.com/release/6310531-Antemasque-Antemasque"
+        },
+        {
+          "image": "/public/mockups/nxp-2026-cd-0024-antemasque-cd-disc.jpg",
+          "credit": "Discogs release r6310531 image",
+          "url": "https://www.discogs.com/release/6310531-Antemasque-Antemasque"
+        },
+        {
+          "image": "/public/mockups/nxp-2026-cd-0024-antemasque-cd-package.jpg",
+          "credit": "Discogs release r6310531 image",
+          "url": "https://www.discogs.com/release/6310531-Antemasque-Antemasque"
+        }
+      ],
+      "reviewSource": "The Guardian (quoted)",
+      "displayFormat": "CD",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "catalog-nxp-2026-cd-0024-antemasque",
+      "relatedArtists": [
+        "The Mars Volta",
+        "At The Drive-In",
+        "Red Hot Chili Peppers"
+      ],
+      "homeCollections": [],
+      "descriptionSource": "AllMusic / Pitchfork / MusicBrainz",
+      "shipping": {
+        "source": "",
+        "status": "needs_measurement",
+        "widthCm": null,
+        "heightCm": null,
+        "lengthCm": null,
+        "updatedAt": "2026-07-19",
+        "weightGrams": null
+      }
     }
   ],
   "artists": [
@@ -2990,6 +3072,13 @@
       "bio": "",
       "status": "Published",
       "sort": 38
+    },
+    {
+      "id": "antemasque",
+      "bio": "",
+      "name": "Antemasque",
+      "sort": 40,
+      "status": "Published"
     }
   ],
   "collections": [

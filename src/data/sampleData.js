@@ -10,6 +10,7 @@ export const requestStatuses = [
 ];
 
 export const artistNames = [
+  "Antemasque",
   "Animal Collective",
   "Arca",
   "Behold The Arctopus",
@@ -538,6 +539,17 @@ const recordRows = [
     "price": 300000,
     "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg",
     "condition": "Used Excellence"
+  },
+  {
+    "id": "nxp-2026-cd-0024-antemasque",
+    "sku": "NXP-2026-CD-0024",
+    "artist": "Antemasque",
+    "title": "Antemasque",
+    "format": "CD",
+    "qty": 1,
+    "price": 300000,
+    "image": "/public/covers/nxp-2026-cd-0024-antemasque.jpg",
+    "condition": "Used Excellent"
   }
 ];
 
@@ -585,7 +597,8 @@ const recordLabels = {
   "nxp-2026-vnl-0011": "Stroom",
   "nxp-2026-vnl-0012": "XL Recordings",
   "nxp-2026-vnl-0013-self-titled": "Keck",
-  "nxp-2026-cd-0023": "Warp Records"
+  "nxp-2026-cd-0023": "Warp Records",
+  "nxp-2026-cd-0024-antemasque": "Nadie Sound"
 };
 
 const recordYears = {
@@ -632,7 +645,8 @@ const recordYears = {
   "nxp-2026-vnl-0011": 2026,
   "nxp-2026-vnl-0012": 2025,
   "nxp-2026-vnl-0013-self-titled": 2019,
-  "nxp-2026-cd-0023": 2025
+  "nxp-2026-cd-0023": 2025,
+  "nxp-2026-cd-0024-antemasque": 2014
 };
 
 const recordRelatedArtists = {
@@ -679,7 +693,8 @@ const recordRelatedArtists = {
   "nxp-2026-vnl-0011": ["Jon Hassell", "Tarawangsawelas", "Heith"],
   "nxp-2026-vnl-0012": ["Karenn", "Pariah", "Surgeon"],
   "nxp-2026-vnl-0013-self-titled": ["Blawan", "Tzusing"],
-  "nxp-2026-cd-0023": ["Tim Hecker", "Arca", "Daniel Lopatin"]
+  "nxp-2026-cd-0023": ["Tim Hecker", "Arca", "Daniel Lopatin"],
+  "nxp-2026-cd-0024-antemasque": ["The Mars Volta", "At The Drive-In", "Red Hot Chili Peppers"]
 };
 
 const nixpSelectionIds = new Set([
@@ -729,6 +744,14 @@ const recordMockups = {
   "nxp-2026-vnl-0011": "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg",
   "nxp-2026-vnl-0012": "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg",
   "nxp-2026-vnl-0013-self-titled": "/public/mockups/nxp-2026-vnl-0013-giant-swan-self-titled-vinyl.jpg"
+};
+
+const recordGalleries = {
+  "nxp-2026-cd-0024-antemasque": [
+    "/public/mockups/nxp-2026-cd-0024-antemasque-cd-front.jpg",
+    "/public/mockups/nxp-2026-cd-0024-antemasque-cd-disc.jpg",
+    "/public/mockups/nxp-2026-cd-0024-antemasque-cd-package.jpg"
+  ]
 };
 
 const recordImageCredits = {
@@ -898,6 +921,12 @@ function record(row) {
   const displayFormat = row.format === "Vinyl" ? "Vinyl 12\"" : row.format;
   const image = row.image || recordImage;
   const mockup = ["New-Sealed", "New-Unsealed"].includes(row.condition) && row.format === "Vinyl" ? recordMockups[row.id] : null;
+  const gallery = recordGalleries[row.id] || [];
+  const galleryCredits = gallery.map((galleryImage) => ({
+    image: galleryImage,
+    credit: "Discogs release r6310531 image",
+    url: "https://www.discogs.com/release/6310531-Antemasque-Antemasque"
+  }));
   return {
     id: row.id,
     sku: row.sku,
@@ -912,8 +941,11 @@ function record(row) {
     year: recordYears[row.id] || 2026,
     label: recordLabels[row.id] || row.label || "NIXP Selection",
     image,
-    images: mockup ? [image, mockup] : [image],
-    imageCredits: mockup && recordImageCredits[row.id] ? [{ image: mockup, ...recordImageCredits[row.id] }] : [],
+    images: [...new Set(mockup ? [image, mockup, ...gallery] : [image, ...gallery])],
+    imageCredits: [
+      ...(mockup && recordImageCredits[row.id] ? [{ image: mockup, ...recordImageCredits[row.id] }] : []),
+      ...galleryCredits
+    ],
     tags: [displayFormat, row.sku],
     relatedArtists: recordRelatedArtists[row.id] || [],
     homeCollections: recordHomeCollections(row),

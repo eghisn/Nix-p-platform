@@ -258,6 +258,12 @@
       "sku": "NXP-2026-CD-0023",
       "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg",
       "localPath": "public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0024-antemasque",
+      "sku": "NXP-2026-CD-0024",
+      "image": "/public/covers/nxp-2026-cd-0024-antemasque.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0024-antemasque.jpg"
     }
   ],
   "uploadedProductImages": [

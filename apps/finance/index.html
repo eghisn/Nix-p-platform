@@ -309,6 +309,20 @@
       gap: 6px;
     }
 
+    .ledger-search {
+      display: grid;
+      grid-template-columns: minmax(130px, 0.22fr) minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--dark);
+    }
+
+    .ledger-search input {
+      min-height: 32px;
+      font-size: 12px;
+    }
+
     form {
       display: grid;
       gap: 12px;
@@ -709,6 +723,10 @@
                 <h2>Sales ledger</h2>
                 <small id="salesCount">0 entries</small>
               </div>
+              <div class="ledger-search">
+                <label for="salesSearch">Search daily sales</label>
+                <input id="salesSearch" type="search" placeholder="Invoice, SKU, category, payment">
+              </div>
               <div class="table-wrap">
                 <table>
                   <thead>
@@ -826,6 +844,10 @@
                 <h2>Purchase ledger</h2>
                 <small id="inventoryCount">0 entries</small>
               </div>
+              <div class="ledger-search">
+                <label for="inventorySearch">Search inventory purchases</label>
+                <input id="inventorySearch" type="search" placeholder="Supplier, SKU, artist, source">
+              </div>
               <div class="table-wrap">
                 <table>
                   <thead>
@@ -867,6 +889,10 @@
               <div class="panel-head">
                 <h2>Stock ledger</h2>
                 <small id="stockCount">0 entries</small>
+              </div>
+              <div class="ledger-search">
+                <label for="stockSearch">Search inventory</label>
+                <input id="stockSearch" type="search" placeholder="SKU, item, artist, title">
               </div>
               <div class="table-wrap">
                 <table>
@@ -1047,6 +1073,9 @@
       stockBody: document.getElementById("stockBody"),
       stockTotals: document.getElementById("stockTotals"),
       ownerDueBody: document.getElementById("ownerDueBody"),
+      salesSearch: document.getElementById("salesSearch"),
+      inventorySearch: document.getElementById("inventorySearch"),
+      stockSearch: document.getElementById("stockSearch"),
       yearFilter: document.getElementById("yearFilter"),
       ownerDueYearFilter: document.getElementById("ownerDueYearFilter"),
       dashboardTypeFilter: document.getElementById("dashboardTypeFilter"),
@@ -1411,7 +1440,7 @@
         resetStockEditMode();
       });
 
-      [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.pnlMonth].forEach(input => {
+      [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.salesSearch, el.inventorySearch, el.stockSearch, el.pnlMonth].forEach(input => {
         input.addEventListener("input", render);
       });
 
@@ -1656,7 +1685,11 @@
 
     function syncStockFromPurchase(purchase) {
       if (!purchase?.id) return;
-      const index = state.inventoryStock.findIndex(item => item.purchaseId === purchase.id);
+      const skuKey = String(purchase.sku || "").trim().toLowerCase();
+      const index = state.inventoryStock.findIndex(item => {
+        if (item.purchaseId === purchase.id) return true;
+        return skuKey && String(item.sku || "").trim().toLowerCase() === skuKey;
+      });
       if (isRawMaterialPurchase(purchase)) {
         if (index >= 0) state.inventoryStock.splice(index, 1);
         return;
@@ -1886,6 +1919,15 @@
       return String(a ?? "").localeCompare(String(b ?? ""), undefined, { numeric: true, sensitivity: "base" });
     }
 
+    function searchQuery(input) {
+      return String(input?.value || "").trim().toLowerCase();
+    }
+
+    function filterRows(rows, query, fields) {
+      if (!query) return rows;
+      return rows.filter(item => fields(item).join(" ").toLowerCase().includes(query));
+    }
+
     function selectedYear() {
       return el.yearFilter.value || currentYear;
     }
@@ -1942,7 +1984,17 @@
     }
 
     function renderSales() {
-      const rows = sortRows("sales", state.sales);
+      const query = searchQuery(el.salesSearch);
+      const rows = sortRows("sales", filterRows(state.sales, query, item => [
+        item.date,
+        item.invoice,
+        item.category,
+        item.sku,
+        item.qty,
+        item.revenue,
+        item.discountContext,
+        item.paymentMethod
+      ]));
       document.getElementById("salesCount").textContent = rows.length + " entries";
       el.salesBody.innerHTML = rows.length ? rows.map(item => `
         <tr>
@@ -2042,7 +2094,18 @@
     }
 
     function renderInventory() {
-      const rows = sortRows("inventory", state.inventory);
+      const query = searchQuery(el.inventorySearch);
+      const rows = sortRows("inventory", filterRows(state.inventory, query, item => [
+        item.date,
+        item.supplier,
+        item.category,
+        item.source,
+        item.itemType,
+        item.itemCondition,
+        item.sku,
+        item.artistName,
+        item.paymentMethod
+      ]));
       document.getElementById("inventoryCount").textContent = rows.length + " entries";
       el.inventoryBody.innerHTML = rows.length ? rows.map(item => `
         <tr>
@@ -2082,7 +2145,16 @@
     }
 
     function renderStock() {
-      const rows = sortRows("stock", state.inventoryStock);
+      const query = searchQuery(el.stockSearch);
+      const rows = sortRows("stock", filterRows(state.inventoryStock, query, item => [
+        item.sku,
+        item.item,
+        item.itemCondition,
+        item.artist,
+        item.title,
+        item.source,
+        item.acquisitionMonth
+      ]));
       document.getElementById("stockCount").textContent = rows.length + " entries";
       el.stockBody.innerHTML = rows.length ? rows.map(item => `
         <tr>
