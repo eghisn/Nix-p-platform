@@ -1,6 +1,7 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { build } from "esbuild";
+import { shell } from "../src/components/layout.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -112,7 +113,7 @@ function replaceMeta(html, attribute, name, value) {
   return pattern.test(html) ? html.replace(pattern, tag) : html.replace("</head>", `    ${tag}\n  </head>`);
 }
 
-function routeDocument({ title, description, url, image, type = "website", crawlMarkup, structuredData }) {
+function routeDocument({ title, description, url, image, type = "website", appMarkup, crawlMarkup, structuredData }) {
   let html = indexHtml.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
   html = replaceMeta(html, "name", "description", description);
   html = replaceMeta(html, "property", "og:title", title);
@@ -137,7 +138,8 @@ function routeDocument({ title, description, url, image, type = "website", crawl
     const json = JSON.stringify(structuredData).replaceAll("<", "\\u003c");
     html = html.replace("</head>", `    <script type="application/ld+json">${json}</script>\n  </head>`);
   }
-  if (crawlMarkup) html = html.replace('<div id="app"></div>', `<div id="app"></div>\n    ${crawlMarkup}`);
+  if (appMarkup) html = html.replace('<div id="app"></div>', `<div id="app">${appMarkup}</div>`);
+  if (crawlMarkup) html = html.replace("</body>", `    ${crawlMarkup}\n  </body>`);
   return html;
 }
 
@@ -157,6 +159,7 @@ function homeDocument() {
     description: siteDescription,
     url: `${siteOrigin}/`,
     image: siteImage,
+    appMarkup: homeAppMarkup(),
     crawlMarkup: crawlerSection(`<h1>NIXP</h1><p>${escapeHtml(siteDescription)}</p><ul>${catalogLinks}</ul>`),
     structuredData: {
       "@context": "https://schema.org",
@@ -167,6 +170,66 @@ function homeDocument() {
       description: siteDescription
     }
   });
+}
+
+function homeAppMarkup() {
+  const products = publicProducts
+    .filter(
+      (product) =>
+        product.category === "Records" &&
+        ["Vinyl", "CD", "Cassette"].includes(product.format) &&
+        [2025, 2026].includes(Number(product.year))
+    )
+    .filter((product) => product.image && !product.image.includes("nixp-product-example"))
+    .sort((a, b) => {
+      const sortA = Number.isFinite(Number(a.homeSlideSort)) ? Number(a.homeSlideSort) : 9999;
+      const sortB = Number.isFinite(Number(b.homeSlideSort)) ? Number(b.homeSlideSort) : 9999;
+      return sortA - sortB || String(a.artist || "").localeCompare(String(b.artist || ""));
+    });
+  const slides = [...products, ...products];
+  const collections = [
+    ["recent-releases", "Recent Releases"],
+    ["nixp-selection", "NIXP Selection"],
+    ["back-in-stock", "Back in Stock"],
+    ["limited-pressing", "Limited Pressing"],
+    ["private-collection", "Private Collection"]
+  ];
+  const content = `
+    <section class="home-slider" aria-label="Product slider">
+      <div class="home-collections" role="group" aria-label="Home collections">
+        ${collections
+          .map(
+            ([id, label], index) =>
+              `<button class="home-collection-button ${index === 0 ? "is-active" : ""}" type="button" data-home-collection="${id}">${label}</button>`
+          )
+          .join("")}
+      </div>
+      <div class="slider-viewport" data-home-slider-viewport aria-roledescription="carousel" aria-label="Automatic product slider. Drag or swipe to browse.">
+        <div class="slider-track" data-home-slider-track>
+          ${slides
+            .map(
+              (product, index) => `
+                <article class="slide">
+                  <a href="/product/${escapeHtml(product.id)}" data-link>
+                    <figure class="product-art slide-art"><img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" /></figure>
+                    <div class="slide-caption">
+                      <span>${String((index % products.length) + 1).padStart(2, "0")}</span>
+                      <strong>${escapeHtml(product.artist)}</strong>
+                      <em>${escapeHtml(product.title)}</em>
+                    </div>
+                  </a>
+                </article>`
+            )
+            .join("")}
+        </div>
+      </div>
+      <div class="slider-scrollbar" aria-label="Catalogue navigation">
+        <button class="slider-scroll-button" type="button" aria-label="Previous catalogue items" data-home-slider-previous>&larr;</button>
+        <div class="slider-scroll-rail" data-home-slider-control role="slider" aria-label="Browse catalogue" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0" tabindex="0"><span class="slider-scroll-thumb" data-home-slider-thumb></span></div>
+        <button class="slider-scroll-button" type="button" aria-label="Next catalogue items" data-home-slider-next>&rarr;</button>
+      </div>
+    </section>`;
+  return shell(content, "/", 0);
 }
 
 function productDocument(product) {
