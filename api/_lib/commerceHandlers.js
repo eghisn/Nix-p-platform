@@ -1,7 +1,14 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { json, requireWorkspace } from "./auth.js";
 import { expirePendingOrders, getOrderRecord, isMidtransConfigured, midtransBaseUrl } from "./commerce.js";
-import { sendOrderPaymentNotification } from "./emailNotifications.js";
+import {
+  sendCustomerCancellationNotification,
+  sendCustomerPaymentConfirmation,
+  sendCustomerRefundNotification,
+  sendCustomerShippingNotification,
+  sendOrderPaymentNotification,
+  sendOrderRefundNotification
+} from "./emailNotifications.js";
 import { supabaseFetch } from "./supabase.js";
 
 export async function handleMidtransToken(req, res) {
@@ -54,12 +61,43 @@ export async function handleMidtransWebhook(req, res) {
     if ((status === "settlement" || status === "capture") && fraud === "accept") {
       const updated = await supabaseFetch("rpc/apply_verified_payment", { method: "POST", service: true, body: { p_order_id: order.id, p_provider: "Midtrans", p_provider_transaction_id: String(verified.transaction_id || ""), p_provider_order_id: String(verified.order_id || ""), p_amount: Number(verified.gross_amount), p_payload: verified } });
       const paidOrder = await getOrderRecord(order.id);
-      await sendOrderPaymentNotification(paidOrder || order).catch((error) => console.warn("Paid-order notification not delivered", error.message));
+      if (!updated?.idempotent) {
+        await Promise.allSettled([
+          sendOrderPaymentNotification(paidOrder || order),
+          sendCustomerPaymentConfirmation(paidOrder || order)
+        ]);
+      }
       return json(res, 200, { ok: true, action: "paid", order: updated });
     }
     if (["expire", "cancel", "deny", "failure"].includes(status)) {
       const updated = await supabaseFetch("rpc/release_order_reservations", { method: "POST", service: true, body: { p_order_id: order.id, p_order_status: status === "expire" ? "Expired" : "Cancelled", p_payment_status: status === "expire" ? "Expired" : "Failed", p_reason: `Midtrans reported ${status}; reserved stock released.` } });
+      const releasedOrder = await getOrderRecord(order.id);
+      await sendCustomerCancellationNotification(releasedOrder || order, `Payment provider status: ${status}.`).catch((error) => console.warn("Customer cancellation email not delivered", error.message));
       return json(res, 200, { ok: true, action: "released", order: updated });
+    }
+    if (["refund", "partial_refund"].includes(status)) {
+      const fullRefund = status === "refund";
+      const refundAmount = fullRefund ? Number(order.grand_total) : Number(verified.refund_amount || 0);
+      const updated = await supabaseFetch("rpc/apply_verified_refund", {
+        method: "POST",
+        service: true,
+        body: {
+          p_order_id: order.id,
+          p_provider: "Midtrans",
+          p_provider_transaction_id: String(verified.transaction_id || ""),
+          p_refund_amount: refundAmount,
+          p_full_refund: fullRefund,
+          p_payload: verified
+        }
+      });
+      const refundedOrder = await getOrderRecord(order.id);
+      if (!updated?.idempotent) {
+        await Promise.allSettled([
+          sendOrderRefundNotification(refundedOrder || order, refundAmount, fullRefund),
+          sendCustomerRefundNotification(refundedOrder || order, refundAmount, fullRefund)
+        ]);
+      }
+      return json(res, 200, { ok: true, action: fullRefund ? "refunded" : "partially-refunded", order: updated });
     }
     return json(res, 200, { ok: true, action: "recorded", status });
   } catch (error) { return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Midtrans webhook failed." }); }
@@ -76,7 +114,13 @@ export async function handleAdminOrders(req, res) {
     if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
     if (body.action !== "update-operation") return json(res, 400, { ok: false, error: "Unsupported order action." });
-    const order = await supabaseFetch("rpc/admin_update_order_operation", { method: "POST", service: true, body: { p_order_id: String(body.orderId || ""), p_fulfillment_status: body.fulfillmentStatus || null, p_shipping_status: body.shippingStatus || null, p_courier: body.courier || null, p_tracking_number: body.trackingNumber || null, p_note: body.note || null } });
+    const orderId = String(body.orderId || "");
+    const before = await getOrderRecord(orderId);
+    const order = await supabaseFetch("rpc/admin_update_order_operation", { method: "POST", service: true, body: { p_order_id: orderId, p_fulfillment_status: body.fulfillmentStatus || null, p_shipping_status: body.shippingStatus || null, p_courier: body.courier || null, p_tracking_number: body.trackingNumber || null, p_note: body.note || null } });
+    const after = await getOrderRecord(orderId);
+    if (after && (after.shipping_status !== before?.shipping_status || after.tracking_number !== before?.tracking_number)) {
+      await sendCustomerShippingNotification(after).catch((error) => console.warn("Customer shipping email not delivered", error.message));
+    }
     return json(res, 200, { ok: true, order });
   } catch (error) { return json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Order action failed." }); }
 }

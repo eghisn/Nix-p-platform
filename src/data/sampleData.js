@@ -931,7 +931,7 @@ export const products = [
     description: "The first NIXP publishing index: interviews, photography, release notes, and shop fragments.",
     details: ["SKU: NXP-2026-PUB-0001", "80 pages", "Offset printed", "First issue"]
   }
-];
+].map(withShippingProfile);
 
 export const inventory = [];
 
@@ -940,6 +940,34 @@ export const orders = [];
 export const requestItems = [];
 
 export const cashflow = [];
+
+function withShippingProfile(product) {
+  const format = String(product.format || "").toLowerCase();
+  const title = String(product.title || "").toLowerCase();
+  const material = String(product.material || "").toLowerCase();
+  const details = Array.isArray(product.details) ? product.details.join(" ").toLowerCase() : "";
+  const shipping = (weightGrams, lengthCm, widthCm, heightCm, source) => ({
+    weightGrams,
+    lengthCm,
+    widthCm,
+    heightCm,
+    status: "format_reference",
+    source,
+    updatedAt: "2026-07-22"
+  });
+  if (format === "vinyl") return { ...product, shipping: shipping(700, 35, 35, 5, "https://www.shopify.com/blog/how-to-ship-vinyl-records") };
+  if (format === "cd") return { ...product, shipping: shipping(200, 18, 16, 5, "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf") };
+  if (format === "cassette") return { ...product, shipping: shipping(180, 16, 12, 5, "https://www.duplication.com/full-black-cassette-cases-no-posts.html") };
+  if (format === "magazine" || product.category === "Publishing") return { ...product, shipping: shipping(700, 32, 24, 4, "https://www.defendapack.com/postal_boxes_and_cartons/book-mailers-book-postal-packaging/size-5-a4-book-mailer-302mm-x-215mm-x-80mm/") };
+  if (product.category === "Objects" || format === "object") return { ...product, shipping: shipping(180, 12, 10, 6, "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights") };
+  if (title.includes("cap")) return { ...product, shipping: shipping(350, 25, 20, 15, "https://hatcaddy.co/pages/shipping") };
+  if (title.includes("knit") || material.includes("knit")) return { ...product, shipping: shipping(1000, 40, 32, 12, "https://www.pluspackaging.com/blog/mailing-bags/poly-mailer-sizes/") };
+  if (title.includes("crewneck") || title.includes("sweatshirt") || title.includes("hoodie")) return { ...product, shipping: shipping(900, 40, 32, 10, "https://www.pluspackaging.com/blog/mailing-bags/poly-mailer-sizes/") };
+  if (title.includes("longsleeve") || details.includes("250gsm")) return { ...product, shipping: shipping(500, 35, 28, 6, "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights") };
+  if (details.includes("320gsm")) return { ...product, shipping: shipping(500, 35, 28, 5, "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights") };
+  if (details.includes("265gsm")) return { ...product, shipping: shipping(450, 35, 28, 5, "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights") };
+  return { ...product, shipping: shipping(380, 35, 28, 5, "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights") };
+}
 
 function record(row) {
   const displayFormat = row.format === "Vinyl" ? "Vinyl 12\"" : row.format;

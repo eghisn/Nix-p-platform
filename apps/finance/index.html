@@ -90,6 +90,17 @@
       text-transform: uppercase;
     }
 
+    .cogs-warning {
+      display: block;
+      margin-top: 4px;
+      color: #c40000;
+      font-size: 9px;
+      font-weight: 760;
+      line-height: 1.25;
+      text-align: right;
+      white-space: normal;
+    }
+
     .nav {
       display: grid;
       gap: 4px;
@@ -906,7 +917,7 @@
                       <th data-sort-section="stock" data-sort-key="source">Source</th>
                       <th data-sort-section="stock" data-sort-key="acquisitionMonth">Acquisition Month</th>
                       <th class="money" data-sort-section="stock" data-sort-key="qty">Quantity</th>
-                      <th class="money" data-sort-section="stock" data-sort-key="costBasis">Unit Cost Basis</th>
+                      <th class="money" data-sort-section="stock" data-sort-key="costBasis">Unit COGS / Landed Cost</th>
                       <th class="money" data-sort-section="stock" data-sort-key="sellingPrice">Unit Selling Price</th>
                       <th class="money" data-sort-section="stock" data-sort-key="soldPrice">Unit Sold Price</th>
                       <th class="money" data-sort-section="stock" data-sort-key="grossProfit">Unit Gross Profit</th>
@@ -1270,7 +1281,7 @@
           ${field("Revenue", "revenue", "number", "", true, "0", "1")}
           ${field("Discount %", "discount", "number", "0", false, "0", "0.01")}
           ${field("Discount Context", "discountContext", "text", "", false, "Promo, friend price, bundle")}
-          ${field("COGS", "cogs", "number", "", true, "0", "1")}
+          ${field("Total COGS", "cogs", "number", "", true, "Total cost of the units sold", "1")}
           ${selectField("Payment Method", "paymentMethod", paymentMethods, true, "Bank Transfer")}
         </div>
         <input type="hidden" name="editId" value="">
@@ -1309,7 +1320,8 @@
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
           ${field("Artist Name", "artistName", "text", "", false, "Artist / creator")}
           ${field("Qty", "qty", "number", "1", true, "", "0.01")}
-          ${field("Unit Cost", "unitCost", "number", "", true, "0", "1")}
+          ${field("Unit COGS / Landed Cost", "unitCost", "number", "", true, "Per-unit purchase cost", "1")}
+          <div class="field full"><p class="tiny">Enter one unit's full landed cost here. This becomes the inventory cost basis used automatically when a paid website order is recorded.</p></div>
           ${field("Cashflow Impact", "cashflowImpact", "number", "", false, "Blank = total cost. Use 0 for owner contribution.", "1")}
           ${selectField("Payment Method", "paymentMethod", paymentMethods, true, "Bank Transfer")}
         </div>
@@ -1330,7 +1342,7 @@
           ${selectField("Source", "source", inventorySources, true, "Business Purchase")}
           ${field("Acquisition Month", "acquisitionMonth", "month", currentMonth, true)}
           ${field("Quantity", "qty", "number", "1", true, "", "0.01")}
-          ${field("Unit Cost Basis", "costBasis", "number", "", true, "0", "1")}
+          ${field("Unit COGS / Landed Cost", "costBasis", "number", "", true, "Per-unit cost basis", "1")}
           ${field("Unit Selling Price", "sellingPrice", "number", "", false, "0", "1")}
           ${field("Unit Sold Price", "soldPrice", "number", "", false, "0", "1")}
         </div>
@@ -1582,8 +1594,9 @@
     function normalizeDerivedData() {
       state.sales = state.sales.map(item => {
         const revenue = numeric(item.revenue);
+        const discount = numeric(item.discount);
         const cogs = numeric(item.cogs);
-        return { ...item, qty: numeric(item.qty), revenue, discount: numeric(item.discount), discountContext: item.discountContext || "", cogs, grossProfit: revenue - cogs };
+        return { ...item, qty: numeric(item.qty), revenue, discount, discountContext: item.discountContext || "", cogs, grossProfit: revenue - (revenue * discount / 100) - cogs };
       });
 
       state.expenses = state.expenses.map(item => ({ ...item, amount: numeric(item.amount) }));
@@ -1610,6 +1623,7 @@
 
     function salesPayload(data) {
       const revenue = numeric(data.revenue);
+      const discount = numeric(data.discount);
       const cogs = numeric(data.cogs);
       return {
         date: data.date,
@@ -1618,10 +1632,10 @@
         sku: data.sku.trim(),
         qty: numeric(data.qty),
         revenue,
-        discount: numeric(data.discount),
+        discount,
         discountContext: data.discountContext.trim(),
         cogs,
-        grossProfit: revenue - cogs,
+        grossProfit: revenue - (revenue * discount / 100) - cogs,
         paymentMethod: data.paymentMethod
       };
     }
@@ -1707,7 +1721,7 @@
         source: purchase.source || existing.source || "Business Purchase",
         acquisitionMonth: monthOf(purchase.date) || existing.acquisitionMonth || currentMonth,
         qty: numeric(purchase.qty) || numeric(existing.qty) || 1,
-        costBasis: numeric(purchase.totalCost),
+        costBasis: numeric(purchase.unitCost),
         sellingPrice: numeric(existing.sellingPrice),
         soldPrice: numeric(existing.soldPrice)
       });
@@ -1993,6 +2007,8 @@
         item.qty,
         item.revenue,
         item.discountContext,
+        item.cogsStatus,
+        ...(item.missingCogsSkus || []),
         item.paymentMethod
       ]));
       document.getElementById("salesCount").textContent = rows.length + " entries";
@@ -2006,7 +2022,7 @@
           <td class="money">${rupiah(item.revenue)}</td>
           <td class="money">${formatPercent(item.discount)}</td>
           <td>${escapeHTML(item.discountContext)}</td>
-          <td class="money">${rupiah(item.cogs)}</td>
+          <td class="money">${rupiah(item.cogs)}${item.cogsStatus === "Missing cost basis" ? `<small class="cogs-warning">Missing: ${escapeHTML((item.missingCogsSkus || []).join(", "))}</small>` : ""}</td>
           <td class="money">${rupiah(item.grossProfit)}</td>
           <td>${escapeHTML(item.paymentMethod)}</td>
           <td class="row-actions">${editButton("sales", item.id)} ${deleteButton("sales", item.id)}</td>

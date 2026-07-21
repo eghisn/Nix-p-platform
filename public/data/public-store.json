@@ -36,7 +36,16 @@
       "updatedAt": "2026-07-20",
       "relatedArtists": [],
       "homeCollections": [],
-      "homeSlideSort": null
+      "homeSlideSort": null,
+      "shipping": {
+        "weightGrams": 350,
+        "lengthCm": 25,
+        "widthCm": 20,
+        "heightCm": 15,
+        "status": "format_reference",
+        "source": "https://hatcaddy.co/pages/shipping",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -67,7 +76,16 @@
       "details": [],
       "sizes": [],
       "description": "LATTICE CAP - COLD METAL BREATHES TOO POLO CAP IN BLACK\n\n\nCOLOR: BLACK\nMATERIAL: 100% COTTON\nLATTICE ART EMBROIDERED ON FRONT\nADJUSTABLE BACK STRAP.",
-      "qty": 1
+      "qty": 1,
+      "shipping": {
+        "weightGrams": 350,
+        "lengthCm": 25,
+        "widthCm": 20,
+        "heightCm": 15,
+        "status": "format_reference",
+        "source": "https://hatcaddy.co/pages/shipping",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -121,7 +139,16 @@
         }
       ],
       "description": "COLD METAL BREATHES TOO BLACK T-SHIRT\n16s 320GSM\n\n\nCOLD METAL BREATHES TOO ART SCREENPRINTED ON FRONT",
-      "qty": 1
+      "qty": 1,
+      "shipping": {
+        "weightGrams": 380,
+        "lengthCm": 35,
+        "widthCm": 28,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -175,7 +202,16 @@
         }
       ],
       "description": "",
-      "qty": 1
+      "qty": 1,
+      "shipping": {
+        "weightGrams": 380,
+        "lengthCm": 35,
+        "widthCm": 28,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -228,7 +264,16 @@
         }
       ],
       "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
-      "qty": 1
+      "qty": 1,
+      "shipping": {
+        "weightGrams": 500,
+        "lengthCm": 35,
+        "widthCm": 28,
+        "heightCm": 6,
+        "status": "format_reference",
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -285,7 +330,16 @@
         }
       ],
       "description": "PREFORM RED T-SHIRT\n20s 200GSM\n\nPREFORM ART SCREENPRINTED ON FRONT",
-      "qty": 1
+      "qty": 1,
+      "shipping": {
+        "weightGrams": 380,
+        "lengthCm": 35,
+        "widthCm": 28,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -327,7 +381,16 @@
       "qty": 1,
       "images": [
         "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg"
-      ]
+      ],
+      "shipping": {
+        "weightGrams": 180,
+        "lengthCm": 12,
+        "widthCm": 10,
+        "heightCm": 6,
+        "status": "format_reference",
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -376,7 +439,16 @@
       "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -427,7 +499,16 @@
       "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -486,7 +567,16 @@
       "reviewQuote": "distressed dancefloor classics",
       "reviewSource": "The Guardian (quoted from Rezzett review)",
       "reviewUrl": "https://www.theguardian.com/music/2018/dec/21/rezzett-rezzett-review-distressed-dancefloor-classics",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 180,
+        "lengthCm": 16,
+        "widthCm": 12,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -547,7 +637,16 @@
       "reviewQuote": "more progressive atmosphere",
       "reviewSource": "Sputnikmusic (quoted)",
       "reviewUrl": "https://www.sputnikmusic.com/review/49058/The-Mars-Volta-Noctourniquet/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -598,7 +697,16 @@
       "homeSlideSort": 5,
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -648,7 +756,16 @@
       "reviewUrl": "https://thequietus.com/quietus-reviews/nine-inch-nails-hesitation-marks-review/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -697,7 +814,16 @@
       "reviewUrl": "https://www.allmusic.com/album/earthly-delights-mw0000832395",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -754,7 +880,16 @@
       "reviewQuote": "pure, visceral panic",
       "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -813,7 +948,16 @@
       "reviewQuote": "full of sound and fury",
       "reviewSource": "The Guardian (quoted from Gilla Band feature)",
       "reviewUrl": "https://www.theguardian.com/music/2022/oct/06/gilla-band-most-normal-interview",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -865,7 +1009,16 @@
       "reviewUrl": "https://www.allmusic.com/album/chaosphere-mw0000045171",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -916,7 +1069,16 @@
       "reviewUrl": "https://www.sputnikmusic.com/review/2272/Team-Sleep-Team-Sleep/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -967,7 +1129,16 @@
       "reviewUrl": "https://pitchfork.com/reviews/albums/1417-come-with-us/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1018,7 +1189,16 @@
       "reviewUrl": "https://www.theguardian.com/music/2010/may/21/the-chemical-brothers-review",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1067,7 +1247,16 @@
       "homeSlideSort": 14,
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1116,7 +1305,16 @@
       "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1174,7 +1372,16 @@
       "reviewQuote": "savor their own powerlessness",
       "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1232,7 +1439,16 @@
       "reviewQuote": "propulsive score",
       "reviewSource": "Associated Press (quoted)",
       "reviewUrl": "https://apnews.com/article/cf0213e446ab505003c7d338c7ad9270",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1290,7 +1506,16 @@
       "reviewQuote": "still sounds like the future of pop music",
       "reviewSource": "Associated Press (quoted)",
       "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1339,7 +1564,16 @@
       "reviewUrl": "https://www.allmusic.com/album/things-falling-apart-mw0000101953",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 180,
+        "lengthCm": 16,
+        "widthCm": 12,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1388,7 +1622,16 @@
       "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 180,
+        "lengthCm": 16,
+        "widthCm": 12,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1437,7 +1680,16 @@
       "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 180,
+        "lengthCm": 16,
+        "widthCm": 12,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1488,7 +1740,16 @@
       "reviewUrl": "https://pitchfork.com/reviews/albums/the-prodigy-the-fat-of-the-land/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 180,
+        "lengthCm": 16,
+        "widthCm": 12,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1547,7 +1808,16 @@
       "reviewQuote": "flagrant showcase for his ear and skill",
       "reviewSource": "The Quietus (quoted)",
       "reviewUrl": "https://thequietus.com/quietus-reviews/squarepusher-kammerkonzert-review/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1605,7 +1875,16 @@
       "reviewQuote": "frantic sensibilities",
       "reviewSource": "The Quietus (quoted)",
       "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1664,7 +1943,16 @@
         "limited-pressing"
       ],
       "homeSlideSort": 25,
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1713,7 +2001,16 @@
       "reviewUrl": "https://escholarship.org/content/qt49b8n6x2/qt49b8n6x2_noSplash_c4fedc01d7808f9361783420c843047c.pdf",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1762,7 +2059,16 @@
       "reviewUrl": "https://www.deathrockstar.club/review-album-sigmun-crimson-eyes/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1823,7 +2129,16 @@
       "reviewQuote": "a cunning act of sleight of hand",
       "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/17855-david-bowie-the-next-day/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1872,7 +2187,16 @@
       "reviewUrl": "https://www.allmusic.com/album/antenna-mw0000021409",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1923,7 +2247,16 @@
       "reviewUrl": "https://pitchfork.com/reviews/albums/12518-merriweather-post-pavilion/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -1974,7 +2307,16 @@
       "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2023,7 +2365,16 @@
       "reviewUrl": "https://ra.co/reviews/23726",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2072,7 +2423,16 @@
       "reviewUrl": "https://www.allmusic.com/album/criminal-mw0003185357",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2121,7 +2481,16 @@
       "reviewUrl": "https://theprogressivesubway.com/2023/09/27/review-behold-the-arctopus-interstellar-overtrove/",
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 180,
+        "lengthCm": 16,
+        "widthCm": 12,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2179,7 +2548,16 @@
       "reviewQuote": "a cavernous uneasiness",
       "reviewSource": "New Noise Magazine (quoted)",
       "reviewUrl": "https://newnoisemagazine.com/reviews/album-review-facs-wish-defense/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 180,
+        "lengthCm": 16,
+        "widthCm": 12,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2237,7 +2615,16 @@
       "reviewQuote": "crowd-pleasing anthems come naturally",
       "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/peggy-gou-i-hear-you/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 180,
+        "lengthCm": 16,
+        "widthCm": 12,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2296,7 +2683,16 @@
       "reviewQuote": "a celebration of musical connection",
       "reviewSource": "Exclaim (quoted)",
       "reviewUrl": "https://exclaim.ca/music/article/hiatus-kaiyote-love-heart-cheat-code-album-review",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2354,7 +2750,16 @@
       "reviewQuote": "unfathomably skillful and multi-layered",
       "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/arca-andandandandand/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2411,7 +2816,16 @@
       "reviewQuote": "unusually unified listen",
       "reviewSource": "Pitchfork (quoted)",
       "reviewUrl": "https://pitchfork.com/reviews/albums/panda-bear-buoys/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2469,7 +2883,16 @@
       "reviewQuote": "glitchy techno banger",
       "reviewSource": "Rolling Stone UK (quoted)",
       "reviewUrl": "https://www.rollingstone.co.uk/music/overmono-london-roundhouse-live-review-good-lies-33786/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2528,7 +2951,16 @@
       "reviewQuote": "a digital magical realism",
       "reviewSource": "Mindies (quoted, translated)",
       "reviewUrl": "https://www.mindies.es/review/heith-tarawangsawelas-duori-critica-de-su-disco-conjunto/",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2587,7 +3019,16 @@
       "reviewQuote": "grotesque, gorgeous dance music",
       "reviewSource": "The FADER (quoted)",
       "reviewUrl": "https://www.thefader.com/2025/10/10/blawan-sickelixir-review",
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2641,7 +3082,16 @@
       ],
       "homeCollections": [],
       "homeSlideSort": null,
-      "edition": ""
+      "edition": "",
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 35,
+        "widthCm": 35,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2706,7 +3156,16 @@
       ],
       "displayFormat": "",
       "condition": "",
-      "qty": 1
+      "qty": 1,
+      "shipping": {
+        "weightGrams": 900,
+        "lengthCm": 40,
+        "widthCm": 32,
+        "heightCm": 10,
+        "status": "format_reference",
+        "source": "https://www.pluspackaging.com/blog/mailing-bags/poly-mailer-sizes/",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2764,7 +3223,16 @@
       "images": [
         "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
         "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08676-jpg-1783940136800.jpg"
-      ]
+      ],
+      "shipping": {
+        "weightGrams": 1000,
+        "lengthCm": 40,
+        "widthCm": 32,
+        "heightCm": 12,
+        "status": "format_reference",
+        "source": "https://www.pluspackaging.com/blog/mailing-bags/poly-mailer-sizes/",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2798,7 +3266,16 @@
       "images": [
         "/public/nixp-product-example-paper.png"
       ],
-      "qty": 0
+      "qty": 0,
+      "shipping": {
+        "weightGrams": 700,
+        "lengthCm": 32,
+        "widthCm": 24,
+        "heightCm": 4,
+        "status": "format_reference",
+        "source": "https://www.defendapack.com/postal_boxes_and_cartons/book-mailers-book-postal-packaging/size-5-a4-book-mailer-302mm-x-215mm-x-80mm/",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "publishStatus": "Published",
@@ -2850,7 +3327,16 @@
       "homeSlideSort": 43,
       "edition": "",
       "mediaCondition": "",
-      "sleeveCondition": ""
+      "sleeveCondition": "",
+      "shipping": {
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
+      }
     },
     {
       "id": "nxp-2026-cd-0024-antemasque",
@@ -2925,13 +3411,13 @@
       "homeCollections": [],
       "descriptionSource": "AllMusic / Pitchfork / MusicBrainz",
       "shipping": {
-        "source": "",
-        "status": "needs_measurement",
-        "widthCm": null,
-        "heightCm": null,
-        "lengthCm": null,
-        "updatedAt": "2026-07-19",
-        "weightGrams": null
+        "weightGrams": 200,
+        "lengthCm": 18,
+        "widthCm": 16,
+        "heightCm": 5,
+        "status": "format_reference",
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "updatedAt": "2026-07-22"
       },
       "edition": "",
       "mediaCondition": "",

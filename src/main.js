@@ -703,11 +703,31 @@ async function cartPage() {
         rows.length
           ? `
             <form class="checkout-form" data-checkout-form>
+              <h2>Contact</h2>
               <div class="admin-form-grid">
-                ${input("name", "Name")}
-                ${input("email", "Email", "", "name@email.com", "email")}
-                ${input("whatsapp", "WhatsApp")}
+                <label>Name<input name="name" required autocomplete="name" /></label>
+                <label>Email<input name="email" type="email" required autocomplete="email" placeholder="name@email.com" /></label>
+                <label>WhatsApp<input name="whatsapp" required autocomplete="tel" inputmode="tel" /></label>
                 <label class="admin-form-span">Notes<textarea name="notes" rows="3" placeholder="Delivery, pickup, or payment notes"></textarea></label>
+              </div>
+              <h2>Delivery</h2>
+              <div class="admin-form-grid">
+                <label>Shipping method
+                  <select name="shippingMethod" required data-checkout-shipping-method>
+                    <option value="JNE">JNE</option>
+                    <option value="GoSend Manual">GoSend Manual</option>
+                    <option value="Store Pickup">Store Pickup</option>
+                  </select>
+                </label>
+                <label data-checkout-address-field>Recipient<input name="shippingRecipient" required autocomplete="shipping name" /></label>
+                <label data-checkout-address-field>Recipient phone<input name="shippingPhone" required autocomplete="shipping tel" inputmode="tel" /></label>
+                <label class="admin-form-span" data-checkout-address-field>Address<input name="shippingAddress1" required autocomplete="shipping address-line1" /></label>
+                <label class="admin-form-span" data-checkout-address-field>Address details<input name="shippingAddress2" autocomplete="shipping address-line2" placeholder="Building, unit, or landmark (optional)" /></label>
+                <label data-checkout-address-field>District<input name="shippingDistrict" required autocomplete="shipping address-level3" /></label>
+                <label data-checkout-address-field>City / regency<input name="shippingCity" required autocomplete="shipping address-level2" /></label>
+                <label data-checkout-address-field>Province<input name="shippingProvince" required autocomplete="shipping address-level1" /></label>
+                <label data-checkout-address-field>Postal code<input name="shippingPostalCode" required autocomplete="shipping postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" /></label>
+                <label data-checkout-address-field>Country<input name="shippingCountry" value="Indonesia" readonly /></label>
               </div>
               <div class="admin-form-actions">
                 <button class="button button-dark" type="submit">Submit order</button>
@@ -2080,7 +2100,25 @@ function bindEvents() {
   document.querySelector("[data-checkout-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    const customer = Object.fromEntries(new FormData(form).entries());
+    const formData = new FormData(form);
+    const customer = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      whatsapp: formData.get("whatsapp"),
+      notes: formData.get("notes")
+    };
+    const shippingMethod = String(formData.get("shippingMethod") || "");
+    const shippingAddress = {
+      recipient: formData.get("shippingRecipient"),
+      phone: formData.get("shippingPhone"),
+      address1: formData.get("shippingAddress1"),
+      address2: formData.get("shippingAddress2"),
+      district: formData.get("shippingDistrict"),
+      city: formData.get("shippingCity"),
+      province: formData.get("shippingProvince"),
+      postalCode: formData.get("shippingPostalCode"),
+      country: formData.get("shippingCountry")
+    };
     const button = form.querySelector('button[type="submit"]');
     button.disabled = true;
     state.checkoutMessage = "Verifying official prices...";
@@ -2096,6 +2134,8 @@ function bindEvents() {
         body: JSON.stringify({
           items: rows.map((row) => ({ id: row.productId, size: row.size, quantity: row.quantity })),
           customer,
+          shippingMethod,
+          shippingAddress,
           orderId
         })
       });
@@ -2116,6 +2156,19 @@ function bindEvents() {
       await render({ preserveScroll: true });
     }
   });
+
+  const shippingMethod = document.querySelector("[data-checkout-shipping-method]");
+  const syncCheckoutAddressRequirements = () => {
+    const pickup = shippingMethod?.value === "Store Pickup";
+    document.querySelectorAll("[data-checkout-address-field]").forEach((field) => {
+      field.hidden = pickup;
+      field.querySelectorAll("input").forEach((input) => {
+        if (input.name !== "shippingAddress2" && input.name !== "shippingCountry") input.required = !pickup;
+      });
+    });
+  };
+  shippingMethod?.addEventListener("change", syncCheckoutAddressRequirements);
+  syncCheckoutAddressRequirements();
 
   document.querySelector("[data-admin-new-product]")?.addEventListener("click", () => {
     state.adminEditingProductId = null;

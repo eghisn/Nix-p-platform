@@ -1,7 +1,7 @@
 import { json } from "./_lib/auth.js";
 import { expirePendingOrders, normalizeShippingAddress } from "./_lib/commerce.js";
 import { handleMidtransToken, handleMidtransWebhook } from "./_lib/commerceHandlers.js";
-import { sendOrderNotification } from "./_lib/emailNotifications.js";
+import { sendCustomerOrderConfirmation, sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 
 export default async function handler(req, res) {
@@ -23,30 +23,47 @@ export default async function handler(req, res) {
 
     const orderId = normalizeOrderId(body.orderId);
     const customer = normalizeCustomer(body.customer);
+    const shippingMethod = normalizeShippingMethod(body.shippingMethod);
+    const shippingAddress = normalizeShippingAddress(body.shippingAddress);
+    validateCheckoutDetails(customer, shippingMethod, shippingAddress);
     const commerceV2Enabled = process.env.NIXP_COMMERCE_V2_ENABLED === "true";
     // The existing manual-order path remains live until Midtrans and the cron
     // secret are configured. The new workflow is enabled only by Vercel env.
     if (commerceV2Enabled) await expirePendingOrders();
-    const order = await supabaseFetch(commerceV2Enabled ? "rpc/create_checkout_order" : "rpc/submit_store_order", {
+    let order = await supabaseFetch(commerceV2Enabled ? "rpc/create_checkout_order" : "rpc/submit_store_order", {
       method: "POST",
       service: true,
       body: commerceV2Enabled ? {
         p_order_id: orderId,
         p_customer: customer,
         p_items: items,
-        p_shipping_address: normalizeShippingAddress(body.shippingAddress),
-        p_shipping_method: cleanText(body.shippingMethod, 80) || null
+        p_shipping_address: shippingAddress,
+        p_shipping_method: shippingMethod
       } : {
         p_order_id: orderId,
         p_customer: customer,
         p_items: items
       }
     });
-    const notification = await sendOrderNotification(order, customer).catch((error) => ({
-      delivered: false,
-      error: error instanceof Error ? error.message : "Notification delivery failed."
-    }));
-    if (!notification.delivered) console.warn("Order notification not delivered", { orderId: order.id, reason: notification.reason || notification.error || "unknown" });
+    if (!commerceV2Enabled) {
+      order = await supabaseFetch("rpc/annotate_legacy_order_delivery_cogs", {
+        method: "POST",
+        service: true,
+        body: {
+          p_order_id: orderId,
+          p_shipping_address: shippingAddress,
+          p_shipping_method: shippingMethod
+        }
+      });
+    }
+    const emailResult = (label) => (error) => ({ delivered: false, label, error: error instanceof Error ? error.message : "Notification delivery failed." });
+    const [internal, customerConfirmation] = await Promise.all([
+      sendOrderNotification(order, customer).catch(emailResult("internal")),
+      sendCustomerOrderConfirmation(order, customer, { shippingMethod, shippingAddress }).catch(emailResult("customer"))
+    ]);
+    const notification = { internal, customer: customerConfirmation };
+    if (!internal.delivered) console.warn("Internal order notification not delivered", { orderId: order.id, reason: internal.reason || internal.error || "unknown" });
+    if (!customerConfirmation.delivered) console.warn("Customer order confirmation not delivered", { orderId: order.id, reason: customerConfirmation.reason || customerConfirmation.error || "unknown" });
 
     return json(res, 200, {
       ok: true,
@@ -124,6 +141,40 @@ function normalizeCustomer(customer) {
     whatsapp: cleanText(customer?.whatsapp, 48),
     notes: cleanText(customer?.notes, 2000)
   };
+}
+
+function normalizeShippingMethod(value) {
+  const method = cleanText(value, 80);
+  if (!["JNE", "GoSend Manual", "Store Pickup"].includes(method)) {
+    const error = new Error("Please choose a valid shipping method.");
+    error.statusCode = 400;
+    throw error;
+  }
+  return method;
+}
+
+function validateCheckoutDetails(customer, shippingMethod, address) {
+  if (!customer.name) throwCheckoutError("Please enter your name.");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) throwCheckoutError("Please enter a valid email address.");
+  if (!customer.whatsapp) throwCheckoutError("Please enter a WhatsApp number.");
+  if (shippingMethod === "Store Pickup") return;
+  for (const [key, label] of [
+    ["recipient", "recipient name"],
+    ["phone", "recipient phone"],
+    ["address1", "address"],
+    ["district", "district"],
+    ["city", "city or regency"],
+    ["province", "province"]
+  ]) {
+    if (!address[key]) throwCheckoutError(`Please enter the ${label}.`);
+  }
+  if (!/^\d{5}$/.test(address.postalCode)) throwCheckoutError("Please enter a valid 5-digit Indonesian postal code.");
+}
+
+function throwCheckoutError(message) {
+  const error = new Error(message);
+  error.statusCode = 400;
+  throw error;
 }
 
 function cleanText(value, limit) {

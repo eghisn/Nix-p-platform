@@ -1991,6 +1991,20 @@ tr:last-child td {
   padding-top: 24px;
 }
 
+.checkout-form h2 {
+  margin: 4px 0 0;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+body:has(.cart-view) {
+  padding-bottom: 0;
+}
+
+body:has(.cart-view) .site-footer {
+  position: static;
+}
+
 .admin-form-span {
   grid-column: 1 / -1;
 }
