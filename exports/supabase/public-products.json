@@ -1,5 +1,291 @@
 [
   {
+    "id": "nxp-2026-app-0010-osculum-nylon-black-polo-cap",
+    "sku": "NXP-2026-APP-0010",
+    "title": "Osculum Nylon Black Polo Cap",
+    "artist": "Cold Metal Breathes Too",
+    "category": "Apparel",
+    "format": "Apparel",
+    "displayFormat": "",
+    "apparelType": "Accessories",
+    "condition": "",
+    "qty": 12,
+    "price": 320000,
+    "year": 2026,
+    "label": "Nix Powell",
+    "collection": "Cold Metal Breathes Too",
+    "color": "Black",
+    "material": "Nylon",
+    "image": "/public/uploads/products/nxp-2026-app-0010-osculum-cap-1.jpg",
+    "images": [
+      "/public/uploads/products/nxp-2026-app-0010-osculum-cap-1.jpg",
+      "/public/uploads/products/nxp-2026-app-0010-osculum-cap-2.jpg",
+      "/public/uploads/products/nxp-2026-app-0010-osculum-cap-3.jpg",
+      "/public/uploads/products/nxp-2026-app-0010-osculum-cap-4.jpg",
+      "/public/uploads/products/nxp-2026-app-0010-osculum-cap-5.jpg"
+    ],
+    "imageCredits": [],
+    "tags": [],
+    "details": [],
+    "sizes": [],
+    "description": "Polo cap in nylon with front Osculum art embroidery and Tether art embroidered on the side\n\nRound crown\nCurved brim\nFront art embroidery\nSide art embroidery\nFive-part construction\nAdjustable strap at rear\n100% Nylon\nColor: Black",
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-20",
+    "relatedArtists": [],
+    "homeCollections": [],
+    "homeSlideSort": null
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-13",
+    "id": "nxp-2026-app-0009-lattice-cap",
+    "sku": "NXP-2026-APP-0009",
+    "title": "Lattice Cap",
+    "artist": "Cold Metal Breathes Too",
+    "category": "Apparel",
+    "format": "Apparel",
+    "displayFormat": "",
+    "apparelType": "Accessories",
+    "condition": "",
+    "price": 320000,
+    "year": 2025,
+    "label": "Nix Powell",
+    "collection": "Cold Metal Breathes Too",
+    "color": "Black",
+    "material": "Cotton",
+    "image": "/public/uploads/products/nxp-2026-app-0009-lattice-cap-np-cap-front-stcsm-jpg-1783939928060.jpg",
+    "images": [
+      "/public/uploads/products/nxp-2026-app-0009-lattice-cap-np-cap-front-stcsm-jpg-1783939928060.jpg",
+      "/public/uploads/products/nxp-2026-app-0009-lattice-cap-np-cap-side-stcsm-jpg-1783939928071.jpg",
+      "/public/uploads/products/nxp-2026-app-0009-lattice-cap-dsc08850-jpg-1783939928194.jpg"
+    ],
+    "tags": [],
+    "details": [],
+    "sizes": [],
+    "description": "LATTICE CAP - COLD METAL BREATHES TOO POLO CAP IN BLACK\n\n\nCOLOR: BLACK\nMATERIAL: 100% COTTON\nLATTICE ART EMBROIDERED ON FRONT\nADJUSTABLE BACK STRAP.",
+    "qty": 1
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-13",
+    "id": "nxp-2026-app-0007-cold-metal-breathes-too-t-shirt",
+    "sku": "NXP-2026-APP-0007",
+    "title": "Cold Metal Breathes Too T-shirt",
+    "artist": "Cold Metal Breathes Too",
+    "category": "Apparel",
+    "format": "Apparel",
+    "displayFormat": "",
+    "apparelType": "Tops",
+    "condition": "",
+    "price": 350000,
+    "year": 2025,
+    "label": "Nix Powell",
+    "collection": "Cold Metal Breathes Too",
+    "color": "Black",
+    "material": "Heavy Cotton 16s 320GSM",
+    "image": "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-front-stcsm-jpg-1783937571772.jpg",
+    "images": [
+      "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-front-stcsm-jpg-1783937571772.jpg",
+      "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-back-stcsm-jpg-1783937571873.jpg",
+      "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-details-front-stcsm-jpg-1783937572128.jpg",
+      "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-details-back-stcsm-jpg-1783937572294.jpg",
+      "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-dsc08715-jpg-1783940012639.jpg"
+    ],
+    "tags": [],
+    "details": [],
+    "sizes": [
+      {
+        "label": "S",
+        "quantity": 3,
+        "soldOut": false
+      },
+      {
+        "label": "M",
+        "quantity": 1,
+        "soldOut": false
+      },
+      {
+        "label": "L",
+        "quantity": 8,
+        "soldOut": false
+      },
+      {
+        "label": "XL",
+        "quantity": 2,
+        "soldOut": false
+      }
+    ],
+    "description": "COLD METAL BREATHES TOO BLACK T-SHIRT\n16s 320GSM\n\n\nCOLD METAL BREATHES TOO ART SCREENPRINTED ON FRONT",
+    "qty": 1
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-13",
+    "id": "nxp-2026-app-0006-paranoiac-odyssey-t-shirt",
+    "sku": "NXP-2026-APP-0006",
+    "title": "Paranoiac Odyssey T-shirt",
+    "artist": "Paranoiac Odyssey",
+    "category": "Apparel",
+    "format": "Apparel",
+    "displayFormat": "",
+    "apparelType": "Tops",
+    "condition": "",
+    "price": 350000,
+    "year": 2024,
+    "label": "Nix Powell",
+    "collection": "Paranoiac Odyssey",
+    "color": "White",
+    "material": "Heavy Cotton 16s 265GSM",
+    "image": "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-hires-white-jpg-1783937379401.jpg",
+    "images": [
+      "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-hires-white-jpg-1783937379401.jpg",
+      "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-jhnh9858j-jpg-1783937379437.jpg",
+      "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-jhnh9854j-jpg-1783937379569.jpg",
+      "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-jhnh9862j-jpg-1783937379741.jpg",
+      "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-jhnh9863j-jpg-1783937380090.jpg"
+    ],
+    "tags": [],
+    "details": [],
+    "sizes": [
+      {
+        "label": "S",
+        "quantity": 2,
+        "soldOut": false
+      },
+      {
+        "label": "M",
+        "quantity": 1,
+        "soldOut": false
+      },
+      {
+        "label": "L",
+        "quantity": 0,
+        "soldOut": true
+      },
+      {
+        "label": "XL",
+        "quantity": 3,
+        "soldOut": false
+      }
+    ],
+    "description": "",
+    "qty": 1
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-13",
+    "id": "nxp-2026-app-0004-mesh-black-longsleeve",
+    "sku": "NXP-2026-APP-0004",
+    "title": "Mesh Black Longsleeve",
+    "artist": "Cold Metal Breathes Too",
+    "category": "Apparel",
+    "format": "Apparel",
+    "displayFormat": "",
+    "apparelType": "Tops",
+    "condition": "",
+    "price": 380000,
+    "year": 2026,
+    "label": "Nix Powell",
+    "collection": "Cold Metal Breathes Too",
+    "color": "Black",
+    "material": "Heavy Cotton 16s 250GSM",
+    "image": "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+    "images": [
+      "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+      "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08839j-jpg-1783936997925.jpg",
+      "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08615-jpg-1783940071226.jpg",
+      "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08635-jpg-1783940071368.jpg"
+    ],
+    "tags": [],
+    "details": [],
+    "sizes": [
+      {
+        "label": "S",
+        "quantity": 1,
+        "soldOut": false
+      },
+      {
+        "label": "M",
+        "quantity": 4,
+        "soldOut": false
+      },
+      {
+        "label": "L",
+        "quantity": 6,
+        "soldOut": false
+      },
+      {
+        "label": "XL",
+        "quantity": 4,
+        "soldOut": false
+      }
+    ],
+    "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
+    "qty": 1
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-13",
+    "id": "nxp-2026-app-0003-preform-tee",
+    "sku": "NXP-2026-APP-0003",
+    "title": "Preform Tee",
+    "artist": "Cold Metal Breathes Too",
+    "category": "Apparel",
+    "format": "Apparel",
+    "displayFormat": "",
+    "apparelType": "Tops",
+    "condition": "",
+    "price": 350000,
+    "year": 2026,
+    "label": "Nix Powell",
+    "collection": "Cold Metal Breathes Too",
+    "color": "Red",
+    "material": "Cotton Combed 20s",
+    "image": "/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08833j-jpg-1783936858741.jpg",
+    "images": [
+      "/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08833j-jpg-1783936858741.jpg",
+      "/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08835j-jpg-1783936858745.jpg",
+      "/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08656-jpg-1783939977234.jpg"
+    ],
+    "tags": [],
+    "details": [],
+    "sizes": [
+      {
+        "label": "S",
+        "quantity": 2,
+        "soldOut": false
+      },
+      {
+        "label": "M",
+        "quantity": 3,
+        "soldOut": false
+      },
+      {
+        "label": "L",
+        "quantity": 8,
+        "soldOut": false
+      },
+      {
+        "label": "XL",
+        "quantity": 5,
+        "soldOut": false
+      },
+      {
+        "label": "XXL",
+        "quantity": 3,
+        "soldOut": false
+      }
+    ],
+    "description": "PREFORM RED T-SHIRT\n20s 200GSM\n\nPREFORM ART SCREENPRINTED ON FRONT",
+    "qty": 1
+  },
+  {
     "publishStatus": "Published",
     "visibility": "Public",
     "updatedAt": "2026-07-12",
@@ -25,36 +311,6 @@
     ],
     "sizes": [
       {
-        "label": "S",
-        "quantity": 0,
-        "soldOut": true
-      },
-      {
-        "label": "M",
-        "quantity": 0,
-        "soldOut": true
-      },
-      {
-        "label": "L",
-        "quantity": 0,
-        "soldOut": true
-      },
-      {
-        "label": "XL",
-        "quantity": 0,
-        "soldOut": true
-      },
-      {
-        "label": "XXL",
-        "quantity": 0,
-        "soldOut": true
-      },
-      {
-        "label": "7",
-        "quantity": 0,
-        "soldOut": true
-      },
-      {
         "label": "9",
         "quantity": 4,
         "soldOut": false
@@ -66,7 +322,10 @@
       }
     ],
     "description": "PREFORM RINGNIX POWELL \"PREFORM\" RING IN BRASS\nTHESE JEWELLERY PIECES ARE CRAFTED WITH THE INDIVIDUAL HANDWORK OF THE ARTISAN, MAKING EACH PIECE UNIQUE.\nWHITE BRASS WITH A BRUSHED PALLADIUM FINISH\n\n\nCOLOR: PALLADIO\nMATERIAL: 100% BRASS",
-    "qty": 1
+    "qty": 1,
+    "images": [
+      "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg"
+    ]
   },
   {
     "publishStatus": "Published",
@@ -82,14 +341,14 @@
     "category": "Records",
     "qty": 1,
     "price": 470000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2013,
+    "label": "Alter",
     "image": "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0006"
     ],
-    "description": "Damien Dubrovnik - First Burning Attraction. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
     "details": [
       "SKU: NXP-2026-VNL-0006",
       "Format: Vinyl 12\"",
@@ -98,7 +357,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg"
+    ],
+    "relatedArtists": [
+      "Puce Mary",
+      "Croatian Amor",
+      "Lust For Youth"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 1,
+    "descriptionSource": "The Quietus",
+    "reviewQuote": "richer, more refined approach to texture",
+    "reviewSource": "The Quietus (quoted)",
+    "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -114,14 +390,14 @@
     "category": "Records",
     "qty": 1,
     "price": 415000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2008,
+    "label": "Nuclear Blast",
     "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0015"
     ],
-    "description": "Meshuggah - Obzen. CD from the current NIXP records selection.",
+    "description": "Meshuggah's 2008 Nuclear Blast album obZen compresses technical precision, polyrhythmic weight and brooding reflection into one of the band's defining records.",
     "details": [
       "SKU: NXP-2026-CD-0015",
       "Format: CD",
@@ -130,7 +406,26 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg"
+    ],
+    "relatedArtists": [
+      "Gojira",
+      "Car Bomb",
+      "Tesseract"
+    ],
+    "homeCollections": [
+      "back-in-stock"
+    ],
+    "homeSlideSort": 2,
+    "descriptionSource": "AllMusic / Pitchfork",
+    "reviewQuote": "magic combination of its earlier freneticism",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -146,14 +441,14 @@
     "category": "Records",
     "qty": 1,
     "price": 260000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2025,
+    "label": "Cav Empt",
     "image": "/public/covers/nxp-2026-cst-0005-rezzett-into-the-boiling-darks.jpg",
     "tags": [
       "Cassette",
       "NXP-2026-CST-0005"
     ],
-    "description": "Rezzet - Untitled Selection. Cassette from the current NIXP records selection.",
+    "description": "Rezzett's Into The Boiling Darks is a 2026 twenty-one-track set of warped, tactile electronic music from the London producer known for distressed rhythms and murky dance-floor pressure.",
     "details": [
       "SKU: NXP-2026-CST-0005",
       "Format: Cassette",
@@ -162,7 +457,34 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cst-0005-rezzett-into-the-boiling-darks.jpg",
+      "/public/mockups/nxp-2026-cst-0005-rezzett-into-the-boiling-darks-cassette.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-cst-0005-rezzett-into-the-boiling-darks-cassette.jpg",
+        "credit": "Cav Empt",
+        "url": "https://www.cavempt.com/"
+      }
+    ],
+    "relatedArtists": [
+      "Actress",
+      "Huerco S.",
+      "Kassem Mosse"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "nixp-selection",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 3,
+    "descriptionSource": "Spotify release listing / The Guardian",
+    "reviewQuote": "distressed dancefloor classics",
+    "reviewSource": "The Guardian (quoted from Rezzett review)",
+    "reviewUrl": "https://www.theguardian.com/music/2018/dec/21/rezzett-rezzett-review-distressed-dancefloor-classics",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -178,14 +500,14 @@
     "category": "Records",
     "qty": 1,
     "price": 180000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2012,
+    "label": "Warner Bros. Records / Sargent House",
     "image": "/public/covers/nxp-2026-cd-0010-the-mars-volta-noctourniquet.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0010"
     ],
-    "description": "The Mars Volta - Noctourniquet. CD from the current NIXP records selection.",
+    "description": "The Mars Volta's 2012 Noctourniquet pares the band's prog-rock excess into a tighter, electronic-tinged record of restless rhythms, fractured guitars and surreal vocals.",
     "details": [
       "SKU: NXP-2026-CD-0010",
       "Format: CD",
@@ -194,7 +516,36 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0010-the-mars-volta-noctourniquet.jpg",
+      "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-a.jpg",
+      "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-b.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-a.jpg",
+        "credit": "The Mars Volta / product listing",
+        "url": "https://themarsvoltaofficial.com/"
+      },
+      {
+        "image": "/public/mockups/nxp-2026-cd-0010-the-mars-volta-noctourniquet-cd-b.jpg",
+        "credit": "The Mars Volta / product listing",
+        "url": "https://themarsvoltaofficial.com/"
+      }
+    ],
+    "relatedArtists": [
+      "At The Drive-In",
+      "Omar Rodriguez-Lopez",
+      "Antemasque"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 4,
+    "descriptionSource": "AllMusic / Sputnikmusic",
+    "reviewQuote": "more progressive atmosphere",
+    "reviewSource": "Sputnikmusic (quoted)",
+    "reviewUrl": "https://www.sputnikmusic.com/review/49058/The-Mars-Volta-Noctourniquet/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -210,14 +561,18 @@
     "category": "Records",
     "qty": 1,
     "price": 250000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2016,
+    "label": "ISO Records / Columbia",
     "image": "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif",
     "tags": [
       "CD",
       "NXP-2026-CD-0011"
     ],
-    "description": "David Bowie - Blackstar. CD from the current NIXP records selection.",
+    "description": "David Bowie's 2016 Blackstar folds exploratory jazz, coded drama and alienation into a final act of reinvention, recorded with a New York jazz ensemble.",
+    "descriptionSource": "Pitchfork",
+    "reviewQuote": "exploratory jazz and the echoes of various mad men",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/21332-blackstar/",
     "details": [
       "SKU: NXP-2026-CD-0011",
       "Format: CD",
@@ -226,12 +581,27 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif"
+    ],
+    "relatedArtists": [
+      "Scott Walker",
+      "Nine Inch Nails",
+      "Brian Eno"
+    ],
+    "homeCollections": [
+      "nixp-selection"
+    ],
+    "homeSlideSort": 5,
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
     "visibility": "Public",
-    "updatedAt": "2026-07-11",
+    "updatedAt": "2026-07-12",
     "id": "nxp-2026-cd-0012",
     "sku": "NXP-2026-CD-0012",
     "title": "Hesitation Marks",
@@ -242,14 +612,14 @@
     "category": "Records",
     "qty": 1,
     "price": 250000,
-    "year": 2026,
-    "label": "NIXP Selection",
-    "image": "/public/covers/nxp-2026-cd-0012-nine-inch-nails-hesitation-marks.jpg",
+    "year": 2013,
+    "label": "The Null Corporation / Columbia",
+    "image": "/public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0012"
     ],
-    "description": "Nine Inch Nails - Hesitation Marks. CD from the current NIXP records selection.",
+    "description": "Nine Inch Nails' 2013 Hesitation Marks is a skeletal, spare return to electronic tension, balancing jagged digital detail with Trent Reznor's industrial songwriting.",
     "details": [
       "SKU: NXP-2026-CD-0012",
       "Format: CD",
@@ -258,7 +628,25 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "apparelType": "",
+    "images": [
+      "/public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg"
+    ],
+    "relatedArtists": [
+      "Trent Reznor and Atticus Ross",
+      "How to Destroy Angels",
+      "Ministry"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 6,
+    "descriptionSource": "Pitchfork / The Quietus",
+    "reviewQuote": "most explicitly electronic album in years",
+    "reviewSource": "The Quietus (quoted)",
+    "reviewUrl": "https://thequietus.com/quietus-reviews/nine-inch-nails-hesitation-marks-review/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -274,14 +662,14 @@
     "category": "Records",
     "qty": 1,
     "price": 350000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2009,
+    "label": "Load Records",
     "image": "/public/covers/nxp-2026-cd-0016-lightning-bolt-earthly-delights.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0016"
     ],
-    "description": "Lightning Bolt - Earthly Delights. CD from the current NIXP records selection.",
+    "description": "Lightning Bolt's 2009 Earthly Delights is a blast of Brian Chippendale's drums and vocals with Brian Gibson's bass, extending the duo's stripped-down attack into longer, louder forms.",
     "details": [
       "SKU: NXP-2026-CD-0016",
       "Format: CD",
@@ -290,7 +678,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0016-lightning-bolt-earthly-delights.jpg"
+    ],
+    "relatedArtists": [
+      "Hella",
+      "Melt-Banana",
+      "Black Pus"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 7,
+    "descriptionSource": "AllMusic",
+    "reviewQuote": "pummeling thunder",
+    "reviewSource": "AllMusic (quoted)",
+    "reviewUrl": "https://www.allmusic.com/album/earthly-delights-mw0000832395",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -306,14 +711,14 @@
     "category": "Records",
     "qty": 1,
     "price": 700000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2019,
+    "label": "Rough Trade Records",
     "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0004"
     ],
-    "description": "Girl Band - The Talkies. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Girl Band's 2019 Rough Trade album The Talkies turns Dublin post-punk into a physical study in distortion, repetition, panic and ecstatic release.",
     "details": [
       "SKU: NXP-2026-VNL-0004",
       "Format: Vinyl 12\"",
@@ -322,12 +727,37 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+      "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg",
+        "credit": "Gilla Band Bandcamp",
+        "url": "https://gillaband.bandcamp.com/album/the-talkies"
+      }
+    ],
+    "relatedArtists": [
+      "The Murder Capital",
+      "Shame",
+      "Squid"
+    ],
+    "homeCollections": [
+      "limited-pressing"
+    ],
+    "homeSlideSort": 8,
+    "descriptionSource": "Pitchfork",
+    "reviewQuote": "pure, visceral panic",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
     "visibility": "Public",
-    "updatedAt": "2026-07-11",
+    "updatedAt": "2026-07-12",
     "id": "nxp-2026-vnl-0005",
     "sku": "NXP-2026-VNL-0005",
     "title": "The Early Years",
@@ -338,14 +768,14 @@
     "category": "Records",
     "qty": 1,
     "price": 568000,
-    "year": 2026,
-    "label": "NIXP Selection",
-    "image": "/public/covers/nxp-2026-vnl-0005-gilla-band-the-early-years.jpg",
+    "year": 2025,
+    "label": "Rough Trade Records",
+    "image": "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0005"
     ],
-    "description": "Gilla Band - The Early Years. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Gilla Band's The Early Years gathers the Dublin band's formative recordings, tracing the movement from noisy post-punk structures toward their later, more fractured industrial sound.",
     "details": [
       "SKU: NXP-2026-VNL-0005",
       "Format: Vinyl 12\"",
@@ -354,12 +784,39 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "apparelType": "",
+    "images": [
+      "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
+      "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg",
+        "credit": "Gilla Band Bandcamp",
+        "url": "https://gillaband.bandcamp.com/album/the-early-years"
+      }
+    ],
+    "relatedArtists": [
+      "The Murder Capital",
+      "Shame",
+      "Squid"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 9,
+    "descriptionSource": "Gilla Band Bandcamp / The Guardian",
+    "reviewQuote": "full of sound and fury",
+    "reviewSource": "The Guardian (quoted from Gilla Band feature)",
+    "reviewUrl": "https://www.theguardian.com/music/2022/oct/06/gilla-band-most-normal-interview",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
     "visibility": "Public",
-    "updatedAt": "2026-07-11",
+    "updatedAt": "2026-07-12",
     "id": "nxp-2026-cd-0001",
     "sku": "NXP-2026-CD-0001",
     "title": "Chaosphere",
@@ -370,14 +827,14 @@
     "category": "Records",
     "qty": 1,
     "price": 285000,
-    "year": 2026,
-    "label": "NIXP Selection",
-    "image": "/public/covers/nxp-2026-cd-0001-meshuggah-chaosphere.jpg",
+    "year": 1998,
+    "label": "Nuclear Blast",
+    "image": "/public/uploads/products/nxp-2026-cd-0001-chaosphere-cover-425412532019-r-jpg-1783885419677.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0001"
     ],
-    "description": "Meshuggah - Chaosphere. CD from the current NIXP records selection.",
+    "description": "Meshuggah's 1998 Chaosphere is a landmark of extreme, rhythm-led metal, built from downtuned guitars, machine-like drumming and tightly interlocked polyrhythms.",
     "details": [
       "SKU: NXP-2026-CD-0001",
       "Format: CD",
@@ -386,7 +843,27 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "apparelType": "",
+    "images": [
+      "/public/uploads/products/nxp-2026-cd-0001-chaosphere-cover-425412532019-r-jpg-1783885419677.jpg"
+    ],
+    "relatedArtists": [
+      "Gojira",
+      "Car Bomb",
+      "Tesseract"
+    ],
+    "homeCollections": [
+      "back-in-stock"
+    ],
+    "homeSlideSort": 10,
+    "descriptionSource": "AllMusic",
+    "reviewQuote": "a landmark of extreme metal",
+    "reviewSource": "AllMusic (quoted)",
+    "reviewUrl": "https://www.allmusic.com/album/chaosphere-mw0000045171",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -394,7 +871,7 @@
     "updatedAt": "2026-07-11",
     "id": "nxp-2026-cd-0002",
     "sku": "NXP-2026-CD-0002",
-    "title": "Maverick",
+    "title": "Self Titled",
     "artist": "Team Sleep",
     "condition": "Used Excellent",
     "format": "CD",
@@ -402,14 +879,14 @@
     "category": "Records",
     "qty": 1,
     "price": 235000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2005,
+    "label": "Maverick",
     "image": "/public/covers/nxp-2026-cd-0002-team-sleep-maverick.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0002"
     ],
-    "description": "Team Sleep - Maverick. CD from the current NIXP records selection.",
+    "description": "Team Sleep's 2005 self-titled album is Chino Moreno's atmospheric side project with Deftones collaborators and guests, using dream-pop, electronics and slow-burn guitar space.",
     "details": [
       "SKU: NXP-2026-CD-0002",
       "Format: CD",
@@ -418,7 +895,26 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0002-team-sleep-maverick.jpg"
+    ],
+    "relatedArtists": [
+      "Deftones",
+      "Crosses",
+      "Palms"
+    ],
+    "homeCollections": [
+      "back-in-stock"
+    ],
+    "homeSlideSort": 11,
+    "descriptionSource": "Sputnikmusic",
+    "reviewQuote": "fit with the music very well",
+    "reviewSource": "Sputnikmusic (quoted)",
+    "reviewUrl": "https://www.sputnikmusic.com/review/2272/Team-Sleep-Team-Sleep/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -434,14 +930,14 @@
     "category": "Records",
     "qty": 1,
     "price": 150000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2002,
+    "label": "Freestyle Dust / Virgin",
     "image": "/public/covers/nxp-2026-cd-0003-the-chemical-brothers-come-with-us.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0003"
     ],
-    "description": "The Chemical Brothers - Untitled Selection. CD from the current NIXP records selection.",
+    "description": "The Chemical Brothers' 2002 Come With Us pairs big-beat propulsion with strings, keyboards, congas and psychedelic studio detail on a sleek early-2000s dance record.",
     "details": [
       "SKU: NXP-2026-CD-0003",
       "Format: CD",
@@ -450,7 +946,26 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0003-the-chemical-brothers-come-with-us.jpg"
+    ],
+    "relatedArtists": [
+      "Fatboy Slim",
+      "The Prodigy",
+      "The Crystal Method"
+    ],
+    "homeCollections": [
+      "back-in-stock"
+    ],
+    "homeSlideSort": 12,
+    "descriptionSource": "Pitchfork",
+    "reviewQuote": "rapid, heart-pounding conga workout",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/1417-come-with-us/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -466,14 +981,14 @@
     "category": "Records",
     "qty": 1,
     "price": 150000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2010,
+    "label": "Freestyle Dust / Parlophone",
     "image": "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0004"
     ],
-    "description": "The Chemical Brothers - Untitled Selection. CD from the current NIXP records selection.",
+    "description": "The Chemical Brothers' 2010 Further is a sequence of electronic songs designed as an audio-visual experience, balancing psychedelic repetition with the duo's club-scale impact.",
     "details": [
       "SKU: NXP-2026-CD-0004",
       "Format: CD",
@@ -482,7 +997,26 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg"
+    ],
+    "relatedArtists": [
+      "Fatboy Slim",
+      "The Prodigy",
+      "Underworld"
+    ],
+    "homeCollections": [
+      "back-in-stock"
+    ],
+    "homeSlideSort": 13,
+    "descriptionSource": "The Guardian",
+    "reviewQuote": "audio-visual experience",
+    "reviewSource": "The Guardian (quoted)",
+    "reviewUrl": "https://www.theguardian.com/music/2010/may/21/the-chemical-brothers-review",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -498,14 +1032,18 @@
     "category": "Records",
     "qty": 1,
     "price": 147000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2009,
+    "label": "Dress Up / Interscope",
     "image": "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0005"
     ],
-    "description": "Yeah Yeah Yeahs - Untitled Selection. CD from the current NIXP records selection.",
+    "description": "Yeah Yeah Yeahs' 2009 It's Blitz! recombines rock, synths and dance-floor instincts into a bracing, emotionally open third album.",
+    "descriptionSource": "Pitchfork",
+    "reviewQuote": "familiar shapes and tools",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/12855-its-blitz/",
     "details": [
       "SKU: NXP-2026-CD-0005",
       "Format: CD",
@@ -514,7 +1052,20 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg"
+    ],
+    "relatedArtists": [
+      "The Strokes",
+      "TV On The Radio",
+      "The Rapture"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 14,
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -530,14 +1081,14 @@
     "category": "Records",
     "qty": 1,
     "price": 150000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2003,
+    "label": "Maverick / Warner Bros.",
     "image": "/public/covers/nxp-2026-cd-0006-matrix-reloaded.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0006"
     ],
-    "description": "Various Artists - Reloaded. CD from the current NIXP records selection.",
+    "description": "The Matrix Reloaded soundtrack is a 2003 compilation of industrial, nu-metal, dark dance and film-score music, connecting artists such as Marilyn Manson, Deftones and Rob Zombie to the sequel.",
     "details": [
       "SKU: NXP-2026-CD-0006",
       "Format: CD",
@@ -546,7 +1097,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0006-matrix-reloaded.jpg"
+    ],
+    "relatedArtists": [
+      "Don Davis",
+      "Juno Reactor",
+      "Rob Dougan"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 15,
+    "descriptionSource": "AllMusic",
+    "reviewQuote": "industrial, aggro-nu-metal, and dark dance music",
+    "reviewSource": "AllMusic (quoted)",
+    "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -562,14 +1130,14 @@
     "category": "Records",
     "qty": 1,
     "price": 480000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2025,
+    "label": "True Panther",
     "image": "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0007"
     ],
-    "description": "Model Actriz - Pirouette. CD from the current NIXP records selection.",
+    "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
     "details": [
       "SKU: NXP-2026-CD-0007",
       "Format: CD",
@@ -578,7 +1146,33 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
+      "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png",
+        "credit": "True Panther",
+        "url": "https://truepanther.com/"
+      }
+    ],
+    "relatedArtists": [
+      "Gilla Band",
+      "Daughters",
+      "The Armed"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "nixp-selection"
+    ],
+    "homeSlideSort": 16,
+    "descriptionSource": "Pitchfork / The Guardian",
+    "reviewQuote": "savor their own powerlessness",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -594,14 +1188,14 @@
     "category": "Records",
     "qty": 1,
     "price": 500000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2025,
+    "label": "A24 Music",
     "image": "/public/covers/nxp-2026-cd-0008-daniel-lopatin-marty-supreme.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0008"
     ],
-    "description": "Daniel Lopatin - Marty Supreme. CD from the current NIXP records selection.",
+    "description": "Daniel Lopatin's 2025 Marty Supreme score uses bright percussion, synth layers and restless momentum to mirror the film's competitive table-tennis world.",
     "details": [
       "SKU: NXP-2026-CD-0008",
       "Format: CD",
@@ -610,7 +1204,33 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0008-daniel-lopatin-marty-supreme.jpg",
+      "/public/mockups/nxp-2026-cd-0008-daniel-lopatin-marty-supreme-cd.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-cd-0008-daniel-lopatin-marty-supreme-cd.jpg",
+        "credit": "A24 Music",
+        "url": "https://a24music.com/"
+      }
+    ],
+    "relatedArtists": [
+      "Oneohtrix Point Never",
+      "Tim Hecker",
+      "Arca"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "nixp-selection"
+    ],
+    "homeSlideSort": 17,
+    "descriptionSource": "Associated Press",
+    "reviewQuote": "propulsive score",
+    "reviewSource": "Associated Press (quoted)",
+    "reviewUrl": "https://apnews.com/article/cf0213e446ab505003c7d338c7ad9270",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -626,14 +1246,14 @@
     "category": "Records",
     "qty": 1,
     "price": 450000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2024,
+    "label": "Transgressive / Future Classic",
     "image": "/public/covers/nxp-2026-cd-0009-sophie-sophie.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0009"
     ],
-    "description": "Sophie - Sophie. CD from the current NIXP records selection.",
+    "description": "Sophie's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping her bright pop abstraction and industrial edges in conversation.",
     "details": [
       "SKU: NXP-2026-CD-0009",
       "Format: CD",
@@ -642,7 +1262,33 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0009-sophie-sophie.jpg",
+      "/public/mockups/nxp-2026-cd-0009-sophie-sophie-cd-b.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-cd-0009-sophie-sophie-cd-b.jpg",
+        "credit": "Transgressive Records",
+        "url": "https://transgressiverecords.com/"
+      }
+    ],
+    "relatedArtists": [
+      "Arca",
+      "A. G. Cook",
+      "Charli XCX"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "nixp-selection"
+    ],
+    "homeSlideSort": 18,
+    "descriptionSource": "Associated Press / Pitchfork",
+    "reviewQuote": "still sounds like the future of pop music",
+    "reviewSource": "Associated Press (quoted)",
+    "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -658,14 +1304,14 @@
     "category": "Records",
     "qty": 1,
     "price": 180000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2000,
+    "label": "Nothing Records / Interscope",
     "image": "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg",
     "tags": [
       "Cassette",
       "NXP-2026-CST-0001"
     ],
-    "description": "Nine Inch Nails - Things Falling Apart. Cassette from the current NIXP records selection.",
+    "description": "Nine Inch Nails' 2000 Things Falling Apart is a remix companion to The Fragile, rebuilding its industrial songs through altered rhythms, harsher electronics and new production perspectives.",
     "details": [
       "SKU: NXP-2026-CST-0001",
       "Format: Cassette",
@@ -674,7 +1320,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg"
+    ],
+    "relatedArtists": [
+      "Trent Reznor and Atticus Ross",
+      "How to Destroy Angels",
+      "Ministry"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 19,
+    "descriptionSource": "Pitchfork / AllMusic",
+    "reviewQuote": "a completely different beast",
+    "reviewSource": "AllMusic (quoted)",
+    "reviewUrl": "https://www.allmusic.com/album/things-falling-apart-mw0000101953",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -690,14 +1353,14 @@
     "category": "Records",
     "qty": 1,
     "price": 197000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2002,
+    "label": "Undying Music",
     "image": "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg",
     "tags": [
       "Cassette",
       "NXP-2026-CST-0002"
     ],
-    "description": "Poison The Well - Tear From The red. Cassette from the current NIXP records selection.",
+    "description": "Poison the Well's 2002 Tear From the Red captures the Florida band's transition from hardcore extremity toward a more melodic, emotionally expansive form of metalcore.",
     "details": [
       "SKU: NXP-2026-CST-0002",
       "Format: Cassette",
@@ -706,7 +1369,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg"
+    ],
+    "relatedArtists": [
+      "Thursday",
+      "Glassjaw",
+      "From Autumn to Ashes"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 20,
+    "descriptionSource": "Sputnikmusic",
+    "reviewQuote": "most accessible album",
+    "reviewSource": "Sputnikmusic (quoted)",
+    "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -722,14 +1402,14 @@
     "category": "Records",
     "qty": 2,
     "price": 100000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2003,
+    "label": "Maverick / Warner Bros.",
     "image": "/public/covers/nxp-2026-cst-0004-matrix-reloaded.jpg",
     "tags": [
       "Cassette",
       "NXP-2026-CST-0004"
     ],
-    "description": "Various Artists - Reloaded. Cassette from the current NIXP records selection.",
+    "description": "The Matrix Reloaded soundtrack's cassette edition presents the same 2003 compilation of industrial, aggro-nu-metal, dark dance and score material assembled for the film's sequel.",
     "details": [
       "SKU: NXP-2026-CST-0004",
       "Format: Cassette",
@@ -738,7 +1418,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cst-0004-matrix-reloaded.jpg"
+    ],
+    "relatedArtists": [
+      "Don Davis",
+      "Juno Reactor",
+      "Rob Dougan"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 21,
+    "descriptionSource": "AllMusic",
+    "reviewQuote": "industrial, aggro-nu-metal, and dark dance music",
+    "reviewSource": "AllMusic (quoted)",
+    "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -754,14 +1451,14 @@
     "category": "Records",
     "qty": 1,
     "price": 150000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 1997,
+    "label": "XL Recordings",
     "image": "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg",
     "tags": [
       "Cassette",
       "NXP-2026-CST-0006"
     ],
-    "description": "Prodigy - The Fat Of The Land. Cassette from the current NIXP records selection.",
+    "description": "The Prodigy's 1997 The Fat of the Land is a global breakbeat landmark, combining punk abrasion, rave production and hard-edged vocal hooks into a chart-topping set.",
     "details": [
       "SKU: NXP-2026-CST-0006",
       "Format: Cassette",
@@ -770,7 +1467,26 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg"
+    ],
+    "relatedArtists": [
+      "The Chemical Brothers",
+      "The Crystal Method",
+      "Fatboy Slim"
+    ],
+    "homeCollections": [
+      "back-in-stock"
+    ],
+    "homeSlideSort": 22,
+    "descriptionSource": "Pitchfork",
+    "reviewQuote": "a Jenga of drums",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/the-prodigy-the-fat-of-the-land/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -787,13 +1503,13 @@
     "qty": 1,
     "price": 950000,
     "year": 2026,
-    "label": "NIXP Selection",
+    "label": "Warp Records",
     "image": "/public/covers/nxp-2026-vnl-0001-squarepusher-kammerkonzert.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0001"
     ],
-    "description": "Squarepusher - Kammerkonzert. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Squarepusher's 2026 Kammerkonzert places Thomas Jenkinson's drum programming and bass imagination inside a virtual chamber ensemble shaped by jazz and contemporary composition.",
     "details": [
       "SKU: NXP-2026-VNL-0001",
       "Format: Vinyl 12\"",
@@ -802,7 +1518,34 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0001-squarepusher-kammerkonzert.jpg",
+      "/public/mockups/nxp-2026-vnl-0001-squarepusher-kammerkonzert-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0001-squarepusher-kammerkonzert-vinyl.jpg",
+        "credit": "Squarepusher Bandcamp",
+        "url": "https://squarepusher.bandcamp.com/"
+      }
+    ],
+    "relatedArtists": [
+      "Aphex Twin",
+      "Autechre",
+      "u-Ziq"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "nixp-selection",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 23,
+    "descriptionSource": "The Quietus",
+    "reviewQuote": "flagrant showcase for his ear and skill",
+    "reviewSource": "The Quietus (quoted)",
+    "reviewUrl": "https://thequietus.com/quietus-reviews/squarepusher-kammerkonzert-review/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -811,21 +1554,21 @@
     "id": "nxp-2026-vnl-0002",
     "sku": "NXP-2026-VNL-0002",
     "title": "3+5",
-    "artist": "Melt Banana",
+    "artist": "Melt-Banana",
     "condition": "New-Sealed",
     "format": "Vinyl",
     "displayFormat": "Vinyl 12\"",
     "category": "Records",
     "qty": 1,
     "price": 820000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2024,
+    "label": "A-Zap",
     "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0002"
     ],
-    "description": "Melt Banana - 3+5. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
     "details": [
       "SKU: NXP-2026-VNL-0002",
       "Format: Vinyl 12\"",
@@ -834,7 +1577,33 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+      "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
+        "credit": "Turntable Lab",
+        "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp"
+      }
+    ],
+    "relatedArtists": [
+      "Lightning Bolt",
+      "Hella",
+      "Boredoms"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 24,
+    "descriptionSource": "The Quietus / AllMusic",
+    "reviewQuote": "frantic sensibilities",
+    "reviewSource": "The Quietus (quoted)",
+    "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -850,14 +1619,18 @@
     "category": "Records",
     "qty": 1,
     "price": 900000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2024,
+    "label": "Warp Records",
     "image": "/public/covers/nxp-2026-vnl-0003-nala-sinephro-endlessness.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0003"
     ],
-    "description": "Nala Sinephro - Endlessness. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Nala Sinephro's 2024 Endlessness centers on evolving arpeggios, bringing harp, piano, modular synths and London's jazz community into one continuous field.",
+    "descriptionSource": "Pitchfork",
+    "reviewQuote": "a feat of physics",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/nala-sinephro-endlessness/",
     "details": [
       "SKU: NXP-2026-VNL-0003",
       "Format: Vinyl 12\"",
@@ -866,7 +1639,30 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0003-nala-sinephro-endlessness.jpg",
+      "/public/mockups/nxp-2026-vnl-0003-nala-sinephro-endlessness-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0003-nala-sinephro-endlessness-vinyl.jpg",
+        "credit": "Nala Sinephro Bandcamp",
+        "url": "https://nalasinephro.bandcamp.com/album/endlessness"
+      }
+    ],
+    "relatedArtists": [
+      "Floating Points",
+      "Shabaka Hutchings",
+      "Sam Gendel"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "nixp-selection",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 25,
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -882,14 +1678,14 @@
     "category": "Records",
     "qty": 1,
     "price": 250000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2012,
+    "label": "Innocent Records / Contra-Disc",
     "image": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0013"
     ],
-    "description": "Senyawa, Kazuhisa Uchihashi - Untitled Selection. CD from the current NIXP records selection.",
+    "description": "Senyawa and Kazuhisa Uchihashi's 2012 collaboration joins Rully Shabara and Wukir Suryadi's vocal and percussive practice with the Japanese improviser's prepared and electric guitar.",
     "details": [
       "SKU: NXP-2026-CD-0013",
       "Format: CD",
@@ -898,7 +1694,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi.jpg"
+    ],
+    "relatedArtists": [
+      "Keiji Haino",
+      "Otomo Yoshihide",
+      "Rully Shabara"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 26,
+    "descriptionSource": "The Wire / Innocent Records",
+    "reviewQuote": "Japanese guitar improv great",
+    "reviewSource": "The Wire (quoted)",
+    "reviewUrl": "https://escholarship.org/content/qt49b8n6x2/qt49b8n6x2_noSplash_c4fedc01d7808f9361783420c843047c.pdf",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -914,14 +1727,14 @@
     "category": "Records",
     "qty": 1,
     "price": 50000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2015,
+    "label": "Orange Cliff Records",
     "image": "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0014"
     ],
-    "description": "Sigmun - Crimson Eyes. CD from the current NIXP records selection.",
+    "description": "Sigmun's 2015 Crimson Eyes is the Indonesian quartet's debut, arranging slow-burning stoner and psychedelic rock around heavy riffs, dark surreal imagery and long-form dynamics.",
     "details": [
       "SKU: NXP-2026-CD-0014",
       "Format: CD",
@@ -930,7 +1743,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg"
+    ],
+    "relatedArtists": [
+      "Mooner",
+      "The Sigit",
+      "White Shoes & The Couples Company"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 27,
+    "descriptionSource": "Deathrockstar / Superlive",
+    "reviewQuote": "a proof of continuation, not a beginning",
+    "reviewSource": "Deathrockstar (quoted, translated)",
+    "reviewUrl": "https://www.deathrockstar.club/review-album-sigmun-crimson-eyes/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -946,14 +1776,14 @@
     "category": "Records",
     "qty": 1,
     "price": 200000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2013,
+    "label": "ISO Records / Columbia",
     "image": "/public/covers/nxp-2026-cd-0017-david-bowie-the-next-day.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0017"
     ],
-    "description": "David Bowie - The Next Day. CD from the current NIXP records selection.",
+    "description": "David Bowie's 2013 The Next Day is a surprise return after a decade away, using hard-edged rock, art-pop echoes and self-reference without becoming a simple nostalgia record.",
     "details": [
       "SKU: NXP-2026-CD-0017",
       "Format: CD",
@@ -962,7 +1792,36 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0017-david-bowie-the-next-day.jpg",
+      "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-a.jpg",
+      "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-b.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-a.jpg",
+        "credit": "David Bowie official store",
+        "url": "https://shop.davidbowie.com/"
+      },
+      {
+        "image": "/public/mockups/nxp-2026-cd-0017-david-bowie-the-next-day-cd-b.jpg",
+        "credit": "David Bowie official store",
+        "url": "https://shop.davidbowie.com/"
+      }
+    ],
+    "relatedArtists": [
+      "Scott Walker",
+      "Brian Eno",
+      "Iggy Pop"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 28,
+    "descriptionSource": "Pitchfork",
+    "reviewQuote": "a cunning act of sleight of hand",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/17855-david-bowie-the-next-day/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -978,14 +1837,14 @@
     "category": "Records",
     "qty": 1,
     "price": 170000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2003,
+    "label": "RCA",
     "image": "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0018"
     ],
-    "description": "Cave In - Antenna. CD from the current NIXP records selection.",
+    "description": "Cave In's 2003 Antenna moves the Massachusetts band's experimental metal toward concise hooks and major-label scale while keeping its guitars intelligently warped.",
     "details": [
       "SKU: NXP-2026-CD-0018",
       "Format: CD",
@@ -994,7 +1853,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg"
+    ],
+    "relatedArtists": [
+      "Converge",
+      "Isis",
+      "Botch"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 29,
+    "descriptionSource": "AllMusic / Pitchfork",
+    "reviewQuote": "intelligently warped sound",
+    "reviewSource": "AllMusic (quoted)",
+    "reviewUrl": "https://www.allmusic.com/album/antenna-mw0000021409",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -1010,14 +1886,14 @@
     "category": "Records",
     "qty": 1,
     "price": 200000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2009,
+    "label": "Domino",
     "image": "/public/covers/nxp-2026-cd-0019-animal-collective-merriweather-post-pavilion.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0019"
     ],
-    "description": "Animal Collective - Merriweather Post Pavilion. CD from the current NIXP records selection.",
+    "description": "Animal Collective's 2009 Merriweather Post Pavilion refines the group's layered vocals, ecstatic electronics and organic percussion into an unusually immediate kind of psychedelic pop.",
     "details": [
       "SKU: NXP-2026-CD-0019",
       "Format: CD",
@@ -1026,7 +1902,26 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0019-animal-collective-merriweather-post-pavilion.jpg"
+    ],
+    "relatedArtists": [
+      "Panda Bear",
+      "Avey Tare",
+      "Boards of Canada"
+    ],
+    "homeCollections": [
+      "back-in-stock"
+    ],
+    "homeSlideSort": 30,
+    "descriptionSource": "Pitchfork",
+    "reviewQuote": "new kind of electronic pop",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/12518-merriweather-post-pavilion/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -1042,14 +1937,14 @@
     "category": "Records",
     "qty": 1,
     "price": 200000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 1988,
+    "label": "Creation Records",
     "image": "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0020"
     ],
-    "description": "My Bloody Valentine - Isn't Anything. CD from the current NIXP records selection.",
+    "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
     "details": [
       "SKU: NXP-2026-CD-0020",
       "Format: CD",
@@ -1058,7 +1953,26 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg"
+    ],
+    "relatedArtists": [
+      "Slowdive",
+      "Ride",
+      "Cocteau Twins"
+    ],
+    "homeCollections": [
+      "back-in-stock"
+    ],
+    "homeSlideSort": 31,
+    "descriptionSource": "The Quietus / AllMusic",
+    "reviewQuote": "livid, lurid and lucid",
+    "reviewSource": "The Quietus (quoted)",
+    "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -1074,14 +1988,14 @@
     "category": "Records",
     "qty": 1,
     "price": 250000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2019,
+    "label": "Avalanche Recordings / Daymare Recordings",
     "image": "/public/covers/nxp-2026-cd-0021-jk-flesh-gothtrad-knights-of-the-black-table.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0021"
     ],
-    "description": "JK Flesh, Gothtrad - Knights of The Black Table. CD from the current NIXP records selection.",
+    "description": "JK Flesh and Goth-Trad's 2019 Knights of the Black Table is an industrial-bass collaboration where Justin Broadrick's metal pressure meets Goth-Trad's stripped, dub-informed electronics.",
     "details": [
       "SKU: NXP-2026-CD-0021",
       "Format: CD",
@@ -1090,7 +2004,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0021-jk-flesh-gothtrad-knights-of-the-black-table.jpg"
+    ],
+    "relatedArtists": [
+      "Godflesh",
+      "Justin Broadrick",
+      "Scorn"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 32,
+    "descriptionSource": "Resident Advisor",
+    "reviewQuote": "slanted techno and industrial bass",
+    "reviewSource": "Resident Advisor (quoted)",
+    "reviewUrl": "https://ra.co/reviews/23726",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -1106,14 +2037,14 @@
     "category": "Records",
     "qty": 1,
     "price": 250000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2018,
+    "label": "Sacred Bones Records",
     "image": "/public/covers/nxp-2026-cd-0022-soft-moon-criminal.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0022"
     ],
-    "description": "Soft Moon - Criminal. CD from the current NIXP records selection.",
+    "description": "The Soft Moon's 2018 Criminal is Luis Vasquez's stark industrial-rock record, turning isolation, mechanical rhythm and cold-wave atmosphere into a confessional late-period statement.",
     "details": [
       "SKU: NXP-2026-CD-0022",
       "Format: CD",
@@ -1122,7 +2053,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0022-soft-moon-criminal.jpg"
+    ],
+    "relatedArtists": [
+      "Cold Cave",
+      "Drab Majesty",
+      "TR/ST"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 33,
+    "descriptionSource": "AllMusic / Sacred Bones",
+    "reviewQuote": "confessional industrial rock",
+    "reviewSource": "AllMusic (quoted)",
+    "reviewUrl": "https://www.allmusic.com/album/criminal-mw0003185357",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -1138,14 +2086,14 @@
     "category": "Records",
     "qty": 1,
     "price": 190000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2023,
+    "label": "P2",
     "image": "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg",
     "tags": [
       "Cassette",
       "NXP-2026-CST-0007"
     ],
-    "description": "Behold The Arctopus - Interstellar Overtrove. Cassette from the current NIXP records selection.",
+    "description": "Behold... The Arctopus's 2023 Interstellar Overtrove is an instrumental experiment in avant-garde jazz, jazz fusion and technical metal, performed with electronic drums, Warr guitar and guitar synth.",
     "details": [
       "SKU: NXP-2026-CST-0007",
       "Format: Cassette",
@@ -1154,7 +2102,24 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg"
+    ],
+    "relatedArtists": [
+      "Dysrhythmia",
+      "Krallice",
+      "Orthrelm"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": 34,
+    "descriptionSource": "The Progressive Subway",
+    "reviewQuote": "decidedly another non-metal experiment",
+    "reviewSource": "The Progressive Subway (quoted)",
+    "reviewUrl": "https://theprogressivesubway.com/2023/09/27/review-behold-the-arctopus-interstellar-overtrove/",
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "publishStatus": "Published",
@@ -1170,14 +2135,14 @@
     "category": "Records",
     "qty": 1,
     "price": 450000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2025,
+    "label": "Trouble In Mind",
     "image": "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
     "tags": [
       "Cassette",
       "NXP-2026-CST-0008"
     ],
-    "description": "FACS - Wish Defense. Cassette from the current NIXP records selection.",
+    "description": "FACS' 2025 Wish Defense is brooding post-punk with wiry guitars, hypnotic drums and dirty bass, and the final recording made by Steve Albini at Electrical Audio.",
     "details": [
       "SKU: NXP-2026-CST-0008",
       "Format: Cassette",
@@ -1186,7 +2151,33 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
+      "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg",
+        "credit": "Trouble In Mind Records",
+        "url": "https://troubleinmindrecs.com/"
+      }
+    ],
+    "relatedArtists": [
+      "Disappears",
+      "Preoccupations",
+      "Ought"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 35,
+    "descriptionSource": "New Noise Magazine",
+    "reviewQuote": "a cavernous uneasiness",
+    "reviewSource": "New Noise Magazine (quoted)",
+    "reviewUrl": "https://newnoisemagazine.com/reviews/album-review-facs-wish-defense/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -1202,14 +2193,14 @@
     "category": "Records",
     "qty": 1,
     "price": 450000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2024,
+    "label": "XL Recordings",
     "image": "/public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg",
     "tags": [
       "Cassette",
       "NXP-2026-CST-0009"
     ],
-    "description": "Peggy Gou - I Hear You. Cassette from the current NIXP records selection.",
+    "description": "Peggy Gou's 2024 I Hear You brings house foundations, disco gloss and pop-minded hooks together in a concise debut designed for both headphones and the dance floor.",
     "details": [
       "SKU: NXP-2026-CST-0009",
       "Format: Cassette",
@@ -1218,12 +2209,38 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg",
+      "/public/mockups/nxp-2026-cst-0009-peggy-gou-i-hear-you-cassette.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-cst-0009-peggy-gou-i-hear-you-cassette.jpg",
+        "credit": "XL Recordings",
+        "url": "https://xlrecordings.com/"
+      }
+    ],
+    "relatedArtists": [
+      "DJ Koze",
+      "Jayda G",
+      "Honey Dijon"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 36,
+    "descriptionSource": "Pitchfork / NME",
+    "reviewQuote": "crowd-pleasing anthems come naturally",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/peggy-gou-i-hear-you/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
     "visibility": "Public",
-    "updatedAt": "2026-07-11",
+    "updatedAt": "2026-07-12",
     "id": "nxp-2026-vnl-0007",
     "sku": "NXP-2026-VNL-0007",
     "title": "Love Heart Cheat Code",
@@ -1234,14 +2251,14 @@
     "category": "Records",
     "qty": 1,
     "price": 900000,
-    "year": 2026,
-    "label": "NIXP Selection",
-    "image": "/public/covers/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code.jpg",
+    "year": 2024,
+    "label": "Brainfeeder",
+    "image": "/public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0007"
     ],
-    "description": "Hiatus Kaiyote - Love Heart Cheat Code. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Hiatus Kaiyote's 2024 Love Heart Cheat Code expands the Melbourne group's future-soul vocabulary with jazz harmony, elastic rhythm and Nai Palm's intimate vocal writing.",
     "details": [
       "SKU: NXP-2026-VNL-0007",
       "Format: Vinyl 12\"",
@@ -1250,7 +2267,34 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "apparelType": "",
+    "images": [
+      "/public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg",
+      "/public/mockups/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code-vinyl.jpg",
+        "credit": "Hiatus Kaiyote Bandcamp",
+        "url": "https://hiatuskaiyote.bandcamp.com/merch"
+      }
+    ],
+    "relatedArtists": [
+      "Nai Palm",
+      "Moonchild",
+      "Thundercat"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 37,
+    "descriptionSource": "Slant / Exclaim",
+    "reviewQuote": "a celebration of musical connection",
+    "reviewSource": "Exclaim (quoted)",
+    "reviewUrl": "https://exclaim.ca/music/article/hiatus-kaiyote-love-heart-cheat-code-album-review",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -1266,14 +2310,14 @@
     "category": "Records",
     "qty": 1,
     "price": 700000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2013,
+    "label": "PAN",
     "image": "/public/covers/nxp-2026-vnl-0008-arca-.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0008"
     ],
-    "description": "Arca - &&&&&. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Arca's 2013 &&&&& is a continuous twenty-five-minute mixtape that mutates grime, trap, glitch and dub into a slippery, multi-layered vision of electronic music.",
     "details": [
       "SKU: NXP-2026-VNL-0008",
       "Format: Vinyl 12\"",
@@ -1282,7 +2326,33 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0008-arca-.jpg",
+      "/public/mockups/nxp-2026-vnl-0008-arca-and-and-and-and-and-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0008-arca-and-and-and-and-and-vinyl.jpg",
+        "credit": "Arca Bandcamp",
+        "url": "https://arca1000000.bandcamp.com/"
+      }
+    ],
+    "relatedArtists": [
+      "SOPHIE",
+      "FKA twigs",
+      "Bjork"
+    ],
+    "homeCollections": [
+      "nixp-selection",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 38,
+    "descriptionSource": "Pitchfork / PAN",
+    "reviewQuote": "unfathomably skillful and multi-layered",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/arca-andandandandand/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -1298,14 +2368,14 @@
     "category": "Records",
     "qty": 1,
     "price": 550000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2019,
+    "label": "Domino",
     "image": "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0009"
     ],
-    "description": "Panda Bear - Buoys. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Panda Bear's 2019 Buoys strips Noah Lennox's songwriting toward acoustic guitar, sparse digital production and voice, creating a direct and solitary Domino album.",
     "details": [
       "SKU: NXP-2026-VNL-0009",
       "Format: Vinyl 12\"",
@@ -1314,7 +2384,32 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
+      "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg",
+        "credit": "Domino",
+        "url": "https://www.dominomusic.com/releases/panda-bear/buoys/deluxe-lp"
+      }
+    ],
+    "relatedArtists": [
+      "Animal Collective",
+      "Avey Tare",
+      "Deakin"
+    ],
+    "homeCollections": [
+      "limited-pressing"
+    ],
+    "homeSlideSort": 39,
+    "descriptionSource": "Pitchfork / The Guardian",
+    "reviewQuote": "unusually unified listen",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/panda-bear-buoys/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -1330,14 +2425,14 @@
     "category": "Records",
     "qty": 1,
     "price": 550000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2024,
+    "label": "XL Recordings",
     "image": "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0010"
     ],
-    "description": "Overmono & The Streets Turn The Page - Turn The Page. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Overmono's 2024 XL rework of The Streets' Turn The Page translates the 2002 original into a glitchy, club-ready UK dance track and long-running live favorite.",
     "details": [
       "SKU: NXP-2026-VNL-0010",
       "Format: Vinyl 12\"",
@@ -1346,7 +2441,33 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png",
+      "/public/mockups/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-vinyl.jpg",
+        "credit": "Overmono Bandcamp",
+        "url": "https://overmono.bandcamp.com/album/turn-the-page"
+      }
+    ],
+    "relatedArtists": [
+      "Joy Orbison",
+      "Bicep",
+      "The Streets"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 40,
+    "descriptionSource": "Pitchfork / The Guardian",
+    "reviewQuote": "glitchy techno banger",
+    "reviewSource": "Rolling Stone UK (quoted)",
+    "reviewUrl": "https://www.rollingstone.co.uk/music/overmono-london-roundhouse-live-review-good-lies-33786/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -1363,13 +2484,13 @@
     "qty": 1,
     "price": 1000000,
     "year": 2026,
-    "label": "NIXP Selection",
+    "label": "Stroom",
     "image": "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0011"
     ],
-    "description": "Heith & Tarawangsawelas - Duori. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Heith and Tarawangsawelas' 2026 Duori documents a long-distance collaboration shaped by Sundanese ritual, jaipong club culture, low-fidelity exchange and electronic sound design.",
     "details": [
       "SKU: NXP-2026-VNL-0011",
       "Format: Vinyl 12\"",
@@ -1378,7 +2499,34 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
+      "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg",
+        "credit": "Meditations",
+        "url": "https://meditations.jp/products/heith-tarawangsawelas-duori-lp"
+      }
+    ],
+    "relatedArtists": [
+      "Jon Hassell",
+      "Tarawangsawelas",
+      "Heith"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "nixp-selection",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 41,
+    "descriptionSource": "Mindies / STROOM",
+    "reviewQuote": "a digital magical realism",
+    "reviewSource": "Mindies (quoted, translated)",
+    "reviewUrl": "https://www.mindies.es/review/heith-tarawangsawelas-duori-critica-de-su-disco-conjunto/",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
@@ -1394,14 +2542,14 @@
     "category": "Records",
     "qty": 1,
     "price": 950000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2025,
+    "label": "XL Recordings",
     "image": "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
     "tags": [
       "Vinyl 12\"",
       "NXP-2026-VNL-0012"
     ],
-    "description": "Blawan - SickElixir. Vinyl 12\" from the current NIXP records selection.",
+    "description": "Blawan's 2025 SickElixir balances industrial abrasion with dance-floor pleasure, turning modular percussion, distorted voices and mutated techno into an unusually entrancing second album.",
     "details": [
       "SKU: NXP-2026-VNL-0012",
       "Format: Vinyl 12\"",
@@ -1410,12 +2558,93 @@
     "sizes": [],
     "collection": "NIXP Selection",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
+      "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg",
+        "credit": "Turntable Lab",
+        "url": "https://www.turntablelab.com/products/blawan-sickelixir-vinyl-lp"
+      }
+    ],
+    "relatedArtists": [
+      "Karenn",
+      "Pariah",
+      "Surgeon"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "nixp-selection",
+      "limited-pressing"
+    ],
+    "homeSlideSort": 42,
+    "descriptionSource": "The FADER / Resident Advisor",
+    "reviewQuote": "grotesque, gorgeous dance music",
+    "reviewSource": "The FADER (quoted)",
+    "reviewUrl": "https://www.thefader.com/2025/10/10/blawan-sickelixir-review",
+    "edition": ""
   },
   {
     "publishStatus": "Published",
     "visibility": "Public",
-    "updatedAt": "2026-07-11",
+    "updatedAt": "2026-07-17",
+    "id": "nxp-2026-vnl-0013-self-titled",
+    "sku": "NXP-2026-VNL-0013",
+    "title": "Self Titled",
+    "artist": "Giant Swan",
+    "condition": "New-Unsealed",
+    "format": "Vinyl",
+    "displayFormat": "Vinyl 12\"",
+    "category": "Records",
+    "qty": 1,
+    "price": 500000,
+    "year": 2019,
+    "label": "Keck",
+    "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0013-1784281689333-a2998490938-10.jpg",
+    "tags": [
+      "Vinyl 12\"",
+      "NXP-2026-VNL-0013"
+    ],
+    "description": "Giant Swan's self-titled debut is a 2019 Keck LP by Bristol duo Robin Stewart and Harry Wright, built from rugged electronics, improvised pressure and physical club energy.",
+    "descriptionSource": "Giant Swan Bandcamp / The Wire",
+    "reviewQuote": "a statement that changes with each recipient",
+    "reviewSource": "Turntable Lab, quoted from Giant Swan",
+    "reviewUrl": "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp",
+    "details": [
+      "SKU: NXP-2026-VNL-0013",
+      "Format: Vinyl 12\"",
+      "Condition: New-Unsealed"
+    ],
+    "sizes": [],
+    "collection": "Keck",
+    "color": "",
+    "material": "",
+    "images": [
+      "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0013-1784281689333-a2998490938-10.jpg",
+      "/public/mockups/nxp-2026-vnl-0013-giant-swan-self-titled-vinyl.jpg"
+    ],
+    "imageCredits": [
+      {
+        "image": "/public/mockups/nxp-2026-vnl-0013-giant-swan-self-titled-vinyl.jpg",
+        "credit": "Turntable Lab",
+        "url": "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp"
+      }
+    ],
+    "relatedArtists": [
+      "Blawan",
+      "Tzusing"
+    ],
+    "homeCollections": [],
+    "homeSlideSort": null,
+    "edition": ""
+  },
+  {
+    "publishStatus": "Published",
+    "visibility": "Public",
+    "updatedAt": "2026-07-13",
     "id": "app-001",
     "sku": "NXP-2023-APP-0001",
     "title": "Crewneck Sweatshirt",
@@ -1467,12 +2696,20 @@
       "Cotton fleece",
       "Black"
     ],
-    "collection": "Motorith"
+    "collection": "Motorith",
+    "images": [
+      "/public/display-photos/motorith-crewneck-sweatshirt-2023.png",
+      "/public/uploads/products/nxp-2023-app-0001-crewneck-sweatshirt-dsc08739-jpg-1783940116533.jpg",
+      "/public/uploads/products/nxp-2023-app-0001-crewneck-sweatshirt-dsc08745-jpg-1783940116734.jpg"
+    ],
+    "displayFormat": "",
+    "condition": "",
+    "qty": 1
   },
   {
     "publishStatus": "Published",
     "visibility": "Public",
-    "updatedAt": "2026-07-12",
+    "updatedAt": "2026-07-13",
     "id": "app-002",
     "sku": "NXP-2026-APP-0002",
     "title": "Flesh Knitsweater",
@@ -1521,7 +2758,11 @@
     ],
     "displayFormat": "",
     "condition": "",
-    "qty": 1
+    "qty": 1,
+    "images": [
+      "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
+      "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08676-jpg-1783940136800.jpg"
+    ]
   },
   {
     "publishStatus": "Published",
@@ -1551,7 +2792,11 @@
     "sizes": [],
     "collection": "NIXP Publishing",
     "color": "",
-    "material": ""
+    "material": "",
+    "images": [
+      "/public/nixp-product-example-paper.png"
+    ],
+    "qty": 0
   },
   {
     "publishStatus": "Published",
@@ -1567,19 +2812,43 @@
     "category": "Records",
     "qty": 1,
     "price": 300000,
-    "year": 2026,
-    "label": "NIXP Selection",
+    "year": 2025,
+    "label": "Warp Records",
     "tags": [
       "CD",
       "NXP-2026-CD-0023"
     ],
+    "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
+    "descriptionSource": "Pitchfork",
+    "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
+    "reviewSource": "Pitchfork (quoted)",
+    "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
     "details": [
       "SKU: NXP-2026-CD-0023",
       "Format: CD",
       "Condition: Used Excellence"
     ],
     "sizes": [],
-    "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
+    "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg",
+    "collection": "NIXP Selection",
+    "color": "",
+    "material": "",
+    "images": [
+      "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
+    ],
+    "relatedArtists": [
+      "Tim Hecker",
+      "Arca",
+      "Daniel Lopatin"
+    ],
+    "homeCollections": [
+      "recent-releases",
+      "nixp-selection"
+    ],
+    "homeSlideSort": 43,
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   },
   {
     "id": "nxp-2026-cd-0024-antemasque",
@@ -1661,6 +2930,9 @@
       "lengthCm": null,
       "updatedAt": "2026-07-19",
       "weightGrams": null
-    }
+    },
+    "edition": "",
+    "mediaCondition": "",
+    "sleeveCondition": ""
   }
 ]

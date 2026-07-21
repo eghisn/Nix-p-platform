@@ -2,6 +2,43 @@
   "version": "home-slider-related-artists-2026-07-15",
   "products": [
     {
+      "id": "nxp-2026-app-0010-osculum-nylon-black-polo-cap",
+      "sku": "NXP-2026-APP-0010",
+      "title": "Osculum Nylon Black Polo Cap",
+      "artist": "Cold Metal Breathes Too",
+      "category": "Apparel",
+      "format": "Apparel",
+      "displayFormat": "",
+      "apparelType": "Accessories",
+      "condition": "",
+      "qty": 12,
+      "price": 320000,
+      "year": 2026,
+      "label": "Nix Powell",
+      "collection": "Cold Metal Breathes Too",
+      "color": "Black",
+      "material": "Nylon",
+      "image": "/public/uploads/products/nxp-2026-app-0010-osculum-cap-1.jpg",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0010-osculum-cap-1.jpg",
+        "/public/uploads/products/nxp-2026-app-0010-osculum-cap-2.jpg",
+        "/public/uploads/products/nxp-2026-app-0010-osculum-cap-3.jpg",
+        "/public/uploads/products/nxp-2026-app-0010-osculum-cap-4.jpg",
+        "/public/uploads/products/nxp-2026-app-0010-osculum-cap-5.jpg"
+      ],
+      "imageCredits": [],
+      "tags": [],
+      "details": [],
+      "sizes": [],
+      "description": "Polo cap in nylon with front Osculum art embroidery and Tether art embroidered on the side\n\nRound crown\nCurved brim\nFront art embroidery\nSide art embroidery\nFive-part construction\nAdjustable strap at rear\n100% Nylon\nColor: Black",
+      "publishStatus": "Published",
+      "visibility": "Public",
+      "updatedAt": "2026-07-20",
+      "relatedArtists": [],
+      "homeCollections": [],
+      "homeSlideSort": null
+    },
+    {
       "publishStatus": "Published",
       "visibility": "Public",
       "updatedAt": "2026-07-13",
@@ -336,7 +373,10 @@
       "descriptionSource": "The Quietus",
       "reviewQuote": "richer, more refined approach to texture",
       "reviewSource": "The Quietus (quoted)",
-      "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview"
+      "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -384,7 +424,10 @@
       "descriptionSource": "AllMusic / Pitchfork",
       "reviewQuote": "magic combination of its earlier freneticism",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -442,7 +485,8 @@
       "descriptionSource": "Spotify release listing / The Guardian",
       "reviewQuote": "distressed dancefloor classics",
       "reviewSource": "The Guardian (quoted from Rezzett review)",
-      "reviewUrl": "https://www.theguardian.com/music/2018/dec/21/rezzett-rezzett-review-distressed-dancefloor-classics"
+      "reviewUrl": "https://www.theguardian.com/music/2018/dec/21/rezzett-rezzett-review-distressed-dancefloor-classics",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -502,7 +546,8 @@
       "descriptionSource": "AllMusic / Sputnikmusic",
       "reviewQuote": "more progressive atmosphere",
       "reviewSource": "Sputnikmusic (quoted)",
-      "reviewUrl": "https://www.sputnikmusic.com/review/49058/The-Mars-Volta-Noctourniquet/"
+      "reviewUrl": "https://www.sputnikmusic.com/review/49058/The-Mars-Volta-Noctourniquet/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -550,7 +595,10 @@
       "homeCollections": [
         "nixp-selection"
       ],
-      "homeSlideSort": 5
+      "homeSlideSort": 5,
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -597,7 +645,10 @@
       "descriptionSource": "Pitchfork / The Quietus",
       "reviewQuote": "most explicitly electronic album in years",
       "reviewSource": "The Quietus (quoted)",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/nine-inch-nails-hesitation-marks-review/"
+      "reviewUrl": "https://thequietus.com/quietus-reviews/nine-inch-nails-hesitation-marks-review/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -643,7 +694,10 @@
       "descriptionSource": "AllMusic",
       "reviewQuote": "pummeling thunder",
       "reviewSource": "AllMusic (quoted)",
-      "reviewUrl": "https://www.allmusic.com/album/earthly-delights-mw0000832395"
+      "reviewUrl": "https://www.allmusic.com/album/earthly-delights-mw0000832395",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -699,7 +753,8 @@
       "descriptionSource": "Pitchfork",
       "reviewQuote": "pure, visceral panic",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -757,7 +812,8 @@
       "descriptionSource": "Gilla Band Bandcamp / The Guardian",
       "reviewQuote": "full of sound and fury",
       "reviewSource": "The Guardian (quoted from Gilla Band feature)",
-      "reviewUrl": "https://www.theguardian.com/music/2022/oct/06/gilla-band-most-normal-interview"
+      "reviewUrl": "https://www.theguardian.com/music/2022/oct/06/gilla-band-most-normal-interview",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -806,7 +862,10 @@
       "descriptionSource": "AllMusic",
       "reviewQuote": "a landmark of extreme metal",
       "reviewSource": "AllMusic (quoted)",
-      "reviewUrl": "https://www.allmusic.com/album/chaosphere-mw0000045171"
+      "reviewUrl": "https://www.allmusic.com/album/chaosphere-mw0000045171",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -854,7 +913,10 @@
       "descriptionSource": "Sputnikmusic",
       "reviewQuote": "fit with the music very well",
       "reviewSource": "Sputnikmusic (quoted)",
-      "reviewUrl": "https://www.sputnikmusic.com/review/2272/Team-Sleep-Team-Sleep/"
+      "reviewUrl": "https://www.sputnikmusic.com/review/2272/Team-Sleep-Team-Sleep/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -902,7 +964,10 @@
       "descriptionSource": "Pitchfork",
       "reviewQuote": "rapid, heart-pounding conga workout",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/1417-come-with-us/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/1417-come-with-us/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -950,7 +1015,10 @@
       "descriptionSource": "The Guardian",
       "reviewQuote": "audio-visual experience",
       "reviewSource": "The Guardian (quoted)",
-      "reviewUrl": "https://www.theguardian.com/music/2010/may/21/the-chemical-brothers-review"
+      "reviewUrl": "https://www.theguardian.com/music/2010/may/21/the-chemical-brothers-review",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -996,7 +1064,10 @@
         "The Rapture"
       ],
       "homeCollections": [],
-      "homeSlideSort": 14
+      "homeSlideSort": 14,
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1042,7 +1113,10 @@
       "descriptionSource": "AllMusic",
       "reviewQuote": "industrial, aggro-nu-metal, and dark dance music",
       "reviewSource": "AllMusic (quoted)",
-      "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069"
+      "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1099,7 +1173,8 @@
       "descriptionSource": "Pitchfork / The Guardian",
       "reviewQuote": "savor their own powerlessness",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -1156,7 +1231,8 @@
       "descriptionSource": "Associated Press",
       "reviewQuote": "propulsive score",
       "reviewSource": "Associated Press (quoted)",
-      "reviewUrl": "https://apnews.com/article/cf0213e446ab505003c7d338c7ad9270"
+      "reviewUrl": "https://apnews.com/article/cf0213e446ab505003c7d338c7ad9270",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -1213,7 +1289,8 @@
       "descriptionSource": "Associated Press / Pitchfork",
       "reviewQuote": "still sounds like the future of pop music",
       "reviewSource": "Associated Press (quoted)",
-      "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3"
+      "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -1259,7 +1336,10 @@
       "descriptionSource": "Pitchfork / AllMusic",
       "reviewQuote": "a completely different beast",
       "reviewSource": "AllMusic (quoted)",
-      "reviewUrl": "https://www.allmusic.com/album/things-falling-apart-mw0000101953"
+      "reviewUrl": "https://www.allmusic.com/album/things-falling-apart-mw0000101953",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1305,7 +1385,10 @@
       "descriptionSource": "Sputnikmusic",
       "reviewQuote": "most accessible album",
       "reviewSource": "Sputnikmusic (quoted)",
-      "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/"
+      "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1351,7 +1434,10 @@
       "descriptionSource": "AllMusic",
       "reviewQuote": "industrial, aggro-nu-metal, and dark dance music",
       "reviewSource": "AllMusic (quoted)",
-      "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069"
+      "reviewUrl": "https://www.allmusic.com/album/the-matrix-reloaded-the-album-mw0000595069",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1399,7 +1485,10 @@
       "descriptionSource": "Pitchfork",
       "reviewQuote": "a Jenga of drums",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/the-prodigy-the-fat-of-the-land/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/the-prodigy-the-fat-of-the-land/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1457,7 +1546,8 @@
       "descriptionSource": "The Quietus",
       "reviewQuote": "flagrant showcase for his ear and skill",
       "reviewSource": "The Quietus (quoted)",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/squarepusher-kammerkonzert-review/"
+      "reviewUrl": "https://thequietus.com/quietus-reviews/squarepusher-kammerkonzert-review/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -1466,7 +1556,7 @@
       "id": "nxp-2026-vnl-0002",
       "sku": "NXP-2026-VNL-0002",
       "title": "3+5",
-      "artist": "Melt Banana",
+      "artist": "Melt-Banana",
       "condition": "New-Sealed",
       "format": "Vinyl",
       "displayFormat": "Vinyl 12\"",
@@ -1514,7 +1604,8 @@
       "descriptionSource": "The Quietus / AllMusic",
       "reviewQuote": "frantic sensibilities",
       "reviewSource": "The Quietus (quoted)",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/"
+      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -1572,7 +1663,8 @@
         "nixp-selection",
         "limited-pressing"
       ],
-      "homeSlideSort": 25
+      "homeSlideSort": 25,
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -1618,7 +1710,10 @@
       "descriptionSource": "The Wire / Innocent Records",
       "reviewQuote": "Japanese guitar improv great",
       "reviewSource": "The Wire (quoted)",
-      "reviewUrl": "https://escholarship.org/content/qt49b8n6x2/qt49b8n6x2_noSplash_c4fedc01d7808f9361783420c843047c.pdf"
+      "reviewUrl": "https://escholarship.org/content/qt49b8n6x2/qt49b8n6x2_noSplash_c4fedc01d7808f9361783420c843047c.pdf",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1664,7 +1759,10 @@
       "descriptionSource": "Deathrockstar / Superlive",
       "reviewQuote": "a proof of continuation, not a beginning",
       "reviewSource": "Deathrockstar (quoted, translated)",
-      "reviewUrl": "https://www.deathrockstar.club/review-album-sigmun-crimson-eyes/"
+      "reviewUrl": "https://www.deathrockstar.club/review-album-sigmun-crimson-eyes/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1724,7 +1822,8 @@
       "descriptionSource": "Pitchfork",
       "reviewQuote": "a cunning act of sleight of hand",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/17855-david-bowie-the-next-day/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/17855-david-bowie-the-next-day/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -1770,7 +1869,10 @@
       "descriptionSource": "AllMusic / Pitchfork",
       "reviewQuote": "intelligently warped sound",
       "reviewSource": "AllMusic (quoted)",
-      "reviewUrl": "https://www.allmusic.com/album/antenna-mw0000021409"
+      "reviewUrl": "https://www.allmusic.com/album/antenna-mw0000021409",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1818,7 +1920,10 @@
       "descriptionSource": "Pitchfork",
       "reviewQuote": "new kind of electronic pop",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/12518-merriweather-post-pavilion/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/12518-merriweather-post-pavilion/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1866,7 +1971,10 @@
       "descriptionSource": "The Quietus / AllMusic",
       "reviewQuote": "livid, lurid and lucid",
       "reviewSource": "The Quietus (quoted)",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/"
+      "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1912,7 +2020,10 @@
       "descriptionSource": "Resident Advisor",
       "reviewQuote": "slanted techno and industrial bass",
       "reviewSource": "Resident Advisor (quoted)",
-      "reviewUrl": "https://ra.co/reviews/23726"
+      "reviewUrl": "https://ra.co/reviews/23726",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -1958,7 +2069,10 @@
       "descriptionSource": "AllMusic / Sacred Bones",
       "reviewQuote": "confessional industrial rock",
       "reviewSource": "AllMusic (quoted)",
-      "reviewUrl": "https://www.allmusic.com/album/criminal-mw0003185357"
+      "reviewUrl": "https://www.allmusic.com/album/criminal-mw0003185357",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -2004,7 +2118,10 @@
       "descriptionSource": "The Progressive Subway",
       "reviewQuote": "decidedly another non-metal experiment",
       "reviewSource": "The Progressive Subway (quoted)",
-      "reviewUrl": "https://theprogressivesubway.com/2023/09/27/review-behold-the-arctopus-interstellar-overtrove/"
+      "reviewUrl": "https://theprogressivesubway.com/2023/09/27/review-behold-the-arctopus-interstellar-overtrove/",
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "publishStatus": "Published",
@@ -2061,7 +2178,8 @@
       "descriptionSource": "New Noise Magazine",
       "reviewQuote": "a cavernous uneasiness",
       "reviewSource": "New Noise Magazine (quoted)",
-      "reviewUrl": "https://newnoisemagazine.com/reviews/album-review-facs-wish-defense/"
+      "reviewUrl": "https://newnoisemagazine.com/reviews/album-review-facs-wish-defense/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -2118,7 +2236,8 @@
       "descriptionSource": "Pitchfork / NME",
       "reviewQuote": "crowd-pleasing anthems come naturally",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/peggy-gou-i-hear-you/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/peggy-gou-i-hear-you/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -2176,7 +2295,8 @@
       "descriptionSource": "Slant / Exclaim",
       "reviewQuote": "a celebration of musical connection",
       "reviewSource": "Exclaim (quoted)",
-      "reviewUrl": "https://exclaim.ca/music/article/hiatus-kaiyote-love-heart-cheat-code-album-review"
+      "reviewUrl": "https://exclaim.ca/music/article/hiatus-kaiyote-love-heart-cheat-code-album-review",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -2233,7 +2353,8 @@
       "descriptionSource": "Pitchfork / PAN",
       "reviewQuote": "unfathomably skillful and multi-layered",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/arca-andandandandand/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/arca-andandandandand/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -2289,7 +2410,8 @@
       "descriptionSource": "Pitchfork / The Guardian",
       "reviewQuote": "unusually unified listen",
       "reviewSource": "Pitchfork (quoted)",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/panda-bear-buoys/"
+      "reviewUrl": "https://pitchfork.com/reviews/albums/panda-bear-buoys/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -2346,7 +2468,8 @@
       "descriptionSource": "Pitchfork / The Guardian",
       "reviewQuote": "glitchy techno banger",
       "reviewSource": "Rolling Stone UK (quoted)",
-      "reviewUrl": "https://www.rollingstone.co.uk/music/overmono-london-roundhouse-live-review-good-lies-33786/"
+      "reviewUrl": "https://www.rollingstone.co.uk/music/overmono-london-roundhouse-live-review-good-lies-33786/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -2404,7 +2527,8 @@
       "descriptionSource": "Mindies / STROOM",
       "reviewQuote": "a digital magical realism",
       "reviewSource": "Mindies (quoted, translated)",
-      "reviewUrl": "https://www.mindies.es/review/heith-tarawangsawelas-duori-critica-de-su-disco-conjunto/"
+      "reviewUrl": "https://www.mindies.es/review/heith-tarawangsawelas-duori-critica-de-su-disco-conjunto/",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -2462,7 +2586,8 @@
       "descriptionSource": "The FADER / Resident Advisor",
       "reviewQuote": "grotesque, gorgeous dance music",
       "reviewSource": "The FADER (quoted)",
-      "reviewUrl": "https://www.thefader.com/2025/10/10/blawan-sickelixir-review"
+      "reviewUrl": "https://www.thefader.com/2025/10/10/blawan-sickelixir-review",
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -2515,7 +2640,8 @@
         "Tzusing"
       ],
       "homeCollections": [],
-      "homeSlideSort": null
+      "homeSlideSort": null,
+      "edition": ""
     },
     {
       "publishStatus": "Published",
@@ -2672,7 +2798,7 @@
       "images": [
         "/public/nixp-product-example-paper.png"
       ],
-      "qty": 1
+      "qty": 0
     },
     {
       "publishStatus": "Published",
@@ -2721,7 +2847,10 @@
         "recent-releases",
         "nixp-selection"
       ],
-      "homeSlideSort": 43
+      "homeSlideSort": 43,
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     },
     {
       "id": "nxp-2026-cd-0024-antemasque",
@@ -2803,7 +2932,10 @@
         "lengthCm": null,
         "updatedAt": "2026-07-19",
         "weightGrams": null
-      }
+      },
+      "edition": "",
+      "mediaCondition": "",
+      "sleeveCondition": ""
     }
   ],
   "artists": [
@@ -2914,7 +3046,7 @@
     },
     {
       "id": "melt-banana",
-      "name": "Melt Banana",
+      "name": "Melt-Banana",
       "bio": "",
       "status": "Published",
       "sort": 16
@@ -2997,8 +3129,8 @@
       "sort": 27
     },
     {
-      "id": "rezzet",
-      "name": "Rezzet",
+      "id": "rezzett",
+      "name": "Rezzett",
       "bio": "",
       "status": "Published",
       "sort": 28

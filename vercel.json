@@ -82,10 +82,6 @@
       "source": "/index.html",
       "has": [{ "type": "host", "value": "finance.nix-p.com" }],
       "destination": "/api/finance-app?financePath=/"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/index.html"
     }
   ]
 }

@@ -106,7 +106,7 @@
   },
   {
     "id": "melt-banana",
-    "name": "Melt Banana",
+    "name": "Melt-Banana",
     "bio": "",
     "status": "Published",
     "sort": 16
@@ -189,8 +189,8 @@
     "sort": 27
   },
   {
-    "id": "rezzet",
-    "name": "Rezzet",
+    "id": "rezzett",
+    "name": "Rezzett",
     "bio": "",
     "status": "Published",
     "sort": 28

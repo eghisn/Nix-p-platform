@@ -409,6 +409,9 @@ async function productDetailMarkup(product) {
   const displayFormat = product.displayFormat || product.format;
   const conditionLabel = product.condition || "Available";
   const isApparel = product.category === "Apparel";
+  const isRecord = product.category === "Records";
+  const isUsedRecord = isRecord && String(product.condition || "").toLowerCase().startsWith("used");
+  const isSoldOut = totalProductStock(product) <= 0;
   const galleryImages = productImages(product);
   const isSizedProduct = (product.category === "Apparel" || product.category === "Objects") && product.sizes?.length;
   const selectedSize =
@@ -422,8 +425,9 @@ async function productDetailMarkup(product) {
         ${galleryImages
           .map(
             (image, index) => `
-              <figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""}">
+              <figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""} ${isSoldOut ? "is-sold-out" : ""}">
                 <img src="${image}" alt="${product.title}${galleryImages.length > 1 ? ` image ${index + 1}` : ""}" />
+                ${isSoldOut ? `<span class="sold-out-label">Sold out</span>` : ""}
                 ${imageCreditMarkup(product, image)}
               </figure>
             `
@@ -464,7 +468,7 @@ async function productDetailMarkup(product) {
             : ""
         }
         <div class="detail-actions">
-          <button class="button button-dark" type="button" data-add-cart="${product.id}">Add to cart</button>
+          <button class="button button-dark" type="button" data-add-cart="${product.id}" ${isSoldOut ? "disabled" : ""}>${isSoldOut ? "Sold out" : "Add to cart"}</button>
           <a class="button button-outline" href="/request-item" data-link>Request similar</a>
         </div>
         <dl class="detail-list">
@@ -472,10 +476,23 @@ async function productDetailMarkup(product) {
             isApparel
               ? `<div><dt>Material</dt><dd>${product.material}</dd></div>
                  <div><dt>Color</dt><dd>${product.color}</dd></div>`
-              : `<div><dt>Format</dt><dd>${displayFormat} / ${conditionLabel}</dd></div>
+              : isRecord
+                ? `<div><dt>Format</dt><dd>${escapeHtml(displayFormat)}</dd></div>
+                 <div><dt>Condition</dt><dd>${escapeHtml(conditionLabel)}</dd></div>
+                 <div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>
+                 ${
+                   isUsedRecord
+                     ? `<div><dt>Media condition</dt><dd>${escapeHtml(product.mediaCondition || "Not specified")}</dd></div>
+                        <div><dt>Sleeve condition</dt><dd>${escapeHtml(product.sleeveCondition || "Not specified")}</dd></div>`
+                     : ""
+                 }
                  <div><dt>Label</dt><dd>${recordLabelMarkup(product)}</dd></div>
                  <div><dt>Year</dt><dd>${product.year}</dd></div>
                  <div><dt>Notes</dt><dd>${product.details.join(" / ")}</dd></div>`
+                : `<div><dt>Format</dt><dd>${escapeHtml(displayFormat)}</dd></div>
+                   <div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div>
+                   <div><dt>Year</dt><dd>${product.year}</dd></div>
+                   <div><dt>Notes</dt><dd>${product.details.join(" / ")}</dd></div>`
           }
         </dl>
         ${recordRelatedArtistsMarkup(product, availableArtistNames)}
@@ -1150,6 +1167,9 @@ async function adminProductsPage({ embedded = false } = {}) {
             ${input("artist", "Artist", product.artist || "", "Artist / maker")}
             ${input("format", "Format", product.format || "", "Vinyl, CD, Book")}
             ${input("displayFormat", "Display format", product.displayFormat || "", "Vinyl 12&quot;")}
+            <div data-admin-edition-field ${productCategory === "Records" ? "" : "hidden"}>
+              ${input("edition", "Edition", product.edition || "", "Original pressing, reissue, limited edition")}
+            </div>
           </div>
           <div class="admin-product-fields" data-admin-product-fields ${productCategory === "Apparel" || productCategory === "Objects" ? "" : "hidden"}>
             ${input("collection", "Collection", product.collection || product.label || "", "NIXP Apparel")}
@@ -1161,6 +1181,10 @@ async function adminProductsPage({ embedded = false } = {}) {
             ${sizeInventoryFields(product)}
           </div>
           ${select("condition", "Condition", ["", "New-Sealed", "New-Unsealed", "Used Mint", "Used Excellent", "Used Excellence", "Used Good", "Used Fair", "Used Poor"], product.condition || "")}
+          <div class="admin-used-condition-fields" data-admin-used-condition-fields ${productCategory === "Records" && String(product.condition || "").toLowerCase().startsWith("used") ? "" : "hidden"}>
+            ${input("mediaCondition", "Media condition", product.mediaCondition || "", "Grade the disc, record, or tape")}
+            ${input("sleeveCondition", "Sleeve condition", product.sleeveCondition || "", "Grade the sleeve or case")}
+          </div>
           ${input("price", "Price IDR", product.price || "", "640000", "number")}
           ${input("year", "Year", product.year || new Date().getFullYear(), "2026", "number")}
           ${input("label", "Label", product.label || "", "NIXP Selection")}
@@ -1629,6 +1653,17 @@ function productStock(product, size = "") {
     const selected = product.sizes.find((item) => item.label === size);
     if (!selected) return 0;
     return Math.max(0, Math.floor(Number(selected.quantity ?? selected.qty ?? (selected.soldOut ? 0 : 1)) || 0));
+  }
+  return Math.max(0, Math.floor(Number(product.qty ?? 1) || 0));
+}
+
+function totalProductStock(product) {
+  if (!product) return 0;
+  if (product.sizes?.length) {
+    return product.sizes.reduce(
+      (sum, size) => sum + Math.max(0, Math.floor(Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1)) || 0)),
+      0
+    );
   }
   return Math.max(0, Math.floor(Number(product.qty ?? 1) || 0));
 }
@@ -2135,11 +2170,15 @@ function bindEvents() {
   document.querySelector("[data-admin-product-form] select[name='category']")?.addEventListener("change", (event) => {
     const form = event.currentTarget.closest("[data-admin-product-form]");
     const isProductCategory = event.currentTarget.value === "Apparel" || event.currentTarget.value === "Objects";
+    const isRecord = event.currentTarget.value === "Records";
     form.querySelector("[data-admin-record-fields]").hidden = isProductCategory;
     form.querySelector("[data-admin-product-fields]").hidden = !isProductCategory;
     form.querySelector("[data-admin-apparel-field]").hidden = event.currentTarget.value !== "Apparel";
+    form.querySelector("[data-admin-edition-field]").hidden = !isRecord;
+    form.querySelector("[data-admin-used-condition-fields]").hidden =
+      !isRecord || !String(form.elements.condition.value || "").toLowerCase().startsWith("used");
     form.querySelectorAll("[data-admin-record-editorial-field]").forEach((field) => {
-      field.hidden = event.currentTarget.value !== "Records";
+      field.hidden = !isRecord;
     });
     if (isProductCategory) {
       form.elements.artist.value ||= event.currentTarget.value === "Objects" ? "NIXP Objects" : "NIXP Apparel";
@@ -2180,6 +2219,13 @@ function bindEvents() {
       setFormMessage(form, state.adminNotice, "error");
       submitButton.disabled = false;
     }
+  });
+
+  document.querySelector("[data-admin-product-form] select[name='condition']")?.addEventListener("change", (event) => {
+    const form = event.currentTarget.closest("[data-admin-product-form]");
+    const isRecord = form.elements.category.value === "Records";
+    form.querySelector("[data-admin-used-condition-fields]").hidden =
+      !isRecord || !String(event.currentTarget.value || "").toLowerCase().startsWith("used");
   });
 
   document.querySelector("[data-admin-deploy-form]")?.addEventListener("submit", async (event) => {
@@ -2619,4 +2665,8 @@ function bindSearch() {
 }
 
 window.addEventListener("popstate", render);
-adminStore.initialize().then(render);
+render();
+adminStore
+  .initialize()
+  .then(() => render({ preserveScroll: true }))
+  .catch((error) => console.warn("Catalog refresh failed; continuing with the local snapshot.", error));

@@ -35,6 +35,9 @@ function withDefaults(product) {
     updatedAt: "2026-07-11",
     ...product,
     image: product.image || product.images?.[0] || "/public/nixp-product-example-paper.png",
+    edition: String(product.edition || "").trim(),
+    mediaCondition: String(product.mediaCondition || "").trim(),
+    sleeveCondition: String(product.sleeveCondition || "").trim(),
     tags: product.tags || [],
     details: product.details || [],
     sizes: normalizeSizes(product.sizes || []),
@@ -262,7 +265,16 @@ function mergeStore(seeded, saved, { publicOnly = false } = {}) {
     ...savedProducts.map((product) => {
       const seedProduct = seededProducts.find((item) => item.id === product.id);
       const mergedProduct = { ...product };
-      const editorialFields = ["description", "descriptionSource", "reviewQuote", "reviewSource", "reviewUrl"];
+      const editorialFields = [
+        "description",
+        "descriptionSource",
+        "reviewQuote",
+        "reviewSource",
+        "reviewUrl",
+        "edition",
+        "mediaCondition",
+        "sleeveCondition"
+      ];
       for (const field of editorialFields) {
         const savedValue = String(product[field] || "").trim();
         const isGenericDescription = field === "description" && savedValue.includes("current NIXP records selection");
@@ -573,8 +585,11 @@ export const adminStore = {
       displayFormat: isProductCategory
         ? data.displayFormat?.trim() || ""
         : data.displayFormat?.trim() || data.format?.trim() || category || "Object",
+      edition: isRecord ? data.edition?.trim() || "" : "",
       apparelType: normalizeApparelType(data.apparelType),
       condition: data.condition?.trim() || "",
+      mediaCondition: isRecord && isUsedCondition(data.condition) ? data.mediaCondition?.trim() || "" : "",
+      sleeveCondition: isRecord && isUsedCondition(data.condition) ? data.sleeveCondition?.trim() || "" : "",
       price: Number(data.price || 0),
       year: Number(data.year || new Date().getFullYear()),
       label: data.label?.trim() || collection || "NIXP Selection",
@@ -725,4 +740,8 @@ function splitList(value) {
     .split(",")
     .map((item) => item.trim())
     .filter(Boolean);
+}
+
+function isUsedCondition(value) {
+  return String(value || "").trim().toLowerCase().startsWith("used");
 }

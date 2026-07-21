@@ -141,16 +141,18 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
   const meta = product.condition ? `${product.displayFormat || product.format}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
   const href = hrefFor ? hrefFor(product) : `/product/${product.id}`;
+  const soldOut = productQuantity(product) <= 0;
   const labelLink =
     product.category === "Records" && product.label
       ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(product.label)}" data-link>${product.label}</a>`
       : "";
 
   return `
-    <article class="product-card">
+    <article class="product-card ${soldOut ? "is-sold-out" : ""}">
       <a class="product-link" href="${href}" data-link aria-label="View ${product.title}">
-        <figure class="${artClass}">
+        <figure class="${artClass} ${soldOut ? "is-sold-out" : ""}">
           <img src="${product.image}" alt="${product.title}" loading="lazy" decoding="async" />
+          ${soldOut ? `<span class="sold-out-label">Sold out</span>` : ""}
         </figure>
       </a>
       <div class="product-meta">
@@ -162,10 +164,20 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
           <span>${meta}</span>
           <strong>${idr.format(product.price)}</strong>
         </div>
-        <button class="button button-outline" type="button" data-add-cart="${product.id}">Add to cart</button>
+        <button class="button button-outline" type="button" data-add-cart="${product.id}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>
       </div>
     </article>
   `;
+}
+
+function productQuantity(product = {}) {
+  if (Array.isArray(product.sizes) && product.sizes.length) {
+    return product.sizes.reduce(
+      (sum, size) => sum + Math.max(0, Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1)) || 0),
+      0
+    );
+  }
+  return Math.max(0, Number(product.qty ?? 1) || 0);
 }
 
 function recordArtistTags(product, availableArtistNames = new Set()) {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T14:15:25.696Z",
+  "generatedAt": "2026-07-21T21:00:20.103Z",
   "coverImages": [
     {
       "productId": "nxp-2026-vnl-0006",
@@ -32,12 +32,6 @@
       "localPath": "public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif"
     },
     {
-      "productId": "nxp-2026-cd-0012",
-      "sku": "NXP-2026-CD-0012",
-      "image": "/public/covers/nxp-2026-cd-0012-nine-inch-nails-hesitation-marks.jpg",
-      "localPath": "public/covers/nxp-2026-cd-0012-nine-inch-nails-hesitation-marks.jpg"
-    },
-    {
       "productId": "nxp-2026-cd-0016",
       "sku": "NXP-2026-CD-0016",
       "image": "/public/covers/nxp-2026-cd-0016-lightning-bolt-earthly-delights.jpg",
@@ -48,18 +42,6 @@
       "sku": "NXP-2026-VNL-0004",
       "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
       "localPath": "public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg"
-    },
-    {
-      "productId": "nxp-2026-vnl-0005",
-      "sku": "NXP-2026-VNL-0005",
-      "image": "/public/covers/nxp-2026-vnl-0005-gilla-band-the-early-years.jpg",
-      "localPath": "public/covers/nxp-2026-vnl-0005-gilla-band-the-early-years.jpg"
-    },
-    {
-      "productId": "nxp-2026-cd-0001",
-      "sku": "NXP-2026-CD-0001",
-      "image": "/public/covers/nxp-2026-cd-0001-meshuggah-chaosphere.jpg",
-      "localPath": "public/covers/nxp-2026-cd-0001-meshuggah-chaosphere.jpg"
     },
     {
       "productId": "nxp-2026-cd-0002",
@@ -218,12 +200,6 @@
       "localPath": "public/covers/nxp-2026-cst-0009-peggy-gou-i-hear-you.jpg"
     },
     {
-      "productId": "nxp-2026-vnl-0007",
-      "sku": "NXP-2026-VNL-0007",
-      "image": "/public/covers/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code.jpg",
-      "localPath": "public/covers/nxp-2026-vnl-0007-hiatus-kaiyote-love-heart-cheat-code.jpg"
-    },
-    {
       "productId": "nxp-2026-vnl-0008",
       "sku": "NXP-2026-VNL-0008",
       "image": "/public/covers/nxp-2026-vnl-0008-arca-.jpg",
@@ -268,10 +244,70 @@
   ],
   "uploadedProductImages": [
     {
+      "productId": "nxp-2026-app-0010-osculum-nylon-black-polo-cap",
+      "sku": "NXP-2026-APP-0010",
+      "image": "/public/uploads/products/nxp-2026-app-0010-osculum-cap-1.jpg",
+      "localPath": "public/uploads/products/nxp-2026-app-0010-osculum-cap-1.jpg"
+    },
+    {
+      "productId": "nxp-2026-app-0009-lattice-cap",
+      "sku": "NXP-2026-APP-0009",
+      "image": "/public/uploads/products/nxp-2026-app-0009-lattice-cap-np-cap-front-stcsm-jpg-1783939928060.jpg",
+      "localPath": "public/uploads/products/nxp-2026-app-0009-lattice-cap-np-cap-front-stcsm-jpg-1783939928060.jpg"
+    },
+    {
+      "productId": "nxp-2026-app-0007-cold-metal-breathes-too-t-shirt",
+      "sku": "NXP-2026-APP-0007",
+      "image": "/public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-front-stcsm-jpg-1783937571772.jpg",
+      "localPath": "public/uploads/products/nxp-2026-app-0007-cold-metal-breathes-too-t-shirt-np-tee-front-stcsm-jpg-1783937571772.jpg"
+    },
+    {
+      "productId": "nxp-2026-app-0006-paranoiac-odyssey-t-shirt",
+      "sku": "NXP-2026-APP-0006",
+      "image": "/public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-hires-white-jpg-1783937379401.jpg",
+      "localPath": "public/uploads/products/nxp-2026-app-0006-paranoiac-odyssey-t-shirt-hires-white-jpg-1783937379401.jpg"
+    },
+    {
+      "productId": "nxp-2026-app-0004-mesh-black-longsleeve",
+      "sku": "NXP-2026-APP-0004",
+      "image": "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+      "localPath": "public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg"
+    },
+    {
+      "productId": "nxp-2026-app-0003-preform-tee",
+      "sku": "NXP-2026-APP-0003",
+      "image": "/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08833j-jpg-1783936858741.jpg",
+      "localPath": "public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08833j-jpg-1783936858741.jpg"
+    },
+    {
       "productId": "nxp-2026-obj-0002-preform",
       "sku": "NXP-2026-OBJ-0002",
       "image": "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg",
       "localPath": "public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0012",
+      "sku": "NXP-2026-CD-0012",
+      "image": "/public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg",
+      "localPath": "public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0005",
+      "sku": "NXP-2026-VNL-0005",
+      "image": "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
+      "localPath": "public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg"
+    },
+    {
+      "productId": "nxp-2026-cd-0001",
+      "sku": "NXP-2026-CD-0001",
+      "image": "/public/uploads/products/nxp-2026-cd-0001-chaosphere-cover-425412532019-r-jpg-1783885419677.jpg",
+      "localPath": "public/uploads/products/nxp-2026-cd-0001-chaosphere-cover-425412532019-r-jpg-1783885419677.jpg"
+    },
+    {
+      "productId": "nxp-2026-vnl-0007",
+      "sku": "NXP-2026-VNL-0007",
+      "image": "/public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg",
+      "localPath": "public/uploads/products/nxp-2026-vnl-0007-love-heart-cheat-code-love-heart-cheat-code-main-jpg-1783884529459.jpg"
     },
     {
       "productId": "app-002",
