@@ -38,10 +38,13 @@ await build({
   legalComments: "none"
 });
 
-const indexHtml = (await readFile(`${dist}/index.html`, "utf8")).replace(
-  /<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i,
-  '<script type="module" src="/assets/app.js?v=20260722-catalog-metadata"></script>'
-);
+const bundleUrl = "/assets/app.js?v=20260722-catalog-metadata";
+const indexHtml = (await readFile(`${dist}/index.html`, "utf8"))
+  .replace(
+    /<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i,
+    `<script type="module" src="${bundleUrl}"></script>`
+  )
+  .replace("</head>", `    <link rel="modulepreload" href="${bundleUrl}" />\n  </head>`);
 const publicStorePath = `${dist}/public/data/public-store.json`;
 const publicStore = existsSync(publicStorePath) ? JSON.parse(await readFile(publicStorePath, "utf8")) : null;
 const siteOrigin = "https://www.nix-p.com";

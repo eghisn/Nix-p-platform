@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Founder Grotesq";
   src:
-    url("/public/fonts/founders-grotesk.woff2") format("woff2"),
     local("Founder Grotesq"),
     local("Founders Grotesk"),
     local("Founders Grotesk Text");
@@ -13,7 +12,6 @@
 @font-face {
   font-family: "Founders Grotesk Text";
   src:
-    url("/public/fonts/founders-grotesk-text.woff2") format("woff2"),
     local("Founders Grotesk Text"),
     local("Founders Grotesk");
   font-weight: 400 800;
