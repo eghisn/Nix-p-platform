@@ -1,5 +1,6 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
+import { build } from "esbuild";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -26,7 +27,21 @@ if (existsSync(dataModule)) {
   await writeFile(dataModule, sanitized);
 }
 
-const indexHtml = await readFile(`${dist}/index.html`, "utf8");
+await mkdir(`${dist}/assets`, { recursive: true });
+await build({
+  entryPoints: [`${dist}/src/main.js`],
+  outfile: `${dist}/assets/app.js`,
+  bundle: true,
+  format: "esm",
+  minify: true,
+  target: "es2022",
+  legalComments: "none"
+});
+
+const indexHtml = (await readFile(`${dist}/index.html`, "utf8")).replace(
+  /<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i,
+  '<script type="module" src="/assets/app.js?v=20260722-catalog-metadata"></script>'
+);
 const publicStorePath = `${dist}/public/data/public-store.json`;
 const publicStore = existsSync(publicStorePath) ? JSON.parse(await readFile(publicStorePath, "utf8")) : null;
 const siteOrigin = "https://www.nix-p.com";

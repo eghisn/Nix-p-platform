@@ -14,5 +14,8 @@
   },
   "dependencies": {
     "nodemailer": "^9.0.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
   }
 }
