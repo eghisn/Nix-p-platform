@@ -521,20 +521,30 @@
     .monthly-report-stage {
       padding: 14px;
       overflow: auto;
-      background: var(--dark);
+      background: var(--light);
     }
 
     .monthly-report-card {
       min-width: 900px;
-      min-height: 520px;
+      min-height: 560px;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-      gap: 40px;
-      padding: 36px 34px 24px;
-      border: 1px solid rgba(241, 241, 241, 0.8);
-      background: #000;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 18px;
+      padding: 18px;
+      border: 1px solid var(--dark);
+      background: var(--light);
+      color: var(--dark);
+      font-family: var(--font);
+    }
+
+    .report-heading {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--dark);
     }
 
     .monthly-report-card h2,
@@ -543,83 +553,103 @@
       margin: 0;
     }
 
-    .monthly-report-card h2 {
-      margin-bottom: 28px;
-      font-size: 19px;
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: 0;
+    .report-heading span,
+    .report-copy span,
+    .report-footnote {
+      font-size: 10px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .report-heading h2 {
+      grid-column: 1 / -1;
+      max-width: 12ch;
+      font-size: clamp(42px, 6.4vw, 76px);
+      line-height: 0.9;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
     .monthly-report-card h3 {
-      margin: 24px 0 16px;
-      font-size: 14px;
+      margin: 20px 0 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--dark);
+      font-size: 10px;
       line-height: 1.2;
-      font-weight: 800;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
     .report-line {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 150px;
+      grid-template-columns: minmax(0, 1fr) 170px;
       gap: 18px;
-      min-height: 23px;
+      min-height: 34px;
       align-items: end;
-      font-size: 14px;
+      padding: 7px 0;
+      border-top: 1px solid rgba(41, 41, 41, 0.22);
+      font-size: 12px;
       line-height: 1.15;
+      font-weight: 600;
+      text-transform: uppercase;
     }
 
     .report-line.indent span:first-child {
-      padding-left: 24px;
+      padding-left: 18px;
     }
 
     .report-line.strong {
-      font-weight: 800;
+      font-weight: 760;
     }
 
     .report-line.total {
       margin-top: 8px;
-      padding-top: 10px;
-      border-top: 1px solid #fff;
-      font-weight: 800;
+      border-top-color: var(--dark);
+      font-weight: 760;
     }
 
     .report-line.final {
       margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid #fff;
-      font-weight: 800;
+      border-top: 1px solid var(--dark);
+      border-bottom: 1px solid var(--dark);
+      font-weight: 760;
     }
 
     .report-line span:last-child {
       text-align: right;
-      color: #9fd7ff;
-      font-weight: 800;
+      color: var(--dark);
+      font-weight: 760;
     }
 
     .report-copy {
       display: grid;
       align-content: start;
-      gap: 18px;
-      font-size: 14px;
-      line-height: 1.25;
+      gap: 12px;
+      border: 1px solid var(--dark);
+      padding: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.28;
+      text-transform: uppercase;
     }
 
     .report-accent {
-      color: #ff27ff;
-      font-weight: 800;
+      color: var(--dark);
+      font-weight: 760;
       text-transform: uppercase;
     }
 
     .report-copy strong {
-      color: #9fd7ff;
+      color: var(--dark);
     }
 
     .report-copy em {
       display: block;
       max-width: 52ch;
+      color: var(--dark);
       font-style: italic;
+      text-transform: none;
     }
 
     .report-footnote {
@@ -628,9 +658,8 @@
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      padding-top: 24px;
-      font-size: 10px;
-      line-height: 1.2;
+      padding-top: 14px;
+      border-top: 1px solid var(--dark);
     }
 
     @media (max-width: 1040px) {
@@ -2476,8 +2505,13 @@
       const data = monthlyReportData();
       el.monthlyReportLabel.textContent = data.monthLabel;
       el.monthlyReportPreview.innerHTML = `
-        <section>
-          <h2>Financials</h2>
+        <header class="report-heading">
+          <span>NIXP Finance</span>
+          <span>${escapeHTML(data.monthLabel)}</span>
+          <h2>Monthly General Finance Report</h2>
+        </header>
+        <section class="report-statement">
+          <h3>Financials</h3>
           ${reportLine("Revenue", data.salesRevenue)}
           ${reportLine("COGS", data.cogs)}
           ${reportLine("Other Revenues (Sponsors)", data.otherRevenue)}
@@ -2494,8 +2528,7 @@
           ${reportLine("Yearly Net Income", data.yearlyNetIncome, "indent")}
         </section>
         <section class="report-copy">
-          <h2>Monthly General Finance Report</h2>
-          <p><span class="report-accent">Actuals</span> + annualized estimate</p>
+          <span>Actuals + Annualized Estimate</span>
           <p>Estimated yearly <b>Net Income</b> at <strong>${escapeHTML(rupiah(data.yearlyNetIncome))}</strong>, with EBITDA margin of <strong>${escapeHTML(formatPercent(data.ebitdaMargin))}</strong>.</p>
           <em>Financial report is created from finance.nix-p.com entries for ${escapeHTML(data.monthLabel)} and annualized by 12 months.</em>
           <p><b>Breakeven point (payback period)</b> at ${escapeHTML(data.paybackYearsText)}.</p>
@@ -2818,67 +2851,72 @@
       canvas.width = 1600;
       canvas.height = 900;
       const context = canvas.getContext("2d");
-      context.fillStyle = "#000";
+      const ink = "#292929";
+      const paper = "#f1f1f1";
+      context.fillStyle = paper;
       context.fillRect(0, 0, canvas.width, canvas.height);
-      context.strokeStyle = "#f1f1f1";
-      context.lineWidth = 4;
-      context.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+      context.strokeStyle = ink;
+      context.lineWidth = 2;
+      context.strokeRect(28, 28, canvas.width - 56, canvas.height - 56);
+      context.beginPath();
+      context.moveTo(28, 140);
+      context.lineTo(canvas.width - 28, 140);
+      context.stroke();
 
-      context.fillStyle = "#fff";
-      context.font = "800 34px Arial";
-      context.fillText("FINANCIALS", 225, 90);
-      context.fillText("MONTHLY GENERAL FINANCE REPORT", 810, 90);
+      context.fillStyle = ink;
+      context.font = "700 18px 'Founders Grotesk Web', Arial";
+      context.fillText("NIXP FINANCE", 60, 74);
+      context.textAlign = "right";
+      context.fillText(data.monthLabel.toUpperCase(), 1540, 74);
+      context.textAlign = "left";
+      context.font = "700 70px 'Founders Grotesk Web', Arial";
+      drawWrappedCanvasText(context, "MONTHLY GENERAL FINANCE REPORT", 60, 128, 760, 64);
 
-      let y = 170;
-      y = drawReportAmountLine(context, "Revenue", data.salesRevenue, 60, y);
-      y = drawReportAmountLine(context, "COGS", data.cogs, 60, y);
-      y = drawReportAmountLine(context, "Other Revenues (Sponsors)", data.otherRevenue, 60, y);
-      y = drawReportAmountLine(context, "Gross Profit", data.grossProfit, 100, y + 28, { strong: true, rule: true });
-      y += 28;
-      context.fillStyle = "#fff";
-      context.font = "400 22px Arial";
-      context.fillText("Operating Expenses", 60, y);
-      y += 28;
-      y = drawReportAmountLine(context, "Salaries & Wages", data.salaryExpense, 100, y);
-      y = drawReportAmountLine(context, "Event Cost", data.eventExpense, 100, y);
-      y = drawReportAmountLine(context, "Other Operational Expenses", data.otherOperatingExpense, 100, y);
-      y = drawReportAmountLine(context, "Rent", data.rentExpense, 100, y);
-      y = drawReportAmountLine(context, "Total Operating Expenses", data.totalOperatingExpenses, 100, y + 28, { strong: true, rule: true });
-      y = drawReportAmountLine(context, "EBITDA", data.ebitda, 60, y + 28, { strong: true });
-      y = drawReportAmountLine(context, "Tax (Non-PPN)", data.tax, 100, y + 28, { rule: true });
-      y = drawReportAmountLine(context, "Net Income", data.netIncome, 60, y + 36, { strong: true, rule: true });
-      drawReportAmountLine(context, "Yearly Net Income", data.yearlyNetIncome, 100, y + 46);
+      let y = 212;
+      context.font = "700 18px 'Founders Grotesk Web', Arial";
+      context.fillText("FINANCIALS", 60, y);
+      y += 34;
+      y = drawReportAmountLine(context, "Revenue", data.salesRevenue, 60, y, { ink });
+      y = drawReportAmountLine(context, "COGS", data.cogs, 60, y, { ink });
+      y = drawReportAmountLine(context, "Other Revenues (Sponsors)", data.otherRevenue, 60, y, { ink });
+      y = drawReportAmountLine(context, "Gross Profit", data.grossProfit, 60, y + 12, { strong: true, ink });
+      y += 22;
+      context.font = "700 18px 'Founders Grotesk Web', Arial";
+      context.fillStyle = ink;
+      context.fillText("OPERATING EXPENSES", 60, y);
+      y += 34;
+      y = drawReportAmountLine(context, "Salaries & Wages", data.salaryExpense, 84, y, { ink });
+      y = drawReportAmountLine(context, "Event Cost", data.eventExpense, 84, y, { ink });
+      y = drawReportAmountLine(context, "Other Operational Expenses", data.otherOperatingExpense, 84, y, { ink });
+      y = drawReportAmountLine(context, "Rent", data.rentExpense, 84, y, { ink });
+      y = drawReportAmountLine(context, "Total Operating Expenses", data.totalOperatingExpenses, 60, y + 12, { strong: true, ink });
+      y = drawReportAmountLine(context, "EBITDA", data.ebitda, 60, y + 12, { strong: true, ink });
+      y = drawReportAmountLine(context, "Tax (Non-PPN)", data.tax, 84, y + 12, { ink });
+      y = drawReportAmountLine(context, "Net Income", data.netIncome, 60, y + 12, { strong: true, ink });
+      drawReportAmountLine(context, "Yearly Net Income", data.yearlyNetIncome, 84, y + 46, { ink });
 
-      context.font = "800 26px Arial";
-      context.fillStyle = "#ff27ff";
-      context.fillText("ACTUALS", 810, 175);
-      context.fillStyle = "#fff";
-      context.fillText(" + ANNUALIZED ESTIMATE", 930, 175);
+      context.strokeStyle = ink;
+      context.strokeRect(890, 212, 590, 360);
+      context.font = "700 18px 'Founders Grotesk Web', Arial";
+      context.fillStyle = ink;
+      context.fillText("ACTUALS + ANNUALIZED ESTIMATE", 920, 256);
+      context.font = "600 24px 'Founders Grotesk Web', Arial";
+      drawWrappedCanvasText(context, `Estimated yearly Net Income at ${rupiah(data.yearlyNetIncome)}, with EBITDA margin of ${formatPercent(data.ebitdaMargin)}.`, 920, 318, 500, 32);
+      context.font = "italic 20px 'Founders Grotesk Web', Arial";
+      let rightY = drawWrappedCanvasText(context, `Financial report is created from finance.nix-p.com entries for ${data.monthLabel} and annualized by 12 months.`, 920, 424, 500, 27);
+      context.font = "600 20px 'Founders Grotesk Web', Arial";
+      rightY += 20;
+      drawWrappedCanvasText(context, `Breakeven point (payback period) at ${data.paybackYearsText}.`, 920, rightY, 500, 27);
 
-      context.font = "700 20px Arial";
-      context.fillStyle = "#fff";
-      context.fillText("Estimated yearly Net Income at", 810, 245);
-      context.fillStyle = "#9fd7ff";
-      context.fillText(rupiah(data.yearlyNetIncome), 810, 272);
-      context.fillStyle = "#fff";
-      context.fillText(`with EBITDA margin of ${formatPercent(data.ebitdaMargin)}.`, 810, 299);
+      context.font = "600 18px 'Founders Grotesk Web', Arial";
+      drawWrappedCanvasText(context, "Key assumptions: Investor, loan, owner capital, bank, and owner reimbursement entries are excluded from operating revenue. Inventory purchase cash impact is grouped into COGS.", 920, 635, 540, 25);
 
-      context.font = "italic 20px Arial";
-      context.fillStyle = "#fff";
-      let rightY = drawWrappedCanvasText(context, `Financial report is created from finance.nix-p.com entries for ${data.monthLabel} and annualized by 12 months.`, 810, 370, 520, 27);
-
-      context.font = "700 20px Arial";
-      rightY += 24;
-      context.fillText(`Breakeven point (payback period) at ${data.paybackYearsText}.`, 810, rightY);
-      rightY += 70;
-      context.font = "400 20px Arial";
-      rightY = drawWrappedCanvasText(context, "Key Assumptions: Investor, loan, owner capital, bank, and owner reimbursement entries are excluded from operating revenue. Inventory purchase cash impact is grouped into COGS.", 810, rightY, 560, 27);
-
-      context.font = "italic 16px Arial";
-      context.fillStyle = "#fff";
-      context.fillText("Disclaimer: Internal management report. Not audited financial advice.", 60, 790);
-      context.font = "700 12px Arial";
-      context.fillText(`NIXP / ${data.monthLabel}`, 60, 850);
+      context.font = "italic 16px 'Founders Grotesk Web', Arial";
+      context.fillText("Disclaimer: Internal management report. Not audited financial advice.", 60, 812);
+      context.font = "700 14px 'Founders Grotesk Web', Arial";
+      context.textAlign = "right";
+      context.fillText(`NIXP / ${data.monthLabel}`.toUpperCase(), 1540, 812);
+      context.textAlign = "left";
 
       canvas.toBlob(blob => {
         if (!blob) return;
@@ -2894,23 +2932,21 @@
     }
 
     function drawReportAmountLine(context, label, value, x, y, options = {}) {
-      if (options.rule) {
-        context.strokeStyle = "#fff";
-        context.lineWidth = 1;
-        context.beginPath();
-        context.moveTo(60, y - 20);
-        context.lineTo(750, y - 20);
-        context.stroke();
-      }
-      context.font = `${options.strong ? "800" : "400"} 22px Arial`;
-      context.fillStyle = "#fff";
-      context.fillText(label, x, y);
-      context.fillStyle = "#9fd7ff";
+      const ink = options.ink || "#292929";
+      context.strokeStyle = "rgba(41, 41, 41, 0.35)";
+      context.lineWidth = 1;
+      context.beginPath();
+      context.moveTo(60, y - 22);
+      context.lineTo(780, y - 22);
+      context.stroke();
+      context.font = `${options.strong ? "700" : "500"} 20px 'Founders Grotesk Web', Arial`;
+      context.fillStyle = ink;
+      context.fillText(label.toUpperCase(), x, y);
       context.textAlign = "right";
-      context.font = "800 22px Arial";
+      context.font = `${options.strong ? "700" : "500"} 20px 'Founders Grotesk Web', Arial`;
       context.fillText(rupiah(value), 620, y);
       context.textAlign = "left";
-      return y + 28;
+      return y + 34;
     }
 
     function drawWrappedCanvasText(context, text, x, y, maxWidth, lineHeight) {
