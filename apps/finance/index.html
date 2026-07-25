@@ -1136,7 +1136,7 @@
                 <input id="reportMonth" type="month">
               </div>
               <div class="field full">
-                <p class="tiny">Auto-builds an income-statement style report from finance.nix-p.com entries. Investor, loan, owner capital, bank, and owner reimbursement income are treated as financing inflows, not operating revenue.</p>
+                <p class="tiny">Auto-builds an actual monthly report from saved finance.nix-p.com ledger rows only. No projections, assumptions, or sample numbers are added.</p>
               </div>
             </div>
           </section>
@@ -2522,23 +2522,19 @@
           ${reportLine("Other Operating Income", data.otherRevenue)}
           ${reportLine("Gross Profit", data.grossProfit, "total")}
           <h3>Operating Expenses</h3>
-          ${reportLine("Salaries & Wages", data.salaryExpense, "indent")}
-          ${reportLine("Event Cost", data.eventExpense, "indent")}
-          ${reportLine("Other Operational Expenses", data.otherOperatingExpense, "indent")}
-          ${reportLine("Rent", data.rentExpense, "indent")}
+          ${reportLines(data.operatingExpenseBreakdown, "indent") || reportPlainLine("No Operating Expense Rows", "0 rows", "indent")}
           ${reportLine("Total Operating Expenses", data.totalOperatingExpenses, "total")}
           ${reportLine("EBITDA", data.ebitda, "strong")}
-          ${reportLine("Tax (Non-PPN)", data.tax, "final indent")}
+          ${reportLine("Tax (Recorded Ledger Rows)", data.taxExpense, "indent")}
           ${reportLine("Net Income", data.netIncome, "final")}
-          ${reportLine("Yearly Net Income", data.yearlyNetIncome, "indent")}
         </section>
         <section class="report-copy">
           <span>Synced from finance.nix-p.com</span>
-          <p>This report summarizes <strong>${data.ledgerRowCount}</strong> finance ledger rows from ${escapeHTML(data.monthLabel)}: cash in, cash out, operating revenue, COGS, expenses, and net income.</p>
-          <p>Estimated yearly <b>Net Income</b> at <strong>${escapeHTML(rupiah(data.yearlyNetIncome))}</strong>, with EBITDA margin of <strong>${escapeHTML(formatPercent(data.ebitdaMargin))}</strong>.</p>
+          <p>This report summarizes <strong>${data.ledgerRowCount}</strong> saved finance ledger rows from ${escapeHTML(data.monthLabel)}: cash in, cash out, operating revenue, COGS, recorded tax, expenses, and net income.</p>
+          <p><b>No projected or manual assumption numbers are included.</b> Every amount shown here is a direct sum of matching finance.nix-p.com rows for the selected month.</p>
           <em>The export is generated from the current saved finance.nix-p.com data. Refresh the page before export if another device has just updated the ledger.</em>
-          <p><b>Breakeven point (payback period)</b> at ${escapeHTML(data.paybackYearsText)}.</p>
-          <p><b>Classification:</b><br>Investor, loan, owner capital, bank, and owner reimbursement entries are tracked as financing cash movement, not operating revenue. Sales COGS and inventory purchase cash impact are grouped into COGS.</p>
+          <p><b>Operating expense categories found:</b><br>${escapeHTML(data.operatingExpenseCategoryText)}</p>
+          <p><b>Classification:</b><br>Investor, loan, owner capital, bank, and owner reimbursement entries are tracked as cash movement, not operating revenue. Sales COGS and inventory purchase cash impact are grouped into COGS. Tax only appears from rows categorized as Tax.</p>
         </section>
         <footer class="report-footnote">
           <span><u>Disclaimer:</u> Internal management report. Not audited financial advice.</span>
@@ -2565,23 +2561,36 @@
       `;
     }
 
+    function reportLines(lines, className = "") {
+      return lines.map(line => reportLine(line.label, line.amount, className)).join("");
+    }
+
     function monthlyReportData() {
       const month = el.reportMonth.value || currentMonth;
-      const selectedYear = month.slice(0, 4);
       const financingCategories = new Set(["Investor", "Loan", "Owner Capital", "Bank", ownerReimbursementCategory]);
       const cogsCategories = new Set(["Sales COGS", "Inventory"]);
       const nonOperatingOutcomeCategories = new Set([ownerDueCategory, "Loan", "Owner Capital", "Bank"]);
-      const eventExpenseCategories = new Set(["Marketing", "Production", "Logistics"]);
       const ledgerRows = buildDashboardRows().filter(item => monthOf(item.date) === month);
       const incomeRows = ledgerRows.filter(item => item.type === "Income");
       const outcomeRows = ledgerRows.filter(item => item.type === "Outcome");
       const operatingIncomeRows = incomeRows.filter(item => !financingCategories.has(item.category));
       const cogsRows = outcomeRows.filter(item => cogsCategories.has(item.category));
+      const taxRows = outcomeRows.filter(item => item.category === "Tax");
       const operatingExpenseRows = outcomeRows
         .filter(item => !cogsCategories.has(item.category))
-        .filter(item => !nonOperatingOutcomeCategories.has(item.category));
-      const cashIn = incomeRows.reduce((total, item) => total + numeric(item.amount), 0);
-      const cashOut = outcomeRows.reduce((total, item) => total + numeric(item.amount), 0);
+        .filter(item => !nonOperatingOutcomeCategories.has(item.category))
+        .filter(item => item.category !== "Tax");
+      const sumRows = rows => rows.reduce((total, item) => total + numeric(item.amount), 0);
+      const operatingExpenseBreakdown = Array.from(operatingExpenseRows.reduce((categories, item) => {
+        const label = item.category || "Uncategorized";
+        categories.set(label, (categories.get(label) || 0) + numeric(item.amount));
+        return categories;
+      }, new Map()))
+        .map(([label, amount]) => ({ label, amount }))
+        .filter(item => item.amount !== 0)
+        .sort((a, b) => b.amount - a.amount || a.label.localeCompare(b.label));
+      const cashIn = sumRows(incomeRows);
+      const cashOut = sumRows(outcomeRows);
       const netCashMovement = cashIn - cashOut;
       const salesRevenue = operatingIncomeRows
         .filter(item => item.category === "Sales")
@@ -2589,29 +2598,14 @@
       const otherRevenue = operatingIncomeRows
         .filter(item => item.category !== "Sales")
         .reduce((total, item) => total + numeric(item.amount), 0);
-      const cogs = cogsRows.reduce((total, item) => total + numeric(item.amount), 0);
-      const salaryExpense = operatingExpenseRows.filter(item => item.category === "Salary").reduce((total, item) => total + numeric(item.amount), 0);
-      const rentExpense = operatingExpenseRows.filter(item => item.category === "Rent").reduce((total, item) => total + numeric(item.amount), 0);
-      const eventExpense = operatingExpenseRows.filter(item => eventExpenseCategories.has(item.category)).reduce((total, item) => total + numeric(item.amount), 0);
-      const otherOperatingExpense = operatingExpenseRows
-        .filter(item => item.category !== "Salary")
-        .filter(item => item.category !== "Rent")
-        .filter(item => !eventExpenseCategories.has(item.category))
-        .reduce((total, item) => total + numeric(item.amount), 0);
+      const cogs = sumRows(cogsRows);
+      const taxExpense = sumRows(taxRows);
+      const totalOperatingExpenses = sumRows(operatingExpenseRows);
       const grossProfit = salesRevenue + otherRevenue - cogs;
-      const totalOperatingExpenses = salaryExpense + eventExpense + otherOperatingExpense + rentExpense;
       const ebitda = grossProfit - totalOperatingExpenses;
-      const tax = Math.max(0, ebitda * 0.25);
-      const netIncome = ebitda - tax;
-      const yearlyNetIncome = netIncome * 12;
+      const netIncome = ebitda - taxExpense;
       const revenueBase = salesRevenue + otherRevenue;
       const ebitdaMargin = revenueBase > 0 ? ebitda / revenueBase * 100 : 0;
-      const investorCapital = state.general
-        .filter(item => item.type === "Income")
-        .filter(item => item.category === "Investor")
-        .filter(item => yearOf(item.date) === selectedYear)
-        .reduce((total, item) => total + numeric(item.amount), 0);
-      const paybackYears = investorCapital > 0 && yearlyNetIncome > 0 ? investorCapital / yearlyNetIncome : null;
       return {
         month,
         monthLabel: formatMonthLabel(month),
@@ -2623,18 +2617,15 @@
         otherRevenue,
         cogs,
         grossProfit,
-        salaryExpense,
-        eventExpense,
-        otherOperatingExpense,
-        rentExpense,
+        operatingExpenseBreakdown,
+        operatingExpenseCategoryText: operatingExpenseBreakdown.length
+          ? operatingExpenseBreakdown.map(item => `${item.label}: ${rupiah(item.amount)}`).join(", ")
+          : "None",
         totalOperatingExpenses,
         ebitda,
-        tax,
+        taxExpense,
         netIncome,
-        yearlyNetIncome,
-        ebitdaMargin,
-        paybackYears,
-        paybackYearsText: paybackYears ? `${paybackYears.toFixed(2)} Years` : "-"
+        ebitdaMargin
       };
     }
 
@@ -2853,6 +2844,7 @@
       return [
         ["Monthly General Finance Report", data.monthLabel],
         ["Data Source", "finance.nix-p.com Main Dashboard ledger"],
+        ["Report Basis", "Actual saved ledger rows only. No projections, assumptions, or sample data."],
         ["Finance Ledger Rows", data.ledgerRowCount],
         ["Total Cash In", data.cashIn],
         ["Total Cash Out", data.cashOut],
@@ -2861,18 +2853,14 @@
         ["COGS", data.cogs],
         ["Other Operating Income", data.otherRevenue],
         ["Gross Profit", data.grossProfit],
-        ["Salaries & Wages", data.salaryExpense],
-        ["Event Cost", data.eventExpense],
-        ["Other Operational Expenses", data.otherOperatingExpense],
-        ["Rent", data.rentExpense],
+        ...data.operatingExpenseBreakdown.map(item => [`Operating Expense - ${item.label}`, item.amount]),
         ["Total Operating Expenses", data.totalOperatingExpenses],
         ["EBITDA", data.ebitda],
         ["EBITDA Margin", formatPercent(data.ebitdaMargin)],
-        ["Tax (Non-PPN)", data.tax],
+        ["Tax (Recorded Ledger Rows)", data.taxExpense],
         ["Net Income", data.netIncome],
-        ["Yearly Net Income", data.yearlyNetIncome],
-        ["Breakeven Point (Payback Period)", data.paybackYearsText],
-        ["Classification", "Investor, loan, owner capital, bank, and owner reimbursement entries are tracked as financing cash movement, not operating revenue. Sales COGS and inventory purchase cash impact are grouped into COGS."]
+        ["Operating Expense Categories Found", data.operatingExpenseCategoryText],
+        ["Classification", "Investor, loan, owner capital, bank, and owner reimbursement entries are tracked as cash movement, not operating revenue. Sales COGS and inventory purchase cash impact are grouped into COGS. Tax only appears from rows categorized as Tax."]
       ];
     }
 
@@ -2915,15 +2903,17 @@
       context.fillStyle = ink;
       context.fillText("OPERATING EXPENSES", 60, y);
       y += 34;
-      y = drawReportAmountLine(context, "Salaries & Wages", data.salaryExpense, 84, y, { ink });
-      y = drawReportAmountLine(context, "Event Cost", data.eventExpense, 84, y, { ink });
-      y = drawReportAmountLine(context, "Other Operational Expenses", data.otherOperatingExpense, 84, y, { ink });
-      y = drawReportAmountLine(context, "Rent", data.rentExpense, 84, y, { ink });
+      if (data.operatingExpenseBreakdown.length) {
+        data.operatingExpenseBreakdown.forEach(item => {
+          y = drawReportAmountLine(context, item.label, item.amount, 84, y, { ink, lineHeight: 28 });
+        });
+      } else {
+        y = drawReportTextLine(context, "No Operating Expense Rows", "0 rows", 84, y, { ink });
+      }
       y = drawReportAmountLine(context, "Total Operating Expenses", data.totalOperatingExpenses, 60, y + 12, { strong: true, ink });
       y = drawReportAmountLine(context, "EBITDA", data.ebitda, 60, y + 12, { strong: true, ink });
-      y = drawReportAmountLine(context, "Tax (Non-PPN)", data.tax, 84, y + 12, { ink });
+      y = drawReportAmountLine(context, "Tax (Recorded Ledger Rows)", data.taxExpense, 84, y + 12, { ink });
       y = drawReportAmountLine(context, "Net Income", data.netIncome, 60, y + 12, { strong: true, ink });
-      drawReportAmountLine(context, "Yearly Net Income", data.yearlyNetIncome, 84, y + 46, { ink });
 
       context.strokeStyle = ink;
       context.strokeRect(890, 212, 590, 360);
@@ -2933,13 +2923,13 @@
       context.font = "600 24px 'Founders Grotesk Web', Arial";
       drawWrappedCanvasText(context, `${data.ledgerRowCount} ledger rows for ${data.monthLabel}. Cash in ${rupiah(data.cashIn)}. Cash out ${rupiah(data.cashOut)}. Net cash movement ${rupiah(data.netCashMovement)}.`, 920, 318, 500, 32);
       context.font = "italic 20px 'Founders Grotesk Web', Arial";
-      let rightY = drawWrappedCanvasText(context, "The export is generated from the current saved finance.nix-p.com Main Dashboard ledger.", 920, 452, 500, 27);
+      let rightY = drawWrappedCanvasText(context, "Generated from current saved finance.nix-p.com Main Dashboard ledger rows only. No projections, assumptions, or sample numbers are included.", 920, 452, 500, 27);
       context.font = "600 20px 'Founders Grotesk Web', Arial";
       rightY += 20;
-      drawWrappedCanvasText(context, `Estimated yearly Net Income ${rupiah(data.yearlyNetIncome)}. EBITDA margin ${formatPercent(data.ebitdaMargin)}. Payback period ${data.paybackYearsText}.`, 920, rightY, 500, 27);
+      drawWrappedCanvasText(context, `Operating expense categories found: ${data.operatingExpenseCategoryText}. EBITDA margin ${formatPercent(data.ebitdaMargin)}.`, 920, rightY, 500, 27);
 
       context.font = "600 18px 'Founders Grotesk Web', Arial";
-      drawWrappedCanvasText(context, "Classification: Investor, loan, owner capital, bank, and owner reimbursement entries are tracked as financing cash movement, not operating revenue. Sales COGS and inventory purchase cash impact are grouped into COGS.", 920, 635, 540, 25);
+      drawWrappedCanvasText(context, "Classification: Investor, loan, owner capital, bank, and owner reimbursement entries are tracked as cash movement, not operating revenue. Sales COGS and inventory purchase cash impact are grouped into COGS. Tax only appears from rows categorized as Tax.", 920, 635, 540, 25);
 
       context.font = "italic 16px 'Founders Grotesk Web', Arial";
       context.fillText("Disclaimer: Internal management report. Not audited financial advice.", 60, 812);
@@ -2963,6 +2953,7 @@
 
     function drawReportAmountLine(context, label, value, x, y, options = {}) {
       const ink = options.ink || "#292929";
+      const lineHeight = options.lineHeight || 34;
       context.strokeStyle = "rgba(41, 41, 41, 0.35)";
       context.lineWidth = 1;
       context.beginPath();
@@ -2975,6 +2966,23 @@
       context.textAlign = "right";
       context.font = `${options.strong ? "700" : "500"} 20px 'Founders Grotesk Web', Arial`;
       context.fillText(rupiah(value), 620, y);
+      context.textAlign = "left";
+      return y + lineHeight;
+    }
+
+    function drawReportTextLine(context, label, value, x, y, options = {}) {
+      const ink = options.ink || "#292929";
+      context.strokeStyle = "rgba(41, 41, 41, 0.35)";
+      context.lineWidth = 1;
+      context.beginPath();
+      context.moveTo(60, y - 22);
+      context.lineTo(780, y - 22);
+      context.stroke();
+      context.font = "500 20px 'Founders Grotesk Web', Arial";
+      context.fillStyle = ink;
+      context.fillText(label.toUpperCase(), x, y);
+      context.textAlign = "right";
+      context.fillText(String(value).toUpperCase(), 620, y);
       context.textAlign = "left";
       return y + 34;
     }
