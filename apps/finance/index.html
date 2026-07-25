@@ -1266,10 +1266,10 @@
     buildForms();
     attachExportControls();
     bindEvents();
-    const removedLegacyTestIncomeCount = removeLegacyTestIncomeEntries();
+    const removedLegacy350kCount = removeLegacy350kEntries();
     normalizeDerivedData();
     render();
-    if (removedLegacyTestIncomeCount > 0) {
+    if (removedLegacy350kCount > 0) {
       saveState();
     } else {
       el.saveStatus.textContent = usesLocalFileStorage ? "Saved locally" : "Loaded from protected server";
@@ -1784,15 +1784,20 @@
       if (visible && name === "qty" && !control.value) control.value = "1";
     }
 
-    function removeLegacyTestIncomeEntries() {
-      const before = state.general.length;
-      state.general = state.general.filter(item => !isLegacyTestIncome(item));
-      return before - state.general.length;
+    function removeLegacy350kEntries() {
+      const beforeGeneral = state.general.length;
+      const beforeSales = state.sales.length;
+      state.general = state.general.filter(item => !isLegacy350kGeneralIncome(item));
+      state.sales = state.sales.filter(item => !isLegacy350kDailySale(item));
+      return (beforeGeneral - state.general.length) + (beforeSales - state.sales.length);
     }
 
-    function isLegacyTestIncome(item) {
-      if (item?.type !== "Income" || numeric(item.amount) !== 350000) return false;
-      return String(item.date || "") <= "2026-07-25";
+    function isLegacy350kGeneralIncome(item) {
+      return item?.type === "Income" && numeric(item.amount) === 350000;
+    }
+
+    function isLegacy350kDailySale(item) {
+      return numeric(item?.revenue) === 350000;
     }
 
     function commitState() {
