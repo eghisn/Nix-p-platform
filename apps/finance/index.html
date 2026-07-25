@@ -351,6 +351,10 @@
       gap: 6px;
     }
 
+    .field[hidden] {
+      display: none;
+    }
+
     .field.full {
       grid-column: 1 / -1;
     }
@@ -514,6 +518,121 @@
       line-height: 1.4;
     }
 
+    .monthly-report-stage {
+      padding: 14px;
+      overflow: auto;
+      background: var(--dark);
+    }
+
+    .monthly-report-card {
+      min-width: 900px;
+      min-height: 520px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 40px;
+      padding: 36px 34px 24px;
+      border: 1px solid rgba(241, 241, 241, 0.8);
+      background: #000;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .monthly-report-card h2,
+    .monthly-report-card h3,
+    .monthly-report-card p {
+      margin: 0;
+    }
+
+    .monthly-report-card h2 {
+      margin-bottom: 28px;
+      font-size: 19px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .monthly-report-card h3 {
+      margin: 24px 0 16px;
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .report-line {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px;
+      gap: 18px;
+      min-height: 23px;
+      align-items: end;
+      font-size: 14px;
+      line-height: 1.15;
+    }
+
+    .report-line.indent span:first-child {
+      padding-left: 24px;
+    }
+
+    .report-line.strong {
+      font-weight: 800;
+    }
+
+    .report-line.total {
+      margin-top: 8px;
+      padding-top: 10px;
+      border-top: 1px solid #fff;
+      font-weight: 800;
+    }
+
+    .report-line.final {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #fff;
+      font-weight: 800;
+    }
+
+    .report-line span:last-child {
+      text-align: right;
+      color: #9fd7ff;
+      font-weight: 800;
+    }
+
+    .report-copy {
+      display: grid;
+      align-content: start;
+      gap: 18px;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .report-accent {
+      color: #ff27ff;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .report-copy strong {
+      color: #9fd7ff;
+    }
+
+    .report-copy em {
+      display: block;
+      max-width: 52ch;
+      font-style: italic;
+    }
+
+    .report-footnote {
+      grid-column: 1 / -1;
+      align-self: end;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 24px;
+      font-size: 10px;
+      line-height: 1.2;
+    }
+
     @media (max-width: 1040px) {
       .app {
         grid-template-columns: 1fr;
@@ -542,6 +661,10 @@
       .metrics,
       .pnl-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .monthly-report-card {
+        min-width: 780px;
       }
     }
 
@@ -589,6 +712,11 @@
       .bar-row {
         grid-template-columns: 1fr;
       }
+
+      .monthly-report-card {
+        min-width: 680px;
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -609,7 +737,8 @@
         <button type="button" data-view="inventory"><span>Inventory purchases</span><span>04</span></button>
         <button type="button" data-view="stock"><span>Inventory</span><span>05</span></button>
         <button type="button" data-view="pnl"><span>Monthly P&amp;L</span><span>06</span></button>
-        <button type="button" data-view="ownerDue"><span>Owner due</span><span>07</span></button>
+        <button type="button" data-view="monthlyReport"><span>Monthly report</span><span>07</span></button>
+        <button type="button" data-view="ownerDue"><span>Owner due</span><span>08</span></button>
       </nav>
       <div class="sidebar-foot">
         <p class="tiny" id="saveStatus">Saved locally</p>
@@ -709,6 +838,7 @@
                       <th class="money" data-sort-section="dashboard" data-sort-key="qty">Qty</th>
                       <th class="money" data-sort-section="dashboard" data-sort-key="amount">Amount</th>
                       <th data-sort-section="dashboard" data-sort-key="paymentMethod">Payment</th>
+                      <th data-sort-section="dashboard" data-sort-key="moneySentTo">Sent To</th>
                       <th data-sort-section="dashboard" data-sort-key="notes">Notes</th>
                       <th class="row-actions">Action</th>
                     </tr>
@@ -964,6 +1094,33 @@
             <div class="bars" id="pnlBars"></div>
           </section>
         </section>
+
+        <section class="view" id="monthlyReportView">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Monthly general finance report</h2>
+              <small id="monthlyReportLabel">Selected month</small>
+            </div>
+            <div class="filters">
+              <div class="field">
+                <label for="reportMonth">Month</label>
+                <input id="reportMonth" type="month">
+              </div>
+              <div class="field full">
+                <p class="tiny">Auto-builds an income-statement style report from finance.nix-p.com entries. Investor, loan, owner capital, bank, and owner reimbursement income are treated as financing inflows, not operating revenue.</p>
+              </div>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Export preview</h2>
+              <small>Income statement</small>
+            </div>
+            <div class="monthly-report-stage">
+              <article class="monthly-report-card" id="monthlyReportPreview" aria-label="Monthly general finance report preview"></article>
+            </div>
+          </section>
+        </section>
       </section>
     </main>
   </div>
@@ -983,7 +1140,8 @@
     const todayISO = today.toISOString().slice(0, 10);
     const currentYear = today.getFullYear().toString();
     const currentMonth = today.toISOString().slice(0, 7);
-    const paymentMethods = ["Cash", "Bank Transfer", "Debit Card", "Credit Card", "QRIS", "E-Wallet", "Marketplace"];
+    const paymentMethods = ["Cash", "Bank Transfer", "Debit Card", "Credit Card", "EDC", "QRIS", "E-Wallet", "Marketplace"];
+    const investorDestinationAccounts = ["Jenius account", "BCA account"];
     const inventorySources = ["Business Purchase", "Personal Collection", "Consignment", "Founder Purchase / Awaiting Reimbursement"];
     const itemTypes = ["Vinyl", "CD", "Cassette", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap", "Object"];
     const itemConditions = ["New-Sealed", "New-Unsealed", "Used Excellent", "Used Good"];
@@ -1009,6 +1167,7 @@
         qty: { type: "number", value: item => item.qty },
         amount: { type: "number", value: item => item.amount },
         paymentMethod: { type: "text", value: item => item.paymentMethod },
+        moneySentTo: { type: "text", value: item => item.moneySentTo },
         notes: { type: "text", value: item => item.notes }
       },
       sales: {
@@ -1093,19 +1252,28 @@
       dashboardCategoryFilter: document.getElementById("dashboardCategoryFilter"),
       dashboardSearch: document.getElementById("dashboardSearch"),
       pnlMonth: document.getElementById("pnlMonth"),
+      reportMonth: document.getElementById("reportMonth"),
+      monthlyReportLabel: document.getElementById("monthlyReportLabel"),
+      monthlyReportPreview: document.getElementById("monthlyReportPreview"),
       importFile: document.getElementById("importFile")
     };
 
     el.yearFilter.value = currentYear;
     el.ownerDueYearFilter.value = currentYear;
     el.pnlMonth.value = currentMonth;
+    el.reportMonth.value = currentMonth;
 
     buildForms();
     attachExportControls();
     bindEvents();
+    const removedLegacyTestIncomeCount = removeLegacyTestIncomeEntries();
     normalizeDerivedData();
     render();
-    el.saveStatus.textContent = usesLocalFileStorage ? "Saved locally" : "Loaded from protected server";
+    if (removedLegacyTestIncomeCount > 0) {
+      saveState();
+    } else {
+      el.saveStatus.textContent = usesLocalFileStorage ? "Saved locally" : "Loaded from protected server";
+    }
     if (!usesLocalFileStorage) {
       window.setInterval(() => {
         refreshServerState().catch(() => {});
@@ -1259,13 +1427,14 @@
       el.generalForm.innerHTML = `
         <div class="fields">
           ${field("Date", "date", "date", todayISO, true)}
-          ${field("Invoice", "invoice", "text", "", false, "INV / reference")}
+          ${field("Invoice", "invoice", "text", "", false, "INV / reference", "", 'data-general-field="invoice"')}
           ${selectField("Type", "type", ["Income", "Outcome"], true, "Income")}
           ${selectField("Category", "category", ["Investor", "Sales", "Operations", ownerReimbursementCategory, "Loan", "Owner Capital", "Bank", "Other"], true, "Investor")}
           ${field("SKU / Note", "sku", "text", "", false, "SKU or short note")}
-          ${field("Qty", "qty", "number", "1", false, "", "0.01")}
+          ${field("Qty", "qty", "number", "1", false, "", "0.01", 'data-general-field="qty"')}
           ${field("Amount", "amount", "number", "", true, "0", "1")}
           ${selectField("Payment Method", "paymentMethod", paymentMethods, true, "Bank Transfer")}
+          ${selectField("Money Sent To", "moneySentTo", investorDestinationAccounts, true, "Jenius account", 'data-general-field="moneySentTo"')}
           ${textArea("Notes", "notes", "Additional details")}
         </div>
         <button class="button primary" type="submit">Save income / outcome</button>
@@ -1352,11 +1521,12 @@
           <button class="button" type="button" id="cancelStockEditBtn" hidden>Cancel edit</button>
         </div>
       `;
+      syncGeneralInvestorFields();
     }
 
-    function field(label, name, type, value, required, placeholder = "", step = "") {
+    function field(label, name, type, value, required, placeholder = "", step = "", wrapperAttributes = "") {
       return `
-        <div class="field">
+        <div class="field" ${wrapperAttributes}>
           <label>${label}</label>
           <input name="${name}" type="${type}" value="${value}" placeholder="${placeholder}" ${required ? "required" : ""} ${step ? `step="${step}"` : ""}>
         </div>
@@ -1372,9 +1542,9 @@
       `;
     }
 
-    function selectField(label, name, options, required, selected) {
+    function selectField(label, name, options, required, selected, wrapperAttributes = "") {
       return `
-        <div class="field">
+        <div class="field" ${wrapperAttributes}>
           <label>${label}</label>
           <select name="${name}" ${required ? "required" : ""}>
             ${options.map(option => `<option ${option === selected ? "selected" : ""}>${option}</option>`).join("")}
@@ -1391,13 +1561,18 @@
         ["ownerDue", "Owner Due"],
         ["inventory", "Inventory Purchases"],
         ["stock", "Inventory"],
-        ["pnl", "Monthly P&L"]
+        ["pnl", "Monthly P&L"],
+        ["monthlyReport", "Monthly General Finance Report"]
       ];
 
       sections.forEach(([section, label]) => {
         const view = document.getElementById(section + "View");
         if (!view) return;
-        const panel = section === "pnl" ? document.getElementById("pnlBars")?.closest(".panel") : view.querySelector("table")?.closest(".panel");
+        const panel = section === "pnl"
+          ? document.getElementById("pnlBars")?.closest(".panel")
+          : section === "monthlyReport"
+            ? document.getElementById("monthlyReportPreview")?.closest(".panel")
+            : view.querySelector("table")?.closest(".panel");
         const head = panel?.querySelector(".panel-head");
         if (!head || head.querySelector(".panel-tools")) return;
         head.insertAdjacentHTML("beforeend", `
@@ -1452,26 +1627,30 @@
         resetStockEditMode();
       });
 
-      [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.salesSearch, el.inventorySearch, el.stockSearch, el.pnlMonth].forEach(input => {
+      [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.salesSearch, el.inventorySearch, el.stockSearch, el.pnlMonth, el.reportMonth].forEach(input => {
         input.addEventListener("input", render);
       });
+      el.generalForm.querySelector('[name="category"]').addEventListener("change", syncGeneralInvestorFields);
 
       el.generalForm.addEventListener("submit", event => {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(el.generalForm));
+        const isInvestor = data.category === "Investor";
         state.general.push({
           id: uid(),
           date: data.date,
-          invoice: data.invoice.trim(),
+          invoice: isInvestor ? "" : (data.invoice || "").trim(),
           type: data.type,
           category: data.category,
-          sku: data.sku.trim(),
-          qty: numeric(data.qty),
+          sku: (data.sku || "").trim(),
+          qty: isInvestor ? "" : numeric(data.qty),
           amount: numeric(data.amount),
           paymentMethod: data.paymentMethod,
-          notes: data.notes.trim()
+          moneySentTo: isInvestor ? data.moneySentTo : "",
+          notes: (data.notes || "").trim()
         });
         resetForm(el.generalForm);
+        syncGeneralInvestorFields();
         commitState();
       });
 
@@ -1583,6 +1762,37 @@
       const qtyInput = form.querySelector("[name=qty]");
       if (dateInput) dateInput.value = todayISO;
       if (qtyInput) qtyInput.value = "1";
+      if (form === el.generalForm) syncGeneralInvestorFields();
+    }
+
+    function syncGeneralInvestorFields() {
+      if (!el?.generalForm) return;
+      const category = el.generalForm.querySelector('[name="category"]')?.value;
+      const isInvestor = category === "Investor";
+      toggleGeneralField("invoice", !isInvestor);
+      toggleGeneralField("qty", !isInvestor);
+      toggleGeneralField("moneySentTo", isInvestor);
+    }
+
+    function toggleGeneralField(name, visible) {
+      const control = el.generalForm.querySelector(`[name="${name}"]`);
+      const wrapper = control?.closest(".field");
+      if (!control || !wrapper) return;
+      wrapper.hidden = !visible;
+      control.disabled = !visible;
+      if (!visible) control.value = "";
+      if (visible && name === "qty" && !control.value) control.value = "1";
+    }
+
+    function removeLegacyTestIncomeEntries() {
+      const before = state.general.length;
+      state.general = state.general.filter(item => !isLegacyTestIncome(item));
+      return before - state.general.length;
+    }
+
+    function isLegacyTestIncome(item) {
+      if (item?.type !== "Income" || numeric(item.amount) !== 350000) return false;
+      return String(item.date || "") <= "2026-07-25";
     }
 
     function commitState() {
@@ -1592,6 +1802,17 @@
     }
 
     function normalizeDerivedData() {
+      state.general = state.general.map(item => {
+        const isInvestor = item.category === "Investor";
+        return {
+          ...item,
+          invoice: isInvestor ? "" : item.invoice,
+          qty: isInvestor ? "" : numeric(item.qty),
+          moneySentTo: isInvestor ? item.moneySentTo || "" : "",
+          notes: item.notes || ""
+        };
+      });
+
       state.sales = state.sales.map(item => {
         const revenue = numeric(item.revenue);
         const discount = numeric(item.discount);
@@ -1874,7 +2095,8 @@
         ownerDue: "Owner Due",
         inventory: "Inventory Purchases",
         stock: "Inventory",
-        pnl: "Monthly P&L"
+        pnl: "Monthly P&L",
+        monthlyReport: "Monthly Report"
       }[view];
       render();
     }
@@ -1900,6 +2122,7 @@
       renderInventory();
       renderStock();
       renderPnl();
+      renderMonthlyReport();
     }
 
     function renderSortIndicators() {
@@ -1977,7 +2200,7 @@
         .filter(item => yearOf(item.date) === year)
         .filter(item => !type || item.type === type)
         .filter(item => !category || item.category === category)
-        .filter(item => !search || [item.source, item.reference, item.category, item.item, item.notes].join(" ").toLowerCase().includes(search));
+        .filter(item => !search || [item.source, item.reference, item.category, item.item, item.paymentMethod, item.moneySentTo, item.notes].join(" ").toLowerCase().includes(search));
       const sortedRows = sortRows("dashboard", rows);
       document.getElementById("generalCount").textContent = rows.length + " entries";
       el.generalBody.innerHTML = sortedRows.length ? sortedRows.map(item => `
@@ -1991,10 +2214,11 @@
           <td class="money">${item.qty}</td>
           <td class="money">${rupiah(item.amount)}</td>
           <td>${escapeHTML(item.paymentMethod)}</td>
+          <td>${escapeHTML(item.moneySentTo)}</td>
           <td>${escapeHTML(item.notes)}</td>
           <td class="row-actions">${deleteButton(item.section, item.id)}</td>
         </tr>
-      `).join("") : emptyRow(11, "No cash flow entries yet.");
+      `).join("") : emptyRow(12, "No cash flow entries yet.");
     }
 
     function renderSales() {
@@ -2243,6 +2467,120 @@
       ]);
     }
 
+    function renderMonthlyReport() {
+      const data = monthlyReportData();
+      el.monthlyReportLabel.textContent = data.monthLabel;
+      el.monthlyReportPreview.innerHTML = `
+        <section>
+          <h2>Financials</h2>
+          ${reportLine("Revenue", data.salesRevenue)}
+          ${reportLine("COGS", data.cogs)}
+          ${reportLine("Other Revenues (Sponsors)", data.otherRevenue)}
+          ${reportLine("Gross Profit", data.grossProfit, "total")}
+          <h3>Operating Expenses</h3>
+          ${reportLine("Salaries & Wages", data.salaryExpense, "indent")}
+          ${reportLine("Event Cost", data.eventExpense, "indent")}
+          ${reportLine("Other Operational Expenses", data.otherOperatingExpense, "indent")}
+          ${reportLine("Rent", data.rentExpense, "indent")}
+          ${reportLine("Total Operating Expenses", data.totalOperatingExpenses, "total")}
+          ${reportLine("EBITDA", data.ebitda, "strong")}
+          ${reportLine("Tax (Non-PPN)", data.tax, "final indent")}
+          ${reportLine("Net Income", data.netIncome, "final")}
+          ${reportLine("Yearly Net Income", data.yearlyNetIncome, "indent")}
+        </section>
+        <section class="report-copy">
+          <h2>Monthly General Finance Report</h2>
+          <p><span class="report-accent">Actuals</span> + annualized estimate</p>
+          <p>Estimated yearly <b>Net Income</b> at <strong>${escapeHTML(rupiah(data.yearlyNetIncome))}</strong>, with EBITDA margin of <strong>${escapeHTML(formatPercent(data.ebitdaMargin))}</strong>.</p>
+          <em>Financial report is created from finance.nix-p.com entries for ${escapeHTML(data.monthLabel)} and annualized by 12 months.</em>
+          <p><b>Breakeven point (payback period)</b> at ${escapeHTML(data.paybackYearsText)}.</p>
+          <p><b>Key assumptions:</b><br>Investor, loan, owner capital, bank, and owner reimbursement entries are excluded from operating revenue. Inventory purchase cash impact is grouped into COGS for this general monthly report.</p>
+        </section>
+        <footer class="report-footnote">
+          <span><u>Disclaimer:</u> Internal management report. Not audited financial advice.</span>
+          <span>NIXP / ${escapeHTML(data.monthLabel)}</span>
+        </footer>
+      `;
+    }
+
+    function reportLine(label, value, className = "") {
+      return `
+        <div class="report-line ${className}">
+          <span>${escapeHTML(label)}</span>
+          <span>${value === null ? "-" : escapeHTML(rupiah(value))}</span>
+        </div>
+      `;
+    }
+
+    function monthlyReportData() {
+      const month = el.reportMonth.value || currentMonth;
+      const selectedYear = month.slice(0, 4);
+      const financingCategories = new Set(["Investor", "Loan", "Owner Capital", "Bank", ownerReimbursementCategory]);
+      const general = state.general.filter(item => monthOf(item.date) === month);
+      const sales = state.sales.filter(item => monthOf(item.date) === month);
+      const expenses = state.expenses.filter(item => monthOf(item.date) === month);
+      const inventory = state.inventory.filter(item => monthOf(item.date) === month && !isRawMaterialPurchase(item));
+      const generalIncome = general.filter(item => item.type === "Income");
+      const salesRevenue = sales.reduce((total, item) => total + numeric(item.revenue), 0)
+        + generalIncome.filter(item => item.category === "Sales").reduce((total, item) => total + numeric(item.amount), 0);
+      const otherRevenue = generalIncome
+        .filter(item => item.category !== "Sales")
+        .filter(item => !financingCategories.has(item.category))
+        .reduce((total, item) => total + numeric(item.amount), 0);
+      const salesCogs = sales.reduce((total, item) => total + numeric(item.cogs), 0);
+      const inventoryCogs = inventory.reduce((total, item) => total + inventoryCashflow(item), 0);
+      const cogs = salesCogs + inventoryCogs;
+      const salaryExpense = expenses.filter(item => item.category === "Salary").reduce((total, item) => total + numeric(item.amount), 0);
+      const rentExpense = expenses.filter(item => item.category === "Rent").reduce((total, item) => total + numeric(item.amount), 0);
+      const eventExpenseCategories = new Set(["Marketing", "Production", "Logistics"]);
+      const eventExpense = expenses.filter(item => eventExpenseCategories.has(item.category)).reduce((total, item) => total + numeric(item.amount), 0);
+      const otherOperatingExpense = expenses
+        .filter(item => item.category !== "Salary")
+        .filter(item => item.category !== "Rent")
+        .filter(item => !eventExpenseCategories.has(item.category))
+        .reduce((total, item) => total + numeric(item.amount), 0);
+      const grossProfit = salesRevenue + otherRevenue - cogs;
+      const totalOperatingExpenses = salaryExpense + eventExpense + otherOperatingExpense + rentExpense;
+      const ebitda = grossProfit - totalOperatingExpenses;
+      const tax = Math.max(0, ebitda * 0.25);
+      const netIncome = ebitda - tax;
+      const yearlyNetIncome = netIncome * 12;
+      const revenueBase = salesRevenue + otherRevenue;
+      const ebitdaMargin = revenueBase > 0 ? ebitda / revenueBase * 100 : 0;
+      const investorCapital = state.general
+        .filter(item => item.type === "Income")
+        .filter(item => item.category === "Investor")
+        .filter(item => yearOf(item.date) === selectedYear)
+        .reduce((total, item) => total + numeric(item.amount), 0);
+      const paybackYears = investorCapital > 0 && yearlyNetIncome > 0 ? investorCapital / yearlyNetIncome : null;
+      return {
+        month,
+        monthLabel: formatMonthLabel(month),
+        salesRevenue,
+        otherRevenue,
+        cogs,
+        grossProfit,
+        salaryExpense,
+        eventExpense,
+        otherOperatingExpense,
+        rentExpense,
+        totalOperatingExpenses,
+        ebitda,
+        tax,
+        netIncome,
+        yearlyNetIncome,
+        ebitdaMargin,
+        paybackYears,
+        paybackYearsText: paybackYears ? `${paybackYears.toFixed(2)} Years` : "-"
+      };
+    }
+
+    function formatMonthLabel(month) {
+      const [year, monthNumber] = String(month || currentMonth).split("-");
+      const date = new Date(Number(year), Number(monthNumber || 1) - 1, 1);
+      return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+    }
+
     function renderBars(items) {
       const max = Math.max(...items.map(([, value]) => Math.abs(value)), 1);
       document.getElementById("pnlBars").innerHTML = items.map(([label, value]) => `
@@ -2267,6 +2605,7 @@
         qty: item.qty,
         amount: item.amount,
         paymentMethod: item.paymentMethod,
+        moneySentTo: item.moneySentTo || "",
         notes: item.notes
       }));
 
@@ -2344,12 +2683,12 @@
 
     function exportCSV() {
       const rows = [
-        ["Section", "Date/Month", "Invoice/Supplier/Vendor", "Type", "Category/Source", "Item", "Item Condition", "Artist Name", "Title", "Qty", "Income", "Outcome", "Discount (%)", "Discount Context", "Cashflow Impact", "Cost Basis", "Selling Price", "Sold Price", "Gross Profit", "Margin (%)", "Fixed/Variable", "Payment Method", "Notes"],
-        ...[...state.general].sort(byDateAsc).map(item => ["General", item.date, item.invoice, item.type, item.category, item.sku, "", "", "", item.qty, item.type === "Income" ? item.amount : "", item.type === "Outcome" ? item.amount : "", "", "", "", "", "", "", "", "", "", item.paymentMethod, item.notes]),
-        ...[...state.sales].sort(byDateAsc).map(item => ["Sales", item.date, item.invoice, "Income", item.category, item.sku, "", "", "", item.qty, item.revenue, item.cogs, item.discount, item.discountContext, "", "", "", "", item.grossProfit, "", "", item.paymentMethod, "Gross profit: " + item.grossProfit]),
-        ...[...state.expenses].sort(byDateAsc).map(item => ["Expenses", item.date, item.vendor, "Outcome", item.category, item.expense, "", "", "", "", "", item.amount, "", "", "", "", "", "", "", "", item.costType, item.paymentMethod, item.notes]),
-        ...[...state.inventory].sort(byDateAsc).map(item => ["Inventory Purchase", item.date, item.supplier, "Outcome", item.source || "Business Purchase", item.itemType || "Vinyl", item.itemCondition || "New-Sealed", item.artistName || "", "SKU: " + item.sku, item.qty, "", item.totalCost, "", "", inventoryCashflow(item), "", "", "", "", "", "", item.paymentMethod, "Unit cost: " + item.unitCost]),
-        ...[...state.inventoryStock].sort((a, b) => String(a.acquisitionMonth).localeCompare(String(b.acquisitionMonth))).map(item => ["Inventory Stock", item.acquisitionMonth, "", "", item.source, item.item, item.itemCondition || "New-Sealed", item.artist, item.title, item.qty, "", "", "", "", "", item.costBasis, item.sellingPrice, item.soldPrice, item.grossProfit, formatMargin(item.margin), "", "", "SKU: " + item.sku])
+        ["Section", "Date/Month", "Invoice/Supplier/Vendor", "Type", "Category/Source", "Item", "Item Condition", "Artist Name", "Title", "Qty", "Income", "Outcome", "Discount (%)", "Discount Context", "Cashflow Impact", "Cost Basis", "Selling Price", "Sold Price", "Gross Profit", "Margin (%)", "Fixed/Variable", "Payment Method", "Money Sent To", "Notes"],
+        ...[...state.general].sort(byDateAsc).map(item => ["General", item.date, item.invoice, item.type, item.category, item.sku, "", "", "", item.qty, item.type === "Income" ? item.amount : "", item.type === "Outcome" ? item.amount : "", "", "", "", "", "", "", "", "", "", item.paymentMethod, item.moneySentTo || "", item.notes]),
+        ...[...state.sales].sort(byDateAsc).map(item => ["Sales", item.date, item.invoice, "Income", item.category, item.sku, "", "", "", item.qty, item.revenue, item.cogs, item.discount, item.discountContext, "", "", "", "", item.grossProfit, "", "", item.paymentMethod, "", "Gross profit: " + item.grossProfit]),
+        ...[...state.expenses].sort(byDateAsc).map(item => ["Expenses", item.date, item.vendor, "Outcome", item.category, item.expense, "", "", "", "", "", item.amount, "", "", "", "", "", "", "", "", item.costType, item.paymentMethod, "", item.notes]),
+        ...[...state.inventory].sort(byDateAsc).map(item => ["Inventory Purchase", item.date, item.supplier, "Outcome", item.source || "Business Purchase", item.itemType || "Vinyl", item.itemCondition || "New-Sealed", item.artistName || "", "SKU: " + item.sku, item.qty, "", item.totalCost, "", "", inventoryCashflow(item), "", "", "", "", "", "", item.paymentMethod, "", "Unit cost: " + item.unitCost]),
+        ...[...state.inventoryStock].sort((a, b) => String(a.acquisitionMonth).localeCompare(String(b.acquisitionMonth))).map(item => ["Inventory Stock", item.acquisitionMonth, "", "", item.source, item.item, item.itemCondition || "New-Sealed", item.artist, item.title, item.qty, "", "", "", "", "", item.costBasis, item.sellingPrice, item.soldPrice, item.grossProfit, formatMargin(item.margin), "", "", "", "SKU: " + item.sku])
       ];
       download("nixp-cashflow.csv", rows.map(row => row.map(cell => `"${String(cell ?? "").replace(/"/g, '""')}"`).join(",")).join("\n"), "text/csv;charset=utf-8");
       download("nixp-cashflow-backup.json", JSON.stringify(state, null, 2), "application/json");
@@ -2361,7 +2700,9 @@
         alert("No data available to export yet.");
         return;
       }
-      const filename = "nixp-" + data.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      const filename = section === "monthlyReport"
+        ? "nixp-monthly-general-finance-report-" + monthlyReportData().month
+        : "nixp-" + data.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
       if (action === "copy") {
         await copyMatrix(data);
         return;
@@ -2375,6 +2716,10 @@
         return;
       }
       if (action === "jpg") {
+        if (section === "monthlyReport") {
+          exportMonthlyReportJPEG(monthlyReportData(), filename + ".jpg");
+          return;
+        }
         exportMatrixJPEG(data.rows, data.name, filename + ".jpg");
       }
     }
@@ -2387,9 +2732,11 @@
         ownerDue: "Owner Due",
         inventory: "Inventory Purchases",
         stock: "Inventory",
-        pnl: "Monthly P&L"
+        pnl: "Monthly P&L",
+        monthlyReport: "Monthly General Finance Report"
       };
       if (section === "pnl") return { name: names.pnl, rows: pnlExportRows() };
+      if (section === "monthlyReport") return { name: names.monthlyReport, rows: monthlyReportExportRows() };
       const table = document.querySelector("#" + section + "View table");
       return { name: names[section] || "NIXP Export", rows: table ? tableToMatrix(table) : [] };
     }
@@ -2436,6 +2783,146 @@
         ]);
       });
       return rows;
+    }
+
+    function monthlyReportExportRows() {
+      const data = monthlyReportData();
+      return [
+        ["Monthly General Finance Report", data.monthLabel],
+        ["Revenue", data.salesRevenue],
+        ["COGS", data.cogs],
+        ["Other Revenues (Sponsors)", data.otherRevenue],
+        ["Gross Profit", data.grossProfit],
+        ["Salaries & Wages", data.salaryExpense],
+        ["Event Cost", data.eventExpense],
+        ["Other Operational Expenses", data.otherOperatingExpense],
+        ["Rent", data.rentExpense],
+        ["Total Operating Expenses", data.totalOperatingExpenses],
+        ["EBITDA", data.ebitda],
+        ["EBITDA Margin", formatPercent(data.ebitdaMargin)],
+        ["Tax (Non-PPN)", data.tax],
+        ["Net Income", data.netIncome],
+        ["Yearly Net Income", data.yearlyNetIncome],
+        ["Breakeven Point (Payback Period)", data.paybackYearsText],
+        ["Assumptions", "Investor, loan, owner capital, bank, and owner reimbursement entries are excluded from operating revenue. Inventory purchase cash impact is grouped into COGS."]
+      ];
+    }
+
+    function exportMonthlyReportJPEG(data, filename) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1600;
+      canvas.height = 900;
+      const context = canvas.getContext("2d");
+      context.fillStyle = "#000";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.strokeStyle = "#f1f1f1";
+      context.lineWidth = 4;
+      context.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+
+      context.fillStyle = "#fff";
+      context.font = "800 34px Arial";
+      context.fillText("FINANCIALS", 225, 90);
+      context.fillText("MONTHLY GENERAL FINANCE REPORT", 810, 90);
+
+      let y = 170;
+      y = drawReportAmountLine(context, "Revenue", data.salesRevenue, 60, y);
+      y = drawReportAmountLine(context, "COGS", data.cogs, 60, y);
+      y = drawReportAmountLine(context, "Other Revenues (Sponsors)", data.otherRevenue, 60, y);
+      y = drawReportAmountLine(context, "Gross Profit", data.grossProfit, 100, y + 28, { strong: true, rule: true });
+      y += 28;
+      context.fillStyle = "#fff";
+      context.font = "400 22px Arial";
+      context.fillText("Operating Expenses", 60, y);
+      y += 28;
+      y = drawReportAmountLine(context, "Salaries & Wages", data.salaryExpense, 100, y);
+      y = drawReportAmountLine(context, "Event Cost", data.eventExpense, 100, y);
+      y = drawReportAmountLine(context, "Other Operational Expenses", data.otherOperatingExpense, 100, y);
+      y = drawReportAmountLine(context, "Rent", data.rentExpense, 100, y);
+      y = drawReportAmountLine(context, "Total Operating Expenses", data.totalOperatingExpenses, 100, y + 28, { strong: true, rule: true });
+      y = drawReportAmountLine(context, "EBITDA", data.ebitda, 60, y + 28, { strong: true });
+      y = drawReportAmountLine(context, "Tax (Non-PPN)", data.tax, 100, y + 28, { rule: true });
+      y = drawReportAmountLine(context, "Net Income", data.netIncome, 60, y + 36, { strong: true, rule: true });
+      drawReportAmountLine(context, "Yearly Net Income", data.yearlyNetIncome, 100, y + 46);
+
+      context.font = "800 26px Arial";
+      context.fillStyle = "#ff27ff";
+      context.fillText("ACTUALS", 810, 175);
+      context.fillStyle = "#fff";
+      context.fillText(" + ANNUALIZED ESTIMATE", 930, 175);
+
+      context.font = "700 20px Arial";
+      context.fillStyle = "#fff";
+      context.fillText("Estimated yearly Net Income at", 810, 245);
+      context.fillStyle = "#9fd7ff";
+      context.fillText(rupiah(data.yearlyNetIncome), 810, 272);
+      context.fillStyle = "#fff";
+      context.fillText(`with EBITDA margin of ${formatPercent(data.ebitdaMargin)}.`, 810, 299);
+
+      context.font = "italic 20px Arial";
+      context.fillStyle = "#fff";
+      let rightY = drawWrappedCanvasText(context, `Financial report is created from finance.nix-p.com entries for ${data.monthLabel} and annualized by 12 months.`, 810, 370, 520, 27);
+
+      context.font = "700 20px Arial";
+      rightY += 24;
+      context.fillText(`Breakeven point (payback period) at ${data.paybackYearsText}.`, 810, rightY);
+      rightY += 70;
+      context.font = "400 20px Arial";
+      rightY = drawWrappedCanvasText(context, "Key Assumptions: Investor, loan, owner capital, bank, and owner reimbursement entries are excluded from operating revenue. Inventory purchase cash impact is grouped into COGS.", 810, rightY, 560, 27);
+
+      context.font = "italic 16px Arial";
+      context.fillStyle = "#fff";
+      context.fillText("Disclaimer: Internal management report. Not audited financial advice.", 60, 790);
+      context.font = "700 12px Arial";
+      context.fillText(`NIXP / ${data.monthLabel}`, 60, 850);
+
+      canvas.toBlob(blob => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      }, "image/jpeg", 0.92);
+    }
+
+    function drawReportAmountLine(context, label, value, x, y, options = {}) {
+      if (options.rule) {
+        context.strokeStyle = "#fff";
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(60, y - 20);
+        context.lineTo(750, y - 20);
+        context.stroke();
+      }
+      context.font = `${options.strong ? "800" : "400"} 22px Arial`;
+      context.fillStyle = "#fff";
+      context.fillText(label, x, y);
+      context.fillStyle = "#9fd7ff";
+      context.textAlign = "right";
+      context.font = "800 22px Arial";
+      context.fillText(rupiah(value), 620, y);
+      context.textAlign = "left";
+      return y + 28;
+    }
+
+    function drawWrappedCanvasText(context, text, x, y, maxWidth, lineHeight) {
+      const words = String(text || "").split(/\s+/);
+      let line = "";
+      for (const word of words) {
+        const testLine = line ? line + " " + word : word;
+        if (context.measureText(testLine).width > maxWidth && line) {
+          context.fillText(line, x, y);
+          line = word;
+          y += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      if (line) context.fillText(line, x, y);
+      return y + lineHeight;
     }
 
     async function copyMatrix(data) {
