@@ -94,6 +94,23 @@ function slugify(value) {
     .replace(/^-|-$/g, "");
 }
 
+function artistKeys(value) {
+  const name = String(value || "").trim().toLowerCase();
+  const slug = slugify(value);
+  return [...new Set([name, slug].filter(Boolean))];
+}
+
+function inventoryArtistMap(products) {
+  const artists = new Map();
+  for (const product of products || []) {
+    if (product.category !== "Records") continue;
+    const artist = String(product.artist || "").trim();
+    if (!artist) continue;
+    for (const key of artistKeys(artist)) artists.set(key, artist);
+  }
+  return artists;
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -320,11 +337,14 @@ function formatPrice(value) {
 }
 
 function artistDocument(artist) {
-  const products = publicProducts.filter((product) => slugify(product.artist) === slugify(artist.name));
+  const availableArtistNames = inventoryArtistMap(publicProducts);
+  const products = publicProducts.filter(
+    (product) => product.category === "Records" && slugify(product.artist) === slugify(artist.name)
+  );
   const appMarkup = shell(
     `<section class="section shop-section artist-products">
       <div class="toolbar artist-toolbar"><a class="back-link" href="/artists" data-link>Artists</a><span>${escapeHtml(artist.name)}</span></div>
-      ${productGrid(products)}
+      ${productGrid(products, { availableArtistNames })}
     </section>`,
     `/artists/${slugify(artist.name)}`,
     0
@@ -376,8 +396,14 @@ for (const product of publicStore?.products || []) {
 }
 
 const artistDirectory = new Map();
-for (const artist of publicStore?.artists || []) artistDirectory.set(slugify(artist.name), artist.name);
-for (const product of publicProducts) {
+const recordArtistKeys = new Set(
+  publicProducts.filter((product) => product.category === "Records").map((product) => slugify(product.artist)).filter(Boolean)
+);
+for (const artist of publicStore?.artists || []) {
+  const slug = slugify(artist.name);
+  if (recordArtistKeys.has(slug)) artistDirectory.set(slug, artist.name);
+}
+for (const product of publicProducts.filter((product) => product.category === "Records")) {
   if (product.artist) artistDirectory.set(slugify(product.artist), product.artist);
 }
 for (const artistSlug of artistDirectory.keys()) staticRoutes.push(`artists/${artistSlug}`);

@@ -128,7 +128,7 @@ export function productGrid(products, options = {}) {
   }
   const availableArtistNames =
     options.availableArtistNames ||
-    new Set(products.map((product) => artistKeys(product.artist)).flat().filter(Boolean));
+    inventoryArtistMap(products);
 
   return `
     <div class="product-grid">
@@ -188,14 +188,38 @@ function recordArtistTags(product, availableArtistNames = new Set()) {
         .map((artist) => String(artist || "").trim())
         .filter(Boolean)
         .slice(0, 3)
-        .map((artist) =>
-          availableArtistNames.has(artistKeys(artist)[0]) || availableArtistNames.has(artistKeys(artist)[1])
-            ? `<a href="/artists/${artistSlug(artist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
+        .map((artist) => {
+          const inventoryArtist = resolveInventoryArtist(artist, availableArtistNames);
+          return inventoryArtist
+            ? `<a href="/artists/${artistSlug(inventoryArtist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
             : `<span>${escapeHtml(artist)}</span>`
-        )
+        })
         .join("")}
     </div>
   `;
+}
+
+function inventoryArtistMap(products) {
+  const artists = new Map();
+  for (const product of products || []) {
+    if (product.category && product.category !== "Records") continue;
+    const artist = String(product.artist || "").trim();
+    if (!artist) continue;
+    for (const key of artistKeys(artist)) artists.set(key, artist);
+  }
+  return artists;
+}
+
+function resolveInventoryArtist(artist, availableArtistNames) {
+  if (!availableArtistNames) return "";
+  const keys = artistKeys(artist);
+  if (typeof availableArtistNames.get === "function") {
+    return keys.map((key) => availableArtistNames.get(key)).find(Boolean) || "";
+  }
+  if (typeof availableArtistNames.has === "function") {
+    return keys.find((key) => availableArtistNames.has(key)) ? artist : "";
+  }
+  return "";
 }
 
 function artistSlug(value) {

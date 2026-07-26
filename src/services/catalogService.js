@@ -69,9 +69,14 @@ export const catalogService = {
   },
   async listArtists() {
     const snapshot = adminStore.getSnapshot();
+    const recordProducts = adminStore.listProducts().filter((product) => product.category === "Records");
+    const recordArtistKeys = new Set(recordProducts.map((product) => artistKey(product.artist)).filter(Boolean));
     const names = [
-      ...snapshot.artists.filter((artist) => artist.status === "Published").map((artist) => artist.name),
-      ...adminStore.listProducts().map((product) => product.artist)
+      ...snapshot.artists
+        .filter((artist) => artist.status === "Published")
+        .filter((artist) => recordArtistKeys.has(artistKey(artist.name)))
+        .map((artist) => artist.name),
+      ...recordProducts.map((product) => product.artist)
     ];
     return [...new Map(names
       .map((name) => String(name || "").trim())

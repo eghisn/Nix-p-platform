@@ -528,16 +528,21 @@ async function artistsPage() {
 
 async function artistProductsPage(path) {
   const requestedArtist = decodeURIComponent(path.replace("/artists/", ""));
+  const allProducts = await catalogService.listProducts();
   const artistNames = await catalogService.listArtists();
-  const artist = artistNames.find((name) => artistSlug(name) === artistSlug(requestedArtist)) || requestedArtist;
-  const products = await catalogService.listProductsByArtist(artist);
+  const artist = artistNames.find((name) => artistSlug(name) === artistSlug(requestedArtist));
+  if (!artist) return notFoundPage();
+  const products = artist
+    ? allProducts.filter((product) => product.category === "Records" && artistSlug(product.artist) === artistSlug(artist))
+    : [];
+  const availableArtistNames = inventoryArtistNames(allProducts);
   return `
     <section class="section shop-section artist-products">
       <div class="toolbar artist-toolbar">
         <a class="back-link" href="/artists" data-link>Artists</a>
         <span>${artist}</span>
       </div>
-      ${productGrid(products)}
+      ${productGrid(products, { availableArtistNames })}
     </section>
   `;
 }
@@ -1140,33 +1145,6 @@ async function adminHomeSliderPage({ embedded = false } = {}) {
 
 async function adminProductsPage({ embedded = false } = {}) {
   const products = await catalogService.listAllProducts();
-  const visibleProducts = sortItems(
-    filterItems(products, "products", (item) => [
-      item.sku,
-      item.artist,
-      item.title,
-      item.format,
-      item.condition,
-      item.category,
-      item.publishStatus,
-      item.price,
-      item.qty
-    ]),
-    state.adminSort.products,
-    {
-      artist: (item) => item.artist,
-      product: (item) => item.title,
-      title: (item) => item.title,
-      sku: (item) => item.sku,
-      category: (item) => item.category,
-      format: (item) => item.format,
-      condition: (item) => item.condition || "",
-      qty: (item) => Number(item.qty || 0),
-      price: (item) => item.price,
-      status: (item) => item.publishStatus,
-      updated: (item) => item.updatedAt || ""
-    }
-  );
   const editing = state.adminEditingProductId
     ? products.find((product) => product.id === state.adminEditingProductId)
     : null;
@@ -1238,7 +1216,45 @@ async function adminProductsPage({ embedded = false } = {}) {
         </div>
       </form>
 
-      <div class="admin-panel">
+      ${adminProductsCatalogMarkup(products)}
+    </div>
+  `;
+}
+
+function visibleAdminProducts(products) {
+  return sortItems(
+    filterItems(products, "products", (item) => [
+      item.sku,
+      item.artist,
+      item.title,
+      item.format,
+      item.condition,
+      item.category,
+      item.publishStatus,
+      item.price,
+      item.qty
+    ]),
+    state.adminSort.products,
+    {
+      artist: (item) => item.artist,
+      product: (item) => item.title,
+      title: (item) => item.title,
+      sku: (item) => item.sku,
+      category: (item) => item.category,
+      format: (item) => item.format,
+      condition: (item) => item.condition || "",
+      qty: (item) => Number(item.qty || 0),
+      price: (item) => item.price,
+      status: (item) => item.publishStatus,
+      updated: (item) => item.updatedAt || ""
+    }
+  );
+}
+
+function adminProductsCatalogMarkup(products) {
+  const visibleProducts = visibleAdminProducts(products);
+  return `
+      <div class="admin-panel" data-admin-products-catalog>
         <div class="admin-panel-head">
           <h2>Catalog</h2>
           <span>${visibleProducts.length} / ${products.length} items</span>
@@ -1285,7 +1301,6 @@ async function adminProductsPage({ embedded = false } = {}) {
           ])
         )}
       </div>
-    </div>
   `;
 }
 
@@ -2214,48 +2229,7 @@ function bindEvents() {
     render({ preserveScroll: true });
   });
 
-  document.querySelectorAll("[data-admin-edit-product]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.adminEditingProductId = button.dataset.adminEditProduct;
-      window.scrollTo({ top: 0, behavior: "auto" });
-      render();
-    });
-  });
-
-  document.querySelectorAll("[data-admin-product-status]").forEach((button) => {
-    button.addEventListener("click", () => {
-      adminStore.updateProductStatus(button.dataset.adminProductStatus, button.dataset.status);
-      render({ preserveScroll: true });
-    });
-  });
-
-  document.querySelectorAll("[data-admin-search]").forEach((input) => {
-    input.addEventListener("input", async () => {
-      const scope = input.dataset.adminSearch;
-      state.adminSearch[scope] = input.value;
-      await render({ preserveScroll: true });
-      const nextInput = document.querySelector(`[data-admin-search="${scope}"]`);
-      nextInput?.focus();
-      nextInput?.setSelectionRange(nextInput.value.length, nextInput.value.length);
-    });
-  });
-
-  document.querySelectorAll("[data-admin-sort]").forEach((selectEl) => {
-    selectEl.addEventListener("change", async () => {
-    state.adminSort[selectEl.dataset.adminSort] = selectEl.value;
-      await render({ preserveScroll: true });
-    });
-  });
-
-  document.querySelectorAll("[data-admin-sort-button]").forEach((button) => {
-    button.addEventListener("click", async () => {
-      const scope = button.dataset.scope;
-      const key = button.dataset.adminSortButton;
-      const current = state.adminSort[scope];
-      state.adminSort[scope] = current === key ? `${key}:desc` : key;
-      await render({ preserveScroll: true });
-    });
-  });
+  bindAdminListControls();
 
   document.querySelector("[data-admin-product-form] select[name='category']")?.addEventListener("change", (event) => {
     const form = event.currentTarget.closest("[data-admin-product-form]");
@@ -2434,6 +2408,73 @@ function bindEvents() {
       await render({ preserveScroll: true });
     }
   });
+}
+
+function bindAdminListControls(root = document) {
+  root.querySelectorAll("[data-admin-edit-product]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.adminEditingProductId = button.dataset.adminEditProduct;
+      window.scrollTo({ top: 0, behavior: "auto" });
+      render();
+    });
+  });
+
+  root.querySelectorAll("[data-admin-product-status]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      await adminStore.updateProductStatus(button.dataset.adminProductStatus, button.dataset.status);
+      await refreshAdminList("products");
+    });
+  });
+
+  root.querySelectorAll("[data-admin-search]").forEach((input) => {
+    input.addEventListener("input", async () => {
+      const scope = input.dataset.adminSearch;
+      state.adminSearch[scope] = input.value;
+      await refreshAdminList(scope);
+      const nextInput = document.querySelector(`[data-admin-search="${scope}"]`);
+      nextInput?.focus();
+      nextInput?.setSelectionRange(nextInput.value.length, nextInput.value.length);
+    });
+  });
+
+  root.querySelectorAll("[data-admin-sort]").forEach((selectEl) => {
+    selectEl.addEventListener("change", async () => {
+      const scope = selectEl.dataset.adminSort;
+      state.adminSort[scope] = selectEl.value;
+      await refreshAdminList(scope);
+    });
+  });
+
+  root.querySelectorAll("[data-admin-sort-button]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const scope = button.dataset.scope;
+      const key = button.dataset.adminSortButton;
+      const current = state.adminSort[scope];
+      state.adminSort[scope] = current === key ? `${key}:desc` : key;
+      await refreshAdminList(scope);
+    });
+  });
+}
+
+async function refreshAdminList(scope) {
+  if (scope !== "products") {
+    await render({ preserveScroll: true });
+    return;
+  }
+
+  const panel = document.querySelector("[data-admin-products-catalog]");
+  if (!panel) {
+    await render({ preserveScroll: true });
+    return;
+  }
+
+  const products = await catalogService.listAllProducts();
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = adminProductsCatalogMarkup(products).trim();
+  const nextPanel = wrapper.firstElementChild;
+  if (!nextPanel) return;
+  panel.replaceWith(nextPanel);
+  bindAdminListControls(nextPanel);
 }
 
 function setCartOpen(isOpen) {
