@@ -103,6 +103,49 @@ async function syncFinanceInventoryToCatalog(state) {
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
+  await syncFinanceArtistsToCatalog(stockRows);
+}
+
+async function syncFinanceArtistsToCatalog(stockRows = []) {
+  const names = [...new Set(
+    stockRows
+      .filter((item) => RECORD_FORMATS.has(String(item?.item || "").trim()))
+      .map((item) => String(item?.artist || "").trim())
+      .filter(Boolean)
+  )];
+  if (!names.length) return;
+
+  const existingRows = await supabaseFetch("artists?select=id,name,sort");
+  const existingNames = new Set(existingRows.map((row) => String(row?.name || "").trim().toLowerCase()).filter(Boolean));
+  const existingIds = new Set(existingRows.map((row) => String(row?.id || "").trim()).filter(Boolean));
+  const nextSort = existingRows.reduce((max, row) => Math.max(max, Number(row?.sort || 0)), 0);
+  const additions = [];
+
+  for (const [offset, name] of names.entries()) {
+    const key = name.toLowerCase();
+    if (existingNames.has(key)) continue;
+    const baseId = slugify(name) || `artist-${offset + 1}`;
+    const id = existingIds.has(baseId) ? `finance-artist-${baseId}` : baseId;
+    if (existingIds.has(id)) continue;
+    additions.push({
+      id,
+      name,
+      bio: "",
+      status: "Published",
+      sort: nextSort + additions.length + 1,
+      raw: { id, name, bio: "", status: "Published", sort: nextSort + additions.length + 1, origin: "finance-inventory" }
+    });
+    existingNames.add(key);
+    existingIds.add(id);
+  }
+
+  if (additions.length) {
+    await supabaseFetch("artists?on_conflict=id", {
+      method: "POST",
+      body: additions,
+      prefer: "resolution=merge-duplicates,return=minimal"
+    });
+  }
 }
 
 async function deleteStaleFinanceInventoryRows(activeIds = []) {
