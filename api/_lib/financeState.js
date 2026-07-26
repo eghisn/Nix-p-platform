@@ -133,7 +133,7 @@ async function syncFinanceArtistsToCatalog(stockRows = []) {
       title: null,
       status: "Published",
       sort: nextSort + additions.length + 1,
-      raw: { id, name, bio: "", status: "Published", sort: nextSort + additions.length + 1, origin: "finance-inventory" }
+      raw: { id, name, status: "Published", sort: nextSort + additions.length + 1, origin: "finance-inventory" }
     });
     existingNames.add(key);
     existingIds.add(id);
