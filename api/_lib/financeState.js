@@ -72,7 +72,7 @@ async function syncFinanceInventoryToCatalog(state) {
     const quantity = normalizedQuantity(stock.qty);
     if (existing) {
       const raw = { ...(existing.raw || {}), qty: quantity, updatedAt: today(), financeStockId: stock.id || null };
-      productRows.push({ ...existing, qty: quantity, updated_at: today(), raw });
+      productRows.push(productRowFromExisting(existing, { qty: quantity, updated_at: today(), raw }));
       productIdBySku.set(key, existing.id);
       continue;
     }
@@ -120,6 +120,39 @@ async function deleteStaleFinanceInventoryRows(activeIds = []) {
     method: "DELETE",
     prefer: "return=minimal"
   });
+}
+
+function productRowFromExisting(row, overrides = {}) {
+  const next = { ...row, ...overrides };
+  return {
+    id: String(next.id),
+    sku: next.sku || next.id,
+    title: next.title || "Untitled Item",
+    artist: next.artist || "",
+    category: next.category || "",
+    format: next.format || "",
+    display_format: next.display_format || "",
+    apparel_type: next.apparel_type || "",
+    condition: next.condition || "",
+    price: Number(next.price || 0),
+    year: Number(next.year || new Date().getFullYear()),
+    label: next.label || "",
+    collection: next.collection || "",
+    color: next.color || "",
+    material: next.material || "",
+    image: next.image || next.images?.[0] || "",
+    images: next.images || [],
+    image_credits: next.image_credits || [],
+    tags: next.tags || [],
+    details: next.details || [],
+    sizes: next.sizes || [],
+    description: next.description || "",
+    qty: normalizedQuantity(next.qty),
+    publish_status: next.publish_status || "Published",
+    visibility: next.visibility || "Public",
+    updated_at: next.updated_at || today(),
+    raw: next.raw || {}
+  };
 }
 
 export async function syncAdminProductInventory(product) {
