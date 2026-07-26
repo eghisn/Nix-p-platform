@@ -724,6 +724,28 @@ html {
   transition: opacity 160ms ease, transform 160ms ease;
 }
 
+#app:empty::before {
+  content: "NIXP";
+  display: grid;
+  min-height: calc(100vh - var(--header-h) - var(--footer-h));
+  place-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.app-boot {
+  display: grid;
+  min-height: calc(100vh - var(--header-h) - var(--footer-h));
+  place-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 #app.is-rendering {
   opacity: 0.72;
   transform: translateY(3px);

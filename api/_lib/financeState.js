@@ -218,9 +218,9 @@ function productRowFromFinanceStock(row, stock, quantity) {
     String(row.id || "").startsWith("finance-") ||
     row.raw?.financeStockId ||
     String(row.raw?.details?.[0] || "").includes("Created from finance inventory");
-  const readyFromFinance = Boolean(financeTitle && financePrice > 0);
-  const publishStatus = wasFinanceDraft && readyFromFinance ? "Published" : row.publish_status || "Published";
-  const visibility = wasFinanceDraft && readyFromFinance ? "Public" : row.visibility || "Public";
+  const readyFromFinance = Boolean(financeTitle && financePrice > 0 && hasUsableProductImage(row));
+  const publishStatus = wasFinanceDraft ? (readyFromFinance ? "Published" : "Draft") : row.publish_status || "Published";
+  const visibility = wasFinanceDraft ? (readyFromFinance ? "Public" : "Private") : row.visibility || "Public";
 
   return productRowFromExisting(row, {
     title: financeTitle || row.title,
@@ -248,6 +248,13 @@ function productRowFromFinanceStock(row, stock, quantity) {
       visibility
     }
   });
+}
+
+function hasUsableProductImage(row = {}) {
+  const images = [row.image, ...(Array.isArray(row.images) ? row.images : [])]
+    .map((image) => String(image || "").trim())
+    .filter(Boolean);
+  return images.some((image) => !image.includes("nixp-product-example"));
 }
 
 export async function syncAdminProductInventory(product) {

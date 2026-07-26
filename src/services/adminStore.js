@@ -30,12 +30,13 @@ function clone(value) {
 }
 
 function withDefaults(product) {
+  const isFinanceDraft = String(product.id || "").startsWith("finance-") || Boolean(product.financeStockId);
   const defaults = {
     publishStatus: "Published",
     visibility: "Public",
     updatedAt: "2026-07-11",
     ...product,
-    image: product.image || product.images?.[0] || "/public/nixp-product-example-paper.png",
+    image: product.image || product.images?.[0] || (isFinanceDraft ? "" : "/public/nixp-product-example-paper.png"),
     edition: String(product.edition || "").trim(),
     mediaCondition: String(product.mediaCondition || "").trim(),
     sleeveCondition: String(product.sleeveCondition || "").trim(),
@@ -576,7 +577,11 @@ export const adminStore = {
   },
   listProducts({ includeDrafts = false } = {}) {
     const items = readStore().products;
-    return includeDrafts ? items : items.filter((product) => product.publishStatus === "Published");
+    if (includeDrafts) return items;
+    return items.filter((product) =>
+      product.publishStatus === "Published" &&
+      (canUsePrivateStore() || (product.image && !(product.category === "Records" && product.image.includes("nixp-product-example"))))
+    );
   },
   getProduct(id, { includeDrafts = false } = {}) {
     return this.listProducts({ includeDrafts }).find((product) => product.id === id);

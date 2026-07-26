@@ -52,9 +52,12 @@ export async function loadStore({ privateScope = false } = {}) {
     privateScope ? supabaseFetch("cashflow?select=*&order=created_at.desc", { service: true }) : [],
     privateScope ? supabaseFetch("inventory?select=*&order=created_at.desc", { service: true }) : []
   ]);
+  const mappedProducts = products.map((row) => fromProductRow(row, { privateScope }));
   return {
     version: "supabase-live-2026-07-13",
-    products: products.map((row) => fromProductRow(row, { privateScope })),
+    products: privateScope
+      ? mappedProducts
+      : mappedProducts.filter((product) => product.image && !(product.category === "Records" && product.image.includes("nixp-product-example"))),
     artists: artists.map(fromRawRow),
     collections: collections.map(fromRawRow),
     requests: requests.map(fromRawRow),

@@ -49,7 +49,8 @@ export const artistNames = [
   "Team Sleep",
   "The Chemical Brothers",
   "The Mars Volta",
-    "Yeah Yeah Yeahs"
+  "Yeah Yeah Yeahs",
+  "Dirty Projectors"
 ];
 
 const recordImage = "/public/nixp-product-example-paper.png";
@@ -550,6 +551,17 @@ const recordRows = [
     "price": 300000,
     "image": "/public/covers/nxp-2026-cd-0024-antemasque.jpg",
     "condition": "Used Excellent"
+  },
+  {
+    "id": "finance-nxp-2026-cd-0035",
+    "sku": "NXP-2026-CD-0035",
+    "artist": "Dirty Projectors",
+    "title": "Swing Lo Magellan",
+    "format": "CD",
+    "qty": 1,
+    "price": 197000,
+    "image": "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg",
+    "condition": "New-Sealed"
   }
 ];
 
@@ -598,7 +610,8 @@ const recordLabels = {
   "nxp-2026-vnl-0012": "XL Recordings",
   "nxp-2026-vnl-0013-self-titled": "Keck",
   "nxp-2026-cd-0023": "Warp Records",
-  "nxp-2026-cd-0024-antemasque": "Nadie Sound"
+  "nxp-2026-cd-0024-antemasque": "Nadie Sound",
+  "finance-nxp-2026-cd-0035": "Domino"
 };
 
 const recordYears = {
@@ -646,7 +659,8 @@ const recordYears = {
   "nxp-2026-vnl-0012": 2025,
   "nxp-2026-vnl-0013-self-titled": 2019,
   "nxp-2026-cd-0023": 2025,
-  "nxp-2026-cd-0024-antemasque": 2014
+  "nxp-2026-cd-0024-antemasque": 2014,
+  "finance-nxp-2026-cd-0035": 2012
 };
 
 const recordRelatedArtists = {
@@ -694,7 +708,8 @@ const recordRelatedArtists = {
   "nxp-2026-vnl-0012": ["Karenn", "Pariah", "Surgeon"],
   "nxp-2026-vnl-0013-self-titled": ["Blawan", "Tzusing"],
   "nxp-2026-cd-0023": ["Tim Hecker", "Arca", "Daniel Lopatin"],
-  "nxp-2026-cd-0024-antemasque": ["The Mars Volta", "At The Drive-In", "Red Hot Chili Peppers"]
+  "nxp-2026-cd-0024-antemasque": ["The Mars Volta", "At The Drive-In", "Red Hot Chili Peppers"],
+  "finance-nxp-2026-cd-0035": ["Björk", "David Byrne", "Animal Collective"]
 };
 
 const nixpSelectionIds = new Set([

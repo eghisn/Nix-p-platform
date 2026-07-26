@@ -45,9 +45,10 @@ export const catalogService = {
     return adminStore.listProducts().filter((product) => product.category === category);
   },
   async listProductsByArtist(artistName) {
+    const requested = artistKey(artistName);
     return adminStore
       .listProducts()
-      .filter((product) => product.artist.toLowerCase() === artistName.toLowerCase());
+      .filter((product) => artistKey(product.artist) === requested);
   },
   async getProduct(id, options = {}) {
     return adminStore.getProduct(id, options);
@@ -67,11 +68,16 @@ export const catalogService = {
     });
   },
   async listArtists() {
-    return adminStore
-      .getSnapshot()
-      .artists.filter((artist) => artist.status === "Published")
-      .filter((artist) => !hiddenPublicArtists.has(artist.name.trim().toLowerCase()))
-      .map((artist) => artist.name)
+    const snapshot = adminStore.getSnapshot();
+    const names = [
+      ...snapshot.artists.filter((artist) => artist.status === "Published").map((artist) => artist.name),
+      ...adminStore.listProducts().map((product) => product.artist)
+    ];
+    return [...new Map(names
+      .map((name) => String(name || "").trim())
+      .filter((name) => name && !hiddenPublicArtists.has(name.toLowerCase()))
+      .map((name) => [artistKey(name), name]))
+      .values()]
       .sort((a, b) => a.localeCompare(b));
   },
   async listAdminArtists() {
@@ -109,3 +115,11 @@ export const catalogService = {
     return adminStore.getSnapshot().cashflow;
   }
 };
+
+function artistKey(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}

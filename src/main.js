@@ -514,7 +514,7 @@ async function artistsPage() {
         .map(
           (artist) => `
             <article class="artist-row">
-              <a href="/artists/${encodeURIComponent(artist)}" data-link>
+              <a href="/artists/${artistSlug(artist)}" data-link>
                 <h2>${artist}</h2>
                 <span>View products</span>
               </a>
@@ -527,7 +527,9 @@ async function artistsPage() {
 }
 
 async function artistProductsPage(path) {
-  const artist = decodeURIComponent(path.replace("/artists/", ""));
+  const requestedArtist = decodeURIComponent(path.replace("/artists/", ""));
+  const artistNames = await catalogService.listArtists();
+  const artist = artistNames.find((name) => artistSlug(name) === artistSlug(requestedArtist)) || requestedArtist;
   const products = await catalogService.listProductsByArtist(artist);
   return `
     <section class="section shop-section artist-products">
@@ -1764,7 +1766,7 @@ function productRelatedArtists(product) {
 }
 
 function inventoryArtistNames(products) {
-  return new Set(products.map((product) => String(product.artist || "").trim().toLowerCase()).filter(Boolean));
+  return new Set(products.map((product) => artistKeys(product.artist)).flat().filter(Boolean));
 }
 
 function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
@@ -1776,13 +1778,27 @@ function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
     <div class="related-artist-tags" aria-label="Related artists">
       ${artists
         .map((artist) =>
-          availableArtistNames.has(artist.toLowerCase())
-            ? `<a href="/artists/${encodeURIComponent(artist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
+          availableArtistNames.has(artistKeys(artist)[0]) || availableArtistNames.has(artistKeys(artist)[1])
+            ? `<a href="/artists/${artistSlug(artist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
             : `<span>${escapeHtml(artist)}</span>`
         )
         .join("")}
     </div>
   `;
+}
+
+function artistSlug(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function artistKeys(value) {
+  const name = String(value || "").trim().toLowerCase();
+  const slug = artistSlug(value);
+  return [...new Set([name, slug])];
 }
 
 function safeExternalUrl(value) {

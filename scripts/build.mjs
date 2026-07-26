@@ -1,7 +1,7 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { build } from "esbuild";
-import { shell } from "../src/components/layout.js";
+import { productGrid, shell } from "../src/components/layout.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -52,7 +52,11 @@ const siteOrigin = "https://www.nix-p.com";
 const siteDescription = "A shifting selection of records, objects, publishing and apparel.";
 const siteImage = `${siteOrigin}/public/assets/nixp-logo.png`;
 const publicProducts = (publicStore?.products || []).filter(
-  (product) => product.publishStatus === "Published" && product.visibility === "Public"
+  (product) =>
+    product.publishStatus === "Published" &&
+    product.visibility === "Public" &&
+    product.image &&
+    !(product.category === "Records" && product.image.includes("nixp-product-example"))
 );
 const staticRoutes = [
   "records",
@@ -138,7 +142,7 @@ function routeDocument({ title, description, url, image, type = "website", appMa
     const json = JSON.stringify(structuredData).replaceAll("<", "\\u003c");
     html = html.replace("</head>", `    <script type="application/ld+json">${json}</script>\n  </head>`);
   }
-  if (appMarkup) html = html.replace('<div id="app"></div>', `<div id="app">${appMarkup}</div>`);
+  if (appMarkup) html = html.replace("<!-- NIXP_APP_MARKER -->", appMarkup);
   if (crawlMarkup) html = html.replace("</body>", `    ${crawlMarkup}\n  </body>`);
   return html;
 }
@@ -277,6 +281,26 @@ function formatPrice(value) {
     .replaceAll("\u00a0", " ");
 }
 
+function artistDocument(artist) {
+  const products = publicProducts.filter((product) => slugify(product.artist) === slugify(artist.name));
+  const appMarkup = shell(
+    `<section class="section shop-section artist-products">
+      <div class="toolbar artist-toolbar"><a class="back-link" href="/artists" data-link>Artists</a><span>${escapeHtml(artist.name)}</span></div>
+      ${productGrid(products)}
+    </section>`,
+    `/artists/${slugify(artist.name)}`,
+    0
+  );
+  return routeDocument({
+    title: `${artist.name} | NIXP`,
+    description: `${artist.name} releases available from NIXP.`,
+    url: `${siteOrigin}/artists/${slugify(artist.name)}`,
+    image: siteImage,
+    appMarkup,
+    crawlMarkup: crawlerSection(`<h1>${escapeHtml(artist.name)}</h1><p>Releases by ${escapeHtml(artist.name)} available from NIXP.</p>`)
+  });
+}
+
 function productQuantity(product = {}) {
   if (Array.isArray(product.sizes) && product.sizes.length) {
     return product.sizes.reduce(
@@ -289,14 +313,20 @@ function productQuantity(product = {}) {
 
 await writeFile(`${dist}/index.html`, homeDocument());
 
-for (const product of publicStore?.products || []) {
+for (const product of publicProducts) {
   staticRoutes.push(`product/${product.id}`);
+}
+
+for (const product of publicStore?.products || []) {
   staticRoutes.push(`admin/preview/product/${product.id}`);
 }
 
-for (const artist of publicStore?.artists || []) {
-  staticRoutes.push(`artists/${slugify(artist.name)}`);
+const artistDirectory = new Map();
+for (const artist of publicStore?.artists || []) artistDirectory.set(slugify(artist.name), artist.name);
+for (const product of publicProducts) {
+  if (product.artist) artistDirectory.set(slugify(product.artist), product.artist);
 }
+for (const artistSlug of artistDirectory.keys()) staticRoutes.push(`artists/${artistSlug}`);
 
 for (const route of [...new Set(staticRoutes)]) {
   const routeDir = `${dist}/${route}`;
@@ -304,15 +334,20 @@ for (const route of [...new Set(staticRoutes)]) {
   const productId = route.startsWith("product/") ? route.slice("product/".length) : "";
   const product = productId ? publicProducts.find((item) => item.id === productId) : null;
   const routeUrl = `${siteOrigin}/${route}`;
+  const artistSlugPath = route.startsWith("artists/") ? route.slice("artists/".length) : "";
+  const artistName = artistSlugPath ? artistDirectory.get(artistSlugPath) : "";
   const document = product
     ? productDocument(product)
-    : routeDocument({
-        title: route === "" ? "NIXP" : `${route.split("/").at(-1).replaceAll("-", " ")} | NIXP`,
-        description: siteDescription,
-        url: routeUrl,
-        image: siteImage,
-        crawlMarkup: crawlerSection(`<h1>NIXP</h1><p>${escapeHtml(siteDescription)}</p>`)
-      });
+    : artistName
+      ? artistDocument({ name: artistName })
+      : routeDocument({
+          title: route === "" ? "NIXP" : `${route.split("/").at(-1).replaceAll("-", " ")} | NIXP`,
+          description: siteDescription,
+          url: routeUrl,
+          image: siteImage,
+          appMarkup: shell(`<section class="section"><div class="app-boot" aria-live="polite">NIXP</div></section>`, `/${route}`, 0),
+          crawlMarkup: crawlerSection(`<h1>NIXP</h1><p>${escapeHtml(siteDescription)}</p>`)
+        });
   await writeFile(`${routeDir}/index.html`, document);
 }
 

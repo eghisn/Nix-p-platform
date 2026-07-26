@@ -128,7 +128,7 @@ export function productGrid(products, options = {}) {
   }
   const availableArtistNames =
     options.availableArtistNames ||
-    new Set(products.map((product) => String(product.artist || "").trim().toLowerCase()).filter(Boolean));
+    new Set(products.map((product) => artistKeys(product.artist)).flat().filter(Boolean));
 
   return `
     <div class="product-grid">
@@ -189,13 +189,27 @@ function recordArtistTags(product, availableArtistNames = new Set()) {
         .filter(Boolean)
         .slice(0, 3)
         .map((artist) =>
-          availableArtistNames.has(artist.toLowerCase())
-            ? `<a href="/artists/${encodeURIComponent(artist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
+          availableArtistNames.has(artistKeys(artist)[0]) || availableArtistNames.has(artistKeys(artist)[1])
+            ? `<a href="/artists/${artistSlug(artist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
             : `<span>${escapeHtml(artist)}</span>`
         )
         .join("")}
     </div>
   `;
+}
+
+function artistSlug(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function artistKeys(value) {
+  const name = String(value || "").trim().toLowerCase();
+  const slug = artistSlug(value);
+  return [...new Set([name, slug])];
 }
 
 function escapeHtml(value) {
