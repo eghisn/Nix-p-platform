@@ -1328,18 +1328,19 @@
       return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
     }
 
-    function saveState() {
+    async function saveState() {
       if (!usesLocalFileStorage) {
         el.saveStatus.textContent = "Saving to protected server...";
-        persistServerState();
-        return;
+        return persistServerState();
       }
       try {
         window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         el.saveStatus.textContent = "Saved locally";
+        return true;
       } catch (error) {
         console.warn("Could not save NIXP data", error);
         el.saveStatus.textContent = "Storage blocked. Export CSV.";
+        return false;
       }
     }
 
@@ -1384,30 +1385,30 @@
       setTimeout(migrateFileStorageToProtectedServer, 800);
     }
 
-    function persistServerState() {
-      if (location.protocol !== "http:" && location.protocol !== "https:") return;
+    async function persistServerState() {
+      if (location.protocol !== "http:" && location.protocol !== "https:") return true;
       financeSavePending = true;
-      fetch("/api/state", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ state, updatedAt: financeStateUpdatedAt })
-      })
-        .then(async (response) => {
-          const payload = await response.json().catch(() => ({}));
-          if (response.status === 409) {
-            financeSaveConflict = true;
-            throw new Error(payload.error || "Finance data changed on the server. Refresh before saving again.");
-          }
-          if (!response.ok) throw new Error(payload.error || "Unable to save finance state");
-          financeStateUpdatedAt = payload.updatedAt || financeStateUpdatedAt;
-          el.saveStatus.textContent = "Saved to protected server";
-        })
-        .catch((error) => {
-          el.saveStatus.textContent = error.message || "Save failed. Changes were not synced.";
-        })
-        .finally(() => {
-          financeSavePending = false;
+      try {
+        const response = await fetch("/api/state", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ state, updatedAt: financeStateUpdatedAt })
         });
+        const payload = await response.json().catch(() => ({}));
+        if (response.status === 409) {
+          financeSaveConflict = true;
+          throw new Error(payload.error || "Finance data changed on the server. Refresh before saving again.");
+        }
+        if (!response.ok) throw new Error(payload.error || "Unable to save finance state");
+        financeStateUpdatedAt = payload.updatedAt || financeStateUpdatedAt;
+        el.saveStatus.textContent = "Saved to protected server";
+        return true;
+      } catch (error) {
+        el.saveStatus.textContent = error.message || "Save failed. Changes were not synced.";
+        return false;
+      } finally {
+        financeSavePending = false;
+      }
     }
 
     async function refreshServerState() {
@@ -1717,11 +1718,13 @@
         commitState();
       });
 
-      el.inventoryForm.addEventListener("submit", event => {
+      el.inventoryForm.addEventListener("submit", async event => {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(el.inventoryForm));
         const purchase = inventoryPayload(data);
         const editId = data.editId;
+        const previousInventory = state.inventory.map(item => ({ ...item }));
+        const previousStock = state.inventoryStock.map(item => ({ ...item }));
         let savedPurchase = null;
         if (editId) {
           const index = state.inventory.findIndex(item => item.id === editId);
@@ -1734,9 +1737,16 @@
           state.inventory.push(savedPurchase);
         }
         if (savedPurchase) syncStockFromPurchase(savedPurchase);
+        const saved = await commitState();
+        if (!saved) {
+          state.inventory = previousInventory;
+          state.inventoryStock = previousStock;
+          render();
+          return;
+        }
         resetForm(el.inventoryForm);
         resetInventoryEditMode();
-        commitState();
+        render();
       });
 
       el.stockForm.addEventListener("submit", event => {
@@ -1829,10 +1839,11 @@
       return numeric(item?.revenue) === 350000;
     }
 
-    function commitState() {
+    async function commitState() {
       normalizeDerivedData();
-      saveState();
+      const saved = await saveState();
       render();
+      return saved;
     }
 
     function normalizeDerivedData() {

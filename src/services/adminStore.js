@@ -7,6 +7,7 @@ const PUBLIC_STORE_PATH = "/public/data/public-store.json";
 const REMOVED_PRODUCT_IDS = new Set(["obj-001", "pub-002"]);
 
 let activeStore = null;
+let activeStoreScope = null;
 let privateStoreRefresh = null;
 let privateStoreRefreshedAt = 0;
 
@@ -149,7 +150,14 @@ function privateWorkspaceFromHost() {
 }
 
 function canUsePrivateStore() {
-  return isLocalEditorRuntime() || Boolean(privateWorkspaceFromHost());
+  if (privateWorkspaceFromHost()) return true;
+  if (!isLocalEditorRuntime() || typeof location === "undefined") return false;
+  const path = location.pathname || "/";
+  return path.startsWith("/admin") || path.startsWith("/finance");
+}
+
+function currentStoreScope() {
+  return canUsePrivateStore() ? "admin" : "public";
 }
 
 function normalizeApparelType(value) {
@@ -182,8 +190,9 @@ function seed({ publicOnly = !canUsePrivateStore() } = {}) {
 function readStore() {
   // Both local editors and the authenticated admin/finance subdomains need the private store.
   const publicOnly = !canUsePrivateStore();
+  const scope = currentStoreScope();
   const seeded = seed({ publicOnly });
-  if (activeStore) return mergeStore(seeded, activeStore, { publicOnly });
+  if (activeStore && activeStoreScope === scope) return mergeStore(seeded, activeStore, { publicOnly });
   if (publicOnly) return seeded;
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
@@ -199,13 +208,16 @@ async function writeStore(store, { inventoryProduct = null } = {}) {
   if (!canUsePrivateStore()) return false;
   const normalizedStore = normalizeStoreForSave(store);
   const previousActiveStore = activeStore;
+  const previousActiveStoreScope = activeStoreScope;
   const previousSavedStore = localStorage.getItem(STORAGE_KEY);
   activeStore = normalizedStore;
+  activeStoreScope = "admin";
   localStorage.setItem(STORAGE_KEY, JSON.stringify(normalizedStore));
   try {
     return await persistStore(normalizedStore, { inventoryProduct });
   } catch (error) {
     activeStore = previousActiveStore;
+    activeStoreScope = previousActiveStoreScope;
     if (previousSavedStore === null) {
       localStorage.removeItem(STORAGE_KEY);
     } else {
@@ -423,6 +435,7 @@ export function slugify(value) {
 export const adminStore = {
   async initialize() {
     const publicOnly = !canUsePrivateStore();
+    const scope = currentStoreScope();
     let browserStore = null;
     if (!publicOnly) {
       try {
@@ -440,6 +453,7 @@ export const adminStore = {
         const payload = await response.json();
         if (payload.store) {
           activeStore = mergeStore(seed({ publicOnly }), payload.store, { publicOnly });
+          activeStoreScope = scope;
           privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
           if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
           return;
@@ -451,6 +465,7 @@ export const adminStore = {
         mergeStore(seed({ publicOnly }), await fileResponse.json(), { publicOnly }),
         browserStore
       );
+      activeStoreScope = scope;
       privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
       if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
     } catch {
@@ -459,6 +474,7 @@ export const adminStore = {
   },
   async refresh() {
     activeStore = null;
+    activeStoreScope = null;
     privateStoreRefreshedAt = 0;
     return this.initialize();
   },
@@ -480,6 +496,7 @@ export const adminStore = {
       const payload = await response.json();
       if (!payload.store) return this.getSnapshot();
       activeStore = mergeStore(seed({ publicOnly: false }), payload.store, { publicOnly: false });
+      activeStoreScope = "admin";
       privateStoreRefreshedAt = Date.now();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
       return activeStore;

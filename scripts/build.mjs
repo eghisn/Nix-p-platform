@@ -39,7 +39,7 @@ await build({
   legalComments: "none"
 });
 
-const bundleUrl = "/assets/app.js?v=20260722-catalog-metadata";
+const bundleUrl = "/assets/app.js?v=20260725-founders-webfont";
 const indexHtml = (await readFile(`${dist}/index.html`, "utf8"))
   .replace(
     /<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i,

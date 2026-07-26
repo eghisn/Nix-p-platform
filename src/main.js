@@ -1777,7 +1777,7 @@ function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
       ${artists
         .map((artist) =>
           availableArtistNames.has(artist.toLowerCase())
-            ? `<a href="/artists/${encodeURIComponent(artist)}" data-link>${escapeHtml(artist)}</a>`
+            ? `<a href="/artists/${encodeURIComponent(artist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
             : `<span>${escapeHtml(artist)}</span>`
         )
         .join("")}
@@ -1977,6 +1977,16 @@ function bindEvents() {
       state.auth = { loaded: true, authenticated: false, workspace: null, username: null };
       history.pushState({}, "", "/");
       render();
+    });
+  });
+
+  document.querySelectorAll("[data-related-artist-link]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+      if (!href) return;
+      event.preventDefault();
+      event.stopPropagation();
+      navigateInternal(href);
     });
   });
 

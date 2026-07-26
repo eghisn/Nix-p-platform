@@ -218,7 +218,7 @@ async function handleApi(req, res) {
       json(res, 401, { ok: false, error: "Admin login required" });
       return true;
     }
-    const storePath = join(root, "public", "data", "admin-store.json");
+    const storePath = join(root, "public", "data", scope === "admin" ? "admin-store.json" : "public-store.json");
     const store = existsSync(storePath)
       ? JSON.parse(await readFile(storePath, "utf8"))
       : { products: [], artists: [], collections: [], requests: [], orders: [], cashflow: [], inventory: [] };

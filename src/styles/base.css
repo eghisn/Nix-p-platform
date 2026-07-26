@@ -1,21 +1,82 @@
 @font-face {
-  font-family: "Founder Grotesq";
-  src:
-    local("Founder Grotesq"),
-    local("Founders Grotesk"),
-    local("Founders Grotesk Text");
-  font-weight: 400 800;
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-Light.woff2") format("woff2");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Founders Grotesk Text";
-  src:
-    local("Founders Grotesk Text"),
-    local("Founders Grotesk");
-  font-weight: 400 800;
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-LightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-RegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-Semibold.woff2") format("woff2");
+  font-weight: 600 800;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 101%;
+}
+
+@font-face {
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-SemiboldItalic.woff2") format("woff2");
+  font-weight: 600 800;
+  font-style: italic;
+  font-display: swap;
+  size-adjust: 101%;
+}
+
+@font-face {
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-Bold.woff2") format("woff2");
+  font-weight: 801 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Founders Grotesk Web";
+  src: url("/public/fonts/FoundersGroteskWeb-BoldItalic.woff2") format("woff2");
+  font-weight: 801 900;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -459,7 +520,7 @@
 }
 
 :root {
-  --font: "Founder Grotesq", "Founders Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font: "Founders Grotesk Web", "Founder Grotesq", "Founders Grotesk", "Helvetica Neue", Arial, sans-serif;
   --ink: #292929;
   --paper: #f1f1f1;
   --line: rgba(41, 41, 41, 0.18);
@@ -1933,6 +1994,11 @@ tr:last-child td {
 
 .related-artist-tags a,
 .related-artist-tags span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 6px 9px;
@@ -1940,6 +2006,12 @@ tr:last-child td {
   font-weight: 760;
   line-height: 1;
   text-transform: uppercase;
+}
+
+.related-artist-tags a {
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .related-artist-tags span {
@@ -2395,5 +2467,15 @@ body:has(.cart-view) .site-footer {
 
   .search-result em {
     grid-column: 1;
+  }
+
+  .related-artist-tags {
+    gap: 8px;
+  }
+
+  .related-artist-tags a,
+  .related-artist-tags span {
+    min-height: 36px;
+    padding: 10px 12px;
   }
 }
