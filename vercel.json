@@ -82,6 +82,70 @@
       "source": "/index.html",
       "has": [{ "type": "host", "value": "finance.nix-p.com" }],
       "destination": "/api/finance-app?financePath=/"
+    },
+    {
+      "source": "/product/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/artists/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/records",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/objects",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/apparel",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/accessories",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/accesories",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/publishing",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/artists",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/request-item",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/shipping-returns",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/cart",
+      "destination": "/index.html"
     }
   ]
 }

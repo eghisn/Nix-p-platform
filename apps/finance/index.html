@@ -1396,10 +1396,24 @@
         });
         const payload = await response.json().catch(() => ({}));
         if (response.status === 409) {
-          financeSaveConflict = true;
-          throw new Error(payload.error || "Finance data changed on the server. Refresh before saving again.");
+          el.saveStatus.textContent = "Server changed. Saving your latest edits...";
+          const retry = await fetch("/api/state", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ state })
+          });
+          const retryPayload = await retry.json().catch(() => ({}));
+          if (!retry.ok) {
+            financeSaveConflict = true;
+            throw new Error(retryPayload.error || payload.error || "Finance data changed on the server. Refresh before saving again.");
+          }
+          financeSaveConflict = false;
+          financeStateUpdatedAt = retryPayload.updatedAt || financeStateUpdatedAt;
+          el.saveStatus.textContent = "Saved to protected server";
+          return true;
         }
         if (!response.ok) throw new Error(payload.error || "Unable to save finance state");
+        financeSaveConflict = false;
         financeStateUpdatedAt = payload.updatedAt || financeStateUpdatedAt;
         el.saveStatus.textContent = "Saved to protected server";
         return true;
