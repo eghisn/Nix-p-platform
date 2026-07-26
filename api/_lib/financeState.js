@@ -57,8 +57,6 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
 // Finance is the source of truth for SKU stock; incomplete finance entries stay private drafts in the catalog.
 async function syncFinanceInventoryToCatalog(state) {
   const stockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
-  if (!stockRows.length && !(state.inventory || []).length) return;
-
   const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
   const existingRows = skus.length
     ? await supabaseFetch(`products?select=*&sku=in.(${skuList(skus)})`)
@@ -97,6 +95,7 @@ async function syncFinanceInventoryToCatalog(state) {
     ...stockRows.map((item) => financeStockRow(item, productIdBySku))
   ];
   const uniqueInventoryRows = dedupeRows(inventoryRows);
+  await deleteStaleFinanceInventoryRows(uniqueInventoryRows.map((row) => row.id));
   if (uniqueInventoryRows.length) {
     await supabaseFetch("inventory?on_conflict=id", {
       method: "POST",
@@ -104,6 +103,23 @@ async function syncFinanceInventoryToCatalog(state) {
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
+}
+
+async function deleteStaleFinanceInventoryRows(activeIds = []) {
+  const active = new Set(activeIds.map(String));
+  const rows = await supabaseFetch("inventory?select=id,raw");
+  const staleIds = rows
+    .filter((row) => {
+      const origin = String(row?.raw?.origin || "");
+      return ["finance-purchase", "finance-stock"].includes(origin) && !active.has(String(row.id));
+    })
+    .map((row) => String(row.id))
+    .filter(Boolean);
+  if (!staleIds.length) return;
+  await supabaseFetch(`inventory?id=in.(${skuList(staleIds)})`, {
+    method: "DELETE",
+    prefer: "return=minimal"
+  });
 }
 
 export async function syncAdminProductInventory(product) {

@@ -1766,7 +1766,7 @@
         commitState();
       });
 
-      document.addEventListener("click", event => {
+      document.addEventListener("click", async event => {
         const exportTarget = event.target.closest("[data-export-action]");
         if (exportTarget) {
           handleSectionExport(exportTarget.dataset.exportAction, exportTarget.dataset.exportSection);
@@ -1787,11 +1787,18 @@
         if (!target) return;
         const [section, id] = target.dataset.delete.split(":");
         if (!confirm("Delete this entry?")) return;
+        const previousSection = Array.isArray(state[section]) ? state[section].map(item => ({ ...item })) : [];
+        const previousStock = state.inventoryStock.map(item => ({ ...item }));
         state[section] = state[section].filter(item => item.id !== id);
         if (section === "inventory") {
           state.inventoryStock = state.inventoryStock.filter(item => item.purchaseId !== id);
         }
-        commitState();
+        const saved = await commitState();
+        if (!saved) {
+          state[section] = previousSection;
+          if (section === "inventory") state.inventoryStock = previousStock;
+          render();
+        }
       });
     }
 
