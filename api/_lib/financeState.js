@@ -130,7 +130,7 @@ async function syncFinanceArtistsToCatalog(stockRows = []) {
     additions.push({
       id,
       name,
-      bio: "",
+      title: null,
       status: "Published",
       sort: nextSort + additions.length + 1,
       raw: { id, name, bio: "", status: "Published", sort: nextSort + additions.length + 1, origin: "finance-inventory" }
