@@ -1191,6 +1191,8 @@ async function adminProductsPage({ embedded = false } = {}) {
             ${input("displayFormat", "Display format", product.displayFormat || "", "Vinyl 12&quot;")}
             <div data-admin-edition-field ${productCategory === "Records" ? "" : "hidden"}>
               ${input("edition", "Edition", product.edition || "", "Original pressing, reissue, limited edition")}
+              ${input("barcode", "Barcode", product.barcode || "", "Exact release barcode")}
+              ${input("catalogNumber", "Catalog number", product.catalogNumber || "", "Label catalog number")}
             </div>
           </div>
           <div class="admin-product-fields" data-admin-product-fields ${productCategory === "Apparel" || productCategory === "Objects" ? "" : "hidden"}>
@@ -1766,7 +1768,13 @@ function productRelatedArtists(product) {
 }
 
 function inventoryArtistNames(products) {
-  return new Set(products.map((product) => artistKeys(product.artist)).flat().filter(Boolean));
+  const artists = new Map();
+  for (const product of products) {
+    const artist = String(product.artist || "").trim();
+    if (!artist) continue;
+    for (const key of artistKeys(artist)) artists.set(key, artist);
+  }
+  return artists;
 }
 
 function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
@@ -1777,11 +1785,14 @@ function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
     <p class="related-artist-heading">Related Artists</p>
     <div class="related-artist-tags" aria-label="Related artists">
       ${artists
-        .map((artist) =>
-          availableArtistNames.has(artistKeys(artist)[0]) || availableArtistNames.has(artistKeys(artist)[1])
-            ? `<a href="/artists/${artistSlug(artist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
-            : `<span>${escapeHtml(artist)}</span>`
-        )
+        .map((artist) => {
+          const inventoryArtist = artistKeys(artist)
+            .map((key) => availableArtistNames.get?.(key))
+            .find(Boolean);
+          return inventoryArtist
+            ? `<a href="/artists/${artistSlug(inventoryArtist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
+            : `<span>${escapeHtml(artist)}</span>`;
+        })
         .join("")}
     </div>
   `;

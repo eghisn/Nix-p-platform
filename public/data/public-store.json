@@ -2,54 +2,74 @@
   "version": "supabase-live-2026-07-13",
   "products": [
     {
-      "id": "finance-nxp-2026-cd-0033",
+      "id": "finance-nxp-2026-vnl-0014",
       "qty": 1,
-      "sku": "NXP-2026-CD-0033",
-      "tags": [],
-      "year": 2008,
+      "sku": "NXP-2026-VNL-0014",
+      "tags": [
+        "electronic",
+        "experimental pop",
+        "2LP"
+      ],
+      "year": 2024,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg",
-      "label": "Ferret Music",
-      "price": 330000,
+      "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+      "label": "Transgressive / Future Classic",
+      "price": 850000,
       "sizes": [],
-      "title": "Controller",
-      "artist": "Misery Signals",
-      "format": "CD",
+      "title": "SOPHIE",
+      "artist": "Sophie",
+      "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg"
+        "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+        "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg"
       ],
       "details": [
-        "SKU: NXP-2026-CD-0033",
-        "Format: CD",
-        "Condition: Used Excellent"
+        "SKU: NXP-2026-VNL-0014",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: 2LP gatefold",
+        "Catalog number: TRANS809X"
       ],
       "category": "Records",
       "material": "",
-      "condition": "Used Excellent",
+      "condition": "New-Sealed",
       "updatedAt": "2026-07-26",
-      "collection": "",
+      "collection": "Transgressive / Future Classic",
       "visibility": "Public",
       "apparelType": "",
-      "description": "Misery Signals' Controller is the 2008 Ferret Music album produced with Devin Townsend, folding melodic hardcore and metalcore weight into a tightly engineered emotional arc.",
-      "reviewQuote": "a return to form",
+      "description": "SOPHIE's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping bright pop abstraction, collaborative songwriting and industrial club textures in conversation.",
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/2790bd40-2eac-4f1d-9618-e029b0cfc2e5",
-          "image": "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release 2790bd40"
+          "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+          "credit": "Transgressive / Future Classic artwork",
+          "url": "https://transgressiverecords.com/artist/sophie/"
+        },
+        {
+          "image": "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg",
+          "credit": "Impressed Recordings product photography",
+          "url": "https://impressedrecordings.com/products/sophie-sophie-vinyl-lp"
         }
       ],
-      "reviewSource": "Sputnikmusic (quoted)",
-      "displayFormat": "CD",
+      "displayFormat": "Vinyl",
       "publishStatus": "Published",
-      "financeStockId": "ms1tiz0nuej19e",
+      "financeStockId": "ms1g1muz69eef7",
+      "shipping": null,
+      "edition": "2LP gatefold",
+      "barcode": "",
+      "catalogNumber": "TRANS809X",
       "relatedArtists": [
-        "Every Time I Die",
-        "The Dillinger Escape Plan",
-        "Converge"
+        "Arca",
+        "Oneohtrix Point Never"
       ],
-      "reviewSourceUrl": "https://www.sputnikmusic.com/review/72160/Misery-Signals-Controller/",
-      "descriptionSource": "AllMusic / Sputnikmusic"
+      "descriptionSource": "Transgressive / Associated Press",
+      "reviewQuote": "still sounds like the future of pop music",
+      "reviewSource": "Associated Press (quoted)",
+      "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
+      "metadataSourceUrl": "https://sophie.ochre.store/?lang=en_GB",
+      "musicBrainzReleaseId": "",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "enrichmentUpdatedAt": "2026-07-26"
     },
     {
       "id": "finance-nxp-2026-cd-0028",
@@ -99,57 +119,8 @@
         "Leftfield"
       ],
       "reviewSourceUrl": "https://www.allmusic.com/album/a-hundred-days-off-mw0000223914",
-      "descriptionSource": "AllMusic / MusicBrainz"
-    },
-    {
-      "id": "finance-nxp-2026-cd-0035",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0035",
-      "tags": [],
-      "year": 2012,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg",
-      "label": "Domino",
-      "price": 197000,
-      "sizes": [],
-      "title": "Swing Lo Magellan",
-      "artist": "Dirty Projectors",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg"
-      ],
-      "details": [
-        "SKU: NXP-2026-CD-0035",
-        "Format: CD",
-        "Condition: New-Sealed"
-      ],
-      "category": "Records",
-      "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://www.theguardian.com/music/2012/jul/08/dirty-projectors-swing-magellan-review",
-      "updatedAt": "2026-07-26",
-      "collection": "",
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Dirty Projectors' 2012 Swing Lo Magellan is a more direct, song-centered turn from Dave Longstreth's Brooklyn collective, balancing intricate harmony with warm melody and art-rock detail.",
-      "reviewQuote": "a new directness to the songs",
-      "imageCredits": [
-        {
-          "url": "https://musicbrainz.org/release/adfe4b45-1847-4877-8e6c-cad1771b2798/cover-art",
-          "image": "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg",
-          "credit": "MusicBrainz / Cover Art Archive"
-        }
-      ],
-      "reviewSource": "The Guardian (quoted)",
-      "displayFormat": "CD",
-      "publishStatus": "Published",
-      "financeStockId": "ms1u4t8pnl9i79",
-      "relatedArtists": [
-        "Björk",
-        "David Byrne",
-        "Animal Collective"
-      ],
-      "descriptionSource": "Pitchfork / The Guardian"
+      "descriptionSource": "AllMusic / MusicBrainz",
+      "shipping": null
     },
     {
       "id": "finance-nxp-2026-cd-0034",
@@ -199,57 +170,71 @@
         "Jerusalem In My Heart"
       ],
       "reviewSourceUrl": "https://www.theskinny.co.uk/music/reviews/albums/suuns-felt",
-      "descriptionSource": "Secretly Canadian / The Skinny"
+      "descriptionSource": "Secretly Canadian / The Skinny",
+      "shipping": null
     },
     {
-      "id": "finance-nxp-2026-cd-0032",
+      "id": "finance-nxp-2026-cd-0030",
       "qty": 1,
-      "sku": "NXP-2026-CD-0032",
+      "sku": "NXP-2026-CD-0030",
       "tags": [],
-      "year": 2015,
+      "year": 1999,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg",
-      "label": "Jagjaguwar",
-      "price": 197000,
+      "image": "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
+      "label": "Relapse Records",
+      "price": 235000,
       "sizes": [],
-      "title": "Viet Cong",
-      "artist": "Viet Cong",
+      "title": "Calculating Infinity",
+      "artist": "The Dillinger Escape Plan",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg"
+        "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
+        "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-disc.jpg",
+        "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-tray.jpg"
       ],
       "details": [
-        "SKU: NXP-2026-CD-0032",
+        "SKU: NXP-2026-CD-0030",
         "Format: CD",
-        "Condition: Used Good"
+        "Condition: Used Excellent"
       ],
       "category": "Records",
       "material": "",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "updatedAt": "2026-07-26",
       "collection": "",
       "visibility": "Public",
       "apparelType": "",
-      "description": "Viet Cong's self-titled 2015 album is the band's lone full-length under that name before becoming Preoccupations, built from shadowed post-punk, art-punk, and noise-rock pressure.",
-      "reviewQuote": "unusually obsessed with the mechanics and process",
+      "description": "The Dillinger Escape Plan's Calculating Infinity is the 1999 Relapse full-length that pushed mathcore into jagged rhythmic extremity and technical collapse.",
+      "reviewQuote": "dizzying skill and originality",
       "imageCredits": [
         {
-          "url": "https://music.apple.com/us/album/viet-cong/931381276",
-          "image": "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg",
-          "credit": "Apple Music artwork / Jagjaguwar"
+          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
+          "image": "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
+        },
+        {
+          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
+          "image": "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-disc.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
+        },
+        {
+          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
+          "image": "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-tray.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
         }
       ],
-      "reviewSource": "Pitchfork (quoted)",
+      "reviewSource": "Treble (quoted)",
       "displayFormat": "CD",
       "publishStatus": "Published",
-      "financeStockId": "ms1thtxkzrwjdx",
+      "financeStockId": "ms1tynew19foeg",
       "relatedArtists": [
-        "Preoccupations",
-        "Women",
-        "Ought"
+        "Every Time I Die",
+        "Converge",
+        "Botch"
       ],
-      "reviewSourceUrl": "https://pitchfork.com/reviews/albums/20086-viet-cong/",
-      "descriptionSource": "Pitchfork / MusicBrainz"
+      "reviewSourceUrl": "https://www.treblezine.com/the-dillinger-escape-plan-calculating-infinity/",
+      "descriptionSource": "Relapse / Treble",
+      "shipping": null
     },
     {
       "id": "finance-nxp-2026-cd-0029",
@@ -323,107 +308,8 @@
         "Leftfield"
       ],
       "reviewSourceUrl": "https://www.allmusic.com/album/born-slippy-mw0000740687",
-      "descriptionSource": "AllMusic / MusicBrainz"
-    },
-    {
-      "id": "finance-nxp-2026-cd-0026",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0026",
-      "tags": [],
-      "year": 2017,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0026-fever-ray-plunge.jpg",
-      "label": "Mute",
-      "price": 290000,
-      "sizes": [],
-      "title": "Plunge",
-      "artist": "Fever Ray",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0026-fever-ray-plunge.jpg"
-      ],
-      "details": [
-        "SKU: NXP-2026-CD-0026",
-        "Format: CD",
-        "Condition: Used Excellent"
-      ],
-      "category": "Records",
-      "material": "",
-      "condition": "Used Excellent",
-      "updatedAt": "2026-07-26",
-      "collection": "",
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Fever Ray's Plunge is Karin Dreijer's second album under the Fever Ray name, pushing experimental electropop into desire, movement, and sharper club pressure.",
-      "reviewQuote": "more conflicted, more manic, and more in love",
-      "imageCredits": [
-        {
-          "url": "https://musicbrainz.org/release/ea370f56-48c2-4ea9-b6ae-ba7f447dd08a",
-          "image": "/public/covers/nxp-2026-cd-0026-fever-ray-plunge.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release ea370f56"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
-      "displayFormat": "CD",
-      "publishStatus": "Published",
-      "financeStockId": "ms1snrc04axq58",
-      "relatedArtists": [
-        "The Knife",
-        "Karin Dreijer",
-        "Bjork"
-      ],
-      "reviewSourceUrl": "https://pitchfork.com/reviews/albums/fever-ray-plunge/",
-      "descriptionSource": "Pitchfork / MusicBrainz"
-    },
-    {
-      "id": "finance-nxp-2026-cd-0027",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0027",
-      "tags": [],
-      "year": 2009,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg",
-      "label": "Epitaph",
-      "price": 265000,
-      "sizes": [],
-      "title": "New Junk Aesthetic",
-      "artist": "Every Time I Die",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg"
-      ],
-      "details": [
-        "SKU: NXP-2026-CD-0027",
-        "Format: CD",
-        "Condition: Used Excellent"
-      ],
-      "category": "Records",
-      "material": "",
-      "condition": "Used Excellent",
-      "updatedAt": "2026-07-26",
-      "collection": "",
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Every Time I Die's New Junk Aesthetic is the band's 2009 Epitaph album, tightening their hardcore, southern rock, and metalcore instincts into a compact, volatile run.",
-      "reviewQuote": "energized and passionate",
-      "imageCredits": [
-        {
-          "url": "https://musicbrainz.org/release/9fc2e27a-8a6b-494f-b70d-fd5009bd73c9",
-          "image": "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release 9fc2e27a"
-        }
-      ],
-      "reviewSource": "AllMusic (quoted)",
-      "displayFormat": "CD",
-      "publishStatus": "Published",
-      "financeStockId": "ms1t1g1kas1r2f",
-      "relatedArtists": [
-        "The Dillinger Escape Plan",
-        "Converge",
-        "Glassjaw"
-      ],
-      "reviewSourceUrl": "https://www.allmusic.com/album/new-junk-aesthetic-mw0000824190",
-      "descriptionSource": "Epitaph / AllMusic"
+      "descriptionSource": "AllMusic / MusicBrainz",
+      "shipping": null
     },
     {
       "id": "finance-nxp-2026-cd-0031",
@@ -473,29 +359,151 @@
         "Ought"
       ],
       "reviewSourceUrl": "https://drownedinsound.com/releases/19605/reviews/4150385",
-      "descriptionSource": "Drowned in Sound / MusicBrainz"
+      "descriptionSource": "Drowned in Sound / MusicBrainz",
+      "shipping": null
     },
     {
-      "id": "finance-nxp-2026-cd-0030",
+      "id": "finance-nxp-2026-cd-0032",
       "qty": 1,
-      "sku": "NXP-2026-CD-0030",
+      "sku": "NXP-2026-CD-0032",
       "tags": [],
-      "year": 1999,
+      "year": 2015,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
-      "label": "Relapse Records",
-      "price": 235000,
+      "image": "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg",
+      "label": "Jagjaguwar",
+      "price": 197000,
       "sizes": [],
-      "title": "Calculating Infinity",
-      "artist": "The Dillinger Escape Plan",
+      "title": "Viet Cong",
+      "artist": "Viet Cong",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
-        "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-disc.jpg",
-        "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-tray.jpg"
+        "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg"
       ],
       "details": [
-        "SKU: NXP-2026-CD-0030",
+        "SKU: NXP-2026-CD-0032",
+        "Format: CD",
+        "Condition: Used Good"
+      ],
+      "category": "Records",
+      "material": "",
+      "condition": "Used Good",
+      "updatedAt": "2026-07-26",
+      "collection": "",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Viet Cong's self-titled 2015 album is the band's lone full-length under that name before becoming Preoccupations, built from shadowed post-punk, art-punk, and noise-rock pressure.",
+      "reviewQuote": "unusually obsessed with the mechanics and process",
+      "imageCredits": [
+        {
+          "url": "https://music.apple.com/us/album/viet-cong/931381276",
+          "image": "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg",
+          "credit": "Apple Music artwork / Jagjaguwar"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "displayFormat": "CD",
+      "publishStatus": "Published",
+      "financeStockId": "ms1thtxkzrwjdx",
+      "relatedArtists": [
+        "Preoccupations",
+        "Women",
+        "Ought"
+      ],
+      "reviewSourceUrl": "https://pitchfork.com/reviews/albums/20086-viet-cong/",
+      "descriptionSource": "Pitchfork / MusicBrainz",
+      "shipping": null
+    },
+    {
+      "id": "finance-nxp-2026-cd-0025",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0025",
+      "tags": [
+        "technical death metal",
+        "progressive death metal",
+        "EP"
+      ],
+      "year": 2016,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0025-gorguts-pleiades-dust.jpg",
+      "label": "Season of Mist",
+      "price": 273000,
+      "sizes": [],
+      "title": "Pleiades' Dust",
+      "artist": "Gorguts",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0025-gorguts-pleiades-dust.jpg",
+        "/public/product-photos/nxp-2026-cd-0025-gorguts-pleiades-dust-cd.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-CD-0025",
+        "Format: CD",
+        "Condition: New-Sealed",
+        "Edition: Digipak CD",
+        "Catalog number: SOM 386D",
+        "Barcode: 0822603138627"
+      ],
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "updatedAt": "2026-07-26",
+      "collection": "Season of Mist",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Gorguts' 2016 EP Pleiades' Dust is a single thirty-three-minute composition in seven movements, using the rise and destruction of Baghdad's House of Wisdom as the frame for the band's dissonant, progressive death metal.",
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-cd-0025-gorguts-pleiades-dust.jpg",
+          "credit": "Cover Art Archive / Season of Mist",
+          "url": "https://coverartarchive.org/release/dde87be9-76ac-47cb-a4a8-40ec53cb135f"
+        },
+        {
+          "image": "/public/product-photos/nxp-2026-cd-0025-gorguts-pleiades-dust-cd.jpg",
+          "credit": "Season of Mist product photography",
+          "url": "https://shop.season-of-mist.com/products/gorguts-pleiades-dust-cd"
+        }
+      ],
+      "displayFormat": "CD",
+      "publishStatus": "Published",
+      "financeStockId": "ms1gmq78l484fx",
+      "shipping": null,
+      "edition": "Digipak CD",
+      "barcode": "0822603138627",
+      "catalogNumber": "SOM 386D",
+      "relatedArtists": [
+        "Behold The Arctopus",
+        "Meshuggah",
+        "The Dillinger Escape Plan"
+      ],
+      "descriptionSource": "Season of Mist / MusicBrainz",
+      "reviewQuote": "music and narrative intertwine themselves flawlessly",
+      "reviewSource": "Sputnikmusic (quoted)",
+      "reviewUrl": "https://www.sputnikmusic.com/review/71492/Gorguts-Pleiades-Dust/",
+      "metadataSourceUrl": "https://www.season-of-mist.com/release/pleiades-dust/",
+      "musicBrainzReleaseId": "dde87be9-76ac-47cb-a4a8-40ec53cb135f",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "enrichmentUpdatedAt": "2026-07-26"
+    },
+    {
+      "id": "finance-nxp-2026-cd-0026",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0026",
+      "tags": [],
+      "year": 2017,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0026-fever-ray-plunge.jpg",
+      "label": "Mute",
+      "price": 290000,
+      "sizes": [],
+      "title": "Plunge",
+      "artist": "Fever Ray",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0026-fever-ray-plunge.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-CD-0026",
         "Format: CD",
         "Condition: Used Excellent"
       ],
@@ -506,36 +514,387 @@
       "collection": "",
       "visibility": "Public",
       "apparelType": "",
-      "description": "The Dillinger Escape Plan's Calculating Infinity is the 1999 Relapse full-length that pushed mathcore into jagged rhythmic extremity and technical collapse.",
-      "reviewQuote": "dizzying skill and originality",
+      "description": "Fever Ray's Plunge is Karin Dreijer's second album under the Fever Ray name, pushing experimental electropop into desire, movement, and sharper club pressure.",
+      "reviewQuote": "more conflicted, more manic, and more in love",
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
-          "image": "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
-        },
-        {
-          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
-          "image": "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-disc.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
-        },
-        {
-          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
-          "image": "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-tray.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
+          "url": "https://musicbrainz.org/release/ea370f56-48c2-4ea9-b6ae-ba7f447dd08a",
+          "image": "/public/covers/nxp-2026-cd-0026-fever-ray-plunge.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release ea370f56"
         }
       ],
-      "reviewSource": "Treble (quoted)",
+      "reviewSource": "Pitchfork (quoted)",
       "displayFormat": "CD",
       "publishStatus": "Published",
-      "financeStockId": "ms1tynew19foeg",
+      "financeStockId": "ms1snrc04axq58",
+      "relatedArtists": [
+        "The Knife",
+        "Karin Dreijer",
+        "Bjork"
+      ],
+      "reviewSourceUrl": "https://pitchfork.com/reviews/albums/fever-ray-plunge/",
+      "descriptionSource": "Pitchfork / MusicBrainz",
+      "shipping": null
+    },
+    {
+      "id": "finance-nxp-2026-cst-0010",
+      "qty": 1,
+      "sku": "NXP-2026-CST-0010",
+      "tags": [
+        "death metal",
+        "technical death metal"
+      ],
+      "year": 1993,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
+      "label": "Roadrunner Records",
+      "price": 245000,
+      "sizes": [],
+      "title": "Breeding the Spawn",
+      "artist": "Suffocation",
+      "format": "Cassette",
+      "images": [
+        "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
+        "/public/product-photos/nxp-2026-cst-0010-suffocation-breeding-the-spawn-cassette.png"
+      ],
+      "details": [
+        "SKU: NXP-2026-CST-0010",
+        "Format: Cassette",
+        "Condition: New-Sealed",
+        "Edition: Cassette"
+      ],
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "updatedAt": "2026-07-26",
+      "collection": "Roadrunner Records",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Suffocation's 1993 second album Breeding the Spawn pushed the New York band's dense riffing, abrupt rhythmic turns and low-register brutality further into the technical death-metal language they helped establish.",
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
+          "credit": "Listenable Records Bandcamp artwork",
+          "url": "https://listenable-records.bandcamp.com/album/breeding-the-spawn-sorry-digital-is-not-available"
+        },
+        {
+          "image": "/public/product-photos/nxp-2026-cst-0010-suffocation-breeding-the-spawn-cassette.png",
+          "credit": "Suffocation Direct Merch product photography",
+          "url": "https://direct-merch.com/products/suffocation-breeding-the-spawn-cassette"
+        }
+      ],
+      "displayFormat": "Cassette",
+      "publishStatus": "Published",
+      "financeStockId": "ms1g40ijr47v91",
+      "shipping": null,
+      "edition": "Cassette",
+      "barcode": "",
+      "catalogNumber": "",
+      "relatedArtists": [
+        "Gorguts",
+        "The Dillinger Escape Plan"
+      ],
+      "descriptionSource": "Suffocation / MusicBrainz",
+      "reviewQuote": "The blueprint that many latter-day tech death bands would borrow from",
+      "reviewSource": "Metal Storm (quoted)",
+      "reviewUrl": "https://metalstorm.net/pub/review.php?review_id=18574",
+      "metadataSourceUrl": "https://direct-merch.com/products/suffocation-breeding-the-spawn-cassette",
+      "musicBrainzReleaseId": "bc9f0c79-5f69-4f60-9681-087caba79c18",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "enrichmentUpdatedAt": "2026-07-26"
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0015",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0015",
+      "tags": [
+        "synth-punk",
+        "electronic",
+        "reissue"
+      ],
+      "year": 1977,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0015-suicide-suicide.jpg",
+      "label": "Mute / BMG",
+      "price": 850000,
+      "sizes": [],
+      "title": "Suicide",
+      "artist": "Suicide",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0015-suicide-suicide.jpg",
+        "/public/product-photos/nxp-2026-vnl-0015-suicide-suicide-vinyl.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-VNL-0015",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: 2019 remastered limited red vinyl reissue"
+      ],
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "updatedAt": "2026-07-26",
+      "collection": "Mute / BMG",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Suicide's 1977 debut reduced rock music to Martin Rev's stark electronics and Alan Vega's exposed voice, producing a confrontational New York record whose pulse became foundational to synth-punk, industrial music and electronic pop.",
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-vnl-0015-suicide-suicide.jpg",
+          "credit": "Cover Art Archive / Red Star Records",
+          "url": "https://coverartarchive.org/release/aa329b8c-6dd0-3279-9fa2-96e3a995cd4c"
+        },
+        {
+          "image": "/public/product-photos/nxp-2026-vnl-0015-suicide-suicide-vinyl.jpg",
+          "credit": "Mute product photography",
+          "url": "https://mutebank.co.uk/collections/suicide/products/suicide-suicide-lp"
+        }
+      ],
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "ms1gemwok064md",
+      "shipping": null,
+      "edition": "2019 remastered limited red vinyl reissue",
+      "barcode": "",
+      "catalogNumber": "",
+      "relatedArtists": [
+        "Soft Moon",
+        "Nine Inch Nails"
+      ],
+      "descriptionSource": "Mute / The Guardian",
+      "reviewQuote": "Immeasurably influential record that has lost little of its bite",
+      "reviewSource": "Sputnikmusic (quoted)",
+      "reviewUrl": "https://www.sputnikmusic.com/review/12011/Suicide-Suicide/",
+      "metadataSourceUrl": "https://mutebank.co.uk/collections/suicide/products/suicide-suicide-lp",
+      "musicBrainzReleaseId": "",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "enrichmentUpdatedAt": "2026-07-26"
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0017",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0017",
+      "tags": [
+        "technical death metal",
+        "death metal",
+        "reissue"
+      ],
+      "year": 1993,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+      "label": "Listenable Records",
+      "price": 805000,
+      "sizes": [],
+      "title": "The Erosion of Sanity",
+      "artist": "Gorguts",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+        "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-vinyl.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-VNL-0017",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: Black vinyl reissue"
+      ],
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "updatedAt": "2026-07-26",
+      "collection": "Listenable Records",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+          "credit": "Listenable Records Bandcamp artwork",
+          "url": "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available"
+        },
+        {
+          "image": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-vinyl.jpg",
+          "credit": "Listenable Records product photography",
+          "url": "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available"
+        }
+      ],
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "ms1gm2hww9witl",
+      "shipping": null,
+      "edition": "Black vinyl reissue",
+      "barcode": "",
+      "catalogNumber": "",
+      "relatedArtists": [
+        "Behold The Arctopus",
+        "Meshuggah",
+        "The Dillinger Escape Plan"
+      ],
+      "descriptionSource": "AllMusic / MusicBrainz",
+      "reviewQuote": "a bona-fide tech-death classic",
+      "reviewSource": "Sputnikmusic (quoted)",
+      "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
+      "metadataSourceUrl": "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available",
+      "musicBrainzReleaseId": "",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "enrichmentUpdatedAt": "2026-07-26"
+    },
+    {
+      "id": "finance-nxp-2026-cd-0035",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0035",
+      "tags": [],
+      "year": 2012,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg",
+      "label": "Domino",
+      "price": 197000,
+      "sizes": [],
+      "title": "Swing Lo Magellan",
+      "artist": "Dirty Projectors",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-CD-0035",
+        "Format: CD",
+        "Condition: New-Sealed"
+      ],
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.theguardian.com/music/2012/jul/08/dirty-projectors-swing-magellan-review",
+      "updatedAt": "2026-07-26",
+      "collection": "",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Dirty Projectors' 2012 Swing Lo Magellan is a more direct, song-centered turn from Dave Longstreth's Brooklyn collective, balancing intricate harmony with warm melody and art-rock detail.",
+      "reviewQuote": "a new directness to the songs",
+      "imageCredits": [
+        {
+          "url": "https://musicbrainz.org/release/adfe4b45-1847-4877-8e6c-cad1771b2798/cover-art",
+          "image": "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg",
+          "credit": "MusicBrainz / Cover Art Archive"
+        }
+      ],
+      "reviewSource": "The Guardian (quoted)",
+      "displayFormat": "CD",
+      "publishStatus": "Published",
+      "financeStockId": "ms1u4t8pnl9i79",
+      "relatedArtists": [
+        "Björk",
+        "David Byrne",
+        "Animal Collective"
+      ],
+      "descriptionSource": "Pitchfork / The Guardian",
+      "shipping": null
+    },
+    {
+      "id": "finance-nxp-2026-cd-0033",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0033",
+      "tags": [],
+      "year": 2008,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg",
+      "label": "Ferret Music",
+      "price": 330000,
+      "sizes": [],
+      "title": "Controller",
+      "artist": "Misery Signals",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-CD-0033",
+        "Format: CD",
+        "Condition: Used Excellent"
+      ],
+      "category": "Records",
+      "material": "",
+      "condition": "Used Excellent",
+      "updatedAt": "2026-07-26",
+      "collection": "",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Misery Signals' Controller is the 2008 Ferret Music album produced with Devin Townsend, folding melodic hardcore and metalcore weight into a tightly engineered emotional arc.",
+      "reviewQuote": "a return to form",
+      "imageCredits": [
+        {
+          "url": "https://musicbrainz.org/release/2790bd40-2eac-4f1d-9618-e029b0cfc2e5",
+          "image": "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release 2790bd40"
+        }
+      ],
+      "reviewSource": "Sputnikmusic (quoted)",
+      "displayFormat": "CD",
+      "publishStatus": "Published",
+      "financeStockId": "ms1tiz0nuej19e",
       "relatedArtists": [
         "Every Time I Die",
-        "Converge",
-        "Botch"
+        "The Dillinger Escape Plan",
+        "Converge"
       ],
-      "reviewSourceUrl": "https://www.treblezine.com/the-dillinger-escape-plan-calculating-infinity/",
-      "descriptionSource": "Relapse / Treble"
+      "reviewSourceUrl": "https://www.sputnikmusic.com/review/72160/Misery-Signals-Controller/",
+      "descriptionSource": "AllMusic / Sputnikmusic",
+      "shipping": null
+    },
+    {
+      "id": "finance-nxp-2026-cd-0027",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0027",
+      "tags": [],
+      "year": 2009,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg",
+      "label": "Epitaph",
+      "price": 265000,
+      "sizes": [],
+      "title": "New Junk Aesthetic",
+      "artist": "Every Time I Die",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-CD-0027",
+        "Format: CD",
+        "Condition: Used Excellent"
+      ],
+      "category": "Records",
+      "material": "",
+      "condition": "Used Excellent",
+      "updatedAt": "2026-07-26",
+      "collection": "",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Every Time I Die's New Junk Aesthetic is the band's 2009 Epitaph album, tightening their hardcore, southern rock, and metalcore instincts into a compact, volatile run.",
+      "reviewQuote": "energized and passionate",
+      "imageCredits": [
+        {
+          "url": "https://musicbrainz.org/release/9fc2e27a-8a6b-494f-b70d-fd5009bd73c9",
+          "image": "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release 9fc2e27a"
+        }
+      ],
+      "reviewSource": "AllMusic (quoted)",
+      "displayFormat": "CD",
+      "publishStatus": "Published",
+      "financeStockId": "ms1t1g1kas1r2f",
+      "relatedArtists": [
+        "The Dillinger Escape Plan",
+        "Converge",
+        "Glassjaw"
+      ],
+      "reviewSourceUrl": "https://www.allmusic.com/album/new-junk-aesthetic-mw0000824190",
+      "descriptionSource": "Epitaph / AllMusic",
+      "shipping": null
     },
     {
       "id": "nxp-2026-cd-0024-antemasque",
@@ -611,7 +970,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "AllMusic / Pitchfork / MusicBrainz"
+      "descriptionSource": "AllMusic / Pitchfork / MusicBrainz",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-app-0010-osculum-nylon-black-polo-cap",
@@ -653,7 +1021,16 @@
       "financeStockId": "catalog-nxp-2026-app-0010-osculum-nylon-black-polo-cap",
       "relatedArtists": [],
       "homeCollections": [],
-      "descriptionSource": ""
+      "descriptionSource": "",
+      "shipping": {
+        "source": "https://hatcaddy.co/pages/shipping",
+        "status": "format_reference",
+        "widthCm": 20,
+        "heightCm": 15,
+        "lengthCm": 25,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 350
+      }
     },
     {
       "id": "nxp-2026-vnl-0013-self-titled",
@@ -709,282 +1086,16 @@
         "Tzusing"
       ],
       "homeCollections": [],
-      "descriptionSource": "Giant Swan Bandcamp / The Wire"
-    },
-    {
-      "id": "nxp-2026-cd-0018",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0018",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0018"
-      ],
-      "year": 2003,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg",
-      "label": "RCA",
-      "price": 170000,
-      "sizes": [],
-      "title": "Antenna",
-      "artist": "Cave In",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg"
-      ],
-      "details": [
-        "SKU: NXP-2026-CD-0018",
-        "Format: CD",
-        "Condition: Used Good"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "Used Good",
-      "reviewUrl": "https://www.allmusic.com/album/antenna-mw0000021409",
-      "updatedAt": "2026-07-26",
-      "collection": "NIXP Selection",
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Cave In's 2003 Antenna moves the Massachusetts band's experimental metal toward concise hooks and major-label scale while keeping its guitars intelligently warped.",
-      "reviewQuote": "intelligently warped sound",
-      "imageCredits": [],
-      "reviewSource": "AllMusic (quoted)",
-      "displayFormat": "CD",
-      "homeSlideSort": 29,
-      "publishStatus": "Published",
-      "financeStockId": "mrf9hnagmp9qfy",
-      "mediaCondition": "",
-      "relatedArtists": [
-        "Converge",
-        "Isis",
-        "Botch"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "descriptionSource": "AllMusic / Pitchfork"
-    },
-    {
-      "id": "nxp-2026-vnl-0005",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0005",
-      "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0005"
-      ],
-      "year": 2025,
-      "color": "",
-      "image": "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
-      "label": "Rough Trade Records",
-      "price": 568000,
-      "sizes": [],
-      "title": "The Early Years",
-      "artist": "Gilla Band",
-      "format": "Vinyl",
-      "images": [
-        "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
-        "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg"
-      ],
-      "details": [
-        "SKU: NXP-2026-VNL-0005",
-        "Format: Vinyl 12\"",
-        "Condition: New-Sealed"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://www.theguardian.com/music/2022/oct/06/gilla-band-most-normal-interview",
-      "updatedAt": "2026-07-26",
-      "collection": "NIXP Selection",
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Gilla Band's The Early Years gathers the Dublin band's formative recordings, tracing the movement from noisy post-punk structures toward their later, more fractured industrial sound.",
-      "reviewQuote": "full of sound and fury",
-      "imageCredits": [
-        {
-          "url": "https://gillaband.bandcamp.com/album/the-early-years",
-          "image": "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg",
-          "credit": "Gilla Band Bandcamp"
-        }
-      ],
-      "reviewSource": "The Guardian (quoted from Gilla Band feature)",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 9,
-      "publishStatus": "Published",
-      "financeStockId": "mr6m92hfful640",
-      "relatedArtists": [
-        "The Murder Capital",
-        "Shame",
-        "Squid"
-      ],
-      "homeCollections": [
-        "limited-pressing",
-        "recent-releases"
-      ],
-      "descriptionSource": "Gilla Band Bandcamp / The Guardian"
-    },
-    {
-      "id": "nxp-2026-cd-0014",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0014",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0014"
-      ],
-      "year": 2015,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg",
-      "label": "Orange Cliff Records",
-      "price": 50000,
-      "sizes": [],
-      "title": "Crimson Eyes",
-      "artist": "Sigmun",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg"
-      ],
-      "details": [
-        "SKU: NXP-2026-CD-0014",
-        "Format: CD",
-        "Condition: Used Good"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "Used Good",
-      "reviewUrl": "https://www.deathrockstar.club/review-album-sigmun-crimson-eyes/",
-      "updatedAt": "2026-07-26",
-      "collection": "NIXP Selection",
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Sigmun's 2015 Crimson Eyes is the Indonesian quartet's debut, arranging slow-burning stoner and psychedelic rock around heavy riffs, dark surreal imagery and long-form dynamics.",
-      "reviewQuote": "a proof of continuation, not a beginning",
-      "imageCredits": [],
-      "reviewSource": "Deathrockstar (quoted, translated)",
-      "displayFormat": "CD",
-      "homeSlideSort": 27,
-      "publishStatus": "Published",
-      "financeStockId": "mr6qkiyv449mvn",
-      "mediaCondition": "",
-      "relatedArtists": [
-        "Mooner",
-        "The Sigit",
-        "White Shoes & The Couples Company"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "descriptionSource": "Deathrockstar / Superlive"
-    },
-    {
-      "id": "nxp-2026-cst-0002",
-      "qty": 1,
-      "sku": "NXP-2026-CST-0002",
-      "tags": [
-        "Cassette",
-        "NXP-2026-CST-0002"
-      ],
-      "year": 2002,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg",
-      "label": "Undying Music",
-      "price": 197000,
-      "sizes": [],
-      "title": "Tear From The red",
-      "artist": "Poison The Well",
-      "format": "Cassette",
-      "images": [
-        "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg"
-      ],
-      "details": [
-        "SKU: NXP-2026-CST-0002",
-        "Format: Cassette",
-        "Condition: Used Excellent"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "Used Excellent",
-      "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/",
-      "updatedAt": "2026-07-26",
-      "collection": "NIXP Selection",
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Poison the Well's 2002 Tear From the Red captures the Florida band's transition from hardcore extremity toward a more melodic, emotionally expansive form of metalcore.",
-      "reviewQuote": "most accessible album",
-      "imageCredits": [],
-      "reviewSource": "Sputnikmusic (quoted)",
-      "displayFormat": "Cassette",
-      "homeSlideSort": 20,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47v3zm15l",
-      "mediaCondition": "",
-      "relatedArtists": [
-        "Thursday",
-        "Glassjaw",
-        "From Autumn to Ashes"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "descriptionSource": "Sputnikmusic"
-    },
-    {
-      "id": "nxp-2026-vnl-0002",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0002",
-      "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0002"
-      ],
-      "year": 2024,
-      "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
-      "label": "A-Zap",
-      "price": 820000,
-      "sizes": [],
-      "title": "3+5",
-      "artist": "Melt-Banana",
-      "format": "Vinyl",
-      "images": [
-        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
-        "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
-      ],
-      "details": [
-        "SKU: NXP-2026-VNL-0002",
-        "Format: Vinyl 12\"",
-        "Condition: New-Sealed"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
-      "updatedAt": "2026-07-26",
-      "collection": "NIXP Selection",
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
-      "reviewQuote": "frantic sensibilities",
-      "imageCredits": [
-        {
-          "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp",
-          "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
-          "credit": "Turntable Lab"
-        }
-      ],
-      "reviewSource": "The Quietus (quoted)",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 24,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47v7cvrh3",
-      "relatedArtists": [
-        "Lightning Bolt",
-        "Hella",
-        "Boredoms"
-      ],
-      "homeCollections": [
-        "limited-pressing"
-      ],
-      "descriptionSource": "The Quietus / AllMusic"
+      "descriptionSource": "Giant Swan Bandcamp / The Wire",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-vnl-0007",
@@ -1043,7 +1154,16 @@
       "homeCollections": [
         "limited-pressing"
       ],
-      "descriptionSource": "Slant / Exclaim"
+      "descriptionSource": "Slant / Exclaim",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-cst-0008",
@@ -1103,7 +1223,16 @@
         "limited-pressing",
         "recent-releases"
       ],
-      "descriptionSource": "New Noise Magazine"
+      "descriptionSource": "New Noise Magazine",
+      "shipping": {
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 5,
+        "lengthCm": 16,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 180
+      }
     },
     {
       "id": "nxp-2026-cd-0013",
@@ -1155,7 +1284,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "The Wire / Innocent Records"
+      "descriptionSource": "The Wire / Innocent Records",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cst-0009",
@@ -1214,7 +1352,16 @@
       "homeCollections": [
         "limited-pressing"
       ],
-      "descriptionSource": "Pitchfork / NME"
+      "descriptionSource": "Pitchfork / NME",
+      "shipping": {
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 5,
+        "lengthCm": 16,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 180
+      }
     },
     {
       "id": "nxp-2026-cd-0010",
@@ -1277,7 +1424,16 @@
         "Antemasque"
       ],
       "homeCollections": [],
-      "descriptionSource": "AllMusic / Sputnikmusic"
+      "descriptionSource": "AllMusic / Sputnikmusic",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-vnl-0012",
@@ -1338,7 +1494,16 @@
         "nixp-selection",
         "recent-releases"
       ],
-      "descriptionSource": "The FADER / Resident Advisor"
+      "descriptionSource": "The FADER / Resident Advisor",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-cst-0006",
@@ -1392,7 +1557,16 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "shipping": {
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 5,
+        "lengthCm": 16,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 180
+      }
     },
     {
       "id": "nxp-2026-cst-0005",
@@ -1453,7 +1627,16 @@
         "nixp-selection",
         "recent-releases"
       ],
-      "descriptionSource": "Spotify release listing / The Guardian"
+      "descriptionSource": "Spotify release listing / The Guardian",
+      "shipping": {
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 5,
+        "lengthCm": 16,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 180
+      }
     },
     {
       "id": "nxp-2026-cd-0011",
@@ -1507,7 +1690,16 @@
         "nixp-selection"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-app-0009-lattice-cap",
@@ -1547,7 +1739,16 @@
       "financeStockId": "catalog-nxp-2026-app-0009-lattice-cap",
       "relatedArtists": [],
       "homeCollections": [],
-      "descriptionSource": ""
+      "descriptionSource": "",
+      "shipping": {
+        "source": "https://hatcaddy.co/pages/shipping",
+        "status": "format_reference",
+        "widthCm": 20,
+        "heightCm": 15,
+        "lengthCm": 25,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 350
+      }
     },
     {
       "id": "nxp-2026-cd-0016",
@@ -1599,7 +1800,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "AllMusic"
+      "descriptionSource": "AllMusic",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cst-0007",
@@ -1651,7 +1861,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "The Progressive Subway"
+      "descriptionSource": "The Progressive Subway",
+      "shipping": {
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 5,
+        "lengthCm": 16,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 180
+      }
     },
     {
       "id": "nxp-2026-cd-0022",
@@ -1703,7 +1922,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "AllMusic / Sacred Bones"
+      "descriptionSource": "AllMusic / Sacred Bones",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-app-0003-preform-tee",
@@ -1769,7 +1997,16 @@
       "financeStockId": "catalog-nxp-2026-app-0003-preform-tee",
       "relatedArtists": [],
       "homeCollections": [],
-      "descriptionSource": ""
+      "descriptionSource": "",
+      "shipping": {
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "status": "format_reference",
+        "widthCm": 28,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 380
+      }
     },
     {
       "id": "nxp-2026-cst-0001",
@@ -1821,7 +2058,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork / AllMusic"
+      "descriptionSource": "Pitchfork / AllMusic",
+      "shipping": {
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 5,
+        "lengthCm": 16,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 180
+      }
     },
     {
       "id": "nxp-2026-vnl-0008",
@@ -1881,7 +2127,16 @@
         "limited-pressing",
         "nixp-selection"
       ],
-      "descriptionSource": "Pitchfork / PAN"
+      "descriptionSource": "Pitchfork / PAN",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-cd-0021",
@@ -1933,7 +2188,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "Resident Advisor"
+      "descriptionSource": "Resident Advisor",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-vnl-0010",
@@ -1992,7 +2256,16 @@
       "homeCollections": [
         "limited-pressing"
       ],
-      "descriptionSource": "Pitchfork / The Guardian"
+      "descriptionSource": "Pitchfork / The Guardian",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-cd-0023",
@@ -2047,7 +2320,16 @@
         "recent-releases"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-vnl-0001",
@@ -2108,7 +2390,16 @@
         "nixp-selection",
         "recent-releases"
       ],
-      "descriptionSource": "The Quietus"
+      "descriptionSource": "The Quietus",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-vnl-0006",
@@ -2160,7 +2451,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "The Quietus"
+      "descriptionSource": "The Quietus",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-cd-0007",
@@ -2220,7 +2520,16 @@
         "nixp-selection",
         "recent-releases"
       ],
-      "descriptionSource": "Pitchfork / The Guardian"
+      "descriptionSource": "Pitchfork / The Guardian",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-obj-0002-preform",
@@ -2271,7 +2580,16 @@
       "financeStockId": "catalog-nxp-2026-obj-0002-preform",
       "relatedArtists": [],
       "homeCollections": [],
-      "descriptionSource": ""
+      "descriptionSource": "",
+      "shipping": {
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "status": "format_reference",
+        "widthCm": 10,
+        "heightCm": 6,
+        "lengthCm": 12,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 180
+      }
     },
     {
       "id": "nxp-2026-vnl-0009",
@@ -2330,7 +2648,16 @@
       "homeCollections": [
         "limited-pressing"
       ],
-      "descriptionSource": "Pitchfork / The Guardian"
+      "descriptionSource": "Pitchfork / The Guardian",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-app-0004-mesh-black-longsleeve",
@@ -2392,7 +2719,16 @@
       "financeStockId": "catalog-nxp-2026-app-0004-mesh-black-longsleeve",
       "relatedArtists": [],
       "homeCollections": [],
-      "descriptionSource": ""
+      "descriptionSource": "",
+      "shipping": {
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "status": "format_reference",
+        "widthCm": 28,
+        "heightCm": 6,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 500
+      }
     },
     {
       "id": "app-001",
@@ -2466,7 +2802,16 @@
       "financeStockId": "catalog-app-001",
       "relatedArtists": [],
       "homeCollections": [],
-      "descriptionSource": ""
+      "descriptionSource": "",
+      "shipping": {
+        "source": "https://www.pluspackaging.com/blog/mailing-bags/poly-mailer-sizes/",
+        "status": "format_reference",
+        "widthCm": 32,
+        "heightCm": 10,
+        "lengthCm": 40,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 900
+      }
     },
     {
       "id": "app-002",
@@ -2533,7 +2878,16 @@
       "financeStockId": "catalog-app-002",
       "relatedArtists": [],
       "homeCollections": [],
-      "descriptionSource": ""
+      "descriptionSource": "",
+      "shipping": {
+        "source": "https://www.pluspackaging.com/blog/mailing-bags/poly-mailer-sizes/",
+        "status": "format_reference",
+        "widthCm": 32,
+        "heightCm": 12,
+        "lengthCm": 40,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 1000
+      }
     },
     {
       "id": "nxp-2026-cd-0006",
@@ -2585,7 +2939,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "AllMusic"
+      "descriptionSource": "AllMusic",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cst-0004",
@@ -2637,7 +3000,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "AllMusic"
+      "descriptionSource": "AllMusic",
+      "shipping": {
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 5,
+        "lengthCm": 16,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 180
+      }
     },
     {
       "id": "nxp-2026-cd-0015",
@@ -2691,7 +3063,16 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "AllMusic / Pitchfork"
+      "descriptionSource": "AllMusic / Pitchfork",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cd-0017",
@@ -2754,7 +3135,16 @@
         "Iggy Pop"
       ],
       "homeCollections": [],
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cd-0004",
@@ -2808,7 +3198,16 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "The Guardian"
+      "descriptionSource": "The Guardian",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-vnl-0004",
@@ -2867,7 +3266,16 @@
       "homeCollections": [
         "limited-pressing"
       ],
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-cd-0005",
@@ -2919,7 +3327,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cd-0001",
@@ -2973,7 +3390,16 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "AllMusic"
+      "descriptionSource": "AllMusic",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-vnl-0003",
@@ -3033,7 +3459,16 @@
         "limited-pressing",
         "nixp-selection"
       ],
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-cd-0002",
@@ -3087,7 +3522,16 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "Sputnikmusic"
+      "descriptionSource": "Sputnikmusic",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cd-0008",
@@ -3147,7 +3591,16 @@
         "nixp-selection",
         "recent-releases"
       ],
-      "descriptionSource": "Associated Press"
+      "descriptionSource": "Associated Press",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cd-0012",
@@ -3199,7 +3652,16 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork / The Quietus"
+      "descriptionSource": "Pitchfork / The Quietus",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-vnl-0011",
@@ -3260,7 +3722,16 @@
         "nixp-selection",
         "recent-releases"
       ],
-      "descriptionSource": "Mindies / STROOM"
+      "descriptionSource": "Mindies / STROOM",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     },
     {
       "id": "nxp-2026-cd-0019",
@@ -3314,7 +3785,16 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cd-0020",
@@ -3368,7 +3848,16 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "The Quietus / AllMusic"
+      "descriptionSource": "The Quietus / AllMusic",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cd-0003",
@@ -3422,7 +3911,16 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-cd-0009",
@@ -3481,7 +3979,16 @@
       "homeCollections": [
         "nixp-selection"
       ],
-      "descriptionSource": "Associated Press / Pitchfork"
+      "descriptionSource": "Associated Press / Pitchfork",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
     },
     {
       "id": "nxp-2026-app-0006-paranoiac-odyssey-t-shirt",
@@ -3534,7 +4041,7 @@
       "collection": "Paranoiac Odyssey",
       "visibility": "Public",
       "apparelType": "Tops",
-      "description": "",
+      "description": "Paranoiac Odyssey T-shirt in white, made from heavyweight 16s cotton at 265 GSM.",
       "reviewQuote": "",
       "imageCredits": [],
       "reviewSource": "",
@@ -3544,7 +4051,16 @@
       "financeStockId": "catalog-nxp-2026-app-0006-paranoiac-odyssey-t-shirt",
       "relatedArtists": [],
       "homeCollections": [],
-      "descriptionSource": ""
+      "descriptionSource": "",
+      "shipping": {
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "status": "format_reference",
+        "widthCm": 28,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 380
+      }
     },
     {
       "id": "nxp-2026-app-0007-cold-metal-breathes-too-t-shirt",
@@ -3607,7 +4123,336 @@
       "financeStockId": "catalog-nxp-2026-app-0007-cold-metal-breathes-too-t-shirt",
       "relatedArtists": [],
       "homeCollections": [],
-      "descriptionSource": ""
+      "descriptionSource": "",
+      "shipping": {
+        "source": "https://help.shopify.com/en/manual/fulfillment/setup/packaging/packages-and-weights",
+        "status": "format_reference",
+        "widthCm": 28,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 380
+      }
+    },
+    {
+      "id": "nxp-2026-cd-0018",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0018",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0018"
+      ],
+      "year": 2003,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg",
+      "label": "RCA",
+      "price": 170000,
+      "sizes": [],
+      "title": "Antenna",
+      "artist": "Cave In",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-CD-0018",
+        "Format: CD",
+        "Condition: Used Good"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "condition": "Used Good",
+      "reviewUrl": "https://www.allmusic.com/album/antenna-mw0000021409",
+      "updatedAt": "2026-07-26",
+      "collection": "NIXP Selection",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Cave In's 2003 Antenna moves the Massachusetts band's experimental metal toward concise hooks and major-label scale while keeping its guitars intelligently warped.",
+      "reviewQuote": "intelligently warped sound",
+      "imageCredits": [],
+      "reviewSource": "AllMusic (quoted)",
+      "displayFormat": "CD",
+      "homeSlideSort": 29,
+      "publishStatus": "Published",
+      "financeStockId": "mrf9hnagmp9qfy",
+      "mediaCondition": "",
+      "relatedArtists": [
+        "Converge",
+        "Isis",
+        "Botch"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "AllMusic / Pitchfork",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
+    },
+    {
+      "id": "nxp-2026-vnl-0005",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0005",
+      "tags": [
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0005"
+      ],
+      "year": 2025,
+      "color": "",
+      "image": "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
+      "label": "Rough Trade Records",
+      "price": 568000,
+      "sizes": [],
+      "title": "The Early Years",
+      "artist": "Gilla Band",
+      "format": "Vinyl",
+      "images": [
+        "/public/uploads/products/nxp-2026-vnl-0005-the-early-years-gilla-band-the-early-years-ep-10th-anniversary-edition-2025-reissue-jpg-1783884296931.jpg",
+        "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-VNL-0005",
+        "Format: Vinyl 12\"",
+        "Condition: New-Sealed"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.theguardian.com/music/2022/oct/06/gilla-band-most-normal-interview",
+      "updatedAt": "2026-07-26",
+      "collection": "NIXP Selection",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Gilla Band's The Early Years gathers the Dublin band's formative recordings, tracing the movement from noisy post-punk structures toward their later, more fractured industrial sound.",
+      "reviewQuote": "full of sound and fury",
+      "imageCredits": [
+        {
+          "url": "https://gillaband.bandcamp.com/album/the-early-years",
+          "image": "/public/mockups/nxp-2026-vnl-0005-gilla-band-the-early-years-vinyl.jpg",
+          "credit": "Gilla Band Bandcamp"
+        }
+      ],
+      "reviewSource": "The Guardian (quoted from Gilla Band feature)",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 9,
+      "publishStatus": "Published",
+      "financeStockId": "mr6m92hfful640",
+      "relatedArtists": [
+        "The Murder Capital",
+        "Shame",
+        "Squid"
+      ],
+      "homeCollections": [
+        "limited-pressing",
+        "recent-releases"
+      ],
+      "descriptionSource": "Gilla Band Bandcamp / The Guardian",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
+    },
+    {
+      "id": "nxp-2026-cd-0014",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0014",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0014"
+      ],
+      "year": 2015,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg",
+      "label": "Orange Cliff Records",
+      "price": 50000,
+      "sizes": [],
+      "title": "Crimson Eyes",
+      "artist": "Sigmun",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0014-sigmun-crimson-eyes.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-CD-0014",
+        "Format: CD",
+        "Condition: Used Good"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "condition": "Used Good",
+      "reviewUrl": "https://www.deathrockstar.club/review-album-sigmun-crimson-eyes/",
+      "updatedAt": "2026-07-26",
+      "collection": "NIXP Selection",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Sigmun's 2015 Crimson Eyes is the Indonesian quartet's debut, arranging slow-burning stoner and psychedelic rock around heavy riffs, dark surreal imagery and long-form dynamics.",
+      "reviewQuote": "a proof of continuation, not a beginning",
+      "imageCredits": [],
+      "reviewSource": "Deathrockstar (quoted, translated)",
+      "displayFormat": "CD",
+      "homeSlideSort": 27,
+      "publishStatus": "Published",
+      "financeStockId": "mr6qkiyv449mvn",
+      "mediaCondition": "",
+      "relatedArtists": [
+        "Mooner",
+        "The Sigit",
+        "White Shoes & The Couples Company"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "Deathrockstar / Superlive",
+      "shipping": {
+        "source": "https://auspost.com.au/content/dam/auspost_corp/media/documents/packaging-guide.pdf",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 5,
+        "lengthCm": 18,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 200
+      }
+    },
+    {
+      "id": "nxp-2026-cst-0002",
+      "qty": 1,
+      "sku": "NXP-2026-CST-0002",
+      "tags": [
+        "Cassette",
+        "NXP-2026-CST-0002"
+      ],
+      "year": 2002,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg",
+      "label": "Undying Music",
+      "price": 197000,
+      "sizes": [],
+      "title": "Tear From The red",
+      "artist": "Poison The Well",
+      "format": "Cassette",
+      "images": [
+        "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-CST-0002",
+        "Format: Cassette",
+        "Condition: Used Excellent"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/",
+      "updatedAt": "2026-07-26",
+      "collection": "NIXP Selection",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Poison the Well's 2002 Tear From the Red captures the Florida band's transition from hardcore extremity toward a more melodic, emotionally expansive form of metalcore.",
+      "reviewQuote": "most accessible album",
+      "imageCredits": [],
+      "reviewSource": "Sputnikmusic (quoted)",
+      "displayFormat": "Cassette",
+      "homeSlideSort": 20,
+      "publishStatus": "Published",
+      "financeStockId": "mr6ja47v3zm15l",
+      "mediaCondition": "",
+      "relatedArtists": [
+        "Thursday",
+        "Glassjaw",
+        "From Autumn to Ashes"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "Sputnikmusic",
+      "shipping": {
+        "source": "https://www.duplication.com/full-black-cassette-cases-no-posts.html",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 5,
+        "lengthCm": 16,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 180
+      }
+    },
+    {
+      "id": "nxp-2026-vnl-0002",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0002",
+      "tags": [
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0002"
+      ],
+      "year": 2024,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+      "label": "A-Zap",
+      "price": 820000,
+      "sizes": [],
+      "title": "3+5",
+      "artist": "Melt-Banana",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+        "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
+      ],
+      "details": [
+        "SKU: NXP-2026-VNL-0002",
+        "Format: Vinyl 12\"",
+        "Condition: New-Sealed"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
+      "updatedAt": "2026-07-26",
+      "collection": "NIXP Selection",
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
+      "reviewQuote": "frantic sensibilities",
+      "imageCredits": [
+        {
+          "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp",
+          "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
+          "credit": "Turntable Lab"
+        }
+      ],
+      "reviewSource": "The Quietus (quoted)",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 24,
+      "publishStatus": "Published",
+      "financeStockId": "mr6ja47v7cvrh3",
+      "relatedArtists": [
+        "Lightning Bolt",
+        "Hella",
+        "Boredoms"
+      ],
+      "homeCollections": [
+        "limited-pressing"
+      ],
+      "descriptionSource": "The Quietus / AllMusic",
+      "shipping": {
+        "source": "https://www.shopify.com/blog/how-to-ship-vinyl-records",
+        "status": "format_reference",
+        "widthCm": 35,
+        "heightCm": 5,
+        "lengthCm": 35,
+        "updatedAt": "2026-07-22",
+        "weightGrams": 700
+      }
     }
   ],
   "artists": [

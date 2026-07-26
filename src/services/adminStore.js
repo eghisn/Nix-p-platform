@@ -38,6 +38,8 @@ function withDefaults(product) {
     ...product,
     image: product.image || product.images?.[0] || (isFinanceDraft ? "" : "/public/nixp-product-example-paper.png"),
     edition: String(product.edition || "").trim(),
+    barcode: String(product.barcode || "").trim(),
+    catalogNumber: String(product.catalogNumber || "").trim(),
     mediaCondition: String(product.mediaCondition || "").trim(),
     sleeveCondition: String(product.sleeveCondition || "").trim(),
     tags: product.tags || [],
@@ -285,6 +287,8 @@ function mergeStore(seeded, saved, { publicOnly = false } = {}) {
         "reviewSource",
         "reviewUrl",
         "edition",
+        "barcode",
+        "catalogNumber",
         "mediaCondition",
         "sleeveCondition"
       ];
@@ -608,6 +612,8 @@ export const adminStore = {
         ? data.displayFormat?.trim() || ""
         : data.displayFormat?.trim() || data.format?.trim() || category || "Object",
       edition: isRecord ? data.edition?.trim() || "" : "",
+      barcode: isRecord ? data.barcode?.trim() || "" : "",
+      catalogNumber: isRecord ? data.catalogNumber?.trim() || "" : "",
       apparelType: normalizeApparelType(data.apparelType),
       condition: data.condition?.trim() || "",
       mediaCondition: isRecord && isUsedCondition(data.condition) ? data.mediaCondition?.trim() || "" : "",

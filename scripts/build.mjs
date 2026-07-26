@@ -167,11 +167,27 @@ function homeDocument() {
     crawlMarkup: crawlerSection(`<h1>NIXP</h1><p>${escapeHtml(siteDescription)}</p><ul>${catalogLinks}</ul>`),
     structuredData: {
       "@context": "https://schema.org",
-      "@type": "Store",
-      name: "NIXP",
-      url: `${siteOrigin}/`,
-      image: siteImage,
-      description: siteDescription
+      "@graph": [
+        {
+          "@type": "Store",
+          "@id": `${siteOrigin}/#store`,
+          name: "NIXP",
+          url: `${siteOrigin}/`,
+          image: siteImage,
+          description: siteDescription
+        },
+        {
+          "@type": "ItemList",
+          name: "NIXP catalog",
+          numberOfItems: publicProducts.length,
+          itemListElement: publicProducts.map((product, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            url: `${siteOrigin}/product/${encodeURIComponent(product.id)}`,
+            name: `${product.artist} - ${product.title}`
+          }))
+        }
+      ]
     }
   });
 }
@@ -243,6 +259,30 @@ function productDocument(product) {
   const format = product.displayFormat || product.format || "Product";
   const description = `${product.artist} - ${product.title}. ${format}${product.condition ? ` / ${product.condition}` : ""}. ${price}.`;
   const inStock = productQuantity(product) > 0;
+  const barcode = String(product.barcode || "").replace(/\D/g, "");
+  const itemCondition = /^used\b/i.test(String(product.condition || "")) ? "UsedCondition" : "NewCondition";
+  const productData = {
+    "@type": "Product",
+    "@id": `${url}#product`,
+    name: `${product.artist} - ${product.title}`,
+    sku: product.sku || product.id,
+    image: (product.images?.length ? product.images : [product.image]).filter(Boolean).map(absoluteUrl),
+    description: product.description || description,
+    category: `${product.category || "Catalog"} > ${format}`,
+    brand: { "@type": "Brand", name: product.label || "NIXP" },
+    ...(barcode.length === 13 ? { gtin13: barcode } : {}),
+    ...(barcode.length === 12 ? { gtin12: barcode } : {}),
+    ...(product.catalogNumber ? { mpn: product.catalogNumber } : {}),
+    offers: {
+      "@type": "Offer",
+      url,
+      priceCurrency: "IDR",
+      price: Number(product.price || 0),
+      availability: `https://schema.org/${inStock ? "InStock" : "OutOfStock"}`,
+      itemCondition: `https://schema.org/${itemCondition}`,
+      seller: { "@type": "Organization", name: "NIXP", url: `${siteOrigin}/` }
+    }
+  };
   return routeDocument({
     title: `${product.artist} - ${product.title} | NIXP`,
     description,
@@ -254,19 +294,17 @@ function productDocument(product) {
     ),
     structuredData: {
       "@context": "https://schema.org",
-      "@type": "Product",
-      name: `${product.artist} - ${product.title}`,
-      sku: product.sku || product.id,
-      image: (product.images?.length ? product.images : [product.image]).filter(Boolean).map(absoluteUrl),
-      description: product.description || description,
-      brand: { "@type": "Brand", name: "NIXP" },
-      offers: {
-        "@type": "Offer",
-        url,
-        priceCurrency: "IDR",
-        price: Number(product.price || 0),
-        availability: `https://schema.org/${inStock ? "InStock" : "OutOfStock"}`
-      }
+      "@graph": [
+        productData,
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "NIXP", item: `${siteOrigin}/` },
+            { "@type": "ListItem", position: 2, name: product.category || "Catalog", item: `${siteOrigin}/${slugify(product.category || "records")}` },
+            { "@type": "ListItem", position: 3, name: `${product.artist} - ${product.title}`, item: url }
+          ]
+        }
+      ]
     }
   });
 }
@@ -297,7 +335,23 @@ function artistDocument(artist) {
     url: `${siteOrigin}/artists/${slugify(artist.name)}`,
     image: siteImage,
     appMarkup,
-    crawlMarkup: crawlerSection(`<h1>${escapeHtml(artist.name)}</h1><p>Releases by ${escapeHtml(artist.name)} available from NIXP.</p>`)
+    crawlMarkup: crawlerSection(`<h1>${escapeHtml(artist.name)}</h1><p>Releases by ${escapeHtml(artist.name)} available from NIXP.</p>`),
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: `${artist.name} releases at NIXP`,
+      url: `${siteOrigin}/artists/${slugify(artist.name)}`,
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: products.length,
+        itemListElement: products.map((product, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `${siteOrigin}/product/${encodeURIComponent(product.id)}`,
+          name: `${product.artist} - ${product.title}`
+        }))
+      }
+    }
   });
 }
 
@@ -350,5 +404,33 @@ for (const route of [...new Set(staticRoutes)]) {
         });
   await writeFile(`${routeDir}/index.html`, document);
 }
+
+const crawlableRoutes = [
+  "",
+  "records",
+  "objects",
+  "apparel",
+  "accessories",
+  "publishing",
+  "artists",
+  "blog",
+  "request-item",
+  "about",
+  "contact",
+  "shipping-returns",
+  ...publicProducts.map((product) => `product/${product.id}`),
+  ...[...artistDirectory.keys()].map((artistSlug) => `artists/${artistSlug}`)
+];
+const sitemapEntries = [...new Set(crawlableRoutes)]
+  .map((route) => `  <url><loc>${escapeHtml(`${siteOrigin}/${route}`)}</loc></url>`)
+  .join("\n");
+await writeFile(
+  `${dist}/sitemap.xml`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`
+);
+await writeFile(
+  `${dist}/robots.txt`,
+  `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nDisallow: /finance/\nDisallow: /login\n\nSitemap: ${siteOrigin}/sitemap.xml\n`
+);
 
 console.log("Built NIXP prototype to dist/");

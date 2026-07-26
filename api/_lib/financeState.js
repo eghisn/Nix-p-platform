@@ -1,3 +1,5 @@
+import { enrichFinanceCatalogProduct } from "./catalogEnrichment.js";
+
 const STATE_KEY = "main";
 const EMPTY_FINANCE_STATE = { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
@@ -54,7 +56,9 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
   return normalized;
 }
 
-// Finance is the source of truth for SKU stock; incomplete finance entries stay private drafts in the catalog.
+// Finance is the source of truth for SKU stock. Complete record entries pass
+// through catalog enrichment before publication; ambiguous editions remain
+// visible in Admin with a precise enrichment status.
 async function syncFinanceInventoryToCatalog(state) {
   const stockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
   const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
@@ -71,12 +75,17 @@ async function syncFinanceInventoryToCatalog(state) {
     const existing = existingBySku.get(key);
     const quantity = normalizedQuantity(stock.qty);
     if (existing) {
-      productRows.push(productRowFromFinanceStock(existing, stock, quantity));
+      const financeProduct = productRowFromFinanceStock(existing, stock, quantity);
+      productRows.push(
+        needsFinanceEnrichment(existing)
+          ? await enrichFinanceCatalogProduct(financeProduct, stock)
+          : financeProduct
+      );
       productIdBySku.set(key, existing.id);
       continue;
     }
     const product = draftProductFromFinanceStock(stock, quantity);
-    productRows.push(product);
+    productRows.push(await enrichFinanceCatalogProduct(product, stock));
     productIdBySku.set(key, product.id);
   }
 
@@ -244,6 +253,9 @@ function productRowFromFinanceStock(row, stock, quantity) {
       displayFormat: category === "Records" ? item : raw.displayFormat || row.display_format || "",
       condition: String(stock.itemCondition || raw.condition || row.condition || "").trim(),
       price: financePrice > 0 ? financePrice : Number(raw.price || row.price || 0),
+      edition: String(stock.edition || raw.edition || "").trim(),
+      barcode: String(stock.barcode || raw.barcode || "").trim(),
+      catalogNumber: String(stock.catalogNumber || raw.catalogNumber || "").trim(),
       publishStatus,
       visibility
     }
@@ -255,6 +267,21 @@ function hasUsableProductImage(row = {}) {
     .map((image) => String(image || "").trim())
     .filter(Boolean);
   return images.some((image) => !image.includes("nixp-product-example"));
+}
+
+function needsFinanceEnrichment(row = {}) {
+  const financeOrigin =
+    String(row.id || "").startsWith("finance-") ||
+    Boolean(row.raw?.financeStockId) ||
+    Boolean(row.raw?.enrichmentStatus);
+  if (!financeOrigin) return false;
+  return Boolean(
+    !hasUsableProductImage(row) ||
+      !String(row.label || "").trim() ||
+      !String(row.description || "").trim() ||
+      String(row.publish_status || "") !== "Published" ||
+      String(row.visibility || "") !== "Public"
+  );
 }
 
 export async function syncAdminProductInventory(product) {
@@ -345,7 +372,7 @@ function draftProductFromFinanceStock(stock, quantity) {
     displayFormat: category === "Records" ? item : "",
     apparelType: category === "Apparel" ? "Accessories" : "",
     condition: String(stock.itemCondition || "").trim(),
-    price: 0,
+    price: Number(stock.sellingPrice || 0),
     year: new Date().getFullYear(),
     label: "",
     collection: "",
@@ -364,6 +391,9 @@ function draftProductFromFinanceStock(stock, quantity) {
     updatedAt: today(),
     financeStockId: stock.id || null
   };
+  product.edition = String(stock.edition || "").trim();
+  product.barcode = String(stock.barcode || "").trim();
+  product.catalogNumber = String(stock.catalogNumber || "").trim();
   return {
     id,
     sku: product.sku,

@@ -1552,6 +1552,9 @@
           ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
           ${field("Artist", "artist", "text", "", false, "Artist name")}
           ${field("Title", "title", "text", "", false, "Artwork / item title")}
+          ${field("Edition", "edition", "text", "", false, "Pressing / packaging, if known")}
+          ${field("Barcode", "barcode", "text", "", false, "Exact release barcode")}
+          ${field("Catalog Number", "catalogNumber", "text", "", false, "Label catalog number")}
           ${selectField("Source", "source", inventorySources, true, "Business Purchase")}
           ${field("Acquisition Month", "acquisitionMonth", "month", currentMonth, true)}
           ${field("Quantity", "qty", "number", "1", true, "", "0.01")}
@@ -1978,6 +1981,9 @@
         itemCondition: data.itemCondition,
         artist: data.artist.trim(),
         title: data.title.trim(),
+        edition: data.edition.trim(),
+        barcode: data.barcode.trim(),
+        catalogNumber: data.catalogNumber.trim(),
         source: data.source,
         acquisitionMonth: data.acquisitionMonth,
         qty: numeric(data.qty),
@@ -2012,6 +2018,9 @@
         itemCondition: purchase.itemCondition || existing.itemCondition || "New-Sealed",
         artist: purchase.artistName || existing.artist || "",
         title: existing.title || "",
+        edition: existing.edition || "",
+        barcode: existing.barcode || "",
+        catalogNumber: existing.catalogNumber || "",
         source: purchase.source || existing.source || "Business Purchase",
         acquisitionMonth: monthOf(purchase.date) || existing.acquisitionMonth || currentMonth,
         qty: numeric(purchase.qty) || numeric(existing.qty) || 1,
@@ -2140,6 +2149,9 @@
       setFormValue(el.stockForm, "itemCondition", item.itemCondition || "New-Sealed");
       setFormValue(el.stockForm, "artist", item.artist);
       setFormValue(el.stockForm, "title", item.title);
+      setFormValue(el.stockForm, "edition", item.edition || "");
+      setFormValue(el.stockForm, "barcode", item.barcode || "");
+      setFormValue(el.stockForm, "catalogNumber", item.catalogNumber || "");
       setFormValue(el.stockForm, "source", item.source || "Business Purchase");
       setFormValue(el.stockForm, "acquisitionMonth", item.acquisitionMonth || currentMonth);
       setFormValue(el.stockForm, "qty", item.qty || 1);
@@ -2465,6 +2477,9 @@
         item.itemCondition,
         item.artist,
         item.title,
+        item.edition,
+        item.barcode,
+        item.catalogNumber,
         item.source,
         item.acquisitionMonth
       ]));
