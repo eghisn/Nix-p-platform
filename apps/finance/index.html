@@ -1749,10 +1749,11 @@
         render();
       });
 
-      el.stockForm.addEventListener("submit", event => {
+      el.stockForm.addEventListener("submit", async event => {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(el.stockForm));
         const editId = data.editId;
+        const previousStock = state.inventoryStock.map(item => ({ ...item }));
         if (editId) {
           const index = state.inventoryStock.findIndex(item => item.id === editId);
           if (index >= 0) {
@@ -1761,9 +1762,15 @@
         } else {
           state.inventoryStock.push(stockPayload(data, { id: uid() }));
         }
+        const saved = await commitState();
+        if (!saved) {
+          state.inventoryStock = previousStock;
+          render();
+          return;
+        }
         resetForm(el.stockForm);
         resetStockEditMode();
-        commitState();
+        render();
       });
 
       document.addEventListener("click", async event => {

@@ -71,8 +71,7 @@ async function syncFinanceInventoryToCatalog(state) {
     const existing = existingBySku.get(key);
     const quantity = normalizedQuantity(stock.qty);
     if (existing) {
-      const raw = { ...(existing.raw || {}), qty: quantity, updatedAt: today(), financeStockId: stock.id || null };
-      productRows.push(productRowFromExisting(existing, { qty: quantity, updated_at: today(), raw }));
+      productRows.push(productRowFromFinanceStock(existing, stock, quantity));
       productIdBySku.set(key, existing.id);
       continue;
     }
@@ -196,6 +195,59 @@ function productRowFromExisting(row, overrides = {}) {
     updated_at: next.updated_at || today(),
     raw: next.raw || {}
   };
+}
+
+function productRowFromFinanceStock(row, stock, quantity) {
+  const item = String(stock.item || row.format || "Vinyl").trim();
+  const category = RECORD_FORMATS.has(item)
+    ? "Records"
+    : APPAREL_TYPES.has(item)
+      ? "Apparel"
+      : row.category || "Objects";
+  const financeTitle = String(stock.title || "").trim();
+  const financeArtist = String(stock.artist || "").trim();
+  const financePrice = Number(stock.sellingPrice || 0);
+  const raw = {
+    ...(row.raw || {}),
+    financeStockId: stock.id || row.raw?.financeStockId || null,
+    qty: quantity,
+    updatedAt: today()
+  };
+
+  const wasFinanceDraft =
+    String(row.id || "").startsWith("finance-") ||
+    row.raw?.financeStockId ||
+    String(row.raw?.details?.[0] || "").includes("Created from finance inventory");
+  const readyFromFinance = Boolean(financeTitle && financePrice > 0);
+  const publishStatus = wasFinanceDraft && readyFromFinance ? "Published" : row.publish_status || "Published";
+  const visibility = wasFinanceDraft && readyFromFinance ? "Public" : row.visibility || "Public";
+
+  return productRowFromExisting(row, {
+    title: financeTitle || row.title,
+    artist: financeArtist || row.artist,
+    category,
+    format: category === "Records" ? item : row.format || "",
+    display_format: category === "Records" ? item : row.display_format || "",
+    apparel_type: category === "Apparel" ? row.apparel_type || "Accessories" : row.apparel_type || "",
+    condition: String(stock.itemCondition || row.condition || "").trim(),
+    price: financePrice > 0 ? financePrice : Number(row.price || 0),
+    qty: quantity,
+    publish_status: publishStatus,
+    visibility,
+    updated_at: today(),
+    raw: {
+      ...raw,
+      title: financeTitle || raw.title || row.title,
+      artist: financeArtist || raw.artist || row.artist,
+      category,
+      format: category === "Records" ? item : raw.format || row.format || "",
+      displayFormat: category === "Records" ? item : raw.displayFormat || row.display_format || "",
+      condition: String(stock.itemCondition || raw.condition || row.condition || "").trim(),
+      price: financePrice > 0 ? financePrice : Number(raw.price || row.price || 0),
+      publishStatus,
+      visibility
+    }
+  });
 }
 
 export async function syncAdminProductInventory(product) {
