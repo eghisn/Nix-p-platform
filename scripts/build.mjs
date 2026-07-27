@@ -270,6 +270,21 @@ function staticProductDetailMarkup(product) {
   const isRecord = product.category === "Records";
   const isApparel = product.category === "Apparel";
   const soldOut = Number(product.qty || 0) <= 0;
+  const availableArtistNames = inventoryArtistMap(publicProducts);
+  const relatedMarkup = product.category === "Records" && Array.isArray(product.relatedArtists) && product.relatedArtists.length
+    ? `<div class="related-artist-tags" aria-label="Related artists">${product.relatedArtists
+        .map((artist) => String(artist || "").trim())
+        .filter(Boolean)
+        .slice(0, 3)
+        .map((artist) => {
+          const relatedSlug = slugify(artist);
+          const inventoryArtist = availableArtistNames.get(relatedSlug);
+          return inventoryArtist
+            ? `<a href="/artists/${relatedSlug}">${escapeHtml(artist)}</a>`
+            : `<span>${escapeHtml(artist)}</span>`;
+        })
+        .join("")}</div>`
+    : "";
   const legacyReview = product.reviewQuote
     ? `<blockquote class="product-review">“${escapeHtml(product.reviewQuote)}”</blockquote><p class="review-source">${escapeHtml(product.reviewSource || "Source review")}</p>`
     : "";
@@ -281,7 +296,7 @@ function staticProductDetailMarkup(product) {
     : `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>${isRecord ? `<div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>` : ""}<div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div><div><dt>Notes</dt><dd>${escapeHtml((product.details || []).join(" / "))}</dd></div>`;
   return `<section class="product-detail"><div class="detail-gallery">${images
     .map((image, index) => `<figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""} ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>`)
-    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${slugify(product.category)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions"><button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button></div><dl class="detail-list">${details}</dl></aside></section>`;
+    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${slugify(product.category)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}${relatedMarkup}<div class="detail-actions"><button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button><a class="button button-outline" href="/request-item">Request similar</a></div><dl class="detail-list">${details}</dl></aside></section>`;
 }
 
 function productDocument(product) {
