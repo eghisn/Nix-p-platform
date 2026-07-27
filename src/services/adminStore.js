@@ -98,6 +98,21 @@ function isCompleteEditorialProduct(product = {}) {
   );
 }
 
+function isManagedCatalogImage(value) {
+  const image = String(value || "").trim();
+  return Boolean(
+    image &&
+      (image.startsWith("/public/") || image.startsWith("/assets/") || /supabase\.co\/storage\/v1\/object\/public\//i.test(image))
+  );
+}
+
+function snapshotOwnsEditorialFields(product = {}) {
+  return Boolean(
+    isCompleteEditorialProduct(product) &&
+      (isManagedCatalogImage(product.image) || (product.images || []).some(isManagedCatalogImage))
+  );
+}
+
 function reconcilePublicCatalog(remoteStore, snapshotStore) {
   const snapshotById = new Map((snapshotStore?.products || []).map((product) => [product.id, product]));
   const editorialFields = [
@@ -125,7 +140,9 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
     ...remoteStore,
     products: (remoteStore.products || []).map((remoteProduct) => {
       const snapshotProduct = snapshotById.get(remoteProduct.id);
-      if (!snapshotProduct || !isCompleteEditorialProduct(snapshotProduct) || isCompleteEditorialProduct(remoteProduct)) return remoteProduct;
+      // Editorial fields come from the deployed public snapshot. Supabase
+      // remains the live authority for price, stock and publication status.
+      if (!snapshotProduct || !snapshotOwnsEditorialFields(snapshotProduct)) return remoteProduct;
       return editorialFields.reduce(
         (merged, field) => (snapshotProduct[field] !== undefined ? { ...merged, [field]: snapshotProduct[field] } : merged),
         remoteProduct

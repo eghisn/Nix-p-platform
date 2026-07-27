@@ -90,6 +90,21 @@ function editorialProductIsComplete(product = {}) {
   );
 }
 
+function isManagedCatalogImage(value) {
+  const image = String(value || "").trim();
+  return Boolean(
+    image &&
+      (image.startsWith("/public/") || image.startsWith("/assets/") || /supabase\.co\/storage\/v1\/object\/public\//i.test(image))
+  );
+}
+
+function snapshotOwnsEditorialFields(snapshotProduct = {}) {
+  return Boolean(
+    editorialProductIsComplete(snapshotProduct) &&
+      (isManagedCatalogImage(snapshotProduct.image) || (snapshotProduct.images || []).some(isManagedCatalogImage))
+  );
+}
+
 function reconcilePublicEditorialProducts(remoteProducts = [], snapshotProducts = []) {
   const snapshotById = new Map(snapshotProducts.map((product) => [product.id, product]));
   const fields = [
@@ -115,7 +130,11 @@ function reconcilePublicEditorialProducts(remoteProducts = [], snapshotProducts 
   ];
   return remoteProducts.map((remoteProduct) => {
     const snapshotProduct = snapshotById.get(remoteProduct.id);
-    if (!snapshotProduct || !editorialProductIsComplete(snapshotProduct) || editorialProductIsComplete(remoteProduct)) return remoteProduct;
+    // After a catalog deploy, the public snapshot is the immutable editorial
+    // publication record. Inventory, price and visibility remain live from
+    // Supabase; artwork, copy and related artists cannot regress from stale
+    // database JSON during client hydration.
+    if (!snapshotProduct || !snapshotOwnsEditorialFields(snapshotProduct)) return remoteProduct;
     return fields.reduce(
       (merged, field) => (snapshotProduct[field] !== undefined ? { ...merged, [field]: snapshotProduct[field] } : merged),
       remoteProduct

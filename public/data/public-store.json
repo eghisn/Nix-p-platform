@@ -12,7 +12,7 @@
       ],
       "year": 2021,
       "color": "",
-      "image": "https://coverartarchive.org/release/2322927f-4aef-404f-851e-bc6dcb079961/front",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0033-cover.webp",
       "label": "Rough Trade",
       "price": 645000,
       "sizes": [],
@@ -20,8 +20,8 @@
       "artist": "Parquet Courts",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/2322927f-4aef-404f-851e-bc6dcb079961/front",
-        "https://f4.bcbits.com/img/a3739988549_5.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0033-cover.webp",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0033-detail-1.webp"
       ],
       "barcode": "",
       "details": [
@@ -44,12 +44,12 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/2322927f-4aef-404f-851e-bc6dcb079961",
-          "image": "https://coverartarchive.org/release/2322927f-4aef-404f-851e-bc6dcb079961/front",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0033-cover.webp",
           "credit": "Cover Art Archive / Rough Trade"
         },
         {
           "url": "https://parquetcourts.bandcamp.com/album/sympathy-for-life",
-          "image": "https://f4.bcbits.com/img/a3739988549_5.jpg",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0033-detail-1.webp",
           "credit": "Parquet Courts official Bandcamp product image"
         }
       ],
@@ -63,7 +63,7 @@
         "Suuns",
         "David Byrne"
       ],
-      "autoProductPhoto": "https://f4.bcbits.com/img/a3739988549_5.jpg",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0033-detail-1.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Parquet Courts official Bandcamp / MusicBrainz",
@@ -82,7 +82,7 @@
       ],
       "year": 2017,
       "color": "",
-      "image": "https://coverartarchive.org/release/d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff/front",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0032-cover.webp",
       "label": "Sacred Bones Records",
       "price": 545000,
       "sizes": [],
@@ -90,8 +90,8 @@
       "artist": "Uniform",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff/front",
-        "https://www.sacredbonesrecords.com/cdn/shop/files/Uniform_Wake-in-Fright_RedandWhite.jpg?v=1728594500&width=2000"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0032-cover.webp",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0032-detail-1.webp"
       ],
       "barcode": "",
       "details": [
@@ -114,12 +114,12 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff",
-          "image": "https://coverartarchive.org/release/d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff/front",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0032-cover.webp",
           "credit": "Cover Art Archive / Sacred Bones Records"
         },
         {
           "url": "https://www.sacredbonesrecords.com/products/sbr170-uniform-wake-in-fright",
-          "image": "https://www.sacredbonesrecords.com/cdn/shop/files/Uniform_Wake-in-Fright_RedandWhite.jpg?v=1728594500&width=2000",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0032-detail-1.webp",
           "credit": "Sacred Bones Records product photography"
         }
       ],
@@ -133,7 +133,7 @@
         "The Soft Moon",
         "JK Flesh"
       ],
-      "autoProductPhoto": "https://www.sacredbonesrecords.com/cdn/shop/files/Uniform_Wake-in-Fright_RedandWhite.jpg?v=1728594500&width=2000",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0032-detail-1.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Sacred Bones Records / Pitchfork",
@@ -152,7 +152,7 @@
       ],
       "year": 2016,
       "color": "",
-      "image": "https://f4.bcbits.com/img/a3731298365_5.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0031-cover.webp",
       "label": "SPE:C",
       "price": 400000,
       "sizes": [],
@@ -160,7 +160,7 @@
       "artist": "Trans AM",
       "format": "Vinyl",
       "images": [
-        "https://f4.bcbits.com/img/a3731298365_5.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0031-cover.webp"
       ],
       "barcode": "",
       "details": [
@@ -183,7 +183,7 @@
       "imageCredits": [
         {
           "url": "https://specrecords.bandcamp.com/album/trans-am-speechless-spe-c-002",
-          "image": "https://f4.bcbits.com/img/a3731298365_5.jpg",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0031-cover.webp",
           "credit": "SPE:C official Bandcamp release image"
         }
       ],
@@ -197,7 +197,7 @@
         "The Chemical Brothers",
         "Animal Collective"
       ],
-      "autoProductPhoto": "https://f4.bcbits.com/img/a3731298365_5.jpg",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0031-cover.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "SPE:C official Bandcamp / Boomkat",
@@ -216,7 +216,7 @@
       ],
       "year": 2016,
       "color": "",
-      "image": "https://coverartarchive.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd/front",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp",
       "label": "Jagjaguwar",
       "price": 550000,
       "sizes": [],
@@ -224,7 +224,7 @@
       "artist": "Preoccupations",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd/front"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp"
       ],
       "barcode": "",
       "details": [
@@ -247,7 +247,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
-          "image": "https://coverartarchive.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd/front",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp",
           "credit": "Cover Art Archive / Jagjaguwar"
         }
       ],
@@ -261,7 +261,7 @@
         "Women",
         "Ought"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd/front",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Jagjaguwar / Pitchfork",
@@ -280,7 +280,7 @@
       ],
       "year": 2020,
       "color": "",
-      "image": "https://coverartarchive.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b/front",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0029-cover.webp",
       "label": "Warp Records",
       "price": 400000,
       "sizes": [],
@@ -288,7 +288,7 @@
       "artist": "Squarepusher",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b/front"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0029-cover.webp"
       ],
       "barcode": "",
       "details": [
@@ -311,7 +311,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b",
-          "image": "https://coverartarchive.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b/front",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0029-cover.webp",
           "credit": "Cover Art Archive / Warp Records"
         }
       ],
@@ -325,7 +325,7 @@
         "Nala Sinephro",
         "The Chemical Brothers"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b/front",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0029-cover.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Warp Records / The Guardian",
@@ -344,7 +344,7 @@
       ],
       "year": 2018,
       "color": "",
-      "image": "https://f4.bcbits.com/img/a1165591995_5.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0028-cover.webp",
       "label": "Sacred Bones Records",
       "price": 410000,
       "sizes": [],
@@ -352,8 +352,8 @@
       "artist": "Blanck Mass",
       "format": "Vinyl",
       "images": [
-        "https://f4.bcbits.com/img/a1165591995_5.jpg",
-        "https://f4.bcbits.com/img/a1165591995_16.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0028-cover.webp",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0028-detail-1.webp"
       ],
       "barcode": "",
       "details": [
@@ -376,7 +376,7 @@
       "imageCredits": [
         {
           "url": "https://blanckmass.bandcamp.com/album/odd-scene-shit-luck",
-          "image": "https://f4.bcbits.com/img/a1165591995_16.jpg",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0028-detail-1.webp",
           "credit": "Blanck Mass official Bandcamp release image"
         }
       ],
@@ -390,7 +390,7 @@
         "The Soft Moon",
         "Pharmakon"
       ],
-      "autoProductPhoto": "https://f4.bcbits.com/img/a1165591995_16.jpg",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0028-detail-1.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Sacred Bones / The Skinny",
@@ -409,7 +409,7 @@
       ],
       "year": 2011,
       "color": "",
-      "image": "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp",
       "label": "Secretly Canadian",
       "price": 360000,
       "sizes": [],
@@ -417,7 +417,7 @@
       "artist": "Suuns",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp"
       ],
       "barcode": "656605025315",
       "details": [
@@ -443,7 +443,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49",
-          "image": "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp",
           "credit": "Cover Art Archive / Secretly Canadian"
         }
       ],
@@ -457,7 +457,7 @@
         "Viet Cong",
         "Jerusalem In My Heart"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "MusicBrainz",
@@ -476,7 +476,7 @@
       ],
       "year": 2019,
       "color": "",
-      "image": "https://coverartarchive.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f/front",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0026-cover.webp",
       "label": "PAN",
       "price": 650000,
       "sizes": [],
@@ -484,7 +484,7 @@
       "artist": "Amnesia Scanner & Bill Kouligas",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f/front"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0026-cover.webp"
       ],
       "barcode": "",
       "details": [
@@ -507,7 +507,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f",
-          "image": "https://coverartarchive.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f/front",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0026-cover.webp",
           "credit": "Cover Art Archive / PAN"
         }
       ],
@@ -521,7 +521,7 @@
         "Oneohtrix Point Never",
         "Toxe"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f/front",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0026-cover.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "PAN / The FADER",
@@ -540,7 +540,7 @@
       ],
       "year": 2018,
       "color": "",
-      "image": "https://coverartarchive.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52/front",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0025-cover.webp",
       "label": "PAN",
       "price": 450000,
       "sizes": [],
@@ -548,7 +548,7 @@
       "artist": "Toxe",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52/front"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0025-cover.webp"
       ],
       "barcode": "",
       "details": [
@@ -571,7 +571,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52",
-          "image": "https://coverartarchive.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52/front",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0025-cover.webp",
           "credit": "Cover Art Archive / PAN"
         }
       ],
@@ -585,7 +585,7 @@
         "Arca",
         "SOPHIE"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52/front",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0025-cover.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "PAN / Tiny Mix Tapes",
@@ -604,7 +604,7 @@
       ],
       "year": 2024,
       "color": "",
-      "image": "https://coverartarchive.org/release/9c4a70fc-8984-4585-97d2-ef672b650034/front",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0024-cover.webp",
       "label": "Sacred Bones Records",
       "price": 685000,
       "sizes": [],
@@ -612,7 +612,7 @@
       "artist": "Pharmakon",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/9c4a70fc-8984-4585-97d2-ef672b650034/front"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0024-cover.webp"
       ],
       "barcode": "",
       "details": [
@@ -635,7 +635,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/9c4a70fc-8984-4585-97d2-ef672b650034",
-          "image": "https://coverartarchive.org/release/9c4a70fc-8984-4585-97d2-ef672b650034/front",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0024-cover.webp",
           "credit": "Cover Art Archive / Sacred Bones Records"
         }
       ],
@@ -649,7 +649,7 @@
         "Blanck Mass",
         "The Soft Moon"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/9c4a70fc-8984-4585-97d2-ef672b650034/front",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0024-cover.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Sacred Bones / Metal Trenches",
@@ -664,7 +664,7 @@
       "tags": [],
       "year": 2026,
       "color": "",
-      "image": "https://coverartarchive.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de/front-1200",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0023-cover.webp",
       "label": "Boysnoize Records",
       "price": 370000,
       "sizes": [],
@@ -672,7 +672,7 @@
       "artist": "Boys Noize",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de/front-1200"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0023-cover.webp"
       ],
       "barcode": "",
       "details": [
@@ -696,7 +696,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de",
-          "image": "https://coverartarchive.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de/front-1200",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0023-cover.webp",
           "credit": "Cover Art Archive / MusicBrainz"
         }
       ],
@@ -710,7 +710,7 @@
         "Siriusmo",
         "Housemeister"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de/front-1200",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0023-cover.webp",
       "enrichmentOrigin": "curated-web",
       "enrichmentStatus": "complete",
       "descriptionSource": "AllMusic / Resident Advisor",
@@ -725,7 +725,7 @@
       "tags": [],
       "year": 2013,
       "color": "",
-      "image": "https://coverartarchive.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f/front-1200",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
       "label": "Sacred Bones Records",
       "price": 400000,
       "sizes": [],
@@ -733,7 +733,7 @@
       "artist": "Lust For Youth",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f/front-1200"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp"
       ],
       "barcode": "616892100249",
       "details": [
@@ -758,7 +758,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f",
-          "image": "https://coverartarchive.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f/front-1200",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
           "credit": "Cover Art Archive / MusicBrainz"
         }
       ],
@@ -772,7 +772,7 @@
         "Cold Cave",
         "The Soft Moon"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f/front-1200",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
       "enrichmentOrigin": "curated-web",
       "enrichmentStatus": "complete",
       "descriptionSource": "Sacred Bones / Pitchfork",
@@ -787,7 +787,7 @@
       "tags": [],
       "year": 2026,
       "color": "",
-      "image": "https://coverartarchive.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534/front-1200",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp",
       "label": "Warp Records",
       "price": 880000,
       "sizes": [],
@@ -795,7 +795,7 @@
       "artist": "Boards of Canada",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534/front-1200"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp"
       ],
       "barcode": "5056818807435",
       "details": [
@@ -820,7 +820,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534",
-          "image": "https://coverartarchive.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534/front-1200",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp",
           "credit": "Cover Art Archive / MusicBrainz"
         }
       ],
@@ -834,7 +834,7 @@
         "Autechre",
         "Plaid"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534/front-1200",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp",
       "enrichmentOrigin": "curated-web",
       "enrichmentStatus": "complete",
       "descriptionSource": "Warp Records / Pitchfork",
@@ -917,7 +917,7 @@
       ],
       "year": 2024,
       "color": "",
-      "image": "https://coverartarchive.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0/front",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
       "label": "Domino",
       "price": 698000,
       "sizes": [],
@@ -925,7 +925,7 @@
       "artist": "Porches",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0/front"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp"
       ],
       "barcode": "",
       "details": [
@@ -948,7 +948,7 @@
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0",
-          "image": "https://coverartarchive.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0/front",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
           "credit": "Cover Art Archive / Domino Records"
         }
       ],
@@ -962,7 +962,7 @@
         "Alex G",
         "Daniel Lopatin"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0/front",
+      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Domino / Pitchfork",
@@ -2019,7 +2019,7 @@
       "format": "Vinyl",
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0013-1784281689333-a2998490938-10.jpg",
-        "https://www.turntablelab.com/cdn/shop/products/giantswan-giantswan.jpg?v=1762277754&width=2048"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0013-cover.webp"
       ],
       "barcode": "",
       "details": [
@@ -2041,7 +2041,7 @@
       "imageCredits": [
         {
           "url": "https://www.turntablelab.com/products/giant-swan-giant-swan-vinyl-lp",
-          "image": "https://www.turntablelab.com/cdn/shop/products/giantswan-giantswan.jpg?v=1762277754&width=2048",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0013-cover.webp",
           "credit": "Turntable Lab"
         }
       ],

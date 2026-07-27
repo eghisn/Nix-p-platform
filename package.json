@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "node scripts/dev-server.mjs",
     "build": "node scripts/build.mjs",
+    "test:catalog": "node scripts/verify-catalog-integrity.mjs",
+    "test:routes": "node scripts/verify-public-routes.mjs",
     "seed:admin": "node scripts/seed-admin-store.mjs",
     "sync:catalog": "node scripts/sync-catalog-snapshots.mjs",
     "preview": "node scripts/dev-server.mjs dist"

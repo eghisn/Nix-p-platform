@@ -5,6 +5,36 @@ const USED_CONDITION = /^used\b/i;
 const MUSICBRAINZ_ORIGIN = "https://musicbrainz.org";
 const USER_AGENT = "NIXP-Catalog/1.0 (contact@nix-p.com)";
 
+// NIXP keeps a local, optimized copy of the public catalog artwork. The
+// original source remains in imageCredits; this mapping prevents third-party
+// artwork URLs from becoming a storefront runtime dependency.
+const ARCHIVED_CATALOG_IMAGES = {
+  "NXP-2026-VNL-0013": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0013-cover.webp" },
+  "NXP-2026-VNL-0019": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp" },
+  "NXP-2026-VNL-0021": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp" },
+  "NXP-2026-VNL-0022": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp" },
+  "NXP-2026-VNL-0023": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0023-cover.webp" },
+  "NXP-2026-VNL-0024": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0024-cover.webp" },
+  "NXP-2026-VNL-0025": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0025-cover.webp" },
+  "NXP-2026-VNL-0026": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0026-cover.webp" },
+  "NXP-2026-VNL-0027": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp" },
+  "NXP-2026-VNL-0028": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0028-cover.webp",
+    productPhoto: "/public/assets/catalog-archive/nxp-2026-vnl-0028-detail-1.webp"
+  },
+  "NXP-2026-VNL-0029": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0029-cover.webp" },
+  "NXP-2026-VNL-0030": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp" },
+  "NXP-2026-VNL-0031": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0031-cover.webp" },
+  "NXP-2026-VNL-0032": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0032-cover.webp",
+    productPhoto: "/public/assets/catalog-archive/nxp-2026-vnl-0032-detail-1.webp"
+  },
+  "NXP-2026-VNL-0033": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0033-cover.webp",
+    productPhoto: "/public/assets/catalog-archive/nxp-2026-vnl-0033-detail-1.webp"
+  }
+};
+
 // Exact, reviewed matches take precedence over discovery. These records also
 // document the source used for every locally archived catalog image.
 export const CURATED_FINANCE_ENRICHMENTS = {
@@ -391,7 +421,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
 
   const sku = String(stock.sku || row.sku || "").trim().toUpperCase();
   const curated = CURATED_FINANCE_ENRICHMENTS[sku];
-  const discovered = curated || (await discoverMusicBrainzRelease({ ...stock, format, title, artist }).catch(() => null));
+  const discoveredSource = curated || (await discoverMusicBrainzRelease({ ...stock, format, title, artist }).catch(() => null));
+  const discovered = applyArchivedCatalogImages(discoveredSource, sku);
   if (!discovered) {
     return finalizeStatus(row, {
       publishable: hasCatalogCore(row),
@@ -480,6 +511,25 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
     publishable: hasCatalogCore(product),
     status: product.raw.enrichmentStatus
   });
+}
+
+function applyArchivedCatalogImages(discovered, sku) {
+  if (!discovered) return discovered;
+  const archived = ARCHIVED_CATALOG_IMAGES[sku];
+  if (!archived) return discovered;
+  const sourceCover = discovered.cover;
+  const sourceProductPhoto = discovered.productPhoto;
+  const mapImage = (image) => {
+    if (image === sourceCover && archived.cover) return archived.cover;
+    if (image === sourceProductPhoto && archived.productPhoto) return archived.productPhoto;
+    return image;
+  };
+  return {
+    ...discovered,
+    cover: archived.cover || discovered.cover,
+    productPhoto: archived.productPhoto || discovered.productPhoto,
+    imageCredits: (discovered.imageCredits || []).map((credit) => ({ ...credit, image: mapImage(credit.image) }))
+  };
 }
 
 async function discoverMusicBrainzRelease(stock) {

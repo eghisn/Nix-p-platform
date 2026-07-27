@@ -15,6 +15,11 @@ const ARTIST_CANONICAL_NAMES = new Map([
   ["boards of canada", "Boards of Canada"]
 ]);
 
+// Exact credits are kept above because not every ampersand is a collaboration.
+// For new collaborative release credits, the separator rule below creates
+// individual artist pages without changing the release's printed credit.
+const COLLABORATION_SEPARATOR = /\s+(?:&|and|with|feat\.?|featuring)\s+|\s*,\s*/i;
+
 export function canonicalArtistName(value) {
   const name = String(value || "").trim();
   if (!name) return "";
@@ -26,7 +31,11 @@ export function artistCreditNames(value) {
   if (!name) return [];
   const exact = ARTIST_CREDIT_ALIASES.get(name.toLowerCase());
   if (exact) return [...exact];
-  return [canonicalArtistName(name)];
+  const credits = name
+    .split(COLLABORATION_SEPARATOR)
+    .map((credit) => canonicalArtistName(credit))
+    .filter(Boolean);
+  return credits.length > 1 ? [...new Set(credits)] : [canonicalArtistName(name)];
 }
 
 export function canonicalRelatedArtistName(value) {

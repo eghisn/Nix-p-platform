@@ -77,16 +77,29 @@ export async function syncFinanceInventoryToCatalog(state) {
     const quantity = normalizedQuantity(stock.qty);
     if (existing) {
       const financeProduct = productRowFromFinanceStock(existing, stock, quantity);
-      productRows.push(
-        needsFinanceEnrichment(existing)
+      const resolvedProduct = needsFinanceEnrichment(existing)
           ? await enrichFinanceCatalogProduct(financeProduct, stock)
-          : financeProduct
+          : financeProduct;
+      productRows.push(
+        withSyncAudit(resolvedProduct, {
+          source: "Finance",
+          action: "Inventory synchronized to catalog",
+          sku,
+          quantity
+        })
       );
       productIdBySku.set(key, existing.id);
       continue;
     }
     const product = draftProductFromFinanceStock(stock, quantity);
-    productRows.push(await enrichFinanceCatalogProduct(product, stock));
+    productRows.push(
+      withSyncAudit(await enrichFinanceCatalogProduct(product, stock), {
+        source: "Finance",
+        action: "Inventory created catalog item",
+        sku,
+        quantity
+      })
+    );
     productIdBySku.set(key, product.id);
   }
 
@@ -212,6 +225,27 @@ function productRowFromExisting(row, overrides = {}) {
     visibility: next.visibility || "Public",
     updated_at: next.updated_at || today(),
     raw
+  };
+}
+
+function withSyncAudit(row, { source, action, sku, quantity } = {}) {
+  const at = new Date().toISOString();
+  const raw = row.raw || {};
+  const audit = Array.isArray(raw.syncAudit) ? raw.syncAudit : [];
+  const entry = {
+    source: String(source || "System"),
+    action: String(action || "Catalog synchronized"),
+    sku: String(sku || row.sku || ""),
+    quantity: normalizedQuantity(quantity ?? row.qty),
+    at
+  };
+  return {
+    ...row,
+    raw: {
+      ...raw,
+      syncStatus: entry,
+      syncAudit: [entry, ...audit.filter((item) => item?.at !== entry.at)].slice(0, 8)
+    }
   };
 }
 

@@ -763,6 +763,11 @@ async function cartPage() {
       ${
         rows.length
           ? `
+            <aside class="checkout-assurance" aria-label="Checkout assurance">
+              <p><strong>Official price verified</strong><span>Prices and available stock are checked by NIXP's server again when you submit the order.</span></p>
+              <p><strong>Two-hour reservation</strong><span>Stock is held for two hours after checkout, then released automatically when payment is not completed.</span></p>
+              <p><strong>Delivery confirmed clearly</strong><span>JNE delivery and tracking are confirmed before dispatch. GoSend requests receive a manual shipping quote.</span></p>
+            </aside>
             <form class="checkout-form" data-checkout-form>
               <h2>Contact</h2>
               <div class="admin-form-grid">
@@ -791,7 +796,7 @@ async function cartPage() {
                 <label data-checkout-address-field>Country<input name="shippingCountry" value="Indonesia" readonly /></label>
               </div>
               <div class="admin-form-actions">
-                <button class="button button-dark" type="submit">Submit order</button>
+                <button class="button button-dark" type="submit">Verify order and reserve stock</button>
                 <p class="admin-form-note" data-tone="${escapeAttr(state.checkoutTone)}">${escapeHtml(state.checkoutMessage)}</p>
               </div>
             </form>
@@ -1212,6 +1217,7 @@ async function adminProductsPage({ embedded = false } = {}) {
           <h2>${editing ? "Edit product" : "New product"}</h2>
           ${editing ? `<button class="button button-outline" type="button" data-admin-new-product>New</button>` : ""}
         </div>
+        ${productSyncMarkup(product)}
         <div class="admin-form-grid">
           ${input("id", "ID", product.id || "", "Leave blank for auto ID")}
           ${input("sku", "SKU", product.sku || "", "NXP-2026-APP-0002")}
@@ -1272,6 +1278,27 @@ async function adminProductsPage({ embedded = false } = {}) {
 
       ${adminProductsCatalogMarkup(products)}
     </div>
+  `;
+}
+
+function productSyncMarkup(product = {}) {
+  const sync = product.syncStatus;
+  if (!sync?.at) return "";
+  const timestamp = new Date(sync.at);
+  const date = Number.isNaN(timestamp.valueOf())
+    ? sync.at
+    : new Intl.DateTimeFormat("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      }).format(timestamp);
+  return `
+    <p class="admin-sync-status" aria-live="polite">
+      <strong>${escapeHtml(sync.source || "System")} sync</strong>
+      <span>${escapeHtml(sync.action || "Catalog synchronized")} · ${escapeHtml(date)}</span>
+    </p>
   `;
 }
 
