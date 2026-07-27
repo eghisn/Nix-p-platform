@@ -853,7 +853,7 @@
       ],
       "year": 2010,
       "color": "",
-      "image": "https://coverartarchive.org/release/5f24a203-f56c-4996-b91b-78ed2d1f4f37/front",
+      "image": "/public/assets/products/mia-steppin-up-meds-and-feds-discogs.jpg",
       "label": "XL Recordings",
       "price": 355000,
       "sizes": [],
@@ -861,7 +861,7 @@
       "artist": "M.I.A",
       "format": "Vinyl",
       "images": [
-        "https://coverartarchive.org/release/5f24a203-f56c-4996-b91b-78ed2d1f4f37/front"
+        "/public/assets/products/mia-steppin-up-meds-and-feds-discogs.jpg"
       ],
       "barcode": "",
       "details": [
@@ -883,9 +883,9 @@
       "reviewQuote": "a non-stop assault of throbbing industrial beats",
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/5f24a203-f56c-4996-b91b-78ed2d1f4f37",
-          "image": "https://coverartarchive.org/release/5f24a203-f56c-4996-b91b-78ed2d1f4f37/front",
-          "credit": "Cover Art Archive / XL Recordings"
+          "url": "https://www.discogs.com/release/2338373-MIA-Steppin-Up-Meds-And-Feds",
+          "image": "/public/assets/products/mia-steppin-up-meds-and-feds-discogs.jpg",
+          "credit": "Discogs / XL Recordings"
         }
       ],
       "reviewSource": "Apple Music (quoted)",
@@ -898,7 +898,7 @@
         "SOPHIE",
         "The Chemical Brothers"
       ],
-      "autoProductPhoto": "https://coverartarchive.org/release/5f24a203-f56c-4996-b91b-78ed2d1f4f37/front",
+      "autoProductPhoto": "/public/assets/products/mia-steppin-up-meds-and-feds-discogs.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "XL Recordings / Apple Music",
