@@ -370,6 +370,23 @@ function artistDocument(artist) {
   });
 }
 
+function artistsIndexMarkup(artists) {
+  return `<section class="section artist-list">
+    ${artists
+      .map(
+        (artist) => `
+          <article class="artist-row">
+            <a href="/artists/${slugify(artist)}" data-link>
+              <h2>${escapeHtml(artist)}</h2>
+              <span>View products</span>
+            </a>
+          </article>
+        `
+      )
+      .join("")}
+  </section>`;
+}
+
 function productQuantity(product = {}) {
   if (Array.isArray(product.sizes) && product.sizes.length) {
     return product.sizes.reduce(
@@ -415,6 +432,15 @@ for (const route of [...new Set(staticRoutes)]) {
     ? productDocument(product)
     : artistName
       ? artistDocument({ name: artistName })
+      : route === "artists"
+        ? routeDocument({
+            title: "Artists | NIXP",
+            description: siteDescription,
+            url: routeUrl,
+            image: siteImage,
+            appMarkup: shell(artistsIndexMarkup([...artistDirectory.values()]), "/artists", 0),
+            crawlMarkup: crawlerSection(`<h1>Artists</h1>${[...artistDirectory.values()].map((artist) => `<p><a href="/artists/${slugify(artist)}">${escapeHtml(artist)}</a></p>`).join("")}`)
+          })
       : routeDocument({
           title: route === "" ? "NIXP" : `${route.split("/").at(-1).replaceAll("-", " ")} | NIXP`,
           description: siteDescription,

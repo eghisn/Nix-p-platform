@@ -2821,8 +2821,10 @@ function bindSearch() {
 }
 
 window.addEventListener("popstate", render);
-render();
 adminStore
   .initialize()
-  .then(() => render({ preserveScroll: true }))
-  .catch((error) => console.warn("Catalog refresh failed; continuing with the local snapshot.", error));
+  .then(() => render())
+  .catch((error) => {
+    console.warn("Catalog refresh failed; continuing with the local snapshot.", error);
+    return render();
+  });
