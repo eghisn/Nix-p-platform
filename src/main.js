@@ -164,6 +164,7 @@ async function render({ preserveScroll = false } = {}) {
   document.body.classList.toggle("login-lock", isLoginView);
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
   const markup = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
+  updateDocumentTitle(path);
   const commit = () => {
     app.innerHTML = markup;
     bindEvents();
@@ -179,6 +180,35 @@ async function render({ preserveScroll = false } = {}) {
     requestAnimationFrame(() => app.classList.remove("is-rendering"));
   }
   if (preserveScroll) window.scrollTo({ top: previousScrollTop, behavior: "auto" });
+}
+
+function updateDocumentTitle(path) {
+  if (path.startsWith("/product/")) {
+    const product = adminStore.getProduct(decodeRoutePart(path.replace("/product/", "")), { includeDrafts: true });
+    document.title = product ? `${product.artist} - ${product.title} | NIXP` : "NIXP";
+    return;
+  }
+  if (path.startsWith("/artists/")) {
+    const artist = decodeRoutePart(path.replace("/artists/", "")).replace(/-/g, " ");
+    document.title = `${artist.replace(/\b\w/g, (letter) => letter.toUpperCase())} | NIXP`;
+    return;
+  }
+  const titles = {
+    "/": "NIXP",
+    "/records": "Records | NIXP",
+    "/objects": "Objects | NIXP",
+    "/apparel": "Apparel | NIXP",
+    "/accessories": "Accessories | NIXP",
+    "/accesories": "Accessories | NIXP",
+    "/publishing": "Publishing | NIXP",
+    "/artists": "Artists | NIXP",
+    "/blog": "Blog | NIXP",
+    "/request-item": "Request Item | NIXP",
+    "/about": "About | NIXP",
+    "/contact": "Contact | NIXP",
+    "/cart": "Cart | NIXP"
+  };
+  document.title = titles[path] || (path.startsWith("/admin") ? "Admin | NIXP" : path.startsWith("/finance") ? "Finance | NIXP" : "NIXP");
 }
 
 function routeErrorPage(workspace, error) {

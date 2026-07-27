@@ -686,13 +686,13 @@
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
-      "reviewUrl": "",
+      "reviewUrl": "https://ra.co/reviews/6842",
       "updatedAt": "2026-07-27",
       "collection": "Boysnoize Records",
       "visibility": "Public",
       "apparelType": "",
-      "description": "Boys Noize's release Kontact Me on Vinyl, issued by Boysnoize Records.",
-      "reviewQuote": "",
+      "description": "Boys Noize's 2010 Kontact Me is a remix-led electronic single on Boysnoize Records, built around a hard-edged club track and four reworks.",
+      "reviewQuote": "brutal effectiveness",
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de",
@@ -700,16 +700,20 @@
           "credit": "Cover Art Archive / MusicBrainz"
         }
       ],
-      "reviewSource": "",
+      "reviewSource": "Resident Advisor (quoted from Power review)",
       "catalogNumber": "BNR045",
       "displayFormat": "Vinyl",
       "publishStatus": "Published",
       "financeStockId": "ms33ns67r1j0pl",
-      "relatedArtists": [],
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "needs-product-photo",
-      "descriptionSource": "MusicBrainz",
+      "relatedArtists": [
+        "Erol Alkan",
+        "Siriusmo",
+        "Housemeister"
+      ],
+      "autoProductPhoto": "https://coverartarchive.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de/front-1200",
+      "enrichmentOrigin": "curated-web",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "AllMusic / Resident Advisor",
       "metadataSourceUrl": "https://musicbrainz.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de",
       "enrichmentUpdatedAt": "2026-07-27",
       "musicBrainzReleaseId": "c7346893-8ee5-4a84-87aa-9105d6ff66de"
@@ -744,13 +748,13 @@
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
-      "reviewUrl": "",
+      "reviewUrl": "https://pitchfork.com/reviews/tracks/14884-lust-for-youth-chasing-the-light/",
       "updatedAt": "2026-07-27",
       "collection": "Sacred Bones Records",
       "visibility": "Public",
       "apparelType": "",
-      "description": "Lust For Youth's 2013 release Chasing the Light on Vinyl, issued by Sacred Bones Records.",
-      "reviewQuote": "",
+      "description": "Lust For Youth's 2013 Chasing the Light is a cold-wave and synth-pop single by Hannes Norrvide, pairing worn production textures with a stark melodic pull.",
+      "reviewQuote": "caught between two poles",
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f",
@@ -758,16 +762,20 @@
           "credit": "Cover Art Archive / MusicBrainz"
         }
       ],
-      "reviewSource": "",
+      "reviewSource": "Pitchfork (quoted)",
       "catalogNumber": "SBR-091",
       "displayFormat": "Vinyl",
       "publishStatus": "Published",
       "financeStockId": "ms335z9bxqja0m",
-      "relatedArtists": [],
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "needs-product-photo",
-      "descriptionSource": "MusicBrainz",
+      "relatedArtists": [
+        "Croatian Amor",
+        "Cold Cave",
+        "The Soft Moon"
+      ],
+      "autoProductPhoto": "https://coverartarchive.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f/front-1200",
+      "enrichmentOrigin": "curated-web",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Sacred Bones / Pitchfork",
       "metadataSourceUrl": "https://musicbrainz.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f",
       "enrichmentUpdatedAt": "2026-07-27",
       "musicBrainzReleaseId": "30e26675-c48d-4240-af33-0bccf0f4e16f"
@@ -802,13 +810,13 @@
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
-      "reviewUrl": "",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/boards-of-canada-inferno/",
       "updatedAt": "2026-07-27",
       "collection": "Warp Records",
       "visibility": "Public",
       "apparelType": "",
-      "description": "Boards Of Canada's 2026 release Inferno on Vinyl, issued by Warp / Music70.",
-      "reviewQuote": "",
+      "description": "Boards of Canada's 2026 Inferno is the Scottish duo's first studio album in thirteen years, returning to Warp with an eighteen-track set of hazy, analogue electronic music.",
+      "reviewQuote": "a world of its own",
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534",
@@ -816,16 +824,20 @@
           "credit": "Cover Art Archive / MusicBrainz"
         }
       ],
-      "reviewSource": "",
+      "reviewSource": "Pitchfork (quoted)",
       "catalogNumber": "WARPLP496",
       "displayFormat": "Vinyl",
       "publishStatus": "Published",
       "financeStockId": "ms334887kr996u",
-      "relatedArtists": [],
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "needs-product-photo",
-      "descriptionSource": "MusicBrainz",
+      "relatedArtists": [
+        "Aphex Twin",
+        "Autechre",
+        "Plaid"
+      ],
+      "autoProductPhoto": "https://coverartarchive.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534/front-1200",
+      "enrichmentOrigin": "curated-web",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Warp Records / Pitchfork",
       "metadataSourceUrl": "https://musicbrainz.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534",
       "enrichmentUpdatedAt": "2026-07-27",
       "musicBrainzReleaseId": "5d9031c6-675c-4c8d-b77d-9e90c5386534"

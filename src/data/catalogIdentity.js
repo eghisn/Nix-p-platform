@@ -3,6 +3,8 @@ const ARTIST_CREDIT_ALIASES = new Map([
   ["heith & tarawangsawelas", ["Heith", "Tarawangsawelas"]],
   ["senyawa, kazuhisa uchihashi", ["Senyawa", "Kazuhisa Uchihashi"]],
   ["overmono & the streets turn the page", ["Overmono", "The Streets"]],
+  ["jk flesh, gothtrad", ["JK Flesh", "Gothtrad"]],
+  ["jk flesh & gothtrad", ["JK Flesh", "Gothtrad"]],
   ["soft moon", ["The Soft Moon"]],
   ["boards of canada", ["Boards of Canada"]]
 ]);
