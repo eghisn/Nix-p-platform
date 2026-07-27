@@ -7,7 +7,6 @@ import { pageHero, productGrid, shell, table } from "./components/layout.js";
 const app = document.querySelector("#app");
 let homeSliderCleanup = null;
 let priceCache = { expiresAt: 0, prices: new Map() };
-const RECORDS_PAGE_SIZE = 24;
 const money = new Intl.NumberFormat("id-ID", {
   style: "currency",
   currency: "IDR",
@@ -17,7 +16,6 @@ const money = new Intl.NumberFormat("id-ID", {
 const state = {
   recordsFilter: "All",
   recordsSort: "artist-asc",
-  recordsVisible: RECORDS_PAGE_SIZE,
   homeCollectionFilter: "recent-releases",
   apparelFilter: "All Apparel",
   cart: readCart(),
@@ -371,8 +369,6 @@ async function recordsPage() {
     artistTagFilter ? productRelatedArtists(product).some((artist) => artist.toLowerCase() === artistTagFilter.toLowerCase()) : true
   );
   records.sort(recordSortComparator(state.recordsSort));
-  const visibleRecords = records.slice(0, state.recordsVisible);
-  const remainingRecords = Math.max(0, records.length - visibleRecords.length);
   const filters = ["All", "Vinyl", "CD", "Cassette"];
   return `
     <section class="section shop-section">
@@ -417,12 +413,7 @@ async function recordsPage() {
           </select>
         </label>
       </div>
-      ${productGrid(visibleRecords, { availableArtistNames })}
-      ${
-        remainingRecords
-          ? `<div class="catalog-load-more"><button class="button button-outline" type="button" data-records-load-more>Load ${Math.min(RECORDS_PAGE_SIZE, remainingRecords)} more <span>${remainingRecords} remaining</span></button></div>`
-          : ""
-      }
+      ${productGrid(records, { availableArtistNames })}
     </section>
   `;
 }
@@ -2168,19 +2159,12 @@ function bindEvents() {
   document.querySelectorAll("[data-record-filter]").forEach((button) => {
     button.addEventListener("click", () => {
       state.recordsFilter = button.dataset.recordFilter;
-      state.recordsVisible = RECORDS_PAGE_SIZE;
       render({ preserveScroll: true });
     });
   });
 
   document.querySelector("[data-record-sort]")?.addEventListener("change", (event) => {
     state.recordsSort = event.currentTarget.value;
-    state.recordsVisible = RECORDS_PAGE_SIZE;
-    render({ preserveScroll: true });
-  });
-
-  document.querySelector("[data-records-load-more]")?.addEventListener("click", () => {
-    state.recordsVisible += RECORDS_PAGE_SIZE;
     render({ preserveScroll: true });
   });
 

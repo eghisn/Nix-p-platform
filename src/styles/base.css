@@ -2611,20 +2611,3 @@ body:has(.cart-view) .site-footer {
     padding: 10px 12px;
   }
 }
-
-.catalog-load-more {
-  display: flex;
-  justify-content: center;
-  margin-top: clamp(32px, 5vw, 56px);
-}
-
-.catalog-load-more .button {
-  min-width: min(100%, 290px);
-}
-
-.catalog-load-more .button span {
-  display: block;
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 9px;
-}
