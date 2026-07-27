@@ -87,6 +87,53 @@ function normalizeList(value) {
   return Array.isArray(value) ? value.map((item) => String(item || "").trim()).filter(Boolean) : [];
 }
 
+function isCompleteEditorialProduct(product = {}) {
+  return Boolean(
+    product.category === "Records" &&
+      String(product.description || "").trim() &&
+      String(product.reviewQuote || "").trim() &&
+      Array.isArray(product.relatedArtists) &&
+      product.relatedArtists.length &&
+      String(product.enrichmentStatus || "").toLowerCase() === "complete"
+  );
+}
+
+function reconcilePublicCatalog(remoteStore, snapshotStore) {
+  const snapshotById = new Map((snapshotStore?.products || []).map((product) => [product.id, product]));
+  const editorialFields = [
+    "description",
+    "descriptionSource",
+    "reviewQuote",
+    "reviewSource",
+    "reviewUrl",
+    "relatedArtists",
+    "image",
+    "images",
+    "imageCredits",
+    "autoProductPhoto",
+    "enrichmentOrigin",
+    "enrichmentStatus",
+    "enrichmentUpdatedAt",
+    "metadataSourceUrl",
+    "musicBrainzReleaseId",
+    "edition",
+    "catalogNumber",
+    "barcode",
+    "details"
+  ];
+  return {
+    ...remoteStore,
+    products: (remoteStore.products || []).map((remoteProduct) => {
+      const snapshotProduct = snapshotById.get(remoteProduct.id);
+      if (!snapshotProduct || !isCompleteEditorialProduct(snapshotProduct) || isCompleteEditorialProduct(remoteProduct)) return remoteProduct;
+      return editorialFields.reduce(
+        (merged, field) => (snapshotProduct[field] !== undefined ? { ...merged, [field]: snapshotProduct[field] } : merged),
+        remoteProduct
+      );
+    })
+  };
+}
+
 function nullableNumber(value) {
   if (value === null || value === undefined || value === "") return null;
   const parsed = Number(value);
@@ -460,7 +507,16 @@ export const adminStore = {
       if (response.ok) {
         const payload = await response.json();
         if (payload.store) {
-          activeStore = mergeStore(seed({ publicOnly }), payload.store, { publicOnly });
+          let runtimeStore = payload.store;
+          if (publicOnly) {
+            try {
+              const snapshotResponse = await fetch(`${PUBLIC_STORE_PATH}?v=${Date.now()}`, { cache: "no-store" });
+              if (snapshotResponse.ok) runtimeStore = reconcilePublicCatalog(runtimeStore, await snapshotResponse.json());
+            } catch {
+              // The API remains the source of truth when the static snapshot is unavailable.
+            }
+          }
+          activeStore = mergeStore(seed({ publicOnly }), runtimeStore, { publicOnly });
           activeStoreScope = scope;
           privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
           if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));

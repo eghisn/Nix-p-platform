@@ -342,6 +342,41 @@ function productDocument(product) {
   });
 }
 
+function staticPublicRouteMarkup(route) {
+  const productsByCategory = (category) => publicProducts.filter((product) => product.category === category);
+  const page = (title, products) => `<section class="section shop-section"><div class="toolbar"><h1>${escapeHtml(title)}</h1></div>${productGrid(products)}</section>`;
+  if (route === "records") return page("Records", productsByCategory("Records"));
+  if (route === "objects") return page("Objects", productsByCategory("Objects"));
+  if (route === "apparel") return page("Apparel", productsByCategory("Apparel"));
+  if (route === "accessories" || route === "accesories") return page("Accessories", productsByCategory("Accessories"));
+  if (route === "publishing") return page("Publishing", productsByCategory("Publishing"));
+  if (route === "blog") return `<section class="section"><h1>Blog</h1><p>Notes and updates from NIXP.</p></section>`;
+  if (route === "request-item") return `<section class="section"><h1>Request Item</h1><p>Send NIXP a record, object, apparel, or publication request.</p></section>`;
+  if (route === "about") return `<section class="section"><h1>About NIXP</h1><p>${escapeHtml(siteDescription)}</p></section>`;
+  if (route === "contact") return `<section class="section"><h1>Contact</h1><p>Contact NIXP for orders, requests, and catalogue questions.</p></section>`;
+  if (route === "shipping-returns") return `<section class="section"><h1>Shipping &amp; Returns</h1><p>Shipping and return information for NIXP orders.</p></section>`;
+  if (route === "cart") return `<section class="section"><h1>Cart</h1><p class="empty-state">Your cart is currently empty.</p></section>`;
+  return `<section class="section"><div class="app-boot" aria-live="polite">NIXP</div></section>`;
+}
+
+function staticRouteTitle(route) {
+  const titles = {
+    records: "Records",
+    objects: "Objects",
+    apparel: "Apparel",
+    accessories: "Accessories",
+    accesories: "Accessories",
+    publishing: "Publishing",
+    blog: "Blog",
+    "request-item": "Request Item",
+    about: "About",
+    contact: "Contact",
+    "shipping-returns": "Shipping & Returns",
+    cart: "Cart"
+  };
+  return titles[route] || (route ? route.split("/").at(-1).replaceAll("-", " ") : "NIXP");
+}
+
 function formatPrice(value) {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -463,11 +498,11 @@ for (const route of [...new Set(staticRoutes)]) {
             crawlMarkup: crawlerSection(`<h1>Artists</h1>${[...artistDirectory.values()].map((artist) => `<p><a href="/artists/${slugify(artist)}">${escapeHtml(artist)}</a></p>`).join("")}`)
           })
       : routeDocument({
-          title: route === "" ? "NIXP" : `${route.split("/").at(-1).replaceAll("-", " ")} | NIXP`,
+          title: `${staticRouteTitle(route)}${route ? " | NIXP" : ""}`,
           description: siteDescription,
           url: routeUrl,
           image: siteImage,
-          appMarkup: shell(`<section class="section"><div class="app-boot" aria-live="polite">NIXP</div></section>`, `/${route}`, 0),
+          appMarkup: shell(staticPublicRouteMarkup(route), `/${route}`, 0),
           crawlMarkup: crawlerSection(`<h1>NIXP</h1><p>${escapeHtml(siteDescription)}</p>`)
         });
   await writeFile(`${routeDir}/index.html`, document);
