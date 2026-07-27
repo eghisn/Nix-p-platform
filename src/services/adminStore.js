@@ -611,7 +611,8 @@ export const adminStore = {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         store: readStore(),
-        message: `Deploy NIXP catalog ${new Date().toISOString()}`
+        message: `Deploy NIXP catalog ${new Date().toISOString()}`,
+        deploymentSource: "admin-editor"
       })
     });
     const payload = await response.json().catch(() => ({}));
