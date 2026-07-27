@@ -267,7 +267,11 @@
       "descriptionSource": "Jagjaguwar / Pitchfork",
       "metadataSourceUrl": "https://musicbrainz.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
       "enrichmentUpdatedAt": "2026-07-27",
-      "musicBrainzReleaseId": "e8747635-0bd4-4cfc-97b5-97f224b0b2cd"
+      "musicBrainzReleaseId": "e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "homeSlideSort": null
     },
     {
       "id": "finance-nxp-2026-vnl-0029",
@@ -527,7 +531,11 @@
       "descriptionSource": "PAN / The FADER",
       "metadataSourceUrl": "https://boomkat.com/products/lexachast",
       "enrichmentUpdatedAt": "2026-07-27",
-      "musicBrainzReleaseId": "69cf0f01-df57-4ec6-ad3d-e43573ba958f"
+      "musicBrainzReleaseId": "69cf0f01-df57-4ec6-ad3d-e43573ba958f",
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "homeSlideSort": null
     },
     {
       "id": "finance-nxp-2026-vnl-0025",
@@ -591,7 +599,11 @@
       "descriptionSource": "PAN / Tiny Mix Tapes",
       "metadataSourceUrl": "https://boomkat.com/products/blinks",
       "enrichmentUpdatedAt": "2026-07-27",
-      "musicBrainzReleaseId": "3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52"
+      "musicBrainzReleaseId": "3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52",
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "homeSlideSort": null
     },
     {
       "id": "finance-nxp-2026-vnl-0024",
@@ -655,7 +667,11 @@
       "descriptionSource": "Sacred Bones / Metal Trenches",
       "metadataSourceUrl": "https://musicbrainz.org/release/9c4a70fc-8984-4585-97d2-ef672b650034",
       "enrichmentUpdatedAt": "2026-07-27",
-      "musicBrainzReleaseId": "9c4a70fc-8984-4585-97d2-ef672b650034"
+      "musicBrainzReleaseId": "9c4a70fc-8984-4585-97d2-ef672b650034",
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "homeSlideSort": null
     },
     {
       "id": "finance-nxp-2026-vnl-0023",
@@ -1139,7 +1155,11 @@
         "Botch"
       ],
       "reviewSourceUrl": "https://www.treblezine.com/the-dillinger-escape-plan-calculating-infinity/",
-      "descriptionSource": "Relapse / Treble"
+      "descriptionSource": "Relapse / Treble",
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "homeSlideSort": null
     },
     {
       "id": "finance-nxp-2026-cd-0028",
@@ -1822,7 +1842,11 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "AllMusic / MusicBrainz",
       "metadataSourceUrl": "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available",
-      "enrichmentUpdatedAt": "2026-07-26"
+      "enrichmentUpdatedAt": "2026-07-26",
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "homeSlideSort": null
     },
     {
       "id": "finance-nxp-2026-cd-0033",
@@ -1951,7 +1975,9 @@
         "At The Drive-In",
         "Red Hot Chili Peppers"
       ],
-      "homeCollections": [],
+      "homeCollections": [
+        "nixp-selection"
+      ],
       "sleeveCondition": "",
       "descriptionSource": "AllMusic / Pitchfork / MusicBrainz"
     },
@@ -2164,7 +2190,9 @@
         "Melt-Banana",
         "Black Pus"
       ],
-      "homeCollections": [],
+      "homeCollections": [
+        "nixp-selection"
+      ],
       "sleeveCondition": "",
       "descriptionSource": "AllMusic"
     },
@@ -2642,7 +2670,6 @@
       ],
       "homeCollections": [
         "limited-pressing",
-        "nixp-selection",
         "recent-releases"
       ],
       "descriptionSource": "The Quietus"
@@ -2698,8 +2725,8 @@
         "Daniel Lopatin"
       ],
       "homeCollections": [
-        "nixp-selection",
-        "recent-releases"
+        "recent-releases",
+        "nixp-selection"
       ],
       "sleeveCondition": "",
       "descriptionSource": "Pitchfork"
@@ -2761,7 +2788,6 @@
         "The Armed"
       ],
       "homeCollections": [
-        "nixp-selection",
         "recent-releases"
       ],
       "descriptionSource": "Pitchfork / The Guardian"
@@ -3396,7 +3422,6 @@
         "Arca"
       ],
       "homeCollections": [
-        "nixp-selection",
         "recent-releases"
       ],
       "descriptionSource": "Associated Press"
@@ -3566,8 +3591,7 @@
         "Sam Gendel"
       ],
       "homeCollections": [
-        "limited-pressing",
-        "nixp-selection"
+        "limited-pressing"
       ],
       "descriptionSource": "Pitchfork"
     },
@@ -3691,8 +3715,8 @@
       ],
       "homeCollections": [
         "limited-pressing",
-        "nixp-selection",
-        "recent-releases"
+        "recent-releases",
+        "nixp-selection"
       ],
       "descriptionSource": "Mindies / STROOM"
     },
@@ -3808,9 +3832,7 @@
         "A. G. Cook",
         "Charli XCX"
       ],
-      "homeCollections": [
-        "nixp-selection"
-      ],
+      "homeCollections": [],
       "descriptionSource": "Associated Press / Pitchfork"
     },
     {
@@ -4418,7 +4440,8 @@
         "Thundercat"
       ],
       "homeCollections": [
-        "limited-pressing"
+        "limited-pressing",
+        "nixp-selection"
       ],
       "descriptionSource": "Slant / Exclaim"
     },
@@ -4534,7 +4557,9 @@
         "Croatian Amor",
         "Lust For Youth"
       ],
-      "homeCollections": [],
+      "homeCollections": [
+        "nixp-selection"
+      ],
       "sleeveCondition": "",
       "descriptionSource": "The Quietus"
     },
@@ -4827,8 +4852,8 @@
       ],
       "homeCollections": [
         "limited-pressing",
-        "nixp-selection",
-        "recent-releases"
+        "recent-releases",
+        "nixp-selection"
       ],
       "descriptionSource": "The FADER / Resident Advisor"
     },
@@ -4882,7 +4907,9 @@
         "Drab Majesty",
         "TR/ST"
       ],
-      "homeCollections": [],
+      "homeCollections": [
+        "nixp-selection"
+      ],
       "sleeveCondition": "",
       "descriptionSource": "AllMusic / Sacred Bones"
     },
@@ -5061,7 +5088,6 @@
       ],
       "homeCollections": [
         "limited-pressing",
-        "nixp-selection",
         "recent-releases"
       ],
       "descriptionSource": "Spotify release listing / The Guardian"
