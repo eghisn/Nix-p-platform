@@ -10,7 +10,10 @@ export default async function handler(req, res) {
     const privateScope = new URL(req.url, "https://nix-p.com").searchParams.get("scope") === "admin";
     const session = getSession(req);
     if (privateScope && session?.workspace !== "admin") return json(res, 401, { ok: false, error: "Admin login required" });
-    const store = await loadStore({ privateScope });
+    const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
+    const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
+    const publicSnapshotUrl = privateScope ? "" : `${protocol}://${host}/public/data/public-store.json`;
+    const store = await loadStore({ privateScope, publicSnapshotUrl });
     json(res, 200, { ok: true, store });
   } catch (error) {
     json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Catalog unavailable" });

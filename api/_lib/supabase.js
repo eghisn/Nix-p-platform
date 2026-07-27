@@ -38,7 +38,7 @@ export async function supabaseFetch(path, options = {}) {
   return payload;
 }
 
-export async function loadStore({ privateScope = false } = {}) {
+export async function loadStore({ privateScope = false, publicSnapshotUrl = "" } = {}) {
   const [products, artists, collections, requests, orders, cashflow, inventory] = await Promise.all([
     supabaseFetch(
       privateScope
@@ -53,7 +53,7 @@ export async function loadStore({ privateScope = false } = {}) {
     privateScope ? supabaseFetch("inventory?select=*&order=created_at.desc", { service: true }) : []
   ]);
   const mappedProducts = products.map((row) => fromProductRow(row, { privateScope }));
-  return {
+  const store = {
     version: "supabase-live-2026-07-13",
     products: privateScope
       ? mappedProducts
@@ -65,6 +65,62 @@ export async function loadStore({ privateScope = false } = {}) {
     cashflow: cashflow.map(fromRawRow),
     inventory: inventory.map(fromRawRow)
   };
+  if (!privateScope && publicSnapshotUrl) {
+    try {
+      const snapshotResponse = await fetch(publicSnapshotUrl, { cache: "no-store" });
+      if (snapshotResponse.ok) {
+        const snapshot = await snapshotResponse.json();
+        store.products = reconcilePublicEditorialProducts(store.products, snapshot.products || []);
+      }
+    } catch {
+      // Supabase remains the source of truth if the deploy snapshot is unavailable.
+    }
+  }
+  return store;
+}
+
+function editorialProductIsComplete(product = {}) {
+  return Boolean(
+    product.category === "Records" &&
+      String(product.description || "").trim() &&
+      String(product.reviewQuote || "").trim() &&
+      Array.isArray(product.relatedArtists) &&
+      product.relatedArtists.length &&
+      String(product.enrichmentStatus || "").toLowerCase() === "complete"
+  );
+}
+
+function reconcilePublicEditorialProducts(remoteProducts = [], snapshotProducts = []) {
+  const snapshotById = new Map(snapshotProducts.map((product) => [product.id, product]));
+  const fields = [
+    "description",
+    "descriptionSource",
+    "reviewQuote",
+    "reviewSource",
+    "reviewUrl",
+    "relatedArtists",
+    "image",
+    "images",
+    "imageCredits",
+    "autoProductPhoto",
+    "enrichmentOrigin",
+    "enrichmentStatus",
+    "enrichmentUpdatedAt",
+    "metadataSourceUrl",
+    "musicBrainzReleaseId",
+    "edition",
+    "catalogNumber",
+    "barcode",
+    "details"
+  ];
+  return remoteProducts.map((remoteProduct) => {
+    const snapshotProduct = snapshotById.get(remoteProduct.id);
+    if (!snapshotProduct || !editorialProductIsComplete(snapshotProduct) || editorialProductIsComplete(remoteProduct)) return remoteProduct;
+    return fields.reduce(
+      (merged, field) => (snapshotProduct[field] !== undefined ? { ...merged, [field]: snapshotProduct[field] } : merged),
+      remoteProduct
+    );
+  });
 }
 
 export async function verifiedPrices(ids = []) {
