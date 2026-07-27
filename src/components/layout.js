@@ -1,3 +1,5 @@
+import { artistCreditNames, artistIdentityKey, canonicalLabelName } from "../data/catalogIdentity.js";
+
 const leftPublicLinks = [
   ["Records", "/records"],
   ["Objects", "/objects"],
@@ -144,7 +146,7 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
   const soldOut = productQuantity(product) <= 0;
   const labelLink =
     product.category === "Records" && product.label
-      ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(product.label)}" data-link>${product.label}</a>`
+      ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${canonicalLabelName(product.label)}</a>`
       : "";
 
   return `
@@ -205,14 +207,14 @@ function inventoryArtistMap(products) {
     if (product.category && product.category !== "Records") continue;
     const artist = String(product.artist || "").trim();
     if (!artist) continue;
-    for (const key of artistKeys(artist)) artists.set(key, artist);
+    for (const credit of artistCreditNames(artist)) artists.set(artistIdentityKey(credit), credit);
   }
   return artists;
 }
 
 function resolveInventoryArtist(artist, availableArtistNames) {
   if (!availableArtistNames) return "";
-  const keys = artistKeys(artist);
+  const keys = artistCreditNames(artist).map(artistIdentityKey);
   if (typeof availableArtistNames.get === "function") {
     return keys.map((key) => availableArtistNames.get(key)).find(Boolean) || "";
   }
@@ -230,11 +232,6 @@ function artistSlug(value) {
     .replace(/^-|-$/g, "");
 }
 
-function artistKeys(value) {
-  const name = String(value || "").trim().toLowerCase();
-  const slug = artistSlug(value);
-  return [...new Set([name, slug])];
-}
 
 function escapeHtml(value) {
   return String(value ?? "")

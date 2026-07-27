@@ -1,4 +1,5 @@
 import { artistNames, cashflow, inventory, orders, products, requestItems } from "../data/sampleData.js";
+import { canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../data/catalogIdentity.js";
 
 const STORAGE_KEY = "nixp-admin-store-v1";
 const STORE_VERSION = "home-slider-related-artists-2026-07-15";
@@ -36,6 +37,8 @@ function withDefaults(product) {
     visibility: "Public",
     updatedAt: "2026-07-11",
     ...product,
+    artist: canonicalArtistName(product.artist),
+    label: canonicalLabelName(product.label),
     image: product.image || product.images?.[0] || (isFinanceDraft ? "" : "/public/nixp-product-example-paper.png"),
     edition: String(product.edition || "").trim(),
     barcode: String(product.barcode || "").trim(),
@@ -46,7 +49,7 @@ function withDefaults(product) {
     details: product.details || [],
     sizes: normalizeSizes(product.sizes || []),
     images: normalizeImages(product),
-    relatedArtists: normalizeList(product.relatedArtists),
+    relatedArtists: normalizeList(product.relatedArtists).map(canonicalRelatedArtistName),
     descriptionSource: String(product.descriptionSource || "").trim(),
     reviewQuote: String(product.reviewQuote || "").trim(),
     reviewSource: String(product.reviewSource || "").trim(),

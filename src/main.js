@@ -1,4 +1,5 @@
 import { requestStatuses } from "./data/sampleData.js";
+import { artistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLabelName } from "./data/catalogIdentity.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
@@ -14,6 +15,7 @@ const money = new Intl.NumberFormat("id-ID", {
 
 const state = {
   recordsFilter: "All",
+  recordsSort: "artist-asc",
   homeCollectionFilter: "recent-releases",
   apparelFilter: "All Apparel",
   cart: readCart(),
@@ -327,6 +329,7 @@ async function recordsPage() {
   const records = (await catalogService.listRecords(state.recordsFilter, labelFilter)).filter((product) =>
     artistTagFilter ? productRelatedArtists(product).some((artist) => artist.toLowerCase() === artistTagFilter.toLowerCase()) : true
   );
+  records.sort(recordSortComparator(state.recordsSort));
   const filters = ["All", "Vinyl", "CD", "Cassette"];
   return `
     <section class="section shop-section">
@@ -348,16 +351,28 @@ async function recordsPage() {
             </div>`
           : ""
       }
-      <div class="toolbar" role="group" aria-label="Record format filters">
-        ${filters
-          .map(
-            (filter) => `
-              <button class="chip ${state.recordsFilter === filter ? "is-active" : ""}" type="button" data-record-filter="${filter}">
-                ${filter}
-              </button>
-            `
-          )
-          .join("")}
+      <div class="records-toolbar">
+        <div class="toolbar" role="group" aria-label="Record format filters">
+          ${filters
+            .map(
+              (filter) => `
+                <button class="chip ${state.recordsFilter === filter ? "is-active" : ""}" type="button" data-record-filter="${filter}">
+                  ${filter}
+                </button>
+              `
+            )
+            .join("")}
+        </div>
+        <label class="records-sort">
+          <span>Sort</span>
+          <select data-record-sort aria-label="Sort records">
+            <option value="artist-asc" ${state.recordsSort === "artist-asc" ? "selected" : ""}>Artist A-Z</option>
+            <option value="artist-desc" ${state.recordsSort === "artist-desc" ? "selected" : ""}>Artist Z-A</option>
+            <option value="price-desc" ${state.recordsSort === "price-desc" ? "selected" : ""}>Price high to low</option>
+            <option value="year-desc" ${state.recordsSort === "year-desc" ? "selected" : ""}>Release year newest</option>
+            <option value="year-asc" ${state.recordsSort === "year-asc" ? "selected" : ""}>Release year oldest</option>
+          </select>
+        </label>
       </div>
       ${productGrid(records, { availableArtistNames })}
     </section>
@@ -533,7 +548,7 @@ async function artistProductsPage(path) {
   const artist = artistNames.find((name) => artistSlug(name) === artistSlug(requestedArtist));
   if (!artist) return notFoundPage();
   const products = artist
-    ? allProducts.filter((product) => product.category === "Records" && artistSlug(product.artist) === artistSlug(artist))
+    ? allProducts.filter((product) => product.category === "Records" && artistCreditNames(product.artist).some((name) => artistIdentityKey(name) === artistIdentityKey(artist)))
     : [];
   const availableArtistNames = inventoryArtistNames(allProducts);
   return `
@@ -1773,7 +1788,8 @@ function filterItems(items, scope, fields) {
 
 function recordLabelMarkup(product) {
   if (product.category !== "Records" || !product.label) return escapeHtml(product.label || "-");
-  return `<a class="record-label-link" href="/records?label=${encodeURIComponent(product.label)}" data-link>${escapeHtml(product.label)}</a>`;
+  const label = canonicalLabelName(product.label);
+  return `<a class="record-label-link" href="/records?label=${encodeURIComponent(label)}" data-link>${escapeHtml(label)}</a>`;
 }
 
 function productRelatedArtists(product) {
@@ -1787,7 +1803,7 @@ function inventoryArtistNames(products) {
   for (const product of products) {
     const artist = String(product.artist || "").trim();
     if (!artist) continue;
-    for (const key of artistKeys(artist)) artists.set(key, artist);
+    for (const credit of artistCreditNames(artist)) artists.set(artistIdentityKey(credit), canonicalArtistName(credit));
   }
   return artists;
 }
@@ -1801,8 +1817,8 @@ function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
     <div class="related-artist-tags" aria-label="Related artists">
       ${artists
         .map((artist) => {
-          const inventoryArtist = artistKeys(artist)
-            .map((key) => availableArtistNames.get?.(key))
+          const inventoryArtist = artistCreditNames(artist)
+            .map((name) => availableArtistNames.get?.(artistIdentityKey(name)))
             .find(Boolean);
           return inventoryArtist
             ? `<a href="/artists/${artistSlug(inventoryArtist)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
@@ -1821,10 +1837,14 @@ function artistSlug(value) {
     .replace(/^-|-$/g, "");
 }
 
-function artistKeys(value) {
-  const name = String(value || "").trim().toLowerCase();
-  const slug = artistSlug(value);
-  return [...new Set([name, slug])];
+function recordSortComparator(sort) {
+  return (a, b) => {
+    if (sort === "price-desc") return Number(b.price || 0) - Number(a.price || 0) || a.title.localeCompare(b.title);
+    if (sort === "year-desc") return Number(b.year || 0) - Number(a.year || 0) || a.artist.localeCompare(b.artist);
+    if (sort === "year-asc") return Number(a.year || 0) - Number(b.year || 0) || a.artist.localeCompare(b.artist);
+    const artistCompare = a.artist.localeCompare(b.artist);
+    return sort === "artist-desc" ? -artistCompare : artistCompare;
+  };
 }
 
 function safeExternalUrl(value) {
@@ -2075,6 +2095,11 @@ function bindEvents() {
       state.recordsFilter = button.dataset.recordFilter;
       render({ preserveScroll: true });
     });
+  });
+
+  document.querySelector("[data-record-sort]")?.addEventListener("change", (event) => {
+    state.recordsSort = event.currentTarget.value;
+    render({ preserveScroll: true });
   });
 
   document.querySelectorAll("[data-home-collection]").forEach((button) => {

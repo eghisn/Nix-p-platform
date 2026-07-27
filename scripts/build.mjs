@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { build } from "esbuild";
 import { productGrid, shell } from "../src/components/layout.js";
+import { artistCreditNames } from "../src/data/catalogIdentity.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -94,19 +95,13 @@ function slugify(value) {
     .replace(/^-|-$/g, "");
 }
 
-function artistKeys(value) {
-  const name = String(value || "").trim().toLowerCase();
-  const slug = slugify(value);
-  return [...new Set([name, slug].filter(Boolean))];
-}
-
 function inventoryArtistMap(products) {
   const artists = new Map();
   for (const product of products || []) {
     if (product.category !== "Records") continue;
     const artist = String(product.artist || "").trim();
     if (!artist) continue;
-    for (const key of artistKeys(artist)) artists.set(key, artist);
+    for (const credit of artistCreditNames(artist)) artists.set(slugify(credit), credit);
   }
   return artists;
 }
@@ -339,7 +334,7 @@ function formatPrice(value) {
 function artistDocument(artist) {
   const availableArtistNames = inventoryArtistMap(publicProducts);
   const products = publicProducts.filter(
-    (product) => product.category === "Records" && slugify(product.artist) === slugify(artist.name)
+    (product) => product.category === "Records" && artistCreditNames(product.artist).some((credit) => slugify(credit) === slugify(artist.name))
   );
   const appMarkup = shell(
     `<section class="section shop-section artist-products">
@@ -397,14 +392,14 @@ for (const product of publicStore?.products || []) {
 
 const artistDirectory = new Map();
 const recordArtistKeys = new Set(
-  publicProducts.filter((product) => product.category === "Records").map((product) => slugify(product.artist)).filter(Boolean)
+  publicProducts.filter((product) => product.category === "Records").flatMap((product) => artistCreditNames(product.artist).map(slugify)).filter(Boolean)
 );
 for (const artist of publicStore?.artists || []) {
   const slug = slugify(artist.name);
   if (recordArtistKeys.has(slug)) artistDirectory.set(slug, artist.name);
 }
 for (const product of publicProducts.filter((product) => product.category === "Records")) {
-  if (product.artist) artistDirectory.set(slugify(product.artist), product.artist);
+  for (const artistName of artistCreditNames(product.artist)) artistDirectory.set(slugify(artistName), artistName);
 }
 for (const artistSlug of artistDirectory.keys()) staticRoutes.push(`artists/${artistSlug}`);
 

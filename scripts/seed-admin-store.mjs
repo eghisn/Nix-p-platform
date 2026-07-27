@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { artistNames, cashflow, inventory, orders, products, requestItems } from "../src/data/sampleData.js";
+import { artistCreditNames, canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../src/data/catalogIdentity.js";
 
 const STORE_VERSION = "uniform-display-product-photos-2026-07-12";
 
@@ -29,12 +30,15 @@ function withDefaults(product) {
     visibility: "Public",
     updatedAt: "2026-07-11",
     ...product,
+    artist: canonicalArtistName(product.artist),
+    label: canonicalLabelName(product.label),
     tags: product.tags || [],
     details: product.details || [],
     sizes: normalizeSizes(product.sizes || []),
     collection: product.collection || product.label || "",
     color: product.color || "",
-    material: product.material || ""
+    material: product.material || "",
+    relatedArtists: (product.relatedArtists || []).map(canonicalRelatedArtistName)
   };
 }
 
@@ -54,7 +58,7 @@ function normalizeSizes(sizes) {
 const store = {
   version: STORE_VERSION,
   products: products.map(withDefaults),
-  artists: [...new Set(artistNames)].sort((a, b) => a.localeCompare(b)).map((name, index) => ({
+  artists: [...new Set(products.flatMap((product) => artistCreditNames(product.artist)).concat(artistNames.map(canonicalArtistName)))].sort((a, b) => a.localeCompare(b)).map((name, index) => ({
     id: slugify(name),
     name,
     bio: "",

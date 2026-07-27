@@ -1,4 +1,5 @@
 import { enrichFinanceCatalogProduct } from "./catalogEnrichment.js";
+import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 
 const STATE_KEY = "main";
 const EMPTY_FINANCE_STATE = { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
@@ -118,7 +119,7 @@ async function syncFinanceArtistsToCatalog(stockRows = []) {
   const names = [...new Set(
     stockRows
       .filter((item) => RECORD_FORMATS.has(String(item?.item || "").trim()))
-      .map((item) => String(item?.artist || "").trim())
+      .flatMap((item) => artistCreditNames(item?.artist))
       .filter(Boolean)
   )];
   if (!names.length) return;
@@ -175,11 +176,19 @@ async function deleteStaleFinanceInventoryRows(activeIds = []) {
 
 function productRowFromExisting(row, overrides = {}) {
   const next = { ...row, ...overrides };
+  const raw = {
+    ...(next.raw || {}),
+    artist: canonicalArtistName(next.artist || ""),
+    label: canonicalLabelName(next.label || ""),
+    relatedArtists: Array.isArray(next.raw?.relatedArtists)
+      ? next.raw.relatedArtists.map((artist) => canonicalArtistName(artist))
+      : next.raw?.relatedArtists || []
+  };
   return {
     id: String(next.id),
     sku: next.sku || next.id,
     title: next.title || "Untitled Item",
-    artist: next.artist || "",
+    artist: canonicalArtistName(next.artist || ""),
     category: next.category || "",
     format: next.format || "",
     display_format: next.display_format || "",
@@ -187,7 +196,7 @@ function productRowFromExisting(row, overrides = {}) {
     condition: next.condition || "",
     price: Number(next.price || 0),
     year: Number(next.year || new Date().getFullYear()),
-    label: next.label || "",
+    label: canonicalLabelName(next.label || ""),
     collection: next.collection || "",
     color: next.color || "",
     material: next.material || "",
@@ -202,7 +211,7 @@ function productRowFromExisting(row, overrides = {}) {
     publish_status: next.publish_status || "Published",
     visibility: next.visibility || "Public",
     updated_at: next.updated_at || today(),
-    raw: next.raw || {}
+    raw
   };
 }
 
@@ -233,7 +242,7 @@ function productRowFromFinanceStock(row, stock, quantity) {
 
   return productRowFromExisting(row, {
     title: financeTitle || row.title,
-    artist: financeArtist || row.artist,
+    artist: canonicalArtistName(financeArtist || row.artist),
     category,
     format: category === "Records" ? item : row.format || "",
     display_format: category === "Records" ? item : row.display_format || "",
@@ -247,7 +256,7 @@ function productRowFromFinanceStock(row, stock, quantity) {
     raw: {
       ...raw,
       title: financeTitle || raw.title || row.title,
-      artist: financeArtist || raw.artist || row.artist,
+      artist: canonicalArtistName(financeArtist || raw.artist || row.artist),
       category,
       format: category === "Records" ? item : raw.format || row.format || "",
       displayFormat: category === "Records" ? item : raw.displayFormat || row.display_format || "",

@@ -1,3 +1,5 @@
+import { canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../../src/data/catalogIdentity.js";
+
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const USED_CONDITION = /^used\b/i;
 const MUSICBRAINZ_ORIGIN = "https://musicbrainz.org";
@@ -380,7 +382,7 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 export async function enrichFinanceCatalogProduct(row, stock = {}) {
   const format = String(stock.item || row.format || "").trim();
   const title = String(stock.title || row.title || "").trim();
-  const artist = String(stock.artist || row.artist || "").trim();
+  const artist = canonicalArtistName(stock.artist || row.artist || "");
   const price = Number(stock.sellingPrice || row.price || 0);
 
   if (!RECORD_FORMATS.has(format) || !title || !artist || price <= 0) {
@@ -420,7 +422,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
     discovered.catalogNumber ? `Catalog number: ${discovered.catalogNumber}` : "",
     discovered.barcode ? `Barcode: ${discovered.barcode}` : ""
   ]).filter((detail) => detail && !detail.startsWith("Created from finance inventory"));
-  const relatedArtists = unique([...(raw.relatedArtists || []), ...(discovered.relatedArtists || [])]);
+  const relatedArtists = unique([...(raw.relatedArtists || []), ...(discovered.relatedArtists || [])].map(canonicalRelatedArtistName));
   const product = {
     ...row,
     title: discovered.title || row.title,
@@ -429,7 +431,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
     display_format: format,
     price,
     year: Number(discovered.year || row.year || new Date().getFullYear()),
-    label: discovered.label || row.label || "",
+    label: canonicalLabelName(discovered.label || row.label || ""),
     collection: discovered.label || row.collection || row.label || "",
     image: cover,
     images,
@@ -450,7 +452,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
       condition: stock.itemCondition || row.condition || "",
       price,
       year: Number(discovered.year || row.year || new Date().getFullYear()),
-      label: discovered.label || row.label || "",
+      label: canonicalLabelName(discovered.label || row.label || ""),
       collection: discovered.label || row.collection || row.label || "",
       image: cover,
       images,

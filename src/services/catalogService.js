@@ -1,4 +1,5 @@
 import { adminStore } from "./adminStore.js";
+import { artistCreditNames, canonicalArtistName, canonicalLabelName, artistIdentityKey } from "../data/catalogIdentity.js";
 
 // Replace this module with Supabase queries when the project receives credentials.
 const hiddenPublicArtists = new Set(["motorith", "nixp publishing", "publishing", "sample artist", "tida lek"]);
@@ -45,10 +46,10 @@ export const catalogService = {
     return adminStore.listProducts().filter((product) => product.category === category);
   },
   async listProductsByArtist(artistName) {
-    const requested = artistKey(artistName);
+    const requested = artistIdentityKey(artistName);
     return adminStore
       .listProducts()
-      .filter((product) => artistKey(product.artist) === requested);
+      .filter((product) => artistCreditNames(product.artist).some((name) => artistIdentityKey(name) === requested));
   },
   async getProduct(id, options = {}) {
     return adminStore.getProduct(id, options);
@@ -57,7 +58,7 @@ export const catalogService = {
     return adminStore.listProducts().filter((product) => {
       const isRecord = product.category === "Records";
       const matchesFormat = format === "All" || product.format === format;
-      const matchesLabel = !label || product.label === label;
+      const matchesLabel = !label || canonicalLabelName(product.label) === canonicalLabelName(label);
       return isRecord && matchesFormat && matchesLabel;
     });
   },
@@ -70,18 +71,18 @@ export const catalogService = {
   async listArtists() {
     const snapshot = adminStore.getSnapshot();
     const recordProducts = adminStore.listProducts().filter((product) => product.category === "Records");
-    const recordArtistKeys = new Set(recordProducts.map((product) => artistKey(product.artist)).filter(Boolean));
+    const recordArtistKeys = new Set(recordProducts.flatMap((product) => artistCreditNames(product.artist).map(artistIdentityKey)).filter(Boolean));
     const names = [
       ...snapshot.artists
         .filter((artist) => artist.status === "Published")
-        .filter((artist) => recordArtistKeys.has(artistKey(artist.name)))
+        .filter((artist) => recordArtistKeys.has(artistIdentityKey(artist.name)))
         .map((artist) => artist.name),
-      ...recordProducts.map((product) => product.artist)
+      ...recordProducts.flatMap((product) => artistCreditNames(product.artist))
     ];
     return [...new Map(names
       .map((name) => String(name || "").trim())
       .filter((name) => name && !hiddenPublicArtists.has(name.toLowerCase()))
-      .map((name) => [artistKey(name), name]))
+      .map((name) => [artistIdentityKey(name), canonicalArtistName(name)]))
       .values()]
       .sort((a, b) => a.localeCompare(b));
   },
@@ -120,11 +121,3 @@ export const catalogService = {
     return adminStore.getSnapshot().cashflow;
   }
 };
-
-function artistKey(value) {
-  return String(value || "")
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
