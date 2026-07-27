@@ -59,7 +59,7 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
 // Finance is the source of truth for SKU stock. Complete record entries pass
 // through catalog enrichment before publication; ambiguous editions remain
 // visible in Admin with a precise enrichment status.
-async function syncFinanceInventoryToCatalog(state) {
+export async function syncFinanceInventoryToCatalog(state) {
   const stockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
   const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
   const existingRows = skus.length

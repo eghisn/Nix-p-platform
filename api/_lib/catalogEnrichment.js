@@ -155,6 +155,225 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     relatedArtists: ["Behold The Arctopus", "Meshuggah", "The Dillinger Escape Plan"],
     tags: ["technical death metal", "death metal", "reissue"],
     sourceUrl: "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available"
+  },
+  "NXP-2026-VNL-0033": {
+    title: "Sympathy for Life",
+    year: 2021,
+    label: "Rough Trade",
+    edition: "LP",
+    cover: "https://coverartarchive.org/release/2322927f-4aef-404f-851e-bc6dcb079961/front-1200",
+    productPhoto: "https://f4.bcbits.com/img/a3739988549_5.jpg",
+    imageCredits: [
+      { image: "https://coverartarchive.org/release/2322927f-4aef-404f-851e-bc6dcb079961/front-1200", credit: "Cover Art Archive / Rough Trade", url: "https://musicbrainz.org/release/2322927f-4aef-404f-851e-bc6dcb079961" },
+      { image: "https://f4.bcbits.com/img/a3739988549_5.jpg", credit: "Parquet Courts official Bandcamp product image", url: "https://parquetcourts.bandcamp.com/album/sympathy-for-life" }
+    ],
+    description: "Parquet Courts' 2021 Sympathy for Life turns the Brooklyn band's post-punk into a more openly dance-oriented record, built from extended jams, synths and club-minded rhythm.",
+    descriptionSource: "Parquet Courts official Bandcamp / MusicBrainz",
+    reviewQuote: "broadly accessible",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/parquet-courts-sympathy-for-life/",
+    relatedArtists: ["Animal Collective", "Suuns", "David Byrne"],
+    tags: ["post-punk", "dance-rock", "indie rock"],
+    sourceUrl: "https://parquetcourts.bandcamp.com/album/sympathy-for-life",
+    musicBrainzReleaseId: "2322927f-4aef-404f-851e-bc6dcb079961"
+  },
+  "NXP-2026-VNL-0032": {
+    title: "Wake in Fright",
+    year: 2017,
+    label: "Sacred Bones Records",
+    edition: "LP",
+    cover: "https://coverartarchive.org/release/d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff/front-1200",
+    productPhoto: "https://www.sacredbonesrecords.com/cdn/shop/files/Uniform_Wake-in-Fright_RedandWhite.jpg?v=1728594500&width=2000",
+    imageCredits: [
+      { image: "https://coverartarchive.org/release/d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff/front-1200", credit: "Cover Art Archive / Sacred Bones Records", url: "https://musicbrainz.org/release/d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff" },
+      { image: "https://www.sacredbonesrecords.com/cdn/shop/files/Uniform_Wake-in-Fright_RedandWhite.jpg?v=1728594500&width=2000", credit: "Sacred Bones Records product photography", url: "https://www.sacredbonesrecords.com/products/sbr170-uniform-wake-in-fright" }
+    ],
+    description: "Uniform's 2017 Wake in Fright is industrial metal built from hardcore aggression, programmed percussion and power-electronic abrasion, confronting war and self-medication with relentless force.",
+    descriptionSource: "Sacred Bones Records / Pitchfork",
+    reviewQuote: "fighting back",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/22737-wake-in-fright/",
+    relatedArtists: ["Godflesh", "The Soft Moon", "JK Flesh"],
+    tags: ["industrial metal", "noise rock", "hardcore"],
+    sourceUrl: "https://www.sacredbonesrecords.com/products/sbr170-uniform-wake-in-fright",
+    musicBrainzReleaseId: "d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff"
+  },
+  "NXP-2026-VNL-0031": {
+    title: "Speechless",
+    year: 2016,
+    label: "SPE:C",
+    edition: "12-inch EP",
+    cover: "https://f4.bcbits.com/img/a3731298365_5.jpg",
+    productPhoto: "https://f4.bcbits.com/img/a3731298365_5.jpg",
+    imageCredits: [{ image: "https://f4.bcbits.com/img/a3731298365_5.jpg", credit: "SPE:C official Bandcamp release image", url: "https://specrecords.bandcamp.com/album/trans-am-speechless-spe-c-002" }],
+    description: "Trans Am's 2016 Speechless is a compact electronic and techno-leaning collaboration from the Washington, D.C. trio, issued through Berlin label SPE:C as a 12-inch release.",
+    descriptionSource: "SPE:C official Bandcamp / Boomkat",
+    reviewQuote: "Techno / House",
+    reviewSource: "Boomkat (catalog description)",
+    reviewUrl: "https://boomkat.com/artists/trans-am",
+    relatedArtists: ["Squarepusher", "The Chemical Brothers", "Animal Collective"],
+    tags: ["techno", "electronic", "12-inch"],
+    sourceUrl: "https://specrecords.bandcamp.com/album/trans-am-speechless-spe-c-002"
+  },
+  "NXP-2026-VNL-0030": {
+    title: "Preoccupations",
+    year: 2016,
+    label: "Jagjaguwar / Flemish Eye",
+    edition: "LP",
+    cover: "https://coverartarchive.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd/front-1200",
+    productPhoto: "https://coverartarchive.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd/front-1200",
+    imageCredits: [{ image: "https://coverartarchive.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd/front-1200", credit: "Cover Art Archive / Jagjaguwar", url: "https://musicbrainz.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd" }],
+    description: "Preoccupations' 2016 self-titled album is a tense, melodic post-punk record that follows the Calgary group beyond its earlier Viet Cong identity into sharper, more expansive arrangements.",
+    descriptionSource: "Jagjaguwar / Pitchfork",
+    reviewQuote: "the vitality of the music",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/22407-preoccupations/",
+    relatedArtists: ["Viet Cong", "Women", "Ought"],
+    tags: ["post-punk", "art punk", "noise rock"],
+    sourceUrl: "https://musicbrainz.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
+    musicBrainzReleaseId: "e8747635-0bd4-4cfc-97b5-97f224b0b2cd"
+  },
+  "NXP-2026-VNL-0029": {
+    title: "Vortrack",
+    year: 2020,
+    label: "Warp Records",
+    edition: "12-inch single",
+    cover: "https://coverartarchive.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b/front-1200",
+    productPhoto: "https://coverartarchive.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b/front-1200",
+    imageCredits: [{ image: "https://coverartarchive.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b/front-1200", credit: "Cover Art Archive / Warp Records", url: "https://musicbrainz.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b" }],
+    description: "Squarepusher's 2020 Vortrack is an eerie Warp single built from submerged acid, intricate breakbeats and the futuristic hardware sound that drives Be Up a Hello.",
+    descriptionSource: "Warp Records / The Guardian",
+    reviewQuote: "devilish and danceable",
+    reviewSource: "The Guardian (quoted)",
+    reviewUrl: "https://www.theguardian.com/music/2020/jan/31/squarepusher-be-up-a-hello-review-warp-records",
+    relatedArtists: ["Oneohtrix Point Never", "Nala Sinephro", "The Chemical Brothers"],
+    tags: ["IDM", "acid", "breakbeat"],
+    sourceUrl: "https://www.theguardian.com/music/2020/jan/31/squarepusher-be-up-a-hello-review-warp-records",
+    musicBrainzReleaseId: "d7373248-ae08-4bd8-a848-8b12c70bd88b"
+  },
+  "NXP-2026-VNL-0028": {
+    title: "Odd Scene / Shit Luck",
+    year: 2018,
+    label: "Sacred Bones Records",
+    edition: "12-inch single",
+    cover: "https://f4.bcbits.com/img/a1165591995_5.jpg",
+    productPhoto: "https://f4.bcbits.com/img/a1165591995_16.jpg",
+    imageCredits: [{ image: "https://f4.bcbits.com/img/a1165591995_16.jpg", credit: "Blanck Mass official Bandcamp release image", url: "https://blanckmass.bandcamp.com/album/odd-scene-shit-luck" }],
+    description: "Blanck Mass' 2018 Odd Scene / Shit Luck single pushes Benjamin John Power's electronics toward industrial metal, combining blown-out synths, noise and physical rhythmic impact.",
+    descriptionSource: "Sacred Bones / The Skinny",
+    reviewQuote: "immensely danceable",
+    reviewSource: "The Skinny (quoted)",
+    reviewUrl: "https://www.theskinny.co.uk/music/live-music/reviews/blanck-mass-summerhall-edinburgh-12-mar",
+    relatedArtists: ["Uniform", "The Soft Moon", "Pharmakon"],
+    tags: ["industrial", "noise", "electronic"],
+    sourceUrl: "https://blanckmass.bandcamp.com/album/odd-scene-shit-luck"
+  },
+  "NXP-2026-VNL-0027": {
+    title: "Bambi",
+    year: 2011,
+    label: "Secretly Canadian",
+    edition: "12-inch single",
+    cover: "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front-1200",
+    productPhoto: "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front-1200",
+    imageCredits: [{ image: "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front-1200", credit: "Cover Art Archive / Secretly Canadian", url: "https://musicbrainz.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49" }],
+    description: "Suuns' Bambi is a dark, guitar-led 12-inch single from the Montreal band's early period, moving between intimate electronic atmosphere and a sharper post-industrial attack.",
+    descriptionSource: "Secretly Canadian / KEXP",
+    reviewQuote: "terrifying power",
+    reviewSource: "KEXP (quoted)",
+    reviewUrl: "https://www.kexp.org/read/2013/3/2/album-review-suuns-images-du-futur/",
+    relatedArtists: ["Preoccupations", "Viet Cong", "Jerusalem In My Heart"],
+    tags: ["post-punk", "electronic", "12-inch"],
+    sourceUrl: "https://www.discogs.com/master/1568907-Suuns-Bambi",
+    musicBrainzReleaseId: "ac2611e4-fa10-47f1-a328-8fad3c73cb49"
+  },
+  "NXP-2026-VNL-0026": {
+    title: "Lexachast",
+    year: 2019,
+    label: "PAN",
+    edition: "LP",
+    cover: "https://coverartarchive.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f/front-1200",
+    productPhoto: "https://coverartarchive.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f/front-1200",
+    imageCredits: [{ image: "https://coverartarchive.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f/front-1200", credit: "Cover Art Archive / PAN", url: "https://musicbrainz.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f" }],
+    description: "Amnesia Scanner and Bill Kouligas' 2019 Lexachast expands an audiovisual collaboration into a PAN album of algorithmic, cybernetic and uncanny electronic sound.",
+    descriptionSource: "PAN / The FADER",
+    reviewQuote: "decisive inquietude",
+    reviewSource: "The FADER (quoted)",
+    reviewUrl: "https://www.thefader.com/2016/01/06/bill-kouligas-amnesia-scanner-harm-van-den-dorpel-share-lexachast",
+    relatedArtists: ["Arca", "Oneohtrix Point Never", "Toxe"],
+    tags: ["experimental electronic", "PAN", "A/V"],
+    sourceUrl: "https://boomkat.com/products/lexachast",
+    musicBrainzReleaseId: "69cf0f01-df57-4ec6-ad3d-e43573ba958f"
+  },
+  "NXP-2026-VNL-0025": {
+    title: "Blinks",
+    year: 2018,
+    label: "PAN",
+    edition: "12-inch EP",
+    cover: "https://coverartarchive.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52/front-1200",
+    productPhoto: "https://coverartarchive.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52/front-1200",
+    imageCredits: [{ image: "https://coverartarchive.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52/front-1200", credit: "Cover Art Archive / PAN", url: "https://musicbrainz.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52" }],
+    description: "Toxe's 2018 Blinks EP turns precise drums, synthetic color and playful world-building into four bright, unstable electronic club miniatures for PAN.",
+    descriptionSource: "PAN / Tiny Mix Tapes",
+    reviewQuote: "a vibrant, buoyant mess of sound",
+    reviewSource: "Tiny Mix Tapes (quoted)",
+    reviewUrl: "https://www.tinymixtapes.com/music-review/toxe-blinks",
+    relatedArtists: ["Amnesia Scanner", "Arca", "SOPHIE"],
+    tags: ["experimental club", "electronic", "EP"],
+    sourceUrl: "https://boomkat.com/products/blinks",
+    musicBrainzReleaseId: "3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52"
+  },
+  "NXP-2026-VNL-0024": {
+    title: "Maggot Mass",
+    year: 2024,
+    label: "Sacred Bones Records",
+    edition: "LP",
+    cover: "https://coverartarchive.org/release/9c4a70fc-8984-4585-97d2-ef672b650034/front-1200",
+    productPhoto: "https://coverartarchive.org/release/9c4a70fc-8984-4585-97d2-ef672b650034/front-1200",
+    imageCredits: [{ image: "https://coverartarchive.org/release/9c4a70fc-8984-4585-97d2-ef672b650034/front-1200", credit: "Cover Art Archive / Sacred Bones Records", url: "https://musicbrainz.org/release/9c4a70fc-8984-4585-97d2-ef672b650034" }],
+    description: "Pharmakon's 2024 Maggot Mass reshapes death industrial into a more structured and volatile album, with Margaret Chardiet turning electronic abrasion into bodily tension.",
+    descriptionSource: "Sacred Bones / Metal Trenches",
+    reviewQuote: "most significant changes",
+    reviewSource: "Metal Trenches (quoted)",
+    reviewUrl: "https://metaltrenches.com/reviews/pharmakon-maggot-mass-album-review-4038",
+    relatedArtists: ["Uniform", "Blanck Mass", "The Soft Moon"],
+    tags: ["death industrial", "noise", "power electronics"],
+    sourceUrl: "https://musicbrainz.org/release/9c4a70fc-8984-4585-97d2-ef672b650034",
+    musicBrainzReleaseId: "9c4a70fc-8984-4585-97d2-ef672b650034"
+  },
+  "NXP-2026-VNL-0020": {
+    title: "Steppin Up / Meds And Feds",
+    year: 2010,
+    label: "XL Recordings",
+    edition: "12-inch single",
+    cover: "https://coverartarchive.org/release/5f24a203-f56c-4996-b91b-78ed2d1f4f37/front-1200",
+    productPhoto: "https://coverartarchive.org/release/5f24a203-f56c-4996-b91b-78ed2d1f4f37/front-1200",
+    imageCredits: [{ image: "https://coverartarchive.org/release/5f24a203-f56c-4996-b91b-78ed2d1f4f37/front-1200", credit: "Cover Art Archive / XL Recordings", url: "https://musicbrainz.org/release/5f24a203-f56c-4996-b91b-78ed2d1f4f37" }],
+    description: "M.I.A.'s 2010 Steppin Up / Meds And Feds 12-inch pairs two of the most abrasive cuts from the Maya era, driven by industrial beats, digital dissonance and XL's classic sleeve design.",
+    descriptionSource: "XL Recordings / Apple Music",
+    reviewQuote: "a non-stop assault of throbbing industrial beats",
+    reviewSource: "Apple Music (quoted)",
+    reviewUrl: "https://music.apple.com/th/album/y/1544491734",
+    relatedArtists: ["Arca", "SOPHIE", "The Chemical Brothers"],
+    tags: ["experimental hip-hop", "electronic", "12-inch"],
+    sourceUrl: "https://www.banquetrecords.com/m.i.a./steppin-up-meds-and-feds/XLT505"
+  },
+  "NXP-2026-VNL-0019": {
+    title: "Shirt",
+    year: 2024,
+    label: "Domino",
+    edition: "LP",
+    cover: "https://coverartarchive.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0/front-1200",
+    productPhoto: "https://coverartarchive.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0/front-1200",
+    imageCredits: [{ image: "https://coverartarchive.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0/front-1200", credit: "Cover Art Archive / Domino Records", url: "https://musicbrainz.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0" }],
+    description: "Porches' 2024 Shirt is Aaron Maine's heaviest and most distorted album, turning existential anxiety and everyday distress into raw, uncanny rock songs.",
+    descriptionSource: "Domino / Pitchfork",
+    reviewQuote: "the heaviest songs he's recorded to date",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/porches-shirt/",
+    relatedArtists: ["Animal Collective", "Alex G", "Daniel Lopatin"],
+    tags: ["indie rock", "alternative", "experimental pop"],
+    sourceUrl: "https://porchesmusic.bandcamp.com/album/shirt",
+    musicBrainzReleaseId: "6ae505ac-d729-4388-9c74-b9e7e041a7d0"
   }
 };
 
@@ -330,7 +549,7 @@ async function discoverMusicBrainzRelease(stock) {
       : [],
     description,
     descriptionSource: "MusicBrainz",
-    relatedArtists: [],
+    relatedArtists: await discoverRelatedArtists(artist),
     tags: [],
     sourceUrl: `${MUSICBRAINZ_ORIGIN}/release/${release.id}`,
     musicBrainzReleaseId: release.id
@@ -376,6 +595,29 @@ async function remoteImageExists(url) {
     headers: { accept: "image/*", "user-agent": USER_AGENT }
   }).catch(() => null);
   return Boolean(response?.ok && String(response.headers.get("content-type") || "").startsWith("image/"));
+}
+
+async function discoverRelatedArtists(artist) {
+  const search = await fetch(
+    `${MUSICBRAINZ_ORIGIN}/ws/2/artist/?query=${encodeURIComponent(`artist:"${escapeQuery(artist)}"`)}&fmt=json&limit=1`,
+    { headers: { accept: "application/json", "user-agent": USER_AGENT } }
+  ).catch(() => null);
+  if (!search?.ok) return [];
+  const payload = await search.json().catch(() => ({}));
+  const match = payload.artists?.[0];
+  if (!match?.id) return [];
+  const response = await fetch(
+    `${MUSICBRAINZ_ORIGIN}/ws/2/artist/${match.id}?inc=artist-rels&fmt=json`,
+    { headers: { accept: "application/json", "user-agent": USER_AGENT } }
+  ).catch(() => null);
+  if (!response?.ok) return [];
+  const artistData = await response.json().catch(() => ({}));
+  return unique(
+    (artistData.relations || [])
+      .filter((relation) => relation?.target?.type === "artist")
+      .map((relation) => relation.target?.name || relation.artist?.name)
+      .filter((name) => normalizedText(name) !== normalizedText(artist))
+  ).slice(0, 8);
 }
 
 function mergeCredits(current, discovered) {
