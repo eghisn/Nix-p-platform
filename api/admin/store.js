@@ -1,9 +1,26 @@
 import { json, requireWorkspace } from "../_lib/auth.js";
 import { isSupabaseConfigured, saveStore } from "../_lib/supabase.js";
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
+import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 
 export default async function handler(req, res) {
-  if (new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("commerceAction") === "orders") return handleAdminOrders(req, res);
+  const action = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("commerceAction");
+  if (action === "orders") return handleAdminOrders(req, res);
+  if (action === "catalog-sync") {
+    if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+    if (!requireWorkspace(req, res, "admin")) return;
+    try {
+      const financeState = await readFinanceState();
+      await syncFinanceInventoryToCatalog(financeState);
+      return json(res, 200, {
+        ok: true,
+        inventoryStock: financeState.inventoryStock?.length || 0,
+        message: "Finance inventory enrichment and catalog sync completed."
+      });
+    } catch (error) {
+      return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Catalog sync failed" });
+    }
+  }
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
   if (!requireWorkspace(req, res, "admin")) return;
   if (!isSupabaseConfigured({ requireServiceRole: true })) {

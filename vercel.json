@@ -64,6 +64,10 @@
       "destination": "/api/admin/store?commerceAction=orders"
     },
     {
+      "source": "/api/admin/catalog-sync",
+      "destination": "/api/admin/store?commerceAction=catalog-sync"
+    },
+    {
       "source": "/login",
       "has": [{ "type": "host", "value": "finance.nix-p.com" }],
       "destination": "/api/finance-app?financePath=/login"
