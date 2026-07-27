@@ -452,6 +452,12 @@ for (const route of [...new Set(staticRoutes)]) {
   await writeFile(`${routeDir}/index.html`, document);
 }
 
+const generatedRoutes = [...new Set(staticRoutes)];
+const missingRoutes = generatedRoutes.filter((route) => !existsSync(`${dist}/${route}/index.html`));
+if (missingRoutes.length) {
+  throw new Error(`Static route generation failed for: ${missingRoutes.join(", ")}`);
+}
+
 const crawlableRoutes = [
   "",
   "records",

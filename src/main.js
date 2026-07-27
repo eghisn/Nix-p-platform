@@ -238,8 +238,17 @@ function isLocalEditorHost() {
 }
 
 function normalizePath(path) {
-  if (path.length > 1 && path.endsWith("/")) return path.slice(0, -1);
-  return path;
+  const value = String(path || "/");
+  const withLeadingSlash = value.startsWith("/") ? value : `/${value}`;
+  return withLeadingSlash.replace(/\/+$/, "") || "/";
+}
+
+function decodeRoutePart(value) {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
 }
 
 async function homePage() {
@@ -409,7 +418,7 @@ async function apparelPage(filter = state.apparelFilter) {
 }
 
 async function productDetailPage(path) {
-  const id = decodeURIComponent(path.replace("/product/", ""));
+  const id = decodeRoutePart(path.replace("/product/", ""));
   const product = await catalogService.getProduct(id);
   if (!product) return notFoundPage();
   return productDetailMarkup(product);
@@ -542,7 +551,7 @@ async function artistsPage() {
 }
 
 async function artistProductsPage(path) {
-  const requestedArtist = decodeURIComponent(path.replace("/artists/", ""));
+  const requestedArtist = decodeRoutePart(path.replace("/artists/", ""));
   const allProducts = await catalogService.listProducts();
   const artistNames = await catalogService.listArtists();
   const artist = artistNames.find((name) => artistSlug(name) === artistSlug(requestedArtist));
@@ -1484,7 +1493,7 @@ async function adminPreviewPage({ embedded = false } = {}) {
 }
 
 async function previewProductDetailPage(path) {
-  const id = decodeURIComponent(path.replace("/admin/preview/product/", ""));
+  const id = decodeRoutePart(path.replace("/admin/preview/product/", ""));
   const product = await catalogService.getProduct(id, { includeDrafts: true });
   if (!product) return notFoundPage();
   return productDetailMarkup(product);
