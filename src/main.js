@@ -7,6 +7,7 @@ import { pageHero, productGrid, shell, table } from "./components/layout.js";
 const app = document.querySelector("#app");
 let homeSliderCleanup = null;
 let priceCache = { expiresAt: 0, prices: new Map() };
+let renderRequestId = 0;
 const money = new Intl.NumberFormat("id-ID", {
   style: "currency",
   currency: "IDR",
@@ -136,7 +137,8 @@ const routes = {
   "/admin/preview": adminPreviewPage
 };
 
-async function render({ preserveScroll = false } = {}) {
+async function render({ preserveScroll = false, scrollToTop = false } = {}) {
+  const requestId = ++renderRequestId;
   const previousScrollTop = preserveScroll ? window.scrollY : 0;
   const path = normalizePath(location.pathname);
   await loadAuthSession();
@@ -159,19 +161,23 @@ async function render({ preserveScroll = false } = {}) {
   } catch (error) {
     content = routeErrorPage(requiredWorkspace, error);
   }
+  if (requestId !== renderRequestId) return;
   const isLoginView = path === "/login" || (requiredWorkspace && !hasWorkspaceAccess(requiredWorkspace));
   document.body.classList.toggle("page-lock", path === "/" || path === "/about" || path === "/contact" || isLoginView);
   document.body.classList.toggle("login-lock", isLoginView);
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
   const markup = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
+  if (requestId !== renderRequestId) return;
   updateDocumentTitle(path);
   const commit = () => {
     app.innerHTML = markup;
     bindEvents();
   };
   const privateRoute = Boolean(requiredWorkspace);
+  let commitDone = Promise.resolve();
   if (document.startViewTransition && !privateRoute) {
-    document.startViewTransition(commit);
+    const transition = document.startViewTransition(commit);
+    commitDone = transition.updateCallbackDone || transition.ready || Promise.resolve();
   } else if (privateRoute) {
     commit();
   } else {
@@ -179,7 +185,10 @@ async function render({ preserveScroll = false } = {}) {
     commit();
     requestAnimationFrame(() => app.classList.remove("is-rendering"));
   }
+  await commitDone.catch(() => {});
+  if (requestId !== renderRequestId) return;
   if (preserveScroll) window.scrollTo({ top: previousScrollTop, behavior: "auto" });
+  else if (scrollToTop) window.scrollTo({ top: 0, behavior: "auto" });
 }
 
 function updateDocumentTitle(path) {
@@ -2011,8 +2020,7 @@ function navigateInternal(href, { preserveScroll = false } = {}) {
   if (!href || href.startsWith("http") || href.startsWith("mailto:")) return false;
   state.zoomedProductId = null;
   history.pushState({}, "", href);
-  if (!preserveScroll) window.scrollTo({ top: 0, behavior: "auto" });
-  render({ preserveScroll });
+  render({ preserveScroll, scrollToTop: !preserveScroll });
   return true;
 }
 
@@ -2875,9 +2883,7 @@ function bindSearch() {
       link.addEventListener("click", (event) => {
         event.preventDefault();
         setSearchOpen(false);
-        history.pushState({}, "", link.getAttribute("href"));
-        window.scrollTo({ top: 0, behavior: "auto" });
-        render();
+        navigateInternal(link.getAttribute("href"));
       });
     });
   };
