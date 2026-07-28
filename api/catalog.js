@@ -1,13 +1,18 @@
 import { getSession, json } from "./_lib/auth.js";
 import { sendRequestNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, loadStore, upsertRawRows } from "./_lib/supabase.js";
+import { publicProductPath } from "../src/data/publicUrls.js";
 
 export default async function handler(req, res) {
-  if (!isSupabaseConfigured()) return json(res, 503, { ok: false, error: "Supabase is not configured." });
   try {
+    const url = new URL(req.url, "https://nix-p.com");
+    if (req.method === "GET" && url.searchParams.get("action") === "product-redirect") {
+      return handleLegacyProductRedirect(req, res, url.searchParams.get("id"));
+    }
+    if (!isSupabaseConfigured()) return json(res, 503, { ok: false, error: "Supabase is not configured." });
     if (req.method === "POST") return handleRequestItem(req, res);
     if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
-    const privateScope = new URL(req.url, "https://nix-p.com").searchParams.get("scope") === "admin";
+    const privateScope = url.searchParams.get("scope") === "admin";
     const session = getSession(req);
     if (privateScope && session?.workspace !== "admin") return json(res, 401, { ok: false, error: "Admin login required" });
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
@@ -18,6 +23,29 @@ export default async function handler(req, res) {
   } catch (error) {
     json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Catalog unavailable" });
   }
+}
+
+async function handleLegacyProductRedirect(req, res, id) {
+  const cleanId = String(id || "").trim();
+  if (!cleanId) return json(res, 404, { ok: false, error: "Product not found." });
+  const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
+  const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
+  const publicSnapshotUrl = `${protocol}://${host}/public/data/public-store.json`;
+  let store;
+  try {
+    store = await loadStore({ privateScope: false, publicSnapshotUrl });
+  } catch {
+    const snapshotResponse = await fetch(`${publicSnapshotUrl}?redirect=${encodeURIComponent(cleanId)}`, { cache: "no-store" });
+    if (!snapshotResponse.ok) return json(res, 404, { ok: false, error: "Product not found." });
+    store = await snapshotResponse.json();
+  }
+  const product = (store.products || []).find((item) => item.id === cleanId);
+  if (!product) return json(res, 404, { ok: false, error: "Product not found." });
+  res.writeHead(308, {
+    location: `${protocol}://${host}${publicProductPath(product)}`,
+    "cache-control": "public, max-age=31536000, immutable"
+  });
+  res.end();
 }
 
 async function handleRequestItem(req, res) {

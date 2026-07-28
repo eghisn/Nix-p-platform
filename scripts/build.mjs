@@ -3,6 +3,7 @@ import { existsSync } from "node:fs";
 import { build } from "esbuild";
 import { productGrid, shell } from "../src/components/layout.js";
 import { artistCreditNames } from "../src/data/catalogIdentity.js";
+import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -167,7 +168,7 @@ function homeDocument() {
   const catalogLinks = publicProducts
     .map(
       (product) =>
-        `<li><a href="/product/${escapeHtml(product.id)}">${escapeHtml(product.artist)} - ${escapeHtml(product.title)} - ${escapeHtml(formatPrice(product.price))}</a></li>`
+        `<li><a href="${escapeHtml(publicProductPath(product))}">${escapeHtml(product.artist)} - ${escapeHtml(product.title)} - ${escapeHtml(formatPrice(product.price))}</a></li>`
     )
     .join("");
   return routeDocument({
@@ -195,7 +196,7 @@ function homeDocument() {
           itemListElement: publicProducts.map((product, index) => ({
             "@type": "ListItem",
             position: index + 1,
-            url: `${siteOrigin}/product/${encodeURIComponent(product.id)}`,
+            url: `${siteOrigin}${publicProductPath(product)}`,
             name: `${product.artist} - ${product.title}`
           }))
         }
@@ -242,7 +243,7 @@ function homeAppMarkup() {
             .map(
               (product, index) => `
                 <article class="slide">
-                  <a href="/product/${escapeHtml(product.id)}" data-link>
+                  <a href="${escapeHtml(publicProductPath(product))}" data-link data-product-link>
                     <figure class="product-art slide-art"><img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" /></figure>
                     <div class="slide-caption">
                       <span>${String((index % products.length) + 1).padStart(2, "0")}</span>
@@ -296,11 +297,11 @@ function staticProductDetailMarkup(product) {
     : `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>${isRecord ? `<div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>` : ""}<div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div><div><dt>Notes</dt><dd>${escapeHtml((product.details || []).join(" / "))}</dd></div>`;
   return `<section class="product-detail"><div class="detail-gallery">${images
     .map((image, index) => `<figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""} ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>`)
-    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${slugify(product.category)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}${relatedMarkup}<div class="detail-actions"><button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button><a class="button button-outline" href="/request-item">Request similar</a></div><dl class="detail-list">${details}</dl></aside></section>`;
+    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}${relatedMarkup}<div class="detail-actions"><button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button><a class="button button-outline" href="/request-item">Request similar</a></div><dl class="detail-list">${details}</dl></aside></section>`;
 }
 
 function productDocument(product) {
-  const url = `${siteOrigin}/product/${encodeURIComponent(product.id)}`;
+  const url = `${siteOrigin}${publicProductPath(product)}`;
   const image = absoluteUrl(product.image || product.images?.[0]);
   const price = formatPrice(product.price);
   const format = product.displayFormat || product.format || "Product";
@@ -336,7 +337,7 @@ function productDocument(product) {
     url,
     image,
     type: "product",
-    appMarkup: shell(staticProductDetailMarkup(product), `/product/${product.id}`, 0),
+    appMarkup: shell(staticProductDetailMarkup(product), publicProductPath(product), 0),
     crawlMarkup: crawlerSection(
       `<article><h1>${escapeHtml(product.artist)} - ${escapeHtml(product.title)}</h1><p>${escapeHtml(description)}</p><p>${escapeHtml(product.description || "")}</p><a href="${escapeHtml(url)}">View product</a></article>`
     ),
@@ -433,7 +434,7 @@ function artistDocument(artist) {
         itemListElement: products.map((product, index) => ({
           "@type": "ListItem",
           position: index + 1,
-          url: `${siteOrigin}/product/${encodeURIComponent(product.id)}`,
+          url: `${siteOrigin}${publicProductPath(product)}`,
           name: `${product.artist} - ${product.title}`
         }))
       }
@@ -470,8 +471,16 @@ function productQuantity(product = {}) {
 
 await writeFile(`${dist}/index.html`, homeDocument());
 
+const productRoutes = new Map();
 for (const product of publicProducts) {
-  staticRoutes.push(`product/${product.id}`);
+  const canonicalRoute = publicProductPath(product).replace(/^\//, "");
+  const legacyRoute = `product/${product.id}`;
+  if (productRoutes.has(canonicalRoute)) {
+    throw new Error(`Duplicate public product URL: /${canonicalRoute}`);
+  }
+  staticRoutes.push(canonicalRoute, legacyRoute);
+  productRoutes.set(canonicalRoute, product);
+  productRoutes.set(legacyRoute, product);
 }
 
 for (const product of publicStore?.products || []) {
@@ -494,8 +503,7 @@ for (const artistSlug of artistDirectory.keys()) staticRoutes.push(`artists/${ar
 for (const route of [...new Set(staticRoutes)]) {
   const routeDir = `${dist}/${route}`;
   await mkdir(routeDir, { recursive: true });
-  const productId = route.startsWith("product/") ? route.slice("product/".length) : "";
-  const product = productId ? publicProducts.find((item) => item.id === productId) : null;
+  const product = productRoutes.get(route) || null;
   const routeUrl = `${siteOrigin}/${route}`;
   const artistSlugPath = route.startsWith("artists/") ? route.slice("artists/".length) : "";
   const artistName = artistSlugPath ? artistDirectory.get(artistSlugPath) : "";
@@ -542,7 +550,7 @@ const crawlableRoutes = [
   "about",
   "contact",
   "shipping-returns",
-  ...publicProducts.map((product) => `product/${product.id}`),
+  ...publicProducts.map((product) => publicProductPath(product).replace(/^\//, "")),
   ...[...artistDirectory.keys()].map((artistSlug) => `artists/${artistSlug}`)
 ];
 const sitemapEntries = [...new Set(crawlableRoutes)]

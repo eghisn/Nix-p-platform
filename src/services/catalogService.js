@@ -1,5 +1,6 @@
 import { adminStore } from "./adminStore.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName, artistIdentityKey } from "../data/catalogIdentity.js";
+import { publicCategoryPath, publicProductSlug } from "../data/publicUrls.js";
 
 // Replace this module with Supabase queries when the project receives credentials.
 const hiddenPublicArtists = new Set(["motorith", "nixp publishing", "publishing", "sample artist", "tida lek"]);
@@ -53,6 +54,11 @@ export const catalogService = {
   },
   async getProduct(id, options = {}) {
     return adminStore.getProduct(id, options);
+  },
+  async getProductByPublicSlug(categoryPath, slug, options = {}) {
+    return adminStore
+      .listProducts(options)
+      .find((product) => publicCategoryPath(product) === categoryPath && publicProductSlug(product) === slug);
   },
   async listRecords(format = "All", label = "") {
     return adminStore.listProducts().filter((product) => {

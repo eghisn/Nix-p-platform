@@ -1,5 +1,6 @@
 import { requestStatuses } from "./data/sampleData.js";
 import { artistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLabelName } from "./data/catalogIdentity.js";
+import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicProductSlug } from "./data/publicUrls.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
@@ -140,15 +141,25 @@ const routes = {
 async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   const requestId = ++renderRequestId;
   const previousScrollTop = preserveScroll ? window.scrollY : 0;
-  const path = normalizePath(location.pathname);
+  let path = normalizePath(location.pathname);
   await loadAuthSession();
+  const legacyProduct = path.startsWith("/product/")
+    ? adminStore.getProduct(decodeRoutePart(path.replace("/product/", "")), { includeDrafts: true })
+    : null;
+  if (legacyProduct) {
+    const canonicalPath = publicProductPath(legacyProduct);
+    if (canonicalPath !== path) {
+      history.replaceState({}, "", canonicalPath);
+      path = canonicalPath;
+    }
+  }
   const requiredWorkspace = workspaceForPath(path);
   const view =
     requiredWorkspace && !isWorkspaceRuntime(requiredWorkspace)
       ? privateWorkspacePage
       : requiredWorkspace && !hasWorkspaceAccess(requiredWorkspace)
         ? () => loginPage(requiredWorkspace, path)
-        : path.startsWith("/product/")
+        : path.startsWith("/product/") || parsePublicProductPath(path)
           ? productDetailPage
           : path.startsWith("/admin/preview/product/")
             ? previewProductDetailPage
@@ -166,7 +177,8 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   document.body.classList.toggle("page-lock", path === "/" || path === "/about" || path === "/contact" || isLoginView);
   document.body.classList.toggle("login-lock", isLoginView);
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
-  const markup = shell(content, path, state.cart.length, await cartDrawer(), await searchOverlay());
+  const [drawerMarkup, searchMarkup] = await Promise.all([cartDrawer(), searchOverlay()]);
+  const markup = shell(content, path, state.cart.length, drawerMarkup, searchMarkup);
   if (requestId !== renderRequestId) return;
   updateDocumentTitle(path);
   const commit = () => {
@@ -192,8 +204,8 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
 }
 
 function updateDocumentTitle(path) {
-  if (path.startsWith("/product/")) {
-    const product = adminStore.getProduct(decodeRoutePart(path.replace("/product/", "")), { includeDrafts: true });
+  if (path.startsWith("/product/") || parsePublicProductPath(path)) {
+    const product = findProductForPublicPath(path);
     document.title = product ? `${product.artist} - ${product.title} | NIXP` : "NIXP";
     return;
   }
@@ -290,6 +302,17 @@ function decodeRoutePart(value) {
   }
 }
 
+function findProductForPublicPath(path, { includeDrafts = true } = {}) {
+  if (path.startsWith("/product/")) {
+    return adminStore.getProduct(decodeRoutePart(path.replace("/product/", "")), { includeDrafts });
+  }
+  const parsed = parsePublicProductPath(path);
+  if (!parsed) return null;
+  return adminStore
+    .listProducts({ includeDrafts })
+    .find((product) => publicCategoryPath(product) === parsed.categoryPath && publicProductSlug(product) === parsed.slug);
+}
+
 async function homePage() {
   const products = await catalogService.listProducts();
   const selectedCollection = homeCollectionOptions.some(([id]) => id === state.homeCollectionFilter)
@@ -326,7 +349,7 @@ async function homePage() {
                   .map(
                     (product, index) => `
                       <article class="slide">
-                        <a href="/product/${product.id}" data-link>
+                        <a href="${publicProductPath(product)}" data-link data-product-link>
                           <figure class="product-art slide-art">
                             <img src="${product.image}" alt="${product.title}" />
                           </figure>
@@ -457,8 +480,12 @@ async function apparelPage(filter = state.apparelFilter) {
 }
 
 async function productDetailPage(path) {
-  const id = decodeRoutePart(path.replace("/product/", ""));
-  const product = await catalogService.getProduct(id);
+  const parsed = parsePublicProductPath(path);
+  const product = path.startsWith("/product/")
+    ? await catalogService.getProduct(decodeRoutePart(path.replace("/product/", "")))
+    : parsed
+      ? await catalogService.getProductByPublicSlug(parsed.categoryPath, parsed.slug)
+      : null;
   if (!product) return notFoundPage();
   return productDetailMarkup(product);
 }
@@ -498,7 +525,7 @@ async function productDetailMarkup(product) {
           .join("")}
       </div>
       <aside class="detail-copy">
-        <a class="back-link" href="/${product.category.toLowerCase()}" data-link>${product.category}</a>
+        <a class="back-link" href="/${publicCategoryPath(product)}" data-link>${product.category}</a>
         <p class="eyebrow">${product.artist}</p>
         <h1>${product.title}</h1>
         <div class="detail-price">${money.format(product.price)}</div>
@@ -937,7 +964,7 @@ async function searchOverlay() {
       type: product.category,
       title: product.title,
       meta: `${product.artist} / ${product.displayFormat || product.format}${product.label ? ` / ${product.label}` : ""}`,
-      href: `/product/${product.id}`
+      href: publicProductPath(product)
     })),
     ...artists.map((artist) => ({
       type: "Artist",
@@ -2668,7 +2695,7 @@ function bindHomeSlider() {
     viewport.setPointerCapture?.(pointerId);
   };
   const onProductPointerDown = (event) => {
-    const productLink = event.target?.closest?.('a[href^="/product/"]');
+    const productLink = event.target?.closest?.("a[data-product-link]");
     pendingProductHref = productLink?.getAttribute("href") || "";
     pendingProductX = event.clientX;
     pendingProductY = event.clientY;
@@ -2703,7 +2730,7 @@ function bindHomeSlider() {
     navigateInternal(href);
   };
   const preventClickAfterDrag = (event) => {
-    const productLink = event.target?.closest?.('a[href^="/product/"]');
+    const productLink = event.target?.closest?.("a[data-product-link]");
     if (productLink && (!didDrag || performance.now() > suppressClickUntil)) {
       event.preventDefault();
       event.stopPropagation();

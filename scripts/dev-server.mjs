@@ -3,6 +3,7 @@ import { randomBytes, timingSafeEqual } from "node:crypto";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { createReadStream, existsSync } from "node:fs";
 import { basename, extname, join, normalize, resolve } from "node:path";
+import { publicProductPath } from "../src/data/publicUrls.js";
 
 const rootArg = process.argv[2] || ".";
 const root = resolve(process.cwd(), rootArg);
@@ -212,6 +213,22 @@ async function handleApi(req, res) {
   }
 
   if (url.pathname === "/api/catalog" && req.method === "GET") {
+    if (url.searchParams.get("action") === "product-redirect") {
+      const productId = String(url.searchParams.get("id") || "").trim();
+      const storePath = join(root, "public", "data", "public-store.json");
+      const store = existsSync(storePath) ? JSON.parse(await readFile(storePath, "utf8")) : { products: [] };
+      const product = (store.products || []).find((item) => item.id === productId);
+      if (!product) {
+        json(res, 404, { ok: false, error: "Product not found." });
+        return true;
+      }
+      res.writeHead(308, {
+        location: publicProductPath(product),
+        "cache-control": "public, max-age=31536000, immutable"
+      });
+      res.end();
+      return true;
+    }
     const scope = url.searchParams.get("scope") || "public";
     const session = sessionFromRequest(req);
     if (scope === "admin" && session?.workspace !== "admin") {

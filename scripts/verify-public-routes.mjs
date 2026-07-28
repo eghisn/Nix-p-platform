@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { artistCreditNames } from "../src/data/catalogIdentity.js";
+import { publicProductPath } from "../src/data/publicUrls.js";
 
 const root = process.cwd();
 const baseUrl = String(process.argv[2] || process.env.NIXP_BASE_URL || "").replace(/\/$/, "");
@@ -11,13 +12,18 @@ const products = (store.products || []).filter((product) => product.publishStatu
 const sampleProduct = products.find((product) => product.category === "Records") || products[0];
 const sampleArtist = artistCreditNames(sampleProduct?.artist || "")[0];
 const artistSlug = String(sampleArtist || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const paths = ["/records/", `/artists/${artistSlug}/`, `/product/${sampleProduct?.id}/`, "/request-item", "/cart"];
+const canonicalProductPath = sampleProduct ? publicProductPath(sampleProduct) : "/records";
+const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}/` : "/product/missing/";
+const paths = ["/records/", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
 
 for (const route of paths) {
   const response = await fetch(`${baseUrl}${route}`, { redirect: "follow", cache: "no-store" });
   const body = await response.text();
   if (!response.ok) throw new Error(`${route} returned ${response.status}`);
   if (!/NIXP_APP_MARKER|src\/main\.js|assets\/app\.js/.test(body)) throw new Error(`${route} did not return the NIXP application shell`);
+  if (route.startsWith("/product/") && /rel="canonical"/i.test(body) && !body.includes(canonicalProductPath)) {
+    throw new Error(`${route} did not expose the canonical product path`);
+  }
   process.stdout.write(`${route} ${response.status}\n`);
 }
 

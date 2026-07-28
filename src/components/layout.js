@@ -1,4 +1,5 @@
 import { artistCreditNames, artistIdentityKey, canonicalLabelName } from "../data/catalogIdentity.js";
+import { publicProductPath } from "../data/publicUrls.js";
 
 const leftPublicLinks = [
   ["Records", "/records"],
@@ -142,7 +143,7 @@ export function productGrid(products, options = {}) {
 export function productCard(product, { hrefFor, availableArtistNames } = {}) {
   const meta = product.condition ? `${product.displayFormat || product.format}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
-  const href = hrefFor ? hrefFor(product) : `/product/${product.id}`;
+  const href = hrefFor ? hrefFor(product) : publicProductPath(product);
   const soldOut = productQuantity(product) <= 0;
   const labelLink =
     product.category === "Records" && product.label
@@ -151,7 +152,7 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
 
   return `
     <article class="product-card ${soldOut ? "is-sold-out" : ""}">
-      <a class="product-link" href="${href}" data-link aria-label="View ${product.title}">
+      <a class="product-link" href="${href}" data-link data-product-link aria-label="View ${product.title}">
         <figure class="${artClass} ${soldOut ? "is-sold-out" : ""}">
           <img src="${product.image}" alt="${product.title}" loading="lazy" decoding="async" />
           ${soldOut ? `<span class="sold-out-label">Sold out</span>` : ""}
@@ -159,7 +160,7 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
       </a>
       <div class="product-meta">
         <p>${product.artist}</p>
-        <h2><a href="${href}" data-link>${product.title}</a></h2>
+        <h2><a href="${href}" data-link data-product-link>${product.title}</a></h2>
         ${labelLink}
         ${recordArtistTags(product, availableArtistNames)}
         <div class="row-between">

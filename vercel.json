@@ -92,7 +92,27 @@
       "destination": "/api/finance-app?financePath=/"
     },
     {
-      "source": "/product/:path*",
+      "source": "/product/:productId",
+      "destination": "/api/catalog?action=product-redirect&id=:productId"
+    },
+    {
+      "source": "/records/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/objects/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/apparel/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/accessories/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/publishing/:path*",
       "destination": "/index.html"
     },
     {
