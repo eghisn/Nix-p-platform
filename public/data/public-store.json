@@ -413,7 +413,7 @@
       ],
       "year": 2011,
       "color": "",
-      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp",
+      "image": "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
       "label": "Secretly Canadian",
       "price": 360000,
       "sizes": [],
@@ -421,7 +421,7 @@
       "artist": "Suuns",
       "format": "Vinyl",
       "images": [
-        "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp"
+        "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg"
       ],
       "barcode": "656605025315",
       "details": [
@@ -438,7 +438,7 @@
       "material": "",
       "condition": "New-Sealed",
       "reviewUrl": "https://www.kexp.org/read/2013/3/2/album-review-suuns-images-du-futur/",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-28",
       "collection": "Secretly Canadian",
       "visibility": "Public",
       "apparelType": "",
@@ -446,9 +446,9 @@
       "reviewQuote": "terrifying power",
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49",
-          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp",
-          "credit": "Cover Art Archive / Secretly Canadian"
+          "image": "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
+          "credit": "Discogs / Secretly Canadian",
+          "url": "https://www.discogs.com/release/3255271-Suuns-Bambi"
         }
       ],
       "reviewSource": "KEXP (quoted)",
@@ -461,13 +461,35 @@
         "Viet Cong",
         "Jerusalem In My Heart"
       ],
-      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp",
+      "autoProductPhoto": "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "MusicBrainz",
-      "metadataSourceUrl": "https://www.discogs.com/master/1568907-Suuns-Bambi",
+      "metadataSourceUrl": "https://www.discogs.com/release/3255271-Suuns-Bambi",
       "enrichmentUpdatedAt": "2026-07-27",
-      "musicBrainzReleaseId": "ac2611e4-fa10-47f1-a328-8fad3c73cb49"
+      "musicBrainzReleaseId": "ac2611e4-fa10-47f1-a328-8fad3c73cb49",
+      "updated_at": "2026-07-28",
+      "raw": {
+        "image": "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
+        "images": [
+          "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg"
+        ],
+        "metadataSourceUrl": "https://www.discogs.com/release/3255271-Suuns-Bambi",
+        "imageCredits": [
+          {
+            "image": "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
+            "credit": "Discogs / Secretly Canadian",
+            "url": "https://www.discogs.com/release/3255271-Suuns-Bambi"
+          }
+        ]
+      },
+      "image_credits": [
+        {
+          "image": "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
+          "credit": "Discogs / Secretly Canadian",
+          "url": "https://www.discogs.com/release/3255271-Suuns-Bambi"
+        }
+      ]
     },
     {
       "id": "finance-nxp-2026-vnl-0026",
@@ -1796,7 +1818,7 @@
       "format": "Vinyl",
       "images": [
         "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-        "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-vinyl.jpg"
+        "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg"
       ],
       "barcode": "",
       "details": [
@@ -1805,12 +1827,12 @@
         "Condition: New-Sealed",
         "Edition: Black vinyl reissue"
       ],
-      "edition": "Black vinyl reissue",
+      "edition": "2023 limited picture disc vinyl reissue",
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
       "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-28",
       "collection": "Listenable Records",
       "visibility": "Public",
       "apparelType": "",
@@ -1818,14 +1840,14 @@
       "reviewQuote": "a bona-fide tech-death classic",
       "imageCredits": [
         {
-          "url": "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available",
           "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-          "credit": "Listenable Records Bandcamp artwork"
+          "credit": "Discogs / Listenable Records",
+          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity"
         },
         {
-          "url": "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available",
-          "image": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-vinyl.jpg",
-          "credit": "Listenable Records product photography"
+          "image": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
+          "credit": "Discogs release photography / Listenable Records",
+          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity"
         }
       ],
       "reviewSource": "Sputnikmusic (quoted)",
@@ -1841,12 +1863,47 @@
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "AllMusic / MusicBrainz",
-      "metadataSourceUrl": "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available",
+      "metadataSourceUrl": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
       "enrichmentUpdatedAt": "2026-07-26",
       "homeCollections": [
         "nixp-selection"
       ],
-      "homeSlideSort": null
+      "homeSlideSort": null,
+      "updated_at": "2026-07-28",
+      "raw": {
+        "edition": "2023 limited picture disc vinyl reissue",
+        "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
+        "metadataSourceUrl": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
+        "imageCredits": [
+          {
+            "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+            "credit": "Discogs / Listenable Records",
+            "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity"
+          },
+          {
+            "image": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
+            "credit": "Discogs release photography / Listenable Records",
+            "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity"
+          }
+        ],
+        "images": [
+          "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+          "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg"
+        ]
+      },
+      "image_credits": [
+        {
+          "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+          "credit": "Discogs / Listenable Records",
+          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity"
+        },
+        {
+          "image": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
+          "credit": "Discogs release photography / Listenable Records",
+          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity"
+        }
+      ],
+      "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg"
     },
     {
       "id": "finance-nxp-2026-cd-0033",
@@ -2917,7 +2974,7 @@
       ],
       "year": 2008,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg",
+      "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
       "label": "Nuclear Blast",
       "price": 415000,
       "sizes": [],
@@ -2925,7 +2982,7 @@
       "artist": "Meshuggah",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg"
+        "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg"
       ],
       "barcode": "",
       "details": [
@@ -2938,13 +2995,19 @@
       "material": "",
       "condition": "Used Good",
       "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-28",
       "collection": "NIXP Selection",
       "visibility": "Public",
       "apparelType": "",
       "description": "Meshuggah's 2008 Nuclear Blast album obZen compresses technical precision, polyrhythmic weight and brooding reflection into one of the band's defining records.",
       "reviewQuote": "magic combination of its earlier freneticism",
-      "imageCredits": [],
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+          "credit": "Discogs / Nuclear Blast",
+          "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+        }
+      ],
       "reviewSource": "Pitchfork (quoted)",
       "catalogNumber": "",
       "displayFormat": "CD",
@@ -2961,7 +3024,30 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "AllMusic / Pitchfork"
+      "descriptionSource": "AllMusic / Pitchfork",
+      "updated_at": "2026-07-28",
+      "raw": {
+        "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+        "images": [
+          "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg"
+        ],
+        "metadataSourceUrl": "https://www.discogs.com/release/2608192-Meshuggah-obZen",
+        "imageCredits": [
+          {
+            "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+            "credit": "Discogs / Nuclear Blast",
+            "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+          }
+        ]
+      },
+      "image_credits": [
+        {
+          "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+          "credit": "Discogs / Nuclear Blast",
+          "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+        }
+      ],
+      "metadataSourceUrl": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
     },
     {
       "id": "nxp-2026-cd-0017",
@@ -4574,7 +4660,7 @@
       "year": 2023,
       "color": "",
       "image": "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg",
-      "label": "P2",
+      "label": "Dense(s) Records",
       "price": 190000,
       "sizes": [],
       "title": "Interstellar Overtrove",
@@ -4594,8 +4680,8 @@
       "material": "",
       "condition": "Used Excellent",
       "reviewUrl": "https://theprogressivesubway.com/2023/09/27/review-behold-the-arctopus-interstellar-overtrove/",
-      "updatedAt": "2026-07-27",
-      "collection": "NIXP Selection",
+      "updatedAt": "2026-07-28",
+      "collection": "Dense(s) Records",
       "visibility": "Public",
       "apparelType": "",
       "description": "Behold... The Arctopus's 2023 Interstellar Overtrove is an instrumental experiment in avant-garde jazz, jazz fusion and technical metal, performed with electronic drums, Warr guitar and guitar synth.",
@@ -4615,7 +4701,12 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "The Progressive Subway"
+      "descriptionSource": "The Progressive Subway",
+      "updated_at": "2026-07-28",
+      "raw": {
+        "label": "Dense(s) Records",
+        "collection": "Dense(s) Records"
+      }
     },
     {
       "id": "nxp-2026-cd-0010",
@@ -4923,15 +5014,15 @@
       ],
       "year": 1997,
       "color": "",
-      "image": "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg",
+      "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
       "label": "XL Recordings",
       "price": 150000,
       "sizes": [],
       "title": "The Fat Of The Land",
-      "artist": "Prodigy",
+      "artist": "The Prodigy",
       "format": "Cassette",
       "images": [
-        "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg"
+        "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg"
       ],
       "barcode": "",
       "details": [
@@ -4944,13 +5035,19 @@
       "material": "",
       "condition": "Used Good",
       "reviewUrl": "https://pitchfork.com/reviews/albums/the-prodigy-the-fat-of-the-land/",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-28",
       "collection": "NIXP Selection",
       "visibility": "Public",
       "apparelType": "",
       "description": "The Prodigy's 1997 The Fat of the Land is a global breakbeat landmark, combining punk abrasion, rave production and hard-edged vocal hooks into a chart-topping set.",
       "reviewQuote": "a Jenga of drums",
-      "imageCredits": [],
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+          "credit": "Discogs / XL Recordings",
+          "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+        }
+      ],
       "reviewSource": "Pitchfork (quoted)",
       "catalogNumber": "",
       "displayFormat": "Cassette",
@@ -4967,7 +5064,31 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "updated_at": "2026-07-28",
+      "raw": {
+        "artist": "The Prodigy",
+        "metadataSourceUrl": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land",
+        "imageCredits": [
+          {
+            "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+            "credit": "Discogs / XL Recordings",
+            "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+          }
+        ],
+        "images": [
+          "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg"
+        ],
+        "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg"
+      },
+      "image_credits": [
+        {
+          "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+          "credit": "Discogs / XL Recordings",
+          "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+        }
+      ],
+      "metadataSourceUrl": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
     },
     {
       "id": "nxp-2026-cst-0009",
@@ -5438,8 +5559,8 @@
       "sort": 49
     },
     {
-      "id": "prodigy",
-      "name": "Prodigy",
+      "id": "the-prodigy",
+      "name": "The Prodigy",
       "bio": "",
       "status": "Published",
       "sort": 50

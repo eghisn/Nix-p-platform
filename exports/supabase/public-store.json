@@ -1350,15 +1350,15 @@
       ],
       "year": 1997,
       "color": "",
-      "image": "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg",
+      "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
       "label": "XL Recordings",
       "price": 150000,
       "sizes": [],
       "title": "The Fat Of The Land",
-      "artist": "Prodigy",
+      "artist": "The Prodigy",
       "format": "Cassette",
       "images": [
-        "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg"
+        "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg"
       ],
       "details": [
         "SKU: NXP-2026-CST-0006",
@@ -1370,13 +1370,19 @@
       "material": "",
       "condition": "Used Good",
       "reviewUrl": "https://pitchfork.com/reviews/albums/the-prodigy-the-fat-of-the-land/",
-      "updatedAt": "2026-07-26",
+      "updatedAt": "2026-07-28",
       "collection": "NIXP Selection",
       "visibility": "Public",
       "apparelType": "",
       "description": "The Prodigy's 1997 The Fat of the Land is a global breakbeat landmark, combining punk abrasion, rave production and hard-edged vocal hooks into a chart-topping set.",
       "reviewQuote": "a Jenga of drums",
-      "imageCredits": [],
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+          "credit": "Discogs / XL Recordings",
+          "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+        }
+      ],
       "reviewSource": "Pitchfork (quoted)",
       "displayFormat": "Cassette",
       "homeSlideSort": 22,
@@ -1392,7 +1398,31 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "Pitchfork"
+      "descriptionSource": "Pitchfork",
+      "updated_at": "2026-07-28",
+      "raw": {
+        "artist": "The Prodigy",
+        "metadataSourceUrl": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land",
+        "imageCredits": [
+          {
+            "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+            "credit": "Discogs / XL Recordings",
+            "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+          }
+        ],
+        "images": [
+          "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg"
+        ],
+        "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg"
+      },
+      "image_credits": [
+        {
+          "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+          "credit": "Discogs / XL Recordings",
+          "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+        }
+      ],
+      "metadataSourceUrl": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
     },
     {
       "id": "nxp-2026-cst-0005",
@@ -1612,7 +1642,7 @@
       "year": 2023,
       "color": "",
       "image": "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg",
-      "label": "P2",
+      "label": "Dense(s) Records",
       "price": 190000,
       "sizes": [],
       "title": "Interstellar Overtrove",
@@ -1631,8 +1661,8 @@
       "material": "",
       "condition": "Used Excellent",
       "reviewUrl": "https://theprogressivesubway.com/2023/09/27/review-behold-the-arctopus-interstellar-overtrove/",
-      "updatedAt": "2026-07-26",
-      "collection": "NIXP Selection",
+      "updatedAt": "2026-07-28",
+      "collection": "Dense(s) Records",
       "visibility": "Public",
       "apparelType": "",
       "description": "Behold... The Arctopus's 2023 Interstellar Overtrove is an instrumental experiment in avant-garde jazz, jazz fusion and technical metal, performed with electronic drums, Warr guitar and guitar synth.",
@@ -1651,7 +1681,12 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "descriptionSource": "The Progressive Subway"
+      "descriptionSource": "The Progressive Subway",
+      "updated_at": "2026-07-28",
+      "raw": {
+        "label": "Dense(s) Records",
+        "collection": "Dense(s) Records"
+      }
     },
     {
       "id": "nxp-2026-cd-0022",
@@ -2649,7 +2684,7 @@
       ],
       "year": 2008,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg",
+      "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
       "label": "Nuclear Blast",
       "price": 415000,
       "sizes": [],
@@ -2657,7 +2692,7 @@
       "artist": "Meshuggah",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg"
+        "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg"
       ],
       "details": [
         "SKU: NXP-2026-CD-0015",
@@ -2669,13 +2704,19 @@
       "material": "",
       "condition": "Used Good",
       "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
-      "updatedAt": "2026-07-26",
+      "updatedAt": "2026-07-28",
       "collection": "NIXP Selection",
       "visibility": "Public",
       "apparelType": "",
       "description": "Meshuggah's 2008 Nuclear Blast album obZen compresses technical precision, polyrhythmic weight and brooding reflection into one of the band's defining records.",
       "reviewQuote": "magic combination of its earlier freneticism",
-      "imageCredits": [],
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+          "credit": "Discogs / Nuclear Blast",
+          "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+        }
+      ],
       "reviewSource": "Pitchfork (quoted)",
       "displayFormat": "CD",
       "homeSlideSort": 2,
@@ -2691,7 +2732,30 @@
         "back-in-stock"
       ],
       "sleeveCondition": "",
-      "descriptionSource": "AllMusic / Pitchfork"
+      "descriptionSource": "AllMusic / Pitchfork",
+      "updated_at": "2026-07-28",
+      "raw": {
+        "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+        "images": [
+          "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg"
+        ],
+        "metadataSourceUrl": "https://www.discogs.com/release/2608192-Meshuggah-obZen",
+        "imageCredits": [
+          {
+            "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+            "credit": "Discogs / Nuclear Blast",
+            "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+          }
+        ]
+      },
+      "image_credits": [
+        {
+          "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+          "credit": "Discogs / Nuclear Blast",
+          "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+        }
+      ],
+      "metadataSourceUrl": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
     },
     {
       "id": "nxp-2026-cd-0017",
@@ -3871,8 +3935,8 @@
       "sort": 37
     },
     {
-      "id": "prodigy",
-      "name": "Prodigy",
+      "id": "the-prodigy",
+      "name": "The Prodigy",
       "bio": "",
       "status": "Published",
       "sort": 38

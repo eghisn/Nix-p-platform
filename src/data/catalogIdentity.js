@@ -10,6 +10,8 @@ const ARTIST_CREDIT_ALIASES = new Map([
 ]);
 
 const ARTIST_CANONICAL_NAMES = new Map([
+  ["prodigy", "The Prodigy"],
+  ["the prodigy", "The Prodigy"],
   ["soft moon", "The Soft Moon"],
   ["the soft moon", "The Soft Moon"],
   ["boards of canada", "Boards of Canada"]
@@ -49,6 +51,7 @@ export function canonicalLabelName(value) {
   if (lower.includes("rough trade")) return "Rough Trade";
   if (lower.includes("jagjaguwar")) return "Jagjaguwar";
   if (lower.includes("warp")) return "Warp Records";
+  if (lower === "p2") return "Dense(s) Records";
   return label;
 }
 

@@ -39,7 +39,7 @@ export const artistNames = [
   "Panda Bear",
   "Peggy Gou",
   "Poison The Well",
-  "Prodigy",
+  "The Prodigy",
   "Rezzett",
   "Senyawa, Kazuhisa Uchihashi",
   "Sigmun",
@@ -76,7 +76,7 @@ const recordRows = [
     "format": "CD",
     "qty": 1,
     "price": 415000,
-    "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg",
+    "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
     "condition": "Used Good"
   },
   {
@@ -291,12 +291,12 @@ const recordRows = [
   {
     "id": "nxp-2026-cst-0006",
     "sku": "NXP-2026-CST-0006",
-    "artist": "Prodigy",
+    "artist": "The Prodigy",
     "title": "The Fat Of The Land",
     "format": "Cassette",
     "qty": 1,
     "price": 150000,
-    "image": "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg",
+    "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
     "condition": "Used Good"
   },
   {
@@ -599,7 +599,7 @@ const recordLabels = {
   "nxp-2026-cd-0020": "Creation Records",
   "nxp-2026-cd-0021": "Avalanche Recordings / Daymare Recordings",
   "nxp-2026-cd-0022": "Sacred Bones Records",
-  "nxp-2026-cst-0007": "P2",
+  "nxp-2026-cst-0007": "Dense(s) Records",
   "nxp-2026-cst-0008": "Trouble In Mind",
   "nxp-2026-cst-0009": "XL Recordings",
   "nxp-2026-vnl-0007": "Brainfeeder",

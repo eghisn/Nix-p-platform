@@ -10,8 +10,26 @@
     {
       "productId": "nxp-2026-cd-0015",
       "sku": "NXP-2026-CD-0015",
-      "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg",
-      "localPath": "public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg"
+      "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+      "localPath": "public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+      "images": [
+        "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+          "credit": "Discogs / Nuclear Blast",
+          "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+        }
+      ],
+      "image_credits": [
+        {
+          "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+          "credit": "Discogs / Nuclear Blast",
+          "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+        }
+      ],
+      "metadataSourceUrl": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
     },
     {
       "productId": "nxp-2026-cst-0005",
@@ -112,8 +130,27 @@
     {
       "productId": "nxp-2026-cst-0006",
       "sku": "NXP-2026-CST-0006",
-      "image": "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg",
-      "localPath": "public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg"
+      "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+      "localPath": "public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+      "artist": "The Prodigy",
+      "images": [
+        "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg"
+      ],
+      "imageCredits": [
+        {
+          "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+          "credit": "Discogs / XL Recordings",
+          "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+        }
+      ],
+      "image_credits": [
+        {
+          "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+          "credit": "Discogs / XL Recordings",
+          "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+        }
+      ],
+      "metadataSourceUrl": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
     },
     {
       "productId": "nxp-2026-vnl-0001",
@@ -185,7 +222,9 @@
       "productId": "nxp-2026-cst-0007",
       "sku": "NXP-2026-CST-0007",
       "image": "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg",
-      "localPath": "public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg"
+      "localPath": "public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg",
+      "label": "Dense(s) Records",
+      "collection": "Dense(s) Records"
     },
     {
       "productId": "nxp-2026-cst-0008",

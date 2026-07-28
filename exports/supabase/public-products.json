@@ -379,7 +379,7 @@
   {
     "publishStatus": "Published",
     "visibility": "Public",
-    "updatedAt": "2026-07-11",
+    "updatedAt": "2026-07-28",
     "id": "nxp-2026-cd-0015",
     "sku": "NXP-2026-CD-0015",
     "title": "Obzen",
@@ -392,7 +392,7 @@
     "price": 415000,
     "year": 2008,
     "label": "Nuclear Blast",
-    "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg",
+    "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
     "tags": [
       "CD",
       "NXP-2026-CD-0015"
@@ -408,7 +408,7 @@
     "color": "",
     "material": "",
     "images": [
-      "/public/covers/nxp-2026-cd-0015-meshuggah-obzen.jpg"
+      "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg"
     ],
     "relatedArtists": [
       "Gojira",
@@ -425,7 +425,22 @@
     "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
     "edition": "",
     "mediaCondition": "",
-    "sleeveCondition": ""
+    "sleeveCondition": "",
+    "imageCredits": [
+      {
+        "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+        "credit": "Discogs / Nuclear Blast",
+        "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+      }
+    ],
+    "image_credits": [
+      {
+        "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+        "credit": "Discogs / Nuclear Blast",
+        "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
+      }
+    ],
+    "metadataSourceUrl": "https://www.discogs.com/release/2608192-Meshuggah-obZen"
   },
   {
     "publishStatus": "Published",
@@ -1440,11 +1455,11 @@
   {
     "publishStatus": "Published",
     "visibility": "Public",
-    "updatedAt": "2026-07-11",
+    "updatedAt": "2026-07-28",
     "id": "nxp-2026-cst-0006",
     "sku": "NXP-2026-CST-0006",
     "title": "The Fat Of The Land",
-    "artist": "Prodigy",
+    "artist": "The Prodigy",
     "condition": "Used Good",
     "format": "Cassette",
     "displayFormat": "Cassette",
@@ -1453,7 +1468,7 @@
     "price": 150000,
     "year": 1997,
     "label": "XL Recordings",
-    "image": "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg",
+    "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
     "tags": [
       "Cassette",
       "NXP-2026-CST-0006"
@@ -1469,7 +1484,7 @@
     "color": "",
     "material": "",
     "images": [
-      "/public/covers/nxp-2026-cst-0006-prodigy-the-fat-of-the-land.jpg"
+      "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg"
     ],
     "relatedArtists": [
       "The Chemical Brothers",
@@ -1486,7 +1501,22 @@
     "reviewUrl": "https://pitchfork.com/reviews/albums/the-prodigy-the-fat-of-the-land/",
     "edition": "",
     "mediaCondition": "",
-    "sleeveCondition": ""
+    "sleeveCondition": "",
+    "imageCredits": [
+      {
+        "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+        "credit": "Discogs / XL Recordings",
+        "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+      }
+    ],
+    "image_credits": [
+      {
+        "image": "/public/covers/nxp-2026-cst-0006-the-prodigy-the-fat-of-the-land-discogs-7205505.jpg",
+        "credit": "Discogs / XL Recordings",
+        "url": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
+      }
+    ],
+    "metadataSourceUrl": "https://www.discogs.com/release/7205505-Prodigy-The-Fat-Of-The-Land"
   },
   {
     "publishStatus": "Published",
@@ -2075,7 +2105,7 @@
   {
     "publishStatus": "Published",
     "visibility": "Public",
-    "updatedAt": "2026-07-11",
+    "updatedAt": "2026-07-28",
     "id": "nxp-2026-cst-0007",
     "sku": "NXP-2026-CST-0007",
     "title": "Interstellar Overtrove",
@@ -2087,7 +2117,7 @@
     "qty": 1,
     "price": 190000,
     "year": 2023,
-    "label": "P2",
+    "label": "Dense(s) Records",
     "image": "/public/covers/nxp-2026-cst-0007-behold-the-arctopus-interstellar-overtrove.jpg",
     "tags": [
       "Cassette",
@@ -2100,7 +2130,7 @@
       "Condition: Used Excellent"
     ],
     "sizes": [],
-    "collection": "NIXP Selection",
+    "collection": "Dense(s) Records",
     "color": "",
     "material": "",
     "images": [

@@ -17,7 +17,7 @@ const ARCHIVED_CATALOG_IMAGES = {
   "NXP-2026-VNL-0024": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0024-cover.webp" },
   "NXP-2026-VNL-0025": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0025-cover.webp" },
   "NXP-2026-VNL-0026": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0026-cover.webp" },
-  "NXP-2026-VNL-0027": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0027-cover.webp" },
+  "NXP-2026-VNL-0027": { cover: "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg" },
   "NXP-2026-VNL-0028": {
     cover: "/public/assets/catalog-archive/nxp-2026-vnl-0028-cover.webp",
     productPhoto: "/public/assets/catalog-archive/nxp-2026-vnl-0028-detail-1.webp"
@@ -163,19 +163,19 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     title: "The Erosion of Sanity",
     year: 1993,
     label: "Listenable Records",
-    edition: "Black vinyl reissue",
+    edition: "2023 limited picture disc vinyl reissue",
     cover: "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-    productPhoto: "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-vinyl.jpg",
+    productPhoto: "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
     imageCredits: [
       {
         image: "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-        credit: "Listenable Records Bandcamp artwork",
-        url: "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available"
+        credit: "Discogs / Listenable Records",
+        url: "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity"
       },
       {
-        image: "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-vinyl.jpg",
-        credit: "Listenable Records product photography",
-        url: "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available"
+        image: "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
+        credit: "Discogs release photography / Listenable Records",
+        url: "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity"
       }
     ],
     description:
@@ -186,7 +186,7 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     reviewUrl: "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
     relatedArtists: ["Behold The Arctopus", "Meshuggah", "The Dillinger Escape Plan"],
     tags: ["technical death metal", "death metal", "reissue"],
-    sourceUrl: "https://gorguts.bandcamp.com/album/the-erosion-of-sanity-sorry-digital-is-not-available"
+    sourceUrl: "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity"
   },
   "NXP-2026-VNL-0033": {
     title: "Sympathy for Life",
@@ -305,9 +305,9 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     year: 2011,
     label: "Secretly Canadian",
     edition: "12-inch single",
-    cover: "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front",
-    productPhoto: "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front",
-    imageCredits: [{ image: "https://coverartarchive.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49/front", credit: "Cover Art Archive / Secretly Canadian", url: "https://musicbrainz.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49" }],
+    cover: "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
+    productPhoto: "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
+    imageCredits: [{ image: "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg", credit: "Discogs / Secretly Canadian", url: "https://www.discogs.com/release/3255271-Suuns-Bambi" }],
     description: "Suuns' Bambi is a dark, guitar-led 12-inch single from the Montreal band's early period, moving between intimate electronic atmosphere and a sharper post-industrial attack.",
     descriptionSource: "Secretly Canadian / KEXP",
     reviewQuote: "terrifying power",
@@ -315,7 +315,7 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     reviewUrl: "https://www.kexp.org/read/2013/3/2/album-review-suuns-images-du-futur/",
     relatedArtists: ["Preoccupations", "Viet Cong", "Jerusalem In My Heart"],
     tags: ["post-punk", "electronic", "12-inch"],
-    sourceUrl: "https://www.discogs.com/master/1568907-Suuns-Bambi",
+    sourceUrl: "https://www.discogs.com/release/3255271-Suuns-Bambi",
     musicBrainzReleaseId: "ac2611e4-fa10-47f1-a328-8fad3c73cb49"
   },
   "NXP-2026-VNL-0026": {
