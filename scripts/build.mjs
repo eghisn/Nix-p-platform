@@ -474,13 +474,11 @@ await writeFile(`${dist}/index.html`, homeDocument());
 const productRoutes = new Map();
 for (const product of publicProducts) {
   const canonicalRoute = publicProductPath(product).replace(/^\//, "");
-  const legacyRoute = `product/${product.id}`;
   if (productRoutes.has(canonicalRoute)) {
     throw new Error(`Duplicate public product URL: /${canonicalRoute}`);
   }
-  staticRoutes.push(canonicalRoute, legacyRoute);
+  staticRoutes.push(canonicalRoute);
   productRoutes.set(canonicalRoute, product);
-  productRoutes.set(legacyRoute, product);
 }
 
 for (const product of publicStore?.products || []) {
