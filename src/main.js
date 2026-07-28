@@ -1,6 +1,7 @@
 import { requestStatuses } from "./data/sampleData.js";
 import { artistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLabelName } from "./data/catalogIdentity.js";
 import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicProductSlug } from "./data/publicUrls.js";
+import { recommendedProducts } from "./data/productRecommendations.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
@@ -493,9 +494,7 @@ async function productDetailPage(path) {
 async function productDetailMarkup(product) {
   const allProducts = await catalogService.listProducts();
   const availableArtistNames = inventoryArtistNames(allProducts);
-  const related = allProducts
-    .filter((item) => item.category === product.category && item.id !== product.id)
-    .slice(0, 4);
+  const related = product.category === "Records" ? recommendedProducts(product, allProducts) : [];
   const displayFormat = product.displayFormat || product.format;
   const conditionLabel = product.condition || "Available";
   const isApparel = product.category === "Apparel";

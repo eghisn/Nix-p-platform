@@ -603,6 +603,11 @@ export const adminStore = {
     }
   },
   getSnapshot() {
+    // Public navigation asks for products, artists, the cart, and search data
+    // during one render. Reusing the hydrated snapshot avoids re-merging the
+    // entire catalogue for each of those reads.
+    const scope = currentStoreScope();
+    if (activeStore && activeStoreScope === scope) return activeStore;
     return readStore();
   },
   async deployStore() {
@@ -657,7 +662,8 @@ export const adminStore = {
     return uploads;
   },
   listProducts({ includeDrafts = false } = {}) {
-    const items = readStore().products;
+    const scope = currentStoreScope();
+    const items = activeStore && activeStoreScope === scope ? activeStore.products : readStore().products;
     if (includeDrafts) return items;
     return items.filter((product) =>
       product.publishStatus === "Published" &&

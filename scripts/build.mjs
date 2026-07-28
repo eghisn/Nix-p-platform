@@ -4,6 +4,7 @@ import { build } from "esbuild";
 import { productGrid, shell } from "../src/components/layout.js";
 import { artistCreditNames } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
+import { recommendedProducts } from "../src/data/productRecommendations.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -295,9 +296,11 @@ function staticProductDetailMarkup(product) {
   const details = isApparel
     ? `<div><dt>Material</dt><dd>${escapeHtml(product.material || "-")}</dd></div><div><dt>Color</dt><dd>${escapeHtml(product.color || "-")}</dd></div>`
     : `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>${isRecord ? `<div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>` : ""}<div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div><div><dt>Notes</dt><dd>${escapeHtml((product.details || []).join(" / "))}</dd></div>`;
-  return `<section class="product-detail"><div class="detail-gallery">${images
+  const recommended = isRecord ? recommendedProducts(product, publicProducts) : [];
+  const detail = `<section class="product-detail"><div class="detail-gallery">${images
     .map((image, index) => `<figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""} ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>`)
     .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}${relatedMarkup}<div class="detail-actions"><button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button><a class="button button-outline" href="/request-item">Request similar</a></div><dl class="detail-list">${details}</dl></aside></section>`;
+  return `${detail}${recommended.length ? `<section class="section shop-section">${productGrid(recommended, { availableArtistNames })}</section>` : ""}`;
 }
 
 function productDocument(product) {

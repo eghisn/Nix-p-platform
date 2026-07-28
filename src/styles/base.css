@@ -1067,6 +1067,8 @@ p {
 
 .product-card {
   min-width: 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 470px;
 }
 
 .product-link {
