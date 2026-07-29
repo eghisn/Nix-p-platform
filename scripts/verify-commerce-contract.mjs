@@ -4,13 +4,17 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (file) => readFile(path.join(root, file), "utf8");
-const [checkout, client, handlers, migration, policies, outboxRecovery] = await Promise.all([
+const [checkout, client, handlers, migration, policies, outboxRecovery, shippingFoundation, orderStatus, maintenance, vercelConfig] = await Promise.all([
   read("api/checkout.js"),
   read("src/main.js"),
   read("api/_lib/commerceHandlers.js"),
   read("supabase/migrations/20260729113000_harden_checkout_payments_and_notifications.sql"),
   read("supabase/migrations/20260729120000_commerce_internal_table_policies.sql"),
-  read("supabase/migrations/20260729121000_recover_stale_outbox_claims.sql")
+  read("supabase/migrations/20260729121000_recover_stale_outbox_claims.sql"),
+  read("supabase/migrations/20260729133000_shipping_quote_foundation.sql"),
+  read("api/order-status.js"),
+  read("api/commerce-maintenance.js"),
+  read("vercel.json")
 ]);
 
 const requirements = [
@@ -25,7 +29,15 @@ const requirements = [
   [migration.includes("notification_outbox"), "Transactional notifications must be stored in the outbox."],
   [migration.includes("commerce_rate_limits"), "Checkout abuse limits must be stored in the database."],
   [policies.includes("No direct access to notification outbox"), "Internal commerce tables must deny direct public access."],
-  [outboxRecovery.includes("status = 'Sending'"), "Stale claimed emails must be recoverable."]
+  [outboxRecovery.includes("status = 'Sending'"), "Stale claimed emails must be recoverable."],
+  [checkout.includes("create_shipping_quote_request"), "JNE and GoSend checkout must create a delivery quote request before payment."],
+  [shippingFoundation.includes("issue_shipping_quote"), "Shipping quotes must reserve stock only after an operator issues the amount."],
+  [shippingFoundation.includes("vinyl-cardboard-bubble"), "Format-based package profiles must be stored for public products."],
+  [shippingFoundation.includes("shippingCollected"), "Finance must keep shipping collected separate from merchandise revenue."],
+  [orderStatus.includes("sameToken"), "Customer order status must require a secure per-order token."],
+  [maintenance.includes("CRON_SECRET"), "Background commerce maintenance must require a scheduler secret."],
+  [vercelConfig.includes("commerce-maintenance"), "A Vercel cron must invoke commerce maintenance."],
+  [vercelConfig.includes('"/order-status"'), "The customer order status route must resolve to the public app."]
 ];
 
 const failures = requirements.filter(([passed]) => !passed).map(([, message]) => message);

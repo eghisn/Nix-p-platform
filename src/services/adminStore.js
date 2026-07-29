@@ -164,6 +164,8 @@ function normalizeShipping(shipping = {}) {
     lengthCm: nullableNumber(data.lengthCm),
     widthCm: nullableNumber(data.widthCm),
     heightCm: nullableNumber(data.heightCm),
+    shippingClass: String(data.shippingClass || "").trim(),
+    packageType: String(data.packageType || "").trim(),
     status: data.status || "needs_measurement",
     source: String(data.source || "").trim(),
     updatedAt: data.updatedAt || ""
@@ -734,6 +736,8 @@ export const adminStore = {
         lengthCm: data.shippingLengthCm,
         widthCm: data.shippingWidthCm,
         heightCm: data.shippingHeightCm,
+        shippingClass: data.shippingClass?.trim() || existing?.shipping?.shippingClass || "",
+        packageType: data.shippingPackageType?.trim() || existing?.shipping?.packageType || "",
         status: data.shippingStatus || existing?.shipping?.status || "needs_measurement",
         source: data.shippingSource?.trim() || existing?.shipping?.source || "",
         updatedAt: today()

@@ -1,7 +1,7 @@
 import { json } from "./_lib/auth.js";
 import { consumeCommerceRateLimit, expirePendingOrders, getOrderRecord, normalizeShippingAddress, requestClientAddress } from "./_lib/commerce.js";
 import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhook } from "./_lib/commerceHandlers.js";
-import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendOrderNotification } from "./_lib/emailNotifications.js";
+import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShippingQuoteRequest, sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 
@@ -34,7 +34,8 @@ export default async function handler(req, res) {
     if (!existingOrder && !(await consumeCommerceRateLimit("checkout-submit", `${requestClientAddress(req)}:${customer.email.toLowerCase()}`, { limit: 8, windowSeconds: 900 }))) {
       return json(res, 429, { ok: false, error: "Too many checkout attempts. Please wait a few minutes and try again." });
     }
-    const order = await supabaseFetch("rpc/create_checkout_order", {
+    const requiresShippingQuote = shippingMethod === "JNE" || shippingMethod === "GoSend Manual";
+    const order = await supabaseFetch(requiresShippingQuote ? "rpc/create_shipping_quote_request" : "rpc/create_checkout_order", {
       method: "POST",
       service: true,
       body: {
@@ -47,18 +48,23 @@ export default async function handler(req, res) {
     });
     const currentOrder = await getOrderRecord(orderId);
     const emailResult = (label) => (error) => ({ delivered: false, label, error: error instanceof Error ? error.message : "Notification delivery failed." });
+    const customerAccessToken = order.customerAccessToken || currentOrder?.customer_access_token || "";
+    const statusUrl = customerAccessToken ? customerOrderStatusUrl(orderId, customerAccessToken) : "";
     const [internal, customerConfirmation] = existingOrder
       ? [{ delivered: true, reason: "existing-order" }, { delivered: true, reason: "existing-order" }]
       : await Promise.all([
           sendOrderNotification(currentOrder || order, customer).catch(emailResult("internal")),
-          sendCustomerOrderConfirmation(currentOrder || order, customer, { shippingMethod, shippingAddress }).catch(emailResult("customer"))
+          (requiresShippingQuote
+            ? sendCustomerShippingQuoteRequest(currentOrder || order, customer, statusUrl)
+            : sendCustomerOrderConfirmation(currentOrder || order, customer, { shippingMethod, shippingAddress })
+          ).catch(emailResult("customer"))
         ]);
     const notification = { internal, customer: customerConfirmation };
     if (!internal.delivered) console.warn("Internal order notification not delivered", { orderId: order.id, reason: internal.reason || internal.error || "unknown" });
     if (!customerConfirmation.delivered) console.warn("Customer order confirmation not delivered", { orderId: order.id, reason: customerConfirmation.reason || customerConfirmation.error || "unknown" });
 
     let payment = { available: false, reason: "midtrans-not-configured" };
-    if ((currentOrder || order).payment_status === "Pending" || order.paymentStatus === "Pending") {
+    if (!requiresShippingQuote && ((currentOrder || order).payment_status === "Pending" || order.paymentStatus === "Pending")) {
       try {
         payment = await createMidtransPaymentSession(orderId);
       } catch (paymentError) {
@@ -70,6 +76,9 @@ export default async function handler(req, res) {
       ok: true,
       notification,
       payment,
+      requiresShippingQuote,
+      customerAccessToken,
+      statusUrl,
       order: {
         id: order.id,
         status: order.status,
@@ -77,6 +86,8 @@ export default async function handler(req, res) {
         fulfillmentStatus: order.fulfillmentStatus || currentOrder?.fulfillment_status || null,
         shippingStatus: order.shippingStatus || currentOrder?.shipping_status || null,
         paymentExpiresAt: order.paymentExpiresAt || currentOrder?.payment_expires_at || null,
+        merchandiseTotal: order.merchandiseTotal || currentOrder?.merchandise_total || order.total,
+        shippingTotal: order.shippingTotal || currentOrder?.shipping_total || 0,
         total: order.total,
         items: order.items
       }
@@ -208,4 +219,9 @@ function isCheckoutOrigin(req) {
     "http://localhost:4174",
     "http://127.0.0.1:4174"
   ].includes(origin);
+}
+
+function customerOrderStatusUrl(orderId, token) {
+  const base = String(process.env.NIXP_PUBLIC_SITE_URL || "https://www.nix-p.com").replace(/\/$/, "");
+  return `${base}/order-status?order=${encodeURIComponent(orderId)}&token=${encodeURIComponent(token)}`;
 }

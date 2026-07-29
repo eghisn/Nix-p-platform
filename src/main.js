@@ -177,6 +177,7 @@ const routes = {
   "/shipping-returns": shippingReturnsPage,
   "/international-order": internationalOrderPage,
   "/cart": cartPage,
+  "/order-status": customerOrderStatusPage,
   "/login": loginPage,
   "/finance": cashflowPage,
   "/finance/cashflow": cashflowPage,
@@ -864,13 +865,17 @@ async function cartPage() {
               .join("")
           : `<p class="empty-state">Your cart is empty.</p>`
       }
-      <div class="cart-total"><span>Total</span><strong>${money.format(total)}</strong></div>
+      <div class="cart-total cart-totals" aria-label="Order total">
+        <span>Items</span><strong>${money.format(total)}</strong>
+        <span>Delivery</span><em>Quoted after address confirmation</em>
+        <span>Total at payment</span><strong>${money.format(total)} + delivery</strong>
+      </div>
       ${
         rows.length
           ? `
             <aside class="checkout-assurance" aria-label="Checkout details">
               <p><strong>Two-hour reservation</strong><span>Stock is held for two hours after checkout, then released automatically when payment is not completed.</span></p>
-              <p><strong>Delivery confirmed clearly</strong><span>JNE delivery and tracking are confirmed before dispatch. GoSend requests receive a manual shipping quote.</span></p>
+              <p><strong>Delivery quote before payment</strong><span>JNE and GoSend delivery costs are confirmed from your address before payment opens. The final total always includes items and shipping.</span></p>
             </aside>
             <form class="checkout-form" data-checkout-form>
               <h2>Contact</h2>
@@ -906,7 +911,7 @@ async function cartPage() {
                 <a class="button checkout-international-order" href="/international-order" data-link>Ordering from outside Indonesia?</a>
               </div>
               <div class="admin-form-actions">
-                <button class="button button-dark" type="submit">Place order and reserve stock</button>
+                <button class="button button-dark" type="submit" data-checkout-submit>Request delivery quote</button>
                 <p class="admin-form-note" data-tone="${escapeAttr(state.checkoutTone)}">${escapeHtml(state.checkoutMessage)}</p>
               </div>
             </form>
@@ -915,6 +920,55 @@ async function cartPage() {
       }
     </section>
   `;
+}
+
+async function customerOrderStatusPage() {
+  const params = new URLSearchParams(location.search);
+  const orderId = String(params.get("order") || "").trim();
+  const token = String(params.get("token") || "").trim();
+  if (!orderId || !token) {
+    return `<section class="section order-status-page"><div class="order-status-shell"><p class="eyebrow">NIXP ORDER</p><h1>Order link unavailable</h1><p class="empty-state">Open the secure link from your NIXP email to view a delivery quote or payment status.</p></div></section>`;
+  }
+  try {
+    const response = await fetch(`/api/order-status?order=${encodeURIComponent(orderId)}&token=${encodeURIComponent(token)}`, { cache: "no-store" });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Order status is unavailable.");
+    const order = payload.order || {};
+    const activeQuote = (payload.quotes || []).find((quote) => quote.status === "Sent") || (payload.quotes || [])[0];
+    const paymentPending = order.paymentStatus === "Pending" && order.orderStatus === "Active";
+    const quotePending = order.shippingStatus === "Awaiting Quote";
+    const expiresAt = order.paymentExpiresAt ? new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(new Date(order.paymentExpiresAt)) : "";
+    return `
+      <section class="section order-status-page">
+        <div class="order-status-shell">
+          <div class="order-status-heading">
+            <p class="eyebrow">NIXP ORDER</p>
+            <h1>${escapeHtml(order.reference || order.id)}</h1>
+            <p>${quotePending ? "Delivery details received. NIXP is preparing your shipping quote." : paymentPending ? "Your delivery quote is ready. Payment is secured through Midtrans." : "This page reflects the latest verified order status."}</p>
+          </div>
+          <div class="order-status-grid">
+            <div class="order-status-lines">
+              ${(order.items || []).map((item) => `<p><span>${escapeHtml([item.artist, item.title, item.size ? `/${item.size}` : ""].filter(Boolean).join(" "))} <small>x${item.quantity}</small></span><strong>${money.format(item.lineTotal || 0)}</strong></p>`).join("")}
+              <p><span>Items</span><strong>${money.format(order.merchandiseTotal || 0)}</strong></p>
+              <p><span>Shipping${activeQuote?.service ? ` / ${escapeHtml(activeQuote.service)}` : ""}</span><strong>${quotePending ? "Awaiting quote" : money.format(order.shippingTotal || 0)}</strong></p>
+              <p class="order-status-total"><span>Total</span><strong>${quotePending ? "To be confirmed" : money.format(order.total || 0)}</strong></p>
+            </div>
+            <div class="order-status-meta">
+              <p><span>Order</span><strong>${escapeHtml(order.orderStatus || "-")}</strong></p>
+              <p><span>Payment</span><strong>${escapeHtml(order.paymentStatus || "-")}</strong></p>
+              <p><span>Fulfillment</span><strong>${escapeHtml(order.fulfillmentStatus || "-")}</strong></p>
+              <p><span>Delivery</span><strong>${escapeHtml(order.shippingStatus || "-")}${activeQuote?.eta ? ` / ${escapeHtml(activeQuote.eta)}` : ""}</strong></p>
+              ${order.trackingNumber ? `<p><span>Tracking</span><strong>${escapeHtml(order.trackingNumber)}</strong></p>` : ""}
+            </div>
+          </div>
+          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p><div class="order-status-actions"><button class="button button-dark" type="button" data-order-pay data-order-id="${escapeAttr(orderId)}" data-order-token="${escapeAttr(token)}">Continue to payment</button><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>`}
+          <p class="admin-form-note" data-order-status-message aria-live="polite"></p>
+        </div>
+      </section>
+    `;
+  } catch (error) {
+    return `<section class="section order-status-page"><div class="order-status-shell"><p class="eyebrow">NIXP ORDER</p><h1>Order unavailable</h1><p class="empty-state">${escapeHtml(error instanceof Error ? error.message : "Order status is unavailable.")}</p></div></section>`;
+  }
 }
 
 async function cartSummary() {
@@ -1713,6 +1767,17 @@ async function ordersPage({ embedded = false } = {}) {
   return `
     ${embedded ? "" : adminHero("Orders", "Payment, fulfillment, shipping, and action-required order operations.")}
     <div>
+      <form class="admin-panel admin-shipping-quote-form" data-admin-shipping-quote-form>
+        <div class="admin-form-heading"><h3>Issue delivery quote</h3><p>Confirm the courier charge before stock is reserved and payment opens.</p></div>
+        <div class="admin-form-grid">
+          ${input("orderId", "Order ID", "", "order-...", "text")}
+          ${input("amount", "Shipping amount (Rp)", "", "0", "number")}
+          ${input("courier", "Courier", "JNE", "JNE", "text")}
+          ${input("service", "Service", "", "REG / YES", "text")}
+          ${input("eta", "Estimated delivery", "", "2-4 working days", "text")}
+        </div>
+        <div class="admin-form-actions"><button class="button button-dark" type="submit">Send quote</button><p class="admin-form-note" data-admin-quote-message aria-live="polite"></p></div>
+      </form>
       ${adminListControls("orders", "Search orders, SKU, artist, album", [
         ["date", "Date"],
         ["customer", "Customer"],
@@ -1832,6 +1897,10 @@ function shippingAttributeFields(product = {}) {
         ${input("shippingLengthCm", "Length (cm)", shipping.lengthCm ?? "", "Measured package length", "number")}
         ${input("shippingWidthCm", "Width (cm)", shipping.widthCm ?? "", "Measured package width", "number")}
         ${input("shippingHeightCm", "Height (cm)", shipping.heightCm ?? "", "Measured package height", "number")}
+      </div>
+      <div class="admin-size-grid">
+        ${input("shippingClass", "Shipping class", shipping.shippingClass || "", "vinyl-cardboard-bubble")}
+        ${input("shippingPackageType", "Packaging", shipping.packageType || "", "lp-mailer / poly-mailer")}
       </div>
       <label>Measurement status
         <select name="shippingStatus">
@@ -2398,6 +2467,13 @@ function bindEvents() {
       const expiresAt = payload.order.paymentExpiresAt
         ? new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit" }).format(new Date(payload.order.paymentExpiresAt))
         : "the end of the reservation window";
+      if (payload.requiresShippingQuote && payload.statusUrl) {
+        state.cart = [];
+        clearCheckoutSession();
+        persistCart();
+        window.location.assign(payload.statusUrl);
+        return;
+      }
       if (payload.payment?.redirectUrl) {
         state.checkoutMessage = `Your order is reserved until ${expiresAt}. Opening secure payment...`;
         state.checkoutTone = "success";
@@ -2434,6 +2510,8 @@ function bindEvents() {
   };
   const syncCheckoutAddressRequirements = () => {
     const pickup = shippingMethod?.value === "Store Pickup";
+    const submit = document.querySelector("[data-checkout-submit]");
+    if (submit) submit.textContent = pickup ? "Place order and reserve stock" : "Request delivery quote";
     document.querySelectorAll("[data-checkout-address-field]").forEach((field) => {
       field.hidden = pickup;
       field.querySelectorAll("input, select").forEach((input) => {
@@ -2445,6 +2523,28 @@ function bindEvents() {
   checkoutCity?.addEventListener("change", syncCheckoutProvince);
   syncCheckoutProvince();
   syncCheckoutAddressRequirements();
+
+  document.querySelector("[data-order-status-refresh]")?.addEventListener("click", () => render({ preserveScroll: true }));
+  document.querySelector("[data-order-pay]")?.addEventListener("click", async (event) => {
+    const button = event.currentTarget;
+    const notice = document.querySelector("[data-order-status-message]");
+    button.disabled = true;
+    if (notice) notice.textContent = "Opening secure payment...";
+    try {
+      const response = await fetch("/api/order-status", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "start-payment", orderId: button.dataset.orderId, token: button.dataset.orderToken })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Payment could not be started.");
+      if (!payload.payment?.redirectUrl) throw new Error(payload.payment?.reason === "midtrans-not-configured" ? "Online payment is not activated yet. NIXP has been notified of your quote." : "Payment is not available for this order.");
+      window.location.assign(payload.payment.redirectUrl);
+    } catch (error) {
+      if (notice) notice.textContent = error instanceof Error ? error.message : "Payment could not be started.";
+      button.disabled = false;
+    }
+  });
 
   document.querySelector("[data-admin-new-product]")?.addEventListener("click", () => {
     state.adminEditingProductId = null;
@@ -2546,6 +2646,34 @@ function bindEvents() {
       await render({ preserveScroll: true });
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Could not save slider.", "error");
+      button.disabled = false;
+    }
+  });
+
+  document.querySelector("[data-admin-shipping-quote-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector("button");
+    const notice = form.querySelector("[data-admin-quote-message]");
+    const data = Object.fromEntries(new FormData(form).entries());
+    button.disabled = true;
+    if (notice) notice.textContent = "Sending delivery quote...";
+    try {
+      const response = await fetch("/api/admin/orders", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "issue-shipping-quote", ...data })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Delivery quote could not be issued.");
+      form.reset();
+      form.elements.courier.value = "JNE";
+      if (notice) notice.textContent = "Quote sent. Stock is reserved for the two-hour payment window.";
+      await adminStore.refresh();
+      await render({ preserveScroll: true });
+    } catch (error) {
+      if (notice) notice.textContent = error instanceof Error ? error.message : "Delivery quote could not be issued.";
+    } finally {
       button.disabled = false;
     }
   });

@@ -37,6 +37,35 @@ export async function sendCustomerOrderConfirmation(order, customer = {}, delive
   });
 }
 
+export async function sendCustomerShippingQuoteRequest(order, customer = {}, statusUrl = "") {
+  if (!customer.email) return { delivered: false, reason: "customer-email-missing" };
+  const message = "We received your delivery details. NIXP will confirm the shipping cost before opening payment. No payment has been taken and stock is not yet reserved.";
+  return sendNotificationEmail({
+    to: customer.email,
+    subject: `NIXP delivery quote requested: ${orderReference(order)}`,
+    replyTo: DEFAULT_TO,
+    text: statusEmailText(order, "Delivery quote requested", `${message}${statusUrl ? `\nView order status: ${statusUrl}` : ""}`),
+    html: `${statusEmailHtml(order, "Delivery quote requested", message)}${statusUrl ? `<p><a href="${escapeHtml(statusUrl)}">View order status</a></p>` : ""}`,
+    idempotencyKey: `customer-shipping-quote-request-${order?.id}`
+  });
+}
+
+export async function sendCustomerShippingQuoteNotification(order, statusUrl = "") {
+  const customer = order?.customer || {};
+  if (!customer.email) return { delivered: false, reason: "customer-email-missing" };
+  const shipping = Number(order?.shipping_total || 0);
+  const merchandise = Number(order?.merchandise_total || 0);
+  const message = `Your delivery quote is ready. Items: ${rupiah(merchandise)}. Shipping: ${rupiah(shipping)}. Total: ${rupiah(order?.grand_total)}. Stock is reserved for two hours once you open payment.`;
+  return sendNotificationEmail({
+    to: customer.email,
+    subject: `NIXP delivery quote ready: ${orderReference(order)}`,
+    replyTo: DEFAULT_TO,
+    text: statusEmailText(order, "Delivery quote ready", `${message}${statusUrl ? `\nPay securely: ${statusUrl}` : ""}`),
+    html: `${statusEmailHtml(order, "Delivery quote ready", message)}${statusUrl ? `<p><a href="${escapeHtml(statusUrl)}">Review quote and pay securely</a></p>` : ""}`,
+    idempotencyKey: `customer-shipping-quote-issued-${order?.id}`
+  });
+}
+
 export async function sendOrderPaymentNotification(order) {
   const customer = order?.customer || {};
   return sendNotificationEmail({

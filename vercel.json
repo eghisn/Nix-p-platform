@@ -8,6 +8,12 @@
       "includeFiles": "apps/finance/index.html"
     }
   },
+  "crons": [
+    {
+      "path": "/api/commerce-maintenance",
+      "schedule": "0 2 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/admin/:path*",
@@ -178,6 +184,10 @@
     },
     {
       "source": "/cart",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/order-status",
       "destination": "/index.html"
     }
   ]

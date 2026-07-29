@@ -2173,6 +2173,122 @@ body:has(.cart-view) .site-footer {
   margin-top: 2px;
 }
 
+.cart-view .cart-total {
+  display: grid;
+  gap: 7px;
+}
+
+.cart-view .cart-total span,
+.cart-view .cart-total em {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cart-view .cart-total em {
+  color: var(--muted);
+  font-size: 11px;
+  font-style: normal;
+}
+
+.order-status-page {
+  min-height: calc(100vh - 180px);
+  display: grid;
+  place-items: center;
+  padding-block: 56px 88px;
+}
+
+.order-status-shell {
+  width: min(100%, 760px);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0 26px;
+}
+
+.order-status-heading h1 {
+  margin: 5px 0 9px;
+  font-size: clamp(34px, 5vw, 60px);
+}
+
+.order-status-heading > p:last-child {
+  max-width: 480px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.order-status-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(200px, .8fr);
+  gap: 38px;
+  margin-top: 34px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.order-status-lines p,
+.order-status-meta p {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.order-status-lines strong,
+.order-status-meta strong {
+  text-align: right;
+}
+
+.order-status-meta span,
+.order-status-lines small {
+  color: var(--muted);
+}
+
+.order-status-total {
+  font-size: 15px !important;
+}
+
+.order-status-note {
+  max-width: 510px;
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.order-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.admin-shipping-quote-form {
+  margin-bottom: 26px;
+}
+
+@media (max-width: 640px) {
+  .order-status-page {
+    place-items: start;
+    padding-block: 30px 60px;
+  }
+
+  .order-status-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 25px;
+  }
+
+  .order-status-lines p,
+  .order-status-meta p {
+    font-size: 12px;
+  }
+}
+
 .admin-sync-status {
   display: flex;
   flex-wrap: wrap;

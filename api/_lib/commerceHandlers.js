@@ -5,6 +5,7 @@ import {
   sendCustomerCancellationNotification,
   sendCustomerPaymentConfirmation,
   sendCustomerRefundNotification,
+  sendCustomerShippingQuoteNotification,
   sendCustomerShippingNotification,
   sendOrderPaymentNotification,
   sendOrderRefundNotification
@@ -22,6 +23,10 @@ export async function handleMidtransToken(req, res) {
     await drainNotificationOutbox(8).catch(() => undefined);
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
     const orderId = String(body.orderId || "").trim();
+    const order = await getOrderRecord(orderId);
+    if (!order || !validCustomerAccessToken(body.customerToken, order.customer_access_token)) {
+      return json(res, 404, { ok: false, error: "Order not found." });
+    }
     const payment = await createMidtransPaymentSession(orderId);
     return json(res, 200, { ok: true, ...payment });
   } catch (error) { return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Unable to create payment session." }); }
@@ -55,6 +60,7 @@ export async function createMidtransPaymentSession(orderId) {
     body: [{ order_id: order.id, provider: "Midtrans", provider_order_id: order.id, status: "Creating", amount: order.grand_total, payload: {} }]
   });
   const customer = order.customer || {};
+  const statusUrl = customerOrderStatusUrl(order);
   try {
     const response = await fetch(`${midtransBaseUrl()}/snap/v1/transactions`, {
       method: "POST",
@@ -63,7 +69,9 @@ export async function createMidtransPaymentSession(orderId) {
         transaction_details: { order_id: order.id, gross_amount: order.grand_total },
         item_details: order.items.map((item) => ({ id: item.sku, price: item.unit_price, quantity: item.quantity, name: [item.artist, item.title, item.size_label].filter(Boolean).join(" - ").slice(0, 50) })),
         customer_details: { first_name: String(customer.name || "NIXP customer").slice(0, 255), email: String(customer.email || "").slice(0, 255), phone: String(customer.whatsapp || "").slice(0, 32) },
-        expiry: { unit: "hour", duration: 2 }, custom_field1: order.public_reference
+        expiry: { unit: "hour", duration: 2 },
+        callbacks: { finish: statusUrl, error: statusUrl },
+        custom_field1: order.public_reference
       })
     });
     const payload = await response.json().catch(() => ({}));
@@ -174,6 +182,22 @@ export async function handleAdminOrders(req, res) {
     }
     if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    if (body.action === "issue-shipping-quote") {
+      const quoted = await supabaseFetch("rpc/issue_shipping_quote", {
+        method: "POST",
+        service: true,
+        body: {
+          p_order_id: String(body.orderId || ""),
+          p_amount: Number(body.amount || 0),
+          p_courier: String(body.courier || ""),
+          p_service: body.service || null,
+          p_eta: body.eta || null
+        }
+      });
+      const after = await getOrderRecord(String(body.orderId || ""));
+      if (after) await sendCustomerShippingQuoteNotification(after, customerOrderStatusUrl(after)).catch((error) => console.warn("Customer shipping quote email not delivered", error.message));
+      return json(res, 200, { ok: true, order: quoted });
+    }
     if (body.action !== "update-operation") return json(res, 400, { ok: false, error: "Unsupported order action." });
     const orderId = String(body.orderId || "");
     const before = await getOrderRecord(orderId);
@@ -184,6 +208,17 @@ export async function handleAdminOrders(req, res) {
     }
     return json(res, 200, { ok: true, order });
   } catch (error) { return json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Order action failed." }); }
+}
+
+function customerOrderStatusUrl(order) {
+  const base = String(process.env.NIXP_PUBLIC_SITE_URL || "https://www.nix-p.com").replace(/\/$/, "");
+  return `${base}/order-status?order=${encodeURIComponent(order.id)}&token=${encodeURIComponent(order.customer_access_token || "")}`;
+}
+
+function validCustomerAccessToken(provided, stored) {
+  const left = Buffer.from(String(provided || ""));
+  const right = Buffer.from(String(stored || ""));
+  return left.length > 0 && left.length === right.length && timingSafeEqual(left, right);
 }
 
 function validSignature(body) {
