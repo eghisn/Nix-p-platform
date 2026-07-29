@@ -1,3 +1,4 @@
+import { timingSafeEqual } from "node:crypto";
 import { json } from "./_lib/auth.js";
 import { consumeCommerceRateLimit, expirePendingOrders, getOrderRecord, normalizeShippingAddress, requestClientAddress } from "./_lib/commerce.js";
 import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhook } from "./_lib/commerceHandlers.js";
@@ -9,6 +10,8 @@ export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://nix-p.com").searchParams.get("commerceAction");
   if (action === "midtrans-token") return handleMidtransToken(req, res);
   if (action === "midtrans-webhook") return handleMidtransWebhook(req, res);
+  if (action === "order-status") return handleCustomerOrderStatus(req, res);
+  if (action === "maintenance") return handleCommerceMaintenance(req, res);
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
   if (!isSupabaseConfigured({ requireServiceRole: true })) {
     return json(res, 503, { ok: false, error: "Checkout is not configured." });
@@ -99,6 +102,82 @@ export default async function handler(req, res) {
       : Number(error?.statusCode || 500);
     return json(res, status, { ok: false, error: friendlyError(message) });
   }
+}
+
+async function handleCustomerOrderStatus(req, res) {
+  if (!isSupabaseConfigured({ requireServiceRole: true })) return json(res, 503, { ok: false, error: "Order status is not configured." });
+  const url = new URL(req.url || "/", "https://www.nix-p.com");
+  const body = req.method === "POST" ? parseBody(req.body) : {};
+  const orderId = String(url.searchParams.get("order") || body.orderId || "").trim();
+  const token = String(url.searchParams.get("token") || body.token || "").trim();
+  if (!/^order-[A-Za-z0-9_-]{8,96}$/.test(orderId) || !/^[a-f0-9]{32,96}$/i.test(token)) {
+    return json(res, 400, { ok: false, error: "This order link is invalid." });
+  }
+  try {
+    if (!(await consumeCommerceRateLimit("customer-order-status", `${requestClientAddress(req)}:${orderId}`, { limit: 60, windowSeconds: 900 }))) {
+      return json(res, 429, { ok: false, error: "Please wait a moment before checking this order again." });
+    }
+    const order = await getOrderRecord(orderId);
+    if (!order || !sameToken(token, order.customer_access_token)) return json(res, 404, { ok: false, error: "Order not found." });
+    if (req.method === "POST") {
+      if (body.action !== "start-payment") return json(res, 400, { ok: false, error: "Unsupported order action." });
+      const payment = await createMidtransPaymentSession(orderId);
+      return json(res, 200, { ok: true, payment, order: customerOrderSummary(order) });
+    }
+    if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed." });
+    const quotes = await supabaseFetch(`shipping_quotes?select=courier,service,amount,eta,status,created_at,expires_at&order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc`, { service: true });
+    return json(res, 200, { ok: true, order: customerOrderSummary(order), quotes: quotes || [] });
+  } catch (error) {
+    return json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Order status is unavailable." });
+  }
+}
+
+async function handleCommerceMaintenance(req, res) {
+  if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed." });
+  if (!isSupabaseConfigured({ requireServiceRole: true })) return json(res, 503, { ok: false, error: "Commerce maintenance is not configured." });
+  if (!validCronSecret(req.headers.authorization, process.env.CRON_SECRET)) return json(res, 401, { ok: false, error: "Unauthorized." });
+  try {
+    const maintenance = await expirePendingOrders();
+    const outbox = await drainNotificationOutbox(50);
+    return json(res, 200, { ok: true, maintenance, outbox, checkedAt: new Date().toISOString() });
+  } catch (error) {
+    return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Commerce maintenance failed." });
+  }
+}
+
+function sameToken(provided, stored) {
+  const left = Buffer.from(String(provided || ""));
+  const right = Buffer.from(String(stored || ""));
+  return left.length === right.length && left.length > 0 && timingSafeEqual(left, right);
+}
+
+function validCronSecret(header, secret) {
+  const expected = String(secret || "");
+  const received = String(header || "").replace(/^Bearer\s+/i, "");
+  if (!expected || !received) return false;
+  const left = Buffer.from(received);
+  const right = Buffer.from(expected);
+  return left.length === right.length && timingSafeEqual(left, right);
+}
+
+function customerOrderSummary(order) {
+  return {
+    id: order.id,
+    reference: order.public_reference,
+    orderStatus: order.order_status,
+    paymentStatus: order.payment_status,
+    fulfillmentStatus: order.fulfillment_status,
+    shippingStatus: order.shipping_status,
+    shippingMethod: order.shipping_method,
+    courier: order.courier,
+    trackingNumber: order.tracking_number,
+    merchandiseTotal: order.merchandise_total,
+    shippingTotal: order.shipping_total,
+    total: order.grand_total,
+    paymentExpiresAt: order.payment_expires_at,
+    createdAt: order.created_at,
+    items: (order.items || []).map((item) => ({ artist: item.artist, title: item.title, size: item.size_label, quantity: item.quantity, lineTotal: item.line_total }))
+  };
 }
 
 function parseBody(body) {

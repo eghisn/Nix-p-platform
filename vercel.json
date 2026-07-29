@@ -67,6 +67,14 @@
       "destination": "/api/checkout?commerceAction=midtrans-webhook"
     },
     {
+      "source": "/api/order-status",
+      "destination": "/api/checkout?commerceAction=order-status"
+    },
+    {
+      "source": "/api/commerce-maintenance",
+      "destination": "/api/checkout?commerceAction=maintenance"
+    },
+    {
       "source": "/api/admin/orders",
       "destination": "/api/admin/store?commerceAction=orders"
     },
