@@ -1,7 +1,25 @@
 import { supabaseFetch } from "./supabase.js";
 
 export async function expirePendingOrders() {
-  return supabaseFetch("rpc/release_expired_orders", { method: "POST", service: true, body: {} });
+  return supabaseFetch("rpc/nixp_commerce_maintenance", { method: "POST", service: true, body: {} });
+}
+
+export async function consumeCommerceRateLimit(scope, subject, { limit, windowSeconds }) {
+  return supabaseFetch("rpc/consume_commerce_rate_limit", {
+    method: "POST",
+    service: true,
+    body: {
+      p_scope: String(scope || "commerce").slice(0, 80),
+      p_subject: String(subject || "unknown").slice(0, 256),
+      p_limit: limit,
+      p_window_seconds: windowSeconds
+    }
+  });
+}
+
+export function requestClientAddress(req) {
+  const forwarded = String(req?.headers?.["x-forwarded-for"] || "").split(",")[0].trim();
+  return forwarded || String(req?.headers?.["x-real-ip"] || "").trim() || "unknown";
 }
 
 export async function getOrderRecord(orderId, { includeEvents = false } = {}) {

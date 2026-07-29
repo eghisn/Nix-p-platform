@@ -8,6 +8,7 @@ import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 
 const app = document.querySelector("#app");
+const CHECKOUT_SESSION_STORAGE_KEY = "nixp-checkout-session";
 let homeSliderCleanup = null;
 let priceCache = { expiresAt: 0, prices: new Map() };
 let renderRequestId = 0;
@@ -27,7 +28,7 @@ const state = {
   cartOpen: false,
   checkoutMessage: "",
   checkoutTone: "",
-  checkoutOrderToken: "",
+  checkoutOrderToken: readCheckoutSession()?.orderId || "",
   requestNotice: "",
   requestNoticeTone: "",
   searchOpen: false,
@@ -67,6 +68,39 @@ function persistCart() {
   localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
 }
 
+function checkoutCartFingerprint(cart = state.cart) {
+  return [...cart].sort().join("|");
+}
+
+function readCheckoutSession() {
+  try {
+    const session = JSON.parse(localStorage.getItem(CHECKOUT_SESSION_STORAGE_KEY) || "null");
+    if (!session?.orderId || !session?.cartFingerprint || !session?.createdAt) return null;
+    if (Date.now() - Number(session.createdAt) > 2 * 60 * 60 * 1000) return null;
+    return session;
+  } catch {
+    return null;
+  }
+}
+
+function getCheckoutOrderToken() {
+  const fingerprint = checkoutCartFingerprint();
+  const existing = readCheckoutSession();
+  if (existing?.cartFingerprint === fingerprint) {
+    state.checkoutOrderToken = existing.orderId;
+    return existing.orderId;
+  }
+  const orderId = createCheckoutOrderToken();
+  state.checkoutOrderToken = orderId;
+  localStorage.setItem(CHECKOUT_SESSION_STORAGE_KEY, JSON.stringify({ orderId, cartFingerprint: fingerprint, createdAt: Date.now() }));
+  return orderId;
+}
+
+function clearCheckoutSession() {
+  state.checkoutOrderToken = "";
+  localStorage.removeItem(CHECKOUT_SESSION_STORAGE_KEY);
+}
+
 function cartKey(productId, size = "") {
   const cleanId = String(productId || "").trim();
   const cleanSize = String(size || "").trim();
@@ -91,7 +125,7 @@ function setCartItemQuantity(key, quantity) {
   const cleanQuantity = Math.max(0, Math.floor(Number(quantity) || 0));
   state.cart = state.cart.filter((itemKey) => itemKey !== cleanKey);
   state.cart.push(...Array.from({ length: cleanQuantity }, () => cleanKey));
-  state.checkoutOrderToken = "";
+  clearCheckoutSession();
   persistCart();
 }
 
@@ -917,7 +951,7 @@ async function cartSummary() {
   const nextCart = rows.flatMap((row) => Array.from({ length: row.quantity }, () => row.id));
   if (nextCart.join("|") !== state.cart.join("|")) {
     state.cart = nextCart;
-    state.checkoutOrderToken = "";
+    clearCheckoutSession();
     persistCart();
   }
   return {
@@ -2281,7 +2315,7 @@ function bindEvents() {
       const currentQuantity = cartItemQuantity(key);
       if (stock > 0 && currentQuantity < stock) {
         state.cart.push(key);
-        state.checkoutOrderToken = "";
+        clearCheckoutSession();
         persistCart();
       }
       state.cartOpen = true;
@@ -2347,8 +2381,7 @@ function bindEvents() {
     await render();
     try {
       const { rows } = await cartSummary();
-      const orderId = state.checkoutOrderToken || createCheckoutOrderToken();
-      state.checkoutOrderToken = orderId;
+      const orderId = getCheckoutOrderToken();
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -2362,12 +2395,26 @@ function bindEvents() {
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(payload.error || "Checkout failed.");
-      state.cart = [];
-      state.checkoutOrderToken = "";
-      persistCart();
-      state.checkoutMessage = payload.order.paymentExpiresAt
-        ? `Order ${payload.order.id} reserved until ${new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit" }).format(new Date(payload.order.paymentExpiresAt))}. Payment will be confirmed securely before NIXP processes the order.`
-        : `Order ${payload.order.id} submitted at ${money.format(payload.order.total)}.`;
+      const expiresAt = payload.order.paymentExpiresAt
+        ? new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit" }).format(new Date(payload.order.paymentExpiresAt))
+        : "the end of the reservation window";
+      if (payload.payment?.redirectUrl) {
+        state.checkoutMessage = `Your order is reserved until ${expiresAt}. Opening secure payment...`;
+        state.checkoutTone = "success";
+        await render({ preserveScroll: true });
+        window.location.assign(payload.payment.redirectUrl);
+        return;
+      }
+      if (payload.order.paymentStatus === "Paid") {
+        state.cart = [];
+        clearCheckoutSession();
+        persistCart();
+        state.checkoutMessage = `Payment for order ${payload.order.id} is confirmed.`;
+      } else if (payload.payment?.error) {
+        state.checkoutMessage = `Order ${payload.order.id} is reserved until ${expiresAt}. ${payload.payment.error}`;
+      } else {
+        state.checkoutMessage = `Order ${payload.order.id} is reserved until ${expiresAt}. Online payment will open here as soon as Midtrans is activated.`;
+      }
       state.checkoutTone = "success";
       await adminStore.refresh();
       await render({ preserveScroll: true });

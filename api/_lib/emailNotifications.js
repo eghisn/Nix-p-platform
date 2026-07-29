@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { isSupabaseConfigured, supabaseFetch } from "./supabase.js";
 
 const DEFAULT_TO = "contact@nix-p.com";
 const DEFAULT_FROM = "NIXP <contact@nix-p.com>";
@@ -126,9 +127,86 @@ export async function sendOrderRefundNotification(order, refundAmount, fullRefun
 }
 
 async function sendNotificationEmail({ to, subject, replyTo, text, html, idempotencyKey }) {
-  const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.NIXP_EMAIL_FROM || process.env.REQUEST_EMAIL_FROM || DEFAULT_FROM;
   const recipient = to || process.env.NIXP_NOTIFICATION_TO || process.env.REQUEST_NOTIFICATION_TO || DEFAULT_TO;
+  const message = { recipient, replyTo, subject, text, html, idempotencyKey, from };
+
+  if (!isSupabaseConfigured({ requireServiceRole: true })) {
+    return deliverEmail(message);
+  }
+
+  const claim = await supabaseFetch("rpc/claim_notification_outbox", {
+    method: "POST",
+    service: true,
+    body: {
+      p_idempotency_key: idempotencyKey,
+      p_recipient: recipient,
+      p_reply_to: replyTo || null,
+      p_subject: subject,
+      p_text_body: text,
+      p_html_body: html
+    }
+  });
+  if (!claim?.shouldSend) {
+    return {
+      delivered: claim?.status === "Sent",
+      queued: true,
+      reason: claim?.status === "Sent" ? "already-delivered" : "delivery-pending"
+    };
+  }
+  return deliverClaimedEmail({ ...message, ...claim });
+}
+
+export async function drainNotificationOutbox(limit = 12) {
+  if (!isSupabaseConfigured({ requireServiceRole: true })) return { processed: 0, delivered: 0, skipped: true };
+  const claimed = await supabaseFetch("rpc/claim_due_notification_outbox", {
+    method: "POST",
+    service: true,
+    body: { p_limit: Math.max(1, Math.min(Number(limit) || 12, 50)) }
+  });
+  const results = await Promise.all(
+    (Array.isArray(claimed) ? claimed : []).map((message) =>
+      deliverClaimedEmail({
+        recipient: message.recipient,
+        replyTo: message.reply_to,
+        subject: message.subject,
+        text: message.text_body,
+        html: message.html_body,
+        idempotencyKey: message.idempotency_key,
+        from: process.env.NIXP_EMAIL_FROM || process.env.REQUEST_EMAIL_FROM || DEFAULT_FROM
+      })
+    )
+  );
+  return { processed: results.length, delivered: results.filter((result) => result.delivered).length };
+}
+
+async function deliverClaimedEmail(message) {
+  try {
+    const result = await deliverEmail(message);
+    await supabaseFetch("rpc/complete_notification_outbox", {
+      method: "POST",
+      service: true,
+      body: {
+        p_idempotency_key: message.idempotencyKey,
+        p_delivered: Boolean(result.delivered),
+        p_provider_message_id: result.id || null,
+        p_error: result.delivered ? null : result.reason || "Notification email could not be delivered."
+      }
+    });
+    return { ...result, queued: true };
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : "Notification email could not be delivered.";
+    await supabaseFetch("rpc/complete_notification_outbox", {
+      method: "POST",
+      service: true,
+      body: { p_idempotency_key: message.idempotencyKey, p_delivered: false, p_error: reason }
+    }).catch(() => undefined);
+    return { delivered: false, queued: true, reason };
+  }
+}
+
+async function deliverEmail({ from, recipient, replyTo, subject, text, html, idempotencyKey }) {
+  const apiKey = process.env.RESEND_API_KEY;
   if (apiKey) return sendWithResend({ apiKey, from, to: recipient, replyTo, subject, text, html, idempotencyKey });
   if (process.env.GMAIL_SMTP_USER && process.env.GMAIL_SMTP_APP_PASSWORD) {
     return sendWithGoogleWorkspace({ from, to: recipient, replyTo, subject, text, html });

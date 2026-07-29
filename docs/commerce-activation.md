@@ -1,8 +1,8 @@
 # NIXP Commerce Activation
 
-The commerce database foundation is live in Supabase. The public checkout
-continues to use the existing manual order path until the Vercel environment
-variable `NIXP_COMMERCE_V2_ENABLED` is set to `true`.
+The commerce database foundation is live in Supabase. Public checkout always
+creates a two-hour server-priced reservation; it never records finance revenue
+or permanently deducts inventory before a verified payment.
 
 ## Status model
 
@@ -20,15 +20,16 @@ Set all values as sensitive Production variables:
 ```text
 MIDTRANS_ENV=sandbox
 MIDTRANS_SERVER_KEY=<server key from Midtrans>
-MIDTRANS_CLIENT_KEY=<client key from Midtrans>
-NIXP_COMMERCE_V2_ENABLED=false
 ```
 
 The Midtrans server key stays on the server. Never expose it in `src/`, the
 browser, GitHub, or Supabase client code.
 
-When the Snap payment UI and shipping quote form are ready for a controlled
-test, set `NIXP_COMMERCE_V2_ENABLED=true`. Leave it `false` until then.
+With a sandbox server key present, checkout creates a Snap payment session and
+redirects the customer to Midtrans. Do not add production keys until the full
+sandbox checklist below passes. The client key is not needed because NIXP uses
+Midtrans's server-created redirect session rather than exposing payment setup
+credentials in browser code.
 
 ## Provider configuration
 
@@ -44,6 +45,12 @@ provider transaction status itself before it marks an order as paid.
 Supabase runs the payment-expiry function every five minutes inside Postgres.
 The scheduler is recorded in the migration history, so it is not dependent on
 the Vercel plan or an external HTTP request.
+
+Checkout request limits, webhook receipt claims, and the transactional email
+outbox are also stored in Supabase. Failed emails remain retryable instead of
+being silently lost. A staff visit to the protected orders view and every
+checkout/payment request drain due outbox messages; add a protected background
+worker before production volume grows.
 
 ## Shipping next
 
@@ -63,3 +70,6 @@ browser.
   number.
 - Refunds and returns remain admin-reviewed workflows. Returned music stock is
   not automatically made available again.
+- Complete a real sandbox run for: successful payment, pending payment,
+  expiry, denied payment, duplicate webhook, wrong amount, last-unit race, and
+  refund before switching `MIDTRANS_ENV` to `production`.

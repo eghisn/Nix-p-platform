@@ -9,6 +9,7 @@
     "test:catalog": "node scripts/verify-catalog-integrity.mjs",
     "test:recommendations": "node scripts/verify-product-recommendations.mjs",
     "test:routes": "node scripts/verify-public-routes.mjs",
+    "test:commerce": "node scripts/verify-commerce-contract.mjs",
     "seed:admin": "node scripts/seed-admin-store.mjs",
     "sync:catalog": "node scripts/sync-catalog-snapshots.mjs",
     "preview": "node scripts/dev-server.mjs dist"

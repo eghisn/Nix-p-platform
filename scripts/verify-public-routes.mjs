@@ -13,7 +13,7 @@ const sampleProduct = products.find((product) => product.category === "Records")
 const sampleArtist = artistCreditNames(sampleProduct?.artist || "")[0];
 const artistSlug = String(sampleArtist || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const canonicalProductPath = sampleProduct ? publicProductPath(sampleProduct) : "/records";
-const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}/` : "/product/missing/";
+const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}` : "/product/missing";
 const paths = ["/records/", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
 
 for (const route of paths) {
