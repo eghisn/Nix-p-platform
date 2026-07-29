@@ -1448,11 +1448,12 @@ async function adminProductsPage({ embedded = false } = {}) {
 }
 
 function productSyncMarkup(product = {}) {
-  const sync = product.syncStatus;
-  if (!sync?.at) return "";
-  const timestamp = new Date(sync.at);
-  const date = Number.isNaN(timestamp.valueOf())
-    ? sync.at
+  const sync = product.syncStatus || {};
+  const enrichment = String(product.enrichmentStatus || "").trim();
+  if (!sync?.at && !enrichment) return "";
+  const timestamp = sync?.at ? new Date(sync.at) : null;
+  const date = !timestamp || Number.isNaN(timestamp.valueOf())
+    ? sync?.at || ""
     : new Intl.DateTimeFormat("en-GB", {
         day: "2-digit",
         month: "short",
@@ -1462,6 +1463,7 @@ function productSyncMarkup(product = {}) {
       }).format(timestamp);
   return `
     <p class="admin-sync-status" aria-live="polite">
+      ${enrichment ? `<span>Enrichment: ${escapeHtml(enrichment.replaceAll("-", " "))}</span>` : ""}
       <strong>${escapeHtml(sync.source || "System")} sync</strong>
       <span>${escapeHtml(sync.action || "Catalog synchronized")} · ${escapeHtml(date)}</span>
     </p>

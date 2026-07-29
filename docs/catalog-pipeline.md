@@ -21,11 +21,18 @@ Supabase, GitHub, Vercel, and the public storefront.
 2. After title and selling price exist, the server synchronizes the SKU to Admin.
 3. Exact reviewed matches use the curated enrichment registry.
 4. Other record releases are matched through MusicBrainz using artist, title,
-   format, and, when supplied, barcode or catalog number.
+   format, and, when supplied, barcode or catalog number. The matched cover is
+   copied into NIXP's Supabase Storage before it is used publicly.
 5. Edition, barcode, and catalog number should be entered whenever known. They
    are required to distinguish pressings that share artist, title, and format.
 6. A release is public only when it has artist, title, label, release year,
-   description, price, and a real cover image.
+   description, price, and a real cover image. A metadata fingerprint makes a
+   Finance title, artist, format, barcode, or catalog-number change re-enrich
+   that specific SKU without overwriting manual Admin edits.
+7. Automatic enrichment supplies verified release metadata, cover art, courtesy,
+   descriptive copy, and clickable catalog relationships when a verified artist
+   relationship exists. Source-backed review quotes remain editorial: the system
+   never invents a quote or attribution.
 
 ## Image Rules
 

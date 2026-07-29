@@ -1,4 +1,5 @@
-import { canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../../src/data/catalogIdentity.js";
+import { artistCreditNames, canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../../src/data/catalogIdentity.js";
+import { archiveRemoteProductImage, isManagedProductImage } from "./productImageStorage.js";
 
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const USED_CONDITION = /^used\b/i;
@@ -409,7 +410,7 @@ export const CURATED_FINANCE_ENRICHMENTS = {
   }
 };
 
-export async function enrichFinanceCatalogProduct(row, stock = {}) {
+export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArtists = [] } = {}) {
   const format = String(stock.item || row.format || "").trim();
   const title = String(stock.title || row.title || "").trim();
   const artist = canonicalArtistName(stock.artist || row.artist || "");
@@ -422,7 +423,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
   const sku = String(stock.sku || row.sku || "").trim().toUpperCase();
   const curated = CURATED_FINANCE_ENRICHMENTS[sku];
   const discoveredSource = curated || (await discoverMusicBrainzRelease({ ...stock, format, title, artist }).catch(() => null));
-  const discovered = applyArchivedCatalogImages(discoveredSource, sku);
+  const discovered = await archiveDiscoveredImages(applyArchivedCatalogImages(discoveredSource, sku), sku, usedCondition(stock.itemCondition || row.condition));
   if (!discovered) {
     return finalizeStatus(row, {
       publishable: hasCatalogCore(row),
@@ -431,17 +432,19 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
   }
 
   const raw = row.raw || {};
-  const used = USED_CONDITION.test(String(stock.itemCondition || row.condition || ""));
+  const used = usedCondition(stock.itemCondition || row.condition);
+  const previousAutoCover = String(raw.autoCover || "").trim();
   const previousAutoProductPhoto = String(raw.autoProductPhoto || "").trim();
   const currentImages = unique([row.image, ...(Array.isArray(row.images) ? row.images : [])])
     .filter(isUsableImage)
+    .filter((image) => image !== previousAutoCover)
     .filter((image) => !used || image !== previousAutoProductPhoto);
   const discoveredImages = used
     ? unique([discovered.cover])
     : unique([discovered.cover, discovered.productPhoto]);
   const images = currentImages.length ? unique([...currentImages, ...discoveredImages]) : discoveredImages;
   const existingCover =
-    isUsableImage(row.image) && (!used || row.image !== previousAutoProductPhoto) ? row.image : "";
+    isUsableImage(row.image) && row.image !== previousAutoCover && (!used || row.image !== previousAutoProductPhoto) ? row.image : "";
   const cover = existingCover || discovered.cover || images[0] || "";
   const imageCredits = mergeCredits(row.image_credits || raw.imageCredits, discovered.imageCredits);
   const details = unique([
@@ -453,7 +456,18 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
     discovered.catalogNumber ? `Catalog number: ${discovered.catalogNumber}` : "",
     discovered.barcode ? `Barcode: ${discovered.barcode}` : ""
   ]).filter((detail) => detail && !detail.startsWith("Created from finance inventory"));
-  const relatedArtists = unique([...(raw.relatedArtists || []), ...(discovered.relatedArtists || [])].map(canonicalRelatedArtistName));
+  const automatic = raw.autoEditorial || {};
+  const description = chooseEditorialValue(row.description, automatic.description, discovered.description);
+  const descriptionSource = chooseEditorialValue(raw.descriptionSource, automatic.descriptionSource, discovered.descriptionSource);
+  const reviewQuote = chooseEditorialValue(raw.reviewQuote, automatic.reviewQuote, discovered.reviewQuote || "");
+  const reviewSource = chooseEditorialValue(raw.reviewSource, automatic.reviewSource, discovered.reviewSource || "");
+  const reviewUrl = chooseEditorialValue(raw.reviewUrl, automatic.reviewUrl, discovered.reviewUrl || "");
+  const relatedArtists = unique([
+    ...((Array.isArray(raw.relatedArtists) ? raw.relatedArtists : [])),
+    ...(discovered.relatedArtists || []),
+    ...relatedArtistsFromCatalog({ artist, label: discovered.label || row.label, catalogArtists })
+  ].map(canonicalRelatedArtistName));
+  const enrichmentFingerprint = inventoryFingerprint({ ...stock, artist, title, format });
   const product = {
     ...row,
     title: discovered.title || row.title,
@@ -469,7 +483,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
     image_credits: imageCredits,
     tags: unique([...(row.tags || []), ...(discovered.tags || [])]),
     details,
-    description: row.description || discovered.description || "",
+    description,
     updated_at: today(),
     raw: {
       ...raw,
@@ -490,20 +504,30 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
       imageCredits,
       tags: unique([...(row.tags || []), ...(discovered.tags || [])]),
       details,
-      description: row.description || discovered.description || "",
+      description,
       edition: raw.edition || discovered.edition || "",
       barcode: raw.barcode || discovered.barcode || "",
       catalogNumber: raw.catalogNumber || discovered.catalogNumber || "",
       relatedArtists,
-      descriptionSource: raw.descriptionSource || discovered.descriptionSource || "",
-      reviewQuote: raw.reviewQuote || discovered.reviewQuote || "",
-      reviewSource: raw.reviewSource || discovered.reviewSource || "",
-      reviewUrl: raw.reviewUrl || discovered.reviewUrl || "",
+      descriptionSource,
+      reviewQuote,
+      reviewSource,
+      reviewUrl,
       metadataSourceUrl: discovered.sourceUrl || "",
       musicBrainzReleaseId: discovered.musicBrainzReleaseId || "",
+      autoCover: discovered.cover || previousAutoCover,
       autoProductPhoto: used ? "" : discovered.productPhoto || previousAutoProductPhoto,
+      autoEditorial: {
+        description,
+        descriptionSource,
+        reviewQuote,
+        reviewSource,
+        reviewUrl,
+        relatedArtists
+      },
+      enrichmentFingerprint,
       enrichmentOrigin: curated ? "curated-exact" : "musicbrainz",
-      enrichmentStatus: used || discovered.productPhoto ? "complete" : "needs-product-photo",
+      enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote }),
       enrichmentUpdatedAt: today()
     }
   };
@@ -511,6 +535,27 @@ export async function enrichFinanceCatalogProduct(row, stock = {}) {
     publishable: hasCatalogCore(product),
     status: product.raw.enrichmentStatus
   });
+}
+
+async function archiveDiscoveredImages(discovered, sku, used) {
+  if (!discovered) return discovered;
+  const coverResult = await archiveRemoteProductImage({ url: discovered.cover, sku, role: "cover" });
+  const photoResult = used
+    ? { url: "", archived: true }
+    : await archiveRemoteProductImage({ url: discovered.productPhoto, sku, role: "detail-1" });
+  const sourceImages = new Map([
+    [String(discovered.cover || ""), coverResult.url],
+    [String(discovered.productPhoto || ""), photoResult.url]
+  ]);
+  return {
+    ...discovered,
+    cover: coverResult.url,
+    productPhoto: photoResult.url,
+    imageCredits: (discovered.imageCredits || []).map((credit) => ({
+      ...credit,
+      image: sourceImages.get(String(credit.image || "")) || credit.image
+    }))
+  };
 }
 
 function applyArchivedCatalogImages(discovered, sku) {
@@ -621,6 +666,43 @@ function finalizeStatus(row, { publishable, status }) {
     visibility: publishable ? "Public" : "Private",
     raw
   };
+}
+
+export function inventoryFingerprint(stock = {}) {
+  return [stock.artist, stock.title, stock.format || stock.item, stock.barcode, stock.catalogNumber]
+    .map(normalizedText)
+    .join("|");
+}
+
+function usedCondition(value) {
+  return USED_CONDITION.test(String(value || ""));
+}
+
+function enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote }) {
+  if (!discovered?.cover) return "needs-cover-art";
+  if (!isManagedProductImage(discovered.cover)) return "needs-cover-archive";
+  if (!used && !discovered?.productPhoto) return "needs-product-photo";
+  if (!used && !isManagedProductImage(discovered.productPhoto)) return "needs-product-photo-archive";
+  if (!description) return "needs-editorial-metadata";
+  if (!relatedArtists.length) return "metadata-complete-no-related-artists";
+  // A source-backed review quote is never invented by automation. Its absence
+  // is an editorial task, not a failed product identity match.
+  return reviewQuote ? "complete" : "metadata-complete-needs-editorial-review";
+}
+
+function chooseEditorialValue(current, previousAutomatic, nextAutomatic) {
+  const value = String(current || "").trim();
+  if (!value || value === String(previousAutomatic || "").trim()) return String(nextAutomatic || "").trim();
+  return value;
+}
+
+function relatedArtistsFromCatalog({ artist, label, catalogArtists = [] } = {}) {
+  const ownNames = new Set(artistCreditNames(artist).map((name) => normalizedText(name)));
+  const normalizedLabel = normalizedText(label);
+  const candidates = (Array.isArray(catalogArtists) ? catalogArtists : [])
+    .filter((candidate) => normalizedText(candidate?.label) === normalizedLabel)
+    .flatMap((candidate) => artistCreditNames(candidate?.artist));
+  return unique(candidates).filter((name) => !ownNames.has(normalizedText(name))).slice(0, 6);
 }
 
 function hasCatalogCore(row) {

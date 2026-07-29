@@ -1,4 +1,4 @@
-import { enrichFinanceCatalogProduct } from "./catalogEnrichment.js";
+import { enrichFinanceCatalogProduct, inventoryFingerprint } from "./catalogEnrichment.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 
 const STATE_KEY = "main";
@@ -63,9 +63,10 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
 export async function syncFinanceInventoryToCatalog(state) {
   const stockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
   const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
-  const existingRows = skus.length
-    ? await supabaseFetch(`products?select=*&sku=in.(${skuList(skus)})`)
-    : [];
+  const [existingRows, catalogArtistRows] = await Promise.all([
+    skus.length ? supabaseFetch(`products?select=*&sku=in.(${skuList(skus)})`) : [],
+    supabaseFetch("products?select=artist,label,category,publish_status,visibility&category=eq.Records&publish_status=eq.Published&visibility=eq.Public")
+  ]);
   const existingBySku = new Map(existingRows.map((row) => [String(row.sku || "").trim().toLowerCase(), row]));
   const productRows = [];
   const productIdBySku = new Map();
@@ -77,8 +78,8 @@ export async function syncFinanceInventoryToCatalog(state) {
     const quantity = normalizedQuantity(stock.qty);
     if (existing) {
       const financeProduct = productRowFromFinanceStock(existing, stock, quantity);
-      const resolvedProduct = needsFinanceEnrichment(existing)
-          ? await enrichFinanceCatalogProduct(financeProduct, stock)
+      const resolvedProduct = needsFinanceEnrichment(existing, stock)
+          ? await enrichFinanceCatalogProduct(financeProduct, stock, { catalogArtists: catalogArtistRows })
           : financeProduct;
       productRows.push(
         withSyncAudit(resolvedProduct, {
@@ -93,7 +94,7 @@ export async function syncFinanceInventoryToCatalog(state) {
     }
     const product = draftProductFromFinanceStock(stock, quantity);
     productRows.push(
-      withSyncAudit(await enrichFinanceCatalogProduct(product, stock), {
+      withSyncAudit(await enrichFinanceCatalogProduct(product, stock, { catalogArtists: catalogArtistRows }), {
         source: "Finance",
         action: "Inventory created catalog item",
         sku,
@@ -312,18 +313,23 @@ function hasUsableProductImage(row = {}) {
   return images.some((image) => !image.includes("nixp-product-example"));
 }
 
-function needsFinanceEnrichment(row = {}) {
+function needsFinanceEnrichment(row = {}, stock = {}) {
   const financeOrigin =
     String(row.id || "").startsWith("finance-") ||
     Boolean(row.raw?.financeStockId) ||
     Boolean(row.raw?.enrichmentStatus);
   if (!financeOrigin) return false;
+  const previousFingerprint = String(row.raw?.enrichmentFingerprint || "");
+  const fingerprintChanged = Boolean(previousFingerprint) && inventoryFingerprint(stock) !== previousFingerprint;
+  const status = String(row.raw?.enrichmentStatus || "").toLowerCase();
   return Boolean(
+    fingerprintChanged ||
     !hasUsableProductImage(row) ||
       !String(row.label || "").trim() ||
       !String(row.description || "").trim() ||
       String(row.publish_status || "") !== "Published" ||
-      String(row.visibility || "") !== "Public"
+      String(row.visibility || "") !== "Public" ||
+      ["needs-release-match", "needs-cover-art", "needs-cover-archive", "needs-product-photo", "needs-product-photo-archive", "needs-editorial-metadata"].includes(status)
   );
 }
 
