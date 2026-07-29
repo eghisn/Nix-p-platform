@@ -39,6 +39,31 @@ const ARCHIVED_CATALOG_IMAGES = {
 // Exact, reviewed matches take precedence over discovery. These records also
 // document the source used for every locally archived catalog image.
 export const CURATED_FINANCE_ENRICHMENTS = {
+  "NXP-2026-CD-0036": {
+    title: "No Interference",
+    year: 2001,
+    label: "Translation Loss Records",
+    edition: "2005 deluxe reissue CD",
+    catalogNumber: "TL11",
+    barcode: "676941773121",
+    cover: "/public/covers/nxp-2026-cd-0036-dysrhythmia-no-interference.jpg",
+    imageCredits: [
+      {
+        image: "/public/covers/nxp-2026-cd-0036-dysrhythmia-no-interference.jpg",
+        credit: "Dysrhythmia Bandcamp artwork",
+        url: "https://dysrhythmia.bandcamp.com/album/no-interference"
+      }
+    ],
+    description:
+      "Dysrhythmia's No Interference was originally self-released in 2001 and later reissued by Translation Loss with five live bonus tracks. Across guitar, bass and drums, the trio treats progressive metal as a precise, restless instrumental conversation rather than verse-chorus songwriting.",
+    descriptionSource: "Dysrhythmia Bandcamp / AllMusic",
+    reviewQuote: "mathy, funky interludes",
+    reviewSource: "AllMusic (quoted)",
+    reviewUrl: "https://www.allmusic.com/artist/dysrhythmia-mn0000127155",
+    relatedArtists: ["Behold The Arctopus", "Gorguts", "The Dillinger Escape Plan"],
+    tags: ["progressive metal", "math metal", "instrumental", "technical metal", "reissue"],
+    sourceUrl: "https://dysrhythmia.bandcamp.com/album/no-interference"
+  },
   "NXP-2026-CD-0025": {
     title: "Pleiades' Dust",
     year: 2016,
