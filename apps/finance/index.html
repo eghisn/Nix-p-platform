@@ -1142,6 +1142,29 @@
           </section>
           <section class="panel">
             <div class="panel-head">
+              <h2>Month close archive</h2>
+              <small id="monthlyArchiveStatus">No closed months archived yet</small>
+            </div>
+            <p class="tiny">Closed-month reports are saved automatically from the ledger. Ledger rows are kept intact so past reports can be audited or regenerated.</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th class="money">Rows</th>
+                    <th class="money">Cash In</th>
+                    <th class="money">Cash Out</th>
+                    <th class="money">Net Income</th>
+                    <th>Closed At</th>
+                    <th class="row-actions">Export</th>
+                  </tr>
+                </thead>
+                <tbody id="monthlyArchiveBody"></tbody>
+              </table>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-head">
               <h2>Export preview</h2>
               <small>Income statement</small>
             </div>
@@ -1284,6 +1307,8 @@
       reportMonth: document.getElementById("reportMonth"),
       monthlyReportLabel: document.getElementById("monthlyReportLabel"),
       monthlyReportPreview: document.getElementById("monthlyReportPreview"),
+      monthlyArchiveStatus: document.getElementById("monthlyArchiveStatus"),
+      monthlyArchiveBody: document.getElementById("monthlyArchiveBody"),
       importFile: document.getElementById("importFile")
     };
 
@@ -1297,8 +1322,9 @@
     bindEvents();
     const removedLegacy350kCount = removeLegacy350kEntries();
     normalizeDerivedData();
+    const closedMonthReportCount = closeCompletedMonthlyReports();
     render();
-    if (removedLegacy350kCount > 0) {
+    if (removedLegacy350kCount > 0 || closedMonthReportCount > 0) {
       saveState();
     } else {
       el.saveStatus.textContent = usesLocalFileStorage ? "Saved locally" : "Loaded from protected server";
@@ -1312,20 +1338,22 @@
     function loadState() {
       if (hasServerState) {
         migratedServerState.inventoryStock = Array.isArray(migratedServerState.inventoryStock) ? migratedServerState.inventoryStock : [];
+        migratedServerState.monthlyReports = Array.isArray(migratedServerState.monthlyReports) ? migratedServerState.monthlyReports : [];
         try { window.localStorage.removeItem(STORAGE_KEY); } catch {}
         return migratedServerState;
       }
-      if (!usesLocalFileStorage) return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
+      if (!usesLocalFileStorage) return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [], monthlyReports: [] };
       try {
         const stored = JSON.parse(window.localStorage.getItem(STORAGE_KEY));
         if (stored && Array.isArray(stored.general) && Array.isArray(stored.sales) && Array.isArray(stored.expenses) && Array.isArray(stored.inventory)) {
           if (!Array.isArray(stored.inventoryStock)) stored.inventoryStock = [];
+          if (!Array.isArray(stored.monthlyReports)) stored.monthlyReports = [];
           return stored;
         }
       } catch (error) {
         console.warn("Could not load NIXP data", error);
       }
-      return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
+      return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [], monthlyReports: [] };
     }
 
     async function saveState() {
@@ -1436,8 +1464,10 @@
       state.expenses = Array.isArray(payload.state.expenses) ? payload.state.expenses : [];
       state.inventory = Array.isArray(payload.state.inventory) ? payload.state.inventory : [];
       state.inventoryStock = Array.isArray(payload.state.inventoryStock) ? payload.state.inventoryStock : [];
+      state.monthlyReports = Array.isArray(payload.state.monthlyReports) ? payload.state.monthlyReports : [];
       financeStateUpdatedAt = payload.updatedAt;
       normalizeDerivedData();
+      closeCompletedMonthlyReports();
       render();
       el.saveStatus.textContent = "Updated from storefront";
     }
@@ -1797,6 +1827,18 @@
           return;
         }
 
+        const closedMonthCsvTarget = event.target.closest("[data-export-closed-month]");
+        if (closedMonthCsvTarget) {
+          exportClosedMonthlyReport(closedMonthCsvTarget.dataset.exportClosedMonth, "csv");
+          return;
+        }
+
+        const closedMonthJpgTarget = event.target.closest("[data-export-closed-month-jpg]");
+        if (closedMonthJpgTarget) {
+          exportClosedMonthlyReport(closedMonthJpgTarget.dataset.exportClosedMonthJpg, "jpg");
+          return;
+        }
+
         const editTarget = event.target.closest("[data-edit]");
         if (editTarget) {
           const [section, id] = editTarget.dataset.edit.split(":");
@@ -1824,6 +1866,17 @@
           render();
         }
       });
+    }
+
+    function exportClosedMonthlyReport(month, format) {
+      const report = (state.monthlyReports || []).find(item => item.month === month);
+      if (!report) return;
+      const filename = "nixp-monthly-general-finance-report-" + month;
+      if (format === "jpg") {
+        exportMonthlyReportJPEG(report, filename + ".jpg");
+        return;
+      }
+      download(filename + ".csv", matrixToCSV(report.rows || monthlyReportExportRows(report)), "text/csv;charset=utf-8");
     }
 
     function resetForm(form) {
@@ -1872,6 +1925,7 @@
 
     async function commitState() {
       normalizeDerivedData();
+      closeCompletedMonthlyReports();
       const saved = await saveState();
       render();
       return saved;
@@ -2208,6 +2262,7 @@
       renderStock();
       renderPnl();
       renderMonthlyReport();
+      renderMonthlyArchive();
     }
 
     function renderSortIndicators() {
@@ -2619,8 +2674,8 @@
       return lines.map(line => reportLine(line.label, line.amount, className)).join("");
     }
 
-    function monthlyReportData() {
-      const month = el.reportMonth.value || currentMonth;
+    function monthlyReportData(monthOverride = "") {
+      const month = monthOverride || el.reportMonth.value || currentMonth;
       const financingCategories = new Set(["Investor", "Loan", "Owner Capital", "Bank", ownerReimbursementCategory]);
       const cogsCategories = new Set(["Sales COGS", "Inventory"]);
       const nonOperatingOutcomeCategories = new Set([ownerDueCategory, "Loan", "Owner Capital", "Bank"]);
@@ -2681,6 +2736,102 @@
         netIncome,
         ebitdaMargin
       };
+    }
+
+    function renderMonthlyArchive() {
+      const reports = [...(state.monthlyReports || [])].sort((a, b) => String(b.month).localeCompare(String(a.month)));
+      el.monthlyArchiveStatus.textContent = reports.length
+        ? `${reports.length} closed month${reports.length === 1 ? "" : "s"} archived`
+        : "No closed months archived yet";
+      el.monthlyArchiveBody.innerHTML = reports.length ? reports.map(report => `
+        <tr>
+          <td>${escapeHTML(report.monthLabel || formatMonthLabel(report.month))}</td>
+          <td class="money">${numeric(report.ledgerRowCount)}</td>
+          <td class="money">${rupiah(report.cashIn)}</td>
+          <td class="money">${rupiah(report.cashOut)}</td>
+          <td class="money">${rupiah(report.netIncome)}</td>
+          <td>${escapeHTML(formatDateTime(report.closedAt))}</td>
+          <td class="row-actions">
+            <button class="link-button" type="button" data-export-closed-month="${escapeHTML(report.month)}">CSV</button>
+            <button class="link-button" type="button" data-export-closed-month-jpg="${escapeHTML(report.month)}">JPEG</button>
+          </td>
+        </tr>
+      `).join("") : emptyRow(7, "Closed monthly reports will appear here automatically after a month ends.");
+    }
+
+    function closeCompletedMonthlyReports() {
+      state.monthlyReports = Array.isArray(state.monthlyReports) ? state.monthlyReports : [];
+      const completedMonths = reportableMonths().filter(month => month < currentMonth);
+      let changed = 0;
+      for (const month of completedMonths) {
+        const data = monthlyReportSnapshot(month);
+        const index = state.monthlyReports.findIndex(report => report.month === month);
+        const existing = index >= 0 ? state.monthlyReports[index] : null;
+        if (existing?.sourceHash === data.sourceHash) continue;
+        const next = {
+          ...data,
+          id: existing?.id || `monthly-report-${month}`,
+          closedAt: new Date().toISOString()
+        };
+        if (index >= 0) state.monthlyReports[index] = next;
+        else state.monthlyReports.push(next);
+        changed += 1;
+      }
+      return changed;
+    }
+
+    function reportableMonths() {
+      return [...new Set(buildDashboardRows()
+        .map(row => monthOf(row.date))
+        .filter(month => /^\d{4}-\d{2}$/.test(month)))].sort();
+    }
+
+    function monthlyReportSnapshot(month) {
+      const data = monthlyReportData(month);
+      const rows = monthlyReportExportRows(data);
+      return {
+        month: data.month,
+        monthLabel: data.monthLabel,
+        ledgerRowCount: data.ledgerRowCount,
+        cashIn: data.cashIn,
+        cashOut: data.cashOut,
+        netCashMovement: data.netCashMovement,
+        salesRevenue: data.salesRevenue,
+        otherRevenue: data.otherRevenue,
+        cogs: data.cogs,
+        grossProfit: data.grossProfit,
+        totalOperatingExpenses: data.totalOperatingExpenses,
+        ebitda: data.ebitda,
+        ebitdaMargin: data.ebitdaMargin,
+        taxExpense: data.taxExpense,
+        netIncome: data.netIncome,
+        operatingExpenseBreakdown: data.operatingExpenseBreakdown,
+        operatingExpenseCategoryText: data.operatingExpenseCategoryText,
+        rows,
+        sourceHash: hashReportRows(rows)
+      };
+    }
+
+    function hashReportRows(rows) {
+      let hash = 0;
+      const text = JSON.stringify(rows);
+      for (let index = 0; index < text.length; index += 1) {
+        hash = ((hash << 5) - hash + text.charCodeAt(index)) | 0;
+      }
+      return String(hash);
+    }
+
+    function formatDateTime(value) {
+      if (!value) return "";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleString("en-GB", {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
     }
 
     function formatMonthLabel(month) {
@@ -2796,7 +2947,8 @@
         ...[...state.sales].sort(byDateAsc).map(item => ["Sales", item.date, item.invoice, "Income", item.category, item.sku, "", "", "", item.qty, item.revenue, item.cogs, item.discount, item.discountContext, "", "", "", "", item.grossProfit, "", "", item.paymentMethod, "", "Gross profit: " + item.grossProfit]),
         ...[...state.expenses].sort(byDateAsc).map(item => ["Expenses", item.date, item.vendor, "Outcome", item.category, item.expense, "", "", "", "", "", item.amount, "", "", "", "", "", "", "", "", item.costType, item.paymentMethod, "", item.notes]),
         ...[...state.inventory].sort(byDateAsc).map(item => ["Inventory Purchase", item.date, item.supplier, "Outcome", item.source || "Business Purchase", item.itemType || "Vinyl", item.itemCondition || "New-Sealed", item.artistName || "", "SKU: " + item.sku, item.qty, "", item.totalCost, "", "", inventoryCashflow(item), "", "", "", "", "", "", item.paymentMethod, "", "Unit cost: " + item.unitCost]),
-        ...[...state.inventoryStock].sort((a, b) => String(a.acquisitionMonth).localeCompare(String(b.acquisitionMonth))).map(item => ["Inventory Stock", item.acquisitionMonth, "", "", item.source, item.item, item.itemCondition || "New-Sealed", item.artist, item.title, item.qty, "", "", "", "", "", item.costBasis, item.sellingPrice, item.soldPrice, item.grossProfit, formatMargin(item.margin), "", "", "", "SKU: " + item.sku])
+        ...[...state.inventoryStock].sort((a, b) => String(a.acquisitionMonth).localeCompare(String(b.acquisitionMonth))).map(item => ["Inventory Stock", item.acquisitionMonth, "", "", item.source, item.item, item.itemCondition || "New-Sealed", item.artist, item.title, item.qty, "", "", "", "", "", item.costBasis, item.sellingPrice, item.soldPrice, item.grossProfit, formatMargin(item.margin), "", "", "", "SKU: " + item.sku]),
+        ...[...(state.monthlyReports || [])].sort((a, b) => String(a.month).localeCompare(String(b.month))).map(item => ["Monthly Report Archive", item.month, "Closed: " + formatDateTime(item.closedAt), "", "", "Ledger rows: " + item.ledgerRowCount, "", "", "", "", item.cashIn, item.cashOut, "", "", item.netCashMovement, item.cogs, "", "", item.grossProfit, formatPercent(item.ebitdaMargin), "", "", "", "Net income: " + rupiah(item.netIncome)])
       ];
       download("nixp-cashflow.csv", rows.map(row => row.map(cell => `"${String(cell ?? "").replace(/"/g, '""')}"`).join(",")).join("\n"), "text/csv;charset=utf-8");
       download("nixp-cashflow-backup.json", JSON.stringify(state, null, 2), "application/json");
@@ -2893,8 +3045,8 @@
       return rows;
     }
 
-    function monthlyReportExportRows() {
-      const data = monthlyReportData();
+    function monthlyReportExportRows(sourceData = null) {
+      const data = sourceData || monthlyReportData();
       return [
         ["Monthly General Finance Report", data.monthLabel],
         ["Data Source", "finance.nix-p.com Main Dashboard ledger"],
@@ -3182,6 +3334,7 @@
           state.expenses = imported.expenses;
           state.inventory = imported.inventory;
           state.inventoryStock = Array.isArray(imported.inventoryStock) ? imported.inventoryStock : [];
+          state.monthlyReports = Array.isArray(imported.monthlyReports) ? imported.monthlyReports : [];
           commitState();
           el.saveStatus.textContent = "Imported backup";
         } catch (error) {
@@ -3200,6 +3353,7 @@
       state.expenses = [];
       state.inventory = [];
       state.inventoryStock = [];
+      state.monthlyReports = [];
       commitState();
     }
 

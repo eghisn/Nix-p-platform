@@ -2,7 +2,7 @@ import { enrichFinanceCatalogProduct } from "./catalogEnrichment.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 
 const STATE_KEY = "main";
-const EMPTY_FINANCE_STATE = { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [] };
+const EMPTY_FINANCE_STATE = { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [], monthlyReports: [] };
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const APPAREL_TYPES = new Set(["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap"]);
 
@@ -397,7 +397,8 @@ export function normalizeFinanceState(state) {
     sales: Array.isArray(state.sales) ? state.sales : [],
     expenses: Array.isArray(state.expenses) ? state.expenses : [],
     inventory: Array.isArray(state.inventory) ? state.inventory : [],
-    inventoryStock: Array.isArray(state.inventoryStock) ? state.inventoryStock : []
+    inventoryStock: Array.isArray(state.inventoryStock) ? state.inventoryStock : [],
+    monthlyReports: Array.isArray(state.monthlyReports) ? state.monthlyReports : []
   };
 }
 

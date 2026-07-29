@@ -440,6 +440,7 @@ async function recordsPage() {
           <select data-record-sort aria-label="Sort records">
             <option value="artist-asc" ${state.recordsSort === "artist-asc" ? "selected" : ""}>Artist A-Z</option>
             <option value="artist-desc" ${state.recordsSort === "artist-desc" ? "selected" : ""}>Artist Z-A</option>
+            <option value="price-asc" ${state.recordsSort === "price-asc" ? "selected" : ""}>Price low to high</option>
             <option value="price-desc" ${state.recordsSort === "price-desc" ? "selected" : ""}>Price high to low</option>
             <option value="year-desc" ${state.recordsSort === "year-desc" ? "selected" : ""}>Release year newest</option>
             <option value="year-asc" ${state.recordsSort === "year-asc" ? "selected" : ""}>Release year oldest</option>
@@ -1941,6 +1942,7 @@ function artistSlug(value) {
 function recordSortComparator(sort) {
   return (a, b) => {
     if (sort === "price-desc") return Number(b.price || 0) - Number(a.price || 0) || a.title.localeCompare(b.title);
+    if (sort === "price-asc") return Number(a.price || 0) - Number(b.price || 0) || a.title.localeCompare(b.title);
     if (sort === "year-desc") return Number(b.year || 0) - Number(a.year || 0) || a.artist.localeCompare(b.artist);
     if (sort === "year-asc") return Number(a.year || 0) - Number(b.year || 0) || a.artist.localeCompare(b.artist);
     const artistCompare = a.artist.localeCompare(b.artist);
