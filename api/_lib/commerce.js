@@ -43,6 +43,7 @@ export function normalizeShippingAddress(value) {
     district: clean(source.district, 120),
     city: clean(source.city, 120),
     province: clean(source.province, 120),
+    regionCode: clean(source.regionCode, 16),
     postalCode: clean(source.postalCode, 16),
     country: clean(source.country || "Indonesia", 80)
   };

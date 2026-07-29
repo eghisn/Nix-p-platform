@@ -172,6 +172,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/international-order",
+      "destination": "/index.html"
+    },
+    {
       "source": "/cart",
       "destination": "/index.html"
     }

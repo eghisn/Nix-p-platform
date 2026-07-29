@@ -3,6 +3,7 @@ import { expirePendingOrders, normalizeShippingAddress } from "./_lib/commerce.j
 import { handleMidtransToken, handleMidtransWebhook } from "./_lib/commerceHandlers.js";
 import { sendCustomerOrderConfirmation, sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
+import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://nix-p.com").searchParams.get("commerceAction");
@@ -158,6 +159,7 @@ function validateCheckoutDetails(customer, shippingMethod, address) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) throwCheckoutError("Please enter a valid email address.");
   if (!customer.whatsapp) throwCheckoutError("Please enter a WhatsApp number.");
   if (shippingMethod === "Store Pickup") return;
+  if (address.country !== "Indonesia") throwCheckoutError("Online checkout is currently available for delivery within Indonesia only.");
   for (const [key, label] of [
     ["recipient", "recipient name"],
     ["phone", "recipient phone"],
@@ -167,6 +169,10 @@ function validateCheckoutDetails(customer, shippingMethod, address) {
     ["province", "province"]
   ]) {
     if (!address[key]) throwCheckoutError(`Please enter the ${label}.`);
+  }
+  const region = indonesiaRegencies.find((item) => item.code === address.regionCode);
+  if (!region || region.city !== address.city || region.province !== address.province) {
+    throwCheckoutError("Please select a valid Indonesian city or regency.");
   }
   if (!/^\d{5}$/.test(address.postalCode)) throwCheckoutError("Please enter a valid 5-digit Indonesian postal code.");
 }

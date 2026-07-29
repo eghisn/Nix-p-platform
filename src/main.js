@@ -2,6 +2,7 @@ import { requestStatuses } from "./data/sampleData.js";
 import { artistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLabelName } from "./data/catalogIdentity.js";
 import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicProductSlug } from "./data/publicUrls.js";
 import { recommendedProducts } from "./data/productRecommendations.js";
+import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
@@ -107,6 +108,25 @@ const homeCollectionOptions = [
   ["private-collection", "Private Collection"]
 ];
 
+const indonesiaRegionByCode = new Map(indonesiaRegencies.map((region) => [region.code, region]));
+
+function checkoutCityOptions() {
+  const byProvince = new Map();
+  for (const region of indonesiaRegencies) {
+    const cities = byProvince.get(region.province) || [];
+    cities.push(region);
+    byProvince.set(region.province, cities);
+  }
+  return [...byProvince.entries()]
+    .map(
+      ([province, cities]) =>
+        `<optgroup label="${escapeAttr(province)}">${cities
+          .map((region) => `<option value="${escapeAttr(region.code)}">${escapeHtml(region.city)}</option>`)
+          .join("")}</optgroup>`
+    )
+    .join("");
+}
+
 const routes = {
   "/": homePage,
   "/records": recordsPage,
@@ -121,6 +141,7 @@ const routes = {
   "/about": aboutPage,
   "/contact": contactPage,
   "/shipping-returns": shippingReturnsPage,
+  "/international-order": internationalOrderPage,
   "/cart": cartPage,
   "/login": loginPage,
   "/finance": cashflowPage,
@@ -775,6 +796,20 @@ function shippingReturnsPage() {
   `;
 }
 
+function internationalOrderPage() {
+  return `
+    <section class="section editorial-page contact-page">
+      <div class="editorial-shell">
+        <h1>International Orders</h1>
+        <div class="editorial-copy contact-copy">
+          <p>Online checkout is currently available for delivery within Indonesia only. For an international order, contact NIXP directly with the item name, your destination country, and postal code.</p>
+          <p><a href="mailto:contact@nix-p.com?subject=International%20order%20enquiry">contact@nix-p.com</a><br><a href="https://wa.me/6282122876289?text=Hello%20NIXP%2C%20I%20would%20like%20to%20arrange%20an%20international%20order.">WhatsApp NIXP</a></p>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 async function cartPage() {
   const { rows, total } = await cartSummary();
   return `
@@ -799,8 +834,7 @@ async function cartPage() {
       ${
         rows.length
           ? `
-            <aside class="checkout-assurance" aria-label="Checkout assurance">
-              <p><strong>Official price verified</strong><span>Prices and available stock are checked by NIXP's server again when you submit the order.</span></p>
+            <aside class="checkout-assurance" aria-label="Checkout details">
               <p><strong>Two-hour reservation</strong><span>Stock is held for two hours after checkout, then released automatically when payment is not completed.</span></p>
               <p><strong>Delivery confirmed clearly</strong><span>JNE delivery and tracking are confirmed before dispatch. GoSend requests receive a manual shipping quote.</span></p>
             </aside>
@@ -826,13 +860,19 @@ async function cartPage() {
                 <label class="admin-form-span" data-checkout-address-field>Address<input name="shippingAddress1" required autocomplete="shipping address-line1" /></label>
                 <label class="admin-form-span" data-checkout-address-field>Address details<input name="shippingAddress2" autocomplete="shipping address-line2" placeholder="Building, unit, or landmark (optional)" /></label>
                 <label data-checkout-address-field>District<input name="shippingDistrict" required autocomplete="shipping address-level3" /></label>
-                <label data-checkout-address-field>City / regency<input name="shippingCity" required autocomplete="shipping address-level2" /></label>
-                <label data-checkout-address-field>Province<input name="shippingProvince" required autocomplete="shipping address-level1" /></label>
+                <label data-checkout-address-field>City / regency
+                  <select name="shippingCity" required autocomplete="shipping address-level2" data-checkout-city>
+                    <option value="" selected disabled>Select city or regency</option>
+                    ${checkoutCityOptions()}
+                  </select>
+                </label>
+                <label data-checkout-address-field>Province<input name="shippingProvince" required readonly autocomplete="shipping address-level1" data-checkout-province /></label>
                 <label data-checkout-address-field>Postal code<input name="shippingPostalCode" required autocomplete="shipping postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" /></label>
                 <label data-checkout-address-field>Country<input name="shippingCountry" value="Indonesia" readonly /></label>
+                <a class="button checkout-international-order" href="/international-order" data-link>Ordering from outside Indonesia?</a>
               </div>
               <div class="admin-form-actions">
-                <button class="button button-dark" type="submit">Verify order and reserve stock</button>
+                <button class="button button-dark" type="submit">Place order and reserve stock</button>
                 <p class="admin-form-note" data-tone="${escapeAttr(state.checkoutTone)}">${escapeHtml(state.checkoutMessage)}</p>
               </div>
             </form>
@@ -2287,20 +2327,22 @@ function bindEvents() {
       notes: formData.get("notes")
     };
     const shippingMethod = String(formData.get("shippingMethod") || "");
+    const selectedRegion = indonesiaRegionByCode.get(String(formData.get("shippingCity") || ""));
     const shippingAddress = {
       recipient: formData.get("shippingRecipient"),
       phone: formData.get("shippingPhone"),
       address1: formData.get("shippingAddress1"),
       address2: formData.get("shippingAddress2"),
       district: formData.get("shippingDistrict"),
-      city: formData.get("shippingCity"),
-      province: formData.get("shippingProvince"),
+      city: selectedRegion?.city || "",
+      province: selectedRegion?.province || "",
+      regionCode: selectedRegion?.code || "",
       postalCode: formData.get("shippingPostalCode"),
       country: formData.get("shippingCountry")
     };
     const button = form.querySelector('button[type="submit"]');
     button.disabled = true;
-    state.checkoutMessage = "Verifying official prices...";
+    state.checkoutMessage = "Preparing your order...";
     state.checkoutTone = "";
     await render();
     try {
@@ -2337,16 +2379,24 @@ function bindEvents() {
   });
 
   const shippingMethod = document.querySelector("[data-checkout-shipping-method]");
+  const checkoutCity = document.querySelector("[data-checkout-city]");
+  const checkoutProvince = document.querySelector("[data-checkout-province]");
+  const syncCheckoutProvince = () => {
+    const region = indonesiaRegionByCode.get(checkoutCity?.value || "");
+    if (checkoutProvince) checkoutProvince.value = region?.province || "";
+  };
   const syncCheckoutAddressRequirements = () => {
     const pickup = shippingMethod?.value === "Store Pickup";
     document.querySelectorAll("[data-checkout-address-field]").forEach((field) => {
       field.hidden = pickup;
-      field.querySelectorAll("input").forEach((input) => {
+      field.querySelectorAll("input, select").forEach((input) => {
         if (input.name !== "shippingAddress2" && input.name !== "shippingCountry") input.required = !pickup;
       });
     });
   };
   shippingMethod?.addEventListener("change", syncCheckoutAddressRequirements);
+  checkoutCity?.addEventListener("change", syncCheckoutProvince);
+  syncCheckoutProvince();
   syncCheckoutAddressRequirements();
 
   document.querySelector("[data-admin-new-product]")?.addEventListener("click", () => {
