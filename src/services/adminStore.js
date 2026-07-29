@@ -506,6 +506,35 @@ export function slugify(value) {
     .replace(/^-|-$/g, "");
 }
 
+function normalizeCommerceOrder(row = {}) {
+  const customer = row.customer || {};
+  const metadata = row.metadata || {};
+  const lineItems = Array.isArray(metadata.lineItems) ? metadata.lineItems : Array.isArray(row.lineItems) ? row.lineItems : [];
+  const ids = lineItems.map((item) => item.productId).filter(Boolean);
+  return {
+    id: row.id,
+    reference: row.public_reference || row.publicReference || row.id,
+    date: String(row.created_at || row.createdAt || "").slice(0, 10),
+    customer: customer.name || customer.email || row.name || "Website customer",
+    email: customer.email || row.email || "",
+    whatsapp: customer.whatsapp || row.whatsapp || "",
+    channel: row.shipping_method ? `Website / ${row.shipping_method}` : row.channel || "Website",
+    status: row.order_status || row.orderStatus || row.status || "Draft",
+    orderStatus: row.order_status || row.orderStatus || row.status || "Draft",
+    paymentStatus: row.payment_status || row.paymentStatus || "Unpaid",
+    fulfillmentStatus: row.fulfillment_status || row.fulfillmentStatus || "Unfulfilled",
+    shippingStatus: row.shipping_status || row.shippingStatus || "Not Required",
+    courier: row.courier || "",
+    trackingNumber: row.tracking_number || row.trackingNumber || "",
+    merchandiseTotal: Number(row.merchandise_total ?? row.merchandiseTotal ?? 0),
+    shippingTotal: Number(row.shipping_total ?? row.shippingTotal ?? 0),
+    total: Number(row.grand_total ?? row.total ?? 0),
+    items: Array.isArray(row.items) && row.items.length ? row.items : ids,
+    lineItems,
+    raw: row
+  };
+}
+
 export const adminStore = {
   async initialize() {
     const publicOnly = !canUsePrivateStore();
@@ -522,14 +551,16 @@ export const adminStore = {
     try {
       const filePath = publicOnly ? PUBLIC_STORE_PATH : ADMIN_STORE_PATH;
       const apiScope = publicOnly ? "public" : "admin";
-      const response = await fetch(`/api/catalog?scope=${apiScope}&v=${Date.now()}`, { cache: "no-store" });
+      const catalogUrl = publicOnly ? `/api/catalog?scope=${apiScope}` : `/api/catalog?scope=${apiScope}&v=${Date.now()}`;
+      const fetchOptions = publicOnly ? {} : { cache: "no-store" };
+      const response = await fetch(catalogUrl, fetchOptions);
       if (response.ok) {
         const payload = await response.json();
         if (payload.store) {
           let runtimeStore = payload.store;
           if (publicOnly) {
             try {
-              const snapshotResponse = await fetch(`${PUBLIC_STORE_PATH}?v=${Date.now()}`, { cache: "no-store" });
+              const snapshotResponse = await fetch(PUBLIC_STORE_PATH);
               if (snapshotResponse.ok) runtimeStore = reconcilePublicCatalog(runtimeStore, await snapshotResponse.json());
             } catch {
               // The API remains the source of truth when the static snapshot is unavailable.
@@ -542,7 +573,7 @@ export const adminStore = {
           return;
         }
       }
-      const fileResponse = await fetch(`${filePath}?v=${Date.now()}`, { cache: "no-store" });
+      const fileResponse = publicOnly ? await fetch(filePath) : await fetch(`${filePath}?v=${Date.now()}`, { cache: "no-store" });
       if (!fileResponse.ok) throw new Error("No file store");
       activeStore = await migrateBrowserStore(
         mergeStore(seed({ publicOnly }), await fileResponse.json(), { publicOnly }),
@@ -566,7 +597,23 @@ export const adminStore = {
     return this.getSnapshot().requests;
   },
   async refreshOrders() {
-    await this.refreshPrivateStore();
+    if (canUsePrivateStore()) {
+      try {
+        const response = await fetch(`/api/admin/orders?v=${Date.now()}`, { cache: "no-store" });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || "Could not refresh orders.");
+        const orders = (payload.orders || []).map(normalizeCommerceOrder);
+        const snapshot = this.getSnapshot();
+        activeStore = { ...snapshot, orders };
+        activeStoreScope = "admin";
+        privateStoreRefreshedAt = Date.now();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+        return orders;
+      } catch {
+        // Keep the workspace usable with the last known private store.
+      }
+    }
+    await this.refreshPrivateStore({ force: true });
     return this.getSnapshot().orders;
   },
   async refreshPrivateStore({ force = false } = {}) {

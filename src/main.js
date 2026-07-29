@@ -10,6 +10,7 @@ import { pageHero, productGrid, shell, table } from "./components/layout.js";
 const app = document.querySelector("#app");
 const CHECKOUT_SESSION_STORAGE_KEY = "nixp-checkout-session";
 let homeSliderCleanup = null;
+let adminOrdersRefreshTimer = null;
 let priceCache = { expiresAt: 0, prices: new Map() };
 let renderRequestId = 0;
 const money = new Intl.NumberFormat("id-ID", {
@@ -258,6 +259,7 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   if (requestId !== renderRequestId) return;
   if (preserveScroll) window.scrollTo({ top: previousScrollTop, behavior: "auto" });
   else if (scrollToTop) window.scrollTo({ top: 0, behavior: "auto" });
+  setupAdminOrdersLiveRefresh(path);
 }
 
 function updateDocumentTitle(path) {
@@ -1753,7 +1755,7 @@ async function ordersPage({ embedded = false } = {}) {
       order.shippingStatus,
       order.date,
       order.total,
-      order.products.map((product) => `${product.sku} ${product.artist} ${product.title}`).join(" ")
+      orderItemSummary(order)
     ]),
     state.adminSort.orders,
     {
@@ -1788,9 +1790,9 @@ async function ordersPage({ embedded = false } = {}) {
       ${table(
         ["Order", "Customer", "Items", "Payment", "Fulfillment", "Shipping", "Action required", "Total"],
         visibleOrders.map((order) => [
-          order.id,
-          order.customer,
-          order.products.map((product) => product.title).join(", "),
+          escapeHtml(order.reference || order.id),
+          `${escapeHtml(order.customer || "-")}<br><small>${escapeHtml(order.email || order.whatsapp || order.channel || "")}</small>`,
+          escapeHtml(orderItemSummary(order)),
           statusBadge(order.paymentStatus || order.status || "-"),
           statusBadge(order.fulfillmentStatus || "Unfulfilled"),
           statusBadge(order.shippingStatus || "Not Required"),
@@ -1872,6 +1874,28 @@ function input(name, label, value = "", placeholder = "", type = "text") {
       <input name="${name}" type="${type}" value="${escapeAttr(value)}" placeholder="${placeholder}" />
     </label>
   `;
+}
+
+function statusBadge(value) {
+  const label = String(value || "-").trim() || "-";
+  const className = label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "unknown";
+  return `<span class="status ${className}">${escapeHtml(label)}</span>`;
+}
+
+function orderItemSummary(order = {}) {
+  const productTitles = Array.isArray(order.products)
+    ? order.products.map((product) => [product.artist, product.title].filter(Boolean).join(" / ")).filter(Boolean)
+    : [];
+  if (productTitles.length) return productTitles.join(", ");
+  const lineItems = Array.isArray(order.lineItems) ? order.lineItems : [];
+  const lineTitles = lineItems
+    .map((item) => {
+      const title = [item.artist, item.title].filter(Boolean).join(" / ") || item.sku || item.productId || "Item";
+      const quantity = Number(item.quantity || 0);
+      return quantity > 1 ? `${title} x${quantity}` : title;
+    })
+    .filter(Boolean);
+  return lineTitles.length ? lineTitles.join(", ") : "-";
 }
 
 function orderActionRequired(order) {
@@ -2193,6 +2217,18 @@ function navigateInternal(href, { preserveScroll = false } = {}) {
   history.pushState({}, "", href);
   render({ preserveScroll, scrollToTop: !preserveScroll });
   return true;
+}
+
+function setupAdminOrdersLiveRefresh(path) {
+  if (adminOrdersRefreshTimer) {
+    clearInterval(adminOrdersRefreshTimer);
+    adminOrdersRefreshTimer = null;
+  }
+  if (path !== "/admin/orders" || !hasWorkspaceAccess("admin")) return;
+  adminOrdersRefreshTimer = setInterval(() => {
+    if (document.hidden || normalizePath(location.pathname) !== "/admin/orders") return;
+    adminStore.refreshOrders().then(() => render({ preserveScroll: true })).catch(() => undefined);
+  }, 10_000);
 }
 
 function deployStatusMarkup(status) {

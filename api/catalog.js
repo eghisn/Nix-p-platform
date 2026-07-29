@@ -13,16 +13,29 @@ export default async function handler(req, res) {
     if (req.method === "POST") return handleRequestItem(req, res);
     if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
     const privateScope = url.searchParams.get("scope") === "admin";
-    const session = getSession(req);
+    const session = privateScope ? getSession(req) : null;
     if (privateScope && session?.workspace !== "admin") return json(res, 401, { ok: false, error: "Admin login required" });
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
     const publicSnapshotUrl = privateScope ? "" : `${protocol}://${host}/public/data/public-store.json`;
     const store = await loadStore({ privateScope, publicSnapshotUrl });
-    json(res, 200, { ok: true, store });
+    catalogJson(res, 200, { ok: true, store }, { privateScope });
   } catch (error) {
     json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Catalog unavailable" });
   }
+}
+
+function catalogJson(res, status, payload, { privateScope = false } = {}) {
+  res.statusCode = status;
+  res.setHeader("content-type", "application/json; charset=utf-8");
+  if (privateScope) {
+    res.setHeader("cache-control", "no-store");
+  } else {
+    res.setHeader("cache-control", "public, max-age=60, stale-while-revalidate=300");
+    res.setHeader("cdn-cache-control", "public, max-age=300, stale-while-revalidate=1800");
+    res.setHeader("vercel-cdn-cache-control", "public, max-age=300, stale-while-revalidate=1800");
+  }
+  res.end(JSON.stringify(payload));
 }
 
 async function handleLegacyProductRedirect(req, res, id) {

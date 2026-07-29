@@ -112,12 +112,18 @@ export const catalogService = {
     }));
   },
   async listOrders() {
-    await adminStore.refreshOrders();
+    const orders = await adminStore.refreshOrders();
     const products = adminStore.listProducts({ includeDrafts: true });
-    return adminStore.getSnapshot().orders.map((order) => ({
-      ...order,
-      products: order.items.map((id) => products.find((product) => product.id === id)).filter(Boolean)
-    }));
+    return orders.map((order) => {
+      const lineItems = Array.isArray(order.lineItems) ? order.lineItems : [];
+      const productIds = Array.isArray(order.items) && order.items.length ? order.items : lineItems.map((item) => item.productId).filter(Boolean);
+      return {
+        ...order,
+        items: productIds,
+        lineItems,
+        products: productIds.map((id) => products.find((product) => product.id === id)).filter(Boolean)
+      };
+    });
   },
   async listRequests() {
     await adminStore.refreshRequests();
