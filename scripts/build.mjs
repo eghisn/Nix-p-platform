@@ -76,6 +76,7 @@ const staticRoutes = [
   "shipping-returns",
   "international-order",
   "cart",
+  "order-status",
   "admin",
   "admin/editor",
   "admin/products",
