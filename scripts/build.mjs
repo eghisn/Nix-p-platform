@@ -374,7 +374,17 @@ function staticPublicRouteMarkup(route) {
   if (route === "blog") return `<section class="section"><h1>Blog</h1><p>Notes and updates from NIXP.</p></section>`;
   if (route === "request-item") return `<section class="section"><h1>Request Item</h1><p>Send NIXP a record, object, apparel, or publication request.</p></section>`;
   if (route === "about") return `<section class="section"><h1>About NIXP</h1><p>${escapeHtml(siteDescription)}</p></section>`;
-  if (route === "contact") return `<section class="section"><h1>Contact</h1><p>Contact NIXP for orders, requests, and catalogue questions.</p></section>`;
+  if (route === "contact") {
+    return `<section class="section editorial-page contact-page">
+      <div class="editorial-shell">
+        <h1>Contact</h1>
+        <div class="editorial-copy contact-copy">
+          <address>Aesthetic Pleasure Gallery Wijaya Grand Centre, Jl. Darmawangsa Raya Blok G 9 2rd Floor, RT.6/RW.1, Pulo, Kebayoran Baru, South Jakarta City, Jakarta 12160</address>
+          <p><a href="https://wa.me/6282122876289">+628 2122 8762 89</a><br><a href="mailto:contact@nix-p.com">contact@nix-p.com</a><br><a href="/shipping-returns" data-link>Shipping &amp; Returns</a></p>
+        </div>
+      </div>
+    </section>`;
+  }
   if (route === "shipping-returns") return `<section class="section"><h1>Shipping &amp; Returns</h1><p>Shipping and return information for NIXP orders.</p></section>`;
   if (route === "international-order") return `<section class="section"><h1>International Orders</h1><p>Contact NIXP directly to arrange international shipping.</p></section>`;
   if (route === "cart") return `<section class="section"><h1>Cart</h1><p class="empty-state">Your cart is currently empty.</p></section>`;
