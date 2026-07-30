@@ -812,7 +812,7 @@ function contactPage() {
         <h1>Contact</h1>
         <div class="editorial-copy contact-copy">
           <address>Aesthetic Pleasure Gallery Wijaya Grand Centre, Jl. Darmawangsa Raya Blok G 9 2rd Floor, RT.6/RW.1, Pulo, Kebayoran Baru, South Jakarta City, Jakarta 12160</address>
-          <p><a href="https://wa.me/6282122876289">+628 2122 8762 89</a><br><a href="mailto:contact@nix-p.com">contact@nix-p.com</a><br><a href="/shipping-returns" data-link>Shipping & Returns</a></p>
+          <p><a href="https://wa.me/6282122876289">+628 2122 8762 89</a><br><a href="mailto:contact@nix-p.com">contact@nix-p.com</a></p>
         </div>
       </div>
     </section>
