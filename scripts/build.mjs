@@ -371,9 +371,69 @@ function staticPublicRouteMarkup(route) {
   if (route === "apparel") return page("Apparel", productsByCategory("Apparel"));
   if (route === "accessories" || route === "accesories") return page("Accessories", productsByCategory("Accessories"));
   if (route === "publishing") return page("Publishing", productsByCategory("Publishing"));
-  if (route === "blog") return `<section class="section"><h1>Blog</h1><p>Notes and updates from NIXP.</p></section>`;
-  if (route === "request-item") return `<section class="section"><h1>Request Item</h1><p>Send NIXP a record, object, apparel, or publication request.</p></section>`;
-  if (route === "about") return `<section class="section"><h1>About NIXP</h1><p>${escapeHtml(siteDescription)}</p></section>`;
+  if (route === "blog") {
+    const articles = [
+      ["01", "Listening Notes: The First NIXP Selection", "Editorial", "2026", "A short introduction to the records, CDs, cassettes, books and objects shaping the first NIXP catalog."],
+      ["02", "Inside Aesthetic Pleasure Gallery", "Place", "2026", "Notes from the listening space, the shop table, and the culture around the gallery floor."],
+      ["03", "Format Notes: Vinyl, CD, Cassette", "Guide", "2026", "A practical media index for collectors moving between physical formats."]
+    ];
+    return `<section class="section editorial-page blog-page">
+      <div class="editorial-shell">
+        <h1>Blog</h1>
+        <div class="blog-list">
+          ${articles
+            .map(
+              ([number, title, type, date, summary]) => `<article class="blog-row">
+                <span>${number} / ${type} / ${date}</span>
+                <div>
+                  <h2>${escapeHtml(title)}</h2>
+                  <p>${escapeHtml(summary)}</p>
+                </div>
+                <a href="#" aria-label="Read ${escapeHtml(title)}">Read</a>
+              </article>`
+            )
+            .join("")}
+        </div>
+      </div>
+    </section>`;
+  }
+  if (route === "request-item") {
+    return `<section class="section form-layout">
+      <form class="request-form" data-request-form>
+        <label>Artist Name:<input name="artistName" required /></label>
+        <label>Title / Item Name:<input name="itemName" required /></label>
+        <label>Format:
+          <select name="format" required>
+            ${["Vinyl", "CD", "Cassette", "Book", "Magazine", "Object", "Apparel", "Other"].map((format) => `<option>${format}</option>`).join("")}
+          </select>
+        </label>
+        <label>Email:<input name="email" type="email" autocomplete="email" required /></label>
+        <label>WhatsApp:<input name="whatsapp" /></label>
+        <label>Notes:<textarea name="notes" rows="5"></textarea></label>
+        <input class="request-honeypot" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="button button-dark" type="submit">Submit request</button>
+      </form>
+      <aside class="status-panel">
+        <p class="eyebrow">Request status</p>
+        <div class="status-stack">
+          ${["New", "Searching", "Found", "Unavailable", "Contacted", "Closed"].map((status) => `<span>${status}</span>`).join("")}
+        </div>
+        <div class="mini-list"></div>
+      </aside>
+    </section>`;
+  }
+  if (route === "about") {
+    return `<section class="section editorial-page">
+      <div class="editorial-shell">
+        <h1>About</h1>
+        <div class="editorial-copy">
+          <p>NIXP is an extension of Nix Powell, built around a growing catalogue of records, tapes, discs, printed matter, and objects selected through personal taste, research, and repeat listening.</p>
+          <p>The focus moves across experimental music, heavy music, electronic music, contemporary composition, independent publishing, and their surrounding edges.</p>
+          <p>Based online and operating from Aesthetic Pleasure Gallery, Grand Wijaya Center, Jakarta.</p>
+        </div>
+      </div>
+    </section>`;
+  }
   if (route === "contact") {
     return `<section class="section editorial-page contact-page">
       <div class="editorial-shell">
@@ -385,9 +445,38 @@ function staticPublicRouteMarkup(route) {
       </div>
     </section>`;
   }
-  if (route === "shipping-returns") return `<section class="section"><h1>Shipping &amp; Returns</h1><p>Shipping and return information for NIXP orders.</p></section>`;
-  if (route === "international-order") return `<section class="section"><h1>International Orders</h1><p>Contact NIXP directly to arrange international shipping.</p></section>`;
-  if (route === "cart") return `<section class="section"><h1>Cart</h1><p class="empty-state">Your cart is currently empty.</p></section>`;
+  if (route === "shipping-returns") {
+    return `<section class="section editorial-page">
+      <div class="editorial-shell">
+        <h1>Shipping &amp; Returns</h1>
+        <div class="editorial-copy">
+          <p>Shipping rates, fulfillment windows, and return terms will be connected once checkout and inventory are live.</p>
+          <p>For now, customers can contact NIXP directly for availability, local pickup, and item condition questions.</p>
+        </div>
+      </div>
+    </section>`;
+  }
+  if (route === "international-order") {
+    return `<section class="section editorial-page contact-page">
+      <div class="editorial-shell">
+        <h1>International Orders</h1>
+        <div class="editorial-copy contact-copy">
+          <p>Online checkout is currently available for delivery within Indonesia only. For an international order, contact NIXP directly with the item name, your destination country, and postal code.</p>
+          <p><a href="mailto:contact@nix-p.com?subject=International%20order%20enquiry">contact@nix-p.com</a><br><a href="https://wa.me/6282122876289?text=Hello%20NIXP%2C%20I%20would%20like%20to%20arrange%20an%20international%20order.">WhatsApp NIXP</a></p>
+        </div>
+      </div>
+    </section>`;
+  }
+  if (route === "cart") {
+    return `<section class="section cart-view">
+      <p class="empty-state">Your cart is empty.</p>
+      <div class="cart-total cart-totals" aria-label="Order total">
+        <span>Items</span><strong>Rp 0</strong>
+        <span>Delivery</span><em>Quoted after address confirmation</em>
+        <span>Total at payment</span><strong>Rp 0 + delivery</strong>
+      </div>
+    </section>`;
+  }
   return `<section class="section"><div class="app-boot" aria-live="polite">NIXP</div></section>`;
 }
 
