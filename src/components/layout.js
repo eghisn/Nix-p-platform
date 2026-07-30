@@ -84,6 +84,7 @@ export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverl
         <a href="/about" data-link>About</a>
         <a href="/contact" data-link>Contact</a>
         <a href="/shipping-returns" data-link>Shipping &amp; Returns</a>
+        <a href="/international-order" data-link>International Order</a>
       </nav>
       <nav class="footer-right" aria-label="Social links">
         <a href="https://www.instagram.com/nixp.archive/?hl=en" aria-label="Instagram">
