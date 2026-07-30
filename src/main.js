@@ -145,15 +145,19 @@ const homeCollectionOptions = [
 
 const indonesiaRegionByCode = new Map(indonesiaRegencies.map((region) => [region.code, region]));
 
-function checkoutCitySuggestions() {
-  return indonesiaRegencies
+function checkoutCityOptions() {
+  const byProvince = new Map();
+  for (const region of indonesiaRegencies) {
+    const cities = byProvince.get(region.province) || [];
+    cities.push(region);
+    byProvince.set(region.province, cities);
+  }
+  return [...byProvince.entries()]
     .map(
-      (region) => `
-        <button class="checkout-city-option" type="button" role="option" data-checkout-city-option="${escapeAttr(region.code)}">
-          <span>${escapeHtml(region.city)}</span>
-          <small>${escapeHtml(region.province)}</small>
-        </button>
-      `
+      ([province, cities]) =>
+        `<optgroup label="${escapeAttr(province)}">${cities
+          .map((region) => `<option value="${escapeAttr(region.code)}">${escapeHtml(region.city)}</option>`)
+          .join("")}</optgroup>`
     )
     .join("");
 }
@@ -897,23 +901,11 @@ async function cartPage() {
                 <label class="admin-form-span" data-checkout-address-field>Address<input name="shippingAddress1" required autocomplete="shipping address-line1" /></label>
                 <label class="admin-form-span" data-checkout-address-field>Address details<input name="shippingAddress2" autocomplete="shipping address-line2" placeholder="Building, unit, or landmark (optional)" /></label>
                 <label data-checkout-address-field>District<input name="shippingDistrict" required autocomplete="shipping address-level3" /></label>
-                <label class="checkout-city-field" data-checkout-address-field>City / regency
-                  <input type="hidden" name="shippingCity" data-checkout-city />
-                  <input
-                    name="shippingCitySearch"
-                    type="search"
-                    required
-                    autocomplete="off"
-                    placeholder="Search city or regency"
-                    role="combobox"
-                    aria-autocomplete="list"
-                    aria-expanded="false"
-                    aria-controls="checkout-city-options"
-                    data-checkout-city-search
-                  />
-                  <div class="checkout-city-options" id="checkout-city-options" role="listbox" hidden>
-                    ${checkoutCitySuggestions()}
-                  </div>
+                <label data-checkout-address-field>City / regency
+                  <select name="shippingCity" required autocomplete="shipping address-level2" data-checkout-city>
+                    <option value="" selected disabled>Select city or regency</option>
+                    ${checkoutCityOptions()}
+                  </select>
                 </label>
                 <label data-checkout-address-field>Province<input name="shippingProvince" required readonly autocomplete="shipping address-level1" data-checkout-province /></label>
                 <label data-checkout-address-field>Postal code<input name="shippingPostalCode" required autocomplete="shipping postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" /></label>
@@ -2549,8 +2541,6 @@ function bindEvents() {
 
   const shippingMethod = document.querySelector("[data-checkout-shipping-method]");
   const checkoutCity = document.querySelector("[data-checkout-city]");
-  const checkoutCitySearch = document.querySelector("[data-checkout-city-search]");
-  const checkoutCityOptions = document.querySelector("[data-checkout-city-options]");
   const checkoutProvince = document.querySelector("[data-checkout-province]");
   const syncCheckoutProvince = () => {
     const region = indonesiaRegionByCode.get(checkoutCity?.value || "");
@@ -2562,37 +2552,25 @@ function bindEvents() {
       .replace(/[\u0300-\u036f]/g, "")
       .toLowerCase()
       .trim();
-  const closeCheckoutCityOptions = () => {
-    if (!checkoutCityOptions || !checkoutCitySearch) return;
-    checkoutCityOptions.hidden = true;
-    checkoutCitySearch.setAttribute("aria-expanded", "false");
-  };
-  const renderCheckoutCityOptions = (query = "") => {
-    if (!checkoutCityOptions) return;
-    const normalizedQuery = normalizeCitySearch(query);
-    const matches = indonesiaRegencies.filter((region) => {
-      const haystack = normalizeCitySearch(`${region.city} ${region.province}`);
-      return !normalizedQuery || haystack.includes(normalizedQuery);
-    });
-    checkoutCityOptions.innerHTML = matches.length
-      ? matches
-          .map(
-            (region) => `
-              <button class="checkout-city-option" type="button" role="option" data-checkout-city-option="${escapeAttr(region.code)}">
-                <span>${escapeHtml(region.city)}</span>
-                <small>${escapeHtml(region.province)}</small>
-              </button>
-            `
-          )
-          .join("")
-      : `<p class="checkout-city-empty">No city or regency found.</p>`;
-  };
-  const syncCheckoutCityValidity = () => {
-    if (!checkoutCitySearch) return;
-    const pickup = shippingMethod?.value === "Store Pickup";
-    checkoutCitySearch.setCustomValidity(
-      !pickup && !checkoutCity?.value ? "Choose a city or regency from the search results." : ""
-    );
+  const citySearchName = (region) => normalizeCitySearch(region.city).replace(/^(kota|kabupaten)\s+/, "");
+  let cityTypeahead = "";
+  let cityTypeaheadReset;
+  const selectCityByTypeahead = () => {
+    const query = normalizeCitySearch(cityTypeahead);
+    if (!query || !checkoutCity) return false;
+    const match = indonesiaRegencies
+      .map((region) => {
+        const name = citySearchName(region);
+        const startsAt = name.startsWith(query) ? 0 : name.includes(query) ? 1 : 2;
+        const cityPriority = normalizeCitySearch(region.city).startsWith("kota ") ? 0 : 1;
+        return { region, score: startsAt * 1000 + Math.max(name.length - query.length, 0) * 10 + cityPriority };
+      })
+      .filter(({ score }) => score < 2000)
+      .sort((a, b) => a.score - b.score || a.region.city.localeCompare(b.region.city, "id"))[0]?.region;
+    if (!match) return false;
+    checkoutCity.value = match.code;
+    syncCheckoutProvince();
+    return true;
   };
   const syncCheckoutAddressRequirements = () => {
     const pickup = shippingMethod?.value === "Store Pickup";
@@ -2604,47 +2582,18 @@ function bindEvents() {
         if (input.name !== "shippingAddress2" && input.name !== "shippingCountry") input.required = !pickup;
       });
     });
-    syncCheckoutCityValidity();
   };
   shippingMethod?.addEventListener("change", syncCheckoutAddressRequirements);
-  checkoutCitySearch?.addEventListener("focus", () => {
-    if (!checkoutCityOptions) return;
-    renderCheckoutCityOptions(checkoutCitySearch.value);
-    checkoutCityOptions.hidden = false;
-    checkoutCitySearch.setAttribute("aria-expanded", "true");
+  checkoutCity?.addEventListener("change", syncCheckoutProvince);
+  checkoutCity?.addEventListener("keydown", (event) => {
+    if (event.ctrlKey || event.metaKey || event.altKey || event.key.length !== 1) return;
+    cityTypeahead += event.key;
+    clearTimeout(cityTypeaheadReset);
+    cityTypeaheadReset = setTimeout(() => {
+      cityTypeahead = "";
+    }, 850);
+    if (selectCityByTypeahead()) event.preventDefault();
   });
-  checkoutCitySearch?.addEventListener("input", () => {
-    if (!checkoutCityOptions) return;
-    if (checkoutCity) checkoutCity.value = "";
-    if (checkoutProvince) checkoutProvince.value = "";
-    renderCheckoutCityOptions(checkoutCitySearch.value);
-    checkoutCityOptions.hidden = false;
-    checkoutCitySearch.setAttribute("aria-expanded", "true");
-    syncCheckoutCityValidity();
-  });
-  checkoutCityOptions?.addEventListener("click", (event) => {
-    const option = event.target.closest("[data-checkout-city-option]");
-    if (!option || !checkoutCity || !checkoutCitySearch) return;
-    const region = indonesiaRegionByCode.get(option.dataset.checkoutCityOption || "");
-    if (!region) return;
-    checkoutCity.value = region.code;
-    checkoutCitySearch.value = region.city;
-    syncCheckoutProvince();
-    syncCheckoutCityValidity();
-    closeCheckoutCityOptions();
-  });
-  checkoutCitySearch?.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeCheckoutCityOptions();
-      return;
-    }
-    if (event.key !== "Enter" || checkoutCityOptions?.hidden) return;
-    const firstOption = checkoutCityOptions.querySelector("[data-checkout-city-option]");
-    if (!firstOption) return;
-    event.preventDefault();
-    firstOption.click();
-  });
-  checkoutCitySearch?.addEventListener("blur", () => setTimeout(closeCheckoutCityOptions, 120));
   syncCheckoutProvince();
   syncCheckoutAddressRequirements();
 
