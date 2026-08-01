@@ -3179,7 +3179,7 @@
       const canvas = document.createElement("canvas");
       const expenseRows = Math.max(1, data.operatingExpenseBreakdown.length);
       canvas.width = 1800;
-      canvas.height = Math.max(1200, 1060 + expenseRows * 42);
+      canvas.height = Math.max(1280, 1140 + expenseRows * 42);
       const context = canvas.getContext("2d");
       const ink = "#292929";
       const paper = "#f1f1f1";
@@ -3188,7 +3188,9 @@
       const leftRight = 930;
       const right = canvas.width - 82;
       const rightX = 1034;
-      const headerRuleY = 228;
+      const headerRuleY = 260;
+      const footerRuleY = canvas.height - 94;
+      const summaryPanelY = 318;
       context.fillStyle = paper;
       context.fillRect(0, 0, canvas.width, canvas.height);
       context.strokeStyle = ink;
@@ -3207,9 +3209,9 @@
       context.textAlign = "left";
       context.font = "700 82px 'Founders Grotesk Web', Arial";
       context.fillText("MONTHLY GENERAL", left, 164);
-      context.fillText("FINANCE REPORT", left, 232 - 8);
+      context.fillText("FINANCE REPORT", left, 220);
 
-      let y = 286;
+      let y = 318;
       context.font = "600 18px 'Founders Grotesk Web', Arial";
       context.fillText("INCOME STATEMENT", left, y);
       y += 42;
@@ -3236,30 +3238,32 @@
 
       context.strokeStyle = ink;
       context.lineWidth = 1;
-      context.strokeRect(rightX, 286, right - rightX, 600);
       context.font = "600 18px 'Founders Grotesk Web', Arial";
       context.fillStyle = ink;
-      context.fillText("SAVED LEDGER SUMMARY", rightX + 30, 330);
+      context.fillText("SAVED LEDGER SUMMARY", rightX + 30, summaryPanelY + 44);
       context.font = "600 42px 'Founders Grotesk Web', Arial";
-      context.fillText(rupiah(data.netCashMovement), rightX + 30, 386);
+      context.fillText(rupiah(data.netCashMovement), rightX + 30, summaryPanelY + 100);
       context.font = "600 15px 'Founders Grotesk Web', Arial";
-      context.fillText("NET CASH MOVEMENT", rightX + 30, 414);
-      drawCanvasRule(context, rightX + 30, right - 30, 448);
-      drawCanvasFact(context, "LEDGER ROWS", String(data.ledgerRowCount), rightX + 30, 484);
-      drawCanvasFact(context, "EBITDA MARGIN", formatPercent(data.ebitdaMargin), rightX + 330, 484);
-      drawCanvasFact(context, "CASH IN", rupiah(data.cashIn), rightX + 30, 570);
-      drawCanvasFact(context, "CASH OUT", rupiah(data.cashOut), rightX + 330, 570);
-      drawCanvasRule(context, rightX + 30, right - 30, 622);
+      context.fillText("NET CASH MOVEMENT", rightX + 30, summaryPanelY + 128);
+      drawCanvasRule(context, rightX + 30, right - 30, summaryPanelY + 162);
+      drawCanvasFact(context, "LEDGER ROWS", String(data.ledgerRowCount), rightX + 30, summaryPanelY + 198);
+      drawCanvasFact(context, "EBITDA MARGIN", formatPercent(data.ebitdaMargin), rightX + 330, summaryPanelY + 198);
+      drawCanvasFact(context, "CASH IN", rupiah(data.cashIn), rightX + 30, summaryPanelY + 284);
+      drawCanvasFact(context, "CASH OUT", rupiah(data.cashOut), rightX + 330, summaryPanelY + 284);
+      drawCanvasRule(context, rightX + 30, right - 30, summaryPanelY + 336);
       context.font = "500 20px 'Founders Grotesk Web', Arial";
-      let rightY = drawWrappedCanvasText(context, "Actual saved ledger rows only. No projections, assumptions, or sample numbers are included.", rightX + 30, 660, right - rightX - 60, 28);
+      let rightY = drawWrappedCanvasText(context, "Actual saved ledger rows only. No projections, assumptions, or sample numbers are included.", rightX + 30, summaryPanelY + 374, right - rightX - 60, 28);
       context.font = "italic 18px 'Founders Grotesk Web', Arial";
       rightY = drawWrappedCanvasText(context, "Generated from the current finance.nix-p.com ledger. Refresh before export if another device has just updated the books.", rightX + 30, rightY + 20, right - rightX - 60, 26);
       context.font = "600 17px 'Founders Grotesk Web', Arial";
       rightY = drawWrappedCanvasText(context, `Operating expense categories: ${data.operatingExpenseCategoryText}.`, rightX + 30, rightY + 22, right - rightX - 60, 24);
       context.font = "500 16px 'Founders Grotesk Web', Arial";
-      drawWrappedCanvasText(context, "Investor, loan, owner capital, bank, and owner reimbursement entries are cash movement, not operating revenue. Inventory purchases and sales COGS are grouped into COGS.", rightX + 30, rightY + 18, right - rightX - 60, 22);
+      rightY = drawWrappedCanvasText(context, "Investor, loan, owner capital, bank, and owner reimbursement entries are cash movement, not operating revenue. Inventory purchases and sales COGS are grouped into COGS.", rightX + 30, rightY + 18, right - rightX - 60, 22);
+      const summaryPanelBottom = Math.min(footerRuleY - 28, rightY + 32);
+      context.strokeStyle = ink;
+      context.lineWidth = 1;
+      context.strokeRect(rightX, summaryPanelY, right - rightX, summaryPanelBottom - summaryPanelY);
 
-      const footerRuleY = canvas.height - 94;
       drawCanvasRule(context, left, right, footerRuleY);
       context.font = "italic 16px 'Founders Grotesk Web', Arial";
       context.fillText("Internal management report. Not audited financial advice.", left, footerRuleY + 36);
