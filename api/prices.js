@@ -7,9 +7,12 @@ export default async function handler(req, res) {
   const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
   try {
     const prices = await verifiedPrices(Array.isArray(body.ids) ? body.ids : []);
+    // Price and stock must never inherit the catalog CDN's editorial cache.
+    res.setHeader("cache-control", "no-store, max-age=0");
+    res.setHeader("cdn-cache-control", "no-store");
+    res.setHeader("vercel-cdn-cache-control", "no-store");
     json(res, 200, { ok: true, prices });
   } catch (error) {
     json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Prices unavailable" });
   }
 }
-

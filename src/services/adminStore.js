@@ -151,6 +151,60 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
   };
 }
 
+function normalizeVerifiedCommerce(row = {}) {
+  const price = Number(row.price);
+  const qty = Number(row.qty);
+  return {
+    id: String(row.id || ""),
+    price: Number.isFinite(price) ? price : null,
+    qty: Number.isFinite(qty) ? Math.max(0, qty) : null,
+    sizes: Array.isArray(row.sizes) ? normalizeSizes(row.sizes) : null,
+    publishStatus: String(row.publishStatus || row.publish_status || ""),
+    visibility: String(row.visibility || "")
+  };
+}
+
+async function fetchVerifiedCommerce(ids = []) {
+  const uniqueIds = [...new Set((ids || []).map(String).filter(Boolean))];
+  if (!uniqueIds.length) return [];
+  try {
+    const response = await fetch("/api/prices", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      cache: "no-store",
+      body: JSON.stringify({ ids: uniqueIds })
+    });
+    if (!response.ok) throw new Error("Price API unavailable");
+    const payload = await response.json();
+    return (payload.prices || []).map(normalizeVerifiedCommerce).filter((row) => row.id);
+  } catch {
+    // Keep the cached editorial catalogue usable during a temporary API failure.
+    return [];
+  }
+}
+
+async function reconcilePublicCommerce(store) {
+  const products = store?.products || [];
+  const verified = await fetchVerifiedCommerce(products.map((product) => product.id));
+  if (!verified.length) return store;
+  const byId = new Map(verified.map((row) => [row.id, row]));
+  return {
+    ...store,
+    products: products.map((product) => {
+      const live = byId.get(product.id);
+      if (!live) return product;
+      return {
+        ...product,
+        ...(live.price === null ? {} : { price: live.price }),
+        ...(live.qty === null ? {} : { qty: live.qty }),
+        ...(live.sizes === null ? {} : { sizes: live.sizes }),
+        ...(live.publishStatus ? { publishStatus: live.publishStatus } : {}),
+        ...(live.visibility ? { visibility: live.visibility } : {})
+      };
+    })
+  };
+}
+
 function nullableNumber(value) {
   if (value === null || value === undefined || value === "") return null;
   const parsed = Number(value);
@@ -567,6 +621,7 @@ export const adminStore = {
             }
           }
           activeStore = mergeStore(seed({ publicOnly }), runtimeStore, { publicOnly });
+          if (publicOnly) activeStore = await reconcilePublicCommerce(activeStore);
           activeStoreScope = scope;
           privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
           if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
@@ -579,6 +634,7 @@ export const adminStore = {
         mergeStore(seed({ publicOnly }), await fileResponse.json(), { publicOnly }),
         browserStore
       );
+      if (publicOnly) activeStore = await reconcilePublicCommerce(activeStore);
       activeStoreScope = scope;
       privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
       if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
@@ -638,18 +694,7 @@ export const adminStore = {
     }
   },
   async verifyPrices(ids) {
-    try {
-      const response = await fetch("/api/prices", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ids })
-      });
-      if (!response.ok) throw new Error("Price API unavailable");
-      const payload = await response.json();
-      return payload.prices || [];
-    } catch {
-      return [];
-    }
+    return fetchVerifiedCommerce(ids);
   },
   getSnapshot() {
     // Public navigation asks for products, artists, the cart, and search data
