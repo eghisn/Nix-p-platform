@@ -191,6 +191,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/terms-of-use",
+      "destination": "/index.html"
+    },
+    {
       "source": "/cart",
       "destination": "/index.html"
     },

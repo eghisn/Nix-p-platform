@@ -3,6 +3,7 @@ import { artistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLab
 import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicProductSlug } from "./data/publicUrls.js";
 import { recommendedProducts } from "./data/productRecommendations.js";
 import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
+import { termsOfUseContent } from "./data/termsOfUse.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
@@ -177,6 +178,7 @@ const routes = {
   "/contact": contactPage,
   "/shipping-returns": shippingReturnsPage,
   "/international-order": internationalOrderPage,
+  "/terms-of-use": termsOfUsePage,
   "/cart": cartPage,
   "/order-status": customerOrderStatusPage,
   "/login": loginPage,
@@ -842,6 +844,17 @@ function internationalOrderPage() {
           <p>Online checkout is currently available for delivery within Indonesia only. For an international order, contact NIXP directly with the item name, your destination country, and postal code.</p>
           <p><a href="mailto:contact@nix-p.com?subject=International%20order%20enquiry">contact@nix-p.com</a><br><a href="https://wa.me/6282122876289?text=Hello%20NIXP%2C%20I%20would%20like%20to%20arrange%20an%20international%20order.">WhatsApp NIXP</a></p>
         </div>
+      </div>
+    </section>
+  `;
+}
+
+function termsOfUsePage() {
+  return `
+    <section class="section editorial-page terms-page">
+      <div class="editorial-shell terms-shell">
+        <h1>Terms of Use</h1>
+        ${termsOfUseContent}
       </div>
     </section>
   `;

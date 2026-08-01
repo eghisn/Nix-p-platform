@@ -5,6 +5,7 @@ import { productGrid, shell } from "../src/components/layout.js";
 import { artistCreditNames } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
 import { recommendedProducts } from "../src/data/productRecommendations.js";
+import { termsOfUseContent } from "../src/data/termsOfUse.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -75,6 +76,7 @@ const staticRoutes = [
   "contact",
   "shipping-returns",
   "international-order",
+  "terms-of-use",
   "cart",
   "order-status",
   "admin",
@@ -467,6 +469,14 @@ function staticPublicRouteMarkup(route) {
       </div>
     </section>`;
   }
+  if (route === "terms-of-use") {
+    return `<section class="section editorial-page terms-page">
+      <div class="editorial-shell terms-shell">
+        <h1>Terms of Use</h1>
+        ${termsOfUseContent}
+      </div>
+    </section>`;
+  }
   if (route === "cart") {
     return `<section class="section cart-view">
       <p class="empty-state">Your cart is empty.</p>
@@ -494,6 +504,7 @@ function staticRouteTitle(route) {
     contact: "Contact",
     "shipping-returns": "Shipping & Returns",
     "international-order": "International Orders",
+    "terms-of-use": "Terms of Use",
     cart: "Cart"
   };
   return titles[route] || (route ? route.split("/").at(-1).replaceAll("-", " ") : "NIXP");
@@ -655,6 +666,7 @@ const crawlableRoutes = [
   "contact",
   "shipping-returns",
   "international-order",
+  "terms-of-use",
   ...publicProducts.map((product) => publicProductPath(product).replace(/^\//, "")),
   ...[...artistDirectory.keys()].map((artistSlug) => `artists/${artistSlug}`)
 ];
