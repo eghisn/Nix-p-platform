@@ -21,6 +21,9 @@ for (const route of paths) {
   const body = await response.text();
   if (!response.ok) throw new Error(`${route} returned ${response.status}`);
   if (!/NIXP_APP_MARKER|src\/main\.js|assets\/app\.js/.test(body)) throw new Error(`${route} did not return the NIXP application shell`);
+  if (route === "/records/" && (!body.includes("records-toolbar") || !body.includes("data-record-sort"))) {
+    throw new Error("/records/ static markup does not match the interactive records controls.");
+  }
   if (route.startsWith("/product/") && /rel="canonical"/i.test(body) && !body.includes(canonicalProductPath)) {
     throw new Error(`${route} did not expose the canonical product path`);
   }

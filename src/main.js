@@ -7,6 +7,7 @@ import { termsOfUseContent } from "./data/termsOfUse.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
+import { recordsPageMarkup } from "./components/recordsPage.js";
 
 const app = document.querySelector("#app");
 const CHECKOUT_SESSION_STORAGE_KEY = "nixp-checkout-session";
@@ -462,54 +463,14 @@ async function recordsPage() {
     artistTagFilter ? productRelatedArtists(product).some((artist) => artist.toLowerCase() === artistTagFilter.toLowerCase()) : true
   );
   records.sort(recordSortComparator(state.recordsSort));
-  const filters = ["All", "Vinyl", "CD", "Cassette"];
-  return `
-    <section class="section shop-section">
-      ${
-        labelFilter
-          ? `<div class="active-label-filter">
-              <span>Record Label</span>
-              <strong>${escapeHtml(labelFilter)}</strong>
-              <a href="/records" data-link>Clear</a>
-            </div>`
-          : ""
-      }
-      ${
-        artistTagFilter
-          ? `<div class="active-label-filter">
-              <span>Related Artist</span>
-              <strong>${escapeHtml(artistTagFilter)}</strong>
-              <a href="/records" data-link>Clear</a>
-            </div>`
-          : ""
-      }
-      <div class="records-toolbar">
-        <div class="toolbar" role="group" aria-label="Record format filters">
-          ${filters
-            .map(
-              (filter) => `
-                <button class="chip ${state.recordsFilter === filter ? "is-active" : ""}" type="button" data-record-filter="${filter}">
-                  ${filter}
-                </button>
-              `
-            )
-            .join("")}
-        </div>
-        <label class="records-sort">
-          <span>Sort</span>
-          <select data-record-sort aria-label="Sort records">
-            <option value="artist-asc" ${state.recordsSort === "artist-asc" ? "selected" : ""}>Artist A-Z</option>
-            <option value="artist-desc" ${state.recordsSort === "artist-desc" ? "selected" : ""}>Artist Z-A</option>
-            <option value="price-asc" ${state.recordsSort === "price-asc" ? "selected" : ""}>Price low to high</option>
-            <option value="price-desc" ${state.recordsSort === "price-desc" ? "selected" : ""}>Price high to low</option>
-            <option value="year-desc" ${state.recordsSort === "year-desc" ? "selected" : ""}>Release year newest</option>
-            <option value="year-asc" ${state.recordsSort === "year-asc" ? "selected" : ""}>Release year oldest</option>
-          </select>
-        </label>
-      </div>
-      ${productGrid(records, { availableArtistNames })}
-    </section>
-  `;
+  return recordsPageMarkup({
+    records,
+    recordsFilter: state.recordsFilter,
+    recordsSort: state.recordsSort,
+    labelFilter,
+    artistTagFilter,
+    availableArtistNames
+  });
 }
 
 function categoryPage(category, title, text) {
