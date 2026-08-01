@@ -14,7 +14,7 @@ const sampleArtist = artistCreditNames(sampleProduct?.artist || "")[0];
 const artistSlug = String(sampleArtist || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const canonicalProductPath = sampleProduct ? publicProductPath(sampleProduct) : "/records";
 const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}` : "/product/missing";
-const paths = ["/records/", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
+const paths = ["/records/", "/objects", "/apparel", "/publishing", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
 
 for (const route of paths) {
   const response = await fetch(`${baseUrl}${route}`, { redirect: "follow", cache: "no-store" });
@@ -23,6 +23,12 @@ for (const route of paths) {
   if (!/NIXP_APP_MARKER|src\/main\.js|assets\/app\.js/.test(body)) throw new Error(`${route} did not return the NIXP application shell`);
   if (route === "/records/" && (!body.includes("records-toolbar") || !body.includes("data-record-sort"))) {
     throw new Error("/records/ static markup does not match the interactive records controls.");
+  }
+  if (["/objects", "/publishing"].includes(route) && body.includes('<div class="toolbar"><h1>')) {
+    throw new Error(`${route} static markup is still using the legacy category template.`);
+  }
+  if (route === "/apparel" && !body.includes("data-apparel-filter")) {
+    throw new Error("/apparel static markup does not match the interactive apparel controls.");
   }
   if (route.startsWith("/product/") && /rel="canonical"/i.test(body) && !body.includes(canonicalProductPath)) {
     throw new Error(`${route} did not expose the canonical product path`);

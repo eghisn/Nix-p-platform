@@ -7,6 +7,7 @@ import { termsOfUseContent } from "./data/termsOfUse.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
+import { apparelPageMarkup, catalogGridPageMarkup } from "./components/catalogPage.js";
 import { recordsPageMarkup } from "./components/recordsPage.js";
 
 const app = document.querySelector("#app");
@@ -476,30 +477,14 @@ async function recordsPage() {
 function categoryPage(category, title, text) {
   return async () => {
     const items = await catalogService.listProductsByCategory(category);
-    return `<section class="section shop-section">${productGrid(items)}</section>`;
+    return catalogGridPageMarkup(items);
   };
 }
 
 async function apparelPage(filter = state.apparelFilter) {
   const activeFilter = filter || "All Apparel";
   const apparel = await catalogService.listApparel(activeFilter);
-  const filters = ["All Apparel", "Tops", "Bottoms", "Accessories"];
-  return `
-    <section class="section shop-section">
-      <div class="toolbar" role="group" aria-label="Apparel filters">
-        ${filters
-          .map(
-            (filter) => `
-              <button class="chip ${activeFilter === filter ? "is-active" : ""}" type="button" data-apparel-filter="${filter}">
-                ${filter}
-              </button>
-            `
-          )
-          .join("")}
-      </div>
-      ${productGrid(apparel)}
-    </section>
-  `;
+  return apparelPageMarkup(apparel, activeFilter);
 }
 
 async function productDetailPage(path) {

@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { build } from "esbuild";
 import { productGrid, shell } from "../src/components/layout.js";
+import { apparelPageMarkup, catalogGridPageMarkup } from "../src/components/catalogPage.js";
 import { recordsPageMarkup } from "../src/components/recordsPage.js";
 import { artistCreditNames } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
@@ -368,7 +369,6 @@ function productDocument(product) {
 
 function staticPublicRouteMarkup(route) {
   const productsByCategory = (category) => publicProducts.filter((product) => product.category === category);
-  const page = (title, products) => `<section class="section shop-section"><div class="toolbar"><h1>${escapeHtml(title)}</h1></div>${productGrid(products)}</section>`;
   if (route === "records") {
     const records = [...productsByCategory("Records")].sort((left, right) => left.artist.localeCompare(right.artist));
     return recordsPageMarkup({
@@ -376,10 +376,10 @@ function staticPublicRouteMarkup(route) {
       availableArtistNames: inventoryArtistMap(publicProducts)
     });
   }
-  if (route === "objects") return page("Objects", productsByCategory("Objects"));
-  if (route === "apparel") return page("Apparel", productsByCategory("Apparel"));
-  if (route === "accessories" || route === "accesories") return page("Accessories", productsByCategory("Accessories"));
-  if (route === "publishing") return page("Publishing", productsByCategory("Publishing"));
+  if (route === "objects") return catalogGridPageMarkup(productsByCategory("Objects"));
+  if (route === "apparel") return apparelPageMarkup(productsByCategory("Apparel"));
+  if (route === "accessories" || route === "accesories") return apparelPageMarkup(productsByCategory("Accessories"), "Accessories");
+  if (route === "publishing") return catalogGridPageMarkup(productsByCategory("Publishing"));
   if (route === "blog") {
     const articles = [
       ["01", "Listening Notes: The First NIXP Selection", "Editorial", "2026", "A short introduction to the records, CDs, cassettes, books and objects shaping the first NIXP catalog."],
