@@ -152,6 +152,7 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
     product.category === "Records" && product.label
       ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${canonicalLabelName(product.label)}</a>`
       : "";
+  const artistMarkup = productArtistMarkup(product, availableArtistNames);
 
   return `
     <article class="product-card ${soldOut ? "is-sold-out" : ""}">
@@ -162,7 +163,7 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
         </figure>
       </a>
       <div class="product-meta">
-        <p>${product.artist}</p>
+        <p class="product-artist">${artistMarkup}</p>
         <h2><a href="${href}" data-link data-product-link>${product.title}</a></h2>
         ${labelLink}
         ${recordArtistTags(product, availableArtistNames)}
@@ -174,6 +175,33 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
       </div>
     </article>
   `;
+}
+
+function productArtistMarkup(product, availableArtistNames) {
+  const artist = String(product.artist || "").trim();
+  if (!artist || product.category !== "Records") return escapeHtml(artist);
+  const credits = artistCreditNames(artist);
+  if (credits.length <= 1) {
+    const inventoryArtist = resolveInventoryArtist(artist, availableArtistNames);
+    return inventoryArtist
+      ? `<a class="product-artist-link" href="/artists/${artistSlug(inventoryArtist)}" data-link data-product-artist-link>${escapeHtml(artist)}</a>`
+      : escapeHtml(artist);
+  }
+  return credits
+    .map((credit) => {
+      const inventoryArtist = resolveInventoryArtist(credit, availableArtistNames);
+      return inventoryArtist
+        ? `<a class="product-artist-link" href="/artists/${artistSlug(inventoryArtist)}" data-link data-product-artist-link>${escapeHtml(credit)}</a>`
+        : escapeHtml(credit);
+    })
+    .join(artistCreditSeparator(artist));
+}
+
+function artistCreditSeparator(artist) {
+  if (artist.includes(",")) return ", ";
+  if (/\s+with\s+/i.test(artist)) return " with ";
+  if (/\s+and\s+/i.test(artist)) return " and ";
+  return " &amp; ";
 }
 
 function productQuantity(product = {}) {

@@ -2099,6 +2099,15 @@ tr:last-child td {
   text-transform: uppercase;
 }
 
+.product-artist-link {
+  border-bottom: 1px solid transparent;
+}
+
+.product-artist-link:hover,
+.product-artist-link:focus-visible {
+  border-color: currentColor;
+}
+
 .records-toolbar {
   display: flex;
   align-items: flex-start;
