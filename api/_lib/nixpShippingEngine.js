@@ -65,9 +65,10 @@ export class NixpShippingEngine {
   async resolveDestination(code) {
     const requested = String(code || "").trim();
     if (!requested) throw shippingError("Please select a valid Indonesian city or regency.", 400);
-    const direct = await supabaseFetch(`jne_destinations?select=*&jne_destination_code=eq.${encodeURIComponent(requested)}&active=eq.true&limit=1`, { service: true });
-    if (direct?.[0]) return destinationFromRow(direct[0]);
     const region = regionByCode.get(requested);
+    const directFilter = region ? `local_region_code=eq.${encodeURIComponent(requested)}` : `jne_destination_code=eq.${encodeURIComponent(requested)}`;
+    const direct = await supabaseFetch(`jne_destinations?select=*&${directFilter}&active=eq.true&limit=1`, { service: true });
+    if (direct?.[0]) return destinationFromRow(direct[0]);
     const query = region ? region.city.replace(/^(Kota|Kabupaten)\s+/i, "") : requested;
     const candidates = await this.client.searchDestinations(query);
     const selected = selectDestination(candidates, region?.city || query);
@@ -282,7 +283,7 @@ async function logSourceEvent(eventType, status, details) {
 
 function destinationToRow(destination, region) {
   const now = new Date().toISOString();
-  return { jne_destination_code: destination.jneDestinationCode, destination_name: destination.destinationName, province_name: destination.provinceName || region?.province || "", city_or_regency_name: destination.cityOrRegencyName || region?.city || destination.destinationName, district_name: destination.districtName || null, subdistrict_name: destination.subdistrictName || null, postal_code: destination.postalCode || null, normalized_search_text: normalizeSearch([destination.destinationName, region?.city, region?.province].filter(Boolean).join(" ")), active: true, last_seen_at: now, last_synced_at: now, raw_source_json: destination.raw || {} };
+  return { jne_destination_code: destination.jneDestinationCode, local_region_code: region?.code || null, destination_name: destination.destinationName, province_name: destination.provinceName || region?.province || "", city_or_regency_name: destination.cityOrRegencyName || region?.city || destination.destinationName, district_name: destination.districtName || null, subdistrict_name: destination.subdistrictName || null, postal_code: destination.postalCode || null, normalized_search_text: normalizeSearch([destination.destinationName, region?.city, region?.province].filter(Boolean).join(" ")), active: true, last_seen_at: now, last_synced_at: now, raw_source_json: destination.raw || {} };
 }
 function destinationFromRow(row) { return { jneDestinationCode: row.jne_destination_code, destinationName: row.destination_name, provinceName: row.province_name || "", cityOrRegencyName: row.city_or_regency_name || "", districtName: row.district_name || "", subdistrictName: row.subdistrict_name || "", postalCode: row.postal_code || "" }; }
 function selectDestination(rows, wanted) { const target = normalizeSearch(wanted).replace(/^(kota|kabupaten) /, ""); return [...rows].sort((a, b) => scoreDestination(a, target) - scoreDestination(b, target))[0] || null; }
