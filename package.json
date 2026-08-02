@@ -11,6 +11,7 @@
     "test:routes": "node scripts/verify-public-routes.mjs",
     "test:commerce": "node scripts/verify-commerce-contract.mjs",
     "test:shipping": "node scripts/verify-shipping-calculator.mjs",
+    "test:jne": "node scripts/verify-jne-official-client.mjs",
     "test:shipping-integration": "node scripts/verify-shipping-integration.mjs",
     "test:shipping-catalog": "node scripts/verify-shipping-catalog.mjs",
     "test:enrichment": "node scripts/verify-finance-enrichment.mjs",

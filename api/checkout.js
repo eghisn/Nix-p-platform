@@ -4,7 +4,9 @@ import { consumeCommerceRateLimit, expirePendingOrders, getOrderRecord, normaliz
 import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhook } from "./_lib/commerceHandlers.js";
 import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShippingQuoteNotification, sendCustomerShippingQuoteRequest, sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
-import { calculateRuleShippingQuote } from "./_lib/shippingQuotes.js";
+import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
+import { JneOfficialClient } from "./_lib/jneOfficialClient.js";
+import { runShippingMaintenance } from "./_lib/nixpShippingEngine.js";
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 
 export default async function handler(req, res) {
@@ -14,6 +16,7 @@ export default async function handler(req, res) {
   if (action === "order-status") return handleCustomerOrderStatus(req, res);
   if (action === "maintenance") return handleCommerceMaintenance(req, res);
   if (action === "shipping-quote") return handleRuleShippingQuote(req, res);
+  if (action === "shipping-destinations") return handleShippingDestinationSearch(req, res);
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
   if (!isSupabaseConfigured({ requireServiceRole: true })) {
     return json(res, 503, { ok: false, error: "Checkout is not configured." });
@@ -40,9 +43,9 @@ export default async function handler(req, res) {
       return json(res, 429, { ok: false, error: "Too many checkout attempts. Please wait a few minutes and try again." });
     }
     const ruleQuote = shippingMethod === "JNE"
-      ? await calculateRuleShippingQuote({ items, destinationCode: shippingAddress.regionCode, optionKey: cleanText(body.shippingOption, 180) })
+      ? await validateRuleShippingQuote({ quoteToken: cleanText(body.shippingQuoteToken, 160), items, destinationCode: shippingAddress.regionCode, optionKey: cleanText(body.shippingOption, 180) })
       : null;
-    const manualShippingQuote = shippingMethod === "GoSend Manual" || (shippingMethod === "JNE" && !ruleQuote?.selectedOption);
+    const manualShippingQuote = shippingMethod === "GoSend Manual";
     const usesShippingQuoteFlow = shippingMethod === "JNE" || manualShippingQuote;
     let order = await supabaseFetch(usesShippingQuoteFlow ? "rpc/create_shipping_quote_request" : "rpc/create_checkout_order", {
       method: "POST",
@@ -76,28 +79,6 @@ export default async function handler(req, res) {
           p_calculator_version: ruleQuote.packaging.calculatorVersion
         }
       });
-    } else if (ruleQuote && orderBeforeQuote?.order_status === "Draft" && orderBeforeQuote?.shipping_status === "Awaiting Quote") {
-      const shippingCalculation = {
-        calculatorVersion: ruleQuote.packaging.calculatorVersion,
-        packages: ruleQuote.packaging.packages,
-        rateIds: [],
-        calculatedAt: ruleQuote.quotedAt,
-        rateStatus: "manual-rate-required"
-      };
-      await Promise.all([
-        supabaseFetch(`order_records?id=eq.${encodeURIComponent(orderId)}`, {
-          method: "PATCH",
-          service: true,
-          prefer: "return=minimal",
-          body: { metadata: { ...(orderBeforeQuote.metadata || {}), shippingCalculation }, updated_at: new Date().toISOString() }
-        }),
-        supabaseFetch(`shipping_quotes?order_id=eq.${encodeURIComponent(orderId)}&status=eq.Draft`, {
-          method: "PATCH",
-          service: true,
-          prefer: "return=minimal",
-          body: { provider: "NIXP Rule Calculator / Manual Rate", payload: shippingCalculation, updated_at: new Date().toISOString() }
-        })
-      ]);
     }
     const currentOrder = await getOrderRecord(orderId);
     const emailResult = (label) => (error) => ({ delivered: false, label, error: error instanceof Error ? error.message : "Notification delivery failed." });
@@ -174,10 +155,25 @@ async function handleRuleShippingQuote(req, res) {
       totalChargeableWeightKg: quote.packaging.totalChargeableWeightKg,
       packages: quote.packaging.packages,
       options: quote.options,
+      quoteToken: quote.quoteToken,
+      expiresAt: quote.expiresAt,
       quotedAt: quote.quotedAt
     });
   } catch (error) {
     return json(res, Number(error?.statusCode || 500), { ok: false, error: friendlyError(error instanceof Error ? error.message : "Shipping quote failed.") });
+  }
+}
+
+async function handleShippingDestinationSearch(req, res) {
+  if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
+  try {
+    if (!isCheckoutOrigin(req)) return json(res, 403, { ok: false, error: "Checkout origin is not allowed." });
+    if (!(await consumeCommerceRateLimit("shipping-destinations", requestClientAddress(req), { limit: 120, windowSeconds: 900 }))) return json(res, 429, { ok: false, error: "Too many destination searches." });
+    const query = new URL(req.url || "/", "https://www.nix-p.com").searchParams.get("q") || "";
+    const destinations = await new JneOfficialClient().searchDestinations(query);
+    return json(res, 200, { ok: true, destinations });
+  } catch (error) {
+    return json(res, Number(error?.statusCode || 503), { ok: false, error: error instanceof Error ? error.message : "Destination search unavailable." });
   }
 }
 
@@ -214,9 +210,8 @@ async function handleCommerceMaintenance(req, res) {
   if (!isSupabaseConfigured({ requireServiceRole: true })) return json(res, 503, { ok: false, error: "Commerce maintenance is not configured." });
   if (!validCronSecret(req.headers.authorization, process.env.CRON_SECRET)) return json(res, 401, { ok: false, error: "Unauthorized." });
   try {
-    const maintenance = await expirePendingOrders();
-    const outbox = await drainNotificationOutbox(50);
-    return json(res, 200, { ok: true, maintenance, outbox, checkedAt: new Date().toISOString() });
+    const [maintenance, outbox, shipping] = await Promise.all([expirePendingOrders(), drainNotificationOutbox(50), runShippingMaintenance({ mode: "daily" })]);
+    return json(res, 200, { ok: true, maintenance, outbox, shipping, checkedAt: new Date().toISOString() });
   } catch (error) {
     return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Commerce maintenance failed." });
   }

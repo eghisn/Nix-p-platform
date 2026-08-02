@@ -130,6 +130,7 @@ function setCartItemQuantity(key, quantity) {
   const cleanQuantity = Math.max(0, Math.floor(Number(quantity) || 0));
   state.cart = state.cart.filter((itemKey) => itemKey !== cleanKey);
   state.cart.push(...Array.from({ length: cleanQuantity }, () => cleanKey));
+  state.checkoutShippingQuote = null;
   clearCheckoutSession();
   persistCart();
 }
@@ -1847,48 +1848,55 @@ async function adminShippingPage() {
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(payload.error || "Shipping settings could not be loaded.");
   const settings = payload.settings || {};
-  const rates = payload.rates || [];
+  const metrics = payload.metrics || {};
+  const connection = payload.connection || {};
+  const events = payload.events || [];
   return `
-    ${adminHero("Shipping", "Manage the NIXP packing calculation origin, volumetric divisor, and destination rates.")}
+    ${adminHero("Shipping", "Monitor the internal NIXP packaging engine, official JNE source, destination catalogue, and tariff cache.")}
     <div class="admin-workspace admin-shipping-workspace">
       <div>
         <form class="admin-panel" data-admin-shipping-settings-form>
-          <div class="admin-panel-head"><h2>Calculator settings</h2></div>
-          ${input("origin", "Origin code", settings.origin || "JAKARTA", "JAKARTA")}
-          ${input("originName", "Origin name", settings.originName || "Jakarta", "Jakarta")}
+          <div class="admin-panel-head"><h2>Engine settings</h2><span>${connection.authenticated ? "Official API authenticated" : "Official public source"}</span></div>
+          ${input("originCode", "Confirmed JNE origin code", settings.originCode || "", "CGK10000")}
+          ${input("originName", "Origin name", settings.originName || "NIXP Jakarta", "NIXP Jakarta")}
           ${input("volumetricDivisor", "Volumetric divisor", settings.volumetricDivisor || 6000, "6000", "number")}
+          ${input("cacheTtlHours", "Fresh cache hours", settings.cacheTtlHours || 24, "24", "number")}
+          ${input("maxStaleHours", "Maximum stale fallback hours", settings.maxStaleHours || 168, "168", "number")}
+          ${input("quoteTtlMinutes", "Checkout quote minutes", settings.quoteTtlMinutes || 15, "15", "number")}
           <div class="admin-form-actions"><button class="button button-dark" type="submit">Save settings</button><p class="admin-form-note" data-admin-form-message aria-live="polite"></p></div>
         </form>
-        <form class="admin-panel admin-shipping-rate-form" data-admin-shipping-rate-form>
-          <div class="admin-panel-head"><h2>Add destination rate</h2></div>
-          <label>Destination
-            <select name="destinationCode" required><option value="" selected disabled>Select city or regency</option>${checkoutCityOptions()}</select>
-          </label>
-          <div class="admin-form-grid">
-            ${input("courier", "Courier", "JNE", "JNE")}
-            ${input("service", "Service", "REG", "REG")}
-            ${input("chargeableWeightKg", "Chargeable kg", 1, "1", "number")}
-            ${input("rate", "Rate (Rp)", "", "25000", "number")}
-            ${input("effectiveDate", "Effective date", new Date().toISOString().slice(0, 10), "YYYY-MM-DD", "date")}
-            ${input("eta", "Estimated delivery", "", "2-4 working days")}
+        <section class="admin-panel">
+          <div class="admin-panel-head"><h2>Official source</h2><span>${connection.ok ? "Connected" : "Unavailable"}</span></div>
+          <p class="admin-form-note">${escapeHtml(connection.source || "JNE official source")} / ${escapeHtml(connection.latencyMs || 0)} ms${connection.error ? ` / ${escapeHtml(connection.error)}` : ""}</p>
+          <div class="admin-form-actions admin-shipping-actions">
+            <button class="button button-outline" type="button" data-admin-shipping-action="health-check">Check connection</button>
+            <button class="button button-outline" type="button" data-admin-shipping-action="sync-destinations">Sync destinations</button>
+            <button class="button button-dark" type="button" data-admin-shipping-action="refresh-tariffs">Refresh used tariffs</button>
           </div>
-          <div class="admin-form-actions"><button class="button button-dark" type="submit">Add rate</button><p class="admin-form-note" data-admin-form-message aria-live="polite"></p></div>
-        </form>
+          <p class="admin-form-note" data-admin-shipping-action-message aria-live="polite"></p>
+        </section>
       </div>
-      <div class="admin-panel">
-        <div class="admin-panel-head"><h2>Rate table</h2><span>${rates.length} rows</span></div>
+      <div>
+        <section class="section report-grid admin-shipping-metrics">
+          ${metric("Active destinations", metrics.activeDestinations || 0)}
+          ${metric("Cached routes", metrics.cachedRoutes || 0)}
+          ${metric("Fresh tariffs", metrics.freshTariffs || 0)}
+          ${metric("Stale tariffs", metrics.staleTariffs || 0)}
+          ${metric("Unavailable routes", metrics.unavailableRoutes || 0)}
+          ${metric("Failed requests", metrics.failedRequests || 0)}
+        </section>
+        <section class="admin-panel">
+        <div class="admin-panel-head"><h2>Source audit</h2><span>${events.length} recent events</span></div>
         ${table(
-          ["Destination", "Courier / service", "Kg", "Rate", "Effective", "Status", "Action"],
-          rates.map((rate) => [
-            `${escapeHtml(rate.destination_name)}<br><small>${escapeHtml(rate.destination_code)}</small>`,
-            `${escapeHtml(rate.courier)} / ${escapeHtml(rate.service)}${rate.eta ? `<br><small>${escapeHtml(rate.eta)}</small>` : ""}`,
-            escapeHtml(rate.chargeable_weight_kg),
-            money.format(rate.rate),
-            escapeHtml(rate.effective_date),
-            statusBadge(rate.active ? "Active" : "Inactive"),
-            `<button class="button button-outline admin-rate-toggle" type="button" data-shipping-rate-id="${escapeAttr(rate.id)}" data-shipping-rate-active="${rate.active ? "false" : "true"}">${rate.active ? "Disable" : "Enable"}</button>`
+          ["Time", "Operation", "Status", "Detail"],
+          events.map((event) => [
+            escapeHtml(new Date(event.created_at).toLocaleString("en-GB")),
+            escapeHtml(event.event_type),
+            statusBadge(event.status),
+            `<small>${escapeHtml(JSON.stringify(event.details || {}).slice(0, 180))}</small>`
           ])
         )}
+        </section>
       </div>
     </div>
   `;
@@ -2551,6 +2559,7 @@ function bindEvents() {
           customer,
           shippingMethod,
           shippingOption: formData.get("shippingOption"),
+          shippingQuoteToken: state.checkoutShippingQuote?.quoteToken || "",
           shippingAddress,
           orderId
         })
@@ -2604,6 +2613,7 @@ function bindEvents() {
   const checkoutGrandTotal = document.querySelector("[data-checkout-grand-total]");
   let checkoutQuoteRequest = 0;
   let checkoutQuoteTimer;
+  let checkoutQuoteExpiryTimer;
   const showCheckoutQuote = (message, tone = "") => {
     if (!checkoutQuote) return;
     checkoutQuote.dataset.tone = tone;
@@ -2622,7 +2632,7 @@ function bindEvents() {
     const requestId = ++checkoutQuoteRequest;
     const submit = document.querySelector("[data-checkout-submit]");
     if (submit) submit.disabled = true;
-    showCheckoutQuote("Calculating packed shipment and destination rate...");
+    showCheckoutQuote("Calculating shipping...");
     if (checkoutServiceField) checkoutServiceField.hidden = true;
     try {
       const { rows, total } = await cartSummary();
@@ -2638,16 +2648,23 @@ function bindEvents() {
       if (requestId !== checkoutQuoteRequest) return;
       if (!response.ok) throw new Error(payload.error || "Shipping quote could not be calculated.");
       state.checkoutShippingQuote = payload;
+      clearTimeout(checkoutQuoteExpiryTimer);
+      const expiresIn = Math.max(0, new Date(payload.expiresAt).getTime() - Date.now());
+      checkoutQuoteExpiryTimer = setTimeout(() => {
+        if (state.checkoutShippingQuote?.quoteToken !== payload.quoteToken) return;
+        state.checkoutShippingQuote = null;
+        if (submit) submit.disabled = true;
+        if (checkoutServiceField) checkoutServiceField.hidden = true;
+        showCheckoutQuote("This shipping quote expired. Recalculating shipping...");
+        requestCheckoutShippingQuote();
+      }, expiresIn + 250);
       if (!payload.options?.length) {
         if (checkoutService) checkoutService.innerHTML = "";
         if (checkoutServiceField) checkoutServiceField.hidden = true;
-        if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Rate unavailable";
-        if (checkoutGrandTotal) checkoutGrandTotal.textContent = `${money.format(total)} + delivery`;
-        if (submit) {
-          submit.disabled = false;
-          submit.textContent = "Request delivery quote";
-        }
-        showCheckoutQuote("The package calculation is ready. This destination still needs a manual rate confirmation before payment.");
+        if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Unavailable";
+        if (checkoutGrandTotal) checkoutGrandTotal.textContent = money.format(total);
+        if (submit) submit.disabled = true;
+        showCheckoutQuote("Shipping is currently unavailable for this destination.", "error");
         return;
       }
       if (checkoutService) {
@@ -2665,8 +2682,10 @@ function bindEvents() {
     } catch (error) {
       if (requestId !== checkoutQuoteRequest) return;
       state.checkoutShippingQuote = null;
+      if (checkoutServiceField) checkoutServiceField.hidden = true;
+      if (submit) submit.disabled = true;
       if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Unavailable";
-      showCheckoutQuote(error instanceof Error ? error.message : "Shipping quote could not be calculated.", "error");
+      showCheckoutQuote(error instanceof Error ? error.message : "We couldn't calculate shipping. Please check your address and try again.", "error");
     }
   };
   const scheduleCheckoutShippingQuote = () => {
@@ -2677,6 +2696,7 @@ function bindEvents() {
     const region = indonesiaRegionByCode.get(checkoutCity?.value || "");
     if (checkoutProvince) checkoutProvince.value = region?.province || "";
     state.checkoutShippingQuote = null;
+    if (checkoutService) checkoutService.innerHTML = "";
     scheduleCheckoutShippingQuote();
   };
   const normalizeCitySearch = (value) =>
@@ -2728,6 +2748,7 @@ function bindEvents() {
       showCheckoutQuote("GoSend is confirmed manually for eligible Jakarta addresses before payment.");
     } else {
       if (submit) submit.disabled = !state.checkoutShippingQuote?.options?.length;
+      if (!checkoutCity?.value) showCheckoutQuote("Enter your delivery address to view shipping options.");
       scheduleCheckoutShippingQuote();
     }
   };
@@ -2903,6 +2924,28 @@ function bindEvents() {
   document.querySelector("[data-admin-shipping-settings-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
     await submitAdminShippingForm(event.currentTarget, "save-settings", "Shipping calculator settings saved.");
+  });
+
+  document.querySelectorAll("[data-admin-shipping-action]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const notice = document.querySelector("[data-admin-shipping-action-message]");
+      button.disabled = true;
+      if (notice) notice.textContent = "Running shipping operation...";
+      try {
+        const response = await fetch("/api/admin/shipping", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ action: button.dataset.adminShippingAction })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || "Shipping operation failed.");
+        if (notice) notice.textContent = "Shipping operation completed.";
+        await render({ preserveScroll: true });
+      } catch (error) {
+        if (notice) notice.textContent = error instanceof Error ? error.message : "Shipping operation failed.";
+        button.disabled = false;
+      }
+    });
   });
 
   document.querySelector("[data-admin-shipping-rate-form]")?.addEventListener("submit", async (event) => {
