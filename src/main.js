@@ -2604,6 +2604,7 @@ function bindEvents() {
   });
 
   const shippingMethod = document.querySelector("[data-checkout-shipping-method]");
+  const checkoutForm = document.querySelector("[data-checkout-form]");
   const checkoutCity = document.querySelector("[data-checkout-city]");
   const checkoutProvince = document.querySelector("[data-checkout-province]");
   const checkoutService = document.querySelector("[data-checkout-shipping-option]");
@@ -2619,6 +2620,18 @@ function bindEvents() {
     checkoutQuote.dataset.tone = tone;
     const messageNode = checkoutQuote.querySelector("span");
     if (messageNode) messageNode.textContent = message;
+  };
+  const syncCheckoutSubmitAvailability = () => {
+    const submit = checkoutForm?.querySelector("[data-checkout-submit]");
+    if (!submit) return;
+    const method = shippingMethod?.value || "";
+    const quoteIsCurrent = Boolean(
+      state.checkoutShippingQuote?.quoteToken
+      && new Date(state.checkoutShippingQuote.expiresAt).getTime() > Date.now()
+      && checkoutService?.value
+    );
+    const deliveryIsReady = method === "Store Pickup" || method === "GoSend Manual" || (method === "JNE" && quoteIsCurrent);
+    submit.disabled = !checkoutForm.checkValidity() || !deliveryIsReady;
   };
   const applyCheckoutShippingOption = (merchandiseTotal) => {
     const option = state.checkoutShippingQuote?.options?.find((item) => item.key === checkoutService?.value) || state.checkoutShippingQuote?.options?.[0];
@@ -2656,6 +2669,7 @@ function bindEvents() {
         if (submit) submit.disabled = true;
         if (checkoutServiceField) checkoutServiceField.hidden = true;
         showCheckoutQuote("This shipping quote expired. Recalculating shipping...");
+        syncCheckoutSubmitAvailability();
         requestCheckoutShippingQuote();
       }, expiresIn + 250);
       if (!payload.options?.length) {
@@ -2677,8 +2691,8 @@ function bindEvents() {
         });
       }
       if (checkoutServiceField) checkoutServiceField.hidden = false;
-      if (submit) submit.disabled = false;
       applyCheckoutShippingOption(total);
+      syncCheckoutSubmitAvailability();
     } catch (error) {
       if (requestId !== checkoutQuoteRequest) return;
       state.checkoutShippingQuote = null;
@@ -2686,6 +2700,7 @@ function bindEvents() {
       if (submit) submit.disabled = true;
       if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Unavailable";
       showCheckoutQuote(error instanceof Error ? error.message : "We couldn't calculate shipping. Please check your address and try again.", "error");
+      syncCheckoutSubmitAvailability();
     }
   };
   const scheduleCheckoutShippingQuote = () => {
@@ -2738,23 +2753,23 @@ function bindEvents() {
     });
     if (checkoutServiceField) checkoutServiceField.hidden = shippingMethod?.value !== "JNE" || !state.checkoutShippingQuote?.options?.length;
     if (pickup) {
-      if (submit) submit.disabled = false;
       if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = money.format(0);
       cartSummary().then(({ total }) => { if (checkoutGrandTotal) checkoutGrandTotal.textContent = money.format(total); });
       showCheckoutQuote("Store pickup does not add a delivery charge.", "success");
     } else if (manual) {
-      if (submit) submit.disabled = false;
       if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Manual quote";
       showCheckoutQuote("GoSend is confirmed manually for eligible Jakarta addresses before payment.");
     } else {
-      if (submit) submit.disabled = !state.checkoutShippingQuote?.options?.length;
       if (!checkoutCity?.value) showCheckoutQuote("Enter your delivery address to view shipping options.");
       scheduleCheckoutShippingQuote();
     }
+    syncCheckoutSubmitAvailability();
   };
   shippingMethod?.addEventListener("change", syncCheckoutAddressRequirements);
   checkoutCity?.addEventListener("change", syncCheckoutProvince);
   checkoutService?.addEventListener("change", async () => applyCheckoutShippingOption((await cartSummary()).total));
+  checkoutForm?.addEventListener("input", syncCheckoutSubmitAvailability);
+  checkoutForm?.addEventListener("change", syncCheckoutSubmitAvailability);
   checkoutCity?.addEventListener("keydown", (event) => {
     if (event.ctrlKey || event.metaKey || event.altKey || event.key.length !== 1) return;
     cityTypeahead += event.key;
