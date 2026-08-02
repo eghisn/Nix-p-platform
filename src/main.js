@@ -815,79 +815,91 @@ async function cartPage() {
     <section class="section cart-view">
       ${
         rows.length
-          ? rows
-              .map(
-                (row) => `
-                  <article class="cart-row">
-                    <span>${row.product.artist}</span>
-                    <strong>${row.product.title}${row.size ? ` <small>/ ${escapeHtml(row.size)}</small>` : ""} <small>x${row.quantity}</small></strong>
-                    ${cartQuantityControl(row)}
-                    <span>${money.format(row.lineTotal)}</span>
-                  </article>
-                `
-              )
-              .join("")
-          : `<p class="empty-state">Your cart is empty.</p>`
-      }
-      <div class="cart-total cart-totals" aria-label="Order total">
-        <span>Items</span><strong>${money.format(total)}</strong>
-        <span>Delivery</span><em data-checkout-delivery-total>Calculated after city selection</em>
-        <span>Total at payment</span><strong data-checkout-grand-total>${money.format(total)} + delivery</strong>
-      </div>
-      ${
-        rows.length
           ? `
-            <aside class="checkout-assurance" aria-label="Checkout details">
-              <p><strong>Two-hour reservation</strong><span>Stock is held for two hours after checkout, then released automatically when payment is not completed.</span></p>
-              <p><strong>Delivery quote before payment</strong><span>JNE and GoSend delivery costs are confirmed from your address before payment opens. The final total always includes items and shipping.</span></p>
-            </aside>
-            <form class="checkout-form" data-checkout-form>
-              <h2>Contact</h2>
-              <div class="admin-form-grid">
-                <label>Name<input name="name" required autocomplete="name" /></label>
-                <label>Email<input name="email" type="email" required autocomplete="email" placeholder="name@email.com" /></label>
-                <label>WhatsApp<input name="whatsapp" required autocomplete="tel" inputmode="tel" /></label>
-                <label class="admin-form-span">Notes<textarea name="notes" rows="3" placeholder="Delivery, pickup, or payment notes"></textarea></label>
+            <div class="checkout-layout">
+              <div class="checkout-main">
+                <aside class="checkout-assurance" aria-label="Checkout details">
+                  <p><strong>Two-hour reservation</strong><span>Stock is held for two hours after checkout, then released automatically when payment is not completed.</span></p>
+                  <p><strong>Delivery quote before payment</strong><span>JNE and GoSend delivery costs are confirmed from your address before payment opens. The final total always includes items and shipping.</span></p>
+                </aside>
+                <form class="checkout-form" data-checkout-form>
+                  <h2>Contact</h2>
+                  <div class="admin-form-grid">
+                    <label>Name<input name="name" required autocomplete="name" /></label>
+                    <label>Email<input name="email" type="email" required autocomplete="email" placeholder="name@email.com" /></label>
+                    <label>WhatsApp<input name="whatsapp" required autocomplete="tel" inputmode="tel" /></label>
+                    <label class="admin-form-span">Notes<textarea name="notes" rows="3" placeholder="Delivery, pickup, or payment notes"></textarea></label>
+                  </div>
+                  <h2>Delivery</h2>
+                  <div class="admin-form-grid">
+                    <label>Shipping method
+                      <select name="shippingMethod" required data-checkout-shipping-method>
+                        <option value="JNE">JNE</option>
+                        <option value="GoSend Manual">GoSend Manual (Jakarta Area Only)</option>
+                        <option value="Store Pickup">Store Pickup</option>
+                      </select>
+                    </label>
+                    <label data-checkout-address-field>Recipient<input name="shippingRecipient" required autocomplete="shipping name" /></label>
+                    <label data-checkout-address-field>Recipient phone<input name="shippingPhone" required autocomplete="shipping tel" inputmode="tel" /></label>
+                    <label class="admin-form-span" data-checkout-address-field>Address<input name="shippingAddress1" required autocomplete="shipping address-line1" /></label>
+                    <label class="admin-form-span" data-checkout-address-field>Address details<input name="shippingAddress2" autocomplete="shipping address-line2" placeholder="Building, unit, or landmark (optional)" /></label>
+                    <label data-checkout-address-field>District<input name="shippingDistrict" required autocomplete="shipping address-level3" /></label>
+                    <label data-checkout-address-field>City / regency
+                      <select name="shippingCity" required autocomplete="shipping address-level2" data-checkout-city>
+                        <option value="" selected disabled>Select city or regency</option>
+                        ${checkoutCityOptions()}
+                      </select>
+                    </label>
+                    <label data-checkout-address-field>Province<input name="shippingProvince" required readonly autocomplete="shipping address-level1" data-checkout-province /></label>
+                    <label data-checkout-address-field>Postal code<input name="shippingPostalCode" required autocomplete="shipping postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" /></label>
+                    <label data-checkout-address-field>Country<input name="shippingCountry" value="Indonesia" readonly /></label>
+                    <label class="admin-form-span" data-checkout-service-field hidden>Shipping service
+                      <select name="shippingOption" data-checkout-shipping-option></select>
+                    </label>
+                    <a class="button checkout-international-order" href="/international-order" data-link>Ordering from outside Indonesia?</a>
+                  </div>
+                  <div class="checkout-shipping-quote" data-checkout-shipping-quote aria-live="polite">
+                    <strong>Shipping quote</strong>
+                    <span>Select a city or regency to calculate the packed shipment and available service.</span>
+                  </div>
+                  <div class="admin-form-actions">
+                    <button class="button button-dark" type="submit" data-checkout-submit>Request delivery quote</button>
+                    <p class="admin-form-note" data-tone="${escapeAttr(state.checkoutTone)}">${escapeHtml(state.checkoutMessage)}</p>
+                  </div>
+                </form>
               </div>
-              <h2>Delivery</h2>
-              <div class="admin-form-grid">
-                <label>Shipping method
-                  <select name="shippingMethod" required data-checkout-shipping-method>
-                    <option value="JNE">JNE</option>
-                    <option value="GoSend Manual">GoSend Manual (Jakarta Area Only)</option>
-                    <option value="Store Pickup">Store Pickup</option>
-                  </select>
-                </label>
-                <label data-checkout-address-field>Recipient<input name="shippingRecipient" required autocomplete="shipping name" /></label>
-                <label data-checkout-address-field>Recipient phone<input name="shippingPhone" required autocomplete="shipping tel" inputmode="tel" /></label>
-                <label class="admin-form-span" data-checkout-address-field>Address<input name="shippingAddress1" required autocomplete="shipping address-line1" /></label>
-                <label class="admin-form-span" data-checkout-address-field>Address details<input name="shippingAddress2" autocomplete="shipping address-line2" placeholder="Building, unit, or landmark (optional)" /></label>
-                <label data-checkout-address-field>District<input name="shippingDistrict" required autocomplete="shipping address-level3" /></label>
-                <label data-checkout-address-field>City / regency
-                  <select name="shippingCity" required autocomplete="shipping address-level2" data-checkout-city>
-                    <option value="" selected disabled>Select city or regency</option>
-                    ${checkoutCityOptions()}
-                  </select>
-                </label>
-                <label data-checkout-address-field>Province<input name="shippingProvince" required readonly autocomplete="shipping address-level1" data-checkout-province /></label>
-                <label data-checkout-address-field>Postal code<input name="shippingPostalCode" required autocomplete="shipping postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" /></label>
-                <label data-checkout-address-field>Country<input name="shippingCountry" value="Indonesia" readonly /></label>
-                <label class="admin-form-span" data-checkout-service-field hidden>Shipping service
-                  <select name="shippingOption" data-checkout-shipping-option></select>
-                </label>
-                <a class="button checkout-international-order" href="/international-order" data-link>Ordering from outside Indonesia?</a>
-              </div>
-              <div class="checkout-shipping-quote" data-checkout-shipping-quote aria-live="polite">
-                <strong>Shipping quote</strong>
-                <span>Select a city or regency to calculate the packed shipment and available service.</span>
-              </div>
-              <div class="admin-form-actions">
-                <button class="button button-dark" type="submit" data-checkout-submit>Request delivery quote</button>
-                <p class="admin-form-note" data-tone="${escapeAttr(state.checkoutTone)}">${escapeHtml(state.checkoutMessage)}</p>
-              </div>
-            </form>
+              <aside class="checkout-summary" aria-label="Order summary">
+                <div class="checkout-summary-heading">
+                  <h2>Order summary</h2>
+                  <span>${rows.reduce((sum, row) => sum + row.quantity, 0)} item${rows.reduce((sum, row) => sum + row.quantity, 0) === 1 ? "" : "s"}</span>
+                </div>
+                <div class="checkout-summary-items">
+                  ${rows
+                    .map(
+                      (row) => `
+                        <article class="checkout-summary-item">
+                          <img src="${escapeAttr(row.product.image || "")}" alt="${escapeAttr(row.product.title)}" />
+                          <div class="checkout-summary-copy">
+                            <span>${escapeHtml(row.product.artist)}</span>
+                            <strong>${escapeHtml(row.product.title)}</strong>
+                            ${row.size ? `<small>${escapeHtml(row.size)}</small>` : ""}
+                            ${cartQuantityControl(row)}
+                          </div>
+                          <strong class="checkout-summary-price">${money.format(row.lineTotal)}</strong>
+                        </article>
+                      `
+                    )
+                    .join("")}
+                </div>
+                <div class="cart-total cart-totals checkout-summary-totals" aria-label="Order total">
+                  <span>Items</span><strong>${money.format(total)}</strong>
+                  <span>Delivery</span><em data-checkout-delivery-total>Calculated after city selection</em>
+                  <span>Total at payment</span><strong data-checkout-grand-total>${money.format(total)} + delivery</strong>
+                </div>
+              </aside>
+            </div>
           `
-          : ""
+          : `<p class="empty-state">Your cart is empty.</p>`
       }
     </section>
   `;

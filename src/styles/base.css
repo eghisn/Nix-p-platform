@@ -2194,7 +2194,6 @@ tr:last-child td {
   display: grid;
   gap: 18px;
   border-top: 1px solid var(--line);
-  margin-top: 18px;
   padding-top: 24px;
 }
 
@@ -2212,6 +2211,17 @@ body:has(.cart-view) .site-footer {
   position: static;
 }
 
+.checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(330px, 0.72fr);
+  gap: clamp(44px, 6vw, 96px);
+  align-items: start;
+}
+
+.checkout-main {
+  min-width: 0;
+}
+
 .admin-form-span {
   grid-column: 1 / -1;
 }
@@ -2221,7 +2231,6 @@ body:has(.cart-view) .site-footer {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px 24px;
   border-top: 1px solid var(--line);
-  margin-top: 24px;
   padding-top: 16px;
 }
 
@@ -2275,6 +2284,134 @@ body:has(.cart-view) .site-footer {
   grid-column: 1 / -1;
   justify-self: start;
   margin-top: 2px;
+}
+
+.checkout-summary {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  max-height: calc(100vh - var(--header-h) - 48px);
+  min-width: 0;
+  border-left: 1px solid var(--line);
+  padding-left: clamp(24px, 3vw, 44px);
+  overflow: hidden;
+}
+
+.checkout-summary-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+
+.checkout-summary-heading h2,
+.checkout-summary-heading span {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.checkout-summary-heading span {
+  color: var(--muted);
+}
+
+.checkout-summary-items {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.checkout-summary-item {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+}
+
+.checkout-summary-item > img {
+  width: 68px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: var(--paper);
+}
+
+.checkout-summary-copy {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.checkout-summary-copy > span,
+.checkout-summary-copy > small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 760;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.checkout-summary-copy > strong {
+  font-size: 14px;
+  line-height: 1.12;
+}
+
+.checkout-summary-copy .cart-quantity {
+  grid-template-columns: 25px 40px 25px;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.checkout-summary-copy .cart-quantity button,
+.checkout-summary-copy .cart-quantity input {
+  height: 26px;
+  font-size: 10px;
+}
+
+.checkout-summary-copy .cart-quantity small {
+  font-size: 8px;
+}
+
+.checkout-summary-price {
+  padding-top: 1px;
+  font-size: 13px;
+  line-height: 1.2;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.checkout-summary-totals {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 18px !important;
+  margin-top: 0 !important;
+  padding: 18px 0 0 !important;
+  font-size: 13px !important;
+}
+
+.checkout-summary-totals > span,
+.checkout-summary-totals > em,
+.checkout-summary-totals > strong {
+  margin: 0;
+  line-height: 1.25;
+}
+
+.checkout-summary-totals > em,
+.checkout-summary-totals > strong {
+  justify-self: end;
+  text-align: right;
+}
+
+.checkout-summary-totals > span:last-of-type,
+.checkout-summary-totals > strong:last-child {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  font-size: 16px;
 }
 
 .cart-view .cart-total {
@@ -2637,6 +2774,35 @@ body:has(.cart-view) .site-footer {
 
   .detail-copy {
     position: static;
+  }
+
+  .checkout-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.7fr);
+    gap: 34px;
+  }
+}
+
+@media (max-width: 960px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-main {
+    order: 2;
+  }
+
+  .checkout-summary {
+    position: static;
+    order: 1;
+    max-height: none;
+    border-left: 0;
+    padding-left: 0;
+    overflow: visible;
+  }
+
+  .checkout-summary-items {
+    max-height: none;
+    overflow: visible;
   }
 }
 
