@@ -67,7 +67,10 @@ export async function createMidtransPaymentSession(orderId) {
       headers: { authorization: `Basic ${Buffer.from(`${process.env.MIDTRANS_SERVER_KEY}:`).toString("base64")}`, "content-type": "application/json", accept: "application/json" },
       body: JSON.stringify({
         transaction_details: { order_id: order.id, gross_amount: order.grand_total },
-        item_details: order.items.map((item) => ({ id: item.sku, price: item.unit_price, quantity: item.quantity, name: [item.artist, item.title, item.size_label].filter(Boolean).join(" - ").slice(0, 50) })),
+        item_details: [
+          ...order.items.map((item) => ({ id: item.sku, price: item.unit_price, quantity: item.quantity, name: [item.artist, item.title, item.size_label].filter(Boolean).join(" - ").slice(0, 50) })),
+          ...(Number(order.shipping_total || 0) > 0 ? [{ id: "NIXP-SHIPPING", price: Number(order.shipping_total), quantity: 1, name: `${order.courier || "Shipping"} delivery`.slice(0, 50) }] : [])
+        ],
         customer_details: { first_name: String(customer.name || "NIXP customer").slice(0, 255), email: String(customer.email || "").slice(0, 255), phone: String(customer.whatsapp || "").slice(0, 32) },
         expiry: { unit: "hour", duration: 2 },
         callbacks: { finish: statusUrl, error: statusUrl },

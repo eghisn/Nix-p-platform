@@ -20,6 +20,7 @@ const adminLinks = [
   ["Products", "/admin/products"],
   ["Requests", "/admin/requests"],
   ["Orders", "/admin/orders"],
+  ["Shipping", "/admin/shipping"],
   ["Preview", "/admin/preview"]
 ];
 

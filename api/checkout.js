@@ -2,8 +2,9 @@ import { timingSafeEqual } from "node:crypto";
 import { json } from "./_lib/auth.js";
 import { consumeCommerceRateLimit, expirePendingOrders, getOrderRecord, normalizeShippingAddress, requestClientAddress } from "./_lib/commerce.js";
 import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhook } from "./_lib/commerceHandlers.js";
-import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShippingQuoteRequest, sendOrderNotification } from "./_lib/emailNotifications.js";
+import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShippingQuoteNotification, sendCustomerShippingQuoteRequest, sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
+import { calculateRuleShippingQuote } from "./_lib/shippingQuotes.js";
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 
 export default async function handler(req, res) {
@@ -12,6 +13,7 @@ export default async function handler(req, res) {
   if (action === "midtrans-webhook") return handleMidtransWebhook(req, res);
   if (action === "order-status") return handleCustomerOrderStatus(req, res);
   if (action === "maintenance") return handleCommerceMaintenance(req, res);
+  if (action === "shipping-quote") return handleRuleShippingQuote(req, res);
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
   if (!isSupabaseConfigured({ requireServiceRole: true })) {
     return json(res, 503, { ok: false, error: "Checkout is not configured." });
@@ -37,8 +39,12 @@ export default async function handler(req, res) {
     if (!existingOrder && !(await consumeCommerceRateLimit("checkout-submit", `${requestClientAddress(req)}:${customer.email.toLowerCase()}`, { limit: 8, windowSeconds: 900 }))) {
       return json(res, 429, { ok: false, error: "Too many checkout attempts. Please wait a few minutes and try again." });
     }
-    const requiresShippingQuote = shippingMethod === "JNE" || shippingMethod === "GoSend Manual";
-    const order = await supabaseFetch(requiresShippingQuote ? "rpc/create_shipping_quote_request" : "rpc/create_checkout_order", {
+    const ruleQuote = shippingMethod === "JNE"
+      ? await calculateRuleShippingQuote({ items, destinationCode: shippingAddress.regionCode, optionKey: cleanText(body.shippingOption, 180) })
+      : null;
+    const manualShippingQuote = shippingMethod === "GoSend Manual" || (shippingMethod === "JNE" && !ruleQuote?.selectedOption);
+    const usesShippingQuoteFlow = shippingMethod === "JNE" || manualShippingQuote;
+    let order = await supabaseFetch(usesShippingQuoteFlow ? "rpc/create_shipping_quote_request" : "rpc/create_checkout_order", {
       method: "POST",
       service: true,
       body: {
@@ -49,6 +55,50 @@ export default async function handler(req, res) {
         p_shipping_method: shippingMethod
       }
     });
+    let orderBeforeQuote = await getOrderRecord(orderId);
+    if (ruleQuote?.selectedOption && orderBeforeQuote?.order_status === "Draft" && orderBeforeQuote?.shipping_status === "Awaiting Quote") {
+      const option = ruleQuote.selectedOption;
+      const packages = ruleQuote.packaging.packages.map((pkg) => {
+        const rate = option.packageRates.find((entry) => entry.packageNumber === pkg.packageNumber);
+        return { ...pkg, rateId: rate?.rateId || null, shippingAmount: rate?.amount || 0 };
+      });
+      order = await supabaseFetch("rpc/issue_rule_based_shipping_quote", {
+        method: "POST",
+        service: true,
+        body: {
+          p_order_id: orderId,
+          p_amount: option.shippingTotal,
+          p_courier: option.courier,
+          p_service: option.service,
+          p_eta: option.eta || null,
+          p_packages: packages,
+          p_rate_ids: option.packageRates.map((entry) => entry.rateId),
+          p_calculator_version: ruleQuote.packaging.calculatorVersion
+        }
+      });
+    } else if (ruleQuote && orderBeforeQuote?.order_status === "Draft" && orderBeforeQuote?.shipping_status === "Awaiting Quote") {
+      const shippingCalculation = {
+        calculatorVersion: ruleQuote.packaging.calculatorVersion,
+        packages: ruleQuote.packaging.packages,
+        rateIds: [],
+        calculatedAt: ruleQuote.quotedAt,
+        rateStatus: "manual-rate-required"
+      };
+      await Promise.all([
+        supabaseFetch(`order_records?id=eq.${encodeURIComponent(orderId)}`, {
+          method: "PATCH",
+          service: true,
+          prefer: "return=minimal",
+          body: { metadata: { ...(orderBeforeQuote.metadata || {}), shippingCalculation }, updated_at: new Date().toISOString() }
+        }),
+        supabaseFetch(`shipping_quotes?order_id=eq.${encodeURIComponent(orderId)}&status=eq.Draft`, {
+          method: "PATCH",
+          service: true,
+          prefer: "return=minimal",
+          body: { provider: "NIXP Rule Calculator / Manual Rate", payload: shippingCalculation, updated_at: new Date().toISOString() }
+        })
+      ]);
+    }
     const currentOrder = await getOrderRecord(orderId);
     const emailResult = (label) => (error) => ({ delivered: false, label, error: error instanceof Error ? error.message : "Notification delivery failed." });
     const customerAccessToken = order.customerAccessToken || currentOrder?.customer_access_token || "";
@@ -57,8 +107,10 @@ export default async function handler(req, res) {
       ? [{ delivered: true, reason: "existing-order" }, { delivered: true, reason: "existing-order" }]
       : await Promise.all([
           sendOrderNotification(currentOrder || order, customer).catch(emailResult("internal")),
-          (requiresShippingQuote
+          (manualShippingQuote
             ? sendCustomerShippingQuoteRequest(currentOrder || order, customer, statusUrl)
+            : shippingMethod === "JNE"
+              ? sendCustomerShippingQuoteNotification(currentOrder || order, statusUrl)
             : sendCustomerOrderConfirmation(currentOrder || order, customer, { shippingMethod, shippingAddress })
           ).catch(emailResult("customer"))
         ]);
@@ -67,7 +119,7 @@ export default async function handler(req, res) {
     if (!customerConfirmation.delivered) console.warn("Customer order confirmation not delivered", { orderId: order.id, reason: customerConfirmation.reason || customerConfirmation.error || "unknown" });
 
     let payment = { available: false, reason: "midtrans-not-configured" };
-    if (!requiresShippingQuote && ((currentOrder || order).payment_status === "Pending" || order.paymentStatus === "Pending")) {
+    if (!manualShippingQuote && ((currentOrder || order).payment_status === "Pending" || order.paymentStatus === "Pending")) {
       try {
         payment = await createMidtransPaymentSession(orderId);
       } catch (paymentError) {
@@ -79,7 +131,8 @@ export default async function handler(req, res) {
       ok: true,
       notification,
       payment,
-      requiresShippingQuote,
+      requiresShippingQuote: manualShippingQuote,
+      shippingQuote: ruleQuote?.selectedOption || null,
       customerAccessToken,
       statusUrl,
       order: {
@@ -101,6 +154,30 @@ export default async function handler(req, res) {
       ? 409
       : Number(error?.statusCode || 500);
     return json(res, status, { ok: false, error: friendlyError(message) });
+  }
+}
+
+async function handleRuleShippingQuote(req, res) {
+  if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+  if (!isSupabaseConfigured({ requireServiceRole: true })) return json(res, 503, { ok: false, error: "Shipping quotes are not configured." });
+  try {
+    if (!isCheckoutOrigin(req)) return json(res, 403, { ok: false, error: "Checkout origin is not allowed." });
+    const body = parseBody(req.body);
+    if (!(await consumeCommerceRateLimit("shipping-quote", requestClientAddress(req), { limit: 90, windowSeconds: 900 }))) {
+      return json(res, 429, { ok: false, error: "Too many shipping quote requests. Please wait a moment and try again." });
+    }
+    const quote = await calculateRuleShippingQuote({ items: normalizeItems(body.items), destinationCode: body.destinationCode });
+    return json(res, 200, {
+      ok: true,
+      destination: quote.destination,
+      calculatorVersion: quote.packaging.calculatorVersion,
+      totalChargeableWeightKg: quote.packaging.totalChargeableWeightKg,
+      packages: quote.packaging.packages,
+      options: quote.options,
+      quotedAt: quote.quotedAt
+    });
+  } catch (error) {
+    return json(res, Number(error?.statusCode || 500), { ok: false, error: friendlyError(error instanceof Error ? error.message : "Shipping quote failed.") });
   }
 }
 

@@ -2,10 +2,12 @@ import { json, requireWorkspace } from "../_lib/auth.js";
 import { isSupabaseConfigured, saveStore, supabaseFetch } from "../_lib/supabase.js";
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
+import { getShippingSettings, listShippingRates, saveShippingRate, saveShippingSettings, setShippingRateActive } from "../_lib/shippingQuotes.js";
 
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("commerceAction");
   if (action === "orders") return handleAdminOrders(req, res);
+  if (action === "shipping-rates") return handleAdminShipping(req, res);
   if (action === "backups") {
     if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
     if (!requireWorkspace(req, res, "admin")) return;
@@ -63,5 +65,24 @@ export default async function handler(req, res) {
       ? "Store save blocked by duplicate row IDs. Refresh the admin editor and save again."
       : message;
     json(res, 500, { ok: false, error: friendlyMessage });
+  }
+}
+
+async function handleAdminShipping(req, res) {
+  if (!requireWorkspace(req, res, "admin")) return;
+  if (!isSupabaseConfigured({ requireServiceRole: true })) return json(res, 503, { ok: false, error: "Supabase service role is not configured." });
+  try {
+    if (req.method === "GET") {
+      const [settings, rates] = await Promise.all([getShippingSettings(), listShippingRates()]);
+      return json(res, 200, { ok: true, settings, rates });
+    }
+    if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    if (body.action === "save-settings") return json(res, 200, { ok: true, settings: await saveShippingSettings(body) });
+    if (body.action === "save-rate") return json(res, 200, { ok: true, rate: await saveShippingRate(body) });
+    if (body.action === "set-rate-active") return json(res, 200, { ok: true, rate: await setShippingRateActive(body.id, body.active) });
+    return json(res, 400, { ok: false, error: "Unsupported shipping action." });
+  } catch (error) {
+    return json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Shipping settings could not be updated." });
   }
 }

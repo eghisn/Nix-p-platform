@@ -32,6 +32,7 @@ const state = {
   cartOpen: false,
   checkoutMessage: "",
   checkoutTone: "",
+  checkoutShippingQuote: null,
   checkoutOrderToken: readCheckoutSession()?.orderId || "",
   requestNotice: "",
   requestNoticeTone: "",
@@ -195,6 +196,7 @@ const routes = {
   "/admin/requests": adminRequestsPage,
   "/admin/inventory": inventoryPage,
   "/admin/orders": ordersPage,
+  "/admin/shipping": adminShippingPage,
   "/admin/cashflow": cashflowPage,
   "/admin/reports": reportsPage,
   "/admin/preview": adminPreviewPage
@@ -828,8 +830,8 @@ async function cartPage() {
       }
       <div class="cart-total cart-totals" aria-label="Order total">
         <span>Items</span><strong>${money.format(total)}</strong>
-        <span>Delivery</span><em>Quoted after address confirmation</em>
-        <span>Total at payment</span><strong>${money.format(total)} + delivery</strong>
+        <span>Delivery</span><em data-checkout-delivery-total>Calculated after city selection</em>
+        <span>Total at payment</span><strong data-checkout-grand-total>${money.format(total)} + delivery</strong>
       </div>
       ${
         rows.length
@@ -869,7 +871,14 @@ async function cartPage() {
                 <label data-checkout-address-field>Province<input name="shippingProvince" required readonly autocomplete="shipping address-level1" data-checkout-province /></label>
                 <label data-checkout-address-field>Postal code<input name="shippingPostalCode" required autocomplete="shipping postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" /></label>
                 <label data-checkout-address-field>Country<input name="shippingCountry" value="Indonesia" readonly /></label>
+                <label class="admin-form-span" data-checkout-service-field hidden>Shipping service
+                  <select name="shippingOption" data-checkout-shipping-option></select>
+                </label>
                 <a class="button checkout-international-order" href="/international-order" data-link>Ordering from outside Indonesia?</a>
+              </div>
+              <div class="checkout-shipping-quote" data-checkout-shipping-quote aria-live="polite">
+                <strong>Shipping quote</strong>
+                <span>Select a city or regency to calculate the packed shipment and available service.</span>
               </div>
               <div class="admin-form-actions">
                 <button class="button button-dark" type="submit" data-checkout-submit>Request delivery quote</button>
@@ -1753,7 +1762,7 @@ async function ordersPage({ embedded = false } = {}) {
         visibleOrders.map((order) => [
           escapeHtml(order.reference || order.id),
           `${escapeHtml(order.customer || "-")}<br><small>${escapeHtml(order.email || order.whatsapp || order.channel || "")}</small>`,
-          escapeHtml(orderItemSummary(order)),
+          `${escapeHtml(orderItemSummary(order))}${orderPackageBreakdownMarkup(order)}`,
           statusBadge(order.paymentStatus || order.status || "-"),
           statusBadge(order.fulfillmentStatus || "Unfulfilled"),
           statusBadge(order.shippingStatus || "Not Required"),
@@ -1824,6 +1833,67 @@ function metric(label, value) {
   return `<article class="metric"><span>${label}</span><strong>${value}</strong></article>`;
 }
 
+function orderPackageBreakdownMarkup(order) {
+  const calculation = order.shippingCalculation || order.raw?.metadata?.shippingCalculation;
+  const packages = Array.isArray(calculation?.packages) ? calculation.packages : [];
+  if (!packages.length) return "";
+  return `<details class="admin-order-packages"><summary>${packages.length} package${packages.length === 1 ? "" : "s"}</summary>${packages.map((pkg) => `
+    <p><strong>${escapeHtml(pkg.packagingGroup || "Package")} ${escapeHtml(pkg.packageNumber || "")}</strong><span>${escapeHtml(pkg.lengthCm)} x ${escapeHtml(pkg.widthCm)} x ${escapeHtml(pkg.heightCm)} cm / ${escapeHtml(pkg.actualPackedWeightKg)} kg actual / ${escapeHtml(pkg.volumetricWeightKg)} kg volumetric / ${escapeHtml(pkg.chargeableWeightKg)} kg charged / ${money.format(pkg.shippingAmount || 0)}</span></p>
+  `).join("")}</details>`;
+}
+
+async function adminShippingPage() {
+  const response = await fetch(`/api/admin/shipping?v=${Date.now()}`, { cache: "no-store" });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || "Shipping settings could not be loaded.");
+  const settings = payload.settings || {};
+  const rates = payload.rates || [];
+  return `
+    ${adminHero("Shipping", "Manage the NIXP packing calculation origin, volumetric divisor, and destination rates.")}
+    <div class="admin-workspace admin-shipping-workspace">
+      <div>
+        <form class="admin-panel" data-admin-shipping-settings-form>
+          <div class="admin-panel-head"><h2>Calculator settings</h2></div>
+          ${input("origin", "Origin code", settings.origin || "JAKARTA", "JAKARTA")}
+          ${input("originName", "Origin name", settings.originName || "Jakarta", "Jakarta")}
+          ${input("volumetricDivisor", "Volumetric divisor", settings.volumetricDivisor || 6000, "6000", "number")}
+          <div class="admin-form-actions"><button class="button button-dark" type="submit">Save settings</button><p class="admin-form-note" data-admin-form-message aria-live="polite"></p></div>
+        </form>
+        <form class="admin-panel admin-shipping-rate-form" data-admin-shipping-rate-form>
+          <div class="admin-panel-head"><h2>Add destination rate</h2></div>
+          <label>Destination
+            <select name="destinationCode" required><option value="" selected disabled>Select city or regency</option>${checkoutCityOptions()}</select>
+          </label>
+          <div class="admin-form-grid">
+            ${input("courier", "Courier", "JNE", "JNE")}
+            ${input("service", "Service", "REG", "REG")}
+            ${input("chargeableWeightKg", "Chargeable kg", 1, "1", "number")}
+            ${input("rate", "Rate (Rp)", "", "25000", "number")}
+            ${input("effectiveDate", "Effective date", new Date().toISOString().slice(0, 10), "YYYY-MM-DD", "date")}
+            ${input("eta", "Estimated delivery", "", "2-4 working days")}
+          </div>
+          <div class="admin-form-actions"><button class="button button-dark" type="submit">Add rate</button><p class="admin-form-note" data-admin-form-message aria-live="polite"></p></div>
+        </form>
+      </div>
+      <div class="admin-panel">
+        <div class="admin-panel-head"><h2>Rate table</h2><span>${rates.length} rows</span></div>
+        ${table(
+          ["Destination", "Courier / service", "Kg", "Rate", "Effective", "Status", "Action"],
+          rates.map((rate) => [
+            `${escapeHtml(rate.destination_name)}<br><small>${escapeHtml(rate.destination_code)}</small>`,
+            `${escapeHtml(rate.courier)} / ${escapeHtml(rate.service)}${rate.eta ? `<br><small>${escapeHtml(rate.eta)}</small>` : ""}`,
+            escapeHtml(rate.chargeable_weight_kg),
+            money.format(rate.rate),
+            escapeHtml(rate.effective_date),
+            statusBadge(rate.active ? "Active" : "Inactive"),
+            `<button class="button button-outline admin-rate-toggle" type="button" data-shipping-rate-id="${escapeAttr(rate.id)}" data-shipping-rate-active="${rate.active ? "false" : "true"}">${rate.active ? "Disable" : "Enable"}</button>`
+          ])
+        )}
+      </div>
+    </div>
+  `;
+}
+
 function numericValue(value, fallback = 0) {
   const number = Number(value);
   return Number.isFinite(number) ? number : fallback;
@@ -1886,6 +1956,11 @@ function shippingAttributeFields(product = {}) {
       <div class="admin-size-grid">
         ${input("shippingClass", "Shipping class", shipping.shippingClass || "", "vinyl-cardboard-bubble")}
         ${input("shippingPackageType", "Packaging", shipping.packageType || "", "lp-mailer / poly-mailer")}
+      </div>
+      <div class="admin-size-grid">
+        ${select("shippingPackagingGroup", "Packaging group", ["", "VINYL", "SMALL_MEDIA", "SOFT_APPAREL", "CAP_HARDBOX", "RING_HARDBOX"], shipping.packagingGroup || "")}
+        ${select("shippingVinylWeightClass", "Vinyl weight class", ["", "Standard", "Heavy"], shipping.vinylWeightClass || "")}
+        ${select("manualShippingOverride", "Manual override", ["No", "Yes"], shipping.manualShippingOverride ? "Yes" : "No")}
       </div>
       <label>Measurement status
         <select name="shippingStatus">
@@ -2172,6 +2247,26 @@ function setFormMessage(form, message, tone = "") {
   target.dataset.tone = tone;
 }
 
+async function submitAdminShippingForm(form, action, successMessage) {
+  const button = form.querySelector('button[type="submit"]');
+  if (button) button.disabled = true;
+  setFormMessage(form, "Saving...");
+  try {
+    const response = await fetch("/api/admin/shipping", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ action, ...Object.fromEntries(new FormData(form).entries()) })
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Shipping data could not be saved.");
+    setFormMessage(form, successMessage, "success");
+    setTimeout(() => render({ preserveScroll: true }), 350);
+  } catch (error) {
+    setFormMessage(form, error instanceof Error ? error.message : "Shipping data could not be saved.", "error");
+    if (button) button.disabled = false;
+  }
+}
+
 function navigateInternal(href, { preserveScroll = false } = {}) {
   if (!href || href.startsWith("http") || href.startsWith("mailto:")) return false;
   state.zoomedProductId = null;
@@ -2455,6 +2550,7 @@ function bindEvents() {
           items: rows.map((row) => ({ id: row.productId, size: row.size, quantity: row.quantity })),
           customer,
           shippingMethod,
+          shippingOption: formData.get("shippingOption"),
           shippingAddress,
           orderId
         })
@@ -2501,9 +2597,87 @@ function bindEvents() {
   const shippingMethod = document.querySelector("[data-checkout-shipping-method]");
   const checkoutCity = document.querySelector("[data-checkout-city]");
   const checkoutProvince = document.querySelector("[data-checkout-province]");
+  const checkoutService = document.querySelector("[data-checkout-shipping-option]");
+  const checkoutServiceField = document.querySelector("[data-checkout-service-field]");
+  const checkoutQuote = document.querySelector("[data-checkout-shipping-quote]");
+  const checkoutDeliveryTotal = document.querySelector("[data-checkout-delivery-total]");
+  const checkoutGrandTotal = document.querySelector("[data-checkout-grand-total]");
+  let checkoutQuoteRequest = 0;
+  let checkoutQuoteTimer;
+  const showCheckoutQuote = (message, tone = "") => {
+    if (!checkoutQuote) return;
+    checkoutQuote.dataset.tone = tone;
+    const messageNode = checkoutQuote.querySelector("span");
+    if (messageNode) messageNode.textContent = message;
+  };
+  const applyCheckoutShippingOption = (merchandiseTotal) => {
+    const option = state.checkoutShippingQuote?.options?.find((item) => item.key === checkoutService?.value) || state.checkoutShippingQuote?.options?.[0];
+    if (!option) return;
+    if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = money.format(option.shippingTotal);
+    if (checkoutGrandTotal) checkoutGrandTotal.textContent = money.format(merchandiseTotal + option.shippingTotal);
+    showCheckoutQuote(`${state.checkoutShippingQuote.packages.length} package${state.checkoutShippingQuote.packages.length === 1 ? "" : "s"} / ${state.checkoutShippingQuote.totalChargeableWeightKg} kg chargeable / ${option.courier} ${option.service}${option.eta ? ` / ${option.eta}` : ""}.`, "success");
+  };
+  const requestCheckoutShippingQuote = async () => {
+    if (!checkoutCity || shippingMethod?.value !== "JNE" || !checkoutCity.value) return;
+    const requestId = ++checkoutQuoteRequest;
+    const submit = document.querySelector("[data-checkout-submit]");
+    if (submit) submit.disabled = true;
+    showCheckoutQuote("Calculating packed shipment and destination rate...");
+    if (checkoutServiceField) checkoutServiceField.hidden = true;
+    try {
+      const { rows, total } = await cartSummary();
+      const response = await fetch("/api/checkout?commerceAction=shipping-quote", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          destinationCode: checkoutCity.value,
+          items: rows.map((row) => ({ id: row.productId, size: row.size, quantity: row.quantity }))
+        })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (requestId !== checkoutQuoteRequest) return;
+      if (!response.ok) throw new Error(payload.error || "Shipping quote could not be calculated.");
+      state.checkoutShippingQuote = payload;
+      if (!payload.options?.length) {
+        if (checkoutService) checkoutService.innerHTML = "";
+        if (checkoutServiceField) checkoutServiceField.hidden = true;
+        if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Rate unavailable";
+        if (checkoutGrandTotal) checkoutGrandTotal.textContent = `${money.format(total)} + delivery`;
+        if (submit) {
+          submit.disabled = false;
+          submit.textContent = "Request delivery quote";
+        }
+        showCheckoutQuote("The package calculation is ready. This destination still needs a manual rate confirmation before payment.");
+        return;
+      }
+      if (checkoutService) {
+        checkoutService.innerHTML = "";
+        payload.options.forEach((option) => {
+          const node = document.createElement("option");
+          node.value = option.key;
+          node.textContent = `${option.courier} ${option.service} / ${money.format(option.shippingTotal)}${option.eta ? ` / ${option.eta}` : ""}`;
+          checkoutService.append(node);
+        });
+      }
+      if (checkoutServiceField) checkoutServiceField.hidden = false;
+      if (submit) submit.disabled = false;
+      applyCheckoutShippingOption(total);
+    } catch (error) {
+      if (requestId !== checkoutQuoteRequest) return;
+      state.checkoutShippingQuote = null;
+      if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Unavailable";
+      showCheckoutQuote(error instanceof Error ? error.message : "Shipping quote could not be calculated.", "error");
+    }
+  };
+  const scheduleCheckoutShippingQuote = () => {
+    clearTimeout(checkoutQuoteTimer);
+    checkoutQuoteTimer = setTimeout(requestCheckoutShippingQuote, 180);
+  };
   const syncCheckoutProvince = () => {
     const region = indonesiaRegionByCode.get(checkoutCity?.value || "");
     if (checkoutProvince) checkoutProvince.value = region?.province || "";
+    state.checkoutShippingQuote = null;
+    scheduleCheckoutShippingQuote();
   };
   const normalizeCitySearch = (value) =>
     String(value || "")
@@ -2533,17 +2707,33 @@ function bindEvents() {
   };
   const syncCheckoutAddressRequirements = () => {
     const pickup = shippingMethod?.value === "Store Pickup";
+    const manual = shippingMethod?.value === "GoSend Manual";
     const submit = document.querySelector("[data-checkout-submit]");
-    if (submit) submit.textContent = pickup ? "Place order and reserve stock" : "Request delivery quote";
+    if (submit) submit.textContent = pickup ? "Place order and reserve stock" : manual ? "Request delivery quote" : "Continue to payment";
     document.querySelectorAll("[data-checkout-address-field]").forEach((field) => {
       field.hidden = pickup;
       field.querySelectorAll("input, select").forEach((input) => {
         if (input.name !== "shippingAddress2" && input.name !== "shippingCountry") input.required = !pickup;
       });
     });
+    if (checkoutServiceField) checkoutServiceField.hidden = shippingMethod?.value !== "JNE" || !state.checkoutShippingQuote?.options?.length;
+    if (pickup) {
+      if (submit) submit.disabled = false;
+      if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = money.format(0);
+      cartSummary().then(({ total }) => { if (checkoutGrandTotal) checkoutGrandTotal.textContent = money.format(total); });
+      showCheckoutQuote("Store pickup does not add a delivery charge.", "success");
+    } else if (manual) {
+      if (submit) submit.disabled = false;
+      if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Manual quote";
+      showCheckoutQuote("GoSend is confirmed manually for eligible Jakarta addresses before payment.");
+    } else {
+      if (submit) submit.disabled = !state.checkoutShippingQuote?.options?.length;
+      scheduleCheckoutShippingQuote();
+    }
   };
   shippingMethod?.addEventListener("change", syncCheckoutAddressRequirements);
   checkoutCity?.addEventListener("change", syncCheckoutProvince);
+  checkoutService?.addEventListener("change", async () => applyCheckoutShippingOption((await cartSummary()).total));
   checkoutCity?.addEventListener("keydown", (event) => {
     if (event.ctrlKey || event.metaKey || event.altKey || event.key.length !== 1) return;
     cityTypeahead += event.key;
@@ -2708,6 +2898,35 @@ function bindEvents() {
     } finally {
       button.disabled = false;
     }
+  });
+
+  document.querySelector("[data-admin-shipping-settings-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await submitAdminShippingForm(event.currentTarget, "save-settings", "Shipping calculator settings saved.");
+  });
+
+  document.querySelector("[data-admin-shipping-rate-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await submitAdminShippingForm(event.currentTarget, "save-rate", "Destination rate added.");
+  });
+
+  document.querySelectorAll("[data-shipping-rate-id]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      try {
+        const response = await fetch("/api/admin/shipping", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ action: "set-rate-active", id: button.dataset.shippingRateId, active: button.dataset.shippingRateActive === "true" })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || "Rate could not be updated.");
+        await render({ preserveScroll: true });
+      } catch (error) {
+        button.disabled = false;
+        window.alert(error instanceof Error ? error.message : "Rate could not be updated.");
+      }
+    });
   });
 
   document.querySelector("[data-admin-media-form]")?.addEventListener("submit", async (event) => {

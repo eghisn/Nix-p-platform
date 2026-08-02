@@ -2243,6 +2243,34 @@ body:has(.cart-view) .site-footer {
   color: var(--muted);
 }
 
+.checkout-shipping-quote {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.checkout-shipping-quote strong {
+  font-size: 10px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.checkout-shipping-quote span {
+  color: var(--muted);
+}
+
+.checkout-shipping-quote[data-tone="success"] span {
+  color: var(--ink);
+}
+
+.checkout-shipping-quote[data-tone="error"] span {
+  color: #b00020;
+}
+
 .checkout-international-order {
   grid-column: 1 / -1;
   justify-self: start;
@@ -2345,6 +2373,43 @@ body:has(.cart-view) .site-footer {
 
 .admin-shipping-quote-form {
   margin-bottom: 26px;
+}
+
+.admin-shipping-workspace > div:first-child {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-shipping-rate-form {
+  margin: 0;
+}
+
+.admin-rate-toggle {
+  min-width: 76px;
+  padding: 8px 10px;
+}
+
+.admin-order-packages {
+  margin-top: 8px;
+  font-size: 10px;
+}
+
+.admin-order-packages summary {
+  cursor: pointer;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.admin-order-packages p {
+  display: grid;
+  gap: 3px;
+  margin: 8px 0 0;
+  min-width: 280px;
+}
+
+.admin-order-packages span {
+  color: var(--muted);
+  line-height: 1.35;
 }
 
 @media (max-width: 640px) {

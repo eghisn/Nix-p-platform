@@ -79,6 +79,10 @@
       "destination": "/api/admin/store?commerceAction=orders"
     },
     {
+      "source": "/api/admin/shipping",
+      "destination": "/api/admin/store?commerceAction=shipping-rates"
+    },
+    {
       "source": "/api/admin/catalog-sync",
       "destination": "/api/admin/store?commerceAction=catalog-sync"
     },

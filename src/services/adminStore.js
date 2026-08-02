@@ -220,6 +220,9 @@ function normalizeShipping(shipping = {}) {
     heightCm: nullableNumber(data.heightCm),
     shippingClass: String(data.shippingClass || "").trim(),
     packageType: String(data.packageType || "").trim(),
+    packagingGroup: String(data.packagingGroup || "").trim().toUpperCase(),
+    vinylWeightClass: String(data.vinylWeightClass || "").trim(),
+    manualShippingOverride: data.manualShippingOverride === true || String(data.manualShippingOverride || "").toLowerCase() === "yes",
     status: data.status || "needs_measurement",
     source: String(data.source || "").trim(),
     updatedAt: data.updatedAt || ""
@@ -585,6 +588,7 @@ function normalizeCommerceOrder(row = {}) {
     total: Number(row.grand_total ?? row.total ?? 0),
     items: Array.isArray(row.items) && row.items.length ? row.items : ids,
     lineItems,
+    shippingCalculation: metadata.shippingCalculation || row.shippingCalculation || null,
     raw: row
   };
 }
@@ -830,6 +834,9 @@ export const adminStore = {
         heightCm: data.shippingHeightCm,
         shippingClass: data.shippingClass?.trim() || existing?.shipping?.shippingClass || "",
         packageType: data.shippingPackageType?.trim() || existing?.shipping?.packageType || "",
+        packagingGroup: data.shippingPackagingGroup || existing?.shipping?.packagingGroup || "",
+        vinylWeightClass: data.shippingVinylWeightClass || existing?.shipping?.vinylWeightClass || "",
+        manualShippingOverride: data.manualShippingOverride === "Yes",
         status: data.shippingStatus || existing?.shipping?.status || "needs_measurement",
         source: data.shippingSource?.trim() || existing?.shipping?.source || "",
         updatedAt: today()
