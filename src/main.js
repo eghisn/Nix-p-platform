@@ -868,11 +868,15 @@ async function cartPage() {
                   </div>
                 </form>
               </div>
-              <aside class="checkout-summary" aria-label="Order summary">
-                <div class="checkout-summary-heading">
-                  <h2>Order summary</h2>
-                  <span>${rows.reduce((sum, row) => sum + row.quantity, 0)} item${rows.reduce((sum, row) => sum + row.quantity, 0) === 1 ? "" : "s"}</span>
-                </div>
+              <details class="checkout-summary" aria-label="Order summary" data-checkout-summary open>
+                <summary class="checkout-summary-heading">
+                  <span class="checkout-summary-title">Order summary</span>
+                  <span class="checkout-summary-count">${rows.reduce((sum, row) => sum + row.quantity, 0)} item${rows.reduce((sum, row) => sum + row.quantity, 0) === 1 ? "" : "s"}</span>
+                  <span class="checkout-summary-mobile-totals">
+                    <small>Delivery</small><strong data-checkout-mobile-delivery-total>Pending</strong>
+                    <small>Total</small><strong data-checkout-mobile-grand-total>${money.format(total)} + delivery</strong>
+                  </span>
+                </summary>
                 <div class="checkout-summary-items">
                   ${rows
                     .map(
@@ -896,7 +900,7 @@ async function cartPage() {
                   <span>Delivery</span><em data-checkout-delivery-total>Calculated after city selection</em>
                   <span>Total at payment</span><strong data-checkout-grand-total>${money.format(total)} + delivery</strong>
                 </div>
-              </aside>
+              </details>
             </div>
           `
           : `<p class="empty-state">Your cart is empty.</p>`
@@ -2624,6 +2628,10 @@ function bindEvents() {
   const checkoutQuote = document.querySelector("[data-checkout-shipping-quote]");
   const checkoutDeliveryTotal = document.querySelector("[data-checkout-delivery-total]");
   const checkoutGrandTotal = document.querySelector("[data-checkout-grand-total]");
+  const checkoutMobileDeliveryTotal = document.querySelector("[data-checkout-mobile-delivery-total]");
+  const checkoutMobileGrandTotal = document.querySelector("[data-checkout-mobile-grand-total]");
+  const checkoutSummary = document.querySelector("[data-checkout-summary]");
+  if (checkoutSummary && window.matchMedia("(max-width: 960px)").matches) checkoutSummary.open = false;
   let checkoutQuoteRequest = 0;
   let checkoutQuoteTimer;
   let checkoutQuoteExpiryTimer;
@@ -2632,6 +2640,12 @@ function bindEvents() {
     checkoutQuote.dataset.tone = tone;
     const messageNode = checkoutQuote.querySelector("span");
     if (messageNode) messageNode.textContent = message;
+  };
+  const setCheckoutTotals = (delivery, grandTotal) => {
+    if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = delivery;
+    if (checkoutGrandTotal) checkoutGrandTotal.textContent = grandTotal;
+    if (checkoutMobileDeliveryTotal) checkoutMobileDeliveryTotal.textContent = delivery;
+    if (checkoutMobileGrandTotal) checkoutMobileGrandTotal.textContent = grandTotal;
   };
   const syncCheckoutSubmitAvailability = () => {
     const submit = checkoutForm?.querySelector("[data-checkout-submit]");
@@ -2648,8 +2662,7 @@ function bindEvents() {
   const applyCheckoutShippingOption = (merchandiseTotal) => {
     const option = state.checkoutShippingQuote?.options?.find((item) => item.key === checkoutService?.value) || state.checkoutShippingQuote?.options?.[0];
     if (!option) return;
-    if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = money.format(option.shippingTotal);
-    if (checkoutGrandTotal) checkoutGrandTotal.textContent = money.format(merchandiseTotal + option.shippingTotal);
+    setCheckoutTotals(money.format(option.shippingTotal), money.format(merchandiseTotal + option.shippingTotal));
     showCheckoutQuote(`${state.checkoutShippingQuote.packages.length} package${state.checkoutShippingQuote.packages.length === 1 ? "" : "s"} / ${state.checkoutShippingQuote.totalChargeableWeightKg} kg chargeable / ${option.courier} ${option.service}${option.eta ? ` / ${option.eta}` : ""}.`, "success");
   };
   const requestCheckoutShippingQuote = async () => {
@@ -2657,6 +2670,7 @@ function bindEvents() {
     const requestId = ++checkoutQuoteRequest;
     const submit = document.querySelector("[data-checkout-submit]");
     if (submit) submit.disabled = true;
+    if (checkoutMobileDeliveryTotal) checkoutMobileDeliveryTotal.textContent = "Calculating...";
     showCheckoutQuote("Calculating shipping...");
     if (checkoutServiceField) checkoutServiceField.hidden = true;
     try {
@@ -2687,8 +2701,7 @@ function bindEvents() {
       if (!payload.options?.length) {
         if (checkoutService) checkoutService.innerHTML = "";
         if (checkoutServiceField) checkoutServiceField.hidden = true;
-        if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Unavailable";
-        if (checkoutGrandTotal) checkoutGrandTotal.textContent = money.format(total);
+        setCheckoutTotals("Unavailable", money.format(total));
         if (submit) submit.disabled = true;
         showCheckoutQuote("Shipping is currently unavailable for this destination.", "error");
         return;
@@ -2710,7 +2723,8 @@ function bindEvents() {
       state.checkoutShippingQuote = null;
       if (checkoutServiceField) checkoutServiceField.hidden = true;
       if (submit) submit.disabled = true;
-      if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Unavailable";
+      const { total } = await cartSummary();
+      setCheckoutTotals("Unavailable", money.format(total));
       showCheckoutQuote(error instanceof Error ? error.message : "We couldn't calculate shipping. Please check your address and try again.", "error");
       syncCheckoutSubmitAvailability();
     }
@@ -2765,11 +2779,10 @@ function bindEvents() {
     });
     if (checkoutServiceField) checkoutServiceField.hidden = shippingMethod?.value !== "JNE" || !state.checkoutShippingQuote?.options?.length;
     if (pickup) {
-      if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = money.format(0);
-      cartSummary().then(({ total }) => { if (checkoutGrandTotal) checkoutGrandTotal.textContent = money.format(total); });
+      cartSummary().then(({ total }) => setCheckoutTotals(money.format(0), money.format(total)));
       showCheckoutQuote("Store pickup does not add a delivery charge.", "success");
     } else if (manual) {
-      if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = "Manual quote";
+      cartSummary().then(({ total }) => setCheckoutTotals("Manual quote", `${money.format(total)} + delivery`));
       showCheckoutQuote("GoSend is confirmed manually for eligible Jakarta addresses before payment.");
     } else {
       if (!checkoutCity?.value) showCheckoutQuote("Enter your delivery address to view shipping options.");
