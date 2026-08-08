@@ -3,7 +3,7 @@ import { isSupabaseConfigured, saveStore, supabaseFetch } from "../_lib/supabase
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
-import { refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
+import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
 
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("commerceAction");
@@ -82,6 +82,7 @@ async function handleAdminShipping(req, res) {
     if (body.action === "health-check") return json(res, 200, { ok: true, maintenance: await runShippingMaintenance({ mode: "manual" }) });
     if (body.action === "sync-destinations") return json(res, 200, { ok: true, sync: await syncDestinationsNow() });
     if (body.action === "refresh-tariffs") return json(res, 200, { ok: true, refresh: await refreshRecentTariffs() });
+    if (body.action === "import-public-tariff-snapshot") return json(res, 200, { ok: true, import: await importPublicTariffSnapshot(body) });
     return json(res, 400, { ok: false, error: "Unsupported shipping action." });
   } catch (error) {
     return json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Shipping settings could not be updated." });

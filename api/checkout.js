@@ -45,7 +45,7 @@ export default async function handler(req, res) {
     const ruleQuote = shippingMethod === "JNE"
       ? await validateRuleShippingQuote({ quoteToken: cleanText(body.shippingQuoteToken, 160), items, destinationCode: shippingAddress.regionCode, optionKey: cleanText(body.shippingOption, 180) })
       : null;
-    const manualShippingQuote = shippingMethod === "GoSend Manual" || shippingMethod === "JNE Manual";
+    const manualShippingQuote = shippingMethod === "GoSend Manual";
     const usesShippingQuoteFlow = shippingMethod === "JNE" || manualShippingQuote;
     let order = await supabaseFetch(usesShippingQuoteFlow ? "rpc/create_shipping_quote_request" : "rpc/create_checkout_order", {
       method: "POST",
@@ -309,7 +309,7 @@ function normalizeCustomer(customer) {
 
 function normalizeShippingMethod(value) {
   const method = cleanText(value, 80);
-  if (!["JNE", "JNE Manual", "GoSend Manual", "Store Pickup"].includes(method)) {
+  if (!["JNE", "GoSend Manual", "Store Pickup"].includes(method)) {
     const error = new Error("Please choose a valid shipping method.");
     error.statusCode = 400;
     throw error;

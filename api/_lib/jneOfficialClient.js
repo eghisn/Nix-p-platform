@@ -1,5 +1,6 @@
 const API_BASE = "https://shipping.jne.co.id";
 const PUBLIC_BASE = "https://www.jne.co.id";
+const PUBLIC_BASE_FALLBACK = "https://jne.co.id";
 const REQUEST_TIMEOUT_MS = 4500;
 const PUBLIC_RETRY_DELAYS_MS = [0, 350];
 
@@ -7,7 +8,12 @@ export class JneOfficialClient {
   constructor(options = {}) {
     this.accessKey = String(options.accessKey || process.env.JNE_API_ACCESS_KEY || "").trim();
     this.apiBase = String(options.apiBase || process.env.JNE_API_BASE_URL || API_BASE).replace(/\/$/, "");
-    this.publicBase = String(options.publicBase || PUBLIC_BASE).replace(/\/$/, "");
+    this.publicBases = [...new Set(
+      (options.publicBases || [options.publicBase, PUBLIC_BASE, PUBLIC_BASE_FALLBACK])
+        .filter(Boolean)
+        .map((base) => String(base).replace(/\/$/, ""))
+    )];
+    this.publicBase = this.publicBases[0];
   }
 
   get authenticated() {
@@ -37,7 +43,7 @@ export class JneOfficialClient {
       });
       return normalizeTariffResponse({ origin, destination, weight, raw, sourceMethod: "authenticated-api" });
     }
-    const response = await this.#publicFetch(`${this.publicBase}/en/shipping-fee?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&weight=${weight}`);
+    const response = await this.#publicFetch(`/en/shipping-fee?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&weight=${weight}`);
     const html = await response.text();
     if (!response.ok) throw sourceError(`JNE public checker returned HTTP ${response.status}.`, response.status);
     const tariffTableHtml = html.match(/<table[^>]*>[\s\S]*?<\/table>/i)?.[0] || "";
@@ -113,7 +119,7 @@ export class JneOfficialClient {
   }
 
   async #publicJson(path) {
-    const response = await this.#publicFetch(`${this.publicBase}${path}`);
+    const response = await this.#publicFetch(path);
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw sourceError(`JNE public endpoint returned HTTP ${response.status}.`, response.status);
     return payload;
@@ -141,12 +147,16 @@ export class JneOfficialClient {
     }
   }
 
-  async #publicFetch(url, options = {}) {
+  async #publicFetch(pathOrUrl, options = {}) {
     let lastResponse = null;
-    for (const delayMs of PUBLIC_RETRY_DELAYS_MS) {
-      if (delayMs) await delay(delayMs);
-      lastResponse = await this.#fetch(url, options);
-      if (lastResponse.ok || !shouldRetryStatus(lastResponse.status)) return lastResponse;
+    const absolute = /^https?:\/\//i.test(pathOrUrl);
+    const bases = absolute ? [""] : this.publicBases;
+    for (const base of bases) {
+      for (const delayMs of PUBLIC_RETRY_DELAYS_MS) {
+        if (delayMs) await delay(delayMs);
+        lastResponse = await this.#fetch(absolute ? pathOrUrl : `${base}${pathOrUrl}`, options);
+        if (lastResponse.ok || !shouldRetryStatus(lastResponse.status)) return lastResponse;
+      }
     }
     return lastResponse;
   }
