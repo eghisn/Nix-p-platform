@@ -460,9 +460,11 @@ async function importTariffRows(versionId, inputs) {
       cacheRows.push({ id: cacheIdentity("CGK10000", tariff.destinationCode, tariff.weight, serviceCode), origin_code: "CGK10000", destination_code: tariff.destinationCode, chargeable_weight_kg: tariff.weight, service_code: serviceCode, service_name: String(rawService.serviceName || serviceCode).slice(0, 100), shipment_type: String(rawService.shipmentType || "").slice(0, 160) || null, rate, estimated_days_min: nullableInteger(rawService.estimatedDaysMin), estimated_days_max: nullableInteger(rawService.estimatedDaysMax), estimated_delivery_raw: String(rawService.estimatedDeliveryRaw || "").slice(0, 100), fetched_at: fetchedAt, valid_until: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), source: "JNE_OFFICIAL", source_method: "official-public-checker-snapshot", raw_source_json: { checksum: String(tariff.checksum || "").slice(0, 128), acquiredAt: fetchedAt }, status: "available", updated_at: now });
     }
   }
-  await supabaseFetch("shipping_rates?on_conflict=rate_version_id,origin_code,destination_id,shipping_service_id,weight_from_kg,weight_to_kg", { method: "POST", service: true, prefer: "resolution=merge-duplicates,return=minimal", body: rateRows });
-  await supabaseFetch("jne_tariff_cache?on_conflict=origin_code,destination_code,chargeable_weight_kg,service_code", { method: "POST", service: true, prefer: "resolution=merge-duplicates,return=minimal", body: cacheRows });
-  return { tariffs: normalized.length, rates: rateRows.length };
+  const uniqueRates = uniqueRows(rateRows, (row) => `${row.rate_version_id}|${row.origin_code}|${row.destination_id}|${row.shipping_service_id}|${row.weight_from_kg}|${row.weight_to_kg}`, "rate");
+  const uniqueCache = uniqueRows(cacheRows, (row) => `${row.origin_code}|${row.destination_code}|${row.chargeable_weight_kg}|${row.service_code}`, "rate");
+  await supabaseFetch("shipping_rates?on_conflict=rate_version_id,origin_code,destination_id,shipping_service_id,weight_from_kg,weight_to_kg", { method: "POST", service: true, prefer: "resolution=merge-duplicates,return=minimal", body: uniqueRates });
+  await supabaseFetch("jne_tariff_cache?on_conflict=origin_code,destination_code,chargeable_weight_kg,service_code", { method: "POST", service: true, prefer: "resolution=merge-duplicates,return=minimal", body: uniqueCache });
+  return { tariffs: normalized.length, rates: uniqueRates.length };
 }
 
 async function rateVersionCoverage(versionId) {
@@ -481,6 +483,16 @@ async function fetchAllRows(path, pageSize = 1000) {
 
 function nullableInteger(value) { const number = Number(value); return Number.isInteger(number) && number >= 0 ? number : null; }
 function validTimestamp(value) { const time = new Date(value || "").getTime(); return Number.isFinite(time) ? new Date(time).toISOString() : ""; }
+function uniqueRows(rows, keyFor, comparedField) {
+  const unique = new Map();
+  for (const row of rows) {
+    const key = keyFor(row);
+    const current = unique.get(key);
+    if (current && Number(current[comparedField]) !== Number(row[comparedField])) throw shippingError(`Conflicting duplicate shipping row: ${key}.`, 409);
+    unique.set(key, row);
+  }
+  return [...unique.values()];
+}
 
 function intersectParcelServices(packages, tariffResults) {
   const maps = tariffResults.map((result) => new Map(result.services.map((service) => [service.serviceCode, service])));
