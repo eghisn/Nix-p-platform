@@ -33,6 +33,8 @@ const requirements = [
   [checkout.includes("create_shipping_quote_request"), "JNE and GoSend checkout must create a delivery quote request before payment."],
   [!checkout.includes('"JNE Manual"'), "Checkout must not create unpriced manual JNE orders."],
   [!client.includes("data-checkout-manual-jne"), "Checkout must rely on the activated internal tariff snapshot rather than a manual JNE fallback."],
+  [!checkout.includes("JneOfficialClient"), "Customer checkout and destination search must not call JNE directly."],
+  [checkout.includes('jne_destinations?select=local_region_code'), "Destination search must use the internal Supabase snapshot."],
   [shippingEngine.includes("active_shipping_rates"), "Checkout must calculate JNE prices from the activated internal rate snapshot."],
   [shippingEngine.includes("NIXP_INTERNAL_JNE_SNAPSHOT"), "Shipping quotes must identify the immutable internal tariff source."],
   [adminStore.includes("const initialStore = browserStore?.version === STORE_VERSION ? browserStore : {}"), "Admin must render from a local seed or cache before its Supabase refresh finishes."],
