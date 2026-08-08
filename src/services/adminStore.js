@@ -615,8 +615,9 @@ export const adminStore = {
       }
     }
 
-    if (!publicOnly && browserStore?.version === STORE_VERSION) {
-      activeStore = mergeStore(seed({ publicOnly: false }), browserStore, { publicOnly: false });
+    if (!publicOnly) {
+      const initialStore = browserStore?.version === STORE_VERSION ? browserStore : {};
+      activeStore = mergeStore(seed({ publicOnly: false }), initialStore, { publicOnly: false });
       activeStoreScope = scope;
       privateStoreRefreshedAt = Date.now();
       this.refreshPrivateStore({ force: true })

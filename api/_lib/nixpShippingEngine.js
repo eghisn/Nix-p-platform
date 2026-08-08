@@ -101,19 +101,26 @@ export class NixpShippingEngine {
 }
 
 export async function shippingDashboard() {
-  const client = new JneOfficialClient();
   const now = new Date().toISOString();
-  const [settings, destinations, cache, events, jobs, health] = await Promise.all([
+  const [settings, destinations, cache, events, jobs] = await Promise.all([
     getSettings(),
     supabaseFetch("jne_destinations?select=id,active,last_synced_at", { service: true }),
     supabaseFetch(`jne_tariff_cache?select=id,status,valid_until,fetched_at&limit=5000`, { service: true }),
     supabaseFetch("shipping_source_events?select=*&order=created_at.desc&limit=30", { service: true }),
-    supabaseFetch("shipping_sync_jobs?select=*&order=created_at.desc&limit=10", { service: true }),
-    client.healthCheck()
+    supabaseFetch("shipping_sync_jobs?select=*&order=created_at.desc&limit=10", { service: true })
   ]);
+  const lastHealth = events.find((event) => event.event_type === "health-check");
+  const connection = lastHealth
+    ? {
+        ...(lastHealth.details || {}),
+        ok: lastHealth.status === "success",
+        checkedAt: lastHealth.details?.checkedAt || lastHealth.created_at,
+        cached: true
+      }
+    : { ok: false, authenticated: settings.authenticated, source: "Not checked yet", cached: true };
   return {
     settings,
-    connection: health,
+    connection,
     metrics: {
       activeDestinations: destinations.filter((row) => row.active).length,
       cachedRoutes: cache.length,

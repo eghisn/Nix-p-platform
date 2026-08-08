@@ -4,10 +4,12 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (file) => readFile(path.join(root, file), "utf8");
-const [checkout, client, handlers, migration, policies, outboxRecovery, shippingFoundation, vercelConfig] = await Promise.all([
+const [checkout, client, adminStore, handlers, shippingEngine, migration, policies, outboxRecovery, shippingFoundation, vercelConfig] = await Promise.all([
   read("api/checkout.js"),
   read("src/main.js"),
+  read("src/services/adminStore.js"),
   read("api/_lib/commerceHandlers.js"),
+  read("api/_lib/nixpShippingEngine.js"),
   read("supabase/migrations/20260729113000_harden_checkout_payments_and_notifications.sql"),
   read("supabase/migrations/20260729120000_commerce_internal_table_policies.sql"),
   read("supabase/migrations/20260729121000_recover_stale_outbox_claims.sql"),
@@ -31,6 +33,8 @@ const requirements = [
   [checkout.includes("create_shipping_quote_request"), "JNE and GoSend checkout must create a delivery quote request before payment."],
   [checkout.includes('"JNE Manual"'), "Checkout must preserve a manual JNE quote fallback when the official source is unavailable."],
   [client.includes("data-checkout-manual-jne"), "Checkout must expose the manual JNE fallback without a blocking error state."],
+  [adminStore.includes("const initialStore = browserStore?.version === STORE_VERSION ? browserStore : {}"), "Admin must render from a local seed or cache before its Supabase refresh finishes."],
+  [shippingEngine.includes('events.find((event) => event.event_type === "health-check")'), "The shipping dashboard must use saved health state instead of blocking every render on JNE."],
   [shippingFoundation.includes("issue_shipping_quote"), "Shipping quotes must reserve stock only after an operator issues the amount."],
   [shippingFoundation.includes("vinyl-cardboard-bubble"), "Format-based package profiles must be stored for public products."],
   [shippingFoundation.includes("shippingCollected"), "Finance must keep shipping collected separate from merchandise revenue."],
