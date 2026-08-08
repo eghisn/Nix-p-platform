@@ -80,11 +80,10 @@ export class NixpShippingEngine {
 
   async tariffForParcel(settings, destination, parcel) {
     const weight = parcel.chargeableWeightKg;
-    const cached = await readTariffCache(settings.originCode, destination.jneDestinationCode);
-    const exact = cached.filter((row) => Number(row.chargeable_weight_kg) === Number(weight));
-    const fresh = exact.filter((row) => row.status === "available" && new Date(row.valid_until).getTime() > Date.now());
+    const cached = await readTariffCache(settings.originCode, destination.jneDestinationCode, weight);
+    const fresh = cached.filter((row) => row.status === "available" && new Date(row.valid_until).getTime() > Date.now());
     if (fresh.length) return { parcelNumber: parcel.packageNumber, services: fresh.map(serviceFromCache), cacheStatus: "fresh" };
-    const exactFallback = tariffCacheFallback(exact, weight, settings.maxStaleHours);
+    const exactFallback = tariffCacheFallback(cached, weight, settings.maxStaleHours);
     if (exactFallback.services.length) return { parcelNumber: parcel.packageNumber, ...exactFallback };
     try {
       const official = await this.client.fetchTariff(settings.originCode, destination.jneDestinationCode, weight);
@@ -245,8 +244,8 @@ async function fetchShippingProducts(ids) {
   return (rows || []).filter((row) => row.publish_status === "Published" && row.visibility === "Public");
 }
 
-async function readTariffCache(origin, destination) {
-  const query = new URLSearchParams({ select: "*", origin_code: `eq.${origin}`, destination_code: `eq.${destination}`, order: "fetched_at.desc" });
+async function readTariffCache(origin, destination, weight) {
+  const query = new URLSearchParams({ select: "*", origin_code: `eq.${origin}`, destination_code: `eq.${destination}`, chargeable_weight_kg: `eq.${weight}`, order: "fetched_at.desc" });
   return supabaseFetch(`jne_tariff_cache?${query}`, { service: true });
 }
 
@@ -257,27 +256,8 @@ export function tariffCacheFallback(rows = [], requestedWeightKg, maxStaleHours 
     (row) => row.status === "available" && Number(row.rate) >= 0 && new Date(row.fetched_at).getTime() >= cutoff
   );
   const exact = usable.filter((row) => Number(row.chargeable_weight_kg) === requestedWeight);
-  if (exact.length) return { services: latestServiceRows(exact).map(serviceFromCache), cacheStatus: "stale" };
-
-  const nearestByService = new Map();
-  for (const row of usable) {
-    const code = String(row.service_code || "");
-    const current = nearestByService.get(code);
-    const distance = Math.abs(Number(row.chargeable_weight_kg) - requestedWeight);
-    const currentDistance = current ? Math.abs(Number(current.chargeable_weight_kg) - requestedWeight) : Number.POSITIVE_INFINITY;
-    if (!current || distance < currentDistance || (distance === currentDistance && new Date(row.fetched_at) > new Date(current.fetched_at))) {
-      nearestByService.set(code, row);
-    }
-  }
-  const services = [...nearestByService.values()].map((row) => {
-    const baseWeight = Math.max(1, Number(row.chargeable_weight_kg) || 1);
-    return {
-      ...serviceFromCache(row),
-      rate: Math.ceil((Number(row.rate) / baseWeight) * requestedWeight),
-      source: "JNE_OFFICIAL_CACHE_DERIVED"
-    };
-  });
-  return { services, cacheStatus: services.length ? "derived-cache" : "miss" };
+  const services = latestServiceRows(exact).map(serviceFromCache);
+  return { services, cacheStatus: services.length ? "stale" : "miss" };
 }
 
 function latestServiceRows(rows) {

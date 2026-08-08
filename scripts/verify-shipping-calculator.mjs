@@ -61,7 +61,7 @@ const exactFallback = tariffCacheFallback(staleCache, 1, 2160);
 assert.equal(exactFallback.cacheStatus, "stale");
 assert.equal(exactFallback.services[0].rate, 12000);
 const derivedFallback = tariffCacheFallback(staleCache, 2, 2160);
-assert.equal(derivedFallback.cacheStatus, "derived-cache");
-assert.equal(derivedFallback.services[0].rate, 24000);
+assert.equal(derivedFallback.cacheStatus, "miss");
+assert.equal(derivedFallback.services.length, 0);
 
 console.log("Shipping calculator contract verified.");
