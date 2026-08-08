@@ -170,19 +170,19 @@ async function handleShippingDestinationSearch(req, res) {
     if (!(await consumeCommerceRateLimit("shipping-destinations", requestClientAddress(req), { limit: 120, windowSeconds: 900 }))) return json(res, 429, { ok: false, error: "Too many destination searches." });
     const query = normalizeSearchText(new URL(req.url || "/", "https://www.nix-p.com").searchParams.get("q") || "");
     if (query.length < 3) return json(res, 200, { ok: true, destinations: [] });
-    const rows = await supabaseFetch("jne_destinations?select=local_region_code,jne_destination_code,province_name,city_name,district_name,subdistrict_name,postal_code&active=eq.true&limit=1000", { service: true });
+    const rows = await supabaseFetch("jne_destinations?select=local_region_code,jne_destination_code,destination_name,province_name,city_or_regency_name,district_name,subdistrict_name,postal_code,normalized_search_text&active=eq.true&limit=1000", { service: true });
     const destinations = (rows || [])
-      .filter((row) => normalizeSearchText([row.city_name, row.province_name, row.district_name, row.subdistrict_name, row.postal_code].filter(Boolean).join(" ")).includes(query))
+      .filter((row) => normalizeSearchText(row.normalized_search_text || [row.destination_name, row.city_or_regency_name, row.province_name, row.district_name, row.subdistrict_name, row.postal_code].filter(Boolean).join(" ")).includes(query))
       .slice(0, 30)
       .map((row) => ({
         localRegionCode: row.local_region_code,
         jneDestinationCode: row.jne_destination_code,
         provinceName: row.province_name,
-        cityName: row.city_name,
+        cityName: row.city_or_regency_name || row.destination_name,
         districtName: row.district_name,
         subdistrictName: row.subdistrict_name,
         postalCode: row.postal_code,
-        displayName: [row.city_name, row.province_name].filter(Boolean).join(", ")
+        displayName: [row.city_or_regency_name || row.destination_name, row.province_name].filter(Boolean).join(", ")
       }));
     return json(res, 200, { ok: true, destinations });
   } catch (error) {
