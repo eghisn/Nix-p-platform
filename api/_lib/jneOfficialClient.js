@@ -1,6 +1,7 @@
 const API_BASE = "https://shipping.jne.co.id";
 const PUBLIC_BASE = "https://www.jne.co.id";
-const REQUEST_TIMEOUT_MS = 12000;
+const REQUEST_TIMEOUT_MS = 4500;
+const PUBLIC_RETRY_DELAYS_MS = [0, 350];
 
 export class JneOfficialClient {
   constructor(options = {}) {
@@ -36,7 +37,7 @@ export class JneOfficialClient {
       });
       return normalizeTariffResponse({ origin, destination, weight, raw, sourceMethod: "authenticated-api" });
     }
-    const response = await this.#fetch(`${this.publicBase}/en/shipping-fee?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&weight=${weight}`);
+    const response = await this.#publicFetch(`${this.publicBase}/en/shipping-fee?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&weight=${weight}`);
     const html = await response.text();
     if (!response.ok) throw sourceError(`JNE public checker returned HTTP ${response.status}.`, response.status);
     const tariffTableHtml = html.match(/<table[^>]*>[\s\S]*?<\/table>/i)?.[0] || "";
@@ -112,7 +113,7 @@ export class JneOfficialClient {
   }
 
   async #publicJson(path) {
-    const response = await this.#fetch(`${this.publicBase}${path}`);
+    const response = await this.#publicFetch(`${this.publicBase}${path}`);
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw sourceError(`JNE public endpoint returned HTTP ${response.status}.`, response.status);
     return payload;
@@ -125,13 +126,29 @@ export class JneOfficialClient {
       return await fetch(url, {
         ...options,
         signal: controller.signal,
-        headers: { accept: "application/json,text/html;q=0.9", "user-agent": "NIXP-Shipping/1.0 (+https://www.nix-p.com)", ...(options.headers || {}) }
+        headers: {
+          accept: "application/json,text/html;q=0.9,*/*;q=0.8",
+          "accept-language": "en-US,en;q=0.9,id;q=0.8",
+          referer: `${this.publicBase}/en/shipping-fee`,
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/127.0 Safari/537.36 NIXP/1.0",
+          ...(options.headers || {})
+        }
       });
     } catch (error) {
       throw sourceError(error?.name === "AbortError" ? "JNE request timed out." : "JNE official source could not be reached.", 503);
     } finally {
       clearTimeout(timer);
     }
+  }
+
+  async #publicFetch(url, options = {}) {
+    let lastResponse = null;
+    for (const delayMs of PUBLIC_RETRY_DELAYS_MS) {
+      if (delayMs) await delay(delayMs);
+      lastResponse = await this.#fetch(url, options);
+      if (lastResponse.ok || !shouldRetryStatus(lastResponse.status)) return lastResponse;
+    }
+    return lastResponse;
   }
 }
 
@@ -187,3 +204,5 @@ function cleanQuery(value) { return String(value || "").trim().replace(/\s+/g, "
 function officialCode(value, label) { const code = String(value || "").trim().toUpperCase(); if (!/^[A-Z0-9_-]{3,32}$/.test(code)) throw sourceError(`Invalid JNE ${label} code.`, 400); return code; }
 function positiveInteger(value, label) { const parsed = Math.ceil(Number(value)); if (!Number.isFinite(parsed) || parsed < 1 || parsed > 100) throw sourceError(`Invalid JNE ${label}.`, 400); return parsed; }
 function sourceError(message, statusCode = 500) { const error = new Error(message); error.statusCode = statusCode; return error; }
+function shouldRetryStatus(status) { return status === 403 || status === 408 || status === 429 || status >= 500; }
+function delay(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }

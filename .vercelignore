@@ -5,6 +5,8 @@
 exports
 outputs
 work
+nixp-stickers
+nixp-shipping
 node_modules
 *.zip
 *.webm

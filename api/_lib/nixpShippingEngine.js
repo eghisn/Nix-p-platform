@@ -80,19 +80,21 @@ export class NixpShippingEngine {
 
   async tariffForParcel(settings, destination, parcel) {
     const weight = parcel.chargeableWeightKg;
-    const cached = await readTariffCache(settings.originCode, destination.jneDestinationCode, weight);
-    const fresh = cached.filter((row) => row.status === "available" && new Date(row.valid_until).getTime() > Date.now());
+    const cached = await readTariffCache(settings.originCode, destination.jneDestinationCode);
+    const exact = cached.filter((row) => Number(row.chargeable_weight_kg) === Number(weight));
+    const fresh = exact.filter((row) => row.status === "available" && new Date(row.valid_until).getTime() > Date.now());
     if (fresh.length) return { parcelNumber: parcel.packageNumber, services: fresh.map(serviceFromCache), cacheStatus: "fresh" };
+    const exactFallback = tariffCacheFallback(exact, weight, settings.maxStaleHours);
+    if (exactFallback.services.length) return { parcelNumber: parcel.packageNumber, ...exactFallback };
     try {
       const official = await this.client.fetchTariff(settings.originCode, destination.jneDestinationCode, weight);
       await saveOfficialTariffs(official, settings.cacheTtlHours);
       await logSourceEvent("tariff-fetch", "success", { originCode: settings.originCode, destinationCode: destination.jneDestinationCode, weight, serviceCount: official.services.length, sourceMethod: official.sourceMethod });
       return { parcelNumber: parcel.packageNumber, services: official.services.map((service) => ({ ...service, cacheId: cacheIdentity(settings.originCode, destination.jneDestinationCode, weight, service.serviceCode), source: official.source, fetchedAt: official.fetchedAt })), cacheStatus: "refreshed" };
     } catch (error) {
-      const maxStale = Date.now() - settings.maxStaleHours * 60 * 60 * 1000;
-      const stale = cached.filter((row) => row.status === "available" && new Date(row.fetched_at).getTime() >= maxStale);
-      await logSourceEvent("tariff-fetch", stale.length ? "stale-fallback" : "failed", { originCode: settings.originCode, destinationCode: destination.jneDestinationCode, weight, error: error instanceof Error ? error.message : "JNE unavailable" });
-      if (stale.length) return { parcelNumber: parcel.packageNumber, services: stale.map(serviceFromCache), cacheStatus: "stale" };
+      const fallback = tariffCacheFallback(cached, weight, settings.maxStaleHours);
+      await logSourceEvent("tariff-fetch", fallback.services.length ? fallback.cacheStatus : "failed", { originCode: settings.originCode, destinationCode: destination.jneDestinationCode, weight, error: error instanceof Error ? error.message : "JNE unavailable" });
+      if (fallback.services.length) return { parcelNumber: parcel.packageNumber, ...fallback };
       throw shippingError("JNE shipping is temporarily unavailable. Please try again shortly.", 503);
     }
   }
@@ -130,7 +132,10 @@ export async function runShippingMaintenance({ mode = "daily" } = {}) {
   const health = await client.healthCheck();
   await logSourceEvent("health-check", health.ok ? "success" : "failed", health);
   await supabaseFetch("shipping_quote_sessions?status=eq.active&expires_at=lt.now()", { method: "PATCH", service: true, prefer: "return=minimal", body: { status: "expired" } });
-  return { mode, health, completedAt: new Date().toISOString() };
+  const tariffRefresh = mode === "daily" && health.ok
+    ? await refreshRecentTariffs({ limit: 2, concurrency: 2 })
+    : { refreshed: 0, failed: 0, skipped: true };
+  return { mode, health, tariffRefresh, completedAt: new Date().toISOString() };
 }
 
 export async function syncDestinationsNow() {
@@ -168,22 +173,28 @@ export async function syncDestinationsNow() {
   }
 }
 
-export async function refreshRecentTariffs() {
+export async function refreshRecentTariffs({ limit = 12, concurrency = 2 } = {}) {
   const settings = await getSettings();
   const client = new JneOfficialClient();
-  const rows = await supabaseFetch("jne_tariff_cache?select=origin_code,destination_code,chargeable_weight_kg&order=fetched_at.desc&limit=40", { service: true });
-  const unique = [...new Map((rows || []).map((row) => [`${row.origin_code}|${row.destination_code}|${row.chargeable_weight_kg}`, row])).values()];
+  const rows = await supabaseFetch("jne_tariff_cache?select=origin_code,destination_code,chargeable_weight_kg,fetched_at&order=fetched_at.asc&limit=120", { service: true });
+  const unique = [...new Map((rows || []).map((row) => [`${row.origin_code}|${row.destination_code}|${row.chargeable_weight_kg}`, row])).values()]
+    .slice(0, Math.max(1, Math.min(Number(limit) || 12, 40)));
   let refreshed = 0;
   let failed = 0;
-  for (const row of unique) {
-    try {
-      const result = await client.fetchTariff(row.origin_code || settings.originCode, row.destination_code, row.chargeable_weight_kg);
-      await saveOfficialTariffs(result, settings.cacheTtlHours);
-      refreshed += 1;
-    } catch {
-      failed += 1;
+  const workerCount = Math.max(1, Math.min(Number(concurrency) || 2, 4, unique.length || 1));
+  let cursor = 0;
+  await Promise.all(Array.from({ length: workerCount }, async () => {
+    while (cursor < unique.length) {
+      const row = unique[cursor++];
+      try {
+        const result = await client.fetchTariff(row.origin_code || settings.originCode, row.destination_code, row.chargeable_weight_kg);
+        await saveOfficialTariffs(result, settings.cacheTtlHours);
+        refreshed += 1;
+      } catch {
+        failed += 1;
+      }
     }
-  }
+  }));
   await logSourceEvent("tariff-refresh", failed ? "partial" : "success", { refreshed, failed });
   return { refreshed, failed };
 }
@@ -227,9 +238,47 @@ async function fetchShippingProducts(ids) {
   return (rows || []).filter((row) => row.publish_status === "Published" && row.visibility === "Public");
 }
 
-async function readTariffCache(origin, destination, weight) {
-  const query = new URLSearchParams({ select: "*", origin_code: `eq.${origin}`, destination_code: `eq.${destination}`, chargeable_weight_kg: `eq.${weight}`, order: "fetched_at.desc" });
+async function readTariffCache(origin, destination) {
+  const query = new URLSearchParams({ select: "*", origin_code: `eq.${origin}`, destination_code: `eq.${destination}`, order: "fetched_at.desc" });
   return supabaseFetch(`jne_tariff_cache?${query}`, { service: true });
+}
+
+export function tariffCacheFallback(rows = [], requestedWeightKg, maxStaleHours = 2160) {
+  const requestedWeight = Math.max(1, Math.ceil(Number(requestedWeightKg) || 1));
+  const cutoff = Date.now() - Math.max(1, Number(maxStaleHours) || 1) * 60 * 60 * 1000;
+  const usable = rows.filter(
+    (row) => row.status === "available" && Number(row.rate) >= 0 && new Date(row.fetched_at).getTime() >= cutoff
+  );
+  const exact = usable.filter((row) => Number(row.chargeable_weight_kg) === requestedWeight);
+  if (exact.length) return { services: latestServiceRows(exact).map(serviceFromCache), cacheStatus: "stale" };
+
+  const nearestByService = new Map();
+  for (const row of usable) {
+    const code = String(row.service_code || "");
+    const current = nearestByService.get(code);
+    const distance = Math.abs(Number(row.chargeable_weight_kg) - requestedWeight);
+    const currentDistance = current ? Math.abs(Number(current.chargeable_weight_kg) - requestedWeight) : Number.POSITIVE_INFINITY;
+    if (!current || distance < currentDistance || (distance === currentDistance && new Date(row.fetched_at) > new Date(current.fetched_at))) {
+      nearestByService.set(code, row);
+    }
+  }
+  const services = [...nearestByService.values()].map((row) => {
+    const baseWeight = Math.max(1, Number(row.chargeable_weight_kg) || 1);
+    return {
+      ...serviceFromCache(row),
+      rate: Math.ceil((Number(row.rate) / baseWeight) * requestedWeight),
+      source: "JNE_OFFICIAL_CACHE_DERIVED"
+    };
+  });
+  return { services, cacheStatus: services.length ? "derived-cache" : "miss" };
+}
+
+function latestServiceRows(rows) {
+  return [...new Map(
+    [...rows]
+      .sort((left, right) => new Date(right.fetched_at) - new Date(left.fetched_at))
+      .map((row) => [String(row.service_code || ""), row])
+  ).values()];
 }
 
 async function saveOfficialTariffs(result, ttlHours) {

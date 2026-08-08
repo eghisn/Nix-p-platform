@@ -177,13 +177,14 @@ async function completeWebhookReceipt(eventKey, processed = true, error = null) 
 export async function handleAdminOrders(req, res) {
   if (!requireWorkspace(req, res, "admin")) return;
   try {
-    await drainNotificationOutbox(24).catch(() => undefined);
     if (req.method === "GET") {
+      res.setHeader("cache-control", "private, no-store, max-age=0");
       const orderId = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("orderId");
       if (orderId) { const order = await getOrderRecord(orderId, { includeEvents: true }); return order ? json(res, 200, { ok: true, order }) : json(res, 404, { ok: false, error: "Order not found." }); }
       return json(res, 200, { ok: true, orders: await supabaseFetch("order_records?select=*&order=created_at.desc", { service: true }) });
     }
     if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+    await drainNotificationOutbox(24).catch(() => undefined);
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
     if (body.action === "issue-shipping-quote") {
       const quoted = await supabaseFetch("rpc/issue_shipping_quote", {

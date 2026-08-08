@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { calculatePackages, priceShippingOptions } from "../api/_lib/shippingCalculator.js";
+import { tariffCacheFallback } from "../api/_lib/nixpShippingEngine.js";
 
 const product = (id, format, title = format, extra = {}) => ({ id, sku: id.toUpperCase(), category: format === "Vinyl" || format === "CD" || format === "Cassette" ? "Records" : "Apparel", format, title, ...extra });
 
@@ -40,5 +41,27 @@ const options = priceShippingOptions(vinyl, [
 ], { origin: "Jakarta" });
 assert.equal(options.length, 1);
 assert.equal(options[0].shippingTotal, 55000);
+
+const fetchedAt = new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString();
+const staleCache = [{
+  id: "CGK-BDO-1-REG",
+  status: "available",
+  service_code: "REG",
+  service_name: "REG",
+  shipment_type: "Document/Paket",
+  chargeable_weight_kg: 1,
+  rate: 12000,
+  estimated_days_min: 1,
+  estimated_days_max: 2,
+  fetched_at: fetchedAt,
+  valid_until: fetchedAt,
+  source: "JNE_OFFICIAL"
+}];
+const exactFallback = tariffCacheFallback(staleCache, 1, 2160);
+assert.equal(exactFallback.cacheStatus, "stale");
+assert.equal(exactFallback.services[0].rate, 12000);
+const derivedFallback = tariffCacheFallback(staleCache, 2, 2160);
+assert.equal(derivedFallback.cacheStatus, "derived-cache");
+assert.equal(derivedFallback.services[0].rate, 24000);
 
 console.log("Shipping calculator contract verified.");

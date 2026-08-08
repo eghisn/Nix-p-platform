@@ -29,6 +29,8 @@ const requirements = [
   [policies.includes("No direct access to notification outbox"), "Internal commerce tables must deny direct public access."],
   [outboxRecovery.includes("status = 'Sending'"), "Stale claimed emails must be recoverable."],
   [checkout.includes("create_shipping_quote_request"), "JNE and GoSend checkout must create a delivery quote request before payment."],
+  [checkout.includes('"JNE Manual"'), "Checkout must preserve a manual JNE quote fallback when the official source is unavailable."],
+  [client.includes("data-checkout-manual-jne"), "Checkout must expose the manual JNE fallback without a blocking error state."],
   [shippingFoundation.includes("issue_shipping_quote"), "Shipping quotes must reserve stock only after an operator issues the amount."],
   [shippingFoundation.includes("vinyl-cardboard-bubble"), "Format-based package profiles must be stored for public products."],
   [shippingFoundation.includes("shippingCollected"), "Finance must keep shipping collected separate from merchandise revenue."],

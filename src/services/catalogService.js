@@ -112,7 +112,8 @@ export const catalogService = {
     }));
   },
   async listOrders() {
-    const orders = await adminStore.refreshOrders();
+    await adminStore.refreshPrivateStore();
+    const orders = adminStore.getSnapshot().orders;
     const products = adminStore.listProducts({ includeDrafts: true });
     return orders.map((order) => {
       const lineItems = Array.isArray(order.lineItems) ? order.lineItems : [];

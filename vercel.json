@@ -139,6 +139,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/admin/shipping",
+      "destination": "/admin/shipping/index.html"
+    },
+    {
       "source": "/admin/:path*",
       "destination": "/index.html"
     },

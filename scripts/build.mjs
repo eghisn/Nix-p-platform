@@ -90,6 +90,7 @@ const staticRoutes = [
   "admin/requests",
   "admin/inventory",
   "admin/orders",
+  "admin/shipping",
   "admin/cashflow",
   "admin/reports",
   "admin/preview"
@@ -369,6 +370,9 @@ function productDocument(product) {
 
 function staticPublicRouteMarkup(route) {
   const productsByCategory = (category) => publicProducts.filter((product) => product.category === category);
+  if (route.startsWith("admin/")) {
+    return `<section class="section"><div class="app-boot" aria-live="polite">NIXP ADMIN</div></section>`;
+  }
   if (route === "records") {
     const records = [...productsByCategory("Records")].sort((left, right) => left.artist.localeCompare(right.artist));
     return recordsPageMarkup({

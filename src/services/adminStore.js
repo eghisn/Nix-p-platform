@@ -12,6 +12,14 @@ let activeStoreScope = null;
 let privateStoreRefresh = null;
 let privateStoreRefreshedAt = 0;
 
+function storeRevision(value) {
+  return JSON.stringify(value || []);
+}
+
+function notifyPrivateStoreRefreshed() {
+  if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("nixp:private-store-refreshed"));
+}
+
 const defaultCollections = [
   { id: "records", title: "Records", type: "Category", status: "Published", sort: 1 },
   { id: "objects", title: "Objects", type: "Category", status: "Published", sort: 2 },
@@ -60,6 +68,7 @@ function withDefaults(product) {
     color: product.color || "",
     material: product.material || "",
     qty: Number(product.qty ?? 1),
+    open_to_offers: product.open_to_offers === true,
     shipping: normalizeShipping(product.shipping)
   };
   return {
@@ -606,6 +615,16 @@ export const adminStore = {
       }
     }
 
+    if (!publicOnly && browserStore?.version === STORE_VERSION) {
+      activeStore = mergeStore(seed({ publicOnly: false }), browserStore, { publicOnly: false });
+      activeStoreScope = scope;
+      privateStoreRefreshedAt = Date.now();
+      this.refreshPrivateStore({ force: true })
+        .then(() => notifyPrivateStoreRefreshed())
+        .catch(() => undefined);
+      return;
+    }
+
     try {
       const filePath = publicOnly ? PUBLIC_STORE_PATH : ADMIN_STORE_PATH;
       const apiScope = publicOnly ? "public" : "admin";
@@ -675,6 +694,11 @@ export const adminStore = {
     }
     await this.refreshPrivateStore({ force: true });
     return this.getSnapshot().orders;
+  },
+  async refreshOrdersIfChanged() {
+    const before = storeRevision(this.getSnapshot().orders);
+    const orders = await this.refreshOrders();
+    return { orders, changed: before !== storeRevision(orders) };
   },
   async refreshPrivateStore({ force = false } = {}) {
     if (!canUsePrivateStore()) return this.getSnapshot();
@@ -827,6 +851,14 @@ export const adminStore = {
       reviewSource: isRecord ? data.reviewSource?.trim() || existing?.reviewSource || "" : "",
       reviewUrl: isRecord ? data.reviewUrl?.trim() || existing?.reviewUrl || "" : "",
       qty: Math.max(0, Number(data.qty ?? 1) || 0),
+      // Optional flag, default false. Only an explicit opt-in here makes a
+      // product show "OPEN TO OFFERS" instead of a price; it is never inferred
+      // from SOURCE or from a zero price.
+      open_to_offers:
+        data.open_to_offers === true ||
+        data.open_to_offers === "true" ||
+        data.open_to_offers === "Yes" ||
+        (data.open_to_offers === undefined && existing?.open_to_offers === true),
       shipping: normalizeShipping({
         weightGrams: data.shippingWeightGrams,
         lengthCm: data.shippingLengthCm,

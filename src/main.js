@@ -14,6 +14,7 @@ const app = document.querySelector("#app");
 const CHECKOUT_SESSION_STORAGE_KEY = "nixp-checkout-session";
 let homeSliderCleanup = null;
 let adminOrdersRefreshTimer = null;
+let adminOrdersVisibilityHandler = null;
 let priceCache = { expiresAt: 0, prices: new Map() };
 let renderRequestId = 0;
 const money = new Intl.NumberFormat("id-ID", {
@@ -835,6 +836,7 @@ async function cartPage() {
                     <label>Shipping method
                       <select name="shippingMethod" required data-checkout-shipping-method>
                         <option value="JNE">JNE</option>
+                        <option value="JNE Manual" hidden>JNE manual quote</option>
                         <option value="GoSend Manual">GoSend Manual (Jakarta Area Only)</option>
                         <option value="Store Pickup">Store Pickup</option>
                       </select>
@@ -861,6 +863,7 @@ async function cartPage() {
                   <div class="checkout-shipping-quote" data-checkout-shipping-quote aria-live="polite">
                     <strong>Shipping quote</strong>
                     <span>Select a city or regency to calculate the packed shipment and available service.</span>
+                    <button class="button button-outline checkout-shipping-fallback" type="button" data-checkout-manual-jne hidden>Request manual JNE quote</button>
                   </div>
                   <div class="admin-form-actions">
                     <button class="button button-dark" type="submit" data-checkout-submit>Request delivery quote</button>
@@ -2304,11 +2307,22 @@ function setupAdminOrdersLiveRefresh(path) {
     clearInterval(adminOrdersRefreshTimer);
     adminOrdersRefreshTimer = null;
   }
+  if (adminOrdersVisibilityHandler) {
+    document.removeEventListener("visibilitychange", adminOrdersVisibilityHandler);
+    window.removeEventListener("focus", adminOrdersVisibilityHandler);
+    adminOrdersVisibilityHandler = null;
+  }
   if (path !== "/admin/orders" || !hasWorkspaceAccess("admin")) return;
-  adminOrdersRefreshTimer = setInterval(() => {
+  const refreshOrders = () => {
     if (document.hidden || normalizePath(location.pathname) !== "/admin/orders") return;
-    adminStore.refreshOrders().then(() => render({ preserveScroll: true })).catch(() => undefined);
-  }, 10_000);
+    adminStore.refreshOrdersIfChanged().then(({ changed }) => {
+      if (changed) render({ preserveScroll: true });
+    }).catch(() => undefined);
+  };
+  adminOrdersRefreshTimer = setInterval(refreshOrders, 3_000);
+  adminOrdersVisibilityHandler = refreshOrders;
+  document.addEventListener("visibilitychange", adminOrdersVisibilityHandler);
+  window.addEventListener("focus", adminOrdersVisibilityHandler);
 }
 
 function deployStatusMarkup(status) {
@@ -2626,6 +2640,7 @@ function bindEvents() {
   const checkoutService = document.querySelector("[data-checkout-shipping-option]");
   const checkoutServiceField = document.querySelector("[data-checkout-service-field]");
   const checkoutQuote = document.querySelector("[data-checkout-shipping-quote]");
+  const checkoutManualJne = document.querySelector("[data-checkout-manual-jne]");
   const checkoutDeliveryTotal = document.querySelector("[data-checkout-delivery-total]");
   const checkoutGrandTotal = document.querySelector("[data-checkout-grand-total]");
   const checkoutMobileDeliveryTotal = document.querySelector("[data-checkout-mobile-delivery-total]");
@@ -2640,6 +2655,7 @@ function bindEvents() {
     checkoutQuote.dataset.tone = tone;
     const messageNode = checkoutQuote.querySelector("span");
     if (messageNode) messageNode.textContent = message;
+    if (checkoutManualJne) checkoutManualJne.hidden = tone !== "manual";
   };
   const setCheckoutTotals = (delivery, grandTotal) => {
     if (checkoutDeliveryTotal) checkoutDeliveryTotal.textContent = delivery;
@@ -2656,7 +2672,7 @@ function bindEvents() {
       && new Date(state.checkoutShippingQuote.expiresAt).getTime() > Date.now()
       && checkoutService?.value
     );
-    const deliveryIsReady = method === "Store Pickup" || method === "GoSend Manual" || (method === "JNE" && quoteIsCurrent);
+    const deliveryIsReady = ["Store Pickup", "GoSend Manual", "JNE Manual"].includes(method) || (method === "JNE" && quoteIsCurrent);
     submit.disabled = !checkoutForm.checkValidity() || !deliveryIsReady;
   };
   const applyCheckoutShippingOption = (merchandiseTotal) => {
@@ -2675,14 +2691,20 @@ function bindEvents() {
     if (checkoutServiceField) checkoutServiceField.hidden = true;
     try {
       const { rows, total } = await cartSummary();
-      const response = await fetch("/api/checkout?commerceAction=shipping-quote", {
+      const requestOptions = {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           destinationCode: checkoutCity.value,
           items: rows.map((row) => ({ id: row.productId, size: row.size, quantity: row.quantity }))
         })
-      });
+      };
+      let response = await fetch("/api/checkout?commerceAction=shipping-quote", requestOptions);
+      if ([502, 503, 504].includes(response.status)) {
+        await new Promise((resolve) => setTimeout(resolve, 650));
+        if (requestId !== checkoutQuoteRequest) return;
+        response = await fetch("/api/checkout?commerceAction=shipping-quote", requestOptions);
+      }
       const payload = await response.json().catch(() => ({}));
       if (requestId !== checkoutQuoteRequest) return;
       if (!response.ok) throw new Error(payload.error || "Shipping quote could not be calculated.");
@@ -2725,7 +2747,7 @@ function bindEvents() {
       if (submit) submit.disabled = true;
       const { total } = await cartSummary();
       setCheckoutTotals("Unavailable", money.format(total));
-      showCheckoutQuote(error instanceof Error ? error.message : "We couldn't calculate shipping. Please check your address and try again.", "error");
+      showCheckoutQuote("Automatic JNE pricing is temporarily unavailable for this route. You can still submit the address for a manual JNE quote.", "manual");
       syncCheckoutSubmitAvailability();
     }
   };
@@ -2768,7 +2790,7 @@ function bindEvents() {
   };
   const syncCheckoutAddressRequirements = () => {
     const pickup = shippingMethod?.value === "Store Pickup";
-    const manual = shippingMethod?.value === "GoSend Manual";
+    const manual = shippingMethod?.value === "GoSend Manual" || shippingMethod?.value === "JNE Manual";
     const submit = document.querySelector("[data-checkout-submit]");
     if (submit) submit.textContent = pickup ? "Place order and reserve stock" : manual ? "Request delivery quote" : "Continue to payment";
     document.querySelectorAll("[data-checkout-address-field]").forEach((field) => {
@@ -2783,7 +2805,11 @@ function bindEvents() {
       showCheckoutQuote("Store pickup does not add a delivery charge.", "success");
     } else if (manual) {
       cartSummary().then(({ total }) => setCheckoutTotals("Manual quote", `${money.format(total)} + delivery`));
-      showCheckoutQuote("GoSend is confirmed manually for eligible Jakarta addresses before payment.");
+      showCheckoutQuote(
+        shippingMethod?.value === "JNE Manual"
+          ? "NIXP will confirm the JNE service and delivery amount before payment opens."
+          : "GoSend is confirmed manually for eligible Jakarta addresses before payment."
+      );
     } else {
       if (!checkoutCity?.value) showCheckoutQuote("Enter your delivery address to view shipping options.");
       scheduleCheckoutShippingQuote();
@@ -2793,6 +2819,12 @@ function bindEvents() {
   shippingMethod?.addEventListener("change", syncCheckoutAddressRequirements);
   checkoutCity?.addEventListener("change", syncCheckoutProvince);
   checkoutService?.addEventListener("change", async () => applyCheckoutShippingOption((await cartSummary()).total));
+  checkoutManualJne?.addEventListener("click", () => {
+    if (!shippingMethod) return;
+    shippingMethod.value = "JNE Manual";
+    state.checkoutShippingQuote = null;
+    syncCheckoutAddressRequirements();
+  });
   checkoutForm?.addEventListener("input", syncCheckoutSubmitAvailability);
   checkoutForm?.addEventListener("change", syncCheckoutSubmitAvailability);
   checkoutCity?.addEventListener("keydown", (event) => {
@@ -3480,6 +3512,11 @@ function bindSearch() {
 }
 
 window.addEventListener("popstate", render);
+window.addEventListener("nixp:private-store-refreshed", () => {
+  if (!normalizePath(location.pathname).startsWith("/admin")) return;
+  if (document.activeElement?.matches("input, textarea, select, [contenteditable='true']")) return;
+  render({ preserveScroll: true });
+});
 adminStore
   .initialize()
   .then(() => render())

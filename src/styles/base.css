@@ -2280,6 +2280,16 @@ body:has(.cart-view) .site-footer {
   color: #b00020;
 }
 
+.checkout-shipping-quote[data-tone="manual"] span {
+  color: var(--ink);
+}
+
+.checkout-shipping-fallback {
+  justify-self: start;
+  width: auto;
+  margin-top: 4px;
+}
+
 .checkout-international-order {
   grid-column: 1 / -1;
   justify-self: start;
