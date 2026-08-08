@@ -379,11 +379,12 @@ async function importDestinationMappings(inputs) {
     return { ...input, localRegionCode, jneDestinationCode, cityName, provinceName, destinationName };
   });
   const now = new Date().toISOString();
+  const uniqueJneInputs = [...new Map(normalized.map((input) => [input.jneDestinationCode, input])).values()];
   const saved = await supabaseFetch("jne_destinations?on_conflict=jne_destination_code", {
     method: "POST",
     service: true,
     prefer: "resolution=merge-duplicates,return=representation",
-    body: normalized.map((input) => ({
+    body: uniqueJneInputs.map((input) => ({
       jne_destination_code: input.jneDestinationCode,
       local_region_code: input.localRegionCode,
       destination_name: input.destinationName,
