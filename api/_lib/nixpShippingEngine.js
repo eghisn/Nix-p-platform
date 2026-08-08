@@ -24,10 +24,9 @@ export class NixpShippingEngine {
     const byId = new Map(products.map((product) => [product.id, product]));
     const lines = normalizedItems.map((item) => ({ product: byId.get(item.id), quantity: item.quantity, size: item.size }));
     const packaging = calculatePackages(lines, { volumetricDivisor: settings.volumetricDivisor });
-    const tariffResults = [];
-    for (const parcel of packaging.packages) {
-      tariffResults.push(await this.tariffForParcel(settings, destination, parcel));
-    }
+    const tariffResults = await Promise.all(
+      packaging.packages.map((parcel) => this.tariffForParcel(settings, destination, parcel))
+    );
     const options = intersectParcelServices(packaging.packages, tariffResults);
     const selectedOption = optionKey ? options.find((option) => option.key === optionKey) : options[0] || null;
     if (optionKey && !selectedOption) throw shippingError("The selected JNE service is no longer available for every parcel.", 409);

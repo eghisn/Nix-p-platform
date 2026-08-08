@@ -5,7 +5,6 @@ import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhoo
 import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShippingQuoteNotification, sendCustomerShippingQuoteRequest, sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
-import { JneOfficialClient } from "./_lib/jneOfficialClient.js";
 import { runShippingMaintenance } from "./_lib/nixpShippingEngine.js";
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 
@@ -169,12 +168,34 @@ async function handleShippingDestinationSearch(req, res) {
   try {
     if (!isCheckoutOrigin(req)) return json(res, 403, { ok: false, error: "Checkout origin is not allowed." });
     if (!(await consumeCommerceRateLimit("shipping-destinations", requestClientAddress(req), { limit: 120, windowSeconds: 900 }))) return json(res, 429, { ok: false, error: "Too many destination searches." });
-    const query = new URL(req.url || "/", "https://www.nix-p.com").searchParams.get("q") || "";
-    const destinations = await new JneOfficialClient().searchDestinations(query);
+    const query = normalizeSearchText(new URL(req.url || "/", "https://www.nix-p.com").searchParams.get("q") || "");
+    if (query.length < 3) return json(res, 200, { ok: true, destinations: [] });
+    const rows = await supabaseFetch("jne_destinations?select=local_region_code,jne_destination_code,province_name,city_name,district_name,subdistrict_name,postal_code&active=eq.true&limit=1000", { service: true });
+    const destinations = (rows || [])
+      .filter((row) => normalizeSearchText([row.city_name, row.province_name, row.district_name, row.subdistrict_name, row.postal_code].filter(Boolean).join(" ")).includes(query))
+      .slice(0, 30)
+      .map((row) => ({
+        localRegionCode: row.local_region_code,
+        jneDestinationCode: row.jne_destination_code,
+        provinceName: row.province_name,
+        cityName: row.city_name,
+        districtName: row.district_name,
+        subdistrictName: row.subdistrict_name,
+        postalCode: row.postal_code,
+        displayName: [row.city_name, row.province_name].filter(Boolean).join(", ")
+      }));
     return json(res, 200, { ok: true, destinations });
   } catch (error) {
     return json(res, Number(error?.statusCode || 503), { ok: false, error: error instanceof Error ? error.message : "Destination search unavailable." });
   }
+}
+
+function normalizeSearchText(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
 }
 
 async function handleCustomerOrderStatus(req, res) {
