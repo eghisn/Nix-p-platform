@@ -1635,7 +1635,7 @@
     let financeCatalogSyncPromise = null;
     function queueFinanceCatalogSync() {
       if (usesLocalFileStorage || financeCatalogSyncPromise) return;
-      financeCatalogSyncPromise = fetch("/api/catalog-sync", {
+      financeCatalogSyncPromise = fetch("/api/admin/catalog-sync", {
         method: "POST",
         headers: { accept: "application/json" }
       })

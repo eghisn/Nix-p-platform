@@ -1,4 +1,4 @@
-import { json, requireWorkspace } from "../_lib/auth.js";
+import { getSession, json, requireWorkspace } from "../_lib/auth.js";
 import { isSupabaseConfigured, saveStore, supabaseFetch } from "../_lib/supabase.js";
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
@@ -38,7 +38,10 @@ export default async function handler(req, res) {
   }
   if (action === "catalog-sync") {
     if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
-    if (!requireWorkspace(req, res, "admin")) return;
+    const session = getSession(req);
+    if (!session || !["admin", "finance"].includes(session.workspace)) {
+      return json(res, 401, { ok: false, error: "Admin or Finance login required" });
+    }
     try {
       const financeState = await readFinanceState();
       await syncFinanceInventoryToCatalog(financeState);
