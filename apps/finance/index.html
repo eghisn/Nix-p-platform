@@ -1296,8 +1296,12 @@
                 <label for="reportMonth">Month</label>
                 <input id="reportMonth" type="month">
               </div>
+              <div class="field">
+                <label for="reportOpeningCash">Opening cash before first ledger entry</label>
+                <input id="reportOpeningCash" type="number" min="0" step="1" placeholder="Required for ending cash">
+              </div>
               <div class="field full">
-                <p class="tiny">Auto-builds an actual monthly report from saved finance.nix-p.com ledger rows only. No projections, assumptions, or sample numbers are added.</p>
+                <p class="tiny">Use the actual cash balance immediately before the reporting period. The report uses saved ledger rows only and does not estimate this value.</p>
               </div>
             </div>
           </section>
@@ -1359,8 +1363,12 @@
     const itemConditions = ["New-Sealed", "New-Unsealed", "Used Excellent", "Used Good"];
     const ownerDueCategory = "Owner Personal Use / Reimbursement Due";
     const ownerReimbursementCategory = "Owner Reimbursement";
+    const operatingExpenseStartMonth = "2026-11";
+    const monthlyReportAccountingVersion = 2;
 
     const state = loadState();
+    if (state.openingCash === undefined) state.openingCash = null;
+    if (!state.targets || typeof state.targets !== "object" || Array.isArray(state.targets)) state.targets = {};
     const sortState = {
       dashboard: { key: "date", direction: "asc" },
       sales: { key: "date", direction: "asc" },
@@ -1465,6 +1473,7 @@
       dashboardSearch: document.getElementById("dashboardSearch"),
       pnlMonth: document.getElementById("pnlMonth"),
       reportMonth: document.getElementById("reportMonth"),
+      reportOpeningCash: document.getElementById("reportOpeningCash"),
       monthlyReportLabel: document.getElementById("monthlyReportLabel"),
       monthlyReportPreview: document.getElementById("monthlyReportPreview"),
       monthlyArchiveStatus: document.getElementById("monthlyArchiveStatus"),
@@ -1476,6 +1485,7 @@
     el.ownerDueYearFilter.value = currentYear;
     el.pnlMonth.value = currentMonth;
     el.reportMonth.value = currentMonth;
+    if (el.reportOpeningCash) el.reportOpeningCash.value = state.openingCash ?? "";
 
     buildForms();
     attachExportControls();
@@ -1502,18 +1512,20 @@
         try { window.localStorage.removeItem(STORAGE_KEY); } catch {}
         return migratedServerState;
       }
-      if (!usesLocalFileStorage) return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [], monthlyReports: [] };
+      if (!usesLocalFileStorage) return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [], monthlyReports: [], openingCash: null, targets: {} };
       try {
         const stored = JSON.parse(window.localStorage.getItem(STORAGE_KEY));
         if (stored && Array.isArray(stored.general) && Array.isArray(stored.sales) && Array.isArray(stored.expenses) && Array.isArray(stored.inventory)) {
           if (!Array.isArray(stored.inventoryStock)) stored.inventoryStock = [];
           if (!Array.isArray(stored.monthlyReports)) stored.monthlyReports = [];
+          if (stored.openingCash === undefined) stored.openingCash = null;
+          if (!stored.targets || typeof stored.targets !== "object" || Array.isArray(stored.targets)) stored.targets = {};
           return stored;
         }
       } catch (error) {
         console.warn("Could not load NIXP data", error);
       }
-      return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [], monthlyReports: [] };
+      return { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [], monthlyReports: [], openingCash: null, targets: {} };
     }
 
     async function saveState() {
@@ -1625,6 +1637,13 @@
       state.inventory = Array.isArray(payload.state.inventory) ? payload.state.inventory : [];
       state.inventoryStock = Array.isArray(payload.state.inventoryStock) ? payload.state.inventoryStock : [];
       state.monthlyReports = Array.isArray(payload.state.monthlyReports) ? payload.state.monthlyReports : [];
+      state.openingCash = payload.state.openingCash === null || payload.state.openingCash === undefined || payload.state.openingCash === ""
+        ? null
+        : numeric(payload.state.openingCash);
+      state.targets = payload.state.targets && typeof payload.state.targets === "object" && !Array.isArray(payload.state.targets)
+        ? payload.state.targets
+        : {};
+      if (el.reportOpeningCash) el.reportOpeningCash.value = state.openingCash ?? "";
       financeStateUpdatedAt = payload.updatedAt;
       normalizeDerivedData();
       closeCompletedMonthlyReports();
@@ -1867,6 +1886,12 @@
       [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.salesSearch, el.inventorySearch, el.stockSearch, el.pnlMonth, el.reportMonth].forEach(input => {
         input.addEventListener("input", render);
       });
+      el.reportOpeningCash?.addEventListener("change", async event => {
+        const value = String(event.target.value ?? "").trim();
+        state.openingCash = value === "" ? null : numeric(value);
+        await commitState();
+        render();
+      });
       el.generalForm.querySelector('[name="category"]').addEventListener("change", syncGeneralInvestorFields);
 
       el.generalForm.addEventListener("submit", event => {
@@ -2031,12 +2056,15 @@
     function exportClosedMonthlyReport(month, format) {
       const report = (state.monthlyReports || []).find(item => item.month === month);
       if (!report) return;
+      const exportData = archiveReportData(report);
       const filename = "NIXP-Monthly-Investor-Report-" + month;
       if (format === "jpg") {
-        exportMonthlyReportJPEG(report, filename + ".jpeg");
+        exportMonthlyReportJPEG(exportData, filename + ".jpeg");
         return;
       }
-      download(filename + ".csv", matrixToCSV(report.rows || monthlyReportExportRows(report)), "text/csv;charset=utf-8");
+      download(filename + ".csv", matrixToCSV(report.accountingVersion >= monthlyReportAccountingVersion
+        ? report.rows
+        : monthlyReportExportRows(exportData)), "text/csv;charset=utf-8");
     }
 
     function resetForm(form) {
@@ -2791,8 +2819,10 @@
             ${reportSummaryRow("Ending Cash", data.endingCash, null, data.ytd.endingCash)}
             ${reportSummaryRow("Inventory Value at Cost", data.inventoryValueAtCost, null, data.ytd.inventoryValueAtCost)}
           </div>
-          ${data.missingCogsSkus.length ? `<p class="report-warning">Missing COGS: ${escapeHTML(data.missingCogsSkus.join(", "))}. Gross profit and margin are withheld until landed cost is recorded.</p>` : ""}
+          ${data.missingCogsUnits > 0 ? `<p class="report-warning">${escapeHTML(String(data.missingCogsUnits))} sold unit${data.missingCogsUnits === 1 ? "" : "s"} missing cost basis. Gross profit and margin are withheld until landed cost is recorded.</p>` : ""}
+          ${data.orphanedCogsAmount > 0 ? `<p class="report-warning">${escapeHTML(rupiah(data.orphanedCogsAmount))} of unmatched Sales COGS was excluded because no recognized sale is linked to it.</p>` : ""}
           ${data.missingInventoryUnits > 0 ? `<p class="report-warning">Inventory cost coverage: ${escapeHTML(reportPercent(data.inventoryCostCoverage))}. ${escapeHTML(String(data.missingInventoryUnits))} remaining units are missing cost basis.</p>` : ""}
+          ${data.endingCash === null ? `<p class="report-warning">Ending cash is unavailable because no opening cash balance is recorded for this ledger.</p>` : ""}
         </section>
         <section class="report-statement">
           <h3>Cash Position / Cash Flow</h3>
@@ -2815,20 +2845,15 @@
         <section class="report-copy">
           <header>
             <span>Month Summary</span>
-            <p class="report-net-cash">${escapeHTML(rupiah(data.netCashMovement))}</p>
-            <p class="report-caption">Net cash movement</p>
+            <p class="report-caption">Key figures</p>
           </header>
           <dl class="report-facts">
-            <div><dt>Revenue</dt><dd>${escapeHTML(reportMoney(data.salesRevenue))}</dd></div>
-            <div><dt>Gross profit</dt><dd>${escapeHTML(reportMoney(data.grossProfit))}</dd></div>
-            <div><dt>Gross margin</dt><dd>${escapeHTML(reportPercent(data.grossMargin))}</dd></div>
+            <div><dt>Ending cash</dt><dd>${escapeHTML(reportMoney(data.endingCash))}</dd></div>
+            <div><dt>Net cash movement</dt><dd>${escapeHTML(reportMoney(data.netCashMovement))}</dd></div>
             <div><dt>Operating profit</dt><dd>${escapeHTML(reportMoney(data.operatingProfit))}</dd></div>
             <div><dt>Net income</dt><dd>${escapeHTML(reportMoney(data.netIncome))}</dd></div>
-            <div><dt>Cash in</dt><dd>${escapeHTML(rupiah(data.cashIn))}</dd></div>
-            <div><dt>Cash out</dt><dd>${escapeHTML(rupiah(data.cashOut))}</dd></div>
           </dl>
           <p><strong>Operating expense categories</strong><br>${escapeHTML(data.operatingExpenseCategoryText)}</p>
-          <p><strong>COGS status</strong><br>${escapeHTML(data.cogsStatus)}</p>
         </section>
         <footer class="report-footnote">
           <span>Management Accounts — Unaudited<br>Prepared for NIXP investors for internal reporting purposes.</span>
@@ -2898,21 +2923,50 @@
     }
 
     function inventoryValueAtCost(month) {
-      // inventoryStock represents current remaining units. Historical stock valuation
-      // is unavailable until monthly inventory snapshots exist, so do not backfill it.
-      if (month !== currentMonth) {
-        return { value: null, totalUnits: 0, coveredUnits: 0, missingUnits: 0, coverage: null };
-      }
+      const purchaseRows = (Array.isArray(state.inventory) ? state.inventory : [])
+        .filter(item => monthOf(item.date) <= month && numeric(item.qty) > 0)
+        .sort((a, b) => byDateAsc(a, b));
       const stockRows = Array.isArray(state.inventoryStock) ? state.inventoryStock : [];
-      const totals = stockRows.reduce((result, item) => {
-        const quantity = Math.max(0, numeric(item.qty));
-        const hasCost = quantity === 0 || numeric(item.costBasis) > 0;
-        result.totalUnits += quantity;
-        if (hasCost) {
-          result.coveredUnits += quantity;
-          result.value += quantity * numeric(item.costBasis);
+      if (!purchaseRows.length && month === currentMonth && stockRows.length) {
+        const totals = stockRows.reduce((result, item) => {
+          const quantity = Math.max(0, numeric(item.qty));
+          const hasCost = quantity === 0 || numeric(item.costBasis) > 0;
+          result.totalUnits += quantity;
+          if (hasCost) {
+            result.coveredUnits += quantity;
+            result.value += quantity * numeric(item.costBasis);
+          } else {
+            result.missingUnits += quantity;
+          }
+          return result;
+        }, { value: 0, totalUnits: 0, coveredUnits: 0, missingUnits: 0 });
+        return {
+          ...totals,
+          value: totals.missingUnits > 0 ? null : totals.value,
+          coverage: totals.totalUnits > 0 ? totals.coveredUnits / totals.totalUnits * 100 : null
+        };
+      }
+
+      const soldBySku = (Array.isArray(state.sales) ? state.sales : [])
+        .filter(item => monthOf(item.date) <= month && isRecognizedSale(item))
+        .reduce((result, item) => {
+          const key = String(item.sku || "").trim().toLowerCase();
+          if (key) result.set(key, (result.get(key) || 0) + Math.max(0, numeric(item.qty)));
+          return result;
+        }, new Map());
+      const totals = purchaseRows.reduce((result, item) => {
+        const key = String(item.sku || "").trim().toLowerCase();
+        const purchased = Math.max(0, numeric(item.qty));
+        const allocatedSold = Math.min(purchased, soldBySku.get(key) || 0);
+        soldBySku.set(key, Math.max(0, (soldBySku.get(key) || 0) - allocatedSold));
+        const remaining = purchased - allocatedSold;
+        const costBasis = numeric(item.unitCost ?? item.costBasis);
+        result.totalUnits += remaining;
+        if (costBasis > 0) {
+          result.coveredUnits += remaining;
+          result.value += remaining * costBasis;
         } else {
-          result.missingUnits += quantity;
+          result.missingUnits += remaining;
         }
         return result;
       }, { value: 0, totalUnits: 0, coveredUnits: 0, missingUnits: 0 });
@@ -2937,12 +2991,21 @@
       const outcomeRows = ledgerRows.filter(item => item.type === "Outcome");
       const cashOutcomeRows = outcomeRows.filter(item => !cogsCategories.has(item.category));
       const operatingIncomeRows = incomeRows.filter(item => !financingCategories.has(item.category));
-      const cogsRows = outcomeRows.filter(item => cogsCategories.has(item.category));
       const taxRows = outcomeRows.filter(item => item.category === "Tax");
-      const operatingExpenseRows = cashOutcomeRows
+      const salesInPeriod = state.sales.filter(item => {
+        const saleMonth = monthOf(item.date);
+        return saleMonth >= startMonth && saleMonth <= month && isRecognizedSale(item);
+      });
+      const recognizedSaleIds = new Set(salesInPeriod
+        .filter(item => numeric(item.revenue) > 0)
+        .map(item => item.id)
+        .filter(Boolean));
+      const cogsRows = outcomeRows.filter(item => cogsCategories.has(item.category) && recognizedSaleIds.has(item.id));
+      const operatingExpenseRows = month >= operatingExpenseStartMonth ? cashOutcomeRows
         .filter(item => item.category !== "Inventory")
         .filter(item => !nonOperatingOutcomeCategories.has(item.category))
-        .filter(item => item.category !== "Tax");
+        .filter(item => item.category !== "Tax")
+        .filter(item => monthOf(item.date) >= operatingExpenseStartMonth) : [];
       const sumRows = rows => rows.reduce((total, item) => total + numeric(item.amount), 0);
       const operatingExpenseBreakdown = Array.from(operatingExpenseRows.reduce((categories, item) => {
         const label = item.category || "Uncategorized";
@@ -2955,10 +3018,6 @@
       const cashIn = sumRows(incomeRows);
       const cashOut = sumRows(cashOutcomeRows);
       const netCashMovement = cashIn - cashOut;
-      const salesInPeriod = state.sales.filter(item => {
-        const saleMonth = monthOf(item.date);
-        return saleMonth >= startMonth && saleMonth <= month && isRecognizedSale(item);
-      });
       const missingCogsSales = salesInPeriod.filter(saleHasMissingCogs);
       const missingCogsSkus = [...new Set(missingCogsSales.flatMap(item => {
         const skus = Array.isArray(item.missingCogsSkus) ? item.missingCogsSkus : [];
@@ -2995,6 +3054,8 @@
         cogs,
         cogsStatus: missingCogsSales.length ? "Missing COGS" : "Complete",
         missingCogsSkus,
+        missingCogsUnits: missingCogsSales.reduce((total, item) => total + Math.max(0, numeric(item.qty)), 0),
+        orphanedCogsAmount: sumRows(outcomeRows.filter(item => cogsCategories.has(item.category) && !recognizedSaleIds.has(item.id))),
         grossProfit,
         grossMargin,
         operatingExpenseBreakdown,
@@ -3034,19 +3095,28 @@
       el.monthlyArchiveStatus.textContent = reports.length
         ? `${reports.length} closed month${reports.length === 1 ? "" : "s"} archived`
         : "No closed months archived yet";
-      el.monthlyArchiveBody.innerHTML = reports.length ? reports.map(report => `
+      el.monthlyArchiveBody.innerHTML = reports.length ? reports.map(report => {
+        const display = archiveReportData(report);
+        return `
         <tr>
           <td>${escapeHTML(report.monthLabel || formatMonthLabel(report.month))}</td>
-          <td class="money">${rupiah(report.cashIn)}</td>
-          <td class="money">${rupiah(report.cashOut)}</td>
-          <td class="money">${rupiah(report.netIncome)}</td>
+          <td class="money">${rupiah(display.cashIn)}</td>
+          <td class="money">${rupiah(display.cashOut)}</td>
+          <td class="money">${reportMoney(display.netIncome)}</td>
           <td>${escapeHTML(formatDateTime(report.closedAt))}</td>
           <td class="row-actions">
             <button class="link-button" type="button" data-export-closed-month="${escapeHTML(report.month)}">CSV</button>
             <button class="link-button" type="button" data-export-closed-month-jpg="${escapeHTML(report.month)}">JPEG</button>
           </td>
         </tr>
-      `).join("") : emptyRow(6, "Closed monthly reports will appear here automatically after a month ends.");
+      `;
+      }).join("") : emptyRow(6, "Closed monthly reports will appear here automatically after a month ends.");
+    }
+
+    function archiveReportData(report) {
+      return Number(report?.accountingVersion || 0) >= monthlyReportAccountingVersion
+        ? report
+        : monthlyReportData(report.month);
     }
 
     function closeCompletedMonthlyReports() {
@@ -3081,6 +3151,7 @@
       const rows = monthlyReportExportRows(data);
       return {
         month: data.month,
+        accountingVersion: monthlyReportAccountingVersion,
         monthLabel: data.monthLabel,
         ledgerRowCount: data.ledgerRowCount,
         cashIn: data.cashIn,
@@ -3106,6 +3177,8 @@
         missingInventoryUnits: data.missingInventoryUnits,
         cogsStatus: data.cogsStatus,
         missingCogsSkus: data.missingCogsSkus,
+        missingCogsUnits: data.missingCogsUnits,
+        orphanedCogsAmount: data.orphanedCogsAmount,
         targetRevenue: data.targetRevenue,
         targetUnitsSold: data.targetUnitsSold,
         targetGrossProfit: data.targetGrossProfit,
@@ -3373,7 +3446,7 @@
     function monthlyReportExportRows(sourceData = null) {
       const data = sourceData || monthlyReportData();
       const ytd = data.ytd || data;
-      return [
+      const rows = [
         ["NIXP Monthly Investor Report", data.monthLabel],
         ["Executive Summary", ""],
         ["KPI", "This Month", "Target", "YTD"],
@@ -3384,7 +3457,6 @@
         ["Operating Profit", data.operatingProfit, reportTarget(data.month, "operatingProfit"), ytd.operatingProfit],
         ["Ending Cash", data.endingCash, "—", ytd.endingCash],
         ["Inventory Value at Cost", data.inventoryValueAtCost, "—", ytd.inventoryValueAtCost],
-        ["Inventory Cost Coverage", reportPercent(data.inventoryCostCoverage), "—", reportPercent(ytd.inventoryCostCoverage)],
         ["Cash Position / Cash Flow", ""],
         ["Total Cash In", data.cashIn],
         ["Total Cash Out", data.cashOut],
@@ -3400,10 +3472,33 @@
         ["Operating Profit / EBITDA", data.operatingProfit],
         ["Tax", data.taxExpense],
         ["Net Income", data.netIncome],
-        ["COGS Status", data.cogsStatus],
-        ["Missing COGS", data.missingCogsSkus.length ? data.missingCogsSkus.join(", ") : "None"],
         ["Operating Expense Categories", data.operatingExpenseCategoryText]
       ];
+      if (data.missingCogsUnits > 0) {
+        rows.push(["Missing COGS", `${data.missingCogsUnits} sold unit${data.missingCogsUnits === 1 ? "" : "s"}: ${data.missingCogsSkus.join(", ")}`]);
+      }
+      if (data.orphanedCogsAmount > 0) {
+        rows.push(["Unmatched Sales COGS Excluded", data.orphanedCogsAmount]);
+      }
+      if (data.missingInventoryUnits > 0) {
+        rows.push(["Inventory Cost Coverage", reportPercent(data.inventoryCostCoverage)]);
+        rows.push(["Missing Inventory Cost Basis", data.missingInventoryUnits]);
+      }
+      return rows;
+    }
+
+    function estimateReportStatementBottom(data, expenseCount, statementTop) {
+      let y = statementTop + 42;
+      y += 42 * 2 + 14 + 42;
+      y += 34 + 42;
+      y += 42 * 2 + 14 + 42 + 42;
+      if (data.otherRevenue !== 0) y += 42;
+      y += 34 + 42;
+      y += 42 * Math.max(1, expenseCount);
+      y += 14 + 42;
+      y += 14 + 42;
+      if (data.taxExpense !== 0) y += 14 + 42;
+      return y + 16;
     }
 
     async function exportMonthlyReportJPEG(data, filename) {
@@ -3412,8 +3507,10 @@
       const expenses = Array.isArray(data.operatingExpenseBreakdown) ? data.operatingExpenseBreakdown : [];
       const ytd = data.ytd || data;
       const expenseRows = Math.max(1, expenses.length);
+      const statementTop = 766;
+      const statementBottom = estimateReportStatementBottom(data, expenses.length, statementTop);
       canvas.width = 1800;
-      canvas.height = Math.max(1540, 1420 + expenseRows * 48);
+      canvas.height = Math.max(1540, 1420 + expenseRows * 48, statementBottom + 170);
       const context = canvas.getContext("2d");
       const ink = "#292929";
       const paper = "#f1f1f1";
@@ -3426,7 +3523,6 @@
       const footerRuleY = canvas.height - 94;
       const executiveSummaryY = 282;
       const executiveSummaryBottom = 700;
-      const statementTop = 766;
       context.fillStyle = paper;
       context.fillRect(0, 0, canvas.width, canvas.height);
       context.strokeStyle = ink;
@@ -3475,7 +3571,20 @@
       summaryRows.forEach((row, index) => drawCanvasSummaryRow(context, row, summaryX, summaryRight, summaryColumns, executiveSummaryY + 102 + index * 42, ink));
       context.font = "600 14px 'Founders Grotesk Web', Arial";
       context.fillStyle = ink;
-      context.fillText(data.missingCogsSkus?.length ? `COGS STATUS: MISSING COGS (${data.missingCogsSkus.join(", ")})` : "COGS STATUS: COMPLETE", summaryX, executiveSummaryBottom - 28);
+      let summaryWarningY = executiveSummaryBottom - 34;
+      if (data.missingCogsUnits > 0) {
+        context.fillText(`MISSING COGS: ${data.missingCogsUnits} SOLD UNIT${data.missingCogsUnits === 1 ? "" : "S"}`, summaryX, summaryWarningY);
+        summaryWarningY -= 20;
+      }
+      if (data.orphanedCogsAmount > 0) {
+        context.fillText(`UNMATCHED COGS EXCLUDED: ${rupiah(data.orphanedCogsAmount)}`, summaryX, summaryWarningY);
+        summaryWarningY -= 20;
+      }
+      if (data.missingInventoryUnits > 0) {
+        context.fillText(`INVENTORY COST COVERAGE: ${reportPercent(data.inventoryCostCoverage)}`, summaryX, summaryWarningY);
+        summaryWarningY -= 20;
+      }
+      if (data.endingCash === null) context.fillText("ENDING CASH: OPENING BALANCE REQUIRED", summaryX, summaryWarningY);
 
       let y = statementTop;
       context.font = "600 18px 'Founders Grotesk Web', Arial";
@@ -3516,22 +3625,32 @@
       context.font = "600 18px 'Founders Grotesk Web', Arial";
       context.fillStyle = ink;
       context.fillText("MONTH SUMMARY", rightX + 30, statementTop + 44);
-      context.font = "600 38px 'Founders Grotesk Web', Arial";
-      context.fillText(rupiah(data.netCashMovement), rightX + 30, statementTop + 104);
-      context.font = "600 15px 'Founders Grotesk Web', Arial";
-      context.fillText("NET CASH MOVEMENT", rightX + 30, statementTop + 132);
-      drawCanvasRule(context, rightX + 30, right - 30, statementTop + 162);
-      drawCanvasFact(context, "REVENUE", reportMoney(data.salesRevenue), rightX + 30, statementTop + 208);
-      drawCanvasFact(context, "GROSS PROFIT", reportMoney(data.grossProfit), rightX + 330, statementTop + 208);
-      drawCanvasFact(context, "GROSS MARGIN", reportPercent(data.grossMargin), rightX + 30, statementTop + 300);
-      drawCanvasFact(context, "OPERATING PROFIT", reportMoney(data.operatingProfit), rightX + 330, statementTop + 300);
-      drawCanvasFact(context, "NET INCOME", reportMoney(data.netIncome), rightX + 30, statementTop + 392);
-      drawCanvasFact(context, "CASH OUT", reportMoney(data.cashOut), rightX + 330, statementTop + 392);
-      drawCanvasRule(context, rightX + 30, right - 30, statementTop + 444);
-      context.font = "600 15px 'Founders Grotesk Web', Arial";
-      context.fillText(data.missingCogsSkus?.length ? "COGS STATUS: MISSING COGS" : "COGS STATUS: COMPLETE", rightX + 30, statementTop + 482);
-      context.fillText(data.missingInventoryUnits > 0 ? `INVENTORY COST COVERAGE: ${reportPercent(data.inventoryCostCoverage)}` : "INVENTORY COST COVERAGE: COMPLETE", rightX + 30, statementTop + 510);
-      const summaryPanelBottom = Math.min(footerRuleY - 28, statementTop + 548);
+      drawCanvasRule(context, rightX + 30, right - 30, statementTop + 72);
+      drawCanvasFact(context, "ENDING CASH", reportMoney(data.endingCash), rightX + 30, statementTop + 122);
+      drawCanvasFact(context, "NET CASH MOVEMENT", reportMoney(data.netCashMovement), rightX + 330, statementTop + 122);
+      drawCanvasFact(context, "OPERATING PROFIT", reportMoney(data.operatingProfit), rightX + 30, statementTop + 236);
+      drawCanvasFact(context, "NET INCOME", reportMoney(data.netIncome), rightX + 330, statementTop + 236);
+      let summaryPanelBottom = statementTop + 330;
+      if (data.missingCogsUnits > 0 || data.orphanedCogsAmount > 0 || data.missingInventoryUnits > 0 || data.endingCash === null) {
+        drawCanvasRule(context, rightX + 30, right - 30, summaryPanelBottom);
+        context.font = "600 15px 'Founders Grotesk Web', Arial";
+        let warningY = summaryPanelBottom + 34;
+        if (data.missingCogsUnits > 0) {
+          context.fillText(`MISSING COGS: ${data.missingCogsUnits} SOLD UNIT${data.missingCogsUnits === 1 ? "" : "S"}`, rightX + 30, warningY);
+          warningY += 28;
+        }
+        if (data.orphanedCogsAmount > 0) {
+          context.fillText(`UNMATCHED COGS EXCLUDED: ${rupiah(data.orphanedCogsAmount)}`, rightX + 30, warningY);
+          warningY += 28;
+        }
+        if (data.missingInventoryUnits > 0) {
+          context.fillText(`INVENTORY COST COVERAGE: ${reportPercent(data.inventoryCostCoverage)}`, rightX + 30, warningY);
+          warningY += 28;
+        }
+        if (data.endingCash === null) context.fillText("ENDING CASH: OPENING BALANCE REQUIRED", rightX + 30, warningY);
+        summaryPanelBottom = warningY + 24;
+      }
+      summaryPanelBottom = Math.min(footerRuleY - 28, summaryPanelBottom);
       context.strokeStyle = ink;
       context.lineWidth = 1;
       context.strokeRect(rightX, statementTop, right - rightX, summaryPanelBottom - statementTop);
