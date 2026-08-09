@@ -2098,6 +2098,19 @@
 
     function resetForm(form) {
       form.reset();
+      if (form === el.inventoryForm) {
+        form.querySelectorAll("input:not([type=hidden])").forEach(input => {
+          input.value = "";
+        });
+        setFormValue(form, "date", todayISO);
+        setFormValue(form, "qty", "1");
+        setFormValue(form, "category", "Retail");
+        setFormValue(form, "source", "Business Purchase");
+        setFormValue(form, "itemType", "Vinyl");
+        setFormValue(form, "itemCondition", "New-Sealed");
+        setFormValue(form, "listingMode", "Standard Sale");
+        setFormValue(form, "paymentMethod", "Bank Transfer");
+      }
       const dateInput = form.querySelector("[name=date]");
       const qtyInput = form.querySelector("[name=qty]");
       if (dateInput) dateInput.value = todayISO;
