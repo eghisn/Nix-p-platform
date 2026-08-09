@@ -49,6 +49,7 @@ assert.equal(privateEnriched.price, 0);
 assert.equal(privateEnriched.minimum_acceptable_offer, 500000);
 assert.equal(privateEnriched.publish_status, "Published");
 assert.equal(privateEnriched.visibility, "Public");
+assert.ok(privateEnriched.raw.enrichmentAttemptedAt);
 
 const missingIdentity = await enrichFinanceCatalogProduct(draft, { ...stock, title: "", sellingPrice: 0 });
 assert.equal(missingIdentity.publish_status, "Draft");

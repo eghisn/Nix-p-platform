@@ -337,8 +337,12 @@ function needsFinanceEnrichment(row = {}, stock = {}) {
     Boolean(row.raw?.enrichmentStatus);
   if (!financeOrigin) return false;
   const previousFingerprint = String(row.raw?.enrichmentFingerprint || "");
-  const fingerprintChanged = Boolean(previousFingerprint) && inventoryFingerprint(stock) !== previousFingerprint;
+  const currentFingerprint = inventoryFingerprint(stock);
+  const fingerprintChanged = Boolean(previousFingerprint) && currentFingerprint !== previousFingerprint;
   const status = String(row.raw?.enrichmentStatus || "").toLowerCase();
+  const attemptedAt = Date.parse(String(row.raw?.enrichmentAttemptedAt || ""));
+  const retryDue = !Number.isFinite(attemptedAt) || Date.now() - attemptedAt >= 5 * 60 * 1000;
+  if (previousFingerprint && !fingerprintChanged && status && !retryDue) return false;
   return Boolean(
     fingerprintChanged ||
     !hasUsableProductImage(row) ||

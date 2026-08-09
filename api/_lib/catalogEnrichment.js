@@ -454,7 +454,9 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   if (!discovered) {
     return finalizeStatus(row, {
       publishable: hasCatalogCore(row),
-      status: "needs-release-match"
+      status: "needs-release-match",
+      enrichmentFingerprint: inventoryFingerprint({ ...stock, artist, title, format }),
+      enrichmentAttemptedAt: new Date().toISOString()
     });
   }
 
@@ -559,7 +561,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       enrichmentFingerprint,
       enrichmentOrigin: curated ? "curated-exact" : "musicbrainz",
       enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote }),
-      enrichmentUpdatedAt: today()
+      enrichmentUpdatedAt: today(),
+      enrichmentAttemptedAt: new Date().toISOString()
     }
   };
   return finalizeStatus(product, {
@@ -684,13 +687,15 @@ async function discoverMusicBrainzRelease(stock) {
   };
 }
 
-function finalizeStatus(row, { publishable, status }) {
+function finalizeStatus(row, { publishable, status, enrichmentFingerprint = "", enrichmentAttemptedAt = "" }) {
   const raw = {
     ...(row.raw || {}),
     enrichmentStatus: status,
     publishStatus: publishable ? "Published" : "Draft",
     visibility: publishable ? "Public" : "Private"
   };
+  if (enrichmentFingerprint) raw.enrichmentFingerprint = enrichmentFingerprint;
+  if (enrichmentAttemptedAt) raw.enrichmentAttemptedAt = enrichmentAttemptedAt;
   return {
     ...row,
     publish_status: publishable ? "Published" : "Draft",
