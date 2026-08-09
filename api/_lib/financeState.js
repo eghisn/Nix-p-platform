@@ -342,7 +342,17 @@ function needsFinanceEnrichment(row = {}, stock = {}) {
   const status = String(row.raw?.enrichmentStatus || "").toLowerCase();
   const attemptedAt = Date.parse(String(row.raw?.enrichmentAttemptedAt || ""));
   const retryDue = !Number.isFinite(attemptedAt) || Date.now() - attemptedAt >= 5 * 60 * 1000;
-  if (previousFingerprint && !fingerprintChanged && status && !retryDue) return false;
+  const unresolvedStatus = [
+    "needs-release-match",
+    "needs-cover-art",
+    "needs-cover-archive",
+    "needs-product-photo",
+    "needs-product-photo-archive",
+    "needs-editorial-metadata"
+  ].includes(status);
+  // Do not make a corrected source wait for the retry window: incomplete
+  // enrichment must be immediately repairable by the next catalog sync.
+  if (previousFingerprint && !fingerprintChanged && status && !retryDue && !unresolvedStatus) return false;
   return Boolean(
     fingerprintChanged ||
     !hasUsableProductImage(row) ||
@@ -350,7 +360,7 @@ function needsFinanceEnrichment(row = {}, stock = {}) {
       !String(row.description || "").trim() ||
       String(row.publish_status || "") !== "Published" ||
       String(row.visibility || "") !== "Public" ||
-      ["needs-release-match", "needs-cover-art", "needs-cover-archive", "needs-product-photo", "needs-product-photo-archive", "needs-editorial-metadata"].includes(status)
+      unresolvedStatus
   );
 }
 
