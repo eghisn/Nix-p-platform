@@ -476,7 +476,7 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     title: "Cryptomnesia",
     year: 2009,
     label: "Rodriguez-Lopez Productions",
-    edition: "1 LP - black vinyl",
+    edition: "CD",
     catalogNumber: "SHRLP001CD",
     barcode: "613481019524",
     cover: "https://f4.bcbits.com/img/a2016704080_5.jpg",
