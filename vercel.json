@@ -87,6 +87,10 @@
       "destination": "/api/admin/store?commerceAction=catalog-sync"
     },
     {
+      "source": "/api/catalog-sync",
+      "destination": "/api/admin/store?commerceAction=catalog-sync"
+    },
+    {
       "source": "/api/admin/backups",
       "destination": "/api/admin/store?commerceAction=backups"
     },
