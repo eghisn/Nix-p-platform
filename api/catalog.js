@@ -7,10 +7,10 @@ export default async function handler(req, res) {
   try {
     const url = new URL(req.url, "https://nix-p.com");
     if (req.method === "GET" && url.searchParams.get("action") === "product-redirect") {
-      return handleLegacyProductRedirect(req, res, url.searchParams.get("id"));
+      return await handleLegacyProductRedirect(req, res, url.searchParams.get("id"));
     }
     if (!isSupabaseConfigured()) return json(res, 503, { ok: false, error: "Supabase is not configured." });
-    if (req.method === "POST") return handlePostAction(req, res);
+    if (req.method === "POST") return await handlePostAction(req, res);
     if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
     const privateScope = url.searchParams.get("scope") === "admin";
     const session = privateScope ? getSession(req) : null;
