@@ -671,12 +671,15 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     isUsableImage(row.image) && row.image !== previousAutoCover && (!used || row.image !== previousAutoProductPhoto) ? row.image : "";
   const cover = existingCover || discovered.cover || images[0] || "";
   const imageCredits = mergeCredits(row.image_credits || raw.imageCredits, discovered.imageCredits);
+  const savedEdition = String(raw.edition || "").trim();
+  const edition = editionMatchesFormat(savedEdition, format) ? savedEdition || discovered.edition || "" : discovered.edition || savedEdition;
+  const replaceStoredEdition = Boolean(savedEdition && discovered.edition && !editionMatchesFormat(savedEdition, format));
   const details = unique([
-    ...(Array.isArray(row.details) ? row.details : []),
+    ...(Array.isArray(row.details) ? row.details : []).filter((detail) => !replaceStoredEdition || !String(detail).startsWith("Edition:")),
     `SKU: ${sku}`,
     `Format: ${format}`,
     stock.itemCondition ? `Condition: ${stock.itemCondition}` : "",
-    discovered.edition ? `Edition: ${discovered.edition}` : "",
+    edition ? `Edition: ${edition}` : "",
     discovered.catalogNumber ? `Catalog number: ${discovered.catalogNumber}` : "",
     discovered.barcode ? `Barcode: ${discovered.barcode}` : ""
   ]).filter((detail) => detail && !detail.startsWith("Created from finance inventory"));
@@ -733,7 +736,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       tags: unique([...(row.tags || []), ...(discovered.tags || [])]),
       details,
       description,
-      edition: raw.edition || discovered.edition || "",
+      edition,
       barcode: raw.barcode || discovered.barcode || "",
       catalogNumber: raw.catalogNumber || discovered.catalogNumber || "",
       relatedArtists,
@@ -916,6 +919,16 @@ function enrichmentStatus({ used, discovered, description, relatedArtists, revie
   // A source-backed review quote is never invented by automation. Its absence
   // is an editorial task, not a failed product identity match.
   return reviewQuote ? "complete" : "metadata-complete-needs-editorial-review";
+}
+
+function editionMatchesFormat(edition, format) {
+  const value = String(edition || "").toLowerCase();
+  const medium = String(format || "").toLowerCase();
+  if (!value || !medium) return true;
+  if (medium === "vinyl") return /(vinyl|\blp\b|7.?inch|10.?inch|12.?inch|flexi|picture disc)/.test(value);
+  if (medium === "cd") return /(\bcd\b|compact disc)/.test(value);
+  if (medium === "cassette") return /(cassette|\btape\b)/.test(value);
+  return true;
 }
 
 function chooseEditorialValue(current, previousAutomatic, nextAutomatic) {
