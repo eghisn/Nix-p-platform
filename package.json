@@ -15,6 +15,7 @@
     "test:shipping-integration": "node scripts/verify-shipping-integration.mjs",
     "test:shipping-catalog": "node scripts/verify-shipping-catalog.mjs",
     "test:enrichment": "node scripts/verify-finance-enrichment.mjs",
+    "test:monthly-report": "node scripts/verify-monthly-report-accounting.mjs",
     "seed:admin": "node scripts/seed-admin-store.mjs",
     "sync:catalog": "node scripts/sync-catalog-snapshots.mjs",
     "collect:jne-tariffs": "node scripts/collect-jne-tariff-snapshot.mjs",

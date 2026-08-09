@@ -561,7 +561,7 @@
       min-height: 680px;
       display: grid;
       grid-template-columns: minmax(0, 1.14fr) minmax(330px, 0.86fr);
-      grid-template-rows: auto 1fr auto;
+      grid-template-rows: auto auto 1fr auto;
       column-gap: 48px;
       row-gap: 30px;
       padding: 34px 36px 22px;
@@ -598,12 +598,72 @@
 
     .report-heading h2 {
       grid-column: 1 / -1;
-      max-width: 16ch;
-      font-size: clamp(48px, 6vw, 78px);
+      max-width: 20ch;
+      font-size: clamp(46px, 5.5vw, 72px);
       letter-spacing: 0;
-      line-height: 0.88;
+      line-height: 0.9;
       font-weight: 700;
       text-transform: uppercase;
+    }
+
+    .report-summary {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 10px;
+    }
+
+    .report-summary h3 {
+      margin: 0;
+      padding: 0 0 10px;
+      border-top: 0;
+      font-size: 11px;
+    }
+
+    .report-summary-grid {
+      border-top: 1px solid var(--dark);
+    }
+
+    .report-summary-head,
+    .report-summary-row {
+      display: grid;
+      grid-template-columns: minmax(250px, 1fr) repeat(3, 150px);
+      gap: 18px;
+      align-items: center;
+      min-height: 30px;
+      border-bottom: 1px solid rgba(41, 41, 41, 0.22);
+      font-size: 12px;
+      line-height: 1.15;
+    }
+
+    .report-summary-head {
+      min-height: 25px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .report-summary-head span:not(:first-child),
+    .report-summary-row span:not(:first-child) {
+      text-align: right;
+    }
+
+    .report-summary-row span {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .report-summary-row .current {
+      font-weight: 600;
+    }
+
+    .report-warning {
+      margin: 4px 0 0;
+      padding-top: 8px;
+      border-top: 1px solid var(--dark);
+      color: var(--dark);
+      font-size: 11px;
+      line-height: 1.25;
+      font-weight: 600;
     }
 
     .report-statement {
@@ -622,6 +682,12 @@
 
     .monthly-report-card h3:first-child {
       margin-top: 0;
+    }
+
+    .monthly-report-card .report-summary h3 {
+      margin: 0;
+      padding-top: 0;
+      border-top: 0;
     }
 
     .report-line {
@@ -1222,7 +1288,7 @@
         <section class="view" id="monthlyReportView">
           <section class="panel">
             <div class="panel-head">
-              <h2>Monthly general finance report</h2>
+              <h2>Monthly investor report</h2>
               <small id="monthlyReportLabel">Selected month</small>
             </div>
             <div class="filters">
@@ -1240,13 +1306,12 @@
               <h2>Month close archive</h2>
               <small id="monthlyArchiveStatus">No closed months archived yet</small>
             </div>
-            <p class="tiny">Closed-month reports are saved automatically from the ledger. Ledger rows are kept intact so past reports can be audited or regenerated.</p>
+            <p class="tiny">Closed-month reports are saved automatically from the ledger. Ledger rows remain intact for audit, and archived snapshots are not changed by normal saves.</p>
             <div class="table-wrap">
               <table>
                 <thead>
                   <tr>
                     <th>Month</th>
-                    <th class="money">Rows</th>
                     <th class="money">Cash In</th>
                     <th class="money">Cash Out</th>
                     <th class="money">Net Income</th>
@@ -1264,7 +1329,7 @@
               <small>Income statement</small>
             </div>
             <div class="monthly-report-stage">
-              <article class="monthly-report-card" id="monthlyReportPreview" aria-label="Monthly general finance report preview"></article>
+              <article class="monthly-report-card" id="monthlyReportPreview" aria-label="Monthly investor report preview"></article>
             </div>
           </section>
         </section>
@@ -1734,7 +1799,7 @@
         ["inventory", "Inventory Purchases"],
         ["stock", "Inventory"],
         ["pnl", "Monthly P&L"],
-        ["monthlyReport", "Monthly General Finance Report"]
+        ["monthlyReport", "Monthly Investor Report"]
       ];
 
       sections.forEach(([section, label]) => {
@@ -1966,9 +2031,9 @@
     function exportClosedMonthlyReport(month, format) {
       const report = (state.monthlyReports || []).find(item => item.month === month);
       if (!report) return;
-      const filename = "nixp-monthly-general-finance-report-" + month;
+      const filename = "NIXP-Monthly-Investor-Report-" + month;
       if (format === "jpg") {
-        exportMonthlyReportJPEG(report, filename + ".jpg");
+        exportMonthlyReportJPEG(report, filename + ".jpeg");
         return;
       }
       download(filename + ".csv", matrixToCSV(report.rows || monthlyReportExportRows(report)), "text/csv;charset=utf-8");
@@ -2710,57 +2775,101 @@
       el.monthlyReportLabel.textContent = data.monthLabel;
       el.monthlyReportPreview.innerHTML = `
         <header class="report-heading">
-          <span>NIXP Finance</span>
+          <span>NIXP / Management Accounts</span>
           <span>${escapeHTML(data.monthLabel)}</span>
-          <h2>Monthly General Finance Report</h2>
+          <h2>NIXP<br>Monthly Investor Report</h2>
         </header>
+        <section class="report-summary">
+          <h3>Executive Summary</h3>
+          <div class="report-summary-grid">
+            <div class="report-summary-head"><span>KPI</span><span>This Month</span><span>Target</span><span>YTD</span></div>
+            ${reportSummaryRow("Revenue", data.salesRevenue, data.targetRevenue, data.ytd.salesRevenue)}
+            ${reportSummaryRow("Units Sold", data.unitsSold, data.targetUnitsSold, data.ytd.unitsSold, "count")}
+            ${reportSummaryRow("Gross Profit", data.grossProfit, data.targetGrossProfit, data.ytd.grossProfit)}
+            ${reportSummaryRow("Gross Margin", data.grossMargin, data.targetGrossMargin, data.ytd.grossMargin, "percent")}
+            ${reportSummaryRow("Operating Profit", data.operatingProfit, data.targetOperatingProfit, data.ytd.operatingProfit)}
+            ${reportSummaryRow("Ending Cash", data.endingCash, null, data.ytd.endingCash)}
+            ${reportSummaryRow("Inventory Value at Cost", data.inventoryValueAtCost, null, data.ytd.inventoryValueAtCost)}
+          </div>
+          ${data.missingCogsSkus.length ? `<p class="report-warning">Missing COGS: ${escapeHTML(data.missingCogsSkus.join(", "))}. Gross profit and margin are withheld until landed cost is recorded.</p>` : ""}
+          ${data.missingInventoryUnits > 0 ? `<p class="report-warning">Inventory cost coverage: ${escapeHTML(reportPercent(data.inventoryCostCoverage))}. ${escapeHTML(String(data.missingInventoryUnits))} remaining units are missing cost basis.</p>` : ""}
+        </section>
         <section class="report-statement">
-          <h3>Cashflow Sync</h3>
+          <h3>Cash Position / Cash Flow</h3>
           ${reportLine("Total Cash In", data.cashIn)}
           ${reportLine("Total Cash Out", data.cashOut)}
           ${reportLine("Net Cash Movement", data.netCashMovement, "final")}
-          ${reportPlainLine("Finance Ledger Rows", data.ledgerRowCount)}
           <h3>Income Statement</h3>
           ${reportLine("Revenue", data.salesRevenue)}
           ${reportLine("COGS", data.cogs)}
-          ${reportLine("Other Operating Income", data.otherRevenue)}
           ${reportLine("Gross Profit", data.grossProfit, "total")}
+          ${reportLine("Gross Margin", data.grossMargin, "percent", "percent")}
+          ${data.otherRevenue !== 0 ? reportLine("Other Operating Income", data.otherRevenue) : ""}
           <h3>Operating Expenses</h3>
           ${reportLines(data.operatingExpenseBreakdown, "indent") || reportPlainLine("No Operating Expense Rows", "0 rows", "indent")}
           ${reportLine("Total Operating Expenses", data.totalOperatingExpenses, "total")}
-          ${reportLine("EBITDA", data.ebitda, "strong")}
-          ${reportLine("Tax (Recorded Ledger Rows)", data.taxExpense, "indent")}
+          ${reportLine("Operating Profit / EBITDA", data.operatingProfit, "strong")}
+          ${data.taxExpense !== 0 ? reportLine("Tax", data.taxExpense, "indent") : ""}
           ${reportLine("Net Income", data.netIncome, "final")}
         </section>
         <section class="report-copy">
           <header>
-            <span>Saved ledger summary</span>
+            <span>Month Summary</span>
             <p class="report-net-cash">${escapeHTML(rupiah(data.netCashMovement))}</p>
             <p class="report-caption">Net cash movement</p>
           </header>
           <dl class="report-facts">
-            <div><dt>Ledger rows</dt><dd>${escapeHTML(String(data.ledgerRowCount))}</dd></div>
-            <div><dt>EBITDA margin</dt><dd>${escapeHTML(formatPercent(data.ebitdaMargin))}</dd></div>
+            <div><dt>Revenue</dt><dd>${escapeHTML(reportMoney(data.salesRevenue))}</dd></div>
+            <div><dt>Gross profit</dt><dd>${escapeHTML(reportMoney(data.grossProfit))}</dd></div>
+            <div><dt>Gross margin</dt><dd>${escapeHTML(reportPercent(data.grossMargin))}</dd></div>
+            <div><dt>Operating profit</dt><dd>${escapeHTML(reportMoney(data.operatingProfit))}</dd></div>
+            <div><dt>Net income</dt><dd>${escapeHTML(reportMoney(data.netIncome))}</dd></div>
             <div><dt>Cash in</dt><dd>${escapeHTML(rupiah(data.cashIn))}</dd></div>
             <div><dt>Cash out</dt><dd>${escapeHTML(rupiah(data.cashOut))}</dd></div>
           </dl>
-          <p><strong>Actual saved ledger rows only.</strong> No projections, assumptions, or sample numbers are included in this report.</p>
-          <em>Generated from the current finance.nix-p.com ledger. Refresh before export if another device has just updated the books.</em>
           <p><strong>Operating expense categories</strong><br>${escapeHTML(data.operatingExpenseCategoryText)}</p>
-          <p><strong>Classification</strong><br>Investor, loan, owner capital, bank, and owner reimbursement entries are cash movement, not operating revenue. Inventory purchases and sales COGS are grouped into COGS.</p>
+          <p><strong>COGS status</strong><br>${escapeHTML(data.cogsStatus)}</p>
         </section>
         <footer class="report-footnote">
-          <span><u>Disclaimer:</u> Internal management report. Not audited financial advice.</span>
+          <span>Management Accounts — Unaudited<br>Prepared for NIXP investors for internal reporting purposes.</span>
           <span>NIXP / ${escapeHTML(data.monthLabel)}</span>
         </footer>
       `;
     }
 
-    function reportLine(label, value, className = "") {
+    function reportSummaryRow(label, current, target, ytd, kind = "money") {
+      return `
+        <div class="report-summary-row">
+          <span>${escapeHTML(label)}</span>
+          <span class="current">${escapeHTML(reportFormat(current, kind))}</span>
+          <span>${escapeHTML(reportFormat(target, kind))}</span>
+          <span>${escapeHTML(reportFormat(ytd, kind))}</span>
+        </div>
+      `;
+    }
+
+    function reportFormat(value, kind = "money") {
+      if (value === null || value === undefined || value === "") return "—";
+      if (kind === "count") return new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 }).format(numeric(value));
+      if (kind === "percent") return reportPercent(value);
+      return rupiah(value);
+    }
+
+    function reportMoney(value) {
+      return reportFormat(value, "money");
+    }
+
+    function reportPercent(value) {
+      return value === null || value === undefined || value === "" || !Number.isFinite(Number(value))
+        ? "—"
+        : Number(value).toFixed(2).replace(/\.00$/, "") + "%";
+    }
+
+    function reportLine(label, value, className = "", formatKind = "money") {
       return `
         <div class="report-line ${className}">
           <span>${escapeHTML(label)}</span>
-          <span>${value === null ? "-" : escapeHTML(rupiah(value))}</span>
+          <span>${escapeHTML(reportFormat(value, formatKind))}</span>
         </div>
       `;
     }
@@ -2778,19 +2887,60 @@
       return lines.map(line => reportLine(line.label, line.amount, className)).join("");
     }
 
-    function monthlyReportData(monthOverride = "") {
-      const month = monthOverride || el.reportMonth.value || currentMonth;
+    function reportTarget(month, key) {
+      const sources = [
+        state.targets?.monthly?.[month]?.[key],
+        state.targets?.[month]?.[key],
+        state.targets?.[key]?.[month]
+      ];
+      const value = sources.find(item => item !== null && item !== undefined && item !== "" && Number.isFinite(Number(item)));
+      return value === undefined ? null : numeric(value);
+    }
+
+    function inventoryValueAtCost(month) {
+      // inventoryStock represents current remaining units. Historical stock valuation
+      // is unavailable until monthly inventory snapshots exist, so do not backfill it.
+      if (month !== currentMonth) {
+        return { value: null, totalUnits: 0, coveredUnits: 0, missingUnits: 0, coverage: null };
+      }
+      const stockRows = Array.isArray(state.inventoryStock) ? state.inventoryStock : [];
+      const totals = stockRows.reduce((result, item) => {
+        const quantity = Math.max(0, numeric(item.qty));
+        const hasCost = quantity === 0 || numeric(item.costBasis) > 0;
+        result.totalUnits += quantity;
+        if (hasCost) {
+          result.coveredUnits += quantity;
+          result.value += quantity * numeric(item.costBasis);
+        } else {
+          result.missingUnits += quantity;
+        }
+        return result;
+      }, { value: 0, totalUnits: 0, coveredUnits: 0, missingUnits: 0 });
+      return {
+        ...totals,
+        value: totals.missingUnits > 0 ? null : totals.value,
+        coverage: totals.totalUnits > 0 ? totals.coveredUnits / totals.totalUnits * 100 : null
+      };
+    }
+
+    function reportCalculation(month, startMonth = month) {
       const financingCategories = new Set(["Investor", "Loan", "Owner Capital", "Bank", ownerReimbursementCategory]);
-      const cogsCategories = new Set(["Sales COGS", "Inventory"]);
+      const cogsCategories = new Set(["Sales COGS"]);
       const nonOperatingOutcomeCategories = new Set([ownerDueCategory, "Loan", "Owner Capital", "Bank"]);
-      const ledgerRows = buildDashboardRows().filter(item => monthOf(item.date) === month);
+      const allRows = buildDashboardRows();
+      const ledgerRows = allRows.filter(item => {
+        const rowMonth = monthOf(item.date);
+        return rowMonth >= startMonth && rowMonth <= month && item.recognized !== false;
+      });
+      const cumulativeRows = allRows.filter(item => monthOf(item.date) <= month && item.recognized !== false);
       const incomeRows = ledgerRows.filter(item => item.type === "Income");
       const outcomeRows = ledgerRows.filter(item => item.type === "Outcome");
+      const cashOutcomeRows = outcomeRows.filter(item => !cogsCategories.has(item.category));
       const operatingIncomeRows = incomeRows.filter(item => !financingCategories.has(item.category));
       const cogsRows = outcomeRows.filter(item => cogsCategories.has(item.category));
       const taxRows = outcomeRows.filter(item => item.category === "Tax");
-      const operatingExpenseRows = outcomeRows
-        .filter(item => !cogsCategories.has(item.category))
+      const operatingExpenseRows = cashOutcomeRows
+        .filter(item => item.category !== "Inventory")
         .filter(item => !nonOperatingOutcomeCategories.has(item.category))
         .filter(item => item.category !== "Tax");
       const sumRows = rows => rows.reduce((total, item) => total + numeric(item.amount), 0);
@@ -2803,22 +2953,36 @@
         .filter(item => item.amount !== 0)
         .sort((a, b) => b.amount - a.amount || a.label.localeCompare(b.label));
       const cashIn = sumRows(incomeRows);
-      const cashOut = sumRows(outcomeRows);
+      const cashOut = sumRows(cashOutcomeRows);
       const netCashMovement = cashIn - cashOut;
+      const salesInPeriod = state.sales.filter(item => {
+        const saleMonth = monthOf(item.date);
+        return saleMonth >= startMonth && saleMonth <= month && isRecognizedSale(item);
+      });
+      const missingCogsSales = salesInPeriod.filter(saleHasMissingCogs);
+      const missingCogsSkus = [...new Set(missingCogsSales.flatMap(item => {
+        const skus = Array.isArray(item.missingCogsSkus) ? item.missingCogsSkus : [];
+        return skus.length ? skus : [item.sku || "Unidentified sale"];
+      }))];
       const salesRevenue = operatingIncomeRows
         .filter(item => item.category === "Sales")
         .reduce((total, item) => total + numeric(item.amount), 0);
       const otherRevenue = operatingIncomeRows
         .filter(item => item.category !== "Sales")
         .reduce((total, item) => total + numeric(item.amount), 0);
-      const cogs = sumRows(cogsRows);
+      const cogs = missingCogsSales.length ? null : sumRows(cogsRows);
       const taxExpense = sumRows(taxRows);
       const totalOperatingExpenses = sumRows(operatingExpenseRows);
-      const grossProfit = salesRevenue + otherRevenue - cogs;
-      const ebitda = grossProfit - totalOperatingExpenses;
-      const netIncome = ebitda - taxExpense;
-      const revenueBase = salesRevenue + otherRevenue;
-      const ebitdaMargin = revenueBase > 0 ? ebitda / revenueBase * 100 : 0;
+      const grossProfit = cogs === null ? null : salesRevenue - cogs;
+      const grossMargin = grossProfit !== null && salesRevenue > 0 ? grossProfit / salesRevenue * 100 : null;
+      const operatingProfit = grossProfit === null ? null : grossProfit + otherRevenue - totalOperatingExpenses;
+      const netIncome = operatingProfit === null ? null : operatingProfit - taxExpense;
+      const endingCashAvailable = state.openingCash !== null && state.openingCash !== undefined && state.openingCash !== "" && Number.isFinite(Number(state.openingCash));
+      const endingCash = endingCashAvailable
+        ? numeric(state.openingCash) + sumRows(cumulativeRows.filter(item => item.type === "Income")) - sumRows(cumulativeRows.filter(item => item.type === "Outcome" && !cogsCategories.has(item.category)))
+        : null;
+      const inventory = inventoryValueAtCost(month);
+      const unitsSold = salesInPeriod.reduce((total, item) => total + Math.max(0, numeric(item.qty)), 0);
       return {
         month,
         monthLabel: formatMonthLabel(month),
@@ -2829,16 +2993,39 @@
         salesRevenue,
         otherRevenue,
         cogs,
+        cogsStatus: missingCogsSales.length ? "Missing COGS" : "Complete",
+        missingCogsSkus,
         grossProfit,
+        grossMargin,
         operatingExpenseBreakdown,
         operatingExpenseCategoryText: operatingExpenseBreakdown.length
           ? operatingExpenseBreakdown.map(item => `${item.label}: ${rupiah(item.amount)}`).join(", ")
           : "None",
         totalOperatingExpenses,
-        ebitda,
+        operatingProfit,
+        ebitda: operatingProfit,
         taxExpense,
         netIncome,
-        ebitdaMargin
+        unitsSold,
+        endingCash,
+        inventoryValueAtCost: inventory.value,
+        inventoryCostCoverage: inventory.coverage,
+        missingInventoryUnits: inventory.missingUnits,
+        targetRevenue: reportTarget(month, "revenue"),
+        targetUnitsSold: reportTarget(month, "unitsSold"),
+        targetGrossProfit: reportTarget(month, "grossProfit"),
+        targetGrossMargin: reportTarget(month, "grossMargin"),
+        targetOperatingProfit: reportTarget(month, "operatingProfit"),
+        targetNetIncome: reportTarget(month, "netIncome")
+      };
+    }
+
+    function monthlyReportData(monthOverride = "") {
+      const month = monthOverride || el.reportMonth.value || currentMonth;
+      const year = String(month).slice(0, 4);
+      return {
+        ...reportCalculation(month, month),
+        ytd: reportCalculation(month, `${year}-01`)
       };
     }
 
@@ -2850,7 +3037,6 @@
       el.monthlyArchiveBody.innerHTML = reports.length ? reports.map(report => `
         <tr>
           <td>${escapeHTML(report.monthLabel || formatMonthLabel(report.month))}</td>
-          <td class="money">${numeric(report.ledgerRowCount)}</td>
           <td class="money">${rupiah(report.cashIn)}</td>
           <td class="money">${rupiah(report.cashOut)}</td>
           <td class="money">${rupiah(report.netIncome)}</td>
@@ -2860,7 +3046,7 @@
             <button class="link-button" type="button" data-export-closed-month-jpg="${escapeHTML(report.month)}">JPEG</button>
           </td>
         </tr>
-      `).join("") : emptyRow(7, "Closed monthly reports will appear here automatically after a month ends.");
+      `).join("") : emptyRow(6, "Closed monthly reports will appear here automatically after a month ends.");
     }
 
     function closeCompletedMonthlyReports() {
@@ -2870,15 +3056,15 @@
       for (const month of completedMonths) {
         const data = monthlyReportSnapshot(month);
         const index = state.monthlyReports.findIndex(report => report.month === month);
-        const existing = index >= 0 ? state.monthlyReports[index] : null;
-        if (existing?.sourceHash === data.sourceHash) continue;
+        // Closed reports are historical snapshots. Reconciliation belongs in an
+        // explicit future regeneration action, never in a normal save or refresh.
+        if (index >= 0) continue;
         const next = {
           ...data,
-          id: existing?.id || `monthly-report-${month}`,
+          id: `monthly-report-${month}`,
           closedAt: new Date().toISOString()
         };
-        if (index >= 0) state.monthlyReports[index] = next;
-        else state.monthlyReports.push(next);
+        state.monthlyReports.push(next);
         changed += 1;
       }
       return changed;
@@ -2903,14 +3089,30 @@
         salesRevenue: data.salesRevenue,
         otherRevenue: data.otherRevenue,
         cogs: data.cogs,
+        grossMargin: data.grossMargin,
         grossProfit: data.grossProfit,
         totalOperatingExpenses: data.totalOperatingExpenses,
+        operatingProfit: data.operatingProfit,
         ebitda: data.ebitda,
         ebitdaMargin: data.ebitdaMargin,
         taxExpense: data.taxExpense,
         netIncome: data.netIncome,
         operatingExpenseBreakdown: data.operatingExpenseBreakdown,
         operatingExpenseCategoryText: data.operatingExpenseCategoryText,
+        unitsSold: data.unitsSold,
+        endingCash: data.endingCash,
+        inventoryValueAtCost: data.inventoryValueAtCost,
+        inventoryCostCoverage: data.inventoryCostCoverage,
+        missingInventoryUnits: data.missingInventoryUnits,
+        cogsStatus: data.cogsStatus,
+        missingCogsSkus: data.missingCogsSkus,
+        targetRevenue: data.targetRevenue,
+        targetUnitsSold: data.targetUnitsSold,
+        targetGrossProfit: data.targetGrossProfit,
+        targetGrossMargin: data.targetGrossMargin,
+        targetOperatingProfit: data.targetOperatingProfit,
+        targetNetIncome: data.targetNetIncome,
+        ytd: data.ytd,
         rows,
         sourceHash: hashReportRows(rows)
       };
@@ -2955,6 +3157,20 @@
       `).join("");
     }
 
+    function isRecognizedSale(item) {
+      const paymentStatus = String(item?.paymentStatus || item?.payment_status || item?.status || "").trim().toLowerCase();
+      if (paymentStatus) return ["paid", "completed", "processing", "packed", "shipped", "fulfilled", "delivered"].includes(paymentStatus);
+      return String(item?.paymentMethod || "").trim().toLowerCase() !== "pending";
+    }
+
+    function saleHasMissingCogs(item) {
+      if (!isRecognizedSale(item)) return false;
+      const missingSkus = Array.isArray(item?.missingCogsSkus) ? item.missingCogsSkus.filter(Boolean) : [];
+      const status = String(item?.cogsStatus || "").trim().toLowerCase();
+      if (missingSkus.length || status.includes("missing")) return true;
+      return numeric(item?.revenue) > 0 && numeric(item?.qty) > 0 && numeric(item?.cogs) <= 0;
+    }
+
     function buildDashboardRows() {
       const generalRows = state.general.map(item => ({
         section: "general",
@@ -2968,6 +3184,7 @@
         qty: item.qty,
         amount: item.amount,
         paymentMethod: item.paymentMethod,
+        recognized: true,
         moneySentTo: item.moneySentTo || "",
         notes: item.notes
       }));
@@ -2985,6 +3202,7 @@
           qty: item.qty,
           amount: item.revenue,
           paymentMethod: item.paymentMethod,
+          recognized: isRecognizedSale(item),
           notes: [
             "Revenue",
             numeric(item.discount) ? `Discount: ${formatPercent(item.discount)}` : "",
@@ -3005,6 +3223,7 @@
             qty: item.qty,
             amount: item.cogs,
             paymentMethod: item.paymentMethod,
+            recognized: isRecognizedSale(item),
             notes: "COGS from sales entry"
           });
         }
@@ -3023,6 +3242,7 @@
         qty: "",
         amount: item.amount,
         paymentMethod: item.paymentMethod,
+        recognized: true,
         notes: [item.costType, item.notes].filter(Boolean).join(" / ")
       }));
 
@@ -3038,6 +3258,7 @@
         qty: item.qty,
         amount: inventoryCashflow(item),
         paymentMethod: item.paymentMethod,
+        recognized: true,
         notes: `Item type: ${item.itemType || "Vinyl"} / Source: ${item.source || "Business Purchase"} / Total cost: ${rupiah(item.totalCost)} / Unit cost: ${rupiah(item.unitCost)}`
       }));
 
@@ -3065,7 +3286,7 @@
         return;
       }
       const filename = section === "monthlyReport"
-        ? "nixp-monthly-general-finance-report-" + monthlyReportData().month
+        ? "NIXP-Monthly-Investor-Report-" + monthlyReportData().month
         : "nixp-" + data.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
       if (action === "copy") {
         await copyMatrix(data);
@@ -3081,7 +3302,7 @@
       }
       if (action === "jpg") {
         if (section === "monthlyReport") {
-          exportMonthlyReportJPEG(monthlyReportData(), filename + ".jpg");
+          exportMonthlyReportJPEG(monthlyReportData(), filename + ".jpeg");
           return;
         }
         exportMatrixJPEG(data.rows, data.name, filename + ".jpg");
@@ -3097,7 +3318,7 @@
         inventory: "Inventory Purchases",
         stock: "Inventory",
         pnl: "Monthly P&L",
-        monthlyReport: "Monthly General Finance Report"
+        monthlyReport: "Monthly Investor Report"
       };
       if (section === "pnl") return { name: names.pnl, rows: pnlExportRows() };
       if (section === "monthlyReport") return { name: names.monthlyReport, rows: monthlyReportExportRows() };
@@ -3151,35 +3372,48 @@
 
     function monthlyReportExportRows(sourceData = null) {
       const data = sourceData || monthlyReportData();
+      const ytd = data.ytd || data;
       return [
-        ["Monthly General Finance Report", data.monthLabel],
-        ["Data Source", "finance.nix-p.com Main Dashboard ledger"],
-        ["Report Basis", "Actual saved ledger rows only. No projections, assumptions, or sample data."],
-        ["Finance Ledger Rows", data.ledgerRowCount],
+        ["NIXP Monthly Investor Report", data.monthLabel],
+        ["Executive Summary", ""],
+        ["KPI", "This Month", "Target", "YTD"],
+        ["Revenue", data.salesRevenue, reportTarget(data.month, "revenue"), ytd.salesRevenue],
+        ["Units Sold", data.unitsSold, reportTarget(data.month, "unitsSold"), ytd.unitsSold],
+        ["Gross Profit", data.grossProfit, reportTarget(data.month, "grossProfit"), ytd.grossProfit],
+        ["Gross Margin", reportPercent(data.grossMargin), reportPercent(reportTarget(data.month, "grossMargin")), reportPercent(ytd.grossMargin)],
+        ["Operating Profit", data.operatingProfit, reportTarget(data.month, "operatingProfit"), ytd.operatingProfit],
+        ["Ending Cash", data.endingCash, "—", ytd.endingCash],
+        ["Inventory Value at Cost", data.inventoryValueAtCost, "—", ytd.inventoryValueAtCost],
+        ["Inventory Cost Coverage", reportPercent(data.inventoryCostCoverage), "—", reportPercent(ytd.inventoryCostCoverage)],
+        ["Cash Position / Cash Flow", ""],
         ["Total Cash In", data.cashIn],
         ["Total Cash Out", data.cashOut],
         ["Net Cash Movement", data.netCashMovement],
+        ["Income Statement", ""],
         ["Revenue", data.salesRevenue],
         ["COGS", data.cogs],
-        ["Other Operating Income", data.otherRevenue],
         ["Gross Profit", data.grossProfit],
+        ["Gross Margin", reportPercent(data.grossMargin)],
+        ["Other Operating Income", data.otherRevenue],
         ...data.operatingExpenseBreakdown.map(item => [`Operating Expense - ${item.label}`, item.amount]),
         ["Total Operating Expenses", data.totalOperatingExpenses],
-        ["EBITDA", data.ebitda],
-        ["EBITDA Margin", formatPercent(data.ebitdaMargin)],
-        ["Tax (Recorded Ledger Rows)", data.taxExpense],
+        ["Operating Profit / EBITDA", data.operatingProfit],
+        ["Tax", data.taxExpense],
         ["Net Income", data.netIncome],
-        ["Operating Expense Categories Found", data.operatingExpenseCategoryText],
-        ["Classification", "Investor, loan, owner capital, bank, and owner reimbursement entries are tracked as cash movement, not operating revenue. Sales COGS and inventory purchase cash impact are grouped into COGS. Tax only appears from rows categorized as Tax."]
+        ["COGS Status", data.cogsStatus],
+        ["Missing COGS", data.missingCogsSkus.length ? data.missingCogsSkus.join(", ") : "None"],
+        ["Operating Expense Categories", data.operatingExpenseCategoryText]
       ];
     }
 
     async function exportMonthlyReportJPEG(data, filename) {
       if (document.fonts?.ready) await document.fonts.ready;
       const canvas = document.createElement("canvas");
-      const expenseRows = Math.max(1, data.operatingExpenseBreakdown.length);
+      const expenses = Array.isArray(data.operatingExpenseBreakdown) ? data.operatingExpenseBreakdown : [];
+      const ytd = data.ytd || data;
+      const expenseRows = Math.max(1, expenses.length);
       canvas.width = 1800;
-      canvas.height = Math.max(1280, 1140 + expenseRows * 42);
+      canvas.height = Math.max(1540, 1420 + expenseRows * 48);
       const context = canvas.getContext("2d");
       const ink = "#292929";
       const paper = "#f1f1f1";
@@ -3188,9 +3422,11 @@
       const leftRight = 930;
       const right = canvas.width - 82;
       const rightX = 1034;
-      const headerRuleY = 260;
+      const headerRuleY = 246;
       const footerRuleY = canvas.height - 94;
-      const summaryPanelY = 318;
+      const executiveSummaryY = 282;
+      const executiveSummaryBottom = 700;
+      const statementTop = 766;
       context.fillStyle = paper;
       context.fillRect(0, 0, canvas.width, canvas.height);
       context.strokeStyle = ink;
@@ -3203,70 +3439,106 @@
 
       context.fillStyle = ink;
       context.font = "600 18px 'Founders Grotesk Web', Arial";
-      context.fillText("NIXP FINANCE / INTERNAL REPORT", left, 88);
+      context.fillText("NIXP / MANAGEMENT ACCOUNTS", left, 88);
       context.textAlign = "right";
       context.fillText(data.monthLabel.toUpperCase(), right, 88);
       context.textAlign = "left";
-      context.font = "700 82px 'Founders Grotesk Web', Arial";
-      context.fillText("MONTHLY GENERAL", left, 164);
-      context.fillText("FINANCE REPORT", left, 220);
+      context.font = "700 76px 'Founders Grotesk Web', Arial";
+      context.fillText("NIXP", left, 158);
+      context.fillText("MONTHLY INVESTOR REPORT", left, 218);
 
-      let y = 318;
       context.font = "600 18px 'Founders Grotesk Web', Arial";
+      context.fillText("EXECUTIVE SUMMARY", left, executiveSummaryY);
+      context.strokeStyle = ink;
+      context.lineWidth = 1;
+      context.strokeRect(left, executiveSummaryY + 24, right - left, executiveSummaryBottom - executiveSummaryY - 24);
+      const summaryX = left + 24;
+      const summaryRight = right - 24;
+      const summaryColumns = [summaryX, 1100, 1320, summaryRight];
+      context.font = "600 14px 'Founders Grotesk Web', Arial";
+      context.fillStyle = ink;
+      context.fillText("KPI", summaryX, executiveSummaryY + 64);
+      context.textAlign = "right";
+      context.fillText("THIS MONTH", summaryColumns[1], executiveSummaryY + 64);
+      context.fillText("TARGET", summaryColumns[2], executiveSummaryY + 64);
+      context.fillText("YTD", summaryColumns[3], executiveSummaryY + 64);
+      context.textAlign = "left";
+      const summaryRows = [
+        ["Revenue", data.salesRevenue, data.targetRevenue, ytd.salesRevenue, "money"],
+        ["Units Sold", data.unitsSold, data.targetUnitsSold, ytd.unitsSold, "count"],
+        ["Gross Profit", data.grossProfit, data.targetGrossProfit, ytd.grossProfit, "money"],
+        ["Gross Margin", data.grossMargin, data.targetGrossMargin, ytd.grossMargin, "percent"],
+        ["Operating Profit", data.operatingProfit, data.targetOperatingProfit, ytd.operatingProfit, "money"],
+        ["Ending Cash", data.endingCash, null, ytd.endingCash, "money"],
+        ["Inventory Value at Cost", data.inventoryValueAtCost, null, ytd.inventoryValueAtCost, "money"]
+      ];
+      summaryRows.forEach((row, index) => drawCanvasSummaryRow(context, row, summaryX, summaryRight, summaryColumns, executiveSummaryY + 102 + index * 42, ink));
+      context.font = "600 14px 'Founders Grotesk Web', Arial";
+      context.fillStyle = ink;
+      context.fillText(data.missingCogsSkus?.length ? `COGS STATUS: MISSING COGS (${data.missingCogsSkus.join(", ")})` : "COGS STATUS: COMPLETE", summaryX, executiveSummaryBottom - 28);
+
+      let y = statementTop;
+      context.font = "600 18px 'Founders Grotesk Web', Arial";
+      context.fillText("CASH POSITION / CASH FLOW", left, y);
+      y += 42;
+      y = drawReportAmountLine(context, "Total Cash In", data.cashIn, left, y, { ink, leftX: left, rightX: leftRight });
+      y = drawReportAmountLine(context, "Total Cash Out", data.cashOut, left, y, { ink, leftX: left, rightX: leftRight });
+      y = drawReportAmountLine(context, "Net Cash Movement", data.netCashMovement, left, y + 14, { strong: true, final: true, ink, leftX: left, rightX: leftRight });
+      y += 34;
+      context.font = "600 18px 'Founders Grotesk Web', Arial";
+      context.fillStyle = ink;
       context.fillText("INCOME STATEMENT", left, y);
       y += 42;
       y = drawReportAmountLine(context, "Revenue", data.salesRevenue, left, y, { ink, leftX: left, rightX: leftRight });
       y = drawReportAmountLine(context, "COGS", data.cogs, left, y, { ink, leftX: left, rightX: leftRight });
-      y = drawReportAmountLine(context, "Other Operating Income", data.otherRevenue, left, y, { ink, leftX: left, rightX: leftRight });
       y = drawReportAmountLine(context, "Gross Profit", data.grossProfit, left, y + 14, { strong: true, ink, leftX: left, rightX: leftRight });
+      y = drawReportAmountLine(context, "Gross Margin", data.grossMargin, left, y, { ink, leftX: left, rightX: leftRight, formatKind: "percent" });
+      if (data.otherRevenue !== 0) y = drawReportAmountLine(context, "Other Operating Income", data.otherRevenue, left, y, { ink, leftX: left, rightX: leftRight });
       y += 34;
       context.font = "600 18px 'Founders Grotesk Web', Arial";
       context.fillStyle = ink;
       context.fillText("OPERATING EXPENSES", left, y);
       y += 42;
-      if (data.operatingExpenseBreakdown.length) {
-        data.operatingExpenseBreakdown.forEach(item => {
+      if (expenses.length) {
+        expenses.forEach(item => {
           y = drawReportAmountLine(context, item.label, item.amount, left + 28, y, { ink, leftX: left, rightX: leftRight });
         });
       } else {
         y = drawReportTextLine(context, "No Operating Expense Rows", "0 rows", left + 28, y, { ink, leftX: left, rightX: leftRight });
       }
       y = drawReportAmountLine(context, "Total Operating Expenses", data.totalOperatingExpenses, left, y + 14, { strong: true, ink, leftX: left, rightX: leftRight });
-      y = drawReportAmountLine(context, "EBITDA", data.ebitda, left, y + 14, { strong: true, ink, leftX: left, rightX: leftRight });
-      y = drawReportAmountLine(context, "Tax (Recorded Ledger Rows)", data.taxExpense, left + 28, y + 14, { ink, leftX: left, rightX: leftRight });
+      y = drawReportAmountLine(context, "Operating Profit / EBITDA", data.operatingProfit, left, y + 14, { strong: true, ink, leftX: left, rightX: leftRight });
+      if (data.taxExpense !== 0) y = drawReportAmountLine(context, "Tax", data.taxExpense, left + 28, y + 14, { ink, leftX: left, rightX: leftRight });
       drawReportAmountLine(context, "Net Income", data.netIncome, left, y + 14, { strong: true, final: true, ink, leftX: left, rightX: leftRight });
 
       context.strokeStyle = ink;
       context.lineWidth = 1;
       context.font = "600 18px 'Founders Grotesk Web', Arial";
       context.fillStyle = ink;
-      context.fillText("SAVED LEDGER SUMMARY", rightX + 30, summaryPanelY + 44);
-      context.font = "600 42px 'Founders Grotesk Web', Arial";
-      context.fillText(rupiah(data.netCashMovement), rightX + 30, summaryPanelY + 100);
+      context.fillText("MONTH SUMMARY", rightX + 30, statementTop + 44);
+      context.font = "600 38px 'Founders Grotesk Web', Arial";
+      context.fillText(rupiah(data.netCashMovement), rightX + 30, statementTop + 104);
       context.font = "600 15px 'Founders Grotesk Web', Arial";
-      context.fillText("NET CASH MOVEMENT", rightX + 30, summaryPanelY + 128);
-      drawCanvasRule(context, rightX + 30, right - 30, summaryPanelY + 162);
-      drawCanvasFact(context, "LEDGER ROWS", String(data.ledgerRowCount), rightX + 30, summaryPanelY + 198);
-      drawCanvasFact(context, "EBITDA MARGIN", formatPercent(data.ebitdaMargin), rightX + 330, summaryPanelY + 198);
-      drawCanvasFact(context, "CASH IN", rupiah(data.cashIn), rightX + 30, summaryPanelY + 284);
-      drawCanvasFact(context, "CASH OUT", rupiah(data.cashOut), rightX + 330, summaryPanelY + 284);
-      drawCanvasRule(context, rightX + 30, right - 30, summaryPanelY + 336);
-      context.font = "500 20px 'Founders Grotesk Web', Arial";
-      let rightY = drawWrappedCanvasText(context, "Actual saved ledger rows only. No projections, assumptions, or sample numbers are included.", rightX + 30, summaryPanelY + 374, right - rightX - 60, 28);
-      context.font = "italic 18px 'Founders Grotesk Web', Arial";
-      rightY = drawWrappedCanvasText(context, "Generated from the current finance.nix-p.com ledger. Refresh before export if another device has just updated the books.", rightX + 30, rightY + 20, right - rightX - 60, 26);
-      context.font = "600 17px 'Founders Grotesk Web', Arial";
-      rightY = drawWrappedCanvasText(context, `Operating expense categories: ${data.operatingExpenseCategoryText}.`, rightX + 30, rightY + 22, right - rightX - 60, 24);
-      context.font = "500 16px 'Founders Grotesk Web', Arial";
-      rightY = drawWrappedCanvasText(context, "Investor, loan, owner capital, bank, and owner reimbursement entries are cash movement, not operating revenue. Inventory purchases and sales COGS are grouped into COGS.", rightX + 30, rightY + 18, right - rightX - 60, 22);
-      const summaryPanelBottom = Math.min(footerRuleY - 28, rightY + 32);
+      context.fillText("NET CASH MOVEMENT", rightX + 30, statementTop + 132);
+      drawCanvasRule(context, rightX + 30, right - 30, statementTop + 162);
+      drawCanvasFact(context, "REVENUE", reportMoney(data.salesRevenue), rightX + 30, statementTop + 208);
+      drawCanvasFact(context, "GROSS PROFIT", reportMoney(data.grossProfit), rightX + 330, statementTop + 208);
+      drawCanvasFact(context, "GROSS MARGIN", reportPercent(data.grossMargin), rightX + 30, statementTop + 300);
+      drawCanvasFact(context, "OPERATING PROFIT", reportMoney(data.operatingProfit), rightX + 330, statementTop + 300);
+      drawCanvasFact(context, "NET INCOME", reportMoney(data.netIncome), rightX + 30, statementTop + 392);
+      drawCanvasFact(context, "CASH OUT", reportMoney(data.cashOut), rightX + 330, statementTop + 392);
+      drawCanvasRule(context, rightX + 30, right - 30, statementTop + 444);
+      context.font = "600 15px 'Founders Grotesk Web', Arial";
+      context.fillText(data.missingCogsSkus?.length ? "COGS STATUS: MISSING COGS" : "COGS STATUS: COMPLETE", rightX + 30, statementTop + 482);
+      context.fillText(data.missingInventoryUnits > 0 ? `INVENTORY COST COVERAGE: ${reportPercent(data.inventoryCostCoverage)}` : "INVENTORY COST COVERAGE: COMPLETE", rightX + 30, statementTop + 510);
+      const summaryPanelBottom = Math.min(footerRuleY - 28, statementTop + 548);
       context.strokeStyle = ink;
       context.lineWidth = 1;
-      context.strokeRect(rightX, summaryPanelY, right - rightX, summaryPanelBottom - summaryPanelY);
+      context.strokeRect(rightX, statementTop, right - rightX, summaryPanelBottom - statementTop);
 
       drawCanvasRule(context, left, right, footerRuleY);
-      context.font = "italic 16px 'Founders Grotesk Web', Arial";
-      context.fillText("Internal management report. Not audited financial advice.", left, footerRuleY + 36);
+      context.font = "500 16px 'Founders Grotesk Web', Arial";
+      context.fillText("Management Accounts — Unaudited / Prepared for NIXP investors for internal reporting purposes.", left, footerRuleY + 36);
       context.font = "600 15px 'Founders Grotesk Web', Arial";
       context.textAlign = "right";
       context.fillText(`NIXP / ${data.monthLabel}`.toUpperCase(), right, footerRuleY + 36);
@@ -3285,6 +3557,21 @@
       }, "image/jpeg", 0.92);
     }
 
+    function drawCanvasSummaryRow(context, row, left, right, columns, y, ink) {
+      const [label, current, target, ytd, kind] = row;
+      drawCanvasRule(context, left, right, y - 22);
+      context.fillStyle = ink;
+      context.font = "500 18px 'Founders Grotesk Web', Arial";
+      context.fillText(String(label).toUpperCase(), left, y);
+      context.font = "600 18px 'Founders Grotesk Web', Arial";
+      context.textAlign = "right";
+      context.fillText(reportFormat(current, kind), columns[1], y);
+      context.font = "500 18px 'Founders Grotesk Web', Arial";
+      context.fillText(reportFormat(target, kind), columns[2], y);
+      context.fillText(reportFormat(ytd, kind), columns[3], y);
+      context.textAlign = "left";
+    }
+
     function drawReportAmountLine(context, label, value, x, y, options = {}) {
       const ink = options.ink || "#292929";
       const lineHeight = options.lineHeight || 42;
@@ -3301,7 +3588,7 @@
       context.fillText(label.toUpperCase(), x, y);
       context.textAlign = "right";
       context.font = `${options.strong ? "600" : "500"} 21px 'Founders Grotesk Web', Arial`;
-      context.fillText(rupiah(value), rightX, y);
+      context.fillText(options.formatKind === "percent" ? reportPercent(value) : reportMoney(value), rightX, y);
       context.textAlign = "left";
       if (options.final) {
         context.strokeStyle = ink;

@@ -2,7 +2,16 @@ import { enrichFinanceCatalogProduct, inventoryFingerprint } from "./catalogEnri
 import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 
 const STATE_KEY = "main";
-const EMPTY_FINANCE_STATE = { general: [], sales: [], expenses: [], inventory: [], inventoryStock: [], monthlyReports: [] };
+const EMPTY_FINANCE_STATE = {
+  general: [],
+  sales: [],
+  expenses: [],
+  inventory: [],
+  inventoryStock: [],
+  monthlyReports: [],
+  openingCash: null,
+  targets: {}
+};
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const APPAREL_TYPES = new Set(["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap"]);
 
@@ -404,7 +413,13 @@ export function normalizeFinanceState(state) {
     expenses: Array.isArray(state.expenses) ? state.expenses : [],
     inventory: Array.isArray(state.inventory) ? state.inventory : [],
     inventoryStock: Array.isArray(state.inventoryStock) ? state.inventoryStock : [],
-    monthlyReports: Array.isArray(state.monthlyReports) ? state.monthlyReports : []
+    monthlyReports: Array.isArray(state.monthlyReports) ? state.monthlyReports : [],
+    openingCash: state.openingCash === null || state.openingCash === undefined || state.openingCash === ""
+      ? null
+      : Number.isFinite(Number(state.openingCash)) ? Number(state.openingCash) : null,
+    targets: state.targets && typeof state.targets === "object" && !Array.isArray(state.targets)
+      ? state.targets
+      : {}
   };
 }
 
