@@ -33,6 +33,23 @@ assert.ok(enriched.raw.relatedArtists.includes("Meshuggah"));
 assert.equal(enriched.raw.enrichmentStatus, "complete");
 assert.equal(enriched.raw.enrichmentFingerprint, inventoryFingerprint(stock));
 
+const privateStock = {
+  ...stock,
+  sellingPrice: 0,
+  listingMode: "Private Collection / Offer Only",
+  minimumAcceptableOffer: 500000
+};
+const privateEnriched = await enrichFinanceCatalogProduct(
+  { ...draft, price: 0, open_to_offers: true, minimum_acceptable_offer: 500000 },
+  privateStock,
+  { catalogArtists: [{ artist: "Meshuggah", label: "Season of Mist" }] }
+);
+assert.equal(privateEnriched.open_to_offers, true);
+assert.equal(privateEnriched.price, 0);
+assert.equal(privateEnriched.minimum_acceptable_offer, 500000);
+assert.equal(privateEnriched.publish_status, "Published");
+assert.equal(privateEnriched.visibility, "Public");
+
 const missingIdentity = await enrichFinanceCatalogProduct(draft, { ...stock, title: "", sellingPrice: 0 });
 assert.equal(missingIdentity.publish_status, "Draft");
 assert.equal(missingIdentity.visibility, "Private");

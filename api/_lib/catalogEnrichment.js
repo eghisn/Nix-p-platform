@@ -440,8 +440,10 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const title = String(stock.title || row.title || "").trim();
   const artist = canonicalArtistName(stock.artist || row.artist || "");
   const price = Number(stock.sellingPrice || row.price || 0);
+  const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true || row.open_to_offers === true;
+  const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer ?? row.minimum_acceptable_offer ?? row.raw?.minimumAcceptableOffer);
 
-  if (!RECORD_FORMATS.has(format) || !title || !artist || price <= 0) {
+  if (!RECORD_FORMATS.has(format) || !title || !artist || (openToOffers ? !minimumAcceptableOffer : price <= 0)) {
     return finalizeStatus(row, { publishable: false, status: "needs-finance-data" });
   }
 
@@ -500,6 +502,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     format,
     display_format: format,
     price,
+    open_to_offers: openToOffers,
+    minimum_acceptable_offer: openToOffers ? minimumAcceptableOffer : null,
     year: Number(discovered.year || row.year || new Date().getFullYear()),
     label: canonicalLabelName(discovered.label || row.label || ""),
     collection: discovered.label || row.collection || row.label || "",
@@ -521,6 +525,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       displayFormat: format,
       condition: stock.itemCondition || row.condition || "",
       price,
+      open_to_offers: openToOffers,
+      minimumAcceptableOffer: openToOffers ? minimumAcceptableOffer : null,
       year: Number(discovered.year || row.year || new Date().getFullYear()),
       label: canonicalLabelName(discovered.label || row.label || ""),
       collection: discovered.label || row.collection || row.label || "",
@@ -731,15 +737,26 @@ function relatedArtistsFromCatalog({ artist, label, catalogArtists = [] } = {}) 
 }
 
 function hasCatalogCore(row) {
+  const openToOffers = row.open_to_offers === true || row.raw?.open_to_offers === true;
+  const hasFinancialValue = openToOffers
+    ? Boolean(wholeAmount(row.minimum_acceptable_offer ?? row.raw?.minimumAcceptableOffer))
+    : Number(row.price || 0) > 0;
   return Boolean(
     String(row.title || "").trim() &&
       String(row.artist || "").trim() &&
       String(row.label || "").trim() &&
       String(row.description || "").trim() &&
       Number(row.year || 0) > 1900 &&
-      Number(row.price || 0) > 0 &&
+      hasFinancialValue &&
       isUsableImage(row.image)
   );
+}
+
+function wholeAmount(value) {
+  const raw = String(value ?? "").trim();
+  if (!/^\d+$/.test(raw)) return null;
+  const amount = Number(raw);
+  return Number.isSafeInteger(amount) && amount > 0 ? amount : null;
 }
 
 function isUsableImage(value) {

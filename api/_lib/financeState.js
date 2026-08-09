@@ -231,6 +231,8 @@ function productRowFromExisting(row, overrides = {}) {
     sizes: next.sizes || [],
     description: next.description || "",
     qty: normalizedQuantity(next.qty),
+    open_to_offers: next.open_to_offers === true || next.raw?.open_to_offers === true,
+    minimum_acceptable_offer: wholeAmount(next.minimum_acceptable_offer ?? next.raw?.minimumAcceptableOffer),
     publish_status: next.publish_status || "Published",
     visibility: next.visibility || "Public",
     updated_at: next.updated_at || today(),
