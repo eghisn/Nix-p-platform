@@ -456,6 +456,9 @@ function homeCollectionMatch(product, collectionId) {
   if (collectionId === "recent-releases") {
     return product.category === "Records" && ["Vinyl", "CD", "Cassette"].includes(product.format) && [2025, 2026].includes(Number(product.year));
   }
+  if (collectionId === "private-collection") {
+    return product.open_to_offers === true;
+  }
   return Array.isArray(product.homeCollections) && product.homeCollections.includes(collectionId);
 }
 
@@ -666,9 +669,9 @@ async function makeOfferPage() {
         <label>Name<input name="name" required autocomplete="name" /></label>
         <label>Email<input name="email" type="email" required autocomplete="email" /></label>
         <label>Mobile phone<input name="mobilePhone" type="tel" required autocomplete="tel" /></label>
-        <label>Offer amount (Rp)<input name="offerAmount" type="text" inputmode="numeric" pattern="[0-9]+" autocomplete="off" required data-whole-rupiah-offer /></label>
+        <label>Offer amount (Rp)<input name="offerAmount" type="text" inputmode="numeric" pattern="[0-9]+" autocomplete="off" required data-whole-rupiah-offer data-minimum-acceptable-offer="${escapeAttr(product.minimumAcceptableOffer)}" /></label>
         <input class="request-honeypot" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <button class="button button-dark" type="submit">Submit Offer</button>
+        <button class="button button-dark" type="submit" data-offer-submit disabled>Submit Offer</button>
         <p class="form-message" data-offer-message aria-live="polite"></p>
       </form>
       <aside class="status-panel">
@@ -3244,7 +3247,37 @@ function bindEvents() {
     });
   });
 
-  document.querySelector("[data-offer-form]")?.addEventListener("submit", async (event) => {
+  const offerForm = document.querySelector("[data-offer-form]");
+  const offerInput = offerForm?.querySelector("[data-minimum-acceptable-offer]");
+  const offerSubmit = offerForm?.querySelector("[data-offer-submit]");
+  const offerMessage = offerForm?.querySelector("[data-offer-message]");
+  const minimumOffer = Number(offerInput?.dataset.minimumAcceptableOffer || 0);
+  const refreshOfferValidity = () => {
+    if (!offerInput || !offerSubmit) return;
+    const value = String(offerInput.value || "").trim();
+    const isWholeAmount = /^\d+$/.test(value);
+    const amount = Number(value);
+    const meetsMinimum = Number.isSafeInteger(amount) && amount >= minimumOffer;
+    offerSubmit.disabled = !isWholeAmount || !meetsMinimum;
+    if (!offerMessage) return;
+    if (!value) {
+      offerMessage.textContent = "";
+      offerMessage.dataset.tone = "";
+    } else if (!isWholeAmount) {
+      offerMessage.textContent = "Enter a whole-number offer in rupiah without commas or periods.";
+      offerMessage.dataset.tone = "error";
+    } else if (!meetsMinimum) {
+      offerMessage.textContent = `Offer must be at least ${money.format(minimumOffer)}.`;
+      offerMessage.dataset.tone = "error";
+    } else {
+      offerMessage.textContent = "";
+      offerMessage.dataset.tone = "";
+    }
+  };
+  offerInput?.addEventListener("input", refreshOfferValidity);
+  refreshOfferValidity();
+
+  offerForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     const button = form.querySelector('button[type="submit"]');
@@ -3254,6 +3287,10 @@ function bindEvents() {
     if (!/^\d+$/.test(String(data.offerAmount || "").trim())) {
       message.textContent = "Enter a whole-number offer in rupiah without commas or periods.";
       message.dataset.tone = "error";
+      return;
+    }
+    if (Number(data.offerAmount) < minimumOffer) {
+      refreshOfferValidity();
       return;
     }
     button.disabled = true;
