@@ -415,6 +415,201 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     tags: ["experimental hip-hop", "electronic", "12-inch"],
     sourceUrl: "https://www.banquetrecords.com/m.i.a./steppin-up-meds-and-feds/XLT505"
   },
+  "NXP-2026-CD-0037": {
+    title: "Skullgrid",
+    year: 2007,
+    label: "Black Market Activities",
+    edition: "CD",
+    catalogNumber: "BMA 021-2",
+    barcode: "039841465020",
+    cover: "https://coverartarchive.org/release/fff27b9d-0d98-474c-b5ca-93ccefaf6574/front",
+    imageCredits: [{ image: "https://coverartarchive.org/release/fff27b9d-0d98-474c-b5ca-93ccefaf6574/front", credit: "Cover Art Archive / Black Market Activities", url: "https://musicbrainz.org/release/fff27b9d-0d98-474c-b5ca-93ccefaf6574" }],
+    description: "Behold... the Arctopus' 2007 debut full-length turns the trio of guitar, Warr guitar and drums into a densely composed instrumental collision of progressive metal, free-jazz complexity and technical extremity.",
+    descriptionSource: "Behold the Arctopus Bandcamp / MusicBrainz",
+    reviewQuote: "Not for the faint of heart",
+    reviewSource: "Sputnikmusic (quoted)",
+    reviewUrl: "https://www.sputnikmusic.com/review/28174/Behold...-The-Arctopus-Skullgrid/",
+    relatedArtists: ["Dysrhythmia", "Gorguts", "The Dillinger Escape Plan"],
+    tags: ["avant-garde metal", "technical metal", "instrumental", "progressive metal"],
+    sourceUrl: "https://beholdthearctopus.bandcamp.com/album/skullgrid",
+    musicBrainzReleaseId: "fff27b9d-0d98-474c-b5ca-93ccefaf6574"
+  },
+  "NXP-2026-CD-0038": {
+    title: "Post-Nothing",
+    year: 2009,
+    label: "Polyvinyl",
+    edition: "CD",
+    catalogNumber: "PRC-184-2",
+    barcode: "644110018427",
+    cover: "https://coverartarchive.org/release/2b6bb8ca-6b18-3ece-afc7-3e72ef3145d6/front",
+    imageCredits: [{ image: "https://coverartarchive.org/release/2b6bb8ca-6b18-3ece-afc7-3e72ef3145d6/front", credit: "Cover Art Archive / Polyvinyl", url: "https://musicbrainz.org/release/2b6bb8ca-6b18-3ece-afc7-3e72ef3145d6" }],
+    description: "Japandroids' Post-Nothing is the Vancouver duo's 2009 debut: ten concise, overdriven songs built from Brian King and David Prowse's guitars, drums, hooks and shouted release.",
+    descriptionSource: "Japandroids Bandcamp / MusicBrainz",
+    reviewQuote: "terminally catchy music played with punk's enthusiasm and velocity",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/12965-post-nothing/",
+    relatedArtists: ["Preoccupations", "Parquet Courts", "Suuns"],
+    tags: ["garage rock", "indie rock", "punk", "noise pop"],
+    sourceUrl: "https://japandroids.bandcamp.com/album/post-nothing",
+    musicBrainzReleaseId: "2b6bb8ca-6b18-3ece-afc7-3e72ef3145d6"
+  },
+  "NXP-2026-CD-0039": {
+    title: "J2",
+    year: 2008,
+    label: "The End Records",
+    edition: "CD",
+    catalogNumber: "TE096",
+    barcode: "654436009627",
+    cover: "https://coverartarchive.org/release/cca61b7c-15b6-4e83-b247-516d6409834b/front",
+    imageCredits: [{ image: "https://coverartarchive.org/release/cca61b7c-15b6-4e83-b247-516d6409834b/front", credit: "Cover Art Archive / The End Records", url: "https://musicbrainz.org/release/cca61b7c-15b6-4e83-b247-516d6409834b" }],
+    description: "J2 is Jarboe and Justin K. Broadrick's 2008 collaboration, pairing Jarboe's voice and keyboards with Broadrick's guitar, programming and production across a dark, slow-moving electronic record.",
+    descriptionSource: "The Living Jarboe / MusicBrainz",
+    reviewQuote: "dark electronica, laced, bound, and gagged with goth, psychedelia, and metal",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/11272-j2/",
+    relatedArtists: ["JK Flesh", "The Soft Moon", "Melt-Banana"],
+    tags: ["dark ambient", "industrial", "experimental", "collaboration"],
+    sourceUrl: "https://thelivingjarboe.com/about/",
+    musicBrainzReleaseId: "cca61b7c-15b6-4e83-b247-516d6409834b"
+  },
+  "NXP-2026-CD-0040": {
+    title: "Cryptomnesia",
+    year: 2009,
+    label: "Rodriguez-Lopez Productions",
+    edition: "CD",
+    catalogNumber: "SHRLP001CD",
+    barcode: "613481019524",
+    cover: "https://coverartarchive.org/release/e4372642-8d04-478a-bcba-058c13209f56/front",
+    imageCredits: [{ image: "https://coverartarchive.org/release/e4372642-8d04-478a-bcba-058c13209f56/front", credit: "Cover Art Archive / Rodriguez-Lopez Productions", url: "https://musicbrainz.org/release/e4372642-8d04-478a-bcba-058c13209f56" }],
+    description: "El Grupo Nuevo de Omar Rodriguez-Lopez's 2009 Cryptomnesia brings Omar Rodriguez-Lopez, Cedric Bixler-Zavala, Juan Alderete, Jonathan Hischke and Zach Hill together for a restless experimental-rock record first recorded in 2006.",
+    descriptionSource: "AllMusic / MusicBrainz",
+    reviewQuote: "Ruthlessly experimental",
+    reviewSource: "Sputnikmusic (quoted)",
+    reviewUrl: "https://www.sputnikmusic.com/review/44308/El-Grupo-Nuevo-de-Omar-Rodriguez-Lopez-Cryptomnesia/",
+    relatedArtists: ["Zach Hill", "The Dillinger Escape Plan", "Melt-Banana"],
+    tags: ["experimental rock", "math rock", "progressive rock"],
+    sourceUrl: "https://www.allmusic.com/album/cryptomnesia-mw0000818186",
+    musicBrainzReleaseId: "e4372642-8d04-478a-bcba-058c13209f56"
+  },
+  "NXP-2026-CD-0041": {
+    title: "Irony Is a Dead Scene",
+    year: 2002,
+    label: "Epitaph Europe",
+    edition: "CD EP",
+    catalogNumber: "6658-2",
+    barcode: "8714092665826",
+    cover: "https://coverartarchive.org/release/1a1d7f1a-0a98-4290-b0dd-a8424e4be7ce/front",
+    imageCredits: [{ image: "https://coverartarchive.org/release/1a1d7f1a-0a98-4290-b0dd-a8424e4be7ce/front", credit: "Cover Art Archive / Epitaph Europe", url: "https://musicbrainz.org/release/1a1d7f1a-0a98-4290-b0dd-a8424e4be7ce" }],
+    description: "The Dillinger Escape Plan's 2002 EP with Mike Patton captures the group between vocal eras, expanding its mathcore precision with Patton's volatile range, noise experiments and a cover of Aphex Twin's Come to Daddy.",
+    descriptionSource: "AllMusic / MusicBrainz",
+    reviewQuote: "Equal parts noise, chaos, and insanity",
+    reviewSource: "Sputnikmusic (quoted)",
+    reviewUrl: "https://www.sputnikmusic.com/review/1681/The-Dillinger-Escape-Plan-Irony-Is-a-Dead-Scene/",
+    relatedArtists: ["Melt-Banana", "Behold The Arctopus", "Dysrhythmia"],
+    tags: ["mathcore", "experimental metal", "noise", "EP"],
+    sourceUrl: "https://www.allmusic.com/album/irony-is-a-dead-scene-mw0000726595",
+    musicBrainzReleaseId: "1a1d7f1a-0a98-4290-b0dd-a8424e4be7ce"
+  },
+  "NXP-2026-CD-0042": {
+    title: "Age Of",
+    year: 2018,
+    label: "Warp Records",
+    edition: "Japan CD",
+    catalogNumber: "BRC-570",
+    barcode: "4523132111704",
+    cover: "https://coverartarchive.org/release/46f66a2f-b782-47b4-9095-2ef933e1e7c7/front",
+    imageCredits: [{ image: "https://coverartarchive.org/release/46f66a2f-b782-47b4-9095-2ef933e1e7c7/front", credit: "Cover Art Archive / Warp Records", url: "https://musicbrainz.org/release/46f66a2f-b782-47b4-9095-2ef933e1e7c7" }],
+    description: "Oneohtrix Point Never's 2018 Age Of frames Daniel Lopatin's electronic collage work as a fractured pop record, with synthesized medievalism, orchestral colour and vocals from collaborators including ANOHNI and James Blake.",
+    descriptionSource: "Beatink / Warp Records",
+    reviewQuote: "his most apocalyptic record",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/oneohtrix-point-never-age-of/",
+    relatedArtists: ["Arca", "SOPHIE", "Amnesia Scanner"],
+    tags: ["electronic", "experimental pop", "ambient", "Warp"],
+    sourceUrl: "https://www.beatink.com/products/detail.php?product_id=9576",
+    musicBrainzReleaseId: "46f66a2f-b782-47b4-9095-2ef933e1e7c7"
+  },
+  "NXP-2026-CD-0043": {
+    title: "444",
+    year: 2023,
+    label: "Tzadik",
+    edition: "CD",
+    catalogNumber: "TZ 8398",
+    barcode: "702397839828",
+    cover: "https://coverartarchive.org/release/d9aa131a-8140-4fd0-ae64-3a0d70eec10c/front",
+    imageCredits: [{ image: "https://coverartarchive.org/release/d9aa131a-8140-4fd0-ae64-3a0d70eec10c/front", credit: "Cover Art Archive / Tzadik", url: "https://musicbrainz.org/release/d9aa131a-8140-4fd0-ae64-3a0d70eec10c" }],
+    description: "John Zorn's 444 is a 2023 Tzadik release for the core trio of Zorn, Bill Laswell and Dave Lombardo, moving through compact compositions shaped by improvisation, electric bass and percussion.",
+    descriptionSource: "John Zorn Resource / MusicBrainz",
+    reviewQuote: "the music is never repeating itself",
+    reviewSource: "Free Jazz Collective (quoted)",
+    reviewUrl: "https://www.freejazzblog.org/2023/08/john-zorn-fourth-way-and-444.html",
+    relatedArtists: ["Melt-Banana", "Behold The Arctopus", "The Dillinger Escape Plan"],
+    tags: ["avant-garde jazz", "improvisation", "Tzadik"],
+    sourceUrl: "https://johnzornresource.com/444",
+    musicBrainzReleaseId: "d9aa131a-8140-4fd0-ae64-3a0d70eec10c"
+  },
+  "NXP-2026-VNL-0034": {
+    title: "Bag of Max Bag of Cass",
+    year: 2025,
+    label: "Warp Records",
+    edition: "1xLP, limited to 1000 copies",
+    catalogNumber: "WARPLP414",
+    barcode: "5056818804700",
+    cover: "https://f4.bcbits.com/img/a0245441444_5.jpg",
+    productPhoto: "https://meditations.jp/cdn/shop/files/0041023271_10_1024x.jpg?v=1758159917",
+    imageCredits: [
+      { image: "https://f4.bcbits.com/img/a0245441444_5.jpg", credit: "Warp Records Bandcamp artwork", url: "https://warprecords.bandcamp.com/album/bag-of-max-bag-of-cass" },
+      { image: "https://meditations.jp/cdn/shop/files/0041023271_10_1024x.jpg?v=1758159917", credit: "Meditations product photography", url: "https://meditations.jp/products/zach-hill-lucas-abela-bag-of-max-bag-of-cass-lp" }
+    ],
+    description: "Zach Hill and Lucas Abela's 2025 Bag of Max Bag of Cass is a limited Warp LP built from Hill's processed electronic drumming and Abela's amplified glass, modular noise and abrasion.",
+    descriptionSource: "Warp Records Bandcamp / Boomkat",
+    reviewQuote: "Probably the noisiest Warp release",
+    reviewSource: "Boomkat (quoted)",
+    reviewUrl: "https://boomkat.com/products/bag-of-max-bag-of-cass",
+    relatedArtists: ["Melt-Banana", "The Dillinger Escape Plan", "Dysrhythmia"],
+    tags: ["noise", "free improvisation", "power electronics", "Warp"],
+    sourceUrl: "https://warprecords.bandcamp.com/album/bag-of-max-bag-of-cass",
+    musicBrainzReleaseId: "5b91a691-c3c3-4e7f-bd50-5c58243347b3"
+  },
+  "NXP-2026-VNL-0035": {
+    title: "Again",
+    year: 2023,
+    label: "Warp Records",
+    edition: "Blue 2xLP",
+    catalogNumber: "WARPLP365I",
+    cover: "https://f4.bcbits.com/img/a4277554650_5.jpg",
+    productPhoto: "https://f4.bcbits.com/img/0033616954_10.jpg",
+    imageCredits: [
+      { image: "https://f4.bcbits.com/img/a4277554650_5.jpg", credit: "Oneohtrix Point Never Bandcamp artwork", url: "https://oneohtrixpointnever.bandcamp.com/album/again" },
+      { image: "https://f4.bcbits.com/img/0033616954_10.jpg", credit: "Oneohtrix Point Never Bandcamp product photography", url: "https://oneohtrixpointnever.bandcamp.com/album/again" }
+    ],
+    description: "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
+    descriptionSource: "Warp Records / Bleep",
+    reviewQuote: "a nostalgic jam session",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
+    relatedArtists: ["Arca", "SOPHIE", "Amnesia Scanner"],
+    tags: ["electronic", "experimental pop", "2LP", "Warp"],
+    sourceUrl: "https://warp.net/products/410494-again",
+    musicBrainzReleaseId: "facdf955-7ded-45f1-ad9b-835e16bbebd2"
+  },
+  "NXP-2026-VNL-0036": {
+    title: "JIL SANDER SOUND ZINE",
+    year: 2026,
+    label: "JIL SANDER",
+    edition: "Sound zine with clear flexi disc",
+    cover: "https://www.jilsander.com/dw/image/v2/BGNJ_PRD/on/demandware.static/-/Library-Sites-jilsander-shared/default/dw492c75ab/projects/cisco/cover_1080x1350.jpg",
+    productPhoto: "https://www.jilsander.com/dw/image/v2/BGNJ_PRD/on/demandware.static/-/Library-Sites-jilsander-shared/default/dw72645a8d/projects/cisco/s1_01.jpg",
+    imageCredits: [
+      { image: "https://www.jilsander.com/dw/image/v2/BGNJ_PRD/on/demandware.static/-/Library-Sites-jilsander-shared/default/dw492c75ab/projects/cisco/cover_1080x1350.jpg", credit: "JIL SANDER project photography", url: "https://www.jilsander.com/en-au/jil-sander-sounds-presents-cisco-records/jil-sander-sounds-presents-cisco-records.html" },
+      { image: "https://www.jilsander.com/dw/image/v2/BGNJ_PRD/on/demandware.static/-/Library-Sites-jilsander-shared/default/dw72645a8d/projects/cisco/s1_01.jpg", credit: "JIL SANDER project photography", url: "https://www.jilsander.com/en-au/jil-sander-sounds-presents-cisco-records/jil-sander-sounds-presents-cisco-records.html" }
+    ],
+    description: "JIL SANDER SOUND ZINE is the 2026 printed and audio companion to the brand's Cisco Records project in Tokyo. Its inaugural Music and Environment issue includes a flexi disc carrying Laurel Halo's music for the Fall/Winter 2026 show.",
+    descriptionSource: "JIL SANDER / HOUYHNHNM",
+    relatedArtists: ["Laurel Halo"],
+    tags: ["sound art", "zine", "flexi disc", "fashion publishing"],
+    sourceUrl: "https://www.jilsander.com/en-au/jil-sander-sounds-presents-cisco-records/jil-sander-sounds-presents-cisco-records.html"
+  },
   "NXP-2026-VNL-0019": {
     title: "Shirt",
     year: 2024,
@@ -617,7 +812,7 @@ async function discoverMusicBrainzRelease(stock) {
     `release:"${escapeQuery(stock.title)}"`
   ].join(" AND ");
   const response = await fetch(
-    `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25`,
+    `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25&inc=labels+artist-credits+media`,
     { headers: { accept: "application/json", "user-agent": USER_AGENT } }
   );
   if (!response.ok) return null;
@@ -625,24 +820,21 @@ async function discoverMusicBrainzRelease(stock) {
   const format = String(stock.format || stock.item || "").toLowerCase();
   const expectedTitle = normalizedText(stock.title);
   const expectedArtist = normalizedText(stock.artist);
-  let matches = (payload.releases || []).filter((release) => {
+  const barcode = String(stock.barcode || "").replace(/\D/g, "");
+  const catalogNumber = normalizedText(stock.catalogNumber);
+  const matches = (payload.releases || []).filter((release) => {
     const formats = (release.media || []).map((medium) => String(medium.format || "").toLowerCase());
     const artists = (release["artist-credit"] || []).map((credit) => credit.name).join(" ");
+    const releaseBarcode = String(release.barcode || "").replace(/\D/g, "");
+    const releaseCatalogNumbers = (release["label-info"] || []).map((label) => normalizedText(label["catalog-number"]));
     return (
       normalizedText(release.title) === expectedTitle &&
       normalizedText(artists).includes(expectedArtist) &&
-      formats.some((candidate) => candidate.includes(format))
+      (!formats.length || formats.some((candidate) => candidate.includes(format))) &&
+      (!barcode || !releaseBarcode || releaseBarcode === barcode || (catalogNumber && releaseCatalogNumbers.includes(catalogNumber))) &&
+      (!catalogNumber || !releaseCatalogNumbers.length || releaseCatalogNumbers.includes(catalogNumber))
     );
   });
-
-  const barcode = String(stock.barcode || "").replace(/\D/g, "");
-  if (barcode) matches = matches.filter((release) => String(release.barcode || "").replace(/\D/g, "") === barcode);
-  const catalogNumber = normalizedText(stock.catalogNumber);
-  if (catalogNumber) {
-    matches = matches.filter((release) =>
-      (release["label-info"] || []).some((label) => normalizedText(label["catalog-number"]) === catalogNumber)
-    );
-  }
   const release = matches.sort((a, b) => Number(b.score || 0) - Number(a.score || 0))[0];
   if (!release) return null;
 
