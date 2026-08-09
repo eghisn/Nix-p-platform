@@ -269,6 +269,8 @@ function productRowFromFinanceStock(row, stock, quantity) {
   const financeTitle = String(stock.title || "").trim();
   const financeArtist = String(stock.artist || "").trim();
   const financePrice = Number(stock.sellingPrice || 0);
+  const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
+  const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer);
   const raw = {
     ...(row.raw || {}),
     financeStockId: stock.id || row.raw?.financeStockId || null,
@@ -280,7 +282,7 @@ function productRowFromFinanceStock(row, stock, quantity) {
     String(row.id || "").startsWith("finance-") ||
     row.raw?.financeStockId ||
     String(row.raw?.details?.[0] || "").includes("Created from finance inventory");
-  const readyFromFinance = Boolean(financeTitle && financePrice > 0 && hasUsableProductImage(row));
+  const readyFromFinance = Boolean(financeTitle && (openToOffers ? minimumAcceptableOffer : financePrice > 0) && hasUsableProductImage(row));
   const publishStatus = wasFinanceDraft ? (readyFromFinance ? "Published" : "Draft") : row.publish_status || "Published";
   const visibility = wasFinanceDraft ? (readyFromFinance ? "Public" : "Private") : row.visibility || "Public";
 
@@ -292,7 +294,9 @@ function productRowFromFinanceStock(row, stock, quantity) {
     display_format: category === "Records" ? item : row.display_format || "",
     apparel_type: category === "Apparel" ? row.apparel_type || "Accessories" : row.apparel_type || "",
     condition: String(stock.itemCondition || row.condition || "").trim(),
-    price: financePrice > 0 ? financePrice : Number(row.price || 0),
+    price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(row.price || 0),
+    open_to_offers: openToOffers,
+    minimum_acceptable_offer: openToOffers ? minimumAcceptableOffer : null,
     qty: quantity,
     publish_status: publishStatus,
     visibility,
@@ -305,7 +309,9 @@ function productRowFromFinanceStock(row, stock, quantity) {
       format: category === "Records" ? item : raw.format || row.format || "",
       displayFormat: category === "Records" ? item : raw.displayFormat || row.display_format || "",
       condition: String(stock.itemCondition || raw.condition || row.condition || "").trim(),
-      price: financePrice > 0 ? financePrice : Number(raw.price || row.price || 0),
+      price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(raw.price || row.price || 0),
+      open_to_offers: openToOffers,
+      minimumAcceptableOffer: openToOffers ? minimumAcceptableOffer : null,
       edition: String(stock.edition || raw.edition || "").trim(),
       barcode: String(stock.barcode || raw.barcode || "").trim(),
       catalogNumber: String(stock.catalogNumber || raw.catalogNumber || "").trim(),
@@ -376,7 +382,9 @@ export async function syncAdminCatalogInventory(products = []) {
       acquisitionMonth: existing.acquisitionMonth || new Date().toISOString().slice(0, 7),
       qty: quantity,
       costBasis: Number(existing.costBasis || 0),
-      sellingPrice: Number(existing.sellingPrice || product.price || 0),
+      sellingPrice: product.open_to_offers ? 0 : Number(existing.sellingPrice || product.price || 0),
+      listingMode: product.open_to_offers ? "Private Collection / Offer Only" : existing.listingMode || "Standard Sale",
+      minimumAcceptableOffer: wholeAmount(product.minimumAcceptableOffer ?? existing.minimumAcceptableOffer),
       soldPrice: Number(existing.soldPrice || 0)
     });
     if (index === undefined) {
@@ -437,7 +445,9 @@ function draftProductFromFinanceStock(stock, quantity) {
     displayFormat: category === "Records" ? item : "",
     apparelType: category === "Apparel" ? "Accessories" : "",
     condition: String(stock.itemCondition || "").trim(),
-    price: Number(stock.sellingPrice || 0),
+    price: stock.listingMode === "Private Collection / Offer Only" ? 0 : Number(stock.sellingPrice || 0),
+    open_to_offers: stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true,
+    minimumAcceptableOffer: wholeAmount(stock.minimumAcceptableOffer),
     year: new Date().getFullYear(),
     label: "",
     collection: "",
@@ -483,6 +493,8 @@ function draftProductFromFinanceStock(stock, quantity) {
     sizes: product.sizes,
     description: product.description,
     qty: product.qty,
+    open_to_offers: product.open_to_offers === true,
+    minimum_acceptable_offer: wholeAmount(product.minimumAcceptableOffer),
     publish_status: product.publishStatus,
     visibility: product.visibility,
     updated_at: product.updatedAt,
@@ -560,6 +572,13 @@ function recalculateStock(item) {
 
 function normalizedQuantity(value) {
   return Math.max(0, Math.floor(Number(value) || 0));
+}
+
+function wholeAmount(value) {
+  const raw = String(value ?? "").trim();
+  if (!/^\d+$/.test(raw)) return null;
+  const amount = Number(raw);
+  return Number.isSafeInteger(amount) && amount > 0 ? amount : null;
 }
 
 function skuList(values) {

@@ -183,6 +183,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/make-an-offer",
+      "destination": "/index.html"
+    },
+    {
       "source": "/about",
       "destination": "/index.html"
     },

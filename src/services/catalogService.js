@@ -130,6 +130,10 @@ export const catalogService = {
     await adminStore.refreshRequests();
     return adminStore.getSnapshot().requests;
   },
+  async listOffers() {
+    await adminStore.refreshPrivateStore();
+    return adminStore.getSnapshot().offers || [];
+  },
   async listCashflow() {
     return adminStore.getSnapshot().cashflow;
   }

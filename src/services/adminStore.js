@@ -69,6 +69,7 @@ function withDefaults(product) {
     material: product.material || "",
     qty: Number(product.qty ?? 1),
     open_to_offers: product.open_to_offers === true,
+    minimumAcceptableOffer: wholeAmount(product.minimumAcceptableOffer),
     shipping: normalizeShipping(product.shipping)
   };
   return {
@@ -319,6 +320,7 @@ function seed({ publicOnly = !canUsePrivateStore() } = {}) {
     })),
     collections: defaultCollections,
     requests: publicOnly ? [] : clone(requestItems),
+    offers: [],
     orders: publicOnly ? [] : clone(orders),
     cashflow: publicOnly ? [] : clone(cashflow),
     inventory: publicOnly ? [] : clone(inventory)
@@ -372,6 +374,7 @@ function normalizeStoreForSave(store) {
     artists: dedupeStoreArray(store.artists || [], "artists"),
     collections: dedupeStoreArray(store.collections || [], "collections"),
     requests: dedupeStoreArray(store.requests || [], "requests"),
+    offers: dedupeStoreArray(store.offers || [], "offers"),
     orders: dedupeStoreArray(store.orders || [], "orders"),
     cashflow: dedupeStoreArray(store.cashflow || [], "cashflow"),
     inventory: dedupeStoreArray(store.inventory || [], "inventory")
@@ -450,6 +453,7 @@ function mergeStore(seeded, saved, { publicOnly = false } = {}) {
     artists: saved.artists || seeded.artists,
     collections: saved.collections || seeded.collections,
     requests: publicOnly ? [] : saved.requests || seeded.requests,
+    offers: publicOnly ? [] : saved.offers || seeded.offers,
     orders: publicOnly ? [] : saved.orders || seeded.orders,
     cashflow: publicOnly ? [] : saved.cashflow || seeded.cashflow,
     inventory: publicOnly ? [] : saved.inventory || seeded.inventory
@@ -806,6 +810,9 @@ export const adminStore = {
     const collection = data.collection?.trim() || data.label?.trim() || existing?.collection || "";
     const fallbackMaker = category === "Objects" ? "NIXP Objects" : category === "Apparel" ? "NIXP Apparel" : "NIXP";
     const format = isProductCategory ? category.replace(/s$/, "") : data.format?.trim();
+    const openToOffers = data.open_to_offers === true || data.open_to_offers === "true" || data.open_to_offers === "Yes" || data.listingMode === "Private Collection / Offer Only" || (data.open_to_offers === undefined && existing?.open_to_offers === true);
+    const minimumAcceptableOffer = wholeAmount(data.minimumAcceptableOffer ?? existing?.minimumAcceptableOffer);
+    if (openToOffers && !minimumAcceptableOffer) throw new Error("Private Collection items require a Minimum Acceptable Offer in whole rupiah.");
     const product = withDefaults({
       ...existing,
       id,
@@ -855,11 +862,8 @@ export const adminStore = {
       // Optional flag, default false. Only an explicit opt-in here makes a
       // product show "OPEN TO OFFERS" instead of a price; it is never inferred
       // from SOURCE or from a zero price.
-      open_to_offers:
-        data.open_to_offers === true ||
-        data.open_to_offers === "true" ||
-        data.open_to_offers === "Yes" ||
-        (data.open_to_offers === undefined && existing?.open_to_offers === true),
+      open_to_offers: openToOffers,
+      minimumAcceptableOffer: openToOffers ? minimumAcceptableOffer : null,
       shipping: normalizeShipping({
         weightGrams: data.shippingWeightGrams,
         lengthCm: data.shippingLengthCm,
@@ -973,6 +977,21 @@ export const adminStore = {
       requests: store.requests.map((request) => (request.id === id ? { ...request, status } : request))
     });
   },
+  async updateOfferStatus(id, status) {
+    const response = await fetch("/api/catalog?action=offer-status", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id, status })
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Offer status could not be updated.");
+    const snapshot = readStore();
+    const nextOffers = (snapshot.offers || []).map((offer) => offer.id === id ? { ...offer, status } : offer);
+    activeStore = { ...snapshot, offers: nextOffers };
+    activeStoreScope = "admin";
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+    return payload.offer;
+  },
   updateOrderStatus(id, status) {
     const store = readStore();
     return writeStore({
@@ -991,4 +1010,12 @@ function splitList(value) {
 
 function isUsedCondition(value) {
   return String(value || "").trim().toLowerCase().startsWith("used");
+}
+
+function wholeAmount(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const raw = String(value).trim();
+  if (!/^\d+$/.test(raw)) return null;
+  const amount = Number(raw);
+  return Number.isSafeInteger(amount) && amount > 0 ? amount : null;
 }

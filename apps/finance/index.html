@@ -1189,12 +1189,14 @@
                       <th data-sort-section="inventory" data-sort-key="source">Source</th>
                       <th data-sort-section="inventory" data-sort-key="itemType">Item Type</th>
                       <th data-sort-section="inventory" data-sort-key="itemCondition">Item Condition</th>
+                      <th data-sort-section="inventory" data-sort-key="listingMode">Listing</th>
                       <th data-sort-section="inventory" data-sort-key="sku">SKU</th>
                       <th data-sort-section="inventory" data-sort-key="artistName">Artist Name</th>
                       <th class="money" data-sort-section="inventory" data-sort-key="qty">Qty</th>
                       <th class="money" data-sort-section="inventory" data-sort-key="unitCost">Unit cost</th>
                       <th class="money" data-sort-section="inventory" data-sort-key="totalCost">Total</th>
                       <th class="money" data-sort-section="inventory" data-sort-key="cashflowImpact">Cashflow Impact</th>
+                      <th class="money" data-sort-section="inventory" data-sort-key="minimumAcceptableOffer">Minimum Offer</th>
                       <th data-sort-section="inventory" data-sort-key="paymentMethod">Payment</th>
                       <th class="row-actions">Action</th>
                     </tr>
@@ -1361,6 +1363,7 @@
     const inventorySources = ["Business Purchase", "Personal Collection", "Consignment", "Founder Purchase / Awaiting Reimbursement"];
     const itemTypes = ["Vinyl", "CD", "Cassette", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap", "Object"];
     const itemConditions = ["New-Sealed", "New-Unsealed", "Used Excellent", "Used Good"];
+    const listingModes = ["Standard Sale", "Private Collection / Offer Only"];
     const ownerDueCategory = "Owner Personal Use / Reimbursement Due";
     const ownerReimbursementCategory = "Owner Reimbursement";
     const operatingExpenseStartMonth = "2026-11";
@@ -1420,12 +1423,14 @@
         source: { type: "text", value: item => item.source },
         itemType: { type: "text", value: item => item.itemType },
         itemCondition: { type: "text", value: item => item.itemCondition },
+        listingMode: { type: "text", value: item => item.listingMode },
         sku: { type: "text", value: item => item.sku },
         artistName: { type: "text", value: item => item.artistName },
         qty: { type: "number", value: item => item.qty },
         unitCost: { type: "number", value: item => item.unitCost },
         totalCost: { type: "number", value: item => item.totalCost },
         cashflowImpact: { type: "number", value: item => inventoryCashflow(item) },
+        minimumAcceptableOffer: { type: "number", value: item => item.minimumAcceptableOffer },
         paymentMethod: { type: "text", value: item => item.paymentMethod }
       },
       stock: {
@@ -1660,6 +1665,13 @@
       return Number.parseFloat(clean) || 0;
     }
 
+    function wholeAmount(value) {
+      const raw = String(value ?? "").trim();
+      if (!/^\d+$/.test(raw)) return null;
+      const amount = Number(raw);
+      return Number.isSafeInteger(amount) && amount > 0 ? amount : null;
+    }
+
     function rupiah(value) {
       return new Intl.NumberFormat("id-ID", {
         style: "currency",
@@ -1739,12 +1751,14 @@
           ${selectField("Source", "source", inventorySources, true, "Business Purchase")}
           ${selectField("Item Type", "itemType", itemTypes, true, "Vinyl")}
           ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
+          ${selectField("Listing mode", "listingMode", listingModes, true, "Standard Sale")}
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
           ${field("Artist Name", "artistName", "text", "", false, "Artist / creator")}
           ${field("Qty", "qty", "number", "1", true, "", "0.01")}
           ${field("Unit COGS / Landed Cost", "unitCost", "number", "", true, "Per-unit purchase cost", "1")}
           <div class="field full"><p class="tiny">Enter one unit's full landed cost here. This becomes the inventory cost basis used automatically when a paid website order is recorded.</p></div>
           ${field("Cashflow Impact", "cashflowImpact", "number", "", false, "Blank = total cost. Use 0 for owner contribution.", "1")}
+          ${field("Minimum Acceptable Offer (Rp)", "minimumAcceptableOffer", "text", "", false, "Whole rupiah amount")}
           ${selectField("Payment Method", "paymentMethod", paymentMethods, true, "Bank Transfer")}
         </div>
         <input type="hidden" name="editId" value="">
@@ -1768,7 +1782,9 @@
           ${field("Acquisition Month", "acquisitionMonth", "month", currentMonth, true)}
           ${field("Quantity", "qty", "number", "1", true, "", "0.01")}
           ${field("Unit COGS / Landed Cost", "costBasis", "number", "", true, "Per-unit cost basis", "1")}
+          ${selectField("Listing mode", "listingMode", listingModes, true, "Standard Sale")}
           ${field("Unit Selling Price", "sellingPrice", "number", "", false, "0", "1")}
+          ${field("Minimum Acceptable Offer (Rp)", "minimumAcceptableOffer", "text", "", false, "Whole rupiah amount")}
           ${field("Unit Sold Price", "soldPrice", "number", "", false, "0", "1")}
         </div>
         <input type="hidden" name="editId" value="">
@@ -1881,6 +1897,19 @@
       document.getElementById("cancelStockEditBtn").addEventListener("click", () => {
         resetForm(el.stockForm);
         resetStockEditMode();
+      });
+
+      document.querySelectorAll('[name="minimumAcceptableOffer"]').forEach(input => {
+        input.addEventListener("keydown", event => {
+          if (event.key === "," || event.key === ".") event.preventDefault();
+        });
+        input.addEventListener("input", () => {
+          input.value = input.value.replace(/\D/g, "");
+        });
+        input.addEventListener("paste", event => {
+          event.preventDefault();
+          input.value = (event.clipboardData?.getData("text") || "").replace(/\D/g, "");
+        });
       });
 
       [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.salesSearch, el.inventorySearch, el.stockSearch, el.pnlMonth, el.reportMonth].forEach(input => {
@@ -2150,6 +2179,8 @@
           ...item,
           itemType,
           itemCondition,
+          listingMode: listingModes.includes(item.listingMode) ? item.listingMode : "Standard Sale",
+          minimumAcceptableOffer: wholeAmount(item.minimumAcceptableOffer),
           qty,
           unitCost,
           totalCost,
@@ -2204,13 +2235,15 @@
         source: data.source,
         itemType: data.itemType,
         itemCondition: data.itemCondition,
+        listingMode: data.listingMode,
         sku: data.sku.trim(),
         artistName: data.artistName.trim(),
         qty,
         unitCost,
         totalCost,
         cashflowImpact,
-        paymentMethod: data.paymentMethod
+        paymentMethod: data.paymentMethod,
+        minimumAcceptableOffer: wholeAmount(data.minimumAcceptableOffer)
       };
     }
 
@@ -2231,7 +2264,9 @@
         qty: numeric(data.qty),
         costBasis: numeric(data.costBasis),
         sellingPrice: numeric(data.sellingPrice),
-        soldPrice: numeric(data.soldPrice)
+        soldPrice: numeric(data.soldPrice),
+        listingMode: data.listingMode,
+        minimumAcceptableOffer: wholeAmount(data.minimumAcceptableOffer)
       });
     }
 
@@ -2258,6 +2293,7 @@
         sku: purchase.sku,
         item: purchase.itemType || existing.item || purchase.category || "Vinyl",
         itemCondition: purchase.itemCondition || existing.itemCondition || "New-Sealed",
+        listingMode: purchase.listingMode || existing.listingMode || "Standard Sale",
         artist: purchase.artistName || existing.artist || "",
         title: existing.title || "",
         edition: existing.edition || "",
@@ -2268,6 +2304,7 @@
         qty: numeric(purchase.qty) || numeric(existing.qty) || 1,
         costBasis: numeric(purchase.unitCost),
         sellingPrice: numeric(existing.sellingPrice),
+        minimumAcceptableOffer: wholeAmount(purchase.minimumAcceptableOffer ?? existing.minimumAcceptableOffer),
         soldPrice: numeric(existing.soldPrice)
       });
       if (index >= 0) {
@@ -2293,6 +2330,8 @@
         costBasis,
         sellingPrice: numeric(item.sellingPrice),
         soldPrice,
+        listingMode: listingModes.includes(item.listingMode) ? item.listingMode : "Standard Sale",
+        minimumAcceptableOffer: wholeAmount(item.minimumAcceptableOffer),
         grossProfit,
         margin: soldPrice > 0 ? grossProfit / soldPrice * 100 : 0
       };
@@ -2359,11 +2398,13 @@
       setFormValue(el.inventoryForm, "source", item.source || "Business Purchase");
       setFormValue(el.inventoryForm, "itemType", item.itemType || "Vinyl");
       setFormValue(el.inventoryForm, "itemCondition", item.itemCondition || "New-Sealed");
+      setFormValue(el.inventoryForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.inventoryForm, "sku", item.sku);
       setFormValue(el.inventoryForm, "artistName", item.artistName);
       setFormValue(el.inventoryForm, "qty", item.qty);
       setFormValue(el.inventoryForm, "unitCost", item.unitCost);
       setFormValue(el.inventoryForm, "cashflowImpact", inventoryCashflow(item));
+      setFormValue(el.inventoryForm, "minimumAcceptableOffer", item.minimumAcceptableOffer || "");
       setFormValue(el.inventoryForm, "paymentMethod", item.paymentMethod || "Bank Transfer");
       document.getElementById("inventorySubmitBtn").textContent = "Update purchase";
       document.getElementById("cancelInventoryEditBtn").hidden = false;
@@ -2389,6 +2430,7 @@
       setFormValue(el.stockForm, "sku", item.sku);
       setFormValue(el.stockForm, "item", item.item);
       setFormValue(el.stockForm, "itemCondition", item.itemCondition || "New-Sealed");
+      setFormValue(el.stockForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.stockForm, "artist", item.artist);
       setFormValue(el.stockForm, "title", item.title);
       setFormValue(el.stockForm, "edition", item.edition || "");
@@ -2399,6 +2441,7 @@
       setFormValue(el.stockForm, "qty", item.qty || 1);
       setFormValue(el.stockForm, "costBasis", item.costBasis);
       setFormValue(el.stockForm, "sellingPrice", item.sellingPrice);
+      setFormValue(el.stockForm, "minimumAcceptableOffer", item.minimumAcceptableOffer || "");
       setFormValue(el.stockForm, "soldPrice", item.soldPrice);
       document.getElementById("stockSubmitBtn").textContent = "Update stock item";
       document.getElementById("cancelStockEditBtn").hidden = false;
@@ -2683,16 +2726,18 @@
           <td>${escapeHTML(item.source)}</td>
           <td>${escapeHTML(item.itemType || "")}</td>
           <td>${escapeHTML(item.itemCondition || "New-Sealed")}</td>
+          <td>${escapeHTML(item.listingMode || "Standard Sale")}</td>
           <td>${escapeHTML(item.sku)}</td>
           <td>${escapeHTML(item.artistName)}</td>
           <td class="money">${item.qty}</td>
           <td class="money">${rupiah(item.unitCost)}</td>
           <td class="money">${rupiah(item.totalCost)}</td>
           <td class="money">${rupiah(inventoryCashflow(item))}</td>
+          <td class="money">${item.minimumAcceptableOffer ? rupiah(item.minimumAcceptableOffer) : "-"}</td>
           <td>${escapeHTML(item.paymentMethod)}</td>
           <td class="row-actions">${editButton("inventory", item.id)} ${deleteButton("inventory", item.id)}</td>
         </tr>
-      `).join("") : emptyRow(14, "No inventory purchases yet.");
+      `).join("") : emptyRow(16, "No inventory purchases yet.");
       const totals = rows.reduce((total, item) => ({
         qty: total.qty + numeric(item.qty),
         unitCost: total.unitCost + numeric(item.unitCost),
@@ -2701,11 +2746,12 @@
       }), { qty: 0, unitCost: 0, totalCost: 0, cashflowImpact: 0 });
       el.inventoryTotals.innerHTML = `
         <tr>
-          <td colspan="8">Total</td>
+          <td colspan="9">Total</td>
           <td class="money">${totals.qty}</td>
           <td class="money">${rupiah(totals.unitCost)}</td>
           <td class="money">${rupiah(totals.totalCost)}</td>
           <td class="money">${rupiah(totals.cashflowImpact)}</td>
+          <td></td>
           <td></td>
           <td></td>
         </tr>

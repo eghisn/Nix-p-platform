@@ -1,6 +1,6 @@
 import { getSession, json } from "./_lib/auth.js";
-import { sendRequestNotification } from "./_lib/emailNotifications.js";
-import { isSupabaseConfigured, loadStore, upsertRawRows } from "./_lib/supabase.js";
+import { sendOfferNotification, sendRequestNotification } from "./_lib/emailNotifications.js";
+import { isSupabaseConfigured, loadStore, supabaseFetch, upsertRawRows } from "./_lib/supabase.js";
 import { publicProductPath } from "../src/data/publicUrls.js";
 
 export default async function handler(req, res) {
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       return handleLegacyProductRedirect(req, res, url.searchParams.get("id"));
     }
     if (!isSupabaseConfigured()) return json(res, 503, { ok: false, error: "Supabase is not configured." });
-    if (req.method === "POST") return handleRequestItem(req, res);
+    if (req.method === "POST") return handlePostAction(req, res);
     if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
     const privateScope = url.searchParams.get("scope") === "admin";
     const session = privateScope ? getSession(req) : null;
@@ -23,6 +23,14 @@ export default async function handler(req, res) {
   } catch (error) {
     json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Catalog unavailable" });
   }
+}
+
+async function handlePostAction(req, res) {
+  const action = new URL(req.url, "https://nix-p.com").searchParams.get("action");
+  if (action === "request-item") return handleRequestItem(req, res);
+  if (action === "make-offer") return handleMakeOffer(req, res);
+  if (action === "offer-status") return handleOfferStatus(req, res);
+  return json(res, 404, { ok: false, error: "Unknown catalog action." });
 }
 
 function catalogJson(res, status, payload, { privateScope = false } = {}) {
@@ -79,6 +87,89 @@ async function handleRequestItem(req, res) {
   return json(res, 201, { ok: true, request, notification });
 }
 
+async function handleMakeOffer(req, res) {
+  if (!isTrustedOrigin(req)) return json(res, 403, { ok: false, error: "Offer origin is not allowed." });
+  const body = parseBody(req.body);
+  if (String(body.company || "").trim()) return json(res, 400, { ok: false, error: "Offer could not be submitted." });
+  const productId = cleanText(body.productId, 160);
+  const productRows = await supabaseFetch(`products?select=*&id=eq.${encodeURIComponent(productId)}`, { service: true });
+  const product = Array.isArray(productRows) ? productRows[0] : null;
+  if (!product) {
+    const error = new Error("This item was not found.");
+    error.statusCode = 404;
+    throw error;
+  }
+  const raw = product?.raw || {};
+  const openToOffers = product?.open_to_offers === true || raw.open_to_offers === true;
+  if (!openToOffers) {
+    const error = new Error("This item is not currently open for offers.");
+    error.statusCode = 404;
+    throw error;
+  }
+  const minimum = integerAmount(product?.minimum_acceptable_offer ?? raw.minimumAcceptableOffer, "Minimum Acceptable Offer is not configured.");
+  if (!minimum) {
+    const error = new Error("This item is not currently open for offers.");
+    error.statusCode = 404;
+    throw error;
+  }
+  const name = cleanText(body.name, 160);
+  const email = cleanText(body.email, 254).toLowerCase();
+  const mobilePhone = cleanText(body.mobilePhone, 48);
+  const offerAmount = integerAmount(body.offerAmount, "Enter a whole-number offer in rupiah.");
+  if (!name || !isEmail(email) || !mobilePhone) {
+    const error = new Error("Name, valid email, and mobile phone are required.");
+    error.statusCode = 400;
+    throw error;
+  }
+  if (offerAmount < minimum) {
+    const error = new Error(`Offer must be at least ${formatRupiah(minimum)}.`);
+    error.statusCode = 422;
+    throw error;
+  }
+  const offer = {
+    id: `offer-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    productId,
+    sku: cleanText(product.sku, 100),
+    artistName: cleanText(product.artist, 160),
+    itemName: cleanText(product.title, 160),
+    name,
+    email,
+    mobilePhone,
+    offerAmount,
+    minimumAcceptableOffer: minimum,
+    status: "New",
+    createdAt: new Date().toISOString()
+  };
+  await upsertRawRows("offers", offer);
+  const notification = await sendOfferNotification(offer).catch((error) => ({
+    delivered: false,
+    error: error instanceof Error ? error.message : "Notification delivery failed."
+  }));
+  if (!notification.delivered) console.warn("Offer notification not delivered", { offerId: offer.id, reason: notification.reason || notification.error || "unknown" });
+  return json(res, 201, { ok: true, offer: { ...offer, notification: undefined }, notification });
+}
+
+async function handleOfferStatus(req, res) {
+  const session = getSession(req);
+  if (session?.workspace !== "admin" && session?.workspace !== "finance") return json(res, 401, { ok: false, error: "Private workspace login required." });
+  const body = parseBody(req.body);
+  const id = cleanText(body.id, 160);
+  const status = cleanText(body.status, 32);
+  const allowed = new Set(["New", "Reviewing", "Contacting", "Accepted", "Declined", "Closed"]);
+  if (!id || !allowed.has(status)) return json(res, 400, { ok: false, error: "Offer status is invalid." });
+  const currentRows = await supabaseFetch(`offers?select=*&id=eq.${encodeURIComponent(id)}`, { service: true });
+  const current = Array.isArray(currentRows) ? currentRows[0] : null;
+  if (!current) return json(res, 404, { ok: false, error: "Offer not found." });
+  const raw = { ...(current.raw || {}), status, updatedAt: new Date().toISOString() };
+  const updated = await supabaseFetch(`offers?id=eq.${encodeURIComponent(id)}`, {
+    method: "PATCH",
+    service: true,
+    body: { status, raw, updated_at: raw.updatedAt },
+    prefer: "return=representation"
+  });
+  return json(res, 200, { ok: true, offer: updated?.[0]?.raw || { ...raw, id } });
+}
+
 function parseBody(body) {
   try {
     return typeof body === "string" ? JSON.parse(body || "{}") : body || {};
@@ -120,6 +211,26 @@ function cleanText(value, limit) {
 
 function isEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function integerAmount(value, message) {
+  const raw = String(value ?? "").trim();
+  if (!/^\d+$/.test(raw)) {
+    const error = new Error(message);
+    error.statusCode = 400;
+    throw error;
+  }
+  const parsed = Number(raw);
+  if (!Number.isSafeInteger(parsed) || parsed <= 0) {
+    const error = new Error(message);
+    error.statusCode = 400;
+    throw error;
+  }
+  return parsed;
+}
+
+function formatRupiah(value) {
+  return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(value);
 }
 
 function isTrustedOrigin(req) {

@@ -56,6 +56,7 @@ const state = {
     collections: "sort",
     requests: "status",
     orders: "date",
+    offers: "date",
     preview: "artist"
   }
 };
@@ -179,6 +180,7 @@ const routes = {
   "/artists": artistsPage,
   "/blog": blogPage,
   "/request-item": requestItemPage,
+  "/make-an-offer": makeOfferPage,
   "/about": aboutPage,
   "/contact": contactPage,
   "/shipping-returns": shippingReturnsPage,
@@ -292,6 +294,7 @@ function updateDocumentTitle(path) {
     "/artists": "Artists | NIXP",
     "/blog": "Blog | NIXP",
     "/request-item": "Request Item | NIXP",
+    "/make-an-offer": "Make an Offer | NIXP",
     "/about": "About | NIXP",
     "/contact": "Contact | NIXP",
     "/cart": "Cart | NIXP"
@@ -512,6 +515,7 @@ async function productDetailMarkup(product) {
   const isRecord = product.category === "Records";
   const isUsedRecord = isRecord && String(product.condition || "").toLowerCase().startsWith("used");
   const isSoldOut = totalProductStock(product) <= 0;
+  const isOfferOnly = product.open_to_offers === true;
   const galleryImages = productImages(product);
   const isSizedProduct = (product.category === "Apparel" || product.category === "Objects") && product.sizes?.length;
   const selectedSize =
@@ -538,7 +542,7 @@ async function productDetailMarkup(product) {
         <a class="back-link" href="/${publicCategoryPath(product)}" data-link>${product.category}</a>
         <p class="eyebrow">${product.artist}</p>
         <h1>${product.title}</h1>
-        <div class="detail-price">${money.format(product.price)}</div>
+        <div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : money.format(product.price)}</div>
         <p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>
         ${productReviewMarkup(product)}
         ${
@@ -568,8 +572,10 @@ async function productDetailMarkup(product) {
             : ""
         }
         <div class="detail-actions">
-          <button class="button button-dark" type="button" data-add-cart="${product.id}" ${isSoldOut ? "disabled" : ""}>${isSoldOut ? "Sold out" : "Add to cart"}</button>
-          <a class="button button-outline" href="/request-item" data-link>Request similar</a>
+          ${isOfferOnly
+            ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>`
+            : `<button class="button button-dark" type="button" data-add-cart="${product.id}" ${isSoldOut ? "disabled" : ""}>${isSoldOut ? "Sold out" : "Add to cart"}</button>
+               <a class="button button-outline" href="/request-item" data-link>Request similar</a>`}
         </div>
         <dl class="detail-list">
           ${
@@ -643,6 +649,33 @@ async function artistProductsPage(path) {
         <span>${artist}</span>
       </div>
       ${productGrid(products, { availableArtistNames })}
+    </section>
+  `;
+}
+
+async function makeOfferPage() {
+  const productId = new URLSearchParams(location.search).get("product") || "";
+  const product = productId ? await catalogService.getProduct(productId) : null;
+  if (!product || product.open_to_offers !== true) return notFoundPage();
+  return `
+    <section class="section form-layout offer-page">
+      <form class="request-form offer-form" data-offer-form data-product-id="${escapeAttr(product.id)}">
+        <p class="eyebrow">Private Collection</p>
+        <h1>Make an Offer</h1>
+        <p class="form-intro"><strong>${escapeHtml(product.artist)} / ${escapeHtml(product.title)}</strong><br>Submit your offer in whole rupiah. NIXP will review it before confirming availability.</p>
+        <label>Name<input name="name" required autocomplete="name" /></label>
+        <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+        <label>Mobile phone<input name="mobilePhone" type="tel" required autocomplete="tel" /></label>
+        <label>Offer amount (Rp)<input name="offerAmount" type="text" inputmode="numeric" pattern="[0-9]+" autocomplete="off" required data-whole-rupiah-offer /></label>
+        <input class="request-honeypot" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="button button-dark" type="submit">Submit Offer</button>
+        <p class="form-message" data-offer-message aria-live="polite"></p>
+      </form>
+      <aside class="status-panel">
+        <p class="eyebrow">How it works</p>
+        <p>NIXP will review your offer and contact you by email to confirm whether it is accepted.</p>
+        <a class="button button-outline" href="${publicProductPath(product)}" data-link>Back to item</a>
+      </aside>
     </section>
   `;
 }
@@ -1163,12 +1196,13 @@ async function adminDashboardPage() {
 }
 
 async function adminEditorPage() {
-  const [products, artists, collections, requests, orders] = await Promise.all([
+  const [products, artists, collections, requests, orders, offers] = await Promise.all([
     safeAdminValue(catalogService.listAllProducts(), []),
     safeAdminValue(catalogService.listAdminArtists(), []),
     safeAdminValue(catalogService.listCollections(), []),
     safeAdminValue(catalogService.listRequests(), []),
-    safeAdminValue(catalogService.listOrders(), [])
+    safeAdminValue(catalogService.listOrders(), []),
+    safeAdminValue(catalogService.listOffers(), [])
   ]);
   const drafts = products.filter((product) => product.publishStatus !== "Published").length;
   let deployStatus = null;
@@ -1188,6 +1222,7 @@ async function adminEditorPage() {
     collectionsSection,
     requestsSection,
     ordersSection,
+    offersSection,
     previewSection
   ] = await Promise.all([
     safeAdminSection("Products", () => adminProductsPage({ embedded: true })),
@@ -1197,6 +1232,7 @@ async function adminEditorPage() {
     safeAdminSection("Collections", () => adminCollectionsPage({ embedded: true })),
     safeAdminSection("Requests", () => adminRequestsPage({ embedded: true })),
     safeAdminSection("Orders", () => ordersPage({ embedded: true })),
+    safeAdminSection("Offers", () => adminOffersPage({ embedded: true })),
     safeAdminSection("Preview", () => adminPreviewPage({ embedded: true }))
   ]);
   return `
@@ -1206,6 +1242,7 @@ async function adminEditorPage() {
       ${metric("Drafts", drafts)}
       ${metric("Requests", requests.length)}
       ${metric("Orders", orders.length)}
+      ${metric("Offers", offers.length)}
       <form class="editor-deploy-panel" data-admin-deploy-form>
         <div>
           <strong>Deploy</strong>
@@ -1223,6 +1260,7 @@ async function adminEditorPage() {
         <a href="#editor-collections">Collections</a>
         <a href="#editor-requests">Requests</a>
         <a href="#editor-orders">Orders</a>
+        <a href="#editor-offers">Offers</a>
         <a href="#editor-preview">Preview</a>
       </nav>
     </section>
@@ -1282,9 +1320,17 @@ async function adminEditorPage() {
       </div>
       ${ordersSection}
     </section>
-    <section class="section editor-section" id="editor-preview">
+    <section class="section editor-section" id="editor-offers">
       <div class="editor-section-head">
         <span>08</span>
+        <h2>Offers</h2>
+        <p>Review Private Collection offers, then contact the interested person by email.</p>
+      </div>
+      ${offersSection}
+    </section>
+    <section class="section editor-section" id="editor-preview">
+      <div class="editor-section-head">
+        <span>09</span>
         <h2>Preview</h2>
         <p>Open draft previews before publishing them to the public storefront.</p>
       </div>
@@ -1399,7 +1445,11 @@ async function adminProductsPage({ embedded = false } = {}) {
             ${input("mediaCondition", "Media condition", product.mediaCondition || "", "Grade the disc, record, or tape")}
             ${input("sleeveCondition", "Sleeve condition", product.sleeveCondition || "", "Grade the sleeve or case")}
           </div>
-          ${input("price", "Price IDR", product.price || "", "640000", "number")}
+          ${select("listingMode", "Listing mode", ["Standard Sale", "Private Collection / Offer Only"], product.open_to_offers ? "Private Collection / Offer Only" : "Standard Sale")}
+          ${input("price", "Price IDR", product.open_to_offers ? "" : product.price || "", "640000", "number")}
+          <div data-admin-offer-field ${product.open_to_offers ? "" : "hidden"}>
+            ${input("minimumAcceptableOffer", "Minimum Acceptable Offer (Rp)", product.minimumAcceptableOffer || "", "Whole rupiah amount", "text")}
+          </div>
           ${input("year", "Year", product.year || new Date().getFullYear(), "2026", "number")}
           ${input("label", "Label", product.label || "", "NIXP Selection")}
           ${input("qty", "Quantity", product.qty ?? 1, "1", "number")}
@@ -1849,6 +1899,51 @@ function adminHero(title, text) {
 
 function metric(label, value) {
   return `<article class="metric"><span>${label}</span><strong>${value}</strong></article>`;
+}
+
+async function adminOffersPage({ embedded = false } = {}) {
+  const offers = await catalogService.listOffers();
+  const visibleOffers = sortItems(
+    filterItems(offers, "offers", (offer) => [
+      offer.id,
+      offer.sku,
+      offer.artistName,
+      offer.itemName,
+      offer.name,
+      offer.email,
+      offer.status,
+      offer.offerAmount
+    ]),
+    state.adminSort.offers,
+    {
+      date: (offer) => offer.createdAt || "",
+      amount: (offer) => Number(offer.offerAmount || 0),
+      status: (offer) => offer.status || "",
+      item: (offer) => offer.itemName || ""
+    }
+  );
+  return `
+    ${embedded ? "" : adminHero("Private Collection Offers", "Review offers and contact interested people manually.")}
+    <div>
+      ${adminListControls("offers", "Search offers, SKU, item, customer, email", [
+        ["status", "Status"],
+        ["date", "Newest"],
+        ["amount", "Offer amount"],
+        ["item", "Item"]
+      ])}
+      ${table(
+        ["Received", "Product", "Interested person", "Offer", "Minimum", "Status"],
+        visibleOffers.map((offer) => [
+          escapeHtml(String(offer.createdAt || "").slice(0, 16).replace("T", " ")),
+          `<strong>${escapeHtml(offer.artistName || "")}</strong><br><small>${escapeHtml(offer.itemName || "")} / ${escapeHtml(offer.sku || "")}</small>`,
+          `${escapeHtml(offer.name || "")}<br><small>${escapeHtml(offer.email || "")}<br>${escapeHtml(offer.mobilePhone || "")}</small>`,
+          money.format(Number(offer.offerAmount || 0)),
+          money.format(Number(offer.minimumAcceptableOffer || 0)),
+          statusSelect("offer", offer.id, offer.status || "New", ["New", "Reviewing", "Contacting", "Accepted", "Declined", "Closed"])
+        ])
+      )}
+    </div>
+  `;
 }
 
 function orderPackageBreakdownMarkup(order) {
@@ -2910,6 +3005,21 @@ function bindEvents() {
     }
   });
 
+  const listingModeSelect = document.querySelector("[data-admin-product-form] select[name='listingMode']");
+  const syncOfferOnlyFields = (select) => {
+    const form = select.closest("[data-admin-product-form]");
+    const offerOnly = select.value === "Private Collection / Offer Only";
+    const offerField = form.querySelector("[data-admin-offer-field]");
+    const priceField = form.elements.price;
+    if (offerField) offerField.hidden = !offerOnly;
+    if (priceField) {
+      priceField.disabled = offerOnly;
+      if (offerOnly) priceField.value = "";
+    }
+  };
+  listingModeSelect?.addEventListener("change", (event) => syncOfferOnlyFields(event.currentTarget));
+  if (listingModeSelect) syncOfferOnlyFields(listingModeSelect);
+
   document.querySelector("[data-admin-product-form] select[name='condition']")?.addEventListener("change", (event) => {
     const form = event.currentTarget.closest("[data-admin-product-form]");
     const isRecord = form.elements.category.value === "Records";
@@ -3073,14 +3183,22 @@ function bindEvents() {
   });
 
   document.querySelectorAll("[data-admin-status]").forEach((selectEl) => {
-    selectEl.addEventListener("change", () => {
+    selectEl.addEventListener("change", async () => {
       if (selectEl.dataset.adminStatus === "request") {
         adminStore.updateRequestStatus(selectEl.dataset.id, selectEl.value);
       }
       if (selectEl.dataset.adminStatus === "order") {
         adminStore.updateOrderStatus(selectEl.dataset.id, selectEl.value);
       }
-      render();
+      if (selectEl.dataset.adminStatus === "offer") {
+        selectEl.disabled = true;
+        try {
+          await adminStore.updateOfferStatus(selectEl.dataset.id, selectEl.value);
+        } catch (error) {
+          window.alert(error instanceof Error ? error.message : "Offer status could not be updated.");
+        }
+      }
+      await render({ preserveScroll: true });
     });
   });
 
@@ -3110,6 +3228,52 @@ function bindEvents() {
       state.requestNotice = error instanceof Error ? error.message : "Request could not be submitted.";
       state.requestNoticeTone = "error";
       await render({ preserveScroll: true });
+    }
+  });
+
+  document.querySelectorAll("[data-whole-rupiah-offer], [name='minimumAcceptableOffer']").forEach((input) => {
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "," || event.key === ".") event.preventDefault();
+    });
+    input.addEventListener("input", () => {
+      input.value = input.value.replace(/\D/g, "");
+    });
+    input.addEventListener("paste", (event) => {
+      event.preventDefault();
+      input.value = (event.clipboardData?.getData("text") || "").replace(/\D/g, "");
+    });
+  });
+
+  document.querySelector("[data-offer-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector('button[type="submit"]');
+    const message = form.querySelector("[data-offer-message]");
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.productId = form.dataset.productId;
+    if (!/^\d+$/.test(String(data.offerAmount || "").trim())) {
+      message.textContent = "Enter a whole-number offer in rupiah without commas or periods.";
+      message.dataset.tone = "error";
+      return;
+    }
+    button.disabled = true;
+    message.textContent = "Submitting offer...";
+    message.dataset.tone = "";
+    try {
+      const response = await fetch("/api/catalog?action=make-offer", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Offer could not be submitted.");
+      form.reset();
+      message.textContent = "Offer submitted. NIXP will contact you by email after review.";
+      message.dataset.tone = "success";
+    } catch (error) {
+      message.textContent = error instanceof Error ? error.message : "Offer could not be submitted.";
+      message.dataset.tone = "error";
+      button.disabled = false;
     }
   });
 }

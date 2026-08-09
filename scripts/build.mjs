@@ -74,6 +74,7 @@ const staticRoutes = [
   "artists",
   "blog",
   "request-item",
+  "make-an-offer",
   "about",
   "contact",
   "shipping-returns",
@@ -279,6 +280,7 @@ function staticProductDetailMarkup(product) {
   const isRecord = product.category === "Records";
   const isApparel = product.category === "Apparel";
   const soldOut = Number(product.qty || 0) <= 0;
+  const isOfferOnly = product.open_to_offers === true;
   const availableArtistNames = inventoryArtistMap(publicProducts);
   const relatedMarkup = product.category === "Records" && Array.isArray(product.relatedArtists) && product.relatedArtists.length
     ? `<div class="related-artist-tags" aria-label="Related artists">${product.relatedArtists
@@ -306,7 +308,7 @@ function staticProductDetailMarkup(product) {
   const recommended = isRecord ? recommendedProducts(product, publicProducts) : [];
   const detail = `<section class="product-detail"><div class="detail-gallery">${images
     .map((image, index) => `<figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""} ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>`)
-    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}${relatedMarkup}<div class="detail-actions"><button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button><a class="button button-outline" href="/request-item">Request similar</a></div><dl class="detail-list">${details}</dl></aside></section>`;
+    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}${relatedMarkup}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button><a class="button button-outline" href="/request-item">Request similar</a>`}</div><dl class="detail-list">${details}</dl></aside></section>`;
   return `${detail}${recommended.length ? `<section class="section shop-section">${productGrid(recommended, { availableArtistNames })}</section>` : ""}`;
 }
 
@@ -315,7 +317,9 @@ function productDocument(product) {
   const image = absoluteUrl(product.image || product.images?.[0]);
   const price = formatPrice(product.price);
   const format = product.displayFormat || product.format || "Product";
-  const description = `${product.artist} - ${product.title}. ${format}${product.condition ? ` / ${product.condition}` : ""}. ${price}.`;
+  const description = product.open_to_offers
+    ? `${product.artist} - ${product.title}. Private Collection item available by offer. Minimum Acceptable Offer is reviewed by NIXP after submission.`
+    : `${product.artist} - ${product.title}. ${format}${product.condition ? ` / ${product.condition}` : ""}. ${price}.`;
   const inStock = productQuantity(product) > 0;
   const barcode = String(product.barcode || "").replace(/\D/g, "");
   const itemCondition = /^used\b/i.test(String(product.condition || "")) ? "UsedCondition" : "NewCondition";
@@ -331,15 +335,17 @@ function productDocument(product) {
     ...(barcode.length === 13 ? { gtin13: barcode } : {}),
     ...(barcode.length === 12 ? { gtin12: barcode } : {}),
     ...(product.catalogNumber ? { mpn: product.catalogNumber } : {}),
-    offers: {
-      "@type": "Offer",
-      url,
-      priceCurrency: "IDR",
-      price: Number(product.price || 0),
-      availability: `https://schema.org/${inStock ? "InStock" : "OutOfStock"}`,
-      itemCondition: `https://schema.org/${itemCondition}`,
-      seller: { "@type": "Organization", name: "NIXP", url: `${siteOrigin}/` }
-    }
+    ...(product.open_to_offers ? {} : {
+      offers: {
+        "@type": "Offer",
+        url,
+        priceCurrency: "IDR",
+        price: Number(product.price || 0),
+        availability: `https://schema.org/${inStock ? "InStock" : "OutOfStock"}`,
+        itemCondition: `https://schema.org/${itemCondition}`,
+        seller: { "@type": "Organization", name: "NIXP", url: `${siteOrigin}/` }
+      }
+    })
   };
   return routeDocument({
     title: `${product.artist} - ${product.title} | NIXP`,
@@ -435,6 +441,9 @@ function staticPublicRouteMarkup(route) {
       </aside>
     </section>`;
   }
+  if (route === "make-an-offer") {
+    return `<section class="section editorial-page"><div class="editorial-shell"><h1>Make an Offer</h1><p>Select a Private Collection item to submit an offer.</p></div></section>`;
+  }
   if (route === "about") {
     return `<section class="section editorial-page">
       <div class="editorial-shell">
@@ -511,6 +520,7 @@ function staticRouteTitle(route) {
     publishing: "Publishing",
     blog: "Blog",
     "request-item": "Request Item",
+    "make-an-offer": "Make an Offer",
     about: "About",
     contact: "Contact",
     "shipping-returns": "Shipping & Returns",
@@ -673,6 +683,7 @@ const crawlableRoutes = [
   "artists",
   "blog",
   "request-item",
+  "make-an-offer",
   "about",
   "contact",
   "shipping-returns",

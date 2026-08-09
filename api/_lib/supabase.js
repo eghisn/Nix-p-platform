@@ -1,7 +1,7 @@
 import { syncAdminCatalogInventory, syncAdminProductInventory } from "./financeState.js";
 
-const TABLES = ["products", "artists", "collections", "requests", "orders", "cashflow", "inventory"];
-const REQUIRED_STORE_ARRAYS = ["products", "artists", "collections", "requests", "orders", "cashflow", "inventory"];
+const TABLES = ["products", "artists", "collections", "requests", "offers", "orders", "cashflow", "inventory"];
+const REQUIRED_STORE_ARRAYS = ["products", "artists", "collections", "requests", "offers", "orders", "cashflow", "inventory"];
 
 export function isSupabaseConfigured({ requireServiceRole = false } = {}) {
   return Boolean(
@@ -39,7 +39,7 @@ export async function supabaseFetch(path, options = {}) {
 }
 
 export async function loadStore({ privateScope = false, publicSnapshotUrl = "" } = {}) {
-  const [products, artists, collections, requests, orders, cashflow, inventory] = await Promise.all([
+  const [products, artists, collections, requests, offers, orders, cashflow, inventory] = await Promise.all([
     supabaseFetch(
       privateScope
         ? "products?select=*&order=created_at.desc"
@@ -48,6 +48,7 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
     supabaseFetch(privateScope ? "artists?select=*&order=sort.asc" : "artists?select=*&status=eq.Published&order=sort.asc"),
     supabaseFetch(privateScope ? "collections?select=*&order=sort.asc" : "collections?select=*&status=eq.Published&order=sort.asc"),
     privateScope ? supabaseFetch("requests?select=*&order=created_at.desc", { service: true }) : [],
+    privateScope ? supabaseFetch("offers?select=*&order=created_at.desc", { service: true }) : [],
     privateScope ? supabaseFetch("orders?select=*&order=created_at.desc", { service: true }) : [],
     privateScope ? supabaseFetch("cashflow?select=*&order=created_at.desc", { service: true }) : [],
     privateScope ? supabaseFetch("inventory?select=*&order=created_at.desc", { service: true }) : []
@@ -61,6 +62,7 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
     artists: artists.map(fromRawRow),
     collections: collections.map(fromRawRow),
     requests: requests.map(fromRawRow),
+    offers: offers.map(fromRawRow),
     orders: orders.map(fromRawRow),
     cashflow: cashflow.map(fromRawRow),
     inventory: inventory.map(fromRawRow)
@@ -157,6 +159,7 @@ export async function saveStore(store, { inventoryProduct = null, syncCatalogPro
     artists: (store.artists || []).map((item, index) => toRawRow(item, "artists", index)),
     collections: (store.collections || []).map((item, index) => toRawRow(item, "collections", index)),
     requests: (store.requests || []).map((item, index) => toRawRow(item, "requests", index)),
+    offers: (store.offers || []).map((item, index) => toRawRow(item, "offers", index)),
     orders: (store.orders || []).map((item, index) => toRawRow(item, "orders", index)),
     cashflow: (store.cashflow || []).map((item, index) => toRawRow(item, "cashflow", index)),
     inventory: (store.inventory || []).map((item, index) => toRawRow(item, "inventory", index))
@@ -232,6 +235,10 @@ function fromProductRow(row, { privateScope = false } = {}) {
     sizes: row.sizes || [],
     description: row.description || "",
     qty: row.qty,
+    open_to_offers: row.open_to_offers === true || row.raw?.open_to_offers === true,
+    minimumAcceptableOffer: Number.isFinite(Number(row.minimum_acceptable_offer ?? row.raw?.minimumAcceptableOffer))
+      ? Math.max(0, Number(row.minimum_acceptable_offer ?? row.raw?.minimumAcceptableOffer))
+      : null,
     publishStatus: row.publish_status,
     visibility: row.visibility,
     updatedAt: row.updated_at
@@ -303,6 +310,11 @@ function toProductRow(product) {
     sizes: product.sizes || [],
     description: product.description || "",
     qty: Number(product.qty || 0),
+    open_to_offers: product.open_to_offers === true,
+    minimum_acceptable_offer:
+      product.minimumAcceptableOffer === null || product.minimumAcceptableOffer === undefined || product.minimumAcceptableOffer === ""
+        ? null
+        : Math.max(0, Math.floor(Number(product.minimumAcceptableOffer) || 0)),
     publish_status: product.publishStatus || "Published",
     visibility: product.visibility || "Public",
     updated_at: product.updatedAt || new Date().toISOString().slice(0, 10),

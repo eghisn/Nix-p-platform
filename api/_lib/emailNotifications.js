@@ -14,6 +14,16 @@ export async function sendRequestNotification(request) {
   });
 }
 
+export async function sendOfferNotification(offer) {
+  return sendNotificationEmail({
+    subject: `NIXP offer: ${offer.artistName} - ${offer.itemName}`,
+    replyTo: offer.email,
+    text: offerEmailText(offer),
+    html: offerEmailHtml(offer),
+    idempotencyKey: `offer-notification-${offer.id}`
+  });
+}
+
 export async function sendOrderNotification(order, customer = {}) {
   return sendNotificationEmail({
     subject: `NIXP order: ${order.id} - ${rupiah(order.total)}`,
@@ -302,6 +312,27 @@ function requestEmailText(request) {
 
 function requestEmailHtml(request) {
   return `<h1>New NIXP request item</h1><p><strong>Artist:</strong> ${escapeHtml(request.artistName)}<br><strong>Title / item:</strong> ${escapeHtml(request.itemName)}<br><strong>Format:</strong> ${escapeHtml(request.format)}<br><strong>Email:</strong> ${escapeHtml(request.email)}<br><strong>WhatsApp:</strong> ${escapeHtml(request.whatsapp || "Not provided")}<br><strong>Notes:</strong> ${escapeHtml(request.notes || "None")}<br><strong>Request ID:</strong> ${escapeHtml(request.id)}</p>`;
+}
+
+function offerEmailText(offer) {
+  return [
+    "New NIXP Private Collection offer",
+    `Artist: ${offer.artistName}`,
+    `Title / item: ${offer.itemName}`,
+    `SKU: ${offer.sku}`,
+    `Offer: ${rupiah(offer.offerAmount)}`,
+    `Minimum Acceptable Offer: ${rupiah(offer.minimumAcceptableOffer)}`,
+    `Name: ${offer.name}`,
+    `Email: ${offer.email}`,
+    `Mobile phone: ${offer.mobilePhone}`,
+    "",
+    "Review the offer in the NIXP Admin and contact the interested person by email.",
+    `Offer ID: ${offer.id}`
+  ].join("\n");
+}
+
+function offerEmailHtml(offer) {
+  return `<h1>New NIXP Private Collection offer</h1><p><strong>Artist:</strong> ${escapeHtml(offer.artistName)}<br><strong>Title / item:</strong> ${escapeHtml(offer.itemName)}<br><strong>SKU:</strong> ${escapeHtml(offer.sku)}<br><strong>Offer:</strong> ${escapeHtml(rupiah(offer.offerAmount))}<br><strong>Minimum Acceptable Offer:</strong> ${escapeHtml(rupiah(offer.minimumAcceptableOffer))}<br><strong>Name:</strong> ${escapeHtml(offer.name)}<br><strong>Email:</strong> ${escapeHtml(offer.email)}<br><strong>Mobile phone:</strong> ${escapeHtml(offer.mobilePhone)}</p><p>Review this offer in the NIXP Admin and contact the interested person by email.</p><p><strong>Offer ID:</strong> ${escapeHtml(offer.id)}</p>`;
 }
 
 function orderEmailText(order, customer) {

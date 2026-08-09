@@ -149,6 +149,7 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
   const href = hrefFor ? hrefFor(product) : publicProductPath(product);
   const soldOut = productQuantity(product) <= 0;
+  const isOfferOnly = product.open_to_offers === true;
   const labelLink =
     product.category === "Records" && product.label
       ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${canonicalLabelName(product.label)}</a>`
@@ -170,9 +171,11 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
         ${recordArtistTags(product, availableArtistNames)}
         <div class="row-between">
           <span>${meta}</span>
-          <strong>${idr.format(product.price)}</strong>
+          <strong>${isOfferOnly ? "Offer only" : idr.format(product.price)}</strong>
         </div>
-        <button class="button button-outline" type="button" data-add-cart="${product.id}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>
+        ${isOfferOnly
+          ? `<a class="button button-outline" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>`
+          : `<button class="button button-outline" type="button" data-add-cart="${product.id}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>`}
       </div>
     </article>
   `;
