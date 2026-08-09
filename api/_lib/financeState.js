@@ -62,14 +62,14 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
-  if (syncCatalog) await syncFinanceInventoryToCatalog(normalized);
+  if (syncCatalog) await syncFinanceInventoryToCatalog(normalized, { enrich: false });
   return normalized;
 }
 
 // Finance is the source of truth for SKU stock. Complete record entries pass
 // through catalog enrichment before publication; ambiguous editions remain
 // visible in Admin with a precise enrichment status.
-export async function syncFinanceInventoryToCatalog(state) {
+export async function syncFinanceInventoryToCatalog(state, { enrich = true } = {}) {
   const stockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
   const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
   const [existingRows, catalogArtistRows] = await Promise.all([
@@ -87,7 +87,7 @@ export async function syncFinanceInventoryToCatalog(state) {
     const quantity = normalizedQuantity(stock.qty);
     if (existing) {
       const financeProduct = productRowFromFinanceStock(existing, stock, quantity);
-      const resolvedProduct = needsFinanceEnrichment(existing, stock)
+      const resolvedProduct = enrich && needsFinanceEnrichment(existing, stock)
           ? await enrichFinanceCatalogProduct(financeProduct, stock, { catalogArtists: catalogArtistRows })
           : financeProduct;
       productRows.push(
@@ -103,7 +103,7 @@ export async function syncFinanceInventoryToCatalog(state) {
     }
     const product = draftProductFromFinanceStock(stock, quantity);
     productRows.push(
-      withSyncAudit(await enrichFinanceCatalogProduct(product, stock, { catalogArtists: catalogArtistRows }), {
+      withSyncAudit(enrich ? await enrichFinanceCatalogProduct(product, stock, { catalogArtists: catalogArtistRows }) : product, {
         source: "Finance",
         action: "Inventory created catalog item",
         sku,
