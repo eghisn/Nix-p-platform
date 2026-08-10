@@ -2,12 +2,16 @@ import { getSession, json } from "./_lib/auth.js";
 import { sendOfferNotification, sendRequestNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, loadStore, supabaseFetch, upsertRawRows } from "./_lib/supabase.js";
 import { publicProductPath } from "../src/data/publicUrls.js";
+import { renderCatalogPage } from "./_lib/catalogPage.js";
 
 export default async function handler(req, res) {
   try {
     const url = new URL(req.url, "https://nix-p.com");
     if (req.method === "GET" && url.searchParams.get("action") === "product-redirect") {
       return await handleLegacyProductRedirect(req, res, url.searchParams.get("id"));
+    }
+    if (req.method === "GET" && url.searchParams.get("action") === "catalog-page") {
+      return await renderCatalogPage(req, res, url);
     }
     if (!isSupabaseConfigured()) return json(res, 503, { ok: false, error: "Supabase is not configured." });
     if (req.method === "POST") return await handlePostAction(req, res);

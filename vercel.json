@@ -7,7 +7,7 @@
     "api/finance-app.js": {
       "includeFiles": "apps/finance/index.html"
     },
-    "api/catalog-page.js": {
+    "api/catalog.js": {
       "includeFiles": "index.html"
     }
   },
@@ -123,23 +123,23 @@
     },
     {
       "source": "/records/:path*",
-      "destination": "/api/catalog-page?catalogPath=/records/:path*"
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/records/:path*"
     },
     {
       "source": "/objects/:path*",
-      "destination": "/api/catalog-page?catalogPath=/objects/:path*"
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/objects/:path*"
     },
     {
       "source": "/apparel/:path*",
-      "destination": "/api/catalog-page?catalogPath=/apparel/:path*"
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/apparel/:path*"
     },
     {
       "source": "/accessories/:path*",
-      "destination": "/api/catalog-page?catalogPath=/accessories/:path*"
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/accessories/:path*"
     },
     {
       "source": "/publishing/:path*",
-      "destination": "/api/catalog-page?catalogPath=/publishing/:path*"
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/publishing/:path*"
     },
     {
       "source": "/artists/:path*",

@@ -1,28 +1,26 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { shell } from "../src/components/layout.js";
-import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
-import { loadStore } from "./_lib/supabase.js";
+import { shell } from "../../src/components/layout.js";
+import { publicCategoryPath, publicProductPath } from "../../src/data/publicUrls.js";
+import { loadStore } from "./supabase.js";
 
 const ORIGIN = "https://www.nix-p.com";
 const BUNDLE_URL = "/assets/app.js?v=20260725-founders-webfont";
 
-export default async function handler(req, res) {
+export async function renderCatalogPage(req, res, url) {
   try {
-    const requestUrl = new URL(req.url || "/", ORIGIN);
-    const requestedPath = normalizePath(requestUrl.searchParams.get("catalogPath"));
+    const requestedPath = normalizePath(url.searchParams.get("catalogPath"));
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
     const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}/public/data/public-store.json` });
     const product = (store.products || []).find((item) => publicProductPath(item) === requestedPath);
     if (!product) return notFound(res);
 
-    const document = await productDocument(product, requestedPath);
     res.statusCode = 200;
     res.setHeader("content-type", "text/html; charset=utf-8");
     res.setHeader("cache-control", "public, max-age=60, stale-while-revalidate=300");
     res.setHeader("cdn-cache-control", "public, max-age=60, stale-while-revalidate=300");
-    res.end(document);
+    res.end(await productDocument(product, requestedPath));
   } catch {
     notFound(res);
   }
@@ -69,9 +67,7 @@ function productMarkup(product) {
   const review = product.reviewQuote
     ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${escapeHtml(product.reviewSource || "Source review")}</cite></blockquote>`
     : "";
-  return `<section class="product-detail"><div class="detail-gallery">${images
-    .map((image, index) => `<figure class="product-art product-art-large"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" /></figure>`)
-    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}">Add to cart</button>`}</div><dl class="detail-list">${details}</dl></aside></section>`;
+  return `<section class="product-detail"><div class="detail-gallery">${images.map((image, index) => `<figure class="product-art product-art-large"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" /></figure>`).join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}">Add to cart</button>`}</div><dl class="detail-list">${details}</dl></aside></section>`;
 }
 
 function normalizePath(value) {
