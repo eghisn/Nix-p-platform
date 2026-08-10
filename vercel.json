@@ -142,8 +142,8 @@
       "destination": "/api/catalog?action=catalog-page&catalogPath=/publishing/:slug"
     },
     {
-      "source": "/artists/:path*",
-      "destination": "/index.html"
+      "source": "/artists/:slug",
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/artists/:slug"
     },
     {
       "source": "/admin/shipping",

@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { shell } from "../../src/components/layout.js";
+import { productGrid, shell } from "../../src/components/layout.js";
+import { artistCreditNames } from "../../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../../src/data/publicUrls.js";
 import { loadStore } from "./supabase.js";
 
@@ -13,6 +14,9 @@ export async function renderCatalogPage(req, res, url) {
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
     const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}/public/data/public-store.json` });
+    if (requestedPath.startsWith("/artists/")) {
+      return renderArtistPage(res, store, requestedPath);
+    }
     const product = (store.products || []).find((item) => publicProductPath(item) === requestedPath);
     if (!product) return notFound(res);
 
@@ -26,8 +30,28 @@ export async function renderCatalogPage(req, res, url) {
   }
 }
 
+async function renderArtistPage(res, store, requestedPath) {
+  const slug = requestedPath.slice("/artists/".length);
+  const records = (store.products || []).filter((product) => product.category === "Records");
+  const artistName = records.flatMap((product) => artistCreditNames(product.artist)).find((artist) => slugify(artist) === slug);
+  if (!artistName) return notFound(res);
+  const products = records.filter((product) => artistCreditNames(product.artist).some((artist) => slugify(artist) === slug));
+  const availableArtistNames = new Map(records.flatMap((product) => artistCreditNames(product.artist).map((artist) => [slugify(artist), artist])));
+  const document = await pageDocument({
+    title: `${artistName} | NIXP`,
+    description: `${artistName} releases available from NIXP.`,
+    canonicalUrl: `${ORIGIN}${requestedPath}`,
+    image: absoluteUrl(products[0]?.image),
+    appMarkup: shell(`<section class="section shop-section artist-products"><div class="toolbar artist-toolbar"><a class="back-link" href="/artists" data-link>Artists</a><span>${escapeHtml(artistName)}</span></div>${productGrid(products, { availableArtistNames })}</section>`, requestedPath, 0)
+  });
+  res.statusCode = 200;
+  res.setHeader("content-type", "text/html; charset=utf-8");
+  res.setHeader("cache-control", "public, max-age=60, stale-while-revalidate=300");
+  res.setHeader("cdn-cache-control", "public, max-age=60, stale-while-revalidate=300");
+  res.end(document);
+}
+
 async function productDocument(product, path) {
-  let template = await readFile(join(process.cwd(), "index.html"), "utf8");
   const title = `${product.artist} - ${product.title} | NIXP`;
   const format = product.displayFormat || product.format || "Product";
   const price = formatPrice(product.price);
@@ -37,11 +61,23 @@ async function productDocument(product, path) {
   const image = absoluteUrl(product.image || product.images?.[0]);
   const canonicalUrl = `${ORIGIN}${path}`;
 
+  return pageDocument({
+    title,
+    description,
+    canonicalUrl,
+    image,
+    type: "product",
+    appMarkup: shell(productMarkup(product), path, 0)
+  });
+}
+
+async function pageDocument({ title, description, canonicalUrl, image, type = "website", appMarkup }) {
+  let template = await readFile(join(process.cwd(), "index.html"), "utf8");
   template = template.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
   template = replaceMeta(template, "name", "description", description);
   template = replaceMeta(template, "property", "og:title", title);
   template = replaceMeta(template, "property", "og:description", description);
-  template = replaceMeta(template, "property", "og:type", "product");
+  template = replaceMeta(template, "property", "og:type", type);
   template = replaceMeta(template, "property", "og:url", canonicalUrl);
   template = replaceMeta(template, "property", "og:image", image);
   template = replaceMeta(template, "property", "og:image:secure_url", image);
@@ -52,7 +88,7 @@ async function productDocument(product, path) {
   template = replaceMeta(template, "name", "twitter:image", image);
   template = template.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`);
   template = template.replace(/<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i, `<script type="module" src="${BUNDLE_URL}"></script>`);
-  template = template.replace("<!-- NIXP_APP_MARKER -->", shell(productMarkup(product), path, 0));
+  template = template.replace("<!-- NIXP_APP_MARKER -->", appMarkup);
   return template;
 }
 
@@ -73,6 +109,10 @@ function productMarkup(product) {
 function normalizePath(value) {
   const path = String(value || "").trim();
   return path.startsWith("/") && !path.includes("..") ? path.replace(/\/+$/, "") : "";
+}
+
+function slugify(value) {
+  return String(value || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 function absoluteUrl(value) {
