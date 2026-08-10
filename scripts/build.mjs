@@ -70,7 +70,6 @@ const staticRoutes = [
   "apparel",
   "accessories",
   "publishing",
-  "artists",
   "blog",
   "request-item",
   "make-an-offer",

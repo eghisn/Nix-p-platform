@@ -179,7 +179,7 @@
     },
     {
       "source": "/artists",
-      "destination": "/index.html"
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/artists"
     },
     {
       "source": "/blog",

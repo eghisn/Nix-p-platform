@@ -14,6 +14,9 @@ export async function renderCatalogPage(req, res, url) {
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
     const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}/public/data/public-store.json` });
+    if (requestedPath === "/artists") {
+      return renderArtistsIndexPage(res, store);
+    }
     if (requestedPath.startsWith("/artists/")) {
       return renderArtistPage(res, store, requestedPath);
     }
@@ -28,6 +31,24 @@ export async function renderCatalogPage(req, res, url) {
   } catch {
     notFound(res);
   }
+}
+
+async function renderArtistsIndexPage(res, store) {
+  const records = (store.products || []).filter((product) => product.category === "Records");
+  const artists = [...new Map(records.flatMap((product) => artistCreditNames(product.artist).map((artist) => [slugify(artist), artist]))).values()].sort((left, right) => left.localeCompare(right));
+  const document = await pageDocument({
+    title: "Artists | NIXP",
+    description: "Artists with releases available from NIXP.",
+    canonicalUrl: `${ORIGIN}/artists`,
+    image: `${ORIGIN}/public/nixp-logo.png`,
+    appMarkup: shell(`<section class="section artist-list">${artists.map((artist) => `<article class="artist-row"><a href="/artists/${slugify(artist)}" data-link><h2>${escapeHtml(artist)}</h2><span>View products</span></a></article>`).join("")}</section>`, "/artists", 0)
+  });
+  res.statusCode = 200;
+  res.setHeader("content-type", "text/html; charset=utf-8");
+  // The artist index is a live inventory directory. Do not let an edge cache
+  // show a stale list after Finance publishes a new record.
+  res.setHeader("cache-control", "no-store");
+  res.end(document);
 }
 
 async function renderArtistPage(res, store, requestedPath) {
