@@ -65,6 +65,12 @@ const publicProducts = (publicStore?.products || []).filter(
     !(product.category === "Records" && product.image.includes("nixp-product-example"))
 );
 const staticRoutes = [
+  "records",
+  "objects",
+  "apparel",
+  "accessories",
+  "publishing",
+  "artists",
   "blog",
   "request-item",
   "make-an-offer",
