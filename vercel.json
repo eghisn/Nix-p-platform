@@ -122,24 +122,24 @@
       "destination": "/api/catalog?action=product-redirect&id=:productId"
     },
     {
-      "source": "/records/:path*",
-      "destination": "/api/catalog?action=catalog-page&catalogPath=/records/:path*"
+      "source": "/records/:slug",
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/records/:slug"
     },
     {
-      "source": "/objects/:path*",
-      "destination": "/api/catalog?action=catalog-page&catalogPath=/objects/:path*"
+      "source": "/objects/:slug",
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/objects/:slug"
     },
     {
-      "source": "/apparel/:path*",
-      "destination": "/api/catalog?action=catalog-page&catalogPath=/apparel/:path*"
+      "source": "/apparel/:slug",
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/apparel/:slug"
     },
     {
-      "source": "/accessories/:path*",
-      "destination": "/api/catalog?action=catalog-page&catalogPath=/accessories/:path*"
+      "source": "/accessories/:slug",
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/accessories/:slug"
     },
     {
-      "source": "/publishing/:path*",
-      "destination": "/api/catalog?action=catalog-page&catalogPath=/publishing/:path*"
+      "source": "/publishing/:slug",
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/publishing/:slug"
     },
     {
       "source": "/artists/:path*",
