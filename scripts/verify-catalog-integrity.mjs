@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { artistCreditNames, artistIdentityKey } from "../src/data/catalogIdentity.js";
+import { isFinanceCatalogProduct, recordPublicationIssues } from "../src/data/catalogPublication.js";
 
 const root = process.cwd();
 const store = JSON.parse(await fs.readFile(path.join(root, "public", "data", "public-store.json"), "utf8"));
@@ -25,6 +26,9 @@ for (const product of publicProducts) {
   if (product.category === "Records") {
     for (const [field, value] of Object.entries({ description: product.description, reviewQuote: product.reviewQuote, reviewSource: product.reviewSource, relatedArtists: product.relatedArtists?.length })) {
       if (!value) issues.push(`${product.sku || product.id}: missing record editorial field ${field}`);
+    }
+    if (isFinanceCatalogProduct(product)) {
+      for (const issue of recordPublicationIssues(product)) issues.push(`${product.sku || product.id}: unsafe finance publication missing ${issue}`);
     }
   }
 }

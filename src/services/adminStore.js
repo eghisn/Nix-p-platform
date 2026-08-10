@@ -484,6 +484,11 @@ async function persistStore(store, { inventoryProduct = null } = {}) {
     });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(payload.error || "Store save failed. Please log in to admin and try again.");
+    if (payload.store?.products) {
+      activeStore = normalizeStoreForSave(payload.store);
+      activeStoreScope = "admin";
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+    }
     return true;
   } catch (error) {
     // Static previews cannot write files. localStorage remains the fallback.

@@ -1,5 +1,5 @@
 import { getSession, json, requireWorkspace } from "../_lib/auth.js";
-import { isSupabaseConfigured, saveStore, supabaseFetch } from "../_lib/supabase.js";
+import { isSupabaseConfigured, loadStore, saveStore, supabaseFetch } from "../_lib/supabase.js";
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
@@ -62,7 +62,14 @@ export default async function handler(req, res) {
   const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
   try {
     await saveStore(body.store || {}, { inventoryProduct: body.inventoryProduct || null });
-    json(res, 200, { ok: true, path: "supabase://public" });
+    let catalogSynced = false;
+    if (body.inventoryProduct?.category === "Records") {
+      const financeState = await readFinanceState();
+      await syncFinanceInventoryToCatalog(financeState, { enrich: true });
+      catalogSynced = true;
+    }
+    const refreshedStore = catalogSynced ? await loadStore({ privateScope: true }) : null;
+    json(res, 200, { ok: true, path: "supabase://public", catalogSynced, store: refreshedStore });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Store save failed";
     const friendlyMessage = message.toLowerCase().includes("on conflict do update")

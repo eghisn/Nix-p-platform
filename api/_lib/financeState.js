@@ -1,5 +1,6 @@
 import { enrichFinanceCatalogProduct, inventoryFingerprint } from "./catalogEnrichment.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
+import { isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 
 const STATE_KEY = "main";
 const EMPTY_FINANCE_STATE = {
@@ -138,13 +139,13 @@ export async function syncFinanceInventoryToCatalog(state, { enrich = true } = {
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
-  await syncFinanceArtistsToCatalog(stockRows);
+  await syncFinanceArtistsToCatalog(uniqueProductRows);
 }
 
-async function syncFinanceArtistsToCatalog(stockRows = []) {
+async function syncFinanceArtistsToCatalog(productRows = []) {
   const names = [...new Set(
-    stockRows
-      .filter((item) => RECORD_FORMATS.has(String(item?.item || "").trim()))
+    productRows
+      .filter((item) => item?.category === "Records" && item?.publish_status === "Published" && item?.visibility === "Public")
       .flatMap((item) => artistCreditNames(item?.artist))
       .filter(Boolean)
   )];
@@ -287,7 +288,9 @@ function productRowFromFinanceStock(row, stock, quantity) {
     String(row.id || "").startsWith("finance-") ||
     row.raw?.financeStockId ||
     String(row.raw?.details?.[0] || "").includes("Created from finance inventory");
-  const readyFromFinance = Boolean(financeTitle && (openToOffers ? minimumAcceptableOffer : financePrice > 0) && hasUsableProductImage(row));
+  const readyFromFinance = category === "Records"
+    ? isRecordPublicationReady({ ...row, ...raw, title: financeTitle || row.title, artist: financeArtist || row.artist, price: openToOffers ? 0 : financePrice || row.price, open_to_offers: openToOffers, minimum_acceptable_offer: minimumAcceptableOffer })
+    : Boolean(financeTitle && (openToOffers ? minimumAcceptableOffer : financePrice > 0) && hasUsableProductImage(row));
   const publishStatus = wasFinanceDraft ? (readyFromFinance ? "Published" : "Draft") : row.publish_status || "Published";
   const visibility = wasFinanceDraft ? (readyFromFinance ? "Public" : "Private") : row.visibility || "Public";
 
@@ -351,16 +354,19 @@ function needsFinanceEnrichment(row = {}, stock = {}) {
     "needs-cover-archive",
     "needs-product-photo",
     "needs-product-photo-archive",
-    "needs-editorial-metadata"
+    "needs-editorial-metadata",
+    "metadata-complete-no-related-artists",
+    "metadata-complete-needs-editorial-review"
   ].includes(status);
   // Do not make a corrected source wait for the retry window: incomplete
   // enrichment must be immediately repairable by the next catalog sync.
-  if (previousFingerprint && !fingerprintChanged && status && !retryDue && !unresolvedStatus) return false;
+  if (previousFingerprint && !fingerprintChanged && status && !retryDue) return false;
   return Boolean(
     fingerprintChanged ||
     !hasUsableProductImage(row) ||
       !String(row.label || "").trim() ||
       !String(row.description || "").trim() ||
+      !isRecordPublicationReady(row) ||
       String(row.publish_status || "") !== "Published" ||
       String(row.visibility || "") !== "Public" ||
       unresolvedStatus

@@ -1,4 +1,5 @@
 import { syncAdminCatalogInventory, syncAdminProductInventory } from "./financeState.js";
+import { applyCatalogPublicationSafety, isFinanceCatalogProduct, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 
 const TABLES = ["products", "artists", "collections", "requests", "offers", "orders", "cashflow", "inventory"];
 const REQUIRED_STORE_ARRAYS = ["products", "artists", "collections", "requests", "offers", "orders", "cashflow", "inventory"];
@@ -58,7 +59,11 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
     version: "supabase-live-2026-07-13",
     products: privateScope
       ? mappedProducts
-      : mappedProducts.filter((product) => product.image && !(product.category === "Records" && product.image.includes("nixp-product-example"))),
+      : mappedProducts.filter((product) =>
+          product.image &&
+          !(product.category === "Records" && product.image.includes("nixp-product-example")) &&
+          (!isFinanceCatalogProduct(product) || isRecordPublicationReady(product))
+        ),
     artists: artists.map(fromRawRow),
     collections: collections.map(fromRawRow),
     requests: requests.map(fromRawRow),
@@ -152,21 +157,23 @@ export async function verifiedPrices(ids = []) {
 }
 
 export async function saveStore(store, { inventoryProduct = null, syncCatalogProducts = false } = {}) {
-  validateStore(store);
-  await backupStore("admin-store", store);
+  const safeStore = applyCatalogPublicationSafety(store);
+  validateStore(safeStore);
+  await backupStore("admin-store", safeStore);
   const rowsByTable = {
-    products: (store.products || []).map(toProductRow),
-    artists: (store.artists || []).map((item, index) => toRawRow(item, "artists", index)),
-    collections: (store.collections || []).map((item, index) => toRawRow(item, "collections", index)),
-    requests: (store.requests || []).map((item, index) => toRawRow(item, "requests", index)),
-    offers: (store.offers || []).map((item, index) => toRawRow(item, "offers", index)),
-    orders: (store.orders || []).map((item, index) => toRawRow(item, "orders", index)),
-    cashflow: (store.cashflow || []).map((item, index) => toRawRow(item, "cashflow", index)),
-    inventory: (store.inventory || []).map((item, index) => toRawRow(item, "inventory", index))
+    products: (safeStore.products || []).map(toProductRow),
+    artists: (safeStore.artists || []).map((item, index) => toRawRow(item, "artists", index)),
+    collections: (safeStore.collections || []).map((item, index) => toRawRow(item, "collections", index)),
+    requests: (safeStore.requests || []).map((item, index) => toRawRow(item, "requests", index)),
+    offers: (safeStore.offers || []).map((item, index) => toRawRow(item, "offers", index)),
+    orders: (safeStore.orders || []).map((item, index) => toRawRow(item, "orders", index)),
+    cashflow: (safeStore.cashflow || []).map((item, index) => toRawRow(item, "cashflow", index)),
+    inventory: (safeStore.inventory || []).map((item, index) => toRawRow(item, "inventory", index))
   };
   for (const table of TABLES) await upsert(table, dedupeRows(rowsByTable[table]));
-  if (syncCatalogProducts) await syncAdminCatalogInventory(store.products || []);
+  if (syncCatalogProducts) await syncAdminCatalogInventory(safeStore.products || []);
   else if (inventoryProduct) await syncAdminProductInventory(inventoryProduct);
+  return safeStore;
 }
 
 async function upsert(table, rows) {

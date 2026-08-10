@@ -1,6 +1,8 @@
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
 import { json, requireWorkspace } from "../_lib/auth.js";
-import { isSupabaseConfigured, saveStore } from "../_lib/supabase.js";
+import { isSupabaseConfigured, loadStore, saveStore } from "../_lib/supabase.js";
+import { applyCatalogPublicationSafety } from "../../src/data/catalogPublication.js";
+import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
@@ -19,7 +21,11 @@ export default async function handler(req, res) {
   try {
     // A deploy can introduce products that were not individually saved in this
     // browser session, so synchronize the complete Admin catalog with Finance.
-    await saveStore(store, { syncCatalogProducts: true });
+    const safeStore = applyCatalogPublicationSafety(store);
+    await saveStore(safeStore, { syncCatalogProducts: true });
+    const financeState = await readFinanceState();
+    await syncFinanceInventoryToCatalog(financeState, { enrich: true });
+    const deployedStore = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
     if (!isGitHubDeployConfigured()) {
       return json(res, 200, {
         ok: true,
@@ -27,7 +33,7 @@ export default async function handler(req, res) {
         github: { skipped: true, reason: "missing_token" }
       });
     }
-    const github = await commitPublicStore(store, { message: body.message });
+    const github = await commitPublicStore(deployedStore, { message: body.message });
     json(res, 200, {
       ok: true,
       message: "Saved to Supabase and committed to GitHub. Vercel will deploy from the GitHub push.",

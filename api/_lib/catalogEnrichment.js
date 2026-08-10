@@ -10,6 +10,7 @@ const USER_AGENT = "NIXP-Catalog/1.0 (contact@nix-p.com)";
 // original source remains in imageCredits; this mapping prevents third-party
 // artwork URLs from becoming a storefront runtime dependency.
 const ARCHIVED_CATALOG_IMAGES = {
+  "NXP-2026-CD-0045": { cover: "/public/covers/nxp-2026-cd-0045-tim-hecker-konoyo.jpg" },
   "NXP-2026-VNL-0013": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0013-cover.webp" },
   "NXP-2026-VNL-0019": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp" },
   "NXP-2026-VNL-0021": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp" },
@@ -63,6 +64,30 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     relatedArtists: ["Behold The Arctopus", "Gorguts", "The Dillinger Escape Plan"],
     tags: ["progressive metal", "math metal", "instrumental", "technical metal", "reissue"],
     sourceUrl: "https://dysrhythmia.bandcamp.com/album/no-interference"
+  },
+  "NXP-2026-CD-0045": {
+    title: "Konoyo",
+    year: 2018,
+    label: "Kranky",
+    edition: "CD",
+    cover: "/public/covers/nxp-2026-cd-0045-tim-hecker-konoyo.jpg",
+    imageCredits: [
+      {
+        image: "/public/covers/nxp-2026-cd-0045-tim-hecker-konoyo.jpg",
+        credit: "Tim Hecker official Bandcamp artwork",
+        url: "https://timhecker.bandcamp.com/album/konoyo"
+      }
+    ],
+    description:
+      "Recorded in Japan with members of Tokyo Gakuso, Tim Hecker's 2018 album Konoyo folds gagaku winds and percussion into processed electronics, treating ancient instruments and digital sound as equal voices.",
+    descriptionSource: "Tim Hecker official Bandcamp / Pitchfork",
+    reviewQuote: "the least dense and most inquisitive album of his career",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/tim-hecker-konoyo/",
+    relatedArtists: ["Oneohtrix Point Never", "Nala Sinephro", "Blanck Mass"],
+    tags: ["ambient", "electroacoustic", "experimental electronic", "gagaku"],
+    sourceUrl: "https://timhecker.bandcamp.com/album/konoyo",
+    musicBrainzReleaseId: "ef389c8c-9465-45fa-86e1-efc49f6f3c36"
   },
   "NXP-2026-CD-0025": {
     title: "Pleiades' Dust",
@@ -760,7 +785,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const discovered = await archiveDiscoveredImages(applyArchivedCatalogImages(discoveredSource, sku), sku, usedCondition(stock.itemCondition || row.condition));
   if (!discovered) {
     return finalizeStatus(row, {
-      publishable: hasCatalogCore(row),
+      publishable: false,
       status: "needs-release-match",
       enrichmentFingerprint: inventoryFingerprint({ ...stock, artist, title, format }),
       enrichmentAttemptedAt: new Date().toISOString()
@@ -801,11 +826,12 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const reviewQuote = chooseEditorialValue(raw.reviewQuote, automatic.reviewQuote, discovered.reviewQuote || "");
   const reviewSource = chooseEditorialValue(raw.reviewSource, automatic.reviewSource, discovered.reviewSource || "");
   const reviewUrl = chooseEditorialValue(raw.reviewUrl, automatic.reviewUrl, discovered.reviewUrl || "");
-  const relatedArtists = unique([
+  const discoveredRelatedArtists = unique([
     ...((Array.isArray(raw.relatedArtists) ? raw.relatedArtists : [])),
     ...(discovered.relatedArtists || []),
     ...relatedArtistsFromCatalog({ artist, label: discovered.label || row.label, catalogArtists })
   ].map(canonicalRelatedArtistName));
+  const relatedArtists = relatedArtistsAvailableInCatalog(discoveredRelatedArtists, catalogArtists);
   const enrichmentFingerprint = inventoryFingerprint({ ...stock, artist, title, format });
   const product = {
     ...row,
@@ -870,13 +896,13 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       },
       enrichmentFingerprint,
       enrichmentOrigin: curated ? "curated-exact" : "musicbrainz",
-      enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote }),
+      enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote, reviewSource, reviewUrl }),
       enrichmentUpdatedAt: today(),
       enrichmentAttemptedAt: new Date().toISOString()
     }
   };
   return finalizeStatus(product, {
-    publishable: hasCatalogCore(product),
+    publishable: hasCatalogCore(product) && product.raw.enrichmentStatus === "complete",
     status: product.raw.enrichmentStatus
   });
 }
@@ -927,7 +953,7 @@ async function discoverMusicBrainzRelease(stock) {
     `release:"${escapeQuery(stock.title)}"`
   ].join(" AND ");
   const response = await fetch(
-    `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25&inc=labels+artist-credits+media`,
+    `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25&inc=labels+artist-credits+media+release-groups`,
     { headers: { accept: "application/json", "user-agent": USER_AGENT } }
   );
   if (!response.ok) return null;
@@ -964,9 +990,16 @@ async function discoverMusicBrainzRelease(stock) {
     release.packaging,
     ...(release.media || []).map((medium) => medium.format)
   ]).join(" / ");
-  const description = `${stock.artist}'s ${year || ""} release ${release.title} on ${stock.format || stock.item}${
-    label ? `, issued by ${label}` : ""
-  }.`.replace(/\s+/g, " ");
+  const [releaseGroup, review, relatedArtists] = await Promise.all([
+    discoverReleaseGroup(release["release-group"]?.id),
+    discoverPitchforkReview({ artist: stock.artist, title: release.title }),
+    discoverRelatedArtists(stock.artist)
+  ]);
+  const tags = unique([...(releaseGroup?.tags || []), ...(release["release-group"]?.tags || []).map((tag) => tag.name)]);
+  const genreText = tags.slice(0, 3).join(", ");
+  const description = `${stock.artist}'s ${year || ""} release ${release.title} is a ${stock.format || stock.item}${
+    label ? ` edition issued by ${label}` : " edition"
+  }${genreText ? `, documented by MusicBrainz as ${genreText}` : ""}.`.replace(/\s+/g, " ");
 
   return {
     title: release.title,
@@ -987,11 +1020,90 @@ async function discoverMusicBrainzRelease(stock) {
       : [],
     description,
     descriptionSource: "MusicBrainz",
-    relatedArtists: await discoverRelatedArtists(stock.artist),
-    tags: [],
-    sourceUrl: `${MUSICBRAINZ_ORIGIN}/release/${release.id}`,
+    reviewQuote: review?.quote || "",
+    reviewSource: review?.source || "",
+    reviewUrl: review?.url || "",
+    relatedArtists,
+    tags,
+    sourceUrl: releaseGroup?.officialUrl || `${MUSICBRAINZ_ORIGIN}/release/${release.id}`,
     musicBrainzReleaseId: release.id
   };
+}
+
+async function discoverReleaseGroup(releaseGroupId) {
+  if (!releaseGroupId) return null;
+  const response = await fetch(
+    `${MUSICBRAINZ_ORIGIN}/ws/2/release-group/${releaseGroupId}?inc=url-rels+tags+artists&fmt=json`,
+    { headers: { accept: "application/json", "user-agent": USER_AGENT } }
+  ).catch(() => null);
+  if (!response?.ok) return null;
+  const payload = await response.json().catch(() => ({}));
+  const relations = Array.isArray(payload.relations) ? payload.relations : [];
+  const officialRelation = relations.find((relation) =>
+    ["bandcamp", "official homepage", "purchase for download", "purchase for mail-order"].includes(String(relation?.type || "").toLowerCase())
+  );
+  return {
+    tags: unique((payload.tags || []).map((tag) => tag.name)),
+    officialUrl: officialRelation?.url?.resource || ""
+  };
+}
+
+async function discoverPitchforkReview({ artist, title }) {
+  const query = `${artist} ${title}`.trim();
+  if (!query) return null;
+  const response = await fetch(`https://pitchfork.com/search/?query=${encodeURIComponent(query)}`, {
+    headers: { accept: "text/html", "user-agent": USER_AGENT }
+  }).catch(() => null);
+  if (!response?.ok) return null;
+  const searchHtml = await response.text();
+  const paths = unique(
+    [...searchHtml.matchAll(/href=["']([^"']*\/reviews\/albums\/[^"'?#]+\/?)["']/gi)].map((match) => match[1])
+  ).slice(0, 5);
+  for (const path of paths) {
+    const url = new URL(path, "https://pitchfork.com").toString();
+    const page = await fetch(url, { headers: { accept: "text/html", "user-agent": USER_AGENT } }).catch(() => null);
+    if (!page?.ok) continue;
+    const html = await page.text();
+    const pageTitle = metaContent(html, "og:title") || titleText(html);
+    if (!normalizedText(pageTitle).includes(normalizedText(title)) || !normalizedText(pageTitle).includes(normalizedText(artist))) continue;
+    const description = metaContent(html, "description") || metaContent(html, "og:description");
+    const quote = conciseQuote(description);
+    if (!quote) continue;
+    return { quote, source: "Pitchfork (quoted)", url };
+  }
+  return null;
+}
+
+function metaContent(html, name) {
+  const escaped = String(name).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const patterns = [
+    new RegExp(`<meta[^>]+(?:name|property)=["']${escaped}["'][^>]+content=["']([^"']+)["'][^>]*>`, "i"),
+    new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+(?:name|property)=["']${escaped}["'][^>]*>`, "i")
+  ];
+  for (const pattern of patterns) {
+    const match = String(html || "").match(pattern);
+    if (match?.[1]) return decodeHtml(match[1]);
+  }
+  return "";
+}
+
+function titleText(html) {
+  return decodeHtml(String(html || "").match(/<title[^>]*>([^<]+)<\/title>/i)?.[1] || "");
+}
+
+function conciseQuote(value) {
+  const words = decodeHtml(value).replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
+  if (words.length < 5) return "";
+  return words.slice(0, 20).join(" ").replace(/[,:;\-]+$/, "");
+}
+
+function decodeHtml(value) {
+  return String(value || "")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">");
 }
 
 function finalizeStatus(row, { publishable, status, enrichmentFingerprint = "", enrichmentAttemptedAt = "" }) {
@@ -1021,7 +1133,7 @@ function usedCondition(value) {
   return USED_CONDITION.test(String(value || ""));
 }
 
-function enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote }) {
+function enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote, reviewSource, reviewUrl }) {
   if (!discovered?.cover) return "needs-cover-art";
   if (!isManagedProductImage(discovered.cover)) return "needs-cover-archive";
   if (!used && !discovered?.productPhoto) return "needs-product-photo";
@@ -1029,8 +1141,8 @@ function enrichmentStatus({ used, discovered, description, relatedArtists, revie
   if (!description) return "needs-editorial-metadata";
   if (!relatedArtists.length) return "metadata-complete-no-related-artists";
   // A source-backed review quote is never invented by automation. Its absence
-  // is an editorial task, not a failed product identity match.
-  return reviewQuote ? "complete" : "metadata-complete-needs-editorial-review";
+  // keeps the product private until a trusted source is resolved.
+  return reviewQuote && reviewSource && reviewUrl ? "complete" : "metadata-complete-needs-editorial-review";
 }
 
 function editionMatchesFormat(edition, format) {
@@ -1056,6 +1168,14 @@ function relatedArtistsFromCatalog({ artist, label, catalogArtists = [] } = {}) 
     .filter((candidate) => normalizedText(candidate?.label) === normalizedLabel)
     .flatMap((candidate) => artistCreditNames(candidate?.artist));
   return unique(candidates).filter((name) => !ownNames.has(normalizedText(name))).slice(0, 6);
+}
+
+function relatedArtistsAvailableInCatalog(candidates, catalogArtists = []) {
+  if (!Array.isArray(catalogArtists) || !catalogArtists.length) return candidates;
+  const available = new Map(
+    catalogArtists.flatMap((product) => artistCreditNames(product?.artist).map((name) => [normalizedText(name), canonicalRelatedArtistName(name)]))
+  );
+  return unique(candidates.map((name) => available.get(normalizedText(name))).filter(Boolean)).slice(0, 6);
 }
 
 function hasCatalogCore(row) {

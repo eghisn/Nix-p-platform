@@ -43,9 +43,9 @@ function catalogJson(res, status, payload, { privateScope = false } = {}) {
   if (privateScope) {
     res.setHeader("cache-control", "no-store");
   } else {
-    res.setHeader("cache-control", "public, max-age=60, stale-while-revalidate=300");
-    res.setHeader("cdn-cache-control", "public, max-age=300, stale-while-revalidate=1800");
-    res.setHeader("vercel-cdn-cache-control", "public, max-age=300, stale-while-revalidate=1800");
+    res.setHeader("cache-control", "public, max-age=0, stale-while-revalidate=15");
+    res.setHeader("cdn-cache-control", "public, s-maxage=15, stale-while-revalidate=15");
+    res.setHeader("vercel-cdn-cache-control", "public, s-maxage=15, stale-while-revalidate=15");
   }
   res.end(JSON.stringify(payload));
 }

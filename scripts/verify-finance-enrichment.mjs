@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { enrichFinanceCatalogProduct, inventoryFingerprint } from "../api/_lib/catalogEnrichment.js";
+import { applyCatalogPublicationSafety, isRecordPublicationReady } from "../src/data/catalogPublication.js";
 
 const stock = {
   sku: "NXP-2026-CD-0025",
@@ -55,5 +56,32 @@ const missingIdentity = await enrichFinanceCatalogProduct(draft, { ...stock, tit
 assert.equal(missingIdentity.publish_status, "Draft");
 assert.equal(missingIdentity.visibility, "Private");
 assert.equal(missingIdentity.raw.enrichmentStatus, "needs-finance-data");
+
+const timStock = {
+  sku: "NXP-2026-CD-0045",
+  item: "CD",
+  itemCondition: "Used Excellent",
+  artist: "Tim Hecker",
+  title: "Konoyo",
+  sellingPrice: 280000
+};
+const tim = await enrichFinanceCatalogProduct(
+  { ...draft, id: "finance-nxp-2026-cd-0045", sku: timStock.sku, raw: {} },
+  timStock,
+  { catalogArtists: [{ artist: "Oneohtrix Point Never", label: "Warp Records" }, { artist: "Nala Sinephro", label: "Warp Records" }] }
+);
+assert.equal(tim.publish_status, "Published");
+assert.equal(tim.raw.enrichmentStatus, "complete");
+assert.equal(tim.raw.reviewSource, "Pitchfork (quoted)");
+assert.deepEqual(tim.raw.relatedArtists, ["Oneohtrix Point Never", "Nala Sinephro"]);
+assert.equal(tim.images.length, 1, "Used records must not receive an invented product mockup.");
+assert.equal(isRecordPublicationReady({ ...tim, ...tim.raw }), true);
+
+const unsafeStore = applyCatalogPublicationSafety({
+  products: [{ ...tim.raw, id: tim.id, financeStockId: "stock-1", publishStatus: "Published", visibility: "Public", reviewQuote: "", reviewSource: "", reviewUrl: "" }]
+});
+assert.equal(unsafeStore.products[0].publishStatus, "Draft");
+assert.equal(unsafeStore.products[0].visibility, "Private");
+assert.ok(unsafeStore.products[0].raw.publicationIssues.includes("review"));
 
 process.stdout.write("Finance catalog enrichment contract passed.\n");
