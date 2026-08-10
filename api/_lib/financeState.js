@@ -62,7 +62,10 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
-  if (syncCatalog) await syncFinanceInventoryToCatalog(normalized, { enrich: false });
+  // Finance is the entry point for new stock. Enrich only records that need it,
+  // so a completed Finance item becomes a complete public catalog product without
+  // requiring a separate Admin sync or deployment action.
+  if (syncCatalog) await syncFinanceInventoryToCatalog(normalized, { enrich: true });
   return normalized;
 }
 
