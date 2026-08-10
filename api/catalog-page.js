@@ -1,0 +1,106 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { shell } from "../src/components/layout.js";
+import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
+import { loadStore } from "./_lib/supabase.js";
+
+const ORIGIN = "https://www.nix-p.com";
+const BUNDLE_URL = "/assets/app.js?v=20260725-founders-webfont";
+
+export default async function handler(req, res) {
+  try {
+    const requestUrl = new URL(req.url || "/", ORIGIN);
+    const requestedPath = normalizePath(requestUrl.searchParams.get("catalogPath"));
+    const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
+    const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
+    const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}/public/data/public-store.json` });
+    const product = (store.products || []).find((item) => publicProductPath(item) === requestedPath);
+    if (!product) return notFound(res);
+
+    const document = await productDocument(product, requestedPath);
+    res.statusCode = 200;
+    res.setHeader("content-type", "text/html; charset=utf-8");
+    res.setHeader("cache-control", "public, max-age=60, stale-while-revalidate=300");
+    res.setHeader("cdn-cache-control", "public, max-age=60, stale-while-revalidate=300");
+    res.end(document);
+  } catch {
+    notFound(res);
+  }
+}
+
+async function productDocument(product, path) {
+  let template = await readFile(join(process.cwd(), "index.html"), "utf8");
+  const title = `${product.artist} - ${product.title} | NIXP`;
+  const format = product.displayFormat || product.format || "Product";
+  const price = formatPrice(product.price);
+  const description = product.open_to_offers
+    ? `${product.artist} - ${product.title}. Private Collection item available by offer.`
+    : `${product.artist} - ${product.title}. ${format}${product.condition ? ` / ${product.condition}` : ""}. ${price}.`;
+  const image = absoluteUrl(product.image || product.images?.[0]);
+  const canonicalUrl = `${ORIGIN}${path}`;
+
+  template = template.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
+  template = replaceMeta(template, "name", "description", description);
+  template = replaceMeta(template, "property", "og:title", title);
+  template = replaceMeta(template, "property", "og:description", description);
+  template = replaceMeta(template, "property", "og:type", "product");
+  template = replaceMeta(template, "property", "og:url", canonicalUrl);
+  template = replaceMeta(template, "property", "og:image", image);
+  template = replaceMeta(template, "property", "og:image:secure_url", image);
+  template = replaceMeta(template, "property", "og:image:alt", title);
+  template = replaceMeta(template, "name", "twitter:card", "summary_large_image");
+  template = replaceMeta(template, "name", "twitter:title", title);
+  template = replaceMeta(template, "name", "twitter:description", description);
+  template = replaceMeta(template, "name", "twitter:image", image);
+  template = template.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`);
+  template = template.replace(/<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i, `<script type="module" src="${BUNDLE_URL}"></script>`);
+  template = template.replace("<!-- NIXP_APP_MARKER -->", shell(productMarkup(product), path, 0));
+  return template;
+}
+
+function productMarkup(product) {
+  const images = [...new Set((Array.isArray(product.images) && product.images.length ? product.images : [product.image]).filter(Boolean))];
+  const format = product.displayFormat || product.format || "Product";
+  const isRecord = product.category === "Records";
+  const isOfferOnly = product.open_to_offers === true;
+  const details = isRecord
+    ? `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div><div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div><div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div>`
+    : `<div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>`;
+  const review = product.reviewQuote
+    ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${escapeHtml(product.reviewSource || "Source review")}</cite></blockquote>`
+    : "";
+  return `<section class="product-detail"><div class="detail-gallery">${images
+    .map((image, index) => `<figure class="product-art product-art-large"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" /></figure>`)
+    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}">Add to cart</button>`}</div><dl class="detail-list">${details}</dl></aside></section>`;
+}
+
+function normalizePath(value) {
+  const path = String(value || "").trim();
+  return path.startsWith("/") && !path.includes("..") ? path.replace(/\/+$/, "") : "";
+}
+
+function absoluteUrl(value) {
+  const image = String(value || "").trim();
+  return /^https?:\/\//i.test(image) ? image : `${ORIGIN}${image.startsWith("/") ? "" : "/"}${image}`;
+}
+
+function formatPrice(value) {
+  return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(Number(value || 0));
+}
+
+function replaceMeta(html, attribute, name, value) {
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(`<meta\\s+${attribute}="${escapedName}"\\s+content="[^"]*"\\s*\\/?>`, "i");
+  const tag = `<meta ${attribute}="${name}" content="${escapeHtml(value)}" />`;
+  return pattern.test(html) ? html.replace(pattern, tag) : html.replace("</head>", `    ${tag}\n  </head>`);
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+}
+
+function notFound(res) {
+  res.statusCode = 404;
+  res.setHeader("content-type", "text/plain; charset=utf-8");
+  res.end("Product not found.");
+}

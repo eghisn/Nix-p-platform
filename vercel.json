@@ -6,6 +6,9 @@
   "functions": {
     "api/finance-app.js": {
       "includeFiles": "apps/finance/index.html"
+    },
+    "api/catalog-page.js": {
+      "includeFiles": "index.html"
     }
   },
   "crons": [
@@ -120,23 +123,23 @@
     },
     {
       "source": "/records/:path*",
-      "destination": "/index.html"
+      "destination": "/api/catalog-page?catalogPath=/records/:path*"
     },
     {
       "source": "/objects/:path*",
-      "destination": "/index.html"
+      "destination": "/api/catalog-page?catalogPath=/objects/:path*"
     },
     {
       "source": "/apparel/:path*",
-      "destination": "/index.html"
+      "destination": "/api/catalog-page?catalogPath=/apparel/:path*"
     },
     {
       "source": "/accessories/:path*",
-      "destination": "/index.html"
+      "destination": "/api/catalog-page?catalogPath=/accessories/:path*"
     },
     {
       "source": "/publishing/:path*",
-      "destination": "/index.html"
+      "destination": "/api/catalog-page?catalogPath=/publishing/:path*"
     },
     {
       "source": "/artists/:path*",

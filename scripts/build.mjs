@@ -65,13 +65,6 @@ const publicProducts = (publicStore?.products || []).filter(
     !(product.category === "Records" && product.image.includes("nixp-product-example"))
 );
 const staticRoutes = [
-  "records",
-  "objects",
-  "apparel",
-  "accessories",
-  "accesories",
-  "publishing",
-  "artists",
   "blog",
   "request-item",
   "make-an-offer",
@@ -615,7 +608,6 @@ for (const product of publicProducts) {
   if (productRoutes.has(canonicalRoute)) {
     throw new Error(`Duplicate public product URL: /${canonicalRoute}`);
   }
-  staticRoutes.push(canonicalRoute);
   productRoutes.set(canonicalRoute, product);
 }
 
@@ -634,8 +626,6 @@ for (const artist of publicStore?.artists || []) {
 for (const product of publicProducts.filter((product) => product.category === "Records")) {
   for (const artistName of artistCreditNames(product.artist)) artistDirectory.set(slugify(artistName), artistName);
 }
-for (const artistSlug of artistDirectory.keys()) staticRoutes.push(`artists/${artistSlug}`);
-
 for (const route of [...new Set(staticRoutes)]) {
   const routeDir = `${dist}/${route}`;
   await mkdir(routeDir, { recursive: true });
