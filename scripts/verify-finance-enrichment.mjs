@@ -1,5 +1,10 @@
 import assert from "node:assert/strict";
-import { enrichFinanceCatalogProduct, inventoryFingerprint } from "../api/_lib/catalogEnrichment.js";
+import {
+  CURATED_EDITORIAL_OVERRIDES,
+  applyCuratedEditorialOverride,
+  enrichFinanceCatalogProduct,
+  inventoryFingerprint
+} from "../api/_lib/catalogEnrichment.js";
 import { applyCatalogPublicationSafety, isRecordPublicationReady } from "../src/data/catalogPublication.js";
 
 const stock = {
@@ -99,5 +104,18 @@ const publicationReadyWithoutEditionOrBarcode = applyCatalogPublicationSafety({
   }]
 });
 assert.equal(publicationReadyWithoutEditionOrBarcode.products[0].publishStatus, "Published");
+
+const bauhausEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0041"];
+assert.equal(bauhausEditorial.reviewSource, "AllMusic (quoted)");
+assert.match(bauhausEditorial.reviewUrl, /^https:\/\/www\.allmusic\.com\/album\//);
+assert.ok(bauhausEditorial.reviewQuote.includes("She's in Parties"));
+assert.ok(bauhausEditorial.relatedArtists.includes("The Soft Moon"));
+const bauhausDiscovered = applyCuratedEditorialOverride(
+  { reviewQuote: "", reviewSource: "", relatedArtists: ["Suicide"], cover: "/public/cover.jpg" },
+  "nxp-2026-vnl-0041"
+);
+assert.equal(bauhausDiscovered.reviewSource, "AllMusic (quoted)");
+assert.deepEqual(bauhausDiscovered.relatedArtists, ["Suicide", "The Soft Moon", "Nine Inch Nails", "David Bowie"]);
+assert.equal(bauhausDiscovered.cover, "/public/cover.jpg");
 
 process.stdout.write("Finance catalog enrichment contract passed.\n");

@@ -780,6 +780,30 @@ export const CURATED_FINANCE_ENRICHMENTS = {
   }
 };
 
+// Editorial overrides supplement a discovered physical release without
+// replacing its verified edition, artwork, barcode, or catalog metadata.
+// They are used when a trusted publication is not reliably crawlable from a
+// serverless runtime but the exact source has been reviewed by NIXP.
+export const CURATED_EDITORIAL_OVERRIDES = {
+  "NXP-2026-VNL-0041": {
+    reviewQuote: "the most notable and successful being the dub-inflected, heavily dramatic ‘She's in Parties’",
+    reviewSource: "AllMusic (quoted)",
+    reviewUrl: "https://www.allmusic.com/album/burning-from-the-inside-mw0000652112",
+    relatedArtists: ["The Soft Moon", "Nine Inch Nails", "David Bowie"]
+  }
+};
+
+export function applyCuratedEditorialOverride(discovered, sku) {
+  if (!discovered) return discovered;
+  const override = CURATED_EDITORIAL_OVERRIDES[String(sku || "").trim().toUpperCase()];
+  if (!override) return discovered;
+  return {
+    ...discovered,
+    ...override,
+    relatedArtists: unique([...(discovered.relatedArtists || []), ...(override.relatedArtists || [])])
+  };
+}
+
 export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArtists = [] } = {}) {
   const format = String(stock.item || row.format || "").trim();
   const title = String(stock.title || row.title || "").trim();
@@ -794,7 +818,11 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
 
   const sku = String(stock.sku || row.sku || "").trim().toUpperCase();
   const curated = CURATED_FINANCE_ENRICHMENTS[sku];
-  const discoveredSource = curated || (await discoverMusicBrainzRelease({ ...stock, format, title, artist }).catch(() => null));
+  const editorialOverride = CURATED_EDITORIAL_OVERRIDES[sku] || {};
+  const discoveredSource = applyCuratedEditorialOverride(
+    curated || (await discoverMusicBrainzRelease({ ...stock, format, title, artist }).catch(() => null)),
+    sku
+  );
   const discovered = await archiveDiscoveredImages(applyArchivedCatalogImages(discoveredSource, sku), sku, usedCondition(stock.itemCondition || row.condition));
   if (!discovered) {
     return finalizeStatus(row, {
@@ -917,7 +945,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
         relatedArtists
       },
       enrichmentFingerprint,
-      enrichmentOrigin: curated ? "curated-exact" : "musicbrainz",
+      enrichmentOrigin: curated ? "curated-exact" : Object.keys(editorialOverride).length ? "musicbrainz+curated-editorial" : "musicbrainz",
       enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote, reviewSource, reviewUrl }),
       enrichmentUpdatedAt: today(),
       enrichmentAttemptedAt: new Date().toISOString(),
@@ -1148,12 +1176,37 @@ async function discoverTrustedReviewSearch({ artist, title } = {}) {
   const response = await fetchWithTimeout(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, {
     headers: { accept: "text/html", "user-agent": USER_AGENT }
   }, 7000);
+  if (response?.ok) {
+    const html = await response.text();
+    const urls = unique(
+      [...html.matchAll(/href=["']([^"']+)["']/gi)]
+        .map((match) => duckDuckGoResultUrl(decodeHtml(match[1])))
+        .filter(Boolean)
+    );
+    const review = await discoverLinkedReview(urls, { artist, title });
+    if (review) return review;
+  }
+  return discoverBraveReviewSearch({ artist, title });
+}
+
+async function discoverBraveReviewSearch({ artist, title } = {}) {
+  const domains = [...TRUSTED_REVIEW_SOURCES.keys()].map((domain) => `site:${domain}`).join(" OR ");
+  const query = `"${artist}" "${title}" review (${domains})`;
+  const response = await fetchWithTimeout(`https://search.brave.com/search?q=${encodeURIComponent(query)}&source=web`, {
+    headers: { accept: "text/html", "user-agent": USER_AGENT }
+  }, 7000);
   if (!response?.ok) return null;
   const html = await response.text();
   const urls = unique(
-    [...html.matchAll(/href=["']([^"']+)["']/gi)]
-      .map((match) => duckDuckGoResultUrl(decodeHtml(match[1])))
-      .filter(Boolean)
+    [...html.matchAll(/href=["'](https:\/\/[^"']+)["']/gi)]
+      .map((match) => decodeHtml(match[1]))
+      .filter((value) => {
+        try {
+          return Boolean(trustedReviewSource(new URL(value).hostname.toLowerCase().replace(/^www\./, "")));
+        } catch {
+          return false;
+        }
+      })
   );
   return discoverLinkedReview(urls, { artist, title });
 }
