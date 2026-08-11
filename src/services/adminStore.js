@@ -775,7 +775,6 @@ export const adminStore = {
     });
     const payload = await response.json().catch(() => ({}));
     if (response.status === 409 && payload.statusChange?.blocked) {
-      await this.refreshPrivateStore({ force: true });
       return { ...payload, blocked: true };
     }
     if (!response.ok) throw new Error(payload.error || "Deploy failed. Please check Vercel and GitHub settings.");
