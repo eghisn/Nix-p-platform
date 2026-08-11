@@ -891,14 +891,14 @@ export const adminStore = {
     const response = await fetch("/api/admin/catalog-sync", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ skus: [product.sku], force: true })
+      body: JSON.stringify({ skus: [product.sku], force: true, publishAfterResearch: true })
     });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(payload.error || `Could not complete ${product.sku}.`);
     const item = payload.report?.items?.find((candidate) =>
       String(candidate.sku || "").toLowerCase() === String(product.sku || "").toLowerCase()
     ) || payload.report?.items?.[0];
-    let deploy = { github: null, message: "Product remains Draft until all required sources are verified." };
+    let deploy = { github: null, message: "Product remains Draft until Finance data and a usable product image are available." };
     if (item?.published) {
       const deployResponse = await fetch("/api/admin/catalog-sync", {
         method: "POST",

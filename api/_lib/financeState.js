@@ -1,6 +1,6 @@
 import { enrichFinanceCatalogProduct, inventoryFingerprint } from "./catalogEnrichment.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
-import { isRecordPublicationReady } from "../../src/data/catalogPublication.js";
+import { isResearchPublicationReady, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 
 const STATE_KEY = "main";
@@ -74,7 +74,10 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
 // Finance is the source of truth for SKU stock. Complete record entries pass
 // through catalog enrichment before publication; ambiguous editions remain
 // visible in Admin with a precise enrichment status.
-export async function syncFinanceInventoryToCatalog(state, { enrich = true, forceEnrichment = false, targetSkus = [] } = {}) {
+export async function syncFinanceInventoryToCatalog(
+  state,
+  { enrich = true, forceEnrichment = false, targetSkus = [], publishAfterResearch = false } = {}
+) {
   const stockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
   const enrichmentTargets = new Set((targetSkus || []).map((sku) => String(sku || "").trim().toLowerCase()).filter(Boolean));
   const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
@@ -95,9 +98,12 @@ export async function syncFinanceInventoryToCatalog(state, { enrich = true, forc
       const financeProduct = productRowFromFinanceStock(existing, stock, quantity);
       const targetSelected = !enrichmentTargets.size || enrichmentTargets.has(key);
       const shouldEnrich = enrich && targetSelected && (forceEnrichment || needsFinanceEnrichment(existing, stock));
-      const resolvedProduct = shouldEnrich
+      const enrichedProduct = shouldEnrich
           ? await enrichFinanceCatalogProduct(financeProduct, stock, { catalogArtists: catalogArtistRows })
           : financeProduct;
+      const resolvedProduct = publishAfterResearch && targetSelected
+        ? allowResearchPublication(enrichedProduct)
+        : enrichedProduct;
       productRows.push(
         withSyncAudit(resolvedProduct, {
           source: "Finance",
@@ -111,8 +117,11 @@ export async function syncFinanceInventoryToCatalog(state, { enrich = true, forc
     }
     const product = draftProductFromFinanceStock(stock, quantity);
     const targetSelected = !enrichmentTargets.size || enrichmentTargets.has(key);
+    const enrichedProduct = enrich && targetSelected
+      ? await enrichFinanceCatalogProduct(product, stock, { catalogArtists: catalogArtistRows })
+      : product;
     productRows.push(
-      withSyncAudit(enrich && targetSelected ? await enrichFinanceCatalogProduct(product, stock, { catalogArtists: catalogArtistRows }) : product, {
+      withSyncAudit(publishAfterResearch && targetSelected ? allowResearchPublication(enrichedProduct) : enrichedProduct, {
         source: "Finance",
         action: "Inventory created catalog item",
         sku,
@@ -145,6 +154,21 @@ export async function syncFinanceInventoryToCatalog(state, { enrich = true, forc
     });
   }
   await syncFinanceArtistsToCatalog(uniqueProductRows);
+}
+
+function allowResearchPublication(product = {}) {
+  if (!isResearchPublicationReady(product)) return product;
+  return {
+    ...product,
+    publish_status: "Published",
+    visibility: "Public",
+    raw: {
+      ...(product.raw || {}),
+      publishAfterResearch: true,
+      publishStatus: "Published",
+      visibility: "Public"
+    }
+  };
 }
 
 async function syncFinanceArtistsToCatalog(productRows = []) {

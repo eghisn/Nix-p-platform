@@ -5,7 +5,12 @@ import {
   enrichFinanceCatalogProduct,
   inventoryFingerprint
 } from "../api/_lib/catalogEnrichment.js";
-import { applyCatalogPublicationSafety, isRecordPublicationReady } from "../src/data/catalogPublication.js";
+import {
+  applyCatalogPublicationSafety,
+  isResearchPublicationReady,
+  isRecordPublicationReady,
+  recordPublicationIssues
+} from "../src/data/catalogPublication.js";
 
 const stock = {
   sku: "NXP-2026-CD-0025",
@@ -104,6 +109,40 @@ const publicationReadyWithoutEditionOrBarcode = applyCatalogPublicationSafety({
   }]
 });
 assert.equal(publicationReadyWithoutEditionOrBarcode.products[0].publishStatus, "Published");
+
+const researchedPartial = {
+  id: "finance-partial-research",
+  category: "Records",
+  format: "Vinyl",
+  title: "Partial Research Test",
+  artist: "Bauhaus",
+  condition: "Used Good",
+  price: 250000,
+  image: "/public/covers/partial-research.jpg",
+  reviewQuote: "",
+  reviewSource: "",
+  relatedArtists: [],
+  publishStatus: "Published",
+  visibility: "Public",
+  raw: {
+    category: "Records",
+    format: "Vinyl",
+    title: "Partial Research Test",
+    artist: "Bauhaus",
+    condition: "Used Good",
+    price: 250000,
+    image: "/public/covers/partial-research.jpg",
+    reviewQuote: "",
+    reviewSource: "",
+    relatedArtists: [],
+    publishAfterResearch: true,
+    publishStatus: "Published",
+    visibility: "Public"
+  }
+};
+assert.equal(isResearchPublicationReady(researchedPartial), true);
+assert.ok(recordPublicationIssues(researchedPartial).includes("source-backed review"));
+assert.equal(applyCatalogPublicationSafety({ products: [researchedPartial] }).products[0].publishStatus, "Published");
 
 const bauhausEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0041"];
 assert.equal(bauhausEditorial.reviewSource, "AllMusic (quoted)");

@@ -3421,7 +3421,7 @@ function bindAdminListControls(root = document) {
             state.adminProductPublishNotices[id] = {
               tone: completion.publicConfirmed ? "success" : "warning",
               busy: false,
-              message: `${completion.publicConfirmed ? "Completed and published live" : "Completed; public confirmation pending"}${completionSha ? ` / commit ${completionSha}` : ""}. No separate Deploy needed.`
+              message: `${completion.item?.publishedAfterResearch ? "Published after research; remaining metadata can be completed later" : completion.publicConfirmed ? "Completed and published live" : "Completed; public confirmation pending"}${completionSha ? ` / commit ${completionSha}` : ""}. No separate Deploy needed.`
             };
           }
           await refreshAdminList("products");
@@ -3494,7 +3494,7 @@ function bindAdminListControls(root = document) {
           state.adminProductPublishNotices[id] = {
             tone: result.publicConfirmed ? "success" : "warning",
             busy: false,
-            message: `${result.publicConfirmed ? "Completed and published live" : "Completed; public confirmation pending"}${sha ? ` / commit ${sha}` : ""}. No separate Deploy needed.`
+            message: `${result.item?.publishedAfterResearch ? "Published after research; remaining metadata can be completed later" : result.publicConfirmed ? "Completed and published live" : "Completed; public confirmation pending"}${sha ? ` / commit ${sha}` : ""}. No separate Deploy needed.`
           };
         }
       } catch (error) {

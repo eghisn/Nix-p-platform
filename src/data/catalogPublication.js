@@ -39,7 +39,32 @@ export function recordPublicationIssues(product = {}) {
 }
 
 export function isRecordPublicationReady(product = {}) {
-  return recordPublicationIssues(product).length === 0;
+  return (
+    (product.raw?.publishAfterResearch === true && isResearchPublicationReady(product)) ||
+    recordPublicationIssues(product).length === 0
+  );
+}
+
+export function isResearchPublicationReady(product = {}) {
+  const raw = product.raw || {};
+  const category = String(product.category || raw.category || "");
+  const format = String(product.format || raw.format || "");
+  if (category !== "Records" || !RECORD_FORMATS.has(format)) return false;
+  const title = String(product.title || raw.title || "").trim();
+  const artist = String(product.artist || raw.artist || "").trim();
+  const condition = String(product.condition || raw.condition || "").trim();
+  const image = String(product.image || raw.image || "").trim();
+  const openToOffers = product.open_to_offers === true || raw.open_to_offers === true;
+  const price = Number(product.price ?? raw.price ?? 0);
+  const minimumOffer = Number(product.minimumAcceptableOffer ?? product.minimum_acceptable_offer ?? raw.minimumAcceptableOffer ?? 0);
+  return Boolean(
+    title &&
+      artist &&
+      condition &&
+      image &&
+      !image.includes("nixp-product-example") &&
+      (openToOffers ? minimumOffer > 0 : price > 0)
+  );
 }
 
 export function applyCatalogPublicationSafety(store = {}) {

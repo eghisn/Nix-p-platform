@@ -5,7 +5,7 @@ import { handleAdminOrders } from "../_lib/commerceHandlers.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
-import { applyCatalogPublicationSafety, recordPublicationIssues } from "../../src/data/catalogPublication.js";
+import { applyCatalogPublicationSafety, isResearchPublicationReady, recordPublicationIssues } from "../../src/data/catalogPublication.js";
 
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("commerceAction");
@@ -75,7 +75,8 @@ export default async function handler(req, res) {
       await syncFinanceInventoryToCatalog(financeState, {
         enrich: true,
         forceEnrichment: body.force === true,
-        targetSkus: requestedSkus
+        targetSkus: requestedSkus,
+        publishAfterResearch: body.publishAfterResearch === true
       });
       const store = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
       const report = catalogCompletionReport(store.products || [], requestedSkus);
@@ -121,13 +122,15 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
   const candidates = products.filter((product) => !requested.size || requested.has(String(product.sku || "").trim().toLowerCase()));
   const items = candidates.map((product) => {
     const issues = recordPublicationIssues(product);
-    const published = product.publishStatus === "Published" && product.visibility === "Public" && !issues.length;
+    const partialResearch = product.raw?.publishAfterResearch === true && isResearchPublicationReady(product);
+    const published = product.publishStatus === "Published" && product.visibility === "Public" && (!issues.length || partialResearch);
     return {
       id: product.id,
       sku: product.sku,
       artist: product.artist,
       title: product.title,
       published,
+      publishedAfterResearch: partialResearch && issues.length > 0,
       enrichmentStatus: product.enrichmentStatus || product.raw?.enrichmentStatus || "",
       issues
     };
