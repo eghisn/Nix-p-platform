@@ -1,6 +1,6 @@
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
 import { json, requireWorkspace } from "../_lib/auth.js";
-import { isSupabaseConfigured, loadStore, saveStore } from "../_lib/supabase.js";
+import { isSupabaseConfigured, loadStore, saveProductPublicationStatus, saveStore } from "../_lib/supabase.js";
 import { applyCatalogPublicationSafety, recordPublicationIssues } from "../../src/data/catalogPublication.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 
@@ -28,10 +28,12 @@ export default async function handler(req, res) {
     // A deploy can introduce products that were not individually saved in this
     // browser session, so synchronize the complete Admin catalog with Finance.
     const safeStore = applyCatalogPublicationSafety(store);
-    await saveStore(safeStore, { syncCatalogProducts: true });
-    // A row-level publish only changes publication state. Running the complete
-    // Finance enrichment pipeline here makes one button wait on every draft.
-    if (!requestedStatusChange?.id) {
+    if (requestedStatusChange?.id) {
+      // Publication is a targeted, backed-up row write. This avoids rewriting
+      // every Admin table or running enrichment when only one status changed.
+      await saveProductPublicationStatus(safeStore, requestedStatusChange.id);
+    } else {
+      await saveStore(safeStore, { syncCatalogProducts: true });
       const financeState = await readFinanceState();
       await syncFinanceInventoryToCatalog(financeState, { enrich: true });
     }

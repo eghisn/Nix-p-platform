@@ -176,6 +176,24 @@ export async function saveStore(store, { inventoryProduct = null, syncCatalogPro
   return safeStore;
 }
 
+export async function saveProductPublicationStatus(store, productId) {
+  const safeStore = applyCatalogPublicationSafety(store);
+  validateStore(safeStore);
+  const product = (safeStore.products || []).find((item) => item.id === productId);
+  if (!product) throw new Error("Product publication save failed: product not found.");
+  const previousRows = await supabaseFetch(
+    `products?select=*&id=eq.${encodeURIComponent(productId)}`,
+    { service: true }
+  );
+  await backupStore("product-publication", {
+    productId,
+    previous: previousRows?.[0] || null,
+    next: product
+  });
+  await upsert("products", [toProductRow(product)]);
+  return product;
+}
+
 async function upsert(table, rows) {
   if (!rows.length) return [];
   return supabaseFetch(`${table}?on_conflict=id`, {
