@@ -18,20 +18,24 @@ export default async function handler(req, res) {
   if (!Array.isArray(store.products) || !Array.isArray(store.artists) || !Array.isArray(store.collections)) {
     return json(res, 400, { ok: false, error: "Deploy requires a complete admin store payload." });
   }
+  const requestedStatusChange = body.statusChange && typeof body.statusChange === "object"
+    ? {
+        id: String(body.statusChange.id || "").trim(),
+        publishStatus: body.statusChange.publishStatus === "Published" ? "Published" : "Draft"
+      }
+    : null;
   try {
     // A deploy can introduce products that were not individually saved in this
     // browser session, so synchronize the complete Admin catalog with Finance.
     const safeStore = applyCatalogPublicationSafety(store);
     await saveStore(safeStore, { syncCatalogProducts: true });
-    const financeState = await readFinanceState();
-    await syncFinanceInventoryToCatalog(financeState, { enrich: true });
+    // A row-level publish only changes publication state. Running the complete
+    // Finance enrichment pipeline here makes one button wait on every draft.
+    if (!requestedStatusChange?.id) {
+      const financeState = await readFinanceState();
+      await syncFinanceInventoryToCatalog(financeState, { enrich: true });
+    }
     const deployedStore = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
-    const requestedStatusChange = body.statusChange && typeof body.statusChange === "object"
-      ? {
-          id: String(body.statusChange.id || "").trim(),
-          publishStatus: body.statusChange.publishStatus === "Published" ? "Published" : "Draft"
-        }
-      : null;
     let statusChange = null;
     if (requestedStatusChange?.id) {
       const product = deployedStore.products.find((item) => item.id === requestedStatusChange.id);
