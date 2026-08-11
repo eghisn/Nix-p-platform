@@ -11,7 +11,12 @@ if (!store || !Array.isArray(store.products) || !Array.isArray(store.artists)) {
 }
 
 const path = "public/data/public-store.json";
-const current = JSON.parse(await readFile(path, "utf8"));
+let current = {};
+try {
+  current = JSON.parse(await readFile(path, "utf8"));
+} catch {
+  current = {};
+}
 const next = {
   ...current,
   version: store.version || current.version,
