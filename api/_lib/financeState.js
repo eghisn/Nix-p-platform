@@ -80,7 +80,7 @@ export async function syncFinanceInventoryToCatalog(state, { enrich = true, forc
   const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
   const [existingRows, catalogArtistRows] = await Promise.all([
     skus.length ? supabaseFetch(`products?select=*&sku=in.(${skuList(skus)})`) : [],
-    supabaseFetch("products?select=artist,label,category,publish_status,visibility&category=eq.Records&publish_status=eq.Published&visibility=eq.Public")
+    supabaseFetch("products?select=artist,label,tags,raw,category,publish_status,visibility&category=eq.Records&publish_status=eq.Published&visibility=eq.Public")
   ]);
   const existingBySku = new Map(existingRows.map((row) => [String(row.sku || "").trim().toLowerCase(), row]));
   const productRows = [];

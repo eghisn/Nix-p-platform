@@ -6,6 +6,18 @@ const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const USED_CONDITION = /^used\b/i;
 const MUSICBRAINZ_ORIGIN = "https://musicbrainz.org";
 const USER_AGENT = "NIXP-Catalog/1.0 (contact@nix-p.com)";
+const TRUSTED_REVIEW_SOURCES = new Map([
+  ["pitchfork.com", "Pitchfork (quoted)"],
+  ["thequietus.com", "The Quietus (quoted)"],
+  ["theguardian.com", "The Guardian (quoted)"],
+  ["thewire.co.uk", "The Wire (quoted)"],
+  ["allmusic.com", "AllMusic (quoted)"],
+  ["residentadvisor.net", "Resident Advisor (quoted)"],
+  ["stereogum.com", "Stereogum (quoted)"],
+  ["tinymixtapes.com", "Tiny Mix Tapes (quoted)"],
+  ["boomkat.com", "Boomkat (quoted)"],
+  ["factmag.com", "FACT (quoted)"]
+]);
 
 // NIXP keeps a local, optimized copy of the public catalog artwork. The
 // original source remains in imageCredits; this mapping prevents third-party
@@ -830,7 +842,12 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const discoveredRelatedArtists = unique([
     ...((Array.isArray(raw.relatedArtists) ? raw.relatedArtists : [])),
     ...(discovered.relatedArtists || []),
-    ...relatedArtistsFromCatalog({ artist, label: discovered.label || row.label, catalogArtists })
+    ...relatedArtistsFromCatalog({
+      artist,
+      label: discovered.label || row.label,
+      tags: discovered.tags || [],
+      catalogArtists
+    })
   ].map(canonicalRelatedArtistName));
   const relatedArtists = relatedArtistsAvailableInCatalog(discoveredRelatedArtists, catalogArtists);
   const enrichmentFingerprint = inventoryFingerprint({ ...stock, artist, title, format });
@@ -1001,10 +1018,11 @@ async function discoverMusicBrainzRelease(stock) {
     discoverPitchforkReview({ artist: stock.artist, title: release.title }),
     discoverRelatedArtists(stock.artist)
   ]);
-  const review = pitchforkReview || (await discoverLinkedReview(releaseGroup?.reviewUrls, {
-    artist: stock.artist,
-    title: release.title
-  }));
+  const review =
+    pitchforkReview ||
+    (await discoverLinkedReview(releaseGroup?.reviewUrls, { artist: stock.artist, title: release.title })) ||
+    (await discoverTrustedReviewSearch({ artist: stock.artist, title: release.title })) ||
+    (await discoverOfficialEditorial(releaseGroup?.officialUrl, { artist: stock.artist, title: release.title }));
   const tags = unique([...(releaseGroup?.tags || []), ...(release["release-group"]?.tags || []).map((tag) => tag.name)]);
   const genreText = tags.slice(0, 3).join(", ");
   const description = `${stock.artist}'s ${year || ""} release ${release.title} is a ${stock.format || stock.item}${
@@ -1100,17 +1118,7 @@ async function discoverReleaseGroup(releaseGroupId) {
 }
 
 async function discoverLinkedReview(urls = [], { artist, title } = {}) {
-  const trustedSources = new Map([
-    ["pitchfork.com", "Pitchfork (quoted)"],
-    ["thequietus.com", "The Quietus (quoted)"],
-    ["theguardian.com", "The Guardian (quoted)"],
-    ["thewire.co.uk", "The Wire (quoted)"],
-    ["allmusic.com", "AllMusic (quoted)"],
-    ["residentadvisor.net", "Resident Advisor (quoted)"],
-    ["stereogum.com", "Stereogum (quoted)"],
-    ["tinymixtapes.com", "Tiny Mix Tapes (quoted)"]
-  ]);
-  for (const value of unique(urls).slice(0, 6)) {
+  for (const value of unique(urls).slice(0, 4)) {
     let url;
     try {
       url = new URL(value);
@@ -1118,11 +1126,11 @@ async function discoverLinkedReview(urls = [], { artist, title } = {}) {
       continue;
     }
     const hostname = url.hostname.toLowerCase().replace(/^www\./, "");
-    const source = [...trustedSources].find(([domain]) => hostname === domain || hostname.endsWith(`.${domain}`))?.[1];
+    const source = trustedReviewSource(hostname);
     if (!source) continue;
-    const response = await fetch(url, {
+    const response = await fetchWithTimeout(url, {
       headers: { accept: "text/html", "user-agent": USER_AGENT }
-    }).catch(() => null);
+    });
     if (!response?.ok) continue;
     const html = await response.text();
     const pageTitle = metaContent(html, "og:title") || titleText(html);
@@ -1132,6 +1140,71 @@ async function discoverLinkedReview(urls = [], { artist, title } = {}) {
     if (quote) return { quote, source, url: url.toString() };
   }
   return null;
+}
+
+async function discoverTrustedReviewSearch({ artist, title } = {}) {
+  const domains = [...TRUSTED_REVIEW_SOURCES.keys()].map((domain) => `site:${domain}`).join(" OR ");
+  const query = `"${artist}" "${title}" review (${domains})`;
+  const response = await fetchWithTimeout(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, {
+    headers: { accept: "text/html", "user-agent": USER_AGENT }
+  }, 7000);
+  if (!response?.ok) return null;
+  const html = await response.text();
+  const urls = unique(
+    [...html.matchAll(/href=["']([^"']+)["']/gi)]
+      .map((match) => duckDuckGoResultUrl(decodeHtml(match[1])))
+      .filter(Boolean)
+  );
+  return discoverLinkedReview(urls, { artist, title });
+}
+
+async function discoverOfficialEditorial(value, { artist, title } = {}) {
+  if (!value) return null;
+  let url;
+  try {
+    url = new URL(value);
+  } catch {
+    return null;
+  }
+  const response = await fetchWithTimeout(url, {
+    headers: { accept: "text/html", "user-agent": USER_AGENT }
+  });
+  if (!response?.ok) return null;
+  const html = await response.text();
+  const pageTitle = metaContent(html, "og:title") || titleText(html);
+  const normalizedPageTitle = normalizedText(pageTitle);
+  if (!normalizedPageTitle.includes(normalizedText(title)) && !normalizedPageTitle.includes(normalizedText(artist))) return null;
+  const quote = conciseQuote(metaContent(html, "description") || metaContent(html, "og:description"));
+  if (!quote) return null;
+  const hostname = url.hostname.toLowerCase().replace(/^www\./, "");
+  return {
+    quote,
+    source: `${editorialSourceName(hostname)} release note (quoted)`,
+    url: url.toString()
+  };
+}
+
+function trustedReviewSource(hostname) {
+  return [...TRUSTED_REVIEW_SOURCES].find(([domain]) => hostname === domain || hostname.endsWith(`.${domain}`))?.[1] || "";
+}
+
+function duckDuckGoResultUrl(value) {
+  try {
+    const url = new URL(value, "https://html.duckduckgo.com");
+    if (url.hostname.endsWith("duckduckgo.com")) return url.searchParams.get("uddg") || "";
+    return url.protocol === "https:" ? url.toString() : "";
+  } catch {
+    return "";
+  }
+}
+
+function editorialSourceName(hostname) {
+  if (hostname.endsWith("bandcamp.com")) return "Bandcamp";
+  return hostname.split(".").slice(-2, -1)[0]?.replace(/(^|[-_])\w/g, (value) => value.toUpperCase().replace(/[-_]/g, "")) || "Official";
+}
+
+async function fetchWithTimeout(url, options = {}, timeoutMs = 6000) {
+  return fetch(url, { ...options, signal: AbortSignal.timeout(timeoutMs) }).catch(() => null);
 }
 
 async function discoverPitchforkReview({ artist, title }) {
@@ -1247,13 +1320,42 @@ function chooseEditorialValue(current, previousAutomatic, nextAutomatic) {
   return value;
 }
 
-function relatedArtistsFromCatalog({ artist, label, catalogArtists = [] } = {}) {
+function relatedArtistsFromCatalog({ artist, label, tags = [], catalogArtists = [] } = {}) {
   const ownNames = new Set(artistCreditNames(artist).map((name) => normalizedText(name)));
   const normalizedLabel = normalizedText(label);
-  const candidates = (Array.isArray(catalogArtists) ? catalogArtists : [])
-    .filter((candidate) => normalizedText(candidate?.label) === normalizedLabel)
-    .flatMap((candidate) => artistCreditNames(candidate?.artist));
-  return unique(candidates).filter((name) => !ownNames.has(normalizedText(name))).slice(0, 6);
+  const sourceFamilies = tagFamilies(tags);
+  const scored = new Map();
+  for (const candidate of Array.isArray(catalogArtists) ? catalogArtists : []) {
+    const names = artistCreditNames(candidate?.artist).filter((name) => !ownNames.has(normalizedText(name)));
+    if (!names.length) continue;
+    const candidateTags = unique([...(candidate?.tags || []), ...(candidate?.raw?.tags || [])]);
+    const candidateFamilies = tagFamilies(candidateTags);
+    const sharedFamilies = [...sourceFamilies].filter((family) => candidateFamilies.has(family)).length;
+    const sameLabel = Boolean(normalizedLabel && normalizedText(candidate?.label) === normalizedLabel);
+    const score = (sameLabel ? 8 : 0) + sharedFamilies * 3;
+    if (!score) continue;
+    for (const name of names) scored.set(name, Math.max(score, scored.get(name) || 0));
+  }
+  return [...scored]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([name]) => name)
+    .slice(0, 6);
+}
+
+function tagFamilies(tags = []) {
+  const families = new Set();
+  const aliases = [
+    ["dark-post-punk", /(post.?punk|goth|darkwave|coldwave|deathrock)/],
+    ["industrial-noise", /(industrial|noise|power electronics|ebm)/],
+    ["electronic-experimental", /(electronic|techno|ambient|idm|deconstructed|experimental)/],
+    ["heavy-technical", /(metal|hardcore|mathcore|grind|technical|progressive)/],
+    ["indie-art-rock", /(indie|art rock|alternative|new wave|punk)/],
+    ["contemporary-composition", /(jazz|classical|composition|minimalism|improvisation)/]
+  ];
+  for (const tag of unique(tags).map(normalizedText)) {
+    for (const [family, pattern] of aliases) if (pattern.test(tag)) families.add(family);
+  }
+  return families;
 }
 
 function relatedArtistsAvailableInCatalog(candidates, catalogArtists = []) {

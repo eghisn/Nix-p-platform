@@ -3394,6 +3394,39 @@ function bindAdminListControls(root = document) {
       };
       await refreshAdminList("products");
       try {
+        const product = adminStore.getProduct(id, { includeDrafts: true });
+        if (publishing && product?.category === "Records") {
+          state.adminProductPublishNotices[id] = {
+            tone: "",
+            busy: true,
+            action: "Research",
+            message: "Completing exact release artwork, editorial sources, related artists, and shipping before publication..."
+          };
+          await refreshAdminList("products");
+          const completion = await adminStore.completeProduct(id);
+          const completionSha = completion.github?.commitSha ? completion.github.commitSha.slice(0, 7) : "";
+          if (!completion.item?.published) {
+            state.adminProductPublishNotices[id] = {
+              tone: "warning",
+              busy: false,
+              message: `Still Draft: ${(completion.item?.issues || ["an exact trusted source could not be verified"]).join(", ")}.`
+            };
+          } else if (completion.github?.skipped) {
+            state.adminProductPublishNotices[id] = {
+              tone: "warning",
+              busy: false,
+              message: "Completed in Admin, but GitHub deployment is not configured. Use Deploy after fixing the token."
+            };
+          } else {
+            state.adminProductPublishNotices[id] = {
+              tone: completion.publicConfirmed ? "success" : "warning",
+              busy: false,
+              message: `${completion.publicConfirmed ? "Completed and published live" : "Completed; public confirmation pending"}${completionSha ? ` / commit ${completionSha}` : ""}. No separate Deploy needed.`
+            };
+          }
+          await refreshAdminList("products");
+          return;
+        }
         const result = await adminStore.publishProduct(id, requestedStatus);
         const sha = result.github?.commitSha ? result.github.commitSha.slice(0, 7) : "";
         if (result.blocked) {
