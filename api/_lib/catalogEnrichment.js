@@ -102,6 +102,36 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     sourceUrl: "https://timhecker.bandcamp.com/album/konoyo",
     musicBrainzReleaseId: "ef389c8c-9465-45fa-86e1-efc49f6f3c36"
   },
+  "NXP-2026-VNL-0044": {
+    title: "Day Of My Death",
+    year: 2016,
+    label: "Buttechno",
+    edition: "LP",
+    catalogNumber: "BTX2016",
+    cover: "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461896036-r-9289741-1478026229-9350.jpg",
+    productPhoto: "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461897996-r-9289741-1632646603-6279.jpg",
+    imageCredits: [
+      {
+        image: "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461896036-r-9289741-1478026229-9350.jpg",
+        credit: "NIXP admin upload / Discogs release photography",
+        url: "https://www.discogs.com/release/9289741-Buttechno-Day-Of-My-Death"
+      },
+      {
+        image: "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461897996-r-9289741-1632646603-6279.jpg",
+        credit: "NIXP admin upload / Discogs release photography",
+        url: "https://www.discogs.com/release/9289741-Buttechno-Day-Of-My-Death"
+      }
+    ],
+    description:
+      "Day Of My Death is Pavel Milyakov's 2016 Buttechno LP, written as a noisily poetic soundtrack around Gosha Rubchinskiy's S/S 17 show and moving through ambient guitar haze, synth pressure, spoken-word fragments and bare-bones electro-dub.",
+    descriptionSource: "Buttechno Bandcamp / Boomkat",
+    reviewQuote: "a must-have bit of the Buttechno catalogue",
+    reviewSource: "Boomkat (quoted)",
+    reviewUrl: "https://boomkat.com/products/day-of-my-death",
+    relatedArtists: ["L.O.T.I.O.N", "The Prodigy", "Suicide", "The Soft Moon"],
+    tags: ["techno", "ambient", "industrial", "electro-dub", "soundtrack"],
+    sourceUrl: "https://buttechno.bandcamp.com/album/day-of-my-death"
+  },
   "NXP-2026-CD-0025": {
     title: "Pleiades' Dust",
     year: 2016,

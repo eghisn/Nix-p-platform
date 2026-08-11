@@ -2,6 +2,158 @@
   "version": "supabase-live-2026-07-13",
   "products": [
     {
+      "id": "finance-nxp-2026-vnl-0044",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0044",
+      "tags": [
+        "techno",
+        "ambient",
+        "industrial",
+        "electro-dub",
+        "soundtrack"
+      ],
+      "year": 2016,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461896036-r-9289741-1478026229-9350.jpg",
+      "label": "Buttechno",
+      "price": 0,
+      "sizes": [],
+      "title": "Day Of My Death",
+      "artist": "Buttechno",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461896036-r-9289741-1478026229-9350.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461897996-r-9289741-1632646603-6279.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461900267-r-9289741-1632646603-8792.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461901762-r-9289741-1632646603-1084.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-VNL-0044",
+        "Format: Vinyl",
+        "Condition: New-Unsealed",
+        "Edition: LP",
+        "Catalog number: BTX2016"
+      ],
+      "edition": "LP",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Unsealed",
+      "reviewUrl": "https://boomkat.com/products/day-of-my-death",
+      "sourceUrl": "https://buttechno.bandcamp.com/album/day-of-my-death",
+      "syncAudit": [
+        {
+          "at": "2026-08-11T15:25:33.290Z",
+          "sku": "NXP-2026-VNL-0044",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-11T15:25:19.612Z",
+          "sku": "NXP-2026-VNL-0044",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-11T15:20:42.816Z",
+          "sku": "NXP-2026-VNL-0044",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-11T15:17:24.695Z",
+          "sku": "NXP-2026-VNL-0044",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-11T15:16:52.330Z",
+          "sku": "NXP-2026-VNL-0044",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-11T15:16:28.846Z",
+          "sku": "NXP-2026-VNL-0044",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-11T15:16:03.138Z",
+          "sku": "NXP-2026-VNL-0044",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-11T15:15:44.415Z",
+          "sku": "NXP-2026-VNL-0044",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-08-11",
+      "collection": "Buttechno",
+      "syncStatus": {
+        "at": "2026-08-11T15:25:33.290Z",
+        "sku": "NXP-2026-VNL-0044",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Day Of My Death is Pavel Milyakov's 2016 Buttechno LP, written as a noisily poetic soundtrack around Gosha Rubchinskiy's S/S 17 show and moving through ambient guitar haze, synth pressure, spoken-word fragments and bare-bones electro-dub.",
+      "reviewQuote": "a must-have bit of the Buttechno catalogue",
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/9289741-Buttechno-Day-Of-My-Death",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461896036-r-9289741-1478026229-9350.jpg",
+          "credit": "NIXP admin upload / Discogs release photography"
+        },
+        {
+          "url": "https://www.discogs.com/release/9289741-Buttechno-Day-Of-My-Death",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0044-1786461897996-r-9289741-1632646603-6279.jpg",
+          "credit": "NIXP admin upload / Discogs release photography"
+        }
+      ],
+      "reviewSource": "Boomkat (quoted)",
+      "catalogNumber": "BTX2016",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "msolheb6skzhi4",
+      "mediaCondition": "",
+      "open_to_offers": true,
+      "relatedArtists": [
+        "L.O.T.I.O.N",
+        "The Prodigy",
+        "Suicide",
+        "The Soft Moon"
+      ],
+      "homeCollections": [
+        "recent-releases"
+      ],
+      "sleeveCondition": "",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Buttechno Bandcamp / Boomkat",
+      "metadataSourceUrl": "https://buttechno.bandcamp.com/album/day-of-my-death",
+      "publicationIssues": [],
+      "enrichmentUpdatedAt": "2026-08-11",
+      "publishAfterResearch": true,
+      "enrichmentAttemptedAt": "2026-08-11 16:09:47.822827+00",
+      "enrichmentFingerprint": "buttechno|day of my death|vinyl||btx2016",
+      "minimumAcceptableOffer": 2500000
+    },
+    {
       "id": "finance-nxp-2026-vnl-0042",
       "qty": 1,
       "raw": {

@@ -90,6 +90,31 @@ assert.equal(tim.images.length, 1, "Used records must not receive an invented pr
 assert.equal(tim.raw.shipping.shippingClass, "small-media-cd-bubble");
 assert.equal(isRecordPublicationReady({ ...tim, ...tim.raw }), true);
 
+const buttechnoStock = {
+  sku: "NXP-2026-VNL-0044",
+  item: "Vinyl",
+  itemCondition: "New-Unsealed",
+  artist: "Buttechno",
+  title: "Day Of My Death",
+  sellingPrice: 0,
+  listingMode: "Private Collection / Offer Only",
+  minimumAcceptableOffer: 2500000,
+  catalogNumber: "BTX2016"
+};
+const buttechno = await enrichFinanceCatalogProduct(
+  { ...draft, id: "finance-nxp-2026-vnl-0044", sku: buttechnoStock.sku, format: "Vinyl", price: 0, open_to_offers: true, minimum_acceptable_offer: 2500000, raw: {} },
+  buttechnoStock,
+  { catalogArtists: [{ artist: "L.O.T.I.O.N" }, { artist: "The Prodigy" }, { artist: "Suicide" }, { artist: "The Soft Moon" }] }
+);
+assert.equal(buttechno.publish_status, "Published");
+assert.equal(buttechno.visibility, "Public");
+assert.equal(buttechno.open_to_offers, true);
+assert.equal(buttechno.minimum_acceptable_offer, 2500000);
+assert.equal(buttechno.raw.enrichmentStatus, "complete");
+assert.equal(buttechno.raw.reviewSource, "Boomkat (quoted)");
+assert.deepEqual(buttechno.raw.relatedArtists, ["L.O.T.I.O.N", "The Prodigy", "Suicide", "The Soft Moon"]);
+assert.equal(isRecordPublicationReady({ ...buttechno, ...buttechno.raw }), true);
+
 const unsafeStore = applyCatalogPublicationSafety({
   products: [{ ...tim.raw, id: tim.id, financeStockId: "stock-1", publishStatus: "Published", visibility: "Public", reviewQuote: "", reviewSource: "", reviewUrl: "" }]
 });

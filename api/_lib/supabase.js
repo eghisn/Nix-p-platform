@@ -234,7 +234,9 @@ function fromRawRow(row) {
 }
 
 function fromProductRow(row, { privateScope = false } = {}) {
-  const { shipping, ...raw } = row.raw || {};
+  const sourceRaw = row.raw || {};
+  const nestedRaw = sourceRaw.raw && typeof sourceRaw.raw === "object" ? sourceRaw.raw : {};
+  const { shipping, raw: _discardNestedRaw, ...raw } = { ...nestedRaw, ...sourceRaw };
   const product = {
     ...raw,
     id: row.id,
@@ -311,6 +313,7 @@ function dedupeRows(rows = []) {
 }
 
 function toProductRow(product) {
+  const raw = normalizedProductRaw(product);
   return {
     id: String(product.id),
     sku: product.sku || product.id,
@@ -343,7 +346,24 @@ function toProductRow(product) {
     publish_status: product.publishStatus || "Published",
     visibility: product.visibility || "Public",
     updated_at: product.updatedAt || new Date().toISOString().slice(0, 10),
-    raw: product
+    raw
+  };
+}
+
+function normalizedProductRaw(product = {}) {
+  const { raw: _discardProductRaw, ...productFields } = product;
+  const previousRaw = product.raw && typeof product.raw === "object" ? { ...product.raw } : {};
+  delete previousRaw.raw;
+  return {
+    ...previousRaw,
+    ...productFields,
+    publishStatus: product.publishStatus || previousRaw.publishStatus || "Published",
+    visibility: product.visibility || previousRaw.visibility || "Public",
+    open_to_offers: product.open_to_offers === true,
+    minimumAcceptableOffer:
+      product.minimumAcceptableOffer === null || product.minimumAcceptableOffer === undefined || product.minimumAcceptableOffer === ""
+        ? null
+        : Math.max(0, Math.floor(Number(product.minimumAcceptableOffer) || 0))
   };
 }
 
