@@ -1,7 +1,7 @@
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
 import { json, requireWorkspace } from "../_lib/auth.js";
 import { isSupabaseConfigured, loadStore, saveStore } from "../_lib/supabase.js";
-import { applyCatalogPublicationSafety } from "../../src/data/catalogPublication.js";
+import { applyCatalogPublicationSafety, recordPublicationIssues } from "../../src/data/catalogPublication.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 
 export default async function handler(req, res) {
@@ -26,18 +26,54 @@ export default async function handler(req, res) {
     const financeState = await readFinanceState();
     await syncFinanceInventoryToCatalog(financeState, { enrich: true });
     const deployedStore = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
+    const requestedStatusChange = body.statusChange && typeof body.statusChange === "object"
+      ? {
+          id: String(body.statusChange.id || "").trim(),
+          publishStatus: body.statusChange.publishStatus === "Published" ? "Published" : "Draft"
+        }
+      : null;
+    let statusChange = null;
+    if (requestedStatusChange?.id) {
+      const product = deployedStore.products.find((item) => item.id === requestedStatusChange.id);
+      if (!product) {
+        return json(res, 404, {
+          ok: false,
+          error: "Product could not be found after saving. Nothing was deployed.",
+          statusChange: { ...requestedStatusChange, actualStatus: "Missing", deployed: false }
+        });
+      }
+      const actualStatus = product.publishStatus === "Published" && product.visibility === "Public" ? "Published" : "Draft";
+      const issues = actualStatus === "Published"
+        ? []
+        : product.raw?.publicationIssues || recordPublicationIssues(product);
+      statusChange = {
+        ...requestedStatusChange,
+        actualStatus,
+        deployed: false,
+        issues
+      };
+      if (requestedStatusChange.publishStatus !== actualStatus) {
+        return json(res, 409, {
+          ok: false,
+          error: `Not published. Complete: ${issues.join(", ") || "required publication fields"}.`,
+          statusChange: { ...statusChange, blocked: true }
+        });
+      }
+    }
     if (!isGitHubDeployConfigured()) {
       return json(res, 200, {
         ok: true,
         message: "Saved to Supabase. GitHub commit skipped because GITHUB_DEPLOY_TOKEN or GITHUB_TOKEN is not configured.",
-        github: { skipped: true, reason: "missing_token" }
+        github: { skipped: true, reason: "missing_token" },
+        statusChange
       });
     }
     const github = await commitPublicStore(deployedStore, { message: body.message });
     json(res, 200, {
       ok: true,
       message: "Saved to Supabase and committed to GitHub. Vercel will deploy from the GitHub push.",
-      github
+      github,
+      statusChange: statusChange ? { ...statusChange, deployed: true } : null
     });
   } catch (error) {
     json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Deploy failed" });

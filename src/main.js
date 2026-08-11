@@ -51,6 +51,7 @@ const state = {
   adminNoticeTone: "",
   adminCompletionNotice: "",
   adminCompletionNoticeTone: "",
+  adminProductPublishNotices: {},
   adminSearch: {},
   adminSort: {
     products: "artist",
@@ -1562,6 +1563,7 @@ function adminProductsCatalogMarkup(products) {
           <h2>Catalog</h2>
           <span>${visibleProducts.length} / ${products.length} items</span>
         </div>
+        <p class="admin-publish-help">Publish sends that product to Supabase, GitHub, Vercel, and verifies the public catalog. No separate Deploy click is needed.</p>
         ${adminListControls("products", "Search SKU, product, category, format, condition", [
           ["status", "Status"],
           ["sku", "SKU"],
@@ -1589,19 +1591,23 @@ function adminProductsCatalogMarkup(products) {
             sortHeader("products", "updated", "Updated"),
             "Actions"
           ],
-          visibleProducts.map((item) => [
-            statusPill(item.publishStatus),
-            escapeHtml(item.sku || "-"),
-            `<strong>${escapeHtml(item.title)}</strong><br><small>${escapeHtml(item.artist)}</small>`,
-            escapeHtml(item.category || "-"),
-            item.displayFormat || item.format,
-            item.condition || "-",
-            Number(item.qty || 0).toString(),
-            money.format(item.price || 0),
-            item.updatedAt || "-",
-            `<button class="link-button" type="button" data-admin-edit-product="${item.id}">Edit</button>
-             <button class="link-button" type="button" data-admin-product-status="${item.id}" data-status="${item.publishStatus === "Published" ? "Draft" : "Published"}">${item.publishStatus === "Published" ? "Unpublish" : "Publish"}</button>`
-          ])
+          visibleProducts.map((item) => {
+            const publishNotice = state.adminProductPublishNotices[item.id] || {};
+            return [
+              statusPill(item.publishStatus),
+              escapeHtml(item.sku || "-"),
+              `<strong>${escapeHtml(item.title)}</strong><br><small>${escapeHtml(item.artist)}</small>`,
+              escapeHtml(item.category || "-"),
+              item.displayFormat || item.format,
+              item.condition || "-",
+              Number(item.qty || 0).toString(),
+              money.format(item.price || 0),
+              item.updatedAt || "-",
+              `<button class="link-button" type="button" data-admin-edit-product="${item.id}">Edit</button>
+               <button class="link-button" type="button" data-admin-product-status="${item.id}" data-status="${item.publishStatus === "Published" ? "Draft" : "Published"}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy ? (publishNotice.action === "Published" ? "Publishing..." : "Unpublishing...") : (item.publishStatus === "Published" ? "Unpublish" : "Publish")}</button>
+               <span class="admin-publish-status" data-tone="${escapeAttr(publishNotice.tone || "")}" aria-live="polite">${escapeHtml(publishNotice.message || "")}</span>`
+            ];
+          })
         )}
       </div>
   `;
@@ -3372,7 +3378,55 @@ function bindAdminListControls(root = document) {
 
   root.querySelectorAll("[data-admin-product-status]").forEach((button) => {
     button.addEventListener("click", async () => {
-      await adminStore.updateProductStatus(button.dataset.adminProductStatus, button.dataset.status);
+      const id = button.dataset.adminProductStatus;
+      const requestedStatus = button.dataset.status;
+      const publishing = requestedStatus === "Published";
+      button.disabled = true;
+      button.textContent = publishing ? "Publishing..." : "Unpublishing...";
+      state.adminProductPublishNotices[id] = {
+        tone: "",
+        busy: true,
+        action: requestedStatus,
+        message: publishing
+          ? "Publishing to Supabase, GitHub, and the public catalog..."
+          : "Removing from the public catalog..."
+      };
+      await refreshAdminList("products");
+      try {
+        const result = await adminStore.publishProduct(id, requestedStatus);
+        const sha = result.github?.commitSha ? result.github.commitSha.slice(0, 7) : "";
+        if (result.blocked) {
+          state.adminProductPublishNotices[id] = {
+            tone: "error",
+            busy: false,
+            message: result.error || "Not published. Complete the required product information first."
+          };
+        } else if (result.github?.skipped) {
+          state.adminProductPublishNotices[id] = {
+            tone: "warning",
+            busy: false,
+            message: `${requestedStatus} in Admin, but not deployed to GitHub. Use Deploy after the GitHub token is fixed.`
+          };
+        } else if (result.publicConfirmed) {
+          state.adminProductPublishNotices[id] = {
+            tone: "success",
+            busy: false,
+            message: `${requestedStatus === "Published" ? "Published live" : "Unpublished live"}${sha ? ` / commit ${sha}` : ""}. No separate Deploy needed.`
+          };
+        } else {
+          state.adminProductPublishNotices[id] = {
+            tone: "warning",
+            busy: false,
+            message: `${requestedStatus} and deployment triggered${sha ? ` / commit ${sha}` : ""}. Public confirmation is still pending; do not click Deploy again.`
+          };
+        }
+      } catch (error) {
+        state.adminProductPublishNotices[id] = {
+          tone: "error",
+          busy: false,
+          message: error instanceof Error ? error.message : "Publish failed. Product was not confirmed live."
+        };
+      }
       await refreshAdminList("products");
     });
   });

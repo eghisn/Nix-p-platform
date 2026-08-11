@@ -505,6 +505,26 @@ async function writeStoreBestEffort(store) {
   }
 }
 
+async function verifyPublicProductState(id, shouldBePublished) {
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    try {
+      const response = await fetch(`/api/catalog?scope=public&v=${Date.now()}`, {
+        cache: "no-store",
+        headers: { accept: "application/json" }
+      });
+      if (response.ok) {
+        const payload = await response.json();
+        const isPublished = Boolean(payload.store?.products?.some((product) => product.id === id));
+        if (isPublished === shouldBePublished) return true;
+      }
+    } catch {
+      // Retry briefly while the public catalog cache catches up.
+    }
+    await new Promise((resolve) => setTimeout(resolve, 700));
+  }
+  return false;
+}
+
 async function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -742,19 +762,62 @@ export const adminStore = {
     if (activeStore && activeStoreScope === scope) return activeStore;
     return readStore();
   },
-  async deployStore() {
+  async deployStore({ store = readStore(), message, statusChange = null } = {}) {
     const response = await fetch("/api/admin/deploy", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        store: readStore(),
-        message: `Deploy NIXP catalog ${new Date().toISOString()}`,
-        deploymentSource: "admin-editor"
+        store,
+        message: message || `Deploy NIXP catalog ${new Date().toISOString()}`,
+        deploymentSource: "admin-editor",
+        statusChange
       })
     });
     const payload = await response.json().catch(() => ({}));
+    if (response.status === 409 && payload.statusChange?.blocked) {
+      await this.refreshPrivateStore({ force: true });
+      return { ...payload, blocked: true };
+    }
     if (!response.ok) throw new Error(payload.error || "Deploy failed. Please check Vercel and GitHub settings.");
     return payload;
+  },
+  async publishProduct(id, publishStatus) {
+    const store = readStore();
+    const product = store.products.find((item) => item.id === id);
+    if (!product) throw new Error("Product could not be found in the Admin catalog.");
+    const nextStore = {
+      ...store,
+      products: store.products.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              publishStatus,
+              visibility: publishStatus === "Published" ? "Public" : "Private",
+              raw: {
+                ...(item.raw || {}),
+                adminPublishOverride: publishStatus === "Draft" ? "Draft" : null
+              },
+              updatedAt: today()
+            }
+          : item
+      )
+    };
+    const result = await this.deployStore({
+      store: nextStore,
+      message: `${publishStatus === "Published" ? "Publish" : "Unpublish"} ${product.sku || product.title}`,
+      statusChange: { id, publishStatus }
+    });
+    await this.refreshPrivateStore({ force: true });
+    const savedProduct = this.getSnapshot().products.find((item) => item.id === id);
+    const publicConfirmed = result.blocked || result.github?.skipped
+      ? false
+      : await verifyPublicProductState(id, publishStatus === "Published");
+    return {
+      ...result,
+      product: savedProduct,
+      requestedStatus: publishStatus,
+      publicConfirmed
+    };
   },
   async deployStatus() {
     const response = await fetch("/api/admin/deploy-status", {
@@ -986,13 +1049,7 @@ export const adminStore = {
     return product;
   },
   updateProductStatus(id, publishStatus) {
-    const store = readStore();
-    return writeStore({
-      ...store,
-      products: store.products.map((product) =>
-        product.id === id ? { ...product, publishStatus, updatedAt: today() } : product
-      )
-    });
+    return this.publishProduct(id, publishStatus);
   },
   saveArtist(data) {
     const store = readStore();

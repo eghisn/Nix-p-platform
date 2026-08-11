@@ -299,8 +299,17 @@ function productRowFromFinanceStock(row, stock, quantity) {
   const readyFromFinance = category === "Records"
     ? isRecordPublicationReady({ ...row, ...raw, title: financeTitle || row.title, artist: financeArtist || row.artist, price: openToOffers ? 0 : financePrice || row.price, open_to_offers: openToOffers, minimum_acceptable_offer: minimumAcceptableOffer })
     : Boolean(financeTitle && (openToOffers ? minimumAcceptableOffer : financePrice > 0) && hasUsableProductImage(row));
-  const publishStatus = wasFinanceDraft ? (readyFromFinance ? "Published" : "Draft") : row.publish_status || "Published";
-  const visibility = wasFinanceDraft ? (readyFromFinance ? "Public" : "Private") : row.visibility || "Public";
+  const adminUnpublished = row.raw?.adminPublishOverride === "Draft";
+  const publishStatus = adminUnpublished
+    ? "Draft"
+    : wasFinanceDraft
+      ? (readyFromFinance ? "Published" : "Draft")
+      : row.publish_status || "Published";
+  const visibility = adminUnpublished
+    ? "Private"
+    : wasFinanceDraft
+      ? (readyFromFinance ? "Public" : "Private")
+      : row.visibility || "Public";
 
   return productRowFromExisting(row, {
     title: financeTitle || row.title,

@@ -613,6 +613,42 @@ img {
   text-transform: uppercase;
 }
 
+.admin-publish-status {
+  display: block;
+  max-width: 230px;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.64rem;
+  font-weight: 760;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.admin-publish-help {
+  margin: -4px 0 14px;
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.admin-publish-status:empty {
+  display: none;
+}
+
+.admin-publish-status[data-tone="success"] {
+  color: #186f3d;
+}
+
+.admin-publish-status[data-tone="warning"] {
+  color: #9a5b00;
+}
+
+.admin-publish-status[data-tone="error"] {
+  color: #b00020;
+}
+
 .site-nav-left {
   justify-self: start;
 }
