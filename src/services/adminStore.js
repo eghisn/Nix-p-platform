@@ -884,6 +884,43 @@ export const adminStore = {
       message: deploy.message || "Draft completion finished."
     };
   },
+  async completeProduct(id) {
+    const product = readStore().products.find((item) => item.id === id);
+    if (!product) throw new Error("Product could not be found in the Admin catalog.");
+    if (product.category !== "Records") throw new Error("Internet catalog completion is only used for records, CDs, and cassettes.");
+    const response = await fetch("/api/admin/catalog-sync", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ skus: [product.sku], force: true })
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || `Could not complete ${product.sku}.`);
+    const item = payload.report?.items?.find((candidate) =>
+      String(candidate.sku || "").toLowerCase() === String(product.sku || "").toLowerCase()
+    ) || payload.report?.items?.[0];
+    let deploy = { github: null, message: "Product remains Draft until all required sources are verified." };
+    if (item?.published) {
+      const deployResponse = await fetch("/api/admin/catalog-sync", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "deploy-current" })
+      });
+      deploy = await deployResponse.json().catch(() => ({}));
+      if (!deployResponse.ok) throw new Error(deploy.error || "Product was completed, but live deployment failed.");
+    }
+    await this.refreshPrivateStore({ force: true });
+    const savedProduct = this.getSnapshot().products.find((candidate) => candidate.id === id);
+    const publicConfirmed = item?.published && !deploy.github?.skipped
+      ? await verifyPublicProductState(id, true)
+      : false;
+    return {
+      item,
+      product: savedProduct,
+      github: deploy.github || null,
+      message: deploy.message || payload.message,
+      publicConfirmed
+    };
+  },
   async saveHomeSlider(data) {
     const store = readStore();
     const collectionIds = ["recent-releases", "nixp-selection", "back-in-stock", "limited-pressing", "private-collection"];

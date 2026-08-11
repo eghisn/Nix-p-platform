@@ -85,6 +85,19 @@ const unsafeStore = applyCatalogPublicationSafety({
 });
 assert.equal(unsafeStore.products[0].publishStatus, "Draft");
 assert.equal(unsafeStore.products[0].visibility, "Private");
-assert.ok(unsafeStore.products[0].raw.publicationIssues.includes("review"));
+assert.ok(unsafeStore.products[0].raw.publicationIssues.includes("source-backed review"));
+
+const publicationReadyWithoutEditionOrBarcode = applyCatalogPublicationSafety({
+  products: [{
+    ...tim.raw,
+    id: tim.id,
+    financeStockId: "stock-1",
+    publishStatus: "Published",
+    visibility: "Public",
+    edition: "",
+    barcode: ""
+  }]
+});
+assert.equal(publicationReadyWithoutEditionOrBarcode.products[0].publishStatus, "Published");
 
 process.stdout.write("Finance catalog enrichment contract passed.\n");

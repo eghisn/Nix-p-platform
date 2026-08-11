@@ -1604,7 +1604,8 @@ function adminProductsCatalogMarkup(products) {
               money.format(item.price || 0),
               item.updatedAt || "-",
               `<button class="link-button" type="button" data-admin-edit-product="${item.id}">Edit</button>
-               <button class="link-button" type="button" data-admin-product-status="${item.id}" data-status="${item.publishStatus === "Published" ? "Draft" : "Published"}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy ? (publishNotice.action === "Published" ? "Publishing..." : "Unpublishing...") : (item.publishStatus === "Published" ? "Unpublish" : "Publish")}</button>
+               ${item.category === "Records" && item.publishStatus !== "Published" ? `<button class="link-button" type="button" data-admin-complete-product="${item.id}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy && publishNotice.action === "Research" ? "Researching..." : "Research & Complete"}</button>` : ""}
+               <button class="link-button" type="button" data-admin-product-status="${item.id}" data-status="${item.publishStatus === "Published" ? "Draft" : "Published"}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy && publishNotice.action !== "Research" ? (publishNotice.action === "Published" ? "Publishing..." : "Unpublishing...") : (item.publishStatus === "Published" ? "Unpublish" : "Publish")}</button>
                <span class="admin-publish-status" data-tone="${escapeAttr(publishNotice.tone || "")}" aria-live="polite">${escapeHtml(publishNotice.message || "")}</span>`
             ];
           })
@@ -3425,6 +3426,49 @@ function bindAdminListControls(root = document) {
           tone: "error",
           busy: false,
           message: error instanceof Error ? error.message : "Publish failed. Product was not confirmed live."
+        };
+      }
+      await refreshAdminList("products");
+    });
+  });
+
+  root.querySelectorAll("[data-admin-complete-product]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const id = button.dataset.adminCompleteProduct;
+      state.adminProductPublishNotices[id] = {
+        tone: "",
+        busy: true,
+        action: "Research",
+        message: "Checking exact release metadata, artwork, editorial sources, related artists, and shipping profile..."
+      };
+      await refreshAdminList("products");
+      try {
+        const result = await adminStore.completeProduct(id);
+        const sha = result.github?.commitSha ? result.github.commitSha.slice(0, 7) : "";
+        if (!result.item?.published) {
+          state.adminProductPublishNotices[id] = {
+            tone: "warning",
+            busy: false,
+            message: `Still Draft: ${(result.item?.issues || ["an exact trusted source could not be verified"]).join(", ")}.`
+          };
+        } else if (result.github?.skipped) {
+          state.adminProductPublishNotices[id] = {
+            tone: "warning",
+            busy: false,
+            message: "Completed in Admin, but GitHub deployment is not configured. Use Deploy after fixing the token."
+          };
+        } else {
+          state.adminProductPublishNotices[id] = {
+            tone: result.publicConfirmed ? "success" : "warning",
+            busy: false,
+            message: `${result.publicConfirmed ? "Completed and published live" : "Completed; public confirmation pending"}${sha ? ` / commit ${sha}` : ""}. No separate Deploy needed.`
+          };
+        }
+      } catch (error) {
+        state.adminProductPublishNotices[id] = {
+          tone: "error",
+          busy: false,
+          message: error instanceof Error ? error.message : "Internet catalog completion failed."
         };
       }
       await refreshAdminList("products");

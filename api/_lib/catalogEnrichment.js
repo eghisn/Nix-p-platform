@@ -996,11 +996,15 @@ async function discoverMusicBrainzRelease(stock) {
     release.packaging,
     ...(release.media || []).map((medium) => medium.format)
   ]).join(" / ");
-  const [releaseGroup, review, relatedArtists] = await Promise.all([
+  const [releaseGroup, pitchforkReview, relatedArtists] = await Promise.all([
     discoverReleaseGroup(release["release-group"]?.id),
     discoverPitchforkReview({ artist: stock.artist, title: release.title }),
     discoverRelatedArtists(stock.artist)
   ]);
+  const review = pitchforkReview || (await discoverLinkedReview(releaseGroup?.reviewUrls, {
+    artist: stock.artist,
+    title: release.title
+  }));
   const tags = unique([...(releaseGroup?.tags || []), ...(release["release-group"]?.tags || []).map((tag) => tag.name)]);
   const genreText = tags.slice(0, 3).join(", ");
   const description = `${stock.artist}'s ${year || ""} release ${release.title} is a ${stock.format || stock.item}${
@@ -1086,8 +1090,48 @@ async function discoverReleaseGroup(releaseGroupId) {
   );
   return {
     tags: unique((payload.tags || []).map((tag) => tag.name)),
-    officialUrl: officialRelation?.url?.resource || ""
+    officialUrl: officialRelation?.url?.resource || "",
+    reviewUrls: unique(
+      relations
+        .filter((relation) => String(relation?.type || "").toLowerCase() === "review")
+        .map((relation) => relation?.url?.resource)
+    )
   };
+}
+
+async function discoverLinkedReview(urls = [], { artist, title } = {}) {
+  const trustedSources = new Map([
+    ["pitchfork.com", "Pitchfork (quoted)"],
+    ["thequietus.com", "The Quietus (quoted)"],
+    ["theguardian.com", "The Guardian (quoted)"],
+    ["thewire.co.uk", "The Wire (quoted)"],
+    ["allmusic.com", "AllMusic (quoted)"],
+    ["residentadvisor.net", "Resident Advisor (quoted)"],
+    ["stereogum.com", "Stereogum (quoted)"],
+    ["tinymixtapes.com", "Tiny Mix Tapes (quoted)"]
+  ]);
+  for (const value of unique(urls).slice(0, 6)) {
+    let url;
+    try {
+      url = new URL(value);
+    } catch {
+      continue;
+    }
+    const hostname = url.hostname.toLowerCase().replace(/^www\./, "");
+    const source = [...trustedSources].find(([domain]) => hostname === domain || hostname.endsWith(`.${domain}`))?.[1];
+    if (!source) continue;
+    const response = await fetch(url, {
+      headers: { accept: "text/html", "user-agent": USER_AGENT }
+    }).catch(() => null);
+    if (!response?.ok) continue;
+    const html = await response.text();
+    const pageTitle = metaContent(html, "og:title") || titleText(html);
+    const normalizedPageTitle = normalizedText(pageTitle);
+    if (!normalizedPageTitle.includes(normalizedText(title)) && !normalizedPageTitle.includes(normalizedText(artist))) continue;
+    const quote = conciseQuote(metaContent(html, "description") || metaContent(html, "og:description"));
+    if (quote) return { quote, source, url: url.toString() };
+  }
+  return null;
 }
 
 async function discoverPitchforkReview({ artist, title }) {

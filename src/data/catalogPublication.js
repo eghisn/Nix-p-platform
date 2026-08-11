@@ -25,12 +25,12 @@ export function recordPublicationIssues(product = {}) {
     ["title", product.title || raw.title],
     ["artist", product.artist || raw.artist],
     ["label", product.label || raw.label],
-    ["description", product.description || raw.description],
-    ["description source", product.descriptionSource || raw.descriptionSource],
-    ["review", product.reviewQuote || raw.reviewQuote],
-    ["review source", product.reviewSource || raw.reviewSource]
+    ["description", product.description || raw.description]
   ];
   const issues = fields.filter(([, value]) => !String(value || "").trim()).map(([name]) => name);
+  const reviewQuote = String(product.reviewQuote || raw.reviewQuote || "").trim();
+  const reviewSource = String(product.reviewSource || raw.reviewSource || "").trim();
+  if (!reviewQuote || !reviewSource) issues.push("source-backed review");
   if (!Number(product.year || raw.year || 0)) issues.push("release year");
   if (!image || image.includes("nixp-product-example")) issues.push("managed cover art");
   if (!relatedArtists.length) issues.push("related artists available in inventory");
