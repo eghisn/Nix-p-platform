@@ -756,9 +756,36 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     ],
     description: "JIL SANDER SOUND ZINE is the 2026 printed and audio companion to the brand's Cisco Records project in Tokyo. Its inaugural Music and Environment issue includes a flexi disc carrying Laurel Halo's music for the Fall/Winter 2026 show.",
     descriptionSource: "JIL SANDER / HOUYHNHNM",
-    relatedArtists: ["Laurel Halo"],
+    reviewQuote: "Bridging new and old influences",
+    reviewSource: "Glass HK (quoted)",
+    reviewUrl: "https://www.theglassmagazine.hk/index.php/2026/04/01/inside-jil-sanders-celebration-of-sound-with-cisco/",
+    relatedArtists: ["Oneohtrix Point Never", "Daniel Lopatin", "Nala Sinephro"],
     tags: ["sound art", "zine", "flexi disc", "fashion publishing"],
     sourceUrl: "https://www.jilsander.com/en-au/jil-sander-sounds-presents-cisco-records/jil-sander-sounds-presents-cisco-records.html"
+  },
+  "NXP-2026-VNL-0042": {
+    title: "Digital Control And Man's Obsolescence",
+    year: 2015,
+    label: "La Vida Es Un Mus",
+    edition: "LP with obi strip, poster and lyric sheet",
+    catalogNumber: "MUS103",
+    cover: "https://f4.bcbits.com/img/a0997716829_10.jpg",
+    imageCredits: [
+      {
+        image: "https://f4.bcbits.com/img/a0997716829_10.jpg",
+        credit: "L.O.T.I.O.N. official Bandcamp artwork",
+        url: "https://lotionmultinationalcorporation.bandcamp.com/album/digital-control-and-mans-obsolescence-lp"
+      }
+    ],
+    description:
+      "Digital Control And Man's Obsolescence is the 2015 debut LP from New York's L.O.T.I.O.N., pushing hardcore punk through electronic body music, industrial paranoia and digital-hardcore pressure.",
+    descriptionSource: "La Vida Es Un Mus / Bandcamp",
+    reviewQuote: "Perhaps the most punk on the album",
+    reviewSource: "CVLT Nation (quoted)",
+    reviewUrl: "https://cvltnation.com/l-o-t-i-o-n-digital-control-and-mans-obsolescence-review-full-stream/",
+    relatedArtists: ["The Prodigy", "Nine Inch Nails", "Suicide", "The Soft Moon"],
+    tags: ["industrial punk", "digital hardcore", "electronic punk", "hardcore", "New York"],
+    sourceUrl: "https://lotionmultinationalcorporation.bandcamp.com/album/digital-control-and-mans-obsolescence-lp"
   },
   "NXP-2026-VNL-0019": {
     title: "Shirt",
