@@ -49,6 +49,8 @@ const state = {
   adminEditingProductId: null,
   adminNotice: "",
   adminNoticeTone: "",
+  adminCompletionNotice: "",
+  adminCompletionNoticeTone: "",
   adminSearch: {},
   adminSort: {
     products: "artist",
@@ -1208,6 +1210,11 @@ async function adminEditorPage() {
     safeAdminValue(catalogService.listOffers(), [])
   ]);
   const drafts = products.filter((product) => product.publishStatus !== "Published").length;
+  const completableDrafts = products.filter((product) =>
+    product.category === "Records" &&
+    product.publishStatus !== "Published" &&
+    (String(product.id || "").startsWith("finance-") || product.financeStockId || product.enrichmentStatus)
+  ).length;
   let deployStatus = null;
   try {
     deployStatus = await adminStore.deployStatus();
@@ -1254,6 +1261,14 @@ async function adminEditorPage() {
         <button class="button button-dark" type="submit">Deploy</button>
         ${deployStatusMarkup(deployStatus)}
         <p class="admin-form-note" data-admin-form-message aria-live="polite"></p>
+      </form>
+      <form class="editor-deploy-panel" data-admin-complete-drafts-form>
+        <div>
+          <strong>Complete Draft Products</strong>
+          <span>Verify release data, archive images, add editorial and shipping fields, then deploy.</span>
+        </div>
+        <button class="button" type="submit" ${completableDrafts ? "" : "disabled"}>Complete ${completableDrafts || ""}</button>
+        <p class="admin-form-note" data-admin-form-message data-tone="${escapeAttr(state.adminCompletionNoticeTone)}" aria-live="polite">${escapeHtml(state.adminCompletionNotice)}</p>
       </form>
       <nav class="editor-tabs" aria-label="Editor sections">
         <a href="#editor-products">Products</a>
@@ -3044,6 +3059,37 @@ function bindEvents() {
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Deploy failed.", "error");
     } finally {
+      button.disabled = false;
+    }
+  });
+
+  document.querySelector("[data-admin-complete-drafts-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector("button");
+    button.disabled = true;
+    state.adminCompletionNotice = "";
+    state.adminCompletionNoticeTone = "";
+    setFormMessage(form, "Preparing draft completion...");
+    try {
+      const result = await adminStore.completeDraftProducts({
+        onProgress: ({ index, total, product }) => {
+          setFormMessage(form, `Researching ${index} of ${total}: ${product.artist} / ${product.title}...`);
+        }
+      });
+      const unresolved = result.items
+        .filter((item) => !item.published)
+        .map((item) => `${item.sku}: ${(item.issues || []).join(", ") || "verified source still required"}`);
+      const sha = result.github?.commitSha ? ` Commit ${result.github.commitSha.slice(0, 7)}.` : "";
+      state.adminCompletionNotice = result.processed
+        ? `${result.published} of ${result.processed} products published.${result.remaining ? ` ${result.remaining} kept Draft: ${unresolved.join("; ")}.` : ""}${sha}`
+        : "No Finance record drafts need completion.";
+      state.adminCompletionNoticeTone = result.remaining || result.failed ? "warning" : "success";
+      await render({ preserveScroll: true });
+    } catch (error) {
+      state.adminCompletionNotice = error instanceof Error ? error.message : "Draft completion failed.";
+      state.adminCompletionNoticeTone = "error";
+      setFormMessage(form, state.adminCompletionNotice, "error");
       button.disabled = false;
     }
   });

@@ -1,4 +1,5 @@
 import { artistCreditNames, canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../../src/data/catalogIdentity.js";
+import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 import { archiveRemoteProductImage, isManagedProductImage } from "./productImageStorage.js";
 
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
@@ -833,6 +834,10 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   ].map(canonicalRelatedArtistName));
   const relatedArtists = relatedArtistsAvailableInCatalog(discoveredRelatedArtists, catalogArtists);
   const enrichmentFingerprint = inventoryFingerprint({ ...stock, artist, title, format });
+  const shipping = referenceShippingProfile(
+    { ...row, format, display_format: format, edition, details },
+    raw.shipping
+  );
   const product = {
     ...row,
     title: discovered.title || row.title,
@@ -898,7 +903,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       enrichmentOrigin: curated ? "curated-exact" : "musicbrainz",
       enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote, reviewSource, reviewUrl }),
       enrichmentUpdatedAt: today(),
-      enrichmentAttemptedAt: new Date().toISOString()
+      enrichmentAttemptedAt: new Date().toISOString(),
+      shipping
     }
   };
   return finalizeStatus(product, {
@@ -982,8 +988,8 @@ async function discoverMusicBrainzRelease(stock) {
   const labelInfo = release["label-info"] || [];
   const labels = unique(labelInfo.map((entry) => entry.label?.name));
   const catalogNumbers = unique(labelInfo.map((entry) => entry["catalog-number"]));
-  const candidateCover = `https://coverartarchive.org/release/${release.id}/front`;
-  const cover = (await remoteImageExists(candidateCover)) ? candidateCover : "";
+  const artwork = await discoverCoverArt(release.id);
+  const cover = artwork.cover;
   const year = Number(String(release.date || "").slice(0, 4)) || 0;
   const label = labels.join(" / ");
   const edition = unique([
@@ -1009,15 +1015,19 @@ async function discoverMusicBrainzRelease(stock) {
     barcode: release.barcode || "",
     catalogNumber: catalogNumbers.join(" / "),
     cover,
-    imageCredits: cover
-      ? [
-          {
-            image: cover,
-            credit: "Cover Art Archive / MusicBrainz",
-            url: `${MUSICBRAINZ_ORIGIN}/release/${release.id}`
-          }
-        ]
-      : [],
+    productPhoto: artwork.productPhoto,
+    imageCredits: uniqueCredits([
+      cover ? {
+        image: cover,
+        credit: "Cover Art Archive / MusicBrainz front artwork",
+        url: `${MUSICBRAINZ_ORIGIN}/release/${release.id}`
+      } : null,
+      artwork.productPhoto ? {
+        image: artwork.productPhoto,
+        credit: "Cover Art Archive / MusicBrainz physical release scan",
+        url: `${MUSICBRAINZ_ORIGIN}/release/${release.id}`
+      } : null
+    ].filter(Boolean)),
     description,
     descriptionSource: "MusicBrainz",
     reviewQuote: review?.quote || "",
@@ -1028,6 +1038,38 @@ async function discoverMusicBrainzRelease(stock) {
     sourceUrl: releaseGroup?.officialUrl || `${MUSICBRAINZ_ORIGIN}/release/${release.id}`,
     musicBrainzReleaseId: release.id
   };
+}
+
+async function discoverCoverArt(releaseId) {
+  const endpoint = `https://coverartarchive.org/release/${releaseId}`;
+  const response = await fetch(endpoint, {
+    headers: { accept: "application/json", "user-agent": USER_AGENT }
+  }).catch(() => null);
+  if (!response?.ok) return { cover: "", productPhoto: "" };
+  const payload = await response.json().catch(() => ({}));
+  const images = Array.isArray(payload.images) ? payload.images : [];
+  const front = images.find((image) => image.front === true) || images.find((image) => imageType(image, "front"));
+  const detail =
+    images.find((image) => imageType(image, "medium")) ||
+    images.find((image) => imageType(image, "booklet")) ||
+    images.find((image) => image.back === true || imageType(image, "back"));
+  const cover = String(front?.image || "").trim();
+  const productPhoto = String(detail?.image || "").trim();
+  return { cover, productPhoto: productPhoto && productPhoto !== cover ? productPhoto : "" };
+}
+
+function imageType(image, expected) {
+  return (image?.types || []).some((type) => String(type || "").trim().toLowerCase() === expected);
+}
+
+function uniqueCredits(credits = []) {
+  const seen = new Set();
+  return credits.filter((credit) => {
+    const key = `${credit.image}::${credit.url}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 async function discoverReleaseGroup(releaseGroupId) {
@@ -1204,15 +1246,6 @@ function wholeAmount(value) {
 function isUsableImage(value) {
   const image = String(value || "").trim();
   return Boolean(image && !image.includes("nixp-product-example"));
-}
-
-async function remoteImageExists(url) {
-  const response = await fetch(url, {
-    method: "HEAD",
-    redirect: "follow",
-    headers: { accept: "image/*", "user-agent": USER_AGENT }
-  }).catch(() => null);
-  return Boolean(response?.ok && String(response.headers.get("content-type") || "").startsWith("image/"));
 }
 
 async function discoverRelatedArtists(artist) {

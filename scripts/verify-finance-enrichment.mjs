@@ -33,6 +33,8 @@ assert.ok(enriched.raw.reviewQuote);
 assert.ok(enriched.raw.relatedArtists.includes("Meshuggah"));
 assert.equal(enriched.raw.enrichmentStatus, "complete");
 assert.equal(enriched.raw.enrichmentFingerprint, inventoryFingerprint(stock));
+assert.equal(enriched.raw.shipping.packagingGroup, "SMALL_MEDIA");
+assert.equal(enriched.raw.shipping.weightGrams, 120);
 
 const privateStock = {
   ...stock,
@@ -75,6 +77,7 @@ assert.equal(tim.raw.enrichmentStatus, "complete");
 assert.equal(tim.raw.reviewSource, "Pitchfork (quoted)");
 assert.deepEqual(tim.raw.relatedArtists, ["Oneohtrix Point Never", "Nala Sinephro"]);
 assert.equal(tim.images.length, 1, "Used records must not receive an invented product mockup.");
+assert.equal(tim.raw.shipping.shippingClass, "small-media-cd-bubble");
 assert.equal(isRecordPublicationReady({ ...tim, ...tim.raw }), true);
 
 const unsafeStore = applyCatalogPublicationSafety({

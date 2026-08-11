@@ -765,6 +765,63 @@ export const adminStore = {
     if (!response.ok) throw new Error(payload.error || "Deploy status unavailable.");
     return payload;
   },
+  async completeDraftProducts({ onProgress } = {}) {
+    const draftsBySku = new Map(readStore().products.filter((product) =>
+      product.category === "Records" &&
+      product.publishStatus !== "Published" &&
+      (String(product.id || "").startsWith("finance-") || product.financeStockId || product.enrichmentStatus)
+    ).map((product) => [String(product.sku || product.id).toLowerCase(), product]));
+    const drafts = [...draftsBySku.values()];
+    if (!drafts.length) {
+      return { processed: 0, published: 0, remaining: 0, failed: 0, items: [], github: null };
+    }
+
+    const items = [];
+    let failed = 0;
+    for (const [index, product] of drafts.entries()) {
+      onProgress?.({ index: index + 1, total: drafts.length, product });
+      try {
+        const response = await fetch("/api/admin/catalog-sync", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ skus: [product.sku], force: true })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || `Could not complete ${product.sku}.`);
+        items.push(...(payload.report?.items || []));
+      } catch (error) {
+        failed += 1;
+        items.push({
+          sku: product.sku,
+          artist: product.artist,
+          title: product.title,
+          published: false,
+          issues: [error instanceof Error ? error.message : "Completion request failed"]
+        });
+      }
+    }
+
+    let deploy = { github: null, message: "No verified products were published; unresolved items remain safely in Draft." };
+    if (items.some((item) => item.published)) {
+      const deployResponse = await fetch("/api/admin/catalog-sync", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "deploy-current" })
+      });
+      deploy = await deployResponse.json().catch(() => ({}));
+      if (!deployResponse.ok) throw new Error(deploy.error || "Completed drafts were saved, but deployment failed.");
+    }
+    await this.refreshPrivateStore({ force: true });
+    return {
+      processed: drafts.length,
+      published: items.filter((item) => item.published).length,
+      remaining: items.filter((item) => !item.published).length,
+      failed,
+      items,
+      github: deploy.github || null,
+      message: deploy.message || "Draft completion finished."
+    };
+  },
   async saveHomeSlider(data) {
     const store = readStore();
     const collectionIds = ["recent-releases", "nixp-selection", "back-in-stock", "limited-pressing", "private-collection"];

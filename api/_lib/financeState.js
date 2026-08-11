@@ -1,6 +1,7 @@
 import { enrichFinanceCatalogProduct, inventoryFingerprint } from "./catalogEnrichment.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 import { isRecordPublicationReady } from "../../src/data/catalogPublication.js";
+import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 
 const STATE_KEY = "main";
 const EMPTY_FINANCE_STATE = {
@@ -73,8 +74,9 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
 // Finance is the source of truth for SKU stock. Complete record entries pass
 // through catalog enrichment before publication; ambiguous editions remain
 // visible in Admin with a precise enrichment status.
-export async function syncFinanceInventoryToCatalog(state, { enrich = true } = {}) {
+export async function syncFinanceInventoryToCatalog(state, { enrich = true, forceEnrichment = false, targetSkus = [] } = {}) {
   const stockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
+  const enrichmentTargets = new Set((targetSkus || []).map((sku) => String(sku || "").trim().toLowerCase()).filter(Boolean));
   const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
   const [existingRows, catalogArtistRows] = await Promise.all([
     skus.length ? supabaseFetch(`products?select=*&sku=in.(${skuList(skus)})`) : [],
@@ -91,7 +93,9 @@ export async function syncFinanceInventoryToCatalog(state, { enrich = true } = {
     const quantity = normalizedQuantity(stock.qty);
     if (existing) {
       const financeProduct = productRowFromFinanceStock(existing, stock, quantity);
-      const resolvedProduct = enrich && needsFinanceEnrichment(existing, stock)
+      const targetSelected = !enrichmentTargets.size || enrichmentTargets.has(key);
+      const shouldEnrich = enrich && targetSelected && (forceEnrichment || needsFinanceEnrichment(existing, stock));
+      const resolvedProduct = shouldEnrich
           ? await enrichFinanceCatalogProduct(financeProduct, stock, { catalogArtists: catalogArtistRows })
           : financeProduct;
       productRows.push(
@@ -106,8 +110,9 @@ export async function syncFinanceInventoryToCatalog(state, { enrich = true } = {
       continue;
     }
     const product = draftProductFromFinanceStock(stock, quantity);
+    const targetSelected = !enrichmentTargets.size || enrichmentTargets.has(key);
     productRows.push(
-      withSyncAudit(enrich ? await enrichFinanceCatalogProduct(product, stock, { catalogArtists: catalogArtistRows }) : product, {
+      withSyncAudit(enrich && targetSelected ? await enrichFinanceCatalogProduct(product, stock, { catalogArtists: catalogArtistRows }) : product, {
         source: "Finance",
         action: "Inventory created catalog item",
         sku,
@@ -281,7 +286,10 @@ function productRowFromFinanceStock(row, stock, quantity) {
     ...(row.raw || {}),
     financeStockId: stock.id || row.raw?.financeStockId || null,
     qty: quantity,
-    updatedAt: today()
+    updatedAt: today(),
+    shipping: category === "Records"
+      ? referenceShippingProfile({ ...row, format: item, edition: stock.edition || row.raw?.edition }, row.raw?.shipping)
+      : row.raw?.shipping
   };
 
   const wasFinanceDraft =
@@ -494,6 +502,7 @@ function draftProductFromFinanceStock(stock, quantity) {
   product.edition = String(stock.edition || "").trim();
   product.barcode = String(stock.barcode || "").trim();
   product.catalogNumber = String(stock.catalogNumber || "").trim();
+  if (category === "Records") product.shipping = referenceShippingProfile(product);
   return {
     id,
     sku: product.sku,

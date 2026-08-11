@@ -9,6 +9,9 @@
     },
     "api/catalog.js": {
       "includeFiles": "index.html"
+    },
+    "api/admin/store.js": {
+      "maxDuration": 60
     }
   },
   "crons": [
