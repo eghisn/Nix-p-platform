@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 620" role="img" aria-labelledby="title">
   <title id="title">Cav Empt</title>
-  <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(304 120 60)">
-    <circle cx="120" cy="60" r="35" />
-    <path d="M120 21v17M120 82v17M81 60H64M176 60h-17" />
-  </g>
-  <g fill="currentColor" transform="rotate(152 120 60)"><rect x="97" y="34" width="46" height="6" rx="3" /><rect x="93.5" y="47" width="53" height="6" rx="3" /><rect x="92" y="60" width="56" height="6" rx="3" /></g>
+  <defs>
+    <filter id="transparent-white" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1 -1 -1 0 3"/>
+    </filter>
+  </defs>
+  <image href="/label-assets/cav-empt-source.png" width="620" height="620" preserveAspectRatio="xMidYMid meet" filter="url(#transparent-white)"/>
 </svg>

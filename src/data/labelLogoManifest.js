@@ -1,6 +1,8 @@
 // Locally stored label artwork. The main page only lists labels with a verified logo asset.
 export const verifiedLabelLogoExtensions = Object.freeze({
+  "a24-music": "svg",
   bmg: "svg",
+  "cav-empt": "svg",
   columbia: "svg",
   elektra: "svg",
   interscope: "svg",
@@ -16,6 +18,7 @@ export const verifiedLabelLogoExtensions = Object.freeze({
   "sacred-bones-records": "svg",
   "secretly-canadian": "svg",
   transgressive: "svg",
+  tzadik: "gif",
   "warp-records": "png",
   "warner-bros": "svg",
   "warner-bros-records": "svg",

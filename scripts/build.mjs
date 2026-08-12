@@ -90,6 +90,11 @@ for (const [slug, extension] of Object.entries(verifiedLabelLogoExtensions)) {
   const source = `${root}/public/labels/${slug}.${extension}`;
   if (existsSync(source)) await cp(source, `${labelStaticDirectory}/${slug}.${extension}`);
 }
+const supplementalLabelAssets = ["cav-empt-source.png"];
+for (const filename of supplementalLabelAssets) {
+  const source = `${root}/public/labels/${filename}`;
+  if (existsSync(source)) await cp(source, `${labelStaticDirectory}/${filename}`);
+}
 
 const staticRoutes = [
   "records",
