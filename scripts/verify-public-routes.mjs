@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { artistCreditNames } from "../src/data/catalogIdentity.js";
 import { publicProductPath } from "../src/data/publicUrls.js";
-import { labelEntries } from "../src/data/labelCatalog.js";
+import { labelEntries, labelLogoPath } from "../src/data/labelCatalog.js";
 import { labelLogoAvailable } from "../src/data/labelLogoManifest.js";
 
 const root = process.cwd();
@@ -50,4 +50,8 @@ const catalogPayload = await catalogResponse.json();
 const apiProduct = catalogPayload?.store?.products?.find((product) => product.id === sampleProduct?.id);
 if (!apiProduct?.image) throw new Error("Public catalog API did not return a product image.");
 if (/coverartarchive\.org/i.test(apiProduct.image)) throw new Error("Public catalog API returned a third-party Cover Art Archive image.");
+if (sampleLabel) {
+  const logoResponse = await fetch(`${baseUrl}${labelLogoPath(sampleLabel.name)}`, { cache: "no-store" });
+  if (!logoResponse.ok) throw new Error(`Label logo asset returned ${logoResponse.status}: ${labelLogoPath(sampleLabel.name)}`);
+}
 process.stdout.write("Public API reconciliation passed.\n");

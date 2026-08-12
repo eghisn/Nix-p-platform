@@ -1064,8 +1064,9 @@ html {
 .label-logo {
   display: block;
   width: min(100%, 240px);
-  max-height: 74px;
+  height: 74px;
   object-fit: contain;
+  object-position: center;
 }
 
 .label-tile:hover .label-logo,
@@ -3198,7 +3199,7 @@ body:has(.cart-view) .site-footer {
   }
 
   .label-logo {
-    max-height: 54px;
+    height: 54px;
   }
 
   .label-detail-heading {

@@ -81,6 +81,16 @@ if (existsSync(labelAssetDirectory)) {
   }
 }
 
+// Serve verified label artwork from a dedicated root-level static directory. Some Vercel
+// deployments do not expose newly-added nested files under /public consistently.
+const labelStaticDirectory = `${dist}/label-assets`;
+await rm(labelStaticDirectory, { recursive: true, force: true });
+await mkdir(labelStaticDirectory, { recursive: true });
+for (const [slug, extension] of Object.entries(verifiedLabelLogoExtensions)) {
+  const source = `${root}/public/labels/${slug}.${extension}`;
+  if (existsSync(source)) await cp(source, `${labelStaticDirectory}/${slug}.${extension}`);
+}
+
 const staticRoutes = [
   "records",
   "objects",

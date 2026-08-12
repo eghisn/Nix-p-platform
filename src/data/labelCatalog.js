@@ -18,7 +18,7 @@ export function labelSlug(value) {
 
 export function labelLogoPath(value) {
   const slug = labelSlug(value);
-  return `/public/labels/${slug}.${verifiedLabelLogoExtensions[slug] || "png"}`;
+  return `/label-assets/${slug}.${verifiedLabelLogoExtensions[slug] || "png"}`;
 }
 
 export function labelEntries(products = []) {
