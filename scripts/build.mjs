@@ -67,10 +67,14 @@ const publicProducts = (publicStore?.products || []).filter(
     product.image &&
     !(product.category === "Records" && product.image.includes("nixp-product-example"))
 );
-const publicLabels = labelEntries(publicProducts).filter((label) => labelLogoAvailable(label.slug));
+const publicLabels = labelEntries(publicProducts);
+const unmappedLabels = publicLabels.filter((label) => !labelLogoAvailable(label.slug));
+if (unmappedLabels.length) {
+  throw new Error(`Public catalogue labels missing from labelLogoManifest: ${unmappedLabels.map((label) => label.name).join(", ")}`);
+}
 
-// Keep the deployed label directory limited to verified real artwork. This prevents old
-// placeholder marks from surviving in dist after the source manifest changes.
+// Keep the deployed label directory limited to the catalogue-backed manifest. This prevents
+// stale or unrelated artwork from surviving in dist after the source manifest changes.
 const labelAssetDirectory = `${dist}/public/labels`;
 if (existsSync(labelAssetDirectory)) {
   const verifiedLabelFiles = new Set(
@@ -88,12 +92,10 @@ await rm(labelStaticDirectory, { recursive: true, force: true });
 await mkdir(labelStaticDirectory, { recursive: true });
 for (const [slug, extension] of Object.entries(verifiedLabelLogoExtensions)) {
   const source = `${root}/public/labels/${slug}.${extension}`;
-  if (existsSync(source)) await cp(source, `${labelStaticDirectory}/${slug}.${extension}`);
-}
-const supplementalLabelAssets = ["cav-empt-source.png"];
-for (const filename of supplementalLabelAssets) {
-  const source = `${root}/public/labels/${filename}`;
-  if (existsSync(source)) await cp(source, `${labelStaticDirectory}/${filename}`);
+  if (!existsSync(source)) {
+    throw new Error(`Missing required label logo asset: public/labels/${slug}.${extension}`);
+  }
+  await cp(source, `${labelStaticDirectory}/${slug}.${extension}`);
 }
 
 const staticRoutes = [

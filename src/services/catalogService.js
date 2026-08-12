@@ -2,7 +2,6 @@ import { adminStore } from "./adminStore.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName, artistIdentityKey } from "../data/catalogIdentity.js";
 import { publicCategoryPath, publicProductSlug } from "../data/publicUrls.js";
 import { labelEntries, productMatchesLabel } from "../data/labelCatalog.js";
-import { labelLogoAvailable } from "../data/labelLogoManifest.js";
 
 // Replace this module with Supabase queries when the project receives credentials.
 const hiddenPublicArtists = new Set(["motorith", "nixp publishing", "publishing", "sample artist", "tida lek"]);
@@ -71,7 +70,7 @@ export const catalogService = {
     });
   },
   async listLabels() {
-    return labelEntries(adminStore.listProducts()).filter((label) => labelLogoAvailable(label.slug));
+    return labelEntries(adminStore.listProducts());
   },
   async listProductsByLabel(slug) {
     return adminStore.listProducts().filter((product) => productMatchesLabel(product, slug));
