@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 620" role="img" aria-labelledby="title">
+  <title id="title">Cav Empt</title>
+  <defs>
+    <filter id="transparent-white" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1 -1 -1 0 3"/>
+    </filter>
+  </defs>
+  <image href="/label-assets/cav-empt-source.png" width="620" height="620" preserveAspectRatio="xMidYMid meet" filter="url(#transparent-white)"/>
+</svg>
