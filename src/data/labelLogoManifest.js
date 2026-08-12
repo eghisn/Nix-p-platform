@@ -2,7 +2,7 @@
 export const verifiedLabelLogoExtensions = Object.freeze({
   "a24-music": "svg",
   bmg: "svg",
-  "cav-empt": "svg",
+  "cav-empt": "png",
   columbia: "svg",
   elektra: "svg",
   interscope: "svg",
