@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 64" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" role="img" aria-labelledby="title">
   <title id="title">Nuclear Blast</title>
-  <text x="112" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="0">Nuclear Blast</text>
+  <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(58 120 60)">
+    <circle cx="120" cy="60" r="28" />
+    <path d="M120 21v17M120 82v17M81 60H64M176 60h-17" />
+  </g>
+  <g fill="currentColor" transform="rotate(29 120 60)"><rect x="98" y="34" width="44" height="6" rx="3" /><rect x="104.5" y="47" width="31" height="6" rx="3" /><rect x="108" y="60" width="24" height="6" rx="3" /><rect x="109.5" y="73" width="21" height="6" rx="3" /><rect x="100" y="86" width="40" height="6" rx="3" /></g>
 </svg>

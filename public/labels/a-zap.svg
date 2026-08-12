@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" role="img" aria-labelledby="title">
   <title id="title">A-Zap</title>
-  <text x="90" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="0">A-Zap</text>
+  <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(270 120 60)">
+    <circle cx="120" cy="60" r="29" />
+    <path d="M120 21v17M120 82v17M81 60H64M176 60h-17" />
+  </g>
+  <g fill="currentColor" transform="rotate(135 120 60)"><rect x="92.5" y="34" width="55" height="6" rx="3" /><rect x="102" y="47" width="36" height="6" rx="3" /><rect x="106.5" y="60" width="27" height="6" rx="3" /><rect x="109" y="73" width="22" height="6" rx="3" /><rect x="110" y="86" width="20" height="6" rx="3" /></g>
 </svg>

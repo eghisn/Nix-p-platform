@@ -8,7 +8,7 @@ import { artistCreditNames } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
 import { recommendedProducts } from "../src/data/productRecommendations.js";
 import { termsOfUseContent } from "../src/data/termsOfUse.js";
-import { labelEntries, labelLogoPath, productMatchesLabel } from "../src/data/labelCatalog.js";
+import { labelEntries, productMatchesLabel } from "../src/data/labelCatalog.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../src/components/labelsPage.js";
 
 const root = process.cwd();
@@ -68,24 +68,6 @@ const publicProducts = (publicStore?.products || []).filter(
 );
 const publicLabels = labelEntries(publicProducts);
 
-function escapeXml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&apos;");
-}
-
-await mkdir(`${dist}/public/labels`, { recursive: true });
-for (const label of publicLabels) {
-  const width = Math.max(180, Math.min(760, 42 + label.name.length * 14));
-  const filename = labelLogoPath(label.name).split("/").at(-1);
-  await writeFile(
-    `${dist}/public/labels/${filename}`,
-    `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} 64" role="img" aria-labelledby="title">\n  <title id="title">${escapeXml(label.name)}</title>\n  <text x="${width / 2}" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">${escapeXml(label.name)}</text>\n</svg>\n`
-  );
-}
 const staticRoutes = [
   "records",
   "objects",
