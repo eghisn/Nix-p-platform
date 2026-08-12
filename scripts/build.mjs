@@ -8,6 +8,8 @@ import { artistCreditNames } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
 import { recommendedProducts } from "../src/data/productRecommendations.js";
 import { termsOfUseContent } from "../src/data/termsOfUse.js";
+import { labelEntries, labelLogoPath, productMatchesLabel } from "../src/data/labelCatalog.js";
+import { labelProductsPageMarkup, labelsPageMarkup } from "../src/components/labelsPage.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -64,12 +66,33 @@ const publicProducts = (publicStore?.products || []).filter(
     product.image &&
     !(product.category === "Records" && product.image.includes("nixp-product-example"))
 );
+const publicLabels = labelEntries(publicProducts);
+
+function escapeXml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
+}
+
+await mkdir(`${dist}/public/labels`, { recursive: true });
+for (const label of publicLabels) {
+  const width = Math.max(180, Math.min(760, 42 + label.name.length * 14));
+  const filename = labelLogoPath(label.name).split("/").at(-1);
+  await writeFile(
+    `${dist}/public/labels/${filename}`,
+    `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} 64" role="img" aria-labelledby="title">\n  <title id="title">${escapeXml(label.name)}</title>\n  <text x="${width / 2}" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">${escapeXml(label.name)}</text>\n</svg>\n`
+  );
+}
 const staticRoutes = [
   "records",
   "objects",
   "apparel",
   "accessories",
   "publishing",
+  "labels",
   "blog",
   "request-item",
   "make-an-offer",
@@ -388,6 +411,13 @@ function staticPublicRouteMarkup(route) {
   if (route === "apparel") return apparelPageMarkup(productsByCategory("Apparel"));
   if (route === "accessories" || route === "accesories") return apparelPageMarkup(productsByCategory("Accessories"), "Accessories");
   if (route === "publishing") return catalogGridPageMarkup(productsByCategory("Publishing"));
+  if (route === "labels") return labelsPageMarkup(publicLabels);
+  if (route.startsWith("labels/")) {
+    const label = publicLabels.find((entry) => entry.slug === route.slice("labels/".length));
+    if (!label) return `<section class="section"><div class="app-boot" aria-live="polite">NIXP</div></section>`;
+    const products = publicProducts.filter((product) => productMatchesLabel(product, label.slug));
+    return labelProductsPageMarkup(label, products, { availableArtistNames: inventoryArtistMap(publicProducts) });
+  }
   if (route === "blog") {
     const articles = [
       ["01", "Listening Notes: The First NIXP Selection", "Editorial", "2026", "A short introduction to the records, CDs, cassettes, books and objects shaping the first NIXP catalog."],
@@ -516,6 +546,7 @@ function staticRouteTitle(route) {
     accessories: "Accessories",
     accesories: "Accessories",
     publishing: "Publishing",
+    labels: "Labels",
     blog: "Blog",
     "request-item": "Request Item",
     "make-an-offer": "Make an Offer",
@@ -631,6 +662,7 @@ for (const artist of publicStore?.artists || []) {
 for (const product of publicProducts.filter((product) => product.category === "Records")) {
   for (const artistName of artistCreditNames(product.artist)) artistDirectory.set(slugify(artistName), artistName);
 }
+for (const label of publicLabels) staticRoutes.push(`labels/${label.slug}`);
 for (const route of [...new Set(staticRoutes)]) {
   const routeDir = `${dist}/${route}`;
   await mkdir(routeDir, { recursive: true });
@@ -638,6 +670,8 @@ for (const route of [...new Set(staticRoutes)]) {
   const routeUrl = `${siteOrigin}/${route}`;
   const artistSlugPath = route.startsWith("artists/") ? route.slice("artists/".length) : "";
   const artistName = artistSlugPath ? artistDirectory.get(artistSlugPath) : "";
+  const labelSlugPath = route.startsWith("labels/") ? route.slice("labels/".length) : "";
+  const labelEntry = labelSlugPath ? publicLabels.find((entry) => entry.slug === labelSlugPath) : null;
   const document = product
     ? productDocument(product)
     : artistName
@@ -650,6 +684,15 @@ for (const route of [...new Set(staticRoutes)]) {
             image: siteImage,
             appMarkup: shell(artistsIndexMarkup([...artistDirectory.values()]), "/artists", 0),
             crawlMarkup: crawlerSection(`<h1>Artists</h1>${[...artistDirectory.values()].map((artist) => `<p><a href="/artists/${slugify(artist)}">${escapeHtml(artist)}</a></p>`).join("")}`)
+            })
+      : route === "labels" || labelEntry
+        ? routeDocument({
+            title: labelEntry ? `${labelEntry.name} | Labels | NIXP` : "Labels | NIXP",
+            description: labelEntry ? `${labelEntry.name} releases available from NIXP.` : "Record labels represented in the NIXP catalogue.",
+            url: routeUrl,
+            image: siteImage,
+            appMarkup: shell(staticPublicRouteMarkup(route), `/${route}`, 0),
+            crawlMarkup: crawlerSection(`<h1>${escapeHtml(labelEntry?.name || "Labels")}</h1><p>${escapeHtml(labelEntry ? `${labelEntry.name} releases available from NIXP.` : "Record labels represented in the NIXP catalogue.")}</p>`)
           })
       : routeDocument({
           title: `${staticRouteTitle(route)}${route ? " | NIXP" : ""}`,
@@ -676,6 +719,7 @@ const crawlableRoutes = [
   "accessories",
   "publishing",
   "artists",
+  "labels",
   "blog",
   "request-item",
   "make-an-offer",
@@ -685,7 +729,8 @@ const crawlableRoutes = [
   "international-order",
   "terms-of-use",
   ...publicProducts.map((product) => publicProductPath(product).replace(/^\//, "")),
-  ...[...artistDirectory.keys()].map((artistSlug) => `artists/${artistSlug}`)
+  ...[...artistDirectory.keys()].map((artistSlug) => `artists/${artistSlug}`),
+  ...publicLabels.map((label) => `labels/${label.slug}`)
 ];
 const sitemapEntries = [...new Set(crawlableRoutes)]
   .map((route) => `  <url><loc>${escapeHtml(`${siteOrigin}/${route}`)}</loc></url>`)

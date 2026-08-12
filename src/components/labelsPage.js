@@ -1,0 +1,41 @@
+import { labelLogoPath } from "../data/labelCatalog.js";
+import { productGrid } from "./layout.js";
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+export function labelsPageMarkup(labels = []) {
+  return `
+    <section class="section labels-page">
+      <div class="labels-grid" aria-label="Record labels">
+        ${labels
+          .map(
+            (label) => `
+              <a class="label-tile" href="/labels/${escapeHtml(label.slug)}" data-link aria-label="View ${escapeHtml(label.name)} releases">
+                <img class="label-logo" src="${labelLogoPath(label.name)}" alt="${escapeHtml(label.name)}" loading="lazy" decoding="async" />
+              </a>
+            `
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
+
+export function labelProductsPageMarkup(label, products, options = {}) {
+  return `
+    <section class="section labels-detail-page">
+      <div class="label-detail-heading">
+        <a class="back-link" href="/labels" data-link>Labels</a>
+        <h1>${escapeHtml(label.name)}</h1>
+      </div>
+      ${productGrid(products, options)}
+    </section>
+  `;
+}

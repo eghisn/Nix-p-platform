@@ -1,6 +1,7 @@
 import { adminStore } from "./adminStore.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName, artistIdentityKey } from "../data/catalogIdentity.js";
 import { publicCategoryPath, publicProductSlug } from "../data/publicUrls.js";
+import { labelEntries, productMatchesLabel } from "../data/labelCatalog.js";
 
 // Replace this module with Supabase queries when the project receives credentials.
 const hiddenPublicArtists = new Set(["motorith", "nixp publishing", "publishing", "sample artist", "tida lek"]);
@@ -67,6 +68,12 @@ export const catalogService = {
       const matchesLabel = !label || canonicalLabelName(product.label) === canonicalLabelName(label);
       return isRecord && matchesFormat && matchesLabel;
     });
+  },
+  async listLabels() {
+    return labelEntries(adminStore.listProducts());
+  },
+  async listProductsByLabel(slug) {
+    return adminStore.listProducts().filter((product) => productMatchesLabel(product, slug));
   },
   async listApparel(type = "All Apparel") {
     return adminStore.listProducts().filter((product) => {

@@ -6,7 +6,8 @@ const leftPublicLinks = [
   ["Objects", "/objects"],
   ["Apparel", "/apparel"],
   ["Publishing", "/publishing"],
-  ["Artists", "/artists"]
+  ["Artists", "/artists"],
+  ["Labels", "/labels"]
 ];
 
 const rightPublicLinks = [

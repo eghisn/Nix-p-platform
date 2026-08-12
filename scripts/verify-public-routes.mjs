@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { artistCreditNames } from "../src/data/catalogIdentity.js";
 import { publicProductPath } from "../src/data/publicUrls.js";
+import { labelEntries } from "../src/data/labelCatalog.js";
 
 const root = process.cwd();
 const baseUrl = String(process.argv[2] || process.env.NIXP_BASE_URL || "").replace(/\/$/, "");
@@ -14,7 +15,8 @@ const sampleArtist = artistCreditNames(sampleProduct?.artist || "")[0];
 const artistSlug = String(sampleArtist || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const canonicalProductPath = sampleProduct ? publicProductPath(sampleProduct) : "/records";
 const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}` : "/product/missing";
-const paths = ["/records/", "/objects", "/apparel", "/publishing", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
+const sampleLabel = labelEntries(products)[0];
+const paths = ["/records/", "/objects", "/apparel", "/publishing", "/labels", sampleLabel ? `/labels/${sampleLabel.slug}` : "/labels", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
 
 for (const route of paths) {
   const response = await fetch(`${baseUrl}${route}`, { redirect: "follow", cache: "no-store" });
@@ -29,6 +31,12 @@ for (const route of paths) {
   }
   if (route === "/apparel" && !body.includes("data-apparel-filter")) {
     throw new Error("/apparel static markup does not match the interactive apparel controls.");
+  }
+  if (route === "/labels" && !body.includes("labels-grid")) {
+    throw new Error("/labels static markup does not contain the label directory.");
+  }
+  if (route.startsWith("/labels/") && !body.includes("product-grid")) {
+    throw new Error(`${route} static markup does not contain the label product grid.`);
   }
   if (route.startsWith("/product/") && /rel="canonical"/i.test(body) && !body.includes(canonicalProductPath)) {
     throw new Error(`${route} did not expose the canonical product path`);

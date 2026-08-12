@@ -4,11 +4,13 @@ import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicPr
 import { recommendedProducts } from "./data/productRecommendations.js";
 import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
 import { termsOfUseContent } from "./data/termsOfUse.js";
+import { labelEntries, labelSlug } from "./data/labelCatalog.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup } from "./components/catalogPage.js";
 import { recordsPageMarkup } from "./components/recordsPage.js";
+import { labelProductsPageMarkup, labelsPageMarkup } from "./components/labelsPage.js";
 
 const app = document.querySelector("#app");
 const CHECKOUT_SESSION_STORAGE_KEY = "nixp-checkout-session";
@@ -181,6 +183,7 @@ const routes = {
   "/accesories": () => apparelPage("Accessories"),
   "/publishing": categoryPage("Publishing", "Publishing", "Printed matter, books, magazines, and text-led editions."),
   "/artists": artistsPage,
+  "/labels": labelsPage,
   "/blog": blogPage,
   "/request-item": requestItemPage,
   "/make-an-offer": makeOfferPage,
@@ -236,6 +239,8 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
             ? previewProductDetailPage
             : path.startsWith("/artists/")
               ? artistProductsPage
+              : path.startsWith("/labels/")
+                ? labelProductsPage
               : routes[path] || notFoundPage;
   let content = "";
   try {
@@ -286,6 +291,12 @@ function updateDocumentTitle(path) {
     document.title = `${artist.replace(/\b\w/g, (letter) => letter.toUpperCase())} | NIXP`;
     return;
   }
+  if (path.startsWith("/labels/")) {
+    const requested = decodeRoutePart(path.replace("/labels/", ""));
+    const label = labelEntries(adminStore.listProducts()).find((entry) => entry.slug === labelSlug(requested));
+    document.title = label ? `${label.name} | Labels | NIXP` : "Labels | NIXP";
+    return;
+  }
   const titles = {
     "/": "NIXP",
     "/records": "Records | NIXP",
@@ -295,6 +306,7 @@ function updateDocumentTitle(path) {
     "/accesories": "Accessories | NIXP",
     "/publishing": "Publishing | NIXP",
     "/artists": "Artists | NIXP",
+    "/labels": "Labels | NIXP",
     "/blog": "Blog | NIXP",
     "/request-item": "Request Item | NIXP",
     "/make-an-offer": "Make an Offer | NIXP",
@@ -657,6 +669,20 @@ async function artistProductsPage(path) {
       ${productGrid(products, { availableArtistNames })}
     </section>
   `;
+}
+
+async function labelsPage() {
+  return labelsPageMarkup(await catalogService.listLabels());
+}
+
+async function labelProductsPage(path) {
+  const requested = decodeRoutePart(path.replace("/labels/", ""));
+  const labels = await catalogService.listLabels();
+  const label = labels.find((entry) => entry.slug === labelSlug(requested));
+  if (!label) return notFoundPage();
+  const products = await catalogService.listProductsByLabel(label.slug);
+  const availableArtistNames = inventoryArtistNames(await catalogService.listProducts());
+  return labelProductsPageMarkup(label, products, { availableArtistNames });
 }
 
 async function makeOfferPage() {
