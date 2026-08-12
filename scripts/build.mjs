@@ -1,4 +1,4 @@
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { build } from "esbuild";
 import { productGrid, shell } from "../src/components/layout.js";
@@ -9,6 +9,7 @@ import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js
 import { recommendedProducts } from "../src/data/productRecommendations.js";
 import { termsOfUseContent } from "../src/data/termsOfUse.js";
 import { labelEntries, productMatchesLabel } from "../src/data/labelCatalog.js";
+import { labelLogoAvailable, verifiedLabelLogoExtensions } from "../src/data/labelLogoManifest.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../src/components/labelsPage.js";
 
 const root = process.cwd();
@@ -66,7 +67,19 @@ const publicProducts = (publicStore?.products || []).filter(
     product.image &&
     !(product.category === "Records" && product.image.includes("nixp-product-example"))
 );
-const publicLabels = labelEntries(publicProducts);
+const publicLabels = labelEntries(publicProducts).filter((label) => labelLogoAvailable(label.slug));
+
+// Keep the deployed label directory limited to verified real artwork. This prevents old
+// placeholder marks from surviving in dist after the source manifest changes.
+const labelAssetDirectory = `${dist}/public/labels`;
+if (existsSync(labelAssetDirectory)) {
+  const verifiedLabelFiles = new Set(
+    Object.entries(verifiedLabelLogoExtensions).map(([slug, extension]) => `${slug}.${extension}`)
+  );
+  for (const filename of await readdir(labelAssetDirectory)) {
+    if (!verifiedLabelFiles.has(filename)) await rm(`${labelAssetDirectory}/${filename}`, { force: true });
+  }
+}
 
 const staticRoutes = [
   "records",

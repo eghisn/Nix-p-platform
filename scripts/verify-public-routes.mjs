@@ -3,6 +3,7 @@ import path from "node:path";
 import { artistCreditNames } from "../src/data/catalogIdentity.js";
 import { publicProductPath } from "../src/data/publicUrls.js";
 import { labelEntries } from "../src/data/labelCatalog.js";
+import { labelLogoAvailable } from "../src/data/labelLogoManifest.js";
 
 const root = process.cwd();
 const baseUrl = String(process.argv[2] || process.env.NIXP_BASE_URL || "").replace(/\/$/, "");
@@ -15,7 +16,7 @@ const sampleArtist = artistCreditNames(sampleProduct?.artist || "")[0];
 const artistSlug = String(sampleArtist || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const canonicalProductPath = sampleProduct ? publicProductPath(sampleProduct) : "/records";
 const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}` : "/product/missing";
-const sampleLabel = labelEntries(products)[0];
+const sampleLabel = labelEntries(products).find((label) => labelLogoAvailable(label.slug));
 const paths = ["/records/", "/objects", "/apparel", "/publishing", "/labels", sampleLabel ? `/labels/${sampleLabel.slug}` : "/labels", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
 
 for (const route of paths) {

@@ -1,5 +1,6 @@
 import { canonicalLabelName } from "./catalogIdentity.js";
 import { slugifyPublic } from "./publicUrls.js";
+import { verifiedLabelLogoExtensions } from "./labelLogoManifest.js";
 
 export function labelParts(value) {
   return [...new Set(
@@ -16,7 +17,8 @@ export function labelSlug(value) {
 }
 
 export function labelLogoPath(value) {
-  return `/public/labels/${labelSlug(value)}.svg`;
+  const slug = labelSlug(value);
+  return `/public/labels/${slug}.${verifiedLabelLogoExtensions[slug] || "png"}`;
 }
 
 export function labelEntries(products = []) {
