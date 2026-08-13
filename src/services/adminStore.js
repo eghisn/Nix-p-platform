@@ -840,6 +840,26 @@ export const adminStore = {
     if (!response.ok) throw new Error(payload.error || "Deploy status unavailable.");
     return payload;
   },
+  async emailHealth() {
+    const response = await fetch(`/api/admin/store?commerceAction=email-health&v=${Date.now()}`, {
+      method: "GET",
+      headers: { accept: "application/json" },
+      cache: "no-store"
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Email delivery health unavailable.");
+    return payload.health || { configured: false, failed: 0, pending: 0, sending: 0, sent: 0, messages: [] };
+  },
+  async retryFailedEmails() {
+    const response = await fetch("/api/admin/store?commerceAction=email-health", {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify({})
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Failed email messages could not be retried.");
+    return payload;
+  },
   async completeDraftProducts({ onProgress } = {}) {
     const draftsBySku = new Map(readStore().products.filter((product) =>
       product.category === "Records" &&

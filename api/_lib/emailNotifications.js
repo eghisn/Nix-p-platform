@@ -219,6 +219,59 @@ export async function drainNotificationOutbox(limit = 12) {
   return { processed: results.length, delivered: results.filter((result) => result.delivered).length };
 }
 
+export async function getNotificationOutboxHealth(limit = 20) {
+  if (!isSupabaseConfigured({ requireServiceRole: true })) {
+    return { configured: false, failed: 0, pending: 0, sending: 0, sent: 0, messages: [] };
+  }
+  const rows = await supabaseFetch(
+    `notification_outbox?select=id,idempotency_key,recipient,subject,status,attempts,next_attempt_at,last_error,provider_message_id,created_at,updated_at&order=updated_at.desc&limit=${Math.max(1, Math.min(Number(limit) || 20, 50))}`,
+    { service: true }
+  );
+  const messages = (Array.isArray(rows) ? rows : []).map((row) => ({
+    id: row.id,
+    idempotencyKey: row.idempotency_key,
+    recipient: row.recipient,
+    subject: row.subject,
+    status: row.status,
+    attempts: Number(row.attempts || 0),
+    nextAttemptAt: row.next_attempt_at,
+    lastError: row.last_error,
+    providerMessageId: row.provider_message_id,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at
+  }));
+  return {
+    configured: true,
+    failed: messages.filter((message) => message.status === "Failed").length,
+    pending: messages.filter((message) => message.status === "Pending").length,
+    sending: messages.filter((message) => message.status === "Sending").length,
+    sent: messages.filter((message) => message.status === "Sent").length,
+    messages
+  };
+}
+
+export async function retryFailedNotificationOutbox(idempotencyKey = "") {
+  if (!isSupabaseConfigured({ requireServiceRole: true })) {
+    return { configured: false, requeued: 0 };
+  }
+  const filters = ["status=eq.Failed"];
+  if (String(idempotencyKey || "").trim()) {
+    filters.push(`idempotency_key=eq.${encodeURIComponent(String(idempotencyKey).trim())}`);
+  }
+  const rows = await supabaseFetch(`notification_outbox?${filters.join("&")}`, {
+    method: "PATCH",
+    service: true,
+    prefer: "return=representation",
+    body: {
+      status: "Pending",
+      next_attempt_at: new Date().toISOString(),
+      last_error: null,
+      updated_at: new Date().toISOString()
+    }
+  });
+  return { configured: true, requeued: Array.isArray(rows) ? rows.length : 0 };
+}
+
 async function deliverClaimedEmail(message) {
   try {
     const result = await deliverEmail(message);

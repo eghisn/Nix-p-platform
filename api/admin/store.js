@@ -5,6 +5,7 @@ import { handleAdminOrders } from "../_lib/commerceHandlers.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
+import { drainNotificationOutbox, getNotificationOutboxHealth, retryFailedNotificationOutbox } from "../_lib/emailNotifications.js";
 import { applyCatalogPublicationSafety, isResearchPublicationReady, recordPublicationIssues } from "../../src/data/catalogPublication.js";
 
 export default async function handler(req, res) {
@@ -36,6 +37,21 @@ export default async function handler(req, res) {
       return json(res, 200, { ok: true, backups });
     } catch (error) {
       return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Backup history unavailable" });
+    }
+  }
+  if (action === "email-health") {
+    if (!requireWorkspace(req, res, "admin")) return;
+    try {
+      if (req.method === "GET") {
+        return json(res, 200, { ok: true, health: await getNotificationOutboxHealth() });
+      }
+      if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+      const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+      const retry = await retryFailedNotificationOutbox(body.idempotencyKey || "");
+      const drain = retry.requeued ? await drainNotificationOutbox(Math.min(retry.requeued, 50)) : { processed: 0, delivered: 0 };
+      return json(res, 200, { ok: true, retry, drain, health: await getNotificationOutboxHealth() });
+    } catch (error) {
+      return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Email outbox health check failed." });
     }
   }
   if (action === "catalog-sync") {

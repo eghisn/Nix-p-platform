@@ -1251,6 +1251,14 @@ async function adminEditorPage() {
       error: error instanceof Error ? error.message : "Deploy status unavailable."
     };
   }
+  const emailHealth = await safeAdminValue(adminStore.emailHealth(), {
+    configured: false,
+    failed: 0,
+    pending: 0,
+    sending: 0,
+    sent: 0,
+    messages: []
+  });
   const [
     productsSection,
     homeSliderSection,
@@ -1297,6 +1305,7 @@ async function adminEditorPage() {
         <button class="button" type="submit" ${completableDrafts ? "" : "disabled"}>Complete ${completableDrafts || ""}</button>
         <p class="admin-form-note" data-admin-form-message data-tone="${escapeAttr(state.adminCompletionNoticeTone)}" aria-live="polite">${escapeHtml(state.adminCompletionNotice)}</p>
       </form>
+      ${adminEmailHealthMarkup(emailHealth)}
       <nav class="editor-tabs" aria-label="Editor sections">
         <a href="#editor-products">Products</a>
         <a href="#editor-home-slider">Home Slider</a>
@@ -1382,6 +1391,18 @@ async function adminEditorPage() {
       ${previewSection}
     </section>
   `;
+}
+
+function adminEmailHealthMarkup(health) {
+  if (!health?.configured) {
+    return `<section class="editor-deploy-panel" data-admin-email-health data-tone="warning"><div><strong>Email delivery</strong><span>Supabase notification outbox is not configured for this deployment.</span></div></section>`;
+  }
+  if (Number(health.failed || 0) > 0) {
+    const failed = (health.messages || []).filter((message) => message.status === "Failed");
+    const details = failed.slice(0, 3).map((message) => `${message.subject || "Message"}: ${message.lastError || "delivery failed"}`).join(" | ");
+    return `<form class="editor-deploy-panel" data-admin-email-retry-form data-tone="error"><div><strong>Email delivery needs attention</strong><span>${escapeHtml(health.failed)} failed outbox message${health.failed === 1 ? "" : "s"}. ${escapeHtml(details)}</span></div><button class="button button-dark" type="submit">Retry failed email${health.failed === 1 ? "" : "s"}</button><p class="admin-form-note" data-admin-form-message aria-live="polite"></p></form>`;
+  }
+  return "";
 }
 
 async function safeAdminValue(promise, fallback) {
@@ -3178,6 +3199,24 @@ function bindEvents() {
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Deploy failed.", "error");
     } finally {
+      button.disabled = false;
+    }
+  });
+
+  document.querySelector("[data-admin-email-retry-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector("button");
+    button.disabled = true;
+    setFormMessage(form, "Retrying failed email messages...");
+    try {
+      const result = await adminStore.retryFailedEmails();
+      const delivered = Number(result.drain?.delivered || 0);
+      const requeued = Number(result.retry?.requeued || 0);
+      setFormMessage(form, requeued ? `Retried ${requeued} message${requeued === 1 ? "" : "s"}; ${delivered} delivered.` : "No failed email messages are waiting for retry.", delivered === requeued ? "success" : "warning");
+      await render({ preserveScroll: true });
+    } catch (error) {
+      setFormMessage(form, error instanceof Error ? error.message : "Failed email messages could not be retried.", "error");
       button.disabled = false;
     }
   });
