@@ -407,11 +407,13 @@ function needsFinanceEnrichment(row = {}, stock = {}) {
     "metadata-complete-no-related-artists",
     "metadata-complete-needs-editorial-review"
   ].includes(status);
+  const placeholderTitle = isPlaceholderInventoryTitle(row.title);
   // Do not make a corrected source wait for the retry window: incomplete
   // enrichment must be immediately repairable by the next catalog sync.
   if (previousFingerprint && !fingerprintChanged && status && !retryDue) return false;
   return Boolean(
     fingerprintChanged ||
+    placeholderTitle ||
     !hasUsableProductImage(row) ||
       !String(row.label || "").trim() ||
       !String(row.description || "").trim() ||
