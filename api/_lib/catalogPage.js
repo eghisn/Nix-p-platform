@@ -6,7 +6,7 @@ import { publicCategoryPath, publicProductPath } from "../../src/data/publicUrls
 import { loadStore } from "./supabase.js";
 
 const ORIGIN = "https://www.nix-p.com";
-const BUNDLE_URL = "/assets/app.js?v=20260725-founders-webfont";
+const BUNDLE_URL = "/assets/app.js?v=20260813-catalog-performance";
 
 export async function renderCatalogPage(req, res, url) {
   try {
@@ -45,9 +45,12 @@ async function renderArtistsIndexPage(res, store) {
   });
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");
-  // The artist index is a live inventory directory. Do not let an edge cache
-  // show a stale list after Finance publishes a new record.
-  res.setHeader("cache-control", "no-store");
+  // Production serves the build-generated artist index directly. Keep this
+  // function fallback cacheable too, so an accidental fallback never restores
+  // the old multi-second no-store behavior.
+  res.setHeader("cache-control", "public, max-age=0, must-revalidate");
+  res.setHeader("cdn-cache-control", "public, s-maxage=60, stale-while-revalidate=300");
+  res.setHeader("vercel-cdn-cache-control", "public, s-maxage=60, stale-while-revalidate=300");
   res.end(document);
 }
 

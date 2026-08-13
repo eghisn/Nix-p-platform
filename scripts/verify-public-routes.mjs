@@ -17,7 +17,7 @@ const artistSlug = String(sampleArtist || "").toLowerCase().replace(/[^a-z0-9]+/
 const canonicalProductPath = sampleProduct ? publicProductPath(sampleProduct) : "/records";
 const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}` : "/product/missing";
 const sampleLabel = labelEntries(products).find((label) => labelLogoAvailable(label.slug));
-const paths = ["/records/", "/objects", "/apparel", "/publishing", "/labels", sampleLabel ? `/labels/${sampleLabel.slug}` : "/labels", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
+const paths = ["/records/", "/objects", "/apparel", "/publishing", "/artists", "/labels", sampleLabel ? `/labels/${sampleLabel.slug}` : "/labels", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
 
 for (const route of paths) {
   const response = await fetch(`${baseUrl}${route}`, { redirect: "follow", cache: "no-store" });
@@ -35,6 +35,9 @@ for (const route of paths) {
   }
   if (route === "/labels" && !body.includes("labels-grid")) {
     throw new Error("/labels static markup does not contain the label directory.");
+  }
+  if (route === "/artists" && !body.includes("artist-list")) {
+    throw new Error("/artists did not return the deployed static artist directory.");
   }
   if (route.startsWith("/labels/") && !body.includes("product-grid")) {
     throw new Error(`${route} static markup does not contain the label product grid.`);

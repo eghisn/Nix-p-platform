@@ -660,6 +660,19 @@ export const adminStore = {
       const apiScope = publicOnly ? "public" : "admin";
       const catalogUrl = publicOnly ? `/api/catalog?scope=${apiScope}` : `/api/catalog?scope=${apiScope}&v=${Date.now()}`;
       const fetchOptions = publicOnly ? {} : { cache: "no-store" };
+      if (publicOnly) {
+        // The deployed snapshot is the public editorial revision. Load it first
+        // so static HTML, client navigation, artists, and collections cannot be
+        // replaced by a different Supabase revision during hydration. Commerce
+        // fields are still verified independently from the protected server.
+        const snapshotResponse = await fetch(filePath);
+        if (snapshotResponse.ok) {
+          activeStore = mergeStore(seed({ publicOnly: true }), await snapshotResponse.json(), { publicOnly: true });
+          activeStore = await reconcilePublicCommerce(activeStore);
+          activeStoreScope = scope;
+          return;
+        }
+      }
       const response = await fetch(catalogUrl, fetchOptions);
       if (response.ok) {
         const payload = await response.json();

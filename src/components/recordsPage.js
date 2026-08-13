@@ -62,7 +62,7 @@ export function recordsPageMarkup({
           </select>
         </label>
       </div>
-      ${productGrid(records, { availableArtistNames })}
+      ${productGrid(records, { availableArtistNames, deferCards: true, eagerCardCount: 8 })}
     </section>
   `;
 }

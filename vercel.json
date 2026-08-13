@@ -47,6 +47,23 @@
           "value": "no-cache, no-store, must-revalidate"
         }
       ]
+    },
+    {
+      "source": "/artists",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=60, stale-while-revalidate=300"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=60, stale-while-revalidate=300"
+        }
+      ]
     }
   ],
   "redirects": [
@@ -179,10 +196,6 @@
     {
       "source": "/publishing",
       "destination": "/index.html"
-    },
-    {
-      "source": "/artists",
-      "destination": "/api/catalog?action=catalog-page&catalogPath=/artists"
     },
     {
       "source": "/blog",

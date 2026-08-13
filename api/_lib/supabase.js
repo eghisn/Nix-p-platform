@@ -77,7 +77,9 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
       const snapshotResponse = await fetch(publicSnapshotUrl, { cache: "no-store" });
       if (snapshotResponse.ok) {
         const snapshot = await snapshotResponse.json();
-        store.products = reconcilePublicEditorialProducts(store.products, snapshot.products || []);
+        store.products = reconcilePublicRevision(store.products, snapshot.products || []);
+        store.artists = Array.isArray(snapshot.artists) ? snapshot.artists : store.artists;
+        store.collections = Array.isArray(snapshot.collections) ? snapshot.collections : store.collections;
       }
     } catch {
       // Supabase remains the source of truth if the deploy snapshot is unavailable.
@@ -112,8 +114,8 @@ function snapshotOwnsEditorialFields(snapshotProduct = {}) {
   );
 }
 
-function reconcilePublicEditorialProducts(remoteProducts = [], snapshotProducts = []) {
-  const snapshotById = new Map(snapshotProducts.map((product) => [product.id, product]));
+function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
+  const remoteById = new Map(remoteProducts.map((product) => [product.id, product]));
   const fields = [
     "description",
     "descriptionSource",
@@ -135,18 +137,30 @@ function reconcilePublicEditorialProducts(remoteProducts = [], snapshotProducts 
     "barcode",
     "details"
   ];
-  return remoteProducts.map((remoteProduct) => {
-    const snapshotProduct = snapshotById.get(remoteProduct.id);
-    // After a catalog deploy, the public snapshot is the immutable editorial
-    // publication record. Inventory, price and visibility remain live from
-    // Supabase; artwork, copy and related artists cannot regress from stale
-    // database JSON during client hydration.
-    if (!snapshotProduct || !snapshotOwnsEditorialFields(snapshotProduct)) return remoteProduct;
-    return fields.reduce(
-      (merged, field) => (snapshotProduct[field] !== undefined ? { ...merged, [field]: snapshotProduct[field] } : merged),
-      remoteProduct
-    );
-  });
+  return snapshotProducts
+    .map((snapshotProduct) => {
+      const remoteProduct = remoteById.get(snapshotProduct.id);
+      // The deployed snapshot defines which editorial revision is public.
+      // Supabase may update price, stock, offer state, and visibility in real
+      // time, but a remote-only draft cannot enter public HTML before deploy.
+      if (!remoteProduct) return null;
+      const merged = {
+        ...snapshotProduct,
+        price: remoteProduct.price,
+        qty: remoteProduct.qty,
+        sizes: remoteProduct.sizes,
+        publishStatus: remoteProduct.publishStatus,
+        visibility: remoteProduct.visibility,
+        open_to_offers: remoteProduct.open_to_offers,
+        minimumAcceptableOffer: remoteProduct.minimumAcceptableOffer
+      };
+      if (!snapshotOwnsEditorialFields(snapshotProduct)) return merged;
+      return fields.reduce(
+        (product, field) => (snapshotProduct[field] !== undefined ? { ...product, [field]: snapshotProduct[field] } : product),
+        merged
+      );
+    })
+    .filter(Boolean);
 }
 
 export async function verifiedPrices(ids = []) {

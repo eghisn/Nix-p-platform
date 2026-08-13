@@ -1,5 +1,6 @@
 import { artistCreditNames, artistIdentityKey, canonicalLabelName } from "../data/catalogIdentity.js";
 import { publicProductPath } from "../data/publicUrls.js";
+import { productCardImageAttributes } from "../data/productThumbnails.js";
 
 const leftPublicLinks = [
   ["Records", "/records"],
@@ -140,12 +141,20 @@ export function productGrid(products, options = {}) {
 
   return `
     <div class="product-grid">
-      ${products.map((product) => productCard(product, { ...options, availableArtistNames })).join("")}
+      ${products
+        .map((product, index) =>
+          productCard(product, {
+            ...options,
+            availableArtistNames,
+            deferCard: options.deferCards === true && index >= Number(options.eagerCardCount ?? 8)
+          })
+        )
+        .join("")}
     </div>
   `;
 }
 
-export function productCard(product, { hrefFor, availableArtistNames } = {}) {
+export function productCard(product, { hrefFor, availableArtistNames, deferCard = false } = {}) {
   const meta = product.condition ? `${product.displayFormat || product.format}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
   const href = hrefFor ? hrefFor(product) : publicProductPath(product);
@@ -156,12 +165,17 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
       ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${canonicalLabelName(product.label)}</a>`
       : "";
   const artistMarkup = productArtistMarkup(product, availableArtistNames);
+  const imageMarkup = productCardImageMarkup(product);
+  const deferredDetails = `${recordArtistTags(product, availableArtistNames)}
+    ${isOfferOnly
+      ? `<a class="button button-outline" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>`
+      : `<button class="button button-outline" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>`}`;
 
   return `
-    <article class="product-card ${soldOut ? "is-sold-out" : ""}">
+    <article class="product-card ${soldOut ? "is-sold-out" : ""}" ${deferCard ? "data-deferred-product-card" : ""}>
       <a class="product-link" href="${href}" data-link data-product-link aria-label="View ${product.title}">
         <figure class="${artClass} ${soldOut ? "is-sold-out" : ""}">
-          <img src="${product.image}" alt="${product.title}" loading="lazy" decoding="async" />
+          ${deferCard ? deferredTemplate(imageMarkup, "deferred-product-media") : imageMarkup}
           ${soldOut ? `<span class="sold-out-label">Sold out</span>` : ""}
         </figure>
       </a>
@@ -169,17 +183,25 @@ export function productCard(product, { hrefFor, availableArtistNames } = {}) {
         <p class="product-artist">${artistMarkup}</p>
         <h2><a href="${href}" data-link data-product-link>${product.title}</a></h2>
         ${labelLink}
-        ${recordArtistTags(product, availableArtistNames)}
         <div class="row-between">
           <span>${meta}</span>
           <strong>${isOfferOnly ? "Offer only" : idr.format(product.price)}</strong>
         </div>
-        ${isOfferOnly
-          ? `<a class="button button-outline" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>`
-          : `<button class="button button-outline" type="button" data-add-cart="${product.id}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>`}
+        ${deferCard ? deferredTemplate(deferredDetails, "deferred-product-details") : deferredDetails}
       </div>
     </article>
   `;
+}
+
+function productCardImageMarkup(product) {
+  const image = productCardImageAttributes(product);
+  const srcset = image.srcset ? ` srcset="${escapeHtml(image.srcset)}"` : "";
+  const fallback = image.fallback ? ` data-image-fallback="${escapeHtml(image.fallback)}"` : "";
+  return `<img src="${escapeHtml(image.src)}"${srcset} sizes="(max-width: 720px) 100vw, (max-width: 1120px) 50vw, 25vw" width="1080" height="1080" alt="${escapeHtml(product.title)}" loading="lazy" decoding="async"${fallback} />`;
+}
+
+function deferredTemplate(markup, className) {
+  return `<span class="${className}" data-deferred-product-content><template>${markup}</template></span>`;
 }
 
 function productArtistMarkup(product, availableArtistNames) {

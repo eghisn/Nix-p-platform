@@ -1,6 +1,8 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
+import { resolve, sep } from "node:path";
 import { build } from "esbuild";
+import sharp from "sharp";
 import { productGrid, shell } from "../src/components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup } from "../src/components/catalogPage.js";
 import { recordsPageMarkup } from "../src/components/recordsPage.js";
@@ -11,6 +13,7 @@ import { termsOfUseContent } from "../src/data/termsOfUse.js";
 import { labelEntries, productMatchesLabel } from "../src/data/labelCatalog.js";
 import { labelLogoAvailable, verifiedLabelLogoExtensions } from "../src/data/labelLogoManifest.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../src/components/labelsPage.js";
+import { canGenerateProductCardThumbnail, productCardThumbnailUrl, productCardThumbnailWidths } from "../src/data/productThumbnails.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -40,15 +43,18 @@ if (existsSync(dataModule)) {
 await mkdir(`${dist}/assets`, { recursive: true });
 await build({
   entryPoints: [`${dist}/src/main.js`],
-  outfile: `${dist}/assets/app.js`,
+  outdir: `${dist}/assets`,
   bundle: true,
   format: "esm",
+  splitting: true,
+  entryNames: "app",
+  chunkNames: "chunks/[name]-[hash]",
   minify: true,
   target: "es2022",
   legalComments: "none"
 });
 
-const bundleUrl = "/assets/app.js?v=20260725-founders-webfont";
+const bundleUrl = "/assets/app.js?v=20260813-catalog-performance";
 const indexHtml = (await readFile(`${dist}/index.html`, "utf8"))
   .replace(
     /<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i,
@@ -67,6 +73,31 @@ const publicProducts = (publicStore?.products || []).filter(
     product.image &&
     !(product.category === "Records" && product.image.includes("nixp-product-example"))
 );
+
+const thumbnailDirectory = `${dist}/product-thumbnails`;
+await mkdir(thumbnailDirectory, { recursive: true });
+const thumbnailProducts = publicProducts.filter(
+  (product) => product.category === "Records" && canGenerateProductCardThumbnail(product)
+);
+for (let index = 0; index < thumbnailProducts.length; index += 4) {
+  await Promise.all(
+    thumbnailProducts.slice(index, index + 4).map(async (product) => {
+      const sourceRelativePath = decodeURIComponent(String(product.image).split("?")[0]).replace(/^\/+/, "");
+      const sourcePath = resolve(root, sourceRelativePath);
+      const publicRoot = resolve(root, "public");
+      if (!sourcePath.startsWith(`${publicRoot}${sep}`) || !existsSync(sourcePath)) return;
+      await Promise.all(
+        productCardThumbnailWidths.map((width) =>
+          sharp(sourcePath)
+            .rotate()
+            .resize({ width, height: width, fit: "inside", withoutEnlargement: true })
+            .webp({ quality: 84, effort: 4 })
+            .toFile(`${dist}${productCardThumbnailUrl(product, width)}`)
+        )
+      );
+    })
+  );
+}
 const publicLabels = labelEntries(publicProducts).filter((label) => labelLogoAvailable(label.slug));
 
 // Keep the deployed label directory limited to verified real artwork. This prevents old
@@ -102,6 +133,7 @@ const staticRoutes = [
   "apparel",
   "accessories",
   "publishing",
+  "artists",
   "labels",
   "blog",
   "request-item",

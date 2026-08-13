@@ -1155,6 +1155,17 @@ p {
   contain-intrinsic-size: auto 470px;
 }
 
+.deferred-product-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.deferred-product-details {
+  display: block;
+  min-height: 66px;
+}
+
 .product-link {
   display: block;
 }

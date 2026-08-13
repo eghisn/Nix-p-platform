@@ -7,6 +7,7 @@
     "dev": "node scripts/dev-server.mjs",
     "build": "node scripts/build.mjs",
     "test:catalog": "node scripts/verify-catalog-integrity.mjs",
+    "test:catalog-performance": "node scripts/verify-catalog-performance.mjs",
     "test:recommendations": "node scripts/verify-product-recommendations.mjs",
     "test:routes": "node scripts/verify-public-routes.mjs",
     "test:commerce": "node scripts/verify-commerce-contract.mjs",
@@ -30,6 +31,7 @@
     "nodemailer": "^9.0.3"
   },
   "devDependencies": {
-    "esbuild": "^0.28.1"
+    "esbuild": "^0.28.1",
+    "sharp": "0.34.3"
   }
 }

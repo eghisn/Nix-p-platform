@@ -9,7 +9,6 @@ import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup } from "./components/catalogPage.js";
-import { recordsPageMarkup } from "./components/recordsPage.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "./components/labelsPage.js";
 
 const app = document.querySelector("#app");
@@ -482,6 +481,7 @@ function hasHomeSlideSort(product) {
 }
 
 async function recordsPage() {
+  const { recordsPageMarkup } = await import("./components/recordsPage.js");
   const labelFilter = new URLSearchParams(location.search).get("label") || "";
   const artistTagFilter = new URLSearchParams(location.search).get("artistTag") || "";
   const availableArtistNames = inventoryArtistNames(await catalogService.listProducts());
@@ -2523,7 +2523,93 @@ function notFoundPage() {
   });
 }
 
+function activateDeferredProductCards() {
+  const cards = [...document.querySelectorAll("[data-deferred-product-card]")];
+  if (!cards.length) {
+    bindProductImageFallbacks(document);
+    return;
+  }
+
+  const activate = (card) => {
+    card.querySelectorAll("[data-deferred-product-content]").forEach((container) => {
+      const template = container.querySelector("template");
+      if (!template) return;
+      container.replaceWith(template.content.cloneNode(true));
+    });
+    card.removeAttribute("data-deferred-product-card");
+    bindProductImageFallbacks(card);
+    bindDeferredProductCardInteractions(card);
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    cards.forEach(activate);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        observer.unobserve(entry.target);
+        activate(entry.target);
+      }
+    },
+    { rootMargin: "900px 0px" }
+  );
+  cards.forEach((card) => observer.observe(card));
+  bindProductImageFallbacks(document);
+}
+
+function bindDeferredProductCardInteractions(card) {
+  card.querySelectorAll("[data-link]").forEach((link) => {
+    if (link.dataset.deferredLinkBound === "true") return;
+    link.dataset.deferredLinkBound = "true";
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+      if (!href || href.startsWith("http") || href.startsWith("mailto:")) return;
+      event.preventDefault();
+      navigateInternal(href);
+    });
+  });
+  card.querySelectorAll("[data-add-cart]").forEach((button) => {
+    if (button.dataset.deferredCartBound === "true") return;
+    button.dataset.deferredCartBound = "true";
+    button.addEventListener("click", async () => {
+      const product = await catalogService.getProduct(button.dataset.addCart);
+      const selectedSize = product?.sizes?.length ? state.selectedSizes[product.id] || defaultAvailableSize(product) : "";
+      const key = cartKey(button.dataset.addCart, selectedSize);
+      const stock = productStock(product, selectedSize);
+      if (stock > 0 && cartItemQuantity(key) < stock) {
+        state.cart.push(key);
+        clearCheckoutSession();
+        persistCart();
+      }
+      state.cartOpen = true;
+      render();
+    });
+  });
+}
+
+function bindProductImageFallbacks(root) {
+  root.querySelectorAll?.("img[data-image-fallback]").forEach((image) => {
+    if (image.dataset.fallbackBound === "true") return;
+    image.dataset.fallbackBound = "true";
+    image.addEventListener(
+      "error",
+      () => {
+        const fallback = image.dataset.imageFallback;
+        if (!fallback || image.src.endsWith(fallback)) return;
+        image.removeAttribute("srcset");
+        image.removeAttribute("sizes");
+        image.src = fallback;
+      },
+      { once: true }
+    );
+  });
+}
+
 function bindEvents() {
+  activateDeferredProductCards();
   bindHomeSlider();
   document.querySelector("[data-login-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
