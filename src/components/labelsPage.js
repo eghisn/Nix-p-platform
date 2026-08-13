@@ -1,4 +1,5 @@
 import { labelLogoPath } from "../data/labelCatalog.js";
+import { verifiedLabelLogos } from "../data/labelLogoManifest.js";
 import { productGrid } from "./layout.js";
 
 function escapeHtml(value) {
@@ -18,7 +19,7 @@ export function labelsPageMarkup(labels = []) {
           .map(
             (label) => `
               <a class="label-tile" href="/labels/${escapeHtml(label.slug)}" data-link aria-label="View ${escapeHtml(label.name)} releases">
-                <img class="label-logo" src="${labelLogoPath(label.name)}" alt="${escapeHtml(label.name)}" loading="lazy" decoding="async" />
+                <img class="label-logo${verifiedLabelLogos[label.slug]?.tone === "inverse" ? " label-logo--inverse" : ""}" src="${labelLogoPath(label.name)}" alt="${escapeHtml(label.name)}" loading="lazy" decoding="async" />
               </a>
             `
           )
