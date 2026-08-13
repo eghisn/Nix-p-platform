@@ -114,8 +114,28 @@ function snapshotOwnsEditorialFields(snapshotProduct = {}) {
   );
 }
 
+function isPlaceholderCatalogTitle(value) {
+  return /^(?:untitled(?:\s+inventory)?\s+item|new\s+inventory\s+item)$/i.test(String(value || "").trim());
+}
+
 function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
   const remoteById = new Map(remoteProducts.map((product) => [product.id, product]));
+  const identityFields = [
+    "sku",
+    "title",
+    "artist",
+    "category",
+    "format",
+    "display_format",
+    "condition",
+    "label",
+    "year",
+    "collection",
+    "edition",
+    "catalogNumber",
+    "barcode",
+    "details"
+  ];
   const fields = [
     "description",
     "descriptionSource",
@@ -154,10 +174,17 @@ function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
         open_to_offers: remoteProduct.open_to_offers,
         minimumAcceptableOffer: remoteProduct.minimumAcceptableOffer
       };
-      if (!snapshotOwnsEditorialFields(snapshotProduct)) return merged;
+      const withCurrentIdentity = identityFields.reduce((product, field) => {
+        const value = remoteProduct[field];
+        const usable = field === "title"
+          ? String(value || "").trim() && !isPlaceholderCatalogTitle(value)
+          : value !== undefined && value !== null && (typeof value !== "string" || value.trim());
+        return usable ? { ...product, [field]: value } : product;
+      }, merged);
+      if (!snapshotOwnsEditorialFields(snapshotProduct)) return withCurrentIdentity;
       return fields.reduce(
         (product, field) => (snapshotProduct[field] !== undefined ? { ...product, [field]: snapshotProduct[field] } : product),
-        merged
+        withCurrentIdentity
       );
     })
     .filter(Boolean);

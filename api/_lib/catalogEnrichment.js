@@ -863,7 +863,8 @@ export function applyCuratedEditorialOverride(discovered, sku) {
 
 export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArtists = [] } = {}) {
   const format = String(stock.item || row.format || "").trim();
-  const title = String(stock.title || row.title || "").trim();
+  const submittedTitle = String(stock.title || "").trim();
+  const title = (isPlaceholderInventoryTitle(submittedTitle) ? String(row.title || "") : submittedTitle).trim();
   const artist = canonicalArtistName(stock.artist || row.artist || "");
   const price = Number(stock.sellingPrice || row.price || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true || row.open_to_offers === true;
@@ -1145,6 +1146,10 @@ async function discoverMusicBrainzRelease(stock) {
     sourceUrl: releaseGroup?.officialUrl || `${MUSICBRAINZ_ORIGIN}/release/${release.id}`,
     musicBrainzReleaseId: release.id
   };
+}
+
+function isPlaceholderInventoryTitle(value) {
+  return /^(?:untitled(?:\s+inventory)?\s+item|new\s+inventory\s+item)$/i.test(String(value || "").trim());
 }
 
 async function discoverCoverArt(releaseId) {

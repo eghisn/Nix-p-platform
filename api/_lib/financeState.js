@@ -301,7 +301,11 @@ function productRowFromFinanceStock(row, stock, quantity) {
     : APPAREL_TYPES.has(item)
       ? "Apparel"
       : row.category || "Objects";
-  const financeTitle = String(stock.title || "").trim();
+  // Finance can contain a temporary placeholder while the editorial match is
+  // still being completed. It must never erase a real title already stored in
+  // Admin or returned by the enrichment step.
+  const submittedTitle = String(stock.title || "").trim();
+  const financeTitle = isPlaceholderInventoryTitle(submittedTitle) ? "" : submittedTitle;
   const financeArtist = String(stock.artist || "").trim();
   const financePrice = Number(stock.sellingPrice || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
@@ -368,6 +372,10 @@ function productRowFromFinanceStock(row, stock, quantity) {
       visibility
     }
   });
+}
+
+function isPlaceholderInventoryTitle(value) {
+  return /^(?:untitled(?:\s+inventory)?\s+item|new\s+inventory\s+item)$/i.test(String(value || "").trim());
 }
 
 function hasUsableProductImage(row = {}) {

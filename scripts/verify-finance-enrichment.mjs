@@ -90,6 +90,13 @@ assert.equal(tim.images.length, 1, "Used records must not receive an invented pr
 assert.equal(tim.raw.shipping.shippingClass, "small-media-cd-bubble");
 assert.equal(isRecordPublicationReady({ ...tim, ...tim.raw }), true);
 
+const timPlaceholder = await enrichFinanceCatalogProduct(
+  { ...draft, id: "finance-nxp-2026-cd-0045", sku: timStock.sku, title: "Legacy Konoyo", raw: {} },
+  { ...timStock, title: "Untitled inventory item" },
+  { catalogArtists: [{ artist: "Oneohtrix Point Never", label: "Warp Records" }] }
+);
+assert.equal(timPlaceholder.title, "Konoyo", "Finance placeholders must not block the curated release title.");
+
 const buttechnoStock = {
   sku: "NXP-2026-VNL-0044",
   item: "Vinyl",
