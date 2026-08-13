@@ -1,5 +1,6 @@
 import { artistNames, cashflow, inventory, orders, products, requestItems } from "../data/sampleData.js";
 import { canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../data/catalogIdentity.js";
+import { isRecentReleaseProduct } from "../data/homeCollections.js";
 
 const STORAGE_KEY = "nixp-admin-store-v1";
 const STORE_VERSION = "home-slider-related-artists-2026-07-15";
@@ -32,7 +33,6 @@ const defaultCollections = [
   { id: "private-collection", title: "Private Collection", type: "Home", status: "Published", sort: 14 }
 ];
 
-const RECENT_RELEASE_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -79,11 +79,7 @@ function withDefaults(product) {
 }
 
 function isRecentRelease(product = {}) {
-  return (
-    product.category === "Records" &&
-    RECENT_RELEASE_FORMATS.has(String(product.format || "").trim()) &&
-    [2025, 2026].includes(Number(product.year))
-  );
+  return isRecentReleaseProduct(product);
 }
 
 function normalizeHomeCollections(product, values = product.homeCollections) {

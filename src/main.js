@@ -5,6 +5,7 @@ import { recommendedProducts } from "./data/productRecommendations.js";
 import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
 import { termsOfUseContent } from "./data/termsOfUse.js";
 import { labelEntries, labelSlug } from "./data/labelCatalog.js";
+import { isRecentReleaseProduct, recentReleaseSortComparator } from "./data/homeCollections.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
@@ -404,11 +405,7 @@ async function homePage() {
     : homeCollectionOptions[0][0];
   const collectionProducts = products
     .filter((product) => homeCollectionMatch(product, selectedCollection))
-    .sort((a, b) => {
-      const sortA = hasHomeSlideSort(a) ? Number(a.homeSlideSort) : 9999;
-      const sortB = hasHomeSlideSort(b) ? Number(b.homeSlideSort) : 9999;
-      return sortA - sortB || String(a.artist || "").localeCompare(String(b.artist || ""));
-    });
+    .sort(selectedCollection === "recent-releases" ? recentReleaseSortComparator : homeSlideSortComparator);
   const featured = collectionProducts.filter((product) => product.image && !product.image.includes("nixp-product-example"));
   const slides = featured.length ? featured : products;
   const loopSlides = [...slides, ...slides];
@@ -468,12 +465,18 @@ async function homePage() {
 
 function homeCollectionMatch(product, collectionId) {
   if (collectionId === "recent-releases") {
-    return product.category === "Records" && ["Vinyl", "CD", "Cassette"].includes(product.format) && [2025, 2026].includes(Number(product.year));
+    return isRecentReleaseProduct(product);
   }
   if (collectionId === "private-collection") {
     return product.open_to_offers === true;
   }
   return Array.isArray(product.homeCollections) && product.homeCollections.includes(collectionId);
+}
+
+function homeSlideSortComparator(a, b) {
+  const sortA = hasHomeSlideSort(a) ? Number(a.homeSlideSort) : 9999;
+  const sortB = hasHomeSlideSort(b) ? Number(b.homeSlideSort) : 9999;
+  return sortA - sortB || String(a.artist || "").localeCompare(String(b.artist || ""));
 }
 
 function hasHomeSlideSort(product) {

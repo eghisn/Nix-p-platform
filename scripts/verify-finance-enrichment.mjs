@@ -11,6 +11,7 @@ import {
   isRecordPublicationReady,
   recordPublicationIssues
 } from "../src/data/catalogPublication.js";
+import { isRecentReleaseProduct, recentReleaseSortComparator } from "../src/data/homeCollections.js";
 
 const stock = {
   sku: "NXP-2026-CD-0025",
@@ -20,6 +21,14 @@ const stock = {
   title: "Pleiades' Dust",
   sellingPrice: 273000
 };
+
+assert.equal(isRecentReleaseProduct({ category: "Records", format: "CD", year: 2026 }), true);
+const recentOrder = [
+  { sku: "NXP-2026-CD-0001", artist: "Older 2026", year: 2026, updatedAt: "2026-08-01" },
+  { sku: "NXP-2026-CD-0002", artist: "Newer 2026", year: 2026, updatedAt: "2026-08-14" },
+  { sku: "NXP-2026-CD-0003", artist: "2025", year: 2025, updatedAt: "2026-08-14" }
+].sort(recentReleaseSortComparator);
+assert.deepEqual(recentOrder.map((item) => item.artist), ["Newer 2026", "Older 2026", "2025"]);
 
 const draft = {
   id: "finance-nxp-2026-cd-0025",

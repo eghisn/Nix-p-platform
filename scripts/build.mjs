@@ -8,6 +8,7 @@ import { apparelPageMarkup, catalogGridPageMarkup } from "../src/components/cata
 import { recordsPageMarkup } from "../src/components/recordsPage.js";
 import { artistCreditNames } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
+import { isRecentReleaseProduct, recentReleaseSortComparator } from "../src/data/homeCollections.js";
 import { recommendedProducts } from "../src/data/productRecommendations.js";
 import { termsOfUseContent } from "../src/data/termsOfUse.js";
 import { labelEntries, productMatchesLabel } from "../src/data/labelCatalog.js";
@@ -279,18 +280,9 @@ function homeDocument() {
 
 function homeAppMarkup() {
   const products = publicProducts
-    .filter(
-      (product) =>
-        product.category === "Records" &&
-        ["Vinyl", "CD", "Cassette"].includes(product.format) &&
-        [2025, 2026].includes(Number(product.year))
-    )
+    .filter(isRecentReleaseProduct)
     .filter((product) => product.image && !product.image.includes("nixp-product-example"))
-    .sort((a, b) => {
-      const sortA = Number.isFinite(Number(a.homeSlideSort)) ? Number(a.homeSlideSort) : 9999;
-      const sortB = Number.isFinite(Number(b.homeSlideSort)) ? Number(b.homeSlideSort) : 9999;
-      return sortA - sortB || String(a.artist || "").localeCompare(String(b.artist || ""));
-    });
+    .sort(recentReleaseSortComparator);
   const slides = [...products, ...products];
   const collections = [
     ["recent-releases", "Recent Releases"],
