@@ -15,6 +15,10 @@ NIXP_BACKUP/
 *_BACKUP/
 exports/backup-*/
 scripts/tmp/
+nixp-shipping/
+nixp-stickers/
+output/
+tmp/
 *.csv
 *.tsv
 *.xls
