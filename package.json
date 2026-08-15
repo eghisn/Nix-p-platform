@@ -23,6 +23,7 @@
     "sync:catalog": "node scripts/sync-catalog-snapshots.mjs",
     "collect:jne-tariffs": "node scripts/collect-jne-tariff-snapshot.mjs",
     "publish:jne-tariffs": "node scripts/publish-jne-tariff-snapshot.mjs",
+    "backup:supabase": "node scripts/export-supabase-backup.mjs",
     "preview": "node scripts/dev-server.mjs dist"
   },
   "engines": {
