@@ -1,5 +1,6 @@
 import { getSession, json } from "./_lib/auth.js";
 import { readFinanceStateWithVersion, writeFinanceState } from "./_lib/financeState.js";
+import { recordSystemEvent } from "./_lib/observability.js";
 
 export default async function handler(req, res) {
   const session = getSession(req);
@@ -20,6 +21,7 @@ export default async function handler(req, res) {
     }
     return json(res, 405, { ok: false, error: "Method not allowed" });
   } catch (error) {
+    await recordSystemEvent({ source: "finance-state-api", req, error });
     return json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Finance state unavailable" });
   }
 }

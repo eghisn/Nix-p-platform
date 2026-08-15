@@ -8,6 +8,7 @@ import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/sh
 import { runShippingMaintenance } from "./_lib/nixpShippingEngine.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "./_lib/financeState.js";
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
+import { recordSystemEvent } from "./_lib/observability.js";
 
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://nix-p.com").searchParams.get("commerceAction");
@@ -134,6 +135,7 @@ export default async function handler(req, res) {
     const status = message.startsWith("OUT_OF_STOCK") || message.startsWith("ITEM_UNAVAILABLE") || message.startsWith("SIZE_")
       ? 409
       : Number(error?.statusCode || 500);
+    await recordSystemEvent({ source: "checkout-api", req, error, details: { action: action || "checkout", status } });
     return json(res, status, { ok: false, error: friendlyError(message) });
   }
 }
@@ -160,6 +162,7 @@ async function handleRuleShippingQuote(req, res) {
       quotedAt: quote.quotedAt
     });
   } catch (error) {
+    await recordSystemEvent({ source: "shipping-quote-api", req, error });
     return json(res, Number(error?.statusCode || 500), { ok: false, error: friendlyError(error instanceof Error ? error.message : "Shipping quote failed.") });
   }
 }

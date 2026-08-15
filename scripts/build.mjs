@@ -19,6 +19,34 @@ import { canGenerateProductCardThumbnail, productCardThumbnailUrl, productCardTh
 const root = process.cwd();
 const dist = `${root}/dist`;
 
+async function collectApiEntries(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = await Promise.all(
+    entries.map(async (entry) => {
+      const path = `${directory}/${entry.name}`;
+      if (entry.isDirectory()) {
+        if (entry.name === "_lib") return [];
+        return collectApiEntries(path);
+      }
+      return entry.isFile() && entry.name.endsWith(".js") ? [path] : [];
+    })
+  );
+  return files.flat();
+}
+
+const apiEntries = await collectApiEntries(`${root}/api`);
+await build({
+  entryPoints: apiEntries,
+  outdir: `${root}/.api-preflight`,
+  bundle: true,
+  write: false,
+  platform: "node",
+  format: "esm",
+  target: "node20",
+  packages: "external",
+  logLevel: "silent"
+});
+
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 
