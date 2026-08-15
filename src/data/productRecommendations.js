@@ -99,10 +99,13 @@ export function recommendedProducts(product, products, { limit = 4 } = {}) {
     });
 
   const seenReleases = new Set();
+  const seenArtists = new Set();
   const distinct = candidates.filter(({ candidate }) => {
     const key = `${artistIdentityKey(candidate.artist)}:${String(candidate.title || "").trim().toLowerCase()}`;
-    if (seenReleases.has(key)) return false;
+    const candidateArtistKeys = productArtistKeys(candidate);
+    if (seenReleases.has(key) || candidateArtistKeys.some((artist) => seenArtists.has(artist))) return false;
     seenReleases.add(key);
+    for (const artist of candidateArtistKeys) seenArtists.add(artist);
     return true;
   });
 
