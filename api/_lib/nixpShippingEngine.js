@@ -134,9 +134,68 @@ export async function shippingDashboard() {
   };
 }
 
+export async function validateActiveShippingSnapshot({ sampleSize = 24 } = {}) {
+  const [active, rows] = await Promise.all([
+    supabaseFetch("shipping_rate_versions?select=id,name,destination_count,rate_count,verified_at,activated_at,effective_from&status=eq.active&limit=1", { service: true }),
+    fetchAllRows("active_shipping_rates?select=destination_code,weight_from_kg,weight_to_kg,service_code,total_rate,rate_version_id&order=destination_code.asc,weight_from_kg.asc,service_code.asc")
+  ]);
+  const version = active?.[0] || null;
+  const groups = new Map();
+  for (const row of rows || []) {
+    const key = `${row.destination_code}|${row.weight_from_kg}-${row.weight_to_kg}`;
+    const group = groups.get(key) || { key, destinationCode: row.destination_code, weightFromKg: row.weight_from_kg, weightToKg: row.weight_to_kg, services: [] };
+    group.services.push(row);
+    groups.set(key, group);
+  }
+  const results = [...groups.values()].slice(0, Math.max(1, Math.min(Number(sampleSize) || 24, 100))).map((group) => {
+    const invalid = !group.destinationCode || !Number.isInteger(Number(group.weightFromKg)) || Number(group.weightFromKg) < 1 || Number(group.weightToKg) < Number(group.weightFromKg) || !group.services.length || group.services.some((service) => !service.service_code || !Number.isFinite(Number(service.total_rate)) || Number(service.total_rate) < 0);
+    return { ...group, ok: !invalid, services: group.services.length, reason: invalid ? "Invalid destination, weight range, service, or non-negative rate." : null };
+  });
+  const mismatchCount = results.filter((result) => !result.ok).length;
+  const verifiedAt = version?.verified_at || version?.activated_at || null;
+  const maxAgeDays = Math.max(1, Number(process.env.NIXP_SHIPPING_SNAPSHOT_MAX_AGE_DAYS || 30));
+  const ageDays = verifiedAt ? Math.floor((Date.now() - new Date(verifiedAt).getTime()) / 86_400_000) : null;
+  const warnings = [];
+  if (!version) warnings.push("No active shipping rate version.");
+  if (version && ageDays !== null && ageDays > maxAgeDays) warnings.push(`Active shipping rate snapshot is ${ageDays} days old.`);
+  if (version && !verifiedAt) warnings.push("Active shipping rate snapshot has no verification timestamp.");
+  if (version && Number(version.destination_count || 0) > 0 && new Set(rows.map((row) => row.destination_code)).size < Number(version.destination_count)) warnings.push("Active shipping snapshot has fewer destinations than its recorded coverage.");
+  if (!rows.length) warnings.push("Active shipping snapshot contains no rates.");
+  const status = version && rows.length && mismatchCount === 0 && !warnings.length ? "passed" : "failed";
+  const validation = {
+    status,
+    sampleSize: results.length,
+    matchedCount: results.filter((result) => result.ok).length,
+    mismatchCount,
+    destinationCount: new Set(rows.map((row) => row.destination_code)).size,
+    rateCount: rows.length,
+    activeRateVersion: version,
+    ageDays,
+    maxAgeDays,
+    warnings,
+    results,
+    completedAt: new Date().toISOString()
+  };
+  await supabaseFetch("shipping_validation_runs", {
+    method: "POST",
+    service: true,
+    prefer: "return=minimal",
+    body: [{ sample_size: validation.sampleSize, matched_count: validation.matchedCount, mismatch_count: validation.mismatchCount, status: validation.status, results: validation.results, completed_at: validation.completedAt }]
+  });
+  await logSourceEvent("validation", status, validation);
+  return validation;
+}
+
 export async function runShippingMaintenance({ mode = "daily" } = {}) {
-  const active = await supabaseFetch("shipping_rate_versions?select=id,name,destination_count,rate_count,verified_at,activated_at&status=eq.active&limit=1", { service: true });
-  const health = { ok: Boolean(active?.[0]), source: "NIXP internal JNE rate snapshot", activeRateVersion: active?.[0] || null, checkedAt: new Date().toISOString() };
+  const active = await supabaseFetch("shipping_rate_versions?select=id,name,destination_count,rate_count,verified_at,activated_at,effective_from&status=eq.active&limit=1", { service: true });
+  let validation;
+  try {
+    validation = await validateActiveShippingSnapshot();
+  } catch (error) {
+    validation = { status: "failed", sampleSize: 0, matchedCount: 0, mismatchCount: 0, warnings: [error instanceof Error ? error.message : "Shipping validation failed."], completedAt: new Date().toISOString() };
+    await logSourceEvent("validation", "failed", validation);
+  }
+  const health = { ok: Boolean(active?.[0]) && validation.status === "passed", source: "NIXP internal JNE rate snapshot", activeRateVersion: active?.[0] || null, validation, checkedAt: new Date().toISOString() };
   await logSourceEvent("health-check", health.ok ? "success" : "failed", health);
   await supabaseFetch("shipping_quote_sessions?status=eq.active&expires_at=lt.now()", { method: "PATCH", service: true, prefer: "return=minimal", body: { status: "expired" } });
   const tariffRefresh = { refreshed: 0, failed: 0, skipped: true, reason: "Checkout uses an activated immutable database snapshot." };
