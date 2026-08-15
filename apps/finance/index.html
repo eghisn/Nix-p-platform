@@ -1132,6 +1132,10 @@
                 <h2>Expense ledger</h2>
                 <small id="expenseCount">0 entries</small>
               </div>
+              <div class="ledger-search">
+                <label for="expenseSearch">Search expenses</label>
+                <input id="expenseSearch" type="search" placeholder="Expense, category, vendor, payment, notes">
+              </div>
               <div class="table-wrap">
                 <table>
                   <thead>
@@ -1521,6 +1525,7 @@
       stockTotals: document.getElementById("stockTotals"),
       ownerDueBody: document.getElementById("ownerDueBody"),
       salesSearch: document.getElementById("salesSearch"),
+      expenseSearch: document.getElementById("expenseSearch"),
       inventorySearch: document.getElementById("inventorySearch"),
       stockSearch: document.getElementById("stockSearch"),
       yearFilter: document.getElementById("yearFilter"),
@@ -1999,7 +2004,7 @@
         });
       });
 
-      [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.salesSearch, el.inventorySearch, el.stockSearch, el.pnlMonth, el.reportMonth].forEach(input => {
+      [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.salesSearch, el.expenseSearch, el.inventorySearch, el.stockSearch, el.pnlMonth, el.reportMonth].forEach(input => {
         input.addEventListener("input", render);
       });
       el.reportOpeningCash?.addEventListener("change", async event => {
@@ -2778,7 +2783,17 @@
     }
 
     function renderExpenses() {
-      const rows = sortRows("expenses", state.expenses);
+      const query = searchQuery(el.expenseSearch);
+      const rows = sortRows("expenses", filterRows(state.expenses, query, item => [
+        item.date,
+        item.expense,
+        item.category,
+        item.vendor,
+        item.amount,
+        item.costType,
+        item.paymentMethod,
+        item.notes
+      ]));
       document.getElementById("expenseCount").textContent = rows.length + " entries";
       el.expenseBody.innerHTML = rows.length ? rows.map(item => `
         <tr>
