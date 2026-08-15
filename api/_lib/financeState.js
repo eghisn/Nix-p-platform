@@ -461,6 +461,7 @@ export async function syncAdminCatalogInventory(products = []) {
       sellingPrice: product.open_to_offers ? 0 : Number(existing.sellingPrice || product.price || 0),
       listingMode: product.open_to_offers ? "Private Collection / Offer Only" : existing.listingMode || "Standard Sale",
       minimumAcceptableOffer: wholeAmount(product.minimumAcceptableOffer ?? existing.minimumAcceptableOffer),
+      inventoryFamily: catalogInventoryFamily(product) || existing.inventoryFamily || "Other",
       soldPrice: Number(existing.soldPrice || 0)
     });
     if (index === undefined) {
@@ -630,6 +631,13 @@ function financeItemForProduct(product) {
   if (product.category === "Records") return product.format || "Vinyl";
   if (product.category === "Apparel") return product.apparelType === "Accessories" ? "Cap" : product.title || "Apparel";
   return "Object";
+}
+
+function catalogInventoryFamily(product = {}) {
+  if (product.category === "Records") return "Records";
+  if (product.category === "Apparel") return "Apparel";
+  if (["Objects", "Object", "Publishing"].includes(product.category)) return "Other";
+  return "";
 }
 
 function recalculateStock(item) {
