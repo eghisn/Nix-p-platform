@@ -14,6 +14,18 @@ export async function sendRequestNotification(request) {
   });
 }
 
+export async function sendCustomerRequestConfirmation(request) {
+  if (!request?.email) return { delivered: false, reason: "customer-email-missing" };
+  return sendNotificationEmail({
+    to: request.email,
+    subject: `NIXP request received: ${request.artistName} - ${request.itemName}`,
+    replyTo: DEFAULT_TO,
+    text: customerRequestConfirmationText(request),
+    html: customerRequestConfirmationHtml(request),
+    idempotencyKey: `customer-request-confirmation-${request.id}`
+  });
+}
+
 export async function sendOfferNotification(offer) {
   return sendNotificationEmail({
     subject: `NIXP offer: ${offer.artistName} - ${offer.itemName}`,
@@ -21,6 +33,30 @@ export async function sendOfferNotification(offer) {
     text: offerEmailText(offer),
     html: offerEmailHtml(offer),
     idempotencyKey: `offer-notification-${offer.id}`
+  });
+}
+
+export async function sendCustomerOfferConfirmation(offer) {
+  if (!offer?.email) return { delivered: false, reason: "customer-email-missing" };
+  return sendNotificationEmail({
+    to: offer.email,
+    subject: `NIXP offer received: ${offer.artistName} - ${offer.itemName}`,
+    replyTo: DEFAULT_TO,
+    text: customerOfferConfirmationText(offer),
+    html: customerOfferConfirmationHtml(offer),
+    idempotencyKey: `customer-offer-confirmation-${offer.id}`
+  });
+}
+
+export async function sendProductStatusNotification(product, previousStatus = "") {
+  const status = String(product?.publishStatus || product?.publish_status || "").trim();
+  const previous = String(previousStatus || "").trim();
+  if (!status || status === previous) return { delivered: false, reason: "product-status-unchanged" };
+  return sendNotificationEmail({
+    subject: `NIXP product status: ${product.artist || "Untitled"} - ${product.title || "Untitled"}`,
+    text: productStatusText(product, previous, status),
+    html: productStatusHtml(product, previous, status),
+    idempotencyKey: `product-status-${product.id}-${previous || "new"}-${status}`
   });
 }
 
@@ -367,6 +403,25 @@ function requestEmailHtml(request) {
   return `<h1>New NIXP request item</h1><p><strong>Artist:</strong> ${escapeHtml(request.artistName)}<br><strong>Title / item:</strong> ${escapeHtml(request.itemName)}<br><strong>Format:</strong> ${escapeHtml(request.format)}<br><strong>Email:</strong> ${escapeHtml(request.email)}<br><strong>WhatsApp:</strong> ${escapeHtml(request.whatsapp || "Not provided")}<br><strong>Notes:</strong> ${escapeHtml(request.notes || "None")}<br><strong>Request ID:</strong> ${escapeHtml(request.id)}</p>`;
 }
 
+function customerRequestConfirmationText(request) {
+  return [
+    "NIXP request received",
+    "",
+    `Artist: ${request.artistName}`,
+    `Title / item: ${request.itemName}`,
+    `Format: ${request.format}`,
+    "",
+    "We received your request. NIXP will review the details and contact you if we can source the item.",
+    "Submitting a request does not guarantee availability, pricing, or purchase.",
+    "",
+    `Request ID: ${request.id}`
+  ].join("\n");
+}
+
+function customerRequestConfirmationHtml(request) {
+  return `<h1>NIXP request received</h1><p><strong>Artist:</strong> ${escapeHtml(request.artistName)}<br><strong>Title / item:</strong> ${escapeHtml(request.itemName)}<br><strong>Format:</strong> ${escapeHtml(request.format)}</p><p>We received your request. NIXP will review the details and contact you if we can source the item.</p><p>Submitting a request does not guarantee availability, pricing, or purchase.</p><p><strong>Request ID:</strong> ${escapeHtml(request.id)}</p>`;
+}
+
 function offerEmailText(offer) {
   return [
     "New NIXP Private Collection offer",
@@ -386,6 +441,40 @@ function offerEmailText(offer) {
 
 function offerEmailHtml(offer) {
   return `<h1>New NIXP Private Collection offer</h1><p><strong>Artist:</strong> ${escapeHtml(offer.artistName)}<br><strong>Title / item:</strong> ${escapeHtml(offer.itemName)}<br><strong>SKU:</strong> ${escapeHtml(offer.sku)}<br><strong>Offer:</strong> ${escapeHtml(rupiah(offer.offerAmount))}<br><strong>Minimum Acceptable Offer:</strong> ${escapeHtml(rupiah(offer.minimumAcceptableOffer))}<br><strong>Name:</strong> ${escapeHtml(offer.name)}<br><strong>Email:</strong> ${escapeHtml(offer.email)}<br><strong>Mobile phone:</strong> ${escapeHtml(offer.mobilePhone)}</p><p>Review this offer in the NIXP Admin and contact the interested person by email.</p><p><strong>Offer ID:</strong> ${escapeHtml(offer.id)}</p>`;
+}
+
+function customerOfferConfirmationText(offer) {
+  return [
+    "NIXP offer received",
+    "",
+    `Artist: ${offer.artistName}`,
+    `Title / item: ${offer.itemName}`,
+    `Offer: ${rupiah(offer.offerAmount)}`,
+    "",
+    "We received your offer. NIXP will review it and contact you by email if the offer is accepted or if more information is needed.",
+    "Submitting an offer does not create a sale or reserve the item.",
+    "",
+    `Offer ID: ${offer.id}`
+  ].join("\n");
+}
+
+function customerOfferConfirmationHtml(offer) {
+  return `<h1>NIXP offer received</h1><p><strong>Artist:</strong> ${escapeHtml(offer.artistName)}<br><strong>Title / item:</strong> ${escapeHtml(offer.itemName)}<br><strong>Offer:</strong> ${escapeHtml(rupiah(offer.offerAmount))}</p><p>We received your offer. NIXP will review it and contact you by email if the offer is accepted or if more information is needed.</p><p>Submitting an offer does not create a sale or reserve the item.</p><p><strong>Offer ID:</strong> ${escapeHtml(offer.id)}</p>`;
+}
+
+function productStatusText(product, previous, status) {
+  return [
+    "NIXP product status changed",
+    `Product: ${product.artist || "Untitled"} - ${product.title || "Untitled"}`,
+    `SKU: ${product.sku || "Not provided"}`,
+    `Status: ${previous || "New"} -> ${status}`,
+    `Visibility: ${product.visibility || "Not provided"}`,
+    `Product ID: ${product.id || "Not provided"}`
+  ].join("\n");
+}
+
+function productStatusHtml(product, previous, status) {
+  return `<h1>NIXP product status changed</h1><p><strong>Product:</strong> ${escapeHtml(product.artist || "Untitled")} - ${escapeHtml(product.title || "Untitled")}<br><strong>SKU:</strong> ${escapeHtml(product.sku || "Not provided")}<br><strong>Status:</strong> ${escapeHtml(previous || "New")} &rarr; ${escapeHtml(status)}<br><strong>Visibility:</strong> ${escapeHtml(product.visibility || "Not provided")}<br><strong>Product ID:</strong> ${escapeHtml(product.id || "Not provided")}</p>`;
 }
 
 function orderEmailText(order, customer) {

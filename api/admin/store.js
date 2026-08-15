@@ -5,7 +5,7 @@ import { handleAdminOrders } from "../_lib/commerceHandlers.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
-import { drainNotificationOutbox, getNotificationOutboxHealth, retryFailedNotificationOutbox } from "../_lib/emailNotifications.js";
+import { drainNotificationOutbox, getNotificationOutboxHealth, retryFailedNotificationOutbox, sendProductStatusNotification } from "../_lib/emailNotifications.js";
 import { applyCatalogPublicationSafety, isResearchPublicationReady, recordPublicationIssues } from "../../src/data/catalogPublication.js";
 
 export default async function handler(req, res) {
@@ -115,7 +115,13 @@ export default async function handler(req, res) {
   }
   const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
   try {
+    const previousStore = await loadStore({ privateScope: true });
     await saveStore(body.store || {}, { inventoryProduct: body.inventoryProduct || null });
+    const productStatusChanges = findProductStatusChanges(previousStore?.products, body.store?.products);
+    await Promise.all(productStatusChanges.map(({ product, previousStatus }) => sendProductStatusNotification(product, previousStatus).catch((error) => {
+      console.warn("Product status notification not delivered", { productId: product.id, reason: error instanceof Error ? error.message : "unknown" });
+      return { delivered: false };
+    })));
     let catalogSynced = false;
     if (body.inventoryProduct?.category === "Records") {
       const financeState = await readFinanceState();
@@ -131,6 +137,18 @@ export default async function handler(req, res) {
       : message;
     json(res, 500, { ok: false, error: friendlyMessage });
   }
+}
+
+function findProductStatusChanges(previousProducts = [], nextProducts = []) {
+  const previousById = new Map((Array.isArray(previousProducts) ? previousProducts : []).map((product) => [String(product.id), product]));
+  return (Array.isArray(nextProducts) ? nextProducts : [])
+    .map((product) => ({ product, previousStatus: previousById.get(String(product.id))?.publishStatus || previousById.get(String(product.id))?.publish_status || "" }))
+    .filter(({ product, previousStatus }) => {
+      const status = String(product.publishStatus || product.publish_status || "").trim();
+      if (!status || status === previousStatus) return false;
+      if (!previousStatus && status !== "Published") return false;
+      return true;
+    });
 }
 
 function catalogCompletionReport(products = [], requestedSkus = []) {

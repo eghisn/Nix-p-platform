@@ -1,8 +1,9 @@
 import { getSession, json } from "./_lib/auth.js";
-import { sendOfferNotification, sendRequestNotification } from "./_lib/emailNotifications.js";
+import { sendCustomerOfferConfirmation, sendCustomerRequestConfirmation, sendOfferNotification, sendRequestNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, loadStore, supabaseFetch, upsertRawRows } from "./_lib/supabase.js";
 import { publicProductPath } from "../src/data/publicUrls.js";
 import { renderCatalogPage } from "./_lib/catalogPage.js";
+import { recordSystemEvent } from "./_lib/observability.js";
 
 export default async function handler(req, res) {
   try {
@@ -25,6 +26,7 @@ export default async function handler(req, res) {
     const store = await loadStore({ privateScope, publicSnapshotUrl });
     catalogJson(res, 200, { ok: true, store }, { privateScope });
   } catch (error) {
+    await recordSystemEvent({ source: "catalog-api", req, error, details: { method: req.method } });
     json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Catalog unavailable" });
   }
 }
@@ -83,12 +85,13 @@ async function handleRequestItem(req, res) {
   if (String(body.company || "").trim()) return json(res, 400, { ok: false, error: "Request could not be submitted." });
   const request = normalizeRequest(body);
   await upsertRawRows("requests", request);
-  const notification = await sendRequestNotification(request).catch((error) => ({
-    delivered: false,
-    error: error instanceof Error ? error.message : "Notification delivery failed."
-  }));
-  if (!notification.delivered) console.warn("Request notification not delivered", { requestId: request.id, reason: notification.reason || notification.error || "unknown" });
-  return json(res, 201, { ok: true, request, notification });
+  const [internal, customer] = await Promise.all([
+    sendRequestNotification(request).catch((error) => ({ delivered: false, error: error instanceof Error ? error.message : "Notification delivery failed." })),
+    sendCustomerRequestConfirmation(request).catch((error) => ({ delivered: false, error: error instanceof Error ? error.message : "Customer confirmation delivery failed." }))
+  ]);
+  if (!internal.delivered) console.warn("Request notification not delivered", { requestId: request.id, reason: internal.reason || internal.error || "unknown" });
+  if (!customer.delivered) console.warn("Request confirmation not delivered", { requestId: request.id, reason: customer.reason || customer.error || "unknown" });
+  return json(res, 201, { ok: true, request, notification: { internal, customer } });
 }
 
 async function handleMakeOffer(req, res) {
@@ -145,12 +148,13 @@ async function handleMakeOffer(req, res) {
     createdAt: new Date().toISOString()
   };
   await upsertRawRows("offers", offer);
-  const notification = await sendOfferNotification(offer).catch((error) => ({
-    delivered: false,
-    error: error instanceof Error ? error.message : "Notification delivery failed."
-  }));
-  if (!notification.delivered) console.warn("Offer notification not delivered", { offerId: offer.id, reason: notification.reason || notification.error || "unknown" });
-  return json(res, 201, { ok: true, offer: { ...offer, notification: undefined }, notification });
+  const [internal, customer] = await Promise.all([
+    sendOfferNotification(offer).catch((error) => ({ delivered: false, error: error instanceof Error ? error.message : "Notification delivery failed." })),
+    sendCustomerOfferConfirmation(offer).catch((error) => ({ delivered: false, error: error instanceof Error ? error.message : "Customer confirmation delivery failed." }))
+  ]);
+  if (!internal.delivered) console.warn("Offer notification not delivered", { offerId: offer.id, reason: internal.reason || internal.error || "unknown" });
+  if (!customer.delivered) console.warn("Offer confirmation not delivered", { offerId: offer.id, reason: customer.reason || customer.error || "unknown" });
+  return json(res, 201, { ok: true, offer: { ...offer, notification: undefined }, notification: { internal, customer } });
 }
 
 async function handleOfferStatus(req, res) {
