@@ -78,7 +78,7 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
       if (snapshotResponse.ok) {
         const snapshot = await snapshotResponse.json();
         store.products = reconcilePublicRevision(store.products, snapshot.products || []);
-        store.artists = Array.isArray(snapshot.artists) ? snapshot.artists : store.artists;
+        store.artists = reconcilePublicRows(store.artists, snapshot.artists || []);
         store.collections = Array.isArray(snapshot.collections) ? snapshot.collections : store.collections;
       }
     } catch {
@@ -157,7 +157,8 @@ function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
     "barcode",
     "details"
   ];
-  return snapshotProducts
+  const snapshotIds = new Set(snapshotProducts.map((product) => String(product?.id || "")).filter(Boolean));
+  const reconciledSnapshot = snapshotProducts
     .map((snapshotProduct) => {
       const remoteProduct = remoteById.get(snapshotProduct.id);
       // The deployed snapshot defines which editorial revision is public.
@@ -188,6 +189,24 @@ function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
       );
     })
     .filter(Boolean);
+  // A product can be fully published in Supabase before the next static
+  // snapshot commit. Keep the established snapshot as the editorial baseline,
+  // but never hide a complete public item merely because it is new.
+  const remoteOnly = remoteProducts.filter((product) => {
+    if (snapshotIds.has(String(product?.id || ""))) return false;
+    return product?.category !== "Records" || isRecordPublicationReady(product);
+  });
+  return [...remoteOnly, ...reconciledSnapshot];
+}
+
+function reconcilePublicRows(remoteRows = [], snapshotRows = []) {
+  const remoteById = new Map(remoteRows.map((row) => [String(row?.id || ""), row]));
+  const snapshotIds = new Set(snapshotRows.map((row) => String(row?.id || "")).filter(Boolean));
+  const reconciled = snapshotRows
+    .map((snapshotRow) => remoteById.get(String(snapshotRow?.id || "")) || snapshotRow)
+    .filter(Boolean);
+  const remoteOnly = remoteRows.filter((row) => !snapshotIds.has(String(row?.id || "")));
+  return [...reconciled, ...remoteOnly].sort((a, b) => Number(a?.sort || 0) - Number(b?.sort || 0) || String(a?.name || "").localeCompare(String(b?.name || "")));
 }
 
 export async function verifiedPrices(ids = []) {
