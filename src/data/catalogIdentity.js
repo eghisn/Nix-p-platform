@@ -5,6 +5,12 @@ const ARTIST_CREDIT_ALIASES = new Map([
   ["overmono & the streets turn the page", ["Overmono", "The Streets"]],
   ["jk flesh, gothtrad", ["JK Flesh", "Gothtrad"]],
   ["jk flesh & gothtrad", ["JK Flesh", "Gothtrad"]],
+  // Siouxsie and the Banshees is a single artist name, not a collaboration.
+  // Keep common ampersand/spelling variants on the same artist page.
+  ["siouxsie & the banshees", ["Siouxsie And The Banshees"]],
+  ["siouxsie and the banshees", ["Siouxsie And The Banshees"]],
+  ["siouxie & the banshees", ["Siouxsie And The Banshees"]],
+  ["siouxie and the banshees", ["Siouxsie And The Banshees"]],
   ["soft moon", ["The Soft Moon"]],
   ["boards of canada", ["Boards of Canada"]]
 ]);
@@ -14,6 +20,10 @@ const ARTIST_CANONICAL_NAMES = new Map([
   ["the prodigy", "The Prodigy"],
   ["soft moon", "The Soft Moon"],
   ["the soft moon", "The Soft Moon"],
+  ["siouxsie & the banshees", "Siouxsie And The Banshees"],
+  ["siouxsie and the banshees", "Siouxsie And The Banshees"],
+  ["siouxie & the banshees", "Siouxsie And The Banshees"],
+  ["siouxie and the banshees", "Siouxsie And The Banshees"],
   ["boards of canada", "Boards of Canada"]
 ]);
 

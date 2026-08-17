@@ -36,6 +36,12 @@ for (const product of publicProducts) {
 const collaborations = publicProducts
   .filter((product) => product.category === "Records")
   .filter((product) => artistCreditNames(product.artist).length > 1);
+
+const siouxsieCredits = artistCreditNames("Siouxsie & The Banshees");
+if (siouxsieCredits.length !== 1 || artistIdentityKey(siouxsieCredits[0]) !== "siouxsie-and-the-banshees") {
+  issues.push("Siouxsie And The Banshees must remain a single artist identity");
+}
+
 for (const product of collaborations) {
   const credits = artistCreditNames(product.artist);
   if (new Set(credits.map(artistIdentityKey)).size !== credits.length) issues.push(`${product.sku || product.id}: collaboration artist rule has duplicate identities`);
