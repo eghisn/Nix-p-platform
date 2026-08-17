@@ -24,7 +24,9 @@ const ARTIST_CANONICAL_NAMES = new Map([
   ["siouxsie and the banshees", "Siouxsie And The Banshees"],
   ["siouxie & the banshees", "Siouxsie And The Banshees"],
   ["siouxie and the banshees", "Siouxsie And The Banshees"],
-  ["boards of canada", "Boards of Canada"]
+  ["boards of canada", "Boards of Canada"],
+  ["v.a.", "Various Artists"],
+  ["va", "Various Artists"]
 ]);
 
 // Exact credits are kept above because not every ampersand is a collaboration.

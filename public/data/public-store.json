@@ -1205,7 +1205,7 @@
       "price": 428750,
       "sizes": [],
       "title": "In Order To Dance (Remix Sampler Vol. 2)",
-      "artist": "V.A.",
+      "artist": "Various Artists",
       "format": "Vinyl",
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0050/cover.jpg",
@@ -18649,13 +18649,6 @@
       "id": "factory-floor",
       "name": "Factory Floor",
       "sort": 106,
-      "origin": "finance-inventory",
-      "status": "Published"
-    },
-    {
-      "id": "v-a",
-      "name": "V.A.",
-      "sort": 107,
       "origin": "finance-inventory",
       "status": "Published"
     },

@@ -211,7 +211,11 @@ function reconcilePublicRows(remoteRows = [], snapshotRows = []) {
   const remoteById = new Map(remoteRows.map((row) => [String(row?.id || ""), row]));
   const snapshotIds = new Set(snapshotRows.map((row) => String(row?.id || "")).filter(Boolean));
   const reconciled = snapshotRows
-    .map((snapshotRow) => remoteById.get(String(snapshotRow?.id || "")) || snapshotRow)
+    .map((snapshotRow) => {
+      const remoteRow = remoteById.get(String(snapshotRow?.id || ""));
+      if (String(remoteRow?.status || "").toLowerCase() === "archived") return null;
+      return remoteRow || snapshotRow;
+    })
     .filter(Boolean);
   const remoteOnly = remoteRows.filter((row) => !snapshotIds.has(String(row?.id || "")));
   return [...reconciled, ...remoteOnly].sort(
