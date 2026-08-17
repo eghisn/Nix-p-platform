@@ -2341,9 +2341,17 @@ function artistSlug(value) {
 }
 
 function recordSortComparator(sort) {
+  const comparisonPrice = (product) => {
+    const raw = product?.raw || {};
+    const openToOffers = product?.open_to_offers === true || raw.open_to_offers === true;
+    const minimumOffer = Number(product?.minimumAcceptableOffer ?? product?.minimum_acceptable_offer ?? raw.minimumAcceptableOffer ?? 0);
+    return openToOffers && Number.isFinite(minimumOffer) && minimumOffer > 0
+      ? minimumOffer
+      : Number(product?.price || 0);
+  };
   return (a, b) => {
-    if (sort === "price-desc") return Number(b.price || 0) - Number(a.price || 0) || a.title.localeCompare(b.title);
-    if (sort === "price-asc") return Number(a.price || 0) - Number(b.price || 0) || a.title.localeCompare(b.title);
+    if (sort === "price-desc") return comparisonPrice(b) - comparisonPrice(a) || a.title.localeCompare(b.title);
+    if (sort === "price-asc") return comparisonPrice(a) - comparisonPrice(b) || a.title.localeCompare(b.title);
     if (sort === "year-desc") return Number(b.year || 0) - Number(a.year || 0) || a.artist.localeCompare(b.artist);
     if (sort === "year-asc") return Number(a.year || 0) - Number(b.year || 0) || a.artist.localeCompare(b.artist);
     const artistCompare = a.artist.localeCompare(b.artist);
