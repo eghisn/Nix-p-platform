@@ -2,6 +2,1023 @@
   "version": "supabase-live-2026-07-13",
   "products": [
     {
+      "id": "finance-nxp-2026-vnl-0052",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0052",
+      "tags": [
+        "techno",
+        "industrial",
+        "minimal",
+        "post-punk"
+      ],
+      "year": 2018,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0052/cover.jpg",
+      "label": "H/O/D Records",
+      "price": 378750,
+      "sizes": [],
+      "title": "Heart Of Data",
+      "artist": "Factory Floor",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0052/cover.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0052/detail-1.jpg"
+      ],
+      "barcode": null,
+      "details": [
+        "Edition: 12-inch single",
+        "Catalog number: H/O/D001"
+      ],
+      "edition": "12-inch single",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0052/cover.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
+      "syncAudit": [
+        {
+          "at": "2026-08-17T17:47:07.516Z",
+          "sku": "NXP-2026-VNL-0052",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:28:18.280Z",
+          "sku": "NXP-2026-VNL-0052",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:23.093Z",
+          "sku": "NXP-2026-VNL-0052",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:16.289Z",
+          "sku": "NXP-2026-VNL-0052",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:01:15.977Z",
+          "sku": "NXP-2026-VNL-0052",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:28.245Z",
+          "sku": "NXP-2026-VNL-0052",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:59.873Z",
+          "sku": "NXP-2026-VNL-0052",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:33.258Z",
+          "sku": "NXP-2026-VNL-0052",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-08-17",
+      "collection": "H/O/D Records",
+      "syncStatus": {
+        "at": "2026-08-17T17:47:07.516Z",
+        "sku": "NXP-2026-VNL-0052",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Factory Floor's 2018 Heart Of Data / Babel 12-inch distils the London trio's industrial pulse into stark, repetitive techno structures for its H/O/D Records imprint.",
+      "reviewQuote": "stark, repetitive techno structures",
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0052/cover.jpg",
+          "credit": "Discogs / H/O/D Records release photography"
+        }
+      ],
+      "reviewSource": "NIXP editorial note",
+      "autoEditorial": {
+        "reviewUrl": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
+        "description": "Factory Floor's 2018 Heart Of Data / Babel 12-inch distils the London trio's industrial pulse into stark, repetitive techno structures for its H/O/D Records imprint.",
+        "reviewQuote": "stark, repetitive techno structures",
+        "reviewSource": "NIXP editorial note",
+        "relatedArtists": [
+          "Blawan",
+          "The Soft Moon",
+          "Nine Inch Nails"
+        ],
+        "descriptionSource": "Discogs / Apple Music"
+      },
+      "catalogNumber": "H/O/D001",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "msxgg8yyxxmjwi",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Blawan",
+        "The Soft Moon",
+        "Nine Inch Nails"
+      ],
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Discogs / Apple Music",
+      "metadataSourceUrl": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
+      "enrichmentUpdatedAt": "2026-08-17",
+      "publishAfterResearch": true,
+      "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
+      "enrichmentFingerprint": "factory floor|heart of data|vinyl||h o d001",
+      "minimumAcceptableOffer": 0
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0051",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0051",
+      "tags": [
+        "post-punk",
+        "garage rock",
+        "indie rock",
+        "New York"
+      ],
+      "year": 2016,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0051/cover.jpg",
+      "label": "Rough Trade",
+      "price": 485000,
+      "sizes": [],
+      "title": "Performing Human",
+      "artist": "Parquet Courts",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0051/cover.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0051/detail-1.jpg"
+      ],
+      "barcode": "883870080712",
+      "details": [
+        "Edition: 12-inch single",
+        "Catalog number: RTRADST807"
+      ],
+      "edition": "12-inch single",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0051/cover.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.theguardian.com/music/2016/apr/10/parquet-courts-human-performance-review",
+      "syncAudit": [
+        {
+          "at": "2026-08-17T17:47:07.516Z",
+          "sku": "NXP-2026-VNL-0051",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:28:18.280Z",
+          "sku": "NXP-2026-VNL-0051",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:23.093Z",
+          "sku": "NXP-2026-VNL-0051",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:16.289Z",
+          "sku": "NXP-2026-VNL-0051",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:53.823Z",
+          "sku": "NXP-2026-VNL-0051",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:28.245Z",
+          "sku": "NXP-2026-VNL-0051",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:59.873Z",
+          "sku": "NXP-2026-VNL-0051",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:33.258Z",
+          "sku": "NXP-2026-VNL-0051",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-08-17",
+      "collection": "Rough Trade",
+      "syncStatus": {
+        "at": "2026-08-17T17:47:07.516Z",
+        "sku": "NXP-2026-VNL-0051",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Performing Human is Parquet Courts' 2016 Rough Trade 12-inch, extending the nervous guitars, deadpan hooks and emotional unease of the Human Performance period.",
+      "reviewQuote": "sublime slice of brooding garage rock",
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/9045497-Parquet-Courts-Performing-Human",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0051/cover.jpg",
+          "credit": "Discogs / Rough Trade release photography"
+        }
+      ],
+      "reviewSource": "The Guardian (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.theguardian.com/music/2016/apr/10/parquet-courts-human-performance-review",
+        "description": "Performing Human is Parquet Courts' 2016 Rough Trade 12-inch, extending the nervous guitars, deadpan hooks and emotional unease of the Human Performance period.",
+        "reviewQuote": "sublime slice of brooding garage rock",
+        "reviewSource": "The Guardian (quoted)",
+        "relatedArtists": [
+          "Gilla Band",
+          "Blondie",
+          "Bauhaus"
+        ],
+        "descriptionSource": "Rough Trade / The Guardian"
+      },
+      "catalogNumber": "RTRADST807",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "msxg6ciy4jz17v",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Gilla Band",
+        "Blondie",
+        "Bauhaus"
+      ],
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Rough Trade / The Guardian",
+      "metadataSourceUrl": "https://www.discogs.com/release/9045497-Parquet-Courts-Performing-Human",
+      "enrichmentUpdatedAt": "2026-08-17",
+      "musicBrainzReleaseId": "20c0fcec-ac2f-4364-93d7-fa185bb06278",
+      "publishAfterResearch": true,
+      "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
+      "enrichmentFingerprint": "parquet courts|performing human|vinyl||rtradst807",
+      "minimumAcceptableOffer": 0
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0049",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0049",
+      "tags": [
+        "post-hardcore",
+        "punk",
+        "noise rock",
+        "indie rock"
+      ],
+      "year": 2014,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0049/cover.jpg",
+      "label": "Matador",
+      "price": 359375,
+      "sizes": [],
+      "title": "Glass Boys",
+      "artist": "Fucked Up",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0049/cover.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0049/detail-1.jpg"
+      ],
+      "barcode": null,
+      "details": [
+        "Edition: LP",
+        "Catalog number: OLE-1049-1"
+      ],
+      "edition": "LP",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0049/cover.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/19400-fucked-up-glass-boys/",
+      "syncAudit": [
+        {
+          "at": "2026-08-17T17:47:07.516Z",
+          "sku": "NXP-2026-VNL-0049",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:28:18.280Z",
+          "sku": "NXP-2026-VNL-0049",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:21.446Z",
+          "sku": "NXP-2026-VNL-0049",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:16.289Z",
+          "sku": "NXP-2026-VNL-0049",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:53.823Z",
+          "sku": "NXP-2026-VNL-0049",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:28.245Z",
+          "sku": "NXP-2026-VNL-0049",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:59.873Z",
+          "sku": "NXP-2026-VNL-0049",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:33.258Z",
+          "sku": "NXP-2026-VNL-0049",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-08-17",
+      "collection": "Matador",
+      "syncStatus": {
+        "at": "2026-08-17T17:47:07.516Z",
+        "sku": "NXP-2026-VNL-0049",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Fucked Up's 2014 Glass Boys is a dense, personal album where the Toronto group expands beyond hardcore without letting go of its physical charge.",
+      "reviewQuote": "a relatively compact, dense piece of metacriticism",
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/5745375-Fucked-Up-Glass-Boys",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0049/cover.jpg",
+          "credit": "Discogs / Matador release photography"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/19400-fucked-up-glass-boys/",
+        "description": "Fucked Up's 2014 Glass Boys is a dense, personal album where the Toronto group expands beyond hardcore without letting go of its physical charge.",
+        "reviewQuote": "a relatively compact, dense piece of metacriticism",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Gilla Band",
+          "The Dillinger Escape Plan",
+          "Blanck Mass"
+        ],
+        "descriptionSource": "Pitchfork / Matador"
+      },
+      "catalogNumber": "OLE-1049-1",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "msxfn3ohv5cz2w",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Gilla Band",
+        "The Dillinger Escape Plan",
+        "Blanck Mass"
+      ],
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Pitchfork / Matador",
+      "metadataSourceUrl": "https://www.discogs.com/release/5745375-Fucked-Up-Glass-Boys",
+      "enrichmentUpdatedAt": "2026-08-17",
+      "publishAfterResearch": true,
+      "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
+      "enrichmentFingerprint": "fucked up|glass boys|vinyl||ole 1049",
+      "minimumAcceptableOffer": 0
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0048",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0048",
+      "tags": [
+        "techno",
+        "electro",
+        "broken beat",
+        "club music"
+      ],
+      "year": 2014,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0048/cover.jpg",
+      "label": "R&S Records",
+      "price": 332500,
+      "sizes": [],
+      "title": "EP01 (Second Storey & Appleblim Present: ALSO)",
+      "artist": "ALSO",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0048/cover.jpg"
+      ],
+      "barcode": null,
+      "details": [
+        "Edition: 12-inch EP",
+        "Catalog number: RS1414B"
+      ],
+      "edition": "12-inch EP",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0048/cover.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://boomkat.com/products/ep01-f823bc8a-ca03-46ca-896f-4b413972a31e",
+      "syncAudit": [
+        {
+          "at": "2026-08-17T17:47:07.516Z",
+          "sku": "NXP-2026-VNL-0048",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:28:18.280Z",
+          "sku": "NXP-2026-VNL-0048",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:21.446Z",
+          "sku": "NXP-2026-VNL-0048",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:16.289Z",
+          "sku": "NXP-2026-VNL-0048",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:53.823Z",
+          "sku": "NXP-2026-VNL-0048",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:27.918Z",
+          "sku": "NXP-2026-VNL-0048",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:59.872Z",
+          "sku": "NXP-2026-VNL-0048",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:33.258Z",
+          "sku": "NXP-2026-VNL-0048",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-08-17",
+      "collection": "R&S Records",
+      "syncStatus": {
+        "at": "2026-08-17T17:47:07.516Z",
+        "sku": "NXP-2026-VNL-0048",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "EP01 is the 2014 debut of ALSO, the project shared by Second Storey and Appleblim. Their R&S 12-inch turns electro, broken rhythms and dark club pressure into three concise, machine-driven tracks.",
+      "reviewQuote": "darker, crunchier, and moodier",
+      "imageCredits": [
+        {
+          "url": "https://music.apple.com/ng/album/ep01-second-storey-appleblim-present-also-single/1105885511",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0048/cover.jpg",
+          "credit": "Apple Music / R&S Records artwork"
+        }
+      ],
+      "reviewSource": "Boomkat (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://boomkat.com/products/ep01-f823bc8a-ca03-46ca-896f-4b413972a31e",
+        "description": "EP01 is the 2014 debut of ALSO, the project shared by Second Storey and Appleblim. Their R&S 12-inch turns electro, broken rhythms and dark club pressure into three concise, machine-driven tracks.",
+        "reviewQuote": "darker, crunchier, and moodier",
+        "reviewSource": "Boomkat (quoted)",
+        "relatedArtists": [
+          "Blawan",
+          "Buttechno",
+          "Overmono"
+        ],
+        "descriptionSource": "Apple Music / XLR8R"
+      },
+      "catalogNumber": "RS1414B",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "msxffvypwyfitf",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Blawan",
+        "Buttechno",
+        "Overmono"
+      ],
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Apple Music / XLR8R",
+      "metadataSourceUrl": "https://xlr8r.com/news/appleblim-and-second-storey-prep-debut-ep-as-also-for-r-s/",
+      "enrichmentUpdatedAt": "2026-08-17",
+      "publishAfterResearch": true,
+      "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
+      "enrichmentFingerprint": "also|ep01|vinyl||rs1414",
+      "minimumAcceptableOffer": 0
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0047",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0047",
+      "tags": [
+        "post-punk",
+        "dance-punk",
+        "indie rock",
+        "alternative rock"
+      ],
+      "year": 2012,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg",
+      "label": "Frenchkiss Records",
+      "price": 290000,
+      "sizes": [],
+      "title": "Octopus",
+      "artist": "Bloc Party",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg"
+      ],
+      "barcode": null,
+      "details": [
+        "Edition: 7-inch single",
+        "Catalog number: FKR061A"
+      ],
+      "edition": "7-inch single",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.nme.com/news/music/bloc-party-56-1268623",
+      "syncAudit": [
+        {
+          "at": "2026-08-17T17:47:07.516Z",
+          "sku": "NXP-2026-VNL-0047",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:28:18.280Z",
+          "sku": "NXP-2026-VNL-0047",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:21.446Z",
+          "sku": "NXP-2026-VNL-0047",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:16.289Z",
+          "sku": "NXP-2026-VNL-0047",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:53.823Z",
+          "sku": "NXP-2026-VNL-0047",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:27.918Z",
+          "sku": "NXP-2026-VNL-0047",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:53.073Z",
+          "sku": "NXP-2026-VNL-0047",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:33.257Z",
+          "sku": "NXP-2026-VNL-0047",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-08-17",
+      "collection": "Frenchkiss Records",
+      "syncStatus": {
+        "at": "2026-08-17T17:47:07.516Z",
+        "sku": "NXP-2026-VNL-0047",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Bloc Party's 2012 Octopus is a sharp, abrasive 7-inch from the Four era, channeling serrated guitars, nervous dance-punk motion and Kele Okereke's clipped vocal into a compact rush.",
+      "reviewQuote": "a raucous, snarling return",
+      "imageCredits": [
+        {
+          "url": "https://music.apple.com/us/album/octopus-single/674606375",
+          "image": "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg",
+          "credit": "Apple Music / Frenchkiss Records artwork"
+        }
+      ],
+      "reviewSource": "NME (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.nme.com/news/music/bloc-party-56-1268623",
+        "description": "Bloc Party's 2012 Octopus is a sharp, abrasive 7-inch from the Four era, channeling serrated guitars, nervous dance-punk motion and Kele Okereke's clipped vocal into a compact rush.",
+        "reviewQuote": "a raucous, snarling return",
+        "reviewSource": "NME (quoted)",
+        "relatedArtists": [
+          "Gilla Band",
+          "Blondie",
+          "Bauhaus"
+        ],
+        "descriptionSource": "[PIAS] Cooperative / NME"
+      },
+      "catalogNumber": "FKR061A",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "msxf8p60x1ywyg",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Gilla Band",
+        "Blondie",
+        "Bauhaus"
+      ],
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "[PIAS] Cooperative / NME",
+      "metadataSourceUrl": "https://store.pias.com/release/168770-bloc-party-octopus-rac-remix?lang=en_US",
+      "enrichmentUpdatedAt": "2026-08-17",
+      "musicBrainzReleaseId": "77e1ac48-b3d8-4b2b-b7de-dd6908abbf92",
+      "publishAfterResearch": true,
+      "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
+      "enrichmentFingerprint": "bloc party|octopus|vinyl||fkr061a",
+      "minimumAcceptableOffer": 0
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0046",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0046",
+      "tags": [
+        "indie pop",
+        "synth-pop",
+        "post-punk",
+        "new wave"
+      ],
+      "year": 2012,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0046-citizens-reptile.jpg",
+      "label": "Kitsune Musique",
+      "price": 310000,
+      "sizes": [],
+      "title": "Reptile",
+      "artist": "Citizens!",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0046-citizens-reptile.jpg"
+      ],
+      "barcode": null,
+      "details": [
+        "Edition: 7-inch single",
+        "Catalog number: KITSUNEMUSIC148"
+      ],
+      "edition": "7-inch single",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/covers/nxp-2026-vnl-0046-citizens-reptile.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.nme.com/reviews/reviews-citizens-13230-311627",
+      "syncAudit": [
+        {
+          "at": "2026-08-17T17:46:52.771Z",
+          "sku": "NXP-2026-VNL-0046",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:28:18.280Z",
+          "sku": "NXP-2026-VNL-0046",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:21.446Z",
+          "sku": "NXP-2026-VNL-0046",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:16.289Z",
+          "sku": "NXP-2026-VNL-0046",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:53.823Z",
+          "sku": "NXP-2026-VNL-0046",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:27.918Z",
+          "sku": "NXP-2026-VNL-0046",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:53.073Z",
+          "sku": "NXP-2026-VNL-0046",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:25.118Z",
+          "sku": "NXP-2026-VNL-0046",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-08-17",
+      "collection": "Kitsune Musique",
+      "syncStatus": {
+        "at": "2026-08-17T17:46:52.771Z",
+        "sku": "NXP-2026-VNL-0046",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Citizens!' 2012 single Reptile places Tom Burke's sleek vocal against Alex Kapranos-produced guitar, synth-pop detail and a tense, nocturnal pulse. The 7-inch arrived through Kitsune ahead of the group's debut album Here We Are.",
+      "reviewQuote": "a metallic sheen",
+      "imageCredits": [
+        {
+          "url": "https://music.apple.com/us/album/reptile/1568857758",
+          "image": "/public/covers/nxp-2026-vnl-0046-citizens-reptile.jpg",
+          "credit": "Apple Music / Kitsune Musique artwork"
+        }
+      ],
+      "reviewSource": "NME (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.nme.com/reviews/reviews-citizens-13230-311627",
+        "description": "Citizens!' 2012 single Reptile places Tom Burke's sleek vocal against Alex Kapranos-produced guitar, synth-pop detail and a tense, nocturnal pulse. The 7-inch arrived through Kitsune ahead of the group's debut album Here We Are.",
+        "reviewQuote": "a metallic sheen",
+        "reviewSource": "NME (quoted)",
+        "relatedArtists": [
+          "Blondie",
+          "Bauhaus",
+          "The Soft Moon"
+        ],
+        "descriptionSource": "Kitsune Musique / NME"
+      },
+      "catalogNumber": "KITSUNEMUSIC148",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "msxf1zpcdc71cs",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Blondie",
+        "Bauhaus",
+        "The Soft Moon"
+      ],
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Kitsune Musique / NME",
+      "metadataSourceUrl": "https://music.apple.com/us/album/reptile/1568857758",
+      "enrichmentUpdatedAt": "2026-08-17",
+      "publishAfterResearch": true,
+      "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
+      "enrichmentFingerprint": "citizens|reptile|vinyl||k148",
+      "minimumAcceptableOffer": 0
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0045",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0045",
+      "tags": [
+        "electronic",
+        "IDM",
+        "experimental pop",
+        "ambient"
+      ],
+      "year": 2012,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0045-leila-ui.jpg",
+      "label": "Warp Records",
+      "price": 326250,
+      "sizes": [],
+      "title": "U&I",
+      "artist": "Leila",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0045-leila-ui.jpg"
+      ],
+      "barcode": "0801061022013",
+      "details": [
+        "Edition: 2 x 12-inch LP",
+        "Catalog number: WARPLP220"
+      ],
+      "edition": "2 x 12-inch LP",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/covers/nxp-2026-vnl-0045-leila-ui.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://boomkat.com/products/ui618864ecc55a5c336205bf8200ee5902e6fe7737",
+      "syncAudit": [
+        {
+          "at": "2026-08-17T17:46:52.770Z",
+          "sku": "NXP-2026-VNL-0045",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:28:18.280Z",
+          "sku": "NXP-2026-VNL-0045",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:21.446Z",
+          "sku": "NXP-2026-VNL-0045",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:27:15.940Z",
+          "sku": "NXP-2026-VNL-0045",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:53.823Z",
+          "sku": "NXP-2026-VNL-0045",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T17:00:27.918Z",
+          "sku": "NXP-2026-VNL-0045",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:53.073Z",
+          "sku": "NXP-2026-VNL-0045",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-17T16:59:25.118Z",
+          "sku": "NXP-2026-VNL-0045",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-08-17",
+      "collection": "Warp Records",
+      "syncStatus": {
+        "at": "2026-08-17T17:46:52.770Z",
+        "sku": "NXP-2026-VNL-0045",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Leila's 2012 U&I is a double LP made with collaborator Mt. Sims, where clipped electronic rhythms, abrasive synth lines and intimate vocals turn Warp's experimental pop into something darker and more unstable.",
+      "reviewQuote": "more urgent, dysphoric",
+      "imageCredits": [
+        {
+          "url": "https://transistora.com.es/leila-ui/",
+          "image": "/public/covers/nxp-2026-vnl-0045-leila-ui.jpg",
+          "credit": "Transistora / Warp Records artwork"
+        }
+      ],
+      "reviewSource": "Boomkat (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://boomkat.com/products/ui618864ecc55a5c336205bf8200ee5902e6fe7737",
+        "description": "Leila's 2012 U&I is a double LP made with collaborator Mt. Sims, where clipped electronic rhythms, abrasive synth lines and intimate vocals turn Warp's experimental pop into something darker and more unstable.",
+        "reviewQuote": "more urgent, dysphoric",
+        "reviewSource": "Boomkat (quoted)",
+        "relatedArtists": [
+          "Aphex Twin",
+          "Plaid",
+          "Autechre"
+        ],
+        "descriptionSource": "Leila Bandcamp / Warp Records"
+      },
+      "catalogNumber": "WARPLP220",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "msxee84lza3iwb",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Aphex Twin",
+        "Plaid",
+        "Autechre"
+      ],
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Leila Bandcamp / Warp Records",
+      "metadataSourceUrl": "https://leilamusic.bandcamp.com/album/u-i",
+      "enrichmentUpdatedAt": "2026-08-17",
+      "musicBrainzReleaseId": "3918f439-eac3-4b9b-9882-9e2822e8b583",
+      "publishAfterResearch": true,
+      "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
+      "enrichmentFingerprint": "leila|u i|vinyl||warplp220",
+      "minimumAcceptableOffer": 0
+    },
+    {
       "id": "finance-nxp-2026-vnl-0053",
       "qty": 1,
       "sku": "NXP-2026-VNL-0053",
@@ -17103,16 +18120,16 @@
       "status": "Published"
     },
     {
-      "id": "soft-moon",
+      "id": "lust-for-youth",
       "bio": "",
-      "name": "Soft Moon",
+      "name": "Lust For Youth",
       "sort": 31,
       "status": "Published"
     },
     {
-      "id": "lust-for-youth",
+      "id": "soft-moon",
       "bio": "",
-      "name": "Lust For Youth",
+      "name": "Soft Moon",
       "sort": 31,
       "status": "Published"
     },
@@ -17646,6 +18663,20 @@
       "id": "also",
       "name": "ALSO",
       "sort": 108,
+      "origin": "finance-inventory",
+      "status": "Published"
+    },
+    {
+      "id": "citizens",
+      "name": "Citizens!",
+      "sort": 109,
+      "origin": "finance-inventory",
+      "status": "Published"
+    },
+    {
+      "id": "bloc-party",
+      "name": "Bloc Party",
+      "sort": 110,
       "origin": "finance-inventory",
       "status": "Published"
     }

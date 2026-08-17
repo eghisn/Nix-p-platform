@@ -1,6 +1,7 @@
 import { artistNames, cashflow, inventory, orders, products, requestItems } from "../data/sampleData.js";
 import { canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../data/catalogIdentity.js";
 import { isRecentReleaseProduct } from "../data/homeCollections.js";
+import { isRecordPublicationReady } from "../data/catalogPublication.js";
 
 const STORAGE_KEY = "nixp-admin-store-v1";
 const STORE_VERSION = "home-slider-related-artists-2026-07-15";
@@ -158,6 +159,7 @@ function snapshotOwnsEditorialFields(product = {}) {
 
 function reconcilePublicCatalog(remoteStore, snapshotStore) {
   const snapshotById = new Map((snapshotStore?.products || []).map((product) => [product.id, product]));
+  const snapshotIds = new Set((snapshotStore?.products || []).map((product) => String(product?.id || "")).filter(Boolean));
   const editorialFields = [
     "description",
     "descriptionSource",
@@ -179,9 +181,14 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
     "barcode",
     "details"
   ];
-  return {
-    ...remoteStore,
-    products: (remoteStore.products || []).map((remoteProduct) => {
+  const remoteProducts = remoteStore.products || [];
+  const remoteOnly = remoteProducts.filter((product) => {
+    if (snapshotIds.has(String(product?.id || ""))) return false;
+    return product?.category !== "Records" || isRecordPublicationReady(product);
+  });
+  const reconciledSnapshot = remoteProducts
+    .filter((product) => snapshotIds.has(String(product?.id || "")))
+    .map((remoteProduct) => {
       const snapshotProduct = snapshotById.get(remoteProduct.id);
       // Editorial fields come from the deployed public snapshot. Supabase
       // remains the live authority for price, stock and publication status.
@@ -190,8 +197,26 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
         (merged, field) => (snapshotProduct[field] !== undefined ? { ...merged, [field]: snapshotProduct[field] } : merged),
         remoteProduct
       );
-    })
+    });
+  return {
+    ...remoteStore,
+    // A complete public product may reach Supabase before the next static
+    // snapshot commit. Never make the browser hide it during hydration.
+    products: [...remoteOnly, ...reconciledSnapshot],
+    artists: reconcilePublicRows(remoteStore.artists || [], snapshotStore?.artists || [])
   };
+}
+
+function reconcilePublicRows(remoteRows = [], snapshotRows = []) {
+  const remoteById = new Map(remoteRows.map((row) => [String(row?.id || ""), row]));
+  const snapshotIds = new Set(snapshotRows.map((row) => String(row?.id || "")).filter(Boolean));
+  const reconciled = snapshotRows
+    .map((snapshotRow) => remoteById.get(String(snapshotRow?.id || "")) || snapshotRow)
+    .filter(Boolean);
+  const remoteOnly = remoteRows.filter((row) => !snapshotIds.has(String(row?.id || "")));
+  return [...reconciled, ...remoteOnly].sort(
+    (a, b) => Number(a?.sort || 0) - Number(b?.sort || 0) || String(a?.name || "").localeCompare(String(b?.name || ""))
+  );
 }
 
 function normalizeVerifiedCommerce(row = {}) {
@@ -551,6 +576,27 @@ function refreshPublicCommerceInBackground(store) {
     .catch(() => store);
 }
 
+async function refreshPublicCatalogInBackground(snapshotStore) {
+  try {
+    const response = await fetch(`/api/catalog?scope=public&v=${Date.now()}`, {
+      cache: "no-store",
+      headers: { accept: "application/json" }
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok || !payload.store) return snapshotStore;
+
+    const runtimeStore = reconcilePublicCatalog(payload.store, snapshotStore);
+    activeStore = mergeStore(seed({ publicOnly: true }), runtimeStore, { publicOnly: true });
+    activeStoreScope = "public";
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("nixp:public-catalog-refreshed"));
+    }
+    return activeStore;
+  } catch {
+    return snapshotStore;
+  }
+}
+
 async function verifyPublicProductState(id, shouldBePublished) {
   for (let attempt = 0; attempt < 4; attempt += 1) {
     try {
@@ -719,6 +765,7 @@ export const adminStore = {
           // immediately. Price/stock verification remains server-authoritative,
           // but must not block the first paint or clear a locally stored cart.
           refreshPublicCommerceInBackground(activeStore);
+          refreshPublicCatalogInBackground(activeStore);
           return;
         }
       }

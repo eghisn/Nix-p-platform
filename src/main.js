@@ -4046,6 +4046,11 @@ window.addEventListener("nixp:private-store-refreshed", () => {
   if (document.activeElement?.matches("input, textarea, select, [contenteditable='true']")) return;
   render({ preserveScroll: true });
 });
+window.addEventListener("nixp:public-catalog-refreshed", () => {
+  if (normalizePath(location.pathname).startsWith("/admin")) return;
+  if (document.activeElement?.matches("input, textarea, select, [contenteditable='true']")) return;
+  render({ preserveScroll: true });
+});
 adminStore
   .initialize()
   .then(() => render())
