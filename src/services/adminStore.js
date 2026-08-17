@@ -501,6 +501,19 @@ async function writeStoreBestEffort(store) {
   }
 }
 
+function refreshPublicCommerceInBackground(store) {
+  return reconcilePublicCommerce(store)
+    .then((nextStore) => {
+      activeStore = nextStore;
+      activeStoreScope = "public";
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("nixp:public-commerce-refreshed"));
+      }
+      return nextStore;
+    })
+    .catch(() => store);
+}
+
 async function verifyPublicProductState(id, shouldBePublished) {
   for (let attempt = 0; attempt < 4; attempt += 1) {
     try {
@@ -664,8 +677,11 @@ export const adminStore = {
         const snapshotResponse = await fetch(filePath);
         if (snapshotResponse.ok) {
           activeStore = mergeStore(seed({ publicOnly: true }), await snapshotResponse.json(), { publicOnly: true });
-          activeStore = await reconcilePublicCommerce(activeStore);
           activeStoreScope = scope;
+          // Editorial content and the cart can render from the deployed snapshot
+          // immediately. Price/stock verification remains server-authoritative,
+          // but must not block the first paint or clear a locally stored cart.
+          refreshPublicCommerceInBackground(activeStore);
           return;
         }
       }
@@ -683,7 +699,7 @@ export const adminStore = {
             }
           }
           activeStore = mergeStore(seed({ publicOnly }), runtimeStore, { publicOnly });
-          if (publicOnly) activeStore = await reconcilePublicCommerce(activeStore);
+          if (publicOnly) refreshPublicCommerceInBackground(activeStore);
           activeStoreScope = scope;
           privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
           if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
@@ -696,7 +712,7 @@ export const adminStore = {
         mergeStore(seed({ publicOnly }), await fileResponse.json(), { publicOnly }),
         browserStore
       );
-      if (publicOnly) activeStore = await reconcilePublicCommerce(activeStore);
+      if (publicOnly) refreshPublicCommerceInBackground(activeStore);
       activeStoreScope = scope;
       privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
       if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));

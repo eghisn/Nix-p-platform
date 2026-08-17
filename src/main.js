@@ -1027,14 +1027,14 @@ async function customerOrderStatusPage() {
   }
 }
 
-async function cartSummary() {
+async function cartSummary({ verifyPrices = true } = {}) {
   const products = await catalogService.listProducts();
   const counts = state.cart.reduce((map, key) => {
     map.set(key, (map.get(key) || 0) + 1);
     return map;
   }, new Map());
   const productIds = [...new Set([...counts.keys()].map((key) => parseCartKey(key).productId))];
-  const serverPrices = await verifiedCartPrices(productIds);
+  const serverPrices = verifyPrices ? await verifiedCartPrices(productIds) : [];
   const priceById = new Map(serverPrices.map((item) => [item.id, Number(item.price || 0)]));
   const rows = [...counts.entries()]
     .map(([key, requestedQuantity]) => {
@@ -1043,8 +1043,11 @@ async function cartSummary() {
       const size = parsed.size || defaultAvailableSize(product);
       const nextKey = size ? cartKey(parsed.productId, size) : parsed.productId;
       const price = priceById.has(parsed.productId) ? priceById.get(parsed.productId) : product?.price;
-      const stock = productStock(product, size);
-      const quantity = Math.min(requestedQuantity, stock);
+      const knownStock = productStock(product, size);
+      // The first shell render must not discard a locally stored cart while the
+      // public commerce snapshot is still being verified in the background.
+      const stock = verifyPrices ? knownStock : Math.max(requestedQuantity, knownStock);
+      const quantity = verifyPrices ? Math.min(requestedQuantity, stock) : requestedQuantity;
       return product
         ? {
             id: nextKey,
@@ -1059,7 +1062,7 @@ async function cartSummary() {
     })
     .filter((row) => row && row.quantity > 0);
   const nextCart = rows.flatMap((row) => Array.from({ length: row.quantity }, () => row.id));
-  if (nextCart.join("|") !== state.cart.join("|")) {
+  if (verifyPrices && nextCart.join("|") !== state.cart.join("|")) {
     state.cart = nextCart;
     clearCheckoutSession();
     persistCart();
@@ -1101,7 +1104,7 @@ function cartQuantityControl(row) {
 }
 
 async function cartDrawer() {
-  const { rows, total } = await cartSummary();
+  const { rows, total } = await cartSummary({ verifyPrices: false });
   return `
     <div class="cart-overlay ${state.cartOpen ? "is-open" : ""}" data-cart-overlay>
       <button class="cart-backdrop" type="button" aria-label="Close cart" data-cart-close></button>
