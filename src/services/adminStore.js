@@ -7,6 +7,7 @@ const STORE_VERSION = "home-slider-related-artists-2026-07-15";
 const ADMIN_STORE_PATH = "/public/data/admin-store.json";
 const PUBLIC_STORE_PATH = "/public/data/public-store.json";
 const REMOVED_PRODUCT_IDS = new Set(["obj-001", "pub-002"]);
+const CATALOG_SYNC_ENDPOINT = "/api/admin/store?commerceAction=catalog-sync";
 
 let activeStore = null;
 let activeStoreScope = null;
@@ -19,6 +20,42 @@ function storeRevision(value) {
 
 function notifyPrivateStoreRefreshed() {
   if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("nixp:private-store-refreshed"));
+}
+
+function wait(ms) {
+  return new Promise((resolve) => globalThis.setTimeout(resolve, ms));
+}
+
+// Use the actual serverless handler rather than a rewrite alias. A one-time
+// retry absorbs a transient Vercel function start without duplicating changes.
+async function syncCatalog(payload) {
+  let lastError;
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      const response = await fetch(CATALOG_SYNC_ENDPOINT, {
+        method: "POST",
+        headers: { "content-type": "application/json", accept: "application/json" },
+        body: JSON.stringify(payload),
+        cache: "no-store"
+      });
+      const result = await response.json().catch(() => ({}));
+      if (response.ok) return result;
+      const message = result.error || `Catalog research returned HTTP ${response.status}.`;
+      if (response.status >= 500 && attempt === 0) {
+        lastError = new Error(message);
+        await wait(700);
+        continue;
+      }
+      throw new Error(message);
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error("Catalog research could not be reached.");
+      if (attempt === 0) {
+        await wait(700);
+        continue;
+      }
+    }
+  }
+  throw new Error(`Catalog research is temporarily unavailable. Nothing was published or changed. Retry Research & Complete. ${lastError?.message || ""}`.trim());
 }
 
 const defaultCollections = [
@@ -888,13 +925,7 @@ export const adminStore = {
     for (const [index, product] of drafts.entries()) {
       onProgress?.({ index: index + 1, total: drafts.length, product });
       try {
-        const response = await fetch("/api/admin/catalog-sync", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ skus: [product.sku], force: true, publishAfterResearch: true })
-        });
-        const payload = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(payload.error || `Could not complete ${product.sku}.`);
+        const payload = await syncCatalog({ skus: [product.sku], force: true, publishAfterResearch: true });
         items.push(...(payload.report?.items || []));
       } catch (error) {
         failed += 1;
@@ -910,13 +941,7 @@ export const adminStore = {
 
     let deploy = { github: null, message: "No verified products were published; unresolved items remain safely in Draft." };
     if (items.some((item) => item.published)) {
-      const deployResponse = await fetch("/api/admin/catalog-sync", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ action: "deploy-current" })
-      });
-      deploy = await deployResponse.json().catch(() => ({}));
-      if (!deployResponse.ok) throw new Error(deploy.error || "Completed drafts were saved, but deployment failed.");
+      deploy = await syncCatalog({ action: "deploy-current" });
     }
     await this.refreshPrivateStore({ force: true });
     return {
@@ -933,25 +958,13 @@ export const adminStore = {
     const product = readStore().products.find((item) => item.id === id);
     if (!product) throw new Error("Product could not be found in the Admin catalog.");
     if (product.category !== "Records") throw new Error("Internet catalog completion is only used for records, CDs, and cassettes.");
-    const response = await fetch("/api/admin/catalog-sync", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ skus: [product.sku], force: true, publishAfterResearch: true })
-    });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(payload.error || `Could not complete ${product.sku}.`);
+    const payload = await syncCatalog({ skus: [product.sku], force: true, publishAfterResearch: true });
     const item = payload.report?.items?.find((candidate) =>
       String(candidate.sku || "").toLowerCase() === String(product.sku || "").toLowerCase()
     ) || payload.report?.items?.[0];
     let deploy = { github: null, message: "Product remains Draft until Finance data and a usable product image are available." };
     if (item?.published) {
-      const deployResponse = await fetch("/api/admin/catalog-sync", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ action: "deploy-current" })
-      });
-      deploy = await deployResponse.json().catch(() => ({}));
-      if (!deployResponse.ok) throw new Error(deploy.error || "Product was completed, but live deployment failed.");
+      deploy = await syncCatalog({ action: "deploy-current" });
     }
     await this.refreshPrivateStore({ force: true });
     const savedProduct = this.getSnapshot().products.find((candidate) => candidate.id === id);

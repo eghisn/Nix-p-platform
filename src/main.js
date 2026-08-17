@@ -3566,7 +3566,7 @@ function bindAdminListControls(root = document) {
             state.adminProductPublishNotices[id] = {
               tone: "warning",
               busy: false,
-              message: `Research completed where exact sources were verified. Still Draft: ${(completion.item?.issues || ["an exact trusted source could not be verified"]).join(", ")}.`
+              message: `Not published. Research could not verify: ${(completion.item?.issues || ["the required catalogue data"]).join(", ")}.`
             };
           } else if (completion.github?.skipped) {
             state.adminProductPublishNotices[id] = {
@@ -3639,7 +3639,7 @@ function bindAdminListControls(root = document) {
           state.adminProductPublishNotices[id] = {
             tone: "warning",
             busy: false,
-            message: `Research completed where exact sources were verified. Still Draft: ${(result.item?.issues || ["an exact trusted source could not be verified"]).join(", ")}.`
+            message: `Not published. Research could not verify: ${(result.item?.issues || ["the required catalogue data"]).join(", ")}.`
           };
         } else if (result.github?.skipped) {
           state.adminProductPublishNotices[id] = {
