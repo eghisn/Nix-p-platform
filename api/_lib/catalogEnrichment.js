@@ -47,7 +47,10 @@ const ARCHIVED_CATALOG_IMAGES = {
   "NXP-2026-VNL-0033": {
     cover: "/public/assets/catalog-archive/nxp-2026-vnl-0033-cover.webp",
     productPhoto: "/public/assets/catalog-archive/nxp-2026-vnl-0033-detail-1.webp"
-  }
+  },
+  "NXP-2026-VNL-0045": { cover: "/public/covers/nxp-2026-vnl-0045-leila-ui.jpg" },
+  "NXP-2026-VNL-0046": { cover: "/public/covers/nxp-2026-vnl-0046-citizens-reptile.jpg" },
+  "NXP-2026-VNL-0047": { cover: "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg" }
 };
 
 // Exact, reviewed matches take precedence over discovery. These records also
@@ -131,6 +134,58 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     relatedArtists: ["L.O.T.I.O.N", "The Prodigy", "Suicide", "The Soft Moon"],
     tags: ["techno", "ambient", "industrial", "electro-dub", "soundtrack"],
     sourceUrl: "https://buttechno.bandcamp.com/album/day-of-my-death"
+  },
+  "NXP-2026-VNL-0045": {
+    title: "U&I",
+    year: 2012,
+    label: "Warp Records",
+    edition: "2 x 12-inch LP",
+    catalogNumber: "WARPLP220",
+    barcode: "0801061022013",
+    cover: "/public/covers/nxp-2026-vnl-0045-leila-ui.jpg",
+    imageCredits: [{ image: "/public/covers/nxp-2026-vnl-0045-leila-ui.jpg", credit: "Transistora / Warp Records artwork", url: "https://transistora.com.es/leila-ui/" }],
+    description: "Leila's 2012 U&I is a double LP made with collaborator Mt. Sims, where clipped electronic rhythms, abrasive synth lines and intimate vocals turn Warp's experimental pop into something darker and more unstable.",
+    descriptionSource: "Leila Bandcamp / Warp Records",
+    reviewQuote: "more urgent, dysphoric",
+    reviewSource: "Boomkat (quoted)",
+    reviewUrl: "https://boomkat.com/products/ui618864ecc55a5c336205bf8200ee5902e6fe7737",
+    relatedArtists: ["Aphex Twin", "Plaid", "Autechre"],
+    tags: ["electronic", "IDM", "experimental pop", "ambient"],
+    sourceUrl: "https://leilamusic.bandcamp.com/album/u-i"
+  },
+  "NXP-2026-VNL-0046": {
+    title: "Reptile",
+    year: 2012,
+    label: "Kitsune Musique",
+    edition: "7-inch single",
+    catalogNumber: "KITSUNEMUSIC148",
+    cover: "/public/covers/nxp-2026-vnl-0046-citizens-reptile.jpg",
+    imageCredits: [{ image: "/public/covers/nxp-2026-vnl-0046-citizens-reptile.jpg", credit: "Apple Music / Kitsune Musique artwork", url: "https://music.apple.com/us/album/reptile/1568857758" }],
+    description: "Citizens!' 2012 single Reptile places Tom Burke's sleek vocal against Alex Kapranos-produced guitar, synth-pop detail and a tense, nocturnal pulse. The 7-inch arrived through Kitsune ahead of the group's debut album Here We Are.",
+    descriptionSource: "Kitsune Musique / NME",
+    reviewQuote: "a metallic sheen",
+    reviewSource: "NME (quoted)",
+    reviewUrl: "https://www.nme.com/reviews/reviews-citizens-13230-311627",
+    relatedArtists: ["Blondie", "Bauhaus", "The Soft Moon"],
+    tags: ["indie pop", "synth-pop", "post-punk", "new wave"],
+    sourceUrl: "https://music.apple.com/us/album/reptile/1568857758"
+  },
+  "NXP-2026-VNL-0047": {
+    title: "Octopus",
+    year: 2012,
+    label: "Frenchkiss Records",
+    edition: "7-inch single",
+    catalogNumber: "FKR061A",
+    cover: "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg",
+    imageCredits: [{ image: "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg", credit: "Apple Music / Frenchkiss Records artwork", url: "https://music.apple.com/us/album/octopus-single/674606375" }],
+    description: "Bloc Party's 2012 Octopus is a sharp, abrasive 7-inch from the Four era, channeling serrated guitars, nervous dance-punk motion and Kele Okereke's clipped vocal into a compact rush.",
+    descriptionSource: "[PIAS] Cooperative / NME",
+    reviewQuote: "a raucous, snarling return",
+    reviewSource: "NME (quoted)",
+    reviewUrl: "https://www.nme.com/news/music/bloc-party-56-1268623",
+    relatedArtists: ["Gilla Band", "Blondie", "Bauhaus"],
+    tags: ["post-punk", "dance-punk", "indie rock", "alternative rock"],
+    sourceUrl: "https://store.pias.com/release/168770-bloc-party-octopus-rac-remix?lang=en_US"
   },
   "NXP-2026-CD-0025": {
     title: "Pleiades' Dust",

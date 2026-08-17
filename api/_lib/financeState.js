@@ -132,10 +132,21 @@ export async function syncFinanceInventoryToCatalog(
   }
 
   const uniqueProductRows = dedupeRows(productRows);
+  // A finance save can overlap a catalog research request. Re-read the catalog
+  // immediately before writing so an older finance snapshot cannot erase an
+  // already-completed cover, review, or publication state.
+  const latestCatalogRows = uniqueProductRows.length
+    ? await supabaseFetch(`products?select=*&id=in.(${skuList(uniqueProductRows.map((row) => row.id))})`)
+    : [];
+  const latestById = new Map(latestCatalogRows.map((row) => [String(row.id), row]));
+  const stockBySku = new Map(stockRows.map((stock) => [String(stock.sku || "").trim().toLowerCase(), stock]));
+  const protectedProductRows = uniqueProductRows.map((row) =>
+    preserveCompletedCatalogData(latestById.get(String(row.id)), row, stockBySku.get(String(row.sku || "").trim().toLowerCase()))
+  );
   if (uniqueProductRows.length) {
     await supabaseFetch("products?on_conflict=id", {
       method: "POST",
-      body: uniqueProductRows,
+      body: protectedProductRows,
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
@@ -153,7 +164,68 @@ export async function syncFinanceInventoryToCatalog(
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
-  await syncFinanceArtistsToCatalog(uniqueProductRows);
+  await syncFinanceArtistsToCatalog(protectedProductRows);
+}
+
+function preserveCompletedCatalogData(latest, next, stock = {}) {
+  if (!latest || !next || next.category !== "Records") return next;
+  const fingerprint = inventoryFingerprint(stock);
+  const sameRelease = String(latest.raw?.enrichmentFingerprint || "") === fingerprint;
+  const latestIsComplete = hasCompletedCatalogData(latest);
+  const nextIsIncomplete = !hasCompletedCatalogData(next);
+  if (!sameRelease || !latestIsComplete || !nextIsIncomplete) return next;
+
+  const latestRaw = latest.raw || {};
+  const nextRaw = next.raw || {};
+  const preservedRaw = {
+    ...latestRaw,
+    ...nextRaw,
+    // Keep finance-owned values from the current save while retaining the
+    // verified editorial fields that a stale snapshot does not contain.
+    autoCover: latestRaw.autoCover,
+    autoProductPhoto: latestRaw.autoProductPhoto,
+    autoEditorial: latestRaw.autoEditorial,
+    relatedArtists: latestRaw.relatedArtists,
+    descriptionSource: latestRaw.descriptionSource,
+    reviewQuote: latestRaw.reviewQuote,
+    reviewSource: latestRaw.reviewSource,
+    reviewUrl: latestRaw.reviewUrl,
+    metadataSourceUrl: latestRaw.metadataSourceUrl,
+    musicBrainzReleaseId: latestRaw.musicBrainzReleaseId,
+    enrichmentFingerprint: latestRaw.enrichmentFingerprint,
+    enrichmentOrigin: latestRaw.enrichmentOrigin,
+    enrichmentStatus: latestRaw.enrichmentStatus,
+    enrichmentUpdatedAt: latestRaw.enrichmentUpdatedAt,
+    enrichmentAttemptedAt: latestRaw.enrichmentAttemptedAt
+  };
+  return productRowFromExisting(latest, {
+    ...next,
+    year: latest.year || next.year,
+    label: latest.label,
+    collection: latest.collection,
+    image: latest.image,
+    images: latest.images,
+    image_credits: latest.image_credits,
+    tags: latest.tags,
+    details: latest.details,
+    description: latest.description,
+    publish_status: latest.publish_status,
+    visibility: latest.visibility,
+    raw: preservedRaw
+  });
+}
+
+function hasCompletedCatalogData(row = {}) {
+  const raw = row.raw || {};
+  return Boolean(
+    hasUsableProductImage(row) &&
+    String(row.label || "").trim() &&
+    String(row.description || "").trim() &&
+    String(raw.reviewQuote || "").trim() &&
+    String(raw.reviewSource || "").trim() &&
+    Array.isArray(raw.relatedArtists) && raw.relatedArtists.length &&
+    String(raw.enrichmentStatus || "").toLowerCase() === "complete"
+  );
 }
 
 function allowResearchPublication(product = {}) {
