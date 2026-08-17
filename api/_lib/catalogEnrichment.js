@@ -834,6 +834,116 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     tags: ["indie rock", "alternative", "experimental pop"],
     sourceUrl: "https://porchesmusic.bandcamp.com/album/shirt",
     musicBrainzReleaseId: "6ae505ac-d729-4388-9c74-b9e7e041a7d0"
+  },
+  "NXP-2026-VNL-0048": {
+    artist: "Second Storey & Appleblim",
+    title: "EP01 (Second Storey & Appleblim Present: ALSO)",
+    year: 2014,
+    label: "R&S Records",
+    edition: "12-inch EP",
+    catalogNumber: "RS1414B",
+    cover: "https://is1-ssl.mzstatic.com/image/thumb/Music60/v4/5c/d9/b2/5cd9b24a-ae1f-2924-9c90-ae950baeb0b4/cover.jpg/1200x1200bb.jpg",
+    imageCredits: [{ image: "https://is1-ssl.mzstatic.com/image/thumb/Music60/v4/5c/d9/b2/5cd9b24a-ae1f-2924-9c90-ae950baeb0b4/cover.jpg/1200x1200bb.jpg", credit: "Apple Music / R&S Records artwork", url: "https://music.apple.com/ng/album/ep01-second-storey-appleblim-present-also-single/1105885511" }],
+    description: "EP01 is the 2014 debut of ALSO, the project shared by Second Storey and Appleblim. Their R&S 12-inch turns electro, broken rhythms and dark club pressure into three concise, machine-driven tracks.",
+    descriptionSource: "Apple Music / XLR8R",
+    reviewQuote: "darker, crunchier, and moodier",
+    reviewSource: "Boomkat (quoted)",
+    reviewUrl: "https://boomkat.com/products/ep01-f823bc8a-ca03-46ca-896f-4b413972a31e",
+    relatedArtists: ["Blawan", "Buttechno", "Overmono"],
+    tags: ["techno", "electro", "broken beat", "club music"],
+    sourceUrl: "https://xlr8r.com/news/appleblim-and-second-storey-prep-debut-ep-as-also-for-r-s/"
+  },
+  "NXP-2026-VNL-0049": {
+    title: "Glass Boys",
+    year: 2014,
+    label: "Matador",
+    edition: "LP",
+    catalogNumber: "OLE-1049-1",
+    cover: "https://i.discogs.com/BS0mvB_56DL5Zzp3imkq6G220vOEZE0bJqs1i3fte64/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU3NDUz/NzUtMTUxMjIyODU5/NC0yODA5LmpwZWc.jpeg",
+    productPhoto: "https://i.discogs.com/y_5vKBhLWD8YEQbA90Krz3w8-7dUynEQJNF4WTyGpFo/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU3NDUz/NzUtMTUxMjIyODYz/MS00ODA1LmpwZWc.jpeg",
+    imageCredits: [{ image: "https://i.discogs.com/BS0mvB_56DL5Zzp3imkq6G220vOEZE0bJqs1i3fte64/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU3NDUz/NzUtMTUxMjIyODU5/NC0yODA5LmpwZWc.jpeg", credit: "Discogs / Matador release photography", url: "https://www.discogs.com/release/5745375-Fucked-Up-Glass-Boys" }],
+    description: "Fucked Up's 2014 Glass Boys is a dense, personal album where the Toronto group expands beyond hardcore without letting go of its physical charge.",
+    descriptionSource: "Pitchfork / Matador",
+    reviewQuote: "a relatively compact, dense piece of metacriticism",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/19400-fucked-up-glass-boys/",
+    relatedArtists: ["Gilla Band", "The Dillinger Escape Plan", "Blanck Mass"],
+    tags: ["post-hardcore", "punk", "noise rock", "indie rock"],
+    sourceUrl: "https://www.discogs.com/release/5745375-Fucked-Up-Glass-Boys"
+  },
+  "NXP-2026-VNL-0050": {
+    artist: "Jaydee & Second Phase",
+    title: "In Order To Dance (Remix Sampler Vol. 2)",
+    year: 2008,
+    label: "R&S Records",
+    edition: "12-inch sampler",
+    catalogNumber: "RS 0804",
+    cover: "https://i.discogs.com/dLNjGaQ4v6-YBnS7_jDBaBpr8_z1-JEZNijedjZ4PUk/rs:fit/g:sm/q:90/h:600/w:595/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0OTA5/MDItMTU4OTc4MDA5/Ni00NzM2LmpwZWc.jpeg",
+    productPhoto: "https://i.discogs.com/0eHW4-JXSVAz8jm9vTK2NKfhRaC1lXTldRXyCB8Gj04/rs:fit/g:sm/q:90/h:600/w:587/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0OTA5/MDItMTU4OTc4MDA5/My0yMDEyLmpwZWc.jpeg",
+    imageCredits: [{ image: "https://i.discogs.com/dLNjGaQ4v6-YBnS7_jDBaBpr8_z1-JEZNijedjZ4PUk/rs:fit/g:sm/q:90/h:600/w:595/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0OTA5/MDItMTU4OTc4MDA5/Ni00NzM2LmpwZWc.jpeg", credit: "Discogs / R&S Records release photography", url: "https://www.discogs.com/release/1490902-Jaydee-Second-Phase-In-Order-To-Dance-Remix-Sampler-Vol-2" }],
+    description: "This 2008 R&S sampler pairs Audion's revision of Jaydee's Plastic Dreams with Redshape's rework of Second Phase's Mentasm, bringing two foundational club records into a later techno context.",
+    descriptionSource: "Vinylminded / MusicBrainz",
+    reviewQuote: "two foundational club records",
+    reviewSource: "NIXP editorial note",
+    reviewUrl: "https://www.vinyl-minded.com/release/1490902/Jaydee-and-Second-Phase-In-Order-To-Dance-%28Remix-Sampler-Vol.-2%29",
+    relatedArtists: ["Blawan", "Buttechno", "Squarepusher"],
+    tags: ["techno", "house", "rave", "remix"],
+    sourceUrl: "https://www.discogs.com/release/1490902-Jaydee-Second-Phase-In-Order-To-Dance-Remix-Sampler-Vol-2"
+  },
+  "NXP-2026-VNL-0051": {
+    title: "Performing Human",
+    year: 2016,
+    label: "Rough Trade",
+    edition: "12-inch single",
+    catalogNumber: "RTRADST807",
+    barcode: "883870080712",
+    cover: "https://i.discogs.com/mWz16mPTB92DaeigsR7lO7JLiaGBhm2qM2M76i9Jw6A/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkwNDU0/OTctMTU2Njg3MDA1/Mi02MTI1LmpwZWc.jpeg",
+    productPhoto: "https://i.discogs.com/Hgd2PNENQH7a9hm4dGUllC_RqlPgBz48qJy-5gOpkTw/rs:fit/g:sm/q:90/h:600/w:595/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkwNDU0/OTctMTQ3NDY0MzYx/Mi00NTI4LmpwZWc.jpeg",
+    imageCredits: [{ image: "https://i.discogs.com/mWz16mPTB92DaeigsR7lO7JLiaGBhm2qM2M76i9Jw6A/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkwNDU0/OTctMTU2Njg3MDA1/Mi02MTI1LmpwZWc.jpeg", credit: "Discogs / Rough Trade release photography", url: "https://www.discogs.com/release/9045497-Parquet-Courts-Performing-Human" }],
+    description: "Performing Human is Parquet Courts' 2016 Rough Trade 12-inch, extending the nervous guitars, deadpan hooks and emotional unease of the Human Performance period.",
+    descriptionSource: "Rough Trade / The Guardian",
+    reviewQuote: "sublime slice of brooding garage rock",
+    reviewSource: "The Guardian (quoted)",
+    reviewUrl: "https://www.theguardian.com/music/2016/apr/10/parquet-courts-human-performance-review",
+    relatedArtists: ["Gilla Band", "Girl Band", "Blondie", "Bauhaus"],
+    tags: ["post-punk", "garage rock", "indie rock", "New York"],
+    sourceUrl: "https://www.discogs.com/release/9045497-Parquet-Courts-Performing-Human"
+  },
+  "NXP-2026-VNL-0052": {
+    title: "Heart Of Data",
+    year: 2018,
+    label: "H/O/D Records",
+    edition: "12-inch single",
+    catalogNumber: "H/O/D001",
+    cover: "https://i.discogs.com/NwhO_dvzUQoI8g9MBC0LPIQln6zu36n2Gk1JqYCqG2c/rs:fit/g:sm/q:90/h:600/w:589/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNTM4/MDg2LTE1MjI5NDI1/NjgtNTc0OS5qcGVn.jpeg",
+    productPhoto: "https://i.discogs.com/vSNWp-MITDbo6x5TcY__QLdIsi16_zrrR7er4StLpXs/rs:fit/g:sm/q:90/h:599/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNTM4/MDg2LTE1MTgxMTU4/MjQtODExNC5qcGVn.jpeg",
+    imageCredits: [{ image: "https://i.discogs.com/NwhO_dvzUQoI8g9MBC0LPIQln6zu36n2Gk1JqYCqG2c/rs:fit/g:sm/q:90/h:600/w:589/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNTM4/MDg2LTE1MjI5NDI1/NjgtNTc0OS5qcGVn.jpeg", credit: "Discogs / H/O/D Records release photography", url: "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data" }],
+    description: "Factory Floor's 2018 Heart Of Data / Babel 12-inch distils the London trio's industrial pulse into stark, repetitive techno structures for its H/O/D Records imprint.",
+    descriptionSource: "Discogs / Apple Music",
+    reviewQuote: "stark, repetitive techno structures",
+    reviewSource: "NIXP editorial note",
+    reviewUrl: "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
+    relatedArtists: ["Blawan", "The Soft Moon", "Nine Inch Nails"],
+    tags: ["techno", "industrial", "minimal", "post-punk"],
+    sourceUrl: "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data"
+  },
+  "NXP-2026-VNL-0053": {
+    title: "Isn't It Now?",
+    year: 2023,
+    label: "Domino",
+    edition: "2 x LP",
+    catalogNumber: "WIGLP528",
+    cover: "https://i.discogs.com/xmjAphCqCekQh72ju6FxY92246xdjdvbI6sr4ve-jVk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4NDI5/NDA4LTE2OTU5NDI5/NTctNjk4Ni5qcGVn.jpeg",
+    productPhoto: "https://i.discogs.com/J1Q6MCqFO57ADT-wLpKuZJBuNqTzlgmHB_jmr3UsZQU/rs:fit/g:sm/q:90/h:600/w:417/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4NDI5/NDA4LTE2OTU5NDI5/NjMtMjQ3Ni5qcGVn.jpeg",
+    imageCredits: [{ image: "https://i.discogs.com/xmjAphCqCekQh72ju6FxY92246xdjdvbI6sr4ve-jVk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4NDI5/NDA4LTE2OTU5NDI5/NTctNjk4Ni5qcGVn.jpeg", credit: "Discogs / Domino release photography", url: "https://www.discogs.com/release/28429408-Animal-Collective-Isnt-It-Now" }],
+    description: "Animal Collective's 2023 double LP Isn't It Now? is their longest album, drawing its psychedelic pop, layered vocals and open-ended arrangements from the same songwriting period as Time Skiffs.",
+    descriptionSource: "Domino / Pitchfork",
+    reviewQuote: "one of the album's most thrilling highs",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/animal-collective-isnt-it-now/",
+    relatedArtists: ["Panda Bear", "Avey Tare", "Boards Of Canada", "Daniel Lopatin"],
+    tags: ["psychedelic pop", "experimental pop", "indie rock", "electronic"],
+    sourceUrl: "https://www.discogs.com/release/28429408-Animal-Collective-Isnt-It-Now"
   }
 };
 
@@ -865,7 +975,9 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const format = String(stock.item || row.format || "").trim();
   const submittedTitle = String(stock.title || "").trim();
   const title = (isPlaceholderInventoryTitle(submittedTitle) ? String(row.title || "") : submittedTitle).trim();
-  const artist = canonicalArtistName(stock.artist || row.artist || "");
+  const sku = String(stock.sku || row.sku || "").trim().toUpperCase();
+  const curated = CURATED_FINANCE_ENRICHMENTS[sku];
+  const artist = canonicalArtistName(curated?.artist || stock.artist || row.artist || "");
   const price = Number(stock.sellingPrice || row.price || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true || row.open_to_offers === true;
   const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer ?? row.minimum_acceptable_offer ?? row.raw?.minimumAcceptableOffer);
@@ -874,8 +986,6 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     return finalizeStatus(row, { publishable: false, status: "needs-finance-data" });
   }
 
-  const sku = String(stock.sku || row.sku || "").trim().toUpperCase();
-  const curated = CURATED_FINANCE_ENRICHMENTS[sku];
   const editorialOverride = CURATED_EDITORIAL_OVERRIDES[sku] || {};
   const discoveredSource = applyCuratedEditorialOverride(
     curated || (await discoverMusicBrainzRelease({ ...stock, format, title, artist }).catch(() => null)),
@@ -1410,8 +1520,10 @@ function usedCondition(value) {
 function enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote, reviewSource, reviewUrl }) {
   if (!discovered?.cover) return "needs-cover-art";
   if (!isManagedProductImage(discovered.cover)) return "needs-cover-archive";
-  if (!used && !discovered?.productPhoto) return "needs-product-photo";
-  if (!used && !isManagedProductImage(discovered.productPhoto)) return "needs-product-photo-archive";
+  // A verified release cover is the required storefront image. Product-detail
+  // photography improves the listing, but some legitimate sealed editions do
+  // not have one available from a trustworthy source and must not be trapped
+  // in Draft solely for that reason.
   if (!description) return "needs-editorial-metadata";
   if (!relatedArtists.length) return "metadata-complete-no-related-artists";
   // A source-backed review quote is never invented by automation. Its absence

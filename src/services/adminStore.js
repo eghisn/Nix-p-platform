@@ -891,7 +891,7 @@ export const adminStore = {
         const response = await fetch("/api/admin/catalog-sync", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ skus: [product.sku], force: true })
+          body: JSON.stringify({ skus: [product.sku], force: true, publishAfterResearch: true })
         });
         const payload = await response.json().catch(() => ({}));
         if (!response.ok) throw new Error(payload.error || `Could not complete ${product.sku}.`);

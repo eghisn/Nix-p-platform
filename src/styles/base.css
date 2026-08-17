@@ -613,6 +613,13 @@ img {
   text-transform: uppercase;
 }
 
+body:has(.admin-dashboard),
+body:has(.admin-workspace),
+body:has(.finance-dashboard),
+body:has(.finance-workspace) {
+  padding-bottom: 0;
+}
+
 .admin-publish-status {
   display: block;
   max-width: 230px;
