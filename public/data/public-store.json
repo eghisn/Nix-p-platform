@@ -2691,7 +2691,7 @@
       ],
       "year": 1984,
       "color": "",
-      "image": "https://images.eil.com/large_image/SIOUXSIE_%26_THE_BANSHEES_DAZZLE-107705.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0037-cover.jpg",
       "label": "Wonderland",
       "price": 536000,
       "sizes": [],
@@ -2699,7 +2699,7 @@
       "artist": "Siouxsie And The Banshees",
       "format": "Vinyl",
       "images": [
-        "https://images.eil.com/large_image/SIOUXSIE_%26_THE_BANSHEES_DAZZLE-107705.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0037-cover.jpg"
       ],
       "barcode": "",
       "details": [
@@ -2711,7 +2711,7 @@
       "edition": "Vinyl, 12\", 45 RPM, Single, Stereo",
       "category": "Records",
       "material": "",
-      "autoCover": "https://images.eil.com/large_image/SIOUXSIE_%26_THE_BANSHEES_DAZZLE-107705.jpg",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0037-cover.jpg",
       "condition": "Used Good",
       "reviewUrl": "https://trouserpress.com/reviews/siouxsie-and-the-banshees/",
       "syncAudit": [
@@ -2787,7 +2787,7 @@
       "imageCredits": [
         {
           "url": "https://eil.com/shop/moreinfo.asp?catalogid=107705",
-          "image": "https://images.eil.com/large_image/SIOUXSIE_%26_THE_BANSHEES_DAZZLE-107705.jpg",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0037-cover.jpg",
           "credit": "EIL / Vinyl Exchange"
         }
       ],
