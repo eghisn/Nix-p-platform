@@ -186,6 +186,8 @@ function preserveCompletedCatalogData(latest, next, stock = {}) {
     autoProductPhoto: latestRaw.autoProductPhoto,
     autoEditorial: latestRaw.autoEditorial,
     relatedArtists: latestRaw.relatedArtists,
+    relatedArtistEvidence: latestRaw.relatedArtistEvidence,
+    relatedArtistsResearch: latestRaw.relatedArtistsResearch,
     descriptionSource: latestRaw.descriptionSource,
     reviewQuote: latestRaw.reviewQuote,
     reviewSource: latestRaw.reviewSource,
@@ -217,14 +219,16 @@ function preserveCompletedCatalogData(latest, next, stock = {}) {
 
 function hasCompletedCatalogData(row = {}) {
   const raw = row.raw || {};
+  const relatedResearchStatus = String(row.relatedArtistsResearch?.status || raw.relatedArtistsResearch?.status || "").trim();
+  const relatedResearchComplete = ["verified", "no-verified-match"].includes(relatedResearchStatus);
   return Boolean(
     hasUsableProductImage(row) &&
     String(row.label || "").trim() &&
     String(row.description || "").trim() &&
     String(raw.reviewQuote || "").trim() &&
     String(raw.reviewSource || "").trim() &&
-    Array.isArray(raw.relatedArtists) && raw.relatedArtists.length &&
-    String(raw.enrichmentStatus || "").toLowerCase() === "complete"
+    (relatedResearchComplete || (Array.isArray(raw.relatedArtists) && raw.relatedArtists.length)) &&
+    ["complete", "complete-no-related-artists"].includes(String(raw.enrichmentStatus || "").toLowerCase())
   );
 }
 

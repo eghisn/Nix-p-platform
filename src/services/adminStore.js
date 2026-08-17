@@ -132,13 +132,13 @@ function normalizeList(value) {
 }
 
 function isCompleteEditorialProduct(product = {}) {
+  const relatedResearchStatus = String(product.relatedArtistsResearch?.status || product.raw?.relatedArtistsResearch?.status || "").trim();
   return Boolean(
     product.category === "Records" &&
       String(product.description || "").trim() &&
       String(product.reviewQuote || "").trim() &&
-      Array.isArray(product.relatedArtists) &&
-      product.relatedArtists.length &&
-      String(product.enrichmentStatus || "").toLowerCase() === "complete"
+      (Array.isArray(product.relatedArtists) && product.relatedArtists.length || ["verified", "no-verified-match"].includes(relatedResearchStatus)) &&
+      ["complete", "complete-no-related-artists"].includes(String(product.enrichmentStatus || product.raw?.enrichmentStatus || "").toLowerCase())
   );
 }
 
@@ -1077,6 +1077,12 @@ export const adminStore = {
     const isRecord = category === "Records";
     const id = data.id?.trim() || slugify(`${data.sku || data.artist}-${data.title}`) || `item-${Date.now()}`;
     const existing = store.products.find((product) => product.id === id);
+    const incomingRelatedArtists = isRecord ? splitList(data.relatedArtists).map(canonicalRelatedArtistName) : [];
+    const existingAutomaticRelatedArtists = normalizeList(existing?.autoEditorial?.relatedArtists).map(canonicalRelatedArtistName);
+    const manualRelatedArtists = isRecord && data.relatedArtists !== undefined &&
+      JSON.stringify(incomingRelatedArtists) !== JSON.stringify(existingAutomaticRelatedArtists)
+      ? incomingRelatedArtists
+      : normalizeList(existing?.manualRelatedArtists).map(canonicalRelatedArtistName);
     const collection = data.collection?.trim() || data.label?.trim() || existing?.collection || "";
     const fallbackMaker = category === "Objects" ? "NIXP Objects" : category === "Apparel" ? "NIXP Apparel" : "NIXP";
     const format = isProductCategory ? category.replace(/s$/, "") : data.format?.trim();
@@ -1118,7 +1124,8 @@ export const adminStore = {
         image: data.image?.trim() || data.images?.[0] || existing?.image
       }),
       tags: splitList(data.tags),
-      relatedArtists: isRecord ? splitList(data.relatedArtists) : [],
+      relatedArtists: isRecord ? incomingRelatedArtists : [],
+      manualRelatedArtists,
       homeCollections: existing?.homeCollections || [],
       homeSlideSort: existing?.homeSlideSort ?? null,
       details: splitList(data.details),

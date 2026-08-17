@@ -131,11 +131,7 @@
       "publishStatus": "Published",
       "financeStockId": "msxgg8yyxxmjwi",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Blawan",
-        "The Soft Moon",
-        "Nine Inch Nails"
-      ],
+      "relatedArtists": [],
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Discogs / Apple Music",
@@ -144,7 +140,16 @@
       "publishAfterResearch": true,
       "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
       "enrichmentFingerprint": "factory floor|heart of data|vinyl||h o d001",
-      "minimumAcceptableOffer": 0
+      "minimumAcceptableOffer": 0,
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
+      }
     },
     {
       "id": "finance-nxp-2026-vnl-0051",
@@ -276,11 +281,7 @@
       "publishStatus": "Published",
       "financeStockId": "msxg6ciy4jz17v",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Gilla Band",
-        "Blondie",
-        "Bauhaus"
-      ],
+      "relatedArtists": [],
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
@@ -291,7 +292,16 @@
       "publishAfterResearch": true,
       "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
       "enrichmentFingerprint": "parquet courts|performing human|vinyl||rtradst807",
-      "minimumAcceptableOffer": 0
+      "minimumAcceptableOffer": 0,
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/20c0fcec-ac2f-4364-93d7-fa185bb06278",
+        "releaseId": "20c0fcec-ac2f-4364-93d7-fa185bb06278"
+      }
     },
     {
       "id": "finance-nxp-2026-vnl-0049",
@@ -423,11 +433,7 @@
       "publishStatus": "Published",
       "financeStockId": "msxfn3ohv5cz2w",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Gilla Band",
-        "The Dillinger Escape Plan",
-        "Blanck Mass"
-      ],
+      "relatedArtists": [],
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Pitchfork / Matador",
@@ -436,7 +442,16 @@
       "publishAfterResearch": true,
       "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
       "enrichmentFingerprint": "fucked up|glass boys|vinyl||ole 1049",
-      "minimumAcceptableOffer": 0
+      "minimumAcceptableOffer": 0,
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/da558c5d-26b6-482e-8b12-4072f920cdcd",
+        "releaseId": "da558c5d-26b6-482e-8b12-4072f920cdcd"
+      }
     },
     {
       "id": "finance-nxp-2026-vnl-0048",
@@ -567,11 +582,7 @@
       "publishStatus": "Published",
       "financeStockId": "msxffvypwyfitf",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Blawan",
-        "Buttechno",
-        "Overmono"
-      ],
+      "relatedArtists": [],
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Apple Music / XLR8R",
@@ -580,7 +591,16 @@
       "publishAfterResearch": true,
       "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
       "enrichmentFingerprint": "also|ep01|vinyl||rs1414",
-      "minimumAcceptableOffer": 0
+      "minimumAcceptableOffer": 0,
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
+      }
     },
     {
       "id": "finance-nxp-2026-vnl-0047",
@@ -711,11 +731,7 @@
       "publishStatus": "Published",
       "financeStockId": "msxf8p60x1ywyg",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Gilla Band",
-        "Blondie",
-        "Bauhaus"
-      ],
+      "relatedArtists": [],
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
@@ -726,7 +742,16 @@
       "publishAfterResearch": true,
       "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
       "enrichmentFingerprint": "bloc party|octopus|vinyl||fkr061a",
-      "minimumAcceptableOffer": 0
+      "minimumAcceptableOffer": 0,
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/77e1ac48-b3d8-4b2b-b7de-dd6908abbf92",
+        "releaseId": "77e1ac48-b3d8-4b2b-b7de-dd6908abbf92"
+      }
     },
     {
       "id": "finance-nxp-2026-vnl-0046",
@@ -857,11 +882,7 @@
       "publishStatus": "Published",
       "financeStockId": "msxf1zpcdc71cs",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Blondie",
-        "Bauhaus",
-        "The Soft Moon"
-      ],
+      "relatedArtists": [],
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Kitsune Musique / NME",
@@ -870,7 +891,16 @@
       "publishAfterResearch": true,
       "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
       "enrichmentFingerprint": "citizens|reptile|vinyl||k148",
-      "minimumAcceptableOffer": 0
+      "minimumAcceptableOffer": 0,
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
+      }
     },
     {
       "id": "finance-nxp-2026-vnl-0045",
@@ -1002,9 +1032,7 @@
       "financeStockId": "msxee84lza3iwb",
       "open_to_offers": false,
       "relatedArtists": [
-        "Aphex Twin",
-        "Plaid",
-        "Autechre"
+        "Mount Sims"
       ],
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
@@ -1016,7 +1044,34 @@
       "publishAfterResearch": true,
       "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
       "enrichmentFingerprint": "leila|u i|vinyl||warplp220",
-      "minimumAcceptableOffer": 0
+      "minimumAcceptableOffer": 0,
+      "relatedArtistEvidence": [
+        {
+          "artist": "Mount Sims",
+          "source": "MusicBrainz release artist credit",
+          "sourceUrl": "https://musicbrainz.org/release/3918f439-eac3-4b9b-9882-9e2822e8b583",
+          "relationType": "release-track-credit",
+          "confidence": "high"
+        }
+      ],
+      "relatedArtistsResearch": {
+        "artists": [
+          "Mount Sims"
+        ],
+        "evidence": [
+          {
+            "artist": "Mount Sims",
+            "source": "MusicBrainz release artist credit",
+            "sourceUrl": "https://musicbrainz.org/release/3918f439-eac3-4b9b-9882-9e2822e8b583",
+            "relationType": "release-track-credit",
+            "confidence": "high"
+          }
+        ],
+        "status": "verified",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/3918f439-eac3-4b9b-9882-9e2822e8b583",
+        "releaseId": "3918f439-eac3-4b9b-9882-9e2822e8b583"
+      }
     },
     {
       "id": "finance-nxp-2026-vnl-0053",
@@ -1154,14 +1209,7 @@
       "publishStatus": "Published",
       "financeStockId": "msxh2jgpcdtnie",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Panda Bear",
-        "Boards of Canada",
-        "Daniel Lopatin",
-        "Porches",
-        "Dirty Projectors",
-        "Bauhaus"
-      ],
+      "relatedArtists": [],
       "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0053/detail-1.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
@@ -1186,6 +1234,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -1324,14 +1381,7 @@
       "publishStatus": "Published",
       "financeStockId": "msxfuxayn1s7is",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Blawan",
-        "Buttechno",
-        "Squarepusher",
-        "Amnesia Scanner",
-        "Bauhaus",
-        "Bill Kouligas"
-      ],
+      "relatedArtists": [],
       "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0050/detail-1.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
@@ -1356,6 +1406,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -1489,12 +1548,7 @@
       "financeStockId": "msolheb6skzhi4",
       "mediaCondition": "",
       "open_to_offers": true,
-      "relatedArtists": [
-        "L.O.T.I.O.N",
-        "The Prodigy",
-        "Suicide",
-        "The Soft Moon"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases"
       ],
@@ -1522,6 +1576,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -1644,11 +1707,7 @@
       "financeStockId": "msoia8gy0kthtu",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Soft Moon",
-        "Tim Hecker",
-        "Blawan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases"
       ],
@@ -1675,6 +1734,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -1815,12 +1883,7 @@
       "financeStockId": "msoi0gdidkozqu",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Prodigy",
-        "Nine Inch Nails",
-        "Suicide",
-        "The Soft Moon"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases"
       ],
@@ -1847,6 +1910,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -1998,14 +2070,7 @@
       "financeStockId": "msohu3rm2mkw9g",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Suuns",
-        "Disappears",
-        "Parquet Courts",
-        "Porches",
-        "Preoccupations",
-        "Suicide"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -2031,6 +2096,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/9f0f5bbb-a11d-4e55-9315-008ef5c1cc38",
+        "releaseId": "9f0f5bbb-a11d-4e55-9315-008ef5c1cc38"
       }
     },
     {
@@ -2200,14 +2274,7 @@
       "financeStockId": "msohoykwowfo51",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Bauhaus",
-        "Disappears",
-        "Japandroids",
-        "Parquet Courts",
-        "Porches",
-        "Preoccupations"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -2233,6 +2300,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/cd361727-c32f-42f9-8d35-6514916d994f",
+        "releaseId": "cd361727-c32f-42f9-8d35-6514916d994f"
       }
     },
     {
@@ -2382,14 +2458,7 @@
       "financeStockId": "msohfpgeqelev4",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Bauhaus",
-        "Disappears",
-        "Parquet Courts",
-        "Preoccupations",
-        "Suuns",
-        "Blondie"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -2416,6 +2485,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/a672416a-005f-3dbc-8f78-952f5e18a7e0",
+        "releaseId": "a672416a-005f-3dbc-8f78-952f5e18a7e0"
       }
     },
     {
@@ -2563,14 +2641,7 @@
       "financeStockId": "msoh9k8yadscxk",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Disappears",
-        "Parquet Courts",
-        "Preoccupations",
-        "Suuns",
-        "Japandroids",
-        "Porches"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -2596,6 +2667,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/9a7f56ad-de7d-4ed4-9fdf-800878316a8f",
+        "releaseId": "9a7f56ad-de7d-4ed4-9fdf-800878316a8f"
       }
     },
     {
@@ -2718,11 +2798,7 @@
       "financeStockId": "msogph6m6pio1z",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Bauhaus",
-        "The Soft Moon",
-        "Suicide"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases"
       ],
@@ -2749,6 +2825,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -2885,11 +2970,7 @@
       "financeStockId": "msmyfig6kre21i",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Behold The Arctopus",
-        "Gorguts",
-        "The Dillinger Escape Plan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -2915,6 +2996,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/74ac1aa8-f962-4cf6-bec1-40fa5a172df3",
+        "releaseId": "74ac1aa8-f962-4cf6-bec1-40fa5a172df3"
       }
     },
     {
@@ -3052,11 +3142,7 @@
       "financeStockId": "msmxxfd0dpobsy",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Daughters",
-        "Melt-Banana",
-        "The Dillinger Escape Plan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -3082,6 +3168,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/3c1f186e-66ca-4b0d-a078-4a83995bfec7",
+        "releaseId": "3c1f186e-66ca-4b0d-a078-4a83995bfec7"
       }
     },
     {
@@ -3218,11 +3313,7 @@
       "financeStockId": "msmxts90uk6eyb",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Meshuggah",
-        "The Dillinger Escape Plan",
-        "Gorguts"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -3248,6 +3339,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/b8ce00cd-e1a1-438b-a861-c2a222e601d5",
+        "releaseId": "b8ce00cd-e1a1-438b-a861-c2a222e601d5"
       }
     },
     {
@@ -3383,11 +3483,7 @@
       "financeStockId": "msmxml4j82dyx9",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Suuns",
-        "Preoccupations",
-        "The Soft Moon"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -3413,6 +3509,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/b5f851d6-3426-4f49-b28b-b28cc0b19d2a",
+        "releaseId": "b5f851d6-3426-4f49-b28b-b28cc0b19d2a"
       }
     },
     {
@@ -3548,11 +3653,7 @@
       "financeStockId": "msmxiuccfelqfy",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Suuns",
-        "Preoccupations",
-        "The Soft Moon"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -3578,6 +3679,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/3c312340-b5c1-4bee-aa83-eec6167a8d79",
+        "releaseId": "3c312340-b5c1-4bee-aa83-eec6167a8d79"
       }
     },
     {
@@ -3726,14 +3836,7 @@
       "financeStockId": "msmtt71xvd9xxi",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Oneohtrix Point Never",
-        "Nala Sinephro",
-        "Blanck Mass",
-        "Disappears",
-        "Amnesia Scanner",
-        "Bauhaus"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -3759,6 +3862,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/ef389c8c-9465-45fa-86e1-efc49f6f3c36",
+        "releaseId": "ef389c8c-9465-45fa-86e1-efc49f6f3c36"
       }
     },
     {
@@ -3895,11 +4007,7 @@
       "financeStockId": "msmqgmu94kyjez",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Dillinger Escape Plan",
-        "Melt-Banana",
-        "The Locust"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -3925,6 +4033,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/666d4e9f-0b12-42ba-afe4-e1627d5072d0",
+        "releaseId": "666d4e9f-0b12-42ba-afe4-e1627d5072d0"
       }
     },
     {
@@ -4061,11 +4178,7 @@
       "financeStockId": "msm8t7boezwj57",
       "mediaCondition": "",
       "open_to_offers": true,
-      "relatedArtists": [
-        "Melt-Banana",
-        "Behold The Arctopus",
-        "The Dillinger Escape Plan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -4091,6 +4204,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/d9aa131a-8140-4fd0-ae64-3a0d70eec10c",
+        "releaseId": "d9aa131a-8140-4fd0-ae64-3a0d70eec10c"
       }
     },
     {
@@ -4231,14 +4353,7 @@
       "financeStockId": "msm7eagbo1efm9",
       "mediaCondition": "",
       "open_to_offers": true,
-      "relatedArtists": [
-        "Arca",
-        "SOPHIE",
-        "Amnesia Scanner",
-        "Boards of Canada",
-        "Nala Sinephro",
-        "Squarepusher"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -4264,6 +4379,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/46f66a2f-b782-47b4-9095-2ef933e1e7c7",
+        "releaseId": "46f66a2f-b782-47b4-9095-2ef933e1e7c7"
       }
     },
     {
@@ -4407,11 +4531,7 @@
       "financeStockId": "msm78f228xcdzm",
       "mediaCondition": "",
       "open_to_offers": true,
-      "relatedArtists": [
-        "Oneohtrix Point Never",
-        "Daniel Lopatin",
-        "Nala Sinephro"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases"
       ],
@@ -4440,6 +4560,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -4587,15 +4716,7 @@
       "financeStockId": "msm68gp0kfllg2",
       "mediaCondition": "",
       "open_to_offers": true,
-      "relatedArtists": [
-        "Melt-Banana",
-        "The Dillinger Escape Plan",
-        "Dysrhythmia",
-        "Boards of Canada",
-        "Nala Sinephro",
-        "Squarepusher",
-        "Oneohtrix Point Never"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases"
       ],
@@ -4623,6 +4744,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/5b91a691-c3c3-4e7f-bd50-5c58243347b3",
+        "releaseId": "5b91a691-c3c3-4e7f-bd50-5c58243347b3"
       }
     },
     {
@@ -4768,14 +4898,7 @@
       "financeStockId": "msm6l1la14ehw1",
       "mediaCondition": "",
       "open_to_offers": true,
-      "relatedArtists": [
-        "Arca",
-        "SOPHIE",
-        "Amnesia Scanner",
-        "Boards of Canada",
-        "Nala Sinephro",
-        "Squarepusher"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
@@ -4801,6 +4924,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "heavy",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
+        "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2"
       }
     },
     {
@@ -4943,11 +5075,7 @@
       "financeStockId": "msdk6pkie8aou7",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Melt-Banana",
-        "Behold The Arctopus",
-        "Dysrhythmia"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -4973,6 +5101,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/1a1d7f1a-0a98-4290-b0dd-a8424e4be7ce",
+        "releaseId": "1a1d7f1a-0a98-4290-b0dd-a8424e4be7ce"
       }
     },
     {
@@ -5116,11 +5253,7 @@
       "financeStockId": "msdk3m9tpcjom6",
       "mediaCondition": "",
       "open_to_offers": true,
-      "relatedArtists": [
-        "Zach Hill",
-        "The Dillinger Escape Plan",
-        "Melt-Banana"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -5146,6 +5279,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/e4372642-8d04-478a-bcba-058c13209f56",
+        "releaseId": "e4372642-8d04-478a-bcba-058c13209f56"
       }
     },
     {
@@ -5284,9 +5426,8 @@
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "JK Flesh",
-        "The Soft Moon",
-        "Melt-Banana"
+        "Jarboe",
+        "Justin Broadrick"
       ],
       "homeCollections": [],
       "sleeveCondition": "",
@@ -5313,6 +5454,48 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [
+        {
+          "artist": "Jarboe",
+          "source": "MusicBrainz release artist credit",
+          "sourceUrl": "https://musicbrainz.org/release/cca61b7c-15b6-4e83-b247-516d6409834b",
+          "relationType": "release-track-credit",
+          "confidence": "high"
+        },
+        {
+          "artist": "Justin Broadrick",
+          "source": "MusicBrainz release artist credit",
+          "sourceUrl": "https://musicbrainz.org/release/cca61b7c-15b6-4e83-b247-516d6409834b",
+          "relationType": "release-track-credit",
+          "confidence": "high"
+        }
+      ],
+      "relatedArtistsResearch": {
+        "artists": [
+          "Jarboe",
+          "Justin Broadrick"
+        ],
+        "evidence": [
+          {
+            "artist": "Jarboe",
+            "source": "MusicBrainz release artist credit",
+            "sourceUrl": "https://musicbrainz.org/release/cca61b7c-15b6-4e83-b247-516d6409834b",
+            "relationType": "release-track-credit",
+            "confidence": "high"
+          },
+          {
+            "artist": "Justin Broadrick",
+            "source": "MusicBrainz release artist credit",
+            "sourceUrl": "https://musicbrainz.org/release/cca61b7c-15b6-4e83-b247-516d6409834b",
+            "relationType": "release-track-credit",
+            "confidence": "high"
+          }
+        ],
+        "status": "verified",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/cca61b7c-15b6-4e83-b247-516d6409834b",
+        "releaseId": "cca61b7c-15b6-4e83-b247-516d6409834b"
       }
     },
     {
@@ -5450,11 +5633,7 @@
       "financeStockId": "msdjyvxbrhrbyw",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Preoccupations",
-        "Parquet Courts",
-        "Suuns"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -5480,6 +5659,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/2b6bb8ca-6b18-3ece-afc7-3e72ef3145d6",
+        "releaseId": "2b6bb8ca-6b18-3ece-afc7-3e72ef3145d6"
       }
     },
     {
@@ -5617,11 +5805,7 @@
       "financeStockId": "msdjx8pb7j5dsl",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Dysrhythmia",
-        "Gorguts",
-        "The Dillinger Escape Plan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -5647,6 +5831,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/fff27b9d-0d98-474c-b5ca-93ccefaf6574",
+        "releaseId": "fff27b9d-0d98-474c-b5ca-93ccefaf6574"
       }
     },
     {
@@ -5785,11 +5978,7 @@
       "financeStockId": "ms69f4adp588gk",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Behold The Arctopus",
-        "Gorguts",
-        "The Dillinger Escape Plan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "",
@@ -5814,6 +6003,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/dc0a1553-cf2d-478c-9fb1-ecec7f76f715",
+        "releaseId": "dc0a1553-cf2d-478c-9fb1-ecec7f76f715"
       }
     },
     {
@@ -5941,11 +6139,7 @@
       "financeStockId": "ms33vcvjw4jzw0",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Animal Collective",
-        "Suuns",
-        "David Byrne"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0033-detail-1.webp",
@@ -5969,6 +6163,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/2322927f-4aef-404f-851e-bc6dcb079961",
+        "releaseId": "2322927f-4aef-404f-851e-bc6dcb079961"
       }
     },
     {
@@ -6096,11 +6299,7 @@
       "financeStockId": "ms33r4rkilatyl",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Godflesh",
-        "The Soft Moon",
-        "JK Flesh"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0032-detail-1.webp",
@@ -6124,6 +6323,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff",
+        "releaseId": "d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff"
       }
     },
     {
@@ -6245,11 +6453,7 @@
       "financeStockId": "ms33pmm7rurmct",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Squarepusher",
-        "The Chemical Brothers",
-        "Animal Collective"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0031-cover.webp",
@@ -6273,6 +6477,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -6394,11 +6607,7 @@
       "financeStockId": "ms33igjrvn4cs8",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Viet Cong",
-        "Women",
-        "Ought"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -6424,6 +6633,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
+        "releaseId": "e8747635-0bd4-4cfc-97b5-97f224b0b2cd"
       }
     },
     {
@@ -6545,11 +6763,7 @@
       "financeStockId": "ms33gr33a83sb2",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Oneohtrix Point Never",
-        "Nala Sinephro",
-        "The Chemical Brothers"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0029-cover.webp",
@@ -6573,6 +6787,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b",
+        "releaseId": "d7373248-ae08-4bd8-a848-8b12c70bd88b"
       }
     },
     {
@@ -6695,11 +6918,7 @@
       "financeStockId": "ms33fiig3kwg3w",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Uniform",
-        "The Soft Moon",
-        "Pharmakon"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0028-detail-1.webp",
@@ -6723,6 +6942,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -6847,11 +7075,7 @@
       "financeStockId": "ms33dxuf11m8n8",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Preoccupations",
-        "Viet Cong",
-        "Jerusalem In My Heart"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
@@ -6875,6 +7099,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49",
+        "releaseId": "ac2611e4-fa10-47f1-a328-8fad3c73cb49"
       }
     },
     {
@@ -6996,11 +7229,7 @@
       "financeStockId": "ms33ceq0ss44nf",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Arca",
-        "Oneohtrix Point Never",
-        "Toxe"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -7026,6 +7255,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f",
+        "releaseId": "69cf0f01-df57-4ec6-ad3d-e43573ba958f"
       }
     },
     {
@@ -7147,11 +7385,7 @@
       "financeStockId": "ms33am34g1j25d",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Amnesia Scanner",
-        "Arca",
-        "SOPHIE"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -7177,6 +7411,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52",
+        "releaseId": "3b8d34c7-9cf7-4f21-a6ed-354e7bf2da52"
       }
     },
     {
@@ -7298,11 +7541,7 @@
       "financeStockId": "ms338w7rxpnorp",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Uniform",
-        "Blanck Mass",
-        "The Soft Moon"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -7328,6 +7567,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/9c4a70fc-8984-4585-97d2-ef672b650034",
+        "releaseId": "9c4a70fc-8984-4585-97d2-ef672b650034"
       }
     },
     {
@@ -7447,9 +7695,8 @@
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Erol Alkan",
-        "Siriusmo",
-        "Housemeister"
+        "Octave Minds",
+        "Nine Inch Noize"
       ],
       "homeCollections": [
         "recent-releases"
@@ -7476,6 +7723,48 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [
+        {
+          "artist": "Octave Minds",
+          "source": "MusicBrainz artist relationship",
+          "sourceUrl": "https://musicbrainz.org/artist/d2f4a968-1f6e-4a4a-9376-ee2b2a50c87a",
+          "relationType": "collaboration",
+          "confidence": "medium"
+        },
+        {
+          "artist": "Nine Inch Noize",
+          "source": "MusicBrainz artist relationship",
+          "sourceUrl": "https://musicbrainz.org/artist/d2f4a968-1f6e-4a4a-9376-ee2b2a50c87a",
+          "relationType": "collaboration",
+          "confidence": "medium"
+        }
+      ],
+      "relatedArtistsResearch": {
+        "artists": [
+          "Octave Minds",
+          "Nine Inch Noize"
+        ],
+        "evidence": [
+          {
+            "artist": "Octave Minds",
+            "source": "MusicBrainz artist relationship",
+            "sourceUrl": "https://musicbrainz.org/artist/d2f4a968-1f6e-4a4a-9376-ee2b2a50c87a",
+            "relationType": "collaboration",
+            "confidence": "medium"
+          },
+          {
+            "artist": "Nine Inch Noize",
+            "source": "MusicBrainz artist relationship",
+            "sourceUrl": "https://musicbrainz.org/artist/d2f4a968-1f6e-4a4a-9376-ee2b2a50c87a",
+            "relationType": "collaboration",
+            "confidence": "medium"
+          }
+        ],
+        "status": "verified",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de",
+        "releaseId": "c7346893-8ee5-4a84-87aa-9105d6ff66de"
       }
     },
     {
@@ -7595,11 +7884,7 @@
       "financeStockId": "ms335z9bxqja0m",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Croatian Amor",
-        "Cold Cave",
-        "The Soft Moon"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
@@ -7623,6 +7908,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f",
+        "releaseId": "30e26675-c48d-4240-af33-0bccf0f4e16f"
       }
     },
     {
@@ -7742,11 +8036,7 @@
       "financeStockId": "ms334887kr996u",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Aphex Twin",
-        "Autechre",
-        "Plaid"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases"
       ],
@@ -7772,6 +8062,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534",
+        "releaseId": "5d9031c6-675c-4c8d-b77d-9e90c5386534"
       }
     },
     {
@@ -7893,11 +8192,7 @@
       "financeStockId": "ms332grc3z02ht",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Arca",
-        "SOPHIE",
-        "The Chemical Brothers"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "/public/assets/products/mia-steppin-up-meds-and-feds-discogs.jpg",
@@ -7921,6 +8216,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -8042,11 +8346,7 @@
       "financeStockId": "ms32y58v8n46lg",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Animal Collective",
-        "Alex G",
-        "Daniel Lopatin"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
@@ -8070,6 +8370,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0",
+        "releaseId": "6ae505ac-d729-4388-9c74-b9e7e041a7d0"
       }
     },
     {
@@ -8186,11 +8495,7 @@
       "financeStockId": "ms1u4t8pnl9i79",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Bj?rk",
-        "David Byrne",
-        "Animal Collective"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "Pitchfork / The Guardian",
@@ -8208,6 +8513,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
+        "releaseId": "f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd"
       }
     },
     {
@@ -8337,11 +8651,7 @@
       "financeStockId": "ms1gmq78l484fx",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Behold The Arctopus",
-        "Meshuggah",
-        "The Dillinger Escape Plan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "enrichmentOrigin": "curated-exact",
@@ -8364,6 +8674,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/dde87be9-76ac-47cb-a4a8-40ec53cb135f",
+        "releaseId": "dde87be9-76ac-47cb-a4a8-40ec53cb135f"
       }
     },
     {
@@ -8490,10 +8809,7 @@
       "financeStockId": "ms1g40ijr47v91",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Gorguts",
-        "The Dillinger Escape Plan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "enrichmentOrigin": "curated-exact",
@@ -8516,6 +8832,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/bc9f0c79-5f69-4f60-9681-087caba79c18",
+        "releaseId": "bc9f0c79-5f69-4f60-9681-087caba79c18"
       }
     },
     {
@@ -8644,10 +8969,7 @@
       "financeStockId": "ms1g1muz69eef7",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Arca",
-        "Oneohtrix Point Never"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "enrichmentOrigin": "curated-exact",
@@ -8669,6 +8991,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/24086ec2-9398-4d7e-9e3c-ce0b426206cf",
+        "releaseId": "24086ec2-9398-4d7e-9e3c-ce0b426206cf"
       }
     },
     {
@@ -8785,11 +9116,7 @@
       "financeStockId": "ms1t6rhsto1tce",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Chemical Brothers",
-        "Orbital",
-        "Leftfield"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "reviewSourceUrl": "https://www.allmusic.com/album/a-hundred-days-off-mw0000223914",
       "sleeveCondition": "",
@@ -8808,6 +9135,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+        "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972"
       }
     },
     {
@@ -8948,11 +9284,7 @@
       "financeStockId": "ms1tattszbmm4p",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Chemical Brothers",
-        "Orbital",
-        "Leftfield"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "reviewSourceUrl": "https://www.allmusic.com/album/born-slippy-mw0000740687",
       "sleeveCondition": "",
@@ -8971,6 +9303,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/f951d2f7-b59a-4678-b09d-c6290694219e",
+        "releaseId": "f951d2f7-b59a-4678-b09d-c6290694219e"
       }
     },
     {
@@ -9098,11 +9439,7 @@
       "financeStockId": "ms1gm2hww9witl",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Behold The Arctopus",
-        "Meshuggah",
-        "The Dillinger Escape Plan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -9127,6 +9464,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -9243,11 +9589,7 @@
       "financeStockId": "ms1snrc04axq58",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Knife",
-        "Karin Dreijer",
-        "Bjork"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "reviewSourceUrl": "https://pitchfork.com/reviews/albums/fever-ray-plunge/",
       "sleeveCondition": "",
@@ -9266,6 +9608,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -9382,11 +9733,7 @@
       "financeStockId": "ms1t1g1kas1r2f",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Dillinger Escape Plan",
-        "Converge",
-        "Glassjaw"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "reviewSourceUrl": "https://www.allmusic.com/album/new-junk-aesthetic-mw0000824190",
       "sleeveCondition": "",
@@ -9405,6 +9752,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/dcce4a72-d61e-4163-b23c-7073d5c51390",
+        "releaseId": "dcce4a72-d61e-4163-b23c-7073d5c51390"
       }
     },
     {
@@ -9522,9 +9878,7 @@
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Preoccupations",
-        "Women",
-        "Ought"
+        "Preoccupations"
       ],
       "homeCollections": [],
       "reviewSourceUrl": "https://pitchfork.com/reviews/albums/20086-viet-cong/",
@@ -9544,6 +9898,33 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [
+        {
+          "artist": "Preoccupations",
+          "source": "MusicBrainz release artist credit",
+          "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+          "relationType": "release-track-credit",
+          "confidence": "high"
+        }
+      ],
+      "relatedArtistsResearch": {
+        "artists": [
+          "Preoccupations"
+        ],
+        "evidence": [
+          {
+            "artist": "Preoccupations",
+            "source": "MusicBrainz release artist credit",
+            "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+            "relationType": "release-track-credit",
+            "confidence": "high"
+          }
+        ],
+        "status": "verified",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+        "releaseId": "5d5fc614-25fe-4b89-8747-f4357f7a7757"
       }
     },
     {
@@ -9660,11 +10041,7 @@
       "financeStockId": "ms1u3tbk3fmxr8",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Viet Cong",
-        "Preoccupations",
-        "Jerusalem In My Heart"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "reviewSourceUrl": "https://www.theskinny.co.uk/music/reviews/albums/suuns-felt",
       "sleeveCondition": "",
@@ -9683,6 +10060,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/425234c3-e9cc-40d3-87c8-786a4aa299a9",
+        "releaseId": "425234c3-e9cc-40d3-87c8-786a4aa299a9"
       }
     },
     {
@@ -9811,11 +10197,7 @@
       "financeStockId": "ms1tynew19foeg",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Every Time I Die",
-        "Converge",
-        "Botch"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -9836,6 +10218,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/246e573d-84b5-4fba-9128-ae993daed6bf",
+        "releaseId": "246e573d-84b5-4fba-9128-ae993daed6bf"
       }
     },
     {
@@ -9952,11 +10343,7 @@
       "financeStockId": "ms1tiz0nuej19e",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Every Time I Die",
-        "The Dillinger Escape Plan",
-        "Converge"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "reviewSourceUrl": "https://www.sputnikmusic.com/review/72160/Misery-Signals-Controller/",
       "sleeveCondition": "",
@@ -9975,6 +10362,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/2790bd40-2eac-4f1d-9618-e029b0cfc2e5",
+        "releaseId": "2790bd40-2eac-4f1d-9618-e029b0cfc2e5"
       }
     },
     {
@@ -10091,11 +10487,7 @@
       "financeStockId": "ms1u16k0mrlvo2",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Viet Cong",
-        "Women",
-        "Ought"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "reviewSourceUrl": "https://drownedinsound.com/releases/19605/reviews/4150385",
       "sleeveCondition": "",
@@ -10114,6 +10506,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/d2a9d069-efd0-4a57-93e0-a43f5299817f",
+        "releaseId": "d2a9d069-efd0-4a57-93e0-a43f5299817f"
       }
     },
     {
@@ -10241,10 +10642,7 @@
       "financeStockId": "ms1gemwok064md",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Soft Moon",
-        "Nine Inch Nails"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "enrichmentOrigin": "curated-exact",
@@ -10266,6 +10664,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/62ecc025-9126-3698-81de-e446dbcad4f6",
+        "releaseId": "62ecc025-9126-3698-81de-e446dbcad4f6"
       }
     },
     {
@@ -10403,11 +10810,7 @@
       "financeStockId": "catalog-nxp-2026-cd-0024-antemasque",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Mars Volta",
-        "At The Drive-In",
-        "Red Hot Chili Peppers"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -10427,6 +10830,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/46ca1149-5527-4c0d-9dd1-5d4ca2fbd8fc",
+        "releaseId": "46ca1149-5527-4c0d-9dd1-5d4ca2fbd8fc"
       }
     },
     {
@@ -10677,10 +11089,7 @@
       "financeStockId": "catalog-nxp-2026-vnl-0013-self-titled",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Blawan",
-        "Tzusing"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "Giant Swan Bandcamp / The Wire",
@@ -10698,6 +11107,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -10811,11 +11229,7 @@
       "financeStockId": "mrfawzb0isnvbg",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Godflesh",
-        "Justin Broadrick",
-        "Scorn"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "Resident Advisor",
@@ -10833,6 +11247,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -10946,11 +11369,7 @@
       "financeStockId": "mr6qkiyv449mvn",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Mooner",
-        "The Sigit",
-        "White Shoes & The Couples Company"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "Deathrockstar / Superlive",
@@ -10968,6 +11387,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -11094,11 +11522,7 @@
       "financeStockId": "mr9iwnsqn29k60",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Scott Walker",
-        "Brian Eno",
-        "Iggy Pop"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "Pitchfork",
@@ -11116,6 +11540,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/6241d76e-45d9-4f7e-b9fc-24ad33e4955a",
+        "releaseId": "6241d76e-45d9-4f7e-b9fc-24ad33e4955a"
       }
     },
     {
@@ -11229,11 +11662,7 @@
       "financeStockId": "mr6ja47ucadylx",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Deftones",
-        "Crosses",
-        "Palms"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "back-in-stock"
       ],
@@ -11253,6 +11682,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -11366,11 +11804,7 @@
       "financeStockId": "mr6ja47umhud0m",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Fatboy Slim",
-        "The Prodigy",
-        "Underworld"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "back-in-stock"
       ],
@@ -11390,6 +11824,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/0a0bf421-dd43-42eb-8031-61a505bce031",
+        "releaseId": "0a0bf421-dd43-42eb-8031-61a505bce031"
       }
     },
     {
@@ -11503,11 +11946,7 @@
       "financeStockId": "mr6ja47vzrq3wb",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Strokes",
-        "TV On The Radio",
-        "The Rapture"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "Pitchfork",
@@ -11525,6 +11964,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/a2a64cb4-f8f4-30df-936c-cca2d785fe85",
+        "releaseId": "a2a64cb4-f8f4-30df-936c-cca2d785fe85"
       }
     },
     {
@@ -11638,11 +12086,7 @@
       "financeStockId": "mr6ja47uzzwpjm",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Fatboy Slim",
-        "The Prodigy",
-        "The Crystal Method"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "back-in-stock"
       ],
@@ -11662,6 +12106,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -11775,11 +12228,7 @@
       "financeStockId": "mr6ja47v51ai81",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Don Davis",
-        "Juno Reactor",
-        "Rob Dougan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "AllMusic",
@@ -11797,6 +12246,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/bb6cf871-60c8-4aa6-829f-544424b7873a",
+        "releaseId": "bb6cf871-60c8-4aa6-829f-544424b7873a"
       }
     },
     {
@@ -11916,11 +12374,7 @@
       "financeStockId": "mr6ja47v0uuwz1",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Chemical Brothers",
-        "The Crystal Method",
-        "Fatboy Slim"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "back-in-stock"
       ],
@@ -11941,6 +12395,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -12061,11 +12524,7 @@
       "financeStockId": "mr6lysztw7r30s",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Actress",
-        "Huerco S.",
-        "Kassem Mosse"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing",
         "recent-releases"
@@ -12086,6 +12545,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/1308209f-4b42-4f8d-8a15-8aae7fbee284",
+        "releaseId": "1308209f-4b42-4f8d-8a15-8aae7fbee284"
       }
     },
     {
@@ -12212,11 +12680,7 @@
       "financeStockId": "mr6lfmwpu3e70h",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "At The Drive-In",
-        "Omar Rodriguez-Lopez",
-        "Antemasque"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "AllMusic / Sputnikmusic",
@@ -12234,6 +12698,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/cc8ab83b-5d18-4fb7-bf31-4323bff4c341",
+        "releaseId": "cc8ab83b-5d18-4fb7-bf31-4323bff4c341"
       }
     },
     {
@@ -12347,11 +12820,7 @@
       "financeStockId": "mr6qqq4ofhe4wj",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Hella",
-        "Melt-Banana",
-        "Black Pus"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -12371,6 +12840,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/ceedf791-9868-42ab-ba61-d329cca64b97",
+        "releaseId": "ceedf791-9868-42ab-ba61-d329cca64b97"
       }
     },
     {
@@ -12484,11 +12962,7 @@
       "financeStockId": "mr6qvv4xl23arz",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Puce Mary",
-        "Croatian Amor",
-        "Lust For Youth"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -12508,6 +12982,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
+        "releaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f"
       }
     },
     {
@@ -12628,11 +13111,7 @@
       "financeStockId": "mr9rjti7q8f9uz",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Animal Collective",
-        "Avey Tare",
-        "Deakin"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing"
       ],
@@ -12652,6 +13131,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -12772,11 +13260,7 @@
       "financeStockId": "mr6ja47vdluske",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Gilla Band",
-        "Daughters",
-        "The Armed"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases"
       ],
@@ -12796,6 +13280,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+        "releaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e"
       }
     },
     {
@@ -12909,11 +13402,7 @@
       "financeStockId": "mrfauoik0qthwg",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Panda Bear",
-        "Avey Tare",
-        "Boards of Canada"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "back-in-stock"
       ],
@@ -12933,6 +13422,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/fe607444-0a02-4532-9631-1052402f9a01",
+        "releaseId": "fe607444-0a02-4532-9631-1052402f9a01"
       }
     },
     {
@@ -13359,11 +13857,7 @@
       "financeStockId": "mr6ja47usqljf4",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Gojira",
-        "Car Bomb",
-        "Tesseract"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "back-in-stock"
       ],
@@ -13383,6 +13877,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/8cd8cca3-7e09-3f0a-a670-87bf0e8e09fa",
+        "releaseId": "8cd8cca3-7e09-3f0a-a670-87bf0e8e09fa"
       }
     },
     {
@@ -13503,11 +14006,7 @@
       "financeStockId": "mr6ja47v5ye2v4",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Floating Points",
-        "Shabaka Hutchings",
-        "Sam Gendel"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing"
       ],
@@ -13527,6 +14026,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/431d2e9d-580a-452c-b213-67da3ec292ec",
+        "releaseId": "431d2e9d-580a-452c-b213-67da3ec292ec"
       }
     },
     {
@@ -13647,11 +14155,7 @@
       "financeStockId": "mr6ja47vjntmjx",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Oneohtrix Point Never",
-        "Tim Hecker",
-        "Arca"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases"
       ],
@@ -13671,6 +14175,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -13791,11 +14304,7 @@
       "financeStockId": "mr6m870z88pwyb",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Murder Capital",
-        "Shame",
-        "Squid"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing"
       ],
@@ -13815,6 +14324,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -13935,11 +14453,7 @@
       "financeStockId": "mr6m92hfful640",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "The Murder Capital",
-        "Shame",
-        "Squid"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing",
         "recent-releases"
@@ -13960,6 +14474,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -14080,11 +14603,7 @@
       "financeStockId": "mrfb4t2smb08x6",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Disappears",
-        "Preoccupations",
-        "Ought"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing",
         "recent-releases"
@@ -14105,6 +14624,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -14218,11 +14746,7 @@
       "financeStockId": "mr6ja47v3zm15l",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Thursday",
-        "Glassjaw",
-        "From Autumn to Ashes"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "Sputnikmusic",
@@ -14240,6 +14764,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/e43ef3ee-521a-4f45-9202-f539802b4106",
+        "releaseId": "e43ef3ee-521a-4f45-9202-f539802b4106"
       }
     },
     {
@@ -14360,11 +14893,7 @@
       "financeStockId": "mr6ja47v7cvrh3",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Lightning Bolt",
-        "Hella",
-        "Boredoms"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing"
       ],
@@ -14384,6 +14913,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -14497,11 +15035,7 @@
       "financeStockId": "mr6qjmb35c7lcl",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Keiji Haino",
-        "Otomo Yoshihide",
-        "Rully Shabara"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "The Wire / Innocent Records",
@@ -14519,6 +15053,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -14638,11 +15181,7 @@
       "financeStockId": "mr6qoels96nchg",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Gojira",
-        "Car Bomb",
-        "Tesseract"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "back-in-stock"
       ],
@@ -14663,6 +15202,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/0340731f-2d26-4b18-97a6-4a4908ab01ad",
+        "releaseId": "0340731f-2d26-4b18-97a6-4a4908ab01ad"
       }
     },
     {
@@ -14783,11 +15331,7 @@
       "financeStockId": "mr9ris8npfejcf",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "SOPHIE",
-        "FKA twigs",
-        "Bjork"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing",
         "nixp-selection"
@@ -14808,6 +15352,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/01d89511-9676-4c9f-a0fb-15e8bab299c3",
+        "releaseId": "01d89511-9676-4c9f-a0fb-15e8bab299c3"
       }
     },
     {
@@ -14928,11 +15481,7 @@
       "financeStockId": "mr9rfv53sn9wkh",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Nai Palm",
-        "Moonchild",
-        "Thundercat"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing",
         "nixp-selection"
@@ -14953,6 +15502,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -15066,11 +15624,7 @@
       "financeStockId": "mra95oo6xiy74w",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Dysrhythmia",
-        "Krallice",
-        "Orthrelm"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "The Progressive Subway",
@@ -15088,6 +15642,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -15201,11 +15764,7 @@
       "financeStockId": "mrfay90szww1lm",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Cold Cave",
-        "Drab Majesty",
-        "TR/ST"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -15225,6 +15784,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/488e9c77-7c21-42c1-8448-7ff0ea76b06c",
+        "releaseId": "488e9c77-7c21-42c1-8448-7ff0ea76b06c"
       }
     },
     {
@@ -15345,11 +15913,7 @@
       "financeStockId": "mrfb32v1rsfgvl",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Joy Orbison",
-        "Bicep",
-        "The Streets"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing"
       ],
@@ -15369,6 +15933,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -15489,11 +16062,7 @@
       "financeStockId": "mrfb5lvpb70byi",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "DJ Koze",
-        "Jayda G",
-        "Honey Dijon"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing"
       ],
@@ -15513,6 +16082,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -15626,11 +16204,7 @@
       "financeStockId": "mrhvkn2udt4bqn",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Tim Hecker",
-        "Arca",
-        "Daniel Lopatin"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "recent-releases",
         "nixp-selection"
@@ -15651,6 +16225,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+        "releaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279"
       }
     },
     {
@@ -15771,11 +16354,7 @@
       "financeStockId": "mrfb3xt9y714xm",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Jon Hassell",
-        "Tarawangsawelas",
-        "Heith"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing",
         "recent-releases",
@@ -15797,6 +16376,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -15917,11 +16505,7 @@
       "financeStockId": "mrfb6in9tjnx3v",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Karenn",
-        "Pariah",
-        "Surgeon"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing",
         "recent-releases",
@@ -15943,6 +16527,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -16189,11 +16782,7 @@
       "financeStockId": "mr6ja47vn7muqm",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Aphex Twin",
-        "Autechre",
-        "u-Ziq"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "limited-pressing",
         "recent-releases"
@@ -16214,6 +16803,15 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -16773,11 +17371,7 @@
       "financeStockId": "mr6ja47v35qf35",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Don Davis",
-        "Juno Reactor",
-        "Rob Dougan"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "AllMusic",
@@ -16795,6 +17389,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -16909,9 +17512,7 @@
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Trent Reznor and Atticus Ross",
-        "How to Destroy Angels",
-        "Ministry"
+        "Nine Inch Noize"
       ],
       "homeCollections": [],
       "sleeveCondition": "",
@@ -16930,6 +17531,33 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [
+        {
+          "artist": "Nine Inch Noize",
+          "source": "MusicBrainz artist relationship",
+          "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
+          "relationType": "collaboration",
+          "confidence": "medium"
+        }
+      ],
+      "relatedArtistsResearch": {
+        "artists": [
+          "Nine Inch Noize"
+        ],
+        "evidence": [
+          {
+            "artist": "Nine Inch Noize",
+            "source": "MusicBrainz artist relationship",
+            "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
+            "relationType": "collaboration",
+            "confidence": "medium"
+          }
+        ],
+        "status": "verified",
+        "source": "MusicBrainz",
+        "sourceUrl": "",
+        "releaseId": ""
       }
     },
     {
@@ -17044,9 +17672,7 @@
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Trent Reznor and Atticus Ross",
-        "How to Destroy Angels",
-        "Ministry"
+        "Nine Inch Noize"
       ],
       "homeCollections": [],
       "sleeveCondition": "",
@@ -17065,6 +17691,33 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [
+        {
+          "artist": "Nine Inch Noize",
+          "source": "MusicBrainz artist relationship",
+          "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
+          "relationType": "collaboration",
+          "confidence": "medium"
+        }
+      ],
+      "relatedArtistsResearch": {
+        "artists": [
+          "Nine Inch Noize"
+        ],
+        "evidence": [
+          {
+            "artist": "Nine Inch Noize",
+            "source": "MusicBrainz artist relationship",
+            "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
+            "relationType": "collaboration",
+            "confidence": "medium"
+          }
+        ],
+        "status": "verified",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/208effc4-c555-4940-ac0f-2105cb61c328",
+        "releaseId": "208effc4-c555-4940-ac0f-2105cb61c328"
       }
     },
     {
@@ -17474,11 +18127,7 @@
       "financeStockId": "mr6ja47vrnb0iv",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Arca",
-        "A. G. Cook",
-        "Charli XCX"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "Associated Press / Pitchfork",
@@ -17496,6 +18145,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/33dbffe4-c447-4a77-8719-c5903cf1228b",
+        "releaseId": "33dbffe4-c447-4a77-8719-c5903cf1228b"
       }
     },
     {
@@ -17609,11 +18267,7 @@
       "financeStockId": "mrf9hnagmp9qfy",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Converge",
-        "Isis",
-        "Botch"
-      ],
+      "relatedArtists": [],
       "homeCollections": [],
       "sleeveCondition": "",
       "descriptionSource": "AllMusic / Pitchfork",
@@ -17631,6 +18285,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/309326d4-b735-4036-a162-67abc3052233",
+        "releaseId": "309326d4-b735-4036-a162-67abc3052233"
       }
     },
     {
@@ -17744,11 +18407,7 @@
       "financeStockId": "mrfavlnv4xrz5g",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Slowdive",
-        "Ride",
-        "Cocteau Twins"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "back-in-stock"
       ],
@@ -17768,6 +18427,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/68dc06dc-242d-43ab-805d-aaa4310648a6",
+        "releaseId": "68dc06dc-242d-43ab-805d-aaa4310648a6"
       }
     },
     {
@@ -17881,11 +18549,7 @@
       "financeStockId": "mr6pcndyfh76py",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [
-        "Scott Walker",
-        "Nine Inch Nails",
-        "Brian Eno"
-      ],
+      "relatedArtists": [],
       "homeCollections": [
         "nixp-selection"
       ],
@@ -17905,6 +18569,15 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "relatedArtistEvidence": [],
+      "relatedArtistsResearch": {
+        "artists": [],
+        "evidence": [],
+        "status": "no-verified-match",
+        "source": "MusicBrainz",
+        "sourceUrl": "https://musicbrainz.org/release/56c67a5e-2f62-4d39-86f3-3bce7678278d",
+        "releaseId": "56c67a5e-2f62-4d39-86f3-3bce7678278d"
       }
     }
   ],

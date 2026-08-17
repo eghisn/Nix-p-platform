@@ -5,7 +5,13 @@ import { archiveRemoteProductImage, isManagedProductImage } from "./productImage
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const USED_CONDITION = /^used\b/i;
 const MUSICBRAINZ_ORIGIN = "https://musicbrainz.org";
-const USER_AGENT = "NIXP-Catalog/1.0 (contact@nix-p.com)";
+const USER_AGENT = "NIXP-Catalog/2.0 (https://nix-p.com; contact@nix-p.com)";
+const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
+const VERIFIED_RELATION_TYPES = new Set(["collaboration", "collaborated with", "member of band"]);
+const musicBrainzCache = new Map();
+let musicBrainzQueue = Promise.resolve();
+let lastMusicBrainzRequestAt = 0;
 const TRUSTED_REVIEW_SOURCES = new Map([
   ["pitchfork.com", "Pitchfork (quoted)"],
   ["thequietus.com", "The Quietus (quoted)"],
@@ -1019,10 +1025,10 @@ export function applyCuratedEditorialOverride(discovered, sku) {
   if (!discovered) return discovered;
   const override = CURATED_EDITORIAL_OVERRIDES[String(sku || "").trim().toUpperCase()];
   if (!override) return discovered;
+  const { relatedArtists: _legacyRelatedArtists, ...verifiedEditorial } = override;
   return {
     ...discovered,
-    ...override,
-    relatedArtists: unique([...(discovered.relatedArtists || []), ...(override.relatedArtists || [])])
+    ...verifiedEditorial
   };
 }
 
@@ -1090,17 +1096,20 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const reviewQuote = chooseEditorialValue(raw.reviewQuote, automatic.reviewQuote, discovered.reviewQuote || "");
   const reviewSource = chooseEditorialValue(raw.reviewSource, automatic.reviewSource, discovered.reviewSource || "");
   const reviewUrl = chooseEditorialValue(raw.reviewUrl, automatic.reviewUrl, discovered.reviewUrl || "");
-  const discoveredRelatedArtists = unique([
-    ...((Array.isArray(raw.relatedArtists) ? raw.relatedArtists : [])),
-    ...(discovered.relatedArtists || []),
-    ...relatedArtistsFromCatalog({
-      artist,
-      label: discovered.label || row.label,
-      tags: discovered.tags || [],
-      catalogArtists
-    })
+  const relatedArtistResearch = discovered.relatedArtistResearch || await researchRelatedArtists({
+    artist,
+    title: discovered.title || title,
+    format,
+    releaseId: discovered.musicBrainzReleaseId || raw.musicBrainzReleaseId || ""
+  });
+  const manualRelatedArtists = Array.isArray(raw.manualRelatedArtists)
+    ? raw.manualRelatedArtists.map(canonicalRelatedArtistName)
+    : [];
+  const relatedArtists = unique([
+    ...manualRelatedArtists,
+    ...(relatedArtistResearch.artists || [])
   ].map(canonicalRelatedArtistName));
-  const relatedArtists = relatedArtistsAvailableInCatalog(discoveredRelatedArtists, catalogArtists);
+  const relatedArtistEvidence = relatedArtistResearch.evidence || [];
   const enrichmentFingerprint = inventoryFingerprint({ ...stock, artist, title, format });
   const shipping = referenceShippingProfile(
     { ...row, format, display_format: format, edition, details },
@@ -1151,6 +1160,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       barcode: raw.barcode || discovered.barcode || "",
       catalogNumber: raw.catalogNumber || discovered.catalogNumber || "",
       relatedArtists,
+      relatedArtistEvidence,
+      relatedArtistsResearch: relatedArtistResearch,
       descriptionSource,
       reviewQuote,
       reviewSource,
@@ -1165,18 +1176,20 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
         reviewQuote,
         reviewSource,
         reviewUrl,
-        relatedArtists
+        relatedArtists,
+        relatedArtistEvidence,
+        relatedArtistsResearch: relatedArtistResearch
       },
       enrichmentFingerprint,
       enrichmentOrigin: curated ? "curated-exact" : Object.keys(editorialOverride).length ? "musicbrainz+curated-editorial" : "musicbrainz",
-      enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote, reviewSource, reviewUrl }),
+      enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl }),
       enrichmentUpdatedAt: today(),
       enrichmentAttemptedAt: new Date().toISOString(),
       shipping
     }
   };
   return finalizeStatus(product, {
-    publishable: hasCatalogCore(product) && product.raw.enrichmentStatus === "complete",
+    publishable: hasCatalogCore(product) && ["complete", "complete-no-related-artists"].includes(product.raw.enrichmentStatus),
     status: product.raw.enrichmentStatus
   });
 }
@@ -1226,9 +1239,8 @@ async function discoverMusicBrainzRelease(stock) {
     `artist:"${escapeQuery(stock.artist)}"`,
     `release:"${escapeQuery(stock.title)}"`
   ].join(" AND ");
-  const response = await fetch(
-    `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25&inc=labels+artist-credits+media+release-groups`,
-    { headers: { accept: "application/json", "user-agent": USER_AGENT } }
+  const response = await musicBrainzFetch(
+    `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25&inc=labels+artist-credits+media+release-groups`
   );
   if (!response.ok) return null;
   const payload = await response.json();
@@ -1264,10 +1276,10 @@ async function discoverMusicBrainzRelease(stock) {
     release.packaging,
     ...(release.media || []).map((medium) => medium.format)
   ]).join(" / ");
-  const [releaseGroup, pitchforkReview, relatedArtists] = await Promise.all([
+  const [releaseGroup, pitchforkReview, relatedArtistResearch] = await Promise.all([
     discoverReleaseGroup(release["release-group"]?.id),
     discoverPitchforkReview({ artist: stock.artist, title: release.title }),
-    discoverRelatedArtists(stock.artist)
+    researchRelatedArtists({ artist: stock.artist, title: release.title, format, releaseId: release.id })
   ]);
   const review =
     pitchforkReview ||
@@ -1306,7 +1318,9 @@ async function discoverMusicBrainzRelease(stock) {
     reviewQuote: review?.quote || "",
     reviewSource: review?.source || "",
     reviewUrl: review?.url || "",
-    relatedArtists,
+    relatedArtists: relatedArtistResearch.artists,
+    relatedArtistEvidence: relatedArtistResearch.evidence,
+    relatedArtistResearch,
     tags,
     sourceUrl: releaseGroup?.officialUrl || `${MUSICBRAINZ_ORIGIN}/release/${release.id}`,
     musicBrainzReleaseId: release.id
@@ -1572,7 +1586,7 @@ function usedCondition(value) {
   return USED_CONDITION.test(String(value || ""));
 }
 
-function enrichmentStatus({ used, discovered, description, relatedArtists, reviewQuote, reviewSource, reviewUrl }) {
+function enrichmentStatus({ used, discovered, description, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl }) {
   if (!discovered?.cover) return "needs-cover-art";
   if (!isManagedProductImage(discovered.cover)) return "needs-cover-archive";
   // A verified release cover is the required storefront image. Product-detail
@@ -1580,10 +1594,11 @@ function enrichmentStatus({ used, discovered, description, relatedArtists, revie
   // not have one available from a trustworthy source and must not be trapped
   // in Draft solely for that reason.
   if (!description) return "needs-editorial-metadata";
-  if (!relatedArtists.length) return "metadata-complete-no-related-artists";
+  if (!relatedArtists.length && relatedArtistResearch?.status !== "no-verified-match") return "needs-related-artist-research";
   // A source-backed review quote is never invented by automation. Its absence
   // keeps the product private until a trusted source is resolved.
-  return reviewQuote && reviewSource && reviewUrl ? "complete" : "metadata-complete-needs-editorial-review";
+  if (!reviewQuote || !reviewSource || !reviewUrl) return "metadata-complete-needs-editorial-review";
+  return relatedArtists.length ? "complete" : "complete-no-related-artists";
 }
 
 function editionMatchesFormat(edition, format) {
@@ -1600,52 +1615,6 @@ function chooseEditorialValue(current, previousAutomatic, nextAutomatic) {
   const value = String(current || "").trim();
   if (!value || value === String(previousAutomatic || "").trim()) return String(nextAutomatic || "").trim();
   return value;
-}
-
-function relatedArtistsFromCatalog({ artist, label, tags = [], catalogArtists = [] } = {}) {
-  const ownNames = new Set(artistCreditNames(artist).map((name) => normalizedText(name)));
-  const normalizedLabel = normalizedText(label);
-  const sourceFamilies = tagFamilies(tags);
-  const scored = new Map();
-  for (const candidate of Array.isArray(catalogArtists) ? catalogArtists : []) {
-    const names = artistCreditNames(candidate?.artist).filter((name) => !ownNames.has(normalizedText(name)));
-    if (!names.length) continue;
-    const candidateTags = unique([...(candidate?.tags || []), ...(candidate?.raw?.tags || [])]);
-    const candidateFamilies = tagFamilies(candidateTags);
-    const sharedFamilies = [...sourceFamilies].filter((family) => candidateFamilies.has(family)).length;
-    const sameLabel = Boolean(normalizedLabel && normalizedText(candidate?.label) === normalizedLabel);
-    const score = (sameLabel ? 8 : 0) + sharedFamilies * 3;
-    if (!score) continue;
-    for (const name of names) scored.set(name, Math.max(score, scored.get(name) || 0));
-  }
-  return [...scored]
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .map(([name]) => name)
-    .slice(0, 6);
-}
-
-function tagFamilies(tags = []) {
-  const families = new Set();
-  const aliases = [
-    ["dark-post-punk", /(post.?punk|goth|darkwave|coldwave|deathrock)/],
-    ["industrial-noise", /(industrial|noise|power electronics|ebm)/],
-    ["electronic-experimental", /(electronic|techno|ambient|idm|deconstructed|experimental)/],
-    ["heavy-technical", /(metal|hardcore|mathcore|grind|technical|progressive)/],
-    ["indie-art-rock", /(indie|art rock|alternative|new wave|punk)/],
-    ["contemporary-composition", /(jazz|classical|composition|minimalism|improvisation)/]
-  ];
-  for (const tag of unique(tags).map(normalizedText)) {
-    for (const [family, pattern] of aliases) if (pattern.test(tag)) families.add(family);
-  }
-  return families;
-}
-
-function relatedArtistsAvailableInCatalog(candidates, catalogArtists = []) {
-  if (!Array.isArray(catalogArtists) || !catalogArtists.length) return candidates;
-  const available = new Map(
-    catalogArtists.flatMap((product) => artistCreditNames(product?.artist).map((name) => [normalizedText(name), canonicalRelatedArtistName(name)]))
-  );
-  return unique(candidates.map((name) => available.get(normalizedText(name))).filter(Boolean)).slice(0, 6);
 }
 
 function hasCatalogCore(row) {
@@ -1676,27 +1645,190 @@ function isUsableImage(value) {
   return Boolean(image && !image.includes("nixp-product-example"));
 }
 
-async function discoverRelatedArtists(artist) {
-  const search = await fetch(
-    `${MUSICBRAINZ_ORIGIN}/ws/2/artist/?query=${encodeURIComponent(`artist:"${escapeQuery(artist)}"`)}&fmt=json&limit=1`,
-    { headers: { accept: "application/json", "user-agent": USER_AGENT } }
-  ).catch(() => null);
-  if (!search?.ok) return [];
+export async function researchRelatedArtists({ artist = "", title = "", format = "", releaseId = "" } = {}) {
+  const ownNames = new Set(artistCreditNames(artist).map((name) => normalizedText(name)));
+  const evidence = [];
+  const seen = new Set();
+  let sourceUnavailable = false;
+  const add = (name, item) => {
+    const value = canonicalRelatedArtistName(name);
+    const key = normalizedText(value);
+    if (!key || ownNames.has(key) || seen.has(key)) return;
+    seen.add(key);
+    evidence.push({ artist: value, ...item });
+  };
+
+  let resolvedReleaseId = String(releaseId || "").trim();
+  if (!resolvedReleaseId && artist && title) {
+    const releaseLookup = await findMusicBrainzReleaseId({ artist, title, format });
+    resolvedReleaseId = releaseLookup.id;
+    sourceUnavailable ||= releaseLookup.unavailable;
+  }
+
+  if (resolvedReleaseId) {
+    const response = await musicBrainzFetch(
+      `${MUSICBRAINZ_ORIGIN}/ws/2/release/${encodeURIComponent(resolvedReleaseId)}?inc=artist-credits+artist-rels+release-rels+recordings&fmt=json`
+    );
+    sourceUnavailable ||= Boolean(response && !response.ok && response.status >= 500) || response === null;
+    if (response?.ok) {
+      const release = await response.json().catch(() => ({}));
+      const sourceUrl = `${MUSICBRAINZ_ORIGIN}/release/${resolvedReleaseId}`;
+      const trackCredits = (release.media || [])
+        .flatMap((medium) => medium.tracks || [])
+        .flatMap((track) => track["artist-credit"] || []);
+      for (const credit of trackCredits) {
+        add(credit?.artist?.name || credit?.name, {
+          source: "MusicBrainz release artist credit",
+          sourceUrl,
+          relationType: "release-track-credit",
+          confidence: "high"
+        });
+        if (evidence.length >= 4) break;
+      }
+      for (const relation of release.relations || []) {
+        if (!VERIFIED_RELATION_TYPES.has(String(relation?.type || "").toLowerCase())) continue;
+        const target = relation.target || relation.artist;
+        if (target?.type !== "artist") continue;
+        add(target.name, {
+          source: "MusicBrainz release relationship",
+          sourceUrl,
+          relationType: relation.type,
+          confidence: "high"
+        });
+        if (evidence.length >= 4) break;
+      }
+    }
+  }
+
+  // If the exact release has no credited collaborator, use only direct
+  // MusicBrainz artist relationships. Do not use genre, label, or NIXP
+  // catalogue similarity as a substitute for evidence.
+  if (!evidence.length && artist) {
+    const relationResult = await discoverDirectArtistRelations(artist);
+    sourceUnavailable ||= relationResult.unavailable;
+    for (const relation of relationResult.relations) {
+      add(relation.artist, relation);
+      if (evidence.length >= 4) break;
+    }
+  }
+
+  return {
+    artists: evidence.map((item) => item.artist),
+    evidence,
+    status: evidence.length ? "verified" : sourceUnavailable ? "source-unavailable" : "no-verified-match",
+    source: "MusicBrainz",
+    sourceUrl: resolvedReleaseId ? `${MUSICBRAINZ_ORIGIN}/release/${resolvedReleaseId}` : "",
+    releaseId: resolvedReleaseId
+  };
+}
+
+async function findMusicBrainzReleaseId({ artist, title, format } = {}) {
+  const query = [
+    `artist:"${escapeQuery(artist)}"`,
+    `release:"${escapeQuery(title)}"`
+  ].join(" AND ");
+  const response = await musicBrainzFetch(
+    `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25&inc=labels+artist-credits+media+release-groups`
+  );
+  if (!response?.ok) return { id: "", unavailable: !response || response.status >= 500 };
+  const payload = await response.json().catch(() => ({}));
+  const expectedTitle = normalizedText(title);
+  const expectedArtist = normalizedText(artist);
+  const expectedFormat = normalizedText(format);
+  const matches = (payload.releases || []).filter((release) => {
+    const formats = (release.media || []).map((medium) => normalizedText(medium.format));
+    const artists = normalizedText((release["artist-credit"] || []).map((credit) => credit.name).join(" "));
+    return normalizedText(release.title) === expectedTitle &&
+      artists.includes(expectedArtist) &&
+      (!expectedFormat || !formats.length || formats.some((candidate) => candidate.includes(expectedFormat)));
+  });
+  return {
+    id: matches.sort((a, b) => Number(b.score || 0) - Number(a.score || 0))[0]?.id || "",
+    unavailable: false
+  };
+}
+
+async function discoverDirectArtistRelations(artist) {
+  const primaryArtist = artistCreditNames(artist)[0] || artist;
+  const search = await musicBrainzFetch(
+    `${MUSICBRAINZ_ORIGIN}/ws/2/artist/?query=${encodeURIComponent(`artist:"${escapeQuery(primaryArtist)}"`)}&fmt=json&limit=5`
+  );
+  if (!search?.ok) return { relations: [], unavailable: !search || search.status >= 500 };
   const payload = await search.json().catch(() => ({}));
-  const match = payload.artists?.[0];
-  if (!match?.id) return [];
-  const response = await fetch(
-    `${MUSICBRAINZ_ORIGIN}/ws/2/artist/${match.id}?inc=artist-rels&fmt=json`,
-    { headers: { accept: "application/json", "user-agent": USER_AGENT } }
-  ).catch(() => null);
-  if (!response?.ok) return [];
+  const candidates = payload.artists || [];
+  const match = candidates.find((item) => normalizedText(item.name) === normalizedText(primaryArtist)) || candidates[0];
+  if (!match?.id) return { relations: [], unavailable: false };
+  const response = await musicBrainzFetch(
+    `${MUSICBRAINZ_ORIGIN}/ws/2/artist/${match.id}?inc=artist-rels&fmt=json`
+  );
+  if (!response?.ok) return { relations: [], unavailable: !response || response.status >= 500 };
   const artistData = await response.json().catch(() => ({}));
-  return unique(
+  return {
+    relations: uniqueRelations(
     (artistData.relations || [])
-      .filter((relation) => relation?.target?.type === "artist")
-      .map((relation) => relation.target?.name || relation.artist?.name)
-      .filter((name) => normalizedText(name) !== normalizedText(artist))
-  ).slice(0, 8);
+      .filter((relation) => VERIFIED_RELATION_TYPES.has(String(relation?.type || "").toLowerCase()))
+      .filter((relation) => {
+        const target = relation.target || relation.artist;
+        // Membership is useful when a solo artist is a member of a group, but
+        // band membership lists are too broad to use as recommendations.
+        return relation.type !== "member of band" || target?.type === "group";
+      })
+      .map((relation) => {
+        const target = relation.target || relation.artist;
+        return target?.name
+          ? {
+              artist: canonicalRelatedArtistName(target.name),
+              source: "MusicBrainz artist relationship",
+              sourceUrl: `${MUSICBRAINZ_ORIGIN}/artist/${match.id}`,
+              relationType: relation.type,
+              confidence: "medium"
+            }
+          : null;
+      })
+      .filter(Boolean)
+    ),
+    unavailable: false
+  };
+}
+
+function uniqueRelations(values = []) {
+  const byArtist = new Map();
+  for (const value of values) {
+    const key = normalizedText(value?.artist);
+    if (!key || byArtist.has(key)) continue;
+    byArtist.set(key, value);
+  }
+  return [...byArtist.values()];
+}
+
+async function musicBrainzFetch(url) {
+  const cached = musicBrainzCache.get(url);
+  if (cached && Date.now() - cached.at < RELATED_ARTIST_CACHE_TTL_MS) return cached.response;
+  const request = musicBrainzQueue.then(async () => {
+    const waitMs = Math.max(0, MUSICBRAINZ_REQUEST_INTERVAL_MS - (Date.now() - lastMusicBrainzRequestAt));
+    if (waitMs) await new Promise((resolve) => setTimeout(resolve, waitMs));
+    lastMusicBrainzRequestAt = Date.now();
+    const response = await fetch(url, { headers: { accept: "application/json", "user-agent": USER_AGENT } }).catch(() => null);
+    if (!response) return null;
+    const payload = await response.json().catch(() => null);
+    const result = {
+      ok: response.ok,
+      status: response.status,
+      response: {
+        ok: response.ok,
+        status: response.status,
+        json: async () => payload
+      }
+    };
+    // Cache successful responses and stable 404s, but never turn a transient API
+    // failure into a week-long false "no match" result.
+    if (result.response.ok || result.response.status === 404) {
+      musicBrainzCache.set(url, { at: Date.now(), response: result.response });
+    }
+    return result.response;
+  });
+  musicBrainzQueue = request.catch(() => null);
+  return request;
 }
 
 function mergeCredits(current, discovered) {

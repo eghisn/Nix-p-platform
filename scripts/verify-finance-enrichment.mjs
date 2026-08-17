@@ -40,17 +40,27 @@ const draft = {
   raw: {}
 };
 
+function assertPublishedOrWaitsForSource(product) {
+  if (product.raw.relatedArtistsResearch?.status === "source-unavailable") {
+    assert.equal(product.publish_status, "Draft");
+    assert.equal(product.visibility, "Private");
+    return false;
+  }
+  assert.equal(product.publish_status, "Published");
+  assert.equal(product.visibility, "Public");
+  return true;
+}
+
 const enriched = await enrichFinanceCatalogProduct(draft, stock, {
   catalogArtists: [{ artist: "Meshuggah", label: "Season of Mist" }]
 });
 
-assert.equal(enriched.publish_status, "Published");
-assert.equal(enriched.visibility, "Public");
+assertPublishedOrWaitsForSource(enriched);
 assert.match(enriched.image, /^\/public\//);
 assert.ok(enriched.description.length > 40);
 assert.ok(enriched.raw.reviewQuote);
-assert.ok(enriched.raw.relatedArtists.includes("Meshuggah"));
-assert.equal(enriched.raw.enrichmentStatus, "complete");
+assert.ok(["complete", "complete-no-related-artists", "needs-related-artist-research"].includes(enriched.raw.enrichmentStatus));
+assert.ok(["verified", "no-verified-match", "source-unavailable"].includes(enriched.raw.relatedArtistsResearch.status));
 assert.equal(enriched.raw.enrichmentFingerprint, inventoryFingerprint(stock));
 assert.equal(enriched.raw.shipping.packagingGroup, "SMALL_MEDIA");
 assert.equal(enriched.raw.shipping.weightGrams, 120);
@@ -69,8 +79,7 @@ const privateEnriched = await enrichFinanceCatalogProduct(
 assert.equal(privateEnriched.open_to_offers, true);
 assert.equal(privateEnriched.price, 0);
 assert.equal(privateEnriched.minimum_acceptable_offer, 500000);
-assert.equal(privateEnriched.publish_status, "Published");
-assert.equal(privateEnriched.visibility, "Public");
+assertPublishedOrWaitsForSource(privateEnriched);
 assert.ok(privateEnriched.raw.enrichmentAttemptedAt);
 
 const missingIdentity = await enrichFinanceCatalogProduct(draft, { ...stock, title: "", sellingPrice: 0 });
@@ -91,13 +100,13 @@ const tim = await enrichFinanceCatalogProduct(
   timStock,
   { catalogArtists: [{ artist: "Oneohtrix Point Never", label: "Warp Records" }, { artist: "Nala Sinephro", label: "Warp Records" }] }
 );
-assert.equal(tim.publish_status, "Published");
-assert.equal(tim.raw.enrichmentStatus, "complete");
+const timPublished = assertPublishedOrWaitsForSource(tim);
+assert.ok(["complete", "complete-no-related-artists", "needs-related-artist-research"].includes(tim.raw.enrichmentStatus));
 assert.equal(tim.raw.reviewSource, "Pitchfork (quoted)");
-assert.deepEqual(tim.raw.relatedArtists, ["Oneohtrix Point Never", "Nala Sinephro"]);
+assert.ok(["verified", "no-verified-match", "source-unavailable"].includes(tim.raw.relatedArtistsResearch.status));
 assert.equal(tim.images.length, 1, "Used records must not receive an invented product mockup.");
 assert.equal(tim.raw.shipping.shippingClass, "small-media-cd-bubble");
-assert.equal(isRecordPublicationReady({ ...tim, ...tim.raw }), true);
+if (timPublished) assert.equal(isRecordPublicationReady({ ...tim, ...tim.raw }), true);
 
 const timPlaceholder = await enrichFinanceCatalogProduct(
   { ...draft, id: "finance-nxp-2026-cd-0045", sku: timStock.sku, title: "Legacy Konoyo", raw: {} },
@@ -122,14 +131,13 @@ const buttechno = await enrichFinanceCatalogProduct(
   buttechnoStock,
   { catalogArtists: [{ artist: "L.O.T.I.O.N" }, { artist: "The Prodigy" }, { artist: "Suicide" }, { artist: "The Soft Moon" }] }
 );
-assert.equal(buttechno.publish_status, "Published");
-assert.equal(buttechno.visibility, "Public");
+const buttechnoPublished = assertPublishedOrWaitsForSource(buttechno);
 assert.equal(buttechno.open_to_offers, true);
 assert.equal(buttechno.minimum_acceptable_offer, 2500000);
-assert.equal(buttechno.raw.enrichmentStatus, "complete");
+assert.ok(["complete", "complete-no-related-artists", "needs-related-artist-research"].includes(buttechno.raw.enrichmentStatus));
 assert.equal(buttechno.raw.reviewSource, "Boomkat (quoted)");
-assert.deepEqual(buttechno.raw.relatedArtists, ["L.O.T.I.O.N", "The Prodigy", "Suicide", "The Soft Moon"]);
-assert.equal(isRecordPublicationReady({ ...buttechno, ...buttechno.raw }), true);
+assert.ok(["verified", "no-verified-match", "source-unavailable"].includes(buttechno.raw.relatedArtistsResearch.status));
+if (buttechnoPublished) assert.equal(isRecordPublicationReady({ ...buttechno, ...buttechno.raw }), true);
 
 const unsafeStore = applyCatalogPublicationSafety({
   products: [{ ...tim.raw, id: tim.id, financeStockId: "stock-1", publishStatus: "Published", visibility: "Public", reviewQuote: "", reviewSource: "", reviewUrl: "" }]
@@ -138,18 +146,20 @@ assert.equal(unsafeStore.products[0].publishStatus, "Draft");
 assert.equal(unsafeStore.products[0].visibility, "Private");
 assert.ok(unsafeStore.products[0].raw.publicationIssues.includes("source-backed review"));
 
-const publicationReadyWithoutEditionOrBarcode = applyCatalogPublicationSafety({
-  products: [{
-    ...tim.raw,
-    id: tim.id,
-    financeStockId: "stock-1",
-    publishStatus: "Published",
-    visibility: "Public",
-    edition: "",
-    barcode: ""
-  }]
-});
-assert.equal(publicationReadyWithoutEditionOrBarcode.products[0].publishStatus, "Published");
+if (timPublished) {
+  const publicationReadyWithoutEditionOrBarcode = applyCatalogPublicationSafety({
+    products: [{
+      ...tim.raw,
+      id: tim.id,
+      financeStockId: "stock-1",
+      publishStatus: "Published",
+      visibility: "Public",
+      edition: "",
+      barcode: ""
+    }]
+  });
+  assert.equal(publicationReadyWithoutEditionOrBarcode.products[0].publishStatus, "Published");
+}
 
 const researchedPartial = {
   id: "finance-partial-research",
@@ -181,21 +191,20 @@ const researchedPartial = {
     visibility: "Public"
   }
 };
-assert.equal(isResearchPublicationReady(researchedPartial), true);
+assert.equal(isResearchPublicationReady(researchedPartial), false);
 assert.ok(recordPublicationIssues(researchedPartial).includes("source-backed review"));
-assert.equal(applyCatalogPublicationSafety({ products: [researchedPartial] }).products[0].publishStatus, "Published");
+assert.equal(applyCatalogPublicationSafety({ products: [researchedPartial] }).products[0].publishStatus, "Draft");
 
 const bauhausEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0041"];
 assert.equal(bauhausEditorial.reviewSource, "AllMusic (quoted)");
 assert.match(bauhausEditorial.reviewUrl, /^https:\/\/www\.allmusic\.com\/album\//);
 assert.ok(bauhausEditorial.reviewQuote.includes("She's in Parties"));
-assert.ok(bauhausEditorial.relatedArtists.includes("The Soft Moon"));
 const bauhausDiscovered = applyCuratedEditorialOverride(
   { reviewQuote: "", reviewSource: "", relatedArtists: ["Suicide"], cover: "/public/cover.jpg" },
   "nxp-2026-vnl-0041"
 );
 assert.equal(bauhausDiscovered.reviewSource, "AllMusic (quoted)");
-assert.deepEqual(bauhausDiscovered.relatedArtists, ["Suicide", "The Soft Moon", "Nine Inch Nails", "David Bowie"]);
+assert.deepEqual(bauhausDiscovered.relatedArtists, ["Suicide"]);
 assert.equal(bauhausDiscovered.cover, "/public/cover.jpg");
 
 process.stdout.write("Finance catalog enrichment contract passed.\n");

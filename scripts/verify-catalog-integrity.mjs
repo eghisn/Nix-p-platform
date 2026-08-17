@@ -24,8 +24,12 @@ for (const product of publicProducts) {
     await fs.access(file).catch(() => issues.push(`${product.sku || product.id}: missing local image ${product.image}`));
   }
   if (product.category === "Records") {
-    for (const [field, value] of Object.entries({ description: product.description, reviewQuote: product.reviewQuote, reviewSource: product.reviewSource, relatedArtists: product.relatedArtists?.length })) {
+    for (const [field, value] of Object.entries({ description: product.description, reviewQuote: product.reviewQuote, reviewSource: product.reviewSource })) {
       if (!value) issues.push(`${product.sku || product.id}: missing record editorial field ${field}`);
+    }
+    const relatedResearchStatus = String(product.relatedArtistsResearch?.status || "").trim();
+    if (!product.relatedArtists?.length && !["verified", "no-verified-match"].includes(relatedResearchStatus)) {
+      issues.push(`${product.sku || product.id}: missing related-artist research result`);
     }
     if (isFinanceCatalogProduct(product)) {
       for (const issue of recordPublicationIssues(product)) issues.push(`${product.sku || product.id}: unsafe finance publication missing ${issue}`);

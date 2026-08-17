@@ -89,13 +89,13 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
 }
 
 function editorialProductIsComplete(product = {}) {
+  const relatedResearchStatus = String(product.relatedArtistsResearch?.status || product.raw?.relatedArtistsResearch?.status || "").trim();
   return Boolean(
     product.category === "Records" &&
       String(product.description || "").trim() &&
       String(product.reviewQuote || "").trim() &&
-      Array.isArray(product.relatedArtists) &&
-      product.relatedArtists.length &&
-      String(product.enrichmentStatus || "").toLowerCase() === "complete"
+      (Array.isArray(product.relatedArtists) && product.relatedArtists.length || ["verified", "no-verified-match"].includes(relatedResearchStatus)) &&
+      ["complete", "complete-no-related-artists"].includes(String(product.enrichmentStatus || product.raw?.enrichmentStatus || "").toLowerCase())
   );
 }
 
@@ -118,8 +118,14 @@ function isPlaceholderCatalogTitle(value) {
   return /^(?:untitled(?:\s+inventory)?\s+item|new\s+inventory\s+item)$/i.test(String(value || "").trim());
 }
 
-function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
+export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
   const remoteById = new Map(remoteProducts.map((product) => [product.id, product]));
+  const researchFields = [
+    "relatedArtists",
+    "relatedArtistEvidence",
+    "relatedArtistsResearch",
+    "enrichmentStatus"
+  ];
   const identityFields = [
     "sku",
     "title",
@@ -142,13 +148,11 @@ function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
     "reviewQuote",
     "reviewSource",
     "reviewUrl",
-    "relatedArtists",
     "image",
     "images",
     "imageCredits",
     "autoProductPhoto",
     "enrichmentOrigin",
-    "enrichmentStatus",
     "enrichmentUpdatedAt",
     "metadataSourceUrl",
     "musicBrainzReleaseId",
@@ -175,18 +179,32 @@ function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
         open_to_offers: remoteProduct.open_to_offers,
         minimumAcceptableOffer: remoteProduct.minimumAcceptableOffer
       };
+      const remoteResearchStatus = String(remoteProduct.relatedArtistsResearch?.status || "").trim();
+      const hasSourceBackedResearch = ["verified", "no-verified-match"].includes(remoteResearchStatus);
+      const withRemoteResearch = hasSourceBackedResearch
+        ? researchFields.reduce(
+            (product, field) => (remoteProduct[field] !== undefined ? { ...product, [field]: remoteProduct[field] } : product),
+            merged
+          )
+        : merged;
       const withCurrentIdentity = identityFields.reduce((product, field) => {
         const value = remoteProduct[field];
         const usable = field === "title"
           ? String(value || "").trim() && !isPlaceholderCatalogTitle(value)
           : value !== undefined && value !== null && (typeof value !== "string" || value.trim());
         return usable ? { ...product, [field]: value } : product;
-      }, merged);
+      }, withRemoteResearch);
       if (!snapshotOwnsEditorialFields(snapshotProduct)) return withCurrentIdentity;
-      return fields.reduce(
+      const withSnapshotEditorial = fields.reduce(
         (product, field) => (snapshotProduct[field] !== undefined ? { ...product, [field]: snapshotProduct[field] } : product),
         withCurrentIdentity
       );
+      return hasSourceBackedResearch
+        ? researchFields.reduce(
+            (product, field) => (remoteProduct[field] !== undefined ? { ...product, [field]: remoteProduct[field] } : product),
+            withSnapshotEditorial
+          )
+        : withSnapshotEditorial;
     })
     .filter(Boolean);
   // A product can be fully published in Supabase before the next static

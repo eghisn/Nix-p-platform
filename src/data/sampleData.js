@@ -1014,7 +1014,9 @@ function record(row) {
       ...galleryCredits
     ],
     tags: [displayFormat, row.sku],
-    relatedArtists: recordRelatedArtists[row.id] || [],
+    // Related artists are authoritative only when returned by the enriched
+    // catalogue/API. Do not flash legacy mood-based suggestions from fallback data.
+    relatedArtists: [],
     homeCollections: recordHomeCollections(row),
     homeSlideSort: recordRows.findIndex((item) => item.id === row.id) + 1,
     description: recordEditorial[row.id]?.description || `${row.artist} - ${row.title}. ${displayFormat} from the current NIXP records selection.`,
