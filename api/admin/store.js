@@ -115,6 +115,7 @@ export default async function handler(req, res) {
     try {
       const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
       const skus = Array.isArray(body.skus) ? body.skus : [];
+      if (!skus.length) return json(res, 400, { ok: false, error: "At least one SKU is required for a related-artist refresh." });
       const result = await refreshRelatedArtistsOnly({ skus });
       return json(res, 200, { ok: true, ...result });
     } catch (error) {
