@@ -34,7 +34,7 @@ export function recordPublicationIssues(product = {}) {
   if (!Number(product.year || raw.year || 0)) issues.push("release year");
   if (!image || image.includes("nixp-product-example")) issues.push("managed cover art");
   const relatedResearchStatus = String(product.relatedArtistsResearch?.status || raw.relatedArtistsResearch?.status || "").trim();
-  if (!relatedArtists.length && !["verified", "no-verified-match"].includes(relatedResearchStatus)) {
+  if (!relatedArtists.length && !["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus)) {
     issues.push("verified related-artist research");
   }
   if (openToOffers ? minimumOffer <= 0 : price <= 0) issues.push(openToOffers ? "minimum acceptable offer" : "selling price");
@@ -77,7 +77,7 @@ export function isResearchPublicationReady(product = {}) {
       image &&
       !image.includes("nixp-product-example") &&
       ["complete", "complete-no-related-artists"].includes(enrichmentStatus) &&
-      (["verified", "no-verified-match"].includes(relatedResearchStatus) || Boolean(product.relatedArtists?.length || raw.relatedArtists?.length)) &&
+      (["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus) || Boolean(product.relatedArtists?.length || raw.relatedArtists?.length)) &&
       (openToOffers ? minimumOffer > 0 : price > 0)
   );
 }

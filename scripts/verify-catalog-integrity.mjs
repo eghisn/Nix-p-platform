@@ -28,7 +28,7 @@ for (const product of publicProducts) {
       if (!value) issues.push(`${product.sku || product.id}: missing record editorial field ${field}`);
     }
     const relatedResearchStatus = String(product.relatedArtistsResearch?.status || "").trim();
-    if (!product.relatedArtists?.length && !["verified", "no-verified-match"].includes(relatedResearchStatus)) {
+    if (!product.relatedArtists?.length && !["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus)) {
       issues.push(`${product.sku || product.id}: missing related-artist research result`);
     }
     if (isFinanceCatalogProduct(product)) {

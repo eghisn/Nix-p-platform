@@ -56,6 +56,8 @@ for (const file of ["public/data/public-store.json", "public/data/admin-store.js
 console.log(JSON.stringify({
   processed: results.length,
   verified: results.filter((item) => item.relatedArtistsResearch.status === "verified").length,
+  combined: results.filter((item) => item.relatedArtistsResearch.status === "combined").length,
+  lastFm: results.filter((item) => item.relatedArtistsResearch.status === "lastfm").length,
   noVerifiedMatch: results.filter((item) => item.relatedArtistsResearch.status === "no-verified-match").length,
   withArtists: results.filter((item) => item.relatedArtists.length).length,
   output: "backups/related-artists/latest-research.json"

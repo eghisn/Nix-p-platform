@@ -18,6 +18,7 @@
     "test:shipping-catalog": "node scripts/verify-shipping-catalog.mjs",
     "test:shipping-profiles": "node scripts/verify-shipping-profiles.mjs",
     "test:enrichment": "node scripts/verify-finance-enrichment.mjs",
+    "test:related-artists": "node scripts/verify-related-artists.mjs",
     "test:monthly-report": "node scripts/verify-monthly-report-accounting.mjs",
     "seed:admin": "node scripts/seed-admin-store.mjs",
     "sync:catalog": "node scripts/sync-catalog-snapshots.mjs",

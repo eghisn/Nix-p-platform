@@ -47,7 +47,13 @@ Supabase, GitHub, Vercel, and the public storefront.
 
 ## Related Artists
 
-- Related artists are editorial relationships, not arbitrary similarity tags.
+- Related artists are built from two independent sources: explicit MusicBrainz
+  artist/release relationships and Last.fm similar-artist results. They are
+  deduplicated, source-labeled, and combined to a maximum of five names. There
+  is no NIXP-availability weighting and neither source is treated as a mere
+  fallback. Last.fm is optional at runtime: if `LASTFM_API_KEY` is absent or
+  temporarily unavailable, MusicBrainz results remain usable and publication
+  does not fail solely because Last.fm is unavailable.
 - A tag is clickable only when that artist currently has a public NIXP product.
 - Artist route slugs are derived consistently from the canonical artist name.
 - Adding a record-format Finance item must also add its artist to the Admin and

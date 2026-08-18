@@ -5,13 +5,18 @@ import { archiveRemoteProductImage, isManagedProductImage } from "./productImage
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const USED_CONDITION = /^used\b/i;
 const MUSICBRAINZ_ORIGIN = "https://musicbrainz.org";
+const LASTFM_ORIGIN = "https://ws.audioscrobbler.com";
 const USER_AGENT = "NIXP-Catalog/2.0 (https://nix-p.com; contact@nix-p.com)";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
+const LASTFM_REQUEST_INTERVAL_MS = 700;
 const VERIFIED_RELATION_TYPES = new Set(["collaboration", "collaborated with", "member of band"]);
 const musicBrainzCache = new Map();
+const lastFmCache = new Map();
 let musicBrainzQueue = Promise.resolve();
 let lastMusicBrainzRequestAt = 0;
+let lastFmQueue = Promise.resolve();
+let lastLastFmRequestAt = 0;
 const TRUSTED_REVIEW_SOURCES = new Map([
   ["pitchfork.com", "Pitchfork (quoted)"],
   ["thequietus.com", "The Quietus (quoted)"],
@@ -1647,15 +1652,17 @@ function isUsableImage(value) {
 
 export async function researchRelatedArtists({ artist = "", title = "", format = "", releaseId = "" } = {}) {
   const ownNames = new Set(artistCreditNames(artist).map((name) => normalizedText(name)));
-  const evidence = [];
-  const seen = new Set();
+  const musicBrainzEvidence = [];
+  const lastFmEvidence = [];
+  const musicBrainzSeen = new Set();
+  const lastFmSeen = new Set();
   let sourceUnavailable = false;
-  const add = (name, item) => {
+  const add = (name, item, target, seen) => {
     const value = canonicalRelatedArtistName(name);
     const key = normalizedText(value);
     if (!key || ownNames.has(key) || seen.has(key)) return;
     seen.add(key);
-    evidence.push({ artist: value, ...item });
+    target.push({ artist: value, ...item });
   };
 
   let resolvedReleaseId = String(releaseId || "").trim();
@@ -1682,8 +1689,8 @@ export async function researchRelatedArtists({ artist = "", title = "", format =
           sourceUrl,
           relationType: "release-track-credit",
           confidence: "high"
-        });
-        if (evidence.length >= 4) break;
+        }, musicBrainzEvidence, musicBrainzSeen);
+        if (musicBrainzEvidence.length >= 5) break;
       }
       for (const relation of release.relations || []) {
         if (!VERIFIED_RELATION_TYPES.has(String(relation?.type || "").toLowerCase())) continue;
@@ -1694,8 +1701,8 @@ export async function researchRelatedArtists({ artist = "", title = "", format =
           sourceUrl,
           relationType: relation.type,
           confidence: "high"
-        });
-        if (evidence.length >= 4) break;
+        }, musicBrainzEvidence, musicBrainzSeen);
+        if (musicBrainzEvidence.length >= 5) break;
       }
     }
   }
@@ -1703,23 +1710,120 @@ export async function researchRelatedArtists({ artist = "", title = "", format =
   // If the exact release has no credited collaborator, use only direct
   // MusicBrainz artist relationships. Do not use genre, label, or NIXP
   // catalogue similarity as a substitute for evidence.
-  if (!evidence.length && artist) {
+  if (!musicBrainzEvidence.length && artist) {
     const relationResult = await discoverDirectArtistRelations(artist);
     sourceUnavailable ||= relationResult.unavailable;
     for (const relation of relationResult.relations) {
-      add(relation.artist, relation);
-      if (evidence.length >= 4) break;
+      add(relation.artist, relation, musicBrainzEvidence, musicBrainzSeen);
+      if (musicBrainzEvidence.length >= 5) break;
     }
   }
+
+  const lastFmResearch = await discoverLastFmSimilarArtists(artist);
+  for (const item of lastFmResearch.evidence) {
+    add(item.artist, item, lastFmEvidence, lastFmSeen);
+    if (lastFmEvidence.length >= 5) break;
+  }
+  sourceUnavailable ||= lastFmResearch.status === "source-unavailable";
+  const evidence = combineRelatedArtistEvidence(musicBrainzEvidence, lastFmEvidence, 5);
+  const hasMusicBrainzEvidence = evidence.some((item) => String(item.source || "").startsWith("MusicBrainz"));
+  const hasLastFmEvidence = evidence.some((item) => String(item.source || "").startsWith("Last.fm"));
+  const sources = [hasMusicBrainzEvidence ? "MusicBrainz" : "", hasLastFmEvidence ? "Last.fm" : ""].filter(Boolean);
 
   return {
     artists: evidence.map((item) => item.artist),
     evidence,
-    status: evidence.length ? "verified" : sourceUnavailable ? "source-unavailable" : "no-verified-match",
-    source: "MusicBrainz",
+    status: hasMusicBrainzEvidence && hasLastFmEvidence
+      ? "combined"
+      : hasMusicBrainzEvidence
+        ? "verified"
+        : hasLastFmEvidence
+          ? "lastfm"
+          : sourceUnavailable
+            ? "source-unavailable"
+            : "no-verified-match",
+    source: sources.join(" + ") || (lastFmResearch.status === "not-configured" ? "MusicBrainz" : "MusicBrainz + Last.fm"),
     sourceUrl: resolvedReleaseId ? `${MUSICBRAINZ_ORIGIN}/release/${resolvedReleaseId}` : "",
-    releaseId: resolvedReleaseId
+    releaseId: resolvedReleaseId,
+    lastFm: lastFmResearch
   };
+}
+
+export function combineRelatedArtistEvidence(musicBrainzEvidence = [], lastFmEvidence = [], max = 5) {
+  const limit = Math.max(1, Math.min(5, Number(max) || 5));
+  const byArtist = new Map();
+  const add = (item, sourceName) => {
+    const name = canonicalRelatedArtistName(item?.artist);
+    const key = normalizedText(name);
+    if (!key) return;
+    const existing = byArtist.get(key);
+    if (!existing) {
+      byArtist.set(key, {
+        ...item,
+        artist: name,
+        sources: [sourceName]
+      });
+      return;
+    }
+    existing.sources = [...new Set([...(existing.sources || []), sourceName])];
+    existing.source = [...new Set([existing.source, item.source].filter(Boolean))].join(" + ");
+    existing.evidence = [...(existing.evidence || []), item];
+  };
+  const musicBrainzKeys = [];
+  const lastFmKeys = [];
+  for (const item of musicBrainzEvidence) {
+    const before = byArtist.size;
+    add(item, "MusicBrainz");
+    const key = normalizedText(item?.artist);
+    if (key && byArtist.size > before) musicBrainzKeys.push(key);
+  }
+  for (const item of lastFmEvidence) {
+    const before = byArtist.size;
+    add(item, "Last.fm");
+    const key = normalizedText(item?.artist);
+    if (key && byArtist.size > before) lastFmKeys.push(key);
+  }
+  const selected = [];
+  const selectedKeys = new Set();
+  for (let index = 0; selected.length < limit && (index < musicBrainzKeys.length || index < lastFmKeys.length); index += 1) {
+    for (const key of [musicBrainzKeys[index], lastFmKeys[index]]) {
+      if (!key || selectedKeys.has(key)) continue;
+      selectedKeys.add(key);
+      selected.push(byArtist.get(key));
+      if (selected.length >= limit) break;
+    }
+  }
+  return selected;
+}
+
+async function discoverLastFmSimilarArtists(artist) {
+  const apiKey = String(process.env.LASTFM_API_KEY || "").trim();
+  if (!apiKey || !String(artist || "").trim()) {
+    return { artists: [], evidence: [], status: "not-configured", source: "Last.fm" };
+  }
+  const primaryArtist = artistCreditNames(artist)[0] || artist;
+  const url = `${LASTFM_ORIGIN}/2.0/?method=artist.getsimilar&artist=${encodeURIComponent(primaryArtist)}&api_key=${encodeURIComponent(apiKey)}&format=json&limit=10&autocorrect=1`;
+  const response = await lastFmFetch(url);
+  if (!response?.ok || response.payload?.error) {
+    return { artists: [], evidence: [], status: "source-unavailable", source: "Last.fm", sourceUrl: `https://www.last.fm/music/${encodeURIComponent(primaryArtist)}` };
+  }
+  const sourceUrl = `https://www.last.fm/music/${encodeURIComponent(primaryArtist)}`;
+  const candidates = response.payload?.similarartists?.artist;
+  const similarArtists = Array.isArray(candidates) ? candidates : candidates ? [candidates] : [];
+  const evidence = similarArtists
+    .map((item) => {
+      const match = Number(item?.match);
+      return {
+        artist: canonicalRelatedArtistName(item?.name),
+        source: "Last.fm similar artist",
+        sourceUrl,
+        relationType: "artist-similarity",
+        confidence: Number.isFinite(match) ? match : null,
+        match: Number.isFinite(match) ? match : null
+      };
+    })
+    .filter((item) => item.artist);
+  return { artists: evidence.map((item) => item.artist), evidence, status: evidence.length ? "available" : "no-match", source: "Last.fm", sourceUrl };
 }
 
 async function findMusicBrainzReleaseId({ artist, title, format } = {}) {
@@ -1828,6 +1932,27 @@ async function musicBrainzFetch(url) {
     return result.response;
   });
   musicBrainzQueue = request.catch(() => null);
+  return request;
+}
+
+async function lastFmFetch(url) {
+  const cached = lastFmCache.get(url);
+  if (cached && Date.now() - cached.at < RELATED_ARTIST_CACHE_TTL_MS) return cached.response;
+  const request = lastFmQueue.then(async () => {
+    const waitMs = Math.max(0, LASTFM_REQUEST_INTERVAL_MS - (Date.now() - lastLastFmRequestAt));
+    if (waitMs) await new Promise((resolve) => setTimeout(resolve, waitMs));
+    lastLastFmRequestAt = Date.now();
+    const response = await fetch(url, {
+      headers: { accept: "application/json", "user-agent": USER_AGENT },
+      signal: AbortSignal.timeout(8000)
+    }).catch(() => null);
+    if (!response) return null;
+    const payload = await response.json().catch(() => null);
+    const result = { ok: response.ok, status: response.status, payload };
+    if (result.ok || result.status === 404) lastFmCache.set(url, { at: Date.now(), response: result });
+    return result;
+  });
+  lastFmQueue = request.catch(() => null);
   return request;
 }
 

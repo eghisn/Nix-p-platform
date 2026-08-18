@@ -137,7 +137,7 @@ function isCompleteEditorialProduct(product = {}) {
     product.category === "Records" &&
       String(product.description || "").trim() &&
       String(product.reviewQuote || "").trim() &&
-      (Array.isArray(product.relatedArtists) && product.relatedArtists.length || ["verified", "no-verified-match"].includes(relatedResearchStatus)) &&
+      (Array.isArray(product.relatedArtists) && product.relatedArtists.length || ["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus)) &&
       ["complete", "complete-no-related-artists"].includes(String(product.enrichmentStatus || product.raw?.enrichmentStatus || "").toLowerCase())
   );
 }

@@ -94,7 +94,7 @@ function editorialProductIsComplete(product = {}) {
     product.category === "Records" &&
       String(product.description || "").trim() &&
       String(product.reviewQuote || "").trim() &&
-      (Array.isArray(product.relatedArtists) && product.relatedArtists.length || ["verified", "no-verified-match"].includes(relatedResearchStatus)) &&
+      (Array.isArray(product.relatedArtists) && product.relatedArtists.length || ["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus)) &&
       ["complete", "complete-no-related-artists"].includes(String(product.enrichmentStatus || product.raw?.enrichmentStatus || "").toLowerCase())
   );
 }
@@ -180,7 +180,7 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
         minimumAcceptableOffer: remoteProduct.minimumAcceptableOffer
       };
       const remoteResearchStatus = String(remoteProduct.relatedArtistsResearch?.status || "").trim();
-      const hasSourceBackedResearch = ["verified", "no-verified-match"].includes(remoteResearchStatus);
+      const hasSourceBackedResearch = ["verified", "combined", "lastfm", "no-verified-match"].includes(remoteResearchStatus);
       const withRemoteResearch = hasSourceBackedResearch
         ? researchFields.reduce(
             (product, field) => (remoteProduct[field] !== undefined ? { ...product, [field]: remoteProduct[field] } : product),

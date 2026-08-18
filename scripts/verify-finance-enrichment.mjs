@@ -60,7 +60,7 @@ assert.match(enriched.image, /^\/public\//);
 assert.ok(enriched.description.length > 40);
 assert.ok(enriched.raw.reviewQuote);
 assert.ok(["complete", "complete-no-related-artists", "needs-related-artist-research"].includes(enriched.raw.enrichmentStatus));
-assert.ok(["verified", "no-verified-match", "source-unavailable"].includes(enriched.raw.relatedArtistsResearch.status));
+assert.ok(["verified", "combined", "lastfm", "no-verified-match", "source-unavailable"].includes(enriched.raw.relatedArtistsResearch.status));
 assert.equal(enriched.raw.enrichmentFingerprint, inventoryFingerprint(stock));
 assert.equal(enriched.raw.shipping.packagingGroup, "SMALL_MEDIA");
 assert.equal(enriched.raw.shipping.weightGrams, 120);
@@ -103,7 +103,7 @@ const tim = await enrichFinanceCatalogProduct(
 const timPublished = assertPublishedOrWaitsForSource(tim);
 assert.ok(["complete", "complete-no-related-artists", "needs-related-artist-research"].includes(tim.raw.enrichmentStatus));
 assert.equal(tim.raw.reviewSource, "Pitchfork (quoted)");
-assert.ok(["verified", "no-verified-match", "source-unavailable"].includes(tim.raw.relatedArtistsResearch.status));
+assert.ok(["verified", "combined", "lastfm", "no-verified-match", "source-unavailable"].includes(tim.raw.relatedArtistsResearch.status));
 assert.equal(tim.images.length, 1, "Used records must not receive an invented product mockup.");
 assert.equal(tim.raw.shipping.shippingClass, "small-media-cd-bubble");
 if (timPublished) assert.equal(isRecordPublicationReady({ ...tim, ...tim.raw }), true);
@@ -136,7 +136,7 @@ assert.equal(buttechno.open_to_offers, true);
 assert.equal(buttechno.minimum_acceptable_offer, 2500000);
 assert.ok(["complete", "complete-no-related-artists", "needs-related-artist-research"].includes(buttechno.raw.enrichmentStatus));
 assert.equal(buttechno.raw.reviewSource, "Boomkat (quoted)");
-assert.ok(["verified", "no-verified-match", "source-unavailable"].includes(buttechno.raw.relatedArtistsResearch.status));
+assert.ok(["verified", "combined", "lastfm", "no-verified-match", "source-unavailable"].includes(buttechno.raw.relatedArtistsResearch.status));
 if (buttechnoPublished) assert.equal(isRecordPublicationReady({ ...buttechno, ...buttechno.raw }), true);
 
 const unsafeStore = applyCatalogPublicationSafety({

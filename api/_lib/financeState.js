@@ -220,7 +220,7 @@ function preserveCompletedCatalogData(latest, next, stock = {}) {
 function hasCompletedCatalogData(row = {}) {
   const raw = row.raw || {};
   const relatedResearchStatus = String(row.relatedArtistsResearch?.status || raw.relatedArtistsResearch?.status || "").trim();
-  const relatedResearchComplete = ["verified", "no-verified-match"].includes(relatedResearchStatus);
+  const relatedResearchComplete = ["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus);
   return Boolean(
     hasUsableProductImage(row) &&
     String(row.label || "").trim() &&
