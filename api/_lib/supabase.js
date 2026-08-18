@@ -126,7 +126,8 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
     "manualRelatedArtistsOverride",
     "relatedArtistEvidence",
     "relatedArtistsResearch",
-    "enrichmentStatus"
+    "enrichmentStatus",
+    "autoEditorial"
   ];
   const identityFields = [
     "sku",
