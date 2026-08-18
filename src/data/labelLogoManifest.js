@@ -6,8 +6,8 @@ export const verifiedLabelLogos = Object.freeze({
   "a24-music": { extension: "svg", source: "https://a24films.com/" },
   alter: { extension: "png", source: "https://www.discogs.com/label/145634-Alter" },
   "avalanche-recordings": { extension: "png", source: "https://www.discogs.com/label/9039-Avalanche-Recordings" },
-  "beggars-banquet": { extension: "png", source: "https://beggars.com/", tone: "inverse" },
-  "black-market-activities": { extension: "svg", source: "https://shops.indiemerch.com/pages/store/black-market-activities", tone: "inverse" },
+  "beggars-banquet": { extension: "png", source: "https://beggarsbanquetrecords.com/about/", tone: "preserve" },
+  "black-market-activities": { extension: "svg", source: "https://shops.indiemerch.com/pages/store/black-market-activities" },
   bmg: { extension: "svg", source: "https://www.bmg.com/" },
   "boysnoize-records": { extension: "png", source: "https://www.discogs.com/label/46768-Boysnoize-Records" },
   brainfeeder: { extension: "png", source: "https://brainfeederstore.com/" },
@@ -18,7 +18,6 @@ export const verifiedLabelLogos = Object.freeze({
   "dress-up": { extension: "png", source: "https://www.discogs.com/label/36910-Dress-Up" },
   domino: { extension: "svg", source: "https://www.dominomusic.com/uk" },
   epitaph: { extension: "png", source: "https://www.epitaph.com/" },
-  "epitaph-europe": { extension: "png", assetSlug: "epitaph", source: "https://eu.epitaph.com/" },
   "ferret-music": { extension: "png", source: "https://www.discogs.com/label/42942-Ferret-Music" },
   "freestyle-dust": { extension: "png", source: "https://www.discogs.com/label/1606-Freestyle-Dust" },
   "future-classic": { extension: "png", source: "https://www.discogs.com/label/31970-Future-Classic" },
@@ -68,7 +67,6 @@ export const verifiedLabelLogos = Object.freeze({
   v2: { extension: "png", source: "https://www.v2benelux.com/" },
   virgin: { extension: "svg", source: "https://www.virgin.com/" },
   "warner-bros": { extension: "svg", source: "https://www.warnerbros.com/" },
-  "warner-bros-records": { extension: "svg", source: "https://www.warnerrecords.com/" },
   "warp-records": { extension: "png", source: "https://warp.net/" },
   "xl-recordings": { extension: "svg", source: "https://xlrecordings.com/" }
 });

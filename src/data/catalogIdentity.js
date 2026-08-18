@@ -60,6 +60,13 @@ export function canonicalLabelName(value) {
   const label = String(value || "").trim();
   const lower = label.toLowerCase();
   if (!label) return "";
+  if (lower === "epitaph" || lower === "epitaph europe" || lower === "epitaph records") return "Epitaph";
+  if (
+    lower === "warner bros" ||
+    lower === "warner bros." ||
+    lower === "warner bros records" ||
+    lower === "warner bros. records"
+  ) return "Warner Bros.";
   if (lower.includes("rough trade")) return "Rough Trade";
   if (lower.includes("jagjaguwar")) return "Jagjaguwar";
   if (lower.includes("warp")) return "Warp Records";

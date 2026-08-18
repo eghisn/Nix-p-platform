@@ -1074,10 +1074,11 @@ html {
   height: 74px;
   object-fit: contain;
   object-position: center;
+  filter: brightness(0);
 }
 
-.label-logo--inverse {
-  filter: invert(1);
+.label-logo--preserve {
+  filter: brightness(0) grayscale(1) contrast(1.08);
 }
 
 .label-tile:hover .label-logo,

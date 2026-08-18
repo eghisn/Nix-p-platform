@@ -27,6 +27,8 @@ for (const [slug, logo] of Object.entries(verifiedLabelLogos)) {
   }
   const metadata = await sharp(assetPath).metadata();
   if (!metadata.hasAlpha) failures.push(`${slug}: raster logo must have an alpha channel`);
+  const stats = await sharp(assetPath).stats();
+  if (!stats.channels.at(-1) || stats.channels.at(-1).max === 0) failures.push(`${slug}: raster logo is fully transparent`);
   const minimumWidth = logo.minimumRasterWidth || 200;
   const minimumHeight = logo.minimumRasterHeight || 60;
   if ((metadata.width || 0) < minimumWidth || (metadata.height || 0) < minimumHeight) failures.push(`${slug}: raster logo is too small (${metadata.width}x${metadata.height})`);
