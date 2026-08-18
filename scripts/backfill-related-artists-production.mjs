@@ -5,6 +5,7 @@ await loadLocalEnv();
 const args = parseArgs(process.argv.slice(2));
 const baseUrl = String(args.baseUrl || "https://admin.nix-p.com").replace(/\/$/, "");
 const limit = Number(args.limit || 0);
+const batchSize = Math.max(1, Math.min(10, Number(args.batch || 3)));
 const cookie = await login();
 const store = await adminRequest("/api/catalog?scope=admin", { method: "GET" });
 const staleSkus = (store.store?.products || [])
@@ -15,12 +16,12 @@ const staleSkus = (store.store?.products || [])
   .slice(0, limit > 0 ? limit : undefined);
 
 console.log(`Backfill ${staleSkus.length} record(s) to ${RELATED_ARTIST_RESEARCH_VERSION}.`);
-for (let index = 0; index < staleSkus.length; index += 25) {
-  const skus = staleSkus.slice(index, index + 25);
+for (let index = 0; index < staleSkus.length; index += batchSize) {
+  const skus = staleSkus.slice(index, index + batchSize);
   const result = await adminRequest("/api/admin/store?commerceAction=catalog-sync", {
     method: "POST",
     body: JSON.stringify({ skus, force: true, publishAfterResearch: false })
-  });
+  }, { retries: 2 });
   console.log(`[${index + skus.length}/${staleSkus.length}]`, JSON.stringify(result.report || result));
 }
 
@@ -47,12 +48,16 @@ async function login() {
   return sessionCookie;
 }
 
-async function adminRequest(path, options = {}) {
+async function adminRequest(path, options = {}, { retries = 0 } = {}) {
   const response = await fetch(`${baseUrl}${path}`, {
     ...options,
     headers: { "content-type": "application/json", cookie, ...(options.headers || {}) }
   });
   const payload = await response.json().catch(() => ({}));
+  if (!response.ok && retries > 0 && [502, 503, 504].includes(response.status)) {
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    return adminRequest(path, options, { retries: retries - 1 });
+  }
   if (!response.ok) throw new Error(payload.error || `Admin request failed (${response.status}).`);
   return payload;
 }
