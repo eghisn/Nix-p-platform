@@ -1,4 +1,10 @@
-import { RELATED_ARTIST_RESEARCH_VERSION, enrichFinanceCatalogProduct, inventoryFingerprint } from "./catalogEnrichment.js";
+import {
+  RELATED_ARTIST_RESEARCH_VERSION,
+  enrichFinanceCatalogProduct,
+  inventoryFingerprint,
+  researchRelatedArtists,
+  resolveRelatedArtistDisplay
+} from "./catalogEnrichment.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 import { isResearchPublicationReady, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
@@ -714,6 +720,74 @@ function financeItemForProduct(product) {
   if (product.category === "Records") return product.format || "Vinyl";
   if (product.category === "Apparel") return product.apparelType === "Accessories" ? "Cap" : product.title || "Apparel";
   return "Object";
+}
+
+// Related-artist maintenance must never run the full finance/catalog
+// enrichment pipeline. This action patches only the raw related-artist fields
+// so covers, descriptions, prices, stock, labels, and publication state stay
+// untouched.
+export async function refreshRelatedArtistsOnly({ skus = [] } = {}) {
+  const normalizedSkus = [...new Set(skus.map((sku) => String(sku || "").trim()).filter(Boolean))];
+  const path = normalizedSkus.length
+    ? `products?select=*&category=eq.Records&sku=in.(${skuList(normalizedSkus)})`
+    : "products?select=*&category=eq.Records";
+  const rows = await supabaseFetch(path);
+  const backup = rows.map((row) => ({
+    id: row.id,
+    sku: row.sku,
+    raw: row.raw || {}
+  }));
+  await supabaseFetch("store_backups", {
+    method: "POST",
+    body: [{
+      id: `related-artists-only-${new Date().toISOString().replace(/[^0-9]/g, "")}-${Math.random().toString(36).slice(2, 8)}`,
+      source: "related-artists-only",
+      raw: { generatedAt: new Date().toISOString(), products: backup }
+    }],
+    prefer: "return=minimal"
+  });
+
+  const results = [];
+  for (const row of rows) {
+    const raw = row.raw || {};
+    if (raw.manualRelatedArtistsOverride === true) {
+      results.push({ sku: row.sku, status: "manual-override", relatedArtists: raw.relatedArtists || [] });
+      continue;
+    }
+    const research = await researchRelatedArtists({
+      artist: row.artist,
+      title: row.title,
+      format: row.format,
+      releaseId: String(raw.musicBrainzReleaseId || "").trim()
+    });
+    const relatedArtists = resolveRelatedArtistDisplay({
+      manualRelatedArtists: Array.isArray(raw.manualRelatedArtists) ? raw.manualRelatedArtists : [],
+      automaticRelatedArtists: research.artists || [],
+      manualRelatedArtistsOverride: false
+    }).relatedArtists;
+    const nextRaw = {
+      ...raw,
+      relatedArtists,
+      relatedArtistEvidence: research.evidence || [],
+      relatedArtistsResearch: research,
+      relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,
+      autoEditorial: {
+        ...(raw.autoEditorial || {}),
+        relatedArtists,
+        relatedArtistEvidence: research.evidence || [],
+        relatedArtistsResearch: research,
+        relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION
+      }
+    };
+    await supabaseFetch(`products?id=eq.${encodeURIComponent(row.id)}`, {
+      method: "PATCH",
+      body: { raw: nextRaw },
+      service: true,
+      prefer: "return=minimal"
+    });
+    results.push({ sku: row.sku, status: research.status, relatedArtists, evidence: research.evidence?.length || 0 });
+  }
+  return { version: RELATED_ARTIST_RESEARCH_VERSION, processed: results.length, results };
 }
 
 function catalogInventoryFamily(product = {}) {

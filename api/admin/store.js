@@ -2,7 +2,7 @@ import { getSession, json, requireWorkspace } from "../_lib/auth.js";
 import { isSupabaseConfigured, loadStore, saveStore, supabaseFetch } from "../_lib/supabase.js";
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
-import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
+import { readFinanceState, refreshRelatedArtistsOnly, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
 import { drainNotificationOutbox, getNotificationOutboxHealth, retryFailedNotificationOutbox, sendProductStatusNotification } from "../_lib/emailNotifications.js";
@@ -106,6 +106,19 @@ export default async function handler(req, res) {
       });
     } catch (error) {
       return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Catalog sync failed" });
+    }
+  }
+  if (action === "catalog-related-artists") {
+    if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+    const session = getSession(req);
+    if (!session || session.workspace !== "admin") return json(res, 401, { ok: false, error: "Admin login required" });
+    try {
+      const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+      const skus = Array.isArray(body.skus) ? body.skus : [];
+      const result = await refreshRelatedArtistsOnly({ skus });
+      return json(res, 200, { ok: true, ...result });
+    } catch (error) {
+      return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Related artist refresh failed" });
     }
   }
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });

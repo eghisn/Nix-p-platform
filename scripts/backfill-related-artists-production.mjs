@@ -10,7 +10,7 @@ const cookie = await login();
 const store = await adminRequest("/api/catalog?scope=admin", { method: "GET" });
 const staleSkus = (store.store?.products || [])
   .filter((product) => product.category === "Records")
-  .filter((product) => String(product.raw?.relatedArtistResearchVersion || "") !== RELATED_ARTIST_RESEARCH_VERSION)
+  .filter((product) => String(product.raw?.relatedArtistResearchVersion || product.relatedArtistResearchVersion || "") !== RELATED_ARTIST_RESEARCH_VERSION)
   .map((product) => String(product.sku || "").trim())
   .filter(Boolean)
   .slice(0, limit > 0 ? limit : undefined);
@@ -18,9 +18,9 @@ const staleSkus = (store.store?.products || [])
 console.log(`Backfill ${staleSkus.length} record(s) to ${RELATED_ARTIST_RESEARCH_VERSION}.`);
 for (let index = 0; index < staleSkus.length; index += batchSize) {
   const skus = staleSkus.slice(index, index + batchSize);
-  const result = await adminRequest("/api/admin/store?commerceAction=catalog-sync", {
+  const result = await adminRequest("/api/admin/store?commerceAction=catalog-related-artists", {
     method: "POST",
-    body: JSON.stringify({ skus, force: true, publishAfterResearch: false })
+    body: JSON.stringify({ skus })
   }, { retries: 2 });
   console.log(`[${index + skus.length}/${staleSkus.length}]`, JSON.stringify(result.report || result));
 }
