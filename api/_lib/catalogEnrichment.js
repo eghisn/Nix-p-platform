@@ -7,6 +7,10 @@ const USED_CONDITION = /^used\b/i;
 const MUSICBRAINZ_ORIGIN = "https://musicbrainz.org";
 const LASTFM_ORIGIN = "https://ws.audioscrobbler.com";
 const USER_AGENT = "NIXP-Catalog/2.0 (https://nix-p.com; contact@nix-p.com)";
+// Bump this whenever the related-artist sources or selection rules change.
+// Finance sync uses it to re-research older records without touching explicit
+// Admin manual overrides.
+export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -1180,6 +1184,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       manualRelatedArtistsOverride,
       relatedArtistEvidence,
       relatedArtistsResearch: relatedArtistResearch,
+      relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,
       descriptionSource,
       reviewQuote,
       reviewSource,
@@ -1196,7 +1201,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
         reviewUrl,
         relatedArtists: automaticRelatedArtists,
         relatedArtistEvidence,
-        relatedArtistsResearch: relatedArtistResearch
+        relatedArtistsResearch: relatedArtistResearch,
+        relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION
       },
       enrichmentFingerprint,
       enrichmentOrigin: curated ? "curated-exact" : Object.keys(editorialOverride).length ? "musicbrainz+curated-editorial" : "musicbrainz",
@@ -1744,6 +1750,7 @@ export async function researchRelatedArtists({ artist = "", title = "", format =
   const sources = [hasMusicBrainzEvidence ? "MusicBrainz" : "", hasLastFmEvidence ? "Last.fm" : ""].filter(Boolean);
 
   return {
+    engineVersion: RELATED_ARTIST_RESEARCH_VERSION,
     artists: evidence.map((item) => item.artist),
     evidence,
     status: hasMusicBrainzEvidence && hasLastFmEvidence

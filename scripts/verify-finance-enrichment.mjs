@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import {
   CURATED_EDITORIAL_OVERRIDES,
+  RELATED_ARTIST_RESEARCH_VERSION,
   applyCuratedEditorialOverride,
   enrichFinanceCatalogProduct,
   inventoryFingerprint
@@ -12,6 +13,7 @@ import {
   recordPublicationIssues
 } from "../src/data/catalogPublication.js";
 import { isRecentReleaseProduct, recentReleaseSortComparator } from "../src/data/homeCollections.js";
+import { needsFinanceEnrichment } from "../api/_lib/financeState.js";
 
 const stock = {
   sku: "NXP-2026-CD-0025",
@@ -61,6 +63,13 @@ assert.ok(enriched.description.length > 40);
 assert.ok(enriched.raw.reviewQuote);
 assert.ok(["complete", "complete-no-related-artists", "needs-related-artist-research"].includes(enriched.raw.enrichmentStatus));
 assert.ok(["verified", "combined", "lastfm", "no-verified-match", "source-unavailable"].includes(enriched.raw.relatedArtistsResearch.status));
+assert.equal(enriched.raw.relatedArtistResearchVersion, RELATED_ARTIST_RESEARCH_VERSION);
+assert.equal(enriched.raw.relatedArtistsResearch.engineVersion, RELATED_ARTIST_RESEARCH_VERSION);
+assert.equal(needsFinanceEnrichment(enriched, stock), false);
+assert.equal(needsFinanceEnrichment({
+  ...enriched,
+  raw: { ...enriched.raw, relatedArtistResearchVersion: "legacy-related-artists-engine" }
+}, stock), true);
 assert.equal(enriched.raw.enrichmentFingerprint, inventoryFingerprint(stock));
 assert.equal(enriched.raw.shipping.packagingGroup, "SMALL_MEDIA");
 assert.equal(enriched.raw.shipping.weightGrams, 120);

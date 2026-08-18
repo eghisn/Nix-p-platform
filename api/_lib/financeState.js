@@ -1,4 +1,4 @@
-import { enrichFinanceCatalogProduct, inventoryFingerprint } from "./catalogEnrichment.js";
+import { RELATED_ARTIST_RESEARCH_VERSION, enrichFinanceCatalogProduct, inventoryFingerprint } from "./catalogEnrichment.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 import { isResearchPublicationReady, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
@@ -190,6 +190,7 @@ function preserveCompletedCatalogData(latest, next, stock = {}) {
     manualRelatedArtistsOverride: latestRaw.manualRelatedArtistsOverride,
     relatedArtistEvidence: latestRaw.relatedArtistEvidence,
     relatedArtistsResearch: latestRaw.relatedArtistsResearch,
+    relatedArtistResearchVersion: latestRaw.relatedArtistResearchVersion,
     descriptionSource: latestRaw.descriptionSource,
     reviewQuote: latestRaw.reviewQuote,
     reviewSource: latestRaw.reviewSource,
@@ -463,7 +464,7 @@ function hasUsableProductImage(row = {}) {
   return images.some((image) => !image.includes("nixp-product-example"));
 }
 
-function needsFinanceEnrichment(row = {}, stock = {}) {
+export function needsFinanceEnrichment(row = {}, stock = {}) {
   const financeOrigin =
     String(row.id || "").startsWith("finance-") ||
     Boolean(row.raw?.financeStockId) ||
@@ -473,6 +474,9 @@ function needsFinanceEnrichment(row = {}, stock = {}) {
   const currentFingerprint = inventoryFingerprint(stock);
   const fingerprintChanged = Boolean(previousFingerprint) && currentFingerprint !== previousFingerprint;
   const status = String(row.raw?.enrichmentStatus || "").toLowerCase();
+  const recordFormat = RECORD_FORMATS.has(String(stock.item || row.format || "").trim());
+  const researchVersionChanged = recordFormat &&
+    String(row.raw?.relatedArtistResearchVersion || "") !== RELATED_ARTIST_RESEARCH_VERSION;
   const attemptedAt = Date.parse(String(row.raw?.enrichmentAttemptedAt || ""));
   const retryDue = !Number.isFinite(attemptedAt) || Date.now() - attemptedAt >= 5 * 60 * 1000;
   const unresolvedStatus = [
@@ -488,9 +492,10 @@ function needsFinanceEnrichment(row = {}, stock = {}) {
   const placeholderTitle = isPlaceholderInventoryTitle(row.title);
   // Do not make a corrected source wait for the retry window: incomplete
   // enrichment must be immediately repairable by the next catalog sync.
-  if (previousFingerprint && !fingerprintChanged && status && !retryDue) return false;
+  if (previousFingerprint && !fingerprintChanged && status && !retryDue && !researchVersionChanged) return false;
   return Boolean(
     fingerprintChanged ||
+    researchVersionChanged ||
     placeholderTitle ||
     !hasUsableProductImage(row) ||
       !String(row.label || "").trim() ||

@@ -1,5 +1,9 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { researchRelatedArtists } from "../api/_lib/catalogEnrichment.js";
+import {
+  RELATED_ARTIST_RESEARCH_VERSION,
+  researchRelatedArtists,
+  resolveRelatedArtistDisplay
+} from "../api/_lib/catalogEnrichment.js";
 import { readFinanceState } from "../api/_lib/financeState.js";
 import { backupStore, loadStore, supabaseFetch } from "../api/_lib/supabase.js";
 
@@ -14,9 +18,11 @@ const stockBySku = new Map(
 );
 const requestedSkus = new Set(process.argv.filter((arg) => arg.startsWith("--sku=")).map((arg) => arg.slice(6).toUpperCase()));
 const limit = Number(process.argv.find((arg) => arg.startsWith("--limit="))?.slice(8) || 0);
+const staleOnly = process.argv.includes("--stale-only");
 const records = products
   .filter((product) => String(product.sku || "").trim())
   .filter((product) => !requestedSkus.size || requestedSkus.has(String(product.sku || "").trim().toUpperCase()))
+  .filter((product) => !staleOnly || String(product.raw?.relatedArtistResearchVersion || "") !== RELATED_ARTIST_RESEARCH_VERSION)
   .slice(0, limit > 0 ? limit : undefined);
 const backup = records.map((product) => ({
   id: product.id,
@@ -42,17 +48,23 @@ for (const [index, product] of records.entries()) {
     releaseId
   });
   const manual = Array.isArray(raw.manualRelatedArtists) ? raw.manualRelatedArtists : [];
-  const relatedArtists = unique([...manual, ...(research.artists || [])]);
+  const relatedArtists = resolveRelatedArtistDisplay({
+    manualRelatedArtists: manual,
+    automaticRelatedArtists: research.artists || [],
+    manualRelatedArtistsOverride: raw.manualRelatedArtistsOverride === true
+  }).relatedArtists;
   const nextRaw = {
     ...raw,
     relatedArtists,
     relatedArtistEvidence: research.evidence || [],
     relatedArtistsResearch: research,
+    relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,
     autoEditorial: {
       ...(raw.autoEditorial || {}),
       relatedArtists,
       relatedArtistEvidence: research.evidence || [],
-      relatedArtistsResearch: research
+      relatedArtistsResearch: research,
+      relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION
     }
   };
   if (String(raw.enrichmentStatus || "").startsWith("complete")) {
