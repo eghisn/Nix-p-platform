@@ -578,7 +578,12 @@ async function persistStore(store, { inventoryProduct = null } = {}) {
       body: JSON.stringify({ store, inventoryProduct })
     });
     const payload = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(payload.error || "Store save failed. Please log in to admin and try again.");
+    if (!response.ok) {
+      if (response.status === 401 || response.status === 403) {
+        throw new Error("Admin session expired. Refresh the Admin Editor and sign in again.");
+      }
+      throw new Error(payload.error || `Store save failed on the server (HTTP ${response.status}). Please try again.`);
+    }
     if (payload.store?.products) {
       activeStore = normalizeStoreForSave(payload.store);
       activeStoreScope = "admin";
