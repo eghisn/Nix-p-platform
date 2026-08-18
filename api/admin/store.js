@@ -136,14 +136,14 @@ export default async function handler(req, res) {
       console.warn("Product status notification not delivered", { productId: product.id, reason: error instanceof Error ? error.message : "unknown" });
       return { delivered: false };
     })));
-    let catalogSynced = false;
-    if (body.inventoryProduct?.category === "Records") {
-      const financeState = await readFinanceState();
-      await syncFinanceInventoryToCatalog(financeState, { enrich: true });
-      catalogSynced = true;
-    }
-    const refreshedStore = catalogSynced ? await loadStore({ privateScope: true }) : null;
-    json(res, 200, { ok: true, path: "supabase://public", catalogSynced, store: refreshedStore });
+    // A manual Admin save may include inventoryProduct so the edited product's
+    // stock, title, and price can be reflected in Finance. It must not also
+    // launch the broad Finance -> catalog enrichment pipeline. That pipeline
+    // is an explicit Research & Complete / catalog-sync action and is scoped
+    // by SKU there. Keeping the operations separate prevents an editorial
+    // edit from unexpectedly re-enriching or overwriting other records.
+    const inventorySynced = Boolean(body.inventoryProduct);
+    json(res, 200, { ok: true, path: "supabase://public", catalogSynced: false, inventorySynced, store: null });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Store save failed";
     const friendlyMessage = message.toLowerCase().includes("on conflict do update")
