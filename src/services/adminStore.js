@@ -619,28 +619,6 @@ function refreshPublicCommerceInBackground(store) {
     .catch(() => store);
 }
 
-async function refreshPublicCatalogInBackground(snapshotStore) {
-  try {
-    const response = await fetch(`/api/catalog?scope=public&v=${Date.now()}`, {
-      cache: "no-store",
-      headers: { accept: "application/json" }
-    });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok || !payload.store) return snapshotStore;
-
-    const currentStore = activeStoreScope === "public" && activeStore ? activeStore : snapshotStore;
-    const runtimeStore = reconcilePublicCatalog(payload.store, currentStore);
-    activeStore = mergeStore(seed({ publicOnly: true }), runtimeStore, { publicOnly: true });
-    activeStoreScope = "public";
-    if (typeof window !== "undefined") {
-      window.dispatchEvent(new CustomEvent("nixp:public-catalog-refreshed"));
-    }
-    return activeStore;
-  } catch {
-    return snapshotStore;
-  }
-}
-
 async function verifyPublicProductState(id, shouldBePublished) {
   for (let attempt = 0; attempt < 4; attempt += 1) {
     try {
