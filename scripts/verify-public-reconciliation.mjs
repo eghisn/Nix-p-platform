@@ -61,4 +61,14 @@ const sourceUnavailableRemote = {
 const preserved = reconcilePublicRevision([sourceUnavailableRemote], [staleSnapshot])[0];
 assert.deepEqual(preserved.relatedArtists, ["Blawan"]);
 
+const manualClearRemote = {
+  ...sourceUnavailableRemote,
+  manualRelatedArtists: [],
+  manualRelatedArtistsOverride: true,
+  relatedArtists: []
+};
+const manuallyCleared = reconcilePublicRevision([manualClearRemote], [staleSnapshot])[0];
+assert.deepEqual(manuallyCleared.relatedArtists, [], "an explicit empty Admin override must clear stale snapshot tags");
+assert.equal(manuallyCleared.manualRelatedArtistsOverride, true);
+
 console.log("Public reconciliation contract passed.");

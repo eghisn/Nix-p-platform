@@ -186,6 +186,8 @@ function preserveCompletedCatalogData(latest, next, stock = {}) {
     autoProductPhoto: latestRaw.autoProductPhoto,
     autoEditorial: latestRaw.autoEditorial,
     relatedArtists: latestRaw.relatedArtists,
+    manualRelatedArtists: latestRaw.manualRelatedArtists,
+    manualRelatedArtistsOverride: latestRaw.manualRelatedArtistsOverride,
     relatedArtistEvidence: latestRaw.relatedArtistEvidence,
     relatedArtistsResearch: latestRaw.relatedArtistsResearch,
     descriptionSource: latestRaw.descriptionSource,

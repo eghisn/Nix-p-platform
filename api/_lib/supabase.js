@@ -122,6 +122,8 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
   const remoteById = new Map(remoteProducts.map((product) => [product.id, product]));
   const researchFields = [
     "relatedArtists",
+    "manualRelatedArtists",
+    "manualRelatedArtistsOverride",
     "relatedArtistEvidence",
     "relatedArtistsResearch",
     "enrichmentStatus"
@@ -181,7 +183,8 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
       };
       const remoteResearchStatus = String(remoteProduct.relatedArtistsResearch?.status || "").trim();
       const hasSourceBackedResearch = ["verified", "combined", "lastfm", "no-verified-match"].includes(remoteResearchStatus);
-      const withRemoteResearch = hasSourceBackedResearch
+      const hasManualRelatedArtistsOverride = remoteProduct.manualRelatedArtistsOverride === true;
+      const withRemoteResearch = hasSourceBackedResearch || hasManualRelatedArtistsOverride
         ? researchFields.reduce(
             (product, field) => (remoteProduct[field] !== undefined ? { ...product, [field]: remoteProduct[field] } : product),
             merged
@@ -199,7 +202,7 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
         (product, field) => (snapshotProduct[field] !== undefined ? { ...product, [field]: snapshotProduct[field] } : product),
         withCurrentIdentity
       );
-      return hasSourceBackedResearch
+      return hasSourceBackedResearch || hasManualRelatedArtistsOverride
         ? researchFields.reduce(
             (product, field) => (remoteProduct[field] !== undefined ? { ...product, [field]: remoteProduct[field] } : product),
             withSnapshotEditorial

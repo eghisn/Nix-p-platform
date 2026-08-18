@@ -1110,10 +1110,21 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const manualRelatedArtists = Array.isArray(raw.manualRelatedArtists)
     ? raw.manualRelatedArtists.map(canonicalRelatedArtistName)
     : [];
-  const relatedArtists = unique([
-    ...manualRelatedArtists,
-    ...(relatedArtistResearch.artists || [])
-  ].map(canonicalRelatedArtistName));
+  const automaticRelatedArtists = unique((relatedArtistResearch.artists || []).map(canonicalRelatedArtistName));
+  const legacyManualOverride = Array.isArray(raw.manualRelatedArtists) &&
+    JSON.stringify(manualRelatedArtists) !== JSON.stringify(
+      unique((raw.autoEditorial?.relatedArtists || []).map(canonicalRelatedArtistName))
+    );
+  const manualRelatedArtistsOverride = raw.manualRelatedArtistsOverride === true || legacyManualOverride;
+  // An explicit Admin edit is authoritative for the storefront. Automatic
+  // research is still retained below for evidence and future review, but a
+  // later Finance sync must not re-add an artist the Admin deliberately removed.
+  const relatedArtistDisplay = resolveRelatedArtistDisplay({
+    manualRelatedArtists,
+    automaticRelatedArtists,
+    manualRelatedArtistsOverride
+  });
+  const relatedArtists = relatedArtistDisplay.relatedArtists;
   const relatedArtistEvidence = relatedArtistResearch.evidence || [];
   const enrichmentFingerprint = inventoryFingerprint({ ...stock, artist, title, format });
   const shipping = referenceShippingProfile(
@@ -1165,6 +1176,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       barcode: raw.barcode || discovered.barcode || "",
       catalogNumber: raw.catalogNumber || discovered.catalogNumber || "",
       relatedArtists,
+      manualRelatedArtists,
+      manualRelatedArtistsOverride,
       relatedArtistEvidence,
       relatedArtistsResearch: relatedArtistResearch,
       descriptionSource,
@@ -1181,13 +1194,13 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
         reviewQuote,
         reviewSource,
         reviewUrl,
-        relatedArtists,
+        relatedArtists: automaticRelatedArtists,
         relatedArtistEvidence,
         relatedArtistsResearch: relatedArtistResearch
       },
       enrichmentFingerprint,
       enrichmentOrigin: curated ? "curated-exact" : Object.keys(editorialOverride).length ? "musicbrainz+curated-editorial" : "musicbrainz",
-      enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl }),
+      enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl, manualRelatedArtistsOverride }),
       enrichmentUpdatedAt: today(),
       enrichmentAttemptedAt: new Date().toISOString(),
       shipping
@@ -1591,7 +1604,7 @@ function usedCondition(value) {
   return USED_CONDITION.test(String(value || ""));
 }
 
-function enrichmentStatus({ used, discovered, description, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl }) {
+function enrichmentStatus({ used, discovered, description, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl, manualRelatedArtistsOverride = false }) {
   if (!discovered?.cover) return "needs-cover-art";
   if (!isManagedProductImage(discovered.cover)) return "needs-cover-archive";
   // A verified release cover is the required storefront image. Product-detail
@@ -1599,7 +1612,7 @@ function enrichmentStatus({ used, discovered, description, relatedArtists, relat
   // not have one available from a trustworthy source and must not be trapped
   // in Draft solely for that reason.
   if (!description) return "needs-editorial-metadata";
-  if (!relatedArtists.length && relatedArtistResearch?.status !== "no-verified-match") return "needs-related-artist-research";
+  if (!relatedArtists.length && !manualRelatedArtistsOverride && relatedArtistResearch?.status !== "no-verified-match") return "needs-related-artist-research";
   // A source-backed review quote is never invented by automation. Its absence
   // keeps the product private until a trusted source is resolved.
   if (!reviewQuote || !reviewSource || !reviewUrl) return "metadata-complete-needs-editorial-review";
@@ -1794,6 +1807,15 @@ export function combineRelatedArtistEvidence(musicBrainzEvidence = [], lastFmEvi
     }
   }
   return selected;
+}
+
+export function resolveRelatedArtistDisplay({ manualRelatedArtists = [], automaticRelatedArtists = [], manualRelatedArtistsOverride = false } = {}) {
+  const manual = unique(manualRelatedArtists.map(canonicalRelatedArtistName));
+  const automatic = unique(automaticRelatedArtists.map(canonicalRelatedArtistName));
+  return {
+    relatedArtists: manualRelatedArtistsOverride ? manual : unique([...manual, ...automatic]),
+    manualRelatedArtistsOverride: Boolean(manualRelatedArtistsOverride)
+  };
 }
 
 async function discoverLastFmSimilarArtists(artist) {

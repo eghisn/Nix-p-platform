@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { combineRelatedArtistEvidence } from "../api/_lib/catalogEnrichment.js";
+import { combineRelatedArtistEvidence, resolveRelatedArtistDisplay } from "../api/_lib/catalogEnrichment.js";
 
 const musicBrainz = [
   { artist: "Artist One", source: "MusicBrainz release relationship" },
@@ -22,5 +22,16 @@ assert.ok(shared?.sources?.includes("MusicBrainz") && shared?.sources?.includes(
 
 const lastFmOnly = combineRelatedArtistEvidence([], [{ artist: "Artist Four", source: "Last.fm similar artist" }], 5);
 assert.deepEqual(lastFmOnly.map((item) => item.artist), ["Artist Four"]);
+
+assert.deepEqual(
+  resolveRelatedArtistDisplay({ manualRelatedArtists: ["Admin Choice"], automaticRelatedArtists: ["Research Choice"], manualRelatedArtistsOverride: true }),
+  { relatedArtists: ["Admin Choice"], manualRelatedArtistsOverride: true },
+  "an explicit Admin edit must remain authoritative"
+);
+assert.deepEqual(
+  resolveRelatedArtistDisplay({ manualRelatedArtists: [], automaticRelatedArtists: ["Research Choice"] }),
+  { relatedArtists: ["Research Choice"], manualRelatedArtistsOverride: false },
+  "without an override, automatic research must remain visible"
+);
 
 console.log(`Related-artist source combination passed: ${combined.length} deduplicated results from MusicBrainz + Last.fm.`);

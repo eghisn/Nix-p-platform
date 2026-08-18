@@ -171,6 +171,8 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
     "reviewSource",
     "reviewUrl",
     "relatedArtists",
+    "manualRelatedArtists",
+    "manualRelatedArtistsOverride",
     "relatedArtistEvidence",
     "relatedArtistsResearch",
     "autoEditorial",
@@ -212,6 +214,14 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
       // revision has an empty field, retain a non-empty snapshot value so a
       // transient partial response cannot erase an already published detail.
       return researchedEditorialFields.reduce((merged, field) => {
+        if (field === "manualRelatedArtistsOverride" && remoteProduct[field] === true) {
+          return {
+            ...merged,
+            manualRelatedArtistsOverride: true,
+            manualRelatedArtists: remoteProduct.manualRelatedArtists || [],
+            relatedArtists: remoteProduct.relatedArtists || []
+          };
+        }
         if (hasEditorialValue(remoteProduct[field])) return { ...merged, [field]: remoteProduct[field] };
         if (hasEditorialValue(snapshotProduct[field])) return { ...merged, [field]: snapshotProduct[field] };
         return merged;
@@ -1100,10 +1110,16 @@ export const adminStore = {
     const existing = store.products.find((product) => product.id === id);
     const incomingRelatedArtists = isRecord ? splitList(data.relatedArtists).map(canonicalRelatedArtistName) : [];
     const existingAutomaticRelatedArtists = normalizeList(existing?.autoEditorial?.relatedArtists).map(canonicalRelatedArtistName);
-    const manualRelatedArtists = isRecord && data.relatedArtists !== undefined &&
-      JSON.stringify(incomingRelatedArtists) !== JSON.stringify(existingAutomaticRelatedArtists)
-      ? incomingRelatedArtists
-      : normalizeList(existing?.manualRelatedArtists).map(canonicalRelatedArtistName);
+    const existingManualRelatedArtists = normalizeList(existing?.manualRelatedArtists).map(canonicalRelatedArtistName);
+    const existingDisplayedRelatedArtists = normalizeList(existing?.relatedArtists).map(canonicalRelatedArtistName);
+    const legacyManualOverride = isRecord && JSON.stringify(existingManualRelatedArtists) !== JSON.stringify(existingAutomaticRelatedArtists);
+    const existingManualOverride = isRecord && (existing?.manualRelatedArtistsOverride === true || legacyManualOverride);
+    const relatedArtistsChanged = isRecord && data.relatedArtists !== undefined &&
+      JSON.stringify(incomingRelatedArtists) !== JSON.stringify(existingDisplayedRelatedArtists);
+    const manualRelatedArtistsOverride = isRecord
+      ? (relatedArtistsChanged ? true : existingManualOverride)
+      : false;
+    const manualRelatedArtists = relatedArtistsChanged ? incomingRelatedArtists : existingManualRelatedArtists;
     const collection = data.collection?.trim() || data.label?.trim() || existing?.collection || "";
     const fallbackMaker = category === "Objects" ? "NIXP Objects" : category === "Apparel" ? "NIXP Apparel" : "NIXP";
     const format = isProductCategory ? category.replace(/s$/, "") : data.format?.trim();
@@ -1145,8 +1161,11 @@ export const adminStore = {
         image: data.image?.trim() || data.images?.[0] || existing?.image
       }),
       tags: splitList(data.tags),
-      relatedArtists: isRecord ? incomingRelatedArtists : [],
+      relatedArtists: isRecord
+        ? (data.relatedArtists !== undefined ? incomingRelatedArtists : existingDisplayedRelatedArtists)
+        : [],
       manualRelatedArtists,
+      manualRelatedArtistsOverride,
       homeCollections: existing?.homeCollections || [],
       homeSlideSort: existing?.homeSlideSort ?? null,
       details: splitList(data.details),
