@@ -1830,29 +1830,54 @@ async function discoverLastFmSimilarArtists(artist) {
   if (!apiKey || !String(artist || "").trim()) {
     return { artists: [], evidence: [], status: "not-configured", source: "Last.fm" };
   }
-  const primaryArtist = artistCreditNames(artist)[0] || artist;
-  const url = `${LASTFM_ORIGIN}/2.0/?method=artist.getsimilar&artist=${encodeURIComponent(primaryArtist)}&api_key=${encodeURIComponent(apiKey)}&format=json&limit=10&autocorrect=1`;
-  const response = await lastFmFetch(url);
-  if (!response?.ok || response.payload?.error) {
-    return { artists: [], evidence: [], status: "source-unavailable", source: "Last.fm", sourceUrl: `https://www.last.fm/music/${encodeURIComponent(primaryArtist)}` };
+  let sourceUnavailable = false;
+  for (const primaryArtist of artistResearchQueryCandidates(artist)) {
+    const url = `${LASTFM_ORIGIN}/2.0/?method=artist.getsimilar&artist=${encodeURIComponent(primaryArtist)}&api_key=${encodeURIComponent(apiKey)}&format=json&limit=10&autocorrect=1`;
+    const response = await lastFmFetch(url);
+    const sourceUrl = `https://www.last.fm/music/${encodeURIComponent(primaryArtist)}`;
+    if (!response?.ok || response.payload?.error) {
+      sourceUnavailable ||= !response || response.status >= 500;
+      continue;
+    }
+    const candidates = response.payload?.similarartists?.artist;
+    const similarArtists = Array.isArray(candidates) ? candidates : candidates ? [candidates] : [];
+    const evidence = similarArtists
+      .map((item) => {
+        const match = Number(item?.match);
+        return {
+          artist: canonicalRelatedArtistName(item?.name),
+          source: "Last.fm similar artist",
+          sourceUrl,
+          relationType: "artist-similarity",
+          confidence: Number.isFinite(match) ? match : null,
+          match: Number.isFinite(match) ? match : null
+        };
+      })
+      .filter((item) => item.artist);
+    if (evidence.length) {
+      return { artists: evidence.map((item) => item.artist), evidence, status: "available", source: "Last.fm", sourceUrl };
+    }
   }
-  const sourceUrl = `https://www.last.fm/music/${encodeURIComponent(primaryArtist)}`;
-  const candidates = response.payload?.similarartists?.artist;
-  const similarArtists = Array.isArray(candidates) ? candidates : candidates ? [candidates] : [];
-  const evidence = similarArtists
-    .map((item) => {
-      const match = Number(item?.match);
-      return {
-        artist: canonicalRelatedArtistName(item?.name),
-        source: "Last.fm similar artist",
-        sourceUrl,
-        relationType: "artist-similarity",
-        confidence: Number.isFinite(match) ? match : null,
-        match: Number.isFinite(match) ? match : null
-      };
-    })
-    .filter((item) => item.artist);
-  return { artists: evidence.map((item) => item.artist), evidence, status: evidence.length ? "available" : "no-match", source: "Last.fm", sourceUrl };
+  const primaryArtist = artistResearchQueryCandidates(artist)[0] || artist;
+  return {
+    artists: [],
+    evidence: [],
+    status: sourceUnavailable ? "source-unavailable" : "no-match",
+    source: "Last.fm",
+    sourceUrl: `https://www.last.fm/music/${encodeURIComponent(primaryArtist)}`
+  };
+}
+
+function artistResearchQueryCandidates(artist) {
+  const primary = String(artistCreditNames(artist)[0] || artist || "").trim();
+  if (!primary) return [];
+  const candidates = [primary];
+  const withoutTrailingPunctuation = primary.replace(/[.!?]+$/u, "").trim();
+  const withoutPeriods = primary.replace(/[.·]/gu, "").replace(/\s+/g, " ").trim();
+  if (withoutTrailingPunctuation && withoutTrailingPunctuation !== primary) candidates.push(withoutTrailingPunctuation);
+  if (withoutPeriods && withoutPeriods !== primary) candidates.push(withoutPeriods);
+  if (!/[.!?]$/u.test(primary)) candidates.push(`${primary}.`);
+  return unique(candidates);
 }
 
 async function findMusicBrainzReleaseId({ artist, title, format } = {}) {
@@ -1882,46 +1907,53 @@ async function findMusicBrainzReleaseId({ artist, title, format } = {}) {
 }
 
 async function discoverDirectArtistRelations(artist) {
-  const primaryArtist = artistCreditNames(artist)[0] || artist;
-  const search = await musicBrainzFetch(
-    `${MUSICBRAINZ_ORIGIN}/ws/2/artist/?query=${encodeURIComponent(`artist:"${escapeQuery(primaryArtist)}"`)}&fmt=json&limit=5`
-  );
-  if (!search?.ok) return { relations: [], unavailable: !search || search.status >= 500 };
-  const payload = await search.json().catch(() => ({}));
-  const candidates = payload.artists || [];
-  const match = candidates.find((item) => normalizedText(item.name) === normalizedText(primaryArtist)) || candidates[0];
-  if (!match?.id) return { relations: [], unavailable: false };
-  const response = await musicBrainzFetch(
-    `${MUSICBRAINZ_ORIGIN}/ws/2/artist/${match.id}?inc=artist-rels&fmt=json`
-  );
-  if (!response?.ok) return { relations: [], unavailable: !response || response.status >= 500 };
-  const artistData = await response.json().catch(() => ({}));
-  return {
-    relations: uniqueRelations(
-    (artistData.relations || [])
-      .filter((relation) => VERIFIED_RELATION_TYPES.has(String(relation?.type || "").toLowerCase()))
-      .filter((relation) => {
-        const target = relation.target || relation.artist;
-        // Membership is useful when a solo artist is a member of a group, but
-        // band membership lists are too broad to use as recommendations.
-        return relation.type !== "member of band" || target?.type === "group";
-      })
-      .map((relation) => {
-        const target = relation.target || relation.artist;
-        return target?.name
-          ? {
-              artist: canonicalRelatedArtistName(target.name),
-              source: "MusicBrainz artist relationship",
-              sourceUrl: `${MUSICBRAINZ_ORIGIN}/artist/${match.id}`,
-              relationType: relation.type,
-              confidence: "medium"
-            }
-          : null;
-      })
-      .filter(Boolean)
-    ),
-    unavailable: false
-  };
+  let unavailable = false;
+  for (const primaryArtist of artistResearchQueryCandidates(artist)) {
+    const search = await musicBrainzFetch(
+      `${MUSICBRAINZ_ORIGIN}/ws/2/artist/?query=${encodeURIComponent(`artist:"${escapeQuery(primaryArtist)}"`)}&fmt=json&limit=5`
+    );
+    if (!search?.ok) {
+      unavailable ||= !search || search.status >= 500;
+      continue;
+    }
+    const payload = await search.json().catch(() => ({}));
+    const candidates = payload.artists || [];
+    const match = candidates.find((item) => normalizedText(item.name) === normalizedText(primaryArtist)) || candidates[0];
+    if (!match?.id) continue;
+    const response = await musicBrainzFetch(
+      `${MUSICBRAINZ_ORIGIN}/ws/2/artist/${match.id}?inc=artist-rels&fmt=json`
+    );
+    if (!response?.ok) {
+      unavailable ||= !response || response.status >= 500;
+      continue;
+    }
+    const artistData = await response.json().catch(() => ({}));
+    const relations = uniqueRelations(
+      (artistData.relations || [])
+        .filter((relation) => VERIFIED_RELATION_TYPES.has(String(relation?.type || "").toLowerCase()))
+        .filter((relation) => {
+          const target = relation.target || relation.artist;
+          // Membership is useful when a solo artist is a member of a group, but
+          // band membership lists are too broad to use as recommendations.
+          return relation.type !== "member of band" || target?.type === "group";
+        })
+        .map((relation) => {
+          const target = relation.target || relation.artist;
+          return target?.name
+            ? {
+                artist: canonicalRelatedArtistName(target.name),
+                source: "MusicBrainz artist relationship",
+                sourceUrl: `${MUSICBRAINZ_ORIGIN}/artist/${match.id}`,
+                relationType: relation.type,
+                confidence: "medium"
+              }
+            : null;
+        })
+        .filter(Boolean)
+    );
+    if (relations.length) return { relations, unavailable: false };
+  }
+  return { relations: [], unavailable };
 }
 
 function uniqueRelations(values = []) {
