@@ -765,18 +765,24 @@ export async function refreshRelatedArtistsOnly({ skus = [] } = {}) {
       automaticRelatedArtists: research.artists || [],
       manualRelatedArtistsOverride: false
     }).relatedArtists;
+    const previousEnrichmentStatus = String(raw.enrichmentStatus || "").trim();
+    const enrichmentStatus = previousEnrichmentStatus.startsWith("complete")
+      ? (relatedArtists.length ? "complete" : "complete-no-related-artists")
+      : previousEnrichmentStatus;
     const nextRaw = {
       ...raw,
       relatedArtists,
       relatedArtistEvidence: research.evidence || [],
       relatedArtistsResearch: research,
       relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,
+      enrichmentStatus,
       autoEditorial: {
         ...(raw.autoEditorial || {}),
         relatedArtists,
         relatedArtistEvidence: research.evidence || [],
         relatedArtistsResearch: research,
-        relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION
+        relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,
+        enrichmentStatus
       }
     };
     await supabaseFetch(`products?id=eq.${encodeURIComponent(row.id)}`, {
