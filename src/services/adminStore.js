@@ -794,39 +794,13 @@ export const adminStore = {
     try {
       const filePath = publicOnly ? PUBLIC_STORE_PATH : ADMIN_STORE_PATH;
       const apiScope = publicOnly ? "public" : "admin";
-      const catalogUrl = publicOnly ? `/api/catalog?scope=${apiScope}` : `/api/catalog?scope=${apiScope}&v=${Date.now()}`;
-      const fetchOptions = publicOnly ? {} : { cache: "no-store" };
-      if (publicOnly) {
-        // The deployed snapshot is the public editorial revision. Load it first
-        // so static HTML, client navigation, artists, and collections cannot be
-        // replaced by a different Supabase revision during hydration. Commerce
-        // fields are still verified independently from the protected server.
-        const snapshotResponse = await fetch(filePath);
-        if (snapshotResponse.ok) {
-          activeStore = mergeStore(seed({ publicOnly: true }), await snapshotResponse.json(), { publicOnly: true });
-          activeStoreScope = scope;
-          // Editorial content and the cart can render from the deployed snapshot
-          // immediately. Price/stock verification remains server-authoritative,
-          // but must not block the first paint or clear a locally stored cart.
-          refreshPublicCommerceInBackground(activeStore);
-          refreshPublicCatalogInBackground(activeStore);
-          return;
-        }
-      }
+      const catalogUrl = `/api/catalog?scope=${apiScope}&v=${Date.now()}`;
+      const fetchOptions = { cache: "no-store" };
       const response = await fetch(catalogUrl, fetchOptions);
       if (response.ok) {
         const payload = await response.json();
         if (payload.store) {
-          let runtimeStore = payload.store;
-          if (publicOnly) {
-            try {
-              const snapshotResponse = await fetch(PUBLIC_STORE_PATH);
-              if (snapshotResponse.ok) runtimeStore = reconcilePublicCatalog(runtimeStore, await snapshotResponse.json());
-            } catch {
-              // The API remains the source of truth when the static snapshot is unavailable.
-            }
-          }
-          activeStore = mergeStore(seed({ publicOnly }), runtimeStore, { publicOnly });
+          activeStore = mergeStore(seed({ publicOnly }), payload.store, { publicOnly });
           if (publicOnly) refreshPublicCommerceInBackground(activeStore);
           activeStoreScope = scope;
           privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
@@ -834,7 +808,10 @@ export const adminStore = {
           return;
         }
       }
-      const fileResponse = publicOnly ? await fetch(filePath) : await fetch(`${filePath}?v=${Date.now()}`, { cache: "no-store" });
+      // The deployed snapshot is a fallback for an unavailable API only. It
+      // must never be rendered first and then replaced by fresher editorial
+      // data from Supabase, which creates an old/new flash after refresh.
+      const fileResponse = await fetch(`${filePath}?v=${Date.now()}`, { cache: "no-store" });
       if (!fileResponse.ok) throw new Error("No file store");
       activeStore = await migrateBrowserStore(
         mergeStore(seed({ publicOnly }), await fileResponse.json(), { publicOnly }),

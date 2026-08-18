@@ -44,10 +44,15 @@ function catalogJson(res, status, payload, { privateScope = false } = {}) {
   res.setHeader("content-type", "application/json; charset=utf-8");
   if (privateScope) {
     res.setHeader("cache-control", "no-store");
+    res.setHeader("cdn-cache-control", "no-store");
+    res.setHeader("vercel-cdn-cache-control", "no-store");
   } else {
-    res.setHeader("cache-control", "public, max-age=0, stale-while-revalidate=15");
-    res.setHeader("cdn-cache-control", "public, s-maxage=15, stale-while-revalidate=15");
-    res.setHeader("vercel-cdn-cache-control", "public, s-maxage=15, stale-while-revalidate=15");
+    // Editorial changes must be visible as one revision. A cached response
+    // here would briefly reintroduce the previous related-artist list after
+    // an Admin save while the fresh Supabase response is being fetched.
+    res.setHeader("cache-control", "no-store, max-age=0");
+    res.setHeader("cdn-cache-control", "no-store");
+    res.setHeader("vercel-cdn-cache-control", "no-store");
   }
   res.end(JSON.stringify(payload));
 }

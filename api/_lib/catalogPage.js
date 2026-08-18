@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { productGrid, shell } from "../../src/components/layout.js";
-import { artistCreditNames } from "../../src/data/catalogIdentity.js";
+import { artistCreditNames, artistIdentityKey } from "../../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../../src/data/publicUrls.js";
 import { loadStore } from "./supabase.js";
 
@@ -25,9 +25,10 @@ export async function renderCatalogPage(req, res, url) {
 
     res.statusCode = 200;
     res.setHeader("content-type", "text/html; charset=utf-8");
-    res.setHeader("cache-control", "public, max-age=60, stale-while-revalidate=300");
-    res.setHeader("cdn-cache-control", "public, max-age=60, stale-while-revalidate=300");
-    res.end(await productDocument(product, requestedPath));
+    res.setHeader("cache-control", "no-store, max-age=0");
+    res.setHeader("cdn-cache-control", "no-store");
+    res.setHeader("vercel-cdn-cache-control", "no-store");
+    res.end(await productDocument(product, requestedPath, store));
   } catch {
     notFound(res);
   }
@@ -45,12 +46,11 @@ async function renderArtistsIndexPage(res, store) {
   });
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");
-  // Production serves the build-generated artist index directly. Keep this
-  // function fallback cacheable too, so an accidental fallback never restores
-  // the old multi-second no-store behavior.
-  res.setHeader("cache-control", "public, max-age=0, must-revalidate");
-  res.setHeader("cdn-cache-control", "public, s-maxage=60, stale-while-revalidate=300");
-  res.setHeader("vercel-cdn-cache-control", "public, s-maxage=60, stale-while-revalidate=300");
+  // Artist membership is editorial data, so a direct request must use the
+  // current Supabase revision instead of a cached HTML response.
+  res.setHeader("cache-control", "no-store, max-age=0");
+  res.setHeader("cdn-cache-control", "no-store");
+  res.setHeader("vercel-cdn-cache-control", "no-store");
   res.end(document);
 }
 
@@ -70,12 +70,13 @@ async function renderArtistPage(res, store, requestedPath) {
   });
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");
-  res.setHeader("cache-control", "public, max-age=60, stale-while-revalidate=300");
-  res.setHeader("cdn-cache-control", "public, max-age=60, stale-while-revalidate=300");
+  res.setHeader("cache-control", "no-store, max-age=0");
+  res.setHeader("cdn-cache-control", "no-store");
+  res.setHeader("vercel-cdn-cache-control", "no-store");
   res.end(document);
 }
 
-async function productDocument(product, path) {
+async function productDocument(product, path, store) {
   const title = `${product.artist} - ${product.title} | NIXP`;
   const format = product.displayFormat || product.format || "Product";
   const price = formatPrice(product.price);
@@ -91,7 +92,7 @@ async function productDocument(product, path) {
     canonicalUrl,
     image,
     type: "product",
-    appMarkup: shell(productMarkup(product), path, 0)
+    appMarkup: shell(productMarkup(product, store), path, 0)
   });
 }
 
@@ -116,7 +117,7 @@ async function pageDocument({ title, description, canonicalUrl, image, type = "w
   return template;
 }
 
-function productMarkup(product) {
+function productMarkup(product, store = {}) {
   const images = [...new Set((Array.isArray(product.images) && product.images.length ? product.images : [product.image]).filter(Boolean))];
   const format = product.displayFormat || product.format || "Product";
   const isRecord = product.category === "Records";
@@ -127,7 +128,25 @@ function productMarkup(product) {
   const review = product.reviewQuote
     ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${escapeHtml(product.reviewSource || "Source review")}</cite></blockquote>`
     : "";
-  return `<section class="product-detail"><div class="detail-gallery">${images.map((image, index) => `<figure class="product-art product-art-large"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" /></figure>`).join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}">Add to cart</button>`}</div><dl class="detail-list">${details}</dl></aside></section>`;
+  const availableArtists = new Map(
+    (store.products || [])
+      .filter((item) => item.category === "Records")
+      .flatMap((item) => artistCreditNames(item.artist).map((artist) => [artistIdentityKey(artist), artist]))
+  );
+  const relatedArtists = product.category === "Records" && Array.isArray(product.relatedArtists)
+    ? product.relatedArtists.filter(Boolean)
+    : [];
+  const relatedMarkup = relatedArtists.length
+    ? `<p class="related-artist-heading">Related Artists</p><div class="related-artist-tags" aria-label="Related artists">${relatedArtists.map((artist) => {
+        const available = artistCreditNames(artist)
+          .map((name) => availableArtists.get(artistIdentityKey(name)))
+          .find(Boolean);
+        return available
+          ? `<a href="/artists/${slugify(available)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
+          : `<span>${escapeHtml(artist)}</span>`;
+      }).join("")}</div>`
+    : "";
+  return `<section class="product-detail"><div class="detail-gallery">${images.map((image, index) => `<figure class="product-art product-art-large"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" /></figure>`).join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}">Add to cart</button>`}</div><dl class="detail-list">${details}</dl>${relatedMarkup}</aside></section>`;
 }
 
 function normalizePath(value) {
