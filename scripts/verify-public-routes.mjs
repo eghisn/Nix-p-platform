@@ -23,6 +23,9 @@ for (const route of paths) {
   const response = await fetch(`${baseUrl}${route}`, { redirect: "follow", cache: "no-store" });
   const body = await response.text();
   if (!response.ok) throw new Error(`${route} returned ${response.status}`);
+  if (body.includes("This route is not part of the NIXP prototype yet.")) {
+    throw new Error(`${route} rendered the application 404 page during route verification.`);
+  }
   if (!/NIXP_APP_MARKER|src\/main\.js|assets\/app\.js/.test(body)) throw new Error(`${route} did not return the NIXP application shell`);
   if (route === "/records/" && (!body.includes("records-toolbar") || !body.includes("data-record-sort"))) {
     throw new Error("/records/ static markup does not match the interactive records controls.");

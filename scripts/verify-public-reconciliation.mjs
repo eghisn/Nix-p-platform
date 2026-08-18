@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { reconcilePublicRevision } from "../api/_lib/supabase.js";
+import { reconcilePublicCatalog } from "../src/services/adminStore.js";
 
 const baseRemote = {
   id: "p1",
@@ -70,5 +71,25 @@ const manualClearRemote = {
 const manuallyCleared = reconcilePublicRevision([manualClearRemote], [staleSnapshot])[0];
 assert.deepEqual(manuallyCleared.relatedArtists, [], "an explicit empty Admin override must clear stale snapshot tags");
 assert.equal(manuallyCleared.manualRelatedArtistsOverride, true);
+
+const snapshotStore = {
+  products: [
+    { ...staleSnapshot, id: "p1" },
+    { ...baseRemote, id: "p2", title: "Second Release" }
+  ],
+  artists: [{ id: "artist-1", name: "Artist", status: "Published" }]
+};
+const partialRemoteStore = {
+  products: [{ ...baseRemote, id: "p1" }],
+  artists: []
+};
+const partialReconciled = reconcilePublicCatalog(partialRemoteStore, snapshotStore);
+assert.deepEqual(
+  partialReconciled.products.map((product) => product.id).sort(),
+  ["p1", "p2"],
+  "a partial API response must not remove products from the deployed snapshot"
+);
+const emptyReconciled = reconcilePublicCatalog({ products: [], artists: [] }, snapshotStore);
+assert.equal(emptyReconciled.products.length, 2, "an empty API response must not blank the public catalog");
 
 console.log("Public reconciliation contract passed.");

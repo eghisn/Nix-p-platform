@@ -157,8 +157,7 @@ function snapshotOwnsEditorialFields(product = {}) {
   );
 }
 
-function reconcilePublicCatalog(remoteStore, snapshotStore) {
-  const snapshotById = new Map((snapshotStore?.products || []).map((product) => [product.id, product]));
+export function reconcilePublicCatalog(remoteStore, snapshotStore) {
   const snapshotIds = new Set((snapshotStore?.products || []).map((product) => String(product?.id || "")).filter(Boolean));
   // The deployed snapshot protects locally managed media from a stale API
   // image. Editorial research, however, is server-owned: otherwise a fresh
@@ -192,16 +191,20 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
     if (value && typeof value === "object") return Object.keys(value).length > 0;
     return value !== null && value !== undefined && String(value).trim() !== "";
   };
-  const remoteProducts = remoteStore.products || [];
+  const remoteProducts = Array.isArray(remoteStore?.products) ? remoteStore.products : [];
+  const remoteById = new Map(remoteProducts.map((product) => [String(product?.id || ""), product]));
   const remoteOnly = remoteProducts.filter((product) => {
     if (snapshotIds.has(String(product?.id || ""))) return false;
     return product?.category !== "Records" || isRecordPublicationReady(product);
   });
-  const reconciledSnapshot = remoteProducts
-    .filter((product) => snapshotIds.has(String(product?.id || "")))
-    .map((remoteProduct) => {
-      const snapshotProduct = snapshotById.get(remoteProduct.id);
-      if (!snapshotProduct) return remoteProduct;
+  const reconciledSnapshot = (snapshotStore?.products || [])
+    .map((snapshotProduct) => {
+      const remoteProduct = remoteById.get(String(snapshotProduct?.id || ""));
+      // A public API response can be temporarily empty or partial while a
+      // server-side catalog read is refreshing. Never let that transient
+      // response erase a product already present in the deployed snapshot.
+      if (!remoteProduct) return snapshotProduct;
+      if (String(remoteProduct.publishStatus || "").toLowerCase() === "archived") return null;
 
       const mediaProtected = snapshotOwnsEditorialFields(snapshotProduct)
         ? snapshotMediaFields.reduce(
@@ -226,7 +229,8 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
         if (hasEditorialValue(snapshotProduct[field])) return { ...merged, [field]: snapshotProduct[field] };
         return merged;
       }, mediaProtected);
-    });
+    })
+    .filter(Boolean);
   return {
     ...remoteStore,
     // A complete public product may reach Supabase before the next static
