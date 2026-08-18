@@ -160,20 +160,24 @@ function snapshotOwnsEditorialFields(product = {}) {
 function reconcilePublicCatalog(remoteStore, snapshotStore) {
   const snapshotById = new Map((snapshotStore?.products || []).map((product) => [product.id, product]));
   const snapshotIds = new Set((snapshotStore?.products || []).map((product) => String(product?.id || "")).filter(Boolean));
-  const editorialFields = [
+  // The deployed snapshot protects locally managed media from a stale API
+  // image. Editorial research, however, is server-owned: otherwise a fresh
+  // Last.fm/MusicBrainz result is silently replaced by yesterday's snapshot.
+  const snapshotMediaFields = ["image", "images", "imageCredits", "autoProductPhoto"];
+  const researchedEditorialFields = [
     "description",
     "descriptionSource",
     "reviewQuote",
     "reviewSource",
     "reviewUrl",
     "relatedArtists",
-    "image",
-    "images",
-    "imageCredits",
-    "autoProductPhoto",
+    "relatedArtistEvidence",
+    "relatedArtistsResearch",
+    "autoEditorial",
     "enrichmentOrigin",
     "enrichmentStatus",
     "enrichmentUpdatedAt",
+    "enrichmentAttemptedAt",
     "metadataSourceUrl",
     "musicBrainzReleaseId",
     "edition",
@@ -181,6 +185,11 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
     "barcode",
     "details"
   ];
+  const hasEditorialValue = (value) => {
+    if (Array.isArray(value)) return value.length > 0;
+    if (value && typeof value === "object") return Object.keys(value).length > 0;
+    return value !== null && value !== undefined && String(value).trim() !== "";
+  };
   const remoteProducts = remoteStore.products || [];
   const remoteOnly = remoteProducts.filter((product) => {
     if (snapshotIds.has(String(product?.id || ""))) return false;
@@ -190,13 +199,23 @@ function reconcilePublicCatalog(remoteStore, snapshotStore) {
     .filter((product) => snapshotIds.has(String(product?.id || "")))
     .map((remoteProduct) => {
       const snapshotProduct = snapshotById.get(remoteProduct.id);
-      // Editorial fields come from the deployed public snapshot. Supabase
-      // remains the live authority for price, stock and publication status.
-      if (!snapshotProduct || !snapshotOwnsEditorialFields(snapshotProduct)) return remoteProduct;
-      return editorialFields.reduce(
-        (merged, field) => (snapshotProduct[field] !== undefined ? { ...merged, [field]: snapshotProduct[field] } : merged),
-        remoteProduct
-      );
+      if (!snapshotProduct) return remoteProduct;
+
+      const mediaProtected = snapshotOwnsEditorialFields(snapshotProduct)
+        ? snapshotMediaFields.reduce(
+            (merged, field) => (snapshotProduct[field] !== undefined ? { ...merged, [field]: snapshotProduct[field] } : merged),
+            remoteProduct
+          )
+        : remoteProduct;
+
+      // Prefer fresh server research whenever it is present. If an older API
+      // revision has an empty field, retain a non-empty snapshot value so a
+      // transient partial response cannot erase an already published detail.
+      return researchedEditorialFields.reduce((merged, field) => {
+        if (hasEditorialValue(remoteProduct[field])) return { ...merged, [field]: remoteProduct[field] };
+        if (hasEditorialValue(snapshotProduct[field])) return { ...merged, [field]: snapshotProduct[field] };
+        return merged;
+      }, mediaProtected);
     });
   return {
     ...remoteStore,
@@ -568,7 +587,8 @@ async function writeStoreBestEffort(store) {
 }
 
 function refreshPublicCommerceInBackground(store) {
-  return reconcilePublicCommerce(store)
+  const currentStore = activeStoreScope === "public" && activeStore ? activeStore : store;
+  return reconcilePublicCommerce(currentStore)
     .then((nextStore) => {
       activeStore = nextStore;
       activeStoreScope = "public";
@@ -589,7 +609,8 @@ async function refreshPublicCatalogInBackground(snapshotStore) {
     const payload = await response.json().catch(() => ({}));
     if (!response.ok || !payload.store) return snapshotStore;
 
-    const runtimeStore = reconcilePublicCatalog(payload.store, snapshotStore);
+    const currentStore = activeStoreScope === "public" && activeStore ? activeStore : snapshotStore;
+    const runtimeStore = reconcilePublicCatalog(payload.store, currentStore);
     activeStore = mergeStore(seed({ publicOnly: true }), runtimeStore, { publicOnly: true });
     activeStoreScope = "public";
     if (typeof window !== "undefined") {
