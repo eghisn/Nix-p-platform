@@ -208,6 +208,19 @@ function inventoryArtistMap(products) {
   return artists;
 }
 
+function resolveInventoryArtist(artist, availableArtistNames) {
+  if (!availableArtistNames) return "";
+  for (const credit of artistCreditNames(artist)) {
+    const match = availableArtistNames.get(slugify(credit));
+    if (match) return match;
+  }
+  return "";
+}
+
+function artistSlug(value) {
+  return slugify(value);
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -371,10 +384,10 @@ function staticProductDetailMarkup(product) {
         .filter(Boolean)
         .slice(0, 3)
         .map((artist) => {
-          const relatedSlug = slugify(artist);
-          const inventoryArtist = availableArtistNames.get(relatedSlug);
+          const inventoryArtist = resolveInventoryArtist(artist, availableArtistNames);
+          const relatedSlug = inventoryArtist ? artistSlug(inventoryArtist) : "";
           return inventoryArtist
-            ? `<a href="/artists/${relatedSlug}">${escapeHtml(artist)}</a>`
+            ? `<a href="/artists/${relatedSlug}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
             : `<span>${escapeHtml(artist)}</span>`;
         })
         .join("")}</div>`
