@@ -72,6 +72,22 @@ const manuallyCleared = reconcilePublicRevision([manualClearRemote], [staleSnaps
 assert.deepEqual(manuallyCleared.relatedArtists, [], "an explicit empty Admin override must clear stale snapshot tags");
 assert.equal(manuallyCleared.manualRelatedArtistsOverride, true);
 
+const variousArtistsRemote = {
+  ...baseRemote,
+  id: "finance-nxp-2026-vnl-0050",
+  sku: "NXP-2026-VNL-0050",
+  artist: "Jaydee & Second Phase"
+};
+const variousArtistsSnapshot = {
+  ...variousArtistsRemote,
+  artist: "Various Artists"
+};
+assert.equal(
+  reconcilePublicRevision([variousArtistsRemote], [variousArtistsSnapshot])[0].artist,
+  "Various Artists",
+  "the compilation SKU must remain under the Various Artists storefront page"
+);
+
 const snapshotStore = {
   products: [
     { ...staleSnapshot, id: "p1" },

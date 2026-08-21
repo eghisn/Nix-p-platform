@@ -5,6 +5,7 @@ import {
 } from "../api/_lib/catalogEnrichment.js";
 import { readFinanceState, writeFinanceState } from "../api/_lib/financeState.js";
 import { loadStore, supabaseFetch } from "../api/_lib/supabase.js";
+import { canonicalProductArtist } from "../src/data/catalogIdentity.js";
 
 if (process.argv.includes("--local")) {
   await applyCuratedEnrichmentsLocally();
@@ -201,7 +202,7 @@ function fromProductRow(row) {
     id: row.id,
     sku: row.sku,
     title: row.title,
-    artist: row.artist,
+    artist: canonicalProductArtist({ ...row, artist: row.artist }),
     category: row.category,
     format: row.format,
     displayFormat: row.display_format,

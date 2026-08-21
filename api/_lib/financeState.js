@@ -5,7 +5,7 @@ import {
   researchRelatedArtists,
   resolveRelatedArtistDisplay
 } from "./catalogEnrichment.js";
-import { artistCreditNames, canonicalArtistName, canonicalLabelName } from "../../src/data/catalogIdentity.js";
+import { artistCreditNames, canonicalArtistName, canonicalLabelName, canonicalProductArtist } from "../../src/data/catalogIdentity.js";
 import { isResearchPublicationReady, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 
@@ -426,7 +426,7 @@ function productRowFromFinanceStock(row, stock, quantity) {
 
   return productRowFromExisting(row, {
     title: financeTitle || row.title,
-    artist: canonicalArtistName(financeArtist || row.artist),
+    artist: canonicalProductArtist({ ...row, artist: financeArtist || row.artist }),
     category,
     format: category === "Records" ? item : row.format || "",
     display_format: category === "Records" ? item : row.display_format || "",
@@ -442,7 +442,7 @@ function productRowFromFinanceStock(row, stock, quantity) {
     raw: {
       ...raw,
       title: financeTitle || raw.title || row.title,
-      artist: canonicalArtistName(financeArtist || raw.artist || row.artist),
+      artist: canonicalProductArtist({ ...row, ...raw, artist: financeArtist || raw.artist || row.artist }),
       category,
       format: category === "Records" ? item : raw.format || row.format || "",
       displayFormat: category === "Records" ? item : raw.displayFormat || row.display_format || "",

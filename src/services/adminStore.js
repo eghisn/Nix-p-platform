@@ -1,5 +1,5 @@
 import { artistNames, cashflow, inventory, orders, products, requestItems } from "../data/sampleData.js";
-import { canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../data/catalogIdentity.js";
+import { canonicalProductArtist, canonicalLabelName, canonicalRelatedArtistName } from "../data/catalogIdentity.js";
 import { isRecentReleaseProduct } from "../data/homeCollections.js";
 import { isRecordPublicationReady } from "../data/catalogPublication.js";
 
@@ -83,7 +83,7 @@ function withDefaults(product) {
     visibility: "Public",
     updatedAt: "2026-07-11",
     ...product,
-    artist: canonicalArtistName(product.artist),
+    artist: canonicalProductArtist(product),
     label: canonicalLabelName(product.label),
     image: product.image || product.images?.[0] || (isFinanceDraft ? "" : "/public/nixp-product-example-paper.png"),
     edition: String(product.edition || "").trim(),

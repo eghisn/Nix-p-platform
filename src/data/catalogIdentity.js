@@ -29,6 +29,14 @@ const ARTIST_CANONICAL_NAMES = new Map([
   ["va", "Various Artists"]
 ]);
 
+// Some compilation records are stored in Finance under the contributing
+// artists printed on the release, while the storefront credits the release
+// as Various Artists. Keep this correction keyed to the stable SKU so a
+// generic collaboration split never changes unrelated products.
+const PRODUCT_ARTIST_OVERRIDES = new Map([
+  ["NXP-2026-VNL-0050", "Various Artists"]
+]);
+
 // Exact credits are kept above because not every ampersand is a collaboration.
 // For new collaborative release credits, the separator rule below creates
 // individual artist pages without changing the release's printed credit.
@@ -38,6 +46,11 @@ export function canonicalArtistName(value) {
   const name = String(value || "").trim();
   if (!name) return "";
   return ARTIST_CANONICAL_NAMES.get(name.toLowerCase()) || name;
+}
+
+export function canonicalProductArtist(product = {}) {
+  const sku = String(product.sku || "").trim().toUpperCase();
+  return PRODUCT_ARTIST_OVERRIDES.get(sku) || canonicalArtistName(product.artist);
 }
 
 export function artistCreditNames(value) {

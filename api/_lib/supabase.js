@@ -1,5 +1,6 @@
 import { syncAdminCatalogInventory, syncAdminProductInventory } from "./financeState.js";
 import { applyCatalogPublicationSafety, isFinanceCatalogProduct, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
+import { canonicalProductArtist } from "../../src/data/catalogIdentity.js";
 
 const TABLES = ["products", "artists", "collections", "requests", "offers", "orders", "cashflow", "inventory"];
 const REQUIRED_STORE_ARRAYS = ["products", "artists", "collections", "requests", "offers", "orders", "cashflow", "inventory"];
@@ -198,10 +199,14 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
           : value !== undefined && value !== null && (typeof value !== "string" || value.trim());
         return usable ? { ...product, [field]: value } : product;
       }, withRemoteResearch);
-      if (!snapshotOwnsEditorialFields(snapshotProduct)) return withCurrentIdentity;
+      const withCanonicalArtist = {
+        ...withCurrentIdentity,
+        artist: canonicalProductArtist(withCurrentIdentity)
+      };
+      if (!snapshotOwnsEditorialFields(snapshotProduct)) return withCanonicalArtist;
       const withSnapshotEditorial = fields.reduce(
         (product, field) => (snapshotProduct[field] !== undefined ? { ...product, [field]: snapshotProduct[field] } : product),
-        withCurrentIdentity
+        withCanonicalArtist
       );
       return hasSourceBackedResearch || hasManualRelatedArtistsOverride
         ? researchFields.reduce(
@@ -324,7 +329,7 @@ function fromProductRow(row, { privateScope = false } = {}) {
     id: row.id,
     sku: row.sku,
     title: row.title,
-    artist: row.artist,
+    artist: canonicalProductArtist({ ...row, artist: row.artist }),
     category: row.category,
     format: row.format,
     displayFormat: row.display_format,
