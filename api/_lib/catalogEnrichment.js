@@ -1101,6 +1101,66 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     relatedArtists: ["Flying Lotus", "Thundercat", "Nai Palm"],
     tags: ["future soul", "neo-soul", "jazz", "experimental pop"],
     sourceUrl: "https://hiatuskaiyote.bandcamp.com/album/mood-valiant"
+  },
+  "NXP-2026-VNL-0057": {
+    title: "Alma Construct EP",
+    artist: "Alma Construct",
+    year: 2014,
+    label: "R&S Records",
+    edition: "12-inch EP",
+    catalogNumber: "RS1408",
+    barcode: "5055274704265",
+    cover: "https://is1-ssl.mzstatic.com/image/thumb/Music20/v4/9d/0f/e4/9d0fe4c8-9bd7-1aef-0593-e5e368d9b2f8/cover.jpg/3000x3000bb.jpg",
+    productPhoto: "https://is1-ssl.mzstatic.com/image/thumb/Music20/v4/9d/0f/e4/9d0fe4c8-9bd7-1aef-0593-e5e368d9b2f8/cover.jpg/3000x3000bb.jpg",
+    imageCredits: [
+      {
+        image: "https://is1-ssl.mzstatic.com/image/thumb/Music20/v4/9d/0f/e4/9d0fe4c8-9bd7-1aef-0593-e5e368d9b2f8/cover.jpg/3000x3000bb.jpg",
+        credit: "Apple Music / R&S Records artwork",
+        url: "https://music.apple.com/us/album/alma-construct-ep/1114573830"
+      }
+    ],
+    description:
+      "Alma Construct's self-titled 2014 EP is the debut of Josh Thompson, a five-track R&S Records release built from pulverising basslines, moody atmospherics, tape machines and guitar pedals, with its sci-fi mood inspired by La Planete Sauvage.",
+    descriptionSource: "R&S Records / Norman Records",
+    reviewQuote: "Space-headed slo-mo techno / hip hop trips from R&S's new signing",
+    reviewSource: "Boomkat (quoted)",
+    reviewUrl: "https://boomkat.com/products/alma-construct-ep",
+    relatedArtists: ["Lakker", "Lone", "Autechre"],
+    tags: ["techno", "experimental electronic", "electro", "trip hop"],
+    sourceUrl: "https://www.normanrecords.com/records/148979-alma-construct-alma-construct",
+    musicBrainzReleaseId: "6d6deb39-4b80-4cee-947f-6512d963a76d"
+  },
+  "NXP-2026-VNL-0059": {
+    title: "Pastel and Pass Out",
+    artist: "No Joy",
+    year: 2013,
+    label: "Mexican Summer",
+    edition: "12-inch EP, Limited Edition",
+    catalogNumber: "MEX1761",
+    barcode: "0184923117615",
+    cover: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/93/9f/d8/939fd8d5-90fd-0e61-c5b0-5c13b4683f37/184923117660_cover.jpg/3000x3000bb.jpg",
+    productPhoto: "https://merchbar.imgix.net/product/4/1616/30672253/184923117615.jpg?auto=compress&format=jpg&h=1200&quality=90&w=1200",
+    imageCredits: [
+      {
+        image: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/93/9f/d8/939fd8d5-90fd-0e61-c5b0-5c13b4683f37/184923117660_cover.jpg/3000x3000bb.jpg",
+        credit: "Apple Music / Mexican Summer artwork",
+        url: "https://music.apple.com/us/album/pastel-and-pass-out-single/1775741802"
+      },
+      {
+        image: "https://merchbar.imgix.net/product/4/1616/30672253/184923117615.jpg?auto=compress&format=jpg&h=1200&quality=90&w=1200",
+        credit: "Merchbar physical vinyl product photography",
+        url: "https://www.merchbar.com/rock-alternative/no-joy/no-joy-pastel-and-pass-out-vinyl-record-2196891"
+      }
+    ],
+    description:
+      "No Joy's 2013 Pastel and Pass Out is a three-track Mexican Summer EP that turns the band's shoegaze density into tighter structures, sharper dynamics and a more playful sense of movement.",
+    descriptionSource: "Mexican Summer / Pitchfork",
+    reviewQuote: "a small but strong release that should tide fans over until No Joy's next major statement",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/18707-no-joy-pastel-and-pass-out-ep/",
+    relatedArtists: ["DIIV", "Ringo Deathstarr", "A Place to Bury Strangers"],
+    tags: ["shoegaze", "noise rock", "dream pop", "alternative rock"],
+    sourceUrl: "https://pitchfork.com/reviews/albums/18707-no-joy-pastel-and-pass-out-ep/"
   }
 };
 
@@ -1324,10 +1384,11 @@ async function archiveDiscoveredImages(discovered, sku, used) {
   const photoResult = used
     ? { url: "", archived: true }
     : await archiveRemoteProductImage({ url: discovered.productPhoto, sku, role: "detail-1" });
-  const sourceImages = new Map([
-    [String(discovered.cover || ""), coverResult.url],
-    [String(discovered.productPhoto || ""), photoResult.url]
-  ]);
+  const sourceImages = new Map();
+  if (discovered.cover) sourceImages.set(String(discovered.cover), coverResult.url);
+  if (discovered.productPhoto && discovered.productPhoto !== discovered.cover) {
+    sourceImages.set(String(discovered.productPhoto), photoResult.url);
+  }
   return {
     ...discovered,
     cover: coverResult.url,
@@ -1359,36 +1420,31 @@ function applyArchivedCatalogImages(discovered, sku) {
 }
 
 async function discoverMusicBrainzRelease(stock) {
-  const query = [
-    `artist:"${escapeQuery(stock.artist)}"`,
-    `release:"${escapeQuery(stock.title)}"`
-  ].join(" AND ");
-  const response = await musicBrainzFetch(
-    `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25&inc=labels+artist-credits+media+release-groups`
-  );
-  if (!response?.ok) return null;
-  const payload = await response.json();
   const format = String(stock.format || stock.item || "").toLowerCase();
   const expectedTitle = normalizedText(stock.title);
   const barcode = String(stock.barcode || "").replace(/\D/g, "");
   const catalogNumber = normalizedText(stock.catalogNumber);
-  let releases = Array.isArray(payload.releases) ? payload.releases : [];
-  let release = chooseMusicBrainzRelease(releases, { stock, expectedTitle, format, barcode, catalogNumber });
+  const queries = [];
+  if (catalogNumber) {
+    // Catalog number is the strongest Finance-side identity. Search it first;
+    // MusicBrainz documents catno as an exact release catalog-number field.
+    queries.push(`catno:"${escapeQuery(stock.catalogNumber)}" AND artist:"${escapeQuery(stock.artist)}"`);
+  }
+  queries.push(
+    `artist:"${escapeQuery(stock.artist)}" AND release:"${escapeQuery(stock.title)}"`,
+    `release:"${escapeQuery(stock.title)}"`
+  );
 
-  // MusicBrainz can return no usable candidate for a legitimate release when
-  // punctuation, collaboration credits, or missing format metadata differs
-  // from Finance. Retry once with a title-focused query, then keep the same
-  // conservative exact-title and verified-artist gate before accepting it.
-  if (!release) {
-    const fallbackQuery = `release:"${escapeQuery(stock.title)}"`;
-    const fallbackResponse = await musicBrainzFetch(
-      `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(fallbackQuery)}&fmt=json&limit=50&inc=labels+artist-credits+media+release-groups`
+  let release = null;
+  for (const [index, query] of queries.entries()) {
+    const response = await musicBrainzFetch(
+      `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=${index === 0 && catalogNumber ? 50 : 25}&inc=labels+artist-credits+media+release-groups`
     );
-    if (fallbackResponse?.ok) {
-      const fallbackPayload = await fallbackResponse.json();
-      releases = Array.isArray(fallbackPayload.releases) ? fallbackPayload.releases : [];
-      release = chooseMusicBrainzRelease(releases, { stock, expectedTitle, format, barcode, catalogNumber });
-    }
+    if (!response?.ok) continue;
+    const payload = await response.json();
+    const releases = Array.isArray(payload.releases) ? payload.releases : [];
+    release = chooseMusicBrainzRelease(releases, { stock, expectedTitle, format, barcode, catalogNumber });
+    if (release) break;
   }
   if (!release) return null;
 
@@ -1461,25 +1517,38 @@ function chooseMusicBrainzRelease(releases = [], { stock, expectedTitle, format,
   const candidates = releases
     .map((release) => {
       const title = normalizedText(release.title);
-      const exactTitle = title === expectedTitle;
-      if (!exactTitle || !musicBrainzArtistMatches(release, stock.artist)) return null;
-
       const formats = (release.media || []).map((medium) => normalizedText(medium.format));
       const formatMatches = !format || !formats.length || formats.some((candidate) => candidate.includes(normalizedText(format)));
       const releaseBarcode = String(release.barcode || "").replace(/\D/g, "");
       const releaseCatalogNumbers = (release["label-info"] || []).map((label) => normalizedText(label["catalog-number"]));
-      const barcodeMatches = !barcode || !releaseBarcode || releaseBarcode === barcode || (catalogNumber && releaseCatalogNumbers.includes(catalogNumber));
-      const catalogMatches = !catalogNumber || !releaseCatalogNumbers.length || releaseCatalogNumbers.includes(catalogNumber);
-      if (!formatMatches || !barcodeMatches || !catalogMatches) return null;
+      const barcodeMatches = !barcode || !releaseBarcode || releaseBarcode === barcode || (catalogNumber && releaseCatalogNumbers.some((value) => catalogNumberMatches(value, catalogNumber)));
+      const catalogMatches = !catalogNumber || !releaseCatalogNumbers.length || releaseCatalogNumbers.some((value) => catalogNumberMatches(value, catalogNumber));
+      const exactTitle = title === expectedTitle;
+      const catalogConfirmedTitleVariant = catalogMatches && compatibleReleaseTitle(expectedTitle, title);
+      if ((!exactTitle && !catalogConfirmedTitleVariant) || !musicBrainzArtistMatches(release, stock.artist) || !formatMatches || !barcodeMatches || !catalogMatches) return null;
 
       return {
         release,
-        score: Number(release.score || 0) + (formatMatches ? 10 : 0) + (barcodeMatches ? 15 : 0) + (catalogMatches ? 15 : 0)
+        score: Number(release.score || 0) + (exactTitle ? 20 : 5) + (formatMatches ? 10 : 0) + (barcodeMatches ? 15 : 0) + (catalogMatches ? 25 : 0)
       };
     })
     .filter(Boolean)
     .sort((a, b) => b.score - a.score);
   return candidates[0]?.release || null;
+}
+
+function catalogNumberMatches(candidate, expected) {
+  const left = String(candidate || "").replace(/[^a-z0-9]/gi, "").toLowerCase();
+  const right = String(expected || "").replace(/[^a-z0-9]/gi, "").toLowerCase();
+  return Boolean(left && right && left === right);
+}
+
+function compatibleReleaseTitle(expected, actual) {
+  if (!expected || !actual) return false;
+  if (expected === actual) return true;
+  const suffixes = new Set(["ep", "lp", "album", "single", "vinyl", "deluxe", "edition"]);
+  const stripSuffix = (value) => value.split(" ").filter((token) => !suffixes.has(token)).join(" ").trim();
+  return stripSuffix(expected) === stripSuffix(actual);
 }
 
 function musicBrainzArtistMatches(release, artist) {
