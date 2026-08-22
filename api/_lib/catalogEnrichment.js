@@ -1266,27 +1266,30 @@ async function discoverMusicBrainzRelease(stock) {
   const response = await musicBrainzFetch(
     `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25&inc=labels+artist-credits+media+release-groups`
   );
-  if (!response.ok) return null;
+  if (!response?.ok) return null;
   const payload = await response.json();
   const format = String(stock.format || stock.item || "").toLowerCase();
   const expectedTitle = normalizedText(stock.title);
-  const expectedArtist = normalizedText(stock.artist);
   const barcode = String(stock.barcode || "").replace(/\D/g, "");
   const catalogNumber = normalizedText(stock.catalogNumber);
-  const matches = (payload.releases || []).filter((release) => {
-    const formats = (release.media || []).map((medium) => String(medium.format || "").toLowerCase());
-    const artists = (release["artist-credit"] || []).map((credit) => credit.name).join(" ");
-    const releaseBarcode = String(release.barcode || "").replace(/\D/g, "");
-    const releaseCatalogNumbers = (release["label-info"] || []).map((label) => normalizedText(label["catalog-number"]));
-    return (
-      normalizedText(release.title) === expectedTitle &&
-      normalizedText(artists).includes(expectedArtist) &&
-      (!formats.length || formats.some((candidate) => candidate.includes(format))) &&
-      (!barcode || !releaseBarcode || releaseBarcode === barcode || (catalogNumber && releaseCatalogNumbers.includes(catalogNumber))) &&
-      (!catalogNumber || !releaseCatalogNumbers.length || releaseCatalogNumbers.includes(catalogNumber))
+  let releases = Array.isArray(payload.releases) ? payload.releases : [];
+  let release = chooseMusicBrainzRelease(releases, { stock, expectedTitle, format, barcode, catalogNumber });
+
+  // MusicBrainz can return no usable candidate for a legitimate release when
+  // punctuation, collaboration credits, or missing format metadata differs
+  // from Finance. Retry once with a title-focused query, then keep the same
+  // conservative exact-title and verified-artist gate before accepting it.
+  if (!release) {
+    const fallbackQuery = `release:"${escapeQuery(stock.title)}"`;
+    const fallbackResponse = await musicBrainzFetch(
+      `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(fallbackQuery)}&fmt=json&limit=50&inc=labels+artist-credits+media+release-groups`
     );
-  });
-  const release = matches.sort((a, b) => Number(b.score || 0) - Number(a.score || 0))[0];
+    if (fallbackResponse?.ok) {
+      const fallbackPayload = await fallbackResponse.json();
+      releases = Array.isArray(fallbackPayload.releases) ? fallbackPayload.releases : [];
+      release = chooseMusicBrainzRelease(releases, { stock, expectedTitle, format, barcode, catalogNumber });
+    }
+  }
   if (!release) return null;
 
   const labelInfo = release["label-info"] || [];
@@ -1349,6 +1352,46 @@ async function discoverMusicBrainzRelease(stock) {
     sourceUrl: releaseGroup?.officialUrl || `${MUSICBRAINZ_ORIGIN}/release/${release.id}`,
     musicBrainzReleaseId: release.id
   };
+}
+
+function chooseMusicBrainzRelease(releases = [], { stock, expectedTitle, format, barcode, catalogNumber } = {}) {
+  const candidates = releases
+    .map((release) => {
+      const title = normalizedText(release.title);
+      const exactTitle = title === expectedTitle;
+      if (!exactTitle || !musicBrainzArtistMatches(release, stock.artist)) return null;
+
+      const formats = (release.media || []).map((medium) => normalizedText(medium.format));
+      const formatMatches = !format || !formats.length || formats.some((candidate) => candidate.includes(normalizedText(format)));
+      const releaseBarcode = String(release.barcode || "").replace(/\D/g, "");
+      const releaseCatalogNumbers = (release["label-info"] || []).map((label) => normalizedText(label["catalog-number"]));
+      const barcodeMatches = !barcode || !releaseBarcode || releaseBarcode === barcode || (catalogNumber && releaseCatalogNumbers.includes(catalogNumber));
+      const catalogMatches = !catalogNumber || !releaseCatalogNumbers.length || releaseCatalogNumbers.includes(catalogNumber);
+      if (!formatMatches || !barcodeMatches || !catalogMatches) return null;
+
+      return {
+        release,
+        score: Number(release.score || 0) + (formatMatches ? 10 : 0) + (barcodeMatches ? 15 : 0) + (catalogMatches ? 15 : 0)
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.score - a.score);
+  return candidates[0]?.release || null;
+}
+
+function musicBrainzArtistMatches(release, artist) {
+  const credits = (release?.["artist-credit"] || [])
+    .map((credit) => credit?.name || credit?.artist?.name || "")
+    .filter(Boolean);
+  const candidate = normalizedText(credits.join(" "));
+  const expectedCredits = artistCreditNames(artist).map(normalizedText).filter(Boolean);
+  if (!candidate || !expectedCredits.length) return false;
+  if (expectedCredits.every((credit) => candidate.includes(credit))) return true;
+  const expected = normalizedText(artist);
+  if (expected === "various artists" || expected === "va" || expected === "v a") {
+    return candidate.includes("various artists") || candidate === "va";
+  }
+  return candidate.includes(expected);
 }
 
 function isPlaceholderInventoryTitle(value) {
