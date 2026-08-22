@@ -78,19 +78,53 @@
       ]
     },
     {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
       "source": "/artists",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
+          "value": "no-store, max-age=0, must-revalidate"
         },
         {
           "key": "CDN-Cache-Control",
-          "value": "public, s-maxage=60, stale-while-revalidate=300"
+          "value": "no-store"
         },
         {
           "key": "Vercel-CDN-Cache-Control",
-          "value": "public, s-maxage=60, stale-while-revalidate=300"
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/(about|apparel|accessories|blog|cart|contact|international-order|labels|make-an-offer|objects|publishing|records|request-item|shipping-returns|terms-of-use)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "no-store"
         }
       ]
     }

@@ -4058,6 +4058,13 @@ adminStore
   .initialize()
   .then(() => render())
   .catch((error) => {
-    console.warn("Catalog refresh failed; continuing with the local snapshot.", error);
+    console.warn("Catalog refresh failed; keeping the server-rendered public revision.", error);
+    // Public route documents already contain the deployed snapshot. Do not
+    // replace that stable HTML with a seed/local snapshot after a failed boot;
+    // doing so creates a visible old/new swap and can expose sample data.
+    const publicDocumentHasMarkup = !workspaceForPath(normalizePath(location.pathname)) &&
+      !workspaceForHost() &&
+      Boolean(document.querySelector("#app")?.children.length);
+    if (publicDocumentHasMarkup) return;
     return render();
   });

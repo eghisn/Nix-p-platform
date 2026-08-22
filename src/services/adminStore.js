@@ -777,25 +777,11 @@ export const adminStore = {
     }
 
     try {
+      // Public HTML is generated from this same deployed snapshot. Keep the
+      // browser on that one editorial revision as well; loading the full
+      // Supabase catalog here would make remote-only products or newer fields
+      // appear after the initial HTML and create an old/new flash on refresh.
       const filePath = publicOnly ? PUBLIC_STORE_PATH : ADMIN_STORE_PATH;
-      const apiScope = publicOnly ? "public" : "admin";
-      const catalogUrl = `/api/catalog?scope=${apiScope}&v=${Date.now()}`;
-      const fetchOptions = { cache: "no-store" };
-      const response = await fetch(catalogUrl, fetchOptions);
-      if (response.ok) {
-        const payload = await response.json();
-        if (payload.store) {
-          activeStore = mergeStore(seed({ publicOnly }), payload.store, { publicOnly });
-          if (publicOnly) refreshPublicCommerceInBackground(activeStore);
-          activeStoreScope = scope;
-          privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
-          if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
-          return;
-        }
-      }
-      // The deployed snapshot is a fallback for an unavailable API only. It
-      // must never be rendered first and then replaced by fresher editorial
-      // data from Supabase, which creates an old/new flash after refresh.
       const fileResponse = await fetch(`${filePath}?v=${Date.now()}`, { cache: "no-store" });
       if (!fileResponse.ok) throw new Error("No file store");
       activeStore = await migrateBrowserStore(
@@ -807,7 +793,21 @@ export const adminStore = {
       privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
       if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
     } catch {
-      activeStore = readStore();
+      // Do not render a stale public seed/snapshot when the deployed source is
+      // unavailable. A public API response is a single-source fallback, not a
+      // second hydration pass, so it is only used when the snapshot request
+      // itself failed before any public content was rendered.
+      if (publicOnly) {
+        const response = await fetch(`/api/catalog?scope=public&v=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error("Public catalog unavailable.");
+        const payload = await response.json();
+        if (!payload.store) throw new Error("Public catalog unavailable.");
+        activeStore = mergeStore(seed({ publicOnly }), payload.store, { publicOnly });
+        activeStoreScope = scope;
+        refreshPublicCommerceInBackground(activeStore);
+      } else {
+        activeStore = readStore();
+      }
     }
   },
   async refresh() {

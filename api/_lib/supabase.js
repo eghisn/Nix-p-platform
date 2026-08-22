@@ -41,6 +41,35 @@ export async function supabaseFetch(path, options = {}) {
 }
 
 export async function loadStore({ privateScope = false, publicSnapshotUrl = "" } = {}) {
+  // Public HTML and the public SPA must use the same deployed editorial
+  // revision. If we read the live catalog first, a Supabase-only publication
+  // can appear during hydration and then be replaced by the older deployed
+  // snapshot (or the reverse). Prices and stock have their own verified
+  // commerce endpoint, so the public catalog does not need a second editorial
+  // source here.
+  if (!privateScope && publicSnapshotUrl) {
+    try {
+      const snapshotResponse = await fetch(publicSnapshotUrl, { cache: "no-store" });
+      if (snapshotResponse.ok) {
+        const snapshot = await snapshotResponse.json();
+        return {
+          ...snapshot,
+          products: Array.isArray(snapshot.products) ? snapshot.products : [],
+          artists: Array.isArray(snapshot.artists) ? snapshot.artists : [],
+          collections: Array.isArray(snapshot.collections) ? snapshot.collections : [],
+          requests: [],
+          offers: [],
+          orders: [],
+          cashflow: [],
+          inventory: []
+        };
+      }
+    } catch {
+      // Fall through to the public Supabase read only when the deployed
+      // snapshot is unreachable before the response has been rendered.
+    }
+  }
+
   const [products, artists, collections, requests, offers, orders, cashflow, inventory] = await Promise.all([
     supabaseFetch(
       privateScope
