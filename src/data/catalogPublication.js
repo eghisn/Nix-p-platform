@@ -12,9 +12,9 @@ export function isFinanceCatalogProduct(product = {}) {
 
 export function recordPublicationIssues(product = {}) {
   const raw = product.raw || {};
-  const category = String(product.category || raw.category || "");
+  const category = normalizedCategory(product);
   const format = String(product.format || raw.format || "");
-  if (category !== "Records" || !RECORD_FORMATS.has(format)) return [];
+  if (category !== "records" || !RECORD_FORMATS.has(format)) return [];
 
   const relatedArtists = arrayValue(product.relatedArtists, raw.relatedArtists);
   const image = String(product.image || raw.image || "").trim();
@@ -41,6 +41,29 @@ export function recordPublicationIssues(product = {}) {
   return issues;
 }
 
+export function apparelPublicationIssues(product = {}) {
+  const raw = product.raw || {};
+  const category = normalizedCategory(product);
+  if (category !== "apparel") return [];
+
+  const image = String(product.image || raw.image || "").trim();
+  const openToOffers = product.open_to_offers === true || raw.open_to_offers === true;
+  const price = Number(product.price ?? raw.price ?? 0);
+  const minimumOffer = Number(product.minimumAcceptableOffer ?? product.minimum_acceptable_offer ?? raw.minimumAcceptableOffer ?? 0);
+  const issues = [];
+  if (!String(product.title || raw.title || "").trim()) issues.push("title");
+  if (!image || image.includes("nixp-product-example")) issues.push("managed product photo");
+  if (openToOffers ? minimumOffer <= 0 : price <= 0) issues.push(openToOffers ? "minimum acceptable offer" : "selling price");
+  return issues;
+}
+
+export function catalogPublicationIssues(product = {}) {
+  const category = normalizedCategory(product);
+  if (category === "records") return recordPublicationIssues(product);
+  if (category === "apparel") return apparelPublicationIssues(product);
+  return [];
+}
+
 export function isRecordPublicationReady(product = {}) {
   return (
     (product.raw?.publishAfterResearch === true && isResearchPublicationReady(product)) ||
@@ -48,11 +71,18 @@ export function isRecordPublicationReady(product = {}) {
   );
 }
 
+export function isCatalogPublicationReady(product = {}) {
+  const category = normalizedCategory(product);
+  if (category === "records") return isRecordPublicationReady(product);
+  if (category === "apparel") return apparelPublicationIssues(product).length === 0;
+  return true;
+}
+
 export function isResearchPublicationReady(product = {}) {
   const raw = product.raw || {};
-  const category = String(product.category || raw.category || "");
+  const category = normalizedCategory(product);
   const format = String(product.format || raw.format || "");
-  if (category !== "Records" || !RECORD_FORMATS.has(format)) return false;
+  if (category !== "records" || !RECORD_FORMATS.has(format)) return false;
   const title = String(product.title || raw.title || "").trim();
   const artist = String(product.artist || raw.artist || "").trim();
   const condition = String(product.condition || raw.condition || "").trim();
@@ -86,7 +116,13 @@ export function applyCatalogPublicationSafety(store = {}) {
   return {
     ...store,
     products: (store.products || []).map((product) => {
-      if (!isFinanceCatalogProduct(product) || isRecordPublicationReady(product)) return product;
+      if (!isFinanceCatalogProduct(product) || isCatalogPublicationReady(product)) {
+        const category = normalizedCategory(product);
+        if (category === "records" || !product.raw?.publicationIssues) return product;
+        const { publicationIssues: _staleIssues, ...cleanRaw } = product.raw || {};
+        return { ...product, raw: cleanRaw };
+      }
+      const issues = catalogPublicationIssues(product);
       return {
         ...product,
         publishStatus: "Draft",
@@ -95,11 +131,15 @@ export function applyCatalogPublicationSafety(store = {}) {
           ...(product.raw || {}),
           publishStatus: "Draft",
           visibility: "Private",
-          publicationIssues: recordPublicationIssues(product)
+          publicationIssues: issues
         }
       };
     })
   };
+}
+
+function normalizedCategory(product = {}) {
+  return String(product.category || product.raw?.category || "").trim().toLowerCase();
 }
 
 function arrayValue(primary, fallback) {

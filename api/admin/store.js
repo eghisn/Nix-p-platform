@@ -6,7 +6,7 @@ import { readFinanceState, refreshRelatedArtistsOnly, syncFinanceInventoryToCata
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
 import { drainNotificationOutbox, getNotificationOutboxHealth, retryFailedNotificationOutbox, sendProductStatusNotification } from "../_lib/emailNotifications.js";
-import { applyCatalogPublicationSafety, isResearchPublicationReady, recordPublicationIssues } from "../../src/data/catalogPublication.js";
+import { applyCatalogPublicationSafety, catalogPublicationIssues, isResearchPublicationReady } from "../../src/data/catalogPublication.js";
 
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("commerceAction");
@@ -169,8 +169,8 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
   const requested = new Set(requestedSkus.map((sku) => String(sku).trim().toLowerCase()));
   const candidates = products.filter((product) => !requested.size || requested.has(String(product.sku || "").trim().toLowerCase()));
   const items = candidates.map((product) => {
-    const issues = recordPublicationIssues(product);
-    const partialResearch = product.raw?.publishAfterResearch === true && isResearchPublicationReady(product);
+    const issues = catalogPublicationIssues(product);
+    const partialResearch = String(product.category || "").toLowerCase() === "records" && product.raw?.publishAfterResearch === true && isResearchPublicationReady(product);
     const published = product.publishStatus === "Published" && product.visibility === "Public" && (!issues.length || partialResearch);
     return {
       id: product.id,

@@ -18,6 +18,7 @@
     "test:shipping-catalog": "node scripts/verify-shipping-catalog.mjs",
     "test:shipping-profiles": "node scripts/verify-shipping-profiles.mjs",
     "test:enrichment": "node scripts/verify-finance-enrichment.mjs",
+    "test:publication-safety": "node scripts/verify-publication-safety.mjs",
     "test:related-artists": "node scripts/verify-related-artists.mjs",
     "backfill:related-artists": "node scripts/refresh-related-artists.mjs --stale-only",
     "test:monthly-report": "node scripts/verify-monthly-report-accounting.mjs",

@@ -1,7 +1,7 @@
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
 import { json, requireWorkspace } from "../_lib/auth.js";
 import { isSupabaseConfigured, loadStore, saveProductPublicationStatus, saveStore } from "../_lib/supabase.js";
-import { applyCatalogPublicationSafety, recordPublicationIssues } from "../../src/data/catalogPublication.js";
+import { applyCatalogPublicationSafety, catalogPublicationIssues } from "../../src/data/catalogPublication.js";
 import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 
 export default async function handler(req, res) {
@@ -49,9 +49,7 @@ export default async function handler(req, res) {
         });
       }
       const actualStatus = product.publishStatus === "Published" && product.visibility === "Public" ? "Published" : "Draft";
-      const issues = actualStatus === "Published"
-        ? []
-        : product.raw?.publicationIssues || recordPublicationIssues(product);
+      const issues = actualStatus === "Published" ? [] : catalogPublicationIssues(product);
       statusChange = {
         ...requestedStatusChange,
         actualStatus,

@@ -404,6 +404,19 @@ function productRowFromFinanceStock(row, stock, quantity) {
       ? referenceShippingProfile({ ...row, format: item, edition: stock.edition || row.raw?.edition }, row.raw?.shipping)
       : row.raw?.shipping
   };
+  // A SKU can change category while it is being corrected in Finance. Remove
+  // record-only research state when that happens so the Admin editor cannot
+  // show stale label/review/related-artist blockers for apparel or objects.
+  if (category !== "Records") {
+    delete raw.publicationIssues;
+    delete raw.enrichmentStatus;
+    delete raw.enrichmentOrigin;
+    delete raw.relatedArtists;
+    delete raw.relatedArtistsResearch;
+    delete raw.relatedArtistEvidence;
+    delete raw.relatedArtistResearchVersion;
+    delete raw.autoEditorial;
+  }
 
   const wasFinanceDraft =
     String(row.id || "").startsWith("finance-") ||
