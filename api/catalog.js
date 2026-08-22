@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     if (privateScope && session?.workspace !== "admin") return json(res, 401, { ok: false, error: "Admin login required" });
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
-    const publicSnapshotUrl = privateScope ? "" : `${protocol}://${host}/public/data/public-store.json`;
+    const publicSnapshotUrl = privateScope ? "" : `${protocol}://${host}/public/data/public-store.json?v=${Date.now()}`;
     const store = await loadStore({ privateScope, publicSnapshotUrl });
     catalogJson(res, 200, { ok: true, store }, { privateScope });
   } catch (error) {

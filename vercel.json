@@ -229,6 +229,14 @@
       "destination": "/api/catalog?action=catalog-page&catalogPath=/artists/:slug"
     },
     {
+      "source": "/labels/:slug",
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/labels/:slug"
+    },
+    {
+      "source": "/labels",
+      "destination": "/api/catalog?action=catalog-page&catalogPath=/labels"
+    },
+    {
       "source": "/admin/shipping",
       "destination": "/admin/shipping/index.html"
     },

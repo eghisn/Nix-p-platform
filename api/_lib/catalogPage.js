@@ -3,6 +3,9 @@ import { join } from "node:path";
 import { productGrid, shell } from "../../src/components/layout.js";
 import { artistCreditNames, artistIdentityKey } from "../../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../../src/data/publicUrls.js";
+import { labelEntries, productMatchesLabel } from "../../src/data/labelCatalog.js";
+import { labelLogoAvailable } from "../../src/data/labelLogoManifest.js";
+import { labelProductsPageMarkup, labelsPageMarkup } from "../../src/components/labelsPage.js";
 import { loadStore } from "./supabase.js";
 
 const ORIGIN = "https://www.nix-p.com";
@@ -13,12 +16,18 @@ export async function renderCatalogPage(req, res, url) {
     const requestedPath = normalizePath(url.searchParams.get("catalogPath"));
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
-    const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}/public/data/public-store.json` });
+    const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}/public/data/public-store.json?v=${Date.now()}` });
     if (requestedPath === "/artists") {
       return renderArtistsIndexPage(res, store);
     }
     if (requestedPath.startsWith("/artists/")) {
       return renderArtistPage(res, store, requestedPath);
+    }
+    if (requestedPath === "/labels") {
+      return renderLabelsIndexPage(res, store);
+    }
+    if (requestedPath.startsWith("/labels/")) {
+      return renderLabelPage(res, store, requestedPath);
     }
     const product = (store.products || []).find((item) => publicProductPath(item) === requestedPath);
     if (!product) return notFound(res);
@@ -74,6 +83,47 @@ async function renderArtistPage(res, store, requestedPath) {
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");
   res.setHeader("cache-control", "no-store, max-age=0");
+  res.setHeader("cdn-cache-control", "no-store");
+  res.setHeader("vercel-cdn-cache-control", "no-store");
+  res.end(document);
+}
+
+async function renderLabelsIndexPage(res, store) {
+  const labels = labelEntries(store.products || []).filter((label) => labelLogoAvailable(label.slug));
+  const document = await pageDocument({
+    title: "Labels | NIXP",
+    description: "Record labels represented in the NIXP catalogue.",
+    canonicalUrl: `${ORIGIN}/labels`,
+    image: `${ORIGIN}/public/nixp-logo.png`,
+    appMarkup: shell(labelsPageMarkup(labels), "/labels", 0)
+  });
+  sendNoStoreHtml(res, document);
+}
+
+async function renderLabelPage(res, store, requestedPath) {
+  const slug = requestedPath.slice("/labels/".length);
+  const labels = labelEntries(store.products || []).filter((label) => labelLogoAvailable(label.slug));
+  const label = labels.find((entry) => entry.slug === slug);
+  if (!label) return notFound(res);
+  const products = (store.products || []).filter((product) => productMatchesLabel(product, label.slug));
+  const records = (store.products || []).filter((product) => product.category === "Records");
+  const availableArtistNames = new Map(
+    records.flatMap((product) => artistCreditNames(product.artist).map((artist) => [artistIdentityKey(artist), artist]))
+  );
+  const document = await pageDocument({
+    title: `${label.name} | Labels | NIXP`,
+    description: `${label.name} releases available from NIXP.`,
+    canonicalUrl: `${ORIGIN}${requestedPath}`,
+    image: `${ORIGIN}/public/nixp-logo.png`,
+    appMarkup: shell(labelProductsPageMarkup(label, products, { availableArtistNames }), requestedPath, 0)
+  });
+  sendNoStoreHtml(res, document);
+}
+
+function sendNoStoreHtml(res, document) {
+  res.statusCode = 200;
+  res.setHeader("content-type", "text/html; charset=utf-8");
+  res.setHeader("cache-control", "no-store, max-age=0, must-revalidate");
   res.setHeader("cdn-cache-control", "no-store");
   res.setHeader("vercel-cdn-cache-control", "no-store");
   res.end(document);

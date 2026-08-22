@@ -163,7 +163,6 @@ const staticRoutes = [
   "accessories",
   "publishing",
   "artists",
-  "labels",
   "blog",
   "request-item",
   "make-an-offer",
@@ -739,7 +738,6 @@ for (const artist of publicStore?.artists || []) {
 for (const product of publicProducts.filter((product) => product.category === "Records")) {
   for (const artistName of artistCreditNames(product.artist)) artistDirectory.set(slugify(artistName), artistName);
 }
-for (const label of publicLabels) staticRoutes.push(`labels/${label.slug}`);
 for (const route of [...new Set(staticRoutes)]) {
   const routeDir = `${dist}/${route}`;
   await mkdir(routeDir, { recursive: true });
