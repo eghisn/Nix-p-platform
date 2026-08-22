@@ -1648,7 +1648,12 @@ function adminProductsCatalogMarkup(products) {
             "Actions"
           ],
           visibleProducts.map((item) => {
-            const publishNotice = state.adminProductPublishNotices[item.id] || {};
+            const storedPublishNotice = state.adminProductPublishNotices[item.id] || {};
+            // A previous research warning is local UI state. Once the fresh
+            // server row is Published, never show that stale warning again.
+            const publishNotice = item.publishStatus === "Published" && !storedPublishNotice.busy
+              ? {}
+              : storedPublishNotice;
             return [
               statusPill(item.publishStatus),
               escapeHtml(item.sku || "-"),

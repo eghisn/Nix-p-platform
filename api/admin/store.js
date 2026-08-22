@@ -94,8 +94,18 @@ export default async function handler(req, res) {
         targetSkus: requestedSkus,
         publishAfterResearch: body.publishAfterResearch === true
       });
-      const store = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
-      const report = catalogCompletionReport(store.products || [], requestedSkus);
+      // Supabase writes are complete before the request returns, but a read
+      // through a separate connection can briefly see the previous row. Read
+      // the private catalog again before reporting failure so the Admin UI
+      // never shows a stale "not published" result after a successful write.
+      let store = null;
+      let report = null;
+      for (let attempt = 0; attempt < 3; attempt += 1) {
+        store = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
+        report = catalogCompletionReport(store.products || [], requestedSkus);
+        if (!report.remaining || attempt === 2) break;
+        await new Promise((resolve) => setTimeout(resolve, 250 * (attempt + 1)));
+      }
       return json(res, 200, {
         ok: true,
         inventoryStock: financeState.inventoryStock?.length || 0,

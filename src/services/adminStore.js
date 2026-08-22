@@ -763,9 +763,16 @@ export const adminStore = {
       activeStore = mergeStore(seed({ publicOnly: false }), initialStore, { publicOnly: false });
       activeStoreScope = scope;
       privateStoreRefreshedAt = Date.now();
-      this.refreshPrivateStore({ force: true })
-        .then(() => notifyPrivateStoreRefreshed())
-        .catch(() => undefined);
+      // Admin actions must start from the server-authoritative catalog. The
+      // browser snapshot remains a fallback for an unavailable session/API,
+      // but rendering it first causes stale research warnings and old product
+      // fields to flash before the private Supabase read completes.
+      try {
+        await this.refreshPrivateStore({ force: true });
+        notifyPrivateStoreRefreshed();
+      } catch {
+        // Keep the last local snapshot available when the private API is down.
+      }
       return;
     }
 

@@ -1295,7 +1295,10 @@ async function discoverMusicBrainzRelease(stock) {
   const labelInfo = release["label-info"] || [];
   const labels = unique(labelInfo.map((entry) => entry.label?.name));
   const catalogNumbers = unique(labelInfo.map((entry) => entry["catalog-number"]));
-  const artwork = await discoverCoverArt(release.id);
+  // Some legitimate editions have no release-level image in Cover Art
+  // Archive even though the release group has verified front artwork. Use
+  // that artwork only after the exact release/artist match above succeeds.
+  const artwork = await discoverCoverArt(release.id, release["release-group"]?.id);
   const cover = artwork.cover;
   const year = Number(String(release.date || "").slice(0, 4)) || 0;
   const label = labels.join(" / ");
@@ -1398,22 +1401,28 @@ function isPlaceholderInventoryTitle(value) {
   return /^(?:untitled(?:\s+inventory)?\s+item|new\s+inventory\s+item)$/i.test(String(value || "").trim());
 }
 
-async function discoverCoverArt(releaseId) {
-  const endpoint = `https://coverartarchive.org/release/${releaseId}`;
-  const response = await fetch(endpoint, {
-    headers: { accept: "application/json", "user-agent": USER_AGENT }
-  }).catch(() => null);
-  if (!response?.ok) return { cover: "", productPhoto: "" };
-  const payload = await response.json().catch(() => ({}));
-  const images = Array.isArray(payload.images) ? payload.images : [];
-  const front = images.find((image) => image.front === true) || images.find((image) => imageType(image, "front"));
-  const detail =
-    images.find((image) => imageType(image, "medium")) ||
-    images.find((image) => imageType(image, "booklet")) ||
-    images.find((image) => image.back === true || imageType(image, "back"));
-  const cover = String(front?.image || "").trim();
-  const productPhoto = String(detail?.image || "").trim();
-  return { cover, productPhoto: productPhoto && productPhoto !== cover ? productPhoto : "" };
+async function discoverCoverArt(releaseId, releaseGroupId = "") {
+  const endpoints = [
+    releaseId ? `https://coverartarchive.org/release/${releaseId}` : "",
+    releaseGroupId ? `https://coverartarchive.org/release-group/${releaseGroupId}` : ""
+  ].filter(Boolean);
+  for (const endpoint of endpoints) {
+    const response = await fetchWithTimeout(endpoint, {
+      headers: { accept: "application/json", "user-agent": USER_AGENT }
+    }, 7000);
+    if (!response?.ok) continue;
+    const payload = await response.json().catch(() => ({}));
+    const images = Array.isArray(payload.images) ? payload.images : [];
+    const front = images.find((image) => image.front === true) || images.find((image) => imageType(image, "front"));
+    const detail =
+      images.find((image) => imageType(image, "medium")) ||
+      images.find((image) => imageType(image, "booklet")) ||
+      images.find((image) => image.back === true || imageType(image, "back"));
+    const cover = String(front?.image || "").trim();
+    const productPhoto = String(detail?.image || "").trim();
+    if (cover) return { cover, productPhoto: productPhoto && productPhoto !== cover ? productPhoto : "" };
+  }
+  return { cover: "", productPhoto: "" };
 }
 
 function imageType(image, expected) {

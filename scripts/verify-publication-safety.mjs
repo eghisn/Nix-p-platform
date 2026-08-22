@@ -55,4 +55,16 @@ assert.equal(protectedRecord.publishStatus, "Draft");
 assert.ok(catalogPublicationIssues(protectedRecord).includes("label"));
 assert.ok(catalogPublicationIssues(protectedRecord).includes("managed cover art"));
 
+const placeholderRecord = {
+  ...incompleteRecord,
+  label: "Example Label",
+  description: "A real release description.",
+  reviewQuote: "A source-backed review.",
+  reviewSource: "Example Source",
+  year: 2026,
+  image: "/public/nixp-product-example-paper.png",
+  relatedArtistsResearch: { status: "no-verified-match" }
+};
+assert.ok(catalogPublicationIssues(placeholderRecord).includes("managed cover art"));
+
 console.log("Publication safety checks passed.");

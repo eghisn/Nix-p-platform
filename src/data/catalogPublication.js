@@ -32,7 +32,7 @@ export function recordPublicationIssues(product = {}) {
   const reviewSource = String(product.reviewSource || raw.reviewSource || "").trim();
   if (!reviewQuote || !reviewSource) issues.push("source-backed review");
   if (!Number(product.year || raw.year || 0)) issues.push("release year");
-  if (!image || image.includes("nixp-product-example")) issues.push("managed cover art");
+  if (!isManagedProductImage(image)) issues.push("managed cover art");
   const relatedResearchStatus = String(product.relatedArtistsResearch?.status || raw.relatedArtistsResearch?.status || "").trim();
   if (!relatedArtists.length && !["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus)) {
     issues.push("verified related-artist research");
@@ -104,8 +104,7 @@ export function isResearchPublicationReady(product = {}) {
       description &&
       reviewQuote &&
       reviewSource &&
-      image &&
-      !image.includes("nixp-product-example") &&
+      isManagedProductImage(image) &&
       ["complete", "complete-no-related-artists"].includes(enrichmentStatus) &&
       (["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus) || Boolean(product.relatedArtists?.length || raw.relatedArtists?.length)) &&
       (openToOffers ? minimumOffer > 0 : price > 0)
@@ -146,4 +145,15 @@ function arrayValue(primary, fallback) {
   if (Array.isArray(primary)) return primary.filter(Boolean);
   if (Array.isArray(fallback)) return fallback.filter(Boolean);
   return [];
+}
+
+function isManagedProductImage(value) {
+  const image = String(value || "").trim();
+  return Boolean(
+    image &&
+      !image.includes("nixp-product-example") &&
+      (image.startsWith("/public/") ||
+        image.startsWith("/assets/") ||
+        /supabase\.co\/storage\/v1\/object\/public\//i.test(image))
+  );
 }
