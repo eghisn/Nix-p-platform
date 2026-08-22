@@ -157,6 +157,17 @@ function snapshotOwnsEditorialFields(product = {}) {
   );
 }
 
+function hasExplicitManualRelatedArtistsOverride(product = {}) {
+  const raw = product.raw || {};
+  const enabled = product.manualRelatedArtistsOverride === true || raw.manualRelatedArtistsOverride === true;
+  if (!enabled) return false;
+  const manual = normalizeList(product.manualRelatedArtists || raw.manualRelatedArtists);
+  if (String(product.manualRelatedArtistsOverrideSource || raw.manualRelatedArtistsOverrideSource || "").trim().toLowerCase() === "admin") return true;
+  if (manual.length) return true;
+  const automatic = normalizeList(product.relatedArtistsResearch?.artists || raw.relatedArtistsResearch?.artists || raw.autoEditorial?.relatedArtists);
+  return automatic.length === 0;
+}
+
 export function reconcilePublicCatalog(remoteStore, snapshotStore) {
   const snapshotIds = new Set((snapshotStore?.products || []).map((product) => String(product?.id || "")).filter(Boolean));
   // The deployed snapshot protects locally managed media from a stale API
@@ -217,7 +228,7 @@ export function reconcilePublicCatalog(remoteStore, snapshotStore) {
       // revision has an empty field, retain a non-empty snapshot value so a
       // transient partial response cannot erase an already published detail.
       return researchedEditorialFields.reduce((merged, field) => {
-        if (field === "manualRelatedArtistsOverride" && remoteProduct[field] === true) {
+        if (field === "manualRelatedArtistsOverride" && hasExplicitManualRelatedArtistsOverride(remoteProduct)) {
           return {
             ...merged,
             manualRelatedArtistsOverride: true,
@@ -1096,6 +1107,9 @@ export const adminStore = {
       ? (relatedArtistsChanged ? true : existingManualOverride)
       : false;
     const manualRelatedArtists = relatedArtistsChanged ? incomingRelatedArtists : existingManualRelatedArtists;
+    const manualRelatedArtistsOverrideSource = relatedArtistsChanged
+      ? "admin"
+      : String(existing?.manualRelatedArtistsOverrideSource || "").trim();
     const collection = data.collection?.trim() || data.label?.trim() || existing?.collection || "";
     const fallbackMaker = category === "Objects" ? "NIXP Objects" : category === "Apparel" ? "NIXP Apparel" : "NIXP";
     const format = isProductCategory ? category.replace(/s$/, "") : data.format?.trim();
@@ -1142,6 +1156,7 @@ export const adminStore = {
         : [],
       manualRelatedArtists,
       manualRelatedArtistsOverride,
+      manualRelatedArtistsOverrideSource,
       homeCollections: existing?.homeCollections || [],
       homeSlideSort: existing?.homeSlideSort ?? null,
       details: splitList(data.details),

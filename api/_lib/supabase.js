@@ -148,6 +148,19 @@ function isPlaceholderCatalogTitle(value) {
   return /^(?:untitled(?:\s+inventory)?\s+item|new\s+inventory\s+item)$/i.test(String(value || "").trim());
 }
 
+function hasExplicitManualRelatedArtistsOverride(product = {}) {
+  if (product.manualRelatedArtistsOverride !== true && product.raw?.manualRelatedArtistsOverride !== true) return false;
+  const manual = Array.isArray(product.manualRelatedArtists)
+    ? product.manualRelatedArtists
+    : Array.isArray(product.raw?.manualRelatedArtists) ? product.raw.manualRelatedArtists : [];
+  if (String(product.manualRelatedArtistsOverrideSource || product.raw?.manualRelatedArtistsOverrideSource || "").trim().toLowerCase() === "admin") return true;
+  if (manual.length) return true;
+  const automatic = Array.isArray(product.relatedArtistsResearch?.artists)
+    ? product.relatedArtistsResearch.artists
+    : Array.isArray(product.raw?.relatedArtistsResearch?.artists) ? product.raw.relatedArtistsResearch.artists : [];
+  return automatic.length === 0;
+}
+
 export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = []) {
   const remoteById = new Map(remoteProducts.map((product) => [product.id, product]));
   const researchFields = [
@@ -214,7 +227,7 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
       };
       const remoteResearchStatus = String(remoteProduct.relatedArtistsResearch?.status || "").trim();
       const hasSourceBackedResearch = ["verified", "combined", "lastfm", "no-verified-match"].includes(remoteResearchStatus);
-      const hasManualRelatedArtistsOverride = remoteProduct.manualRelatedArtistsOverride === true;
+      const hasManualRelatedArtistsOverride = hasExplicitManualRelatedArtistsOverride(remoteProduct);
       const withRemoteResearch = hasSourceBackedResearch || hasManualRelatedArtistsOverride
         ? researchFields.reduce(
             (product, field) => (remoteProduct[field] !== undefined ? { ...product, [field]: remoteProduct[field] } : product),

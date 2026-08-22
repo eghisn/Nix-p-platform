@@ -2,6 +2,7 @@ import {
   RELATED_ARTIST_RESEARCH_VERSION,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
+  isExplicitManualRelatedArtistsOverride,
   researchRelatedArtists,
   resolveRelatedArtistDisplay
 } from "./catalogEnrichment.js";
@@ -763,7 +764,10 @@ export async function refreshRelatedArtistsOnly({ skus = [] } = {}) {
   const results = [];
   for (const row of rows) {
     const raw = row.raw || {};
-    if (raw.manualRelatedArtistsOverride === true) {
+    const existingAutomaticRelatedArtists = Array.isArray(raw.autoEditorial?.relatedArtists)
+      ? raw.autoEditorial.relatedArtists
+      : Array.isArray(raw.relatedArtistsResearch?.artists) ? raw.relatedArtistsResearch.artists : [];
+    if (isExplicitManualRelatedArtistsOverride(raw, existingAutomaticRelatedArtists)) {
       results.push({ sku: row.sku, status: "manual-override", relatedArtists: raw.relatedArtists || [] });
       continue;
     }
@@ -785,6 +789,8 @@ export async function refreshRelatedArtistsOnly({ skus = [] } = {}) {
     const nextRaw = {
       ...raw,
       relatedArtists,
+      manualRelatedArtistsOverride: false,
+      manualRelatedArtistsOverrideSource: "",
       relatedArtistEvidence: research.evidence || [],
       relatedArtistsResearch: research,
       relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,

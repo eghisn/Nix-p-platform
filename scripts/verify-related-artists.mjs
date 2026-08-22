@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { combineRelatedArtistEvidence, resolveRelatedArtistDisplay } from "../api/_lib/catalogEnrichment.js";
+import { combineRelatedArtistEvidence, isExplicitManualRelatedArtistsOverride, resolveRelatedArtistDisplay } from "../api/_lib/catalogEnrichment.js";
 
 const musicBrainz = [
   { artist: "Artist One", source: "MusicBrainz release relationship" },
@@ -32,6 +32,16 @@ assert.deepEqual(
   resolveRelatedArtistDisplay({ manualRelatedArtists: [], automaticRelatedArtists: ["Research Choice"] }),
   { relatedArtists: ["Research Choice"], manualRelatedArtistsOverride: false },
   "without an override, automatic research must remain visible"
+);
+assert.equal(
+  isExplicitManualRelatedArtistsOverride({ manualRelatedArtistsOverride: true, manualRelatedArtists: [], autoEditorial: { relatedArtists: ["Research Choice"] } }, ["Research Choice"]),
+  false,
+  "legacy empty overrides must not hide valid automatic research"
+);
+assert.equal(
+  isExplicitManualRelatedArtistsOverride({ manualRelatedArtistsOverride: true, manualRelatedArtists: [], manualRelatedArtistsOverrideSource: "admin" }, ["Research Choice"]),
+  true,
+  "an intentional Admin clear must remain authoritative"
 );
 
 console.log(`Related-artist source combination passed: ${combined.length} deduplicated results from MusicBrainz + Last.fm.`);

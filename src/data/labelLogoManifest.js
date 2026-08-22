@@ -30,6 +30,7 @@ export const verifiedLabelLogos = Object.freeze({
   "load-records": { extension: "png", source: "https://www.discogs.com/label/17358-Load-Records", minimumRasterWidth: 160 },
   "logic-records": { extension: "png", source: "https://www.discogs.com/label/930-Logic-Records" },
   maverick: { extension: "png", source: "https://www.discogs.com/label/1685-Maverick" },
+  "mexican-summer": { extension: "svg", source: "https://mexicansummer.com/assets/images/mex_text.svg" },
   mute: { extension: "png", source: "https://www.discogs.com/label/26391-Mute", minimumRasterWidth: 120 },
   "nadie-sound": { extension: "png", source: "https://web.archive.org/web/20140702155558/http://nadiesound.com/album/antemasque" },
   "nothing-records": { extension: "png", source: "https://www.discogs.com/label/647-Nothing-Records", minimumRasterWidth: 140, minimumRasterHeight: 50 },

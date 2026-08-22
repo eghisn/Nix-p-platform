@@ -1161,6 +1161,32 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     relatedArtists: ["DIIV", "Ringo Deathstarr", "A Place to Bury Strangers"],
     tags: ["shoegaze", "noise rock", "dream pop", "alternative rock"],
     sourceUrl: "https://pitchfork.com/reviews/albums/18707-no-joy-pastel-and-pass-out-ep/"
+  },
+  "NXP-2026-VNL-0060": {
+    title: "Dross Glop 1",
+    artist: "Battles",
+    year: 2012,
+    label: "Warp Records",
+    edition: "12-inch, 45 RPM, Single",
+    catalogNumber: "WAP327D",
+    barcode: "0801061932718",
+    cover: "/public/covers/nxp-2026-vnl-0060-battles-dross-glop-1.jpg",
+    imageCredits: [
+      {
+        image: "/public/covers/nxp-2026-vnl-0060-battles-dross-glop-1.jpg",
+        credit: "Battles official Bandcamp artwork",
+        url: "https://battles.bandcamp.com/album/dross-glop-1"
+      }
+    ],
+    description:
+      "Battles' Dross Glop 1 is the first 12-inch in a four-part remix series, pairing Gui Boratto's 'Wall Street' rework with The Field's 'Sweetie & Shag' remix.",
+    descriptionSource: "Battles official Warp / Resident Advisor",
+    reviewQuote: "Dancefloor-readied remixes of Battles by The Field and Gui Boratto.",
+    reviewSource: "Boomkat (quoted)",
+    reviewUrl: "https://boomkat.com/products/dross-glop-1",
+    relatedArtists: ["The Field", "Gui Boratto"],
+    tags: ["experimental rock", "math rock", "techno", "remix"],
+    sourceUrl: "https://battles.warp.net/release/60919-battles-dross-glop-1"
   }
 };
 
@@ -1275,11 +1301,11 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
         ]
       };
   const automaticRelatedArtists = unique((relatedArtistResearch.artists || []).map(canonicalRelatedArtistName));
-  const legacyManualOverride = Array.isArray(raw.manualRelatedArtists) &&
+  const legacyManualOverride = manualRelatedArtists.length > 0 &&
     JSON.stringify(manualRelatedArtists) !== JSON.stringify(
       unique((raw.autoEditorial?.relatedArtists || []).map(canonicalRelatedArtistName))
     );
-  const manualRelatedArtistsOverride = raw.manualRelatedArtistsOverride === true || legacyManualOverride;
+  const manualRelatedArtistsOverride = isExplicitManualRelatedArtistsOverride(raw, automaticRelatedArtists) || legacyManualOverride;
   // An explicit Admin edit is authoritative for the storefront. Automatic
   // research is still retained below for evidence and future review, but a
   // later Finance sync must not re-add an artist the Admin deliberately removed.
@@ -2044,6 +2070,21 @@ export function resolveRelatedArtistDisplay({ manualRelatedArtists = [], automat
     relatedArtists: manualRelatedArtistsOverride ? manual : unique([...manual, ...automatic]),
     manualRelatedArtistsOverride: Boolean(manualRelatedArtistsOverride)
   };
+}
+
+// Older Admin saves could leave manualRelatedArtistsOverride=true with an
+// empty manual list even though the research engine had found valid artists.
+// Treat that legacy shape as stale. A current manual clear is marked with an
+// explicit source, so an intentional empty override remains authoritative.
+export function isExplicitManualRelatedArtistsOverride(raw = {}, automaticRelatedArtists = []) {
+  if (raw?.manualRelatedArtistsOverride !== true) return false;
+  const manual = Array.isArray(raw.manualRelatedArtists)
+    ? raw.manualRelatedArtists.map(canonicalRelatedArtistName).filter(Boolean)
+    : [];
+  if (String(raw.manualRelatedArtistsOverrideSource || "").trim().toLowerCase() === "admin") return true;
+  if (manual.length) return true;
+  const automatic = Array.isArray(automaticRelatedArtists) ? automaticRelatedArtists.filter(Boolean) : [];
+  return automatic.length === 0;
 }
 
 async function discoverLastFmSimilarArtists(artist) {
