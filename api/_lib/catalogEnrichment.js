@@ -1020,13 +1020,13 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     year: 2026,
     label: "Warp Records",
     edition: "LP",
-    cover: "https://f4.bcbits.com/img/a1820018607_10.jpg",
+    cover: "/public/covers/nxp-2026-vnl-0054-kelela-new-avatar.jpg",
     productPhoto: "https://f4.bcbits.com/img/a1820018607_5.jpg",
     imageCredits: [
       {
-        image: "https://f4.bcbits.com/img/a1820018607_10.jpg",
-        credit: "Kelela official Bandcamp artwork",
-        url: "https://kelela.bandcamp.com/album/new-avatar-2"
+        image: "/public/covers/nxp-2026-vnl-0054-kelela-new-avatar.jpg",
+        credit: "Apple Music artwork",
+        url: "https://music.apple.com/us/album/new-avatar/1888561538"
       },
       {
         image: "https://f4.bcbits.com/img/a1820018607_5.jpg",
@@ -1049,13 +1049,13 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     label: "Warp Records",
     edition: "12-inch vinyl",
     catalogNumber: "WARPLP509",
-    cover: "https://f4.bcbits.com/img/a1777662215_10.jpg",
+    cover: "/public/covers/nxp-2026-vnl-0055-fire-toolz-lavender-networks.jpg",
     productPhoto: "https://f4.bcbits.com/img/a1777662215_5.jpg",
     imageCredits: [
       {
-        image: "https://f4.bcbits.com/img/a1777662215_10.jpg",
-        credit: "Fire-Toolz official Bandcamp artwork",
-        url: "https://fire-toolz.bandcamp.com/album/lavender-networks"
+        image: "/public/covers/nxp-2026-vnl-0055-fire-toolz-lavender-networks.jpg",
+        credit: "Apple Music artwork",
+        url: "https://music.apple.com/us/album/lavender-networks/1876627207"
       },
       {
         image: "https://f4.bcbits.com/img/a1777662215_5.jpg",

@@ -3167,7 +3167,7 @@
       ],
       "year": 2026,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/cover.jpg",
+      "image": "/public/covers/nxp-2026-vnl-0055-fire-toolz-lavender-networks.jpg",
       "label": "Warp Records",
       "price": 775750,
       "sizes": [],
@@ -3176,7 +3176,7 @@
       "format": "Vinyl",
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/detail-1.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/cover.jpg"
+        "/public/covers/nxp-2026-vnl-0055-fire-toolz-lavender-networks.jpg"
       ],
       "barcode": "5056818808036",
       "details": [
@@ -3189,7 +3189,7 @@
       "edition": "Vinyl, LP, Album, Lavender Marble",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/cover.jpg",
+      "autoCover": "/public/covers/nxp-2026-vnl-0055-fire-toolz-lavender-networks.jpg",
       "condition": "New-Sealed",
       "reviewUrl": "https://pitchfork.com/reviews/albums/fire-toolz-lavender-networks/",
       "syncAudit": [
@@ -3265,9 +3265,9 @@
       "reviewQuote": "a step up on the approachable scale",
       "imageCredits": [
         {
-          "url": "https://fire-toolz.bandcamp.com/album/lavender-networks",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/cover.jpg",
-          "credit": "Fire-Toolz official Bandcamp artwork"
+          "url": "https://music.apple.com/us/album/lavender-networks/1876627207",
+          "image": "/public/covers/nxp-2026-vnl-0055-fire-toolz-lavender-networks.jpg",
+          "credit": "Apple Music artwork"
         },
         {
           "url": "https://fire-toolz.bandcamp.com/album/lavender-networks",
@@ -3811,7 +3811,7 @@
       ],
       "year": 2026,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/cover.jpg",
+      "image": "/public/covers/nxp-2026-vnl-0054-kelela-new-avatar.jpg",
       "label": "Warp Records",
       "price": 765750,
       "sizes": [],
@@ -3820,7 +3820,7 @@
       "format": "Vinyl",
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/detail-1.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/cover.jpg"
+        "/public/covers/nxp-2026-vnl-0054-kelela-new-avatar.jpg"
       ],
       "barcode": "",
       "details": [
@@ -3832,7 +3832,7 @@
       "edition": "Vinyl, LP, Album, Limited Edition, Purple Vinyl",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/cover.jpg",
+      "autoCover": "/public/covers/nxp-2026-vnl-0054-kelela-new-avatar.jpg",
       "condition": "New-Sealed",
       "reviewUrl": "https://pitchfork.com/reviews/albums/kelela-new-avatar/",
       "syncAudit": [
@@ -3908,9 +3908,9 @@
       "reviewQuote": "another immersive evolution",
       "imageCredits": [
         {
-          "url": "https://kelela.bandcamp.com/album/new-avatar-2",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/cover.jpg",
-          "credit": "Kelela official Bandcamp artwork"
+          "url": "https://music.apple.com/us/album/new-avatar/1888561538",
+          "image": "/public/covers/nxp-2026-vnl-0054-kelela-new-avatar.jpg",
+          "credit": "Apple Music artwork"
         },
         {
           "url": "https://kelela.bandcamp.com/album/new-avatar-2",
