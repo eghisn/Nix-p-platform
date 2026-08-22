@@ -877,12 +877,13 @@ export const adminStore = {
     if (activeStore && activeStoreScope === scope) return activeStore;
     return readStore();
   },
-  async deployStore({ store = readStore(), message, statusChange = null } = {}) {
+  async deployStore({ store, message, statusChange = null } = {}) {
+    const currentStore = store || this.getSnapshot();
     const response = await fetch("/api/admin/deploy", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        store,
+        store: currentStore,
         message: message || `Deploy NIXP catalog ${new Date().toISOString()}`,
         deploymentSource: "admin-editor",
         statusChange
@@ -896,7 +897,7 @@ export const adminStore = {
     return payload;
   },
   async publishProduct(id, publishStatus) {
-    const store = readStore();
+    const store = this.getSnapshot();
     const product = store.products.find((item) => item.id === id);
     if (!product) throw new Error("Product could not be found in the Admin catalog.");
     const nextStore = {
@@ -963,7 +964,7 @@ export const adminStore = {
     return payload;
   },
   async completeDraftProducts({ onProgress } = {}) {
-    const draftsBySku = new Map(readStore().products.filter((product) =>
+    const draftsBySku = new Map(this.getSnapshot().products.filter((product) =>
       product.category === "Records" &&
       product.publishStatus !== "Published" &&
       (String(product.id || "").startsWith("finance-") || product.financeStockId || product.enrichmentStatus)
@@ -1008,7 +1009,11 @@ export const adminStore = {
     };
   },
   async completeProduct(id) {
-    const product = readStore().products.find((item) => item.id === id);
+    // The rendered Admin table comes from the active server-refreshed store.
+    // Never fall back to an older localStorage row when constructing the
+    // research request, or the result can be written against stale Finance
+    // identity data and appear as an unresolved draft.
+    const product = this.getSnapshot().products.find((item) => item.id === id);
     if (!product) throw new Error("Product could not be found in the Admin catalog.");
     if (product.category !== "Records") throw new Error("Internet catalog completion is only used for records, CDs, and cassettes.");
     const payload = await syncCatalog({ skus: [product.sku], force: true, publishAfterResearch: true });
@@ -1033,7 +1038,7 @@ export const adminStore = {
     };
   },
   async saveHomeSlider(data) {
-    const store = readStore();
+    const store = this.getSnapshot();
     const collectionIds = ["recent-releases", "nixp-selection", "back-in-stock", "limited-pressing", "private-collection"];
     const nextProducts = store.products.map((product) => {
       const include = data[`homeSlide:${product.id}`] === "on";
@@ -1073,7 +1078,7 @@ export const adminStore = {
     return this.listProducts({ includeDrafts }).find((product) => product.id === id);
   },
   async saveProduct(data) {
-    const store = readStore();
+    const store = this.getSnapshot();
     const category = data.category || "Records";
     const isProductCategory = category === "Apparel" || category === "Objects";
     const isRecord = category === "Records";
@@ -1215,7 +1220,7 @@ export const adminStore = {
     return this.publishProduct(id, publishStatus);
   },
   saveArtist(data) {
-    const store = readStore();
+    const store = this.getSnapshot();
     const name = data.name?.trim();
     if (!name) return;
     const id = data.id || slugify(name);
@@ -1233,7 +1238,7 @@ export const adminStore = {
     });
   },
   saveCollection(data) {
-    const store = readStore();
+    const store = this.getSnapshot();
     const title = data.title?.trim();
     if (!title) return;
     const id = data.id || slugify(title);
@@ -1253,7 +1258,7 @@ export const adminStore = {
     });
   },
   updateRequestStatus(id, status) {
-    const store = readStore();
+    const store = this.getSnapshot();
     return writeStore({
       ...store,
       requests: store.requests.map((request) => (request.id === id ? { ...request, status } : request))
@@ -1267,7 +1272,7 @@ export const adminStore = {
     });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(payload.error || "Offer status could not be updated.");
-    const snapshot = readStore();
+    const snapshot = this.getSnapshot();
     const nextOffers = (snapshot.offers || []).map((offer) => offer.id === id ? { ...offer, status } : offer);
     activeStore = { ...snapshot, offers: nextOffers };
     activeStoreScope = "admin";
@@ -1275,7 +1280,7 @@ export const adminStore = {
     return payload.offer;
   },
   updateOrderStatus(id, status) {
-    const store = readStore();
+    const store = this.getSnapshot();
     return writeStore({
       ...store,
       orders: store.orders.map((order) => (order.id === id ? { ...order, status } : order))
