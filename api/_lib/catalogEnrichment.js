@@ -1014,6 +1014,93 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     relatedArtists: ["Panda Bear", "Avey Tare", "Boards Of Canada", "Daniel Lopatin"],
     tags: ["psychedelic pop", "experimental pop", "indie rock", "electronic"],
     sourceUrl: "https://www.discogs.com/release/28429408-Animal-Collective-Isnt-It-Now"
+  },
+  "NXP-2026-VNL-0054": {
+    title: "New Avatar",
+    year: 2026,
+    label: "Warp Records",
+    edition: "LP",
+    cover: "https://f4.bcbits.com/img/a1820018607_3.jpg",
+    productPhoto: "https://f4.bcbits.com/img/a1820018607_5.jpg",
+    imageCredits: [
+      {
+        image: "https://f4.bcbits.com/img/a1820018607_3.jpg",
+        credit: "Kelela official Bandcamp artwork",
+        url: "https://kelela.bandcamp.com/album/new-avatar-2"
+      },
+      {
+        image: "https://f4.bcbits.com/img/a1820018607_5.jpg",
+        credit: "Kelela official Bandcamp release photography",
+        url: "https://kelela.bandcamp.com/album/new-avatar-2"
+      }
+    ],
+    description: "Kelela's 2026 New Avatar turns her alternative R&B language toward shoegaze guitars, grunge textures and electronic space, drawing on the D.C. indie roots that preceded her club work.",
+    descriptionSource: "Kelela official Bandcamp / Pitchfork",
+    reviewQuote: "another immersive evolution",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/kelela-new-avatar/",
+    relatedArtists: ["Arca", "SOPHIE", "Oneohtrix Point Never"],
+    tags: ["alternative R&B", "shoegaze", "electronic", "experimental pop"],
+    sourceUrl: "https://kelela.bandcamp.com/album/new-avatar-2"
+  },
+  "NXP-2026-VNL-0055": {
+    title: "Lavender Networks",
+    year: 2026,
+    label: "Warp Records",
+    edition: "12-inch vinyl",
+    catalogNumber: "WARPLP509",
+    cover: "https://f4.bcbits.com/img/a1777662215_3.jpg",
+    productPhoto: "https://f4.bcbits.com/img/a1777662215_5.jpg",
+    imageCredits: [
+      {
+        image: "https://f4.bcbits.com/img/a1777662215_3.jpg",
+        credit: "Fire-Toolz official Bandcamp artwork",
+        url: "https://fire-toolz.bandcamp.com/album/lavender-networks"
+      },
+      {
+        image: "https://f4.bcbits.com/img/a1777662215_5.jpg",
+        credit: "Fire-Toolz official Bandcamp release photography",
+        url: "https://fire-toolz.bandcamp.com/album/lavender-networks"
+      }
+    ],
+    description: "Fire-Toolz's 2026 Lavender Networks is Angel Marcloid's Warp debut, a maximalist collision of black and death metal, scorched electronics, jazz fusion and moments of melodramatic beauty.",
+    descriptionSource: "Fire-Toolz official Bandcamp / Pitchfork",
+    reviewQuote: "a step up on the approachable scale",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/fire-toolz-lavender-networks/",
+    relatedArtists: ["Zola Jesus", "Nailah Hunter", "Brothertiger"],
+    tags: ["experimental electronic", "black metal", "jazz fusion", "industrial"],
+    sourceUrl: "https://fire-toolz.bandcamp.com/album/lavender-networks"
+  },
+  "NXP-2026-VNL-0056": {
+    title: "Mood Valiant",
+    year: 2021,
+    label: "Brainfeeder",
+    edition: "LP",
+    catalogNumber: "BFDNL112",
+    barcode: "5054429148053",
+    cover: "https://f4.bcbits.com/img/a1741986296_3.jpg",
+    productPhoto: "https://f4.bcbits.com/img/a1741986296_5.jpg",
+    imageCredits: [
+      {
+        image: "https://f4.bcbits.com/img/a1741986296_3.jpg",
+        credit: "Hiatus Kaiyote official Bandcamp artwork",
+        url: "https://hiatuskaiyote.bandcamp.com/album/mood-valiant"
+      },
+      {
+        image: "https://f4.bcbits.com/img/a1741986296_5.jpg",
+        credit: "Hiatus Kaiyote official Bandcamp release photography",
+        url: "https://hiatuskaiyote.bandcamp.com/album/mood-valiant"
+      }
+    ],
+    description: "Hiatus Kaiyote's 2021 Mood Valiant is a focused Brainfeeder album where future soul, jazz, strings and pop songwriting meet the Melbourne quartet's detailed rhythmic language.",
+    descriptionSource: "Hiatus Kaiyote official Bandcamp / NME",
+    reviewQuote: "their most focused album with more classic songs than epic jams",
+    reviewSource: "NME (quoted)",
+    reviewUrl: "https://www.nme.com/reviews/album/hiatus-kaiyote-mood-valiant-review-2977032",
+    relatedArtists: ["Flying Lotus", "Thundercat", "Nai Palm"],
+    tags: ["future soul", "neo-soul", "jazz", "experimental pop"],
+    sourceUrl: "https://hiatuskaiyote.bandcamp.com/album/mood-valiant"
   }
 };
 
@@ -1105,7 +1192,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const reviewQuote = chooseEditorialValue(raw.reviewQuote, automatic.reviewQuote, discovered.reviewQuote || "");
   const reviewSource = chooseEditorialValue(raw.reviewSource, automatic.reviewSource, discovered.reviewSource || "");
   const reviewUrl = chooseEditorialValue(raw.reviewUrl, automatic.reviewUrl, discovered.reviewUrl || "");
-  const relatedArtistResearch = discovered.relatedArtistResearch || await researchRelatedArtists({
+  const researchedRelatedArtists = discovered.relatedArtistResearch || await researchRelatedArtists({
     artist,
     title: discovered.title || title,
     format,
@@ -1114,6 +1201,19 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const manualRelatedArtists = Array.isArray(raw.manualRelatedArtists)
     ? raw.manualRelatedArtists.map(canonicalRelatedArtistName)
     : [];
+  const curatedRelatedArtists = unique((discovered.relatedArtists || []).map(canonicalRelatedArtistName));
+  const relatedArtistResearch = researchedRelatedArtists?.artists?.length || !curatedRelatedArtists.length
+    ? researchedRelatedArtists
+    : {
+        ...researchedRelatedArtists,
+        status: "curated-exact-release",
+        source: [researchedRelatedArtists.source, "NIXP exact-release editorial fallback"].filter(Boolean).join(" + "),
+        artists: curatedRelatedArtists,
+        evidence: [
+          ...(researchedRelatedArtists.evidence || []),
+          { source: "NIXP exact-release editorial fallback", artists: curatedRelatedArtists }
+        ]
+      };
   const automaticRelatedArtists = unique((relatedArtistResearch.artists || []).map(canonicalRelatedArtistName));
   const legacyManualOverride = Array.isArray(raw.manualRelatedArtists) &&
     JSON.stringify(manualRelatedArtists) !== JSON.stringify(

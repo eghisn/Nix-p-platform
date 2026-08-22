@@ -179,7 +179,9 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
   const requested = new Set(requestedSkus.map((sku) => String(sku).trim().toLowerCase()));
   const candidates = products.filter((product) => !requested.size || requested.has(String(product.sku || "").trim().toLowerCase()));
   const items = candidates.map((product) => {
-    const issues = catalogPublicationIssues(product);
+    const publicationIssues = catalogPublicationIssues(product);
+    const enrichmentStatus = product.enrichmentStatus || product.raw?.enrichmentStatus || "";
+    const issues = researchFailureIssues(enrichmentStatus, publicationIssues);
     const partialResearch = String(product.category || "").toLowerCase() === "records" && product.raw?.publishAfterResearch === true && isResearchPublicationReady(product);
     const published = product.publishStatus === "Published" && product.visibility === "Public" && (!issues.length || partialResearch);
     return {
@@ -189,7 +191,7 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
       title: product.title,
       published,
       publishedAfterResearch: partialResearch && issues.length > 0,
-      enrichmentStatus: product.enrichmentStatus || product.raw?.enrichmentStatus || "",
+      enrichmentStatus,
       issues
     };
   });
@@ -212,6 +214,20 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
     remaining: items.filter((item) => !item.published).length,
     items
   };
+}
+
+function researchFailureIssues(status, publicationIssues = []) {
+  const code = String(status || "").trim().toLowerCase();
+  const specific = {
+    "needs-finance-data": "Finance identity is incomplete: title, artist, format, condition, or price",
+    "needs-release-match": "No exact release source matched the Finance artist, title, and format",
+    "needs-cover-art": "Exact release matched, but no verified cover artwork was found",
+    "needs-cover-archive": "Verified cover found, but NIXP could not archive it to managed storage",
+    "needs-editorial-metadata": "Exact release matched, but the source description could not be prepared",
+    "needs-related-artist-research": "Exact release matched, but related-artist research returned no verified result",
+    "metadata-complete-needs-editorial-review": "Exact release matched, but no trusted review source was available"
+  }[code];
+  return specific ? [specific] : publicationIssues;
 }
 
 async function handleAdminShipping(req, res) {
