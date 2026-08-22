@@ -1020,11 +1020,11 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     year: 2026,
     label: "Warp Records",
     edition: "LP",
-    cover: "https://f4.bcbits.com/img/a1820018607_3.jpg",
+    cover: "https://f4.bcbits.com/img/a1820018607_10.jpg",
     productPhoto: "https://f4.bcbits.com/img/a1820018607_5.jpg",
     imageCredits: [
       {
-        image: "https://f4.bcbits.com/img/a1820018607_3.jpg",
+        image: "https://f4.bcbits.com/img/a1820018607_10.jpg",
         credit: "Kelela official Bandcamp artwork",
         url: "https://kelela.bandcamp.com/album/new-avatar-2"
       },
@@ -1049,11 +1049,11 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     label: "Warp Records",
     edition: "12-inch vinyl",
     catalogNumber: "WARPLP509",
-    cover: "https://f4.bcbits.com/img/a1777662215_3.jpg",
+    cover: "https://f4.bcbits.com/img/a1777662215_10.jpg",
     productPhoto: "https://f4.bcbits.com/img/a1777662215_5.jpg",
     imageCredits: [
       {
-        image: "https://f4.bcbits.com/img/a1777662215_3.jpg",
+        image: "https://f4.bcbits.com/img/a1777662215_10.jpg",
         credit: "Fire-Toolz official Bandcamp artwork",
         url: "https://fire-toolz.bandcamp.com/album/lavender-networks"
       },
@@ -1079,11 +1079,11 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     edition: "LP",
     catalogNumber: "BFDNL112",
     barcode: "5054429148053",
-    cover: "https://f4.bcbits.com/img/a1741986296_3.jpg",
+    cover: "https://f4.bcbits.com/img/a1741986296_10.jpg",
     productPhoto: "https://f4.bcbits.com/img/a1741986296_5.jpg",
     imageCredits: [
       {
-        image: "https://f4.bcbits.com/img/a1741986296_3.jpg",
+        image: "https://f4.bcbits.com/img/a1741986296_10.jpg",
         credit: "Hiatus Kaiyote official Bandcamp artwork",
         url: "https://hiatuskaiyote.bandcamp.com/album/mood-valiant"
       },

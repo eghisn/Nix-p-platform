@@ -17,6 +17,13 @@ export async function archiveRemoteProductImage({ url, sku, role = "cover" } = {
   if (!source || isManagedProductImage(source) || !/^https?:\/\//i.test(source)) {
     return { url: source, archived: isManagedProductImage(source) };
   }
+  // Bandcamp exposes `_3` as a small catalogue thumbnail. It is unsuitable
+  // for NIXP's storefront cover art, even though it is a valid image response.
+  // Keep the item in Draft until enrichment supplies a larger source instead
+  // of silently archiving a pixelated cover.
+  if (isKnownThumbnailSource(source)) {
+    return { url: source, archived: false, reason: "low-resolution-thumbnail" };
+  }
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
     return { url: source, archived: false };
   }
@@ -94,4 +101,8 @@ function extensionFor(contentType, url) {
   if (contentType.includes("jpeg") || contentType.includes("jpg")) return ".jpg";
   const match = String(url).match(/\.(jpe?g|png|webp|avif|gif)(?:$|[?#])/i);
   return match ? `.${match[1].toLowerCase().replace("jpeg", "jpg")}` : ".jpg";
+}
+
+function isKnownThumbnailSource(url) {
+  return /(?:^|[\/_])a\d+_3\.(?:jpe?g|png|webp)(?:$|[?#])/i.test(String(url || ""));
 }
