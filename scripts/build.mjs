@@ -648,7 +648,9 @@ function formatPrice(value) {
 function artistDocument(artist) {
   const availableArtistNames = inventoryArtistMap(publicProducts);
   const products = publicProducts.filter(
-    (product) => product.category === "Records" && artistCreditNames(product.artist).some((credit) => slugify(credit) === slugify(artist.name))
+    (product) =>
+      ["Records", "Apparel"].includes(product.category) &&
+      artistCreditNames(product.artist).some((credit) => slugify(credit) === slugify(artist.name))
   );
   const appMarkup = shell(
     `<section class="section shop-section artist-products">

@@ -660,7 +660,10 @@ async function artistProductsPage(path) {
   const artist = artistNames.find((name) => artistSlug(name) === artistSlug(requestedArtist));
   if (!artist) return notFoundPage();
   const products = artist
-    ? allProducts.filter((product) => product.category === "Records" && artistCreditNames(product.artist).some((name) => artistIdentityKey(name) === artistIdentityKey(artist)))
+    ? allProducts.filter((product) =>
+        ["Records", "Apparel"].includes(product.category) &&
+        artistCreditNames(product.artist).some((name) => artistIdentityKey(name) === artistIdentityKey(artist))
+      )
     : [];
   const availableArtistNames = inventoryArtistNames(allProducts);
   return `

@@ -59,7 +59,10 @@ async function renderArtistPage(res, store, requestedPath) {
   const records = (store.products || []).filter((product) => product.category === "Records");
   const artistName = records.flatMap((product) => artistCreditNames(product.artist)).find((artist) => slugify(artist) === slug);
   if (!artistName) return notFound(res);
-  const products = records.filter((product) => artistCreditNames(product.artist).some((artist) => slugify(artist) === slug));
+  const products = (store.products || []).filter((product) =>
+    ["Records", "Apparel"].includes(product.category) &&
+    artistCreditNames(product.artist).some((artist) => slugify(artist) === slug)
+  );
   const availableArtistNames = new Map(records.flatMap((product) => artistCreditNames(product.artist).map((artist) => [slugify(artist), artist])));
   const document = await pageDocument({
     title: `${artistName} | NIXP`,
