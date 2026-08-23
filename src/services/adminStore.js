@@ -630,26 +630,6 @@ function refreshPublicCommerceInBackground(store) {
     .catch(() => store);
 }
 
-async function verifyPublicProductState(id, shouldBePublished) {
-  for (let attempt = 0; attempt < 4; attempt += 1) {
-    try {
-      const response = await fetch(`/api/catalog?scope=public&v=${Date.now()}`, {
-        cache: "no-store",
-        headers: { accept: "application/json" }
-      });
-      if (response.ok) {
-        const payload = await response.json();
-        const isPublished = Boolean(payload.store?.products?.some((product) => product.id === id));
-        if (isPublished === shouldBePublished) return true;
-      }
-    } catch {
-      // Retry briefly while the public catalog cache catches up.
-    }
-    await new Promise((resolve) => setTimeout(resolve, 700));
-  }
-  return false;
-}
-
 async function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -935,9 +915,9 @@ export const adminStore = {
     });
     await this.refreshPrivateStore({ force: true });
     const savedProduct = this.getSnapshot().products.find((item) => item.id === id);
-    const publicConfirmed = result.blocked || result.github?.skipped
-      ? false
-      : await verifyPublicProductState(id, publishStatus === "Published");
+    // The server owns deployment verification. A second browser-side poll can
+    // race a CDN response and wrongly report a completed deployment as pending.
+    const publicConfirmed = !result.blocked && !result.github?.skipped && result.deployment?.confirmed === true;
     return {
       ...result,
       product: savedProduct,

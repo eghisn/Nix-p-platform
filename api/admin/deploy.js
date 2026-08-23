@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       const financeState = await readFinanceState();
       await syncFinanceInventoryToCatalog(financeState, { enrich: false });
     }
-    const deployedStore = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
+    let deployedStore = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
     let statusChange = null;
     if (requestedStatusChange?.id) {
       const product = deployedStore.products.find((item) => item.id === requestedStatusChange.id);
@@ -64,6 +64,14 @@ export default async function handler(req, res) {
           statusChange: { ...statusChange, blocked: true }
         });
       }
+      // The row is saved before the GitHub/Vercel work begins, but it must not
+      // be presented as live until the public API proves that deployment has
+      // reached the storefront. This state is Admin-only metadata.
+      deployedStore = withPublicationState(deployedStore, requestedStatusChange.id, "deployment_pending", {
+        requestedStatus: requestedStatusChange.publishStatus,
+        requestedAt: new Date().toISOString()
+      });
+      await saveProductPublicationStatus(deployedStore, requestedStatusChange.id);
     }
     if (!isGitHubDeployConfigured()) {
       return json(res, 200, {
@@ -75,6 +83,15 @@ export default async function handler(req, res) {
     }
     const github = await commitPublicStore(deployedStore, { message: body.message });
     const live = await verifyPublicCatalogRevision((deployedStore.products || []).filter((product) => product.publishStatus === "Published" && product.visibility === "Public"));
+    if (requestedStatusChange?.id) {
+      const finalStore = withPublicationState(deployedStore, requestedStatusChange.id, live.confirmed ? "live" : "deployment_pending", {
+        requestedStatus: requestedStatusChange.publishStatus,
+        requestedAt: new Date().toISOString(),
+        verifiedAt: live.confirmed ? new Date().toISOString() : "",
+        deployment: github
+      });
+      await saveProductPublicationStatus(finalStore, requestedStatusChange.id);
+    }
     json(res, 200, {
       ok: true,
       message: live.confirmed
@@ -87,4 +104,22 @@ export default async function handler(req, res) {
   } catch (error) {
     json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Deploy failed" });
   }
+}
+
+function withPublicationState(store, productId, publicationState, publication = {}) {
+  return {
+    ...store,
+    products: (store.products || []).map((product) =>
+      product.id === productId
+        ? {
+            ...product,
+            raw: {
+              ...(product.raw || {}),
+              publicationState,
+              publication
+            }
+          }
+        : product
+    )
+  };
 }

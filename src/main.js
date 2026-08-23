@@ -1649,13 +1649,16 @@ function adminProductsCatalogMarkup(products) {
           ],
           visibleProducts.map((item) => {
             const storedPublishNotice = state.adminProductPublishNotices[item.id] || {};
-            // A previous research warning is local UI state. Once the fresh
-            // server row is Published, never show that stale warning again.
-            const publishNotice = item.publishStatus === "Published" && !storedPublishNotice.busy
+            // A previous research warning is local UI state. Once the server
+            // has confirmed this revision live, never show that stale warning
+            // again. A saved-but-unverified revision remains visible as
+            // Deployment Pending instead of pretending it is already public.
+            const publicationPending = item.raw?.publicationState === "deployment_pending";
+            const publishNotice = item.publishStatus === "Published" && !publicationPending && !storedPublishNotice.busy
               ? {}
               : storedPublishNotice;
             return [
-              statusPill(item.publishStatus),
+              statusPill(productPublicationLabel(item)),
               escapeHtml(item.sku || "-"),
               `<strong>${escapeHtml(item.title)}</strong><br><small>${escapeHtml(item.artist)}</small>`,
               escapeHtml(item.category || "-"),
@@ -2192,6 +2195,13 @@ function select(name, label, options, value = "") {
 
 function statusPill(status) {
   return `<span class="status ${String(status).toLowerCase().replaceAll(" ", "-")}">${status}</span>`;
+}
+
+function productPublicationLabel(product) {
+  const state = String(product?.raw?.publicationState || "").trim().toLowerCase();
+  if (state === "deployment_pending") return "Deployment Pending";
+  if (state === "live" && product?.publishStatus === "Published") return "Published Live";
+  return product?.publishStatus || "Draft";
 }
 
 function statusSelect(type, id, value, options) {
