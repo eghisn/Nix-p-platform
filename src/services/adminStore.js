@@ -1004,10 +1004,6 @@ export const adminStore = {
       }
     }
 
-    let deploy = { github: null, message: "No verified products were published; unresolved items remain safely in Draft." };
-    if (items.some((item) => item.published)) {
-      deploy = await syncCatalog({ action: "deploy-current" });
-    }
     await this.refreshPrivateStore({ force: true });
     return {
       processed: drafts.length,
@@ -1015,8 +1011,10 @@ export const adminStore = {
       remaining: items.filter((item) => !item.published).length,
       failed,
       items,
-      github: deploy.github || null,
-      message: deploy.message || "Draft completion finished."
+      github: null,
+      message: items.some((item) => item.published)
+        ? "Research requests completed. Each published item is now waiting for, or has passed, public deployment verification."
+        : "No item was published; unresolved items remain safely in Draft."
     };
   },
   async completeProduct(id) {
@@ -1031,20 +1029,15 @@ export const adminStore = {
     const item = payload.report?.items?.find((candidate) =>
       String(candidate.sku || "").toLowerCase() === String(product.sku || "").toLowerCase()
     ) || payload.report?.items?.[0];
-    let deploy = { github: null, message: "Product remains Draft until Finance data and a usable product image are available." };
-    if (item?.published) {
-      deploy = await syncCatalog({ action: "deploy-current" });
-    }
     await this.refreshPrivateStore({ force: true });
     const savedProduct = this.getSnapshot().products.find((candidate) => candidate.id === id);
-    const publicConfirmed = item?.published && !deploy.github?.skipped
-      ? await verifyPublicProductState(id, true)
-      : false;
+    const publicConfirmed = Boolean(payload.deployment?.confirmed);
     return {
       item,
       product: savedProduct,
-      github: deploy.github || null,
-      message: deploy.message || payload.message,
+      github: payload.deployment?.github || null,
+      deployment: payload.deployment || null,
+      message: payload.message,
       publicConfirmed
     };
   },

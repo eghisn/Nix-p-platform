@@ -6,7 +6,7 @@ import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShi
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
 import { runShippingMaintenance } from "./_lib/nixpShippingEngine.js";
-import { readFinanceState, syncFinanceInventoryToCatalog } from "./_lib/financeState.js";
+import { processCatalogResearchJobs, readFinanceState, syncFinanceInventoryToCatalog } from "./_lib/financeState.js";
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 import { recordSystemEvent } from "./_lib/observability.js";
 
@@ -236,13 +236,14 @@ async function handleCommerceMaintenance(req, res) {
   if (!validCronSecret(req.headers.authorization, process.env.CRON_SECRET)) return json(res, 401, { ok: false, error: "Unauthorized." });
   try {
     const financeState = await readFinanceState();
-    const [maintenance, outbox, shipping, catalog] = await Promise.all([
+    const [maintenance, outbox, shipping, catalog, research] = await Promise.all([
       expirePendingOrders(),
       drainNotificationOutbox(50),
       runShippingMaintenance({ mode: "daily" }),
-      syncFinanceInventoryToCatalog(financeState, { enrich: true }).then(() => ({ inventoryStock: financeState.inventoryStock?.length || 0 }))
+      syncFinanceInventoryToCatalog(financeState, { enrich: false }).then(() => ({ inventoryStock: financeState.inventoryStock?.length || 0 })),
+      processCatalogResearchJobs({ limit: 2, requestedBy: "maintenance" })
     ]);
-    return json(res, 200, { ok: true, maintenance, outbox, shipping, catalog, checkedAt: new Date().toISOString() });
+    return json(res, 200, { ok: true, maintenance, outbox, shipping, catalog, research, checkedAt: new Date().toISOString() });
   } catch (error) {
     return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Commerce maintenance failed." });
   }

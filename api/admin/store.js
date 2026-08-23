@@ -1,8 +1,9 @@
 import { getSession, json, requireWorkspace } from "../_lib/auth.js";
 import { isSupabaseConfigured, loadStore, saveStore, supabaseFetch } from "../_lib/supabase.js";
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
+import { verifyPublicCatalogRevision } from "../_lib/publicCatalogDeployment.js";
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
-import { readFinanceState, refreshRelatedArtistsOnly, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
+import { processCatalogResearchJobs, readFinanceState, refreshRelatedArtistsOnly, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
 import { drainNotificationOutbox, getNotificationOutboxHealth, retryFailedNotificationOutbox, sendProductStatusNotification } from "../_lib/emailNotifications.js";
@@ -77,10 +78,14 @@ export default async function handler(req, res) {
         const github = await commitPublicStore(store, {
           message: `Complete NIXP draft catalog ${new Date().toISOString()}`
         });
+        const live = await verifyPublicCatalogRevision((store.products || []).filter((product) => product.publishStatus === "Published" && product.visibility === "Public"));
         return json(res, 200, {
           ok: true,
-          message: "Completed products saved to Supabase and committed to GitHub. Vercel will deploy the update.",
-          github
+          message: live.confirmed
+            ? "Catalog is confirmed live on the public site."
+            : "Saved and committed. Vercel deployment is still pending public verification.",
+          github,
+          deployment: live
         });
       }
 
@@ -89,10 +94,14 @@ export default async function handler(req, res) {
         .filter(Boolean))].slice(0, 25);
       const financeState = await readFinanceState();
       await syncFinanceInventoryToCatalog(financeState, {
-        enrich: true,
-        forceEnrichment: body.force === true,
-        targetSkus: requestedSkus,
-        publishAfterResearch: body.publishAfterResearch === true
+        enrich: false
+      });
+      const research = await processCatalogResearchJobs({
+        limit: Math.max(1, Math.min(5, requestedSkus.length || 1)),
+        skus: requestedSkus,
+        force: body.force === true,
+        publishAfterResearch: body.publishAfterResearch === true,
+        requestedBy: session.workspace
       });
       // Supabase writes are complete before the request returns, but a read
       // through a separate connection can briefly see the previous row. Read
@@ -106,13 +115,25 @@ export default async function handler(req, res) {
         if (!report.remaining || attempt === 2) break;
         await new Promise((resolve) => setTimeout(resolve, 250 * (attempt + 1)));
       }
+      let deployment = null;
+      if (body.publishAfterResearch === true && report.published && isGitHubDeployConfigured()) {
+        const github = await commitPublicStore(store, { message: `Publish researched NIXP catalog ${new Date().toISOString()}` });
+        deployment = { github, ...(await verifyPublicCatalogRevision(store.products || [], requestedSkus)) };
+        const jobs = await import("../_lib/catalogResearchJobs.js");
+        if (deployment.confirmed) await jobs.markCatalogResearchJobsLive(requestedSkus, deployment.github);
+        else await jobs.markCatalogResearchJobsDeploymentPending(requestedSkus, deployment.github);
+      }
       return json(res, 200, {
         ok: true,
         inventoryStock: financeState.inventoryStock?.length || 0,
         report,
+        research,
+        deployment,
         message: report.remaining
           ? `${report.published} product(s) completed; ${report.remaining} still require a verified source.`
-          : `${report.published} product(s) completed and publication-ready.`
+          : deployment?.confirmed
+            ? `${report.published} product(s) completed and confirmed live.`
+            : `${report.published} product(s) completed and publication-ready.`
       });
     } catch (error) {
       return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Catalog sync failed" });

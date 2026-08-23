@@ -1,6 +1,6 @@
 import { syncAdminCatalogInventory, syncAdminProductInventory } from "./financeState.js";
 import { applyCatalogPublicationSafety, isFinanceCatalogProduct, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
-import { canonicalProductArtist } from "../../src/data/catalogIdentity.js";
+import { canonicalProductArtist, canonicalRelatedArtistName } from "../../src/data/catalogIdentity.js";
 
 const TABLES = ["products", "artists", "collections", "requests", "offers", "orders", "cashflow", "inventory"];
 const REQUIRED_STORE_ARRAYS = ["products", "artists", "collections", "requests", "offers", "orders", "cashflow", "inventory"];
@@ -21,17 +21,26 @@ export async function supabaseFetch(path, options = {}) {
   if (!process.env.SUPABASE_URL || !key) {
     throw new Error("Supabase runtime environment variables are not configured.");
   }
-  const response = await fetch(`${process.env.SUPABASE_URL.replace(/\/$/, "")}/rest/v1/${path}`, {
-    method: options.method || "GET",
-    headers: {
-      apikey: key,
-      authorization: `Bearer ${key}`,
-      "content-type": "application/json",
-      prefer: options.prefer || "return=representation",
-      ...(options.headers || {})
-    },
-    body: options.body ? JSON.stringify(options.body) : undefined
-  });
+  let response;
+  try {
+    response = await fetch(`${process.env.SUPABASE_URL.replace(/\/$/, "")}/rest/v1/${path}`, {
+      method: options.method || "GET",
+      headers: {
+        apikey: key,
+        authorization: `Bearer ${key}`,
+        "content-type": "application/json",
+        prefer: options.prefer || "return=representation",
+        ...(options.headers || {})
+      },
+      body: options.body ? JSON.stringify(options.body) : undefined,
+      signal: options.signal || AbortSignal.timeout(Number(options.timeoutMs || 12000))
+    });
+  } catch (error) {
+    const message = error?.name === "TimeoutError" || error?.name === "AbortError"
+      ? `Supabase request timed out after ${Number(options.timeoutMs || 12000)}ms.`
+      : error instanceof Error ? error.message : "Supabase request failed.";
+    throw new Error(message);
+  }
   const text = await response.text();
   const payload = text ? JSON.parse(text) : null;
   if (!response.ok) {
@@ -225,15 +234,11 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
         open_to_offers: remoteProduct.open_to_offers,
         minimumAcceptableOffer: remoteProduct.minimumAcceptableOffer
       };
-      const remoteResearchStatus = String(remoteProduct.relatedArtistsResearch?.status || "").trim();
-      const hasSourceBackedResearch = ["verified", "combined", "lastfm", "no-verified-match"].includes(remoteResearchStatus);
-      const hasManualRelatedArtistsOverride = hasExplicitManualRelatedArtistsOverride(remoteProduct);
-      const withRemoteResearch = hasSourceBackedResearch || hasManualRelatedArtistsOverride
-        ? researchFields.reduce(
-            (product, field) => (remoteProduct[field] !== undefined ? { ...product, [field]: remoteProduct[field] } : product),
-            merged
-          )
-        : merged;
+      // Editorial fields belong to the deployed snapshot. Pulling related
+      // artists or copy from Supabase here caused a page to render one revision
+      // and then visibly replace itself after hydration. A completed deploy is
+      // the single publication boundary for editorial changes.
+      const withRemoteResearch = merged;
       const withCurrentIdentity = identityFields.reduce((product, field) => {
         const value = remoteProduct[field];
         const usable = field === "title"
@@ -250,22 +255,10 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
         (product, field) => (snapshotProduct[field] !== undefined ? { ...product, [field]: snapshotProduct[field] } : product),
         withCanonicalArtist
       );
-      return hasSourceBackedResearch || hasManualRelatedArtistsOverride
-        ? researchFields.reduce(
-            (product, field) => (remoteProduct[field] !== undefined ? { ...product, [field]: remoteProduct[field] } : product),
-            withSnapshotEditorial
-          )
-        : withSnapshotEditorial;
+      return withSnapshotEditorial;
     })
     .filter(Boolean);
-  // A product can be fully published in Supabase before the next static
-  // snapshot commit. Keep the established snapshot as the editorial baseline,
-  // but never hide a complete public item merely because it is new.
-  const remoteOnly = remoteProducts.filter((product) => {
-    if (snapshotIds.has(String(product?.id || ""))) return false;
-    return product?.category !== "Records" || isRecordPublicationReady(product);
-  });
-  return [...remoteOnly, ...reconciledSnapshot];
+  return reconciledSnapshot;
 }
 
 function reconcilePublicRows(remoteRows = [], snapshotRows = []) {
@@ -274,8 +267,7 @@ function reconcilePublicRows(remoteRows = [], snapshotRows = []) {
   const reconciled = snapshotRows
     .map((snapshotRow) => remoteById.get(String(snapshotRow?.id || "")) || snapshotRow)
     .filter(Boolean);
-  const remoteOnly = remoteRows.filter((row) => !snapshotIds.has(String(row?.id || "")));
-  return [...reconciled, ...remoteOnly].sort((a, b) => Number(a?.sort || 0) - Number(b?.sort || 0) || String(a?.name || "").localeCompare(String(b?.name || "")));
+  return reconciled.sort((a, b) => Number(a?.sort || 0) - Number(b?.sort || 0) || String(a?.name || "").localeCompare(String(b?.name || "")));
 }
 
 export async function verifiedPrices(ids = []) {
@@ -366,6 +358,15 @@ function fromProductRow(row, { privateScope = false } = {}) {
   const sourceRaw = row.raw || {};
   const nestedRaw = sourceRaw.raw && typeof sourceRaw.raw === "object" ? sourceRaw.raw : {};
   const { shipping, raw: _discardNestedRaw, ...raw } = { ...nestedRaw, ...sourceRaw };
+  const manualRelatedArtists = Array.isArray(raw.manualRelatedArtists) ? raw.manualRelatedArtists : [];
+  const researchedRelatedArtists = Array.isArray(raw.relatedArtistsResearch?.artists)
+    ? raw.relatedArtistsResearch.artists
+    : Array.isArray(raw.autoEditorial?.relatedArtists) ? raw.autoEditorial.relatedArtists : [];
+  const relatedArtists = canonicalRelatedArtists(
+    raw.manualRelatedArtistsOverride === true && (manualRelatedArtists.length || String(raw.manualRelatedArtistsOverrideSource || "").toLowerCase() === "admin")
+      ? manualRelatedArtists
+      : Array.isArray(raw.relatedArtists) && raw.relatedArtists.length ? raw.relatedArtists : [...manualRelatedArtists, ...researchedRelatedArtists]
+  );
   const product = {
     ...raw,
     id: row.id,
@@ -399,6 +400,9 @@ function fromProductRow(row, { privateScope = false } = {}) {
     visibility: row.visibility,
     updatedAt: row.updated_at
   };
+  product.relatedArtists = relatedArtists;
+  product.manualRelatedArtists = canonicalRelatedArtists(manualRelatedArtists);
+  product.relatedArtistsResearch = raw.relatedArtistsResearch || null;
   if (privateScope) product.shipping = shipping || null;
   return product;
 }
@@ -477,6 +481,18 @@ function toProductRow(product) {
     updated_at: product.updatedAt || new Date().toISOString().slice(0, 10),
     raw
   };
+}
+
+function canonicalRelatedArtists(values = []) {
+  const seen = new Set();
+  return (Array.isArray(values) ? values : [])
+    .map(canonicalRelatedArtistName)
+    .filter((value) => {
+      const key = String(value || "").trim().toLowerCase();
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
 }
 
 function normalizedProductRaw(product = {}) {

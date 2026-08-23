@@ -20,6 +20,7 @@
     "test:enrichment": "node scripts/verify-finance-enrichment.mjs",
     "test:publication-safety": "node scripts/verify-publication-safety.mjs",
     "test:related-artists": "node scripts/verify-related-artists.mjs",
+    "test:research-jobs": "node scripts/verify-catalog-research-jobs.mjs",
     "backfill:related-artists": "node scripts/refresh-related-artists.mjs --stale-only",
     "test:monthly-report": "node scripts/verify-monthly-report-accounting.mjs",
     "seed:admin": "node scripts/seed-admin-store.mjs",

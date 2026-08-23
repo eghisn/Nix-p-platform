@@ -1,4 +1,5 @@
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
+import { verifyPublicCatalogRevision } from "../_lib/publicCatalogDeployment.js";
 import { json, requireWorkspace } from "../_lib/auth.js";
 import { isSupabaseConfigured, loadStore, saveProductPublicationStatus, saveStore } from "../_lib/supabase.js";
 import { applyCatalogPublicationSafety, catalogPublicationIssues } from "../../src/data/catalogPublication.js";
@@ -35,7 +36,7 @@ export default async function handler(req, res) {
     } else {
       await saveStore(safeStore, { syncCatalogProducts: true });
       const financeState = await readFinanceState();
-      await syncFinanceInventoryToCatalog(financeState, { enrich: true });
+      await syncFinanceInventoryToCatalog(financeState, { enrich: false });
     }
     const deployedStore = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
     let statusChange = null;
@@ -73,11 +74,15 @@ export default async function handler(req, res) {
       });
     }
     const github = await commitPublicStore(deployedStore, { message: body.message });
+    const live = await verifyPublicCatalogRevision((deployedStore.products || []).filter((product) => product.publishStatus === "Published" && product.visibility === "Public"));
     json(res, 200, {
       ok: true,
-      message: "Saved to Supabase and committed to GitHub. Vercel will deploy from the GitHub push.",
+      message: live.confirmed
+        ? "Saved, committed, and confirmed live on the public site."
+        : "Saved and committed. Vercel deployment is pending public verification.",
       github,
-      statusChange: statusChange ? { ...statusChange, deployed: true } : null
+      deployment: live,
+      statusChange: statusChange ? { ...statusChange, deployed: live.confirmed } : null
     });
   } catch (error) {
     json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Deploy failed" });

@@ -3,11 +3,11 @@ import {
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
   isExplicitManualRelatedArtistsOverride,
-  researchRelatedArtists,
-  resolveRelatedArtistDisplay
+  normalizeRelatedArtistsPayload,
+  researchRelatedArtists
 } from "./catalogEnrichment.js";
 import { artistCreditNames, canonicalArtistName, canonicalLabelName, canonicalProductArtist } from "../../src/data/catalogIdentity.js";
-import { isResearchPublicationReady, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
+import { catalogPublicationIssues, isResearchPublicationReady, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 
 const STATE_KEY = "main";
@@ -71,10 +71,14 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
-  // Finance is the entry point for new stock. Enrich only records that need it,
-  // so a completed Finance item becomes a complete public catalog product without
-  // requiring a separate Admin sync or deployment action.
-  if (syncCatalog) await syncFinanceInventoryToCatalog(normalized, { enrich: true });
+  // Saving Finance must never wait for MusicBrainz, Last.fm, image archiving,
+  // or a Vercel deploy. First persist the financial truth and a lightweight
+  // catalog mirror, then place research in the durable server queue.
+  if (syncCatalog) {
+    await syncFinanceInventoryToCatalog(normalized, { enrich: false });
+    const { enqueueCatalogResearchJobs } = await import("./catalogResearchJobs.js");
+    await enqueueCatalogResearchJobs(normalized.inventoryStock || [], { requestedBy: "finance" });
+  }
   return normalized;
 }
 
@@ -172,6 +176,65 @@ export async function syncFinanceInventoryToCatalog(
     });
   }
   await syncFinanceArtistsToCatalog(protectedProductRows);
+}
+
+// Server-side, resumable catalog research. A job is claimed in Supabase before
+// external calls begin, so a browser refresh or function timeout cannot make
+// Finance data disappear or leave Admin guessing whether work was saved.
+export async function processCatalogResearchJobs({ limit = 1, skus = [], force = false, publishAfterResearch = false, requestedBy = "admin" } = {}) {
+  const jobsApi = await import("./catalogResearchJobs.js");
+  const state = await readFinanceState();
+  if (force || skus.length) {
+    await jobsApi.enqueueCatalogResearchJobs(state.inventoryStock || [], { requestedBy, force, skus });
+  }
+  const jobs = await jobsApi.claimCatalogResearchJobs({ limit, skus });
+  const stockBySku = new Map((state.inventoryStock || []).map((item) => [String(item?.sku || "").trim().toUpperCase(), item]));
+  const results = [];
+  for (const job of jobs) {
+    const stock = stockBySku.get(String(job.sku || "").trim().toUpperCase());
+    if (!stock) {
+      await jobsApi.completeCatalogResearchJob(job, { status: "cancelled", stage: "complete", result: { reason: "SKU no longer exists in Finance inventory." } });
+      results.push({ sku: job.sku, status: "cancelled", issues: ["SKU no longer exists in Finance inventory."] });
+      continue;
+    }
+    try {
+      await syncFinanceInventoryToCatalog(state, {
+        enrich: true,
+        forceEnrichment: true,
+        targetSkus: [job.sku],
+        publishAfterResearch
+      });
+      const rows = await supabaseFetch(`products?select=*&sku=eq.${encodeURIComponent(job.sku)}&limit=1`);
+      const product = rows?.[0] || null;
+      const issues = product ? catalogPublicationIssues(product) : ["Catalog product was not written after research."];
+      const ready = Boolean(product && isResearchPublicationReady(product));
+      if (ready) {
+        await jobsApi.completeCatalogResearchJob(job, {
+          status: publishAfterResearch ? "deployment_pending" : "ready",
+          stage: publishAfterResearch ? "deployment" : "validating",
+          result: { productId: product.id, issues: [], publishRequested: publishAfterResearch }
+        });
+        results.push({ sku: job.sku, id: product.id, status: publishAfterResearch ? "deployment_pending" : "ready", issues: [] });
+      } else {
+        const status = String(product?.raw?.enrichmentStatus || "needs-release-match");
+        await jobsApi.retryCatalogResearchJob(job, {
+          code: status,
+          message: issues.join("; ") || "Exact release research is incomplete.",
+          source: "catalog-enrichment",
+          result: { productId: product?.id || null, issues }
+        });
+        results.push({ sku: job.sku, id: product?.id || null, status: "retry", issues });
+      }
+    } catch (error) {
+      await jobsApi.retryCatalogResearchJob(job, {
+        code: "research-runtime-failed",
+        message: error instanceof Error ? error.message : "Catalog research failed.",
+        source: "catalog-enrichment"
+      });
+      results.push({ sku: job.sku, status: "retry", issues: [error instanceof Error ? error.message : "Catalog research failed."] });
+    }
+  }
+  return { queued: jobs.length, processed: results.length, results };
 }
 
 function preserveCompletedCatalogData(latest, next, stock = {}) {
@@ -777,11 +840,8 @@ export async function refreshRelatedArtistsOnly({ skus = [] } = {}) {
       format: row.format,
       releaseId: String(raw.musicBrainzReleaseId || "").trim()
     });
-    const relatedArtists = resolveRelatedArtistDisplay({
-      manualRelatedArtists: Array.isArray(raw.manualRelatedArtists) ? raw.manualRelatedArtists : [],
-      automaticRelatedArtists: research.artists || [],
-      manualRelatedArtistsOverride: false
-    }).relatedArtists;
+    const relatedArtistPayload = normalizeRelatedArtistsPayload({ raw, research });
+    const relatedArtists = relatedArtistPayload.relatedArtists;
     const previousEnrichmentStatus = String(raw.enrichmentStatus || "").trim();
     const enrichmentStatus = previousEnrichmentStatus.startsWith("complete")
       ? (relatedArtists.length ? "complete" : "complete-no-related-artists")
@@ -789,8 +849,11 @@ export async function refreshRelatedArtistsOnly({ skus = [] } = {}) {
     const nextRaw = {
       ...raw,
       relatedArtists,
-      manualRelatedArtistsOverride: false,
-      manualRelatedArtistsOverrideSource: "",
+      manualRelatedArtists: relatedArtistPayload.manualRelatedArtists,
+      manualRelatedArtistsOverride: relatedArtistPayload.manualRelatedArtistsOverride,
+      manualRelatedArtistsOverrideSource: relatedArtistPayload.manualRelatedArtistsOverride
+        ? raw.manualRelatedArtistsOverrideSource || "admin"
+        : "",
       relatedArtistEvidence: research.evidence || [],
       relatedArtistsResearch: research,
       relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,

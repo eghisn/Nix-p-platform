@@ -1671,15 +1671,13 @@
           }
           financeSaveConflict = false;
           financeStateUpdatedAt = retryPayload.updatedAt || financeStateUpdatedAt;
-          el.saveStatus.textContent = "Saved to protected server";
-          queueFinanceCatalogSync();
+          el.saveStatus.textContent = "Saved to protected server. Catalog research queued.";
           return true;
         }
         if (!response.ok) throw new Error(payload.error || "Unable to save finance state");
         financeSaveConflict = false;
         financeStateUpdatedAt = payload.updatedAt || financeStateUpdatedAt;
-        el.saveStatus.textContent = "Saved to protected server";
-        queueFinanceCatalogSync();
+        el.saveStatus.textContent = "Saved to protected server. Catalog research queued.";
         return true;
       } catch (error) {
         el.saveStatus.textContent = error.message || "Save failed. Changes were not synced.";
@@ -1687,26 +1685,6 @@
       } finally {
         financeSavePending = false;
       }
-    }
-
-    let financeCatalogSyncPromise = null;
-    function queueFinanceCatalogSync() {
-      if (usesLocalFileStorage || financeCatalogSyncPromise) return;
-      financeCatalogSyncPromise = fetch("/api/admin/catalog-sync", {
-        method: "POST",
-        headers: { accept: "application/json" }
-      })
-        .then((response) => {
-          if (!response.ok) throw new Error(`Catalog enrichment failed (${response.status})`);
-          return response.json().catch(() => ({}));
-        })
-        .catch((error) => {
-          // The protected finance save already succeeded. A later save retries enrichment.
-          console.warn("Finance catalog enrichment deferred", error);
-        })
-        .finally(() => {
-          financeCatalogSyncPromise = null;
-        });
     }
 
     async function refreshServerState() {

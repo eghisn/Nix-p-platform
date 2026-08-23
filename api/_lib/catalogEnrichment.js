@@ -21,6 +21,7 @@ let musicBrainzQueue = Promise.resolve();
 let lastMusicBrainzRequestAt = 0;
 let lastFmQueue = Promise.resolve();
 let lastLastFmRequestAt = 0;
+const externalSourceHealth = new Map();
 const TRUSTED_REVIEW_SOURCES = new Map([
   ["pitchfork.com", "Pitchfork (quoted)"],
   ["thequietus.com", "The Quietus (quoted)"],
@@ -1300,21 +1301,13 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
           { source: "NIXP exact-release editorial fallback", artists: curatedRelatedArtists }
         ]
       };
-  const automaticRelatedArtists = unique((relatedArtistResearch.artists || []).map(canonicalRelatedArtistName));
-  const legacyManualOverride = manualRelatedArtists.length > 0 &&
-    JSON.stringify(manualRelatedArtists) !== JSON.stringify(
-      unique((raw.autoEditorial?.relatedArtists || []).map(canonicalRelatedArtistName))
-    );
-  const manualRelatedArtistsOverride = isExplicitManualRelatedArtistsOverride(raw, automaticRelatedArtists) || legacyManualOverride;
+  const relatedArtistPayload = normalizeRelatedArtistsPayload({ raw, research: relatedArtistResearch });
+  const automaticRelatedArtists = relatedArtistPayload.automaticRelatedArtists;
+  const manualRelatedArtistsOverride = relatedArtistPayload.manualRelatedArtistsOverride;
   // An explicit Admin edit is authoritative for the storefront. Automatic
   // research is still retained below for evidence and future review, but a
   // later Finance sync must not re-add an artist the Admin deliberately removed.
-  const relatedArtistDisplay = resolveRelatedArtistDisplay({
-    manualRelatedArtists,
-    automaticRelatedArtists,
-    manualRelatedArtistsOverride
-  });
-  const relatedArtists = relatedArtistDisplay.relatedArtists;
+  const relatedArtists = relatedArtistPayload.relatedArtists;
   const relatedArtistEvidence = relatedArtistResearch.evidence || [];
   const enrichmentFingerprint = inventoryFingerprint({ ...stock, artist, title, format });
   const shipping = referenceShippingProfile(
@@ -1547,15 +1540,24 @@ function chooseMusicBrainzRelease(releases = [], { stock, expectedTitle, format,
       const formatMatches = !format || !formats.length || formats.some((candidate) => candidate.includes(normalizedText(format)));
       const releaseBarcode = String(release.barcode || "").replace(/\D/g, "");
       const releaseCatalogNumbers = (release["label-info"] || []).map((label) => normalizedText(label["catalog-number"]));
-      const barcodeMatches = !barcode || !releaseBarcode || releaseBarcode === barcode || (catalogNumber && releaseCatalogNumbers.some((value) => catalogNumberMatches(value, catalogNumber)));
-      const catalogMatches = !catalogNumber || !releaseCatalogNumbers.length || releaseCatalogNumbers.some((value) => catalogNumberMatches(value, catalogNumber));
+      const barcodeExact = Boolean(barcode && releaseBarcode && releaseBarcode === barcode);
+      const catalogExact = Boolean(catalogNumber && releaseCatalogNumbers.some((value) => catalogNumberMatches(value, catalogNumber)));
       const exactTitle = title === expectedTitle;
-      const catalogConfirmedTitleVariant = catalogMatches && compatibleReleaseTitle(expectedTitle, title);
-      if ((!exactTitle && !catalogConfirmedTitleVariant) || !musicBrainzArtistMatches(release, stock.artist) || !formatMatches || !barcodeMatches || !catalogMatches) return null;
+      const titleCompatible = exactTitle || compatibleReleaseTitle(expectedTitle, title);
+      const artistMatches = musicBrainzArtistMatches(release, stock.artist);
+      // Catalog number and barcode are the strongest signals when supplied,
+      // but neither is mandatory. Finance can legitimately identify a record
+      // using a normalised artist + title + format alone.
+      if (!artistMatches || !formatMatches || (!titleCompatible && !catalogExact && !barcodeExact)) return null;
 
       return {
         release,
-        score: Number(release.score || 0) + (exactTitle ? 20 : 5) + (formatMatches ? 10 : 0) + (barcodeMatches ? 15 : 0) + (catalogMatches ? 25 : 0)
+        score: Number(release.score || 0) +
+          (catalogExact ? 100 : 0) +
+          (barcodeExact ? 90 : 0) +
+          (exactTitle ? 45 : titleCompatible ? 24 : 0) +
+          (artistMatches ? 35 : 0) +
+          (formatMatches ? 20 : 0)
       };
     })
     .filter(Boolean)
@@ -1768,16 +1770,38 @@ function editorialSourceName(hostname) {
   return hostname.split(".").slice(-2, -1)[0]?.replace(/(^|[-_])\w/g, (value) => value.toUpperCase().replace(/[-_]/g, "")) || "Official";
 }
 
-async function fetchWithTimeout(url, options = {}, timeoutMs = 6000) {
-  return fetch(url, { ...options, signal: AbortSignal.timeout(timeoutMs) }).catch(() => null);
+async function fetchWithTimeout(url, options = {}, timeoutMs = 6000, source = "external") {
+  const health = externalSourceHealth.get(source);
+  if (health?.blockedUntil && health.blockedUntil > Date.now()) return null;
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      const response = await fetch(url, { ...options, signal: AbortSignal.timeout(timeoutMs) });
+      if (response.ok || (response.status >= 400 && response.status < 500 && response.status !== 429)) {
+        externalSourceHealth.delete(source);
+        return response;
+      }
+      if (attempt === 1) throw new Error(`HTTP ${response.status}`);
+    } catch {
+      if (attempt === 1) {
+        const failures = Number(health?.failures || 0) + 1;
+        externalSourceHealth.set(source, {
+          failures,
+          blockedUntil: failures >= 3 ? Date.now() + 60_000 : 0
+        });
+        return null;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 250));
+    }
+  }
+  return null;
 }
 
 async function discoverPitchforkReview({ artist, title }) {
   const query = `${artist} ${title}`.trim();
   if (!query) return null;
-  const response = await fetch(`https://pitchfork.com/search/?query=${encodeURIComponent(query)}`, {
+  const response = await fetchWithTimeout(`https://pitchfork.com/search/?query=${encodeURIComponent(query)}`, {
     headers: { accept: "text/html", "user-agent": USER_AGENT }
-  }).catch(() => null);
+  }, 7000, "pitchfork");
   if (!response?.ok) return null;
   const searchHtml = await response.text();
   const paths = unique(
@@ -1785,7 +1809,7 @@ async function discoverPitchforkReview({ artist, title }) {
   ).slice(0, 5);
   for (const path of paths) {
     const url = new URL(path, "https://pitchfork.com").toString();
-    const page = await fetch(url, { headers: { accept: "text/html", "user-agent": USER_AGENT } }).catch(() => null);
+    const page = await fetchWithTimeout(url, { headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "pitchfork");
     if (!page?.ok) continue;
     const html = await page.text();
     const pageTitle = metaContent(html, "og:title") || titleText(html);
@@ -2072,6 +2096,32 @@ export function resolveRelatedArtistDisplay({ manualRelatedArtists = [], automat
   };
 }
 
+// This is the single mapping from source research to the visitor-facing list.
+// Finance, Admin and the public catalog all persist this same shape so a
+// successful research result cannot be present in evidence but absent on page.
+export function normalizeRelatedArtistsPayload({ raw = {}, research = null } = {}) {
+  const safeResearch = research && typeof research === "object" ? research : {};
+  const automaticRelatedArtists = unique((safeResearch.artists || raw.relatedArtistsResearch?.artists || raw.autoEditorial?.relatedArtists || [])
+    .map(canonicalRelatedArtistName));
+  const manualRelatedArtists = unique((raw.manualRelatedArtists || []).map(canonicalRelatedArtistName));
+  const legacyManualOverride = manualRelatedArtists.length > 0 &&
+    JSON.stringify(manualRelatedArtists) !== JSON.stringify(
+      unique((raw.autoEditorial?.relatedArtists || []).map(canonicalRelatedArtistName))
+    );
+  const manualRelatedArtistsOverride = isExplicitManualRelatedArtistsOverride(raw, automaticRelatedArtists) || legacyManualOverride;
+  const display = resolveRelatedArtistDisplay({
+    manualRelatedArtists,
+    automaticRelatedArtists,
+    manualRelatedArtistsOverride
+  });
+  return {
+    relatedArtists: display.relatedArtists,
+    automaticRelatedArtists,
+    manualRelatedArtists,
+    manualRelatedArtistsOverride: display.manualRelatedArtistsOverride
+  };
+}
+
 // Older Admin saves could leave manualRelatedArtistsOverride=true with an
 // empty manual list even though the research engine had found valid artists.
 // Treat that legacy shape as stale. A current manual clear is marked with an
@@ -2235,7 +2285,7 @@ async function musicBrainzFetch(url) {
     const waitMs = Math.max(0, MUSICBRAINZ_REQUEST_INTERVAL_MS - (Date.now() - lastMusicBrainzRequestAt));
     if (waitMs) await new Promise((resolve) => setTimeout(resolve, waitMs));
     lastMusicBrainzRequestAt = Date.now();
-    const response = await fetch(url, { headers: { accept: "application/json", "user-agent": USER_AGENT } }).catch(() => null);
+    const response = await fetchWithTimeout(url, { headers: { accept: "application/json", "user-agent": USER_AGENT } }, 8000, "musicbrainz");
     if (!response) return null;
     const payload = await response.json().catch(() => null);
     const result = {
@@ -2265,10 +2315,9 @@ async function lastFmFetch(url) {
     const waitMs = Math.max(0, LASTFM_REQUEST_INTERVAL_MS - (Date.now() - lastLastFmRequestAt));
     if (waitMs) await new Promise((resolve) => setTimeout(resolve, waitMs));
     lastLastFmRequestAt = Date.now();
-    const response = await fetch(url, {
+    const response = await fetchWithTimeout(url, {
       headers: { accept: "application/json", "user-agent": USER_AGENT },
-      signal: AbortSignal.timeout(8000)
-    }).catch(() => null);
+    }, 8000, "lastfm");
     if (!response) return null;
     const payload = await response.json().catch(() => null);
     const result = { ok: response.ok, status: response.status, payload };
