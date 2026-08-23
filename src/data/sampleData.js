@@ -341,7 +341,7 @@ const recordRows = [
     "qty": 1,
     "price": 250000,
     "condition": "Used Good",
-    "image": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi.jpg"
+    "image": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi-bandcamp.jpg"
   },
   {
     "id": "nxp-2026-cd-0014",

@@ -64,6 +64,13 @@ const ARCHIVED_CATALOG_IMAGES = {
     cover: "/public/assets/catalog-archive/nxp-2026-vnl-0033-cover.webp",
     productPhoto: "/public/assets/catalog-archive/nxp-2026-vnl-0033-detail-1.webp"
   },
+  "NXP-2026-VNL-0036": {
+    cover: "/public/covers/nxp-2026-vnl-0036-jil-sander-sound-zine.jpg",
+    productPhoto: ""
+  },
+  "NXP-2026-VNL-0038": { cover: "/public/covers/nxp-2026-vnl-0038-bauhaus-kick-in-the-eye-gold-text.jpg" },
+  "NXP-2026-CD-0040": { cover: "/public/covers/nxp-2026-cd-0040-cryptomnesia-discogs.jpg" },
+  "NXP-2026-CD-0013": { cover: "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi-bandcamp.jpg" },
   "NXP-2026-VNL-0045": { cover: "/public/covers/nxp-2026-vnl-0045-leila-ui.jpg" },
   "NXP-2026-VNL-0046": { cover: "/public/covers/nxp-2026-vnl-0046-citizens-reptile.jpg" },
   "NXP-2026-VNL-0047": { cover: "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg" }
@@ -618,8 +625,8 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     edition: "CD",
     catalogNumber: "SHRLP001CD",
     barcode: "613481019524",
-    cover: "https://f4.bcbits.com/img/a2016704080_5.jpg",
-    imageCredits: [{ image: "https://f4.bcbits.com/img/a2016704080_5.jpg", credit: "Omar Rodriguez-Lopez official Bandcamp artwork", url: "https://orlprojects.bandcamp.com/album/el-grupo-nuevo-de-omar-rodr-guez-l-pez-cryptomnesia" }],
+    cover: "/public/covers/nxp-2026-cd-0040-cryptomnesia-discogs.jpg",
+    imageCredits: [{ image: "/public/covers/nxp-2026-cd-0040-cryptomnesia-discogs.jpg", credit: "Discogs release artwork", url: "https://www.discogs.com/release/1709731" }],
     description: "El Grupo Nuevo de Omar Rodriguez-Lopez's 2009 Cryptomnesia brings Omar Rodriguez-Lopez, Cedric Bixler-Zavala, Juan Alderete, Jonathan Hischke and Zach Hill together for a restless experimental-rock record first recorded in 2006.",
     descriptionSource: "AllMusic / MusicBrainz",
     reviewQuote: "Ruthlessly experimental",
@@ -849,12 +856,9 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     year: 2026,
     label: "JIL SANDER",
     edition: "Sound zine with clear flexi disc",
-    cover: "https://www.jilsander.com/dw/image/v2/BGNJ_PRD/on/demandware.static/-/Library-Sites-jilsander-shared/default/dw492c75ab/projects/cisco/cover_1080x1350.jpg",
-    productPhoto: "https://www.jilsander.com/dw/image/v2/BGNJ_PRD/on/demandware.static/-/Library-Sites-jilsander-shared/default/dw72645a8d/projects/cisco/s1_01.jpg",
-    imageCredits: [
-      { image: "https://www.jilsander.com/dw/image/v2/BGNJ_PRD/on/demandware.static/-/Library-Sites-jilsander-shared/default/dw492c75ab/projects/cisco/cover_1080x1350.jpg", credit: "JIL SANDER project photography", url: "https://www.jilsander.com/en-au/jil-sander-sounds-presents-cisco-records/jil-sander-sounds-presents-cisco-records.html" },
-      { image: "https://www.jilsander.com/dw/image/v2/BGNJ_PRD/on/demandware.static/-/Library-Sites-jilsander-shared/default/dw72645a8d/projects/cisco/s1_01.jpg", credit: "JIL SANDER project photography", url: "https://www.jilsander.com/en-au/jil-sander-sounds-presents-cisco-records/jil-sander-sounds-presents-cisco-records.html" }
-    ],
+    cover: "/public/covers/nxp-2026-vnl-0036-jil-sander-sound-zine.jpg",
+    productPhoto: "",
+    imageCredits: [{ image: "/public/covers/nxp-2026-vnl-0036-jil-sander-sound-zine.jpg", credit: "JIL SANDER project photography", url: "https://www.jilsander.com/en-au/jil-sander-sounds-presents-cisco-records/jil-sander-sounds-presents-cisco-records.html" }],
     description: "JIL SANDER SOUND ZINE is the 2026 printed and audio companion to the brand's Cisco Records project in Tokyo. Its inaugural Music and Environment issue includes a flexi disc carrying Laurel Halo's music for the Fall/Winter 2026 show.",
     descriptionSource: "JIL SANDER / HOUYHNHNM",
     reviewQuote: "Bridging new and old influences",
@@ -1196,11 +1200,33 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // They are used when a trusted publication is not reliably crawlable from a
 // serverless runtime but the exact source has been reviewed by NIXP.
 export const CURATED_EDITORIAL_OVERRIDES = {
+  "NXP-2026-VNL-0027": {
+    description: "Suuns' 2011 Bambi b/w Red Song is a compact Secretly Canadian single that turns the Montreal band's dark rocktronica into something both creepy and danceable, with stabby guitars, electronic pulse, and Ben Shemie's detached vocal.",
+    descriptionSource: "Secretly Canadian / KEXP"
+  },
+  "NXP-2026-VNL-0038": {
+    description: "Bauhaus' 1982 Kick in the Eye (Searching for Satori E.P.) expands the original single into a bass-heavy, dub-touched set: the title track's funk pulse sits beside Harry and Earwax in a compact Beggars Banquet document of the band's restless early-80s phase.",
+    descriptionSource: "Trouser Press / Official Charts"
+  },
+  "NXP-2026-VNL-0039": {
+    description: "Television's 1978 Adventure is the New York quartet's quieter, more reflective second album: Tom Verlaine and Richard Lloyd's interlocking guitars remain mesmerizing, but the songs settle into a cleaner, more spacious shape than Marquee Moon.",
+    descriptionSource: "Rhino / Robert Christgau"
+  },
+  "NXP-2026-VNL-0040": {
+    description: "Blondie's self-titled 1976 debut places the New York band at the intersection of CBGB punk, pop melody, and downtown cool, with Debbie Harry's voice and Chris Stein's guitar giving its sharpest songs a stylish charge. This Pickwick issue documents the album in a later budget reissue form.",
+    descriptionSource: "Rock & Roll Hall of Fame / Private Stock"
+  },
   "NXP-2026-VNL-0041": {
+    description: "Bauhaus' 1983 She's in Parties single turns the band's gothic drama toward an easier, dub-inflected groove, with a tense guitar figure and Peter Murphy's theatrical vocal riding a leaner pop structure. It became one of the band's best-known late-period songs on Beggars Banquet.",
+    descriptionSource: "AV Club / Official Charts",
     reviewQuote: "the most notable and successful being the dub-inflected, heavily dramatic ‘She's in Parties’",
     reviewSource: "AllMusic (quoted)",
     reviewUrl: "https://www.allmusic.com/album/burning-from-the-inside-mw0000652112",
     relatedArtists: ["The Soft Moon", "Nine Inch Nails", "David Bowie"]
+  },
+  "NXP-2026-VNL-0058": {
+    description: "Burial's 2019 Claustro / State Forest 12-inch returns to the UK producer's garage shuffle while pushing his sound toward harder-to-decipher emotions: Claustro lands as a banger, while State Forest opens into a more ambient, impressionistic space.",
+    descriptionSource: "Resident Advisor / Pitchfork"
   }
 };
 
@@ -1385,7 +1411,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       },
       enrichmentFingerprint,
       enrichmentOrigin: curated ? "curated-exact" : Object.keys(editorialOverride).length ? "musicbrainz+curated-editorial" : "musicbrainz",
-      enrichmentStatus: enrichmentStatus({ used, discovered, description, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl, manualRelatedArtistsOverride }),
+      enrichmentStatus: enrichmentStatus({ used, discovered, description, descriptionSource, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl, manualRelatedArtistsOverride }),
       enrichmentUpdatedAt: today(),
       enrichmentAttemptedAt: new Date().toISOString(),
       shipping
@@ -1430,10 +1456,11 @@ function applyArchivedCatalogImages(discovered, sku) {
     if (image === sourceProductPhoto && archived.productPhoto) return archived.productPhoto;
     return image;
   };
+  const hasArchivedProductPhoto = Object.prototype.hasOwnProperty.call(archived, "productPhoto");
   return {
     ...discovered,
     cover: archived.cover || discovered.cover,
-    productPhoto: archived.productPhoto || discovered.productPhoto,
+    productPhoto: hasArchivedProductPhoto ? archived.productPhoto : discovered.productPhoto,
     imageCredits: (discovered.imageCredits || []).map((credit) => ({ ...credit, image: mapImage(credit.image) }))
   };
 }
@@ -1881,14 +1908,23 @@ function usedCondition(value) {
   return USED_CONDITION.test(String(value || ""));
 }
 
-function enrichmentStatus({ used, discovered, description, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl, manualRelatedArtistsOverride = false }) {
+export function isEditorialDescriptionQuality(description, descriptionSource = "") {
+  const text = String(description || "").trim();
+  const source = String(descriptionSource || "").trim();
+  if (!text || /^MusicBrainz$/i.test(source)) return false;
+  if (/^.+(?:'s|’s)\s+(?:\d{4}\s+)?release\s+.+\s+is\s+a\s+(?:Vinyl|CD|Cassette)\s+edition\s+issued\s+by\s+.+(?:,\s+documented\s+by\s+MusicBrainz\s+as\s+.+)?\.$/i.test(text)) return false;
+  if (/current NIXP records selection/i.test(text)) return false;
+  return true;
+}
+
+function enrichmentStatus({ used, discovered, description, descriptionSource, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl, manualRelatedArtistsOverride = false }) {
   if (!discovered?.cover) return "needs-cover-art";
   if (!isManagedProductImage(discovered.cover)) return "needs-cover-archive";
   // A verified release cover is the required storefront image. Product-detail
   // photography improves the listing, but some legitimate sealed editions do
   // not have one available from a trustworthy source and must not be trapped
   // in Draft solely for that reason.
-  if (!description) return "needs-editorial-metadata";
+  if (!isEditorialDescriptionQuality(description, descriptionSource)) return "needs-editorial-quality";
   if (!relatedArtists.length && !manualRelatedArtistsOverride && relatedArtistResearch?.status !== "no-verified-match") return "needs-related-artist-research";
   // A source-backed review quote is never invented by automation. Its absence
   // keeps the product private until a trusted source is resolved.

@@ -2,6 +2,7 @@ import {
   RELATED_ARTIST_RESEARCH_VERSION,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
+  isEditorialDescriptionQuality,
   isExplicitManualRelatedArtistsOverride,
   normalizeRelatedArtistsPayload,
   researchRelatedArtists
@@ -569,13 +570,18 @@ export function needsFinanceEnrichment(row = {}, stock = {}) {
     "needs-product-photo",
     "needs-product-photo-archive",
     "needs-editorial-metadata",
+    "needs-editorial-quality",
     "metadata-complete-no-related-artists",
     "metadata-complete-needs-editorial-review"
   ].includes(status);
+  const editorialQualityPending = recordFormat && !isEditorialDescriptionQuality(
+    row.description,
+    row.descriptionSource || row.raw?.descriptionSource || ""
+  );
   const placeholderTitle = isPlaceholderInventoryTitle(row.title);
   // Do not make a corrected source wait for the retry window: incomplete
   // enrichment must be immediately repairable by the next catalog sync.
-  if (previousFingerprint && !fingerprintChanged && status && !retryDue && !researchVersionChanged) return false;
+  if (previousFingerprint && !fingerprintChanged && status && !retryDue && !researchVersionChanged && !editorialQualityPending) return false;
   return Boolean(
     fingerprintChanged ||
     researchVersionChanged ||
@@ -586,7 +592,8 @@ export function needsFinanceEnrichment(row = {}, stock = {}) {
       !isRecordPublicationReady(row) ||
       String(row.publish_status || "") !== "Published" ||
       String(row.visibility || "") !== "Public" ||
-      unresolvedStatus
+      unresolvedStatus ||
+      editorialQualityPending
   );
 }
 

@@ -4,7 +4,8 @@ import {
   RELATED_ARTIST_RESEARCH_VERSION,
   applyCuratedEditorialOverride,
   enrichFinanceCatalogProduct,
-  inventoryFingerprint
+  inventoryFingerprint,
+  isEditorialDescriptionQuality
 } from "../api/_lib/catalogEnrichment.js";
 import {
   applyCatalogPublicationSafety,
@@ -66,6 +67,12 @@ assert.ok(["verified", "combined", "lastfm", "no-verified-match", "curated-exact
 assert.equal(enriched.raw.relatedArtistResearchVersion, RELATED_ARTIST_RESEARCH_VERSION);
 assert.equal(enriched.raw.relatedArtistsResearch.engineVersion, RELATED_ARTIST_RESEARCH_VERSION);
 assert.equal(needsFinanceEnrichment(enriched, stock), false);
+assert.equal(needsFinanceEnrichment({
+  ...enriched,
+  description: "Example Artist's 2026 release Example is a Vinyl edition issued by Example Label.",
+  descriptionSource: "MusicBrainz",
+  raw: { ...enriched.raw, enrichmentStatus: "complete" }
+}, stock), true);
 assert.equal(needsFinanceEnrichment({
   ...enriched,
   raw: { ...enriched.raw, relatedArtistResearchVersion: "legacy-related-artists-engine" }
@@ -205,6 +212,8 @@ assert.ok(recordPublicationIssues(researchedPartial).includes("source-backed rev
 assert.equal(applyCatalogPublicationSafety({ products: [researchedPartial] }).products[0].publishStatus, "Draft");
 
 const bauhausEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0041"];
+assert.equal(isEditorialDescriptionQuality("Artist's 2026 release Title is a Vinyl edition issued by Label, documented by MusicBrainz as rock.", "MusicBrainz"), false);
+assert.equal(isEditorialDescriptionQuality(bauhausEditorial.description, bauhausEditorial.descriptionSource), true);
 assert.equal(bauhausEditorial.reviewSource, "AllMusic (quoted)");
 assert.match(bauhausEditorial.reviewUrl, /^https:\/\/www\.allmusic\.com\/album\//);
 assert.ok(bauhausEditorial.reviewQuote.includes("She's in Parties"));
@@ -215,5 +224,18 @@ const bauhausDiscovered = applyCuratedEditorialOverride(
 assert.equal(bauhausDiscovered.reviewSource, "AllMusic (quoted)");
 assert.deepEqual(bauhausDiscovered.relatedArtists, ["Suicide"]);
 assert.equal(bauhausDiscovered.cover, "/public/cover.jpg");
+
+for (const sku of [
+  "NXP-2026-VNL-0027",
+  "NXP-2026-VNL-0038",
+  "NXP-2026-VNL-0039",
+  "NXP-2026-VNL-0040",
+  "NXP-2026-VNL-0041",
+  "NXP-2026-VNL-0058"
+]) {
+  const editorial = CURATED_EDITORIAL_OVERRIDES[sku];
+  assert.ok(editorial?.description, `${sku} must have curated editorial copy`);
+  assert.equal(isEditorialDescriptionQuality(editorial.description, editorial.descriptionSource), true);
+}
 
 process.stdout.write("Finance catalog enrichment contract passed.\n");
