@@ -1460,7 +1460,7 @@ async function discoverMusicBrainzRelease(stock) {
       `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=${index === 0 && catalogNumber ? 50 : 25}&inc=labels+artist-credits+media+release-groups`
     );
     if (!response?.ok) continue;
-    const payload = await response.json();
+    const payload = await jsonObject(response);
     const releases = Array.isArray(payload.releases) ? payload.releases : [];
     release = chooseMusicBrainzRelease(releases, { stock, expectedTitle, format, barcode, catalogNumber });
     if (release) break;
@@ -1968,7 +1968,7 @@ export async function researchRelatedArtists({ artist = "", title = "", format =
     );
     sourceUnavailable ||= Boolean(response && !response.ok && response.status >= 500) || response === null;
     if (response?.ok) {
-      const release = await response.json().catch(() => ({}));
+      const release = await jsonObject(response);
       const sourceUrl = `${MUSICBRAINZ_ORIGIN}/release/${resolvedReleaseId}`;
       const trackCredits = (release.media || [])
         .flatMap((medium) => medium.tracks || [])
@@ -2201,7 +2201,7 @@ async function findMusicBrainzReleaseId({ artist, title, format } = {}) {
     `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=25&inc=labels+artist-credits+media+release-groups`
   );
   if (!response?.ok) return { id: "", unavailable: !response || response.status >= 500 };
-  const payload = await response.json().catch(() => ({}));
+  const payload = await jsonObject(response);
   const expectedTitle = normalizedText(title);
   const expectedArtist = normalizedText(artist);
   const expectedFormat = normalizedText(format);
@@ -2228,7 +2228,7 @@ async function discoverDirectArtistRelations(artist) {
       unavailable ||= !search || search.status >= 500;
       continue;
     }
-    const payload = await search.json().catch(() => ({}));
+    const payload = await jsonObject(search);
     const candidates = payload.artists || [];
     const match = candidates.find((item) => normalizedText(item.name) === normalizedText(primaryArtist)) || candidates[0];
     if (!match?.id) continue;
@@ -2239,7 +2239,7 @@ async function discoverDirectArtistRelations(artist) {
       unavailable ||= !response || response.status >= 500;
       continue;
     }
-    const artistData = await response.json().catch(() => ({}));
+    const artistData = await jsonObject(response);
     const relations = uniqueRelations(
       (artistData.relations || [])
         .filter((relation) => VERIFIED_RELATION_TYPES.has(String(relation?.type || "").toLowerCase()))
@@ -2306,6 +2306,14 @@ async function musicBrainzFetch(url) {
   });
   musicBrainzQueue = request.catch(() => null);
   return request;
+}
+
+// External APIs occasionally return an empty body even with a successful HTTP
+// response. Keep that transient condition inside the retryable research flow
+// instead of letting a property access abort the whole catalog job.
+async function jsonObject(response) {
+  const payload = await response?.json?.().catch(() => null);
+  return payload && typeof payload === "object" ? payload : {};
 }
 
 async function lastFmFetch(url) {

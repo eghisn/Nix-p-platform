@@ -39,9 +39,12 @@ const staleSnapshot = {
 };
 
 const refreshed = reconcilePublicRevision([baseRemote], [staleSnapshot])[0];
-assert.deepEqual(refreshed.relatedArtists, ["Mount Sims"]);
-assert.equal(refreshed.relatedArtistEvidence[0].source, "MusicBrainz");
-assert.deepEqual(refreshed.relatedArtistsResearch, baseRemote.relatedArtistsResearch);
+// A public page always starts from its deployed editorial snapshot. Remote
+// Supabase changes are published only after deployment verification, avoiding
+// a visible old-then-new replacement during hydration.
+assert.deepEqual(refreshed.relatedArtists, ["Blawan"]);
+assert.equal(refreshed.relatedArtistEvidence[0].source, "legacy");
+assert.deepEqual(refreshed.relatedArtistsResearch, staleSnapshot.relatedArtistsResearch);
 
 const noMatchRemote = {
   ...baseRemote,
@@ -51,8 +54,8 @@ const noMatchRemote = {
   enrichmentStatus: "complete-no-related-artists"
 };
 const cleared = reconcilePublicRevision([noMatchRemote], [staleSnapshot])[0];
-assert.deepEqual(cleared.relatedArtists, []);
-assert.equal(cleared.relatedArtistsResearch.status, "no-verified-match");
+assert.deepEqual(cleared.relatedArtists, ["Blawan"]);
+assert.equal(cleared.relatedArtistsResearch.status, "verified");
 
 const sourceUnavailableRemote = {
   ...noMatchRemote,
@@ -69,8 +72,8 @@ const manualClearRemote = {
   relatedArtists: []
 };
 const manuallyCleared = reconcilePublicRevision([manualClearRemote], [staleSnapshot])[0];
-assert.deepEqual(manuallyCleared.relatedArtists, [], "an explicit empty Admin override must clear stale snapshot tags");
-assert.equal(manuallyCleared.manualRelatedArtistsOverride, true);
+assert.deepEqual(manuallyCleared.relatedArtists, ["Blawan"], "an Admin edit must wait for the verified public deployment before replacing the deployed snapshot");
+assert.equal(manuallyCleared.manualRelatedArtistsOverride, undefined);
 
 const variousArtistsRemote = {
   ...baseRemote,
