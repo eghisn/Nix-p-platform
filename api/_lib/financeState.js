@@ -53,7 +53,7 @@ export async function readFinanceStateWithVersion() {
 export async function writeFinanceState(state, { syncCatalog = true, expectedUpdatedAt = null } = {}) {
   if (!isFinanceState(state)) throw new Error("Invalid finance state.");
   const normalized = normalizeFinanceState(state);
-  await backupFinanceState(normalized);
+  const backupId = await backupFinanceState(normalized);
   if (expectedUpdatedAt) {
     const rows = await supabaseFetch(`finance_state?key=eq.${STATE_KEY}&updated_at=eq.${encodeURIComponent(expectedUpdatedAt)}`, {
       method: "PATCH",
@@ -80,7 +80,7 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
     const { enqueueCatalogResearchJobs } = await import("./catalogResearchJobs.js");
     await enqueueCatalogResearchJobs(normalized.inventoryStock || [], { requestedBy: "finance" });
   }
-  return normalized;
+  return { state: normalized, backupId };
 }
 
 // Finance is the source of truth for SKU stock. Complete record entries pass
@@ -650,7 +650,7 @@ export async function syncAdminCatalogInventory(products = []) {
 async function backupFinanceState(nextState) {
   const previousState = await readRemoteState().catch(() => null);
   const id = `finance-state-${new Date().toISOString().replace(/[^0-9]/g, "")}-${Math.random().toString(36).slice(2, 8)}`;
-  return supabaseFetch("store_backups", {
+  await supabaseFetch("store_backups", {
     method: "POST",
     body: [{
       id,
@@ -662,6 +662,7 @@ async function backupFinanceState(nextState) {
     }],
     prefer: "return=minimal"
   });
+  return id;
 }
 
 export function normalizeFinanceState(state) {

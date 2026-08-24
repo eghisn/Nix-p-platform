@@ -15,9 +15,9 @@ export default async function handler(req, res) {
     }
     if (req.method === "POST") {
       const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
-      await writeFinanceState(body.state, { expectedUpdatedAt: body.updatedAt || null });
+      const saved = await writeFinanceState(body.state, { expectedUpdatedAt: body.updatedAt || null });
       const snapshot = await readFinanceStateWithVersion();
-      return json(res, 200, { ok: true, ...snapshot });
+      return json(res, 200, { ok: true, ...snapshot, backupId: saved.backupId });
     }
     return json(res, 405, { ok: false, error: "Method not allowed" });
   } catch (error) {

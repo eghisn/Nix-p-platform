@@ -513,8 +513,18 @@
     }
 
     .row-actions {
+      position: sticky;
+      right: 0;
+      z-index: 2;
       text-align: right;
       white-space: nowrap;
+      background: var(--light);
+      box-shadow: -1px 0 0 var(--dark);
+    }
+
+    th.row-actions {
+      z-index: 3;
+      background: var(--dark);
     }
 
     .link-button {
@@ -1399,6 +1409,7 @@
     const STORAGE_KEY = "nixp-cashflow-web-v1";
     const migratedServerState = window.__NIXP_FINANCE_STATE__;
     let financeStateUpdatedAt = window.__NIXP_FINANCE_UPDATED_AT__ || null;
+    let financeLastBackupId = null;
     let financeSavePending = false;
     let financeSaveConflict = false;
     const hasServerState = migratedServerState && Array.isArray(migratedServerState.general) && Array.isArray(migratedServerState.sales) && Array.isArray(migratedServerState.expenses) && Array.isArray(migratedServerState.inventory);
@@ -1671,13 +1682,19 @@
           }
           financeSaveConflict = false;
           financeStateUpdatedAt = retryPayload.updatedAt || financeStateUpdatedAt;
-          el.saveStatus.textContent = "Saved to protected server. Catalog research queued.";
+          financeLastBackupId = retryPayload.backupId || financeLastBackupId;
+          el.saveStatus.textContent = financeLastBackupId
+            ? "Saved to protected server and backed up. Catalog research queued."
+            : "Saved to protected server. Catalog research queued.";
           return true;
         }
         if (!response.ok) throw new Error(payload.error || "Unable to save finance state");
         financeSaveConflict = false;
         financeStateUpdatedAt = payload.updatedAt || financeStateUpdatedAt;
-        el.saveStatus.textContent = "Saved to protected server. Catalog research queued.";
+        financeLastBackupId = payload.backupId || financeLastBackupId;
+        el.saveStatus.textContent = financeLastBackupId
+          ? "Saved to protected server and backed up. Catalog research queued."
+          : "Saved to protected server. Catalog research queued.";
         return true;
       } catch (error) {
         el.saveStatus.textContent = error.message || "Save failed. Changes were not synced.";
@@ -1759,7 +1776,11 @@
           ${selectField("Money Sent To", "moneySentTo", investorDestinationAccounts, true, "Jenius account", 'data-general-field="moneySentTo"')}
           ${textArea("Notes", "notes", "Additional details")}
         </div>
-        <button class="button primary" type="submit">Save income / outcome</button>
+        <input type="hidden" name="editId" value="">
+        <div class="form-actions">
+          <button class="button primary" type="submit" id="generalSubmitBtn">Save income / outcome</button>
+          <button class="button" type="button" id="cancelGeneralEditBtn" hidden>Cancel edit</button>
+        </div>
       `;
 
       el.salesForm.innerHTML = `
@@ -1956,6 +1977,10 @@
         resetForm(el.salesForm);
         resetSalesEditMode();
       });
+      document.getElementById("cancelGeneralEditBtn").addEventListener("click", () => {
+        resetForm(el.generalForm);
+        resetGeneralEditMode();
+      });
       document.getElementById("cancelExpenseEditBtn").addEventListener("click", () => {
         resetForm(el.expenseForm);
         resetExpenseEditMode();
@@ -1997,8 +2022,7 @@
         event.preventDefault();
         const data = Object.fromEntries(new FormData(el.generalForm));
         const isInvestor = data.category === "Investor";
-        state.general.push({
-          id: uid(),
+        const generalEntry = {
           date: data.date,
           invoice: isInvestor ? "" : (data.invoice || "").trim(),
           type: data.type,
@@ -2009,8 +2033,16 @@
           paymentMethod: data.paymentMethod,
           moneySentTo: isInvestor ? data.moneySentTo : "",
           notes: (data.notes || "").trim()
-        });
+        };
+        const editId = data.editId;
+        if (editId) {
+          const index = state.general.findIndex(item => item.id === editId);
+          if (index >= 0) state.general[index] = { ...generalEntry, id: editId };
+        } else {
+          state.general.push({ ...generalEntry, id: uid() });
+        }
         resetForm(el.generalForm);
+        resetGeneralEditMode();
         syncGeneralInvestorFields();
         commitState();
       });
@@ -2126,6 +2158,7 @@
         const editTarget = event.target.closest("[data-edit]");
         if (editTarget) {
           const [section, id] = editTarget.dataset.edit.split(":");
+          if (section === "general") startGeneralEdit(id);
           if (section === "sales") startSalesEdit(id);
           if (section === "expenses") startExpenseEdit(id);
           if (section === "inventory") startInventoryEdit(id);
@@ -2205,6 +2238,33 @@
       control.disabled = !visible;
       if (!visible) control.value = "";
       if (visible && name === "qty" && !control.value) control.value = "1";
+    }
+
+    function startGeneralEdit(id) {
+      const item = state.general.find(entry => entry.id === id);
+      if (!item) return;
+      showView("dashboard");
+      setFormValue(el.generalForm, "editId", item.id);
+      setFormValue(el.generalForm, "date", item.date);
+      setFormValue(el.generalForm, "invoice", item.invoice || "");
+      setFormValue(el.generalForm, "type", item.type || "Income");
+      setFormValue(el.generalForm, "category", item.category || "Other");
+      setFormValue(el.generalForm, "sku", item.sku || "");
+      setFormValue(el.generalForm, "qty", item.qty === "" ? "" : item.qty);
+      setFormValue(el.generalForm, "amount", item.amount);
+      setFormValue(el.generalForm, "paymentMethod", item.paymentMethod || "Bank Transfer");
+      setFormValue(el.generalForm, "moneySentTo", item.moneySentTo || "Jenius account");
+      setFormValue(el.generalForm, "notes", item.notes || "");
+      syncGeneralInvestorFields();
+      document.getElementById("generalSubmitBtn").textContent = "Update income / outcome";
+      document.getElementById("cancelGeneralEditBtn").hidden = false;
+      el.generalForm.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function resetGeneralEditMode() {
+      setFormValue(el.generalForm, "editId", "");
+      document.getElementById("generalSubmitBtn").textContent = "Save income / outcome";
+      document.getElementById("cancelGeneralEditBtn").hidden = true;
     }
 
     function removeLegacy350kEntries() {
@@ -2703,7 +2763,7 @@
           <td>${escapeHTML(item.paymentMethod)}</td>
           <td>${escapeHTML(item.moneySentTo)}</td>
           <td>${escapeHTML(item.notes)}</td>
-          <td class="row-actions">${deleteButton(item.section, item.id)}</td>
+          <td class="row-actions">${editButton(item.section, item.id)} ${deleteButton(item.section, item.id)}</td>
         </tr>
       `).join("") : emptyRow(12, "No cash flow entries yet.");
     }
