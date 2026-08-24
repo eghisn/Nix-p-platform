@@ -887,6 +887,39 @@ export const adminStore = {
     if (!response.ok) throw new Error(payload.error || "Deploy failed. Please check Vercel and GitHub settings.");
     return payload;
   },
+  async deployCurrentCatalog({ message = "" } = {}) {
+    return syncCatalog({
+      action: "deploy-current",
+      message: message || `Deploy current NIXP catalog ${new Date().toISOString()}`
+    });
+  },
+  async saveProductAndPublish(data) {
+    const saved = await this.saveProduct(data);
+    // Draft and private listings deliberately stop at the protected database.
+    // Public listings deploy from a fresh server snapshot so a browser cache
+    // can never overwrite another editor's current catalog fields.
+    await this.refreshPrivateStore({ force: true });
+    const product = this.getSnapshot().products.find((item) => item.id === saved.id) || saved;
+    if (product.publishStatus !== "Published" || product.visibility !== "Public") {
+      return { product, savedOnly: true, publicConfirmed: false };
+    }
+    try {
+      const deployment = await this.deployCurrentCatalog({
+        message: `Update ${product.sku || product.title} from Admin Editor`
+      });
+      return {
+        product,
+        deployment,
+        publicConfirmed: !deployment.github?.skipped && deployment.deployment?.confirmed === true
+      };
+    } catch (error) {
+      return {
+        product,
+        deploymentError: error instanceof Error ? error.message : "Public catalog deployment failed.",
+        publicConfirmed: false
+      };
+    }
+  },
   async publishProduct(id, publishStatus) {
     const store = this.getSnapshot();
     const product = store.products.find((item) => item.id === id);

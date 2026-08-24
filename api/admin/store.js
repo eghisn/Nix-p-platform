@@ -75,8 +75,9 @@ export default async function handler(req, res) {
             github: { skipped: true, reason: "missing_token" }
           });
         }
+        const requestedMessage = String(body.message || "").trim().replace(/\s+/g, " ").slice(0, 160);
         const github = await commitPublicStore(store, {
-          message: `Complete NIXP draft catalog ${new Date().toISOString()}`
+          message: requestedMessage || `Deploy current NIXP catalog ${new Date().toISOString()}`
         });
         const live = await verifyPublicCatalogRevision((store.products || []).filter((product) => product.publishStatus === "Published" && product.visibility === "Public"));
         return json(res, 200, {

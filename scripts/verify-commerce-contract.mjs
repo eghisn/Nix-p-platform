@@ -10,10 +10,10 @@ const [checkout, client, adminStore, handlers, shippingEngine, migration, polici
   read("src/services/adminStore.js"),
   read("api/_lib/commerceHandlers.js"),
   read("api/_lib/nixpShippingEngine.js"),
-  read("supabase/migrations/20260729113000_harden_checkout_payments_and_notifications.sql"),
-  read("supabase/migrations/20260729120000_commerce_internal_table_policies.sql"),
-  read("supabase/migrations/20260729121000_recover_stale_outbox_claims.sql"),
-  read("supabase/migrations/20260729133000_shipping_quote_foundation.sql"),
+  read("supabase/migrations/20260729103555_harden_checkout_payments_and_notifications.sql"),
+  read("supabase/migrations/20260729104345_commerce_internal_table_policies.sql"),
+  read("supabase/migrations/20260729104514_recover_stale_outbox_claims.sql"),
+  read("supabase/migrations/20260729121848_shipping_quote_foundation.sql"),
   read("vercel.json")
 ]);
 

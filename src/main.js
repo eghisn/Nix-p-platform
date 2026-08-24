@@ -615,11 +615,11 @@ async function productDetailMarkup(product) {
                  }
                  <div><dt>Label</dt><dd>${recordLabelMarkup(product)}</dd></div>
                  <div><dt>Year</dt><dd>${product.year}</dd></div>
-                 <div><dt>Notes</dt><dd>${product.details.join(" / ")}</dd></div>`
+                 <div><dt>Notes</dt><dd>${productNotesMarkup(product)}</dd></div>`
                 : `<div><dt>Format</dt><dd>${escapeHtml(displayFormat)}</dd></div>
                    <div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div>
                    <div><dt>Year</dt><dd>${product.year}</dd></div>
-                   <div><dt>Notes</dt><dd>${product.details.join(" / ")}</dd></div>`
+                   <div><dt>Notes</dt><dd>${productNotesMarkup(product)}</dd></div>`
           }
         </dl>
         ${recordRelatedArtistsMarkup(product, availableArtistNames)}
@@ -631,6 +631,14 @@ async function productDetailMarkup(product) {
         : ""
     }
   `;
+}
+
+function productNotesMarkup(product = {}) {
+  const details = Array.isArray(product.details) ? product.details.map((detail) => String(detail || "").trim()).filter(Boolean) : [];
+  const barcode = String(product.barcode || "").trim();
+  const hasBarcodeDetail = details.some((detail) => /^barcode\s*:/i.test(detail));
+  const notes = barcode && !hasBarcodeDetail ? [...details, `Barcode: ${barcode}`] : details;
+  return escapeHtml(notes.join(" / "));
 }
 
 async function artistsPage() {
@@ -1339,7 +1347,7 @@ async function adminEditorPage() {
       <div class="editor-section-head">
         <span>02</span>
         <h2>Home Slider</h2>
-        <p>Edit homepage collection tabs and slider order. Use Deploy above after saving to publish it live.</p>
+        <p>Edit homepage collection tabs and slider order. Saving publishes the current slider revision after it is stored safely.</p>
       </div>
       ${homeSliderSection}
     </section>
@@ -3182,10 +3190,25 @@ function bindEvents() {
         data.images = gallery;
         data.image = gallery[0];
       }
-      const saved = await adminStore.saveProduct(data);
-      state.adminEditingProductId = wasEditing ? saved.id : null;
-      state.adminNotice = wasEditing ? "Product updated successfully." : "Product saved successfully. Ready for a new product.";
-      state.adminNoticeTone = "success";
+      setFormMessage(form, "Publishing saved product...");
+      const result = await adminStore.saveProductAndPublish(data);
+      state.adminEditingProductId = wasEditing ? result.product.id : null;
+      const sha = result.deployment?.github?.commitSha ? ` / commit ${result.deployment.github.commitSha.slice(0, 7)}` : "";
+      if (result.savedOnly) {
+        state.adminNotice = wasEditing
+          ? "Product updated in the protected Admin catalog. It remains private or draft, so nothing was sent to the public site."
+          : "Product saved in the protected Admin catalog. Ready for a new product.";
+        state.adminNoticeTone = "success";
+      } else if (result.publicConfirmed) {
+        state.adminNotice = `${wasEditing ? "Product updated" : "Product saved"} and confirmed live on the public site${sha}.`;
+        state.adminNoticeTone = "success";
+      } else if (result.deploymentError) {
+        state.adminNotice = `Product saved safely in Admin, but public deployment is pending: ${result.deploymentError}`;
+        state.adminNoticeTone = "warning";
+      } else {
+        state.adminNotice = `Product saved and committed${sha}. Vercel is still publishing it; do not save it again.`;
+        state.adminNoticeTone = "warning";
+      }
       await render({ preserveScroll: true });
     } catch (error) {
       state.adminNotice = error instanceof Error ? error.message : "Could not save product.";
@@ -3292,7 +3315,15 @@ function bindEvents() {
     setFormMessage(form, "Saving slider...");
     try {
       await adminStore.saveHomeSlider(Object.fromEntries(new FormData(form).entries()));
-      setFormMessage(form, "Slider saved. Use Deploy to publish it live.", "success");
+      setFormMessage(form, "Publishing slider update...");
+      const result = await adminStore.deployCurrentCatalog({ message: "Update NIXP home slider from Admin Editor" });
+      setFormMessage(
+        form,
+        result.deployment?.confirmed
+          ? "Slider saved and confirmed live on the public site."
+          : "Slider saved and committed. Vercel is still publishing it; do not save it again.",
+        result.deployment?.confirmed ? "success" : "warning"
+      );
       await render({ preserveScroll: true });
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Could not save slider.", "error");
@@ -3394,12 +3425,20 @@ function bindEvents() {
         image: data.image?.trim() || product.image
       });
       const gallery = await uploadGallerySlots(form, { ...product, images: baseGallery });
-      await adminStore.saveProduct({
+      const result = await adminStore.saveProductAndPublish({
         ...product,
         image: gallery[0] || product.image,
         images: gallery
       });
-      setFormMessage(form, "Images updated.", "success");
+      setFormMessage(
+        form,
+        result.publicConfirmed
+          ? "Images updated and confirmed live on the public site."
+          : result.deploymentError
+            ? `Images saved safely in Admin, but public deployment is pending: ${result.deploymentError}`
+            : "Images saved. Public deployment is still pending.",
+        result.publicConfirmed ? "success" : "warning"
+      );
       await render({ preserveScroll: true });
     } catch (error) {
       setFormMessage(form, error instanceof Error ? error.message : "Could not update images.", "error");
