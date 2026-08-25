@@ -82,15 +82,15 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-store, max-age=0, must-revalidate"
+          "value": "public, max-age=0, must-revalidate"
         },
         {
           "key": "CDN-Cache-Control",
-          "value": "no-store"
+          "value": "public, s-maxage=31536000, immutable"
         },
         {
           "key": "Vercel-CDN-Cache-Control",
-          "value": "no-store"
+          "value": "public, s-maxage=31536000, immutable"
         }
       ]
     },
@@ -99,15 +99,15 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-store, max-age=0, must-revalidate"
+          "value": "public, max-age=0, must-revalidate"
         },
         {
           "key": "CDN-Cache-Control",
-          "value": "no-store"
+          "value": "public, s-maxage=31536000, immutable"
         },
         {
           "key": "Vercel-CDN-Cache-Control",
-          "value": "no-store"
+          "value": "public, s-maxage=31536000, immutable"
         }
       ]
     },
@@ -116,15 +116,32 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-store, max-age=0, must-revalidate"
+          "value": "public, max-age=0, must-revalidate"
         },
         {
           "key": "CDN-Cache-Control",
-          "value": "no-store"
+          "value": "public, s-maxage=31536000, immutable"
         },
         {
           "key": "Vercel-CDN-Cache-Control",
-          "value": "no-store"
+          "value": "public, s-maxage=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/public/data/public-store.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000, immutable"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000, immutable"
         }
       ]
     }

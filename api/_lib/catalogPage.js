@@ -16,7 +16,7 @@ export async function renderCatalogPage(req, res, url) {
     const requestedPath = normalizePath(url.searchParams.get("catalogPath"));
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
-    const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}/public/data/public-store.json?v=${Date.now()}` });
+    const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}/public/data/public-store.json` });
     if (requestedPath === "/artists") {
       return renderArtistsIndexPage(res, store);
     }
@@ -34,9 +34,7 @@ export async function renderCatalogPage(req, res, url) {
 
     res.statusCode = 200;
     res.setHeader("content-type", "text/html; charset=utf-8");
-    res.setHeader("cache-control", "no-store, max-age=0");
-    res.setHeader("cdn-cache-control", "no-store");
-    res.setHeader("vercel-cdn-cache-control", "no-store");
+    sendPublicSnapshotHeaders(res);
     res.end(await productDocument(product, requestedPath, store));
   } catch {
     notFound(res);
@@ -55,11 +53,7 @@ async function renderArtistsIndexPage(res, store) {
   });
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");
-  // Artist membership is editorial data, so a direct request must use the
-  // current Supabase revision instead of a cached HTML response.
-  res.setHeader("cache-control", "no-store, max-age=0");
-  res.setHeader("cdn-cache-control", "no-store");
-  res.setHeader("vercel-cdn-cache-control", "no-store");
+  sendPublicSnapshotHeaders(res);
   res.end(document);
 }
 
@@ -82,9 +76,7 @@ async function renderArtistPage(res, store, requestedPath) {
   });
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");
-  res.setHeader("cache-control", "no-store, max-age=0");
-  res.setHeader("cdn-cache-control", "no-store");
-  res.setHeader("vercel-cdn-cache-control", "no-store");
+  sendPublicSnapshotHeaders(res);
   res.end(document);
 }
 
@@ -123,10 +115,17 @@ async function renderLabelPage(res, store, requestedPath) {
 function sendNoStoreHtml(res, document) {
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");
-  res.setHeader("cache-control", "no-store, max-age=0, must-revalidate");
-  res.setHeader("cdn-cache-control", "no-store");
-  res.setHeader("vercel-cdn-cache-control", "no-store");
+  sendPublicSnapshotHeaders(res);
   res.end(document);
+}
+
+function sendPublicSnapshotHeaders(res) {
+  // Every public document is generated from the deployment's immutable
+  // editorial snapshot. Browser requests revalidate at navigation time, while
+  // the Vercel CDN can serve that exact deployment revision immediately.
+  res.setHeader("cache-control", "public, max-age=0, must-revalidate");
+  res.setHeader("cdn-cache-control", "public, s-maxage=31536000, immutable");
+  res.setHeader("vercel-cdn-cache-control", "public, s-maxage=31536000, immutable");
 }
 
 async function productDocument(product, path, store) {

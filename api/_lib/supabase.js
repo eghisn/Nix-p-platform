@@ -58,7 +58,7 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
   // source here.
   if (!privateScope && publicSnapshotUrl) {
     try {
-      const snapshotResponse = await fetch(publicSnapshotUrl, { cache: "no-store" });
+      const snapshotResponse = await fetch(publicSnapshotUrl);
       if (snapshotResponse.ok) {
         const snapshot = await snapshotResponse.json();
         return {

@@ -101,7 +101,7 @@ export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverl
           isPrivate
             ? `<a href="/" data-link>Public site</a>`
             : `${rightPublicLinks.map(([label, href]) => navLink(label, href, path)).join("")}
-              <button class="cart-trigger" type="button" data-cart-open>Cart <span>${cartCount}</span></button>
+              <button class="cart-trigger" type="button" data-cart-open>Cart <span data-cart-count>${cartCount}</span></button>
               <button class="search-trigger" type="button" aria-label="Search" data-search-open>
                 <svg aria-hidden="true" viewBox="0 0 24 24">
                   <circle cx="10.5" cy="10.5" r="6.5"></circle>

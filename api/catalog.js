@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     if (privateScope && session?.workspace !== "admin") return json(res, 401, { ok: false, error: "Admin login required" });
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
-    const publicSnapshotUrl = privateScope ? "" : `${protocol}://${host}/public/data/public-store.json?v=${Date.now()}`;
+    const publicSnapshotUrl = privateScope ? "" : `${protocol}://${host}/public/data/public-store.json`;
     const store = await loadStore({ privateScope, publicSnapshotUrl });
     catalogJson(res, 200, { ok: true, store }, { privateScope });
   } catch (error) {
@@ -47,12 +47,11 @@ function catalogJson(res, status, payload, { privateScope = false } = {}) {
     res.setHeader("cdn-cache-control", "no-store");
     res.setHeader("vercel-cdn-cache-control", "no-store");
   } else {
-    // Editorial changes must be visible as one revision. A cached response
-    // here would briefly reintroduce the previous related-artist list after
-    // an Admin save while the fresh Supabase response is being fetched.
-    res.setHeader("cache-control", "no-store, max-age=0");
-    res.setHeader("cdn-cache-control", "no-store");
-    res.setHeader("vercel-cdn-cache-control", "no-store");
+    // This endpoint contains the same deploy-owned editorial snapshot as the
+    // page HTML. Prices and stock are deliberately kept on /api/prices.
+    res.setHeader("cache-control", "public, max-age=0, must-revalidate");
+    res.setHeader("cdn-cache-control", "public, s-maxage=31536000, immutable");
+    res.setHeader("vercel-cdn-cache-control", "public, s-maxage=31536000, immutable");
   }
   res.end(JSON.stringify(payload));
 }

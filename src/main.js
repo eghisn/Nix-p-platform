@@ -80,6 +80,12 @@ function persistCart() {
   localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
 }
 
+function syncPublicCartCount() {
+  document.querySelectorAll("[data-cart-count]").forEach((element) => {
+    element.textContent = String(state.cart.length);
+  });
+}
+
 function checkoutCartFingerprint(cart = state.cart) {
   return [...cart].sort().join("|");
 }
@@ -4103,17 +4109,35 @@ window.addEventListener("nixp:private-store-refreshed", () => {
   if (document.activeElement?.matches("input, textarea, select, [contenteditable='true']")) return;
   render({ preserveScroll: true });
 });
+
+function publicDocumentHasServerMarkup() {
+  return !workspaceForPath(normalizePath(location.pathname)) &&
+    !workspaceForHost() &&
+    Boolean(document.querySelector("#app")?.children.length);
+}
+
+async function hydratePublicServerMarkup() {
+  // Static/public server markup already represents the deployed editorial
+  // revision. Replacing it with a second client render resets the home slider
+  // and exposes a visible old/new catalogue transition on refresh.
+  syncPublicCartCount();
+  const [drawerMarkup, searchMarkup] = await Promise.all([cartDrawer(), searchOverlay()]);
+  const existingApp = document.querySelector("#app");
+  if (!existingApp) return;
+  existingApp.insertAdjacentHTML("beforeend", `${drawerMarkup}${searchMarkup}`);
+  bindEvents();
+  setupAdminOrdersLiveRefresh(normalizePath(location.pathname));
+}
+
+const shouldHydratePublicMarkup = publicDocumentHasServerMarkup();
+if (shouldHydratePublicMarkup) syncPublicCartCount();
 adminStore
   .initialize()
-  .then(() => render())
+  .then(() => shouldHydratePublicMarkup ? hydratePublicServerMarkup() : render())
   .catch((error) => {
     console.warn("Catalog refresh failed; keeping the server-rendered public revision.", error);
-    // Public route documents already contain the deployed snapshot. Do not
-    // replace that stable HTML with a seed/local snapshot after a failed boot;
-    // doing so creates a visible old/new swap and can expose sample data.
-    const publicDocumentHasMarkup = !workspaceForPath(normalizePath(location.pathname)) &&
-      !workspaceForHost() &&
-      Boolean(document.querySelector("#app")?.children.length);
-    if (publicDocumentHasMarkup) return;
+    if (shouldHydratePublicMarkup) {
+      return hydratePublicServerMarkup();
+    }
     return render();
   });

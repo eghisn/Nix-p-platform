@@ -773,7 +773,10 @@ export const adminStore = {
       // Supabase catalog here would make remote-only products or newer fields
       // appear after the initial HTML and create an old/new flash on refresh.
       const filePath = publicOnly ? PUBLIC_STORE_PATH : ADMIN_STORE_PATH;
-      const fileResponse = await fetch(`${filePath}?v=${Date.now()}`, { cache: "no-store" });
+      // The public store is a deploy-owned editorial revision. Do not append a
+      // timestamp here: it turns one immutable snapshot into a fresh cache key
+      // on every refresh and makes the first interactive render needlessly late.
+      const fileResponse = await fetch(filePath, { cache: publicOnly ? "default" : "no-store" });
       if (!fileResponse.ok) throw new Error("No file store");
       activeStore = await migrateBrowserStore(
         mergeStore(seed({ publicOnly }), await fileResponse.json(), { publicOnly }),
@@ -789,7 +792,7 @@ export const adminStore = {
       // second hydration pass, so it is only used when the snapshot request
       // itself failed before any public content was rendered.
       if (publicOnly) {
-        const response = await fetch(`/api/catalog?scope=public&v=${Date.now()}`, { cache: "no-store" });
+        const response = await fetch("/api/catalog?scope=public", { cache: "default" });
         if (!response.ok) throw new Error("Public catalog unavailable.");
         const payload = await response.json();
         if (!payload.store) throw new Error("Public catalog unavailable.");
