@@ -2324,7 +2324,7 @@ function filterItems(items, scope, fields) {
 function recordLabelMarkup(product) {
   if (product.category !== "Records" || !product.label) return escapeHtml(product.label || "-");
   const label = canonicalLabelName(product.label);
-  return `<a class="record-label-link" href="/records?label=${encodeURIComponent(label)}" data-link>${escapeHtml(label)}</a>`;
+  return `<a class="record-label-link" href="/labels/${encodeURIComponent(labelSlug(label))}" data-link>${escapeHtml(label)}</a>`;
 }
 
 function productRelatedArtists(product) {

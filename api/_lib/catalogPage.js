@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { productGrid, shell } from "../../src/components/layout.js";
 import { artistCreditNames, artistIdentityKey, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../../src/data/publicUrls.js";
-import { labelEntries, productMatchesLabel } from "../../src/data/labelCatalog.js";
+import { labelEntries, labelSlug, productMatchesLabel } from "../../src/data/labelCatalog.js";
 import { labelLogoAvailable } from "../../src/data/labelLogoManifest.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../../src/components/labelsPage.js";
 import { loadStore } from "./supabase.js";
@@ -175,7 +175,7 @@ function productMarkup(product, store = {}) {
   const isRecord = product.category === "Records";
   const isOfferOnly = product.open_to_offers === true;
   const labelMarkup = isRecord && product.label
-    ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${escapeHtml(canonicalLabelName(product.label))}</a>`
+    ? `<a class="record-label-link" href="/labels/${encodeURIComponent(labelSlug(product.label))}" data-link>${escapeHtml(canonicalLabelName(product.label))}</a>`
     : escapeHtml(product.label || "-");
   const details = isRecord
     ? `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div><div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div><div><dt>Label</dt><dd>${labelMarkup}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div>`
