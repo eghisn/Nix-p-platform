@@ -72,13 +72,11 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
       prefer: "resolution=merge-duplicates,return=minimal"
     });
   }
-  // Saving Finance must never wait for MusicBrainz, Last.fm, image archiving,
-  // or a Vercel deploy. First persist the financial truth and a lightweight
-  // catalog mirror, then place research in the durable server queue.
+  // Saving Finance must never wait for research or a Vercel deploy. It updates
+  // the financial truth and the lightweight catalog mirror only. Research is
+  // intentionally started by the exact SKU selected in Admin.
   if (syncCatalog) {
     await syncFinanceInventoryToCatalog(normalized, { enrich: false });
-    const { enqueueCatalogResearchJobs } = await import("./catalogResearchJobs.js");
-    await enqueueCatalogResearchJobs(normalized.inventoryStock || [], { requestedBy: "finance" });
   }
   return { state: normalized, backupId };
 }

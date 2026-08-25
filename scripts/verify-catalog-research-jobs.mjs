@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { catalogResearchRequest, isResearchableCatalogStock, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
+import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
 import { normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
 
 const completeRecord = {
@@ -22,6 +22,9 @@ assert.ok(job.request_fingerprint, "A durable job must have an input fingerprint
 assert.equal(retryDelaySeconds(1), 30);
 assert.equal(retryDelaySeconds(5), 480);
 assert.equal(retryDelaySeconds(99), 3600);
+
+const unscoped = await enqueueCatalogResearchJobs([completeRecord], { requestedBy: "finance" });
+assert.deepEqual(unscoped, { queued: 0, jobs: [] }, "Finance saves must not enqueue the entire inventory without explicit SKUs.");
 
 const automatic = normalizeRelatedArtistsPayload({
   raw: {},

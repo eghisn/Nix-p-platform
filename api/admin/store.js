@@ -102,7 +102,7 @@ export default async function handler(req, res) {
         skus: requestedSkus,
         force: body.force === true,
         publishAfterResearch: body.publishAfterResearch === true,
-        requestedBy: session.workspace
+        requestedBy: requestedSkus.length ? "admin-research-complete" : session.workspace
       });
       // Supabase writes are complete before the request returns, but a read
       // through a separate connection can briefly see the previous row. Read

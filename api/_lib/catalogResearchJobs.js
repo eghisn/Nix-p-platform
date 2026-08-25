@@ -55,9 +55,13 @@ export function catalogResearchRequest(stock = {}, { requestedBy = "finance" } =
 
 export async function enqueueCatalogResearchJobs(stockRows = [], { requestedBy = "finance", force = false, skus = [] } = {}) {
   const targets = new Set((skus || []).map(normalizedSku).filter(Boolean));
+  // Broad inventory saves must never create a catalogue-wide research backlog.
+  // Every queued job needs an explicit SKU from Research & Complete (or a
+  // separately implemented, deliberately confirmed bulk action).
+  if (!targets.size) return { queued: 0, jobs: [] };
   const jobs = stockRows
     .filter(isResearchableCatalogStock)
-    .filter((stock) => !targets.size || targets.has(normalizedSku(stock.sku)))
+    .filter((stock) => targets.has(normalizedSku(stock.sku)))
     .map((stock) => catalogResearchRequest(stock, { requestedBy }));
   if (!jobs.length) return { queued: 0, jobs: [] };
 
