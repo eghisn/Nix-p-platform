@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { productGrid, shell } from "../../src/components/layout.js";
-import { artistCreditNames, artistIdentityKey } from "../../src/data/catalogIdentity.js";
+import { artistCreditNames, artistIdentityKey, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../../src/data/publicUrls.js";
 import { labelEntries, productMatchesLabel } from "../../src/data/labelCatalog.js";
 import { labelLogoAvailable } from "../../src/data/labelLogoManifest.js";
@@ -174,8 +174,11 @@ function productMarkup(product, store = {}) {
   const format = product.displayFormat || product.format || "Product";
   const isRecord = product.category === "Records";
   const isOfferOnly = product.open_to_offers === true;
+  const labelMarkup = isRecord && product.label
+    ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${escapeHtml(canonicalLabelName(product.label))}</a>`
+    : escapeHtml(product.label || "-");
   const details = isRecord
-    ? `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div><div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div><div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div>`
+    ? `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div><div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div><div><dt>Label</dt><dd>${labelMarkup}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div>`
     : `<div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>`;
   const review = product.reviewQuote
     ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${escapeHtml(product.reviewSource || "Source review")}</cite></blockquote>`

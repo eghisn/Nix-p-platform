@@ -6,7 +6,7 @@ import sharp from "sharp";
 import { productGrid, shell } from "../src/components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup } from "../src/components/catalogPage.js";
 import { recordsPageMarkup } from "../src/components/recordsPage.js";
-import { artistCreditNames } from "../src/data/catalogIdentity.js";
+import { artistCreditNames, canonicalLabelName } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
 import { isRecentReleaseProduct, recentReleaseSortComparator } from "../src/data/homeCollections.js";
 import { recommendedProducts } from "../src/data/productRecommendations.js";
@@ -397,9 +397,12 @@ function staticProductDetailMarkup(product) {
   const review = product.reviewQuote
     ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${escapeHtml(product.reviewSource || "Source review")}</cite></blockquote>`
     : "";
+  const labelMarkup = isRecord && product.label
+    ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${escapeHtml(canonicalLabelName(product.label))}</a>`
+    : escapeHtml(product.label || "-");
   const details = isApparel
     ? `<div><dt>Material</dt><dd>${escapeHtml(product.material || "-")}</dd></div><div><dt>Color</dt><dd>${escapeHtml(product.color || "-")}</dd></div>`
-    : `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>${isRecord ? `<div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>` : ""}<div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div><div><dt>Notes</dt><dd>${escapeHtml((product.details || []).join(" / "))}</dd></div>`;
+    : `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>${isRecord ? `<div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>` : ""}<div><dt>Label</dt><dd>${labelMarkup}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div><div><dt>Notes</dt><dd>${escapeHtml((product.details || []).join(" / "))}</dd></div>`;
   const recommended = isRecord ? recommendedProducts(product, publicProducts) : [];
   const detail = `<section class="product-detail"><div class="detail-gallery">${images
     .map((image, index) => `<figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""} ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>`)
