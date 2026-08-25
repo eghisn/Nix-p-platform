@@ -97,13 +97,19 @@ export default async function handler(req, res) {
       await syncFinanceInventoryToCatalog(financeState, {
         enrich: false
       });
-      const research = await processCatalogResearchJobs({
-        limit: Math.max(1, Math.min(5, requestedSkus.length || 1)),
-        skus: requestedSkus,
-        force: body.force === true,
-        publishAfterResearch: body.publishAfterResearch === true,
-        requestedBy: requestedSkus.length ? "admin-research-complete" : session.workspace
-      });
+      // A catalog sync is allowed to create or refresh Admin drafts, but it
+      // must never claim a research job unless the caller named exact SKU(s).
+      // This keeps Finance saves and incidental Admin refreshes from turning
+      // into an unrequested catalogue-wide research run.
+      const research = requestedSkus.length
+        ? await processCatalogResearchJobs({
+            limit: Math.max(1, Math.min(5, requestedSkus.length)),
+            skus: requestedSkus,
+            force: body.force === true,
+            publishAfterResearch: body.publishAfterResearch === true,
+            requestedBy: "admin-research-complete"
+          })
+        : { queued: 0, processed: 0, results: [] };
       // Supabase writes are complete before the request returns, but a read
       // through a separate connection can briefly see the previous row. Read
       // the private catalog again before reporting failure so the Admin UI

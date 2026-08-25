@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
+import { draftProductFromFinanceStock } from "../api/_lib/financeState.js";
 import { normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
 
 const completeRecord = {
@@ -25,6 +26,10 @@ assert.equal(retryDelaySeconds(99), 3600);
 
 const unscoped = await enqueueCatalogResearchJobs([completeRecord], { requestedBy: "finance" });
 assert.deepEqual(unscoped, { queued: 0, jobs: [] }, "Finance saves must not enqueue the entire inventory without explicit SKUs.");
+
+const financeDraft = draftProductFromFinanceStock(completeRecord, 1);
+assert.equal(financeDraft.publish_status, "Draft", "A new Finance item must enter Admin as a Draft.");
+assert.equal(financeDraft.visibility, "Private", "A new Finance item must not be public before an Admin action.");
 
 const automatic = normalizeRelatedArtistsPayload({
   raw: {},

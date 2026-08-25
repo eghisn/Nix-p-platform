@@ -680,7 +680,7 @@ export function normalizeFinanceState(state) {
   };
 }
 
-function draftProductFromFinanceStock(stock, quantity) {
+export function draftProductFromFinanceStock(stock, quantity) {
   const item = String(stock.item || "Vinyl").trim();
   const category = RECORD_FORMATS.has(item) ? "Records" : APPAREL_TYPES.has(item) ? "Apparel" : "Objects";
   const id = `finance-${slugify(stock.sku)}`;
@@ -710,6 +710,8 @@ function draftProductFromFinanceStock(stock, quantity) {
     sizes: [],
     description: "",
     qty: quantity,
+    // Finance creates an operational inventory draft only. Publication and
+    // any internet research remain explicit Admin actions for this exact SKU.
     publishStatus: "Draft",
     visibility: "Private",
     updatedAt: today(),
