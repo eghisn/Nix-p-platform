@@ -1192,6 +1192,30 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     relatedArtists: ["The Field", "Gui Boratto"],
     tags: ["experimental rock", "math rock", "techno", "remix"],
     sourceUrl: "https://battles.warp.net/release/60919-battles-dross-glop-1"
+  },
+  "NXP-2026-VNL-0062": {
+    title: "Faster Lover",
+    artist: "Negative Lovers",
+    year: 2014,
+    label: "Picture In My Ear",
+    edition: "12-inch EP",
+    cover: "https://f4.bcbits.com/img/a0335934103_0.jpg",
+    imageCredits: [
+      {
+        image: "https://f4.bcbits.com/img/a0335934103_0.jpg",
+        credit: "Picture In My Ear official Bandcamp artwork",
+        url: "https://pictureinmyearrecords.bandcamp.com/album/faster-lover-ep"
+      }
+    ],
+    description:
+      "Negative Lovers' 2014 Faster Lover EP is a six-track 12-inch release on Picture In My Ear. The title track is joined by Jagz Kooner's remix and dub, while Hit & Run, Last Sex, and Class War extend the band's abrasive, psychedelic post-punk.",
+    descriptionSource: "Picture In My Ear official Bandcamp",
+    reviewQuote: "12-inch EP with remixes from Jagz Kooner",
+    reviewSource: "Bandcamp release note (quoted)",
+    reviewUrl: "https://pictureinmyearrecords.bandcamp.com/album/faster-lover-ep",
+    relatedArtists: ["Jagz Kooner"],
+    tags: ["post-punk", "psychedelic rock", "noise rock", "shoegaze", "remix"],
+    sourceUrl: "https://pictureinmyearrecords.bandcamp.com/album/faster-lover-ep"
   }
 };
 

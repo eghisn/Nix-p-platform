@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import {
   CURATED_EDITORIAL_OVERRIDES,
+  CURATED_FINANCE_ENRICHMENTS,
   RELATED_ARTIST_RESEARCH_VERSION,
   assessMusicBrainzReleaseCandidates,
   applyCuratedEditorialOverride,
@@ -260,5 +261,13 @@ for (const sku of [
   assert.ok(editorial?.description, `${sku} must have curated editorial copy`);
   assert.equal(isEditorialDescriptionQuality(editorial.description, editorial.descriptionSource), true);
 }
+
+const negativeLovers = CURATED_FINANCE_ENRICHMENTS["NXP-2026-VNL-0062"];
+assert.equal(negativeLovers.title, "Faster Lover");
+assert.equal(negativeLovers.artist, "Negative Lovers");
+assert.equal(negativeLovers.edition, "12-inch EP");
+assert.match(negativeLovers.cover, /a0335934103_0\.jpg$/);
+assert.equal(isEditorialDescriptionQuality(negativeLovers.description, negativeLovers.descriptionSource), true);
+assert.equal(negativeLovers.reviewSource, "Bandcamp release note (quoted)");
 
 process.stdout.write("Finance catalog enrichment contract passed.\n");
