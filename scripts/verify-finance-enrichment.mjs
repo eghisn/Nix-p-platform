@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   CURATED_EDITORIAL_OVERRIDES,
   RELATED_ARTIST_RESEARCH_VERSION,
+  assessMusicBrainzReleaseCandidates,
   applyCuratedEditorialOverride,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
@@ -102,6 +103,28 @@ const missingIdentity = await enrichFinanceCatalogProduct(draft, { ...stock, tit
 assert.equal(missingIdentity.publish_status, "Draft");
 assert.equal(missingIdentity.visibility, "Private");
 assert.equal(missingIdentity.raw.enrichmentStatus, "needs-finance-data");
+
+const tracerVinyl = {
+  sku: "NXP-2026-VNL-0061",
+  item: "Vinyl",
+  artist: "Teengirl Fantasy",
+  title: "Tracer",
+  sellingPrice: 320000
+};
+const tracerCdOnly = [{
+  title: "Tracer",
+  score: 100,
+  "artist-credit": [{ name: "Teengirl Fantasy" }],
+  media: [{ format: "CD" }],
+  "label-info": [{ "catalog-number": "RS1208CD" }]
+}];
+const tracerAssessment = assessMusicBrainzReleaseCandidates(tracerCdOnly, {
+  stock: tracerVinyl,
+  expectedTitle: "tracer",
+  format: "vinyl"
+});
+assert.equal(tracerAssessment.release, null);
+assert.equal(tracerAssessment.exactAlbumWithDifferentFormat, true);
 
 const timStock = {
   sku: "NXP-2026-CD-0045",

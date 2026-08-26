@@ -216,13 +216,25 @@ export async function processCatalogResearchJobs({ limit = 1, skus = [], force =
         results.push({ sku: job.sku, id: product.id, status: publishAfterResearch ? "deployment_pending" : "ready", issues: [] });
       } else {
         const status = String(product?.raw?.enrichmentStatus || "needs-release-match");
-        await jobsApi.retryCatalogResearchJob(job, {
-          code: status,
-          message: issues.join("; ") || "Exact release research is incomplete.",
-          source: "catalog-enrichment",
-          result: { productId: product?.id || null, issues }
-        });
-        results.push({ sku: job.sku, id: product?.id || null, status: "retry", issues });
+        const result = { productId: product?.id || null, issues };
+        if (["needs-finance-data", "needs-pressing-identifier"].includes(status)) {
+          // These states need a human correction in Finance, so retries only
+          // repeat the same work and make the queue look unreliable.
+          await jobsApi.completeCatalogResearchJob(job, {
+            status: "failed",
+            stage: "complete",
+            result: { ...result, reason: status }
+          });
+          results.push({ sku: job.sku, id: product?.id || null, status: "needs-input", issues });
+        } else {
+          await jobsApi.retryCatalogResearchJob(job, {
+            code: status,
+            message: issues.join("; ") || "Exact release research is incomplete.",
+            source: "catalog-enrichment",
+            result
+          });
+          results.push({ sku: job.sku, id: product?.id || null, status: "retry", issues });
+        }
       }
     } catch (error) {
       await jobsApi.retryCatalogResearchJob(job, {
@@ -563,6 +575,7 @@ export function needsFinanceEnrichment(row = {}, stock = {}) {
   const retryDue = !Number.isFinite(attemptedAt) || Date.now() - attemptedAt >= 5 * 60 * 1000;
   const unresolvedStatus = [
     "needs-release-match",
+    "needs-pressing-identifier",
     "needs-cover-art",
     "needs-cover-archive",
     "needs-product-photo",

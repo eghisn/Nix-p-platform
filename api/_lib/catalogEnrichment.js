@@ -1261,6 +1261,17 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     curated || (await discoverMusicBrainzRelease({ ...stock, format, title, artist }).catch(() => null)),
     sku
   );
+  // An artist/title match can still describe several physical pressings. Do
+  // not invent a Vinyl edition from a CD/digital MusicBrainz entry: wait for
+  // the catalog number or barcode printed on the item instead.
+  if (discoveredSource?.needsPressingIdentifier) {
+    return finalizeStatus(row, {
+      publishable: false,
+      status: "needs-pressing-identifier",
+      enrichmentFingerprint: inventoryFingerprint({ ...stock, artist, title, format }),
+      enrichmentAttemptedAt: new Date().toISOString()
+    });
+  }
   const discovered = await archiveDiscoveredImages(applyArchivedCatalogImages(discoveredSource, sku), sku, usedCondition(stock.itemCondition || row.condition));
   if (!discovered) {
     return finalizeStatus(row, {
@@ -1482,6 +1493,7 @@ async function discoverMusicBrainzRelease(stock) {
   );
 
   let release = null;
+  let exactAlbumWithDifferentFormat = false;
   for (const [index, query] of queries.entries()) {
     const response = await musicBrainzFetch(
       `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=${index === 0 && catalogNumber ? 50 : 25}&inc=labels+artist-credits+media+release-groups`
@@ -1489,10 +1501,20 @@ async function discoverMusicBrainzRelease(stock) {
     if (!response?.ok) continue;
     const payload = await jsonObject(response);
     const releases = Array.isArray(payload.releases) ? payload.releases : [];
-    release = chooseMusicBrainzRelease(releases, { stock, expectedTitle, format, barcode, catalogNumber });
+    const candidateAssessment = assessMusicBrainzReleaseCandidates(releases, { stock, expectedTitle, format, barcode, catalogNumber });
+    exactAlbumWithDifferentFormat ||= candidateAssessment.exactAlbumWithDifferentFormat;
+    release = candidateAssessment.release;
     if (release) break;
   }
-  if (!release) return null;
+  if (!release) {
+    // With no Finance-side pressing identifier, an artist/title match that
+    // conflicts only on medium is actionable input, not a failed search.
+    // A supplied catalog number or barcode must still match a source exactly.
+    if (exactAlbumWithDifferentFormat && !barcode && !catalogNumber) {
+      return { needsPressingIdentifier: true };
+    }
+    return null;
+  }
 
   const labelInfo = release["label-info"] || [];
   const labels = unique(labelInfo.map((entry) => entry.label?.name));
@@ -1559,7 +1581,8 @@ async function discoverMusicBrainzRelease(stock) {
   };
 }
 
-function chooseMusicBrainzRelease(releases = [], { stock, expectedTitle, format, barcode, catalogNumber } = {}) {
+export function assessMusicBrainzReleaseCandidates(releases = [], { stock = {}, expectedTitle = "", format = "", barcode = "", catalogNumber = "" } = {}) {
+  let exactAlbumWithDifferentFormat = false;
   const candidates = releases
     .map((release) => {
       const title = normalizedText(release.title);
@@ -1572,6 +1595,8 @@ function chooseMusicBrainzRelease(releases = [], { stock, expectedTitle, format,
       const exactTitle = title === expectedTitle;
       const titleCompatible = exactTitle || compatibleReleaseTitle(expectedTitle, title);
       const artistMatches = musicBrainzArtistMatches(release, stock.artist);
+      const exactAlbumMatch = artistMatches && titleCompatible;
+      if (exactAlbumMatch && !formatMatches) exactAlbumWithDifferentFormat = true;
       // Catalog number and barcode are the strongest signals when supplied,
       // but neither is mandatory. Finance can legitimately identify a record
       // using a normalised artist + title + format alone.
@@ -1589,7 +1614,7 @@ function chooseMusicBrainzRelease(releases = [], { stock, expectedTitle, format,
     })
     .filter(Boolean)
     .sort((a, b) => b.score - a.score);
-  return candidates[0]?.release || null;
+  return { release: candidates[0]?.release || null, exactAlbumWithDifferentFormat };
 }
 
 function catalogNumberMatches(candidate, expected) {

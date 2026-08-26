@@ -249,6 +249,7 @@ function researchFailureIssues(status, publicationIssues = []) {
   const specific = {
     "needs-finance-data": "Finance identity is incomplete: title, artist, format, condition, or price",
     "needs-release-match": "No exact release source matched the Finance artist, title, and format",
+    "needs-pressing-identifier": "Exact album found, but more than one physical pressing exists. Add the catalog number or barcode from the item before publishing",
     "needs-cover-art": "Exact release matched, but no verified cover artwork was found",
     "needs-cover-archive": "Verified cover found, but NIXP could not archive it to managed storage",
     "needs-editorial-metadata": "Exact release matched, but the source description could not be prepared",
