@@ -16,7 +16,6 @@ export function recordPublicationIssues(product = {}) {
   const format = String(product.format || raw.format || "");
   if (category !== "records" || !RECORD_FORMATS.has(format)) return [];
 
-  const relatedArtists = arrayValue(product.relatedArtists, raw.relatedArtists);
   const image = String(product.image || raw.image || "").trim();
   const openToOffers = product.open_to_offers === true || raw.open_to_offers === true;
   const price = Number(product.price ?? raw.price ?? 0);
@@ -28,15 +27,8 @@ export function recordPublicationIssues(product = {}) {
     ["description", product.description || raw.description]
   ];
   const issues = fields.filter(([, value]) => !String(value || "").trim()).map(([name]) => name);
-  const reviewQuote = String(product.reviewQuote || raw.reviewQuote || "").trim();
-  const reviewSource = String(product.reviewSource || raw.reviewSource || "").trim();
-  if (!reviewQuote || !reviewSource) issues.push("source-backed review");
   if (!Number(product.year || raw.year || 0)) issues.push("release year");
   if (!isManagedProductImage(image)) issues.push("managed cover art");
-  const relatedResearchStatus = String(product.relatedArtistsResearch?.status || raw.relatedArtistsResearch?.status || "").trim();
-  if (!relatedArtists.length && !["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus)) {
-    issues.push("verified related-artist research");
-  }
   if (openToOffers ? minimumOffer <= 0 : price <= 0) issues.push(openToOffers ? "minimum acceptable offer" : "selling price");
   return issues;
 }
@@ -89,9 +81,6 @@ export function isResearchPublicationReady(product = {}) {
   const image = String(product.image || raw.image || "").trim();
   const description = String(product.description || raw.description || "").trim();
   const label = String(product.label || raw.label || "").trim();
-  const reviewQuote = String(product.reviewQuote || raw.reviewQuote || "").trim();
-  const reviewSource = String(product.reviewSource || raw.reviewSource || "").trim();
-  const relatedResearchStatus = String(product.relatedArtistsResearch?.status || raw.relatedArtistsResearch?.status || "").trim();
   const enrichmentStatus = String(product.enrichmentStatus || raw.enrichmentStatus || "").trim();
   const openToOffers = product.open_to_offers === true || raw.open_to_offers === true;
   const price = Number(product.price ?? raw.price ?? 0);
@@ -102,11 +91,8 @@ export function isResearchPublicationReady(product = {}) {
       condition &&
       label &&
       description &&
-      reviewQuote &&
-      reviewSource &&
       isManagedProductImage(image) &&
       ["complete", "complete-no-related-artists"].includes(enrichmentStatus) &&
-      (["verified", "combined", "lastfm", "no-verified-match"].includes(relatedResearchStatus) || Boolean(product.relatedArtists?.length || raw.relatedArtists?.length)) &&
       (openToOffers ? minimumOffer > 0 : price > 0)
   );
 }

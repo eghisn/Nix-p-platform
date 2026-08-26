@@ -1282,7 +1282,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
 
   const editorialOverride = CURATED_EDITORIAL_OVERRIDES[sku] || {};
   const discoveredSource = applyCuratedEditorialOverride(
-    curated || (await discoverMusicBrainzRelease({ ...stock, format, title, artist }).catch(() => null)),
+    curated || (await discoverReleaseAcrossSources({ ...stock, format, title, artist }).catch(() => null)),
     sku
   );
   // An artist/title match can still describe several physical pressings. Do
@@ -1445,7 +1445,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
         relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION
       },
       enrichmentFingerprint,
-      enrichmentOrigin: curated ? "curated-exact" : Object.keys(editorialOverride).length ? "musicbrainz+curated-editorial" : "musicbrainz",
+      enrichmentOrigin: curated ? "curated-exact" : Object.keys(editorialOverride).length ? "source+curated-editorial" : discovered.sourceType || "unknown",
+      researchSources: discovered.researchSources || [],
       enrichmentStatus: enrichmentStatus({ used, discovered, description, descriptionSource, relatedArtists, relatedArtistResearch, reviewQuote, reviewSource, reviewUrl, manualRelatedArtistsOverride }),
       enrichmentUpdatedAt: today(),
       enrichmentAttemptedAt: new Date().toISOString(),
@@ -1498,6 +1499,228 @@ function applyArchivedCatalogImages(discovered, sku) {
     productPhoto: hasArchivedProductPhoto ? archived.productPhoto : discovered.productPhoto,
     imageCredits: (discovered.imageCredits || []).map((credit) => ({ ...credit, image: mapImage(credit.image) }))
   };
+}
+
+async function discoverReleaseAcrossSources(stock) {
+  // Discogs records the physical edition, while Bandcamp can supply the
+  // label's original artwork and release note. MusicBrainz remains useful,
+  // but is deliberately a fallback rather than the publishing gate.
+  const [discogs, bandcamp] = await Promise.all([
+    discoverDiscogsRelease(stock).catch(() => null),
+    discoverBandcampRelease(stock).catch(() => null)
+  ]);
+
+  if (discogs?.needsPressingIdentifier) return discogs;
+  const externalMatch = chooseExternalReleaseCandidate([discogs, bandcamp]);
+  if (externalMatch) return externalMatch;
+
+  return discoverMusicBrainzRelease(stock);
+}
+
+function chooseExternalReleaseCandidate(candidates = []) {
+  const discogs = candidates.find((candidate) => candidate?.sourceType === "discogs" && candidate.cover);
+  const bandcamp = candidates.find((candidate) => candidate?.sourceType === "bandcamp" && candidate.cover);
+  // A barcode/catalog-number match identifies the exact object, so it wins.
+  // Otherwise the official page is the better editorial and artwork source.
+  if (discogs?.matchConfidence >= 95) return discogs;
+  return bandcamp || discogs || null;
+}
+
+async function discoverDiscogsRelease(stock) {
+  const format = String(stock.format || stock.item || "").trim();
+  const barcode = String(stock.barcode || "").replace(/\D/g, "");
+  const catalogNumber = normalizedText(stock.catalogNumber);
+  const params = new URLSearchParams({
+    type: "release",
+    per_page: "20",
+    artist: String(stock.artist || "").trim(),
+    release_title: String(stock.title || "").trim(),
+    format
+  });
+  if (barcode) params.set("barcode", barcode);
+  const response = await fetchWithTimeout(`https://api.discogs.com/database/search?${params.toString()}`, {
+    headers: { accept: "application/json", "user-agent": USER_AGENT }
+  }, 7000, "discogs");
+  if (!response?.ok) return null;
+  const payload = await jsonObject(response);
+  const assessment = assessDiscogsReleaseCandidates(payload?.results || [], { stock, format, barcode, catalogNumber });
+  if (assessment.needsPressingIdentifier) return { needsPressingIdentifier: true };
+  if (!assessment.release?.resource_url) return null;
+
+  const detailResponse = await fetchWithTimeout(assessment.release.resource_url, {
+    headers: { accept: "application/json", "user-agent": USER_AGENT }
+  }, 7000, "discogs");
+  if (!detailResponse?.ok) return null;
+  const release = await jsonObject(detailResponse);
+  if (!release?.id) return null;
+  return normalizeDiscogsRelease(release, stock, assessment.matchConfidence);
+}
+
+export function assessDiscogsReleaseCandidates(releases = [], { stock = {}, format = "", barcode = "", catalogNumber = "" } = {}) {
+  const expectedTitle = normalizedText(stock.title);
+  const expectedArtist = normalizedText(stock.artist);
+  const expectedFormat = normalizedText(format || stock.format || stock.item);
+  const hasPhysicalIdentifier = Boolean(barcode || catalogNumber);
+  const candidates = releases
+    .filter((release) => String(release?.type || "release").toLowerCase() === "release")
+    .map((release) => {
+      const title = discogsReleaseTitle(release.title, stock.artist);
+      const artist = normalizedText(String(release.title || "").split(" - ")[0] || "");
+      const formats = unique([...(release.format || []), ...(release.formats || []).map((entry) => entry?.name)]).map(normalizedText);
+      const releaseBarcode = unique(release.barcode || []).map((value) => String(value || "").replace(/\D/g, "")).find(Boolean) || "";
+      const releaseCatalogNumber = normalizedText(release.catno);
+      const titleMatches = title === expectedTitle || compatibleReleaseTitle(expectedTitle, title);
+      const artistMatches = artist === expectedArtist || artist.includes(expectedArtist) || expectedArtist.includes(artist);
+      const formatMatches = !expectedFormat || formats.some((value) => value.includes(expectedFormat));
+      const barcodeExact = Boolean(barcode && releaseBarcode === barcode);
+      const catalogExact = Boolean(catalogNumber && catalogNumberMatches(releaseCatalogNumber, catalogNumber));
+      if (!artistMatches || !titleMatches || !formatMatches) return null;
+      if (hasPhysicalIdentifier && !barcodeExact && !catalogExact) return null;
+      return {
+        release,
+        barcodeExact,
+        catalogExact,
+        matchConfidence: 70 + (barcodeExact ? 25 : 0) + (catalogExact ? 25 : 0) + (formatMatches ? 5 : 0)
+      };
+    })
+    .filter(Boolean)
+    .sort((left, right) => right.matchConfidence - left.matchConfidence);
+  if (!candidates.length) return { release: null, needsPressingIdentifier: false, matchConfidence: 0 };
+  const physicalCandidates = new Set(candidates.map((candidate) => String(candidate.release.id || "")).filter(Boolean));
+  if (!hasPhysicalIdentifier && physicalCandidates.size > 1) {
+    return { release: null, needsPressingIdentifier: true, matchConfidence: 0 };
+  }
+  return { ...candidates[0], needsPressingIdentifier: false };
+}
+
+function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
+  const labelEntries = Array.isArray(release.labels) ? release.labels : [];
+  const label = unique(labelEntries.map((entry) => entry?.name)).join(" / ");
+  const catalogNumber = unique(labelEntries.map((entry) => entry?.catno).filter((value) => value && value !== "none")).join(" / ");
+  const barcode = unique((release.identifiers || [])
+    .filter((entry) => /barcode/i.test(String(entry?.type || "")))
+    .map((entry) => String(entry?.value || "").replace(/\D/g, ""))
+    .filter(Boolean)).join(" / ");
+  const format = unique((release.formats || []).flatMap((entry) => [entry?.name, ...(entry?.descriptions || [])])).join(", ");
+  const styles = unique([...(release.styles || []), ...(release.genres || [])]);
+  const tracks = (release.tracklist || []).filter((track) => track?.type_ !== "heading" && track?.title).map((track) => track.title);
+  const image = (release.images || []).find((entry) => entry?.type === "primary") || (release.images || [])[0] || {};
+  const cover = String(image.uri || image.uri150 || "").trim();
+  const artist = unique((release.artists || []).map((entry) => entry?.name?.replace(/\s*\(\d+\)$/, ""))).join(" / ") || stock.artist;
+  const year = Number(release.year || 0);
+  const title = String(release.title || stock.title || "").trim();
+  const trackText = tracks.length ? ` The track list includes ${tracks.slice(0, 4).join(", ")}${tracks.length > 4 ? ", and more" : ""}.` : "";
+  const styleText = styles.length ? ` Its Discogs entry is filed under ${styles.slice(0, 3).join(", ")}.` : "";
+  const sourceUrl = String(release.uri || "").startsWith("http") ? release.uri : `https://www.discogs.com${release.uri || `/release/${release.id}`}`;
+  return {
+    title,
+    artist,
+    year,
+    label,
+    edition: format,
+    barcode,
+    catalogNumber,
+    cover,
+    productPhoto: "",
+    imageCredits: cover ? [{ image: cover, credit: "Discogs physical-release artwork", url: sourceUrl }] : [],
+    description: `${artist}'s ${year || ""} ${title} is documented by Discogs as ${format || stock.item || "a physical release"}${label ? ` on ${label}` : ""}.${trackText}${styleText}`.replace(/\s+/g, " ").trim(),
+    descriptionSource: "Discogs release data",
+    reviewQuote: `Discogs documents this physical edition as ${format || stock.item || "a release"}${label ? ` on ${label}` : ""}.`,
+    reviewSource: "Discogs release data",
+    reviewUrl: sourceUrl,
+    tags: styles,
+    sourceUrl,
+    sourceType: "discogs",
+    matchConfidence,
+    researchSources: [{ source: "Discogs", url: sourceUrl, confidence: matchConfidence }]
+  };
+}
+
+async function discoverBandcampRelease(stock) {
+  const query = `site:bandcamp.com/album \"${stock.artist}\" \"${stock.title}\"`;
+  const response = await fetchWithTimeout(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, {
+    headers: { accept: "text/html", "user-agent": USER_AGENT }
+  }, 7000, "bandcamp-search");
+  if (!response?.ok) return null;
+  const html = await response.text();
+  const urls = unique(
+    [...html.matchAll(/href=["']([^"']+)["']/gi)]
+      .map((match) => duckDuckGoResultUrl(decodeHtml(match[1])))
+      .filter((value) => /https:\/\/[^/]+\.bandcamp\.com\/album\//i.test(value))
+  ).slice(0, 4);
+  for (const url of urls) {
+    const page = await fetchWithTimeout(url, { headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "bandcamp");
+    if (!page?.ok) continue;
+    const pageHtml = await page.text();
+    const pageTitle = metaContent(pageHtml, "og:title") || titleText(pageHtml);
+    if (!bandcampReleaseMatches(pageTitle, stock)) continue;
+    const hasRequestedFormat = bandcampFormatMatches(pageHtml, stock.item || stock.format);
+    if (!hasRequestedFormat) continue;
+    const cover = highResolutionBandcampImage(metaContent(pageHtml, "og:image"));
+    if (!cover) continue;
+    const releaseNote = conciseQuote(metaContent(pageHtml, "description") || metaContent(pageHtml, "og:description"));
+    const year = bandcampReleaseYear(pageHtml);
+    const label = String(pageTitle || "").split("|").map((value) => value.trim()).filter(Boolean).at(-1) || "";
+    const title = String(pageTitle || "").split("|")[0]?.trim() || stock.title;
+    const description = releaseNote
+      ? `${stock.artist}'s ${year || ""} ${title} is a ${stock.item || stock.format} release from ${label || "Bandcamp"}. ${releaseNote}`.replace(/\s+/g, " ").trim()
+      : `${stock.artist}'s ${year || ""} ${title} is a ${stock.item || stock.format} release from ${label || "Bandcamp"}.`.replace(/\s+/g, " ").trim();
+    return {
+      title,
+      artist: stock.artist,
+      year,
+      label,
+      edition: stock.item || stock.format,
+      cover,
+      productPhoto: "",
+      imageCredits: [{ image: cover, credit: "Official Bandcamp release artwork", url }],
+      description,
+      descriptionSource: "Official Bandcamp release page",
+      reviewQuote: releaseNote || "Official release page.",
+      reviewSource: "Bandcamp release note (quoted)",
+      reviewUrl: url,
+      tags: [],
+      sourceUrl: url,
+      sourceType: "bandcamp",
+      matchConfidence: 80,
+      researchSources: [{ source: "Bandcamp", url, confidence: 80 }]
+    };
+  }
+  return null;
+}
+
+function discogsReleaseTitle(value, artist) {
+  const title = String(value || "").trim();
+  const prefix = String(artist || "").trim();
+  return normalizedText(prefix && title.toLowerCase().startsWith(`${prefix.toLowerCase()} - `) ? title.slice(prefix.length + 3) : title);
+}
+
+function bandcampReleaseMatches(pageTitle, stock) {
+  const [candidateTitle = "", candidateArtist = ""] = String(pageTitle || "").split("|").map((value) => value.trim());
+  const expectedTitle = normalizedText(stock.title);
+  const actualTitle = normalizedText(candidateTitle);
+  return (actualTitle === expectedTitle || compatibleReleaseTitle(expectedTitle, actualTitle)) && normalizedText(candidateArtist).includes(normalizedText(stock.artist));
+}
+
+function bandcampFormatMatches(html, format) {
+  const requested = normalizedText(format);
+  if (!requested) return true;
+  if (requested === "vinyl") return /record\s*\/\s*vinyl|\bvinyl\b|\b12[\"”]?(?:\s*(?:ep|inch))?/i.test(html);
+  if (requested === "cd") return /\bcompact disc\b|\bcd\b/i.test(html);
+  if (requested === "cassette") return /\bcassette\b|\btape\b/i.test(html);
+  return true;
+}
+
+function bandcampReleaseYear(html) {
+  const match = String(html || "").match(/released\s+(?:on\s+)?(?:\w+\s+\d{1,2},\s+|\d{1,2}\s+\w+\s+)(\d{4})/i);
+  return Number(match?.[1] || 0);
+}
+
+function highResolutionBandcampImage(value) {
+  const image = String(value || "").trim();
+  return /f\d+\.bcbits\.com\/img\/a\d+_\d+\.(?:jpe?g|png|webp)/i.test(image)
+    ? image.replace(/_\d+(\.(?:jpe?g|png|webp)(?:\?.*)?)$/i, "_0$1")
+    : image;
 }
 
 async function discoverMusicBrainzRelease(stock) {
@@ -1974,10 +2197,9 @@ function enrichmentStatus({ used, discovered, description, descriptionSource, re
   // not have one available from a trustworthy source and must not be trapped
   // in Draft solely for that reason.
   if (!isEditorialDescriptionQuality(description, descriptionSource)) return "needs-editorial-quality";
-  if (!relatedArtists.length && !manualRelatedArtistsOverride && relatedArtistResearch?.status !== "no-verified-match") return "needs-related-artist-research";
-  // A source-backed review quote is never invented by automation. Its absence
-  // keeps the product private until a trusted source is resolved.
-  if (!reviewQuote || !reviewSource || !reviewUrl) return "metadata-complete-needs-editorial-review";
+  // Reviews and related artists are valuable enrichment, but an unavailable
+  // source must not turn an otherwise verified physical release into a Draft.
+  // They remain visible to Admin as enrichment fields and can be improved later.
   return relatedArtists.length ? "complete" : "complete-no-related-artists";
 }
 

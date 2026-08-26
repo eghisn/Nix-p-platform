@@ -4,6 +4,7 @@ import {
   CURATED_FINANCE_ENRICHMENTS,
   RELATED_ARTIST_RESEARCH_VERSION,
   assessMusicBrainzReleaseCandidates,
+  assessDiscogsReleaseCandidates,
   applyCuratedEditorialOverride,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
@@ -127,6 +128,30 @@ const tracerAssessment = assessMusicBrainzReleaseCandidates(tracerCdOnly, {
 assert.equal(tracerAssessment.release, null);
 assert.equal(tracerAssessment.exactAlbumWithDifferentFormat, true);
 
+const negativeLoversDiscogs = [{
+  id: 9967524,
+  type: "release",
+  title: "Negative Lovers - Faster Lover",
+  format: ["Vinyl", "12\"", "EP"],
+  barcode: ["789577728615"],
+  catno: "none",
+  resource_url: "https://api.discogs.com/releases/9967524"
+}];
+const negativeLoversAssessment = assessDiscogsReleaseCandidates(negativeLoversDiscogs, {
+  stock: { artist: "Negative Lovers", title: "Faster Lover", item: "Vinyl" },
+  format: "Vinyl"
+});
+assert.equal(negativeLoversAssessment.release.id, 9967524);
+assert.equal(negativeLoversAssessment.needsPressingIdentifier, false);
+const ambiguousDiscogsAssessment = assessDiscogsReleaseCandidates([
+  ...negativeLoversDiscogs,
+  { ...negativeLoversDiscogs[0], id: 9967525, resource_url: "https://api.discogs.com/releases/9967525" }
+], {
+  stock: { artist: "Negative Lovers", title: "Faster Lover", item: "Vinyl" },
+  format: "Vinyl"
+});
+assert.equal(ambiguousDiscogsAssessment.needsPressingIdentifier, true);
+
 const timStock = {
   sku: "NXP-2026-CD-0045",
   item: "CD",
@@ -182,9 +207,9 @@ if (buttechnoPublished) assert.equal(isRecordPublicationReady({ ...buttechno, ..
 const unsafeStore = applyCatalogPublicationSafety({
   products: [{ ...tim.raw, id: tim.id, financeStockId: "stock-1", publishStatus: "Published", visibility: "Public", reviewQuote: "", reviewSource: "", reviewUrl: "" }]
 });
-assert.equal(unsafeStore.products[0].publishStatus, "Draft");
-assert.equal(unsafeStore.products[0].visibility, "Private");
-assert.ok(unsafeStore.products[0].raw.publicationIssues.includes("source-backed review"));
+assert.equal(unsafeStore.products[0].publishStatus, "Published");
+assert.equal(unsafeStore.products[0].visibility, "Public");
+assert.equal(unsafeStore.products[0].raw?.publicationIssues, undefined);
 
 if (timPublished) {
   const publicationReadyWithoutEditionOrBarcode = applyCatalogPublicationSafety({
@@ -209,6 +234,9 @@ const researchedPartial = {
   artist: "Bauhaus",
   condition: "Used Good",
   price: 250000,
+  label: "Example Label",
+  description: "A verified physical release with a complete description.",
+  year: 2026,
   image: "/public/covers/partial-research.jpg",
   reviewQuote: "",
   reviewSource: "",
@@ -222,18 +250,22 @@ const researchedPartial = {
     artist: "Bauhaus",
     condition: "Used Good",
     price: 250000,
+    label: "Example Label",
+    description: "A verified physical release with a complete description.",
+    year: 2026,
     image: "/public/covers/partial-research.jpg",
     reviewQuote: "",
     reviewSource: "",
     relatedArtists: [],
+    enrichmentStatus: "complete-no-related-artists",
     publishAfterResearch: true,
     publishStatus: "Published",
     visibility: "Public"
   }
 };
-assert.equal(isResearchPublicationReady(researchedPartial), false);
-assert.ok(recordPublicationIssues(researchedPartial).includes("source-backed review"));
-assert.equal(applyCatalogPublicationSafety({ products: [researchedPartial] }).products[0].publishStatus, "Draft");
+assert.equal(isResearchPublicationReady(researchedPartial), true);
+assert.equal(recordPublicationIssues(researchedPartial).includes("source-backed review"), false);
+assert.equal(applyCatalogPublicationSafety({ products: [researchedPartial] }).products[0].publishStatus, "Published");
 
 const bauhausEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0041"];
 assert.equal(isEditorialDescriptionQuality("Artist's 2026 release Title is a Vinyl edition issued by Label, documented by MusicBrainz as rock.", "MusicBrainz"), false);
