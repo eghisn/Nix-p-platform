@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.mjs",
-    "build": "node scripts/build.mjs",
+    "build": "node scripts/build.mjs && node scripts/verify-artist-directory-consistency.mjs",
     "test:catalog": "node scripts/verify-catalog-integrity.mjs",
     "test:labels": "node scripts/verify-label-assets.mjs",
     "test:catalog-performance": "node scripts/verify-catalog-performance.mjs",
     "test:release-lock": "node scripts/verify-public-release-lock.mjs",
+    "test:artist-directory": "node scripts/verify-artist-directory-consistency.mjs",
     "test:recommendations": "node scripts/verify-product-recommendations.mjs",
     "test:routes": "node scripts/verify-public-routes.mjs",
     "test:commerce": "node scripts/verify-commerce-contract.mjs",

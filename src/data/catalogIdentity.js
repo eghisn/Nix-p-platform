@@ -1,5 +1,6 @@
 const ARTIST_CREDIT_ALIASES = new Map([
   ["amnesia scanner & bill kouligas", ["Amnesia Scanner", "Bill Kouligas"]],
+  ["ford & lopatin", ["Ford", "Daniel Lopatin"]],
   ["heith & tarawangsawelas", ["Heith", "Tarawangsawelas"]],
   ["senyawa, kazuhisa uchihashi", ["Senyawa", "Kazuhisa Uchihashi"]],
   ["overmono & the streets turn the page", ["Overmono", "The Streets"]],

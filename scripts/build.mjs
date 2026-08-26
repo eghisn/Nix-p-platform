@@ -749,16 +749,10 @@ for (const product of publicStore?.products || []) {
 }
 
 const artistDirectory = new Map();
-const recordArtistKeys = new Set(
-  publicProducts.filter((product) => product.category === "Records").flatMap((product) => artistCreditNames(product.artist).map(slugify)).filter(Boolean)
-);
-for (const artist of publicStore?.artists || []) {
-  const slug = slugify(artist.name);
-  if (recordArtistKeys.has(slug)) artistDirectory.set(slug, artist.name);
-}
 for (const product of publicProducts.filter((product) => product.category === "Records")) {
   for (const artistName of artistCreditNames(product.artist)) artistDirectory.set(slugify(artistName), artistName);
 }
+const orderedArtistDirectory = [...artistDirectory.values()].sort((left, right) => left.localeCompare(right));
 for (const route of [...new Set(staticRoutes)]) {
   const routeDir = `${dist}/${route}`;
   await mkdir(routeDir, { recursive: true });
@@ -778,8 +772,8 @@ for (const route of [...new Set(staticRoutes)]) {
             description: siteDescription,
             url: routeUrl,
             image: siteImage,
-            appMarkup: shell(artistsIndexMarkup([...artistDirectory.values()]), "/artists", 0),
-            crawlMarkup: crawlerSection(`<h1>Artists</h1>${[...artistDirectory.values()].map((artist) => `<p><a href="/artists/${slugify(artist)}">${escapeHtml(artist)}</a></p>`).join("")}`)
+            appMarkup: shell(artistsIndexMarkup(orderedArtistDirectory), "/artists", 0),
+            crawlMarkup: crawlerSection(`<h1>Artists</h1>${orderedArtistDirectory.map((artist) => `<p><a href="/artists/${slugify(artist)}">${escapeHtml(artist)}</a></p>`).join("")}`)
             })
       : route === "labels" || labelEntry
         ? routeDocument({
