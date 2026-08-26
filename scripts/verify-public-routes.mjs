@@ -18,6 +18,7 @@ const canonicalProductPath = sampleProduct ? publicProductPath(sampleProduct) : 
 const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}` : "/product/missing";
 const sampleLabel = labelEntries(products).find((label) => labelLogoAvailable(label.slug));
 const paths = ["/records/", "/objects", "/apparel", "/publishing", "/artists", "/labels", sampleLabel ? `/labels/${sampleLabel.slug}` : "/labels", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
+let deployedRevision = "";
 
 for (const route of paths) {
   const response = await fetch(`${baseUrl}${route}`, { redirect: "follow", cache: "no-store" });
@@ -26,7 +27,13 @@ for (const route of paths) {
   if (body.includes("This route is not part of the NIXP prototype yet.")) {
     throw new Error(`${route} rendered the application 404 page during route verification.`);
   }
-  if (!/NIXP_APP_MARKER|src\/main\.js|assets\/app\.js/.test(body)) throw new Error(`${route} did not return the NIXP application shell`);
+  if (!/NIXP_APP_MARKER|src\/main\.js|assets\/app-[a-z0-9]+\.js/i.test(body)) throw new Error(`${route} did not return the NIXP application shell`);
+  const revision = body.match(/<meta name="nixp-release-revision" content="([a-z0-9]+)"/i)?.[1] || "";
+  const snapshot = body.match(/<meta name="nixp-catalog-snapshot" content="([^"]+)"/i)?.[1] || "";
+  if (!revision) throw new Error(`${route} did not declare a public release revision.`);
+  if (!deployedRevision) deployedRevision = revision;
+  if (revision !== deployedRevision) throw new Error(`${route} returned release ${revision}, expected ${deployedRevision}.`);
+  if (snapshot !== `/public/data/releases/${revision}.json`) throw new Error(`${route} did not lock its catalog snapshot.`);
   if (route === "/records/" && (!body.includes("records-toolbar") || !body.includes("data-record-sort"))) {
     throw new Error("/records/ static markup does not match the interactive records controls.");
   }
