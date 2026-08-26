@@ -6,6 +6,7 @@ import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
 import { termsOfUseContent } from "./data/termsOfUse.js";
 import { labelEntries, labelSlug } from "./data/labelCatalog.js";
 import { isRecentReleaseProduct, recentReleaseSortComparator } from "./data/homeCollections.js";
+import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "./data/recordMetadata.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
@@ -540,7 +541,7 @@ async function productDetailMarkup(product) {
   const conditionLabel = product.condition || "Available";
   const isApparel = product.category === "Apparel";
   const isRecord = product.category === "Records";
-  const isUsedRecord = isRecord && String(product.condition || "").toLowerCase().startsWith("used");
+  const hasRecordConditionDetails = needsRecordConditionDetails(product);
   const isSoldOut = totalProductStock(product) <= 0;
   const isOfferOnly = product.open_to_offers === true;
   const galleryImages = productImages(product);
@@ -613,14 +614,16 @@ async function productDetailMarkup(product) {
                 ? `<div><dt>Format</dt><dd>${escapeHtml(displayFormat)}</dd></div>
                  <div><dt>Condition</dt><dd>${escapeHtml(conditionLabel)}</dd></div>
                  <div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>
+                 <div><dt>Label</dt><dd>${recordLabelMarkup(product)}</dd></div>
+                 <div><dt>Year</dt><dd>${product.year}</dd></div>
+                 <div><dt>Catalog number</dt><dd>${escapeHtml(recordMetadataValue(product, "catalogNumber") || "Not specified")}</dd></div>
+                 <div><dt>Barcode</dt><dd>${escapeHtml(recordMetadataValue(product, "barcode") || "Not specified")}</dd></div>
                  ${
-                   isUsedRecord
+                   hasRecordConditionDetails
                      ? `<div><dt>Media condition</dt><dd>${escapeHtml(product.mediaCondition || "Not specified")}</dd></div>
                         <div><dt>Sleeve condition</dt><dd>${escapeHtml(product.sleeveCondition || "Not specified")}</dd></div>`
                      : ""
                  }
-                 <div><dt>Label</dt><dd>${recordLabelMarkup(product)}</dd></div>
-                 <div><dt>Year</dt><dd>${product.year}</dd></div>
                  <div><dt>Notes</dt><dd>${productNotesMarkup(product)}</dd></div>`
                 : `<div><dt>Format</dt><dd>${escapeHtml(displayFormat)}</dd></div>
                    <div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div>
@@ -640,11 +643,7 @@ async function productDetailMarkup(product) {
 }
 
 function productNotesMarkup(product = {}) {
-  const details = Array.isArray(product.details) ? product.details.map((detail) => String(detail || "").trim()).filter(Boolean) : [];
-  const barcode = String(product.barcode || "").trim();
-  const hasBarcodeDetail = details.some((detail) => /^barcode\s*:/i.test(detail));
-  const notes = barcode && !hasBarcodeDetail ? [...details, `Barcode: ${barcode}`] : details;
-  return escapeHtml(notes.join(" / "));
+  return escapeHtml(recordNotes(product).join(" / "));
 }
 
 async function artistsPage() {
@@ -1530,7 +1529,7 @@ async function adminProductsPage({ embedded = false } = {}) {
             ${sizeInventoryFields(product)}
           </div>
           ${select("condition", "Condition", ["", "New-Sealed", "New-Unsealed", "Used Mint", "Used Excellent", "Used Excellence", "Used Good", "Used Fair", "Used Poor"], product.condition || "")}
-          <div class="admin-used-condition-fields" data-admin-used-condition-fields ${productCategory === "Records" && String(product.condition || "").toLowerCase().startsWith("used") ? "" : "hidden"}>
+          <div class="admin-used-condition-fields" data-admin-used-condition-fields ${needsRecordConditionDetails(product) ? "" : "hidden"}>
             ${input("mediaCondition", "Media condition", product.mediaCondition || "", "Grade the disc, record, or tape")}
             ${input("sleeveCondition", "Sleeve condition", product.sleeveCondition || "", "Grade the sleeve or case")}
           </div>
@@ -3164,7 +3163,7 @@ function bindEvents() {
     form.querySelector("[data-admin-apparel-field]").hidden = event.currentTarget.value !== "Apparel";
     form.querySelector("[data-admin-edition-field]").hidden = !isRecord;
     form.querySelector("[data-admin-used-condition-fields]").hidden =
-      !isRecord || !String(form.elements.condition.value || "").toLowerCase().startsWith("used");
+      !needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: form.elements.condition.value });
     form.querySelectorAll("[data-admin-record-editorial-field]").forEach((field) => {
       field.hidden = !isRecord;
     });
@@ -3243,7 +3242,7 @@ function bindEvents() {
     const form = event.currentTarget.closest("[data-admin-product-form]");
     const isRecord = form.elements.category.value === "Records";
     form.querySelector("[data-admin-used-condition-fields]").hidden =
-      !isRecord || !String(event.currentTarget.value || "").toLowerCase().startsWith("used");
+      !needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: event.currentTarget.value });
   });
 
   document.querySelector("[data-admin-deploy-form]")?.addEventListener("submit", async (event) => {

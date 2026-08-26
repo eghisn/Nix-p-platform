@@ -2,6 +2,7 @@ import { artistNames, cashflow, inventory, orders, products, requestItems } from
 import { canonicalProductArtist, canonicalLabelName, canonicalRelatedArtistName } from "../data/catalogIdentity.js";
 import { isRecentReleaseProduct } from "../data/homeCollections.js";
 import { isRecordPublicationReady } from "../data/catalogPublication.js";
+import { needsRecordConditionDetails } from "../data/recordMetadata.js";
 
 const STORAGE_KEY = "nixp-admin-store-v1";
 const STORE_VERSION = "home-slider-related-artists-2026-07-15";
@@ -1141,8 +1142,8 @@ export const adminStore = {
       catalogNumber: isRecord ? data.catalogNumber?.trim() || "" : "",
       apparelType: normalizeApparelType(data.apparelType),
       condition: data.condition?.trim() || "",
-      mediaCondition: isRecord && isUsedCondition(data.condition) ? data.mediaCondition?.trim() || "" : "",
-      sleeveCondition: isRecord && isUsedCondition(data.condition) ? data.sleeveCondition?.trim() || "" : "",
+      mediaCondition: needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: data.condition }) ? data.mediaCondition?.trim() || "" : "",
+      sleeveCondition: needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: data.condition }) ? data.sleeveCondition?.trim() || "" : "",
       price: Number(data.price || 0),
       year: Number(data.year || new Date().getFullYear()),
       label: data.label?.trim() || collection || "NIXP Selection",
@@ -1317,10 +1318,6 @@ function splitList(value) {
     .split(",")
     .map((item) => item.trim())
     .filter(Boolean);
-}
-
-function isUsedCondition(value) {
-  return String(value || "").trim().toLowerCase().startsWith("used");
 }
 
 function wholeAmount(value) {

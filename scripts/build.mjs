@@ -15,6 +15,7 @@ import { labelEntries, labelSlug, productMatchesLabel } from "../src/data/labelC
 import { labelLogoAvailable, verifiedLabelLogoExtensions } from "../src/data/labelLogoManifest.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../src/components/labelsPage.js";
 import { canGenerateProductCardThumbnail, productCardThumbnailUrl, productCardThumbnailWidths } from "../src/data/productThumbnails.js";
+import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "../src/data/recordMetadata.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -400,9 +401,10 @@ function staticProductDetailMarkup(product) {
   const labelMarkup = isRecord && product.label
     ? `<a class="record-label-link" href="/labels/${encodeURIComponent(labelSlug(product.label))}" data-link>${escapeHtml(canonicalLabelName(product.label))}</a>`
     : escapeHtml(product.label || "-");
+  const hasRecordConditionDetails = needsRecordConditionDetails(product);
   const details = isApparel
     ? `<div><dt>Material</dt><dd>${escapeHtml(product.material || "-")}</dd></div><div><dt>Color</dt><dd>${escapeHtml(product.color || "-")}</dd></div>`
-    : `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>${isRecord ? `<div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>` : ""}<div><dt>Label</dt><dd>${labelMarkup}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div><div><dt>Notes</dt><dd>${escapeHtml((product.details || []).join(" / "))}</dd></div>`;
+    : `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>${isRecord ? `<div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>` : ""}<div><dt>Label</dt><dd>${labelMarkup}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div>${isRecord ? `<div><dt>Catalog number</dt><dd>${escapeHtml(recordMetadataValue(product, "catalogNumber") || "Not specified")}</dd></div><div><dt>Barcode</dt><dd>${escapeHtml(recordMetadataValue(product, "barcode") || "Not specified")}</dd></div>${hasRecordConditionDetails ? `<div><dt>Media condition</dt><dd>${escapeHtml(product.mediaCondition || "Not specified")}</dd></div><div><dt>Sleeve condition</dt><dd>${escapeHtml(product.sleeveCondition || "Not specified")}</dd></div>` : ""}` : ""}<div><dt>Notes</dt><dd>${escapeHtml(recordNotes(product).join(" / "))}</dd></div>`;
   const recommended = isRecord ? recommendedProducts(product, publicProducts) : [];
   const detail = `<section class="product-detail"><div class="detail-gallery">${images
     .map((image, index) => `<figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""} ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>`)
