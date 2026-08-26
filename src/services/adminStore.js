@@ -24,6 +24,15 @@ function notifyPrivateStoreRefreshed() {
   if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("nixp:private-store-refreshed"));
 }
 
+function assertPrivateStoreReady() {
+  // The initial private catalog refresh runs in the background so the editor
+  // can open immediately. Do not let an older browser snapshot become a save
+  // payload before the server-authoritative refresh has completed.
+  if (canUsePrivateStore() && privateStoreRefresh) {
+    throw new Error("Admin is still syncing the current server catalog. Wait a moment before saving or publishing.");
+  }
+}
+
 function wait(ms) {
   return new Promise((resolve) => globalThis.setTimeout(resolve, ms));
 }
@@ -453,6 +462,7 @@ function readStore() {
 
 async function writeStore(store, { inventoryProduct = null } = {}) {
   if (!canUsePrivateStore()) return false;
+  assertPrivateStoreReady();
   const normalizedStore = normalizeStoreForSave(store);
   const previousActiveStore = activeStore;
   const previousActiveStoreScope = activeStoreScope;
@@ -755,16 +765,16 @@ export const adminStore = {
       activeStore = mergeStore(seed({ publicOnly: false }), initialStore, { publicOnly: false });
       activeStoreScope = scope;
       privateStoreRefreshedAt = Date.now();
-      // Admin actions must start from the server-authoritative catalog. The
-      // browser snapshot remains a fallback for an unavailable session/API,
-      // but rendering it first causes stale research warnings and old product
-      // fields to flash before the private Supabase read completes.
-      try {
-        await this.refreshPrivateStore({ force: true });
-        notifyPrivateStoreRefreshed();
-      } catch {
-        // Keep the last local snapshot available when the private API is down.
-      }
+      // Render the last known private snapshot immediately. Previously this
+      // awaited a full Supabase read of products, inventory, orders, cashflow,
+      // requests, and offers, leaving a blank workspace for several seconds.
+      // The authoritative response still replaces this snapshot in the
+      // background, while writes remain guarded until that refresh is done.
+      this.refreshPrivateStore({ force: true })
+        .then(() => notifyPrivateStoreRefreshed())
+        .catch(() => {
+          // Keep the last local snapshot available when the private API is down.
+        });
       return;
     }
 
@@ -873,6 +883,7 @@ export const adminStore = {
     return readStore();
   },
   async deployStore({ store, message, statusChange = null } = {}) {
+    assertPrivateStoreReady();
     const currentStore = store || this.getSnapshot();
     const response = await fetch("/api/admin/deploy", {
       method: "POST",
@@ -892,6 +903,7 @@ export const adminStore = {
     return payload;
   },
   async deployCurrentCatalog({ message = "" } = {}) {
+    assertPrivateStoreReady();
     return syncCatalog({
       action: "deploy-current",
       message: message || `Deploy current NIXP catalog ${new Date().toISOString()}`
@@ -992,6 +1004,7 @@ export const adminStore = {
     return payload;
   },
   async completeDraftProducts({ onProgress } = {}) {
+    assertPrivateStoreReady();
     const draftsBySku = new Map(this.getSnapshot().products.filter((product) =>
       product.category === "Records" &&
       product.publishStatus !== "Published" &&
@@ -1035,6 +1048,7 @@ export const adminStore = {
     };
   },
   async completeProduct(id) {
+    assertPrivateStoreReady();
     // The rendered Admin table comes from the active server-refreshed store.
     // Never fall back to an older localStorage row when constructing the
     // research request, or the result can be written against stale Finance
