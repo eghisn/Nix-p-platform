@@ -47,11 +47,11 @@ function catalogJson(res, status, payload, { privateScope = false } = {}) {
     res.setHeader("cdn-cache-control", "no-store");
     res.setHeader("vercel-cdn-cache-control", "no-store");
   } else {
-    // This endpoint contains the same deploy-owned editorial snapshot as the
-    // page HTML. Prices and stock are deliberately kept on /api/prices.
+    // This is a stable fallback URL, so it must follow the active deployment.
+    // Public pages normally use their revisioned snapshot instead.
     res.setHeader("cache-control", "public, max-age=0, must-revalidate");
-    res.setHeader("cdn-cache-control", "public, s-maxage=31536000, immutable");
-    res.setHeader("vercel-cdn-cache-control", "public, s-maxage=31536000, immutable");
+    res.setHeader("cdn-cache-control", "public, s-maxage=0, must-revalidate");
+    res.setHeader("vercel-cdn-cache-control", "public, s-maxage=0, must-revalidate");
   }
   res.end(JSON.stringify(payload));
 }

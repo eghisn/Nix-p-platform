@@ -10,14 +10,19 @@ import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from ".
 import { loadStore } from "./supabase.js";
 
 const ORIGIN = "https://www.nix-p.com";
-const BUNDLE_URL = "/assets/app.js?v=20260813-catalog-performance";
+const RELEASE_REVISION = String(process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA || "local")
+  .toLowerCase()
+  .replace(/[^a-z0-9]/g, "")
+  .slice(0, 16) || "local";
+const BUNDLE_URL = `/assets/app-${RELEASE_REVISION}.js`;
+const PUBLIC_SNAPSHOT_URL = `/public/data/releases/${RELEASE_REVISION}.json`;
 
 export async function renderCatalogPage(req, res, url) {
   try {
     const requestedPath = normalizePath(url.searchParams.get("catalogPath"));
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
-    const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}/public/data/public-store.json` });
+    const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}${PUBLIC_SNAPSHOT_URL}` });
     if (requestedPath === "/artists") {
       return renderArtistsIndexPage(res, store);
     }
@@ -121,12 +126,11 @@ function sendNoStoreHtml(res, document) {
 }
 
 function sendPublicSnapshotHeaders(res) {
-  // Every public document is generated from the deployment's immutable
-  // editorial snapshot. Browser requests revalidate at navigation time, while
-  // the Vercel CDN can serve that exact deployment revision immediately.
+  // Route URLs are stable and must resolve to the active deployment. The HTML
+  // itself points at immutable, revisioned catalog and application assets.
   res.setHeader("cache-control", "public, max-age=0, must-revalidate");
-  res.setHeader("cdn-cache-control", "public, s-maxage=31536000, immutable");
-  res.setHeader("vercel-cdn-cache-control", "public, s-maxage=31536000, immutable");
+  res.setHeader("cdn-cache-control", "public, s-maxage=0, must-revalidate");
+  res.setHeader("vercel-cdn-cache-control", "public, s-maxage=0, must-revalidate");
 }
 
 async function productDocument(product, path, store) {
@@ -166,6 +170,11 @@ async function pageDocument({ title, description, canonicalUrl, image, type = "w
   template = replaceMeta(template, "name", "twitter:image", image);
   template = template.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`);
   template = template.replace(/<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i, `<script type="module" src="${BUNDLE_URL}"></script>`);
+  template = template.replace(/\/src\/styles\/base\.css\?v=[^"]+/i, `/src/styles/base.css?v=${RELEASE_REVISION}`);
+  template = template.replace(
+    "</head>",
+    `    <meta name="nixp-release-revision" content="${RELEASE_REVISION}" />\n    <meta name="nixp-catalog-snapshot" content="${PUBLIC_SNAPSHOT_URL}" />\n    <link rel="modulepreload" href="${BUNDLE_URL}" />\n  </head>`
+  );
   template = template.replace("<!-- NIXP_APP_MARKER -->", appMarkup);
   return template;
 }

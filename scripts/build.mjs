@@ -19,6 +19,10 @@ import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from ".
 
 const root = process.cwd();
 const dist = `${root}/dist`;
+const releaseRevision = String(process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA || "local")
+  .toLowerCase()
+  .replace(/[^a-z0-9]/g, "")
+  .slice(0, 16) || "local";
 
 async function collectApiEntries(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -77,22 +81,34 @@ await build({
   bundle: true,
   format: "esm",
   splitting: true,
-  entryNames: "app",
+  entryNames: `app-${releaseRevision}`,
   chunkNames: "chunks/[name]-[hash]",
   minify: true,
   target: "es2022",
   legalComments: "none"
 });
 
-const bundleUrl = "/assets/app.js?v=20260813-catalog-performance";
+const bundleUrl = `/assets/app-${releaseRevision}.js`;
+const publicStorePath = `${dist}/public/data/public-store.json`;
+const publicStore = existsSync(publicStorePath) ? JSON.parse(await readFile(publicStorePath, "utf8")) : null;
+const releasedPublicStoreUrl = `/public/data/releases/${releaseRevision}.json`;
+await mkdir(`${dist}/public/data/releases`, { recursive: true });
+await writeFile(
+  `${dist}${releasedPublicStoreUrl}`,
+  `${JSON.stringify({ ...(publicStore || {}), releaseRevision }, null, 2)}\n`
+);
+const releaseMeta = [
+  `    <meta name="nixp-release-revision" content="${releaseRevision}" />`,
+  `    <meta name="nixp-catalog-snapshot" content="${releasedPublicStoreUrl}" />`,
+  `    <link rel="modulepreload" href="${bundleUrl}" />`
+].join("\n");
 const indexHtml = (await readFile(`${dist}/index.html`, "utf8"))
   .replace(
     /<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i,
     `<script type="module" src="${bundleUrl}"></script>`
   )
-  .replace("</head>", `    <link rel="modulepreload" href="${bundleUrl}" />\n  </head>`);
-const publicStorePath = `${dist}/public/data/public-store.json`;
-const publicStore = existsSync(publicStorePath) ? JSON.parse(await readFile(publicStorePath, "utf8")) : null;
+  .replace(/\/src\/styles\/base\.css\?v=[^"]+/i, `/src/styles/base.css?v=${releaseRevision}`)
+  .replace("</head>", `${releaseMeta}\n  </head>`);
 const siteOrigin = "https://www.nix-p.com";
 const siteDescription = "A shifting selection of records, objects, publishing and apparel.";
 const siteImage = `${siteOrigin}/public/assets/nixp-logo.png`;

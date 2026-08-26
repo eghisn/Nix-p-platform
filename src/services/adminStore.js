@@ -415,6 +415,17 @@ function currentStoreScope() {
   return canUsePrivateStore() ? "admin" : "public";
 }
 
+function deployedPublicStorePath() {
+  if (typeof document === "undefined") return PUBLIC_STORE_PATH;
+  const path = document.querySelector('meta[name="nixp-catalog-snapshot"]')?.content || "";
+  return /^\/public\/data\/releases\/[a-z0-9]+\.json$/i.test(path) ? path : PUBLIC_STORE_PATH;
+}
+
+function deployedReleaseRevision() {
+  if (typeof document === "undefined") return "";
+  return String(document.querySelector('meta[name="nixp-release-revision"]')?.content || "").trim();
+}
+
 function normalizeApparelType(value) {
   const type = String(value || "").trim().toLowerCase();
   if (type === "accesories" || type === "accessory") return "Accessories";
@@ -751,6 +762,7 @@ export const adminStore = {
   async initialize() {
     const publicOnly = !canUsePrivateStore();
     const scope = currentStoreScope();
+    const expectedReleaseRevision = publicOnly ? deployedReleaseRevision() : "";
     let browserStore = null;
     if (!publicOnly) {
       try {
@@ -783,14 +795,18 @@ export const adminStore = {
       // browser on that one editorial revision as well; loading the full
       // Supabase catalog here would make remote-only products or newer fields
       // appear after the initial HTML and create an old/new flash on refresh.
-      const filePath = publicOnly ? PUBLIC_STORE_PATH : ADMIN_STORE_PATH;
+      const filePath = publicOnly ? deployedPublicStorePath() : ADMIN_STORE_PATH;
       // The public store is a deploy-owned editorial revision. Do not append a
       // timestamp here: it turns one immutable snapshot into a fresh cache key
       // on every refresh and makes the first interactive render needlessly late.
       const fileResponse = await fetch(filePath, { cache: publicOnly ? "default" : "no-store" });
       if (!fileResponse.ok) throw new Error("No file store");
+      const fileStore = await fileResponse.json();
+      if (expectedReleaseRevision && fileStore?.releaseRevision !== expectedReleaseRevision) {
+        throw new Error("Catalog release does not match this page.");
+      }
       activeStore = await migrateBrowserStore(
-        mergeStore(seed({ publicOnly }), await fileResponse.json(), { publicOnly }),
+        mergeStore(seed({ publicOnly }), fileStore, { publicOnly }),
         browserStore
       );
       if (publicOnly) refreshPublicCommerceInBackground(activeStore);
@@ -803,6 +819,7 @@ export const adminStore = {
       // second hydration pass, so it is only used when the snapshot request
       // itself failed before any public content was rendered.
       if (publicOnly) {
+        if (expectedReleaseRevision) throw new Error("This catalog release is unavailable.");
         const response = await fetch("/api/catalog?scope=public", { cache: "default" });
         if (!response.ok) throw new Error("Public catalog unavailable.");
         const payload = await response.json();
