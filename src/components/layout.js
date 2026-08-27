@@ -1,4 +1,4 @@
-import { artistCreditNames, artistIdentityKey, canonicalLabelName } from "../data/catalogIdentity.js";
+import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalLabelName } from "../data/catalogIdentity.js";
 import { publicProductPath } from "../data/publicUrls.js";
 import { productCardImageAttributes } from "../data/productThumbnails.js";
 
@@ -267,9 +267,8 @@ function inventoryArtistMap(products) {
   const artists = new Map();
   for (const product of products || []) {
     if (product.category && product.category !== "Records") continue;
-    const artist = String(product.artist || "").trim();
-    if (!artist) continue;
-    for (const credit of artistCreditNames(artist)) artists.set(artistIdentityKey(credit), credit);
+    if (!String(product.artist || "").trim()) continue;
+    for (const credit of productArtistCreditNames(product)) artists.set(artistIdentityKey(credit), credit);
   }
   return artists;
 }

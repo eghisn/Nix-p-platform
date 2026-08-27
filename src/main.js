@@ -1,5 +1,5 @@
 import { requestStatuses } from "./data/sampleData.js";
-import { artistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLabelName } from "./data/catalogIdentity.js";
+import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLabelName } from "./data/catalogIdentity.js";
 import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicProductSlug } from "./data/publicUrls.js";
 import { recommendedProducts } from "./data/productRecommendations.js";
 import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
@@ -675,7 +675,7 @@ async function artistProductsPage(path) {
   const products = artist
     ? allProducts.filter((product) =>
         ["Records", "Apparel"].includes(product.category) &&
-        artistCreditNames(product.artist).some((name) => artistIdentityKey(name) === artistIdentityKey(artist))
+        productArtistCreditNames(product).some((name) => artistIdentityKey(name) === artistIdentityKey(artist))
       )
     : [];
   const availableArtistNames = inventoryArtistNames(allProducts);
@@ -2337,7 +2337,7 @@ function inventoryArtistNames(products) {
   for (const product of products) {
     const artist = String(product.artist || "").trim();
     if (!artist) continue;
-    for (const credit of artistCreditNames(artist)) artists.set(artistIdentityKey(credit), canonicalArtistName(credit));
+    for (const credit of productArtistCreditNames(product)) artists.set(artistIdentityKey(credit), canonicalArtistName(credit));
   }
   return artists;
 }

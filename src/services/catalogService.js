@@ -1,5 +1,5 @@
 import { adminStore } from "./adminStore.js";
-import { artistCreditNames, canonicalArtistName, canonicalLabelName, artistIdentityKey } from "../data/catalogIdentity.js";
+import { productArtistCreditNames, canonicalArtistName, canonicalLabelName, artistIdentityKey } from "../data/catalogIdentity.js";
 import { publicCategoryPath, publicProductSlug } from "../data/publicUrls.js";
 import { labelEntries, productMatchesLabel } from "../data/labelCatalog.js";
 import { labelLogoAvailable } from "../data/labelLogoManifest.js";
@@ -52,7 +52,7 @@ export const catalogService = {
     const requested = artistIdentityKey(artistName);
     return adminStore
       .listProducts()
-      .filter((product) => artistCreditNames(product.artist).some((name) => artistIdentityKey(name) === requested));
+      .filter((product) => productArtistCreditNames(product).some((name) => artistIdentityKey(name) === requested));
   },
   async getProduct(id, options = {}) {
     return adminStore.getProduct(id, options);
@@ -85,13 +85,13 @@ export const catalogService = {
   async listArtists() {
     const snapshot = adminStore.getSnapshot();
     const recordProducts = adminStore.listProducts().filter((product) => product.category === "Records");
-    const recordArtistKeys = new Set(recordProducts.flatMap((product) => artistCreditNames(product.artist).map(artistIdentityKey)).filter(Boolean));
+    const recordArtistKeys = new Set(recordProducts.flatMap((product) => productArtistCreditNames(product).map(artistIdentityKey)).filter(Boolean));
     const names = [
       ...snapshot.artists
         .filter((artist) => artist.status === "Published")
         .filter((artist) => recordArtistKeys.has(artistIdentityKey(artist.name)))
         .map((artist) => artist.name),
-      ...recordProducts.flatMap((product) => artistCreditNames(product.artist))
+      ...recordProducts.flatMap((product) => productArtistCreditNames(product))
     ];
     return [...new Map(names
       .map((name) => String(name || "").trim())

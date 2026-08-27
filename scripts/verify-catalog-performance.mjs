@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { artistCreditNames } from "../src/data/catalogIdentity.js";
+import { productArtistCreditNames } from "../src/data/catalogIdentity.js";
 import { canGenerateProductCardThumbnail, productCardThumbnailWidths } from "../src/data/productThumbnails.js";
 
 const root = process.cwd();
@@ -9,7 +9,7 @@ const products = (store.products || []).filter(
   (product) => product.publishStatus === "Published" && product.visibility === "Public" && product.image
 );
 const records = products.filter((product) => product.category === "Records");
-const artistCount = new Set(records.flatMap((product) => artistCreditNames(product.artist).map(slugify))).size;
+const artistCount = new Set(records.flatMap((product) => productArtistCreditNames(product).map(slugify))).size;
 
 const artistsHtml = await fs.readFile(path.join(root, "dist", "artists", "index.html"), "utf8");
 assert(artistsHtml.includes("artist-list"), "Artists must be generated as a static catalogue page.");

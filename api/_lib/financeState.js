@@ -7,7 +7,7 @@ import {
   normalizeRelatedArtistsPayload,
   researchRelatedArtists
 } from "./catalogEnrichment.js";
-import { artistCreditNames, canonicalArtistName, canonicalLabelName, canonicalProductArtist } from "../../src/data/catalogIdentity.js";
+import { artistCreditNames, productArtistCreditNames, canonicalArtistName, canonicalLabelName, canonicalProductArtist } from "../../src/data/catalogIdentity.js";
 import { catalogPublicationIssues, isResearchPublicationReady, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 
@@ -335,7 +335,7 @@ async function syncFinanceArtistsToCatalog(productRows = []) {
   const names = [...new Set(
     productRows
       .filter((item) => item?.category === "Records" && item?.publish_status === "Published" && item?.visibility === "Public")
-      .flatMap((item) => artistCreditNames(item?.artist))
+      .flatMap((item) => productArtistCreditNames(item))
       .filter(Boolean)
   )];
   if (!names.length) return;

@@ -15,6 +15,7 @@ export const verifiedLabelLogos = Object.freeze({
   columbia: { extension: "svg", source: "https://www.sonymusic.com/" },
   "creation-records": { extension: "png", source: "https://www.discogs.com/label/1658-Creation-Records" },
   "daymare-recordings": { extension: "png", source: "https://www.discogs.com/label/29944-Daymare-Recordings" },
+  dekmantel: { extension: "svg", source: "https://dekmantel.com/" },
   "dress-up": { extension: "png", source: "https://www.discogs.com/label/36910-Dress-Up" },
   domino: { extension: "svg", source: "https://www.dominomusic.com/uk" },
   epitaph: { extension: "png", source: "https://www.epitaph.com/" },

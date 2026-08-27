@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { productGrid, shell } from "../../src/components/layout.js";
-import { artistCreditNames, artistIdentityKey, canonicalLabelName } from "../../src/data/catalogIdentity.js";
+import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalLabelName } from "../../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../../src/data/publicUrls.js";
 import { labelEntries, labelSlug, productMatchesLabel } from "../../src/data/labelCatalog.js";
 import { labelLogoAvailable } from "../../src/data/labelLogoManifest.js";
@@ -49,7 +49,7 @@ export async function renderCatalogPage(req, res, url) {
 
 async function renderArtistsIndexPage(res, store) {
   const records = (store.products || []).filter((product) => product.category === "Records");
-  const artists = [...new Map(records.flatMap((product) => artistCreditNames(product.artist).map((artist) => [slugify(artist), artist]))).values()].sort((left, right) => left.localeCompare(right));
+  const artists = [...new Map(records.flatMap((product) => productArtistCreditNames(product).map((artist) => [slugify(artist), artist]))).values()].sort((left, right) => left.localeCompare(right));
   const document = await pageDocument({
     title: "Artists | NIXP",
     description: "Artists with releases available from NIXP.",
@@ -66,13 +66,13 @@ async function renderArtistsIndexPage(res, store) {
 async function renderArtistPage(res, store, requestedPath) {
   const slug = requestedPath.slice("/artists/".length);
   const records = (store.products || []).filter((product) => product.category === "Records");
-  const artistName = records.flatMap((product) => artistCreditNames(product.artist)).find((artist) => slugify(artist) === slug);
+  const artistName = records.flatMap((product) => productArtistCreditNames(product)).find((artist) => slugify(artist) === slug);
   if (!artistName) return notFound(res);
   const products = (store.products || []).filter((product) =>
     ["Records", "Apparel"].includes(product.category) &&
-    artistCreditNames(product.artist).some((artist) => slugify(artist) === slug)
+    productArtistCreditNames(product).some((artist) => slugify(artist) === slug)
   );
-  const availableArtistNames = new Map(records.flatMap((product) => artistCreditNames(product.artist).map((artist) => [slugify(artist), artist])));
+  const availableArtistNames = new Map(records.flatMap((product) => productArtistCreditNames(product).map((artist) => [slugify(artist), artist])));
   const document = await pageDocument({
     title: `${artistName} | NIXP`,
     description: `${artistName} releases available from NIXP.`,
@@ -106,7 +106,7 @@ async function renderLabelPage(res, store, requestedPath) {
   const products = (store.products || []).filter((product) => productMatchesLabel(product, label.slug));
   const records = (store.products || []).filter((product) => product.category === "Records");
   const availableArtistNames = new Map(
-    records.flatMap((product) => artistCreditNames(product.artist).map((artist) => [artistIdentityKey(artist), artist]))
+    records.flatMap((product) => productArtistCreditNames(product).map((artist) => [artistIdentityKey(artist), artist]))
   );
   const document = await pageDocument({
     title: `${label.name} | Labels | NIXP`,
@@ -197,7 +197,7 @@ function productMarkup(product, store = {}) {
   const availableArtists = new Map(
     (store.products || [])
       .filter((item) => item.category === "Records")
-      .flatMap((item) => artistCreditNames(item.artist).map((artist) => [artistIdentityKey(artist), artist]))
+      .flatMap((item) => productArtistCreditNames(item).map((artist) => [artistIdentityKey(artist), artist]))
   );
   const relatedArtists = product.category === "Records" && Array.isArray(product.relatedArtists)
     ? product.relatedArtists.filter(Boolean)

@@ -6,7 +6,7 @@ import sharp from "sharp";
 import { productGrid, shell } from "../src/components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup } from "../src/components/catalogPage.js";
 import { recordsPageMarkup } from "../src/components/recordsPage.js";
-import { artistCreditNames, canonicalLabelName } from "../src/data/catalogIdentity.js";
+import { artistCreditNames, productArtistCreditNames, canonicalLabelName } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
 import { isRecentReleaseProduct, recentReleaseSortComparator } from "../src/data/homeCollections.js";
 import { recommendedProducts } from "../src/data/productRecommendations.js";
@@ -145,6 +145,13 @@ for (let index = 0; index < thumbnailProducts.length; index += 4) {
   );
 }
 const publicLabels = labelEntries(publicProducts).filter((label) => labelLogoAvailable(label.slug));
+const missingPublicLabelAssets = publicLabels.filter((label) => {
+  const extension = verifiedLabelLogoExtensions[label.slug];
+  return !extension || !existsSync(`${root}/public/labels/${label.slug}.${extension}`);
+});
+if (missingPublicLabelAssets.length) {
+  throw new Error(`Public label assets are missing: ${missingPublicLabelAssets.map((label) => label.slug).join(", ")}`);
+}
 
 // Keep the deployed label directory limited to verified real artwork. This prevents old
 // placeholder marks from surviving in dist after the source manifest changes.
@@ -180,6 +187,7 @@ const staticRoutes = [
   "accessories",
   "publishing",
   "artists",
+  "labels",
   "blog",
   "request-item",
   "make-an-offer",
@@ -217,9 +225,8 @@ function inventoryArtistMap(products) {
   const artists = new Map();
   for (const product of products || []) {
     if (product.category !== "Records") continue;
-    const artist = String(product.artist || "").trim();
-    if (!artist) continue;
-    for (const credit of artistCreditNames(artist)) artists.set(slugify(credit), credit);
+    if (!String(product.artist || "").trim()) continue;
+    for (const credit of productArtistCreditNames(product)) artists.set(slugify(credit), credit);
   }
   return artists;
 }
@@ -670,7 +677,7 @@ function artistDocument(artist) {
   const products = publicProducts.filter(
     (product) =>
       ["Records", "Apparel"].includes(product.category) &&
-      artistCreditNames(product.artist).some((credit) => slugify(credit) === slugify(artist.name))
+      productArtistCreditNames(product).some((credit) => slugify(credit) === slugify(artist.name))
   );
   const appMarkup = shell(
     `<section class="section shop-section artist-products">
@@ -750,9 +757,11 @@ for (const product of publicStore?.products || []) {
 
 const artistDirectory = new Map();
 for (const product of publicProducts.filter((product) => product.category === "Records")) {
-  for (const artistName of artistCreditNames(product.artist)) artistDirectory.set(slugify(artistName), artistName);
+  for (const artistName of productArtistCreditNames(product)) artistDirectory.set(slugify(artistName), artistName);
 }
 const orderedArtistDirectory = [...artistDirectory.values()].sort((left, right) => left.localeCompare(right));
+for (const artistSlugPath of artistDirectory.keys()) staticRoutes.push(`artists/${artistSlugPath}`);
+for (const label of publicLabels) staticRoutes.push(`labels/${label.slug}`);
 for (const route of [...new Set(staticRoutes)]) {
   const routeDir = `${dist}/${route}`;
   await mkdir(routeDir, { recursive: true });

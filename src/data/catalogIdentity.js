@@ -42,6 +42,12 @@ const PRODUCT_ARTIST_OVERRIDES = new Map([
   ["NXP-2026-VNL-0064", "Skudge / San Proper"]
 ]);
 
+// A release can belong to an additional catalogue artist page without changing
+// the sleeve credit shown on the product itself.
+const PRODUCT_ARTIST_PAGE_ALIASES = new Map([
+  ["NXP-2026-VNL-0064", ["Various Artists"]]
+]);
+
 // Exact credits are kept above because not every ampersand is a collaboration.
 // For new collaborative release credits, the separator rule below creates
 // individual artist pages without changing the release's printed credit.
@@ -68,6 +74,15 @@ export function artistCreditNames(value) {
     .map((credit) => canonicalArtistName(credit))
     .filter(Boolean);
   return credits.length > 1 ? [...new Set(credits)] : [canonicalArtistName(name)];
+}
+
+export function productArtistCreditNames(product = {}) {
+  const sku = String(product.sku || "").trim().toUpperCase();
+  const names = [
+    ...artistCreditNames(canonicalProductArtist(product)),
+    ...(PRODUCT_ARTIST_PAGE_ALIASES.get(sku) || []).map(canonicalArtistName)
+  ].filter(Boolean);
+  return [...new Map(names.map((name) => [artistIdentityKey(name), name])).values()];
 }
 
 export function canonicalRelatedArtistName(value) {
