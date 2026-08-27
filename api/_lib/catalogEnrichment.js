@@ -1216,6 +1216,92 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     relatedArtists: ["Jagz Kooner"],
     tags: ["post-punk", "psychedelic rock", "noise rock", "shoegaze", "remix"],
     sourceUrl: "https://pictureinmyearrecords.bandcamp.com/album/faster-lover-ep"
+  },
+  "NXP-2026-VNL-0063": {
+    title: "Enter The Slasher House",
+    year: 2014,
+    label: "Domino",
+    edition: "2 x Vinyl, LP, Album",
+    catalogNumber: "WIGLP331",
+    barcode: "887828033119",
+    cover: "https://f4.bcbits.com/img/a1936172471_0.jpg",
+    productPhoto: "https://uk.rarevinyl.com/cdn/shop/files/slasher-flicks-enter-the-slasher-house-180g-sealed-uk-2-lp-vinyl-record-double-wiglp331-853987_188ce0c5-1cce-4ce7-bdb9-a67da604dcab_1200x1207.jpg?v=1736454494",
+    imageCredits: [
+      {
+        image: "https://f4.bcbits.com/img/a1936172471_0.jpg",
+        credit: "Avey Tare official Bandcamp artwork",
+        url: "https://aveytare.bandcamp.com/album/enter-the-slasher-house"
+      },
+      {
+        image: "https://uk.rarevinyl.com/cdn/shop/files/slasher-flicks-enter-the-slasher-house-180g-sealed-uk-2-lp-vinyl-record-double-wiglp331-853987_188ce0c5-1cce-4ce7-bdb9-a67da604dcab_1200x1207.jpg?v=1736454494",
+        credit: "RareVinyl physical vinyl product photography",
+        url: "https://uk.rarevinyl.com/products/slasher-flicks-enter-the-slasher-house-180g-sealed-uk-2-lp-vinyl-record-double-wiglp331-853987"
+      }
+    ],
+    description: "Avey Tare's Slasher Flicks brings Dave Portner together with Angel Deradoorian and drummer Jeremy Hyman for a brightly physical psychedelic-pop record made with minimal overdubs. Enter The Slasher House moves from serrated guitar and analog-synth color to the buoyant hooks of Little Fang, keeping the trio's live, slightly unhinged momentum intact.",
+    descriptionSource: "Avey Tare official Bandcamp / Pitchfork",
+    reviewQuote: "a balance of more accessible and introspective sounds",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/19200-avey-tares-slasher-flicks-enter-the-slasher-house/",
+    relatedArtists: ["Avey Tare", "Angel Deradoorian", "Jeremy Hyman", "Animal Collective"],
+    relatedArtistResearch: {
+      status: "verified",
+      source: "Avey Tare official Bandcamp release credits",
+      artists: ["Avey Tare", "Angel Deradoorian", "Jeremy Hyman", "Animal Collective"],
+      evidence: [
+        {
+          source: "Avey Tare official Bandcamp release credits",
+          sourceUrl: "https://aveytare.bandcamp.com/album/enter-the-slasher-house",
+          relationType: "release personnel and artist lineage",
+          artists: ["Avey Tare", "Angel Deradoorian", "Jeremy Hyman", "Animal Collective"]
+        }
+      ]
+    },
+    tags: ["psychedelic pop", "experimental rock", "indie rock", "art rock"],
+    sourceUrl: "https://aveytare.bandcamp.com/album/enter-the-slasher-house"
+  },
+  "NXP-2026-VNL-0064": {
+    artist: "Skudge / San Proper",
+    title: "Anniversary Series: Part 4",
+    year: 2012,
+    label: "Dekmantel",
+    edition: "Vinyl, 12\", 45 RPM, Blue",
+    catalogNumber: "DKMNTL AS-5.4",
+    cover: "https://imagescdn.juno.co.uk/full/CS445694-01A-BIG.jpg",
+    productPhoto: "https://imagescdn.juno.co.uk/full/CS445694-01B-BIG.jpg",
+    imageCredits: [
+      {
+        image: "https://imagescdn.juno.co.uk/full/CS445694-01A-BIG.jpg",
+        credit: "Juno Records physical release sleeve scan",
+        url: "https://www.juno.co.uk/products/skudge-san-proper-dekmantel-anniversary-series-part-4-vinyl/445694-01/"
+      },
+      {
+        image: "https://imagescdn.juno.co.uk/full/CS445694-01B-BIG.jpg",
+        credit: "Juno Records physical release label scan",
+        url: "https://www.juno.co.uk/products/skudge-san-proper-dekmantel-anniversary-series-part-4-vinyl/445694-01/"
+      }
+    ],
+    description: "Dekmantel's 2012 anniversary-series installment pairs Skudge's Silent Running with San Proper's Rattle (Station 2 Station). The 12-inch keeps the label's early club language concise: stripped, machine-led techno on one side, a rougher house cut on the other.",
+    descriptionSource: "HHV / Juno Records",
+    reviewQuote: "raw and lively tracks dripping dirty funk and dusty machine",
+    reviewSource: "Juno Records (quoted)",
+    reviewUrl: "https://www.juno.co.uk/products/skudge-san-proper-dekmantel-anniversary-series-part-4-vinyl/445694-01/",
+    relatedArtists: ["Skudge", "San Proper"],
+    relatedArtistResearch: {
+      status: "verified",
+      source: "Exact release artist credits",
+      artists: ["Skudge", "San Proper"],
+      evidence: [
+        {
+          source: "HHV / Juno Records release credits",
+          sourceUrl: "https://www.hhv.de/en/records/item/skudge-san-proper-dekmantel-anniversary-series-part-4-1255668",
+          relationType: "split release artist credits",
+          artists: ["Skudge", "San Proper"]
+        }
+      ]
+    },
+    tags: ["techno", "house", "minimal", "electronic"],
+    sourceUrl: "https://www.hhv.de/en/records/item/skudge-san-proper-dekmantel-anniversary-series-part-4-1255668"
   }
 };
 

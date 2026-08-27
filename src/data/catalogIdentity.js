@@ -6,6 +6,7 @@ const ARTIST_CREDIT_ALIASES = new Map([
   ["overmono & the streets turn the page", ["Overmono", "The Streets"]],
   ["jk flesh, gothtrad", ["JK Flesh", "Gothtrad"]],
   ["jk flesh & gothtrad", ["JK Flesh", "Gothtrad"]],
+  ["skudge / san proper", ["Skudge", "San Proper"]],
   // Siouxsie and the Banshees is a single artist name, not a collaboration.
   // Keep common ampersand/spelling variants on the same artist page.
   ["siouxsie & the banshees", ["Siouxsie And The Banshees"]],
@@ -35,7 +36,10 @@ const ARTIST_CANONICAL_NAMES = new Map([
 // as Various Artists. Keep this correction keyed to the stable SKU so a
 // generic collaboration split never changes unrelated products.
 const PRODUCT_ARTIST_OVERRIDES = new Map([
-  ["NXP-2026-VNL-0050", "Various Artists"]
+  ["NXP-2026-VNL-0050", "Various Artists"],
+  // Finance initially recorded this split release as Various Artists. Preserve
+  // the verified sleeve credit on every later Finance-to-catalog sync.
+  ["NXP-2026-VNL-0064", "Skudge / San Proper"]
 ]);
 
 // Exact credits are kept above because not every ampersand is a collaboration.
