@@ -12,7 +12,9 @@ if (JSON.stringify(artistCreditNames(fordLopatin.artist)) !== JSON.stringify(["F
 }
 const expected = [...new Set(records.flatMap((product) => artistCreditNames(product.artist)))].sort((left, right) => left.localeCompare(right));
 const html = await fs.readFile(path.join(root, "dist", "artists", "index.html"), "utf8");
-const actual = [...html.matchAll(/class="artist-row"[\s\S]*?<h2>(.*?)<\/h2>/g)].map((match) => match[1].replaceAll("&amp;", "&"));
+const actual = [...html.matchAll(/class="artist-row"[\s\S]*?<h2>(.*?)<\/h2>/g)].map((match) =>
+  match[1].replaceAll("&amp;", "&").replaceAll("&#039;", "'")
+);
 
 if (JSON.stringify(actual) !== JSON.stringify(expected)) {
   throw new Error(`Generated artist directory differs from the public record credits (${actual.length} rendered, ${expected.length} expected).`);
