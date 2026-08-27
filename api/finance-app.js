@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   const snapshot = await readFinanceStateWithVersion();
   const html = (await readFile(htmlPath, "utf8")).replace(
     "<script>",
-    `<script>window.__NIXP_FINANCE_STATE__=${JSON.stringify(snapshot.state).replace(/</g, "\\u003c")};window.__NIXP_FINANCE_UPDATED_AT__=${JSON.stringify(snapshot.updatedAt)};</script>\n  <script>`
+    `<script>window.__NIXP_FINANCE_STATE__=${JSON.stringify(snapshot.state).replace(/</g, "\\u003c")};window.__NIXP_FINANCE_UPDATED_AT__=${JSON.stringify(snapshot.updatedAt)};window.__NIXP_FINANCE_SECTION_VERSIONS__=${JSON.stringify(snapshot.sectionVersions || {})};</script>\n  <script>`
   );
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");

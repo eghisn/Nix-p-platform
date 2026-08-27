@@ -3,7 +3,7 @@ import {
   CURATED_FINANCE_ENRICHMENTS,
   enrichFinanceCatalogProduct
 } from "../api/_lib/catalogEnrichment.js";
-import { readFinanceState, writeFinanceState } from "../api/_lib/financeState.js";
+import { readFinanceStateWithVersion, writeFinanceState } from "../api/_lib/financeState.js";
 import { loadStore, supabaseFetch } from "../api/_lib/supabase.js";
 import { canonicalProductArtist } from "../src/data/catalogIdentity.js";
 
@@ -16,7 +16,8 @@ if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
   throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required.");
 }
 
-const state = await readFinanceState();
+const financeSnapshot = await readFinanceStateWithVersion();
+const state = financeSnapshot.state;
 let financeChanged = false;
 for (const stock of state.inventoryStock || []) {
   const enrichment = CURATED_FINANCE_ENRICHMENTS[String(stock.sku || "").toUpperCase()];
@@ -43,7 +44,7 @@ for (const purchase of state.inventory || []) {
   financeChanged = true;
 }
 
-if (financeChanged) await writeFinanceState(state);
+if (financeChanged) await writeFinanceState(state, { expectedSectionVersions: financeSnapshot.sectionVersions });
 
 const [adminStore, publicStore] = await Promise.all([
   loadStore({ privateScope: true }),

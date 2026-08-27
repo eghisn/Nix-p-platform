@@ -1409,6 +1409,7 @@
     const STORAGE_KEY = "nixp-cashflow-web-v1";
     const migratedServerState = window.__NIXP_FINANCE_STATE__;
     let financeStateUpdatedAt = window.__NIXP_FINANCE_UPDATED_AT__ || null;
+    let financeSectionVersions = window.__NIXP_FINANCE_SECTION_VERSIONS__ || {};
     let financeLastBackupId = null;
     let financeSavePending = false;
     let financeSaveConflict = false;
@@ -1435,6 +1436,7 @@
     const state = loadState();
     if (state.openingCash === undefined) state.openingCash = null;
     if (!state.targets || typeof state.targets !== "object" || Array.isArray(state.targets)) state.targets = {};
+    let financeBaselineState = cloneFinanceState(state);
     const sortState = {
       dashboard: { key: "date", direction: "asc" },
       sales: { key: "date", direction: "asc" },
@@ -1665,32 +1667,24 @@
         const response = await fetch("/api/state", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ state, updatedAt: financeStateUpdatedAt })
+          body: JSON.stringify({
+            state,
+            updatedAt: financeStateUpdatedAt,
+            sectionVersions: financeSectionVersions,
+            changedSections: changedFinanceSections()
+          })
         });
         const payload = await response.json().catch(() => ({}));
         if (response.status === 409) {
-          el.saveStatus.textContent = "Server changed. Saving your latest edits...";
-          const retry = await fetch("/api/state", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({ state })
-          });
-          const retryPayload = await retry.json().catch(() => ({}));
-          if (!retry.ok) {
-            financeSaveConflict = true;
-            throw new Error(retryPayload.error || payload.error || "Finance data changed on the server. Refresh before saving again.");
-          }
-          financeSaveConflict = false;
-          financeStateUpdatedAt = retryPayload.updatedAt || financeStateUpdatedAt;
-          financeLastBackupId = retryPayload.backupId || financeLastBackupId;
-          el.saveStatus.textContent = financeLastBackupId
-            ? "Saved to protected server and backed up. Catalog research queued."
-            : "Saved to protected server. Catalog research queued.";
-          return true;
+          financeSaveConflict = true;
+          throw new Error("Server data changed in the same section. Reload before saving so no edit is overwritten.");
         }
         if (!response.ok) throw new Error(payload.error || "Unable to save finance state");
         financeSaveConflict = false;
+        if (payload.state) applyServerState(payload.state);
         financeStateUpdatedAt = payload.updatedAt || financeStateUpdatedAt;
+        financeSectionVersions = payload.sectionVersions || financeSectionVersions;
+        financeBaselineState = cloneFinanceState(state);
         financeLastBackupId = payload.backupId || financeLastBackupId;
         el.saveStatus.textContent = financeLastBackupId
           ? "Saved to protected server and backed up. Catalog research queued."
@@ -1710,24 +1704,39 @@
       if (!response.ok) return;
       const payload = await response.json().catch(() => ({}));
       if (!payload.state || !payload.updatedAt || payload.updatedAt === financeStateUpdatedAt) return;
-      state.general = Array.isArray(payload.state.general) ? payload.state.general : [];
-      state.sales = Array.isArray(payload.state.sales) ? payload.state.sales : [];
-      state.expenses = Array.isArray(payload.state.expenses) ? payload.state.expenses : [];
-      state.inventory = Array.isArray(payload.state.inventory) ? payload.state.inventory : [];
-      state.inventoryStock = Array.isArray(payload.state.inventoryStock) ? payload.state.inventoryStock : [];
-      state.monthlyReports = Array.isArray(payload.state.monthlyReports) ? payload.state.monthlyReports : [];
-      state.openingCash = payload.state.openingCash === null || payload.state.openingCash === undefined || payload.state.openingCash === ""
-        ? null
-        : numeric(payload.state.openingCash);
-      state.targets = payload.state.targets && typeof payload.state.targets === "object" && !Array.isArray(payload.state.targets)
-        ? payload.state.targets
-        : {};
+      applyServerState(payload.state);
       if (el.reportOpeningCash) el.reportOpeningCash.value = state.openingCash ?? "";
       financeStateUpdatedAt = payload.updatedAt;
+      financeSectionVersions = payload.sectionVersions || financeSectionVersions;
+      financeBaselineState = cloneFinanceState(state);
       normalizeDerivedData();
       closeCompletedMonthlyReports();
       render();
       el.saveStatus.textContent = "Updated from storefront";
+    }
+
+    function applyServerState(next) {
+      state.general = Array.isArray(next.general) ? next.general : [];
+      state.sales = Array.isArray(next.sales) ? next.sales : [];
+      state.expenses = Array.isArray(next.expenses) ? next.expenses : [];
+      state.inventory = Array.isArray(next.inventory) ? next.inventory : [];
+      state.inventoryStock = Array.isArray(next.inventoryStock) ? next.inventoryStock : [];
+      state.monthlyReports = Array.isArray(next.monthlyReports) ? next.monthlyReports : [];
+      state.openingCash = next.openingCash === null || next.openingCash === undefined || next.openingCash === ""
+        ? null
+        : numeric(next.openingCash);
+      state.targets = next.targets && typeof next.targets === "object" && !Array.isArray(next.targets)
+        ? next.targets
+        : {};
+    }
+
+    function cloneFinanceState(value) {
+      return JSON.parse(JSON.stringify(value));
+    }
+
+    function changedFinanceSections() {
+      return ["general", "sales", "expenses", "inventory", "inventoryStock", "monthlyReports", "openingCash", "targets"]
+        .filter((section) => JSON.stringify(financeBaselineState[section]) !== JSON.stringify(state[section]));
     }
 
     function uid() {

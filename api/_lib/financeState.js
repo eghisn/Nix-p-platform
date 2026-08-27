@@ -12,6 +12,7 @@ import { catalogPublicationIssues, isResearchPublicationReady, isRecordPublicati
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 
 const STATE_KEY = "main";
+const FINANCE_SECTIONS = ["general", "sales", "expenses", "inventory", "inventoryStock", "monthlyReports", "openingCash", "targets"];
 const EMPTY_FINANCE_STATE = {
   general: [],
   sales: [],
@@ -40,45 +41,59 @@ export async function readFinanceState() {
 }
 
 export async function readFinanceStateWithVersion() {
-  const remote = await readRemoteStateWithVersion().catch((error) => {
+  const sections = await readRemoteSectionsWithVersion().catch((error) => {
+    if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) throw error;
+    return null;
+  });
+  if (sections && isFinanceState(sections.state)) {
+    return sections;
+  }
+  const remote = await readLegacyStateWithVersion().catch((error) => {
     if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) throw error;
     return null;
   });
   if (isFinanceState(remote?.state)) {
-    return { state: normalizeFinanceState(remote.state), updatedAt: remote.updatedAt || null };
+    return { state: normalizeFinanceState(remote.state), updatedAt: remote.updatedAt || null, sectionVersions: {} };
   }
-  return { state: normalizeFinanceState(EMPTY_FINANCE_STATE), updatedAt: null };
+  return { state: normalizeFinanceState(EMPTY_FINANCE_STATE), updatedAt: null, sectionVersions: {} };
 }
 
-export async function writeFinanceState(state, { syncCatalog = true, expectedUpdatedAt = null } = {}) {
+export async function writeFinanceState(state, { syncCatalog = true, expectedUpdatedAt = null, expectedSectionVersions = null, changedSections = null } = {}) {
   if (!isFinanceState(state)) throw new Error("Invalid finance state.");
   const normalized = normalizeFinanceState(state);
-  const backupId = await backupFinanceState(normalized);
-  if (expectedUpdatedAt) {
-    const rows = await supabaseFetch(`finance_state?key=eq.${STATE_KEY}&updated_at=eq.${encodeURIComponent(expectedUpdatedAt)}`, {
-      method: "PATCH",
-      body: { state: normalized },
-      prefer: "return=representation"
-    });
-    if (!Array.isArray(rows) || !rows.length) {
-      const error = new Error("Finance data changed on the server. Refresh before saving again.");
-      error.statusCode = 409;
+  const previous = await readFinanceStateWithVersion();
+  if (expectedUpdatedAt && !expectedSectionVersions && expectedUpdatedAt !== previous.updatedAt) {
+    const error = new Error("Finance data changed on the server. Reload before saving again.");
+    error.statusCode = 409;
+    throw error;
+  }
+  const changes = changedFinanceSections(previous.state, normalized, changedSections);
+  if (Object.keys(changes).length) {
+    try {
+      await supabaseFetch("rpc/write_finance_state_sections", {
+        method: "POST",
+        body: {
+          p_changes: changes,
+          p_expected_revisions: expectedSectionVersions || previous.sectionVersions || {}
+        },
+        prefer: "return=minimal"
+      });
+    } catch (error) {
+      if (String(error?.message || "").includes("FINANCE_SECTION_CONFLICT")) error.statusCode = 409;
       throw error;
     }
-  } else {
-    await supabaseFetch("finance_state?on_conflict=key", {
-      method: "POST",
-      body: [{ key: STATE_KEY, state: normalized }],
-      prefer: "resolution=merge-duplicates,return=minimal"
-    });
   }
+  const saved = await readFinanceStateWithVersion();
+  const backupId = Object.keys(changes).length
+    ? await backupFinanceState(previous.state, saved.state, changes).catch(() => null)
+    : null;
   // Saving Finance must never wait for research or a Vercel deploy. It updates
   // the financial truth and the lightweight catalog mirror only. Research is
   // intentionally started by the exact SKU selected in Admin.
   if (syncCatalog) {
-    await syncFinanceInventoryToCatalog(normalized, { enrich: false });
+    await syncFinanceInventoryToCatalog(saved.state, { enrich: false });
   }
-  return { state: normalized, backupId };
+  return { ...saved, backupId };
 }
 
 // Finance is the source of truth for SKU stock. Complete record entries pass
@@ -617,7 +632,8 @@ export async function syncAdminProductInventory(product) {
 export async function syncAdminCatalogInventory(products = []) {
   const catalogProducts = (Array.isArray(products) ? products : [products]).filter((product) => product?.sku);
   if (!catalogProducts.length) return;
-  const current = normalizeFinanceState((await readRemoteState().catch(() => null)) || EMPTY_FINANCE_STATE);
+  const currentSnapshot = await readFinanceStateWithVersion();
+  const current = normalizeFinanceState(currentSnapshot.state || EMPTY_FINANCE_STATE);
   const existingIndexes = new Map(
     current.inventoryStock.map((item, index) => [String(item?.sku || "").trim().toLowerCase(), index])
   );
@@ -655,20 +671,20 @@ export async function syncAdminCatalogInventory(products = []) {
       current.inventoryStock[index] = nextStock;
     }
   }
-  await writeFinanceState(current, { syncCatalog: false });
+  await writeFinanceState(current, { syncCatalog: false, expectedSectionVersions: currentSnapshot.sectionVersions });
 }
 
-async function backupFinanceState(nextState) {
-  const previousState = await readRemoteState().catch(() => null);
+async function backupFinanceState(previousState, nextState, changes) {
   const id = `finance-state-${new Date().toISOString().replace(/[^0-9]/g, "")}-${Math.random().toString(36).slice(2, 8)}`;
   await supabaseFetch("store_backups", {
     method: "POST",
     body: [{
       id,
-      source: "finance-state",
+      source: "finance-state-change",
       raw: {
-        previous: isFinanceState(previousState) ? normalizeFinanceState(previousState) : null,
-        next: nextState
+        changedSections: Object.keys(changes),
+        previous: Object.fromEntries(Object.keys(changes).map((section) => [section, previousState[section]])),
+        next: Object.fromEntries(Object.keys(changes).map((section) => [section, nextState[section]]))
       }
     }],
     prefer: "return=minimal"
@@ -949,10 +965,32 @@ function today() {
 }
 
 async function readRemoteState() {
-  return (await readRemoteStateWithVersion())?.state || null;
+  return (await readFinanceStateWithVersion())?.state || null;
 }
 
-async function readRemoteStateWithVersion() {
+export function changedFinanceSections(previous = EMPTY_FINANCE_STATE, next = EMPTY_FINANCE_STATE, requestedSections = null) {
+  const allowed = Array.isArray(requestedSections)
+    ? requestedSections.filter((section) => FINANCE_SECTIONS.includes(section))
+    : FINANCE_SECTIONS;
+  return Object.fromEntries(
+    allowed
+      .filter((section) => JSON.stringify(previous[section]) !== JSON.stringify(next[section]))
+      .map((section) => [section, next[section]])
+  );
+}
+
+async function readRemoteSectionsWithVersion() {
+  const rows = await supabaseFetch("finance_state_sections?select=section,payload,revision,updated_at&order=section.asc");
+  if (!Array.isArray(rows) || rows.length !== FINANCE_SECTIONS.length) return null;
+  const bySection = new Map(rows.map((row) => [row.section, row]));
+  if (FINANCE_SECTIONS.some((section) => !bySection.has(section))) return null;
+  const state = Object.fromEntries(FINANCE_SECTIONS.map((section) => [section, bySection.get(section).payload]));
+  const sectionVersions = Object.fromEntries(FINANCE_SECTIONS.map((section) => [section, Number(bySection.get(section).revision)]));
+  const updatedAt = FINANCE_SECTIONS.map((section) => `${section}:${sectionVersions[section]}`).join("|");
+  return { state: normalizeFinanceState(state), updatedAt, sectionVersions };
+}
+
+async function readLegacyStateWithVersion() {
   const rows = await supabaseFetch(`finance_state?select=state,updated_at&key=eq.${STATE_KEY}&limit=1`);
   const row = rows?.[0];
   return row ? { state: row.state, updatedAt: row.updated_at || null } : null;
