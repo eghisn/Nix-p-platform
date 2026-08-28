@@ -190,6 +190,20 @@ export async function syncFinanceInventoryToCatalog(
     });
   }
   await syncFinanceArtistsToCatalog(protectedProductRows);
+  // Stock availability is calculated in Postgres from Finance quantity minus
+  // live reservations. Never write the Finance quantity directly onto an
+  // existing catalog product here: that could revive stock during checkout.
+  await reconcileFinanceStockToCatalog(skus);
+}
+
+export async function reconcileFinanceStockToCatalog(skus = []) {
+  const targetSkus = [...new Set((skus || [])
+    .map((sku) => String(sku || "").trim())
+    .filter(Boolean))];
+  return supabaseFetch("rpc/reconcile_finance_stock_to_catalog", {
+    method: "POST",
+    body: { p_skus: targetSkus.length ? targetSkus : null }
+  });
 }
 
 // Server-side, resumable catalog research. A job is claimed in Supabase before
@@ -488,7 +502,9 @@ function productRowFromFinanceStock(row, stock, quantity) {
   const raw = {
     ...(row.raw || {}),
     financeStockId: stock.id || row.raw?.financeStockId || null,
-    qty: quantity,
+    // Existing catalog quantities can have active checkout reservations. The
+    // database reconciler applies Finance quantity minus those reservations.
+    qty: normalizedQuantity(row.qty),
     updatedAt: today(),
     shipping: category === "Records"
       ? referenceShippingProfile({ ...row, format: item, edition: stock.edition || row.raw?.edition }, row.raw?.shipping)
@@ -538,7 +554,7 @@ function productRowFromFinanceStock(row, stock, quantity) {
     price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(row.price || 0),
     open_to_offers: openToOffers,
     minimum_acceptable_offer: openToOffers ? minimumAcceptableOffer : null,
-    qty: quantity,
+    qty: normalizedQuantity(row.qty),
     publish_status: publishStatus,
     visibility,
     updated_at: today(),
@@ -643,9 +659,12 @@ export async function syncAdminCatalogInventory(products = []) {
     const key = sku.toLowerCase();
     const index = existingIndexes.get(key);
     const existing = index === undefined ? {} : current.inventoryStock[index];
-    const quantity = Array.isArray(product.sizes) && product.sizes.length
+    const catalogQuantity = Array.isArray(product.sizes) && product.sizes.length
       ? product.sizes.reduce((sum, size) => sum + normalizedQuantity(size.quantity ?? size.qty), 0)
       : normalizedQuantity(product.qty);
+    // Admin owns editorial fields. Once a Finance stock row exists, Admin
+    // saves must not replace its quantity with a stale catalog snapshot.
+    const quantity = index === undefined ? catalogQuantity : normalizedQuantity(existing.qty);
     const nextStock = recalculateStock({
       ...existing,
       id: existing.id || `catalog-${product.id}`,
@@ -672,6 +691,7 @@ export async function syncAdminCatalogInventory(products = []) {
     }
   }
   await writeFinanceState(current, { syncCatalog: false, expectedSectionVersions: currentSnapshot.sectionVersions });
+  await reconcileFinanceStockToCatalog(catalogProducts.map((product) => product.sku));
 }
 
 async function backupFinanceState(previousState, nextState, changes) {

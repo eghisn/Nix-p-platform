@@ -235,9 +235,11 @@ async function handleCommerceMaintenance(req, res) {
   if (!isSupabaseConfigured({ requireServiceRole: true })) return json(res, 503, { ok: false, error: "Commerce maintenance is not configured." });
   if (!validCronSecret(req.headers.authorization, process.env.CRON_SECRET)) return json(res, 401, { ok: false, error: "Unauthorized." });
   try {
+    // Release first. Reconciliation reads active reservations, so it must not
+    // race the release transaction and publish an intermediate stock count.
+    const maintenance = await expirePendingOrders();
     const financeState = await readFinanceState();
-    const [maintenance, outbox, shipping, catalog, research] = await Promise.all([
-      expirePendingOrders(),
+    const [outbox, shipping, catalog, research] = await Promise.all([
       drainNotificationOutbox(50),
       runShippingMaintenance({ mode: "daily" }),
       syncFinanceInventoryToCatalog(financeState, { enrich: false }).then(() => ({ inventoryStock: financeState.inventoryStock?.length || 0 })),
