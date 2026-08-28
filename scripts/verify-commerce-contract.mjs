@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (file) => readFile(path.join(root, file), "utf8");
-const [checkout, client, adminStore, handlers, shippingEngine, migration, policies, outboxRecovery, shippingFoundation, stockLedger, financeState, vercelConfig] = await Promise.all([
+const [checkout, client, adminStore, handlers, shippingEngine, migration, policies, outboxRecovery, shippingFoundation, stockLedger, stockWriteGuard, financeState, vercelConfig] = await Promise.all([
   read("api/checkout.js"),
   read("src/main.js"),
   read("src/services/adminStore.js"),
@@ -15,6 +15,7 @@ const [checkout, client, adminStore, handlers, shippingEngine, migration, polici
   read("supabase/migrations/20260729104514_recover_stale_outbox_claims.sql"),
   read("supabase/migrations/20260729121848_shipping_quote_foundation.sql"),
   read("supabase/migrations/20260828103000_atomic_finance_stock_ledger.sql"),
+  read("supabase/migrations/20260828104500_enforce_finance_stock_on_catalog_writes.sql"),
   read("api/_lib/financeState.js"),
   read("vercel.json")
 ]);
@@ -49,6 +50,7 @@ const requirements = [
   [stockLedger.includes("select state into v_state from public.finance_state where key = 'main' for update"), "Payment, release, and reconciliation must lock Finance stock atomically."],
   [stockLedger.includes("'{inventoryStock}'") && stockLedger.includes("v_next_inventory_stock"), "Verified payments must debit Finance stock atomically."],
   [stockLedger.includes("order by product_id, coalesce(size_label, ''), id"), "Payment and release must lock products in a stable order."],
+  [stockWriteGuard.includes("create trigger enforce_product_stock_from_finance"), "Catalog writes must not revive active-reservation stock before the server deploy completes."],
   [financeState.includes("await reconcileFinanceStockToCatalog(skus);"), "Finance catalog sync must use the database stock reconciler."],
   [financeState.includes("const quantity = index === undefined ? catalogQuantity : normalizedQuantity(existing.qty);"), "Admin saves must preserve existing Finance stock quantities."],
   [checkout.includes("const maintenance = await expirePendingOrders();"), "Maintenance must finish stock releases before reconciliation."],
