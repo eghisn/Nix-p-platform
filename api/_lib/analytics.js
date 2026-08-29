@@ -1,12 +1,12 @@
-import { json } from "./_lib/auth.js";
-import { consumeCommerceRateLimit, requestClientAddress } from "./_lib/commerce.js";
-import { recordSystemEvent } from "./_lib/observability.js";
-import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
+import { json } from "./auth.js";
+import { consumeCommerceRateLimit, requestClientAddress } from "./commerce.js";
+import { recordSystemEvent } from "./observability.js";
+import { isSupabaseConfigured, supabaseFetch } from "./supabase.js";
 
 const EVENT_TYPES = new Set(["page_view", "product_view", "product_click", "add_to_cart", "cart_open", "checkout_started"]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
-export default async function handler(req, res) {
+export async function handleAnalyticsEvent(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed." });
   if (!sameOriginRequest(req)) return json(res, 403, { ok: false, error: "Analytics origin is not allowed." });
   if (!isSupabaseConfigured({ requireServiceRole: true })) {
@@ -40,9 +40,7 @@ export default async function handler(req, res) {
     return json(res, 202, { ok: true });
   } catch (error) {
     const status = Number(error?.statusCode || 500);
-    if (status >= 500) {
-      await recordSystemEvent({ level: "warning", source: "analytics-api", req, error });
-    }
+    if (status >= 500) await recordSystemEvent({ level: "warning", source: "analytics-api", req, error });
     return json(res, status, { ok: false, error: status === 400 ? error.message : "Analytics event was not accepted." });
   }
 }
