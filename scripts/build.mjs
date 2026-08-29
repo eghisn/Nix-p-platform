@@ -56,7 +56,7 @@ await build({
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 
-for (const entry of ["index.html", "src", "public", "vercel.json"]) {
+for (const entry of ["index.html", "src", "public", "marketing", "vercel.json"]) {
   if (existsSync(`${root}/${entry}`)) {
     await cp(`${root}/${entry}`, `${dist}/${entry}`, { recursive: true });
   }

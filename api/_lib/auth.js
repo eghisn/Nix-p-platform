@@ -78,15 +78,20 @@ export function clearSession(res) {
 export function requireWorkspace(req, res, workspace) {
   const session = getSession(req);
   if (!session || session.workspace !== workspace) {
-    json(res, 401, { ok: false, error: `${workspace === "finance" ? "Finance" : "Admin"} login required` });
+    const label = workspace === "finance" ? "Finance" : workspace === "marketing" ? "Marketing" : "Admin";
+    json(res, 401, { ok: false, error: `${label} login required` });
     return null;
   }
   return session;
 }
 
 export function validLogin(workspace, username, password) {
-  const expectedUser = workspace === "finance" ? process.env.NIXP_FINANCE_USERNAME : process.env.NIXP_ADMIN_USERNAME;
-  const expectedPass = workspace === "finance" ? process.env.NIXP_FINANCE_PASSWORD : process.env.NIXP_ADMIN_PASSWORD;
+  const expectedUser = workspace === "finance"
+    ? process.env.NIXP_FINANCE_USERNAME
+    : workspace === "marketing" ? process.env.NIXP_MARKETING_USERNAME : process.env.NIXP_ADMIN_USERNAME;
+  const expectedPass = workspace === "finance"
+    ? process.env.NIXP_FINANCE_PASSWORD
+    : workspace === "marketing" ? process.env.NIXP_MARKETING_PASSWORD : process.env.NIXP_ADMIN_PASSWORD;
   if (!expectedUser || !expectedPass) return false;
   return safeEqual(username, expectedUser) && safeEqual(password, expectedPass);
 }

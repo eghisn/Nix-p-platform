@@ -78,6 +78,24 @@
       ]
     },
     {
+      "source": "/marketing/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/marketing",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/",
       "headers": [
         {
@@ -192,12 +210,22 @@
       "has": [{ "type": "host", "value": "finance.nix-p.com" }],
       "destination": "/finance",
       "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "analytics.nix-p.com" }],
+      "destination": "/marketing",
+      "permanent": false
     }
   ],
   "rewrites": [
     {
       "source": "/api/analytics",
       "destination": "/api/catalog?action=analytics"
+    },
+    {
+      "source": "/api/marketing",
+      "destination": "/api/catalog?action=marketing-dashboard"
     },
     {
       "source": "/api/payments/midtrans-token",
@@ -358,6 +386,10 @@
     {
       "source": "/privacy",
       "destination": "/index.html"
+    },
+    {
+      "source": "/marketing",
+      "destination": "/marketing/index.html"
     },
     {
       "source": "/cart",

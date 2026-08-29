@@ -26,6 +26,7 @@
     "backfill:related-artists": "node scripts/refresh-related-artists.mjs --stale-only",
     "test:monthly-report": "node scripts/verify-monthly-report-accounting.mjs",
     "test:finance-storage": "node scripts/verify-finance-section-storage.mjs",
+    "test:marketing": "node scripts/verify-marketing-dashboard.mjs",
     "seed:admin": "node scripts/seed-admin-store.mjs",
     "sync:catalog": "node scripts/sync-catalog-snapshots.mjs",
     "collect:jne-tariffs": "node scripts/collect-jne-tariff-snapshot.mjs",

@@ -5,6 +5,7 @@ import { publicProductPath } from "../src/data/publicUrls.js";
 import { renderCatalogPage } from "./_lib/catalogPage.js";
 import { recordSystemEvent } from "./_lib/observability.js";
 import { handleAnalyticsEvent } from "./_lib/analytics.js";
+import { handleMarketingDashboard } from "./_lib/marketingDashboard.js";
 
 export default async function handler(req, res) {
   try {
@@ -16,6 +17,7 @@ export default async function handler(req, res) {
       return await renderCatalogPage(req, res, url);
     }
     if (url.searchParams.get("action") === "analytics") return await handleAnalyticsEvent(req, res);
+    if (url.searchParams.get("action") === "marketing-dashboard") return await handleMarketingDashboard(req, res, url);
     if (!isSupabaseConfigured()) return json(res, 503, { ok: false, error: "Supabase is not configured." });
     if (req.method === "POST") return await handlePostAction(req, res);
     if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
