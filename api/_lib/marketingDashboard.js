@@ -78,7 +78,7 @@ export function buildRollupMarketingDashboard({
       added: number(row.add_to_cart_count),
       checkouts: number(row.checkout_starts),
       orders: number(row.orders_paid),
-      sales: number(row.net_sales)
+      cashNetSales: number(row.net_sales)
     };
   });
   const eventRows = number(sessionMetrics.pageViews) + number(sessionMetrics.productViews) + number(sessionMetrics.productClicks) + number(sessionMetrics.addToCart) + number(sessionMetrics.checkoutStarted);
@@ -87,7 +87,9 @@ export function buildRollupMarketingDashboard({
     rangeDays: days,
     generatedAt: new Date().toISOString(),
     metrics: {
-      netSales: totals.grossSales - totals.refundAmount,
+      cashNetSales: totals.grossSales - totals.refundAmount,
+      grossSales: totals.grossSales,
+      verifiedRefunds: totals.refundAmount,
       paidOrders: totals.paidOrders,
       refundedOrders: totals.refundedOrders,
       visitors: sessions,

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { buildRollupMarketingDashboard } from "../api/_lib/marketingDashboard.js";
+import { normalizeAnalyticsEvent, sameOriginAnalyticsRequest } from "../api/_lib/analytics.js";
 
 const dashboard = buildRollupMarketingDashboard({
   days: 7,
@@ -23,7 +24,9 @@ const dashboard = buildRollupMarketingDashboard({
 
 assert.equal(dashboard.metrics.visitors, 1);
 assert.equal(dashboard.metrics.paidOrders, 2);
-assert.equal(dashboard.metrics.netSales, 750_000, "Partial refunds must subtract only the verified refund amount.");
+assert.equal(dashboard.metrics.cashNetSales, 750_000, "Partial refunds must subtract only the verified refund amount from cash net sales.");
+assert.equal(dashboard.metrics.grossSales, 1_000_000);
+assert.equal(dashboard.metrics.verifiedRefunds, 250_000);
 assert.equal(dashboard.metrics.refundedOrders, 1);
 assert.equal(dashboard.metrics.knownCustomers, 501, "Contacts must not silently truncate at the visible 500-row table limit.");
 assert.equal(dashboard.products[0].title, "Release");
@@ -32,5 +35,20 @@ assert.equal(dashboard.contacts.length, 1);
 assert.equal(dashboard.daily.length, 7, "The chart needs zero-filled reporting days.");
 assert.equal(dashboard.orderOutcomes.expired, 1);
 assert.equal(dashboard.orderOutcomes.cancelled, 1);
+
+const validEvent = {
+  eventId: "2b6f2b09-4be9-4b58-8b81-0ace022ddd84",
+  eventType: "product_view",
+  sessionId: "e630f6ca-2f11-4d30-a2d6-9e2efba3283f",
+  path: "/records/example-release",
+  productId: "NXP-2026-VNL-0001",
+  deviceType: "mobile"
+};
+assert.equal(normalizeAnalyticsEvent(validEvent).path, "/records/example-release");
+assert.throws(() => normalizeAnalyticsEvent({ ...validEvent, path: "/records/example-release?email=test@example.com" }), /Invalid analytics event/);
+assert.throws(() => normalizeAnalyticsEvent({ ...validEvent, productId: "" }), /Product analytics events require a product/);
+assert.equal(sameOriginAnalyticsRequest({ headers: { origin: "https://www.nix-p.com", host: "www.nix-p.com", "x-forwarded-proto": "https", "sec-fetch-site": "same-origin" } }), true);
+assert.equal(sameOriginAnalyticsRequest({ headers: { host: "www.nix-p.com", "x-forwarded-proto": "https" } }), false);
+assert.equal(sameOriginAnalyticsRequest({ headers: { origin: "https://attacker.example", host: "www.nix-p.com", "x-forwarded-proto": "https", "sec-fetch-site": "cross-site" } }), false);
 
 console.log("Marketing dashboard rollup aggregation verified.");

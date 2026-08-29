@@ -1,5 +1,6 @@
 import { createServer } from "node:http";
 import { randomBytes, timingSafeEqual } from "node:crypto";
+import { normalizeAnalyticsEvent, validateAnalyticsRequest } from "../api/_lib/analytics.js";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { createReadStream, existsSync } from "node:fs";
 import { basename, extname, join, normalize, resolve } from "node:path";
@@ -213,11 +214,15 @@ async function handleApi(req, res) {
   }
 
   if (url.pathname === "/api/analytics" && req.method === "POST") {
-    const payload = JSON.parse(await readBody(req));
-    const eventType = String(payload.eventType || "");
-    const path = String(payload.path || "");
-    if (!new Set(["page_view", "product_view", "product_click", "add_to_cart", "cart_open", "checkout_started"]).has(eventType) || !path.startsWith("/")) {
-      json(res, 400, { ok: false, error: "Invalid analytics event." });
+    const requestError = validateAnalyticsRequest(req);
+    if (requestError) {
+      json(res, requestError.status, { ok: false, error: requestError.message });
+      return true;
+    }
+    try {
+      normalizeAnalyticsEvent(await readBody(req));
+    } catch (error) {
+      json(res, Number(error?.statusCode || 400), { ok: false, error: error?.message || "Invalid analytics event." });
       return true;
     }
     json(res, 202, { ok: true, preview: true });

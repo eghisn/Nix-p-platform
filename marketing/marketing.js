@@ -52,7 +52,7 @@ async function loadDashboard() {
 
 function renderDashboard(data) {
   const metrics = data.metrics;
-  setText('[data-metric="sales"]', money.format(metrics.netSales));
+  setText('[data-metric="sales"]', money.format(metrics.cashNetSales));
   setText('[data-metric="orders"]', integer.format(metrics.paidOrders));
   setText('[data-metric="visitors"]', integer.format(metrics.visitors));
   setText('[data-metric="conversion"]', percent.format(metrics.conversion));
@@ -67,6 +67,15 @@ function renderDashboard(data) {
   renderContacts();
   renderData(data);
   renderConsent();
+}
+
+function renderAccountingBasis() {
+  const heading = [...document.querySelectorAll(".panel h3")].find((node) => node.textContent === "Net sales basis");
+  if (!heading) return;
+  heading.textContent = "Cash sales basis";
+  heading.closest(".panel")?.querySelector(".panel-copy")?.replaceChildren(
+    "Cash net sales are provider-verified payments minus verified refunds on the day each cash movement is confirmed. Product tables show gross item sales because refunds are not allocated by item yet. Shipping remains separate."
+  );
 }
 
 function renderInsights(data) {
@@ -87,9 +96,9 @@ function renderProducts(rows) {
 
 function renderChart(rows) {
   const values = rows.slice(-12);
-  const salesMax = Math.max(1, ...values.map((row) => row.sales));
+  const salesMax = Math.max(1, ...values.map((row) => row.cashNetSales));
   const visitorMax = Math.max(1, ...values.map((row) => row.visitors));
-  document.querySelector("[data-chart-bars]").innerHTML = values.map((row) => `<div class="bar-group" title="${escapeHtml(row.date)}: ${money.format(row.sales)}, ${integer.format(row.visitors)} visitors"><i class="bar sales" style="height:${Math.max(3, row.sales / salesMax * 100)}%"></i><i class="bar visitors" style="height:${Math.max(3, row.visitors / visitorMax * 100)}%"></i></div>`).join("") || `<p class="empty-inline">No daily activity</p>`;
+  document.querySelector("[data-chart-bars]").innerHTML = values.map((row) => `<div class="bar-group" title="${escapeHtml(row.date)}: ${money.format(row.cashNetSales)} cash net sales, ${integer.format(row.visitors)} visitors"><i class="bar sales" style="height:${Math.max(3, row.cashNetSales / salesMax * 100)}%"></i><i class="bar visitors" style="height:${Math.max(3, row.visitors / visitorMax * 100)}%"></i></div>`).join("") || `<p class="empty-inline">No daily activity</p>`;
   document.querySelector("[data-chart-labels]").innerHTML = values.map((row) => `<span>${escapeHtml(row.date.slice(5))}</span>`).join("");
 }
 
@@ -134,7 +143,7 @@ function renderContacts(query = "") {
 
 function renderData(data) {
   document.querySelector("[data-events-table]").innerHTML = data.events.map((item) => `<tr><td>${formatDateTime(item.time)}</td><td><strong>${escapeHtml(item.event)}</strong></td><td>${escapeHtml(item.path)}</td><td>${escapeHtml(item.source)}</td><td>${escapeHtml(item.session)}</td></tr>`).join("") || emptyRow(5, "No consented events in this period.");
-  document.querySelector("[data-daily-metrics-table]").innerHTML = data.daily.slice().reverse().map((item) => `<tr><td><strong>${escapeHtml(item.date)}</strong></td><td>${integer.format(item.visitors)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(6, "No daily metrics in this period.");
+  document.querySelector("[data-daily-metrics-table]").innerHTML = data.daily.slice().reverse().map((item) => `<tr><td><strong>${escapeHtml(item.date)}</strong></td><td>${integer.format(item.visitors)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.cashNetSales)}</td></tr>`).join("") || emptyRow(6, "No daily metrics in this period.");
   const cards = document.querySelectorAll(".data-model-card dd");
   const values = [data.health.eventRows, "Live", data.daily.at(-1)?.date || "-", "On request", data.sources.length, "5 fields", data.metrics.knownCustomers, "0 opted in"];
   cards.forEach((node, index) => { if (values[index] !== undefined) node.textContent = values[index]; });
@@ -156,7 +165,7 @@ function switchView(view) {
 
 function exportCsv() {
   const products = state.dashboard?.products || [];
-  const rows = [["Product", "Artist", "Views", "Added to cart", "Paid orders", "Net sales"], ...products.map((item) => [item.title, item.artist, item.views, item.added, item.orders, item.sales])];
+  const rows = [["Product", "Artist", "Views", "Added to cart", "Paid orders", "Gross item sales"], ...products.map((item) => [item.title, item.artist, item.views, item.added, item.orders, item.sales])];
   const csv = rows.map((row) => row.map((cell) => `"${String(cell).replaceAll('"', '""')}"`).join(",")).join("\n");
   const url = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
   const link = Object.assign(document.createElement("a"), { href: url, download: `nixp-marketing-${new Date().toISOString().slice(0, 10)}.csv` });
@@ -195,4 +204,5 @@ function formatDate(value) { return value ? new Intl.DateTimeFormat("id-ID", { d
 function formatDateTime(value) { return value ? new Intl.DateTimeFormat("id-ID", { dateStyle: "medium", timeStyle: "short" }).format(new Date(value)) : "No data"; }
 function formatFreshness(value) { if (!value) return "No events yet"; const minutes = Math.max(0, Math.round((Date.now() - new Date(value).getTime()) / 60000)); return minutes < 2 ? "Current" : `${minutes} min ago`; }
 
+renderAccountingBasis();
 boot();

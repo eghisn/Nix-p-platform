@@ -4,18 +4,22 @@ import { recordSystemEvent } from "./observability.js";
 import { isSupabaseConfigured, supabaseFetch } from "./supabase.js";
 
 const EVENT_TYPES = new Set(["page_view", "product_view", "product_click", "add_to_cart", "cart_open", "checkout_started"]);
+const PRODUCT_EVENT_TYPES = new Set(["product_view", "product_click", "add_to_cart"]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const PRODUCT_ID = /^[A-Za-z0-9][A-Za-z0-9._-]{0,159}$/;
+const MAX_EVENT_BYTES = 2_048;
 
 export async function handleAnalyticsEvent(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed." });
-  if (!sameOriginRequest(req)) return json(res, 403, { ok: false, error: "Analytics origin is not allowed." });
+  const requestError = validateAnalyticsRequest(req);
+  if (requestError) return json(res, requestError.status, { ok: false, error: requestError.message });
   if (!isSupabaseConfigured({ requireServiceRole: true })) {
     return json(res, 503, { ok: false, error: "Analytics is not configured." });
   }
 
   try {
-    const event = normalizeEvent(req.body);
-    const allowed = await consumeCommerceRateLimit("analytics-event", requestClientAddress(req), { limit: 240, windowSeconds: 60 });
+    const event = normalizeAnalyticsEvent(req.body);
+    const allowed = await consumeCommerceRateLimit("analytics-event", requestClientAddress(req), { limit: 120, windowSeconds: 60 });
     if (!allowed) return json(res, 429, { ok: false, error: "Too many analytics events." });
     await supabaseFetch("marketing_events", {
       method: "POST",
@@ -45,7 +49,7 @@ export async function handleAnalyticsEvent(req, res) {
   }
 }
 
-function normalizeEvent(body) {
+export function normalizeAnalyticsEvent(body) {
   let value;
   try {
     value = typeof body === "string" ? JSON.parse(body || "{}") : body || {};
@@ -59,7 +63,7 @@ function normalizeEvent(body) {
     eventId: text(value.eventId, 64),
     eventType: text(value.eventType, 48),
     sessionId: text(value.sessionId, 64),
-    path: text(value.path, 240),
+    path: normalizePath(value.path),
     productId: text(value.productId, 160),
     source: text(value.source, 120),
     medium: text(value.medium, 120),
@@ -68,21 +72,67 @@ function normalizeEvent(body) {
     content: text(value.content, 120),
     deviceType: text(value.deviceType, 16)
   };
-  if (!UUID.test(event.eventId) || !UUID.test(event.sessionId) || !EVENT_TYPES.has(event.eventType) || !event.path.startsWith("/")) {
+  if (!UUID.test(event.eventId) || !UUID.test(event.sessionId) || !EVENT_TYPES.has(event.eventType) || !event.path) {
     const error = new Error("Invalid analytics event.");
     error.statusCode = 400;
     throw error;
   }
+  if (event.productId && !PRODUCT_ID.test(event.productId)) {
+    const error = new Error("Invalid analytics product.");
+    error.statusCode = 400;
+    throw error;
+  }
+  if (PRODUCT_EVENT_TYPES.has(event.eventType) && !event.productId) {
+    const error = new Error("Product analytics events require a product.");
+    error.statusCode = 400;
+    throw error;
+  }
+  if (!PRODUCT_EVENT_TYPES.has(event.eventType)) event.productId = "";
   if (!["mobile", "tablet", "desktop"].includes(event.deviceType)) event.deviceType = "unknown";
   return event;
 }
 
-function sameOriginRequest(req) {
+function normalizePath(value) {
+  const path = String(value || "").trim();
+  if (!path || path.length > 240 || !path.startsWith("/") || path.includes("?") || path.includes("#") || path.includes("\\") || /[\u0000-\u001f\u007f]/.test(path)) return "";
+  try {
+    const parsed = new URL(path, "https://nix-p.invalid");
+    return parsed.origin === "https://nix-p.invalid" && parsed.pathname === path ? path : "";
+  } catch {
+    return "";
+  }
+}
+
+export function sameOriginAnalyticsRequest(req) {
   const origin = String(req.headers.origin || "").trim();
-  if (!origin) return true;
+  if (!origin || origin === "null") return false;
   const host = String(req.headers.host || "").trim();
-  const proto = String(req.headers["x-forwarded-proto"] || "https").split(",")[0].trim();
-  return origin === `${proto}://${host}`;
+  const forwardedProto = String(req.headers["x-forwarded-proto"] || "").split(",")[0].trim();
+  const proto = forwardedProto || (host.includes("localhost") || host.startsWith("127.0.0.1") ? "http" : "https");
+  const fetchSite = String(req.headers["sec-fetch-site"] || "").trim().toLowerCase();
+  if (fetchSite && fetchSite !== "same-origin" && fetchSite !== "same-site") return false;
+  try {
+    const parsed = new URL(origin);
+    return parsed.protocol === `${proto}:` && parsed.host === host;
+  } catch {
+    return false;
+  }
+}
+
+export function validateAnalyticsRequest(req) {
+  if (!isJsonRequest(req)) return { status: 415, message: "Analytics requests must use JSON." };
+  if (!sameOriginAnalyticsRequest(req)) return { status: 403, message: "Analytics origin is not allowed." };
+  if (requestIsTooLarge(req)) return { status: 413, message: "Analytics event is too large." };
+  return null;
+}
+
+function isJsonRequest(req) {
+  return /^application\/json(?:\s*;|$)/i.test(String(req.headers["content-type"] || ""));
+}
+
+function requestIsTooLarge(req) {
+  const value = Number(req.headers["content-length"]);
+  return Number.isFinite(value) && value > MAX_EVENT_BYTES;
 }
 
 function countryCode(req) {

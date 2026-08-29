@@ -102,7 +102,7 @@ export function trackAnalytics(eventType, metadata = {}) {
     eventId: createUuid(),
     eventType,
     sessionId: analyticsSessionId(),
-    path: `${location.pathname}${location.search}`.slice(0, 240),
+    path: location.pathname.slice(0, 240),
     productId: String(metadata.productId || currentProductId() || "").slice(0, 160),
     deviceType: deviceType(),
     ...campaign
