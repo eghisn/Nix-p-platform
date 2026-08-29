@@ -73,7 +73,7 @@ export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverl
             <path d="M10.6 9.4v5.2l4.5-2.6-4.5-2.6Z"></path>
           </svg>
         </a>
-        <a href="https://www.tiktok.com/@nixp" aria-label="TikTok">
+        <a href="https://www.tiktok.com/@nixparchive" aria-label="TikTok">
           <svg aria-hidden="true" viewBox="0 0 24 24">
             <path d="M14 4v10.2a4 4 0 1 1-3.4-4"></path>
             <path d="M14 4c.6 3 2.4 4.8 5.2 5.1"></path>
