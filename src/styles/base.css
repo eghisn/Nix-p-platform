@@ -2914,13 +2914,15 @@ body:has(.cart-view) .site-footer {
 .cookie-consent {
   position: fixed;
   z-index: 40;
-  right: var(--page-pad);
+  left: 50%;
   bottom: calc(var(--footer-h) + 18px);
-  width: min(440px, calc(100vw - (var(--page-pad) * 2)));
+  width: min(760px, calc(100vw - (var(--page-pad) * 2)));
   border: 1px solid var(--ink);
   background: var(--paper);
-  padding: 16px;
+  padding: 15px 18px;
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 .cookie-consent p {
@@ -2931,6 +2933,7 @@ body:has(.cart-view) .site-footer {
 
 .cookie-consent-actions {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 14px;
@@ -3119,10 +3122,8 @@ body:has(.cart-view) .site-footer {
   }
 
   .cookie-consent {
-    right: var(--page-pad);
     bottom: calc(var(--footer-h) + 12px);
-    left: var(--page-pad);
-    width: auto;
+    width: calc(100vw - (var(--page-pad) * 2));
   }
 
   .home-collections::-webkit-scrollbar {
