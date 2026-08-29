@@ -2911,6 +2911,46 @@ body:has(.cart-view) .site-footer {
   }
 }
 
+.cookie-consent {
+  position: fixed;
+  z-index: 40;
+  right: var(--page-pad);
+  bottom: calc(var(--footer-h) + 18px);
+  width: min(440px, calc(100vw - (var(--page-pad) * 2)));
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 16px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+.cookie-consent p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.cookie-consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.cookie-consent .button {
+  min-height: 38px;
+  padding: 9px 14px;
+  font-size: 10px;
+}
+
+.cookie-consent > a {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
 @media (max-width: 960px) {
   .checkout-layout {
     grid-template-columns: 1fr;
@@ -3076,6 +3116,13 @@ body:has(.cart-view) .site-footer {
     transform: none;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .cookie-consent {
+    right: var(--page-pad);
+    bottom: calc(var(--footer-h) + 12px);
+    left: var(--page-pad);
+    width: auto;
   }
 
   .home-collections::-webkit-scrollbar {

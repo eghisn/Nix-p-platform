@@ -4,11 +4,13 @@ import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicPr
 import { recommendedProducts } from "./data/productRecommendations.js";
 import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
 import { termsOfUseContent } from "./data/termsOfUse.js";
+import { privacyPolicyContent } from "./data/privacyPolicy.js";
 import { labelEntries, labelSlug } from "./data/labelCatalog.js";
 import { isRecentReleaseProduct, recentReleaseSortComparator } from "./data/homeCollections.js";
 import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "./data/recordMetadata.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
+import { initializeAnalytics, trackCurrentPageView } from "./services/analytics.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup } from "./components/catalogPage.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "./components/labelsPage.js";
@@ -199,6 +201,7 @@ const routes = {
   "/shipping-returns": shippingReturnsPage,
   "/international-order": internationalOrderPage,
   "/terms-of-use": termsOfUsePage,
+  "/privacy": privacyPolicyPage,
   "/cart": cartPage,
   "/order-status": customerOrderStatusPage,
   "/login": loginPage,
@@ -285,6 +288,7 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   if (preserveScroll) window.scrollTo({ top: previousScrollTop, behavior: "auto" });
   else if (scrollToTop) window.scrollTo({ top: 0, behavior: "auto" });
   setupAdminOrdersLiveRefresh(path);
+  trackCurrentPageView();
 }
 
 function updateDocumentTitle(path) {
@@ -437,7 +441,7 @@ async function homePage() {
                   .map(
                     (product, index) => `
                       <article class="slide">
-                        <a href="${publicProductPath(product)}" data-link data-product-link>
+                        <a href="${publicProductPath(product)}" data-link data-product-link data-product-id="${escapeAttr(product.id)}">
                           <figure class="product-art slide-art">
                             <img src="${product.image}" alt="${product.title}" />
                           </figure>
@@ -552,7 +556,7 @@ async function productDetailMarkup(product) {
     "";
 
   return `
-    <section class="product-detail">
+    <section class="product-detail" data-product-id="${escapeAttr(product.id)}">
       <div class="detail-gallery">
         ${galleryImages
           .map(
@@ -2324,6 +2328,17 @@ function recordLabelMarkup(product) {
   if (product.category !== "Records" || !product.label) return escapeHtml(product.label || "-");
   const label = canonicalLabelName(product.label);
   return `<a class="record-label-link" href="/labels/${encodeURIComponent(labelSlug(label))}" data-link>${escapeHtml(label)}</a>`;
+}
+
+function privacyPolicyPage() {
+  return `
+    <section class="section editorial-page terms-page">
+      <div class="editorial-shell terms-shell">
+        <h1>Privacy &amp; Cookies</h1>
+        ${privacyPolicyContent}
+      </div>
+    </section>
+  `;
 }
 
 function productRelatedArtists(product) {
@@ -4130,6 +4145,7 @@ async function hydratePublicServerMarkup() {
 
 const shouldHydratePublicMarkup = publicDocumentHasServerMarkup();
 if (shouldHydratePublicMarkup) syncPublicCartCount();
+initializeAnalytics();
 adminStore
   .initialize()
   .then(() => shouldHydratePublicMarkup ? hydratePublicServerMarkup() : render())

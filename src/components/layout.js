@@ -57,6 +57,7 @@ export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverl
         <a href="/shipping-returns" data-link>Shipping &amp; Returns</a>
         <a href="/international-order" data-link>International Order</a>
         <a href="/terms-of-use" data-link>Terms of Use</a>
+        <a href="/privacy" data-link>Privacy</a>
       </nav>
       <nav class="footer-right" aria-label="Social links">
         <a href="https://www.instagram.com/nixp.archive/?hl=en" aria-label="Instagram">
@@ -115,6 +116,14 @@ export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverl
     ${cartDrawer}
     ${searchOverlay}
     ${publicFooter}
+    ${isPrivate ? "" : `<aside class="cookie-consent" data-cookie-consent hidden aria-label="Cookie consent">
+      <p>We use essential cookies to keep NIXP working. Optional analytics help us understand visits and improve the site.</p>
+      <div class="cookie-consent-actions">
+        <button class="button button-dark" type="button" data-cookie-consent-choice="analytics">Accept cookies</button>
+        <button class="button" type="button" data-cookie-consent-choice="essential">Reject optional</button>
+      </div>
+      <a href="/privacy" data-link>Privacy &amp; cookies</a>
+    </aside>`}
   `;
 }
 
@@ -176,7 +185,7 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
 
   return `
     <article class="product-card ${soldOut ? "is-sold-out" : ""}" ${deferCard ? "data-deferred-product-card" : ""}>
-      <a class="product-link" href="${href}" data-link data-product-link aria-label="View ${product.title}">
+      <a class="product-link" href="${href}" data-link data-product-link data-product-id="${escapeHtml(product.id)}" aria-label="View ${product.title}">
         <figure class="${artClass} ${soldOut ? "is-sold-out" : ""}">
           ${deferCard ? deferredTemplate(imageMarkup, "deferred-product-media") : imageMarkup}
           ${soldOut ? `<span class="sold-out-label">Sold out</span>` : ""}
@@ -184,7 +193,7 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
       </a>
       <div class="product-meta">
         <p class="product-artist">${artistMarkup}</p>
-        <h2><a href="${href}" data-link data-product-link>${product.title}</a></h2>
+        <h2><a href="${href}" data-link data-product-link data-product-id="${escapeHtml(product.id)}">${product.title}</a></h2>
         ${labelLink}
         <div class="row-between">
           <span>${meta}</span>

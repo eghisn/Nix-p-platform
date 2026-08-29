@@ -212,6 +212,18 @@ async function handleApi(req, res) {
     return true;
   }
 
+  if (url.pathname === "/api/analytics" && req.method === "POST") {
+    const payload = JSON.parse(await readBody(req));
+    const eventType = String(payload.eventType || "");
+    const path = String(payload.path || "");
+    if (!new Set(["page_view", "product_view", "product_click", "add_to_cart", "cart_open", "checkout_started"]).has(eventType) || !path.startsWith("/")) {
+      json(res, 400, { ok: false, error: "Invalid analytics event." });
+      return true;
+    }
+    json(res, 202, { ok: true, preview: true });
+    return true;
+  }
+
   if (url.pathname === "/api/catalog" && req.method === "GET") {
     if (url.searchParams.get("action") === "product-redirect") {
       const productId = String(url.searchParams.get("id") || "").trim();

@@ -112,7 +112,7 @@
       ]
     },
     {
-      "source": "/(about|apparel|accessories|blog|cart|contact|international-order|labels|make-an-offer|objects|publishing|records|request-item|shipping-returns|terms-of-use)",
+      "source": "/(about|apparel|accessories|blog|cart|contact|international-order|labels|make-an-offer|objects|privacy|publishing|records|request-item|shipping-returns|terms-of-use)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -349,6 +349,10 @@
     },
     {
       "source": "/terms-of-use",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/privacy",
       "destination": "/index.html"
     },
     {

@@ -11,6 +11,7 @@ import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js
 import { isRecentReleaseProduct, recentReleaseSortComparator } from "../src/data/homeCollections.js";
 import { recommendedProducts } from "../src/data/productRecommendations.js";
 import { termsOfUseContent } from "../src/data/termsOfUse.js";
+import { privacyPolicyContent } from "../src/data/privacyPolicy.js";
 import { labelEntries, labelSlug, productMatchesLabel } from "../src/data/labelCatalog.js";
 import { labelLogoAvailable, verifiedLabelLogoExtensions } from "../src/data/labelLogoManifest.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../src/components/labelsPage.js";
@@ -196,6 +197,7 @@ const staticRoutes = [
   "shipping-returns",
   "international-order",
   "terms-of-use",
+  "privacy",
   "cart",
   "order-status",
   "admin",
@@ -371,7 +373,7 @@ function homeAppMarkup() {
             .map(
               (product, index) => `
                 <article class="slide">
-                  <a href="${escapeHtml(publicProductPath(product))}" data-link data-product-link>
+                  <a href="${escapeHtml(publicProductPath(product))}" data-link data-product-link data-product-id="${escapeHtml(product.id)}">
                     <figure class="product-art slide-art"><img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" /></figure>
                     <div class="slide-caption">
                       <span>${String((index % products.length) + 1).padStart(2, "0")}</span>
@@ -429,7 +431,7 @@ function staticProductDetailMarkup(product) {
     ? `<div><dt>Material</dt><dd>${escapeHtml(product.material || "-")}</dd></div><div><dt>Color</dt><dd>${escapeHtml(product.color || "-")}</dd></div>`
     : `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>${isRecord ? `<div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div>` : ""}<div><dt>Label</dt><dd>${labelMarkup}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div>${isRecord ? `<div><dt>Catalog number</dt><dd>${escapeHtml(recordMetadataValue(product, "catalogNumber") || "Not specified")}</dd></div><div><dt>Barcode</dt><dd>${escapeHtml(recordMetadataValue(product, "barcode") || "Not specified")}</dd></div>${hasRecordConditionDetails ? `<div><dt>Media condition</dt><dd>${escapeHtml(product.mediaCondition || "Not specified")}</dd></div><div><dt>Sleeve condition</dt><dd>${escapeHtml(product.sleeveCondition || "Not specified")}</dd></div>` : ""}` : ""}<div><dt>Notes</dt><dd>${escapeHtml(recordNotes(product).join(" / "))}</dd></div>`;
   const recommended = isRecord ? recommendedProducts(product, publicProducts) : [];
-  const detail = `<section class="product-detail"><div class="detail-gallery">${images
+  const detail = `<section class="product-detail" data-product-id="${escapeHtml(product.id)}"><div class="detail-gallery">${images
     .map((image, index) => `<figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""} ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>`)
     .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}${relatedMarkup}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button><a class="button button-outline" href="/request-item">Request similar</a>`}</div><dl class="detail-list">${details}</dl></aside></section>`;
   return `${detail}${recommended.length ? `<section class="section shop-section">${productGrid(recommended, { availableArtistNames })}</section>` : ""}`;
@@ -627,6 +629,14 @@ function staticPublicRouteMarkup(route) {
       </div>
     </section>`;
   }
+  if (route === "privacy") {
+    return `<section class="section editorial-page terms-page">
+      <div class="editorial-shell terms-shell">
+        <h1>Privacy &amp; Cookies</h1>
+        ${privacyPolicyContent}
+      </div>
+    </section>`;
+  }
   if (route === "cart") {
     return `<section class="section cart-view">
       <p class="empty-state">Your cart is empty.</p>
@@ -657,6 +667,7 @@ function staticRouteTitle(route) {
     "shipping-returns": "Shipping & Returns",
     "international-order": "International Orders",
     "terms-of-use": "Terms of Use",
+    privacy: "Privacy & Cookies",
     cart: "Cart"
   };
   return titles[route] || (route ? route.split("/").at(-1).replaceAll("-", " ") : "NIXP");
@@ -827,6 +838,7 @@ const crawlableRoutes = [
   "shipping-returns",
   "international-order",
   "terms-of-use",
+  "privacy",
   ...publicProducts.map((product) => publicProductPath(product).replace(/^\//, "")),
   ...[...artistDirectory.keys()].map((artistSlug) => `artists/${artistSlug}`),
   ...publicLabels.map((label) => `labels/${label.slug}`)
