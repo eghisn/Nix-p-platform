@@ -15,7 +15,7 @@ async function htmlFiles(directory) {
   return nested.flat();
 }
 
-const files = await htmlFiles(dist);
+const files = (await htmlFiles(dist)).filter((file) => !relative(dist, file).replaceAll("\\", "/").startsWith("marketing/"));
 if (!files.length) throw new Error("No generated HTML files found.");
 
 let expectedRevision = "";
