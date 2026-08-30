@@ -482,6 +482,7 @@ function fromProductRow(row, { privateScope = false, compactAdmin = false } = {}
   const sourceRaw = row.raw || {};
   const nestedRaw = sourceRaw.raw && typeof sourceRaw.raw === "object" ? sourceRaw.raw : {};
   const { shipping, raw: _discardNestedRaw, ...raw } = { ...nestedRaw, ...sourceRaw };
+  const responseRaw = compactAdmin ? compactAdminRaw(raw) : raw;
   const manualRelatedArtists = Array.isArray(raw.manualRelatedArtists) ? raw.manualRelatedArtists : [];
   const researchedRelatedArtists = Array.isArray(raw.relatedArtistsResearch?.artists)
     ? raw.relatedArtistsResearch.artists
@@ -492,7 +493,7 @@ function fromProductRow(row, { privateScope = false, compactAdmin = false } = {}
       : Array.isArray(raw.relatedArtists) && raw.relatedArtists.length ? raw.relatedArtists : [...manualRelatedArtists, ...researchedRelatedArtists]
   );
   const product = {
-    ...(compactAdmin ? compactAdminRaw(raw) : raw),
+    ...responseRaw,
     id: row.id,
     sku: row.sku,
     title: row.title,
@@ -529,7 +530,7 @@ function fromProductRow(row, { privateScope = false, compactAdmin = false } = {}
   };
   product.relatedArtists = relatedArtists;
   product.manualRelatedArtists = canonicalRelatedArtists(manualRelatedArtists);
-  product.relatedArtistsResearch = raw.relatedArtistsResearch || null;
+  product.relatedArtistsResearch = responseRaw.relatedArtistsResearch || null;
   if (privateScope) product.shipping = shipping || null;
   return product;
 }
