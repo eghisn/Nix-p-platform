@@ -1374,7 +1374,7 @@
               <h2>Month close archive</h2>
               <small id="monthlyArchiveStatus">No closed months archived yet</small>
             </div>
-            <p class="tiny">Closed-month reports are saved automatically from the ledger. Ledger rows remain intact for audit, and archived snapshots are not changed by normal saves.</p>
+            <p class="tiny">Closed-month reports are saved automatically from the ledger. Normal saves never rewrite an archive; use Reconcile only after correcting a closed month's ledger.</p>
             <div class="table-wrap">
               <table>
                 <thead>
@@ -1686,9 +1686,19 @@
         financeSectionVersions = payload.sectionVersions || financeSectionVersions;
         financeBaselineState = cloneFinanceState(state);
         financeLastBackupId = payload.backupId || financeLastBackupId;
-        el.saveStatus.textContent = financeLastBackupId
-          ? "Saved to protected server and backed up. Catalog research queued."
-          : "Saved to protected server. Catalog research queued.";
+        const savedPrefix = financeLastBackupId
+          ? "Saved to protected server and backed up."
+          : "Saved to protected server.";
+        const catalogSync = payload.catalogSync || {};
+        if (catalogSync.synced) {
+          el.saveStatus.textContent = `${savedPrefix} Catalog inventory synchronized.`;
+        } else if (catalogSync.pending) {
+          el.saveStatus.textContent = `${savedPrefix} Catalog inventory sync is pending and will retry automatically.`;
+        } else if (catalogSync.status === "not_needed") {
+          el.saveStatus.textContent = savedPrefix;
+        } else {
+          el.saveStatus.textContent = `${savedPrefix} ${catalogSync.message || "Catalog inventory sync needs attention."}`;
+        }
         return true;
       } catch (error) {
         el.saveStatus.textContent = error.message || "Save failed. Changes were not synced.";
@@ -2164,6 +2174,12 @@
           return;
         }
 
+        const reconcileClosedMonthTarget = event.target.closest("[data-reconcile-closed-month]");
+        if (reconcileClosedMonthTarget) {
+          await reconcileClosedMonthlyReport(reconcileClosedMonthTarget.dataset.reconcileClosedMonth);
+          return;
+        }
+
         const editTarget = event.target.closest("[data-edit]");
         if (editTarget) {
           const [section, id] = editTarget.dataset.edit.split(":");
@@ -2206,6 +2222,27 @@
       download(filename + ".csv", matrixToCSV(report.accountingVersion >= monthlyReportAccountingVersion
         ? report.rows
         : monthlyReportExportRows(exportData)), "text/csv;charset=utf-8");
+    }
+
+    async function reconcileClosedMonthlyReport(month) {
+      const index = (state.monthlyReports || []).findIndex(report => report.month === month);
+      if (index < 0) return;
+      const report = state.monthlyReports[index];
+      if (!confirm(`Reconcile ${report.monthLabel || formatMonthLabel(month)} using the current ledger? This replaces the archived totals, keeps the original close date, and records a new reconciliation time.`)) return;
+      const previousReports = state.monthlyReports.map(item => ({ ...item }));
+      const refreshed = monthlyReportSnapshot(month);
+      state.monthlyReports[index] = {
+        ...refreshed,
+        id: report.id,
+        closedAt: report.closedAt,
+        reconciledAt: new Date().toISOString(),
+        reconciliationCount: Number(report.reconciliationCount || 0) + 1
+      };
+      const saved = await commitState();
+      if (!saved) {
+        state.monthlyReports = previousReports;
+        render();
+      }
     }
 
     function resetForm(form) {
@@ -3346,10 +3383,11 @@
           <td class="money">${rupiah(display.cashIn)}</td>
           <td class="money">${rupiah(display.cashOut)}</td>
           <td class="money">${reportMoney(display.netIncome)}</td>
-          <td>${escapeHTML(formatDateTime(report.closedAt))}</td>
+          <td>${escapeHTML(formatDateTime(report.closedAt))}${report.reconciledAt ? `<br><small>Reconciled ${escapeHTML(formatDateTime(report.reconciledAt))}</small>` : ""}</td>
           <td class="row-actions">
             <button class="link-button" type="button" data-export-closed-month="${escapeHTML(report.month)}">CSV</button>
             <button class="link-button" type="button" data-export-closed-month-jpg="${escapeHTML(report.month)}">JPEG</button>
+            <button class="link-button" type="button" data-reconcile-closed-month="${escapeHTML(report.month)}">Reconcile</button>
           </td>
         </tr>
       `;

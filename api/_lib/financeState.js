@@ -25,6 +25,8 @@ const EMPTY_FINANCE_STATE = {
 };
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const APPAREL_TYPES = new Set(["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap"]);
+const FINANCE_CATALOG_SYNC_LEASE_MS = 2 * 60 * 1000;
+const FINANCE_CATALOG_SYNC_MAX_ATTEMPTS = 5;
 
 export function isFinanceState(value) {
   return (
@@ -87,13 +89,12 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
   const backupId = Object.keys(changes).length
     ? await backupFinanceState(previous.state, saved.state, changes).catch(() => null)
     : null;
-  // Saving Finance must never wait for research or a Vercel deploy. It updates
-  // the financial truth and the lightweight catalog mirror only. Research is
-  // intentionally started by the exact SKU selected in Admin.
-  if (syncCatalog) {
-    await syncFinanceInventoryToCatalog(saved.state, { enrich: false });
-  }
-  return { ...saved, backupId };
+  // Finance is committed before catalog work begins. A durable, SKU-scoped job
+  // keeps a transient catalog failure from making a saved transaction look lost.
+  const catalogSync = syncCatalog
+    ? await queueFinanceCatalogSync(previous.state, saved.state, changes)
+    : { status: "not_needed", synced: false, pending: false, message: "Catalog synchronization was intentionally skipped." };
+  return { ...saved, backupId, catalogSync };
 }
 
 // Finance is the source of truth for SKU stock. Complete record entries pass
@@ -101,19 +102,45 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
 // visible in Admin with a precise enrichment status.
 export async function syncFinanceInventoryToCatalog(
   state,
-  { enrich = true, forceEnrichment = false, targetSkus = [], publishAfterResearch = false } = {}
+  {
+    enrich = true,
+    forceEnrichment = false,
+    targetSkus = [],
+    publishAfterResearch = false,
+    syncSkus = null,
+    syncInventoryIds = [],
+    fullInventorySync = false
+  } = {}
 ) {
-  const stockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
+  const allStockRows = (state.inventoryStock || []).filter((item) => String(item?.sku || "").trim());
+  const syncSkuKeys = new Set((syncSkus || []).map((sku) => String(sku || "").trim().toLowerCase()).filter(Boolean));
+  const syncInventoryIdSet = new Set((syncInventoryIds || []).map((id) => String(id || "").trim()).filter(Boolean));
+  const scopedSync = !fullInventorySync && (syncSkuKeys.size > 0 || syncInventoryIdSet.size > 0);
+  const stockRows = scopedSync
+    ? allStockRows.filter((item) => syncSkuKeys.has(String(item?.sku || "").trim().toLowerCase()))
+    : allStockRows;
+  const purchaseRows = scopedSync
+    ? (state.inventory || []).filter((item) => {
+      const sku = String(item?.sku || "").trim().toLowerCase();
+      return syncSkuKeys.has(sku) || syncInventoryIdSet.has(String(item?.id || "").trim());
+    })
+    : (state.inventory || []);
   const enrichmentTargets = new Set((targetSkus || []).map((sku) => String(sku || "").trim().toLowerCase()).filter(Boolean));
-  const skus = [...new Set(stockRows.map((item) => String(item.sku).trim()))];
+  const skus = [...new Set([
+    ...stockRows.map((item) => String(item.sku).trim()),
+    ...purchaseRows.map((item) => String(item?.sku || "").trim()),
+    ...(syncSkus || []).map((sku) => String(sku || "").trim())
+  ].filter(Boolean))];
   const [existingRows, catalogArtistRows] = await Promise.all([
     skus.length ? supabaseFetch(`products?select=*&sku=in.(${skuList(skus)})`) : [],
-    supabaseFetch("products?select=artist,label,tags,raw,category,publish_status,visibility&category=eq.Records&publish_status=eq.Published&visibility=eq.Public")
+    enrich
+      ? supabaseFetch("products?select=artist,label,tags,raw,category,publish_status,visibility&category=eq.Records&publish_status=eq.Published&visibility=eq.Public")
+      : Promise.resolve([])
   ]);
   const existingBySku = new Map(existingRows.map((row) => [String(row.sku || "").trim().toLowerCase(), row]));
   const productRows = [];
   const operationalUpdates = [];
-  const productIdBySku = new Map();
+  const productIdBySku = new Map(existingRows.map((row) => [String(row.sku || "").trim().toLowerCase(), row.id]));
 
   for (const stock of stockRows) {
     const sku = String(stock.sku).trim();
@@ -214,11 +241,15 @@ export async function syncFinanceInventoryToCatalog(
   }
 
   const inventoryRows = [
-    ...(state.inventory || []).map((item) => financeInventoryRow(item, productIdBySku)),
+    ...purchaseRows.map((item) => financeInventoryRow(item, productIdBySku)),
     ...stockRows.map((item) => financeStockRow(item, productIdBySku))
   ];
   const uniqueInventoryRows = dedupeRows(inventoryRows);
-  await deleteStaleFinanceInventoryRows(uniqueInventoryRows.map((row) => row.id));
+  await deleteStaleFinanceInventoryRows(uniqueInventoryRows.map((row) => row.id), {
+    fullSync: !scopedSync,
+    targetSkuKeys: syncSkuKeys,
+    targetInventoryIds: syncInventoryIdSet
+  });
   if (uniqueInventoryRows.length) {
     await supabaseFetch("inventory?on_conflict=id", {
       method: "POST",
@@ -230,7 +261,7 @@ export async function syncFinanceInventoryToCatalog(
   // Stock availability is calculated in Postgres from Finance quantity minus
   // live reservations. Never write the Finance quantity directly onto an
   // existing catalog product here: that could revive stock during checkout.
-  await reconcileFinanceStockToCatalog(skus);
+  if (skus.length) await reconcileFinanceStockToCatalog(skus);
 }
 
 export async function reconcileFinanceStockToCatalog(skus = []) {
@@ -241,6 +272,231 @@ export async function reconcileFinanceStockToCatalog(skus = []) {
     method: "POST",
     body: { p_skus: targetSkus.length ? targetSkus : null }
   });
+}
+
+export function financeCatalogSyncRequest(previousState, nextState, changes = {}) {
+  const touchesInventory = Object.prototype.hasOwnProperty.call(changes, "inventory") ||
+    Object.prototype.hasOwnProperty.call(changes, "inventoryStock");
+  if (!touchesInventory) return null;
+  const targetSkus = new Set();
+  const targetInventoryIds = new Set();
+  const addInventoryItem = (item) => {
+    if (!item) return;
+    const sku = String(item?.sku || "").trim();
+    if (sku) targetSkus.add(sku);
+    if (item?.id) targetInventoryIds.add(String(item.id));
+  };
+  const addStockItem = (item) => {
+    const sku = String(item?.sku || "").trim();
+    if (sku) targetSkus.add(sku);
+  };
+  if (Object.prototype.hasOwnProperty.call(changes, "inventory")) {
+    for (const item of changedFinanceRows(previousState?.inventory, nextState?.inventory)) addInventoryItem(item);
+  }
+  if (Object.prototype.hasOwnProperty.call(changes, "inventoryStock")) {
+    for (const item of changedFinanceRows(previousState?.inventoryStock, nextState?.inventoryStock)) addStockItem(item);
+  }
+  // Rows without an SKU (for example, a non-catalog operational note) have no
+  // corresponding storefront row. Never let one turn a normal Finance save
+  // into a full-catalog synchronization.
+  if (targetSkus.size === 0 && targetInventoryIds.size === 0) return null;
+  return {
+    targetSkus: [...targetSkus],
+    targetInventoryIds: [...targetInventoryIds],
+    changedSections: Object.keys(changes),
+    fullInventorySync: false
+  };
+}
+
+function changedFinanceRows(previousRows = [], nextRows = []) {
+  const previousByKey = new Map((Array.isArray(previousRows) ? previousRows : [])
+    .map((item, index) => [String(item?.id || item?.sku || `previous-${index}`), item]));
+  const nextByKey = new Map((Array.isArray(nextRows) ? nextRows : [])
+    .map((item, index) => [String(item?.id || item?.sku || `next-${index}`), item]));
+  const rows = [];
+  for (const key of new Set([...previousByKey.keys(), ...nextByKey.keys()])) {
+    const previous = previousByKey.get(key);
+    const next = nextByKey.get(key);
+    if (JSON.stringify(previous) === JSON.stringify(next)) continue;
+    if (previous) rows.push(previous);
+    if (next) rows.push(next);
+  }
+  return rows;
+}
+
+function financeCatalogSyncJobId() {
+  return `finance-catalog-sync-${new Date().toISOString().replace(/[^0-9]/g, "")}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function financeCatalogRetryDelaySeconds(attempt) {
+  return Math.min(15 * 60, 30 * (2 ** Math.max(0, Number(attempt || 1) - 1)));
+}
+
+function financeCatalogSyncSummary(job, message = "") {
+  const status = String(job?.status || "queued");
+  return {
+    jobId: job?.id || null,
+    status,
+    synced: status === "synced",
+    pending: ["queued", "processing", "retry"].includes(status),
+    message: message || job?.last_error_message || ""
+  };
+}
+
+async function enqueueFinanceCatalogSyncJob(request) {
+  const job = {
+    id: financeCatalogSyncJobId(),
+    status: "queued",
+    target_skus: request.targetSkus || [],
+    target_inventory_ids: request.targetInventoryIds || [],
+    changed_sections: request.changedSections || [],
+    full_inventory_sync: request.fullInventorySync === true,
+    attempt_count: 0,
+    max_attempts: FINANCE_CATALOG_SYNC_MAX_ATTEMPTS,
+    next_retry_at: new Date().toISOString(),
+    lease_expires_at: null,
+    worker_id: null,
+    last_error_message: null,
+    completed_at: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  };
+  await supabaseFetch("finance_catalog_sync_jobs", {
+    method: "POST",
+    body: [job],
+    prefer: "return=representation"
+  });
+  return job;
+}
+
+async function recoverExpiredFinanceCatalogSyncJobs({ jobId = "" } = {}) {
+  const jobFilter = jobId ? `&id=eq.${encodeURIComponent(jobId)}` : "";
+  return supabaseFetch(
+    `finance_catalog_sync_jobs?status=eq.processing&lease_expires_at=lt.${encodeURIComponent(new Date().toISOString())}${jobFilter}`,
+    {
+      method: "PATCH",
+      body: {
+        status: "retry",
+        next_retry_at: new Date().toISOString(),
+        lease_expires_at: null,
+        worker_id: null,
+        last_error_message: "The previous catalog sync worker ended before completing. The saved Finance change remains queued for a safe retry.",
+        updated_at: new Date().toISOString()
+      },
+      prefer: "return=representation"
+    }
+  );
+}
+
+async function claimFinanceCatalogSyncJobs({ limit = 1, jobId = "" } = {}) {
+  const safeLimit = Math.max(1, Math.min(10, Number(limit) || 1));
+  await recoverExpiredFinanceCatalogSyncJobs({ jobId });
+  const jobFilter = jobId ? `&id=eq.${encodeURIComponent(jobId)}` : "";
+  const rows = await supabaseFetch(
+    `finance_catalog_sync_jobs?select=*&status=in.(queued,retry)&next_retry_at=lte.${encodeURIComponent(new Date().toISOString())}${jobFilter}&order=created_at.asc&limit=${safeLimit * 3}`
+  );
+  const workerId = `finance-catalog-sync-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  const claimed = [];
+  for (const row of rows || []) {
+    if (claimed.length >= safeLimit) break;
+    const updated = await supabaseFetch(
+      `finance_catalog_sync_jobs?id=eq.${encodeURIComponent(row.id)}&status=eq.${encodeURIComponent(row.status)}`,
+      {
+        method: "PATCH",
+        body: {
+          status: "processing",
+          attempt_count: Number(row.attempt_count || 0) + 1,
+          lease_expires_at: new Date(Date.now() + FINANCE_CATALOG_SYNC_LEASE_MS).toISOString(),
+          worker_id: workerId,
+          updated_at: new Date().toISOString()
+        },
+        prefer: "return=representation"
+      }
+    );
+    if (updated?.[0]) claimed.push(updated[0]);
+  }
+  return claimed;
+}
+
+async function updateFinanceCatalogSyncJob(job, update) {
+  const workerFilter = String(job?.worker_id || "").trim()
+    ? `&worker_id=eq.${encodeURIComponent(job.worker_id)}`
+    : "";
+  const rows = await supabaseFetch(
+    `finance_catalog_sync_jobs?id=eq.${encodeURIComponent(job.id)}&status=eq.processing${workerFilter}`,
+    {
+      method: "PATCH",
+      body: { ...update, lease_expires_at: null, worker_id: null, updated_at: new Date().toISOString() },
+      prefer: "return=representation"
+    }
+  );
+  return rows?.[0] || null;
+}
+
+export async function processFinanceCatalogSyncJobs({ limit = 2, jobId = "" } = {}) {
+  const jobs = await claimFinanceCatalogSyncJobs({ limit, jobId });
+  const results = [];
+  for (const job of jobs) {
+    try {
+      const state = await readFinanceState();
+      await syncFinanceInventoryToCatalog(state, {
+        enrich: false,
+        syncSkus: Array.isArray(job.target_skus) ? job.target_skus : [],
+        syncInventoryIds: Array.isArray(job.target_inventory_ids) ? job.target_inventory_ids : [],
+        fullInventorySync: job.full_inventory_sync === true
+      });
+      const synced = await updateFinanceCatalogSyncJob(job, {
+        status: "synced",
+        completed_at: new Date().toISOString(),
+        last_error_message: null
+      });
+      results.push(synced
+        ? financeCatalogSyncSummary(synced, "Catalog inventory synchronized.")
+        : { jobId: job.id, status: "superseded", synced: false, pending: true, message: "Catalog sync lease moved to a newer worker." });
+    } catch (error) {
+      const attempts = Number(job.attempt_count || 0);
+      const exhausted = attempts >= Number(job.max_attempts || FINANCE_CATALOG_SYNC_MAX_ATTEMPTS);
+      const message = error instanceof Error ? error.message : "Finance catalog synchronization failed.";
+      const updated = await updateFinanceCatalogSyncJob(job, {
+        status: exhausted ? "failed" : "retry",
+        completed_at: exhausted ? new Date().toISOString() : null,
+        next_retry_at: exhausted
+          ? new Date().toISOString()
+          : new Date(Date.now() + financeCatalogRetryDelaySeconds(attempts) * 1000).toISOString(),
+        last_error_message: String(message).slice(0, 1200)
+      });
+      results.push(updated
+        ? financeCatalogSyncSummary(updated, updated.last_error_message || message)
+        : { jobId: job.id, status: "superseded", synced: false, pending: true, message: "Catalog sync lease moved to a newer worker." });
+    }
+  }
+  return {
+    processed: results.length,
+    synced: results.filter((result) => result.synced).length,
+    pending: results.filter((result) => result.pending).length,
+    failed: results.filter((result) => result.status === "failed").length,
+    results
+  };
+}
+
+async function queueFinanceCatalogSync(previousState, nextState, changes) {
+  const request = financeCatalogSyncRequest(previousState, nextState, changes);
+  if (!request) {
+    return { status: "not_needed", synced: false, pending: false, message: "No inventory fields changed, so catalog synchronization was not needed." };
+  }
+  try {
+    const job = await enqueueFinanceCatalogSyncJob(request);
+    const processed = await processFinanceCatalogSyncJobs({ limit: 1, jobId: job.id });
+    return processed.results.find((result) => result.jobId === job.id) ||
+      financeCatalogSyncSummary(job, "Catalog inventory synchronization is queued for retry.");
+  } catch (error) {
+    return {
+      status: "needs_attention",
+      synced: false,
+      pending: false,
+      message: `Finance was saved, but catalog sync could not be queued: ${error instanceof Error ? error.message : "unknown error"}`
+    };
+  }
 }
 
 // Server-side, resumable catalog research. A job is claimed in Supabase before
@@ -455,13 +711,17 @@ async function syncFinanceArtistsToCatalog(productRows = []) {
   }
 }
 
-async function deleteStaleFinanceInventoryRows(activeIds = []) {
+async function deleteStaleFinanceInventoryRows(activeIds = [], { fullSync = false, targetSkuKeys = new Set(), targetInventoryIds = new Set() } = {}) {
   const active = new Set(activeIds.map(String));
+  const targetMirrorIds = new Set([...targetInventoryIds].map((id) => financePurchaseMirrorId({ id })));
   const rows = await supabaseFetch("inventory?select=id,raw");
   const staleIds = rows
     .filter((row) => {
       const origin = String(row?.raw?.origin || "");
-      return ["finance-purchase", "finance-stock"].includes(origin) && !active.has(String(row.id));
+      if (!["finance-purchase", "finance-stock"].includes(origin) || active.has(String(row.id))) return false;
+      if (fullSync) return true;
+      const sku = String(row?.raw?.sku || "").trim().toLowerCase();
+      return targetSkuKeys.has(sku) || targetMirrorIds.has(String(row.id));
     })
     .map((row) => String(row.id))
     .filter(Boolean);
@@ -873,7 +1133,7 @@ export function draftProductFromFinanceStock(stock, quantity) {
 
 function financeInventoryRow(item, productIdBySku) {
   const sku = String(item?.sku || "").trim();
-  const rowId = `finance-purchase-${item.id || sku || slugify(item.itemType || item.title || item.date)}`;
+  const rowId = financePurchaseMirrorId(item);
   return {
     id: rowId,
     name: null,
@@ -1088,6 +1348,10 @@ function today() {
 
 async function readRemoteState() {
   return (await readFinanceStateWithVersion())?.state || null;
+}
+
+function financePurchaseMirrorId(item = {}) {
+  return `finance-purchase-${item.id || item.sku || slugify(item.itemType || item.title || item.date)}`;
 }
 
 export function changedFinanceSections(previous = EMPTY_FINANCE_STATE, next = EMPTY_FINANCE_STATE, requestedSections = null) {

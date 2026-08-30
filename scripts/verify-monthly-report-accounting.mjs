@@ -2,6 +2,13 @@ import fs from "node:fs";
 
 const source = fs.readFileSync("apps/finance/index.html", "utf8");
 
+if (!source.includes("data-reconcile-closed-month") || !source.includes("function reconcileClosedMonthlyReport")) {
+  throw new Error("Closed-month reports must have an explicit reconciliation action.");
+}
+if (!source.includes("reconciliationCount") || !source.includes("reconciledAt")) {
+  throw new Error("Closed-month reconciliation must retain an audit marker.");
+}
+
 function extractFunction(name) {
   const marker = `function ${name}(`;
   const start = source.indexOf(marker);
