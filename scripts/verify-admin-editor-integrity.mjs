@@ -95,12 +95,12 @@ const productSaveSource = await readFile(new URL("../api/admin/store.js", import
 assert.match(productSaveSource, /enqueueAdminFinanceSyncJob/);
 assert.match(productSaveSource, /financeSync/);
 
-const migration = await readFile(new URL("../supabase/migrations/20260829191626_admin_product_revisions_and_research_leases.sql", import.meta.url), "utf8");
+const migration = await readFile(new URL("../supabase/migrations/20260830045706_admin_product_revisions_and_research_leases.sql", import.meta.url), "utf8");
 assert.match(migration, /edit_revision bigint/);
 assert.match(migration, /save_admin_home_slider/);
 assert.match(migration, /sync_finance_catalog_operational/);
 
-const financeQueueMigration = await readFile(new URL("../supabase/migrations/20260830093000_admin_finance_sync_jobs.sql", import.meta.url), "utf8");
+const financeQueueMigration = await readFile(new URL("../supabase/migrations/20260830105625_admin_finance_sync_jobs.sql", import.meta.url), "utf8");
 assert.match(financeQueueMigration, /admin_finance_sync_jobs/);
 assert.match(financeQueueMigration, /unique \(product_id, product_revision\)/);
 

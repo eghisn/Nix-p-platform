@@ -14,8 +14,8 @@ const [checkout, client, adminStore, handlers, shippingEngine, migration, polici
   read("supabase/migrations/20260729104345_commerce_internal_table_policies.sql"),
   read("supabase/migrations/20260729104514_recover_stale_outbox_claims.sql"),
   read("supabase/migrations/20260729121848_shipping_quote_foundation.sql"),
-  read("supabase/migrations/20260828103000_atomic_finance_stock_ledger.sql"),
-  read("supabase/migrations/20260828104500_enforce_finance_stock_on_catalog_writes.sql"),
+  read("supabase/migrations/20260828163000_atomic_finance_stock_ledger.sql"),
+  read("supabase/migrations/20260828163553_enforce_finance_stock_on_catalog_writes.sql"),
   read("api/_lib/financeState.js"),
   read("vercel.json")
 ]);
