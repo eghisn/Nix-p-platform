@@ -79,7 +79,7 @@ assert.match(financeState, /processFinanceCatalogSyncJobs/);
 assert.match(financeState, /syncSkus/);
 assert.match(financeState, /Catalog inventory synchronized/);
 
-const migration = await readFile("supabase/migrations/20260830123000_finance_catalog_sync_jobs.sql", "utf8");
+const migration = await readFile("supabase/migrations/20260830121400_finance_catalog_sync_jobs.sql", "utf8");
 assert.match(migration, /finance_catalog_sync_jobs/);
 assert.match(migration, /enable row level security/);
 assert.match(migration, /service_role/);
