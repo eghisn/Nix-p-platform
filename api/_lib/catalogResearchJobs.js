@@ -203,41 +203,74 @@ export async function retryCatalogResearchJob(job, { code = "source-unavailable"
   });
 }
 
-export async function markCatalogResearchJobsDeploymentPending(skus = [], deployment = {}) {
-  const targets = [...new Set((skus || []).map(normalizedSku).filter(Boolean))];
-  if (!targets.length) return [];
-  return supabaseFetch(`catalog_research_jobs?sku=in.(${quoteList(targets)})&status=in.(ready,deployment_pending)`, {
-    method: "PATCH",
-    service: true,
-    body: { status: "deployment_pending", stage: "deployment", result: { deployment }, next_retry_at: now(), lease_expires_at: null, worker_id: null, updated_at: now() },
-    prefer: "return=representation"
+function publicationJobTargets(jobs = []) {
+  const targets = new Map();
+  for (const job of Array.isArray(jobs) ? jobs : []) {
+    const id = String(job?.id || "").trim();
+    const requestFingerprint = String(job?.request_fingerprint || job?.requestFingerprint || "").trim();
+    if (!id || !requestFingerprint) continue;
+    targets.set(`${id}:${requestFingerprint}`, { id, requestFingerprint });
+  }
+  return [...targets.values()];
+}
+
+export function publicationJobsForProducts(jobs = [], products = []) {
+  const productBySku = new Map(
+    (Array.isArray(products) ? products : []).map((product) => [normalizedSku(product?.sku), product])
+  );
+  return (Array.isArray(jobs) ? jobs : []).filter((job) => {
+    const product = productBySku.get(normalizedSku(job?.sku));
+    if (!product || product.publishStatus !== "Published" || product.visibility !== "Public") return false;
+    const fingerprint = String(product.raw?.enrichmentFingerprint || product.enrichmentFingerprint || "").trim();
+    return Boolean(fingerprint && fingerprint === String(job?.request_fingerprint || "").trim());
   });
 }
 
-export async function markCatalogResearchJobsLive(skus = [], deployment = {}) {
-  const targets = [...new Set((skus || []).map(normalizedSku).filter(Boolean))];
+export async function markCatalogResearchJobsDeploymentPending(jobs = [], deployment = {}) {
+  const targets = publicationJobTargets(jobs);
   if (!targets.length) return [];
-  return supabaseFetch(`catalog_research_jobs?sku=in.(${quoteList(targets)})&status=in.(ready,deployment_pending)`, {
-    method: "PATCH",
-    service: true,
-    body: {
-      status: "live",
-      stage: "complete",
-      completed_at: now(),
-      result: { deployment },
-      next_retry_at: now(),
-      lease_expires_at: null,
-      worker_id: null,
-      updated_at: now()
-    },
-    prefer: "return=representation"
-  });
+  const rows = await Promise.all(targets.map((target) => supabaseFetch(
+    `catalog_research_jobs?id=eq.${encodeURIComponent(target.id)}&request_fingerprint=eq.${encodeURIComponent(target.requestFingerprint)}&status=in.(ready,deployment_pending)`,
+    {
+      method: "PATCH",
+      service: true,
+      body: { status: "deployment_pending", stage: "deployment", result: { deployment }, next_retry_at: now(), lease_expires_at: null, worker_id: null, updated_at: now() },
+      prefer: "return=representation"
+    }
+  )));
+  return rows.flat();
 }
 
-export async function catalogResearchJobSummary(skus = []) {
+export async function markCatalogResearchJobsLive(jobs = [], deployment = {}) {
+  const targets = publicationJobTargets(jobs);
+  if (!targets.length) return [];
+  const rows = await Promise.all(targets.map((target) => supabaseFetch(
+    `catalog_research_jobs?id=eq.${encodeURIComponent(target.id)}&request_fingerprint=eq.${encodeURIComponent(target.requestFingerprint)}&status=in.(ready,deployment_pending)`,
+    {
+      method: "PATCH",
+      service: true,
+      body: {
+        status: "live",
+        stage: "complete",
+        completed_at: now(),
+        result: { deployment },
+        next_retry_at: now(),
+        lease_expires_at: null,
+        worker_id: null,
+        updated_at: now()
+      },
+      prefer: "return=representation"
+    }
+  )));
+  return rows.flat();
+}
+
+export async function catalogResearchJobSummary(skus = [], { statuses = [], limit = 1000 } = {}) {
   const targets = [...new Set((skus || []).map(normalizedSku).filter(Boolean))];
   const filter = targets.length ? `&sku=in.(${quoteList(targets)})` : "";
-  const rows = await supabaseFetch(`catalog_research_jobs?select=*&order=updated_at.desc&limit=100${filter}`, { service: true });
+  const statusFilter = statuses.length ? `&status=in.(${statuses.map(String).join(",")})` : "";
+  const safeLimit = Math.max(1, Math.min(1000, Number(limit) || 1000));
+  const rows = await supabaseFetch(`catalog_research_jobs?select=*&order=updated_at.desc&limit=${safeLimit}${filter}${statusFilter}`, { service: true });
   return rows || [];
 }
 

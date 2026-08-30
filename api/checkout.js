@@ -7,6 +7,7 @@ import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
 import { runShippingMaintenance } from "./_lib/nixpShippingEngine.js";
 import { processCatalogResearchJobs, readFinanceState, syncFinanceInventoryToCatalog } from "./_lib/financeState.js";
+import { processAdminFinanceSyncJobs } from "./_lib/adminFinanceSyncJobs.js";
 import { reconcileCatalogPublicationState } from "./_lib/catalogPublicationReconciliation.js";
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 import { recordSystemEvent } from "./_lib/observability.js";
@@ -240,14 +241,15 @@ async function handleCommerceMaintenance(req, res) {
     // race the release transaction and publish an intermediate stock count.
     const maintenance = await expirePendingOrders();
     const financeState = await readFinanceState();
-    const [outbox, shipping, catalog, research, publication] = await Promise.all([
+    const [outbox, shipping, catalog, research, publication, financeSync] = await Promise.all([
       drainNotificationOutbox(50),
       runShippingMaintenance({ mode: "daily" }),
       syncFinanceInventoryToCatalog(financeState, { enrich: false }).then(() => ({ inventoryStock: financeState.inventoryStock?.length || 0 })),
       processCatalogResearchJobs({ limit: 2, requestedBy: "maintenance" }),
-      reconcileCatalogPublicationState()
+      reconcileCatalogPublicationState(),
+      processAdminFinanceSyncJobs({ limit: 10 })
     ]);
-    return json(res, 200, { ok: true, maintenance, outbox, shipping, catalog, research, publication, checkedAt: new Date().toISOString() });
+    return json(res, 200, { ok: true, maintenance, outbox, shipping, catalog, research, publication, financeSync, checkedAt: new Date().toISOString() });
   } catch (error) {
     return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Commerce maintenance failed." });
   }

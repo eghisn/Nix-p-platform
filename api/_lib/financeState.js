@@ -950,55 +950,89 @@ export async function refreshRelatedArtistsOnly({ skus = [] } = {}) {
   });
 
   const results = [];
-  for (const row of rows) {
-    const raw = row.raw || {};
-    const existingAutomaticRelatedArtists = Array.isArray(raw.autoEditorial?.relatedArtists)
-      ? raw.autoEditorial.relatedArtists
-      : Array.isArray(raw.relatedArtistsResearch?.artists) ? raw.relatedArtistsResearch.artists : [];
-    if (isExplicitManualRelatedArtistsOverride(raw, existingAutomaticRelatedArtists)) {
-      results.push({ sku: row.sku, status: "manual-override", relatedArtists: raw.relatedArtists || [] });
-      continue;
-    }
-    const research = await researchRelatedArtists({
-      artist: row.artist,
-      title: row.title,
-      format: row.format,
-      releaseId: String(raw.musicBrainzReleaseId || "").trim()
-    });
-    const relatedArtistPayload = normalizeRelatedArtistsPayload({ raw, research });
-    const relatedArtists = relatedArtistPayload.relatedArtists;
-    const previousEnrichmentStatus = String(raw.enrichmentStatus || "").trim();
-    const enrichmentStatus = previousEnrichmentStatus.startsWith("complete")
-      ? (relatedArtists.length ? "complete" : "complete-no-related-artists")
-      : previousEnrichmentStatus;
-    const nextRaw = {
-      ...raw,
-      relatedArtists,
-      manualRelatedArtists: relatedArtistPayload.manualRelatedArtists,
-      manualRelatedArtistsOverride: relatedArtistPayload.manualRelatedArtistsOverride,
-      manualRelatedArtistsOverrideSource: relatedArtistPayload.manualRelatedArtistsOverride
-        ? raw.manualRelatedArtistsOverrideSource || "admin"
-        : "",
-      relatedArtistEvidence: research.evidence || [],
-      relatedArtistsResearch: research,
-      relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,
-      enrichmentStatus,
-      autoEditorial: {
-        ...(raw.autoEditorial || {}),
+  for (const originalRow of rows) {
+    let row = originalRow;
+    let saved = false;
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      const raw = row.raw || {};
+      const existingAutomaticRelatedArtists = Array.isArray(raw.autoEditorial?.relatedArtists)
+        ? raw.autoEditorial.relatedArtists
+        : Array.isArray(raw.relatedArtistsResearch?.artists) ? raw.relatedArtistsResearch.artists : [];
+      if (isExplicitManualRelatedArtistsOverride(raw, existingAutomaticRelatedArtists)) {
+        results.push({ sku: row.sku, status: "manual-override", relatedArtists: raw.relatedArtists || [] });
+        saved = true;
+        break;
+      }
+      const research = await researchRelatedArtists({
+        artist: row.artist,
+        title: row.title,
+        format: row.format,
+        releaseId: String(raw.musicBrainzReleaseId || "").trim()
+      });
+      const relatedArtistPayload = normalizeRelatedArtistsPayload({ raw, research });
+      const relatedArtists = relatedArtistPayload.relatedArtists;
+      const previousEnrichmentStatus = String(raw.enrichmentStatus || "").trim();
+      const enrichmentStatus = previousEnrichmentStatus.startsWith("complete")
+        ? (relatedArtists.length ? "complete" : "complete-no-related-artists")
+        : previousEnrichmentStatus;
+      const nextRaw = {
+        ...raw,
         relatedArtists,
+        manualRelatedArtists: relatedArtistPayload.manualRelatedArtists,
+        manualRelatedArtistsOverride: relatedArtistPayload.manualRelatedArtistsOverride,
+        manualRelatedArtistsOverrideSource: relatedArtistPayload.manualRelatedArtistsOverride
+          ? raw.manualRelatedArtistsOverrideSource || "admin"
+          : "",
         relatedArtistEvidence: research.evidence || [],
         relatedArtistsResearch: research,
         relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,
-        enrichmentStatus
+        enrichmentStatus,
+        autoEditorial: {
+          ...(raw.autoEditorial || {}),
+          relatedArtists,
+          relatedArtistEvidence: research.evidence || [],
+          relatedArtistsResearch: research,
+          relatedArtistResearchVersion: RELATED_ARTIST_RESEARCH_VERSION,
+          enrichmentStatus
+        }
+      };
+      const currentRevision = Math.max(1, Number(row.edit_revision) || 1);
+      const updated = await supabaseFetch(
+        `products?id=eq.${encodeURIComponent(row.id)}&edit_revision=eq.${currentRevision}`,
+        {
+          method: "PATCH",
+          body: {
+            raw: nextRaw,
+            edit_revision: currentRevision + 1,
+            updated_at: today(),
+            editorial_updated_at: new Date().toISOString(),
+            editorial_updated_by: "related-artists-research"
+          },
+          service: true,
+          prefer: "return=representation"
+        }
+      );
+      if (updated?.[0]) {
+        results.push({ sku: row.sku, status: research.status, relatedArtists, evidence: research.evidence?.length || 0 });
+        saved = true;
+        break;
       }
-    };
-    await supabaseFetch(`products?id=eq.${encodeURIComponent(row.id)}`, {
-      method: "PATCH",
-      body: { raw: nextRaw },
-      service: true,
-      prefer: "return=minimal"
-    });
-    results.push({ sku: row.sku, status: research.status, relatedArtists, evidence: research.evidence?.length || 0 });
+      const latestRows = await supabaseFetch(`products?select=*&id=eq.${encodeURIComponent(row.id)}&limit=1`, { service: true });
+      if (!latestRows?.[0]) {
+        results.push({ sku: row.sku, status: "missing", relatedArtists: [] });
+        saved = true;
+        break;
+      }
+      row = latestRows[0];
+    }
+    if (!saved) {
+      results.push({
+        sku: originalRow.sku,
+        status: "conflict",
+        relatedArtists: [],
+        message: "A newer product edit arrived while related artists were refreshing. The automatic result was not saved."
+      });
+    }
   }
   return { version: RELATED_ARTIST_RESEARCH_VERSION, processed: results.length, results };
 }

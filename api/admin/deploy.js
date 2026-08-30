@@ -21,7 +21,8 @@ export default async function handler(req, res) {
   const requestedStatusChange = body.statusChange && typeof body.statusChange === "object"
     ? {
         id: String(body.statusChange.id || "").trim(),
-        publishStatus: body.statusChange.publishStatus === "Published" ? "Published" : "Draft"
+        publishStatus: body.statusChange.publishStatus === "Published" ? "Published" : "Draft",
+        expectedRevision: Math.max(0, Number(body.statusChange.expectedRevision) || 0)
       }
     : null;
   try {
@@ -31,7 +32,10 @@ export default async function handler(req, res) {
     if (requestedStatusChange?.id) {
       // Publication is a targeted, backed-up row write. This avoids rewriting
       // every Admin table or running enrichment when only one status changed.
-      await saveProductPublicationStatus(safeStore, requestedStatusChange.id);
+      await saveProductPublicationStatus(safeStore, requestedStatusChange.id, {
+        expectedRevision: requestedStatusChange.expectedRevision || null,
+        actor: "admin-publication"
+      });
     }
     let deployedStore = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
     let statusChange = null;
@@ -66,7 +70,14 @@ export default async function handler(req, res) {
         requestedStatus: requestedStatusChange.publishStatus,
         requestedAt: new Date().toISOString()
       });
-      await saveProductPublicationStatus(deployedStore, requestedStatusChange.id);
+      const pendingProduct = await saveProductPublicationStatus(deployedStore, requestedStatusChange.id, {
+        expectedRevision: product.editRevision,
+        actor: "admin-publication"
+      });
+      deployedStore = {
+        ...deployedStore,
+        products: deployedStore.products.map((item) => item.id === pendingProduct.id ? pendingProduct : item)
+      };
     }
     if (!isGitHubDeployConfigured()) {
       return json(res, 200, {
@@ -85,7 +96,11 @@ export default async function handler(req, res) {
         verifiedAt: live.confirmed ? new Date().toISOString() : "",
         deployment: github
       });
-      await saveProductPublicationStatus(finalStore, requestedStatusChange.id);
+      const finalProduct = finalStore.products.find((item) => item.id === requestedStatusChange.id);
+      await saveProductPublicationStatus(finalStore, requestedStatusChange.id, {
+        expectedRevision: finalProduct?.editRevision,
+        actor: "admin-publication"
+      });
     }
     json(res, 200, {
       ok: true,
@@ -97,7 +112,11 @@ export default async function handler(req, res) {
       statusChange: statusChange ? { ...statusChange, deployed: live.confirmed } : null
     });
   } catch (error) {
-    json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Deploy failed" });
+    json(res, Number(error?.statusCode || 500), {
+      ok: false,
+      error: error instanceof Error ? error.message : "Deploy failed",
+      currentProduct: error?.currentProduct || null
+    });
   }
 }
 

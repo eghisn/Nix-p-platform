@@ -3214,19 +3214,22 @@ function bindEvents() {
       const result = await adminStore.saveProductAndPublish(data);
       state.adminEditingProductId = wasEditing ? result.product.id : null;
       const sha = result.deployment?.github?.commitSha ? ` / commit ${result.deployment.github.commitSha.slice(0, 7)}` : "";
+      const financeSyncNote = result.financeSync?.synced === false
+        ? ` Finance inventory sync is ${result.financeSync.pending ? "pending and will retry automatically" : "not complete yet"}${result.financeSync.message ? `: ${result.financeSync.message}` : "."}`
+        : "";
       if (result.savedOnly) {
         state.adminNotice = wasEditing
-          ? "Product updated in the protected Admin catalog. It remains private or draft, so nothing was sent to the public site."
-          : "Product saved in the protected Admin catalog. Ready for a new product.";
-        state.adminNoticeTone = "success";
+          ? `Product updated in the protected Admin catalog. It remains private or draft, so nothing was sent to the public site.${financeSyncNote}`
+          : `Product saved in the protected Admin catalog. Ready for a new product.${financeSyncNote}`;
+        state.adminNoticeTone = result.financeSync?.synced === false ? "warning" : "success";
       } else if (result.publicConfirmed) {
-        state.adminNotice = `${wasEditing ? "Product updated" : "Product saved"} and confirmed live on the public site${sha}.`;
-        state.adminNoticeTone = "success";
+        state.adminNotice = `${wasEditing ? "Product updated" : "Product saved"} and confirmed live on the public site${sha}.${financeSyncNote}`;
+        state.adminNoticeTone = result.financeSync?.synced === false ? "warning" : "success";
       } else if (result.deploymentError) {
-        state.adminNotice = `Product saved safely in Admin, but public deployment is pending: ${result.deploymentError}`;
+        state.adminNotice = `Product saved safely in Admin, but public deployment is pending: ${result.deploymentError}${financeSyncNote}`;
         state.adminNoticeTone = "warning";
       } else {
-        state.adminNotice = `Product saved and committed${sha}. Vercel is still publishing it; do not save it again.`;
+        state.adminNotice = `Product saved and committed${sha}. Vercel is still publishing it; do not save it again.${financeSyncNote}`;
         state.adminNoticeTone = "warning";
       }
       await render({ preserveScroll: true });

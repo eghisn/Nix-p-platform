@@ -76,10 +76,32 @@ const researchSource = await readFile(new URL("../api/_lib/catalogResearchJobs.j
 assert.match(researchSource, /lease_expires_at/);
 assert.match(researchSource, /recoverExpiredCatalogResearchJobs/);
 assert.match(researchSource, /worker-lease-expired/);
+assert.match(researchSource, /publicationJobsForProducts/);
+assert.match(researchSource, /request_fingerprint=eq/);
+
+const supabaseSource = await readFile(new URL("../api/_lib/supabase.js", import.meta.url), "utf8");
+assert.match(supabaseSource, /saveProductPublicationStatus\(store, productId, \{ expectedRevision/);
+assert.match(supabaseSource, /edit_revision=eq\.\$\{currentRevision\}/);
+
+const financeSource = await readFile(new URL("../api/_lib/financeState.js", import.meta.url), "utf8");
+assert.match(financeSource, /editorial_updated_by: "related-artists-research"/);
+assert.match(financeSource, /A newer product edit arrived while related artists were refreshing/);
+
+const financeQueueSource = await readFile(new URL("../api/_lib/adminFinanceSyncJobs.js", import.meta.url), "utf8");
+assert.match(financeQueueSource, /product_revision/);
+assert.match(financeQueueSource, /A newer product revision replaced this sync request/);
+
+const productSaveSource = await readFile(new URL("../api/admin/store.js", import.meta.url), "utf8");
+assert.match(productSaveSource, /enqueueAdminFinanceSyncJob/);
+assert.match(productSaveSource, /financeSync/);
 
 const migration = await readFile(new URL("../supabase/migrations/20260829191626_admin_product_revisions_and_research_leases.sql", import.meta.url), "utf8");
 assert.match(migration, /edit_revision bigint/);
 assert.match(migration, /save_admin_home_slider/);
 assert.match(migration, /sync_finance_catalog_operational/);
+
+const financeQueueMigration = await readFile(new URL("../supabase/migrations/20260830093000_admin_finance_sync_jobs.sql", import.meta.url), "utf8");
+assert.match(financeQueueMigration, /admin_finance_sync_jobs/);
+assert.match(financeQueueMigration, /unique \(product_id, product_revision\)/);
 
 console.log("Admin editor concurrency, deployment, and lease contracts verified.");

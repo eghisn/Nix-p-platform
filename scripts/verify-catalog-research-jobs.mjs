@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
+import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, publicationJobsForProducts, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
 import { draftProductFromFinanceStock } from "../api/_lib/financeState.js";
 import { normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
 
@@ -23,6 +23,17 @@ assert.ok(job.request_fingerprint, "A durable job must have an input fingerprint
 assert.equal(retryDelaySeconds(1), 30);
 assert.equal(retryDelaySeconds(5), 480);
 assert.equal(retryDelaySeconds(99), 3600);
+
+const publicationJobs = publicationJobsForProducts([
+  { id: "old-job", sku: completeRecord.sku, request_fingerprint: "old-release", status: "ready" },
+  { id: "current-job", sku: completeRecord.sku, request_fingerprint: "current-release", status: "ready" }
+], [{
+  sku: completeRecord.sku,
+  publishStatus: "Published",
+  visibility: "Public",
+  raw: { enrichmentFingerprint: "current-release" }
+}]);
+assert.deepEqual(publicationJobs.map((item) => item.id), ["current-job"], "Only the matching research fingerprint may be marked live.");
 
 const unscoped = await enqueueCatalogResearchJobs([completeRecord], { requestedBy: "finance" });
 assert.deepEqual(unscoped, { queued: 0, jobs: [] }, "Finance saves must not enqueue the entire inventory without explicit SKUs.");

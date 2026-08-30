@@ -3,7 +3,8 @@ import { isSupabaseConfigured, loadStore, saveAdminHomeSlider, saveAdminProduct,
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
 import { verifyPublicCatalogRevision } from "../_lib/publicCatalogDeployment.js";
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
-import { processCatalogResearchJobs, readFinanceState, refreshRelatedArtistsOnly, syncAdminProductInventory, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
+import { processCatalogResearchJobs, readFinanceState, refreshRelatedArtistsOnly, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
+import { enqueueAdminFinanceSyncJob, processAdminFinanceSyncJobs } from "../_lib/adminFinanceSyncJobs.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
 import { drainNotificationOutbox, getNotificationOutboxHealth, retryFailedNotificationOutbox, sendProductStatusNotification } from "../_lib/emailNotifications.js";
@@ -130,8 +131,12 @@ export default async function handler(req, res) {
         const github = await commitPublicStore(store, { message: `Publish researched NIXP catalog ${new Date().toISOString()}` });
         deployment = { github, ...(await verifyPublicCatalogRevision(store.products || [], requestedSkus)) };
         const jobs = await import("../_lib/catalogResearchJobs.js");
-        if (deployment.confirmed) await jobs.markCatalogResearchJobsLive(requestedSkus, deployment.github);
-        else await jobs.markCatalogResearchJobsDeploymentPending(requestedSkus, deployment.github);
+        const publicationJobs = jobs.publicationJobsForProducts(
+          await jobs.catalogResearchJobSummary(requestedSkus, { statuses: ["ready", "deployment_pending"] }),
+          store.products || []
+        );
+        if (deployment.confirmed) await jobs.markCatalogResearchJobsLive(publicationJobs, deployment.github);
+        else await jobs.markCatalogResearchJobsDeploymentPending(publicationJobs, deployment.github);
       }
       return json(res, 200, {
         ok: true,
@@ -226,13 +231,24 @@ async function handleAdminProductSave(req, res) {
       expectedRevision: body.expectedRevision,
       actor: session.username || "admin"
     });
-    let financeSynced = true;
-    let financeWarning = "";
+    let financeSync;
     try {
-      await syncAdminProductInventory(saved.product);
+      const queuedJob = await enqueueAdminFinanceSyncJob(saved.product);
+      const processed = await processAdminFinanceSyncJobs({ limit: 1, productId: saved.product.id });
+      financeSync = processed.results.find((result) => result.jobId === queuedJob.id) || processed.results[0] || {
+        jobId: queuedJob.id,
+        status: "queued",
+        synced: false,
+        pending: true,
+        message: "Finance inventory sync is queued and will retry automatically."
+      };
     } catch (error) {
-      financeSynced = false;
-      financeWarning = error instanceof Error ? error.message : "Finance inventory synchronization is pending.";
+      financeSync = {
+        status: "needs_attention",
+        synced: false,
+        pending: false,
+        message: error instanceof Error ? error.message : "Finance inventory sync needs attention."
+      };
     }
     const nextStatus = String(saved.product.publishStatus || "").trim();
     if (nextStatus && nextStatus !== saved.previousStatus) {
@@ -246,8 +262,9 @@ async function handleAdminProductSave(req, res) {
     return json(res, saved.created ? 201 : 200, {
       ok: true,
       product: saved.product,
-      financeSynced,
-      warning: financeWarning
+      financeSynced: financeSync.synced === true,
+      financeSync,
+      warning: financeSync.message || ""
     });
   } catch (error) {
     return json(res, Number(error?.statusCode || 500), {

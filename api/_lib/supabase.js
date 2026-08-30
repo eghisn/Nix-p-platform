@@ -337,7 +337,7 @@ export async function saveAdminHomeSlider(updates = [], { actor = "admin" } = {}
   }
 }
 
-export async function saveProductPublicationStatus(store, productId) {
+export async function saveProductPublicationStatus(store, productId, { expectedRevision = null, actor = "admin" } = {}) {
   const safeStore = applyCatalogPublicationSafety(store);
   validateStore(safeStore);
   const product = (safeStore.products || []).find((item) => item.id === productId);
@@ -353,6 +353,16 @@ export async function saveProductPublicationStatus(store, productId) {
   });
   const previous = previousRows?.[0];
   if (!previous) throw new Error("Product publication save failed: current product not found.");
+  const currentRevision = Math.max(1, Number(previous.edit_revision) || 1);
+  const revisionFromProduct = Math.max(0, Number(product.editRevision) || 0);
+  const expected = expectedRevision === null || expectedRevision === undefined
+    ? revisionFromProduct
+    : Math.max(0, Number(expectedRevision) || 0);
+  if (expected !== currentRevision) {
+    const error = requestError("This product changed after the publication action was opened. Refresh it before publishing so newer edits are not overwritten.", 409);
+    error.currentProduct = fromProductRow(previous, { privateScope: true, compactAdmin: true });
+    throw error;
+  }
   const raw = {
     ...(previous.raw || {}),
     publishStatus: product.publishStatus || previous.publish_status || "Draft",
@@ -360,18 +370,27 @@ export async function saveProductPublicationStatus(store, productId) {
     adminPublishOverride: product.raw?.adminPublishOverride ?? previous.raw?.adminPublishOverride ?? null,
     publicationState: product.raw?.publicationState ?? previous.raw?.publicationState ?? null
   };
-  const updated = await supabaseFetch(`products?id=eq.${encodeURIComponent(productId)}`, {
+  const updated = await supabaseFetch(`products?id=eq.${encodeURIComponent(productId)}&edit_revision=eq.${currentRevision}`, {
     method: "PATCH",
     service: true,
     body: {
       publish_status: raw.publishStatus,
       visibility: raw.visibility,
-      updated_at: product.updatedAt || new Date().toISOString().slice(0, 10),
-      raw
+      updated_at: new Date().toISOString().slice(0, 10),
+      raw,
+      edit_revision: currentRevision + 1,
+      editorial_updated_at: new Date().toISOString(),
+      editorial_updated_by: String(actor || "admin").trim().slice(0, 160) || "admin"
     },
     prefer: "return=representation"
   });
-  return fromProductRow(updated?.[0] || { ...previous, publish_status: raw.publishStatus, visibility: raw.visibility, raw }, { privateScope: true });
+  if (!updated?.[0]) {
+    const latestRows = await supabaseFetch(`products?select=*&id=eq.${encodeURIComponent(productId)}&limit=1`, { service: true });
+    const error = requestError("This product changed while publication was being saved. Refresh it before retrying.", 409);
+    error.currentProduct = latestRows?.[0] ? fromProductRow(latestRows[0], { privateScope: true, compactAdmin: true }) : null;
+    throw error;
+  }
+  return fromProductRow(updated[0], { privateScope: true });
 }
 
 export async function saveAdminProduct(product, { expectedRevision = 0, actor = "admin" } = {}) {
@@ -478,7 +497,7 @@ function fromRawRow(row) {
   return row.raw || row;
 }
 
-function fromProductRow(row, { privateScope = false, compactAdmin = false } = {}) {
+export function fromProductRow(row, { privateScope = false, compactAdmin = false } = {}) {
   const sourceRaw = row.raw || {};
   const nestedRaw = sourceRaw.raw && typeof sourceRaw.raw === "object" ? sourceRaw.raw : {};
   const { shipping, raw: _discardNestedRaw, ...raw } = { ...nestedRaw, ...sourceRaw };

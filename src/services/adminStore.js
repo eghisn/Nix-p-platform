@@ -973,13 +973,14 @@ export const adminStore = {
   },
   async saveProductAndPublish(data) {
     const saved = await this.saveProduct(data);
+    const financeSync = saved.financeSync || null;
     // Draft and private listings deliberately stop at the protected database.
     // Public listings deploy from a fresh server snapshot so a browser cache
     // can never overwrite another editor's current catalog fields.
     await this.refreshPrivateStore({ force: true });
     const product = this.getSnapshot().products.find((item) => item.id === saved.id) || saved;
     if (product.publishStatus !== "Published" || product.visibility !== "Public") {
-      return { product, savedOnly: true, publicConfirmed: false };
+      return { product, financeSync, savedOnly: true, publicConfirmed: false };
     }
     try {
       const deployment = await this.deployCurrentCatalog({
@@ -987,12 +988,14 @@ export const adminStore = {
       });
       return {
         product,
+        financeSync,
         deployment,
         publicConfirmed: !deployment.github?.skipped && deployment.deployment?.confirmed === true
       };
     } catch (error) {
       return {
         product,
+        financeSync,
         deploymentError: error instanceof Error ? error.message : "Public catalog deployment failed.",
         publicConfirmed: false
       };
@@ -1022,7 +1025,7 @@ export const adminStore = {
     const result = await this.deployStore({
       store: nextStore,
       message: `${publishStatus === "Published" ? "Publish" : "Unpublish"} ${product.sku || product.title}`,
-      statusChange: { id, publishStatus }
+      statusChange: { id, publishStatus, expectedRevision: product.editRevision || 0 }
     });
     await this.refreshPrivateStore({ force: true });
     const savedProduct = this.getSnapshot().products.find((item) => item.id === id);
@@ -1300,6 +1303,15 @@ export const adminStore = {
     });
     const payload = await persistProduct(product, { expectedRevision: existing?.editRevision || 0 });
     const savedProduct = payload.product || product;
+    Object.defineProperty(savedProduct, "financeSync", {
+      value: payload.financeSync || {
+        status: payload.financeSynced === false ? "pending" : "synced",
+        synced: payload.financeSynced !== false,
+        pending: payload.financeSynced === false,
+        message: payload.warning || ""
+      },
+      configurable: true
+    });
     const nextProducts = existing
       ? store.products.map((item) => (item.id === id ? savedProduct : item))
       : [savedProduct, ...store.products];

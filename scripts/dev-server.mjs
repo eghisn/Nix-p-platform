@@ -349,7 +349,12 @@ async function handleApi(req, res) {
         ? currentStore.products.map((item) => item.id === saved.id ? saved : item)
         : [saved, ...(currentStore.products || [])];
       await writeFile(storePath, JSON.stringify(currentStore, null, 2) + "\n");
-      json(res, current ? 200 : 201, { ok: true, product: saved, financeSynced: false });
+      json(res, current ? 200 : 201, {
+        ok: true,
+        product: saved,
+        financeSynced: true,
+        financeSync: { status: "local-preview", synced: true, pending: false, message: "" }
+      });
       return true;
     }
     if (action === "home-slider") {

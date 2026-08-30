@@ -1,25 +1,19 @@
-import { catalogResearchJobSummary, markCatalogResearchJobsLive } from "./catalogResearchJobs.js";
+import { catalogResearchJobSummary, markCatalogResearchJobsLive, publicationJobsForProducts } from "./catalogResearchJobs.js";
 import { comparePublicCatalogRevision, fetchPublicCatalogRevision } from "./publicCatalogDeployment.js";
 import { loadStore, saveProductPublicationStatus } from "./supabase.js";
 
 export async function reconcileCatalogPublicationState() {
   const [store, jobs, liveProducts] = await Promise.all([
     loadStore({ privateScope: true }),
-    catalogResearchJobSummary(),
+    catalogResearchJobSummary([], { statuses: ["ready", "deployment_pending"] }),
     fetchPublicCatalogRevision()
   ]);
   const products = store.products || [];
-  const productBySku = new Map(products.map((product) => [normalizedSku(product.sku), product]));
-  const pendingJobs = (jobs || []).filter((job) => ["ready", "deployment_pending"].includes(String(job.status || "")));
-  const liveJobSkus = [...new Set(pendingJobs
-    .map((job) => normalizedSku(job.sku))
-    .filter((sku) => {
-      const product = productBySku.get(sku);
-      return product?.publishStatus === "Published" && product?.visibility === "Public";
-    })
-    .filter((sku) => comparePublicCatalogRevision(products, liveProducts, [sku]).confirmed))];
-  if (liveJobSkus.length) {
-    await markCatalogResearchJobsLive(liveJobSkus, {
+  const pendingJobs = jobs || [];
+  const liveJobs = publicationJobsForProducts(pendingJobs, products)
+    .filter((job) => comparePublicCatalogRevision(products, liveProducts, [job.sku]).confirmed);
+  if (liveJobs.length) {
+    await markCatalogResearchJobsLive(liveJobs, {
       reconciledAt: new Date().toISOString(),
       source: "public-catalog-reconciliation"
     });
@@ -29,6 +23,7 @@ export async function reconcileCatalogPublicationState() {
     String(product.publicationState || product.raw?.publicationState || "") === "deployment_pending"
   );
   const reconciledProducts = [];
+  const skippedProducts = [];
   for (const product of pendingProducts) {
     if (!comparePublicCatalogRevision(products, liveProducts, [product.sku]).confirmed) continue;
     const nextStore = {
@@ -48,18 +43,23 @@ export async function reconcileCatalogPublicationState() {
           }
         : candidate)
     };
-    await saveProductPublicationStatus(nextStore, product.id);
-    reconciledProducts.push(product.sku);
+    try {
+      await saveProductPublicationStatus(nextStore, product.id, {
+        expectedRevision: product.editRevision,
+        actor: "publication-reconciliation"
+      });
+      reconciledProducts.push(product.sku);
+    } catch (error) {
+      if (Number(error?.statusCode) !== 409) throw error;
+      skippedProducts.push(product.sku);
+    }
   }
 
   return {
     checkedJobs: pendingJobs.length,
-    jobsMarkedLive: liveJobSkus,
+    jobsMarkedLive: liveJobs.map((job) => job.id),
     checkedProducts: pendingProducts.length,
-    productsMarkedLive: reconciledProducts
+    productsMarkedLive: reconciledProducts,
+    productsSkippedForNewerEdit: skippedProducts
   };
-}
-
-function normalizedSku(value) {
-  return String(value || "").trim().toUpperCase();
 }
