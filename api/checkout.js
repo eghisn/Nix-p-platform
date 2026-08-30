@@ -11,6 +11,7 @@ import { processAdminFinanceSyncJobs } from "./_lib/adminFinanceSyncJobs.js";
 import { reconcileCatalogPublicationState } from "./_lib/catalogPublicationReconciliation.js";
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 import { recordSystemEvent } from "./_lib/observability.js";
+import { attachOrderMarketingAttribution } from "./_lib/orderMarketingAttribution.js";
 
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://nix-p.com").searchParams.get("commerceAction");
@@ -84,6 +85,10 @@ export default async function handler(req, res) {
       });
     }
     const currentOrder = await getOrderRecord(orderId);
+    await attachOrderMarketingAttribution(orderId, body.marketingAttribution).catch((error) => {
+      // Never let optional, consented measurement interrupt an order.
+      recordSystemEvent({ level: "warning", source: "checkout-marketing-attribution", req, error, details: { orderId } }).catch(() => undefined);
+    });
     const emailResult = (label) => (error) => ({ delivered: false, label, error: error instanceof Error ? error.message : "Notification delivery failed." });
     const customerAccessToken = order.customerAccessToken || currentOrder?.customer_access_token || "";
     const statusUrl = customerAccessToken ? customerOrderStatusUrl(orderId, customerAccessToken) : "";

@@ -1831,6 +1831,8 @@
           ${field("Amount", "amount", "number", "", true, "0", "1")}
           ${selectField("Fixed / Variable", "costType", ["Fixed", "Variable"], true, "Variable")}
           ${selectField("Payment Method", "paymentMethod", paymentMethods, true, "Bank Transfer")}
+          ${selectField("Marketing Channel", "marketingChannel", ["", "Instagram", "TikTok", "Google", "YouTube", "Facebook", "X", "Other"], false, "")}
+          ${field("Campaign", "marketingCampaign", "text", "", false, "Launch name / UTM campaign (Marketing only)")}
           ${textArea("Notes", "notes", "Additional details")}
         </div>
         <input type="hidden" name="editId" value="">
@@ -2412,6 +2414,8 @@
         amount: numeric(data.amount),
         costType: data.costType,
         paymentMethod: data.paymentMethod,
+        marketingChannel: data.category === "Marketing" ? data.marketingChannel.trim() : "",
+        marketingCampaign: data.category === "Marketing" ? data.marketingCampaign.trim() : "",
         notes: data.notes.trim()
       };
     }
@@ -2571,6 +2575,8 @@
       setFormValue(el.expenseForm, "amount", item.amount);
       setFormValue(el.expenseForm, "costType", item.costType || "Variable");
       setFormValue(el.expenseForm, "paymentMethod", item.paymentMethod || "Bank Transfer");
+      setFormValue(el.expenseForm, "marketingChannel", item.marketingChannel || "");
+      setFormValue(el.expenseForm, "marketingCampaign", item.marketingCampaign || "");
       setFormValue(el.expenseForm, "notes", item.notes);
       document.getElementById("expenseSubmitBtn").textContent = "Update expense";
       document.getElementById("cancelExpenseEditBtn").hidden = false;

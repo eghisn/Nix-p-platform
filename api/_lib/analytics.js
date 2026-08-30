@@ -2,9 +2,8 @@ import { json } from "./auth.js";
 import { consumeCommerceRateLimit, requestClientAddress } from "./commerce.js";
 import { recordSystemEvent } from "./observability.js";
 import { isSupabaseConfigured, supabaseFetch } from "./supabase.js";
+import { MARKETING_EVENT_TYPES, PRODUCT_MARKETING_EVENT_TYPES, normalizeMarketingAttribution, validMarketingSessionId } from "./marketingAttribution.js";
 
-const EVENT_TYPES = new Set(["page_view", "product_view", "product_click", "add_to_cart", "cart_open", "checkout_started"]);
-const PRODUCT_EVENT_TYPES = new Set(["product_view", "product_click", "add_to_cart"]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const PRODUCT_ID = /^[A-Za-z0-9][A-Za-z0-9._-]{0,159}$/;
 const MAX_EVENT_BYTES = 2_048;
@@ -31,14 +30,14 @@ export async function handleAnalyticsEvent(req, res) {
         anonymous_session_id: event.sessionId,
         page_path: event.path,
         product_id: event.productId || null,
-        source: event.source || null,
-        medium: event.medium || null,
-        campaign: event.campaign || null,
-        term: event.term || null,
-        content: event.content || null,
+        source: event.attribution.source,
+        medium: event.attribution.medium || null,
+        campaign: event.attribution.campaign || null,
+        term: event.attribution.term || null,
+        content: event.attribution.content || null,
         country_code: countryCode(req),
         device_type: event.deviceType,
-        metadata: {}
+        metadata: event.label ? { label: event.label } : {}
       }]
     });
     return json(res, 202, { ok: true });
@@ -65,14 +64,11 @@ export function normalizeAnalyticsEvent(body) {
     sessionId: text(value.sessionId, 64),
     path: normalizePath(value.path),
     productId: text(value.productId, 160),
-    source: text(value.source, 120),
-    medium: text(value.medium, 120),
-    campaign: text(value.campaign, 120),
-    term: text(value.term, 120),
-    content: text(value.content, 120),
+    attribution: normalizeMarketingAttribution(value),
+    label: text(value.label, 120),
     deviceType: text(value.deviceType, 16)
   };
-  if (!UUID.test(event.eventId) || !UUID.test(event.sessionId) || !EVENT_TYPES.has(event.eventType) || !event.path) {
+  if (!UUID.test(event.eventId) || !validMarketingSessionId(event.sessionId) || !MARKETING_EVENT_TYPES.has(event.eventType) || !event.path) {
     const error = new Error("Invalid analytics event.");
     error.statusCode = 400;
     throw error;
@@ -82,12 +78,13 @@ export function normalizeAnalyticsEvent(body) {
     error.statusCode = 400;
     throw error;
   }
-  if (PRODUCT_EVENT_TYPES.has(event.eventType) && !event.productId) {
+  if (PRODUCT_MARKETING_EVENT_TYPES.has(event.eventType) && !event.productId) {
     const error = new Error("Product analytics events require a product.");
     error.statusCode = 400;
     throw error;
   }
-  if (!PRODUCT_EVENT_TYPES.has(event.eventType)) event.productId = "";
+  if (!PRODUCT_MARKETING_EVENT_TYPES.has(event.eventType)) event.productId = "";
+  if (event.eventType !== "social_outbound_click") event.label = "";
   if (!["mobile", "tablet", "desktop"].includes(event.deviceType)) event.deviceType = "unknown";
   return event;
 }

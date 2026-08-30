@@ -10,7 +10,7 @@ import { isRecentReleaseProduct, recentReleaseSortComparator } from "./data/home
 import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "./data/recordMetadata.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
-import { initializeAnalytics, trackCurrentPageView } from "./services/analytics.js";
+import { checkoutMarketingAttribution, initializeAnalytics, trackAnalytics, trackCurrentPageView } from "./services/analytics.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup } from "./components/catalogPage.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "./components/labelsPage.js";
@@ -2902,11 +2902,15 @@ function bindEvents() {
           shippingOption: formData.get("shippingOption"),
           shippingQuoteToken: state.checkoutShippingQuote?.quoteToken || "",
           shippingAddress,
-          orderId
+          orderId,
+          marketingAttribution: checkoutMarketingAttribution()
         })
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(payload.error || "Checkout failed.");
+      // The event is emitted only after the server created or resumed an order.
+      // Clicking "Request delivery quote" alone is never counted as checkout.
+      trackAnalytics("checkout_started");
       const expiresAt = payload.order.paymentExpiresAt
         ? new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit" }).format(new Date(payload.order.paymentExpiresAt))
         : "the end of the reservation window";
@@ -3524,6 +3528,7 @@ function bindEvents() {
         ? "Request submitted. NIXP has been notified."
         : "Request submitted successfully.";
       state.requestNoticeTone = "success";
+      trackAnalytics("request_item_submitted");
       await render({ preserveScroll: true });
     } catch (error) {
       state.requestNotice = error instanceof Error ? error.message : "Request could not be submitted.";
@@ -3605,6 +3610,7 @@ function bindEvents() {
       form.reset();
       message.textContent = "Offer submitted. NIXP will contact you by email after review.";
       message.dataset.tone = "success";
+      trackAnalytics("offer_submitted");
     } catch (error) {
       message.textContent = error instanceof Error ? error.message : "Offer could not be submitted.";
       message.dataset.tone = "error";

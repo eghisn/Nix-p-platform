@@ -39,9 +39,10 @@ async function showDashboard() {
 
 async function loadDashboard() {
   const days = Number(document.querySelector("[data-period]").value || 30);
+  const month = document.querySelector("[data-monthly-month]")?.value || "";
   document.querySelector("[data-status-copy]").textContent = "Refreshing live website events, commerce records, and contacts.";
   try {
-    const payload = await request(`/api/marketing?days=${days}`);
+    const payload = await request(`/api/marketing?days=${days}${month ? `&month=${encodeURIComponent(month)}` : ""}`);
     state.dashboard = payload.dashboard;
     renderDashboard(payload.dashboard);
   } catch (error) {
@@ -55,13 +56,14 @@ function renderDashboard(data) {
   setText('[data-metric="sales"]', money.format(metrics.cashNetSales));
   setText('[data-metric="orders"]', integer.format(metrics.paidOrders));
   setText('[data-metric="visitors"]', integer.format(metrics.visitors));
-  setText('[data-metric="conversion"]', percent.format(metrics.conversion));
+  setText('[data-metric="conversion"]', percent.format(metrics.checkoutCreatedRate));
   document.querySelector("[data-updated]").textContent = `Updated ${formatDateTime(data.generatedAt)} / ${data.rangeDays} days`;
   document.querySelector("[data-status-copy]").textContent = `${integer.format(data.health.eventRows)} consented events and ${integer.format(data.health.orderRows)} commerce records loaded.`;
   renderChart(data.daily);
   renderProducts(data.products);
   renderAudience(data);
   renderInsights(data);
+  renderMonthly(data.monthly || {});
   renderFunnel(data);
   renderCampaigns();
   renderContacts();
@@ -91,7 +93,7 @@ function renderInsights(data) {
 }
 
 function renderProducts(rows) {
-  document.querySelector("[data-products-table]").innerHTML = rows.slice(0, 12).map((item) => `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.views)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(6, "No product activity in this period.");
+  document.querySelector("[data-products-table]").innerHTML = rows.slice(0, 12).map((item) => `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.productClicks)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(7, "No product activity in this period.");
 }
 
 function renderChart(rows) {
@@ -107,7 +109,7 @@ function renderAudience(data) {
   [data.metrics.visitors, data.metrics.sessions, data.metrics.productViews].forEach((value, index) => { if (panels[index]) panels[index].textContent = integer.format(value); });
   renderRanks("[data-geography-list]", data.countries);
   renderRanks("[data-device-list]", data.devices);
-  document.querySelector("[data-source-table]").innerHTML = data.sources.map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${integer.format(item.views)}</td><td>-</td><td class="number">-</td></tr>`).join("") || emptyRow(5, "No attributed visits in this period.");
+  document.querySelector("[data-source-table]").innerHTML = data.sources.map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.paidOrders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(5, "No attributed visits in this period.");
 }
 
 function renderRanks(selector, rows) {
@@ -118,16 +120,47 @@ function renderRanks(selector, rows) {
 function renderFunnel(data) {
   const max = Math.max(1, data.funnel[0]?.value || 0);
   document.querySelector("[data-funnel-list]").innerHTML = data.funnel.map((step) => `<div class="funnel-step"><span>${escapeHtml(step.label)}</span><div class="funnel-track"><i style="width:${Math.max(step.value ? 2 : 0, step.value / max * 100)}%"></i></div><strong>${integer.format(step.value)}</strong></div>`).join("");
-  setText("[data-funnel-conversion]", percent.format(data.metrics.conversion));
+  setText("[data-funnel-conversion]", percent.format(data.metrics.checkoutCreatedRate));
   const outcomeValues = [data.orderOutcomes.paid, data.orderOutcomes.expired, data.orderOutcomes.cancelled, data.orderOutcomes.refunded];
-  document.querySelectorAll(".outcome-grid strong").forEach((node, index) => { node.textContent = integer.format(outcomeValues[index] || 0); });
+  document.querySelectorAll('[data-view-panel="funnel"] .outcome-grid strong').forEach((node, index) => { node.textContent = integer.format(outcomeValues[index] || 0); });
 }
 
 function renderCampaigns(query = "") {
   const rows = state.dashboard?.sources || [];
   const needle = query.trim().toLowerCase();
   const filtered = rows.filter((item) => sourceName(item).toLowerCase().includes(needle));
-  document.querySelector("[data-campaign-table]").innerHTML = filtered.map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${integer.format(item.views)}</td><td>${integer.format(item.added)}</td><td>-</td><td class="number">-</td></tr>`).join("") || emptyRow(6, "No campaign source matches this search.");
+  document.querySelector("[data-campaign-table]").innerHTML = filtered.map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.paidOrders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(6, "No campaign source matches this search.");
+}
+
+function renderMonthly(data) {
+  const summary = data.summary || {};
+  const month = String(data.month || "");
+  const monthInput = document.querySelector("[data-monthly-month]");
+  if (monthInput && !monthInput.value && /^\d{4}-\d{2}/.test(month)) monthInput.value = month.slice(0, 7);
+  setText("[data-monthly-title]", month ? formatMonth(month) : "Current month");
+  setText('[data-monthly-metric="sales"]', money.format(summary.cashNetSales || 0));
+  setText('[data-monthly-metric="spend"]', money.format(summary.marketingSpend || 0));
+  setText('[data-monthly-metric="attributed-sales"]', money.format(summary.attributableRevenue || 0));
+  setText('[data-monthly-metric="roas"]', ratio(summary.roas));
+  setText('[data-monthly-metric="orders"]', integer.format(summary.paidOrders || 0));
+  const previous = data.comparison || {};
+  setText('[data-monthly-compare="sales"]', comparisonCopy(summary.cashNetSales, previous.cashNetSales, "vs previous month"));
+  setText("[data-monthly-spend-note]", summary.untaggedSpend ? `${money.format(summary.untaggedSpend)} needs a channel or campaign` : "Finance expenses marked Marketing");
+
+  const funnelRows = [
+    ["Consented sessions", summary.consentedSessions],
+    ["Product views", summary.productViews],
+    ["Add to cart", summary.carts],
+    ["Checkout created", summary.checkoutCreated],
+    ["Paid orders", summary.paidOrders]
+  ];
+  const max = Math.max(1, ...funnelRows.map(([, value]) => Number(value || 0)));
+  document.querySelector("[data-monthly-funnel]").innerHTML = funnelRows.map(([label, value]) => `<div class="funnel-step"><span>${escapeHtml(label)}</span><div class="funnel-track"><i style="width:${Math.max(value ? 2 : 0, Number(value || 0) / max * 100)}%"></i></div><strong>${integer.format(value || 0)}</strong></div>`).join("");
+
+  const actions = data.actions || {};
+  document.querySelectorAll("[data-monthly-action]").forEach((node) => { node.textContent = integer.format(actions[node.dataset.monthlyAction] || 0); });
+  document.querySelector("[data-monthly-campaign-table]").innerHTML = (data.campaigns || []).map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${money.format(item.spend)}</td><td>${integer.format(item.paidOrders)}</td><td class="number">${money.format(item.sales)}</td><td class="number">${ratio(item.roas)}</td></tr>`).join("") || emptyRow(6, "No campaign, spend, or attributed order data for this month.");
+  document.querySelector("[data-monthly-products-table]").innerHTML = (data.topProducts || []).map((item) => `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.productClicks)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(6, "No product activity in this month.");
 }
 
 function renderContacts(query = "") {
@@ -165,7 +198,7 @@ function switchView(view) {
 
 function exportCsv() {
   const products = state.dashboard?.products || [];
-  const rows = [["Product", "Artist", "Views", "Added to cart", "Paid orders", "Gross item sales"], ...products.map((item) => [item.title, item.artist, item.views, item.added, item.orders, item.sales])];
+  const rows = [["Product", "Artist", "Product views", "Product clicks", "Added to cart", "Paid orders", "Gross item sales"], ...products.map((item) => [item.title, item.artist, item.productViews, item.productClicks, item.added, item.orders, item.sales])];
   const csv = rows.map((row) => row.map((cell) => `"${String(cell).replaceAll('"', '""')}"`).join(",")).join("\n");
   const url = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
   const link = Object.assign(document.createElement("a"), { href: url, download: `nixp-marketing-${new Date().toISOString().slice(0, 10)}.csv` });
@@ -194,11 +227,15 @@ document.querySelector("[data-export]").addEventListener("click", exportCsv);
 document.querySelector("[data-refresh]").addEventListener("click", loadDashboard);
 document.querySelector("[data-logout]").addEventListener("click", async () => { await request("/api/auth/logout", { method: "POST" }).catch(() => {}); showLogin(); });
 document.querySelector("[data-period]").addEventListener("change", loadDashboard);
+document.querySelector("[data-monthly-month]").addEventListener("change", loadDashboard);
 document.querySelector("[data-campaign-search]").addEventListener("input", (event) => renderCampaigns(event.target.value));
 document.querySelector("[data-contact-search]").addEventListener("input", (event) => renderContacts(event.target.value));
 
 function setText(selector, value) { const node = document.querySelector(selector); if (node) node.textContent = value; }
 function sourceName(item) { return item.campaign ? `${item.source} / ${item.campaign}` : item.source; }
+function ratio(value) { return Number.isFinite(Number(value)) ? `${Number(value).toFixed(2)}x` : "-"; }
+function comparisonCopy(current, previous, suffix) { if (!Number.isFinite(Number(previous)) || Number(previous) === 0) return `${suffix}: no prior baseline`; const change = (Number(current || 0) - Number(previous)) / Number(previous); return `${change >= 0 ? "+" : ""}${percent.format(change)} ${suffix}`; }
+function formatMonth(value) { return new Intl.DateTimeFormat("id-ID", { month: "long", year: "numeric" }).format(new Date(`${String(value).slice(0, 7)}-01T00:00:00`)); }
 function emptyRow(columns, text) { return `<tr><td colspan="${columns}">${escapeHtml(text)}</td></tr>`; }
 function formatDate(value) { return value ? new Intl.DateTimeFormat("id-ID", { dateStyle: "medium" }).format(new Date(value)) : "No order"; }
 function formatDateTime(value) { return value ? new Intl.DateTimeFormat("id-ID", { dateStyle: "medium", timeStyle: "short" }).format(new Date(value)) : "No data"; }

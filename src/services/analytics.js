@@ -1,5 +1,6 @@
 const CONSENT_COOKIE = "nixp_cookie_consent";
 const ANALYTICS_SESSION_KEY = "nixp_analytics_session";
+const ANALYTICS_ATTRIBUTION_KEY = "nixp_analytics_attribution";
 const CONSENT_MAX_AGE_SECONDS = 60 * 60 * 24 * 180;
 const ANALYTICS_EVENT_TYPES = new Set([
   "page_view",
@@ -7,7 +8,10 @@ const ANALYTICS_EVENT_TYPES = new Set([
   "product_click",
   "add_to_cart",
   "cart_open",
-  "checkout_started"
+  "checkout_started",
+  "request_item_submitted",
+  "offer_submitted",
+  "social_outbound_click"
 ]);
 
 let initialized = false;
@@ -53,7 +57,27 @@ function analyticsSessionId() {
   return value;
 }
 
+function normalizeSource(value) {
+  const source = String(value || "").trim().toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/$/, "");
+  if (!source || source === "nix-p.com" || source.endsWith(".nix-p.com") || source === "localhost" || source.startsWith("127.0.0.1")) return "direct";
+  if (["instagram.com", "m.instagram.com", "l.instagram.com", "ig"].includes(source)) return "instagram";
+  if (["tiktok.com", "vm.tiktok.com", "vt.tiktok.com"].includes(source)) return "tiktok";
+  if (["facebook.com", "m.facebook.com", "l.facebook.com"].includes(source)) return "facebook";
+  if (["youtube.com", "m.youtube.com", "youtu.be"].includes(source)) return "youtube";
+  if (["x.com", "twitter.com"].includes(source)) return "x";
+  if (source.startsWith("google.")) return "google";
+  if (source.startsWith("bing.")) return "bing";
+  return source.slice(0, 120);
+}
+
 function campaignContext() {
+  const existing = sessionStorage.getItem(ANALYTICS_ATTRIBUTION_KEY);
+  if (existing) {
+    try {
+      const saved = JSON.parse(existing);
+      if (saved && typeof saved === "object" && saved.source) return saved;
+    } catch {}
+  }
   const params = new URLSearchParams(location.search);
   const value = (name) => String(params.get(name) || "").trim().slice(0, 120);
   const referrerHost = (() => {
@@ -63,13 +87,15 @@ function campaignContext() {
       return "";
     }
   })();
-  return {
-    source: value("utm_source") || referrerHost,
-    medium: value("utm_medium"),
-    campaign: value("utm_campaign"),
-    term: value("utm_term"),
-    content: value("utm_content")
+  const attribution = {
+    source: normalizeSource(value("utm_source") || referrerHost),
+    medium: value("utm_medium").toLowerCase(),
+    campaign: value("utm_campaign").toLowerCase(),
+    term: value("utm_term").toLowerCase(),
+    content: value("utm_content").toLowerCase()
   };
+  sessionStorage.setItem(ANALYTICS_ATTRIBUTION_KEY, JSON.stringify(attribution));
+  return attribution;
 }
 
 function deviceType() {
@@ -104,6 +130,7 @@ export function trackAnalytics(eventType, metadata = {}) {
     sessionId: analyticsSessionId(),
     path: location.pathname.slice(0, 240),
     productId: String(metadata.productId || currentProductId() || "").slice(0, 160),
+    label: String(metadata.label || "").slice(0, 120),
     deviceType: deviceType(),
     ...campaign
   };
@@ -114,6 +141,12 @@ export function trackAnalytics(eventType, metadata = {}) {
     credentials: "same-origin",
     keepalive: true
   }).catch(() => undefined);
+}
+
+export function checkoutMarketingAttribution() {
+  if (!isPublicPage() || !hasAnalyticsConsent()) return null;
+  const campaign = campaignContext();
+  return { sessionId: analyticsSessionId(), ...campaign };
 }
 
 export function trackCurrentPageView() {
@@ -153,9 +186,17 @@ export function initializeAnalytics() {
       trackAnalytics("cart_open");
       return;
     }
-    if (event.target.closest("[data-checkout-submit]")) {
-      trackAnalytics("checkout_started");
+    const socialLink = event.target.closest("[data-social-link]");
+    if (socialLink) {
+      trackAnalytics("social_outbound_click", { label: socialLink.dataset.socialLink || "social" });
       return;
+    }
+    const outboundLink = event.target.closest("a[href]");
+    if (outboundLink) {
+      try {
+        const hostname = new URL(outboundLink.href, location.href).hostname.toLowerCase();
+        if (hostname === "wa.me" || hostname.endsWith("whatsapp.com")) trackAnalytics("social_outbound_click", { label: "whatsapp" });
+      } catch {}
     }
     const productLink = event.target.closest("[data-product-link]");
     if (productLink) trackAnalytics("product_click", { productId: productLink.dataset.productId || "" });

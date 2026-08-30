@@ -14,14 +14,17 @@ export async function handleMarketingDashboard(req, res, url) {
   if (!allowed) return respond(res, 429, { ok: false, error: "Too many dashboard requests." });
 
   const days = [7, 30, 90, 365].includes(Number(url.searchParams.get("days"))) ? Number(url.searchParams.get("days")) : 30;
+  const requestedMonth = String(url.searchParams.get("month") || "");
+  const month = /^\d{4}-(0[1-9]|1[0-2])$/.test(requestedMonth) ? `${requestedMonth}-01` : null;
   const { fromDate, toDate } = reportingRange(days);
   const queryRange = `metric_date=gte.${fromDate}&metric_date=lte.${toDate}&order=metric_date.asc`;
   const eventSince = encodeURIComponent(`${fromDate}T00:00:00+07:00`);
-  const [dailyRows, sessionPayload, productPayload, contactPayload, recentEvents, newestOrder] = await Promise.all([
+  const [dailyRows, sessionPayload, productPayload, contactPayload, monthlyPayload, recentEvents, newestOrder] = await Promise.all([
     supabaseFetch(`marketing_daily_metrics?select=*&${queryRange}`, { service: true }),
     supabaseFetch("rpc/marketing_dashboard_session_summary", { method: "POST", service: true, body: { p_from_date: fromDate, p_to_date: toDate } }),
     supabaseFetch("rpc/marketing_dashboard_products", { method: "POST", service: true, body: { p_from_date: fromDate, p_to_date: toDate } }),
     supabaseFetch("rpc/marketing_dashboard_contacts_summary", { method: "POST", service: true, body: {} }),
+    supabaseFetch("rpc/marketing_dashboard_monthly_report", { method: "POST", service: true, body: month ? { p_month: month } : {} }),
     // This is only the latest-activity panel. Dashboard totals never read
     // raw event rows in the API, so a high-volume event stream cannot truncate metrics.
     supabaseFetch(`marketing_events?select=event_type,anonymous_session_id,page_path,source,occurred_at&occurred_at=gte.${eventSince}&order=occurred_at.desc&limit=50`, { service: true }),
@@ -38,6 +41,7 @@ export async function handleMarketingDashboard(req, res, url) {
       sessionSummary: sessionPayload || {},
       products: productPayload || [],
       contactsSummary: contactPayload || {},
+      monthlyReport: monthlyPayload || {},
       recentEvents: recentEvents || [],
       newestOrder: newestOrder?.[0] || null
     })
@@ -52,6 +56,7 @@ export function buildRollupMarketingDashboard({
   sessionSummary = {},
   products = [],
   contactsSummary = {},
+  monthlyReport = {},
   recentEvents = [],
   newestOrder = null
 } = {}) {
@@ -99,7 +104,7 @@ export function buildRollupMarketingDashboard({
       productClicks: number(sessionMetrics.productClicks),
       addToCart: number(sessionMetrics.addToCart),
       checkoutStarted: number(sessionMetrics.checkoutStarted),
-      conversion: sessions ? totals.paidOrders / sessions : 0,
+      checkoutCreatedRate: sessions ? checkoutSessions / sessions : 0,
       cartAbandonment: cartSessions ? Math.max(0, (cartSessions - checkoutSessions) / cartSessions) : 0,
       knownCustomers: number(contactsSummary.knownCustomers),
       returningCustomers: number(contactsSummary.returningCustomers)
@@ -117,6 +122,7 @@ export function buildRollupMarketingDashboard({
     ],
     orderOutcomes: { paid: totals.paidOrders, unpaid: 0, expired: totals.expired, cancelled: totals.cancelled, refunded: totals.refundedOrders },
     contacts: Array.isArray(contactsSummary.contacts) ? contactsSummary.contacts : [],
+    monthly: monthlyReport,
     events: recentEvents.map((event) => ({
       time: event.occurred_at,
       event: event.event_type,

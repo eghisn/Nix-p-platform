@@ -30,12 +30,13 @@
         </div>
         <nav class="nav-list">
           <button class="nav-item is-active" type="button" data-view="overview">Overview <span>01</span></button>
-          <button class="nav-item" type="button" data-view="audience">Audience <span>02</span></button>
-          <button class="nav-item" type="button" data-view="funnel">Funnel <span>03</span></button>
-          <button class="nav-item" type="button" data-view="campaigns">Campaigns <span>04</span></button>
-          <button class="nav-item" type="button" data-view="consent">Consent <span>05</span></button>
-          <button class="nav-item" type="button" data-view="contacts">Contacts <span>06</span></button>
-          <button class="nav-item" type="button" data-view="data">Data <span>07</span></button>
+          <button class="nav-item" type="button" data-view="monthly">Monthly Report <span>02</span></button>
+          <button class="nav-item" type="button" data-view="audience">Audience <span>03</span></button>
+          <button class="nav-item" type="button" data-view="funnel">Funnel <span>04</span></button>
+          <button class="nav-item" type="button" data-view="campaigns">Campaigns <span>05</span></button>
+          <button class="nav-item" type="button" data-view="consent">Consent <span>06</span></button>
+          <button class="nav-item" type="button" data-view="contacts">Contacts <span>07</span></button>
+          <button class="nav-item" type="button" data-view="data">Data <span>08</span></button>
         </nav>
         <div class="sidebar-foot">
           <span class="status-dot"><i></i> Live data</span>
@@ -79,7 +80,7 @@
             <article class="metric-panel"><span>Cash net sales</span><strong data-metric="sales">Rp 0</strong><small>Verified payments minus verified refunds</small></article>
             <article class="metric-panel"><span>Paid orders</span><strong data-metric="orders">0</strong><small>Selected reporting period</small></article>
             <article class="metric-panel"><span>Visitors</span><strong data-metric="visitors">0</strong><small>Consented anonymous sessions</small></article>
-            <article class="metric-panel"><span>Purchase conversion</span><strong data-metric="conversion">0%</strong><small>Based on paid orders</small></article>
+            <article class="metric-panel"><span>Checkout creation rate</span><strong data-metric="conversion">0%</strong><small>Consented sessions that created an order</small></article>
           </div>
           <div class="split-grid">
             <section class="panel chart-panel">
@@ -97,8 +98,25 @@
           </div>
           <section class="panel table-panel">
             <div class="panel-heading"><div><p class="eyebrow">Merchandise</p><h3>Top products</h3></div><a href="#" data-view-link="campaigns">View full report</a></div>
-            <div class="data-table-wrap"><table><thead><tr><th>Product</th><th>Artist</th><th>Views</th><th>Added</th><th>Paid orders</th><th class="number">Gross item sales</th></tr></thead><tbody data-products-table></tbody></table></div>
+            <div class="data-table-wrap"><table><thead><tr><th>Product</th><th>Artist</th><th>Views</th><th>Clicks</th><th>Added</th><th>Paid orders</th><th class="number">Gross item sales</th></tr></thead><tbody data-products-table></tbody></table></div>
           </section>
+        </section>
+
+        <section class="view" data-view-panel="monthly" aria-labelledby="monthly-title" hidden>
+          <div class="section-heading"><div><p class="eyebrow">02 / Monthly report</p><h2 id="monthly-title">Marketing review</h2></div><p class="section-note">A calendar-month view for operating decisions and investor updates. Commerce remains verified; behavioural figures are consented sessions only.</p></div>
+          <div class="toolbar-row"><div><p class="eyebrow">Reporting month</p><h3 data-monthly-title>Current month</h3></div><label class="period-control">Month <input type="month" data-monthly-month aria-label="Monthly report month" /></label></div>
+          <div class="metrics-grid">
+            <article class="metric-panel"><span>Cash net sales</span><strong data-monthly-metric="sales">Rp 0</strong><small data-monthly-compare="sales">No previous-month comparison</small></article>
+            <article class="metric-panel"><span>Marketing spend</span><strong data-monthly-metric="spend">Rp 0</strong><small data-monthly-spend-note>Finance expenses marked Marketing</small></article>
+            <article class="metric-panel"><span>Attributed revenue</span><strong data-monthly-metric="attributed-sales">Rp 0</strong><small>Only consented order attribution</small></article>
+            <article class="metric-panel"><span>ROAS</span><strong data-monthly-metric="roas">-</strong><small>Attributed revenue divided by tagged spend</small></article>
+          </div>
+          <div class="split-grid">
+            <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Funnel</p><h3>Measured month</h3></div></div><div class="funnel-list" data-monthly-funnel></div></section>
+            <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Actions</p><h3>High-intent signals</h3></div></div><div class="outcome-grid monthly-actions"><div><strong data-monthly-action="request_item_submitted">0</strong><span>Item requests</span></div><div><strong data-monthly-action="offer_submitted">0</strong><span>Offers</span></div><div><strong data-monthly-action="social_outbound_click">0</strong><span>Social clicks</span></div><div><strong data-monthly-metric="orders">0</strong><span>Paid orders</span></div></div></section>
+          </div>
+          <section class="panel table-panel"><div class="panel-heading"><div><p class="eyebrow">Campaign efficiency</p><h3>Source, spend, and attributable return</h3></div><span class="muted-label">Blank campaign fields are shown as unassigned</span></div><div class="data-table-wrap"><table><thead><tr><th>Source / campaign</th><th>Sessions</th><th>Spend</th><th>Paid orders</th><th class="number">Attributed revenue</th><th class="number">ROAS</th></tr></thead><tbody data-monthly-campaign-table></tbody></table></div></section>
+          <section class="panel table-panel"><div class="panel-heading"><div><p class="eyebrow">Merchandise</p><h3>Month leaders</h3></div></div><div class="data-table-wrap"><table><thead><tr><th>Product</th><th>Artist</th><th>Views</th><th>Clicks</th><th>Paid orders</th><th class="number">Gross item sales</th></tr></thead><tbody data-monthly-products-table></tbody></table></div></section>
         </section>
 
         <section class="view" data-view-panel="audience" aria-labelledby="audience-title" hidden>
@@ -112,17 +130,17 @@
             <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Geography</p><h3>Visitor location</h3></div></div><div class="rank-list" data-geography-list></div></section>
             <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Device</p><h3>Session mix</h3></div></div><div class="device-list" data-device-list></div></section>
           </div>
-          <section class="panel table-panel"><div class="panel-heading"><div><p class="eyebrow">Acquisition</p><h3>Where visits came from</h3></div><span class="muted-label">Consent required</span></div><div class="data-table-wrap"><table><thead><tr><th>Source</th><th>Sessions</th><th>Product views</th><th>Paid orders</th><th class="number">Conversion</th></tr></thead><tbody data-source-table></tbody></table></div></section>
+          <section class="panel table-panel"><div class="panel-heading"><div><p class="eyebrow">Acquisition</p><h3>Where visits came from</h3></div><span class="muted-label">Consent required</span></div><div class="data-table-wrap"><table><thead><tr><th>Source</th><th>Sessions</th><th>Product views</th><th>Paid orders</th><th class="number">Attributed revenue</th></tr></thead><tbody data-source-table></tbody></table></div></section>
         </section>
 
         <section class="view" data-view-panel="funnel" aria-labelledby="funnel-title" hidden>
           <div class="section-heading"><div><p class="eyebrow">03 / Funnel</p><h2 id="funnel-title">From visit to order</h2></div><p class="section-note">Each stage is counted independently and deduplicated by event ID.</p></div>
-          <section class="panel funnel-panel"><div class="funnel-list" data-funnel-list></div><div class="funnel-foot"><span>Paid conversion</span><strong data-funnel-conversion>0%</strong></div></section>
+          <section class="panel funnel-panel"><div class="funnel-list" data-funnel-list></div><div class="funnel-foot"><span>Checkout creation rate</span><strong data-funnel-conversion>0%</strong></div></section>
           <div class="split-grid"><section class="panel"><div class="panel-heading"><div><p class="eyebrow">Checkout health</p><h3>Order outcomes</h3></div></div><div class="outcome-grid"><div><strong>0</strong><span>Paid</span></div><div><strong>0</strong><span>Expired</span></div><div><strong>0</strong><span>Cancelled</span></div><div><strong>0</strong><span>Refunded</span></div></div></section><section class="panel"><div class="panel-heading"><div><p class="eyebrow">Revenue quality</p><h3>Net sales basis</h3></div></div><p class="panel-copy">Net sales are based on provider-verified payments and exclude refunded merchandise. Shipping is kept separate from product revenue.</p></section></div>
         </section>
 
         <section class="view" data-view-panel="campaigns" aria-labelledby="campaigns-title" hidden>
-          <div class="section-heading"><div><p class="eyebrow">04 / Campaigns</p><h2 id="campaigns-title">What brings people in</h2></div><p class="section-note">Campaign attribution is read from referrer and UTM parameters, never guessed from customer identity.</p></div>
+          <div class="section-heading"><div><p class="eyebrow">05 / Campaigns</p><h2 id="campaigns-title">What brings people in</h2></div><p class="section-note">Campaign attribution is normalized from external referrer and UTM parameters, then saved anonymously with a consented order.</p></div>
           <section class="panel table-panel"><div class="toolbar-row"><div><p class="eyebrow">Tracked sources</p><h3>Campaign performance</h3></div><label class="search-control">Search <input type="search" placeholder="Source or campaign" data-campaign-search /></label></div><div class="data-table-wrap"><table><thead><tr><th>Source / campaign</th><th>Sessions</th><th>Product views</th><th>Add to cart</th><th>Paid orders</th><th class="number">Sales</th></tr></thead><tbody data-campaign-table></tbody></table></div></section>
           <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Measurement rules</p><h3>Reliable attribution</h3></div></div><div class="rule-grid"><span>01</span><p>One event ID per action prevents refreshes from inflating counts.</p><span>02</span><p>Admin and Finance traffic is excluded from audience metrics.</p><span>03</span><p>Revenue is reconciled against paid orders, not browser events.</p></div></section>
         </section>
