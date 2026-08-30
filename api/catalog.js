@@ -27,7 +27,11 @@ export default async function handler(req, res) {
     const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
     const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
     const publicSnapshotUrl = privateScope ? "" : `${protocol}://${host}/public/data/public-store.json`;
-    const store = await loadStore({ privateScope, publicSnapshotUrl });
+    const store = await loadStore({
+      privateScope,
+      publicSnapshotUrl,
+      privateMode: privateScope ? "editor" : "full"
+    });
     catalogJson(res, 200, { ok: true, store }, { privateScope });
   } catch (error) {
     await recordSystemEvent({ source: "catalog-api", req, error, details: { method: req.method } });

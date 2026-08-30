@@ -1234,7 +1234,7 @@ function privateWorkspacePage() {
 async function adminDashboardPage() {
   const [inventory, orders, requests] = await Promise.all([
     catalogService.listInventory(),
-    catalogService.listOrders(),
+    catalogService.listOrders({ refresh: true }),
     catalogService.listRequests()
   ]);
   const products = await catalogService.listAllProducts();
@@ -1887,7 +1887,7 @@ async function inventoryPage() {
 }
 
 async function ordersPage({ embedded = false } = {}) {
-  const orders = await catalogService.listOrders();
+  const orders = await catalogService.listOrders({ refresh: true });
   const visibleOrders = sortItems(
     filterItems(orders, "orders", (order) => [
       order.id,
@@ -1980,7 +1980,7 @@ async function cashflowPage() {
 async function reportsPage() {
   const [products, orders, inventory] = await Promise.all([
     catalogService.listProducts(),
-    catalogService.listOrders(),
+    catalogService.listOrders({ refresh: true }),
     catalogService.listInventory()
   ]);
   return `

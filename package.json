@@ -23,6 +23,7 @@
     "test:publication-safety": "node scripts/verify-publication-safety.mjs",
     "test:related-artists": "node scripts/verify-related-artists.mjs",
     "test:research-jobs": "node scripts/verify-catalog-research-jobs.mjs",
+    "test:admin-integrity": "node scripts/verify-admin-editor-integrity.mjs",
     "backfill:related-artists": "node scripts/refresh-related-artists.mjs --stale-only",
     "test:monthly-report": "node scripts/verify-monthly-report-accounting.mjs",
     "test:finance-storage": "node scripts/verify-finance-section-storage.mjs",

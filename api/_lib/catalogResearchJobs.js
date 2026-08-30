@@ -3,6 +3,7 @@ import { supabaseFetch } from "./supabase.js";
 
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const ACTIVE_STATUSES = new Set(["queued", "processing", "retry", "ready", "deployment_pending"]);
+const RESEARCH_LEASE_MS = 2 * 60 * 1000;
 
 function now() {
   return new Date().toISOString();
@@ -78,6 +79,8 @@ export async function enqueueCatalogResearchJobs(stockRows = [], { requestedBy =
           last_error_code: null,
           last_error_message: null,
           last_error_source: null,
+          lease_expires_at: null,
+          worker_id: null,
           updated_at: now()
         },
         prefer: "return=minimal"
@@ -97,6 +100,7 @@ export async function enqueueCatalogResearchJobs(stockRows = [], { requestedBy =
 export async function claimCatalogResearchJobs({ limit = 1, skus = [] } = {}) {
   const safeLimit = Math.max(1, Math.min(8, Number(limit) || 1));
   const targets = [...new Set((skus || []).map(normalizedSku).filter(Boolean))];
+  await recoverExpiredCatalogResearchJobs({ skus: targets });
   const nowValue = encodeURIComponent(now());
   const filter = targets.length ? `&sku=in.(${quoteList(targets)})` : "";
   const rows = await supabaseFetch(
@@ -104,6 +108,7 @@ export async function claimCatalogResearchJobs({ limit = 1, skus = [] } = {}) {
     { service: true }
   );
   const claimed = [];
+  const workerId = `catalog-worker-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
   for (const row of rows || []) {
     if (claimed.length >= safeLimit) break;
     const previousStatus = String(row.status || "");
@@ -112,6 +117,8 @@ export async function claimCatalogResearchJobs({ limit = 1, skus = [] } = {}) {
       stage: "matching_release",
       started_at: now(),
       attempt_count: Number(row.attempt_count || 0) + 1,
+      lease_expires_at: new Date(Date.now() + RESEARCH_LEASE_MS).toISOString(),
+      worker_id: workerId,
       updated_at: now()
     };
     const updated = await supabaseFetch(
@@ -121,6 +128,30 @@ export async function claimCatalogResearchJobs({ limit = 1, skus = [] } = {}) {
     if (updated?.[0]) claimed.push({ ...row, ...updated[0] });
   }
   return claimed;
+}
+
+export async function recoverExpiredCatalogResearchJobs({ skus = [] } = {}) {
+  const targets = [...new Set((skus || []).map(normalizedSku).filter(Boolean))];
+  const filter = targets.length ? `&sku=in.(${quoteList(targets)})` : "";
+  return supabaseFetch(
+    `catalog_research_jobs?status=eq.processing&lease_expires_at=lt.${encodeURIComponent(now())}${filter}`,
+    {
+      method: "PATCH",
+      service: true,
+      body: {
+        status: "retry",
+        stage: "queued",
+        next_retry_at: now(),
+        lease_expires_at: null,
+        worker_id: null,
+        last_error_code: "worker-lease-expired",
+        last_error_message: "The previous research worker ended before completing the job; the job was safely returned to the queue.",
+        last_error_source: "catalog-research-worker",
+        updated_at: now()
+      },
+      prefer: "return=representation"
+    }
+  );
 }
 
 export function retryDelaySeconds(attemptCount = 1) {
@@ -139,6 +170,8 @@ export async function completeCatalogResearchJob(job, { status = "ready", stage 
       last_error_code: null,
       last_error_message: null,
       last_error_source: null,
+      lease_expires_at: null,
+      worker_id: null,
       result: { ...(job.result || {}), ...result },
       updated_at: now()
     },
@@ -161,6 +194,8 @@ export async function retryCatalogResearchJob(job, { code = "source-unavailable"
       last_error_code: code,
       last_error_message: String(message || "").slice(0, 1200),
       last_error_source: source,
+      lease_expires_at: null,
+      worker_id: null,
       result: { ...(job.result || {}), ...result },
       updated_at: now()
     },
@@ -174,7 +209,7 @@ export async function markCatalogResearchJobsDeploymentPending(skus = [], deploy
   return supabaseFetch(`catalog_research_jobs?sku=in.(${quoteList(targets)})&status=in.(ready,deployment_pending)`, {
     method: "PATCH",
     service: true,
-    body: { status: "deployment_pending", stage: "deployment", result: { deployment }, next_retry_at: now(), updated_at: now() },
+    body: { status: "deployment_pending", stage: "deployment", result: { deployment }, next_retry_at: now(), lease_expires_at: null, worker_id: null, updated_at: now() },
     prefer: "return=representation"
   });
 }
@@ -191,6 +226,8 @@ export async function markCatalogResearchJobsLive(skus = [], deployment = {}) {
       completed_at: now(),
       result: { deployment },
       next_retry_at: now(),
+      lease_expires_at: null,
+      worker_id: null,
       updated_at: now()
     },
     prefer: "return=representation"

@@ -112,6 +112,7 @@ export async function syncFinanceInventoryToCatalog(
   ]);
   const existingBySku = new Map(existingRows.map((row) => [String(row.sku || "").trim().toLowerCase(), row]));
   const productRows = [];
+  const operationalUpdates = [];
   const productIdBySku = new Map();
 
   for (const stock of stockRows) {
@@ -123,6 +124,17 @@ export async function syncFinanceInventoryToCatalog(
       const financeProduct = productRowFromFinanceStock(existing, stock, quantity);
       const targetSelected = !enrichmentTargets.size || enrichmentTargets.has(key);
       const shouldEnrich = enrich && targetSelected && (forceEnrichment || needsFinanceEnrichment(existing, stock));
+      if (!shouldEnrich) {
+        operationalUpdates.push({
+          id: existing.id,
+          price: openToOffersPrice(stock),
+          openToOffers: stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true,
+          minimumAcceptableOffer: wholeAmount(stock.minimumAcceptableOffer),
+          updatedAt: today()
+        });
+        productIdBySku.set(key, existing.id);
+        continue;
+      }
       const enrichedProduct = shouldEnrich
           ? await enrichFinanceCatalogProduct(financeProduct, stock, { catalogArtists: catalogArtistRows })
           : financeProduct;
@@ -168,11 +180,36 @@ export async function syncFinanceInventoryToCatalog(
   const protectedProductRows = uniqueProductRows.map((row) =>
     preserveCompletedCatalogData(latestById.get(String(row.id)), row, stockBySku.get(String(row.sku || "").trim().toLowerCase()))
   );
-  if (uniqueProductRows.length) {
-    await supabaseFetch("products?on_conflict=id", {
+  for (const row of protectedProductRows) {
+    const latest = latestById.get(String(row.id));
+    if (!latest) {
+      await supabaseFetch("products?on_conflict=id", {
+        method: "POST",
+        body: [row],
+        prefer: "resolution=ignore-duplicates,return=minimal"
+      });
+      continue;
+    }
+    const revision = Math.max(1, Number(latest.edit_revision) || 1);
+    const saved = await supabaseFetch(
+      `products?id=eq.${encodeURIComponent(row.id)}&edit_revision=eq.${revision}`,
+      {
+        method: "PATCH",
+        body: row,
+        prefer: "return=representation"
+      }
+    );
+    if (!saved?.[0]) {
+      const error = new Error("Admin edited this product while catalog research was running. Research will retry without overwriting the manual edit.");
+      error.code = "admin-edit-conflict";
+      throw error;
+    }
+  }
+  if (operationalUpdates.length) {
+    await supabaseFetch("rpc/sync_finance_catalog_operational", {
       method: "POST",
-      body: protectedProductRows,
-      prefer: "resolution=merge-duplicates,return=minimal"
+      body: { p_updates: operationalUpdates },
+      prefer: "return=minimal"
     });
   }
 
@@ -267,9 +304,9 @@ export async function processCatalogResearchJobs({ limit = 1, skus = [], force =
       }
     } catch (error) {
       await jobsApi.retryCatalogResearchJob(job, {
-        code: "research-runtime-failed",
+        code: error?.code || "research-runtime-failed",
         message: error instanceof Error ? error.message : "Catalog research failed.",
-        source: "catalog-enrichment"
+        source: error?.code === "admin-edit-conflict" ? "admin-revision-guard" : "catalog-enrichment"
       });
       results.push({ sku: job.sku, status: "retry", issues: [error instanceof Error ? error.message : "Catalog research failed."] });
     }
@@ -279,6 +316,22 @@ export async function processCatalogResearchJobs({ limit = 1, skus = [], force =
 
 function preserveCompletedCatalogData(latest, next, stock = {}) {
   if (!latest || !next || next.category !== "Records") return next;
+  if (Number(latest.edit_revision || 1) > Number(next.edit_revision || 1)) {
+    return {
+      ...latest,
+      price: next.price,
+      open_to_offers: next.open_to_offers,
+      minimum_acceptable_offer: next.minimum_acceptable_offer,
+      updated_at: next.updated_at,
+      raw: {
+        ...(latest.raw || {}),
+        price: next.price,
+        open_to_offers: next.open_to_offers,
+        minimumAcceptableOffer: next.minimum_acceptable_offer,
+        updatedAt: next.updated_at
+      }
+    };
+  }
   const fingerprint = inventoryFingerprint(stock);
   const sameRelease = String(latest.raw?.enrichmentFingerprint || "") === fingerprint;
   const latestIsComplete = hasCompletedCatalogData(latest);
@@ -569,13 +622,23 @@ function productRowFromFinanceStock(row, stock, quantity) {
       price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(raw.price || row.price || 0),
       open_to_offers: openToOffers,
       minimumAcceptableOffer: openToOffers ? minimumAcceptableOffer : null,
-      edition: String(stock.edition || raw.edition || "").trim(),
-      barcode: String(stock.barcode || raw.barcode || "").trim(),
-      catalogNumber: String(stock.catalogNumber || raw.catalogNumber || "").trim(),
+      edition: adminOwnedValue(raw, "edition", stock.edition),
+      barcode: adminOwnedValue(raw, "barcode", stock.barcode),
+      catalogNumber: adminOwnedValue(raw, "catalogNumber", stock.catalogNumber),
       publishStatus,
       visibility
     }
   });
+}
+
+function adminOwnedValue(raw, key, seedValue) {
+  if (Object.prototype.hasOwnProperty.call(raw || {}, key)) return String(raw[key] ?? "").trim();
+  return String(seedValue || "").trim();
+}
+
+function openToOffersPrice(stock = {}) {
+  const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
+  return openToOffers ? 0 : Math.max(0, Number(stock.sellingPrice || 0));
 }
 
 function isPlaceholderInventoryTitle(value) {
@@ -673,6 +736,11 @@ export async function syncAdminCatalogInventory(products = []) {
       itemCondition: product.condition || existing.itemCondition || "New-Sealed",
       artist: product.artist || existing.artist || "",
       title: product.title || existing.title || "",
+      edition: product.edition ?? existing.edition ?? "",
+      barcode: product.barcode ?? existing.barcode ?? "",
+      catalogNumber: product.catalogNumber ?? existing.catalogNumber ?? "",
+      mediaCondition: product.mediaCondition ?? existing.mediaCondition ?? "",
+      sleeveCondition: product.sleeveCondition ?? existing.sleeveCondition ?? "",
       source: existing.source || "Admin editor",
       acquisitionMonth: existing.acquisitionMonth || new Date().toISOString().slice(0, 7),
       qty: quantity,

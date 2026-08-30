@@ -310,6 +310,17 @@ async function handleApi(req, res) {
     return true;
   }
 
+  if (url.pathname === "/api/admin/store" && req.method === "GET" && url.searchParams.get("commerceAction") === "inventory") {
+    if (!requireWorkspace(req, "admin")) {
+      json(res, 401, { ok: false, error: "Admin login required" });
+      return true;
+    }
+    const storePath = join(root, "public", "data", "admin-store.json");
+    const store = existsSync(storePath) ? JSON.parse(await readFile(storePath, "utf8")) : {};
+    json(res, 200, { ok: true, inventory: Array.isArray(store.inventory) ? store.inventory : [] });
+    return true;
+  }
+
   if (url.pathname === "/api/admin/store" && req.method === "POST") {
     if (!requireWorkspace(req, "admin")) {
       json(res, 401, { ok: false, error: "Admin login required" });
@@ -318,6 +329,56 @@ async function handleApi(req, res) {
     const payload = JSON.parse(await readBody(req));
     const dataDir = join(root, "public", "data");
     await mkdir(dataDir, { recursive: true });
+    const storePath = join(dataDir, "admin-store.json");
+    const action = url.searchParams.get("commerceAction");
+    const currentStore = existsSync(storePath)
+      ? JSON.parse(await readFile(storePath, "utf8"))
+      : { products: [], artists: [], collections: [], requests: [], offers: [], orders: [], cashflow: [], inventory: [] };
+    if (action === "product") {
+      const product = payload.product || {};
+      const index = (currentStore.products || []).findIndex((item) => item.id === product.id);
+      const current = index === -1 ? null : currentStore.products[index];
+      const currentRevision = Math.max(1, Number(current?.editRevision) || 1);
+      const expectedRevision = Math.max(0, Number(payload.expectedRevision) || 0);
+      if ((current && currentRevision !== expectedRevision) || (!current && expectedRevision !== 0)) {
+        json(res, 409, { ok: false, error: "This product changed after the editor was opened.", currentProduct: current });
+        return true;
+      }
+      const saved = { ...current, ...product, editRevision: current ? currentRevision + 1 : 1 };
+      currentStore.products = current
+        ? currentStore.products.map((item) => item.id === saved.id ? saved : item)
+        : [saved, ...(currentStore.products || [])];
+      await writeFile(storePath, JSON.stringify(currentStore, null, 2) + "\n");
+      json(res, current ? 200 : 201, { ok: true, product: saved, financeSynced: false });
+      return true;
+    }
+    if (action === "home-slider") {
+      const updates = new Map((payload.updates || []).map((update) => [update.id, update]));
+      for (const product of currentStore.products || []) {
+        const update = updates.get(product.id);
+        if (!update) continue;
+        if (Math.max(1, Number(product.editRevision) || 1) !== Math.max(1, Number(update.expectedRevision) || 1)) {
+          json(res, 409, { ok: false, error: "A product changed while the slider editor was open." });
+          return true;
+        }
+      }
+      const savedProducts = [];
+      currentStore.products = (currentStore.products || []).map((product) => {
+        const update = updates.get(product.id);
+        if (!update) return product;
+        const saved = {
+          ...product,
+          homeCollections: update.homeCollections || [],
+          homeSlideSort: update.homeSlideSort ?? null,
+          editRevision: Math.max(1, Number(product.editRevision) || 1) + 1
+        };
+        savedProducts.push(saved);
+        return saved;
+      });
+      await writeFile(storePath, JSON.stringify(currentStore, null, 2) + "\n");
+      json(res, 200, { ok: true, products: savedProducts });
+      return true;
+    }
     await writeFile(join(dataDir, "admin-store.json"), JSON.stringify(payload.store, null, 2) + "\n");
     const publicStore = {
       ...payload.store,

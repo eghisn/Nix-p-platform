@@ -107,7 +107,7 @@ export const catalogService = {
     return adminStore.getSnapshot().collections;
   },
   async listInventory() {
-    await adminStore.refreshPrivateStore();
+    await adminStore.refreshInventory();
     const products = adminStore.listProducts({ includeDrafts: true });
     return adminStore.getSnapshot().inventory.map((item) => ({
       ...item,
@@ -119,8 +119,8 @@ export const catalogService = {
       status: item.status || "In stock"
     }));
   },
-  async listOrders() {
-    await adminStore.refreshPrivateStore();
+  async listOrders({ refresh = false } = {}) {
+    if (refresh) await adminStore.refreshOrders();
     const orders = adminStore.getSnapshot().orders;
     const products = adminStore.listProducts({ includeDrafts: true });
     return orders.map((order) => {

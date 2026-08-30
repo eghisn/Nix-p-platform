@@ -49,7 +49,7 @@ export async function supabaseFetch(path, options = {}) {
   return payload;
 }
 
-export async function loadStore({ privateScope = false, publicSnapshotUrl = "" } = {}) {
+export async function loadStore({ privateScope = false, publicSnapshotUrl = "", privateMode = "full" } = {}) {
   // Public HTML and the public SPA must use the same deployed editorial
   // revision. If we read the live catalog first, a Supabase-only publication
   // can appear during hydration and then be replaced by the older deployed
@@ -79,6 +79,7 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
     }
   }
 
+  const editorMode = privateScope && privateMode === "editor";
   const [products, artists, collections, requests, offers, orders, cashflow, inventory] = await Promise.all([
     supabaseFetch(
       privateScope
@@ -89,11 +90,11 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
     supabaseFetch(privateScope ? "collections?select=*&order=sort.asc" : "collections?select=*&status=eq.Published&order=sort.asc"),
     privateScope ? supabaseFetch("requests?select=*&order=created_at.desc", { service: true }) : [],
     privateScope ? supabaseFetch("offers?select=*&order=created_at.desc", { service: true }) : [],
-    privateScope ? supabaseFetch("orders?select=*&order=created_at.desc", { service: true }) : [],
-    privateScope ? supabaseFetch("cashflow?select=*&order=created_at.desc", { service: true }) : [],
-    privateScope ? supabaseFetch("inventory?select=*&order=created_at.desc", { service: true }) : []
+    privateScope && !editorMode ? supabaseFetch("orders?select=*&order=created_at.desc", { service: true }) : [],
+    privateScope && !editorMode ? supabaseFetch("cashflow?select=*&order=created_at.desc", { service: true }) : [],
+    privateScope && !editorMode ? supabaseFetch("inventory?select=*&order=created_at.desc", { service: true }) : []
   ]);
-  const mappedProducts = products.map((row) => fromProductRow(row, { privateScope }));
+  const mappedProducts = products.map((row) => fromProductRow(row, { privateScope, compactAdmin: editorMode }));
   const store = {
     version: "supabase-live-2026-07-13",
     products: privateScope
@@ -111,6 +112,11 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "" }
     cashflow: cashflow.map(fromRawRow),
     inventory: inventory.map(fromRawRow)
   };
+  if (editorMode) {
+    delete store.orders;
+    delete store.cashflow;
+    delete store.inventory;
+  }
   if (!privateScope && publicSnapshotUrl) {
     try {
       const snapshotResponse = await fetch(publicSnapshotUrl, { cache: "no-store" });
@@ -277,7 +283,7 @@ export async function verifiedPrices(ids = []) {
   return supabaseFetch(`products?select=id,price,qty,sizes,publish_status,visibility&id=in.(${inList})`);
 }
 
-export async function saveStore(store, { inventoryProduct = null, syncCatalogProducts = false } = {}) {
+export async function saveStore(store, { inventoryProduct = null, syncCatalogProducts = false, tables = TABLES } = {}) {
   const safeStore = applyCatalogPublicationSafety(store);
   validateStore(safeStore);
   await backupStore("admin-store", safeStore);
@@ -291,10 +297,44 @@ export async function saveStore(store, { inventoryProduct = null, syncCatalogPro
     cashflow: (safeStore.cashflow || []).map((item, index) => toRawRow(item, "cashflow", index)),
     inventory: (safeStore.inventory || []).map((item, index) => toRawRow(item, "inventory", index))
   };
-  for (const table of TABLES) await upsert(table, dedupeRows(rowsByTable[table]));
+  const requestedTables = new Set((Array.isArray(tables) ? tables : TABLES).filter((table) => TABLES.includes(table)));
+  for (const table of TABLES) {
+    if (requestedTables.has(table)) await upsert(table, dedupeRows(rowsByTable[table]));
+  }
   if (syncCatalogProducts) await syncAdminCatalogInventory(safeStore.products || []);
   else if (inventoryProduct) await syncAdminProductInventory(inventoryProduct);
   return safeStore;
+}
+
+export async function saveAdminHomeSlider(updates = [], { actor = "admin" } = {}) {
+  const safeUpdates = (Array.isArray(updates) ? updates : [])
+    .map((update) => ({
+      id: String(update?.id || "").trim(),
+      expectedRevision: Math.max(1, Number(update?.expectedRevision) || 1),
+      homeCollections: Array.isArray(update?.homeCollections) ? update.homeCollections.map(String) : [],
+      homeSlideSort: update?.homeSlideSort === null || update?.homeSlideSort === undefined
+        ? null
+        : Number(update.homeSlideSort)
+    }))
+    .filter((update) => update.id);
+  if (!safeUpdates.length) return [];
+  const ids = safeUpdates.map((update) => update.id);
+  const previous = await supabaseFetch(`products?select=*&id=in.(${ids.map((id) => `"${id.replaceAll('"', '\\"')}"`).join(",")})`, { service: true });
+  await backupStore("admin-home-slider", { previous, updates: safeUpdates });
+  try {
+    const rows = await supabaseFetch("rpc/save_admin_home_slider", {
+      method: "POST",
+      service: true,
+      body: { p_updates: safeUpdates, p_actor: String(actor || "admin").slice(0, 160) },
+      prefer: "return=representation"
+    });
+    return (rows || []).map((row) => fromProductRow(row, { privateScope: true, compactAdmin: true }));
+  } catch (error) {
+    if (String(error?.message || "").includes("ADMIN_PRODUCT_CONFLICT")) {
+      throw requestError("A product changed while the slider editor was open. Refresh before saving the slider.", 409);
+    }
+    throw error;
+  }
 }
 
 export async function saveProductPublicationStatus(store, productId) {
@@ -311,8 +351,92 @@ export async function saveProductPublicationStatus(store, productId) {
     previous: previousRows?.[0] || null,
     next: product
   });
-  await upsert("products", [toProductRow(product)]);
-  return product;
+  const previous = previousRows?.[0];
+  if (!previous) throw new Error("Product publication save failed: current product not found.");
+  const raw = {
+    ...(previous.raw || {}),
+    publishStatus: product.publishStatus || previous.publish_status || "Draft",
+    visibility: product.visibility || previous.visibility || "Private",
+    adminPublishOverride: product.raw?.adminPublishOverride ?? previous.raw?.adminPublishOverride ?? null,
+    publicationState: product.raw?.publicationState ?? previous.raw?.publicationState ?? null
+  };
+  const updated = await supabaseFetch(`products?id=eq.${encodeURIComponent(productId)}`, {
+    method: "PATCH",
+    service: true,
+    body: {
+      publish_status: raw.publishStatus,
+      visibility: raw.visibility,
+      updated_at: product.updatedAt || new Date().toISOString().slice(0, 10),
+      raw
+    },
+    prefer: "return=representation"
+  });
+  return fromProductRow(updated?.[0] || { ...previous, publish_status: raw.publishStatus, visibility: raw.visibility, raw }, { privateScope: true });
+}
+
+export async function saveAdminProduct(product, { expectedRevision = 0, actor = "admin" } = {}) {
+  const productId = String(product?.id || "").trim();
+  if (!productId) throw requestError("Product save failed: product ID is required.", 400);
+  const currentRows = await supabaseFetch(`products?select=*&id=eq.${encodeURIComponent(productId)}&limit=1`, { service: true });
+  const currentRow = currentRows?.[0] || null;
+  const expected = Math.max(0, Number(expectedRevision) || 0);
+  const currentRevision = Math.max(1, Number(currentRow?.edit_revision) || 1);
+  if ((currentRow && expected !== currentRevision) || (!currentRow && expected !== 0)) {
+    const error = requestError("This product changed after the editor was opened. Refresh it before saving so the newer edit is not overwritten.", 409);
+    error.currentProduct = currentRow ? fromProductRow(currentRow, { privateScope: true, compactAdmin: true }) : null;
+    throw error;
+  }
+
+  const currentProduct = currentRow ? fromProductRow(currentRow, { privateScope: true }) : null;
+  const merged = preserveServerResearchFields(currentProduct, {
+    ...currentProduct,
+    ...product,
+    id: productId,
+    raw: currentRow?.raw || product.raw || {}
+  });
+  const safeProduct = applyCatalogPublicationSafety({ products: [merged] }).products[0];
+  const nextRevision = currentRow ? currentRevision + 1 : 1;
+  const savedAt = new Date().toISOString();
+  const row = {
+    ...toProductRow(safeProduct),
+    edit_revision: nextRevision,
+    editorial_updated_at: savedAt,
+    editorial_updated_by: String(actor || "admin").trim().slice(0, 160) || "admin"
+  };
+  await backupStore("admin-product", {
+    productId,
+    expectedRevision: expected,
+    previous: currentRow,
+    next: row
+  });
+
+  let savedRows;
+  if (currentRow) {
+    savedRows = await supabaseFetch(
+      `products?id=eq.${encodeURIComponent(productId)}&edit_revision=eq.${currentRevision}`,
+      { method: "PATCH", service: true, body: row, prefer: "return=representation" }
+    );
+  } else {
+    savedRows = await supabaseFetch("products?on_conflict=id", {
+      method: "POST",
+      service: true,
+      body: [row],
+      prefer: "resolution=ignore-duplicates,return=representation"
+    });
+  }
+  if (!savedRows?.[0]) {
+    const latestRows = await supabaseFetch(`products?select=*&id=eq.${encodeURIComponent(productId)}&limit=1`, { service: true });
+    const error = requestError("This product was saved elsewhere at the same time. Refresh it before retrying.", 409);
+    error.currentProduct = latestRows?.[0] ? fromProductRow(latestRows[0], { privateScope: true, compactAdmin: true }) : null;
+    throw error;
+  }
+  const savedProduct = fromProductRow(savedRows[0], { privateScope: true, compactAdmin: true });
+  await ensureProductArtist(savedProduct);
+  return {
+    product: savedProduct,
+    previousStatus: currentRow?.publish_status || "",
+    created: !currentRow
+  };
 }
 
 async function upsert(table, rows) {
@@ -354,7 +478,7 @@ function fromRawRow(row) {
   return row.raw || row;
 }
 
-function fromProductRow(row, { privateScope = false } = {}) {
+function fromProductRow(row, { privateScope = false, compactAdmin = false } = {}) {
   const sourceRaw = row.raw || {};
   const nestedRaw = sourceRaw.raw && typeof sourceRaw.raw === "object" ? sourceRaw.raw : {};
   const { shipping, raw: _discardNestedRaw, ...raw } = { ...nestedRaw, ...sourceRaw };
@@ -368,7 +492,7 @@ function fromProductRow(row, { privateScope = false } = {}) {
       : Array.isArray(raw.relatedArtists) && raw.relatedArtists.length ? raw.relatedArtists : [...manualRelatedArtists, ...researchedRelatedArtists]
   );
   const product = {
-    ...raw,
+    ...(compactAdmin ? compactAdminRaw(raw) : raw),
     id: row.id,
     sku: row.sku,
     title: row.title,
@@ -398,7 +522,10 @@ function fromProductRow(row, { privateScope = false } = {}) {
       : null,
     publishStatus: row.publish_status,
     visibility: row.visibility,
-    updatedAt: row.updated_at
+    updatedAt: row.updated_at,
+    editRevision: Math.max(1, Number(row.edit_revision) || 1),
+    editorialUpdatedAt: row.editorial_updated_at || "",
+    editorialUpdatedBy: row.editorial_updated_by || ""
   };
   product.relatedArtists = relatedArtists;
   product.manualRelatedArtists = canonicalRelatedArtists(manualRelatedArtists);
@@ -481,6 +608,64 @@ function toProductRow(product) {
     updated_at: product.updatedAt || new Date().toISOString().slice(0, 10),
     raw
   };
+}
+
+function compactAdminRaw(raw = {}) {
+  const compact = { ...raw };
+  delete compact.syncAudit;
+  delete compact.relatedArtistEvidence;
+  if (compact.autoEditorial && typeof compact.autoEditorial === "object") {
+    compact.autoEditorial = {
+      relatedArtists: Array.isArray(compact.autoEditorial.relatedArtists) ? compact.autoEditorial.relatedArtists : []
+    };
+  }
+  if (compact.relatedArtistsResearch && typeof compact.relatedArtistsResearch === "object") {
+    compact.relatedArtistsResearch = {
+      status: compact.relatedArtistsResearch.status || "",
+      artists: Array.isArray(compact.relatedArtistsResearch.artists) ? compact.relatedArtistsResearch.artists : [],
+      version: compact.relatedArtistsResearch.version || compact.relatedArtistResearchVersion || "",
+      researchedAt: compact.relatedArtistsResearch.researchedAt || compact.relatedArtistsResearch.updatedAt || ""
+    };
+  }
+  return compact;
+}
+
+function preserveServerResearchFields(current, next) {
+  if (!current) return next;
+  const protectedFields = [
+    "autoEditorial",
+    "relatedArtistsResearch",
+    "relatedArtistEvidence",
+    "relatedArtistResearchVersion",
+    "syncAudit",
+    "syncStatus"
+  ];
+  const preserved = { ...next };
+  for (const field of protectedFields) {
+    if (current[field] !== undefined) preserved[field] = current[field];
+  }
+  return preserved;
+}
+
+async function ensureProductArtist(product = {}) {
+  if (String(product.category || "") !== "Records") return;
+  const name = String(product.artist || "").trim();
+  if (!name) return;
+  const id = slugify(name);
+  const existing = await supabaseFetch(`artists?select=id&id=eq.${encodeURIComponent(id)}&limit=1`, { service: true });
+  if (existing?.length) return;
+  await supabaseFetch("artists?on_conflict=id", {
+    method: "POST",
+    service: true,
+    body: [{ id, name, title: null, status: "Published", sort: 9999, raw: { id, name, bio: "", status: "Published", sort: 9999 } }],
+    prefer: "resolution=ignore-duplicates,return=minimal"
+  });
+}
+
+function requestError(message, statusCode) {
+  const error = new Error(message);
+  error.statusCode = statusCode;
+  return error;
 }
 
 function canonicalRelatedArtists(values = []) {

@@ -1,9 +1,8 @@
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
 import { verifyPublicCatalogRevision } from "../_lib/publicCatalogDeployment.js";
 import { json, requireWorkspace } from "../_lib/auth.js";
-import { isSupabaseConfigured, loadStore, saveProductPublicationStatus, saveStore } from "../_lib/supabase.js";
+import { isSupabaseConfigured, loadStore, saveProductPublicationStatus } from "../_lib/supabase.js";
 import { applyCatalogPublicationSafety, catalogPublicationIssues } from "../../src/data/catalogPublication.js";
-import { readFinanceState, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
@@ -33,10 +32,6 @@ export default async function handler(req, res) {
       // Publication is a targeted, backed-up row write. This avoids rewriting
       // every Admin table or running enrichment when only one status changed.
       await saveProductPublicationStatus(safeStore, requestedStatusChange.id);
-    } else {
-      await saveStore(safeStore, { syncCatalogProducts: true });
-      const financeState = await readFinanceState();
-      await syncFinanceInventoryToCatalog(financeState, { enrich: false });
     }
     let deployedStore = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
     let statusChange = null;

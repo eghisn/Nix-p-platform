@@ -24,6 +24,10 @@ function notifyPrivateStoreRefreshed() {
   if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("nixp:private-store-refreshed"));
 }
 
+function reconcilePublicationInBackground() {
+  fetch("/api/admin/deploy-status?reconcile=1", { cache: "no-store" }).catch(() => {});
+}
+
 function assertPrivateStoreReady() {
   // The initial private catalog refresh runs in the background so the editor
   // can open immediately. Do not let an older browser snapshot become a save
@@ -630,6 +634,25 @@ async function persistStore(store, { inventoryProduct = null } = {}) {
   }
 }
 
+async function persistProduct(product, { expectedRevision = 0 } = {}) {
+  const response = await fetch("/api/admin/store?commerceAction=product", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ product, expectedRevision })
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    if (response.status === 401 || response.status === 403) {
+      throw new Error("Admin session expired. Refresh the Admin Editor and sign in again.");
+    }
+    const error = new Error(payload.error || `Product save failed on the server (HTTP ${response.status}). Please try again.`);
+    error.statusCode = response.status;
+    error.currentProduct = payload.currentProduct || null;
+    throw error;
+  }
+  return payload;
+}
+
 async function writeStoreBestEffort(store) {
   try {
     return await writeStore(store);
@@ -783,7 +806,10 @@ export const adminStore = {
       // The authoritative response still replaces this snapshot in the
       // background, while writes remain guarded until that refresh is done.
       this.refreshPrivateStore({ force: true })
-        .then(() => notifyPrivateStoreRefreshed())
+        .then(() => {
+          notifyPrivateStoreRefreshed();
+          reconcilePublicationInBackground();
+        })
         .catch(() => {
           // Keep the last local snapshot available when the private API is down.
         });
@@ -862,6 +888,18 @@ export const adminStore = {
     await this.refreshPrivateStore({ force: true });
     return this.getSnapshot().orders;
   },
+  async refreshInventory() {
+    if (!canUsePrivateStore()) return this.getSnapshot().inventory;
+    const response = await fetch(`/api/admin/store?commerceAction=inventory&v=${Date.now()}`, { cache: "no-store" });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Could not refresh inventory.");
+    const inventory = Array.isArray(payload.inventory) ? payload.inventory : [];
+    const snapshot = this.getSnapshot();
+    activeStore = { ...snapshot, inventory };
+    activeStoreScope = "admin";
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+    return inventory;
+  },
   async refreshOrdersIfChanged() {
     const before = storeRevision(this.getSnapshot().orders);
     const orders = await this.refreshOrders();
@@ -876,7 +914,14 @@ export const adminStore = {
       if (!response.ok) throw new Error("Could not refresh admin data. Please log in to admin and try again.");
       const payload = await response.json();
       if (!payload.store) return this.getSnapshot();
-      activeStore = mergeStore(seed({ publicOnly: false }), payload.store, { publicOnly: false });
+      const current = this.getSnapshot();
+      const partialStore = {
+        ...payload.store,
+        orders: Array.isArray(payload.store.orders) ? payload.store.orders : current.orders,
+        cashflow: Array.isArray(payload.store.cashflow) ? payload.store.cashflow : current.cashflow,
+        inventory: Array.isArray(payload.store.inventory) ? payload.store.inventory : current.inventory
+      };
+      activeStore = mergeStore(seed({ publicOnly: false }), partialStore, { publicOnly: false });
       activeStoreScope = "admin";
       privateStoreRefreshedAt = Date.now();
       localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
@@ -1092,20 +1137,42 @@ export const adminStore = {
   async saveHomeSlider(data) {
     const store = this.getSnapshot();
     const collectionIds = ["recent-releases", "nixp-selection", "back-in-stock", "limited-pressing", "private-collection"];
-    const nextProducts = store.products.map((product) => {
+    const updates = [];
+    for (const product of store.products) {
       const include = data[`homeSlide:${product.id}`] === "on";
       const rawSort = Number(data[`homeSlideSort:${product.id}`]);
-      return {
-        ...product,
-        homeSlideSort: include && Number.isFinite(rawSort) ? rawSort : null,
-        homeCollections: normalizeHomeCollections(
-          product,
-          collectionIds.filter((id) => data[`homeCollection:${product.id}:${id}`] === "on")
-        ),
-        updatedAt: today()
-      };
+      const homeSlideSort = include && Number.isFinite(rawSort) ? rawSort : null;
+      const homeCollections = normalizeHomeCollections(
+        product,
+        collectionIds.filter((id) => data[`homeCollection:${product.id}:${id}`] === "on")
+      );
+      if (
+        Number(product.homeSlideSort ?? -1) === Number(homeSlideSort ?? -1) &&
+        JSON.stringify(product.homeCollections || []) === JSON.stringify(homeCollections)
+      ) continue;
+      updates.push({
+        id: product.id,
+        expectedRevision: product.editRevision || 1,
+        homeSlideSort,
+        homeCollections
+      });
+    }
+    if (!updates.length) return true;
+    const response = await fetch("/api/admin/store?commerceAction=home-slider", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ updates })
     });
-    return writeStore({ ...store, products: nextProducts });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Home slider save failed. Refresh Admin and try again.");
+    const savedById = new Map((payload.products || []).map((product) => [product.id, product]));
+    activeStore = {
+      ...store,
+      products: store.products.map((product) => savedById.get(product.id) || product)
+    };
+    activeStoreScope = "admin";
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+    return true;
   },
   async uploadProductImage(file, product) {
     return uploadDataUrlImage(await fileToDataUrl(file), product, file.name);
@@ -1231,46 +1298,15 @@ export const adminStore = {
       visibility: data.visibility || "Public",
       updatedAt: today()
     });
+    const payload = await persistProduct(product, { expectedRevision: existing?.editRevision || 0 });
+    const savedProduct = payload.product || product;
     const nextProducts = existing
-      ? store.products.map((item) => (item.id === id ? product : item))
-      : [product, ...store.products];
-    const nextArtists = [...store.artists];
-    const recordArtist = category === "Records" ? data.artist?.trim() : "";
-    if (recordArtist && !nextArtists.some((artist) => artist.name.toLowerCase() === recordArtist.toLowerCase())) {
-      nextArtists.push({
-        id: slugify(recordArtist),
-        name: recordArtist,
-        bio: "",
-        status: "Published",
-        sort: nextArtists.length + 1
-      });
-    }
-    const inventoryId = product.id;
-    const existingInventory = store.inventory.find((item) => item.productId === product.id || item.id === inventoryId);
-    const inventoryEntry = {
-      ...existingInventory,
-      id: existingInventory?.id || inventoryId,
-      productId: product.id,
-      sku: product.sku,
-      artist: product.artist,
-      title: product.title,
-      category: product.category,
-      format: product.format,
-      condition: product.condition,
-      stock: productStock(product),
-      quantity: product.qty,
-      sizes: product.sizes,
-      source: "Admin editor",
-      updatedAt: today()
-    };
-    const nextInventory = existingInventory
-      ? store.inventory.map((item) => (item.id === existingInventory.id ? inventoryEntry : item))
-      : [inventoryEntry, ...store.inventory];
-    await writeStore(
-      { ...store, products: nextProducts, artists: nextArtists, inventory: nextInventory },
-      { inventoryProduct: product }
-    );
-    return product;
+      ? store.products.map((item) => (item.id === id ? savedProduct : item))
+      : [savedProduct, ...store.products];
+    activeStore = { ...store, products: nextProducts };
+    activeStoreScope = "admin";
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
+    return savedProduct;
   },
   updateProductStatus(id, publishStatus) {
     return this.publishProduct(id, publishStatus);

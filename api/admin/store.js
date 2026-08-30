@@ -1,9 +1,9 @@
 import { getSession, json, requireWorkspace } from "../_lib/auth.js";
-import { isSupabaseConfigured, loadStore, saveStore, supabaseFetch } from "../_lib/supabase.js";
+import { isSupabaseConfigured, loadStore, saveAdminHomeSlider, saveAdminProduct, saveStore, supabaseFetch } from "../_lib/supabase.js";
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
 import { verifyPublicCatalogRevision } from "../_lib/publicCatalogDeployment.js";
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
-import { processCatalogResearchJobs, readFinanceState, refreshRelatedArtistsOnly, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
+import { processCatalogResearchJobs, readFinanceState, refreshRelatedArtistsOnly, syncAdminProductInventory, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
 import { drainNotificationOutbox, getNotificationOutboxHealth, retryFailedNotificationOutbox, sendProductStatusNotification } from "../_lib/emailNotifications.js";
@@ -12,7 +12,10 @@ import { applyCatalogPublicationSafety, catalogPublicationIssues, isResearchPubl
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("commerceAction");
   if (action === "orders") return handleAdminOrders(req, res);
+  if (action === "inventory") return handleAdminInventory(req, res);
   if (action === "shipping-rates") return handleAdminShipping(req, res);
+  if (action === "product") return handleAdminProductSave(req, res);
+  if (action === "home-slider") return handleAdminHomeSliderSave(req, res);
   if (action === "backups") {
     if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
     if (!requireWorkspace(req, res, "admin")) return;
@@ -167,21 +170,10 @@ export default async function handler(req, res) {
   }
   const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
   try {
-    const previousStore = await loadStore({ privateScope: true });
-    await saveStore(body.store || {}, { inventoryProduct: body.inventoryProduct || null });
-    const productStatusChanges = findProductStatusChanges(previousStore?.products, body.store?.products);
-    await Promise.all(productStatusChanges.map(({ product, previousStatus }) => sendProductStatusNotification(product, previousStatus).catch((error) => {
-      console.warn("Product status notification not delivered", { productId: product.id, reason: error instanceof Error ? error.message : "unknown" });
-      return { delivered: false };
-    })));
-    // A manual Admin save may include inventoryProduct so the edited product's
-    // stock, title, and price can be reflected in Finance. It must not also
-    // launch the broad Finance -> catalog enrichment pipeline. That pipeline
-    // is an explicit Research & Complete / catalog-sync action and is scoped
-    // by SKU there. Keeping the operations separate prevents an editorial
-    // edit from unexpectedly re-enriching or overwriting other records.
-    const inventorySynced = Boolean(body.inventoryProduct);
-    json(res, 200, { ok: true, path: "supabase://public", catalogSynced: false, inventorySynced, store: null });
+    await saveStore(body.store || {}, {
+      tables: ["artists", "collections", "requests", "offers"]
+    });
+    json(res, 200, { ok: true, path: "supabase://public", catalogSynced: false, inventorySynced: false, store: null });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Store save failed";
     const friendlyMessage = message.toLowerCase().includes("on conflict do update")
@@ -191,16 +183,79 @@ export default async function handler(req, res) {
   }
 }
 
-function findProductStatusChanges(previousProducts = [], nextProducts = []) {
-  const previousById = new Map((Array.isArray(previousProducts) ? previousProducts : []).map((product) => [String(product.id), product]));
-  return (Array.isArray(nextProducts) ? nextProducts : [])
-    .map((product) => ({ product, previousStatus: previousById.get(String(product.id))?.publishStatus || previousById.get(String(product.id))?.publish_status || "" }))
-    .filter(({ product, previousStatus }) => {
-      const status = String(product.publishStatus || product.publish_status || "").trim();
-      if (!status || status === previousStatus) return false;
-      if (!previousStatus && status !== "Published") return false;
-      return true;
+async function handleAdminInventory(req, res) {
+  if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
+  if (!requireWorkspace(req, res, "admin")) return;
+  try {
+    const rows = await supabaseFetch("inventory?select=*&order=created_at.desc", { service: true });
+    return json(res, 200, { ok: true, inventory: (rows || []).map((row) => row.raw || row) });
+  } catch (error) {
+    return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Inventory unavailable." });
+  }
+}
+
+async function handleAdminHomeSliderSave(req, res) {
+  if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+  const session = requireWorkspace(req, res, "admin");
+  if (!session) return;
+  if (!isSupabaseConfigured({ requireServiceRole: true })) {
+    return json(res, 503, { ok: false, error: "Supabase service role is not configured." });
+  }
+  try {
+    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    const products = await saveAdminHomeSlider(body.updates || [], { actor: session.username || "admin" });
+    return json(res, 200, { ok: true, products });
+  } catch (error) {
+    return json(res, Number(error?.statusCode || 500), {
+      ok: false,
+      error: error instanceof Error ? error.message : "Home slider save failed."
     });
+  }
+}
+
+async function handleAdminProductSave(req, res) {
+  if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+  const session = requireWorkspace(req, res, "admin");
+  if (!session) return;
+  if (!isSupabaseConfigured({ requireServiceRole: true })) {
+    return json(res, 503, { ok: false, error: "Supabase service role is not configured." });
+  }
+  try {
+    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    const saved = await saveAdminProduct(body.product || {}, {
+      expectedRevision: body.expectedRevision,
+      actor: session.username || "admin"
+    });
+    let financeSynced = true;
+    let financeWarning = "";
+    try {
+      await syncAdminProductInventory(saved.product);
+    } catch (error) {
+      financeSynced = false;
+      financeWarning = error instanceof Error ? error.message : "Finance inventory synchronization is pending.";
+    }
+    const nextStatus = String(saved.product.publishStatus || "").trim();
+    if (nextStatus && nextStatus !== saved.previousStatus) {
+      await sendProductStatusNotification(saved.product, saved.previousStatus).catch((error) => {
+        console.warn("Product status notification not delivered", {
+          productId: saved.product.id,
+          reason: error instanceof Error ? error.message : "unknown"
+        });
+      });
+    }
+    return json(res, saved.created ? 201 : 200, {
+      ok: true,
+      product: saved.product,
+      financeSynced,
+      warning: financeWarning
+    });
+  } catch (error) {
+    return json(res, Number(error?.statusCode || 500), {
+      ok: false,
+      error: error instanceof Error ? error.message : "Product save failed.",
+      currentProduct: error?.currentProduct || null
+    });
+  }
 }
 
 function catalogCompletionReport(products = [], requestedSkus = []) {
