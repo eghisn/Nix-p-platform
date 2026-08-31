@@ -1,7 +1,17 @@
-const state = { dashboard: null, view: "overview" };
+const state = { dashboard: null, view: "overview", sorts: {} };
 const money = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat("id-ID", { style: "percent", maximumFractionDigits: 2 });
+const sortDefaults = {
+  products: { key: "sales", direction: "desc" },
+  "monthly-campaigns": { key: "sales", direction: "desc" },
+  "monthly-products": { key: "sales", direction: "desc" },
+  sources: { key: "sessions", direction: "desc" },
+  campaigns: { key: "sales", direction: "desc" },
+  contacts: { key: "lastOrder", direction: "desc" },
+  events: { key: "time", direction: "desc" },
+  daily: { key: "date", direction: "desc" }
+};
 
 function escapeHtml(value) {
   return String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
@@ -69,6 +79,7 @@ function renderDashboard(data) {
   renderContacts();
   renderData(data);
   renderConsent();
+  updateSortIndicators();
 }
 
 function renderAccountingBasis() {
@@ -93,7 +104,8 @@ function renderInsights(data) {
 }
 
 function renderProducts(rows) {
-  document.querySelector("[data-products-table]").innerHTML = rows.slice(0, 12).map((item) => `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.productClicks)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(7, "No product activity in this period.");
+  const sorted = sortRows("products", rows, (item, key) => item[key]);
+  document.querySelector("[data-products-table]").innerHTML = sorted.map((item) => `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.productClicks)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(7, "No product activity in this period.");
 }
 
 function renderChart(rows) {
@@ -109,7 +121,8 @@ function renderAudience(data) {
   [data.metrics.visitors, data.metrics.sessions, data.metrics.productViews].forEach((value, index) => { if (panels[index]) panels[index].textContent = integer.format(value); });
   renderRanks("[data-geography-list]", data.countries);
   renderRanks("[data-device-list]", data.devices);
-  document.querySelector("[data-source-table]").innerHTML = data.sources.map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.paidOrders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(5, "No attributed visits in this period.");
+  const sources = sortRows("sources", data.sources, (item, key) => key === "source" ? sourceName(item) : item[key]);
+  document.querySelector("[data-source-table]").innerHTML = sources.map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.paidOrders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(5, "No attributed visits in this period.");
 }
 
 function renderRanks(selector, rows) {
@@ -128,7 +141,7 @@ function renderFunnel(data) {
 function renderCampaigns(query = "") {
   const rows = state.dashboard?.sources || [];
   const needle = query.trim().toLowerCase();
-  const filtered = rows.filter((item) => sourceName(item).toLowerCase().includes(needle));
+  const filtered = sortRows("campaigns", rows.filter((item) => sourceName(item).toLowerCase().includes(needle)), (item, key) => key === "source" ? sourceName(item) : item[key]);
   document.querySelector("[data-campaign-table]").innerHTML = filtered.map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.paidOrders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(6, "No campaign source matches this search.");
 }
 
@@ -159,8 +172,10 @@ function renderMonthly(data) {
 
   const actions = data.actions || {};
   document.querySelectorAll("[data-monthly-action]").forEach((node) => { node.textContent = integer.format(actions[node.dataset.monthlyAction] || 0); });
-  document.querySelector("[data-monthly-campaign-table]").innerHTML = (data.campaigns || []).map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${money.format(item.spend)}</td><td>${integer.format(item.paidOrders)}</td><td class="number">${money.format(item.sales)}</td><td class="number">${ratio(item.roas)}</td></tr>`).join("") || emptyRow(6, "No campaign, spend, or attributed order data for this month.");
-  document.querySelector("[data-monthly-products-table]").innerHTML = (data.topProducts || []).map((item) => `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.productClicks)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(6, "No product activity in this month.");
+  const campaigns = sortRows("monthly-campaigns", data.campaigns || [], (item, key) => key === "source" ? sourceName(item) : item[key]);
+  const products = sortRows("monthly-products", data.topProducts || [], (item, key) => item[key]);
+  document.querySelector("[data-monthly-campaign-table]").innerHTML = campaigns.map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${money.format(item.spend)}</td><td>${integer.format(item.paidOrders)}</td><td class="number">${money.format(item.sales)}</td><td class="number">${ratio(item.roas)}</td></tr>`).join("") || emptyRow(6, "No campaign, spend, or attributed order data for this month.");
+  document.querySelector("[data-monthly-products-table]").innerHTML = products.map((item) => `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.productClicks)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(6, "No product activity in this month.");
 }
 
 function renderContacts(query = "") {
@@ -170,13 +185,19 @@ function renderContacts(query = "") {
   setText('[data-contact-metric="consent"]', "0");
   setText('[data-contact-metric="returning"]', integer.format(data.metrics.returningCustomers));
   const needle = query.trim().toLowerCase();
-  const rows = data.contacts.filter((item) => `${item.name} ${item.email}`.toLowerCase().includes(needle));
+  const rows = sortRows("contacts", data.contacts.filter((item) => `${item.name} ${item.email}`.toLowerCase().includes(needle)), (item, key) => {
+    if (key === "source") return "Order";
+    if (key === "consent") return "Not collected";
+    return item[key];
+  });
   document.querySelector("[data-contacts-table]").innerHTML = rows.map((item) => `<tr><td><strong>${escapeHtml(item.name)}</strong><br><span>${escapeHtml(item.email)}</span></td><td>Order</td><td>${formatDate(item.lastOrder)}</td><td>${integer.format(item.orders)}</td><td><span class="consent-badge">Not collected</span></td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(6, "No customer contact matches this search.");
 }
 
 function renderData(data) {
-  document.querySelector("[data-events-table]").innerHTML = data.events.map((item) => `<tr><td>${formatDateTime(item.time)}</td><td><strong>${escapeHtml(item.event)}</strong></td><td>${escapeHtml(item.path)}</td><td>${escapeHtml(item.source)}</td><td>${escapeHtml(item.session)}</td></tr>`).join("") || emptyRow(5, "No consented events in this period.");
-  document.querySelector("[data-daily-metrics-table]").innerHTML = data.daily.slice().reverse().map((item) => `<tr><td><strong>${escapeHtml(item.date)}</strong></td><td>${integer.format(item.visitors)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.cashNetSales)}</td></tr>`).join("") || emptyRow(6, "No daily metrics in this period.");
+  const events = sortRows("events", data.events, (item, key) => item[key]);
+  const daily = sortRows("daily", data.daily, (item, key) => item[key]);
+  document.querySelector("[data-events-table]").innerHTML = events.map((item) => `<tr><td>${formatDateTime(item.time)}</td><td><strong>${escapeHtml(item.event)}</strong></td><td>${escapeHtml(item.path)}</td><td>${escapeHtml(item.source)}</td><td>${escapeHtml(item.session)}</td></tr>`).join("") || emptyRow(5, "No consented events in this period.");
+  document.querySelector("[data-daily-metrics-table]").innerHTML = daily.map((item) => `<tr><td><strong>${escapeHtml(item.date)}</strong></td><td>${integer.format(item.visitors)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.cashNetSales)}</td></tr>`).join("") || emptyRow(6, "No daily metrics in this period.");
   const cards = document.querySelectorAll(".data-model-card dd");
   const values = [data.health.eventRows, "Live", data.daily.at(-1)?.date || "-", "On request", data.sources.length, "5 fields", data.metrics.knownCustomers, "0 opted in"];
   cards.forEach((node, index) => { if (values[index] !== undefined) node.textContent = values[index]; });
@@ -196,6 +217,50 @@ function switchView(view) {
   document.querySelectorAll("[data-view]").forEach((button) => button.classList.toggle("is-active", button.dataset.view === view));
 }
 
+function sortRows(table, rows, valueFor) {
+  const fallback = sortDefaults[table] || { key: "", direction: "asc" };
+  const sort = state.sorts[table] || fallback;
+  return [...rows].sort((left, right) => {
+    const first = valueFor(left, sort.key);
+    const second = valueFor(right, sort.key);
+    const firstNumber = Number(first);
+    const secondNumber = Number(second);
+    const numeric = String(first ?? "").trim() !== "" && String(second ?? "").trim() !== "" && Number.isFinite(firstNumber) && Number.isFinite(secondNumber);
+    const result = numeric
+      ? firstNumber - secondNumber
+      : String(first ?? "").localeCompare(String(second ?? ""), "id", { numeric: true, sensitivity: "base" });
+    return sort.direction === "desc" ? -result : result;
+  });
+}
+
+function updateSortIndicators() {
+  document.querySelectorAll("[data-sort-table]").forEach((table) => {
+    const tableName = table.dataset.sortTable;
+    const fallback = sortDefaults[tableName] || { key: "", direction: "asc" };
+    const sort = state.sorts[tableName] || fallback;
+    table.querySelectorAll("[data-sort-key]").forEach((button) => {
+      const active = button.dataset.sortKey === sort.key;
+      const heading = button.closest("th");
+      heading?.toggleAttribute("data-sort-direction", active);
+      if (active && heading) heading.dataset.sortDirection = sort.direction;
+      if (!active && heading) delete heading.dataset.sortDirection;
+      if (heading) heading.setAttribute("aria-sort", active ? (sort.direction === "asc" ? "ascending" : "descending") : "none");
+      button.setAttribute("aria-label", `${button.textContent.trim()}: ${active ? `${sort.direction}ending` : "sort"}`);
+    });
+  });
+}
+
+function refreshSortedTable(table) {
+  if (!state.dashboard) return;
+  if (table === "products") renderProducts(state.dashboard.products);
+  if (table === "monthly-campaigns" || table === "monthly-products") renderMonthly(state.dashboard.monthly || {});
+  if (table === "sources") renderAudience(state.dashboard);
+  if (table === "campaigns") renderCampaigns(document.querySelector("[data-campaign-search]").value || "");
+  if (table === "contacts") renderContacts(document.querySelector("[data-contact-search]").value || "");
+  if (table === "events" || table === "daily") renderData(state.dashboard);
+  updateSortIndicators();
+}
+
 function exportCsv() {
   const products = state.dashboard?.products || [];
   const rows = [["Product", "Artist", "Product views", "Product clicks", "Added to cart", "Paid orders", "Gross item sales"], ...products.map((item) => [item.title, item.artist, item.productViews, item.productClicks, item.added, item.orders, item.sales])];
@@ -204,6 +269,30 @@ function exportCsv() {
   const link = Object.assign(document.createElement("a"), { href: url, download: `nixp-marketing-${new Date().toISOString().slice(0, 10)}.csv` });
   link.click();
   URL.revokeObjectURL(url);
+}
+
+async function exportMonthly(format) {
+  const rawReport = state.dashboard?.monthly;
+  const report = rawReport && {
+    ...rawReport,
+    campaigns: sortRows("monthly-campaigns", rawReport.campaigns || [], (item, key) => key === "source" ? sourceName(item) : item[key]),
+    topProducts: sortRows("monthly-products", rawReport.topProducts || [], (item, key) => item[key])
+  };
+  const buttons = document.querySelectorAll("[data-export-monthly-jpg], [data-export-monthly-pdf]");
+  if (!report || !window.NIXPMonthlyReportExport) {
+    document.querySelector("[data-status-copy]").textContent = "Monthly report is still loading.";
+    return;
+  }
+  buttons.forEach((button) => { button.disabled = true; });
+  document.querySelector("[data-status-copy]").textContent = `Preparing ${format.toUpperCase()} monthly report.`;
+  try {
+    await window.NIXPMonthlyReportExport.download(report, format);
+    document.querySelector("[data-status-copy]").textContent = `Monthly report ${format.toUpperCase()} exported.`;
+  } catch (error) {
+    document.querySelector("[data-status-copy]").textContent = error.message || "Monthly report export failed.";
+  } finally {
+    buttons.forEach((button) => { button.disabled = false; });
+  }
 }
 
 document.querySelector("[data-login-form]").addEventListener("submit", async (event) => {
@@ -224,12 +313,27 @@ document.querySelector("[data-login-form]").addEventListener("submit", async (ev
 document.querySelectorAll("[data-view]").forEach((button) => button.addEventListener("click", () => switchView(button.dataset.view)));
 document.querySelectorAll("[data-view-link]").forEach((link) => link.addEventListener("click", (event) => { event.preventDefault(); switchView(link.dataset.viewLink); }));
 document.querySelector("[data-export]").addEventListener("click", exportCsv);
+document.querySelector("[data-export-monthly-jpg]").addEventListener("click", () => exportMonthly("jpg"));
+document.querySelector("[data-export-monthly-pdf]").addEventListener("click", () => exportMonthly("pdf"));
 document.querySelector("[data-refresh]").addEventListener("click", loadDashboard);
 document.querySelector("[data-logout]").addEventListener("click", async () => { await request("/api/auth/logout", { method: "POST" }).catch(() => {}); showLogin(); });
 document.querySelector("[data-period]").addEventListener("change", loadDashboard);
 document.querySelector("[data-monthly-month]").addEventListener("change", loadDashboard);
 document.querySelector("[data-campaign-search]").addEventListener("input", (event) => renderCampaigns(event.target.value));
 document.querySelector("[data-contact-search]").addEventListener("input", (event) => renderContacts(event.target.value));
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-sort-key]");
+  if (!button) return;
+  const table = button.closest("[data-sort-table]");
+  if (!table) return;
+  const tableName = table.dataset.sortTable;
+  const previous = state.sorts[tableName] || sortDefaults[tableName] || { key: "", direction: "asc" };
+  state.sorts[tableName] = {
+    key: button.dataset.sortKey,
+    direction: previous.key === button.dataset.sortKey && previous.direction === "asc" ? "desc" : "asc"
+  };
+  refreshSortedTable(tableName);
+});
 
 function setText(selector, value) { const node = document.querySelector(selector); if (node) node.textContent = value; }
 function sourceName(item) { return item.campaign ? `${item.source} / ${item.campaign}` : item.source; }
