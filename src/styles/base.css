@@ -1063,9 +1063,26 @@ html {
 
 .label-tile {
   display: grid;
-  min-height: clamp(68px, 8vw, 112px);
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: clamp(106px, 11vw, 144px);
   place-items: center;
-  padding: 12px;
+  gap: 10px;
+  padding: 12px 12px 8px;
+}
+
+.label-logo-link {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  place-items: center;
+}
+
+.label-products-link {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .label-logo {
@@ -1081,9 +1098,17 @@ html {
   filter: brightness(0) grayscale(1) contrast(1.08);
 }
 
-.label-tile:hover .label-logo,
-.label-tile:focus-visible .label-logo {
+.label-logo-link:hover .label-logo,
+.label-logo-link:focus-visible .label-logo {
   opacity: 0.62;
+}
+
+.label-products-link:hover,
+.label-products-link:focus-visible {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
 .label-detail-heading {
@@ -3265,7 +3290,8 @@ body:has(.cart-view) .site-footer {
   }
 
   .label-tile {
-    min-height: 68px;
+    min-height: 92px;
+    gap: 8px;
     padding: 8px 2px;
   }
 

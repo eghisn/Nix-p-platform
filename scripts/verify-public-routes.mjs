@@ -17,6 +17,7 @@ const artistSlug = String(sampleArtist || "").toLowerCase().replace(/[^a-z0-9]+/
 const canonicalProductPath = sampleProduct ? publicProductPath(sampleProduct) : "/records";
 const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}` : "/product/missing";
 const sampleLabel = labelEntries(products).find((label) => labelLogoAvailable(label.slug));
+const publicLabels = labelEntries(products).filter((label) => labelLogoAvailable(label.slug));
 const paths = ["/records/", "/objects", "/apparel", "/publishing", "/artists", "/labels", sampleLabel ? `/labels/${sampleLabel.slug}` : "/labels", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
 let deployedRevision = "";
 
@@ -45,6 +46,12 @@ for (const route of paths) {
   }
   if (route === "/labels" && !body.includes("labels-grid")) {
     throw new Error("/labels static markup does not contain the label directory.");
+  }
+  if (route === "/labels") {
+    const productLinks = body.match(/class="label-products-link"/g) || [];
+    if (productLinks.length !== publicLabels.length) {
+      throw new Error(`/labels rendered ${productLinks.length} View products links for ${publicLabels.length} public labels.`);
+    }
   }
   if (route === "/artists" && !body.includes("artist-list")) {
     throw new Error("/artists did not return the deployed static artist directory.");

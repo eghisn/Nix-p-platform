@@ -18,9 +18,12 @@ export function labelsPageMarkup(labels = []) {
         ${labels
           .map(
             (label) => `
-              <a class="label-tile" href="/labels/${escapeHtml(label.slug)}" data-link aria-label="View ${escapeHtml(label.name)} releases">
-                <img class="label-logo${verifiedLabelLogos[label.slug]?.tone === "preserve" ? " label-logo--preserve" : ""}" src="${labelLogoPath(label.name)}" alt="${escapeHtml(label.name)}" loading="lazy" decoding="async" />
-              </a>
+              <article class="label-tile">
+                <a class="label-logo-link" href="/labels/${escapeHtml(label.slug)}" data-link aria-label="View ${escapeHtml(label.name)} products">
+                  <img class="label-logo${verifiedLabelLogos[label.slug]?.tone === "preserve" ? " label-logo--preserve" : ""}" src="${labelLogoPath(label.name)}" alt="${escapeHtml(label.name)}" loading="lazy" decoding="async" />
+                </a>
+                <a class="label-products-link" href="/labels/${escapeHtml(label.slug)}" data-link>View products</a>
+              </article>
             `
           )
           .join("")}
