@@ -166,7 +166,7 @@ export async function sendCustomerCancellationNotification(order, reason = "") {
   const expired = order?.order_status === "Expired" || order?.payment_status === "Expired";
   const title = expired ? "Order expired" : "Order cancelled";
   const message = expired
-    ? "The two-hour payment window ended before payment was verified. Reserved stock has been released."
+    ? "The one-hour payment window ended before payment was verified. Reserved stock has been released."
     : `This order was cancelled and its reserved stock was released.${reason ? ` ${reason}` : ""}`;
   return sendNotificationEmail({
     to: customer.email,

@@ -1364,6 +1364,12 @@ p {
   border-bottom: 1px solid currentColor;
 }
 
+.button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 .terms-page {
   align-content: start;
   padding-block: clamp(72px, 10vw, 140px) calc(clamp(72px, 10vw, 140px) + var(--footer-h));

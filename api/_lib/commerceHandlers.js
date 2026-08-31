@@ -72,7 +72,7 @@ export async function createMidtransPaymentSession(orderId) {
           ...(Number(order.shipping_total || 0) > 0 ? [{ id: "NIXP-SHIPPING", price: Number(order.shipping_total), quantity: 1, name: `${order.courier || "Shipping"} delivery`.slice(0, 50) }] : [])
         ],
         customer_details: { first_name: String(customer.name || "NIXP customer").slice(0, 255), email: String(customer.email || "").slice(0, 255), phone: String(customer.whatsapp || "").slice(0, 32) },
-        expiry: { unit: "hour", duration: 2 },
+        expiry: { unit: "hour", duration: 1 },
         callbacks: { finish: statusUrl, error: statusUrl },
         custom_field1: order.public_reference
       })

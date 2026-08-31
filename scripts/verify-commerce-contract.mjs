@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (file) => readFile(path.join(root, file), "utf8");
-const [checkout, client, adminStore, handlers, shippingEngine, migration, policies, outboxRecovery, shippingFoundation, stockLedger, stockWriteGuard, financeState, vercelConfig] = await Promise.all([
+const [checkout, client, adminStore, handlers, shippingEngine, migration, policies, outboxRecovery, shippingFoundation, stockLedger, stockWriteGuard, atomicReservation, financeState, vercelConfig] = await Promise.all([
   read("api/checkout.js"),
   read("src/main.js"),
   read("src/services/adminStore.js"),
@@ -16,6 +16,7 @@ const [checkout, client, adminStore, handlers, shippingEngine, migration, polici
   read("supabase/migrations/20260729121848_shipping_quote_foundation.sql"),
   read("supabase/migrations/20260828163000_atomic_finance_stock_ledger.sql"),
   read("supabase/migrations/20260828163553_enforce_finance_stock_on_catalog_writes.sql"),
+  read("supabase/migrations/20260831184251_atomic_checkout_reservation_and_one_hour_expiry.sql"),
   read("api/_lib/financeState.js"),
   read("vercel.json")
 ]);
@@ -51,6 +52,11 @@ const requirements = [
   [stockLedger.includes("'{inventoryStock}'") && stockLedger.includes("v_next_inventory_stock"), "Verified payments must debit Finance stock atomically."],
   [stockLedger.includes("order by product_id, coalesce(size_label, ''), id"), "Payment and release must lock products in a stable order."],
   [stockWriteGuard.includes("create trigger enforce_product_stock_from_finance"), "Catalog writes must not revive active-reservation stock before the server deploy completes."],
+  [atomicReservation.includes("v_physical_quantity - v_reserved_before"), "Checkout must reserve Finance quantity minus active reservations."],
+  [atomicReservation.includes("interval '1 hour'"), "Checkout and shipping quote reservations must use a one-hour payment window."],
+  [atomicReservation.includes("release_order_reservations"), "Expired orders must use the Finance-aware reservation release transaction."],
+  [handlers.includes('expiry: { unit: "hour", duration: 1 }'), "Midtrans must use the same one-hour payment expiry."],
+  [client.includes('nixp:public-commerce-refreshed'), "Public pages must patch live sold-out commerce state without rerendering editorial content."],
   [financeState.includes("await reconcileFinanceStockToCatalog(skus);"), "Finance catalog sync must use the database stock reconciler."],
   [financeState.includes("const quantity = index === undefined ? catalogQuantity : normalizedQuantity(existing.qty);"), "Admin saves must preserve existing Finance stock quantities."],
   [checkout.includes("const maintenance = await expirePendingOrders();"), "Maintenance must finish stock releases before reconciliation."],

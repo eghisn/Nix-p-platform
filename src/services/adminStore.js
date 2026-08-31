@@ -661,18 +661,39 @@ async function writeStoreBestEffort(store) {
   }
 }
 
-function refreshPublicCommerceInBackground(store) {
+let publicCommerceRefreshPromise = null;
+
+function refreshPublicCommerceInBackground(store, ids = []) {
   const currentStore = activeStoreScope === "public" && activeStore ? activeStore : store;
-  return reconcilePublicCommerce(currentStore)
+  const requestedIds = [...new Set((ids || []).map(String).filter(Boolean))];
+  const requestedIdSet = new Set(requestedIds);
+  const products = currentStore?.products || [];
+  const scopedStore = requestedIds.length
+    ? { ...currentStore, products: products.filter((product) => requestedIdSet.has(String(product.id))) }
+    : currentStore;
+  if (publicCommerceRefreshPromise) return publicCommerceRefreshPromise;
+  publicCommerceRefreshPromise = reconcilePublicCommerce(scopedStore)
     .then((nextStore) => {
-      activeStore = nextStore;
+      if (requestedIds.length) {
+        const liveById = new Map((nextStore.products || []).map((product) => [String(product.id), product]));
+        activeStore = {
+          ...currentStore,
+          products: products.map((product) => liveById.get(String(product.id)) || product)
+        };
+      } else {
+        activeStore = nextStore;
+      }
       activeStoreScope = "public";
       if (typeof window !== "undefined") {
         window.dispatchEvent(new CustomEvent("nixp:public-commerce-refreshed"));
       }
-      return nextStore;
+      return activeStore;
     })
-    .catch(() => store);
+    .catch(() => currentStore)
+    .finally(() => {
+      publicCommerceRefreshPromise = null;
+    });
+  return publicCommerceRefreshPromise;
 }
 
 async function fileToDataUrl(file) {
@@ -863,6 +884,10 @@ export const adminStore = {
     activeStoreScope = null;
     privateStoreRefreshedAt = 0;
     return this.initialize();
+  },
+  async refreshPublicCommerce(ids = []) {
+    if (activeStoreScope !== "public" || !activeStore) return this.getSnapshot();
+    return refreshPublicCommerceInBackground(activeStore, ids);
   },
   async refreshRequests() {
     await this.refreshPrivateStore();

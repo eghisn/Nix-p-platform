@@ -605,7 +605,7 @@ async function productDetailMarkup(product) {
         }
         <div class="detail-actions">
           ${isOfferOnly
-            ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>`
+            ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeAttr(product.id)}" ${isSoldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${isSoldOut ? "Sold out" : "Make an Offer"}</a>`
             : `<button class="button button-dark" type="button" data-add-cart="${product.id}" ${isSoldOut ? "disabled" : ""}>${isSoldOut ? "Sold out" : "Add to cart"}</button>
                <a class="button button-outline" href="/request-item" data-link>Request similar</a>`}
         </div>
@@ -908,7 +908,7 @@ async function cartPage() {
             <div class="checkout-layout">
               <div class="checkout-main">
                 <aside class="checkout-assurance" aria-label="Checkout details">
-                  <p><strong>Two-hour reservation</strong><span>Stock is held for two hours after checkout, then released automatically when payment is not completed.</span></p>
+                  <p><strong>One-hour reservation</strong><span>Stock is held for one hour after checkout, then released automatically when payment is not completed.</span></p>
                   <p><strong>Delivery quote before payment</strong><span>JNE and GoSend delivery costs are confirmed from your address before payment opens. The final total always includes items and shipping.</span></p>
                 </aside>
                 <form class="checkout-form" data-checkout-form>
@@ -2260,6 +2260,109 @@ function totalProductStock(product) {
   return Math.max(0, Math.floor(Number(product.qty ?? 1) || 0));
 }
 
+function publicProductRoots(productId) {
+  const roots = new Set();
+  document.querySelectorAll("[data-product-id]").forEach((node) => {
+    if (node.getAttribute("data-product-id") !== productId) return;
+    const root = node.matches(".product-detail")
+      ? node
+      : node.closest(".product-card, .product-detail, .slide");
+    if (root) roots.add(root);
+  });
+  return [...roots];
+}
+
+function setPublicProductSoldOutState(product) {
+  const soldOut = totalProductStock(product) <= 0;
+  const roots = publicProductRoots(String(product.id));
+  if (!roots.length) return;
+
+  for (const root of roots) {
+    root.classList.toggle("is-sold-out", soldOut);
+    root.querySelectorAll(".product-art").forEach((art) => {
+      art.classList.toggle("is-sold-out", soldOut);
+      const badge = art.querySelector(":scope > .sold-out-label");
+      if (soldOut && !badge) {
+        const label = document.createElement("span");
+        label.className = "sold-out-label";
+        label.textContent = "Sold out";
+        art.append(label);
+      } else if (!soldOut && badge) {
+        badge.remove();
+      }
+    });
+
+    root.querySelectorAll("[data-add-cart]").forEach((button) => {
+      if (button.getAttribute("data-add-cart") !== String(product.id)) return;
+      button.disabled = soldOut;
+      button.textContent = soldOut ? "Sold out" : "Add to cart";
+    });
+
+    root.querySelectorAll("[data-offer-product]").forEach((action) => {
+      if (action.getAttribute("data-offer-product") !== String(product.id)) return;
+      if (soldOut) {
+        if (action.hasAttribute("href")) action.dataset.availableHref = action.getAttribute("href");
+        action.removeAttribute("href");
+        action.setAttribute("aria-disabled", "true");
+        action.setAttribute("tabindex", "-1");
+        action.textContent = "Sold out";
+      } else {
+        action.setAttribute("href", action.dataset.availableHref || `/make-an-offer?product=${encodeURIComponent(product.id)}`);
+        action.removeAttribute("aria-disabled");
+        action.removeAttribute("tabindex");
+        action.textContent = "Make an Offer";
+      }
+    });
+
+    const sizeButtons = [...root.querySelectorAll("[data-size-option]")]
+      .filter((button) => button.getAttribute("data-size-option") === String(product.id));
+    if (sizeButtons.length && product.sizes?.length) {
+      const sizes = new Map(product.sizes.map((size) => [String(size.label), size]));
+      for (const button of sizeButtons) {
+        const size = sizes.get(button.getAttribute("data-size-value"));
+        const sizeSoldOut = !size || isSizeSoldOut(size);
+        button.disabled = sizeSoldOut;
+        button.classList.toggle("is-sold-out", sizeSoldOut);
+      }
+      const selected = sizeButtons.find((button) => button.classList.contains("is-selected"));
+      if (selected?.disabled) {
+        selected.classList.remove("is-selected");
+        const available = sizeButtons.find((button) => !button.disabled);
+        if (available) {
+          available.classList.add("is-selected");
+          state.selectedSizes[product.id] = available.getAttribute("data-size-value");
+        } else {
+          delete state.selectedSizes[product.id];
+        }
+      }
+    }
+  }
+}
+
+function applyPublicCommerceStateToDom() {
+  if (workspaceForPath(normalizePath(location.pathname)) || workspaceForHost()) return;
+  for (const product of adminStore.getSnapshot().products || []) {
+    setPublicProductSoldOutState(product);
+  }
+}
+
+function visiblePublicProductIds() {
+  return [...new Set(
+    [...document.querySelectorAll("[data-product-id]")]
+      .map((node) => node.getAttribute("data-product-id"))
+      .filter(Boolean)
+  )];
+}
+
+const PUBLIC_COMMERCE_REFRESH_MS = 15_000;
+
+function refreshVisiblePublicCommerce() {
+  if (document.visibilityState === "hidden") return;
+  const ids = visiblePublicProductIds();
+  if (!ids.length) return;
+  adminStore.refreshPublicCommerce(ids);
+}
+
 function sizeInventoryFields(product = {}) {
   const sizeOptions = ["S", "M", "L", "XL", "XXL", "7", "9", "11"];
   const savedSizes = new Map((product.sizes || []).map((size) => [size.label, size]));
@@ -3376,7 +3479,7 @@ function bindEvents() {
       if (!response.ok) throw new Error(payload.error || "Delivery quote could not be issued.");
       form.reset();
       form.elements.courier.value = "JNE";
-      if (notice) notice.textContent = "Quote sent. Stock is reserved for the two-hour payment window.";
+      if (notice) notice.textContent = "Quote sent. Stock is reserved for the one-hour payment window.";
       await adminStore.refresh();
       await render({ preserveScroll: true });
     } catch (error) {
@@ -4132,6 +4235,10 @@ window.addEventListener("nixp:private-store-refreshed", () => {
   if (document.activeElement?.matches("input, textarea, select, [contenteditable='true']")) return;
   render({ preserveScroll: true });
 });
+window.addEventListener("nixp:public-commerce-refreshed", applyPublicCommerceStateToDom);
+window.addEventListener("focus", refreshVisiblePublicCommerce);
+document.addEventListener("visibilitychange", refreshVisiblePublicCommerce);
+window.setInterval(refreshVisiblePublicCommerce, PUBLIC_COMMERCE_REFRESH_MS);
 
 function publicDocumentHasServerMarkup() {
   return !workspaceForPath(normalizePath(location.pathname)) &&

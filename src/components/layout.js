@@ -180,7 +180,7 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
   const imageMarkup = productCardImageMarkup(product);
   const deferredDetails = `${recordArtistTags(product, availableArtistNames)}
     ${isOfferOnly
-      ? `<a class="button button-outline" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>`
+      ? `<a class="button button-outline" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeHtml(product.id)}" ${soldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${soldOut ? "Sold out" : "Make an Offer"}</a>`
       : `<button class="button button-outline" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>`}`;
 
   return `
