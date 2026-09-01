@@ -13,6 +13,9 @@ import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 import { recordSystemEvent } from "./_lib/observability.js";
 import { attachOrderMarketingAttribution } from "./_lib/orderMarketingAttribution.js";
 
+const ORDER_ACCESS_COOKIE_NAME = "nixp_order_access";
+const ORDER_ACCESS_MAX_AGE_SECONDS = 60 * 60 * 24 * 14;
+
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://nix-p.com").searchParams.get("commerceAction");
   if (action === "midtrans-token") return handleMidtransToken(req, res);
@@ -43,6 +46,9 @@ export default async function handler(req, res) {
     await drainNotificationOutbox(8).catch(() => undefined);
     await expirePendingOrders();
     const existingOrder = await getOrderRecord(orderId);
+    if (existingOrder && !sameToken(body.orderAccessToken, existingOrder.customer_access_token)) {
+      return json(res, 409, { ok: false, error: "This checkout session already belongs to an order. Open the secure order link from your NIXP email to continue." });
+    }
     if (!existingOrder && !(await consumeCommerceRateLimit("checkout-submit", `${requestClientAddress(req)}:${customer.email.toLowerCase()}`, { limit: 8, windowSeconds: 900 }))) {
       return json(res, 429, { ok: false, error: "Too many checkout attempts. Please wait a few minutes and try again." });
     }
@@ -90,8 +96,14 @@ export default async function handler(req, res) {
       recordSystemEvent({ level: "warning", source: "checkout-marketing-attribution", req, error, details: { orderId } }).catch(() => undefined);
     });
     const emailResult = (label) => (error) => ({ delivered: false, label, error: error instanceof Error ? error.message : "Notification delivery failed." });
-    const customerAccessToken = order.customerAccessToken || currentOrder?.customer_access_token || "";
-    const statusUrl = customerAccessToken ? customerOrderStatusUrl(orderId, customerAccessToken) : "";
+    // A token is returned only when this browser just created the order. A
+    // retried checkout proves access by sending its locally-held token instead.
+    const customerAccessToken = existingOrder ? "" : order.customerAccessToken || currentOrder?.customer_access_token || "";
+    const statusUrl = customerAccessToken
+      ? customerOrderStatusUrl(orderId, customerAccessToken)
+      : existingOrder && sameToken(body.orderAccessToken, currentOrder?.customer_access_token)
+        ? customerOrderStatusUrl(orderId, body.orderAccessToken)
+        : "";
     const [internal, customerConfirmation] = existingOrder
       ? [{ delivered: true, reason: "existing-order" }, { delivered: true, reason: "existing-order" }]
       : await Promise.all([
@@ -213,8 +225,12 @@ async function handleCustomerOrderStatus(req, res) {
   if (!isSupabaseConfigured({ requireServiceRole: true })) return json(res, 503, { ok: false, error: "Order status is not configured." });
   const url = new URL(req.url || "/", "https://www.nix-p.com");
   const body = req.method === "POST" ? parseBody(req.body) : {};
-  const orderId = String(url.searchParams.get("order") || body.orderId || "").trim();
-  const token = String(url.searchParams.get("token") || body.token || "").trim();
+  const suppliedOrderId = String(url.searchParams.get("order") || body.orderId || "").trim();
+  const suppliedToken = String(url.searchParams.get("token") || body.token || "").trim();
+  const cookieAccess = readOrderAccessCookie(req);
+  const shouldExchange = body.action === "exchange-access-token";
+  const orderId = shouldExchange || suppliedOrderId ? suppliedOrderId : cookieAccess?.orderId || "";
+  const token = shouldExchange || suppliedToken ? suppliedToken : cookieAccess?.token || "";
   if (!/^order-[A-Za-z0-9_-]{8,96}$/.test(orderId) || !/^[a-f0-9]{32,96}$/i.test(token)) {
     return json(res, 400, { ok: false, error: "This order link is invalid." });
   }
@@ -224,12 +240,20 @@ async function handleCustomerOrderStatus(req, res) {
     }
     const order = await getOrderRecord(orderId);
     if (!order || !sameToken(token, order.customer_access_token)) return json(res, 404, { ok: false, error: "Order not found." });
+    if (shouldExchange) {
+      setOrderAccessCookie(req, res, orderId, token);
+      return json(res, 200, { ok: true });
+    }
     if (req.method === "POST") {
       if (body.action !== "start-payment") return json(res, 400, { ok: false, error: "Unsupported order action." });
+      if (suppliedOrderId && suppliedToken) setOrderAccessCookie(req, res, orderId, token);
       const payment = await createMidtransPaymentSession(orderId);
       return json(res, 200, { ok: true, payment, order: customerOrderSummary(order) });
     }
     if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed." });
+    // Compatibility for old email links. New links place credentials after #,
+    // so browsers do not send them to Vercel, logs, analytics, or referrers.
+    if (suppliedOrderId && suppliedToken) setOrderAccessCookie(req, res, orderId, token);
     const quotes = await supabaseFetch(`shipping_quotes?select=courier,service,amount,eta,status,created_at,expires_at&order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc`, { service: true });
     return json(res, 200, { ok: true, order: customerOrderSummary(order), quotes: quotes || [] });
   } catch (error) {
@@ -265,6 +289,33 @@ function sameToken(provided, stored) {
   const left = Buffer.from(String(provided || ""));
   const right = Buffer.from(String(stored || ""));
   return left.length === right.length && left.length > 0 && timingSafeEqual(left, right);
+}
+
+function readOrderAccessCookie(req) {
+  const value = String(req.headers.cookie || "")
+    .split(";")
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(`${ORDER_ACCESS_COOKIE_NAME}=`));
+  if (!value) return null;
+  try {
+    const parsed = JSON.parse(Buffer.from(value.slice(ORDER_ACCESS_COOKIE_NAME.length + 1), "base64url").toString("utf8"));
+    const orderId = String(parsed?.orderId || "").trim();
+    const token = String(parsed?.token || "").trim();
+    return /^order-[A-Za-z0-9_-]{8,96}$/.test(orderId) && /^[a-f0-9]{32,96}$/i.test(token) ? { orderId, token } : null;
+  } catch {
+    return null;
+  }
+}
+
+function setOrderAccessCookie(req, res, orderId, token) {
+  const payload = Buffer.from(JSON.stringify({ orderId, token })).toString("base64url");
+  const host = String(req.headers.host || "");
+  const proto = String(req.headers["x-forwarded-proto"] || "");
+  const secure = proto === "https" || (!host.includes("localhost") && !host.startsWith("127.0.0.1"));
+  res.setHeader(
+    "Set-Cookie",
+    `${ORDER_ACCESS_COOKIE_NAME}=${payload}; Path=/api/order-status; Max-Age=${ORDER_ACCESS_MAX_AGE_SECONDS}; HttpOnly; ${secure ? "Secure; " : ""}SameSite=Lax`
+  );
 }
 
 function validCronSecret(header, secret) {
@@ -418,5 +469,5 @@ function isCheckoutOrigin(req) {
 
 function customerOrderStatusUrl(orderId, token) {
   const base = String(process.env.NIXP_PUBLIC_SITE_URL || "https://www.nix-p.com").replace(/\/$/, "");
-  return `${base}/order-status?order=${encodeURIComponent(orderId)}&token=${encodeURIComponent(token)}`;
+  return `${base}/order-status#order=${encodeURIComponent(orderId)}&token=${encodeURIComponent(token)}`;
 }

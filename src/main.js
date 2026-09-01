@@ -40,6 +40,7 @@ const state = {
   checkoutTone: "",
   checkoutShippingQuote: null,
   checkoutOrderToken: readCheckoutSession()?.orderId || "",
+  checkoutOrderAccessToken: readCheckoutSession()?.customerAccessToken || "",
   requestNotice: "",
   requestNoticeTone: "",
   searchOpen: false,
@@ -109,16 +110,36 @@ function getCheckoutOrderToken() {
   const existing = readCheckoutSession();
   if (existing?.cartFingerprint === fingerprint) {
     state.checkoutOrderToken = existing.orderId;
+    state.checkoutOrderAccessToken = existing.customerAccessToken || "";
     return existing.orderId;
   }
   const orderId = createCheckoutOrderToken();
   state.checkoutOrderToken = orderId;
-  localStorage.setItem(CHECKOUT_SESSION_STORAGE_KEY, JSON.stringify({ orderId, cartFingerprint: fingerprint, createdAt: Date.now() }));
+  state.checkoutOrderAccessToken = "";
+  writeCheckoutSession({ orderId, cartFingerprint: fingerprint, createdAt: Date.now() });
   return orderId;
+}
+
+function rememberCheckoutOrderAccessToken(token) {
+  const cleanToken = String(token || "").trim();
+  if (!cleanToken || !state.checkoutOrderToken) return;
+  const existing = readCheckoutSession();
+  state.checkoutOrderAccessToken = cleanToken;
+  writeCheckoutSession({
+    orderId: state.checkoutOrderToken,
+    cartFingerprint: checkoutCartFingerprint(),
+    customerAccessToken: cleanToken,
+    createdAt: existing?.createdAt || Date.now()
+  });
+}
+
+function writeCheckoutSession(session) {
+  localStorage.setItem(CHECKOUT_SESSION_STORAGE_KEY, JSON.stringify(session));
 }
 
 function clearCheckoutSession() {
   state.checkoutOrderToken = "";
+  state.checkoutOrderAccessToken = "";
   localStorage.removeItem(CHECKOUT_SESSION_STORAGE_KEY);
 }
 
@@ -269,6 +290,7 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   updateDocumentTitle(path);
   const commit = () => {
     app.innerHTML = markup;
+    applyDynamicInlineStyles(app);
     bindEvents();
   };
   const privateRoute = Boolean(requiredWorkspace);
@@ -650,6 +672,13 @@ function productNotesMarkup(product = {}) {
   return escapeHtml(recordNotes(product).join(" / "));
 }
 
+function applyDynamicInlineStyles(root) {
+  root.querySelectorAll("[data-inline-width]").forEach((node) => {
+    const width = Math.max(0, Math.min(100, Number(node.dataset.inlineWidth) || 0));
+    node.style.width = `${width}%`;
+  });
+}
+
 async function artistsPage() {
   const artists = await catalogService.listArtists();
   return `
@@ -999,14 +1028,9 @@ async function cartPage() {
 }
 
 async function customerOrderStatusPage() {
-  const params = new URLSearchParams(location.search);
-  const orderId = String(params.get("order") || "").trim();
-  const token = String(params.get("token") || "").trim();
-  if (!orderId || !token) {
-    return `<section class="section order-status-page"><div class="order-status-shell"><p class="eyebrow">NIXP ORDER</p><h1>Order link unavailable</h1><p class="empty-state">Open the secure link from your NIXP email to view a delivery quote or payment status.</p></div></section>`;
-  }
   try {
-    const response = await fetch(`/api/order-status?order=${encodeURIComponent(orderId)}&token=${encodeURIComponent(token)}`, { cache: "no-store" });
+    await establishCustomerOrderAccess();
+    const response = await fetch("/api/order-status", { cache: "no-store" });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(payload.error || "Order status is unavailable.");
     const order = payload.order || {};
@@ -1037,7 +1061,7 @@ async function customerOrderStatusPage() {
               ${order.trackingNumber ? `<p><span>Tracking</span><strong>${escapeHtml(order.trackingNumber)}</strong></p>` : ""}
             </div>
           </div>
-          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p><div class="order-status-actions"><button class="button button-dark" type="button" data-order-pay data-order-id="${escapeAttr(orderId)}" data-order-token="${escapeAttr(token)}">Continue to payment</button><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>`}
+          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p><div class="order-status-actions"><button class="button button-dark" type="button" data-order-pay>Continue to payment</button><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>`}
           <p class="admin-form-note" data-order-status-message aria-live="polite"></p>
         </div>
       </section>
@@ -1961,7 +1985,7 @@ async function cashflowPage() {
               <div class="bar-row">
                 <span>${row.month}</span>
                 <div class="bar-track">
-                  <i style="width: ${(row.revenue / max) * 100}%"></i>
+                  <i data-inline-width="${(row.revenue / max) * 100}"></i>
                 </div>
                 <strong>${money.format(row.net)}</strong>
               </div>
@@ -2258,6 +2282,22 @@ function totalProductStock(product) {
     );
   }
   return Math.max(0, Math.floor(Number(product.qty ?? 1) || 0));
+}
+
+async function establishCustomerOrderAccess() {
+  const hash = new URLSearchParams(location.hash.startsWith("#") ? location.hash.slice(1) : "");
+  const legacy = new URLSearchParams(location.search);
+  const orderId = String(hash.get("order") || legacy.get("order") || "").trim();
+  const token = String(hash.get("token") || legacy.get("token") || "").trim();
+  if (!orderId || !token) return;
+  const response = await fetch("/api/order-status", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ action: "exchange-access-token", orderId, token })
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || "Order status is unavailable.");
+  history.replaceState(null, "", location.pathname);
 }
 
 function publicProductRoots(productId) {
@@ -3006,11 +3046,13 @@ function bindEvents() {
           shippingQuoteToken: state.checkoutShippingQuote?.quoteToken || "",
           shippingAddress,
           orderId,
+          orderAccessToken: state.checkoutOrderAccessToken,
           marketingAttribution: checkoutMarketingAttribution()
         })
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(payload.error || "Checkout failed.");
+      if (payload.customerAccessToken) rememberCheckoutOrderAccessToken(payload.customerAccessToken);
       // The event is emitted only after the server created or resumed an order.
       // Clicking "Request delivery quote" alone is never counted as checkout.
       trackAnalytics("checkout_started");
@@ -3255,7 +3297,7 @@ function bindEvents() {
       const response = await fetch("/api/order-status", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ action: "start-payment", orderId: button.dataset.orderId, token: button.dataset.orderToken })
+        body: JSON.stringify({ action: "start-payment" })
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(payload.error || "Payment could not be started.");

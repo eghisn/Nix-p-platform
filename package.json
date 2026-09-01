@@ -13,7 +13,7 @@
     "test:artist-directory": "node scripts/verify-artist-directory-consistency.mjs",
     "test:recommendations": "node scripts/verify-product-recommendations.mjs",
     "test:routes": "node scripts/verify-public-routes.mjs",
-    "test:commerce": "node scripts/verify-commerce-contract.mjs && node scripts/verify-atomic-checkout-reservation.mjs",
+    "test:commerce": "node scripts/verify-commerce-contract.mjs && node scripts/verify-atomic-checkout-reservation.mjs && node scripts/verify-order-security-hardening.mjs",
     "test:shipping": "node scripts/verify-shipping-calculator.mjs",
     "test:jne": "node scripts/verify-jne-official-client.mjs",
     "test:shipping-integration": "node scripts/verify-shipping-integration.mjs",
@@ -39,6 +39,7 @@
     "node": "24.x"
   },
   "dependencies": {
+    "@vercel/functions": "^3.9.5",
     "nodemailer": "^9.0.3"
   },
   "devDependencies": {

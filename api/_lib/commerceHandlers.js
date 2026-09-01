@@ -1,4 +1,5 @@
 import { createHash, timingSafeEqual } from "node:crypto";
+import { waitUntil } from "@vercel/functions";
 import { json, requireWorkspace } from "./auth.js";
 import { consumeCommerceRateLimit, expirePendingOrders, getOrderRecord, isMidtransConfigured, midtransBaseUrl, requestClientAddress } from "./commerce.js";
 import {
@@ -41,30 +42,38 @@ export async function createMidtransPaymentSession(orderId) {
   if (order.payment_status !== "Pending" || order.order_status !== "Active") throw new Error("This order is no longer awaiting payment.");
   if (new Date(order.payment_expires_at).getTime() <= Date.now()) throw new Error("This order reservation has expired.");
 
-  const existing = await supabaseFetch(`payment_attempts?select=id,status,payload&provider=eq.Midtrans&provider_order_id=eq.${encodeURIComponent(order.id)}&limit=1`, { service: true });
-  const attempt = existing?.[0];
-  const existingPayload = attempt?.payload || {};
-  if (existingPayload.token && existingPayload.redirectUrl) {
-    return { available: true, token: existingPayload.token, redirectUrl: existingPayload.redirectUrl, expiresAt: order.payment_expires_at, reused: true };
-  }
-  if (attempt) {
-    // Never create a second provider order when the first request entered an
-    // unknown state. That protects customers from a possible double charge.
-    throw new Error("Payment session is being recovered. Please contact NIXP if it does not resume shortly.");
-  }
-
-  await supabaseFetch("payment_attempts", {
+  const claim = await supabaseFetch("rpc/claim_midtrans_payment_session", {
     method: "POST",
     service: true,
-    prefer: "return=minimal",
-    body: [{ order_id: order.id, provider: "Midtrans", provider_order_id: order.id, status: "Creating", amount: order.grand_total, payload: {} }]
+    body: { p_order_id: order.id }
   });
+  if (claim?.action === "reuse") {
+    return { available: true, token: claim.token, redirectUrl: claim.redirectUrl, expiresAt: claim.expiresAt || order.payment_expires_at, reused: true };
+  }
+  if (claim?.action === "wait") {
+    return { available: false, reason: "payment-session-preparing", expiresAt: claim.expiresAt || order.payment_expires_at, retryAfterSeconds: 3 };
+  }
+  if (!['create', 'recover'].includes(claim?.action)) throw new Error("Payment session could not be claimed.");
+
+  if (claim.action === "recover") {
+    const existingProviderPayment = await fetchMidtransStatus(order.id, { allowMissing: true });
+    if (existingProviderPayment) {
+      await updateMidtransAttempt(order.id, "Provider Pending", {
+        providerStatus: String(existingProviderPayment.transaction_status || "unknown"),
+        providerTransactionId: String(existingProviderPayment.transaction_id || ""),
+        recoveryCheckedAt: new Date().toISOString()
+      });
+      return { available: false, reason: "payment-session-provider-pending", expiresAt: order.payment_expires_at };
+    }
+  }
+
   const customer = order.customer || {};
   const statusUrl = customerOrderStatusUrl(order);
   try {
     const response = await fetch(`${midtransBaseUrl()}/snap/v1/transactions`, {
       method: "POST",
       headers: { authorization: `Basic ${Buffer.from(`${process.env.MIDTRANS_SERVER_KEY}:`).toString("base64")}`, "content-type": "application/json", accept: "application/json" },
+      signal: AbortSignal.timeout(10_000),
       body: JSON.stringify({
         transaction_details: { order_id: order.id, gross_amount: order.grand_total },
         item_details: [
@@ -79,20 +88,10 @@ export async function createMidtransPaymentSession(orderId) {
     });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok || !payload.token || !payload.redirect_url) throw new Error(payload.error_messages?.join(" ") || payload.status_message || "Midtrans could not create a payment session.");
-    await supabaseFetch(`payment_attempts?provider=eq.Midtrans&provider_order_id=eq.${encodeURIComponent(order.id)}`, {
-      method: "PATCH",
-      service: true,
-      prefer: "return=minimal",
-      body: { status: "Pending", payload: { token: payload.token, redirectUrl: payload.redirect_url } }
-    });
+    await updateMidtransAttempt(order.id, "Pending", { token: payload.token, redirectUrl: payload.redirect_url, createdAt: new Date().toISOString() });
     return { available: true, token: payload.token, redirectUrl: payload.redirect_url, expiresAt: order.payment_expires_at };
   } catch (error) {
-    await supabaseFetch(`payment_attempts?provider=eq.Midtrans&provider_order_id=eq.${encodeURIComponent(order.id)}`, {
-      method: "PATCH",
-      service: true,
-      prefer: "return=minimal",
-      body: { status: "Creation Failed", payload: { error: error instanceof Error ? error.message : "Midtrans session creation failed." } }
-    }).catch(() => undefined);
+    await updateMidtransAttempt(order.id, "Creation Failed", { error: error instanceof Error ? error.message : "Midtrans session creation failed.", failedAt: new Date().toISOString() }).catch(() => undefined);
     throw error;
   }
 }
@@ -102,14 +101,13 @@ export async function handleMidtransWebhook(req, res) {
   if (!isMidtransConfigured()) return json(res, 503, { ok: false, error: "Midtrans is not configured." });
   let eventKey = "";
   try {
-    await drainNotificationOutbox(8).catch(() => undefined);
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
     if (!validSignature(body)) return json(res, 401, { ok: false, error: "Invalid Midtrans signature." });
     const verified = await fetchMidtransStatus(body.order_id);
     if (String(verified.order_id) !== String(body.order_id)) throw new Error("Midtrans order verification mismatch.");
     const order = await getOrderRecord(verified.order_id);
     if (!order) return json(res, 404, { ok: false, error: "Order not found." });
-    eventKey = String(verified.transaction_id || `${verified.order_id}:${verified.transaction_status}:${verified.transaction_time || ""}`);
+    eventKey = midtransWebhookEventKey(verified);
     const claim = await supabaseFetch("rpc/claim_webhook_receipt", { method: "POST", service: true, body: { p_provider: "Midtrans", p_event_key: eventKey, p_payload: verified } });
     if (!claim?.shouldProcess) return json(res, 200, { ok: true, action: "duplicate", status: claim?.status || "Processed" });
     const status = String(verified.transaction_status || "").toLowerCase();
@@ -119,18 +117,20 @@ export async function handleMidtransWebhook(req, res) {
       const paidOrder = await getOrderRecord(order.id);
       if (!updated?.idempotent) {
         await Promise.allSettled([
-          sendOrderPaymentNotification(paidOrder || order),
-          sendCustomerPaymentConfirmation(paidOrder || order)
+          sendOrderPaymentNotification(paidOrder || order, { queueOnly: true }),
+          sendCustomerPaymentConfirmation(paidOrder || order, { queueOnly: true })
         ]);
       }
       await completeWebhookReceipt(eventKey);
+      scheduleNotificationOutboxDrain();
       return json(res, 200, { ok: true, action: "paid", order: updated });
     }
     if (["expire", "cancel", "deny", "failure"].includes(status)) {
       const updated = await supabaseFetch("rpc/release_order_reservations", { method: "POST", service: true, body: { p_order_id: order.id, p_order_status: status === "expire" ? "Expired" : "Cancelled", p_payment_status: status === "expire" ? "Expired" : "Failed", p_reason: `Midtrans reported ${status}; reserved stock released.` } });
       const releasedOrder = await getOrderRecord(order.id);
-      await sendCustomerCancellationNotification(releasedOrder || order, `Payment provider status: ${status}.`).catch((error) => console.warn("Customer cancellation email not delivered", error.message));
+      await sendCustomerCancellationNotification(releasedOrder || order, `Payment provider status: ${status}.`, { queueOnly: true }).catch((error) => console.warn("Customer cancellation email could not be queued", error.message));
       await completeWebhookReceipt(eventKey);
+      scheduleNotificationOutboxDrain();
       return json(res, 200, { ok: true, action: "released", order: updated });
     }
     if (["refund", "partial_refund"].includes(status)) {
@@ -151,18 +151,19 @@ export async function handleMidtransWebhook(req, res) {
       const refundedOrder = await getOrderRecord(order.id);
       if (!updated?.idempotent) {
         await Promise.allSettled([
-          sendOrderRefundNotification(refundedOrder || order, refundAmount, fullRefund),
-          sendCustomerRefundNotification(refundedOrder || order, refundAmount, fullRefund)
+          sendOrderRefundNotification(refundedOrder || order, refundAmount, fullRefund, { queueOnly: true }),
+          sendCustomerRefundNotification(refundedOrder || order, refundAmount, fullRefund, { queueOnly: true })
         ]);
       }
       await completeWebhookReceipt(eventKey);
+      scheduleNotificationOutboxDrain();
       return json(res, 200, { ok: true, action: fullRefund ? "refunded" : "partially-refunded", order: updated });
     }
     await completeWebhookReceipt(eventKey);
     return json(res, 200, { ok: true, action: "recorded", status });
   } catch (error) {
     if (eventKey) await completeWebhookReceipt(eventKey, false, error instanceof Error ? error.message : "Midtrans webhook failed.").catch(() => undefined);
-    return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Midtrans webhook failed." });
+    return json(res, 500, { ok: false, error: "Midtrans webhook could not be processed." });
   }
 }
 
@@ -181,7 +182,8 @@ export async function handleAdminOrders(req, res) {
       res.setHeader("cache-control", "private, no-store, max-age=0");
       const orderId = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("orderId");
       if (orderId) { const order = await getOrderRecord(orderId, { includeEvents: true }); return order ? json(res, 200, { ok: true, order }) : json(res, 404, { ok: false, error: "Order not found." }); }
-      return json(res, 200, { ok: true, orders: await supabaseFetch("order_records?select=*&order=created_at.desc", { service: true }) });
+      const orders = await supabaseFetch("order_records?select=id,public_reference,customer,metadata,order_status,payment_status,fulfillment_status,shipping_status,shipping_method,courier,tracking_number,merchandise_total,shipping_total,grand_total,payment_expires_at,created_at,updated_at&order=created_at.desc", { service: true });
+      return json(res, 200, { ok: true, orders: (orders || []).map(adminOrderListRow) });
     }
     if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
     await drainNotificationOutbox(24).catch(() => undefined);
@@ -216,7 +218,7 @@ export async function handleAdminOrders(req, res) {
 
 function customerOrderStatusUrl(order) {
   const base = String(process.env.NIXP_PUBLIC_SITE_URL || "https://www.nix-p.com").replace(/\/$/, "");
-  return `${base}/order-status?order=${encodeURIComponent(order.id)}&token=${encodeURIComponent(order.customer_access_token || "")}`;
+  return `${base}/order-status#order=${encodeURIComponent(order.id)}&token=${encodeURIComponent(order.customer_access_token || "")}`;
 }
 
 function validCustomerAccessToken(provided, stored) {
@@ -232,9 +234,60 @@ function validSignature(body) {
   return left.length === right.length && timingSafeEqual(left, right);
 }
 
-async function fetchMidtransStatus(orderId) {
-  const response = await fetch(`${midtransBaseUrl()}/v2/${encodeURIComponent(orderId)}/status`, { headers: { authorization: `Basic ${Buffer.from(`${process.env.MIDTRANS_SERVER_KEY}:`).toString("base64")}`, accept: "application/json" } });
+async function fetchMidtransStatus(orderId, { allowMissing = false } = {}) {
+  const response = await fetch(`${midtransBaseUrl()}/v2/${encodeURIComponent(orderId)}/status`, {
+    headers: { authorization: `Basic ${Buffer.from(`${process.env.MIDTRANS_SERVER_KEY}:`).toString("base64")}`, accept: "application/json" },
+    signal: AbortSignal.timeout(4_000)
+  });
   const payload = await response.json().catch(() => ({}));
+  if (allowMissing && response.status === 404) return null;
   if (!response.ok) throw new Error(payload.status_message || "Could not verify the Midtrans transaction.");
   return payload;
+}
+
+async function updateMidtransAttempt(orderId, status, payload) {
+  return supabaseFetch(`payment_attempts?provider=eq.Midtrans&provider_order_id=eq.${encodeURIComponent(orderId)}`, {
+    method: "PATCH",
+    service: true,
+    prefer: "return=minimal",
+    body: { status, payload }
+  });
+}
+
+function midtransWebhookEventKey(payload) {
+  return [
+    payload.order_id,
+    payload.transaction_id || "no-transaction",
+    payload.transaction_status || "unknown-status",
+    payload.fraud_status || "",
+    payload.status_code || "",
+    payload.gross_amount || "",
+    payload.refund_amount || "",
+    payload.refund_key || "",
+    payload.settlement_time || payload.transaction_time || ""
+  ].map((value) => String(value || "").slice(0, 80)).join(":").slice(0, 240);
+}
+
+function scheduleNotificationOutboxDrain() {
+  try {
+    waitUntil(
+      drainNotificationOutbox(8).catch((error) => {
+        console.warn("Webhook notification delivery deferred", error instanceof Error ? error.message : error);
+      })
+    );
+  } catch (error) {
+    console.warn("Webhook notification delivery could not be scheduled", error instanceof Error ? error.message : error);
+  }
+}
+
+function adminOrderListRow(order) {
+  const customer = order?.customer || {};
+  return {
+    ...order,
+    customer: {
+      name: String(customer.name || "").slice(0, 160),
+      email: String(customer.email || "").slice(0, 254),
+      whatsapp: String(customer.whatsapp || "").slice(0, 48)
+    }
+  };
 }

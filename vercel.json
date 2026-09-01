@@ -43,10 +43,36 @@
         {
           "key": "X-Frame-Options",
           "value": "SAMEORIGIN"
-        },
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "^(www\\.)?nix-p\\.com$" }],
+      "headers": [
         {
-          "key": "Content-Security-Policy-Report-Only",
-          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://app.midtrans.com https://app.sandbox.midtrans.com; script-src 'self' 'unsafe-inline' https://app.midtrans.com https://app.sandbox.midtrans.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.supabase.co https://coverartarchive.org https://i.discogs.com; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://api.resend.com https://app.midtrans.com https://app.sandbox.midtrans.com; frame-src https://app.midtrans.com https://app.sandbox.midtrans.com; worker-src 'self' blob:"
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://app.midtrans.com https://app.sandbox.midtrans.com; script-src 'self' https://app.midtrans.com https://app.sandbox.midtrans.com; style-src 'self'; style-src-attr 'none'; img-src 'self' data: blob: https://*.supabase.co https://coverartarchive.org https://i.discogs.com; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://api.resend.com https://app.midtrans.com https://app.sandbox.midtrans.com; frame-src https://app.midtrans.com https://app.sandbox.midtrans.com; worker-src 'self' blob:"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "admin.nix-p.com" }],
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self'; style-src 'self'; style-src-attr 'none'; img-src 'self' data: blob: https://*.supabase.co https://coverartarchive.org https://i.discogs.com; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://api.resend.com; worker-src 'self' blob:"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "analytics.nix-p.com" }],
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self'; style-src 'self'; style-src-attr 'none'; img-src 'self' data: blob: https://*.supabase.co; font-src 'self' data:; connect-src 'self' https://*.supabase.co; worker-src 'self' blob:"
         }
       ]
     },

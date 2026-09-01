@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { randomBytes } from "node:crypto";
 import { clearSession, createSession, getSession, validLogin } from "./_lib/auth.js";
 import { readFinanceStateWithVersion } from "./_lib/financeState.js";
 
@@ -14,13 +15,17 @@ export default async function handler(req, res) {
 
   const htmlPath = join(process.cwd(), "apps", "finance", "index.html");
   const snapshot = await readFinanceStateWithVersion();
-  const html = (await readFile(htmlPath, "utf8")).replace(
-    "<script>",
-    `<script>window.__NIXP_FINANCE_STATE__=${JSON.stringify(snapshot.state).replace(/</g, "\\u003c")};window.__NIXP_FINANCE_UPDATED_AT__=${JSON.stringify(snapshot.updatedAt)};window.__NIXP_FINANCE_SECTION_VERSIONS__=${JSON.stringify(snapshot.sectionVersions || {})};</script>\n  <script>`
-  );
+  const nonce = createCspNonce();
+  const html = (await readFile(htmlPath, "utf8"))
+    .replace("<style>", `<style nonce="${nonce}">`)
+    .replace(
+      "<script>",
+      `<script nonce="${nonce}">window.__NIXP_FINANCE_STATE__=${JSON.stringify(snapshot.state).replace(/</g, "\\u003c")};window.__NIXP_FINANCE_UPDATED_AT__=${JSON.stringify(snapshot.updatedAt)};window.__NIXP_FINANCE_SECTION_VERSIONS__=${JSON.stringify(snapshot.sectionVersions || {})};</script>\n  <script nonce="${nonce}">`
+    );
   res.statusCode = 200;
   res.setHeader("content-type", "text/html; charset=utf-8");
   res.setHeader("cache-control", "no-store");
+  res.setHeader("Content-Security-Policy", financeCsp(nonce));
   res.end(html);
 }
 
@@ -67,10 +72,32 @@ function redirect(res, location) {
 }
 
 function html(res, status, content) {
+  const nonce = createCspNonce();
   res.statusCode = status;
   res.setHeader("content-type", "text/html; charset=utf-8");
   res.setHeader("cache-control", "no-store");
-  res.end(content);
+  res.setHeader("Content-Security-Policy", financeCsp(nonce));
+  res.end(content.replace("<style>", `<style nonce="${nonce}">`));
+}
+
+function createCspNonce() {
+  return randomBytes(18).toString("base64url");
+}
+
+function financeCsp(nonce) {
+  return [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "frame-ancestors 'self'",
+    "form-action 'self'",
+    `script-src 'self' 'nonce-${nonce}'`,
+    `style-src 'self' 'nonce-${nonce}'`,
+    "img-src 'self' data: blob: https://*.supabase.co",
+    "font-src 'self' data:",
+    "connect-src 'self' https://*.supabase.co",
+    "worker-src 'self' blob:"
+  ].join("; ");
 }
 
 function loginPage(error = "") {

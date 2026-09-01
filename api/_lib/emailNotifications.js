@@ -112,7 +112,7 @@ export async function sendCustomerShippingQuoteNotification(order, statusUrl = "
   });
 }
 
-export async function sendOrderPaymentNotification(order) {
+export async function sendOrderPaymentNotification(order, { queueOnly = false } = {}) {
   const customer = order?.customer || {};
   return sendNotificationEmail({
     subject: `NIXP payment verified: ${order?.public_reference || order?.id}`,
@@ -127,10 +127,10 @@ export async function sendOrderPaymentNotification(order) {
     ].join("\n"),
     html: `<h1>NIXP payment verified</h1><p><strong>Order:</strong> ${escapeHtml(order?.public_reference || order?.id)}<br><strong>Official total:</strong> ${escapeHtml(rupiah(order?.grand_total))}<br><strong>Payment:</strong> ${escapeHtml(order?.payment_status)}<br><strong>Fulfillment:</strong> ${escapeHtml(order?.fulfillment_status)}<br><strong>Shipping:</strong> ${escapeHtml(order?.shipping_status)}</p>`,
     idempotencyKey: `paid-order-notification-${order?.id}`
-  });
+  }, { queueOnly });
 }
 
-export async function sendCustomerPaymentConfirmation(order) {
+export async function sendCustomerPaymentConfirmation(order, { queueOnly = false } = {}) {
   const customer = order?.customer || {};
   if (!customer.email) return { delivered: false, reason: "customer-email-missing" };
   return sendNotificationEmail({
@@ -140,7 +140,7 @@ export async function sendCustomerPaymentConfirmation(order) {
     text: statusEmailText(order, "Payment confirmed", "We have securely verified your payment. Your order is now being prepared."),
     html: statusEmailHtml(order, "Payment confirmed", "We have securely verified your payment. Your order is now being prepared."),
     idempotencyKey: `customer-payment-confirmation-${order?.id}`
-  });
+  }, { queueOnly });
 }
 
 export async function sendCustomerShippingNotification(order) {
@@ -160,7 +160,7 @@ export async function sendCustomerShippingNotification(order) {
   });
 }
 
-export async function sendCustomerCancellationNotification(order, reason = "") {
+export async function sendCustomerCancellationNotification(order, reason = "", { queueOnly = false } = {}) {
   const customer = order?.customer || {};
   if (!customer.email) return { delivered: false, reason: "customer-email-missing" };
   const expired = order?.order_status === "Expired" || order?.payment_status === "Expired";
@@ -175,10 +175,10 @@ export async function sendCustomerCancellationNotification(order, reason = "") {
     text: statusEmailText(order, title, message),
     html: statusEmailHtml(order, title, message),
     idempotencyKey: `customer-${expired ? "expired" : "cancelled"}-${order?.id}`
-  });
+  }, { queueOnly });
 }
 
-export async function sendCustomerRefundNotification(order, refundAmount, fullRefund = true) {
+export async function sendCustomerRefundNotification(order, refundAmount, fullRefund = true, { queueOnly = false } = {}) {
   const customer = order?.customer || {};
   if (!customer.email) return { delivered: false, reason: "customer-email-missing" };
   return sendNotificationEmail({
@@ -188,27 +188,30 @@ export async function sendCustomerRefundNotification(order, refundAmount, fullRe
     text: statusEmailText(order, fullRefund ? "Refund completed" : "Partial refund completed", `${rupiah(refundAmount)} has been confirmed as refunded by the payment provider. Returned products are not placed back into available stock until NIXP inspects them.`),
     html: statusEmailHtml(order, fullRefund ? "Refund completed" : "Partial refund completed", `${rupiah(refundAmount)} has been confirmed as refunded by the payment provider. Returned products are not placed back into available stock until NIXP inspects them.`),
     idempotencyKey: `customer-refund-confirmation-${order?.id}-${Number(refundAmount || 0)}`
-  });
+  }, { queueOnly });
 }
 
-export async function sendOrderRefundNotification(order, refundAmount, fullRefund = true) {
+export async function sendOrderRefundNotification(order, refundAmount, fullRefund = true, { queueOnly = false } = {}) {
   return sendNotificationEmail({
     subject: `NIXP ${fullRefund ? "refund" : "partial refund"} verified: ${orderReference(order)}`,
     replyTo: order?.customer?.email,
     text: statusEmailText(order, fullRefund ? "Refund verified" : "Partial refund verified", `Provider-verified refund amount: ${rupiah(refundAmount)}. Inventory remains awaiting inspection.`),
     html: statusEmailHtml(order, fullRefund ? "Refund verified" : "Partial refund verified", `Provider-verified refund amount: ${rupiah(refundAmount)}. Inventory remains awaiting inspection.`),
     idempotencyKey: `internal-refund-notification-${order?.id}-${Number(refundAmount || 0)}`
-  });
+  }, { queueOnly });
 }
 
-async function sendNotificationEmail({ to, subject, replyTo, text, html, idempotencyKey }) {
+async function sendNotificationEmail({ to, subject, replyTo, text, html, idempotencyKey }, { queueOnly = false } = {}) {
   const from = process.env.NIXP_EMAIL_FROM || process.env.REQUEST_EMAIL_FROM || DEFAULT_FROM;
   const recipient = to || process.env.NIXP_NOTIFICATION_TO || process.env.REQUEST_NOTIFICATION_TO || DEFAULT_TO;
   const message = { recipient, replyTo, subject, text, html, idempotencyKey, from };
 
   if (!isSupabaseConfigured({ requireServiceRole: true })) {
+    if (queueOnly) return { delivered: false, queued: false, reason: "notification-outbox-unavailable" };
     return deliverEmail(message);
   }
+
+  if (queueOnly) return queueNotificationEmail(message);
 
   const claim = await supabaseFetch("rpc/claim_notification_outbox", {
     method: "POST",
@@ -230,6 +233,26 @@ async function sendNotificationEmail({ to, subject, replyTo, text, html, idempot
     };
   }
   return deliverClaimedEmail({ ...message, ...claim });
+}
+
+async function queueNotificationEmail(message) {
+  const queued = await supabaseFetch("rpc/queue_notification_outbox", {
+    method: "POST",
+    service: true,
+    body: {
+      p_idempotency_key: message.idempotencyKey,
+      p_recipient: message.recipient,
+      p_reply_to: message.replyTo || null,
+      p_subject: message.subject,
+      p_text_body: message.text,
+      p_html_body: message.html
+    }
+  });
+  return {
+    delivered: queued?.status === "Sent",
+    queued: Boolean(queued?.queued),
+    reason: queued?.status === "Sent" ? "already-delivered" : "delivery-pending"
+  };
 }
 
 export async function drainNotificationOutbox(limit = 12) {

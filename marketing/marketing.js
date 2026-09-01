@@ -112,7 +112,9 @@ function renderChart(rows) {
   const values = rows.slice(-12);
   const salesMax = Math.max(1, ...values.map((row) => row.cashNetSales));
   const visitorMax = Math.max(1, ...values.map((row) => row.visitors));
-  document.querySelector("[data-chart-bars]").innerHTML = values.map((row) => `<div class="bar-group" title="${escapeHtml(row.date)}: ${money.format(row.cashNetSales)} cash net sales, ${integer.format(row.visitors)} visitors"><i class="bar sales" style="height:${Math.max(3, row.cashNetSales / salesMax * 100)}%"></i><i class="bar visitors" style="height:${Math.max(3, row.visitors / visitorMax * 100)}%"></i></div>`).join("") || `<p class="empty-inline">No daily activity</p>`;
+  const chart = document.querySelector("[data-chart-bars]");
+  chart.innerHTML = values.map((row) => `<div class="bar-group" title="${escapeHtml(row.date)}: ${money.format(row.cashNetSales)} cash net sales, ${integer.format(row.visitors)} visitors"><i class="bar sales" data-bar-height="${Math.max(3, row.cashNetSales / salesMax * 100)}"></i><i class="bar visitors" data-bar-height="${Math.max(3, row.visitors / visitorMax * 100)}"></i></div>`).join("") || `<p class="empty-inline">No daily activity</p>`;
+  applyDynamicBarSizes(chart);
   document.querySelector("[data-chart-labels]").innerHTML = values.map((row) => `<span>${escapeHtml(row.date.slice(5))}</span>`).join("");
 }
 
@@ -127,12 +129,16 @@ function renderAudience(data) {
 
 function renderRanks(selector, rows) {
   const max = Math.max(1, ...rows.map((row) => row.count));
-  document.querySelector(selector).innerHTML = rows.slice(0, 10).map((row) => `<div class="rank-row"><span>${escapeHtml(row.name)}</span><div class="rank-bar"><i style="width:${row.count / max * 100}%"></i></div><strong>${percent.format(row.share)}</strong></div>`).join("") || `<p class="panel-copy">No data in this period.</p>`;
+  const root = document.querySelector(selector);
+  root.innerHTML = rows.slice(0, 10).map((row) => `<div class="rank-row"><span>${escapeHtml(row.name)}</span><div class="rank-bar"><i data-bar-width="${row.count / max * 100}"></i></div><strong>${percent.format(row.share)}</strong></div>`).join("") || `<p class="panel-copy">No data in this period.</p>`;
+  applyDynamicBarSizes(root);
 }
 
 function renderFunnel(data) {
   const max = Math.max(1, data.funnel[0]?.value || 0);
-  document.querySelector("[data-funnel-list]").innerHTML = data.funnel.map((step) => `<div class="funnel-step"><span>${escapeHtml(step.label)}</span><div class="funnel-track"><i style="width:${Math.max(step.value ? 2 : 0, step.value / max * 100)}%"></i></div><strong>${integer.format(step.value)}</strong></div>`).join("");
+  const funnel = document.querySelector("[data-funnel-list]");
+  funnel.innerHTML = data.funnel.map((step) => `<div class="funnel-step"><span>${escapeHtml(step.label)}</span><div class="funnel-track"><i data-bar-width="${Math.max(step.value ? 2 : 0, step.value / max * 100)}"></i></div><strong>${integer.format(step.value)}</strong></div>`).join("");
+  applyDynamicBarSizes(funnel);
   setText("[data-funnel-conversion]", percent.format(data.metrics.checkoutCreatedRate));
   const outcomeValues = [data.orderOutcomes.paid, data.orderOutcomes.expired, data.orderOutcomes.cancelled, data.orderOutcomes.refunded];
   document.querySelectorAll('[data-view-panel="funnel"] .outcome-grid strong').forEach((node, index) => { node.textContent = integer.format(outcomeValues[index] || 0); });
@@ -168,7 +174,9 @@ function renderMonthly(data) {
     ["Paid orders", summary.paidOrders]
   ];
   const max = Math.max(1, ...funnelRows.map(([, value]) => Number(value || 0)));
-  document.querySelector("[data-monthly-funnel]").innerHTML = funnelRows.map(([label, value]) => `<div class="funnel-step"><span>${escapeHtml(label)}</span><div class="funnel-track"><i style="width:${Math.max(value ? 2 : 0, Number(value || 0) / max * 100)}%"></i></div><strong>${integer.format(value || 0)}</strong></div>`).join("");
+  const monthlyFunnel = document.querySelector("[data-monthly-funnel]");
+  monthlyFunnel.innerHTML = funnelRows.map(([label, value]) => `<div class="funnel-step"><span>${escapeHtml(label)}</span><div class="funnel-track"><i data-bar-width="${Math.max(value ? 2 : 0, Number(value || 0) / max * 100)}"></i></div><strong>${integer.format(value || 0)}</strong></div>`).join("");
+  applyDynamicBarSizes(monthlyFunnel);
 
   const actions = data.actions || {};
   document.querySelectorAll("[data-monthly-action]").forEach((node) => { node.textContent = integer.format(actions[node.dataset.monthlyAction] || 0); });
@@ -176,6 +184,15 @@ function renderMonthly(data) {
   const products = sortRows("monthly-products", data.topProducts || [], (item, key) => item[key]);
   document.querySelector("[data-monthly-campaign-table]").innerHTML = campaigns.map((item) => `<tr><td><strong>${escapeHtml(sourceName(item))}</strong></td><td>${integer.format(item.sessions)}</td><td>${money.format(item.spend)}</td><td>${integer.format(item.paidOrders)}</td><td class="number">${money.format(item.sales)}</td><td class="number">${ratio(item.roas)}</td></tr>`).join("") || emptyRow(6, "No campaign, spend, or attributed order data for this month.");
   document.querySelector("[data-monthly-products-table]").innerHTML = products.map((item) => `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.productClicks)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(6, "No product activity in this month.");
+}
+
+function applyDynamicBarSizes(root) {
+  root?.querySelectorAll("[data-bar-height], [data-bar-width]").forEach((node) => {
+    const height = node.dataset.barHeight;
+    const width = node.dataset.barWidth;
+    if (height !== undefined) node.style.height = `${Math.max(0, Math.min(100, Number(height) || 0))}%`;
+    if (width !== undefined) node.style.width = `${Math.max(0, Math.min(100, Number(width) || 0))}%`;
+  });
 }
 
 function renderContacts(query = "") {
