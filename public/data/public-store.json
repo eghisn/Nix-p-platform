@@ -30668,7 +30668,8 @@
       "artist": "Preoccupations",
       "format": "Vinyl",
       "images": [
-        "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp",
+        "/public/mockups/nxp-2026-vnl-0030-preoccupations-clear-vinyl.jpg"
       ],
       "barcode": "",
       "details": [
@@ -30759,6 +30760,11 @@
           "url": "https://musicbrainz.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp",
           "credit": "Cover Art Archive / Jagjaguwar"
+        },
+        {
+          "url": "https://www.turntablelab.com/products/preoccupations-preoccupations-indie-exclusive-colored-vinyl-vinyl-lp",
+          "image": "/public/mockups/nxp-2026-vnl-0030-preoccupations-clear-vinyl.jpg",
+          "credit": "Turntable Lab / Jagjaguwar clear vinyl product photography"
         }
       ],
       "reviewSource": "Pitchfork (quoted)",
@@ -31022,7 +31028,7 @@
         "nixp-selection"
       ],
       "sleeveCondition": "",
-      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp",
+      "autoProductPhoto": "/public/mockups/nxp-2026-vnl-0030-preoccupations-clear-vinyl.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Jagjaguwar / Pitchfork",
