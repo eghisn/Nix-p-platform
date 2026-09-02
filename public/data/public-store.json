@@ -4469,8 +4469,7 @@
       "artist": "Alma Construct",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0057/cover.jpg",
-        "/public/mockups/nxp-2026-vnl-0057-alma-construct-black-vinyl-mockup.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0057/cover.jpg"
       ],
       "barcode": "5055274704265",
       "details": [
@@ -4563,11 +4562,6 @@
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0057/cover.jpg",
           "credit": "Apple Music / R&S Records artwork",
           "url": "https://music.apple.com/us/album/alma-construct-ep/1114573830"
-        },
-        {
-          "image": "/public/mockups/nxp-2026-vnl-0057-alma-construct-black-vinyl-mockup.jpg",
-          "credit": "NIXP product mockup rendered from verified R&S label artwork",
-          "url": "https://www.discogs.com/release/5957276-Alma-Construct-Alma-Construct"
         }
       ],
       "reviewSource": "Boomkat (quoted)",
@@ -4829,7 +4823,7 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "autoProductPhoto": "/public/mockups/nxp-2026-vnl-0057-alma-construct-black-vinyl-mockup.jpg",
+      "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "R&S Records / Norman Records",
