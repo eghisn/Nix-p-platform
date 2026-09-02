@@ -21,6 +21,11 @@ assert.match(handlers, /payment-session-preparing/, "Concurrent payment clicks m
 assert.match(handlers, /fetchMidtransStatus\(order\.id, \{ allowMissing: true \}\)/, "A stale payment attempt must be checked against Midtrans before recovery.");
 assert.match(handlers, /AbortSignal\.timeout\(10_000\)/, "Snap session creation must have a bounded timeout.");
 assert.match(handlers, /AbortSignal\.timeout\(4_000\)/, "Webhook verification must have a bounded timeout.");
+assert.match(handlers, /"Idempotency-Key": idempotencyKey/, "Snap session creation must send a stable Midtrans idempotency key.");
+assert.match(handlers, /midtransIdempotencyKey\(order\.id\)/, "The Midtrans idempotency key must be derived from the stored order.");
+assert.match(handlers, /validMidtransRedirectUrl/, "Midtrans redirect URLs must be restricted to the configured provider origin.");
+assert.match(handlers, /assertSuccessfulMidtransPayment/, "Verified payment amount and provider status must be checked before settlement.");
+assert.match(handlers, /MIDTRANS_MERCHANT_ID/, "Webhook verification must bind transactions to the configured Midtrans merchant when available.");
 assert.match(handlers, /midtransWebhookEventKey/, "Webhook idempotency must include the verified payment state.");
 assert.match(handlers, /payload\.transaction_status/, "Webhook keys must distinguish status transitions.");
 assert.match(handlers, /payload\.refund_amount/, "Webhook keys must distinguish refund transitions.");
@@ -33,6 +38,14 @@ assert.match(webhook, /queueOnly: true/, "Webhook email work must be queued, not
 assert.match(webhook, /scheduleNotificationOutboxDrain\(\)/, "Queued email delivery must be scheduled after the webhook response path is durable.");
 assert.match(handlers, /waitUntil\(/, "Webhook background email work must use the serverless background-task API.");
 assert.match(notifications, /queue_notification_outbox/, "Notification helpers must persist queued messages before background delivery.");
+
+const tokenStart = handlers.indexOf("export async function handleMidtransToken");
+const webhookStartIndex = handlers.indexOf("export async function handleMidtransWebhook");
+const paymentSession = handlers.slice(tokenStart, webhookStartIndex);
+assert.doesNotMatch(paymentSession, /drainNotificationOutbox/, "Payment session creation must not wait for email delivery.");
+assert.doesNotMatch(paymentSession, /expirePendingOrders/, "Payment session creation must not run catalogue or expiry maintenance.");
+assert.match(handlers, /reconcilePendingMidtransPayments/, "Pending Midtrans payments must have a provider reconciliation path.");
+assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protected payment-health summary.");
 
 assert.match(checkout, /ORDER_ACCESS_COOKIE_NAME/, "Order access must use a dedicated HttpOnly cookie.");
 assert.match(checkout, /exchange-access-token/, "The order page must exchange a one-time URL token for a cookie.");

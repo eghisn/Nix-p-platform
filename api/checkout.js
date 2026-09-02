@@ -1,7 +1,7 @@
 import { timingSafeEqual } from "node:crypto";
 import { json } from "./_lib/auth.js";
 import { consumeCommerceRateLimit, expirePendingOrders, getOrderRecord, normalizeShippingAddress, requestClientAddress } from "./_lib/commerce.js";
-import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhook } from "./_lib/commerceHandlers.js";
+import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhook, reconcilePendingMidtransPayments } from "./_lib/commerceHandlers.js";
 import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShippingQuoteNotification, sendCustomerShippingQuoteRequest, sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
@@ -43,8 +43,6 @@ export default async function handler(req, res) {
     const shippingMethod = normalizeShippingMethod(body.shippingMethod);
     const shippingAddress = normalizeShippingAddress(body.shippingAddress);
     validateCheckoutDetails(customer, shippingMethod, shippingAddress);
-    await drainNotificationOutbox(8).catch(() => undefined);
-    await expirePendingOrders();
     const existingOrder = await getOrderRecord(orderId);
     if (existingOrder && !sameToken(body.orderAccessToken, existingOrder.customer_access_token)) {
       return json(res, 409, { ok: false, error: "This checkout session already belongs to an order. Open the secure order link from your NIXP email to continue." });
@@ -269,9 +267,12 @@ async function handleCommerceMaintenance(req, res) {
     // Release first. Reconciliation reads active reservations, so it must not
     // race the release transaction and publish an intermediate stock count.
     const maintenance = await expirePendingOrders();
-    const financeState = await readFinanceState();
-    const [outbox, shipping, catalog, research, publication, financeSync, financeCatalogSync] = await Promise.all([
+    const [outbox, paymentReconciliation] = await Promise.all([
       drainNotificationOutbox(50),
+      reconcilePendingMidtransPayments({ limit: 20, source: "scheduled-maintenance" })
+    ]);
+    const financeState = await readFinanceState();
+    const [shipping, catalog, research, publication, financeSync, financeCatalogSync] = await Promise.all([
       runShippingMaintenance({ mode: "daily" }),
       syncFinanceInventoryToCatalog(financeState, { enrich: false }).then(() => ({ inventoryStock: financeState.inventoryStock?.length || 0 })),
       processCatalogResearchJobs({ limit: 2, requestedBy: "maintenance" }),
@@ -279,8 +280,9 @@ async function handleCommerceMaintenance(req, res) {
       processAdminFinanceSyncJobs({ limit: 10 }),
       processFinanceCatalogSyncJobs({ limit: 10 })
     ]);
-    return json(res, 200, { ok: true, maintenance, outbox, shipping, catalog, research, publication, financeSync, financeCatalogSync, checkedAt: new Date().toISOString() });
+    return json(res, 200, { ok: true, maintenance, outbox, paymentReconciliation, shipping, catalog, research, publication, financeSync, financeCatalogSync, checkedAt: new Date().toISOString() });
   } catch (error) {
+    await recordSystemEvent({ source: "commerce-maintenance", req, error });
     return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Commerce maintenance failed." });
   }
 }

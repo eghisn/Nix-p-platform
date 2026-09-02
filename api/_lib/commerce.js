@@ -74,5 +74,19 @@ export function midtransBaseUrl() {
 }
 
 export function isMidtransConfigured() {
-  return Boolean(process.env.MIDTRANS_SERVER_KEY);
+  return midtransConfiguration().ready;
+}
+
+export function midtransConfiguration() {
+  const environment = String(process.env.MIDTRANS_ENV || "sandbox").trim().toLowerCase();
+  const enabled = /^(1|true|yes|on)$/i.test(String(process.env.MIDTRANS_ENABLED || ""));
+  const hasServerKey = Boolean(String(process.env.MIDTRANS_SERVER_KEY || "").trim());
+  const hasMerchantId = Boolean(String(process.env.MIDTRANS_MERCHANT_ID || "").trim());
+  return {
+    enabled,
+    environment: environment === "production" ? "production" : "sandbox",
+    hasServerKey,
+    hasMerchantId,
+    ready: enabled && hasServerKey && hasMerchantId
+  };
 }

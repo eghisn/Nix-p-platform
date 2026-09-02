@@ -1,7 +1,7 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { waitUntil } from "@vercel/functions";
 import { json, requireWorkspace } from "./auth.js";
-import { consumeCommerceRateLimit, expirePendingOrders, getOrderRecord, isMidtransConfigured, midtransBaseUrl, requestClientAddress } from "./commerce.js";
+import { consumeCommerceRateLimit, getOrderRecord, isMidtransConfigured, midtransBaseUrl, midtransConfiguration, requestClientAddress } from "./commerce.js";
 import {
   sendCustomerCancellationNotification,
   sendCustomerPaymentConfirmation,
@@ -12,6 +12,7 @@ import {
   sendOrderRefundNotification
 } from "./emailNotifications.js";
 import { drainNotificationOutbox } from "./emailNotifications.js";
+import { recordSystemEvent } from "./observability.js";
 import { supabaseFetch } from "./supabase.js";
 
 export async function handleMidtransToken(req, res) {
@@ -21,7 +22,6 @@ export async function handleMidtransToken(req, res) {
     if (!(await consumeCommerceRateLimit("midtrans-token", requestClientAddress(req), { limit: 20, windowSeconds: 900 }))) {
       return json(res, 429, { ok: false, error: "Too many payment attempts. Please wait a few minutes and try again." });
     }
-    await drainNotificationOutbox(8).catch(() => undefined);
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
     const orderId = String(body.orderId || "").trim();
     const order = await getOrderRecord(orderId);
@@ -36,7 +36,6 @@ export async function handleMidtransToken(req, res) {
 export async function createMidtransPaymentSession(orderId) {
   if (!isMidtransConfigured()) return { available: false, reason: "midtrans-not-configured" };
   if (!/^order-[A-Za-z0-9_-]{8,96}$/.test(orderId)) throw new Error("Invalid order.");
-  await expirePendingOrders();
   const order = await getOrderRecord(orderId);
   if (!order) throw new Error("Order not found.");
   if (order.payment_status !== "Pending" || order.order_status !== "Active") throw new Error("This order is no longer awaiting payment.");
@@ -69,10 +68,20 @@ export async function createMidtransPaymentSession(orderId) {
 
   const customer = order.customer || {};
   const statusUrl = customerOrderStatusUrl(order);
+  const idempotencyKey = midtransIdempotencyKey(order.id);
   try {
+    await updateMidtransAttempt(order.id, "Creating", {
+      idempotencyKey,
+      requestStartedAt: new Date().toISOString()
+    });
     const response = await fetch(`${midtransBaseUrl()}/snap/v1/transactions`, {
       method: "POST",
-      headers: { authorization: `Basic ${Buffer.from(`${process.env.MIDTRANS_SERVER_KEY}:`).toString("base64")}`, "content-type": "application/json", accept: "application/json" },
+      headers: {
+        authorization: `Basic ${Buffer.from(`${process.env.MIDTRANS_SERVER_KEY}:`).toString("base64")}`,
+        "content-type": "application/json",
+        accept: "application/json",
+        "Idempotency-Key": idempotencyKey
+      },
       signal: AbortSignal.timeout(10_000),
       body: JSON.stringify({
         transaction_details: { order_id: order.id, gross_amount: order.grand_total },
@@ -88,10 +97,11 @@ export async function createMidtransPaymentSession(orderId) {
     });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok || !payload.token || !payload.redirect_url) throw new Error(payload.error_messages?.join(" ") || payload.status_message || "Midtrans could not create a payment session.");
-    await updateMidtransAttempt(order.id, "Pending", { token: payload.token, redirectUrl: payload.redirect_url, createdAt: new Date().toISOString() });
+    if (!validMidtransRedirectUrl(payload.redirect_url)) throw new Error("Midtrans returned an invalid payment URL.");
+    await updateMidtransAttempt(order.id, "Pending", { idempotencyKey, token: payload.token, redirectUrl: payload.redirect_url, createdAt: new Date().toISOString() });
     return { available: true, token: payload.token, redirectUrl: payload.redirect_url, expiresAt: order.payment_expires_at };
   } catch (error) {
-    await updateMidtransAttempt(order.id, "Creation Failed", { error: error instanceof Error ? error.message : "Midtrans session creation failed.", failedAt: new Date().toISOString() }).catch(() => undefined);
+    await updateMidtransAttempt(order.id, "Creation Failed", { idempotencyKey, error: error instanceof Error ? error.message : "Midtrans session creation failed.", failedAt: new Date().toISOString() }).catch(() => undefined);
     throw error;
   }
 }
@@ -105,65 +115,215 @@ export async function handleMidtransWebhook(req, res) {
     if (!validSignature(body)) return json(res, 401, { ok: false, error: "Invalid Midtrans signature." });
     const verified = await fetchMidtransStatus(body.order_id);
     if (String(verified.order_id) !== String(body.order_id)) throw new Error("Midtrans order verification mismatch.");
-    const order = await getOrderRecord(verified.order_id);
-    if (!order) return json(res, 404, { ok: false, error: "Order not found." });
     eventKey = midtransWebhookEventKey(verified);
-    const claim = await supabaseFetch("rpc/claim_webhook_receipt", { method: "POST", service: true, body: { p_provider: "Midtrans", p_event_key: eventKey, p_payload: verified } });
-    if (!claim?.shouldProcess) return json(res, 200, { ok: true, action: "duplicate", status: claim?.status || "Processed" });
-    const status = String(verified.transaction_status || "").toLowerCase();
-    const fraud = String(verified.fraud_status || "accept").toLowerCase();
-    if ((status === "settlement" || status === "capture") && fraud === "accept") {
-      const updated = await supabaseFetch("rpc/apply_verified_payment", { method: "POST", service: true, body: { p_order_id: order.id, p_provider: "Midtrans", p_provider_transaction_id: String(verified.transaction_id || ""), p_provider_order_id: String(verified.order_id || ""), p_amount: Number(verified.gross_amount), p_payload: verified } });
-      const paidOrder = await getOrderRecord(order.id);
-      if (!updated?.idempotent) {
-        await Promise.allSettled([
-          sendOrderPaymentNotification(paidOrder || order, { queueOnly: true }),
-          sendCustomerPaymentConfirmation(paidOrder || order, { queueOnly: true })
-        ]);
-      }
-      await completeWebhookReceipt(eventKey);
-      scheduleNotificationOutboxDrain();
-      return json(res, 200, { ok: true, action: "paid", order: updated });
-    }
-    if (["expire", "cancel", "deny", "failure"].includes(status)) {
-      const updated = await supabaseFetch("rpc/release_order_reservations", { method: "POST", service: true, body: { p_order_id: order.id, p_order_status: status === "expire" ? "Expired" : "Cancelled", p_payment_status: status === "expire" ? "Expired" : "Failed", p_reason: `Midtrans reported ${status}; reserved stock released.` } });
-      const releasedOrder = await getOrderRecord(order.id);
-      await sendCustomerCancellationNotification(releasedOrder || order, `Payment provider status: ${status}.`, { queueOnly: true }).catch((error) => console.warn("Customer cancellation email could not be queued", error.message));
-      await completeWebhookReceipt(eventKey);
-      scheduleNotificationOutboxDrain();
-      return json(res, 200, { ok: true, action: "released", order: updated });
-    }
-    if (["refund", "partial_refund"].includes(status)) {
-      const fullRefund = status === "refund";
-      const refundAmount = fullRefund ? Number(order.grand_total) : Number(verified.refund_amount || 0);
-      const updated = await supabaseFetch("rpc/apply_verified_refund", {
-        method: "POST",
-        service: true,
-        body: {
-          p_order_id: order.id,
-          p_provider: "Midtrans",
-          p_provider_transaction_id: String(verified.transaction_id || ""),
-          p_refund_amount: refundAmount,
-          p_full_refund: fullRefund,
-          p_payload: verified
-        }
-      });
-      const refundedOrder = await getOrderRecord(order.id);
-      if (!updated?.idempotent) {
-        await Promise.allSettled([
-          sendOrderRefundNotification(refundedOrder || order, refundAmount, fullRefund, { queueOnly: true }),
-          sendCustomerRefundNotification(refundedOrder || order, refundAmount, fullRefund, { queueOnly: true })
-        ]);
-      }
-      await completeWebhookReceipt(eventKey);
-      scheduleNotificationOutboxDrain();
-      return json(res, 200, { ok: true, action: fullRefund ? "refunded" : "partially-refunded", order: updated });
-    }
-    await completeWebhookReceipt(eventKey);
-    return json(res, 200, { ok: true, action: "recorded", status });
+    const result = await processVerifiedMidtransEvent(verified, eventKey);
+    return json(res, result.notFound ? 404 : 200, { ok: !result.notFound, ...result });
   } catch (error) {
     if (eventKey) await completeWebhookReceipt(eventKey, false, error instanceof Error ? error.message : "Midtrans webhook failed.").catch(() => undefined);
+    await recordSystemEvent({ source: "midtrans-webhook", req, error, details: { eventKey: eventKey || null } });
     return json(res, 500, { ok: false, error: "Midtrans webhook could not be processed." });
+  }
+}
+
+async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhookEventKey(verified)) {
+  const order = await getOrderRecord(verified.order_id);
+  if (!order) return { action: "not-found", notFound: true, error: "Order not found." };
+  assertVerifiedMidtransIdentity(verified, order);
+  const claim = await supabaseFetch("rpc/claim_webhook_receipt", {
+    method: "POST",
+    service: true,
+    body: { p_provider: "Midtrans", p_event_key: eventKey, p_payload: verified }
+  });
+  if (!claim?.shouldProcess) return { action: "duplicate", status: claim?.status || "Processed" };
+
+  const status = String(verified.transaction_status || "").toLowerCase();
+  const fraud = String(verified.fraud_status || "").toLowerCase();
+  if ((status === "settlement" || status === "capture") && (!fraud || fraud === "accept")) {
+    assertSuccessfulMidtransPayment(verified, order);
+    const updated = await supabaseFetch("rpc/apply_verified_payment", {
+      method: "POST",
+      service: true,
+      body: {
+        p_order_id: order.id,
+        p_provider: "Midtrans",
+        p_provider_transaction_id: String(verified.transaction_id || ""),
+        p_provider_order_id: String(verified.order_id || ""),
+        p_amount: Number(verified.gross_amount),
+        p_payload: verified
+      }
+    });
+    const paidOrder = await getOrderRecord(order.id);
+    if (!updated?.idempotent) {
+      await Promise.allSettled([
+        sendOrderPaymentNotification(paidOrder || order, { queueOnly: true }),
+        sendCustomerPaymentConfirmation(paidOrder || order, { queueOnly: true })
+      ]);
+    }
+    await completeWebhookReceipt(eventKey);
+    scheduleNotificationOutboxDrain();
+    return { action: "paid", order: updated };
+  }
+
+  if (["expire", "cancel", "deny", "failure"].includes(status)) {
+    const updated = await supabaseFetch("rpc/release_order_reservations", {
+      method: "POST",
+      service: true,
+      body: {
+        p_order_id: order.id,
+        p_order_status: status === "expire" ? "Expired" : "Cancelled",
+        p_payment_status: status === "expire" ? "Expired" : "Failed",
+        p_reason: `Midtrans reported ${status}; reserved stock released.`
+      }
+    });
+    const releasedOrder = await getOrderRecord(order.id);
+    await sendCustomerCancellationNotification(releasedOrder || order, `Payment provider status: ${status}.`, { queueOnly: true })
+      .catch((error) => console.warn("Customer cancellation email could not be queued", error.message));
+    await completeWebhookReceipt(eventKey);
+    scheduleNotificationOutboxDrain();
+    return { action: "released", order: updated };
+  }
+
+  if (["refund", "partial_refund"].includes(status)) {
+    const fullRefund = status === "refund";
+    const refundAmount = fullRefund ? Number(order.grand_total) : Number(verified.refund_amount || 0);
+    const updated = await supabaseFetch("rpc/apply_verified_refund", {
+      method: "POST",
+      service: true,
+      body: {
+        p_order_id: order.id,
+        p_provider: "Midtrans",
+        p_provider_transaction_id: String(verified.transaction_id || ""),
+        p_refund_amount: refundAmount,
+        p_full_refund: fullRefund,
+        p_payload: verified
+      }
+    });
+    const refundedOrder = await getOrderRecord(order.id);
+    if (!updated?.idempotent) {
+      await Promise.allSettled([
+        sendOrderRefundNotification(refundedOrder || order, refundAmount, fullRefund, { queueOnly: true }),
+        sendCustomerRefundNotification(refundedOrder || order, refundAmount, fullRefund, { queueOnly: true })
+      ]);
+    }
+    await completeWebhookReceipt(eventKey);
+    scheduleNotificationOutboxDrain();
+    return { action: fullRefund ? "refunded" : "partially-refunded", order: updated };
+  }
+
+  await updateMidtransAttempt(order.id, "Provider Pending", {
+    providerStatus: status || "unknown",
+    providerTransactionId: String(verified.transaction_id || ""),
+    verifiedAt: new Date().toISOString()
+  });
+  await completeWebhookReceipt(eventKey);
+  return { action: "recorded", status };
+}
+
+export async function reconcilePendingMidtransPayments({ limit = 20, source = "manual" } = {}) {
+  if (!isMidtransConfigured()) return { configured: false, checked: 0, changed: 0, failed: 0 };
+  const attempts = await supabaseFetch(
+    `payment_attempts?select=order_id,status,payload,updated_at&provider=eq.Midtrans&order=updated_at.asc&limit=100`,
+    { service: true }
+  );
+  const eligibleStatuses = new Set(["Creating", "Creation Failed", "Pending", "Provider Pending"]);
+  const minimumAge = Date.now() - 30_000;
+  const eligible = (Array.isArray(attempts) ? attempts : [])
+    .filter((attempt) => eligibleStatuses.has(attempt.status) && new Date(attempt.updated_at).getTime() <= minimumAge)
+    .slice(0, Math.max(1, Math.min(Number(limit) || 20, 50)));
+  const summary = { configured: true, checked: 0, changed: 0, missing: 0, failed: 0, source };
+
+  for (const attempt of eligible) {
+    const order = await getOrderRecord(attempt.order_id);
+    if (!order || order.order_status !== "Active" || order.payment_status !== "Pending") continue;
+    summary.checked += 1;
+    try {
+      const verified = await fetchMidtransStatus(order.id, { allowMissing: true });
+      if (!verified) {
+        summary.missing += 1;
+        continue;
+      }
+      const result = await processVerifiedMidtransEvent(verified);
+      if (!["recorded", "duplicate"].includes(result.action)) summary.changed += 1;
+    } catch (error) {
+      summary.failed += 1;
+      await updateMidtransAttempt(order.id, attempt.status, {
+        ...(attempt.payload || {}),
+        lastReconciliationError: error instanceof Error ? error.message : "Midtrans reconciliation failed.",
+        lastReconciliationAt: new Date().toISOString()
+      }).catch(() => undefined);
+      await recordSystemEvent({
+        source: "midtrans-reconciliation",
+        error,
+        details: { orderId: order.id, attemptStatus: attempt.status, reconciliationSource: source }
+      });
+    }
+  }
+  return summary;
+}
+
+export async function getCommerceHealthSnapshot() {
+  const configuration = midtransConfiguration();
+  const [attempts, receipts, reservations, orders, outbox] = await Promise.all([
+    supabaseFetch("payment_attempts?select=order_id,status,updated_at&provider=eq.Midtrans&order=updated_at.desc&limit=100", { service: true }),
+    supabaseFetch("webhook_receipts?select=status,last_error,updated_at&provider=eq.Midtrans&order=updated_at.desc&limit=100", { service: true }),
+    supabaseFetch("inventory_reservations?select=order_id,status,expires_at&status=eq.Active&order=expires_at.asc&limit=100", { service: true }),
+    supabaseFetch("order_records?select=id,public_reference,payment_status,payment_expires_at&payment_status=eq.Pending&order=payment_expires_at.asc&limit=100", { service: true }),
+    supabaseFetch("notification_outbox?select=status,updated_at&status=in.(Pending,Failed,Sending)&order=updated_at.asc&limit=100", { service: true })
+  ]);
+  const now = Date.now();
+  const staleAttempts = (attempts || []).filter((row) => ["Creating", "Creation Failed", "Provider Pending"].includes(row.status) && new Date(row.updated_at).getTime() < now - 5 * 60_000);
+  const failedWebhooks = (receipts || []).filter((row) => row.status === "Failed");
+  const overdueReservations = (reservations || []).filter((row) => new Date(row.expires_at).getTime() < now - 10 * 60_000);
+  const overdueOrders = (orders || []).filter((row) => new Date(row.payment_expires_at).getTime() < now - 10 * 60_000);
+  const failedOutbox = (outbox || []).filter((row) => row.status === "Failed");
+  const issues = [];
+  if (!configuration.enabled) issues.push("Midtrans payments are disabled by the launch switch.");
+  if (configuration.enabled && !configuration.hasMerchantId) issues.push("Midtrans merchant ID is missing.");
+  if (configuration.enabled && !configuration.hasServerKey) issues.push("Midtrans server key is missing.");
+  if (staleAttempts.length) issues.push(`${staleAttempts.length} payment attempt${staleAttempts.length === 1 ? " is" : "s are"} stuck.`);
+  if (failedWebhooks.length) issues.push(`${failedWebhooks.length} Midtrans webhook${failedWebhooks.length === 1 ? " has" : "s have"} failed.`);
+  if (overdueReservations.length || overdueOrders.length) issues.push(`${Math.max(overdueReservations.length, overdueOrders.length)} expired order reservation${Math.max(overdueReservations.length, overdueOrders.length) === 1 ? " needs" : "s need"} cleanup.`);
+  if (failedOutbox.length) issues.push(`${failedOutbox.length} order notification${failedOutbox.length === 1 ? " has" : "s have"} failed delivery.`);
+  return {
+    ok: configuration.ready && issues.length === 0,
+    configuration,
+    counts: {
+      pendingPayments: (orders || []).length,
+      activeReservations: (reservations || []).length,
+      staleAttempts: staleAttempts.length,
+      failedWebhooks: failedWebhooks.length,
+      overdueReservations: Math.max(overdueReservations.length, overdueOrders.length),
+      failedNotifications: failedOutbox.length
+    },
+    issues,
+    checkedAt: new Date().toISOString()
+  };
+}
+
+function assertVerifiedMidtransIdentity(verified, order) {
+  if (String(verified.order_id || "") !== String(order.id)) throw new Error("Midtrans order verification mismatch.");
+  const configuredMerchant = String(process.env.MIDTRANS_MERCHANT_ID || "").trim();
+  const providerMerchant = String(verified.merchant_id || "").trim();
+  if (configuredMerchant && providerMerchant && configuredMerchant !== providerMerchant) throw new Error("Midtrans merchant verification mismatch.");
+  const currency = String(verified.currency || "IDR").toUpperCase();
+  if (currency !== "IDR") throw new Error("Midtrans transaction currency mismatch.");
+}
+
+function assertSuccessfulMidtransPayment(verified, order) {
+  if (String(verified.status_code || "") !== "200") throw new Error("Midtrans did not verify a successful payment status code.");
+  const amount = Number(verified.gross_amount);
+  if (!Number.isInteger(amount) || amount !== Number(order.grand_total)) throw new Error("Midtrans payment amount does not match the order total.");
+}
+
+function midtransIdempotencyKey(orderId) {
+  return `nixp-snap-${createHash("sha256").update(`midtrans:${orderId}`).digest("hex").slice(0, 48)}`;
+}
+
+function validMidtransRedirectUrl(value) {
+  try {
+    return new URL(String(value || "")).origin === new URL(midtransBaseUrl()).origin;
+  } catch {
+    return false;
   }
 }
 
@@ -180,7 +340,11 @@ export async function handleAdminOrders(req, res) {
   try {
     if (req.method === "GET") {
       res.setHeader("cache-control", "private, no-store, max-age=0");
-      const orderId = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("orderId");
+      const url = new URL(req.url || "/", "https://admin.nix-p.com");
+      if (url.searchParams.get("health") === "1") {
+        return json(res, 200, { ok: true, health: await getCommerceHealthSnapshot() });
+      }
+      const orderId = url.searchParams.get("orderId");
       if (orderId) { const order = await getOrderRecord(orderId, { includeEvents: true }); return order ? json(res, 200, { ok: true, order }) : json(res, 404, { ok: false, error: "Order not found." }); }
       const orders = await supabaseFetch("order_records?select=id,public_reference,customer,metadata,order_status,payment_status,fulfillment_status,shipping_status,shipping_method,courier,tracking_number,merchandise_total,shipping_total,grand_total,payment_expires_at,created_at,updated_at&order=created_at.desc", { service: true });
       return json(res, 200, { ok: true, orders: (orders || []).map(adminOrderListRow) });
@@ -188,6 +352,10 @@ export async function handleAdminOrders(req, res) {
     if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
     await drainNotificationOutbox(24).catch(() => undefined);
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    if (body.action === "reconcile-payments") {
+      const reconciliation = await reconcilePendingMidtransPayments({ limit: 30, source: "admin" });
+      return json(res, 200, { ok: true, reconciliation, health: await getCommerceHealthSnapshot() });
+    }
     if (body.action === "issue-shipping-quote") {
       const quoted = await supabaseFetch("rpc/issue_shipping_quote", {
         method: "POST",

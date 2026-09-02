@@ -1911,7 +1911,10 @@ async function inventoryPage() {
 }
 
 async function ordersPage({ embedded = false } = {}) {
-  const orders = await catalogService.listOrders({ refresh: true });
+  const [orders, commerceHealth] = await Promise.all([
+    catalogService.listOrders({ refresh: true }),
+    safeAdminValue(adminStore.commerceHealth(), null)
+  ]);
   const visibleOrders = sortItems(
     filterItems(orders, "orders", (order) => [
       order.id,
@@ -1937,6 +1940,7 @@ async function ordersPage({ embedded = false } = {}) {
   return `
     ${embedded ? "" : adminHero("Orders", "Payment, fulfillment, shipping, and action-required order operations.")}
     <div>
+      ${adminCommerceHealthMarkup(commerceHealth)}
       <form class="admin-panel admin-shipping-quote-form" data-admin-shipping-quote-form>
         <div class="admin-form-heading"><h3>Issue delivery quote</h3><p>Confirm the courier charge before stock is reserved and payment opens.</p></div>
         <div class="admin-form-grid">
@@ -2482,6 +2486,17 @@ function privacyPolicyPage() {
       </div>
     </section>
   `;
+}
+
+function adminCommerceHealthMarkup(health) {
+  if (!health) {
+    return `<section class="editor-deploy-panel" data-tone="warning"><div><strong>Payment health unavailable</strong><span>The protected health check could not be loaded. Checkout remains unchanged.</span></div></section>`;
+  }
+  const counts = health.counts || {};
+  const summary = health.issues?.length
+    ? health.issues.join(" ")
+    : `${counts.pendingPayments || 0} pending payments, ${counts.activeReservations || 0} active reservations, no payment errors detected.`;
+  return `<form class="editor-deploy-panel" data-admin-payment-reconcile-form data-tone="${health.ok ? "success" : "warning"}"><div><strong>Midtrans ${escapeHtml(health.configuration?.environment || "sandbox")}</strong><span>${escapeHtml(summary)}</span></div><button class="button button-outline" type="submit">Reconcile payments</button><p class="admin-form-note" data-admin-form-message aria-live="polite"></p></form>`;
 }
 
 function productRelatedArtists(product) {
@@ -4313,4 +4328,23 @@ adminStore
       return hydratePublicServerMarkup();
     }
     return render();
+  });
+
+  document.querySelector("[data-admin-payment-reconcile-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector("button");
+    button.disabled = true;
+    setFormMessage(form, "Checking pending payments with Midtrans...");
+    try {
+      const result = await adminStore.reconcilePayments();
+      const checked = Number(result.reconciliation?.checked || 0);
+      const changed = Number(result.reconciliation?.changed || 0);
+      const failed = Number(result.reconciliation?.failed || 0);
+      setFormMessage(form, `Checked ${checked} pending payment${checked === 1 ? "" : "s"}; ${changed} updated; ${failed} failed.`, failed ? "warning" : "success");
+      await render({ preserveScroll: true });
+    } catch (error) {
+      setFormMessage(form, error instanceof Error ? error.message : "Payment reconciliation failed.", "error");
+      button.disabled = false;
+    }
   });

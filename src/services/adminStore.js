@@ -930,6 +930,22 @@ export const adminStore = {
     const orders = await this.refreshOrders();
     return { orders, changed: before !== storeRevision(orders) };
   },
+  async commerceHealth() {
+    const response = await fetch(`/api/admin/orders?health=1&v=${Date.now()}`, { cache: "no-store" });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Payment health is unavailable.");
+    return payload.health;
+  },
+  async reconcilePayments() {
+    const response = await fetch("/api/admin/orders", {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify({ action: "reconcile-payments" })
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Payment reconciliation failed.");
+    return payload;
+  },
   async refreshPrivateStore({ force = false } = {}) {
     if (!canUsePrivateStore()) return this.getSnapshot();
     if (!force && activeStore && Date.now() - privateStoreRefreshedAt < 30_000) return this.getSnapshot();
