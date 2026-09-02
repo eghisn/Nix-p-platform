@@ -269,7 +269,7 @@ function replaceMeta(html, attribute, name, value) {
   return pattern.test(html) ? html.replace(pattern, tag) : html.replace("</head>", `    ${tag}\n  </head>`);
 }
 
-function routeDocument({ title, description, url, image, type = "website", appMarkup, crawlMarkup, structuredData }) {
+function routeDocument({ title, description, url, image, type = "website", appMarkup, structuredData }) {
   let html = indexHtml.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
   html = replaceMeta(html, "name", "description", description);
   html = replaceMeta(html, "property", "og:title", title);
@@ -295,28 +295,16 @@ function routeDocument({ title, description, url, image, type = "website", appMa
     html = html.replace("</head>", `    <script type="application/ld+json">${json}</script>\n  </head>`);
   }
   if (appMarkup) html = html.replace("<!-- NIXP_APP_MARKER -->", appMarkup);
-  if (crawlMarkup) html = html.replace("</body>", `    ${crawlMarkup}\n  </body>`);
   return html;
 }
 
-function crawlerSection(content) {
-  return `<section aria-label="Catalog summary" style="position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important">${content}</section>`;
-}
-
 function homeDocument() {
-  const catalogLinks = publicProducts
-    .map(
-      (product) =>
-        `<li><a href="${escapeHtml(publicProductPath(product))}">${escapeHtml(product.artist)} - ${escapeHtml(product.title)} - ${escapeHtml(formatPrice(product.price))}</a></li>`
-    )
-    .join("");
   return routeDocument({
     title: "NIXP",
     description: siteDescription,
     url: `${siteOrigin}/`,
     image: siteImage,
     appMarkup: homeAppMarkup(),
-    crawlMarkup: crawlerSection(`<h1>NIXP</h1><p>${escapeHtml(siteDescription)}</p><ul>${catalogLinks}</ul>`),
     structuredData: {
       "@context": "https://schema.org",
       "@graph": [
@@ -479,9 +467,6 @@ function productDocument(product) {
     image,
     type: "product",
     appMarkup: shell(staticProductDetailMarkup(product), publicProductPath(product), 0),
-    crawlMarkup: crawlerSection(
-      `<article><h1>${escapeHtml(product.artist)} - ${escapeHtml(product.title)}</h1><p>${escapeHtml(description)}</p><p>${escapeHtml(product.description || "")}</p><a href="${escapeHtml(url)}">View product</a></article>`
-    ),
     structuredData: {
       "@context": "https://schema.org",
       "@graph": [
@@ -704,7 +689,6 @@ function artistDocument(artist) {
     url: `${siteOrigin}/artists/${slugify(artist.name)}`,
     image: siteImage,
     appMarkup,
-    crawlMarkup: crawlerSection(`<h1>${escapeHtml(artist.name)}</h1><p>Releases by ${escapeHtml(artist.name)} available from NIXP.</p>`),
     structuredData: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -792,8 +776,7 @@ for (const route of [...new Set(staticRoutes)]) {
             description: siteDescription,
             url: routeUrl,
             image: siteImage,
-            appMarkup: shell(artistsIndexMarkup(orderedArtistDirectory), "/artists", 0),
-            crawlMarkup: crawlerSection(`<h1>Artists</h1>${orderedArtistDirectory.map((artist) => `<p><a href="/artists/${slugify(artist)}">${escapeHtml(artist)}</a></p>`).join("")}`)
+            appMarkup: shell(artistsIndexMarkup(orderedArtistDirectory), "/artists", 0)
             })
       : route === "labels" || labelEntry
         ? routeDocument({
@@ -801,16 +784,14 @@ for (const route of [...new Set(staticRoutes)]) {
             description: labelEntry ? `${labelEntry.name} releases available from NIXP.` : "Record labels represented in the NIXP catalogue.",
             url: routeUrl,
             image: siteImage,
-            appMarkup: shell(staticPublicRouteMarkup(route), `/${route}`, 0),
-            crawlMarkup: crawlerSection(`<h1>${escapeHtml(labelEntry?.name || "Labels")}</h1><p>${escapeHtml(labelEntry ? `${labelEntry.name} releases available from NIXP.` : "Record labels represented in the NIXP catalogue.")}</p>`)
+            appMarkup: shell(staticPublicRouteMarkup(route), `/${route}`, 0)
           })
       : routeDocument({
           title: `${staticRouteTitle(route)}${route ? " | NIXP" : ""}`,
           description: siteDescription,
           url: routeUrl,
           image: siteImage,
-          appMarkup: shell(staticPublicRouteMarkup(route), `/${route}`, 0),
-          crawlMarkup: crawlerSection(`<h1>NIXP</h1><p>${escapeHtml(siteDescription)}</p>`)
+          appMarkup: shell(staticPublicRouteMarkup(route), `/${route}`, 0)
         });
   await writeFile(`${routeDir}/index.html`, document);
 }
@@ -819,6 +800,16 @@ const generatedRoutes = [...new Set(staticRoutes)];
 const missingRoutes = generatedRoutes.filter((route) => !existsSync(`${dist}/${route}/index.html`));
 if (missingRoutes.length) {
   throw new Error(`Static route generation failed for: ${missingRoutes.join(", ")}`);
+}
+
+// Structured data is the sole SEO catalog representation. A visually hidden
+// HTML catalog can be exposed by mobile renderers, so block it at build time.
+const generatedHtmlPaths = [`${dist}/index.html`, ...generatedRoutes.map((route) => `${dist}/${route}/index.html`)];
+for (const path of generatedHtmlPaths) {
+  const html = await readFile(path, "utf8");
+  if (html.includes('aria-label="Catalog summary"')) {
+    throw new Error(`Public fallback catalog markup is not allowed: ${path}`);
+  }
 }
 
 const crawlableRoutes = [
