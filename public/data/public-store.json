@@ -4470,7 +4470,7 @@
       "format": "Vinyl",
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0057/cover.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0057/detail-1.jpg"
+        "/public/mockups/nxp-2026-vnl-0057-alma-construct-black-vinyl-mockup.jpg"
       ],
       "barcode": "5055274704265",
       "details": [
@@ -4545,7 +4545,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-09-02",
       "collection": "R&S Records",
       "syncStatus": {
         "at": "2026-08-27T07:21:50.485Z",
@@ -4560,9 +4560,14 @@
       "reviewQuote": "Space-headed slo-mo techno / hip hop trips from R&S's new signing",
       "imageCredits": [
         {
-          "url": "https://music.apple.com/us/album/alma-construct-ep/1114573830",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0057/cover.jpg",
-          "credit": "Apple Music / R&S Records artwork"
+          "credit": "Apple Music / R&S Records artwork",
+          "url": "https://music.apple.com/us/album/alma-construct-ep/1114573830"
+        },
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0057-alma-construct-black-vinyl-mockup.jpg",
+          "credit": "NIXP product mockup rendered from verified R&S label artwork",
+          "url": "https://www.discogs.com/release/5957276-Alma-Construct-Alma-Construct"
         }
       ],
       "reviewSource": "Boomkat (quoted)",
@@ -4824,7 +4829,7 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0057/detail-1.jpg",
+      "autoProductPhoto": "/public/mockups/nxp-2026-vnl-0057-alma-construct-black-vinyl-mockup.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "R&S Records / Norman Records",
@@ -5100,8 +5105,8 @@
       "artist": "Hiatus Kaiyote",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0056/detail-1.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0056/cover.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0056/cover.jpg",
+        "/public/mockups/nxp-2026-vnl-0056-hiatus-kaiyote-mood-valiant-inkspot-vinyl.png"
       ],
       "barcode": "5054429148053",
       "details": [
@@ -5176,7 +5181,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-09-02",
       "collection": "Brainfeeder",
       "syncStatus": {
         "at": "2026-08-27T07:21:50.485Z",
@@ -5191,14 +5196,14 @@
       "reviewQuote": "their most focused album with more classic songs than epic jams",
       "imageCredits": [
         {
-          "url": "https://hiatuskaiyote.bandcamp.com/album/mood-valiant",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0056/cover.jpg",
-          "credit": "Hiatus Kaiyote official Bandcamp artwork"
+          "credit": "Hiatus Kaiyote official Bandcamp artwork",
+          "url": "https://hiatuskaiyote.bandcamp.com/album/mood-valiant"
         },
         {
-          "url": "https://hiatuskaiyote.bandcamp.com/album/mood-valiant",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0056/detail-1.jpg",
-          "credit": "Hiatus Kaiyote official Bandcamp release photography"
+          "image": "/public/mockups/nxp-2026-vnl-0056-hiatus-kaiyote-mood-valiant-inkspot-vinyl.png",
+          "credit": "Hiatus Kaiyote official store product image - black and red ink-spot vinyl",
+          "url": "https://store.hiatuskaiyote.com/products/mood-valiant-red-in-black-inkspot-lp"
         }
       ],
       "reviewSource": "NME (quoted)",
@@ -5460,7 +5465,7 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0056/detail-1.jpg",
+      "autoProductPhoto": "/public/mockups/nxp-2026-vnl-0056-hiatus-kaiyote-mood-valiant-inkspot-vinyl.png",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Hiatus Kaiyote official Bandcamp / NME",
@@ -5736,8 +5741,8 @@
       "artist": "Fire-Toolz",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/detail-1.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/cover.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/cover.jpg",
+        "/public/mockups/nxp-2026-vnl-0055-fire-toolz-lavender-networks-lavender-marble.jpg"
       ],
       "barcode": "5056818808036",
       "details": [
@@ -5811,7 +5816,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-09-02",
       "collection": "Warp Records",
       "syncStatus": {
         "at": "2026-08-27T07:21:50.485Z",
@@ -5826,14 +5831,14 @@
       "reviewQuote": "a step up on the approachable scale",
       "imageCredits": [
         {
-          "url": "https://fire-toolz.bandcamp.com/album/lavender-networks",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/cover.jpg",
-          "credit": "Fire-Toolz official Bandcamp artwork"
+          "credit": "Fire-Toolz official Bandcamp artwork",
+          "url": "https://fire-toolz.bandcamp.com/album/lavender-networks"
         },
         {
-          "url": "https://fire-toolz.bandcamp.com/album/lavender-networks",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/detail-1.jpg",
-          "credit": "Fire-Toolz official Bandcamp release photography"
+          "image": "/public/mockups/nxp-2026-vnl-0055-fire-toolz-lavender-networks-lavender-marble.jpg",
+          "credit": "Bandcamp / Warp Records press image - lavender marble vinyl",
+          "url": "https://fire-toolz.bandcamp.com/album/lavender-networks"
         }
       ],
       "reviewSource": "Pitchfork (quoted)",
@@ -6095,7 +6100,7 @@
         "recent-releases"
       ],
       "sleeveCondition": "",
-      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0055/detail-1.jpg",
+      "autoProductPhoto": "/public/mockups/nxp-2026-vnl-0055-fire-toolz-lavender-networks-lavender-marble.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Fire-Toolz official Bandcamp / Pitchfork",
@@ -6380,8 +6385,8 @@
       "artist": "Kelela",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/detail-1.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/cover.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/cover.jpg",
+        "/public/mockups/nxp-2026-vnl-0054-kelela-new-avatar-purple-vinyl.jpg"
       ],
       "barcode": "",
       "details": [
@@ -6454,7 +6459,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-09-02",
       "collection": "Warp Records",
       "syncStatus": {
         "at": "2026-08-27T07:21:50.485Z",
@@ -6469,14 +6474,14 @@
       "reviewQuote": "another immersive evolution",
       "imageCredits": [
         {
-          "url": "https://kelela.bandcamp.com/album/new-avatar-2",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/cover.jpg",
-          "credit": "Kelela official Bandcamp artwork"
+          "credit": "Kelela official Bandcamp artwork",
+          "url": "https://kelela.bandcamp.com/album/new-avatar-2"
         },
         {
-          "url": "https://kelela.bandcamp.com/album/new-avatar-2",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/detail-1.jpg",
-          "credit": "Kelela official Bandcamp release photography"
+          "image": "/public/mockups/nxp-2026-vnl-0054-kelela-new-avatar-purple-vinyl.jpg",
+          "credit": "Turntable Lab / Warp Records product image - purple vinyl edition",
+          "url": "https://www.turntablelab.com/products/kelela-new-avatar-colored-vinyl-vinyl-lp"
         }
       ],
       "reviewSource": "Pitchfork (quoted)",
@@ -6740,7 +6745,7 @@
         "recent-releases"
       ],
       "sleeveCondition": "",
-      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/detail-1.jpg",
+      "autoProductPhoto": "/public/mockups/nxp-2026-vnl-0054-kelela-new-avatar-purple-vinyl.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Kelela official Bandcamp / Pitchfork",
@@ -31925,7 +31930,7 @@
       "format": "Vinyl",
       "images": [
         "/public/assets/catalog-archive/nxp-2026-vnl-0028-cover.webp",
-        "/public/assets/catalog-archive/nxp-2026-vnl-0028-detail-1.webp"
+        "/public/mockups/nxp-2026-vnl-0028-blanck-mass-odd-scene-black-vinyl.jpg"
       ],
       "barcode": "616892573142",
       "details": [
@@ -31998,7 +32003,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-09-02",
       "collection": "Sacred Bones Records",
       "syncStatus": {
         "at": "2026-08-27T07:21:50.483Z",
@@ -32013,9 +32018,14 @@
       "reviewQuote": "immensely danceable",
       "imageCredits": [
         {
-          "url": "https://blanckmass.bandcamp.com/album/odd-scene-shit-luck",
-          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0028-detail-1.webp",
-          "credit": "Blanck Mass official Bandcamp release image"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0028-cover.webp",
+          "credit": "Blanck Mass official Bandcamp artwork",
+          "url": "https://blanckmass.bandcamp.com/album/odd-scene-shit-luck"
+        },
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0028-blanck-mass-odd-scene-black-vinyl.jpg",
+          "credit": "Sacred Bones Records product image - black Record Store Day vinyl",
+          "url": "https://www.sacredbonesrecords.com/products/sbr202-blanck-mass-odd-scene-shit-luck"
         }
       ],
       "reviewSource": "The Skinny (quoted)",
@@ -32277,7 +32287,7 @@
       ],
       "homeCollections": [],
       "sleeveCondition": "",
-      "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0028-detail-1.webp",
+      "autoProductPhoto": "/public/mockups/nxp-2026-vnl-0028-blanck-mass-odd-scene-black-vinyl.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Sacred Bones / The Skinny",
@@ -57906,7 +57916,7 @@
       "format": "Vinyl",
       "images": [
         "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png",
-        "/public/mockups/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-vinyl.jpg"
+        "/public/mockups/nxp-2026-vnl-0010-overmono-turn-the-page-etched-vinyl.jpg"
       ],
       "barcode": "191404143919",
       "details": [
@@ -57977,7 +57987,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-08-27",
+      "updatedAt": "2026-09-02",
       "collection": "NIXP Selection",
       "syncStatus": {
         "at": "2026-08-27T07:21:50.481Z",
@@ -57992,9 +58002,14 @@
       "reviewQuote": "glitchy techno banger",
       "imageCredits": [
         {
-          "url": "https://overmono.bandcamp.com/album/turn-the-page",
-          "image": "/public/mockups/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-vinyl.jpg",
-          "credit": "Overmono Bandcamp"
+          "image": "/public/covers/nxp-2026-vnl-0010-overmono-the-streets-turn-the-page-turn-the-page.png",
+          "credit": "Overmono official Bandcamp artwork",
+          "url": "https://overmono.bandcamp.com/album/turn-the-page"
+        },
+        {
+          "image": "/public/mockups/nxp-2026-vnl-0010-overmono-turn-the-page-etched-vinyl.jpg",
+          "credit": "Turntable Lab / XL Recordings product image - single-sided etched vinyl",
+          "url": "https://www.turntablelab.com/products/overmono-the-streets-turn-the-page-vinyl-12"
         }
       ],
       "reviewSource": "Rolling Stone UK (quoted)",
@@ -58503,7 +58518,8 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
-      }
+      },
+      "autoProductPhoto": "/public/mockups/nxp-2026-vnl-0010-overmono-turn-the-page-etched-vinyl.jpg"
     },
     {
       "id": "nxp-2026-app-0006-paranoiac-odyssey-t-shirt",
