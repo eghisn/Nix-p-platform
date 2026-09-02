@@ -15,9 +15,11 @@ const APPAREL_DIMENSIONS = {
 };
 
 const CAP_RULES = {
-  1: { ruleWeightKg: 2, lengthCm: 25, widthCm: 22, heightCm: 14 },
-  2: { ruleWeightKg: 3, lengthCm: 30, widthCm: 25, heightCm: 18 },
-  3: { ruleWeightKg: 4, lengthCm: 35, widthCm: 30, heightCm: 20 }
+  // Each cap is protected in its own 20 x 20 x 8 cm hardbox. Multiple cap
+  // boxes travel together in one outer shipment, stacked vertically.
+  1: { ruleWeightKg: 2, lengthCm: 20, widthCm: 20, heightCm: 8 },
+  2: { ruleWeightKg: 3, lengthCm: 20, widthCm: 20, heightCm: 16 },
+  3: { ruleWeightKg: 4, lengthCm: 20, widthCm: 20, heightCm: 24 }
 };
 
 function number(value, fallback = 0) {
@@ -237,11 +239,14 @@ function buildRingPackages(units, divisor) {
   for (let index = 0; index < units.length; index += 16) {
     const chunk = units.slice(index, index + 16);
     const quantity = chunk.length;
+    // Rings are first boxed individually at 10 x 8 x 7 cm, then combined
+    // in a protective outer parcel. The tiers preserve the existing maximum
+    // of sixteen rings while reflecting the supplied individual hardbox.
     const dimensions = quantity <= 4
-      ? { lengthCm: 15, widthCm: 15, heightCm: 8 }
+      ? { lengthCm: 20, widthCm: 16, heightCm: 7 }
       : quantity <= 8
-        ? { lengthCm: 22, widthCm: 16, heightCm: 10 }
-        : { lengthCm: 25, widthCm: 20, heightCm: 15 };
+        ? { lengthCm: 20, widthCm: 16, heightCm: 14 }
+        : { lengthCm: 20, widthCm: 32, heightCm: 14 };
     const ruleWeightKg = Math.ceil(quantity / 8);
     packages.push(finalizePackage({
       packagingGroup: "RING_HARDBOX",

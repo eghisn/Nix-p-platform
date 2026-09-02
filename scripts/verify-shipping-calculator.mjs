@@ -27,9 +27,11 @@ assert.deepEqual(apparel.packages.map((pkg) => pkg.packingPoints), [5, 4]);
 const caps = calculatePackages([{ product: product("cap", "Apparel", "Cap"), quantity: 4 }]);
 assert.equal(caps.packages.length, 2);
 assert.deepEqual(caps.packages.map((pkg) => pkg.chargeableWeightKg), [4, 2]);
+assert.deepEqual(caps.packages.map((pkg) => [pkg.lengthCm, pkg.widthCm, pkg.heightCm]), [[20, 20, 24], [20, 20, 8]]);
 
 const rings = calculatePackages([{ product: product("ring", "Object", "Silver Ring", { category: "Objects" }), quantity: 17 }]);
 assert.deepEqual(rings.packages.map((pkg) => pkg.chargeableWeightKg), [2, 1]);
+assert.deepEqual(rings.packages.map((pkg) => [pkg.lengthCm, pkg.widthCm, pkg.heightCm]), [[20, 32, 14], [20, 16, 7]]);
 
 const manual = calculatePackages([{ product: product("obj", "Object", "Object", { category: "Objects", shipping: { manualShippingOverride: true, weightGrams: 1200, lengthCm: 20, widthCm: 20, heightCm: 20 } }), quantity: 2 }]);
 assert.equal(manual.packages.length, 2);
