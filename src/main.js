@@ -1552,7 +1552,7 @@ async function adminProductsPage({ embedded = false } = {}) {
             ${input("color", "Color", product.color || "", "Black")}
             ${input("material", "Material", product.material || "", "Knit cotton blend")}
             <div data-admin-apparel-field ${productCategory === "Apparel" ? "" : "hidden"}>
-              ${select("apparelType", "Apparel type", ["", "Tops", "Bottoms", "Accessories"], product.apparelType === "Accesories" ? "Accessories" : product.apparelType || "")}
+              ${select("apparelType", "Apparel type", ["", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Cap", "Ring", "Jacket", "Shirt", "Tops", "Bottoms", "Accessories", "Other"], product.apparelType === "Accesories" ? "Accessories" : product.apparelType || "")}
             </div>
             ${sizeInventoryFields(product)}
           </div>

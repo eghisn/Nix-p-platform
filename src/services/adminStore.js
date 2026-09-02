@@ -3,6 +3,7 @@ import { canonicalProductArtist, canonicalLabelName, canonicalRelatedArtistName 
 import { isRecentReleaseProduct } from "../data/homeCollections.js";
 import { isRecordPublicationReady } from "../data/catalogPublication.js";
 import { needsRecordConditionDetails } from "../data/recordMetadata.js";
+import { referenceShippingProfile } from "../data/shippingProfiles.js";
 
 const STORAGE_KEY = "nixp-admin-store-v1";
 const STORE_VERSION = "home-slider-related-artists-2026-07-15";
@@ -1324,11 +1325,21 @@ export const adminStore = {
       // from SOURCE or from a zero price.
       open_to_offers: openToOffers,
       minimumAcceptableOffer: openToOffers ? minimumAcceptableOffer : null,
-      shipping: normalizeShipping({
-        weightGrams: data.shippingWeightGrams,
-        lengthCm: data.shippingLengthCm,
-        widthCm: data.shippingWidthCm,
-        heightCm: data.shippingHeightCm,
+      shipping: normalizeShipping(referenceShippingProfile({
+        category: data.category || existing?.category || "",
+        format: data.format || existing?.format || "",
+        displayFormat: data.displayFormat || existing?.displayFormat || "",
+        apparelType: normalizeApparelType(data.apparelType) || existing?.apparelType || "",
+        title: data.title || existing?.title || "",
+        material: data.material || existing?.material || "",
+        details: splitList(data.details),
+        edition: data.edition || existing?.edition || ""
+      }, {
+        ...existing?.shipping,
+        weightGrams: data.shippingWeightGrams === "" || data.shippingWeightGrams === undefined ? existing?.shipping?.weightGrams : data.shippingWeightGrams,
+        lengthCm: data.shippingLengthCm === "" || data.shippingLengthCm === undefined ? existing?.shipping?.lengthCm : data.shippingLengthCm,
+        widthCm: data.shippingWidthCm === "" || data.shippingWidthCm === undefined ? existing?.shipping?.widthCm : data.shippingWidthCm,
+        heightCm: data.shippingHeightCm === "" || data.shippingHeightCm === undefined ? existing?.shipping?.heightCm : data.shippingHeightCm,
         shippingClass: data.shippingClass?.trim() || existing?.shipping?.shippingClass || "",
         packageType: data.shippingPackageType?.trim() || existing?.shipping?.packageType || "",
         packagingGroup: data.shippingPackagingGroup || existing?.shipping?.packagingGroup || "",
@@ -1337,7 +1348,7 @@ export const adminStore = {
         status: data.shippingStatus || existing?.shipping?.status || "needs_measurement",
         source: data.shippingSource?.trim() || existing?.shipping?.source || "",
         updatedAt: today()
-      }),
+      })),
       publishStatus: data.publishStatus || "Published",
       visibility: data.visibility || "Public",
       updatedAt: today()

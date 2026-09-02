@@ -819,9 +819,14 @@ function productRowFromFinanceStock(row, stock, quantity) {
     // database reconciler applies Finance quantity minus those reservations.
     qty: normalizedQuantity(row.qty),
     updatedAt: today(),
-    shipping: category === "Records"
-      ? referenceShippingProfile({ ...row, format: item, edition: stock.edition || row.raw?.edition }, row.raw?.shipping)
-      : row.raw?.shipping
+    shipping: referenceShippingProfile({
+      ...row,
+      category,
+      format: category === "Records" ? item : row.format,
+      apparelType: category === "Apparel" ? item : row.apparel_type,
+      apparel_type: category === "Apparel" ? item : row.apparel_type,
+      edition: stock.edition || row.raw?.edition
+    }, row.raw?.shipping)
   };
   // A SKU can change category while it is being corrected in Finance. Remove
   // record-only research state when that happens so the Admin editor cannot
@@ -1069,7 +1074,7 @@ export function draftProductFromFinanceStock(stock, quantity) {
     category,
     format: category === "Records" ? item : category === "Apparel" ? "Apparel" : "Object",
     displayFormat: category === "Records" ? item : "",
-    apparelType: category === "Apparel" ? "Accessories" : "",
+    apparelType: category === "Apparel" ? item : "",
     condition: String(stock.itemCondition || "").trim(),
     price: stock.listingMode === "Private Collection / Offer Only" ? 0 : Number(stock.sellingPrice || 0),
     open_to_offers: stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true,
@@ -1097,7 +1102,7 @@ export function draftProductFromFinanceStock(stock, quantity) {
   product.edition = String(stock.edition || "").trim();
   product.barcode = String(stock.barcode || "").trim();
   product.catalogNumber = String(stock.catalogNumber || "").trim();
-  if (category === "Records") product.shipping = referenceShippingProfile(product);
+  product.shipping = referenceShippingProfile(product);
   return {
     id,
     sku: product.sku,
