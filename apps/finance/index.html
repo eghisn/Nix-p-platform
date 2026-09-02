@@ -1078,6 +1078,7 @@
                     </tr>
                   </thead>
                   <tbody id="generalBody"></tbody>
+                  <tfoot id="generalTotals"></tfoot>
                 </table>
               </div>
             </section>
@@ -1528,6 +1529,7 @@
       inventoryForm: document.getElementById("inventoryForm"),
       stockForm: document.getElementById("stockForm"),
       generalBody: document.getElementById("generalBody"),
+      generalTotals: document.getElementById("generalTotals"),
       salesBody: document.getElementById("salesBody"),
       salesTotals: document.getElementById("salesTotals"),
       expenseBody: document.getElementById("expenseBody"),
@@ -2800,6 +2802,7 @@
         .filter(item => !type || item.type === type)
         .filter(item => !category || item.category === category)
         .filter(item => !search || [item.source, item.reference, item.category, item.item, item.paymentMethod, item.moneySentTo, item.notes].join(" ").toLowerCase().includes(search));
+
       const sortedRows = sortRows("dashboard", rows);
       document.getElementById("generalCount").textContent = rows.length + " entries";
       el.generalBody.innerHTML = sortedRows.length ? sortedRows.map(item => `
@@ -2818,6 +2821,14 @@
           <td class="row-actions">${editButton(item.section, item.id)} ${deleteButton(item.section, item.id)}</td>
         </tr>
       `).join("") : emptyRow(12, "No cash flow entries yet.");
+      const totalAmount = rows.reduce((total, item) => total + numeric(item.amount), 0);
+      el.generalTotals.innerHTML = `
+        <tr>
+          <td colspan="7">Total</td>
+          <td class="money">${rupiah(totalAmount)}</td>
+          <td colspan="4"></td>
+        </tr>
+      `;
     }
 
     function renderSales() {
