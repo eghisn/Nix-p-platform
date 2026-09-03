@@ -6,7 +6,7 @@ import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShi
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
 import { runShippingMaintenance } from "./_lib/nixpShippingEngine.js";
-import { processCatalogResearchJobs, processFinanceCatalogSyncJobs, readFinanceState, syncFinanceInventoryToCatalog } from "./_lib/financeState.js";
+import { processFinanceCatalogSyncJobs, readFinanceState, syncFinanceInventoryToCatalog } from "./_lib/financeState.js";
 import { processAdminFinanceSyncJobs } from "./_lib/adminFinanceSyncJobs.js";
 import { reconcileCatalogPublicationState } from "./_lib/catalogPublicationReconciliation.js";
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
@@ -271,16 +271,41 @@ async function handleCommerceMaintenance(req, res) {
       drainNotificationOutbox(50),
       reconcilePendingMidtransPayments({ limit: 20, source: "scheduled-maintenance" })
     ]);
+    // The five-minute Pro cron is deliberately limited to customer-facing
+    // commerce recovery. It must not trigger catalog research or broad data
+    // synchronization repeatedly throughout the day.
+    if (String(req.headers["x-vercel-cron-schedule"] || "") === "*/5 * * * *") {
+      return json(res, 200, {
+        ok: true,
+        scope: "commerce-recovery",
+        maintenance,
+        outbox,
+        paymentReconciliation,
+        checkedAt: new Date().toISOString()
+      });
+    }
     const financeState = await readFinanceState();
-    const [shipping, catalog, research, publication, financeSync, financeCatalogSync] = await Promise.all([
+    const [shipping, catalog, publication, financeSync, financeCatalogSync] = await Promise.all([
       runShippingMaintenance({ mode: "daily" }),
       syncFinanceInventoryToCatalog(financeState, { enrich: false }).then(() => ({ inventoryStock: financeState.inventoryStock?.length || 0 })),
-      processCatalogResearchJobs({ limit: 2, requestedBy: "maintenance" }),
       reconcileCatalogPublicationState(),
       processAdminFinanceSyncJobs({ limit: 10 }),
       processFinanceCatalogSyncJobs({ limit: 10 })
     ]);
-    return json(res, 200, { ok: true, maintenance, outbox, paymentReconciliation, shipping, catalog, research, publication, financeSync, financeCatalogSync, checkedAt: new Date().toISOString() });
+    return json(res, 200, {
+      ok: true,
+      scope: "daily-operations",
+      maintenance,
+      outbox,
+      paymentReconciliation,
+      shipping,
+      catalog,
+      research: { skipped: true, reason: "manual-only" },
+      publication,
+      financeSync,
+      financeCatalogSync,
+      checkedAt: new Date().toISOString()
+    });
   } catch (error) {
     await recordSystemEvent({ source: "commerce-maintenance", req, error });
     return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Commerce maintenance failed." });

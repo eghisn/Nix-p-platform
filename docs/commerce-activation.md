@@ -49,8 +49,11 @@ provider transaction status itself before it marks an order as paid.
 Supabase runs `nixp_commerce_maintenance()` every five minutes inside Postgres.
 The active job is named `nixp-expire-pending-orders`; verify its recent runs in
 `cron.job_run_details` before each payment launch. This scheduler releases
-expired stock independently of Vercel and customer requests. The daily Vercel
-maintenance route is a secondary operations pass, not the primary expiry clock.
+expired stock independently of Vercel and customer requests. On Vercel Pro, a
+separate five-minute fallback repeats only payment reconciliation, expiry
+release, and notification retry. The daily Vercel pass retains broader shipping,
+Finance, and publication reconciliation. Neither scheduler starts catalog
+research; research runs only for explicitly requested SKUs.
 
 Checkout request limits, webhook receipt claims, and the transactional email
 outbox are also stored in Supabase. Failed emails remain retryable instead of

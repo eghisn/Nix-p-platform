@@ -66,6 +66,9 @@ const requirements = [
   [checkout.includes("sameToken"), "Customer order status must require a secure per-order token."],
   [checkout.includes("CRON_SECRET"), "Background commerce maintenance must require a scheduler secret."],
   [vercelConfig.includes("commerce-maintenance"), "A Vercel cron must invoke commerce maintenance."],
+  [vercelConfig.includes('"schedule": "*/5 * * * *"'), "Pro must run the commerce recovery fallback every five minutes."],
+  [checkout.includes('scope: "commerce-recovery"'), "The five-minute cron must be limited to commerce recovery."],
+  [!checkout.includes("processCatalogResearchJobs"), "Background commerce maintenance must not start catalog research without an explicit request."],
   [vercelConfig.includes('"/order-status"'), "The customer order status route must resolve to the public app."]
 ];
 

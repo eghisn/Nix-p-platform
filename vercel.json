@@ -12,9 +12,16 @@
     },
     "api/admin/store.js": {
       "maxDuration": 60
+    },
+    "api/checkout.js": {
+      "maxDuration": 90
     }
   },
   "crons": [
+    {
+      "path": "/api/commerce-maintenance",
+      "schedule": "*/5 * * * *"
+    },
     {
       "path": "/api/commerce-maintenance",
       "schedule": "0 2 * * *"
