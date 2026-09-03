@@ -10,8 +10,12 @@ export function productCardThumbnailKey(product = {}) {
     .replace(/^-|-$/g, "") || "product";
 }
 
+function productCardSource(product = {}) {
+  return String(product.listingImage || product.image || "").trim();
+}
+
 export function canGenerateProductCardThumbnail(product = {}) {
-  return LOCAL_RASTER_IMAGE.test(String(product.image || "").trim());
+  return LOCAL_RASTER_IMAGE.test(productCardSource(product));
 }
 
 export function productCardThumbnailUrl(product, width) {
@@ -19,7 +23,9 @@ export function productCardThumbnailUrl(product, width) {
 }
 
 export function productCardImageAttributes(product = {}) {
-  const original = String(product.image || "").trim();
+  // Listing artwork is deliberately independent from the product gallery.
+  // This keeps product pages archival while giving storefront cards a curated display image.
+  const original = productCardSource(product);
   if (!canGenerateProductCardThumbnail(product)) {
     return { src: original, srcset: "", fallback: "" };
   }
