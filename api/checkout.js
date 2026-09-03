@@ -484,14 +484,20 @@ function friendlyError(message) {
 function isCheckoutOrigin(req) {
   const origin = String(req.headers?.origin || "").replace(/\/$/, "");
   if (!origin) return true;
-  return [
+  const trustedOrigins = new Set([
     "https://nix-p.com",
     "https://www.nix-p.com",
     "http://localhost:4173",
     "http://127.0.0.1:4173",
     "http://localhost:4174",
     "http://127.0.0.1:4174"
-  ].includes(origin);
+  ]);
+  try {
+    trustedOrigins.add(new URL(String(process.env.NIXP_PUBLIC_SITE_URL || "https://www.nix-p.com")).origin);
+  } catch {
+    // A malformed deployment URL must not broaden the origin allowlist.
+  }
+  return trustedOrigins.has(origin);
 }
 
 function customerOrderStatusUrl(orderId, token) {

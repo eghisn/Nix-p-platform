@@ -27,6 +27,7 @@ const requirements = [
   [checkout.includes('rpc/create_checkout_order'), "Checkout must create a reservation through create_checkout_order."],
   [checkout.includes("consumeCommerceRateLimit"), "Checkout must enforce a server-side rate limit."],
   [checkout.includes("isCheckoutOrigin"), "Checkout must check the browser origin."],
+  [checkout.includes("process.env.NIXP_PUBLIC_SITE_URL"), "Checkout must trust only the deployment's configured public origin."],
   [client.includes("CHECKOUT_SESSION_STORAGE_KEY"), "Checkout order identity must survive a page refresh."],
   [client.includes("payload.payment?.redirectUrl"), "Checkout must hand off to a provider redirect when available."],
   [handlers.includes("claim_webhook_receipt"), "Midtrans webhooks must be durably claimed before processing."],
