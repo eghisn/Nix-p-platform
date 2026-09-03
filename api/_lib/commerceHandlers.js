@@ -69,6 +69,7 @@ export async function createMidtransPaymentSession(orderId) {
   const customer = order.customer || {};
   const statusUrl = customerOrderStatusUrl(order);
   const idempotencyKey = midtransIdempotencyKey(order.id);
+  const itemDetails = buildMidtransItemDetails(order);
   try {
     await updateMidtransAttempt(order.id, "Creating", {
       idempotencyKey,
@@ -85,10 +86,7 @@ export async function createMidtransPaymentSession(orderId) {
       signal: AbortSignal.timeout(10_000),
       body: JSON.stringify({
         transaction_details: { order_id: order.id, gross_amount: order.grand_total },
-        item_details: [
-          ...order.items.map((item) => ({ id: item.sku, price: item.unit_price, quantity: item.quantity, name: [item.artist, item.title, item.size_label].filter(Boolean).join(" - ").slice(0, 50) })),
-          ...(Number(order.shipping_total || 0) > 0 ? [{ id: "NIXP-SHIPPING", price: Number(order.shipping_total), quantity: 1, name: `${order.courier || "Shipping"} delivery`.slice(0, 50) }] : [])
-        ],
+        item_details: itemDetails,
         customer_details: { first_name: String(customer.name || "NIXP customer").slice(0, 255), email: String(customer.email || "").slice(0, 255), phone: String(customer.whatsapp || "").slice(0, 32) },
         expiry: { unit: "hour", duration: 1 },
         callbacks: { finish: statusUrl, error: statusUrl },
@@ -113,6 +111,9 @@ export async function handleMidtransWebhook(req, res) {
   try {
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
     if (!validSignature(body)) return json(res, 401, { ok: false, error: "Invalid Midtrans signature." });
+    if (isMidtransDashboardNotificationTest(body)) {
+      return json(res, 200, { ok: true, action: "test-acknowledged" });
+    }
     const verified = await fetchMidtransStatus(body.order_id);
     if (String(verified.order_id) !== String(body.order_id)) throw new Error("Midtrans order verification mismatch.");
     eventKey = midtransWebhookEventKey(verified);
@@ -319,6 +320,37 @@ function midtransIdempotencyKey(orderId) {
   return `nixp-snap-${createHash("sha256").update(`midtrans:${orderId}`).digest("hex").slice(0, 48)}`;
 }
 
+function buildMidtransItemDetails(order) {
+  const details = (order.items || []).map((item, index) => {
+    const price = Number(item.unit_price);
+    const quantity = Number(item.quantity);
+    if (!Number.isInteger(price) || price <= 0 || !Number.isInteger(quantity) || quantity <= 0) {
+      throw new Error("Order contains an item that is not ready for online payment.");
+    }
+    const identity = [item.sku, item.size_label, index + 1]
+      .filter((value) => value !== null && value !== undefined && String(value).trim())
+      .join("-")
+      .replace(/[^A-Za-z0-9_.~-]+/g, "-")
+      .slice(0, 50);
+    return {
+      id: identity || `NIXP-ITEM-${index + 1}`,
+      price,
+      quantity,
+      name: [item.artist, item.title, item.size_label].filter(Boolean).join(" - ").slice(0, 50)
+    };
+  });
+  const shipping = Number(order.shipping_total || 0);
+  if (!Number.isInteger(shipping) || shipping < 0) throw new Error("Order shipping total is invalid.");
+  if (shipping > 0) {
+    details.push({ id: "NIXP-SHIPPING", price: shipping, quantity: 1, name: `${order.courier || "Shipping"} delivery`.slice(0, 50) });
+  }
+  const detailTotal = details.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  if (!Number.isInteger(order.grand_total) || detailTotal !== Number(order.grand_total)) {
+    throw new Error("Order total does not match its Midtrans payment details.");
+  }
+  return details;
+}
+
 function validMidtransRedirectUrl(value) {
   try {
     return new URL(String(value || "")).origin === new URL(midtransBaseUrl()).origin;
@@ -400,6 +432,12 @@ function validSignature(body) {
   const expected = createHash("sha512").update(`${body.order_id || ""}${body.status_code || ""}${body.gross_amount || ""}${process.env.MIDTRANS_SERVER_KEY}`).digest("hex");
   const left = Buffer.from(actual); const right = Buffer.from(expected);
   return left.length === right.length && timingSafeEqual(left, right);
+}
+
+function isMidtransDashboardNotificationTest(body) {
+  const merchantId = String(process.env.MIDTRANS_MERCHANT_ID || "").trim();
+  if (!merchantId || String(body.merchant_id || "").trim() !== merchantId) return false;
+  return String(body.order_id || "").startsWith(`payment_notif_test_${merchantId}_`);
 }
 
 async function fetchMidtransStatus(orderId, { allowMissing = false } = {}) {

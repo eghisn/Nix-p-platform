@@ -101,7 +101,7 @@ export async function sendCustomerShippingQuoteNotification(order, statusUrl = "
   if (!customer.email) return { delivered: false, reason: "customer-email-missing" };
   const shipping = Number(order?.shipping_total || 0);
   const merchandise = Number(order?.merchandise_total || 0);
-  const message = `Your delivery quote is ready. Items: ${rupiah(merchandise)}. Shipping: ${rupiah(shipping)}. Total: ${rupiah(order?.grand_total)}. Stock is reserved for two hours once you open payment.`;
+  const message = `Your delivery quote is ready. Items: ${rupiah(merchandise)}. Shipping: ${rupiah(shipping)}. Total: ${rupiah(order?.grand_total)}. Stock is reserved for one hour once you open payment.`;
   return sendNotificationEmail({
     to: customer.email,
     subject: `NIXP delivery quote ready: ${orderReference(order)}`,

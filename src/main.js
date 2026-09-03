@@ -576,6 +576,7 @@ async function productDetailMarkup(product) {
     state.selectedSizes[product.id] ||
     product.sizes?.find((size) => !isSizeSoldOut(size))?.label ||
     "";
+  const priceReady = Number.isInteger(Number(product.price)) && Number(product.price) > 0;
 
   return `
     <section class="product-detail" data-product-id="${escapeAttr(product.id)}">
@@ -596,7 +597,7 @@ async function productDetailMarkup(product) {
         <a class="back-link" href="/${publicCategoryPath(product)}" data-link>${product.category}</a>
         <p class="eyebrow">${product.artist}</p>
         <h1>${product.title}</h1>
-        <div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : money.format(product.price)}</div>
+        <div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : priceReady ? money.format(product.price) : "Price pending"}</div>
         <p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>
         ${productReviewMarkup(product)}
         ${
@@ -628,7 +629,7 @@ async function productDetailMarkup(product) {
         <div class="detail-actions">
           ${isOfferOnly
             ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeAttr(product.id)}" ${isSoldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${isSoldOut ? "Sold out" : "Make an Offer"}</a>`
-            : `<button class="button button-dark" type="button" data-add-cart="${product.id}" ${isSoldOut ? "disabled" : ""}>${isSoldOut ? "Sold out" : "Add to cart"}</button>
+            : `<button class="button button-dark" type="button" data-add-cart="${product.id}" ${isSoldOut || !priceReady ? "disabled" : ""}>${isSoldOut ? "Sold out" : !priceReady ? "Unavailable" : "Add to cart"}</button>
                <a class="button button-outline" href="/request-item" data-link>Request similar</a>`}
         </div>
         <dl class="detail-list">
@@ -2318,6 +2319,7 @@ function publicProductRoots(productId) {
 
 function setPublicProductSoldOutState(product) {
   const soldOut = totalProductStock(product) <= 0;
+  const unavailable = product.open_to_offers !== true && !(Number.isInteger(Number(product.price)) && Number(product.price) > 0);
   const roots = publicProductRoots(String(product.id));
   if (!roots.length) return;
 
@@ -2338,8 +2340,8 @@ function setPublicProductSoldOutState(product) {
 
     root.querySelectorAll("[data-add-cart]").forEach((button) => {
       if (button.getAttribute("data-add-cart") !== String(product.id)) return;
-      button.disabled = soldOut;
-      button.textContent = soldOut ? "Sold out" : "Add to cart";
+      button.disabled = soldOut || unavailable;
+      button.textContent = soldOut ? "Sold out" : unavailable ? "Unavailable" : "Add to cart";
     });
 
     root.querySelectorAll("[data-offer-product]").forEach((action) => {

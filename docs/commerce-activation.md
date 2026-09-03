@@ -40,7 +40,7 @@ setup credentials in browser code.
 Configure Midtrans to call this exact HTTPS notification URL:
 
 ```text
-https://nix-p.com/api/webhooks/midtrans
+https://www.nix-p.com/api/webhooks/midtrans
 ```
 
 The endpoint verifies the Midtrans SHA-512 signature and then fetches the

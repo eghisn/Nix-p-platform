@@ -172,6 +172,8 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
   const href = hrefFor ? hrefFor(product) : publicProductPath(product);
   const soldOut = productQuantity(product) <= 0;
   const isOfferOnly = product.open_to_offers === true;
+  const priceReady = Number.isInteger(Number(product.price)) && Number(product.price) > 0;
+  const unavailable = !isOfferOnly && !priceReady;
   const labelLink =
     product.category === "Records" && product.label
       ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${canonicalLabelName(product.label)}</a>`
@@ -181,7 +183,7 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
   const deferredDetails = `${recordArtistTags(product, availableArtistNames)}
     ${isOfferOnly
       ? `<a class="button button-outline" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeHtml(product.id)}" ${soldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${soldOut ? "Sold out" : "Make an Offer"}</a>`
-      : `<button class="button button-outline" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>`}`;
+      : `<button class="button button-outline" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut || unavailable ? "disabled" : ""}>${soldOut ? "Sold out" : unavailable ? "Unavailable" : "Add to cart"}</button>`}`;
 
   return `
     <article class="product-card ${soldOut ? "is-sold-out" : ""}" ${deferCard ? "data-deferred-product-card" : ""}>
@@ -197,7 +199,7 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
         ${labelLink}
         <div class="row-between">
           <span>${meta}</span>
-          <strong>${isOfferOnly ? "Offer only" : idr.format(product.price)}</strong>
+          <strong>${isOfferOnly ? "Offer only" : priceReady ? idr.format(product.price) : "Price pending"}</strong>
         </div>
         ${deferCard ? deferredTemplate(deferredDetails, "deferred-product-details") : deferredDetails}
       </div>

@@ -24,6 +24,9 @@ assert.match(handlers, /AbortSignal\.timeout\(4_000\)/, "Webhook verification mu
 assert.match(handlers, /"Idempotency-Key": idempotencyKey/, "Snap session creation must send a stable Midtrans idempotency key.");
 assert.match(handlers, /midtransIdempotencyKey\(order\.id\)/, "The Midtrans idempotency key must be derived from the stored order.");
 assert.match(handlers, /validMidtransRedirectUrl/, "Midtrans redirect URLs must be restricted to the configured provider origin.");
+assert.match(handlers, /buildMidtransItemDetails\(order\)/, "Midtrans payloads must validate variant IDs and order totals before leaving NIXP.");
+assert.match(handlers, /isMidtransDashboardNotificationTest\(body\)/, "The signed Midtrans dashboard test must be acknowledged without treating it as a customer order.");
+assert.match(handlers, /payment_notif_test_\$\{merchantId\}_/, "Dashboard-test acknowledgement must be bound to the configured merchant ID.");
 assert.match(handlers, /assertSuccessfulMidtransPayment/, "Verified payment amount and provider status must be checked before settlement.");
 assert.match(handlers, /MIDTRANS_MERCHANT_ID/, "Webhook verification must bind transactions to the configured Midtrans merchant when available.");
 assert.match(handlers, /midtransWebhookEventKey/, "Webhook idempotency must include the verified payment state.");
@@ -57,6 +60,7 @@ assert.match(client, /location\.hash/, "The public order page must read secure l
 assert.match(client, /history\.replaceState\(null, "", location\.pathname\)/, "The order page must clear the token from the address bar immediately after exchange.");
 assert.doesNotMatch(client, /\/api\/order-status\?order=/, "The public order page must not send order tokens in a GET URL.");
 assert.doesNotMatch(client, /data-order-token/, "The payment button must not retain the order token in the DOM.");
+assert.doesNotMatch(notifications, /reserved for two hours/i, "Current customer email copy must use the one-hour reservation window.");
 
 assert.doesNotMatch(handlers, /order_records\?select=\*/, "The Admin order list must not load every private order column.");
 assert.match(handlers, /adminOrderListRow/, "Admin order-list rows must be explicitly shaped before returning them.");

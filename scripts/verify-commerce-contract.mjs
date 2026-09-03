@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (file) => readFile(path.join(root, file), "utf8");
-const [checkout, client, adminStore, handlers, shippingEngine, migration, policies, outboxRecovery, shippingFoundation, stockLedger, stockWriteGuard, atomicReservation, financeState, vercelConfig] = await Promise.all([
+const [checkout, client, adminStore, handlers, shippingEngine, migration, policies, outboxRecovery, shippingFoundation, stockLedger, stockWriteGuard, atomicReservation, pricedOrders, financeState, vercelConfig] = await Promise.all([
   read("api/checkout.js"),
   read("src/main.js"),
   read("src/services/adminStore.js"),
@@ -17,6 +17,7 @@ const [checkout, client, adminStore, handlers, shippingEngine, migration, polici
   read("supabase/migrations/20260828163000_atomic_finance_stock_ledger.sql"),
   read("supabase/migrations/20260828163553_enforce_finance_stock_on_catalog_writes.sql"),
   read("supabase/migrations/20260831184251_atomic_checkout_reservation_and_one_hour_expiry.sql"),
+  read("supabase/migrations/20260903181500_reject_unpriced_order_lines.sql"),
   read("api/_lib/financeState.js"),
   read("vercel.json")
 ]);
@@ -57,9 +58,14 @@ const requirements = [
   [atomicReservation.includes("release_order_reservations"), "Expired orders must use the Finance-aware reservation release transaction."],
   [handlers.includes('expiry: { unit: "hour", duration: 1 }'), "Midtrans must use the same one-hour payment expiry."],
   [handlers.includes('"Idempotency-Key": idempotencyKey'), "Midtrans session creation must be idempotent."],
+  [handlers.includes("buildMidtransItemDetails(order)"), "Midtrans item variants and totals must be validated before payment creation."],
+  [handlers.includes("detailTotal !== Number(order.grand_total)"), "Midtrans item details must add up exactly to the server order total."],
+  [handlers.includes("item.size_label, index + 1"), "Midtrans item IDs must remain unique when one apparel product has multiple sizes."],
+  [pricedOrders.includes("ITEM_UNAVAILABLE: PRICE_NOT_SET"), "Checkout must reject zero-price order lines inside the reservation transaction."],
   [handlers.includes("reconcilePendingMidtransPayments"), "Commerce maintenance must reconcile pending provider transactions."],
   [client.includes("data-admin-payment-reconcile-form"), "Admin Orders must surface payment reconciliation and health."],
   [client.includes('nixp:public-commerce-refreshed'), "Public pages must patch live sold-out commerce state without rerendering editorial content."],
+  [client.includes('button.disabled = soldOut || unavailable'), "Live commerce refresh must not re-enable products whose price is not ready."],
   [financeState.includes("await reconcileFinanceStockToCatalog(skus);"), "Finance catalog sync must use the database stock reconciler."],
   [financeState.includes("const quantity = index === undefined ? catalogQuantity : normalizedQuantity(existing.qty);"), "Admin saves must preserve existing Finance stock quantities."],
   [checkout.includes("const maintenance = await expirePendingOrders();"), "Maintenance must finish stock releases before reconciliation."],
