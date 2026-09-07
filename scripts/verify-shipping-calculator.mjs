@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { calculatePackages, priceShippingOptions } from "../api/_lib/shippingCalculator.js";
-import { tariffCacheFallback } from "../api/_lib/nixpShippingEngine.js";
+import { shippingSnapshotCoverage, tariffCacheFallback } from "../api/_lib/nixpShippingEngine.js";
 
 const product = (id, format, title = format, extra = {}) => ({ id, sku: id.toUpperCase(), category: format === "Vinyl" || format === "CD" || format === "Cassette" ? "Records" : "Apparel", format, title, ...extra });
 
@@ -65,5 +65,13 @@ assert.equal(exactFallback.services[0].rate, 12000);
 const derivedFallback = tariffCacheFallback(staleCache, 2, 2160);
 assert.equal(derivedFallback.cacheStatus, "miss");
 assert.equal(derivedFallback.services.length, 0);
+
+const snapshotCoverage = shippingSnapshotCoverage([
+  { destination_code: "TGR10000", local_region_code: "36.03" },
+  { destination_code: "TGR10000", local_region_code: "36.71" },
+  { destination_code: "TGR10000", local_region_code: "36.74" },
+  { destination_code: "BDO10000", local_region_code: "32.73" }
+]);
+assert.deepEqual(snapshotCoverage, { destinationCount: 4, destinationCodeCount: 2 });
 
 console.log("Shipping calculator contract verified.");

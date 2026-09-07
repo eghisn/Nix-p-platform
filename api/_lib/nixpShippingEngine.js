@@ -134,16 +134,29 @@ export async function shippingDashboard() {
   };
 }
 
+export function shippingSnapshotCoverage(rows = []) {
+  const destinationIds = new Set();
+  const destinationCodes = new Set();
+  for (const row of rows) {
+    const destinationId = String(row.local_region_code || row.destination_code || "").trim();
+    const destinationCode = String(row.destination_code || "").trim();
+    if (destinationId) destinationIds.add(destinationId);
+    if (destinationCode) destinationCodes.add(destinationCode);
+  }
+  return { destinationCount: destinationIds.size, destinationCodeCount: destinationCodes.size };
+}
+
 export async function validateActiveShippingSnapshot({ sampleSize = 24 } = {}) {
   const [active, rows] = await Promise.all([
     supabaseFetch("shipping_rate_versions?select=id,name,destination_count,rate_count,verified_at,activated_at,effective_from&status=eq.active&limit=1", { service: true }),
-    fetchAllRows("active_shipping_rates?select=destination_code,weight_from_kg,weight_to_kg,service_code,total_rate,rate_version_id&order=destination_code.asc,weight_from_kg.asc,service_code.asc")
+    fetchAllRows("active_shipping_rates?select=destination_code,local_region_code,weight_from_kg,weight_to_kg,service_code,total_rate,rate_version_id&order=local_region_code.asc,destination_code.asc,weight_from_kg.asc,service_code.asc")
   ]);
   const version = active?.[0] || null;
   const groups = new Map();
   for (const row of rows || []) {
-    const key = `${row.destination_code}|${row.weight_from_kg}-${row.weight_to_kg}`;
-    const group = groups.get(key) || { key, destinationCode: row.destination_code, weightFromKg: row.weight_from_kg, weightToKg: row.weight_to_kg, services: [] };
+    const destinationId = String(row.local_region_code || row.destination_code || "").trim();
+    const key = `${destinationId}|${row.weight_from_kg}-${row.weight_to_kg}`;
+    const group = groups.get(key) || { key, destinationCode: row.destination_code, destinationId, weightFromKg: row.weight_from_kg, weightToKg: row.weight_to_kg, services: [] };
     group.services.push(row);
     groups.set(key, group);
   }
@@ -155,11 +168,12 @@ export async function validateActiveShippingSnapshot({ sampleSize = 24 } = {}) {
   const verifiedAt = version?.verified_at || version?.activated_at || null;
   const maxAgeDays = Math.max(1, Number(process.env.NIXP_SHIPPING_SNAPSHOT_MAX_AGE_DAYS || 30));
   const ageDays = verifiedAt ? Math.floor((Date.now() - new Date(verifiedAt).getTime()) / 86_400_000) : null;
+  const coverage = shippingSnapshotCoverage(rows);
   const warnings = [];
   if (!version) warnings.push("No active shipping rate version.");
   if (version && ageDays !== null && ageDays > maxAgeDays) warnings.push(`Active shipping rate snapshot is ${ageDays} days old.`);
   if (version && !verifiedAt) warnings.push("Active shipping rate snapshot has no verification timestamp.");
-  if (version && Number(version.destination_count || 0) > 0 && new Set(rows.map((row) => row.destination_code)).size < Number(version.destination_count)) warnings.push("Active shipping snapshot has fewer destinations than its recorded coverage.");
+  if (version && Number(version.destination_count || 0) > 0 && coverage.destinationCount < Number(version.destination_count)) warnings.push("Active shipping snapshot has fewer destinations than its recorded coverage.");
   if (!rows.length) warnings.push("Active shipping snapshot contains no rates.");
   const status = version && rows.length && mismatchCount === 0 && !warnings.length ? "passed" : "failed";
   const validation = {
@@ -167,7 +181,8 @@ export async function validateActiveShippingSnapshot({ sampleSize = 24 } = {}) {
     sampleSize: results.length,
     matchedCount: results.filter((result) => result.ok).length,
     mismatchCount,
-    destinationCount: new Set(rows.map((row) => row.destination_code)).size,
+    destinationCount: coverage.destinationCount,
+    destinationCodeCount: coverage.destinationCodeCount,
     rateCount: rows.length,
     activeRateVersion: version,
     ageDays,
