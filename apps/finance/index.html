@@ -1875,7 +1875,7 @@
           ${selectField("Item", "item", itemTypes, true, "Vinyl")}
           ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
           ${field("Artist", "artist", "text", "", false, "Artist name")}
-          ${field("Title", "title", "text", "", false, "Artwork / item title")}
+          ${field("Title", "title", "text", "", true, "Artwork / item title")}
           ${field("Edition", "edition", "text", "", false, "Pressing / packaging, if known")}
           ${field("Barcode", "barcode", "text", "", false, "Exact release barcode")}
           ${field("Catalog Number", "catalogNumber", "text", "", false, "Label catalog number")}
@@ -2139,6 +2139,14 @@
         event.preventDefault();
         const data = Object.fromEntries(new FormData(el.stockForm));
         const editId = data.editId;
+        const skuKey = String(data.sku || "").trim().toLowerCase();
+        const duplicate = state.inventoryStock.find(item =>
+          item.id !== editId && String(item.sku || "").trim().toLowerCase() === skuKey
+        );
+        if (duplicate) {
+          alert("This SKU already has an Inventory Stock entry. Edit the existing entry so one SKU keeps one catalog identity.");
+          return;
+        }
         const previousStock = state.inventoryStock.map(item => ({ ...item }));
         if (editId) {
           const index = state.inventoryStock.findIndex(item => item.id === editId);

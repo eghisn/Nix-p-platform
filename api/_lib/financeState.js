@@ -152,13 +152,29 @@ export async function syncFinanceInventoryToCatalog(
       const targetSelected = !enrichmentTargets.size || enrichmentTargets.has(key);
       const shouldEnrich = enrich && targetSelected && (forceEnrichment || needsFinanceEnrichment(existing, stock));
       if (!shouldEnrich) {
-        operationalUpdates.push({
-          id: existing.id,
-          price: openToOffersPrice(stock),
-          openToOffers: stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true,
-          minimumAcceptableOffer: wholeAmount(stock.minimumAcceptableOffer),
-          updatedAt: today()
-        });
+        // Fast Finance syncs intentionally skip external research, but they
+        // must still carry the stock identity entered in Finance to Admin.
+        // Previously this branch updated only price and offers, so a Draft
+        // created before its title was entered stayed "Untitled" forever.
+        const identityUpdate = mergeFinanceStockIdentity(existing, financeProduct);
+        if (hasFinanceCatalogIdentityDrift(existing, identityUpdate)) {
+          productRows.push(
+            withSyncAudit(identityUpdate, {
+              source: "Finance",
+              action: "Inventory identity synchronized to catalog",
+              sku,
+              quantity
+            })
+          );
+        } else {
+          operationalUpdates.push({
+            id: existing.id,
+            price: openToOffersPrice(stock),
+            openToOffers: stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true,
+            minimumAcceptableOffer: wholeAmount(stock.minimumAcceptableOffer),
+            updatedAt: today()
+          });
+        }
         productIdBySku.set(key, existing.id);
         continue;
       }
@@ -179,6 +195,11 @@ export async function syncFinanceInventoryToCatalog(
       productIdBySku.set(key, existing.id);
       continue;
     }
+    // An Inventory Purchase is a financial transaction. Do not manufacture a
+    // catalog draft from it until its linked Stock row has a usable identity.
+    // This keeps unfinished purchases out of Admin instead of creating a fake
+    // product title that later needs to be repaired.
+    if (!canCreateFinanceCatalogDraft(stock)) continue;
     const product = draftProductFromFinanceStock(stock, quantity);
     const targetSelected = !enrichmentTargets.size || enrichmentTargets.has(key);
     const enrichedProduct = enrich && targetSelected
@@ -796,7 +817,7 @@ function withSyncAudit(row, { source, action, sku, quantity } = {}) {
   };
 }
 
-function productRowFromFinanceStock(row, stock, quantity) {
+export function productRowFromFinanceStock(row, stock, quantity) {
   const item = String(stock.item || row.format || "Vinyl").trim();
   const category = RECORD_FORMATS.has(item)
     ? "Records"
@@ -809,6 +830,9 @@ function productRowFromFinanceStock(row, stock, quantity) {
   const submittedTitle = String(stock.title || "").trim();
   const financeTitle = isPlaceholderInventoryTitle(submittedTitle) ? "" : submittedTitle;
   const financeArtist = String(stock.artist || "").trim();
+  const financeEdition = stockIdentityValue(stock, "edition", row.raw?.edition);
+  const financeBarcode = stockIdentityValue(stock, "barcode", row.raw?.barcode);
+  const financeCatalogNumber = stockIdentityValue(stock, "catalogNumber", row.raw?.catalogNumber);
   const financePrice = Number(stock.sellingPrice || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
   const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer);
@@ -825,7 +849,7 @@ function productRowFromFinanceStock(row, stock, quantity) {
       format: category === "Records" ? item : row.format,
       apparelType: category === "Apparel" ? item : row.apparel_type,
       apparel_type: category === "Apparel" ? item : row.apparel_type,
-      edition: stock.edition || row.raw?.edition
+      edition: financeEdition
     }, row.raw?.shipping)
   };
   // A SKU can change category while it is being corrected in Finance. Remove
@@ -887,18 +911,94 @@ function productRowFromFinanceStock(row, stock, quantity) {
       price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(raw.price || row.price || 0),
       open_to_offers: openToOffers,
       minimumAcceptableOffer: openToOffers ? minimumAcceptableOffer : null,
-      edition: adminOwnedValue(raw, "edition", stock.edition),
-      barcode: adminOwnedValue(raw, "barcode", stock.barcode),
-      catalogNumber: adminOwnedValue(raw, "catalogNumber", stock.catalogNumber),
+      edition: financeEdition,
+      barcode: financeBarcode,
+      catalogNumber: financeCatalogNumber,
       publishStatus,
       visibility
     }
   });
 }
 
-function adminOwnedValue(raw, key, seedValue) {
-  if (Object.prototype.hasOwnProperty.call(raw || {}, key)) return String(raw[key] ?? "").trim();
-  return String(seedValue || "").trim();
+function stockIdentityValue(stock, key, fallback = "") {
+  if (Object.prototype.hasOwnProperty.call(stock || {}, key)) return String(stock[key] ?? "").trim();
+  return String(fallback ?? "").trim();
+}
+
+function removeFinanceDraftDetail(details = [], title = "") {
+  if (!String(title || "").trim()) return Array.isArray(details) ? details : [];
+  return (Array.isArray(details) ? details : []).filter(
+    (detail) => !/^Created from finance inventory\. Complete this draft in NIXP Admin before publishing\.$/i.test(String(detail || "").trim())
+  );
+}
+
+export function mergeFinanceStockIdentity(existing = {}, financeProduct = {}) {
+  const financeRaw = financeProduct.raw || {};
+  const nextRaw = {
+    ...(existing.raw || {}),
+    financeStockId: financeRaw.financeStockId || existing.raw?.financeStockId || null,
+    shipping: financeRaw.shipping || existing.raw?.shipping || null,
+    title: financeProduct.title,
+    artist: financeProduct.artist,
+    category: financeProduct.category,
+    format: financeProduct.format,
+    displayFormat: financeProduct.display_format,
+    condition: financeProduct.condition,
+    price: financeProduct.price,
+    open_to_offers: financeProduct.open_to_offers === true,
+    minimumAcceptableOffer: financeProduct.minimum_acceptable_offer,
+    edition: String(financeRaw.edition || "").trim(),
+    barcode: String(financeRaw.barcode || "").trim(),
+    catalogNumber: String(financeRaw.catalogNumber || "").trim()
+  };
+  return productRowFromExisting(existing, {
+    title: financeProduct.title,
+    artist: financeProduct.artist,
+    category: financeProduct.category,
+    format: financeProduct.format,
+    display_format: financeProduct.display_format,
+    apparel_type: financeProduct.apparel_type,
+    condition: financeProduct.condition,
+    price: financeProduct.price,
+    open_to_offers: financeProduct.open_to_offers === true,
+    minimum_acceptable_offer: financeProduct.minimum_acceptable_offer,
+    details: removeFinanceDraftDetail(existing.details, financeProduct.title),
+    updated_at: financeProduct.updated_at,
+    raw: nextRaw
+  });
+}
+
+function financeCatalogIdentitySignature(row = {}) {
+  const raw = row.raw || {};
+  return JSON.stringify({
+    title: String(row.title || "").trim(),
+    artist: String(row.artist || "").trim(),
+    category: String(row.category || "").trim(),
+    format: String(row.format || "").trim(),
+    displayFormat: String(row.display_format || "").trim(),
+    apparelType: String(row.apparel_type || "").trim(),
+    condition: String(row.condition || "").trim(),
+    price: Number(row.price || 0),
+    openToOffers: row.open_to_offers === true,
+    minimumAcceptableOffer: wholeAmount(row.minimum_acceptable_offer),
+    edition: String(raw.edition || "").trim(),
+    barcode: String(raw.barcode || "").trim(),
+    catalogNumber: String(raw.catalogNumber || "").trim(),
+    details: Array.isArray(row.details) ? row.details : [],
+    shipping: raw.shipping || null
+  });
+}
+
+export function hasFinanceCatalogIdentityDrift(existing = {}, next = {}) {
+  return financeCatalogIdentitySignature(existing) !== financeCatalogIdentitySignature(next);
+}
+
+export function canCreateFinanceCatalogDraft(stock = {}) {
+  const item = String(stock.item || "").trim();
+  const title = String(stock.title || "").trim();
+  const artist = String(stock.artist || "").trim();
+  if (!String(stock.sku || "").trim() || !title || isPlaceholderInventoryTitle(title)) return false;
+  return !RECORD_FORMATS.has(item) || Boolean(artist);
 }
 
 function openToOffersPrice(stock = {}) {
