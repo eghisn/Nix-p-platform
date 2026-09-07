@@ -243,7 +243,12 @@ export async function syncFinanceInventoryToCatalog(
       `products?id=eq.${encodeURIComponent(row.id)}&edit_revision=eq.${revision}`,
       {
         method: "PATCH",
-        body: row,
+        body: {
+          ...row,
+          edit_revision: revision + 1,
+          editorial_updated_at: new Date().toISOString(),
+          editorial_updated_by: "finance-stock"
+        },
         prefer: "return=representation"
       }
     );

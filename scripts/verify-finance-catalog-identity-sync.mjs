@@ -55,4 +55,8 @@ const financeUi = await readFile(new URL("../apps/finance/index.html", import.me
 assert.match(financeUi, /field\("Title", "title", "text", "", true, "Artwork \/ item title"\)/);
 assert.match(financeUi, /one SKU keeps one catalog identity/);
 
+const financeSyncSource = await readFile(new URL("../api/_lib/financeState.js", import.meta.url), "utf8");
+assert.match(financeSyncSource, /edit_revision: revision \+ 1/);
+assert.match(financeSyncSource, /editorial_updated_by: "finance-stock"/);
+
 console.log("Finance catalog identity synchronization contract passed.");
