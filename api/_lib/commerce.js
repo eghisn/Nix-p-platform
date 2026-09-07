@@ -67,10 +67,16 @@ export function normalizeShippingAddress(value) {
   };
 }
 
-export function midtransBaseUrl() {
+export function midtransSnapBaseUrl() {
   return String(process.env.MIDTRANS_ENV || "sandbox").toLowerCase() === "production"
     ? "https://app.midtrans.com"
     : "https://app.sandbox.midtrans.com";
+}
+
+export function midtransApiBaseUrl() {
+  return String(process.env.MIDTRANS_ENV || "sandbox").toLowerCase() === "production"
+    ? "https://api.midtrans.com"
+    : "https://api.sandbox.midtrans.com";
 }
 
 export function isMidtransConfigured() {

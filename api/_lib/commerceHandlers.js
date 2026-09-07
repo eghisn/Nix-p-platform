@@ -1,7 +1,7 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { waitUntil } from "@vercel/functions";
 import { json, requireWorkspace } from "./auth.js";
-import { consumeCommerceRateLimit, getOrderRecord, isMidtransConfigured, midtransBaseUrl, midtransConfiguration, requestClientAddress } from "./commerce.js";
+import { consumeCommerceRateLimit, getOrderRecord, isMidtransConfigured, midtransApiBaseUrl, midtransConfiguration, midtransSnapBaseUrl, requestClientAddress } from "./commerce.js";
 import {
   sendCustomerCancellationNotification,
   sendCustomerPaymentConfirmation,
@@ -75,7 +75,7 @@ export async function createMidtransPaymentSession(orderId) {
       idempotencyKey,
       requestStartedAt: new Date().toISOString()
     });
-    const response = await fetch(`${midtransBaseUrl()}/snap/v1/transactions`, {
+    const response = await fetch(`${midtransSnapBaseUrl()}/snap/v1/transactions`, {
       method: "POST",
       headers: {
         authorization: `Basic ${Buffer.from(`${process.env.MIDTRANS_SERVER_KEY}:`).toString("base64")}`,
@@ -353,7 +353,7 @@ function buildMidtransItemDetails(order) {
 
 function validMidtransRedirectUrl(value) {
   try {
-    return new URL(String(value || "")).origin === new URL(midtransBaseUrl()).origin;
+    return new URL(String(value || "")).origin === new URL(midtransSnapBaseUrl()).origin;
   } catch {
     return false;
   }
@@ -441,7 +441,7 @@ function isMidtransDashboardNotificationTest(body) {
 }
 
 async function fetchMidtransStatus(orderId, { allowMissing = false } = {}) {
-  const response = await fetch(`${midtransBaseUrl()}/v2/${encodeURIComponent(orderId)}/status`, {
+  const response = await fetch(`${midtransApiBaseUrl()}/v2/${encodeURIComponent(orderId)}/status`, {
     headers: { authorization: `Basic ${Buffer.from(`${process.env.MIDTRANS_SERVER_KEY}:`).toString("base64")}`, accept: "application/json" },
     signal: AbortSignal.timeout(4_000)
   });
