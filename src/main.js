@@ -4280,6 +4280,14 @@ function publicDocumentHasServerMarkup() {
     Boolean(document.querySelector("#app")?.children.length);
 }
 
+function publicDocumentNeedsClientRender() {
+  // The static Records page cannot represent a query-specific artist letter.
+  // Render only this explicit view so default public pages retain their stable
+  // server markup and do not transition between catalogue snapshots on refresh.
+  return normalizePath(location.pathname) === "/records" &&
+    Boolean(validRecordArtistInitial(new URLSearchParams(location.search).get("letter")));
+}
+
 async function hydratePublicServerMarkup() {
   // Static/public server markup already represents the deployed editorial
   // revision. Replacing it with a second client render resets the home slider
@@ -4293,7 +4301,7 @@ async function hydratePublicServerMarkup() {
   setupAdminOrdersLiveRefresh(normalizePath(location.pathname));
 }
 
-const shouldHydratePublicMarkup = publicDocumentHasServerMarkup();
+const shouldHydratePublicMarkup = publicDocumentHasServerMarkup() && !publicDocumentNeedsClientRender();
 if (shouldHydratePublicMarkup) syncPublicCartCount();
 initializeAnalytics();
 adminStore
