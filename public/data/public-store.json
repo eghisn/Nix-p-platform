@@ -34913,7 +34913,7 @@
       "images": [
         "/public/assets/catalog-archive/nxp-2026-vnl-0024-cover.webp"
       ],
-      "barcode": "",
+      "barcode": "8 4356317917 8",
       "details": [
         "SKU: NXP-2026-VNL-0024",
         "Format: Vinyl",
@@ -34997,6 +34997,7 @@
       "apparelType": "",
       "description": "Pharmakon's 2024 Maggot Mass reshapes death industrial into a more structured and volatile album, with Margaret Chardiet turning electronic abrasion into bodily tension.",
       "reviewQuote": "most significant changes",
+      "editRevision": 3,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/9c4a70fc-8984-4585-97d2-ef672b650034",
@@ -35270,6 +35271,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Sacred Bones / Metal Trenches",
       "metadataSourceUrl": "https://musicbrainz.org/release/9c4a70fc-8984-4585-97d2-ef672b650034",
+      "editorialUpdatedAt": "2026-09-08T13:23:53.814+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-27",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "9c4a70fc-8984-4585-97d2-ef672b650034",
@@ -35506,16 +35509,13 @@
       "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 2,
-      "editorialUpdatedAt": "2026-09-07T16:32:27.745+00:00",
-      "editorialUpdatedBy": "finance-stock",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-24",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
