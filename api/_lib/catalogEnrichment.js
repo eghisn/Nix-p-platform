@@ -1797,7 +1797,19 @@ async function discoverDiscogsRelease(stock) {
     return { sourceUnavailable: true, sourceType: "discogs" };
   }
   const release = await jsonObject(detailResponse);
-  if (!release?.id) return null;
+  if (!release?.id) {
+    // The exact search result contains the physical pressing's identifier,
+    // label, format, artwork URL, and Discogs URL. If Discogs' secondary
+    // detail endpoint returns an empty successful response, retain that
+    // verified evidence instead of discarding a 100-confidence release.
+    console.warn("Catalog research Discogs detail response was empty", {
+      sku: String(stock.sku || ""),
+      releaseId: assessment.release.id || null,
+      status: Number(detailResponse.status || 0),
+      usingExactSearchFallback: true
+    });
+    return normalizeDiscogsSearchRelease(assessment.release, stock, assessment.matchConfidence);
+  }
   return normalizeDiscogsRelease(release, stock, assessment.matchConfidence);
 }
 
@@ -2089,6 +2101,49 @@ async function discoverMusicBrainzRelease(stock) {
     sourceUrl: releaseGroup?.officialUrl || `${MUSICBRAINZ_ORIGIN}/release/${release.id}`,
     musicBrainzReleaseId: release.id,
     catalogFormatFallback
+  };
+}
+
+export function normalizeDiscogsSearchRelease(release, stock, matchConfidence = 0) {
+  const label = unique(Array.isArray(release.label) ? release.label : [release.label]).join(" / ");
+  const catalogNumber = String(release.catno || "").trim();
+  const barcode = unique(Array.isArray(release.barcode) ? release.barcode : [release.barcode])
+    .map((value) => String(value || "").replace(/\D/g, ""))
+    .filter(Boolean)
+    .join(" / ");
+  const format = unique(Array.isArray(release.format) ? release.format : [release.format]).join(", ");
+  const styles = unique([...(release.style || []), ...(release.genre || [])]);
+  const cover = String(release.cover_image || release.thumb || "").trim();
+  const sourceTitle = String(release.title || "").trim();
+  const artist = sourceTitle.includes(" - ")
+    ? sourceTitle.split(" - ").slice(0, -1).join(" - ").trim() || stock.artist
+    : stock.artist;
+  const title = discogsReleaseTitle(sourceTitle, stock.artist) || String(stock.title || "").trim();
+  const year = Number(release.year || 0);
+  const sourceUrl = String(release.uri || "").startsWith("http")
+    ? release.uri
+    : `https://www.discogs.com${release.uri || `/release/${release.id}`}`;
+  return {
+    title,
+    artist,
+    year,
+    label,
+    edition: format,
+    barcode,
+    catalogNumber,
+    cover,
+    productPhoto: "",
+    imageCredits: cover ? [{ image: cover, credit: "Discogs physical-release artwork", url: sourceUrl }] : [],
+    description: `${artist}'s ${year || ""} ${title} is documented by Discogs as ${format || stock.item || "a physical release"}${label ? ` on ${label}` : ""}.`.replace(/\s+/g, " ").trim(),
+    descriptionSource: "Discogs release data",
+    reviewQuote: "",
+    reviewSource: "",
+    reviewUrl: "",
+    tags: styles,
+    sourceUrl,
+    sourceType: "discogs",
+    matchConfidence,
+    researchSources: [{ source: "Discogs", url: sourceUrl, confidence: matchConfidence }]
   };
 }
 

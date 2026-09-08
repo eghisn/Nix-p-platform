@@ -9,7 +9,8 @@ import {
   composeDiscogsEditorial,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
-  isEditorialDescriptionQuality
+  isEditorialDescriptionQuality,
+  normalizeDiscogsSearchRelease
 } from "../api/_lib/catalogEnrichment.js";
 import {
   applyCatalogPublicationSafety,
@@ -174,6 +175,18 @@ const shortenedTitleWithExactCatalog = assessDiscogsReleaseCandidates([
   catalogNumber: "rfc097"
 });
 assert.equal(shortenedTitleWithExactCatalog.release.id, 5986176, "An exact Finance catalog number must match a source title that includes a B-side.");
+const discogsSearchFallback = normalizeDiscogsSearchRelease({
+  ...shortenedTitleWithExactCatalog.release,
+  label: ["Run For Cover Records"],
+  cover_image: "https://example.test/deep-end.jpg",
+  uri: "/release/5986176-Creative-Adult-Deep-End-bw-Momentary-Lapse",
+  year: "2014"
+}, { artist: "Creative Adult", title: "Deep End", item: "Vinyl" }, 100);
+assert.equal(discogsSearchFallback.label, "Run For Cover Records");
+assert.equal(discogsSearchFallback.catalogNumber, "RFC097");
+assert.equal(discogsSearchFallback.cover, "https://example.test/deep-end.jpg");
+assert.equal(discogsSearchFallback.matchConfidence, 100);
+assert.match(discogsSearchFallback.sourceUrl, /5986176/);
 const discogsOnlyEditorial = composeDiscogsEditorial({
   description: "Exact physical-release metadata.",
   descriptionSource: "Discogs release data",
