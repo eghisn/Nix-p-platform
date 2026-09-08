@@ -1744,6 +1744,7 @@ async function discoverDiscogsRelease(stock) {
     }
   ].filter(Boolean);
   const releases = [];
+  const searchSummary = [];
   let sourceUnavailable = false;
   for (const query of queryVariants) {
     const response = await fetchWithTimeout(`https://api.discogs.com/database/search?${new URLSearchParams(query.params).toString()}`, {
@@ -1757,13 +1758,30 @@ async function discoverDiscogsRelease(stock) {
         query: query.kind
       });
       sourceUnavailable = true;
+      searchSummary.push({ kind: query.kind, status: Number(response?.status || 0), results: 0 });
       continue;
     }
     const payload = await jsonObject(response);
-    releases.push(...(payload?.results || []));
+    const results = Array.isArray(payload?.results) ? payload.results : [];
+    releases.push(...results);
+    searchSummary.push({ kind: query.kind, status: Number(response.status), results: results.length });
   }
   if (!releases.length) return sourceUnavailable ? { sourceUnavailable: true, sourceType: "discogs" } : null;
   const assessment = assessDiscogsReleaseCandidates(releases, { stock, format, barcode, catalogNumber });
+  // This records only source health and match evidence. It makes a future
+  // rejected exact release diagnosable without logging credentials or product
+  // content from the external API.
+  console.info("Catalog research Discogs match", {
+    sku: String(stock.sku || ""),
+    tokenConfigured: Boolean(String(process.env.DISCOGS_TOKEN || "").trim()),
+    hasBarcode: Boolean(barcode),
+    hasCatalogNumber: Boolean(catalogNumber),
+    searchSummary,
+    candidates: releases.length,
+    matchedReleaseId: assessment.release?.id || null,
+    matchConfidence: assessment.matchConfidence || 0,
+    needsPressingIdentifier: assessment.needsPressingIdentifier === true
+  });
   if (assessment.needsPressingIdentifier) return { needsPressingIdentifier: true };
   if (!assessment.release?.resource_url) return null;
 
