@@ -181,6 +181,14 @@ export async function syncFinanceInventoryToCatalog(
       const enrichedProduct = shouldEnrich
           ? await enrichFinanceCatalogProduct(financeProduct, stock, { catalogArtists: catalogArtistRows })
           : financeProduct;
+      console.info("Catalog research enrichment prepared", {
+        sku,
+        shouldEnrich,
+        status: String(enrichedProduct?.raw?.enrichmentStatus || ""),
+        hasCover: Boolean(String(enrichedProduct?.image || "").trim()),
+        hasLabel: Boolean(String(enrichedProduct?.label || "").trim()),
+        descriptionLength: String(enrichedProduct?.description || "").trim().length
+      });
       const resolvedProduct = publishAfterResearch && targetSelected
         ? allowResearchPublication(enrichedProduct)
         : enrichedProduct;
@@ -252,6 +260,14 @@ export async function syncFinanceInventoryToCatalog(
         prefer: "return=representation"
       }
     );
+    console.info("Catalog research product write", {
+      sku: row.sku,
+      previousRevision: revision,
+      saved: Boolean(saved?.[0]),
+      status: String(saved?.[0]?.raw?.enrichmentStatus || row.raw?.enrichmentStatus || ""),
+      hasCover: Boolean(String(saved?.[0]?.image || row.image || "").trim()),
+      hasLabel: Boolean(String(saved?.[0]?.label || row.label || "").trim())
+    });
     if (!saved?.[0]) {
       const error = new Error("Admin edited this product while catalog research was running. Research will retry without overwriting the manual edit.");
       error.code = "admin-edit-conflict";
