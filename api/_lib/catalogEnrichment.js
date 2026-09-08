@@ -1783,9 +1783,10 @@ async function discoverDiscogsRelease(stock) {
     needsPressingIdentifier: assessment.needsPressingIdentifier === true
   });
   if (assessment.needsPressingIdentifier) return { needsPressingIdentifier: true };
-  if (!assessment.release?.resource_url) return null;
+  const detailUrl = discogsReleaseDetailUrl(assessment.release);
+  if (!detailUrl) return null;
 
-  const detailResponse = await fetchWithTimeout(assessment.release.resource_url, {
+  const detailResponse = await fetchWithTimeout(detailUrl, {
     headers: discogsHeaders()
   }, 7000, "discogs");
   if (!detailResponse || !detailResponse.ok || isExternalSourceUnavailable(detailResponse)) {
@@ -1811,6 +1812,17 @@ async function discoverDiscogsRelease(stock) {
     return normalizeDiscogsSearchRelease(assessment.release, stock, assessment.matchConfidence);
   }
   return normalizeDiscogsRelease(release, stock, assessment.matchConfidence);
+}
+
+// Discogs search normally includes resource_url, but some successful result
+// payloads only contain the release id. The id identifies the same immutable
+// release resource, so derive its documented API URL instead of discarding an
+// otherwise exact catalog-number or barcode match.
+export function discogsReleaseDetailUrl(release = {}) {
+  const resourceUrl = String(release.resource_url || "").trim();
+  if (/^https:\/\/api\.discogs\.com\/releases\/\d+\/?$/i.test(resourceUrl)) return resourceUrl;
+  const releaseId = String(release.id || "").trim();
+  return /^\d+$/.test(releaseId) ? `https://api.discogs.com/releases/${releaseId}` : "";
 }
 
 export function assessDiscogsReleaseCandidates(releases = [], { stock = {}, format = "", barcode = "", catalogNumber = "" } = {}) {

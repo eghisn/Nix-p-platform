@@ -7,6 +7,7 @@ import {
   assessDiscogsReleaseCandidates,
   applyCuratedEditorialOverride,
   composeDiscogsEditorial,
+  discogsReleaseDetailUrl,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
   isEditorialDescriptionQuality,
@@ -175,6 +176,15 @@ const shortenedTitleWithExactCatalog = assessDiscogsReleaseCandidates([
   catalogNumber: "rfc097"
 });
 assert.equal(shortenedTitleWithExactCatalog.release.id, 5986176, "An exact Finance catalog number must match a source title that includes a B-side.");
+assert.equal(
+  discogsReleaseDetailUrl({ id: 5986176 }),
+  "https://api.discogs.com/releases/5986176",
+  "An exact Discogs search result without resource_url must still fetch its immutable release detail."
+);
+assert.equal(
+  discogsReleaseDetailUrl({ id: 5986176, resource_url: "https://api.discogs.com/releases/5986176" }),
+  "https://api.discogs.com/releases/5986176"
+);
 const discogsSearchFallback = normalizeDiscogsSearchRelease({
   ...shortenedTitleWithExactCatalog.release,
   label: ["Run For Cover Records"],
