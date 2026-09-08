@@ -1,5 +1,22 @@
 import { productGrid } from "./layout.js";
 
+export const recordArtistInitials = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+export function recordArtistInitial(value) {
+  const normalized = String(value ?? "")
+    .trim()
+    .normalize("NFKD")
+    .replace(/\p{Mark}/gu, "")
+    .toUpperCase();
+  const initial = Array.from(normalized)[0] || "";
+  return recordArtistInitials.includes(initial) ? initial : "";
+}
+
+export function validRecordArtistInitial(value) {
+  const initial = String(value ?? "").trim().toUpperCase();
+  return recordArtistInitials.includes(initial) ? initial : "";
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -13,6 +30,7 @@ export function recordsPageMarkup({
   records,
   recordsFilter = "All",
   recordsSort = "artist-asc",
+  artistInitialFilter = "",
   labelFilter = "",
   artistTagFilter = "",
   availableArtistNames
@@ -39,16 +57,31 @@ export function recordsPageMarkup({
           : ""
       }
       <div class="records-toolbar">
-        <div class="toolbar" role="group" aria-label="Record format filters">
-          ${filters
-            .map(
-              (filter) => `
-                <button class="chip ${recordsFilter === filter ? "is-active" : ""}" type="button" data-record-filter="${filter}">
-                  ${filter}
-                </button>
-              `
-            )
-            .join("")}
+        <div class="records-filter-groups">
+          <div class="toolbar" role="group" aria-label="Record format filters">
+            ${filters
+              .map(
+                (filter) => `
+                  <button class="chip ${recordsFilter === filter ? "is-active" : ""}" type="button" data-record-filter="${filter}">
+                    ${filter}
+                  </button>
+                `
+              )
+              .join("")}
+          </div>
+          <div class="artist-alphabet-filter" role="group" aria-label="Filter records by artist initial">
+            <span class="artist-alphabet-filter-label">Artist</span>
+            <div class="artist-alphabet-filter-options">
+              <button class="chip artist-alphabet-chip ${!artistInitialFilter ? "is-active" : ""}" type="button" data-record-letter="" aria-pressed="${!artistInitialFilter}">All</button>
+              ${recordArtistInitials
+                .map(
+                  (letter) => `
+                    <button class="chip artist-alphabet-chip ${artistInitialFilter === letter ? "is-active" : ""}" type="button" data-record-letter="${letter}" aria-pressed="${artistInitialFilter === letter}">${letter}</button>
+                  `
+                )
+                .join("")}
+            </div>
+          </div>
         </div>
         <label class="records-sort">
           <span>Sort</span>

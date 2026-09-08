@@ -9,6 +9,7 @@ import { shippingReturnsContent } from "./data/shippingReturns.js";
 import { labelEntries, labelSlug } from "./data/labelCatalog.js";
 import { isRecentReleaseProduct, recentReleaseSortComparator } from "./data/homeCollections.js";
 import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "./data/recordMetadata.js";
+import { recordArtistInitial, validRecordArtistInitial } from "./components/recordsPage.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { checkoutMarketingAttribution, initializeAnalytics, trackAnalytics, trackCurrentPageView } from "./services/analytics.js";
@@ -519,17 +520,22 @@ function hasHomeSlideSort(product) {
 
 async function recordsPage() {
   const { recordsPageMarkup } = await import("./components/recordsPage.js");
-  const labelFilter = new URLSearchParams(location.search).get("label") || "";
-  const artistTagFilter = new URLSearchParams(location.search).get("artistTag") || "";
+  const searchParams = new URLSearchParams(location.search);
+  const labelFilter = searchParams.get("label") || "";
+  const artistTagFilter = searchParams.get("artistTag") || "";
+  const artistInitialFilter = validRecordArtistInitial(searchParams.get("letter"));
   const availableArtistNames = inventoryArtistNames(await catalogService.listProducts());
-  const records = (await catalogService.listRecords(state.recordsFilter, labelFilter)).filter((product) =>
-    artistTagFilter ? productRelatedArtists(product).some((artist) => artist.toLowerCase() === artistTagFilter.toLowerCase()) : true
-  );
+  const records = (await catalogService.listRecords(state.recordsFilter, labelFilter))
+    .filter((product) =>
+      artistTagFilter ? productRelatedArtists(product).some((artist) => artist.toLowerCase() === artistTagFilter.toLowerCase()) : true
+    )
+    .filter((product) => !artistInitialFilter || recordArtistInitial(product.artist) === artistInitialFilter);
   records.sort(recordSortComparator(state.recordsSort));
   return recordsPageMarkup({
     records,
     recordsFilter: state.recordsFilter,
     recordsSort: state.recordsSort,
+    artistInitialFilter,
     labelFilter,
     artistTagFilter,
     availableArtistNames
@@ -2938,6 +2944,16 @@ function bindEvents() {
     button.addEventListener("click", () => {
       state.recordsFilter = button.dataset.recordFilter;
       render({ preserveScroll: true });
+    });
+  });
+
+  document.querySelectorAll("[data-record-letter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const artistInitialFilter = validRecordArtistInitial(button.dataset.recordLetter);
+      const url = new URL(location.href);
+      if (artistInitialFilter) url.searchParams.set("letter", artistInitialFilter);
+      else url.searchParams.delete("letter");
+      navigateInternal(`${url.pathname}${url.search}${url.hash}`, { preserveScroll: true });
     });
   });
 
