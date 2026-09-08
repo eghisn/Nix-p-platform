@@ -1723,25 +1723,33 @@ async function discoverDiscogsRelease(stock) {
   const catalogNumber = normalizedText(stock.catalogNumber);
   const baseParams = { type: "release", per_page: "20", format };
   const queryVariants = [
-    barcode ? { ...baseParams, barcode } : null,
-    catalogNumber ? { ...baseParams, catno: String(stock.catalogNumber || "").trim() } : null,
+    barcode ? { kind: "barcode", params: { ...baseParams, barcode } } : null,
+    catalogNumber ? { kind: "catalog-number", params: { ...baseParams, catno: String(stock.catalogNumber || "").trim() } } : null,
     {
-      ...baseParams,
-      artist: String(stock.artist || "").trim(),
-      release_title: String(stock.title || "").trim()
+      kind: "artist-title",
+      params: {
+        ...baseParams,
+        artist: String(stock.artist || "").trim(),
+        release_title: String(stock.title || "").trim()
+      }
     }
   ].filter(Boolean);
   const releases = [];
   let sourceUnavailable = false;
   for (const query of queryVariants) {
-    const response = await fetchWithTimeout(`https://api.discogs.com/database/search?${new URLSearchParams(query).toString()}`, {
+    const response = await fetchWithTimeout(`https://api.discogs.com/database/search?${new URLSearchParams(query.params).toString()}`, {
       headers: { accept: "application/json", "user-agent": USER_AGENT }
     }, 7000, "discogs");
-    if (!response || isExternalSourceUnavailable(response)) {
+    if (!response || !response.ok || isExternalSourceUnavailable(response)) {
+      console.warn("Catalog research source unavailable", {
+        source: "discogs-search",
+        status: Number(response?.status || 0),
+        sku: String(stock.sku || ""),
+        query: query.kind
+      });
       sourceUnavailable = true;
       continue;
     }
-    if (!response.ok) continue;
     const payload = await jsonObject(response);
     releases.push(...(payload?.results || []));
   }
@@ -1753,8 +1761,14 @@ async function discoverDiscogsRelease(stock) {
   const detailResponse = await fetchWithTimeout(assessment.release.resource_url, {
     headers: { accept: "application/json", "user-agent": USER_AGENT }
   }, 7000, "discogs");
-  if (!detailResponse || isExternalSourceUnavailable(detailResponse)) return { sourceUnavailable: true, sourceType: "discogs" };
-  if (!detailResponse?.ok) return null;
+  if (!detailResponse || !detailResponse.ok || isExternalSourceUnavailable(detailResponse)) {
+    console.warn("Catalog research source unavailable", {
+      source: "discogs-release",
+      status: Number(detailResponse?.status || 0),
+      sku: String(stock.sku || "")
+    });
+    return { sourceUnavailable: true, sourceType: "discogs" };
+  }
   const release = await jsonObject(detailResponse);
   if (!release?.id) return null;
   return normalizeDiscogsRelease(release, stock, assessment.matchConfidence);
@@ -1957,7 +1971,15 @@ async function discoverMusicBrainzRelease(stock) {
     const response = await musicBrainzFetch(
       `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=${index === 0 && catalogNumber ? 50 : 25}&inc=labels+artist-credits+media+release-groups`
     );
-    if (!response?.ok) continue;
+    if (!response?.ok) {
+      console.warn("Catalog research source unavailable", {
+        source: "musicbrainz-release",
+        status: Number(response?.status || 0),
+        sku: String(stock.sku || ""),
+        query: index === 0 && catalogNumber ? "catalog-number" : "artist-title"
+      });
+      continue;
+    }
     const payload = await jsonObject(response);
     const releases = Array.isArray(payload.releases) ? payload.releases : [];
     const candidateAssessment = assessMusicBrainzReleaseCandidates(releases, { stock, expectedTitle, format, barcode, catalogNumber });
