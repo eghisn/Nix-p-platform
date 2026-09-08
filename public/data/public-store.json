@@ -52183,13 +52183,13 @@
         "/public/covers/nxp-2026-vnl-0008-arca-.jpg",
         "/public/mockups/nxp-2026-vnl-0008-arca-and-and-and-and-and-vinyl.jpg"
       ],
-      "barcode": "",
+      "barcode": "7 20524 67932 1",
       "details": [
         "SKU: NXP-2026-VNL-0008",
         "Format: Vinyl 12\"",
         "Condition: New-Sealed"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Single Sided, Etched, Mixtape, Reissue, Remastered",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0008/cover.jpg",
@@ -52266,6 +52266,7 @@
       "apparelType": "",
       "description": "Arca's 2013 &&&&& is a continuous twenty-five-minute mixtape that mutates grime, trap, glitch and dub into a slippery, multi-layered vision of electronic music.",
       "reviewQuote": "unfathomably skillful and multi-layered",
+      "editRevision": 2,
       "imageCredits": [
         {
           "url": "https://arca1000000.bandcamp.com/",
@@ -52516,7 +52517,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "PAN 100 LP",
       "displayFormat": "Vinyl",
       "homeSlideSort": 38,
       "publishStatus": "Published",
@@ -52540,6 +52541,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Pitchfork / PAN",
       "metadataSourceUrl": "https://musicbrainz.org/release/01d89511-9676-4c9f-a0fb-15e8bab299c3",
+      "editorialUpdatedAt": "2026-09-08T12:50:47.128+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "01d89511-9676-4c9f-a0fb-15e8bab299c3",
@@ -52773,18 +52776,16 @@
         "sourceUrl": "https://musicbrainz.org/release/01d89511-9676-4c9f-a0fb-15e8bab299c3",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
