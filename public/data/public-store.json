@@ -63031,13 +63031,13 @@
         "/public/covers/nxp-2026-vnl-0001-squarepusher-kammerkonzert.jpg",
         "/public/mockups/nxp-2026-vnl-0001-squarepusher-kammerkonzert-vinyl.jpg"
       ],
-      "barcode": "",
+      "barcode": "5056818806070",
       "details": [
         "SKU: NXP-2026-VNL-0001",
         "Format: Vinyl 12\"",
         "Condition: New-Sealed"
       ],
-      "edition": "",
+      "edition": "2 x Vinyl, LP, Album",
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
@@ -63113,6 +63113,7 @@
       "apparelType": "",
       "description": "Squarepusher's 2026 Kammerkonzert places Thomas Jenkinson's drum programming and bass imagination inside a virtual chamber ensemble shaped by jazz and contemporary composition.",
       "reviewQuote": "flagrant showcase for his ear and skill",
+      "editRevision": 2,
       "imageCredits": [
         {
           "url": "https://squarepusher.bandcamp.com/",
@@ -63359,7 +63360,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "WARPLP417",
       "displayFormat": "Vinyl",
       "homeSlideSort": 23,
       "publishStatus": "Published",
@@ -63380,6 +63381,8 @@
       "sleeveCondition": "",
       "enrichmentStatus": "complete",
       "descriptionSource": "The Quietus",
+      "editorialUpdatedAt": "2026-09-08T13:10:39.274+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "manualRelatedArtists": [],
       "enrichmentAttemptedAt": "2026-08-18T16:58:25.547Z",
       "enrichmentFingerprint": "squarepusher|kammerkonzert|vinyl||",
@@ -63611,17 +63614,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
