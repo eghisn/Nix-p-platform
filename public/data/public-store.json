@@ -10014,12 +10014,14 @@
         "Overtone Singing",
         "Folk",
         "Electronic",
-        "Folk, World, & Country"
+        "Folk",
+        "World",
+        "& Country"
       ],
       "year": 2020,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0066/cover.jpg",
-      "label": "iDEAL Recordings / Dubplates & Mastering / Ideologic Organ / Figure 8 Recording, Brooklyn, NYC, NY / Avast! Recording Co. / Kaaitheater",
+      "label": "iDEAL Recordings",
       "price": 728750,
       "sizes": [],
       "stock": {
@@ -10038,7 +10040,11 @@
         "SKU: NXP-2026-VNL-0066",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album, Limited Edition, Violet",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Limited Edition",
+        "Violet",
         "Catalog number: iDEAL198",
         "Barcode: 1983 / 198"
       ],
@@ -10085,6 +10091,7 @@
       "description": "Senyawa & Stephen O'Malley's 2020 senyawa stephen o malley bima sakti is documented by Discogs as Vinyl, LP, Album, Limited Edition on iDEAL Recordings / Dubplates & Mastering / Ideologic Organ / Figure 8 Recording, Brooklyn, NYC, NY / Avast! Recording Co. / Kaaitheater.",
       "reviewQuote": "",
       "sourceTitle": "senyawa stephen o malley bima sakti",
+      "editRevision": 10,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/15665190-Senyawa-Stephen-OMalley-Bima-Sakti",
@@ -10337,8 +10344,10 @@
       },
       "catalogNumber": "IDEAL198",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtn25asdbvoacr",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Wukir Suryadi",
@@ -10347,6 +10356,7 @@
         "Circuit des Yeux",
         "Ex-Easter Island Head"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/15665190-Senyawa-Stephen-OMalley-Bima-Sakti",
@@ -10354,12 +10364,15 @@
           "confidence": 100
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Discogs release data",
       "metadataSourceUrl": "https://www.discogs.com/release/15665190-Senyawa-Stephen-OMalley-Bima-Sakti",
+      "editorialUpdatedAt": "2026-09-08T19:56:25.417+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
@@ -10595,18 +10608,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 9,
-      "editorialUpdatedAt": "2026-09-08T17:09:06.838+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-04",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -89269,17 +89280,17 @@
       "status": "Published"
     },
     {
-      "id": "bloc-party",
-      "name": "Bloc Party",
-      "sort": 110,
-      "origin": "finance-inventory",
-      "status": "Published"
-    },
-    {
       "id": "fire-toolz",
       "bio": "",
       "name": "Fire-Toolz",
       "sort": 110,
+      "status": "Published"
+    },
+    {
+      "id": "bloc-party",
+      "name": "Bloc Party",
+      "sort": 110,
+      "origin": "finance-inventory",
       "status": "Published"
     },
     {
@@ -89370,6 +89381,13 @@
       "id": "sam-gendel",
       "bio": "",
       "name": "Sam Gendel",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "senyawa-stephen-o-malley",
+      "bio": "",
+      "name": "Senyawa & Stephen O' Malley",
       "sort": 9999,
       "status": "Published"
     },
