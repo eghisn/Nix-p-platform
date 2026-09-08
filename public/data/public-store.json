@@ -45123,14 +45123,14 @@
         "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
         "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg"
       ],
-      "barcode": "",
+      "barcode": "3760053846860",
       "details": [
         "SKU: NXP-2026-VNL-0017",
         "Format: Vinyl",
         "Condition: New-Sealed",
         "Edition: 2023 limited picture disc vinyl reissue"
       ],
-      "edition": "Black vinyl reissue",
+      "edition": "Vinyl, LP, Album, Limited Edition, Picture Disc, Reissue",
       "category": "Records",
       "material": "",
       "autoCover": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
@@ -45207,6 +45207,7 @@
       "apparelType": "",
       "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
       "reviewQuote": "a bona-fide tech-death classic",
+      "editRevision": 2,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
@@ -45462,7 +45463,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "POSH686",
       "displayFormat": "Vinyl",
       "homeSlideSort": null,
       "publishStatus": "Published",
@@ -45485,6 +45486,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "AllMusic / MusicBrainz",
       "metadataSourceUrl": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
+      "editorialUpdatedAt": "2026-09-08T13:27:49.717+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-26",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
@@ -45718,18 +45721,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
