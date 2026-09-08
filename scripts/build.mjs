@@ -12,6 +12,7 @@ import { isRecentReleaseProduct, recentReleaseSortComparator } from "../src/data
 import { recommendedProducts } from "../src/data/productRecommendations.js";
 import { termsOfUseContent } from "../src/data/termsOfUse.js";
 import { privacyPolicyContent } from "../src/data/privacyPolicy.js";
+import { shippingReturnsContent } from "../src/data/shippingReturns.js";
 import { labelEntries, labelSlug, productMatchesLabel } from "../src/data/labelCatalog.js";
 import { labelLogoAvailable, verifiedLabelLogoExtensions } from "../src/data/labelLogoManifest.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../src/components/labelsPage.js";
@@ -588,10 +589,7 @@ function staticPublicRouteMarkup(route) {
     return `<section class="section editorial-page">
       <div class="editorial-shell">
         <h1>Shipping &amp; Returns</h1>
-        <div class="editorial-copy">
-          <p>Shipping rates, fulfillment windows, and return terms will be connected once checkout and inventory are live.</p>
-          <p>For now, customers can contact NIXP directly for availability, local pickup, and item condition questions.</p>
-        </div>
+        <div class="editorial-copy">${shippingReturnsContent}</div>
       </div>
     </section>`;
   }

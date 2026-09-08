@@ -18,7 +18,7 @@ const canonicalProductPath = sampleProduct ? publicProductPath(sampleProduct) : 
 const legacyProductPath = sampleProduct ? `/product/${sampleProduct.id}` : "/product/missing";
 const sampleLabel = labelEntries(products).find((label) => labelLogoAvailable(label.slug));
 const publicLabels = labelEntries(products).filter((label) => labelLogoAvailable(label.slug));
-const paths = ["/records/", "/objects", "/apparel", "/publishing", "/artists", "/labels", sampleLabel ? `/labels/${sampleLabel.slug}` : "/labels", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/cart"];
+const paths = ["/records/", "/objects", "/apparel", "/publishing", "/artists", "/labels", sampleLabel ? `/labels/${sampleLabel.slug}` : "/labels", `/artists/${artistSlug}/`, `${canonicalProductPath}/`, legacyProductPath, "/request-item", "/shipping-returns", "/cart"];
 let deployedRevision = "";
 
 for (const route of paths) {
@@ -43,6 +43,14 @@ for (const route of paths) {
   }
   if (route === "/apparel" && !body.includes("data-apparel-filter")) {
     throw new Error("/apparel static markup does not match the interactive apparel controls.");
+  }
+  if (route === "/shipping-returns") {
+    if (!body.includes("JNE rates are calculated from the packed order")) {
+      throw new Error("/shipping-returns did not return the launch shipping policy.");
+    }
+    if (body.includes("will be connected once checkout and inventory are live")) {
+      throw new Error("/shipping-returns still contains the prototype-only shipping copy.");
+    }
   }
   if (route === "/labels" && !body.includes("labels-grid")) {
     throw new Error("/labels static markup does not contain the label directory.");
