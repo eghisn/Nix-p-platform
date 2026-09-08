@@ -6949,7 +6949,7 @@
       "year": 2018,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0072/cover.jpg",
-      "label": "Epitaph / Kings Road Merch Europe",
+      "label": "Epitaph",
       "price": 607000,
       "sizes": [],
       "stock": {
@@ -6968,7 +6968,11 @@
         "SKU: NXP-2026-VNL-0072",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album, Gatefold, transparent blue",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Gatefold",
+        "transparent blue",
         "Catalog number: 7563-1",
         "Barcode: 8714092756319"
       ],
@@ -7008,6 +7012,7 @@
       "description": "Teenage Wrist's 2018 chrome neon jesus is documented by Discogs as Vinyl, LP, Album, Limited Edition on Epitaph / Kings Road Merch Europe.",
       "reviewQuote": "",
       "sourceTitle": "chrome neon jesus",
+      "editRevision": 8,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/11693666-Teenage-Wrist-Chrome-Neon-Jesus",
@@ -7260,8 +7265,10 @@
       },
       "catalogNumber": "7563-1",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtpgbb4dp7y3x4",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Heavenward",
@@ -7270,6 +7277,7 @@
         "Gleemer",
         "Narrow Head"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/11693666-Teenage-Wrist-Chrome-Neon-Jesus",
@@ -7277,12 +7285,15 @@
           "confidence": 125
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Discogs release data",
       "metadataSourceUrl": "https://www.discogs.com/release/11693666-Teenage-Wrist-Chrome-Neon-Jesus",
+      "editorialUpdatedAt": "2026-09-08T20:04:41.117+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
@@ -7518,18 +7529,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 7,
-      "editorialUpdatedAt": "2026-09-08T17:36:13.105+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -89385,6 +89394,13 @@
       "status": "Published"
     },
     {
+      "id": "alan-vega",
+      "bio": "",
+      "name": "Alan Vega",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
       "id": "senyawa-stephen-o-malley",
       "bio": "",
       "name": "Senyawa & Stephen O' Malley",
@@ -89392,9 +89408,9 @@
       "status": "Published"
     },
     {
-      "id": "alan-vega",
+      "id": "teenage-wrist",
       "bio": "",
-      "name": "Alan Vega",
+      "name": "Teenage Wrist",
       "sort": 9999,
       "status": "Published"
     },
