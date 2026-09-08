@@ -91,8 +91,18 @@ function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
+function isLegacyExampleImage(value) {
+  return String(value || "").includes("nixp-product-example-paper.png");
+}
+
+function usableProductImage(value) {
+  const image = String(value || "").trim();
+  return isLegacyExampleImage(image) ? "" : image;
+}
+
 function withDefaults(product) {
-  const isFinanceDraft = String(product.id || "").startsWith("finance-") || Boolean(product.financeStockId);
+  const productImages = normalizeImages(product);
+  const primaryImage = usableProductImage(product.image) || productImages[0] || "";
   const defaults = {
     publishStatus: "Published",
     visibility: "Public",
@@ -100,7 +110,9 @@ function withDefaults(product) {
     ...product,
     artist: canonicalProductArtist(product),
     label: canonicalLabelName(product.label),
-    image: product.image || product.images?.[0] || (isFinanceDraft ? "" : "/public/nixp-product-example-paper.png"),
+    // A missing cover must remain visibly missing. The old sample-paper image
+    // is not product artwork and must never be presented as research output.
+    image: primaryImage,
     edition: String(product.edition || "").trim(),
     barcode: String(product.barcode || "").trim(),
     catalogNumber: String(product.catalogNumber || "").trim(),
@@ -109,7 +121,7 @@ function withDefaults(product) {
     tags: product.tags || [],
     details: product.details || [],
     sizes: normalizeSizes(product.sizes || []),
-    images: normalizeImages(product),
+    images: normalizeImages({ ...product, image: primaryImage }),
     relatedArtists: normalizeList(product.relatedArtists).map(canonicalRelatedArtistName),
     descriptionSource: String(product.descriptionSource || "").trim(),
     reviewQuote: String(product.reviewQuote || "").trim(),
@@ -369,7 +381,7 @@ function normalizeImages(product = {}) {
     ...(Array.isArray(product.images) ? product.images : []),
     product.image
   ]
-    .map((image) => String(image || "").trim())
+    .map(usableProductImage)
     .filter(Boolean);
   return [...new Set(urls)];
 }
@@ -1267,6 +1279,9 @@ export const adminStore = {
     const collection = data.collection?.trim() || data.label?.trim() || existing?.collection || "";
     const fallbackMaker = category === "Objects" ? "NIXP Objects" : category === "Apparel" ? "NIXP Apparel" : "NIXP";
     const format = isProductCategory ? category.replace(/s$/, "") : data.format?.trim();
+    const incomingImage = usableProductImage(data.image) || usableProductImage(data.images?.[0]);
+    const existingImage = usableProductImage(existing?.image) || normalizeImages(existing)[0] || "";
+    const primaryImage = incomingImage || existingImage;
     const openToOffers = data.open_to_offers === true || data.open_to_offers === "true" || data.open_to_offers === "Yes" || data.listingMode === "Private Collection / Offer Only" || (data.open_to_offers === undefined && existing?.open_to_offers === true);
     const minimumAcceptableOffer = wholeAmount(data.minimumAcceptableOffer ?? existing?.minimumAcceptableOffer);
     if (openToOffers && !minimumAcceptableOffer) throw new Error("Private Collection items require a Minimum Acceptable Offer in whole rupiah.");
@@ -1294,15 +1309,10 @@ export const adminStore = {
       collection,
       color: data.color?.trim() || "",
       material: data.material?.trim() || "",
-      image:
-        data.image?.trim() ||
-        data.images?.[0] ||
-        existing?.image ||
-        existing?.images?.[0] ||
-        "/public/nixp-product-example-paper.png",
+      image: primaryImage,
       images: normalizeImages({
         images: data.images || existing?.images,
-        image: data.image?.trim() || data.images?.[0] || existing?.image
+        image: primaryImage
       }),
       tags: splitList(data.tags),
       relatedArtists: isRecord

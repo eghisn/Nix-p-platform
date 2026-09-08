@@ -67,6 +67,13 @@ const saveProductSource = adminStoreSource.slice(
 );
 assert.match(saveProductSource, /persistProduct\(product/);
 assert.doesNotMatch(saveProductSource, /writeStore\(/, "Save Product must not write the complete Admin store.");
+assert.match(adminStoreSource, /function isLegacyExampleImage\(value\)/);
+assert.match(adminStoreSource, /\.map\(usableProductImage\)/, "Legacy example images must be excluded from galleries.");
+assert.doesNotMatch(
+  saveProductSource,
+  /\|\|\s*"\/public\/nixp-product-example-paper\.png"/,
+  "Save Product must never persist the sample placeholder as a product cover."
+);
 
 const serverStoreSource = await readFile(new URL("../api/admin/store.js", import.meta.url), "utf8");
 assert.match(serverStoreSource, /tables:\s*\["artists", "collections", "requests", "offers"\]/);
