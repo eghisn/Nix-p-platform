@@ -8154,7 +8154,7 @@
       "year": 1984,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0070/cover.jpg",
-      "label": "Rough Trade",
+      "label": "Factory",
       "price": 436250,
       "sizes": [],
       "stock": {
@@ -8173,7 +8173,14 @@
         "SKU: NXP-2026-VNL-0070",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, 12\", 45 RPM, Single, Reissue, Remastered, Stereo, 180g",
+        "Edition: Vinyl",
+        "12\"",
+        "45 RPM",
+        "Single",
+        "Reissue",
+        "Remastered",
+        "Stereo",
+        "180g",
         "Catalog number: FAC 103",
         "Barcode: 103 / 103 / 5661"
       ],
@@ -8220,6 +8227,7 @@
       "description": "New Order's 1984 thieves like us is documented by Discogs as Vinyl, 12\", Single, 45 RPM on Factory / Rough Trade / Britannia Row Studios / Be Music / Warner Bros. Music / Shakin' Baker Music / Factory Communications Ltd. / Studio-Nord-Bremen / Schallplattenfabrik Pallas GmbH.",
       "reviewQuote": "",
       "sourceTitle": "thieves like us",
+      "editRevision": 9,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/1144914-New-Order-Thieves-Like-Us",
@@ -8472,8 +8480,10 @@
       },
       "catalogNumber": "FAC 103",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtn2uj9g7mmnn6",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Electronic",
@@ -8482,6 +8492,7 @@
         "Monaco",
         "Pet Shop Boys"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/1144914-New-Order-Thieves-Like-Us",
@@ -8489,12 +8500,15 @@
           "confidence": 100
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Discogs release data",
       "metadataSourceUrl": "https://www.discogs.com/release/1144914-New-Order-Thieves-Like-Us",
+      "editorialUpdatedAt": "2026-09-08T19:46:28.988+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
@@ -8730,18 +8744,16 @@
         "sourceUrl": "https://musicbrainz.org/release/8b72cb22-5c5f-4f8b-ad4b-6520ab18feae",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 8,
-      "editorialUpdatedAt": "2026-09-08T17:36:15.51+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-04",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
