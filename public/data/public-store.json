@@ -1416,7 +1416,7 @@
       "year": 2021,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0079/cover.jpg",
-      "label": "Nonesuch / Nonesuch Records Inc. / Warner Music Group / Beyond Language / Bernie Grundman Mastering",
+      "label": "Nonesuch",
       "price": 631000,
       "sizes": [],
       "stock": {
@@ -1435,7 +1435,9 @@
         "SKU: NXP-2026-VNL-0079",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
         "Catalog number: 0075597917178",
         "Barcode: 075597917178 / 3142110755979171781645897 / 1645897314211075597917178"
       ],
@@ -1475,6 +1477,7 @@
       "description": "Sam Gendel's 2021 drm is documented by Discogs as Vinyl, LP, Album on Nonesuch / Nonesuch Records Inc. / Warner Music Group / Beyond Language / Bernie Grundman Mastering.",
       "reviewQuote": "",
       "sourceTitle": "drm",
+      "editRevision": 8,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/18242311-Sam-Gendel-DRM",
@@ -1727,16 +1730,19 @@
       },
       "catalogNumber": "0075597917178",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtphr29w1fi9r8",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Sam Wilkes",
-        "Sam Gendel, Sam Wilkes",
+        "Sam Gendel",
         "Fabiano do Nascimento",
         "Joseph Shabason",
         "Jeff Parker"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/18242311-Sam-Gendel-DRM",
@@ -1744,15 +1750,24 @@
           "confidence": 125
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Discogs release data",
       "metadataSourceUrl": "https://www.discogs.com/release/18242311-Sam-Gendel-DRM",
+      "editorialUpdatedAt": "2026-09-08T19:53:24.723+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "adminPublishOverride": null,
-      "manualRelatedArtists": [],
+      "manualRelatedArtists": [
+        "Sam Wilkes",
+        "Sam Gendel",
+        "Fabiano do Nascimento",
+        "Joseph Shabason",
+        "Jeff Parker"
+      ],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
       "enrichmentAttemptedAt": "2026-09-08T18:27:40.192Z",
@@ -1985,18 +2000,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 7,
-      "editorialUpdatedAt": "2026-09-08T18:40:09.894+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "manualRelatedArtistsOverrideSource": "admin",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -88709,16 +88722,16 @@
       "status": "Published"
     },
     {
-      "id": "soft-moon",
+      "id": "lust-for-youth",
       "bio": "",
-      "name": "Soft Moon",
+      "name": "Lust For Youth",
       "sort": 31,
       "status": "Published"
     },
     {
-      "id": "lust-for-youth",
+      "id": "soft-moon",
       "bio": "",
-      "name": "Lust For Youth",
+      "name": "Soft Moon",
       "sort": 31,
       "status": "Published"
     },
@@ -89256,17 +89269,17 @@
       "status": "Published"
     },
     {
-      "id": "fire-toolz",
-      "bio": "",
-      "name": "Fire-Toolz",
-      "sort": 110,
-      "status": "Published"
-    },
-    {
       "id": "bloc-party",
       "name": "Bloc Party",
       "sort": 110,
       "origin": "finance-inventory",
+      "status": "Published"
+    },
+    {
+      "id": "fire-toolz",
+      "bio": "",
+      "name": "Fire-Toolz",
+      "sort": 110,
       "status": "Published"
     },
     {
@@ -89350,6 +89363,13 @@
       "id": "hella",
       "bio": "",
       "name": "Hella",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "sam-gendel",
+      "bio": "",
+      "name": "Sam Gendel",
       "sort": 9999,
       "status": "Published"
     },
