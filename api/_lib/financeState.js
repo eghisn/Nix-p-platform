@@ -787,6 +787,10 @@ function productRowFromExisting(row, overrides = {}) {
   };
   return {
     id: String(next.id),
+    // Keep the revision read with the product all the way through enrichment.
+    // The sync writer uses it to distinguish a genuine concurrent Admin edit
+    // from the same product being rebuilt for research.
+    edit_revision: Math.max(1, Number(next.edit_revision) || 1),
     sku: next.sku || next.id,
     title: next.title || "Untitled Item",
     artist: canonicalArtistName(next.artist || ""),

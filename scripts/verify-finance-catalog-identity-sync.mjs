@@ -38,8 +38,9 @@ const completedStock = {
 };
 
 assert.equal(canCreateFinanceCatalogDraft(completedStock), true);
-const financeProduct = productRowFromFinanceStock(placeholderProduct, completedStock, 1);
-const repaired = mergeFinanceStockIdentity(placeholderProduct, financeProduct);
+const versionedPlaceholder = { ...placeholderProduct, edit_revision: 17 };
+const financeProduct = productRowFromFinanceStock(versionedPlaceholder, completedStock, 1);
+const repaired = mergeFinanceStockIdentity(versionedPlaceholder, financeProduct);
 
 assert.equal(repaired.title, "Bazaar");
 assert.equal(repaired.artist, "Wampire");
@@ -48,7 +49,8 @@ assert.equal(repaired.raw.edition, "Vinyl, LP, Album, 180 gram");
 assert.equal(repaired.raw.barcode, "644110028518");
 assert.equal(repaired.raw.catalogNumber, "PRC-285");
 assert.deepEqual(repaired.details, []);
-assert.equal(hasFinanceCatalogIdentityDrift(placeholderProduct, repaired), true);
+assert.equal(financeProduct.edit_revision, 17);
+assert.equal(hasFinanceCatalogIdentityDrift(versionedPlaceholder, repaired), true);
 assert.equal(hasFinanceCatalogIdentityDrift(repaired, mergeFinanceStockIdentity(repaired, productRowFromFinanceStock(repaired, completedStock, 1))), false);
 
 const financeUi = await readFile(new URL("../apps/finance/index.html", import.meta.url), "utf8");
