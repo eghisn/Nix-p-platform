@@ -10,6 +10,7 @@ import {
   discogsReleaseDetailUrl,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
+  isExactDiscogsSearchEvidence,
   isEditorialDescriptionQuality,
   mergeExactDiscogsEvidence,
   normalizeDiscogsSearchRelease
@@ -186,6 +187,12 @@ assert.equal(
   discogsReleaseDetailUrl({ id: 5986176, resource_url: "https://api.discogs.com/releases/5986176" }),
   "https://api.discogs.com/releases/5986176"
 );
+assert.equal(
+  isExactDiscogsSearchEvidence({ id: 5986176, cover_image: "https://example.test/deep-end.jpg" }, 100),
+  true,
+  "An exact pressing with search artwork must not depend on the optional Discogs detail response."
+);
+assert.equal(isExactDiscogsSearchEvidence({ id: 5986176, cover_image: "https://example.test/deep-end.jpg" }, 80), false);
 const discogsSearchFallback = normalizeDiscogsSearchRelease({
   ...shortenedTitleWithExactCatalog.release,
   label: ["Run For Cover Records"],

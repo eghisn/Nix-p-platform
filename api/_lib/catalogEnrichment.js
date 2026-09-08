@@ -1783,6 +1783,12 @@ async function discoverDiscogsRelease(stock) {
     needsPressingIdentifier: assessment.needsPressingIdentifier === true
   });
   if (assessment.needsPressingIdentifier) return { needsPressingIdentifier: true };
+  // A matching barcode or catalog number plus the search artwork identifies a
+  // concrete physical pressing. Use that complete evidence directly rather
+  // than making publication depend on Discogs' optional second detail call.
+  if (isExactDiscogsSearchEvidence(assessment.release, assessment.matchConfidence)) {
+    return normalizeDiscogsSearchRelease(assessment.release, stock, assessment.matchConfidence);
+  }
   const detailUrl = discogsReleaseDetailUrl(assessment.release);
   if (!detailUrl) return null;
 
@@ -1826,6 +1832,11 @@ export function discogsReleaseDetailUrl(release = {}) {
   if (/^https:\/\/api\.discogs\.com\/releases\/\d+\/?$/i.test(resourceUrl)) return resourceUrl;
   const releaseId = String(release.id || "").trim();
   return /^\d+$/.test(releaseId) ? `https://api.discogs.com/releases/${releaseId}` : "";
+}
+
+export function isExactDiscogsSearchEvidence(release = {}, matchConfidence = 0) {
+  const artwork = String(release.cover_image || release.thumb || "").trim();
+  return Number(matchConfidence || 0) >= 95 && /^https?:\/\//i.test(artwork);
 }
 
 export function assessDiscogsReleaseCandidates(releases = [], { stock = {}, format = "", barcode = "", catalogNumber = "" } = {}) {
