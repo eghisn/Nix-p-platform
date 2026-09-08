@@ -100,10 +100,10 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     edition: "Vinyl, LP, Album, Reissue, Stereo",
     catalogNumber: "IPC297LP",
     barcode: "689230029717",
-    cover: "https://cdn.shopify.com/s/files/1/0867/1120/6219/files/TheMelvinswithNapalmDeath_R1569-3871.png?v=1775744502",
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0080-cover.png",
     imageCredits: [
       {
-        image: "https://cdn.shopify.com/s/files/1/0867/1120/6219/files/TheMelvinswithNapalmDeath_R1569-3871.png?v=1775744502",
+        image: "/public/assets/catalog-archive/nxp-2026-vnl-0080-cover.png",
         credit: "Rough Trade product artwork",
         url: "https://www.roughtrade.com/en-us/product/melvins-with-napalm-death/savage-imperial-death-march"
       }
