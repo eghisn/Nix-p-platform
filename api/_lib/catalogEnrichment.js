@@ -1780,6 +1780,7 @@ async function discoverDiscogsRelease(stock) {
     candidates: releases.length,
     matchedReleaseId: assessment.release?.id || null,
     matchConfidence: assessment.matchConfidence || 0,
+    hasSearchArtwork: Boolean(String(assessment.release?.cover_image || assessment.release?.thumb || "").trim()),
     needsPressingIdentifier: assessment.needsPressingIdentifier === true
   });
   if (assessment.needsPressingIdentifier) return { needsPressingIdentifier: true };
