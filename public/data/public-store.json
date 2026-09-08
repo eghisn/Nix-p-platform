@@ -1356,7 +1356,7 @@
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete-no-related-artists",
-      "publicationState": "deployment_pending",
+      "publicationState": "live",
       "descriptionSource": "Discogs release 37039197",
       "metadataSourceUrl": "https://www.discogs.com/release/37039197-The-Melvins-With-Napalm-Death-Savage-Imperial-Death-March",
       "enrichmentUpdatedAt": "2026-09-08",
@@ -1376,9 +1376,9 @@
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 9,
-      "editorialUpdatedAt": "2026-09-08T19:05:41.316+00:00",
-      "editorialUpdatedBy": "admin-publication",
+      "editRevision": 11,
+      "editorialUpdatedAt": "2026-09-08T19:08:31.638+00:00",
+      "editorialUpdatedBy": "publication-reconciliation",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
@@ -4452,7 +4452,7 @@
       "year": 2026,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0075/cover.jpg",
-      "label": "Sony Records Int'l / Sony Music Labels Inc. / Tower Vinyl Presents レコードで聴きたい名盤",
+      "label": "Sony Music Japan International",
       "price": 868000,
       "sizes": [],
       "stock": {
@@ -4471,7 +4471,12 @@
         "SKU: NXP-2026-VNL-0075",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album, Limited Edition, Reissue, White & Black Marbled",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Limited Edition",
+        "Reissue",
+        "White & Black Marbled",
         "Catalog number: SIJP 1184"
       ],
       "edition": "Vinyl, LP, Album, Limited Edition, Reissue, White & Black Marbled",
@@ -4510,6 +4515,7 @@
       "description": "Chapterhouse's 2026 whirlpool is documented by Discogs as Vinyl, LP, Album, Limited Edition, Reissue on Sony Records Int'l / Sony Music Labels Inc. / Tower Vinyl Presents レコードで聴きたい名盤.",
       "reviewQuote": "",
       "sourceTitle": "whirlpool",
+      "editRevision": 8,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/38005602-Chapterhouse-Whirlpool",
@@ -4762,8 +4768,10 @@
       },
       "catalogNumber": "SIJP-1184",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtpgvecc2tn7h7",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Ride",
@@ -4772,6 +4780,9 @@
         "Lush",
         "Catherine Wheel"
       ],
+      "homeCollections": [
+        "recent-releases"
+      ],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/38005602-Chapterhouse-Whirlpool",
@@ -4779,12 +4790,15 @@
           "confidence": 100
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Discogs release data",
       "metadataSourceUrl": "https://www.discogs.com/release/38005602-Chapterhouse-Whirlpool",
+      "editorialUpdatedAt": "2026-09-08T19:22:40.872+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
@@ -5020,18 +5034,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 7,
-      "editorialUpdatedAt": "2026-09-08T18:40:17.943+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -88634,16 +88646,16 @@
       "status": "Published"
     },
     {
-      "id": "lust-for-youth",
+      "id": "soft-moon",
       "bio": "",
-      "name": "Lust For Youth",
+      "name": "Soft Moon",
       "sort": 31,
       "status": "Published"
     },
     {
-      "id": "soft-moon",
+      "id": "lust-for-youth",
       "bio": "",
-      "name": "Soft Moon",
+      "name": "Lust For Youth",
       "sort": 31,
       "status": "Published"
     },
@@ -89181,17 +89193,17 @@
       "status": "Published"
     },
     {
-      "id": "fire-toolz",
-      "bio": "",
-      "name": "Fire-Toolz",
-      "sort": 110,
-      "status": "Published"
-    },
-    {
       "id": "bloc-party",
       "name": "Bloc Party",
       "sort": 110,
       "origin": "finance-inventory",
+      "status": "Published"
+    },
+    {
+      "id": "fire-toolz",
+      "bio": "",
+      "name": "Fire-Toolz",
+      "sort": 110,
       "status": "Published"
     },
     {
@@ -89275,6 +89287,13 @@
       "id": "alan-vega",
       "bio": "",
       "name": "Alan Vega",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "chapterhouse",
+      "bio": "",
+      "name": "Chapterhouse",
       "sort": 9999,
       "status": "Published"
     },
