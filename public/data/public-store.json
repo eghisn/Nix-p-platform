@@ -2033,7 +2033,7 @@
       "year": 2018,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0078/cover.jpg",
-      "label": "Third Worlds / Harvest / Sunset Sound",
+      "label": "Third Worlds / Harvest",
       "price": 823000,
       "sizes": [],
       "stock": {
@@ -2052,7 +2052,9 @@
         "SKU: NXP-2026-VNL-0078",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
         "Catalog number: 2567785408",
         "Barcode: 602567785408"
       ],
@@ -2099,6 +2101,7 @@
       "description": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
       "reviewQuote": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
       "sourceTitle": "year of the snitch",
+      "editRevision": 9,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/12485858-Death-Grips-Year-Of-The-Snitch",
@@ -2349,8 +2352,10 @@
       },
       "catalogNumber": "2567785408",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtphixnovmhn5h",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Andrew Adamson",
@@ -2359,6 +2364,7 @@
         "dälek",
         "Lil Ugly Mane"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/12485858-Death-Grips-Year-Of-The-Snitch",
@@ -2371,12 +2377,15 @@
           "confidence": 85
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Pitchfork (quoted)",
       "metadataSourceUrl": "https://www.discogs.com/release/12485858-Death-Grips-Year-Of-The-Snitch",
+      "editorialUpdatedAt": "2026-09-08T20:08:32.918+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
@@ -2610,18 +2619,16 @@
         "sourceUrl": "https://musicbrainz.org/release/d4aeb9ee-285d-4bbb-8d2d-11005df53f3b",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 8,
-      "editorialUpdatedAt": "2026-09-08T18:40:11.699+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
