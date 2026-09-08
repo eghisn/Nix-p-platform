@@ -24359,648 +24359,6 @@
       }
     },
     {
-      "id": "finance-nxp-2026-vnl-0035",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0035",
-      "tags": [
-        "electronic",
-        "experimental pop",
-        "2LP",
-        "Warp"
-      ],
-      "year": 2023,
-      "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-      "label": "Warp Records",
-      "price": 0,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Again",
-      "artist": "Oneohtrix Point Never",
-      "format": "Vinyl",
-      "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg"
-      ],
-      "barcode": "4523132135243",
-      "details": [
-        "SKU: NXP-2026-VNL-0035",
-        "Format: Vinyl",
-        "Condition: New-Unsealed",
-        "Edition: Blue 2xLP",
-        "Catalog number: WARPLP365I"
-      ],
-      "edition": "2 x Vinyl, LP, Album, Blue",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-      "condition": "New-Unsealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.799Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.968Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.184Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.937Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.767Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.740Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.230Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.322Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-08",
-      "collection": "Warp Records",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.799Z",
-        "sku": "NXP-2026-VNL-0035",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
-      "reviewQuote": "a nostalgic jam session",
-      "imageCredits": [
-        {
-          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-          "credit": "Oneohtrix Point Never Bandcamp artwork"
-        },
-        {
-          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
-          "credit": "Oneohtrix Point Never Bandcamp product photography"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
-        "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
-        "reviewQuote": "a nostalgic jam session",
-        "reviewSource": "Pitchfork (quoted)",
-        "relatedArtists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "descriptionSource": "Warp Records / Bleep",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Tim Hecker",
-              "Autechre",
-              "James Ferraro",
-              "Emeralds",
-              "Laurel Halo",
-              "Tim Hecker & Daniel Lopatin",
-              "Boards of Canada",
-              "Fennesz",
-              "Steve Hauschildt",
-              "Huerco S."
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Tim Hecker",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.725642,
-                "artist": "Autechre",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.725642,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.688586,
-                "artist": "James Ferraro",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.688586,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.622036,
-                "artist": "Emeralds",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.622036,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.596252,
-                "artist": "Laurel Halo",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.596252,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.570321,
-                "artist": "Tim Hecker & Daniel Lopatin",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.570321,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.556456,
-                "artist": "Boards of Canada",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.556456,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.547454,
-                "artist": "Fennesz",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.547454,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.534696,
-                "artist": "Steve Hauschildt",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.534696,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.492442,
-                "artist": "Huerco S.",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.492442,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-          "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "WARPLP365IBR",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "msm6l1la14ehw1",
-      "mediaCondition": "",
-      "open_to_offers": true,
-      "relatedArtists": [
-        "Tim Hecker",
-        "Autechre",
-        "James Ferraro",
-        "Emeralds",
-        "Laurel Halo"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
-      "enrichmentOrigin": "curated-exact",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Warp Records / Bleep",
-      "metadataSourceUrl": "https://warp.net/products/410494-again",
-      "enrichmentUpdatedAt": "2026-08-09",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-      "enrichmentAttemptedAt": "2026-08-09T20:36:39.408Z",
-      "enrichmentFingerprint": "oneohtrix point never|again|vinyl|4523132135243|warplp365ibr",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Tim Hecker",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.725642,
-          "artist": "Autechre",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.725642,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.688586,
-          "artist": "James Ferraro",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.688586,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.622036,
-          "artist": "Emeralds",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.622036,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.596252,
-          "artist": "Laurel Halo",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.596252,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 1500000,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo",
-            "Tim Hecker & Daniel Lopatin",
-            "Boards of Canada",
-            "Fennesz",
-            "Steve Hauschildt",
-            "Huerco S."
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.570321,
-              "artist": "Tim Hecker & Daniel Lopatin",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.570321,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.556456,
-              "artist": "Boards of Canada",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.556456,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.547454,
-              "artist": "Fennesz",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.547454,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.534696,
-              "artist": "Steve Hauschildt",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.534696,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.492442,
-              "artist": "Huerco S.",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.492442,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-        "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 750,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "heavy",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "finance-nxp-2026-vnl-0034",
       "qty": 1,
       "sku": "NXP-2026-VNL-0034",
@@ -25642,6 +25000,648 @@
         "shippingClass": "vinyl-cardboard-bubble",
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0035",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0035",
+      "tags": [
+        "electronic",
+        "experimental pop",
+        "2LP",
+        "Warp"
+      ],
+      "year": 2023,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+      "label": "Warp Records",
+      "price": 0,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Again",
+      "artist": "Oneohtrix Point Never",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg"
+      ],
+      "barcode": "4523132135243",
+      "details": [
+        "SKU: NXP-2026-VNL-0035",
+        "Format: Vinyl",
+        "Condition: New-Unsealed",
+        "Edition: Blue 2xLP",
+        "Catalog number: WARPLP365I"
+      ],
+      "edition": "2 x Vinyl, LP, Album, Blue",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+      "condition": "New-Unsealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.799Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.968Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.184Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.937Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.767Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.740Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.230Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.322Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-08",
+      "collection": "Warp Records",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.799Z",
+        "sku": "NXP-2026-VNL-0035",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
+      "reviewQuote": "a nostalgic jam session",
+      "imageCredits": [
+        {
+          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+          "credit": "Oneohtrix Point Never Bandcamp artwork"
+        },
+        {
+          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
+          "credit": "Oneohtrix Point Never Bandcamp product photography"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
+        "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
+        "reviewQuote": "a nostalgic jam session",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
+        ],
+        "descriptionSource": "Warp Records / Bleep",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Tim Hecker",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725642,
+            "artist": "Autechre",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.688586,
+            "artist": "James Ferraro",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.622036,
+            "artist": "Emeralds",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.596252,
+            "artist": "Laurel Halo",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Tim Hecker",
+              "Autechre",
+              "James Ferraro",
+              "Emeralds",
+              "Laurel Halo",
+              "Tim Hecker & Daniel Lopatin",
+              "Boards of Canada",
+              "Fennesz",
+              "Steve Hauschildt",
+              "Huerco S."
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Tim Hecker",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.725642,
+                "artist": "Autechre",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.725642,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.688586,
+                "artist": "James Ferraro",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.688586,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.622036,
+                "artist": "Emeralds",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.622036,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.596252,
+                "artist": "Laurel Halo",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.596252,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.570321,
+                "artist": "Tim Hecker & Daniel Lopatin",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.570321,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.556456,
+                "artist": "Boards of Canada",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.556456,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.547454,
+                "artist": "Fennesz",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.547454,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.534696,
+                "artist": "Steve Hauschildt",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.534696,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.492442,
+                "artist": "Huerco S.",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.492442,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tim Hecker",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725642,
+              "artist": "Autechre",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.688586,
+              "artist": "James Ferraro",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.622036,
+              "artist": "Emeralds",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.596252,
+              "artist": "Laurel Halo",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+          "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "WARPLP365IBR",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "msm6l1la14ehw1",
+      "mediaCondition": "",
+      "open_to_offers": true,
+      "relatedArtists": [
+        "Tim Hecker",
+        "Autechre",
+        "James Ferraro",
+        "Emeralds",
+        "Laurel Halo"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Warp Records / Bleep",
+      "metadataSourceUrl": "https://warp.net/products/410494-again",
+      "enrichmentUpdatedAt": "2026-08-09",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+      "enrichmentAttemptedAt": "2026-08-09T20:36:39.408Z",
+      "enrichmentFingerprint": "oneohtrix point never|again|vinyl|4523132135243|warplp365ibr",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Tim Hecker",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.725642,
+          "artist": "Autechre",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.725642,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.688586,
+          "artist": "James Ferraro",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.688586,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.622036,
+          "artist": "Emeralds",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.622036,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.596252,
+          "artist": "Laurel Halo",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.596252,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 1500000,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo",
+            "Tim Hecker & Daniel Lopatin",
+            "Boards of Canada",
+            "Fennesz",
+            "Steve Hauschildt",
+            "Huerco S."
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tim Hecker",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725642,
+              "artist": "Autechre",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.688586,
+              "artist": "James Ferraro",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.622036,
+              "artist": "Emeralds",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.596252,
+              "artist": "Laurel Halo",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.570321,
+              "artist": "Tim Hecker & Daniel Lopatin",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.570321,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.556456,
+              "artist": "Boards of Canada",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.556456,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.547454,
+              "artist": "Fennesz",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.547454,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.534696,
+              "artist": "Steve Hauschildt",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.534696,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.492442,
+              "artist": "Huerco S.",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.492442,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Tim Hecker",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725642,
+            "artist": "Autechre",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.688586,
+            "artist": "James Ferraro",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.622036,
+            "artist": "Emeralds",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.596252,
+            "artist": "Laurel Halo",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+        "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 750,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "heavy",
         "manualShippingOverride": false
       }
     },
@@ -57019,630 +57019,6 @@
       }
     },
     {
-      "id": "nxp-2026-vnl-0002",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0002",
-      "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0002"
-      ],
-      "year": 2024,
-      "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
-      "label": "A-Zap",
-      "price": 750000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "3+5",
-      "artist": "Melt-Banana",
-      "format": "Vinyl",
-      "images": [
-        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
-        "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-VNL-0002",
-        "Format: Vinyl 12\"",
-        "Condition: New-Sealed"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.793Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.173Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.931Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.735Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.309Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-08",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.793Z",
-        "sku": "NXP-2026-VNL-0002",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
-      "reviewQuote": "frantic sensibilities",
-      "imageCredits": [
-        {
-          "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp",
-          "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
-          "credit": "Turntable Lab"
-        }
-      ],
-      "reviewSource": "The Quietus (quoted)",
-      "autoEditorial": {
-        "relatedArtists": [
-          "Lightning Bolt",
-          "Boredoms",
-          "Ruins",
-          "OOIOO",
-          "Otoboke Beaver"
-        ],
-        "enrichmentStatus": "complete",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Lightning Bolt",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.631121,
-            "artist": "Boredoms",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.631121,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.598863,
-            "artist": "Ruins",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.598863,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.568415,
-            "artist": "OOIOO",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.568415,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.554159,
-            "artist": "Otoboke Beaver",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.554159,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Lightning Bolt",
-              "Boredoms",
-              "Ruins",
-              "OOIOO",
-              "Otoboke Beaver",
-              "Black Eyes",
-              "Hella",
-              "Big Black",
-              "Boris",
-              "The Locust"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Lightning Bolt",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.631121,
-                "artist": "Boredoms",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.631121,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.598863,
-                "artist": "Ruins",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.598863,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.568415,
-                "artist": "OOIOO",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.568415,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.554159,
-                "artist": "Otoboke Beaver",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.554159,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.545315,
-                "artist": "Black Eyes",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.545315,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.538107,
-                "artist": "Hella",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.538107,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.528056,
-                "artist": "Big Black",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.528056,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.524238,
-                "artist": "Boris",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.524238,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.507644,
-                "artist": "The Locust",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.507644,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Lightning Bolt",
-            "Boredoms",
-            "Ruins",
-            "OOIOO",
-            "Otoboke Beaver"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Lightning Bolt",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.631121,
-              "artist": "Boredoms",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.631121,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.598863,
-              "artist": "Ruins",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.598863,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.568415,
-              "artist": "OOIOO",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.568415,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.554159,
-              "artist": "Otoboke Beaver",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.554159,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "",
-          "sourceUrl": "",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 24,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47v7cvrh3",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Lightning Bolt",
-        "Boredoms",
-        "Ruins",
-        "OOIOO",
-        "Otoboke Beaver"
-      ],
-      "homeCollections": [
-        "limited-pressing"
-      ],
-      "sleeveCondition": "",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "The Quietus / AllMusic",
-      "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:56:07.703Z",
-      "enrichmentFingerprint": "melt banana|3 5|vinyl||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Lightning Bolt",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.631121,
-          "artist": "Boredoms",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.631121,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.598863,
-          "artist": "Ruins",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.598863,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.568415,
-          "artist": "OOIOO",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.568415,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.554159,
-          "artist": "Otoboke Beaver",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.554159,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Lightning Bolt",
-            "Boredoms",
-            "Ruins",
-            "OOIOO",
-            "Otoboke Beaver",
-            "Black Eyes",
-            "Hella",
-            "Big Black",
-            "Boris",
-            "The Locust"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Lightning Bolt",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.631121,
-              "artist": "Boredoms",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.631121,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.598863,
-              "artist": "Ruins",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.598863,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.568415,
-              "artist": "OOIOO",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.568415,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.554159,
-              "artist": "Otoboke Beaver",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.554159,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.545315,
-              "artist": "Black Eyes",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.545315,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.538107,
-              "artist": "Hella",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.538107,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.528056,
-              "artist": "Big Black",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.528056,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.524238,
-              "artist": "Boris",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.524238,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.507644,
-              "artist": "The Locust",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.507644,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Lightning Bolt",
-          "Boredoms",
-          "Ruins",
-          "OOIOO",
-          "Otoboke Beaver"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Lightning Bolt",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.631121,
-            "artist": "Boredoms",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.631121,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.598863,
-            "artist": "Ruins",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.598863,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.568415,
-            "artist": "OOIOO",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.568415,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.554159,
-            "artist": "Otoboke Beaver",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.554159,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "",
-        "sourceUrl": "",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "nxp-2026-vnl-0004",
       "qty": 1,
       "sku": "NXP-2026-VNL-0004",
@@ -58243,6 +57619,632 @@
             ],
             "sourceUrl": "https://www.last.fm/music/Girl%20Band",
             "confidence": 0.213973,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-08",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-vnl-0002",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0002",
+      "tags": [
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0002"
+      ],
+      "year": 2024,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+      "label": "A-Zap",
+      "price": 750000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "3+5",
+      "artist": "Melt-Banana",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+        "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
+      ],
+      "barcode": "6 57628 44481 7",
+      "details": [
+        "SKU: NXP-2026-VNL-0002",
+        "Format: Vinyl 12\"",
+        "Condition: New-Sealed"
+      ],
+      "edition": "Vinyl, LP, Silver Metallic",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.793Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.173Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.931Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.735Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.222Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.309Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-08",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.793Z",
+        "sku": "NXP-2026-VNL-0002",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
+      "reviewQuote": "frantic sensibilities",
+      "editRevision": 2,
+      "imageCredits": [
+        {
+          "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp",
+          "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
+          "credit": "Turntable Lab"
+        }
+      ],
+      "reviewSource": "The Quietus (quoted)",
+      "autoEditorial": {
+        "relatedArtists": [
+          "Lightning Bolt",
+          "Boredoms",
+          "Ruins",
+          "OOIOO",
+          "Otoboke Beaver"
+        ],
+        "enrichmentStatus": "complete",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Lightning Bolt",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.631121,
+            "artist": "Boredoms",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.631121,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.598863,
+            "artist": "Ruins",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.598863,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.568415,
+            "artist": "OOIOO",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.568415,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.554159,
+            "artist": "Otoboke Beaver",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.554159,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Lightning Bolt",
+              "Boredoms",
+              "Ruins",
+              "OOIOO",
+              "Otoboke Beaver",
+              "Black Eyes",
+              "Hella",
+              "Big Black",
+              "Boris",
+              "The Locust"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Lightning Bolt",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.631121,
+                "artist": "Boredoms",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.631121,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.598863,
+                "artist": "Ruins",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.598863,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.568415,
+                "artist": "OOIOO",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.568415,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.554159,
+                "artist": "Otoboke Beaver",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.554159,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.545315,
+                "artist": "Black Eyes",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.545315,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.538107,
+                "artist": "Hella",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.538107,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.528056,
+                "artist": "Big Black",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.528056,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.524238,
+                "artist": "Boris",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.524238,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.507644,
+                "artist": "The Locust",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.507644,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Lightning Bolt",
+            "Boredoms",
+            "Ruins",
+            "OOIOO",
+            "Otoboke Beaver"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Lightning Bolt",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.631121,
+              "artist": "Boredoms",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.631121,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.598863,
+              "artist": "Ruins",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.598863,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.568415,
+              "artist": "OOIOO",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.568415,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.554159,
+              "artist": "Otoboke Beaver",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.554159,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "AZLP-0011",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 24,
+      "publishStatus": "Published",
+      "financeStockId": "mr6ja47v7cvrh3",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Lightning Bolt",
+        "Boredoms",
+        "Ruins",
+        "OOIOO",
+        "Otoboke Beaver"
+      ],
+      "homeCollections": [
+        "limited-pressing"
+      ],
+      "sleeveCondition": "",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "The Quietus / AllMusic",
+      "editorialUpdatedAt": "2026-09-08T13:16:42.276+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "manualRelatedArtists": [],
+      "enrichmentAttemptedAt": "2026-08-18T16:56:07.703Z",
+      "enrichmentFingerprint": "melt banana|3 5|vinyl||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Lightning Bolt",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.631121,
+          "artist": "Boredoms",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.631121,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.598863,
+          "artist": "Ruins",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.598863,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.568415,
+          "artist": "OOIOO",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.568415,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.554159,
+          "artist": "Otoboke Beaver",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.554159,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Lightning Bolt",
+            "Boredoms",
+            "Ruins",
+            "OOIOO",
+            "Otoboke Beaver",
+            "Black Eyes",
+            "Hella",
+            "Big Black",
+            "Boris",
+            "The Locust"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Lightning Bolt",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.631121,
+              "artist": "Boredoms",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.631121,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.598863,
+              "artist": "Ruins",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.598863,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.568415,
+              "artist": "OOIOO",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.568415,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.554159,
+              "artist": "Otoboke Beaver",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.554159,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.545315,
+              "artist": "Black Eyes",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.545315,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.538107,
+              "artist": "Hella",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.538107,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.528056,
+              "artist": "Big Black",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.528056,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.524238,
+              "artist": "Boris",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.524238,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.507644,
+              "artist": "The Locust",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.507644,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Lightning Bolt",
+          "Boredoms",
+          "Ruins",
+          "OOIOO",
+          "Otoboke Beaver"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Lightning Bolt",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.631121,
+            "artist": "Boredoms",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.631121,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.598863,
+            "artist": "Ruins",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.598863,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.568415,
+            "artist": "OOIOO",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.568415,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.554159,
+            "artist": "Otoboke Beaver",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.554159,
             "relationType": "artist-similarity"
           }
         ],
