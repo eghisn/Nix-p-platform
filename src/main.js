@@ -1714,7 +1714,7 @@ function adminProductsCatalogMarkup(products) {
               money.format(item.price || 0),
               item.updatedAt || "-",
               `<button class="link-button" type="button" data-admin-edit-product="${item.id}">Edit</button>
-               ${item.category === "Records" && item.publishStatus !== "Published" ? `<button class="link-button" type="button" data-admin-complete-product="${item.id}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy && publishNotice.action === "Research" ? "Researching..." : "Research & Complete"}</button>` : ""}
+               ${item.category === "Records" ? `<button class="link-button" type="button" data-admin-complete-product="${item.id}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy && publishNotice.action === "Research" ? "Researching..." : item.publishStatus === "Published" ? "Refresh Research" : "Research & Complete"}</button>` : ""}
                <button class="link-button" type="button" data-admin-product-status="${item.id}" data-status="${item.publishStatus === "Published" ? "Draft" : "Published"}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy && publishNotice.action !== "Research" ? (publishNotice.action === "Published" ? "Publishing..." : "Unpublishing...") : (item.publishStatus === "Published" ? "Unpublish" : "Publish")}</button>
                <span class="admin-publish-status" data-tone="${escapeAttr(publishNotice.tone || "")}" aria-live="polite">${escapeHtml(publishNotice.message || "")}</span>`
             ];
@@ -3863,6 +3863,8 @@ function bindAdminListControls(root = document) {
   root.querySelectorAll("[data-admin-complete-product]").forEach((button) => {
     button.addEventListener("click", async () => {
       const id = button.dataset.adminCompleteProduct;
+      const existingProduct = adminStore.getSnapshot().products.find((item) => item.id === id);
+      const wasPublished = existingProduct?.publishStatus === "Published" && existingProduct?.visibility === "Public";
       state.adminProductPublishNotices[id] = {
         tone: "",
         busy: true,
@@ -3876,7 +3878,9 @@ function bindAdminListControls(root = document) {
           state.adminProductPublishNotices[id] = {
             tone: "success",
             busy: false,
-            message: "Research saved verified release data. Review it, then use Publish when you are ready."
+            message: wasPublished
+              ? "Research refreshed verified release data. Review it, then Deploy when you are ready to update the public listing."
+              : "Research saved verified release data. Review it, then use Publish when you are ready."
           };
         } else {
           state.adminProductPublishNotices[id] = {

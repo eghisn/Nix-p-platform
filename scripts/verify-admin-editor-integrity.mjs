@@ -116,6 +116,10 @@ const publishControlSource = mainSource.slice(
 assert.doesNotMatch(publishControlSource, /completeProduct\(id\)/, "Publish must not re-run internet research over a manual product edit.");
 assert.match(publishControlSource, /publishProduct\(id, requestedStatus\)/, "Publish must remain the explicit deployment action.");
 
+const researchControlSource = mainSource.slice(mainSource.indexOf('root.querySelectorAll("[data-admin-complete-product]")'));
+assert.match(researchControlSource, /wasPublished/, "Published records must be able to refresh research without invoking Publish.");
+assert.match(researchControlSource, /then Deploy when you are ready to update the public listing/, "A research refresh must explain that public deployment remains explicit.");
+
 const migration = await readFile(new URL("../supabase/migrations/20260830045706_admin_product_revisions_and_research_leases.sql", import.meta.url), "utf8");
 assert.match(migration, /edit_revision bigint/);
 assert.match(migration, /save_admin_home_slider/);
