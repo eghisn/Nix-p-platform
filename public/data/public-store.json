@@ -5703,7 +5703,7 @@
       "year": 2016,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0074/cover.jpg",
-      "label": "Captured Tracks / GZ Media",
+      "label": "Captured Tracks",
       "price": 838000,
       "sizes": [],
       "stock": {
@@ -5722,7 +5722,9 @@
         "SKU: NXP-2026-VNL-0074",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
         "Catalog number: CT-231",
         "Barcode: 817949011697 / 817949011697 / 1386731 / 1386732 / 1386733 / 1386734 / 1386731"
       ],
@@ -5769,6 +5771,7 @@
       "description": "DIIV&#x27;s long-awaited follow-up to Oshin is not the radical break in style that Zachary Cole Smith had promised: While it&#x27;s",
       "reviewQuote": "DIIV&#x27;s long-awaited follow-up to Oshin is not the radical break in style that Zachary Cole Smith had promised: While it&#x27;s",
       "sourceTitle": "is the is are",
+      "editRevision": 9,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/8205956-DIIV-Is-The-Is-Are",
@@ -6021,8 +6024,10 @@
       },
       "catalogNumber": "CT-231",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtpgo7c4uupcym",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Beach Fossils",
@@ -6031,6 +6036,7 @@
         "BDRMM",
         "Nothing"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/8205956-DIIV-Is-The-Is-Are",
@@ -6043,12 +6049,15 @@
           "confidence": 85
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Pitchfork (quoted)",
       "metadataSourceUrl": "https://www.discogs.com/release/8205956-DIIV-Is-The-Is-Are",
+      "editorialUpdatedAt": "2026-09-08T19:39:19.733+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
@@ -6284,18 +6293,16 @@
         "sourceUrl": "https://musicbrainz.org/release/e18439ba-b586-4f80-a79f-ebac4d8d9b67",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 8,
-      "editorialUpdatedAt": "2026-09-08T18:40:20.557+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
