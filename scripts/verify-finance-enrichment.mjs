@@ -13,7 +13,8 @@ import {
   isExactDiscogsSearchEvidence,
   isEditorialDescriptionQuality,
   mergeExactDiscogsEvidence,
-  normalizeDiscogsSearchRelease
+  normalizeDiscogsSearchRelease,
+  selectTrustedRecordLabel
 } from "../api/_lib/catalogEnrichment.js";
 import {
   applyCatalogPublicationSafety,
@@ -205,6 +206,23 @@ assert.equal(discogsSearchFallback.catalogNumber, "RFC097");
 assert.equal(discogsSearchFallback.cover, "https://example.test/deep-end.jpg");
 assert.equal(discogsSearchFallback.matchConfidence, 100);
 assert.match(discogsSearchFallback.sourceUrl, /5986176/);
+assert.equal(
+  selectTrustedRecordLabel([
+    { name: "Ipecac Recordings", catno: "IPC-123" },
+    { name: "MPO", catno: "MPO-456" },
+    { name: "Tower Vinyl Presents", catno: "TVP-789" }
+  ], "IPC-123"),
+  "Ipecac Recordings",
+  "A label field must contain the matched release label, never a pressing plant or retailer."
+);
+assert.equal(
+  selectTrustedRecordLabel([
+    { name: "Distributor Archive", catno: "DIST-1" },
+    { name: "Verified Label", catno: "NXP-42" }
+  ], "NXP-42"),
+  "Verified Label",
+  "The catalog-number match must win when Discogs provides several companies."
+);
 const discogsMergedEvidence = mergeExactDiscogsEvidence({
   title: "Deep End b/w Momentary Lapse",
   artist: "Creative Adult",

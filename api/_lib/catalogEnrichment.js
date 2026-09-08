@@ -14,7 +14,10 @@ export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 // Release matching has a separate lifecycle from related-artist research.
 // Bump this when physical-release evidence rules change so an explicit retry
 // cannot reuse a job created by older matching logic.
-export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v3";
+// A versioned research request means editorial rule changes only run for an
+// item when an editor explicitly asks to research it again. This keeps a
+// deployment from silently rewriting live catalogue copy.
+export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v4";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -1898,7 +1901,7 @@ export function assessDiscogsReleaseCandidates(releases = [], { stock = {}, form
 
 function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
   const labelEntries = Array.isArray(release.labels) ? release.labels : [];
-  const label = unique(labelEntries.map((entry) => entry?.name)).join(" / ");
+  const label = selectTrustedRecordLabel(labelEntries, stock.catalogNumber);
   const catalogNumber = unique(labelEntries.map((entry) => entry?.catno).filter((value) => value && value !== "none")).join(" / ");
   const barcode = unique((release.identifiers || [])
     .filter((entry) => /barcode/i.test(String(entry?.type || "")))
@@ -1912,8 +1915,6 @@ function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
   const artist = unique((release.artists || []).map((entry) => entry?.name?.replace(/\s*\(\d+\)$/, ""))).join(" / ") || stock.artist;
   const year = Number(release.year || 0);
   const title = String(release.title || stock.title || "").trim();
-  const trackText = tracks.length ? ` The track list includes ${tracks.slice(0, 4).join(", ")}${tracks.length > 4 ? ", and more" : ""}.` : "";
-  const styleText = styles.length ? ` Its Discogs entry is filed under ${styles.slice(0, 3).join(", ")}.` : "";
   const sourceUrl = String(release.uri || "").startsWith("http") ? release.uri : `https://www.discogs.com${release.uri || `/release/${release.id}`}`;
   return {
     title,
@@ -1926,8 +1927,8 @@ function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
     cover,
     productPhoto: "",
     imageCredits: cover ? [{ image: cover, credit: "Discogs physical-release artwork", url: sourceUrl }] : [],
-    description: `${artist}'s ${year || ""} ${title} is documented by Discogs as ${format || stock.item || "a physical release"}${label ? ` on ${label}` : ""}.${trackText}${styleText}`.replace(/\s+/g, " ").trim(),
-    descriptionSource: "Discogs release data",
+    description: physicalReleaseDescription({ artist, title, year, format, label, tracks, styles, fallbackFormat: stock.item }),
+    descriptionSource: "Verified physical-release metadata",
     reviewQuote: "",
     reviewSource: "",
     reviewUrl: "",
@@ -1967,9 +1968,17 @@ async function discoverBandcampRelease(stock) {
     const year = bandcampReleaseYear(pageHtml);
     const label = String(pageTitle || "").split("|").map((value) => value.trim()).filter(Boolean).at(-1) || "";
     const title = String(pageTitle || "").split("|")[0]?.trim() || stock.title;
-    const description = releaseNote
-      ? `${stock.artist}'s ${year || ""} ${title} is a ${stock.item || stock.format} release from ${label || "Bandcamp"}. ${releaseNote}`.replace(/\s+/g, " ").trim()
-      : `${stock.artist}'s ${year || ""} ${title} is a ${stock.item || stock.format} release from ${label || "Bandcamp"}.`.replace(/\s+/g, " ").trim();
+    // The page title, artist and edition are already visible around the
+    // description in the storefront. Let an official release note carry the
+    // editorial voice instead of wrapping it in another generic template.
+    const description = releaseNote || physicalReleaseDescription({
+      artist: stock.artist,
+      title,
+      year,
+      format: stock.item || stock.format,
+      label,
+      fallbackFormat: stock.item || stock.format
+    });
     return {
       title,
       artist: stock.artist,
@@ -1980,7 +1989,7 @@ async function discoverBandcampRelease(stock) {
       productPhoto: "",
       imageCredits: [{ image: cover, credit: "Official Bandcamp release artwork", url }],
       description,
-      descriptionSource: "Official Bandcamp release page",
+      descriptionSource: releaseNote ? "Official Bandcamp release note" : "Official Bandcamp release page",
       reviewQuote: releaseNote,
       reviewSource: releaseNote ? "Bandcamp release note (quoted)" : "",
       reviewUrl: releaseNote ? url : "",
@@ -1992,6 +2001,55 @@ async function discoverBandcampRelease(stock) {
     };
   }
   return null;
+}
+
+const NON_LABEL_COMPANY_PATTERN = /\b(?:retail(?:er)?|store|shop|marketplace|mail[ -]?order|distribution|distributor|manufactur(?:er|ing)?|press(?:ing)?|master(?:ing|ed)?|plating|duplication|webstore|presents)\b/i;
+const NON_LABEL_COMPANY_NAMES = new Set([
+  "gz media",
+  "mpo",
+  "optimal media production",
+  "record industry",
+  "pallas",
+  "rainbo records"
+]);
+
+// Discogs can list labels, distributors and manufacturing plants together.
+// Keep one release-label candidate, preferring the entry whose catalogue
+// number matches the physical object entered in Finance. This prevents a
+// product card from becoming a slash-separated list of unrelated companies.
+export function selectTrustedRecordLabel(entries = [], expectedCatalogNumber = "") {
+  const candidates = [];
+  const seen = new Set();
+  for (const entry of Array.isArray(entries) ? entries : []) {
+    const value = typeof entry === "string" ? entry : entry?.name;
+    const name = String(value || "").replace(/\s+/g, " ").trim();
+    const key = name.toLowerCase();
+    if (!name || seen.has(key) || NON_LABEL_COMPANY_PATTERN.test(name) || NON_LABEL_COMPANY_NAMES.has(key)) continue;
+    seen.add(key);
+    candidates.push({
+      name,
+      catalogNumber: String(typeof entry === "string" ? "" : entry?.catno || "").trim()
+    });
+  }
+  if (!candidates.length) return "";
+  const expected = normalizedText(expectedCatalogNumber);
+  if (expected) {
+    const matched = candidates.find((candidate) => catalogNumberMatches(candidate.catalogNumber, expected));
+    if (matched) return matched.name;
+  }
+  return candidates[0].name;
+}
+
+function physicalReleaseDescription({ artist, title, year, format, label, tracks = [], styles = [], fallbackFormat = "" } = {}) {
+  const edition = String(format || fallbackFormat || "physical release").replace(/\s+/g, " ").trim();
+  const release = [String(artist || "").trim(), year ? String(year) : "", String(title || "").trim()].filter(Boolean).join(" ").trim();
+  const facts = [];
+  if (tracks.length) {
+    const examples = tracks.slice(0, 3).join(", ");
+    facts.push(`The pressing carries ${tracks.length} track${tracks.length === 1 ? "" : "s"}${examples ? `, including ${examples}` : ""}`);
+  }
+  if (styles.length) facts.push(`The release is indexed under ${styles.slice(0, 3).join(", ")}`);
+  return `${release || "This release"} is a verified ${edition}${label ? ` edition on ${label}` : ""}.${facts.length ? ` ${facts.join(". ")}.` : ""}`.replace(/\s+/g, " ").trim();
 }
 
 function discogsReleaseTitle(value, artist) {
@@ -2146,7 +2204,10 @@ async function discoverMusicBrainzRelease(stock) {
 }
 
 export function normalizeDiscogsSearchRelease(release, stock, matchConfidence = 0) {
-  const label = unique(Array.isArray(release.label) ? release.label : [release.label]).join(" / ");
+  const label = selectTrustedRecordLabel(
+    (Array.isArray(release.label) ? release.label : [release.label]).map((name) => ({ name, catno: release.catno })),
+    stock.catalogNumber
+  );
   const catalogNumber = String(release.catno || "").trim();
   const barcode = unique(Array.isArray(release.barcode) ? release.barcode : [release.barcode])
     .map((value) => String(value || "").replace(/\D/g, ""))
@@ -2175,8 +2236,8 @@ export function normalizeDiscogsSearchRelease(release, stock, matchConfidence = 
     cover,
     productPhoto: "",
     imageCredits: cover ? [{ image: cover, credit: "Discogs physical-release artwork", url: sourceUrl }] : [],
-    description: `${artist}'s ${year || ""} ${title} is documented by Discogs as ${format || stock.item || "a physical release"}${label ? ` on ${label}` : ""}.`.replace(/\s+/g, " ").trim(),
-    descriptionSource: "Discogs release data",
+    description: physicalReleaseDescription({ artist, title, year, format, label, styles, fallbackFormat: stock.item }),
+    descriptionSource: "Verified physical-release metadata",
     reviewQuote: "",
     reviewSource: "",
     reviewUrl: "",
@@ -2406,8 +2467,10 @@ async function discoverLinkedReview(urls = [], { artist, title } = {}) {
 }
 
 async function discoverTrustedReviewSearch({ artist, title } = {}) {
-  const domains = [...TRUSTED_REVIEW_SOURCES.keys()].map((domain) => `site:${domain}`).join(" OR ");
-  const query = `"${artist}" "${title}" review (${domains})`;
+  // Search engines do not consistently honour a parenthesized list of `site:`
+  // clauses. Search the exact release normally, then admit only URLs from the
+  // trusted allow-list below.
+  const query = `"${artist}" "${title}" review`;
   const response = await fetchWithTimeout(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, {
     headers: { accept: "text/html", "user-agent": USER_AGENT }
   }, 7000);
@@ -2425,8 +2488,7 @@ async function discoverTrustedReviewSearch({ artist, title } = {}) {
 }
 
 async function discoverBraveReviewSearch({ artist, title } = {}) {
-  const domains = [...TRUSTED_REVIEW_SOURCES.keys()].map((domain) => `site:${domain}`).join(" OR ");
-  const query = `"${artist}" "${title}" review (${domains})`;
+  const query = `"${artist}" "${title}" review`;
   const response = await fetchWithTimeout(`https://search.brave.com/search?q=${encodeURIComponent(query)}&source=web`, {
     headers: { accept: "text/html", "user-agent": USER_AGENT }
   }, 7000);

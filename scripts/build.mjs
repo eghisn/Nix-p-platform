@@ -256,6 +256,21 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function reviewSourceMarkup(product = {}) {
+  const source = escapeHtml(product.reviewSource || "Source review");
+  const url = safeExternalUrl(product.reviewUrl);
+  return url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${source}</a>` : source;
+}
+
+function safeExternalUrl(value) {
+  try {
+    const url = new URL(String(value || ""));
+    return url.protocol === "https:" ? url.toString() : "";
+  } catch {
+    return "";
+  }
+}
+
 function absoluteUrl(value) {
   const path = String(value || "").trim();
   if (!path) return siteImage;
@@ -406,11 +421,8 @@ function staticProductDetailMarkup(product) {
         })
         .join("")}</div>`
     : "";
-  const legacyReview = product.reviewQuote
-    ? `<blockquote class="product-review">“${escapeHtml(product.reviewQuote)}”</blockquote><p class="review-source">${escapeHtml(product.reviewSource || "Source review")}</p>`
-    : "";
   const review = product.reviewQuote
-    ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${escapeHtml(product.reviewSource || "Source review")}</cite></blockquote>`
+    ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${reviewSourceMarkup(product)}</cite></blockquote>`
     : "";
   const labelMarkup = isRecord && product.label
     ? `<a class="record-label-link" href="/labels/${encodeURIComponent(labelSlug(product.label))}" data-link>${escapeHtml(canonicalLabelName(product.label))}</a>`

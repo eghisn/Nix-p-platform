@@ -192,7 +192,7 @@ function productMarkup(product, store = {}) {
     ? `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div><div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div><div><dt>Label</dt><dd>${labelMarkup}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div><div><dt>Catalog number</dt><dd>${escapeHtml(recordMetadataValue(product, "catalogNumber") || "Not specified")}</dd></div><div><dt>Barcode</dt><dd>${escapeHtml(recordMetadataValue(product, "barcode") || "Not specified")}</dd></div>${hasRecordConditionDetails ? `<div><dt>Media condition</dt><dd>${escapeHtml(product.mediaCondition || "Not specified")}</dd></div><div><dt>Sleeve condition</dt><dd>${escapeHtml(product.sleeveCondition || "Not specified")}</dd></div>` : ""}<div><dt>Notes</dt><dd>${escapeHtml(recordNotes(product).join(" / "))}</dd></div>`
     : `<div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>`;
   const review = product.reviewQuote
-    ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${escapeHtml(product.reviewSource || "Source review")}</cite></blockquote>`
+    ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${reviewSourceMarkup(product)}</cite></blockquote>`
     : "";
   const availableArtists = new Map(
     (store.products || [])
@@ -227,6 +227,21 @@ function slugify(value) {
 function absoluteUrl(value) {
   const image = String(value || "").trim();
   return /^https?:\/\//i.test(image) ? image : `${ORIGIN}${image.startsWith("/") ? "" : "/"}${image}`;
+}
+
+function reviewSourceMarkup(product = {}) {
+  const source = escapeHtml(product.reviewSource || "Source review");
+  const url = safeExternalUrl(product.reviewUrl);
+  return url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${source}</a>` : source;
+}
+
+function safeExternalUrl(value) {
+  try {
+    const url = new URL(String(value || ""));
+    return url.protocol === "https:" ? url.toString() : "";
+  } catch {
+    return "";
+  }
 }
 
 function formatPrice(value) {
