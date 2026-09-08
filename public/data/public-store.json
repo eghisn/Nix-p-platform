@@ -5071,7 +5071,7 @@
       "year": 2019,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0051/cover.jpg",
-      "label": "Rough Trade",
+      "label": "Captured Tracks",
       "price": 368000,
       "sizes": [],
       "stock": {
@@ -5090,7 +5090,8 @@
         "SKU: NXP-2026-CD-0051",
         "Format: CD",
         "Condition: New-Sealed",
-        "Edition: CD, Album",
+        "Edition: CD",
+        "Album",
         "Catalog number: CT-300",
         "Barcode: 817949016982"
       ],
@@ -5151,6 +5152,7 @@
       "description": "The shoegaze band’s third album is another portrait of addiction and recovery, but this time there’s no suggestion of a",
       "reviewQuote": "The shoegaze band’s third album is another portrait of addiction and recovery, but this time there’s no suggestion of a",
       "sourceTitle": "deceiver",
+      "editRevision": 8,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/14248376-DIIV-Deceiver",
@@ -5403,8 +5405,10 @@
       },
       "catalogNumber": "CT-300",
       "displayFormat": "CD",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtpgrpx0a4jf98",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Beach Fossils",
@@ -5413,6 +5417,7 @@
         "BDRMM",
         "Nothing"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/14248376-DIIV-Deceiver",
@@ -5425,11 +5430,14 @@
           "confidence": 85
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "descriptionSource": "Pitchfork (quoted)",
       "metadataSourceUrl": "https://www.discogs.com/release/14248376-DIIV-Deceiver",
+      "editorialUpdatedAt": "2026-09-08T19:31:00.398+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
@@ -5664,22 +5672,21 @@
         "sourceUrl": "https://musicbrainz.org/release/db63a077-06f3-484b-b45d-933d31a0c6d7",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 7,
-      "editorialUpdatedAt": "2026-09-08T17:41:55.339+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
