@@ -92,6 +92,35 @@ const ARCHIVED_CATALOG_IMAGES = {
 // Exact, reviewed matches take precedence over discovery. These records also
 // document the source used for every locally archived catalog image.
 export const CURATED_FINANCE_ENRICHMENTS = {
+  "NXP-2026-VNL-0080": {
+    artist: "Melvins, Napalm Death",
+    title: "Savage Imperial Death March",
+    year: 2026,
+    label: "Ipecac Recordings",
+    edition: "Vinyl, LP, Album, Reissue, Stereo",
+    catalogNumber: "IPC297LP",
+    barcode: "689230029717",
+    cover: "https://i.discogs.com/u9ZJwrmVRvUImS6KhEwhuc2s8KLD8aBLw7E7yHM2B0E/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dzLWRhdGFiYXNlLWltYWdlcy9SLTM3MDM5MTk3LTE3NzU5MzMwOTQtMjM5OC5qcGVn.jpeg",
+    imageCredits: [
+      {
+        image: "https://i.discogs.com/u9ZJwrmVRvUImS6KhEwhuc2s8KLD8aBLw7E7yHM2B0E/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dzLWRhdGFiYXNlLWltYWdlcy9SLTM3MDM5MTk3LTE3NzU5MzMwOTQtMjM5OC5qcGVn.jpeg",
+        credit: "Discogs physical-release artwork",
+        url: "https://www.discogs.com/release/37039197-The-Melvins-With-Napalm-Death-Savage-Imperial-Death-March"
+      }
+    ],
+    description:
+      "Savage Imperial Death March is a 2026 vinyl reissue pairing Melvins with Napalm Death, issued by Ipecac Recordings as IPC297LP. The one-LP stereo album is documented as a rock release with grindcore and sludge-metal affiliations.",
+    descriptionSource: "Discogs release 37039197",
+    relatedArtists: [],
+    relatedArtistResearch: {
+      status: "no-verified-match",
+      source: "Exact release artist credits",
+      artists: [],
+      evidence: []
+    },
+    tags: ["rock", "grindcore", "sludge metal", "reissue"],
+    sourceUrl: "https://www.discogs.com/release/37039197-The-Melvins-With-Napalm-Death-Savage-Imperial-Death-March"
+  },
   "NXP-2026-CD-0036": {
     title: "No Interference",
     year: 2001,
