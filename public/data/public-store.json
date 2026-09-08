@@ -2,6 +2,606 @@
   "version": "supabase-live-2026-07-13",
   "products": [
     {
+      "id": "finance-nxp-2026-vnl-0068",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0068",
+      "tags": [
+        "Indie Rock",
+        "Rock"
+      ],
+      "year": 2008,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0068/cover.jpg",
+      "label": "Domino",
+      "price": 416250,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Navigate, Navigate",
+      "artist": "These New Puritans",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0068/cover.jpg"
+      ],
+      "barcode": "80139008215 / 982 / 982",
+      "details": [
+        "SKU: NXP-2026-VNL-0068",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: Vinyl, 12\"",
+        "Catalog number: DNO 982",
+        "Barcode: 80139008215 / 982 / 982"
+      ],
+      "edition": "Vinyl, 12\"",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0068/cover.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-09-08T16:55:44.993Z",
+          "sku": "NXP-2026-VNL-0068",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-04T14:48:01.659Z",
+          "sku": "NXP-2026-VNL-0068",
+          "action": "Inventory created catalog item",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-08",
+      "collection": "Domino",
+      "syncStatus": {
+        "at": "2026-09-08T16:55:44.993Z",
+        "sku": "NXP-2026-VNL-0068",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "These New Puritans's 2008 navigate navigate is documented by Discogs as Vinyl, 12\" on Domino.",
+      "reviewQuote": "",
+      "sourceTitle": "navigate navigate",
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0068/cover.jpg",
+          "credit": "Discogs physical-release artwork"
+        }
+      ],
+      "reviewSource": "",
+      "autoEditorial": {
+        "reviewUrl": "",
+        "description": "These New Puritans's 2008 navigate navigate is documented by Discogs as Vinyl, 12\" on Domino.",
+        "reviewQuote": "",
+        "reviewSource": "",
+        "relatedArtists": [
+          "The Horrors",
+          "Moin",
+          "Caroline",
+          "Heartworms",
+          "Wild Beasts"
+        ],
+        "descriptionSource": "Discogs release data",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "The Horrors",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.803789,
+            "artist": "Moin",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 0.803789,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.752679,
+            "artist": "Caroline",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 0.752679,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.71758,
+            "artist": "Heartworms",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 0.71758,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.711087,
+            "artist": "Wild Beasts",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 0.711087,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "The Horrors",
+              "Moin",
+              "Caroline",
+              "Heartworms",
+              "Wild Beasts",
+              "Lucrecia Dalt",
+              "Patrick Wolf",
+              "Liars",
+              "John Glacier",
+              "Factory Floor"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "The Horrors",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.803789,
+                "artist": "Moin",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 0.803789,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.752679,
+                "artist": "Caroline",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 0.752679,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.71758,
+                "artist": "Heartworms",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 0.71758,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.711087,
+                "artist": "Wild Beasts",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 0.711087,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.654834,
+                "artist": "Lucrecia Dalt",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 0.654834,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.646731,
+                "artist": "Patrick Wolf",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 0.646731,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.609064,
+                "artist": "Liars",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 0.609064,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.566422,
+                "artist": "John Glacier",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 0.566422,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.52662,
+                "artist": "Factory Floor",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+                "confidence": 0.52662,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "The Horrors",
+            "Moin",
+            "Caroline",
+            "Heartworms",
+            "Wild Beasts"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "The Horrors",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.803789,
+              "artist": "Moin",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.803789,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.752679,
+              "artist": "Caroline",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.752679,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.71758,
+              "artist": "Heartworms",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.71758,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.711087,
+              "artist": "Wild Beasts",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.711087,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "3dc72fb6-6623-4ed4-9bc5-dbd243aaccee",
+          "sourceUrl": "https://musicbrainz.org/release/3dc72fb6-6623-4ed4-9bc5-dbd243aaccee",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "DNO 982",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mtn2j5otjeqr6v",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "The Horrors",
+        "Moin",
+        "Caroline",
+        "Heartworms",
+        "Wild Beasts"
+      ],
+      "researchSources": [
+        {
+          "url": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
+          "source": "Discogs",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "discogs",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Discogs release data",
+      "metadataSourceUrl": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
+      "enrichmentUpdatedAt": "2026-09-08",
+      "adminPublishOverride": null,
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-09-08T16:55:44.993Z",
+      "enrichmentFingerprint": "these new puritans|navigate navigate|vinyl||dno 982",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "The Horrors",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.803789,
+          "artist": "Moin",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+          "confidence": 0.803789,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.752679,
+          "artist": "Caroline",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+          "confidence": 0.752679,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.71758,
+          "artist": "Heartworms",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+          "confidence": 0.71758,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.711087,
+          "artist": "Wild Beasts",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+          "confidence": 0.711087,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "The Horrors",
+            "Moin",
+            "Caroline",
+            "Heartworms",
+            "Wild Beasts",
+            "Lucrecia Dalt",
+            "Patrick Wolf",
+            "Liars",
+            "John Glacier",
+            "Factory Floor"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "The Horrors",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.803789,
+              "artist": "Moin",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.803789,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.752679,
+              "artist": "Caroline",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.752679,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.71758,
+              "artist": "Heartworms",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.71758,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.711087,
+              "artist": "Wild Beasts",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.711087,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.654834,
+              "artist": "Lucrecia Dalt",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.654834,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.646731,
+              "artist": "Patrick Wolf",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.646731,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.609064,
+              "artist": "Liars",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.609064,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.566422,
+              "artist": "John Glacier",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.566422,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.52662,
+              "artist": "Factory Floor",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+              "confidence": 0.52662,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "The Horrors",
+          "Moin",
+          "Caroline",
+          "Heartworms",
+          "Wild Beasts"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "The Horrors",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.803789,
+            "artist": "Moin",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 0.803789,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.752679,
+            "artist": "Caroline",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 0.752679,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.71758,
+            "artist": "Heartworms",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 0.71758,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.711087,
+            "artist": "Wild Beasts",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/These%20New%20Puritans",
+            "confidence": 0.711087,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "3dc72fb6-6623-4ed4-9bc5-dbd243aaccee",
+        "sourceUrl": "https://musicbrainz.org/release/3dc72fb6-6623-4ed4-9bc5-dbd243aaccee",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 5,
+      "editorialUpdatedAt": "2026-09-08T17:02:34.357+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-04",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0067",
       "qty": 1,
       "sku": "NXP-2026-VNL-0067",
@@ -28,7 +628,7 @@
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0067/cover.jpg"
       ],
-      "barcode": "887829091439 / 19410011914 / 19410011914",
+      "barcode": "",
       "details": [
         "SKU: NXP-2026-VNL-0067",
         "Format: Vinyl",
@@ -44,6 +644,13 @@
       "condition": "New-Sealed",
       "reviewUrl": "https://pitchfork.com/reviews/albums/protomartyr-consolation-ep/",
       "syncAudit": [
+        {
+          "at": "2026-09-08T16:55:20.522Z",
+          "sku": "NXP-2026-VNL-0067",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-09-08T16:46:10.700Z",
           "sku": "NXP-2026-VNL-0067",
@@ -62,9 +669,9 @@
       "updatedAt": "2026-09-08",
       "collection": "Domino",
       "syncStatus": {
-        "at": "2026-09-08T16:46:10.700Z",
+        "at": "2026-09-08T16:55:20.522Z",
         "sku": "NXP-2026-VNL-0067",
-        "action": "Inventory synchronized to catalog",
+        "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
@@ -590,9 +1197,9 @@
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 6,
-      "editorialUpdatedAt": "2026-09-08T16:47:24.041+00:00",
-      "editorialUpdatedBy": "admin-publication",
+      "editRevision": 8,
+      "editorialUpdatedAt": "2026-09-08T16:55:20.824+00:00",
+      "editorialUpdatedBy": "finance-stock",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
@@ -79325,16 +79932,16 @@
       "status": "Published"
     },
     {
-      "id": "soft-moon",
+      "id": "lust-for-youth",
       "bio": "",
-      "name": "Soft Moon",
+      "name": "Lust For Youth",
       "sort": 31,
       "status": "Published"
     },
     {
-      "id": "lust-for-youth",
+      "id": "soft-moon",
       "bio": "",
-      "name": "Lust For Youth",
+      "name": "Soft Moon",
       "sort": 31,
       "status": "Published"
     },
@@ -79872,17 +80479,17 @@
       "status": "Published"
     },
     {
-      "id": "fire-toolz",
-      "bio": "",
-      "name": "Fire-Toolz",
-      "sort": 110,
-      "status": "Published"
-    },
-    {
       "id": "bloc-party",
       "name": "Bloc Party",
       "sort": 110,
       "origin": "finance-inventory",
+      "status": "Published"
+    },
+    {
+      "id": "fire-toolz",
+      "bio": "",
+      "name": "Fire-Toolz",
+      "sort": 110,
       "status": "Published"
     },
     {
@@ -79980,6 +80587,13 @@
       "id": "stephen-o-malley",
       "name": "Stephen O' Malley",
       "sort": 10001,
+      "origin": "finance-inventory",
+      "status": "Published"
+    },
+    {
+      "id": "protomartyr",
+      "name": "Protomartyr",
+      "sort": 10002,
       "origin": "finance-inventory",
       "status": "Published"
     }
