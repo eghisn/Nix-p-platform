@@ -1952,6 +1952,7 @@ async function discoverMusicBrainzRelease(stock) {
 
   let release = null;
   let exactAlbumWithDifferentFormat = false;
+  let catalogFormatFallback = false;
   for (const [index, query] of queries.entries()) {
     const response = await musicBrainzFetch(
       `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=${index === 0 && catalogNumber ? 50 : 25}&inc=labels+artist-credits+media+release-groups`
@@ -1962,7 +1963,10 @@ async function discoverMusicBrainzRelease(stock) {
     const candidateAssessment = assessMusicBrainzReleaseCandidates(releases, { stock, expectedTitle, format, barcode, catalogNumber });
     exactAlbumWithDifferentFormat ||= candidateAssessment.exactAlbumWithDifferentFormat;
     release = candidateAssessment.release;
-    if (release) break;
+    if (release) {
+      catalogFormatFallback = candidateAssessment.catalogFormatFallback === true;
+      break;
+    }
   }
   if (!release) {
     // With no Finance-side pressing identifier, an artist/title match that
@@ -1985,8 +1989,7 @@ async function discoverMusicBrainzRelease(stock) {
   const year = Number(String(release.date || "").slice(0, 4)) || 0;
   const label = labels.join(" / ");
   const edition = unique([
-    release.packaging,
-    ...(release.media || []).map((medium) => medium.format)
+    ...(catalogFormatFallback ? [stock.format || stock.item] : [release.packaging, ...(release.media || []).map((medium) => medium.format)])
   ]).join(" / ");
   const [releaseGroup, pitchforkReview, relatedArtistResearch] = await Promise.all([
     discoverReleaseGroup(release["release-group"]?.id),
@@ -2000,7 +2003,7 @@ async function discoverMusicBrainzRelease(stock) {
     (await discoverOfficialEditorial(releaseGroup?.officialUrl, { artist: stock.artist, title: release.title }));
   const tags = unique([...(releaseGroup?.tags || []), ...(release["release-group"]?.tags || []).map((tag) => tag.name)]);
   const genreText = tags.slice(0, 3).join(", ");
-  const description = `${stock.artist}'s ${year || ""} release ${release.title} is a ${stock.format || stock.item}${
+  const description = `${stock.artist}'s ${year || ""} release ${release.title} is documented by MusicBrainz with catalog number ${catalogNumbers.join(" / ") || String(stock.catalogNumber || "").trim()} as a ${stock.format || stock.item}${
     label ? ` edition issued by ${label}` : " edition"
   }${genreText ? `, documented by MusicBrainz as ${genreText}` : ""}.`.replace(/\s+/g, " ");
 
@@ -2026,7 +2029,7 @@ async function discoverMusicBrainzRelease(stock) {
       } : null
     ].filter(Boolean)),
     description,
-    descriptionSource: "MusicBrainz",
+    descriptionSource: "MusicBrainz catalog data",
     reviewQuote: review?.quote || "",
     reviewSource: review?.source || "",
     reviewUrl: review?.url || "",
@@ -2035,7 +2038,8 @@ async function discoverMusicBrainzRelease(stock) {
     relatedArtistResearch,
     tags,
     sourceUrl: releaseGroup?.officialUrl || `${MUSICBRAINZ_ORIGIN}/release/${release.id}`,
-    musicBrainzReleaseId: release.id
+    musicBrainzReleaseId: release.id,
+    catalogFormatFallback
   };
 }
 
@@ -2055,13 +2059,23 @@ export function assessMusicBrainzReleaseCandidates(releases = [], { stock = {}, 
       const artistMatches = musicBrainzArtistMatches(release, stock.artist);
       const exactAlbumMatch = artistMatches && titleCompatible;
       if (exactAlbumMatch && !formatMatches) exactAlbumWithDifferentFormat = true;
+      // MusicBrainz sometimes stores a label's catalog record as Digital
+      // Media while the same exact catalog number identifies a physical
+      // edition in Finance. This fallback is intentionally narrow: it needs
+      // an exact catalog number plus the same artist. A shortened Finance
+      // title is allowed only because the physical identifier is exact, for
+      // example "Deep End" versus "Deep End b/w Momentary Lapse". It
+      // preserves Finance's physical format rather than copying the
+      // conflicting MusicBrainz medium.
+      const catalogFormatFallback = Boolean(catalogExact && artistMatches && !formatMatches);
       // Catalog number and barcode are the strongest signals when supplied,
       // but neither is mandatory. Finance can legitimately identify a record
       // using a normalised artist + title + format alone.
-      if (!artistMatches || !formatMatches || (!titleCompatible && !catalogExact && !barcodeExact)) return null;
+      if (!artistMatches || (!formatMatches && !catalogFormatFallback) || (!titleCompatible && !catalogExact && !barcodeExact)) return null;
 
       return {
         release,
+        catalogFormatFallback,
         score: Number(release.score || 0) +
           (catalogExact ? 100 : 0) +
           (barcodeExact ? 90 : 0) +
@@ -2072,7 +2086,11 @@ export function assessMusicBrainzReleaseCandidates(releases = [], { stock = {}, 
     })
     .filter(Boolean)
     .sort((a, b) => b.score - a.score);
-  return { release: candidates[0]?.release || null, exactAlbumWithDifferentFormat };
+  return {
+    release: candidates[0]?.release || null,
+    exactAlbumWithDifferentFormat,
+    catalogFormatFallback: candidates[0]?.catalogFormatFallback === true
+  };
 }
 
 function catalogNumberMatches(candidate, expected) {

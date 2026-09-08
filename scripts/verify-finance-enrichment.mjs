@@ -128,6 +128,21 @@ const tracerAssessment = assessMusicBrainzReleaseCandidates(tracerCdOnly, {
 });
 assert.equal(tracerAssessment.release, null);
 assert.equal(tracerAssessment.exactAlbumWithDifferentFormat, true);
+const catalogExactAcrossMusicBrainzMedia = assessMusicBrainzReleaseCandidates([{
+  id: "2f6a2c3c-acfa-47f9-a44c-36da42d52dca",
+  title: "Deep End b/w Momentary Lapse",
+  score: 100,
+  "artist-credit": [{ name: "Creative Adult" }],
+  media: [{ format: "Digital Media" }],
+  "label-info": [{ "catalog-number": "RFC097" }]
+}], {
+  stock: { artist: "Creative Adult", title: "Deep End", item: "Vinyl", catalogNumber: "RFC097" },
+  expectedTitle: "deep end",
+  format: "vinyl",
+  catalogNumber: "rfc097"
+});
+assert.equal(catalogExactAcrossMusicBrainzMedia.release.id, "2f6a2c3c-acfa-47f9-a44c-36da42d52dca");
+assert.equal(catalogExactAcrossMusicBrainzMedia.catalogFormatFallback, true, "An exact catalog number may bridge a source's digital-only medium record without changing Finance's physical format.");
 
 const negativeLoversDiscogs = [{
   id: 9967524,
