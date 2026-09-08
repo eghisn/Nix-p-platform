@@ -1,4 +1,4 @@
-import { inventoryFingerprint, RELATED_ARTIST_RESEARCH_VERSION } from "./catalogEnrichment.js";
+import { CATALOG_RESEARCH_VERSION, inventoryFingerprint } from "./catalogEnrichment.js";
 import { supabaseFetch } from "./supabase.js";
 
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
@@ -39,7 +39,7 @@ export function catalogResearchRequest(stock = {}, { requestedBy = "finance" } =
     id: jobId(sku, requestFingerprint),
     sku,
     request_fingerprint: requestFingerprint,
-    research_version: RELATED_ARTIST_RESEARCH_VERSION,
+    research_version: CATALOG_RESEARCH_VERSION,
     status: "queued",
     stage: "queued",
     attempt_count: 0,

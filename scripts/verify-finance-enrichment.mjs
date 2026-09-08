@@ -143,6 +143,21 @@ const negativeLoversAssessment = assessDiscogsReleaseCandidates(negativeLoversDi
 });
 assert.equal(negativeLoversAssessment.release.id, 9967524);
 assert.equal(negativeLoversAssessment.needsPressingIdentifier, false);
+const shortenedTitleWithExactCatalog = assessDiscogsReleaseCandidates([
+  {
+    id: 5986176,
+    type: "release",
+    title: "Creative Adult - Deep End b/w Momentary Lapse",
+    format: ["Vinyl", "7\"", "45 RPM"],
+    catno: "RFC097",
+    resource_url: "https://api.discogs.com/releases/5986176"
+  }
+], {
+  stock: { artist: "Creative Adult", title: "Deep End", item: "Vinyl", catalogNumber: "RFC097" },
+  format: "Vinyl",
+  catalogNumber: "rfc097"
+});
+assert.equal(shortenedTitleWithExactCatalog.release.id, 5986176, "An exact Finance catalog number must match a source title that includes a B-side.");
 const ambiguousDiscogsAssessment = assessDiscogsReleaseCandidates([
   ...negativeLoversDiscogs,
   { ...negativeLoversDiscogs[0], id: 9967525, resource_url: "https://api.discogs.com/releases/9967525" }

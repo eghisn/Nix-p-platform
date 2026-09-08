@@ -1350,10 +1350,10 @@ async function adminEditorPage() {
       </form>
       <form class="editor-deploy-panel" data-admin-complete-drafts-form>
         <div>
-          <strong>Complete Draft Products</strong>
-          <span>Verify release data, archive images, add editorial and shipping fields, then deploy.</span>
+          <strong>Research Draft Products</strong>
+          <span>Verify release data, archive images, and add available metadata. Review before publishing.</span>
         </div>
-        <button class="button" type="submit" ${completableDrafts ? "" : "disabled"}>Complete ${completableDrafts || ""}</button>
+        <button class="button" type="submit" ${completableDrafts ? "" : "disabled"}>Research ${completableDrafts || ""}</button>
         <p class="admin-form-note" data-admin-form-message data-tone="${escapeAttr(state.adminCompletionNoticeTone)}" aria-live="polite">${escapeHtml(state.adminCompletionNotice)}</p>
       </form>
       ${adminEmailHealthMarkup(emailHealth)}
@@ -3808,38 +3808,6 @@ function bindAdminListControls(root = document) {
       await refreshAdminList("products");
       try {
         const product = adminStore.getProduct(id, { includeDrafts: true });
-        if (publishing && product?.category === "Records") {
-          state.adminProductPublishNotices[id] = {
-            tone: "",
-            busy: true,
-            action: "Research",
-            message: "Completing exact release artwork, editorial sources, related artists, and shipping before publication..."
-          };
-          await refreshAdminList("products");
-          const completion = await adminStore.completeProduct(id);
-          const completionSha = completion.github?.commitSha ? completion.github.commitSha.slice(0, 7) : "";
-          if (!completion.item?.published) {
-            state.adminProductPublishNotices[id] = {
-              tone: "warning",
-              busy: false,
-              message: `Not published. Research could not verify: ${(completion.item?.issues || ["the required catalogue data"]).join(", ")}.`
-            };
-          } else if (completion.github?.skipped) {
-            state.adminProductPublishNotices[id] = {
-              tone: "warning",
-              busy: false,
-              message: "Completed in Admin, but GitHub deployment is not configured. Use Deploy after fixing the token."
-            };
-          } else {
-            state.adminProductPublishNotices[id] = {
-              tone: completion.publicConfirmed ? "success" : "warning",
-              busy: false,
-              message: `${completion.item?.publishedAfterResearch ? "Published after research; remaining metadata can be completed later" : completion.publicConfirmed ? "Completed and published live" : "Completed; public confirmation pending"}${completionSha ? ` / commit ${completionSha}` : ""}. No separate Deploy needed.`
-            };
-          }
-          await refreshAdminList("products");
-          return;
-        }
         const result = await adminStore.publishProduct(id, requestedStatus);
         const sha = result.github?.commitSha ? result.github.commitSha.slice(0, 7) : "";
         if (result.blocked) {
@@ -3890,24 +3858,17 @@ function bindAdminListControls(root = document) {
       await refreshAdminList("products");
       try {
         const result = await adminStore.completeProduct(id);
-        const sha = result.github?.commitSha ? result.github.commitSha.slice(0, 7) : "";
-        if (!result.item?.published) {
+        if (result.item?.researchReady) {
           state.adminProductPublishNotices[id] = {
-            tone: "warning",
+            tone: "success",
             busy: false,
-            message: `Not published. Research could not verify: ${(result.item?.issues || ["the required catalogue data"]).join(", ")}.`
-          };
-        } else if (result.github?.skipped) {
-          state.adminProductPublishNotices[id] = {
-            tone: "warning",
-            busy: false,
-            message: "Completed in Admin, but GitHub deployment is not configured. Use Deploy after fixing the token."
+            message: "Research saved verified release data. Review it, then use Publish when you are ready."
           };
         } else {
           state.adminProductPublishNotices[id] = {
-            tone: result.publicConfirmed ? "success" : "warning",
+            tone: "warning",
             busy: false,
-            message: `${result.item?.publishedAfterResearch ? "Published after research; remaining metadata can be completed later" : result.publicConfirmed ? "Completed and published live" : "Completed; public confirmation pending"}${sha ? ` / commit ${sha}` : ""}. No separate Deploy needed.`
+            message: `Research saved no publishable result yet: ${(result.item?.issues || ["the required catalogue data"]).join(", ")}.`
           };
         }
       } catch (error) {

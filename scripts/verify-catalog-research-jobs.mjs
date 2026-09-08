@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, publicationJobsForProducts, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
+import { CATALOG_RESEARCH_VERSION } from "../api/_lib/catalogEnrichment.js";
 import { draftProductFromFinanceStock } from "../api/_lib/financeState.js";
 import { normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
 
@@ -19,6 +20,7 @@ assert.equal(isResearchableCatalogStock({ ...completeRecord, sellingPrice: 0 }),
 const job = catalogResearchRequest(completeRecord, { requestedBy: "test" });
 assert.equal(job.sku, "NXP-2026-VNL-TEST");
 assert.equal(job.status, "queued");
+assert.equal(job.research_version, CATALOG_RESEARCH_VERSION, "A research job must carry the release-matching ruleset version.");
 assert.ok(job.request_fingerprint, "A durable job must have an input fingerprint.");
 assert.equal(retryDelaySeconds(1), 30);
 assert.equal(retryDelaySeconds(5), 480);

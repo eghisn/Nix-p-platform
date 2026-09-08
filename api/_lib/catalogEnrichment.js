@@ -11,6 +11,10 @@ const USER_AGENT = "NIXP-Catalog/2.0 (https://nix-p.com; contact@nix-p.com)";
 // Finance sync uses it to re-research older records without touching explicit
 // Admin manual overrides.
 export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
+// Release matching has a separate lifecycle from related-artist research.
+// Bump this when physical-release evidence rules change so an explicit retry
+// cannot reuse a job created by older matching logic.
+export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v3";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -1367,10 +1371,21 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   }
 
   const editorialOverride = CURATED_EDITORIAL_OVERRIDES[sku] || {};
-  const discoveredSource = applyCuratedEditorialOverride(
-    curated || (await discoverReleaseAcrossSources({ ...stock, format, title, artist }).catch(() => null)),
-    sku
-  );
+  let discoveredSource;
+  try {
+    discoveredSource = applyCuratedEditorialOverride(
+      curated || await discoverReleaseAcrossSources({ ...stock, format, title, artist }),
+      sku
+    );
+  } catch (error) {
+    const status = error?.code === "source-unavailable" ? "source-unavailable" : "research-unavailable";
+    return finalizeStatus(row, {
+      publishable: false,
+      status,
+      enrichmentFingerprint: inventoryFingerprint({ ...stock, artist, title, format }),
+      enrichmentAttemptedAt: new Date().toISOString()
+    });
+  }
   // An artist/title match can still describe several physical pressings. Do
   // not invent a Vinyl edition from a CD/digital MusicBrainz entry: wait for
   // the catalog number or barcode printed on the item instead.
@@ -1394,6 +1409,9 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
 
   const raw = row.raw || {};
   const used = usedCondition(stock.itemCondition || row.condition);
+  const listingTitle = isPlaceholderInventoryTitle(submittedTitle) && discovered.title
+    ? discovered.title
+    : title;
   const previousAutoCover = String(raw.autoCover || "").trim();
   const previousAutoProductPhoto = String(raw.autoProductPhoto || "").trim();
   const currentImages = unique([row.image, ...(Array.isArray(row.images) ? row.images : [])])
@@ -1463,7 +1481,10 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   );
   const product = {
     ...row,
-    title: discovered.title || row.title,
+    // Finance/Admin owns the listing title. A source title can include the
+    // B-side or a regional suffix, but matching it must not silently rename
+    // the product the editor deliberately entered.
+    title: listingTitle,
     artist,
     format,
     display_format: format,
@@ -1484,7 +1505,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       ...raw,
       id: row.id,
       sku,
-      title: discovered.title || row.title,
+      title: listingTitle,
+      sourceTitle: discovered.title || "",
       artist,
       category: "Records",
       format,
@@ -1592,15 +1614,31 @@ async function discoverReleaseAcrossSources(stock) {
   // label's original artwork and release note. MusicBrainz remains useful,
   // but is deliberately a fallback rather than the publishing gate.
   const [discogs, bandcamp] = await Promise.all([
-    discoverDiscogsRelease(stock).catch(() => null),
-    discoverBandcampRelease(stock).catch(() => null)
+    discoverDiscogsRelease(stock),
+    discoverBandcampRelease(stock)
   ]);
 
   if (discogs?.needsPressingIdentifier) return discogs;
   const externalMatch = chooseExternalReleaseCandidate([discogs, bandcamp]);
   if (externalMatch) return externalMatch;
 
-  return discoverMusicBrainzRelease(stock);
+  const musicBrainz = await discoverMusicBrainzRelease(stock);
+  if (musicBrainz) return musicBrainz;
+
+  // Do not report "no exact match" when a required source timed out or was
+  // rate-limited. That is retryable infrastructure state, not bad Finance
+  // data, and it must never send the editor on a false correction hunt.
+  const unavailableSources = [discogs, bandcamp]
+    .filter((candidate) => candidate?.sourceUnavailable)
+    .map((candidate) => candidate.sourceType)
+    .filter(Boolean);
+  if (unavailableSources.length) {
+    const error = new Error(`${unavailableSources.join(" and ")} is temporarily unavailable.`);
+    error.code = "source-unavailable";
+    throw error;
+  }
+
+  return null;
 }
 
 function chooseExternalReleaseCandidate(candidates = []) {
@@ -1627,6 +1665,7 @@ async function discoverDiscogsRelease(stock) {
   const response = await fetchWithTimeout(`https://api.discogs.com/database/search?${params.toString()}`, {
     headers: { accept: "application/json", "user-agent": USER_AGENT }
   }, 7000, "discogs");
+  if (!response) return { sourceUnavailable: true, sourceType: "discogs" };
   if (!response?.ok) return null;
   const payload = await jsonObject(response);
   const assessment = assessDiscogsReleaseCandidates(payload?.results || [], { stock, format, barcode, catalogNumber });
@@ -1636,6 +1675,7 @@ async function discoverDiscogsRelease(stock) {
   const detailResponse = await fetchWithTimeout(assessment.release.resource_url, {
     headers: { accept: "application/json", "user-agent": USER_AGENT }
   }, 7000, "discogs");
+  if (!detailResponse) return { sourceUnavailable: true, sourceType: "discogs" };
   if (!detailResponse?.ok) return null;
   const release = await jsonObject(detailResponse);
   if (!release?.id) return null;
@@ -1660,7 +1700,12 @@ export function assessDiscogsReleaseCandidates(releases = [], { stock = {}, form
       const formatMatches = !expectedFormat || formats.some((value) => value.includes(expectedFormat));
       const barcodeExact = Boolean(barcode && releaseBarcode === barcode);
       const catalogExact = Boolean(catalogNumber && catalogNumberMatches(releaseCatalogNumber, catalogNumber));
-      if (!artistMatches || !titleMatches || !formatMatches) return null;
+      // A barcode or catalogue number identifies the physical object more
+      // reliably than a shortened Finance title. For example, a shop may list
+      // "Deep End" while Discogs records "Deep End b/w Momentary Lapse".
+      // Artist and format still have to agree before an identifier can win.
+      const physicalIdentifierMatches = barcodeExact || catalogExact;
+      if (!artistMatches || !formatMatches || (!titleMatches && !physicalIdentifierMatches)) return null;
       if (hasPhysicalIdentifier && !barcodeExact && !catalogExact) return null;
       return {
         release,
@@ -1727,6 +1772,7 @@ async function discoverBandcampRelease(stock) {
   const response = await fetchWithTimeout(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, {
     headers: { accept: "text/html", "user-agent": USER_AGENT }
   }, 7000, "bandcamp-search");
+  if (!response) return { sourceUnavailable: true, sourceType: "bandcamp" };
   if (!response?.ok) return null;
   const html = await response.text();
   const urls = unique(
@@ -1736,6 +1782,7 @@ async function discoverBandcampRelease(stock) {
   ).slice(0, 4);
   for (const url of urls) {
     const page = await fetchWithTimeout(url, { headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "bandcamp");
+    if (!page) return { sourceUnavailable: true, sourceType: "bandcamp" };
     if (!page?.ok) continue;
     const pageHtml = await page.text();
     const pageTitle = metaContent(pageHtml, "og:title") || titleText(pageHtml);

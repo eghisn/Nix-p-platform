@@ -1119,7 +1119,7 @@ export const adminStore = {
     ).map((product) => [String(product.sku || product.id).toLowerCase(), product]));
     const drafts = [...draftsBySku.values()];
     if (!drafts.length) {
-      return { processed: 0, published: 0, remaining: 0, failed: 0, items: [], github: null };
+      return { processed: 0, published: 0, ready: 0, remaining: 0, failed: 0, items: [], github: null };
     }
 
     const items = [];
@@ -1127,7 +1127,7 @@ export const adminStore = {
     for (const [index, product] of drafts.entries()) {
       onProgress?.({ index: index + 1, total: drafts.length, product });
       try {
-        const payload = await syncCatalog({ skus: [product.sku], force: true, publishAfterResearch: true });
+        const payload = await syncCatalog({ skus: [product.sku], force: true, publishAfterResearch: false });
         items.push(...(payload.report?.items || []));
       } catch (error) {
         failed += 1;
@@ -1145,13 +1145,14 @@ export const adminStore = {
     return {
       processed: drafts.length,
       published: items.filter((item) => item.published).length,
-      remaining: items.filter((item) => !item.published).length,
+      ready: items.filter((item) => item.researchReady).length,
+      remaining: items.filter((item) => !item.researchReady).length,
       failed,
       items,
       github: null,
-      message: items.some((item) => item.published)
-        ? "Research requests completed. Each published item is now waiting for, or has passed, public deployment verification."
-        : "No item was published; unresolved items remain safely in Draft."
+      message: items.some((item) => item.researchReady)
+        ? "Research saved the available evidence. Review each item, then use Publish when the listing is ready."
+        : "No item was completed; unresolved items remain safely in Draft."
     };
   },
   async completeProduct(id) {
@@ -1163,7 +1164,7 @@ export const adminStore = {
     const product = this.getSnapshot().products.find((item) => item.id === id);
     if (!product) throw new Error("Product could not be found in the Admin catalog.");
     if (product.category !== "Records") throw new Error("Internet catalog completion is only used for records, CDs, and cassettes.");
-    const payload = await syncCatalog({ skus: [product.sku], force: true, publishAfterResearch: true });
+    const payload = await syncCatalog({ skus: [product.sku], force: true, publishAfterResearch: false });
     const item = payload.report?.items?.find((candidate) =>
       String(candidate.sku || "").toLowerCase() === String(product.sku || "").toLowerCase()
     ) || payload.report?.items?.[0];

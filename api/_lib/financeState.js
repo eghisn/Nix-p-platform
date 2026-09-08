@@ -565,9 +565,10 @@ export async function processCatalogResearchJobs({ limit = 1, skus = [], force =
       } else {
         const status = String(product?.raw?.enrichmentStatus || "needs-release-match");
         const result = { productId: product?.id || null, issues };
-        if (["needs-finance-data", "needs-pressing-identifier"].includes(status)) {
+        if (["needs-finance-data", "needs-pressing-identifier", "needs-release-match", "needs-editorial-quality", "needs-editorial-metadata"].includes(status)) {
           // These states need a human correction in Finance, so retries only
-          // repeat the same work and make the queue look unreliable.
+          // repeat the same work and make the queue look unreliable. A source
+          // outage and cover archival failure remain retryable below.
           await jobsApi.completeCatalogResearchJob(job, {
             status: "failed",
             stage: "complete",

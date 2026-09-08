@@ -282,7 +282,8 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
     const publicationIssues = catalogPublicationIssues(product);
     const enrichmentStatus = product.enrichmentStatus || product.raw?.enrichmentStatus || "";
     const issues = researchFailureIssues(enrichmentStatus, publicationIssues);
-    const partialResearch = String(product.category || "").toLowerCase() === "records" && product.raw?.publishAfterResearch === true && isResearchPublicationReady(product);
+    const researchReady = isResearchPublicationReady(product);
+    const partialResearch = String(product.category || "").toLowerCase() === "records" && product.raw?.publishAfterResearch === true && researchReady;
     const published = product.publishStatus === "Published" && product.visibility === "Public" && (!issues.length || partialResearch);
     return {
       id: product.id,
@@ -290,6 +291,7 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
       artist: product.artist,
       title: product.title,
       published,
+      researchReady,
       publishedAfterResearch: partialResearch && issues.length > 0,
       enrichmentStatus,
       issues
@@ -304,6 +306,7 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
       artist: "",
       title: "",
       published: false,
+      researchReady: false,
       enrichmentStatus: "missing-finance-item",
       issues: ["SKU was not found in Finance inventory after synchronization"]
     });
@@ -311,7 +314,8 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
   return {
     processed: items.length,
     published: items.filter((item) => item.published).length,
-    remaining: items.filter((item) => !item.published).length,
+    ready: items.filter((item) => item.researchReady).length,
+    remaining: items.filter((item) => !item.researchReady).length,
     items
   };
 }
@@ -327,7 +331,9 @@ function researchFailureIssues(status, publicationIssues = []) {
     "needs-editorial-metadata": "Exact release matched, but the source description could not be prepared",
     "needs-editorial-quality": "Exact release matched, but the description is only generic release metadata and needs editorial copy",
     "needs-related-artist-research": "Exact release matched, but related-artist research returned no verified result",
-    "metadata-complete-needs-editorial-review": "Exact release matched, but no trusted review source was available"
+    "metadata-complete-needs-editorial-review": "Exact release matched, but no trusted review source was available",
+    "source-unavailable": "A release source was temporarily unavailable. The item was not changed and can be retried safely.",
+    "research-unavailable": "Research could not finish because an external source failed unexpectedly. The item was not changed and can be retried safely."
   }[code];
   return specific ? [specific] : publicationIssues;
 }

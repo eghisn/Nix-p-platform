@@ -95,6 +95,20 @@ const productSaveSource = await readFile(new URL("../api/admin/store.js", import
 assert.match(productSaveSource, /enqueueAdminFinanceSyncJob/);
 assert.match(productSaveSource, /financeSync/);
 
+const completionSource = adminStoreSource.slice(
+  adminStoreSource.indexOf("async completeDraftProducts"),
+  adminStoreSource.indexOf("async saveHomeSlider", adminStoreSource.indexOf("async completeDraftProducts"))
+);
+assert.match(completionSource, /publishAfterResearch:\s*false/, "Research must save evidence without silently publishing a record.");
+
+const mainSource = await readFile(new URL("../src/main.js", import.meta.url), "utf8");
+const publishControlSource = mainSource.slice(
+  mainSource.indexOf('root.querySelectorAll("[data-admin-product-status]")'),
+  mainSource.indexOf('root.querySelectorAll("[data-admin-complete-product]")')
+);
+assert.doesNotMatch(publishControlSource, /completeProduct\(id\)/, "Publish must not re-run internet research over a manual product edit.");
+assert.match(publishControlSource, /publishProduct\(id, requestedStatus\)/, "Publish must remain the explicit deployment action.");
+
 const migration = await readFile(new URL("../supabase/migrations/20260830045706_admin_product_revisions_and_research_leases.sql", import.meta.url), "utf8");
 assert.match(migration, /edit_revision bigint/);
 assert.match(migration, /save_admin_home_slider/);
