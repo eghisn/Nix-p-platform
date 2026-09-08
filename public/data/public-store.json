@@ -57668,13 +57668,13 @@
         "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
         "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
       ],
-      "barcode": "",
+      "barcode": "1 91402 00651 3",
       "details": [
         "SKU: NXP-2026-VNL-0004",
         "Format: Vinyl 12\"",
         "Condition: New-Sealed"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
@@ -57750,6 +57750,7 @@
       "apparelType": "",
       "description": "Girl Band's 2019 Rough Trade album The Talkies turns Dublin post-punk into a physical study in distortion, repetition, panic and ecstatic release.",
       "reviewQuote": "pure, visceral panic",
+      "editRevision": 2,
       "imageCredits": [
         {
           "url": "https://gillaband.bandcamp.com/album/the-talkies",
@@ -57996,7 +57997,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "RT0065LP",
       "displayFormat": "Vinyl",
       "homeSlideSort": 8,
       "publishStatus": "Published",
@@ -58016,6 +58017,8 @@
       "sleeveCondition": "",
       "enrichmentStatus": "complete-no-related-artists",
       "descriptionSource": "Pitchfork",
+      "editorialUpdatedAt": "2026-09-08T13:03:13.446+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "manualRelatedArtists": [],
       "enrichmentAttemptedAt": "2026-08-18T16:55:23.325Z",
       "enrichmentFingerprint": "girl band|the talkies|vinyl||",
@@ -58247,17 +58250,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
