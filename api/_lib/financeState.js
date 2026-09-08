@@ -191,7 +191,7 @@ export async function syncFinanceInventoryToCatalog(
       });
       const resolvedProduct = publishAfterResearch && targetSelected
         ? allowResearchPublication(enrichedProduct)
-        : enrichedProduct;
+        : preserveResearchPublicationState(enrichedProduct, financeProduct);
       productRows.push(
         withSyncAudit(resolvedProduct, {
           source: "Finance",
@@ -214,12 +214,17 @@ export async function syncFinanceInventoryToCatalog(
       ? await enrichFinanceCatalogProduct(product, stock, { catalogArtists: catalogArtistRows })
       : product;
     productRows.push(
-      withSyncAudit(publishAfterResearch && targetSelected ? allowResearchPublication(enrichedProduct) : enrichedProduct, {
-        source: "Finance",
-        action: "Inventory created catalog item",
-        sku,
-        quantity
-      })
+      withSyncAudit(
+        publishAfterResearch && targetSelected
+          ? allowResearchPublication(enrichedProduct)
+          : preserveResearchPublicationState(enrichedProduct, product),
+        {
+          source: "Finance",
+          action: "Inventory created catalog item",
+          sku,
+          quantity
+        }
+      )
     );
     productIdBySku.set(key, product.id);
   }
@@ -944,6 +949,25 @@ export function productRowFromFinanceStock(row, stock, quantity) {
       visibility
     }
   });
+}
+
+export function preserveResearchPublicationState(researchedProduct = {}, existingProduct = {}) {
+  // Research may complete the editorial fields, but only an explicit Publish
+  // action may change storefront visibility. This also keeps a previously
+  // published product published when its metadata is refreshed.
+  const publishStatus = String(existingProduct.publish_status || existingProduct.publishStatus || "Draft").trim() || "Draft";
+  const visibility = String(existingProduct.visibility || "Private").trim() || "Private";
+  return {
+    ...researchedProduct,
+    publish_status: publishStatus,
+    visibility,
+    raw: {
+      ...(researchedProduct.raw || {}),
+      publishStatus,
+      visibility,
+      publishAfterResearch: false
+    }
+  };
 }
 
 function stockIdentityValue(stock, key, fallback = "") {

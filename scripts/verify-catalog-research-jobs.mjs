@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, publicationJobsForProducts, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
 import { CATALOG_RESEARCH_VERSION } from "../api/_lib/catalogEnrichment.js";
-import { draftProductFromFinanceStock } from "../api/_lib/financeState.js";
+import { draftProductFromFinanceStock, preserveResearchPublicationState } from "../api/_lib/financeState.js";
 import { normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
 
 const completeRecord = {
@@ -49,6 +49,16 @@ assert.deepEqual(unscoped, { queued: 0, jobs: [] }, "Finance saves must not enqu
 const financeDraft = draftProductFromFinanceStock(completeRecord, 1);
 assert.equal(financeDraft.publish_status, "Draft", "A new Finance item must enter Admin as a Draft.");
 assert.equal(financeDraft.visibility, "Private", "A new Finance item must not be public before an Admin action.");
+
+const researchedDraft = preserveResearchPublicationState({
+  ...financeDraft,
+  publish_status: "Published",
+  visibility: "Public",
+  raw: { enrichmentStatus: "complete", publishStatus: "Published", visibility: "Public" }
+}, financeDraft);
+assert.equal(researchedDraft.publish_status, "Draft", "Research completion must not publish a Draft without an explicit Publish action.");
+assert.equal(researchedDraft.visibility, "Private");
+assert.equal(researchedDraft.raw.enrichmentStatus, "complete", "Research data must be retained when publication remains Draft.");
 
 const automatic = normalizeRelatedArtistsPayload({
   raw: {},
