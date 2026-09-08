@@ -22,6 +22,12 @@ assert.equal(job.sku, "NXP-2026-VNL-TEST");
 assert.equal(job.status, "queued");
 assert.equal(job.research_version, CATALOG_RESEARCH_VERSION, "A research job must carry the release-matching ruleset version.");
 assert.ok(job.request_fingerprint, "A durable job must have an input fingerprint.");
+const legacyRulesetJob = catalogResearchRequest(completeRecord, {
+  requestedBy: "test",
+  researchVersion: "musicbrainz-lastfm-v2"
+});
+assert.notEqual(job.id, legacyRulesetJob.id, "A ruleset upgrade must never reuse the primary key of an older research job.");
+assert.notEqual(job.research_version, legacyRulesetJob.research_version);
 assert.equal(retryDelaySeconds(1), 30);
 assert.equal(retryDelaySeconds(5), 480);
 assert.equal(retryDelaySeconds(99), 3600);

@@ -1620,7 +1620,15 @@ async function discoverReleaseAcrossSources(stock) {
 
   if (discogs?.needsPressingIdentifier) return discogs;
   const externalMatch = chooseExternalReleaseCandidate([discogs, bandcamp]);
-  if (externalMatch) return externalMatch;
+  if (externalMatch) {
+    // A catalog-number/barcode match is authoritative for the physical
+    // object. It does not, however, make Discogs metadata a review. Retain
+    // the exact pressing cover/details and separately gather only source-
+    // backed editorial material.
+    return externalMatch.sourceType === "discogs"
+      ? enrichExactDiscogsReleaseEditorial(externalMatch, bandcamp, stock)
+      : externalMatch;
+  }
 
   const musicBrainz = await discoverMusicBrainzRelease(stock);
   if (musicBrainz) return musicBrainz;
@@ -1648,6 +1656,62 @@ function chooseExternalReleaseCandidate(candidates = []) {
   // Otherwise the official page is the better editorial and artwork source.
   if (discogs?.matchConfidence >= 95) return discogs;
   return bandcamp || discogs || null;
+}
+
+async function enrichExactDiscogsReleaseEditorial(discogs, bandcamp, stock) {
+  const officialReleaseNote = sourceBackedReleaseNote(bandcamp);
+  // The matched official release note is already a source-backed editorial
+  // statement. Prefer it before opening two more search paths: it is more
+  // directly tied to the release and keeps one-item research comfortably
+  // inside the Admin function's duration budget.
+  if (officialReleaseNote) {
+    return composeDiscogsEditorial(discogs, { bandcamp, review: officialReleaseNote });
+  }
+  const [pitchforkReview, trustedReview] = await Promise.all([
+    discoverPitchforkReview({ artist: stock.artist, title: stock.title }),
+    discoverTrustedReviewSearch({ artist: stock.artist, title: stock.title })
+  ]);
+  return composeDiscogsEditorial(discogs, {
+    bandcamp,
+    review: pitchforkReview || trustedReview
+  });
+}
+
+export function composeDiscogsEditorial(discogs = {}, { bandcamp = null, review = null } = {}) {
+  const officialDescription = bandcamp && isEditorialDescriptionQuality(bandcamp.description, bandcamp.descriptionSource)
+    ? { description: bandcamp.description, descriptionSource: bandcamp.descriptionSource }
+    : null;
+  const sources = [
+    ...(discogs.researchSources || []),
+    ...(bandcamp?.researchSources || []),
+    review?.url ? [{ source: review.source || "Editorial source", url: review.url, confidence: 85 }] : []
+  ];
+  const deduplicatedSources = [];
+  const seenSourceUrls = new Set();
+  for (const source of sources) {
+    const url = String(source?.url || "").trim();
+    const key = url || `${source?.source || ""}:${source?.confidence || ""}`;
+    if (!key || seenSourceUrls.has(key)) continue;
+    seenSourceUrls.add(key);
+    deduplicatedSources.push(source);
+  }
+  return {
+    ...discogs,
+    ...(officialDescription || {}),
+    // No source-backed review is preferable to a fabricated one. This keeps
+    // the public-facing quotation block honest when a review cannot be found.
+    reviewQuote: String(review?.quote || "").trim(),
+    reviewSource: String(review?.source || "").trim(),
+    reviewUrl: String(review?.url || "").trim(),
+    researchSources: deduplicatedSources
+  };
+}
+
+function sourceBackedReleaseNote(release) {
+  const quote = String(release?.reviewQuote || "").trim();
+  const source = String(release?.reviewSource || "").trim();
+  const url = String(release?.reviewUrl || "").trim();
+  return quote && /release note/i.test(source) && url ? { quote, source, url } : null;
 }
 
 async function discoverDiscogsRelease(stock) {
@@ -1756,9 +1820,9 @@ function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
     imageCredits: cover ? [{ image: cover, credit: "Discogs physical-release artwork", url: sourceUrl }] : [],
     description: `${artist}'s ${year || ""} ${title} is documented by Discogs as ${format || stock.item || "a physical release"}${label ? ` on ${label}` : ""}.${trackText}${styleText}`.replace(/\s+/g, " ").trim(),
     descriptionSource: "Discogs release data",
-    reviewQuote: `Discogs documents this physical edition as ${format || stock.item || "a release"}${label ? ` on ${label}` : ""}.`,
-    reviewSource: "Discogs release data",
-    reviewUrl: sourceUrl,
+    reviewQuote: "",
+    reviewSource: "",
+    reviewUrl: "",
     tags: styles,
     sourceUrl,
     sourceType: "discogs",
@@ -1809,9 +1873,9 @@ async function discoverBandcampRelease(stock) {
       imageCredits: [{ image: cover, credit: "Official Bandcamp release artwork", url }],
       description,
       descriptionSource: "Official Bandcamp release page",
-      reviewQuote: releaseNote || "Official release page.",
-      reviewSource: "Bandcamp release note (quoted)",
-      reviewUrl: url,
+      reviewQuote: releaseNote,
+      reviewSource: releaseNote ? "Bandcamp release note (quoted)" : "",
+      reviewUrl: releaseNote ? url : "",
       tags: [],
       sourceUrl: url,
       sourceType: "bandcamp",
@@ -2109,7 +2173,9 @@ async function discoverLinkedReview(urls = [], { artist, title } = {}) {
     const html = await response.text();
     const pageTitle = metaContent(html, "og:title") || titleText(html);
     const normalizedPageTitle = normalizedText(pageTitle);
-    if (!normalizedPageTitle.includes(normalizedText(title)) && !normalizedPageTitle.includes(normalizedText(artist))) continue;
+    const titleMatches = normalizedPageTitle.includes(normalizedText(title));
+    const artistMatches = normalizedPageTitle.includes(normalizedText(artist));
+    if (!titleMatches || !artistMatches) continue;
     const quote = conciseQuote(metaContent(html, "description") || metaContent(html, "og:description"));
     if (quote) return { quote, source, url: url.toString() };
   }
@@ -2316,7 +2382,7 @@ function usedCondition(value) {
 export function isEditorialDescriptionQuality(description, descriptionSource = "") {
   const text = String(description || "").trim();
   const source = String(descriptionSource || "").trim();
-  if (!text || /^MusicBrainz$/i.test(source)) return false;
+  if (!text || /^(?:MusicBrainz|Discogs release data)$/i.test(source)) return false;
   if (/^.+(?:'s|’s)\s+(?:\d{4}\s+)?release\s+.+\s+is\s+a\s+(?:Vinyl|CD|Cassette)\s+edition\s+issued\s+by\s+.+(?:,\s+documented\s+by\s+MusicBrainz\s+as\s+.+)?\.$/i.test(text)) return false;
   if (/current NIXP records selection/i.test(text)) return false;
   return true;

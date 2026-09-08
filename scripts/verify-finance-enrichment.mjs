@@ -6,6 +6,7 @@ import {
   assessMusicBrainzReleaseCandidates,
   assessDiscogsReleaseCandidates,
   applyCuratedEditorialOverride,
+  composeDiscogsEditorial,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
   isEditorialDescriptionQuality
@@ -158,6 +159,28 @@ const shortenedTitleWithExactCatalog = assessDiscogsReleaseCandidates([
   catalogNumber: "rfc097"
 });
 assert.equal(shortenedTitleWithExactCatalog.release.id, 5986176, "An exact Finance catalog number must match a source title that includes a B-side.");
+const discogsOnlyEditorial = composeDiscogsEditorial({
+  description: "Exact physical-release metadata.",
+  descriptionSource: "Discogs release data",
+  reviewQuote: "Old generic review that must not survive.",
+  reviewSource: "Discogs release data",
+  reviewUrl: "https://www.discogs.com/release/5986176",
+  researchSources: [{ source: "Discogs", url: "https://www.discogs.com/release/5986176", confidence: 95 }]
+});
+assert.equal(discogsOnlyEditorial.reviewQuote, "", "Discogs object data must never be rendered as a review.");
+assert.equal(isEditorialDescriptionQuality(discogsOnlyEditorial.description, discogsOnlyEditorial.descriptionSource), false);
+const discogsWithOfficialEditorial = composeDiscogsEditorial(discogsOnlyEditorial, {
+  bandcamp: {
+    description: "Creative Adult's release note describes the record's sound and origin in source-backed editorial detail.",
+    descriptionSource: "Official Bandcamp release page",
+    reviewQuote: "A direct official release note.",
+    reviewSource: "Bandcamp release note (quoted)",
+    reviewUrl: "https://creativeadult.bandcamp.com/album/deep-end",
+    researchSources: [{ source: "Bandcamp", url: "https://creativeadult.bandcamp.com/album/deep-end", confidence: 80 }]
+  }
+});
+assert.equal(discogsWithOfficialEditorial.descriptionSource, "Official Bandcamp release page");
+assert.equal(discogsWithOfficialEditorial.reviewQuote, "", "Editorial copy is not silently promoted to a review without an explicit source selection.");
 const ambiguousDiscogsAssessment = assessDiscogsReleaseCandidates([
   ...negativeLoversDiscogs,
   { ...negativeLoversDiscogs[0], id: 9967525, resource_url: "https://api.discogs.com/releases/9967525" }

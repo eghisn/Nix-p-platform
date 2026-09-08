@@ -17,9 +17,17 @@ function quoteList(values = []) {
   return values.map((value) => `"${String(value).replaceAll('"', '\\"')}"`).join(",");
 }
 
-function jobId(sku, fingerprint) {
-  const compact = String(fingerprint || "").replace(/[^a-z0-9]+/gi, "").slice(0, 40).toLowerCase();
-  return `catalog-research-${String(sku).toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${compact || "pending"}`;
+function jobId(sku, fingerprint, researchVersion) {
+  const compactFingerprint = String(fingerprint || "").replace(/[^a-z0-9]+/gi, "").slice(0, 40).toLowerCase();
+  const compactVersion = String(researchVersion || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 32);
+  // `id` is the primary key, while research_version is only part of the
+  // natural unique key. Include both so a ruleset upgrade creates a distinct
+  // durable job instead of colliding with an older job for the same SKU.
+  return `catalog-research-${String(sku).toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${compactFingerprint || "pending"}-${compactVersion || "rules"}`;
 }
 
 export function isResearchableCatalogStock(stock = {}) {
@@ -32,14 +40,14 @@ export function isResearchableCatalogStock(stock = {}) {
   return Boolean(normalizedSku(stock.sku) && RECORD_FORMATS.has(format) && title && artist && (offerOnly ? minimumOffer > 0 : sellingPrice > 0));
 }
 
-export function catalogResearchRequest(stock = {}, { requestedBy = "finance" } = {}) {
+export function catalogResearchRequest(stock = {}, { requestedBy = "finance", researchVersion = CATALOG_RESEARCH_VERSION } = {}) {
   const sku = normalizedSku(stock.sku);
   const requestFingerprint = inventoryFingerprint({ ...stock, sku, format: stock.item || stock.format });
   return {
-    id: jobId(sku, requestFingerprint),
+    id: jobId(sku, requestFingerprint, researchVersion),
     sku,
     request_fingerprint: requestFingerprint,
-    research_version: CATALOG_RESEARCH_VERSION,
+    research_version: researchVersion,
     status: "queued",
     stage: "queued",
     attempt_count: 0,
