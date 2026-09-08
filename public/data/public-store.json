@@ -2,6 +2,628 @@
   "version": "supabase-live-2026-07-13",
   "products": [
     {
+      "id": "finance-nxp-2026-vnl-0016",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0016",
+      "tags": [
+        "Psychedelic Rock",
+        "Post-Punk",
+        "Shoegaze",
+        "Rock"
+      ],
+      "year": 2014,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0016/cover.jpg",
+      "label": "Run For Cover Records",
+      "price": 297500,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Deep End",
+      "artist": "Creative Adult",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0016/cover.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-VNL-0016",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: Vinyl, 7\", 45 RPM",
+        "Catalog number: RFC097"
+      ],
+      "edition": "Vinyl, 7\", 45 RPM",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0016/cover.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://stereogum.com/1631462/creative-adult-deep-end-video-stereogum-premiere/video",
+      "syncAudit": [
+        {
+          "at": "2026-09-08T11:13:56.067Z",
+          "sku": "NXP-2026-VNL-0016",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-08T11:08:52.696Z",
+          "sku": "NXP-2026-VNL-0016",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-07T16:32:24.144Z",
+          "sku": "NXP-2026-VNL-0016",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-06T15:41:13.195Z",
+          "sku": "NXP-2026-VNL-0016",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-04T14:26:39.620Z",
+          "sku": "NXP-2026-VNL-0016",
+          "action": "Inventory created catalog item",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-08",
+      "collection": "Run For Cover Records",
+      "syncStatus": {
+        "at": "2026-09-08T11:13:56.067Z",
+        "sku": "NXP-2026-VNL-0016",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "San Fran punks Creative Adult pal around with the likes of Ceremony, Trash Talk, and Touché Amore, and Efrim Menuck",
+      "reviewQuote": "San Fran punks Creative Adult pal around with the likes of Ceremony, Trash Talk, and Touché Amore, and Efrim Menuck",
+      "sourceTitle": "deep end b w momentary lapse",
+      "editRevision": 25,
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/5986176-Creative-Adult-Deep-End-bw-Momentary-Lapse",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0016/cover.jpg",
+          "credit": "Discogs physical-release artwork"
+        }
+      ],
+      "reviewSource": "Stereogum (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://stereogum.com/1631462/creative-adult-deep-end-video-stereogum-premiere/video",
+        "description": "San Fran punks Creative Adult pal around with the likes of Ceremony, Trash Talk, and Touché Amore, and Efrim Menuck",
+        "reviewQuote": "San Fran punks Creative Adult pal around with the likes of Ceremony, Trash Talk, and Touché Amore, and Efrim Menuck",
+        "reviewSource": "Stereogum (quoted)",
+        "relatedArtists": [
+          "Wild Moth",
+          "No Sir",
+          "End of a Year Self Defense Family",
+          "Give",
+          "The Vibrating Antennas"
+        ],
+        "descriptionSource": "Stereogum (quoted)",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Wild Moth",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.785243,
+            "artist": "No Sir",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 0.785243,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.539375,
+            "artist": "End of a Year Self Defense Family",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 0.539375,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.508797,
+            "artist": "Give",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 0.508797,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.459193,
+            "artist": "The Vibrating Antennas",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 0.459193,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Wild Moth",
+              "No Sir",
+              "End of a Year Self Defense Family",
+              "Give",
+              "The Vibrating Antennas",
+              "Chain Of Flowers",
+              "Death Index",
+              "True Love",
+              "Dark Blue",
+              "Loss Leader"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Wild Moth",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.785243,
+                "artist": "No Sir",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 0.785243,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.539375,
+                "artist": "End of a Year Self Defense Family",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 0.539375,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.508797,
+                "artist": "Give",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 0.508797,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.459193,
+                "artist": "The Vibrating Antennas",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 0.459193,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.435088,
+                "artist": "Chain Of Flowers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 0.435088,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.407206,
+                "artist": "Death Index",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 0.407206,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.390747,
+                "artist": "True Love",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 0.390747,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.386953,
+                "artist": "Dark Blue",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 0.386953,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.363412,
+                "artist": "Loss Leader",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+                "confidence": 0.363412,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Wild Moth",
+            "No Sir",
+            "End of a Year Self Defense Family",
+            "Give",
+            "The Vibrating Antennas"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Wild Moth",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.785243,
+              "artist": "No Sir",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.785243,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.539375,
+              "artist": "End of a Year Self Defense Family",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.539375,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.508797,
+              "artist": "Give",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.508797,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.459193,
+              "artist": "The Vibrating Antennas",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.459193,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "RFC097",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mtn1rohps2wk0f",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Wild Moth",
+        "No Sir",
+        "End of a Year Self Defense Family",
+        "Give",
+        "The Vibrating Antennas"
+      ],
+      "researchSources": [
+        {
+          "url": "https://www.discogs.com/release/5986176-Creative-Adult-Deep-End-bw-Momentary-Lapse",
+          "source": "Discogs",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "discogs",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Stereogum (quoted)",
+      "metadataSourceUrl": "https://www.discogs.com/release/5986176-Creative-Adult-Deep-End-bw-Momentary-Lapse",
+      "editorialUpdatedAt": "2026-09-08T16:17:46.762+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "enrichmentUpdatedAt": "2026-09-08",
+      "adminPublishOverride": null,
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-09-08T11:08:52.695Z",
+      "enrichmentFingerprint": "creative adult|deep end|vinyl||rfc097",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Wild Moth",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.785243,
+          "artist": "No Sir",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+          "confidence": 0.785243,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.539375,
+          "artist": "End of a Year Self Defense Family",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+          "confidence": 0.539375,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.508797,
+          "artist": "Give",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+          "confidence": 0.508797,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.459193,
+          "artist": "The Vibrating Antennas",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+          "confidence": 0.459193,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Wild Moth",
+            "No Sir",
+            "End of a Year Self Defense Family",
+            "Give",
+            "The Vibrating Antennas",
+            "Chain Of Flowers",
+            "Death Index",
+            "True Love",
+            "Dark Blue",
+            "Loss Leader"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Wild Moth",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.785243,
+              "artist": "No Sir",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.785243,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.539375,
+              "artist": "End of a Year Self Defense Family",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.539375,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.508797,
+              "artist": "Give",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.508797,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.459193,
+              "artist": "The Vibrating Antennas",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.459193,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.435088,
+              "artist": "Chain Of Flowers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.435088,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.407206,
+              "artist": "Death Index",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.407206,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.390747,
+              "artist": "True Love",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.390747,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.386953,
+              "artist": "Dark Blue",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.386953,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.363412,
+              "artist": "Loss Leader",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+              "confidence": 0.363412,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Creative%20Adult"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Wild Moth",
+          "No Sir",
+          "End of a Year Self Defense Family",
+          "Give",
+          "The Vibrating Antennas"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Wild Moth",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.785243,
+            "artist": "No Sir",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 0.785243,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.539375,
+            "artist": "End of a Year Self Defense Family",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 0.539375,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.508797,
+            "artist": "Give",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 0.508797,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.459193,
+            "artist": "The Vibrating Antennas",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Creative%20Adult",
+            "confidence": 0.459193,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-04",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0065",
       "qty": 1,
       "sku": "NXP-2026-VNL-0065",
