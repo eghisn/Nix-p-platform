@@ -100,12 +100,12 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     edition: "Vinyl, LP, Album, Reissue, Stereo",
     catalogNumber: "IPC297LP",
     barcode: "689230029717",
-    cover: "https://i.discogs.com/u9ZJwrmVRvUImS6KhEwhuc2s8KLD8aBLw7E7yHM2B0E/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dzLWRhdGFiYXNlLWltYWdlcy9SLTM3MDM5MTk3LTE3NzU5MzMwOTQtMjM5OC5qcGVn.jpeg",
+    cover: "https://cdn.shopify.com/s/files/1/0867/1120/6219/files/TheMelvinswithNapalmDeath_R1569-3871.png?v=1775744502",
     imageCredits: [
       {
-        image: "https://i.discogs.com/u9ZJwrmVRvUImS6KhEwhuc2s8KLD8aBLw7E7yHM2B0E/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dzLWRhdGFiYXNlLWltYWdlcy9SLTM3MDM5MTk3LTE3NzU5MzMwOTQtMjM5OC5qcGVn.jpeg",
-        credit: "Discogs physical-release artwork",
-        url: "https://www.discogs.com/release/37039197-The-Melvins-With-Napalm-Death-Savage-Imperial-Death-March"
+        image: "https://cdn.shopify.com/s/files/1/0867/1120/6219/files/TheMelvinswithNapalmDeath_R1569-3871.png?v=1775744502",
+        credit: "Rough Trade product artwork",
+        url: "https://www.roughtrade.com/en-us/product/melvins-with-napalm-death/savage-imperial-death-march"
       }
     ],
     description:
