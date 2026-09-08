@@ -621,7 +621,7 @@
       "year": 2023,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0081/cover.jpg",
-      "label": "XL Recordings / Urban Outfitters",
+      "label": "XL Recordings",
       "price": 618140,
       "sizes": [],
       "stock": {
@@ -640,7 +640,11 @@
         "SKU: NXP-2026-VNL-0081",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album, Limited Edition, Stereo",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Limited Edition",
+        "Stereo",
         "Catalog number: XL1223LP",
         "Barcode: 191404122303"
       ],
@@ -687,6 +691,7 @@
       "description": "Arca (4)'s 2023 arca 4 kick iiii is documented by Discogs as Vinyl, LP, Album, Limited Edition, Stereo on XL Recordings / Urban Outfitters.",
       "reviewQuote": "",
       "sourceTitle": "arca 4 kick iiii",
+      "editRevision": 9,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/27162723-Arca-Kick-iiii",
@@ -939,8 +944,10 @@
       },
       "catalogNumber": "XL1223LP",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtpi79t7kmwlyg",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Eartheater",
@@ -949,6 +956,7 @@
         "Doon Kanda",
         "Björk"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/27162723-Arca-Kick-iiii",
@@ -956,12 +964,15 @@
           "confidence": 100
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Discogs release data",
       "metadataSourceUrl": "https://www.discogs.com/release/27162723-Arca-Kick-iiii",
+      "editorialUpdatedAt": "2026-09-08T20:09:48.729+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
@@ -1197,18 +1208,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 8,
-      "editorialUpdatedAt": "2026-09-08T18:40:08.411+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
