@@ -1395,6 +1395,13 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       enrichmentAttemptedAt: new Date().toISOString()
     });
   }
+  console.info("Catalog research source selected", {
+    sku,
+    found: Boolean(discoveredSource),
+    sourceType: String(discoveredSource?.sourceType || ""),
+    matchConfidence: Number(discoveredSource?.matchConfidence || 0),
+    hasCover: Boolean(String(discoveredSource?.cover || "").trim())
+  });
   // An artist/title match can still describe several physical pressings. Do
   // not invent a Vinyl edition from a CD/digital MusicBrainz entry: wait for
   // the catalog number or barcode printed on the item instead.
@@ -1407,6 +1414,12 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     });
   }
   const discovered = await archiveDiscoveredImages(applyArchivedCatalogImages(discoveredSource, sku), sku, usedCondition(stock.itemCondition || row.condition));
+  console.info("Catalog research image archival", {
+    sku,
+    found: Boolean(discovered),
+    hasCover: Boolean(String(discovered?.cover || "").trim()),
+    managedCover: isManagedProductImage(discovered?.cover)
+  });
   if (!discovered) {
     return finalizeStatus(row, {
       publishable: false,
