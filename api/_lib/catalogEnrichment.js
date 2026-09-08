@@ -1395,13 +1395,6 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       enrichmentAttemptedAt: new Date().toISOString()
     });
   }
-  console.info("Catalog research source selected", {
-    sku,
-    found: Boolean(discoveredSource),
-    sourceType: String(discoveredSource?.sourceType || ""),
-    matchConfidence: Number(discoveredSource?.matchConfidence || 0),
-    hasCover: Boolean(String(discoveredSource?.cover || "").trim())
-  });
   // An artist/title match can still describe several physical pressings. Do
   // not invent a Vinyl edition from a CD/digital MusicBrainz entry: wait for
   // the catalog number or barcode printed on the item instead.
@@ -1414,12 +1407,6 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     });
   }
   const discovered = await archiveDiscoveredImages(applyArchivedCatalogImages(discoveredSource, sku), sku, usedCondition(stock.itemCondition || row.condition));
-  console.info("Catalog research image archival", {
-    sku,
-    found: Boolean(discovered),
-    hasCover: Boolean(String(discovered?.cover || "").trim()),
-    managedCover: isManagedProductImage(discovered?.cover)
-  });
   if (!discovered) {
     return finalizeStatus(row, {
       publishable: false,
@@ -1781,21 +1768,6 @@ async function discoverDiscogsRelease(stock) {
   }
   if (!releases.length) return sourceUnavailable ? { sourceUnavailable: true, sourceType: "discogs" } : null;
   const assessment = assessDiscogsReleaseCandidates(releases, { stock, format, barcode, catalogNumber });
-  // This records only source health and match evidence. It makes a future
-  // rejected exact release diagnosable without logging credentials or product
-  // content from the external API.
-  console.info("Catalog research Discogs match", {
-    sku: String(stock.sku || ""),
-    tokenConfigured: Boolean(String(process.env.DISCOGS_TOKEN || "").trim()),
-    hasBarcode: Boolean(barcode),
-    hasCatalogNumber: Boolean(catalogNumber),
-    searchSummary,
-    candidates: releases.length,
-    matchedReleaseId: assessment.release?.id || null,
-    matchConfidence: assessment.matchConfidence || 0,
-    hasSearchArtwork: Boolean(String(assessment.release?.cover_image || assessment.release?.thumb || "").trim()),
-    needsPressingIdentifier: assessment.needsPressingIdentifier === true
-  });
   if (assessment.needsPressingIdentifier) return { needsPressingIdentifier: true };
   // A matching barcode or catalog number plus the search artwork identifies a
   // concrete physical pressing. Use that complete evidence directly rather
