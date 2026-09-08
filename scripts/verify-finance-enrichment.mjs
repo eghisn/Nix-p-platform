@@ -11,6 +11,7 @@ import {
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
   isEditorialDescriptionQuality,
+  mergeExactDiscogsEvidence,
   normalizeDiscogsSearchRelease
 } from "../api/_lib/catalogEnrichment.js";
 import {
@@ -197,6 +198,16 @@ assert.equal(discogsSearchFallback.catalogNumber, "RFC097");
 assert.equal(discogsSearchFallback.cover, "https://example.test/deep-end.jpg");
 assert.equal(discogsSearchFallback.matchConfidence, 100);
 assert.match(discogsSearchFallback.sourceUrl, /5986176/);
+const discogsMergedEvidence = mergeExactDiscogsEvidence({
+  title: "Deep End b/w Momentary Lapse",
+  artist: "Creative Adult",
+  description: "Detail metadata from the exact physical release.",
+  descriptionSource: "Discogs release data",
+  sourceUrl: "https://www.discogs.com/release/5986176"
+}, discogsSearchFallback);
+assert.equal(discogsMergedEvidence.cover, "https://example.test/deep-end.jpg", "An exact search cover must survive a detail response without images.");
+assert.equal(discogsMergedEvidence.label, "Run For Cover Records");
+assert.equal(discogsMergedEvidence.catalogNumber, "RFC097");
 const discogsOnlyEditorial = composeDiscogsEditorial({
   description: "Exact physical-release metadata.",
   descriptionSource: "Discogs release data",

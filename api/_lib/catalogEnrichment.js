@@ -1811,7 +1811,10 @@ async function discoverDiscogsRelease(stock) {
     });
     return normalizeDiscogsSearchRelease(assessment.release, stock, assessment.matchConfidence);
   }
-  return normalizeDiscogsRelease(release, stock, assessment.matchConfidence);
+  return mergeExactDiscogsEvidence(
+    normalizeDiscogsRelease(release, stock, assessment.matchConfidence),
+    normalizeDiscogsSearchRelease(assessment.release, stock, assessment.matchConfidence)
+  );
 }
 
 // Discogs search normally includes resource_url, but some successful result
@@ -2157,6 +2160,52 @@ export function normalizeDiscogsSearchRelease(release, stock, matchConfidence = 
     matchConfidence,
     researchSources: [{ source: "Discogs", url: sourceUrl, confidence: matchConfidence }]
   };
+}
+
+// Discogs detail and search responses are complementary. Detail data is the
+// preferred source, while the exact search result can legitimately be the
+// only response that includes the release artwork. This merge is called only
+// after assessDiscogsReleaseCandidates has verified the physical pressing.
+export function mergeExactDiscogsEvidence(detail = {}, search = {}) {
+  const cover = String(detail.cover || search.cover || "").trim();
+  const detailCredits = Array.isArray(detail.imageCredits) ? detail.imageCredits : [];
+  const searchCredits = Array.isArray(search.imageCredits) ? search.imageCredits : [];
+  const imageCredits = cover === String(detail.cover || "").trim() && detailCredits.length
+    ? detailCredits
+    : searchCredits;
+  return {
+    ...search,
+    ...detail,
+    title: String(detail.title || search.title || "").trim(),
+    artist: String(detail.artist || search.artist || "").trim(),
+    year: Number(detail.year || search.year || 0),
+    label: String(detail.label || search.label || "").trim(),
+    edition: String(detail.edition || search.edition || "").trim(),
+    barcode: String(detail.barcode || search.barcode || "").trim(),
+    catalogNumber: String(detail.catalogNumber || search.catalogNumber || "").trim(),
+    cover,
+    productPhoto: String(detail.productPhoto || search.productPhoto || "").trim(),
+    imageCredits,
+    description: String(detail.description || search.description || "").trim(),
+    descriptionSource: String(detail.descriptionSource || search.descriptionSource || "").trim(),
+    sourceUrl: String(detail.sourceUrl || search.sourceUrl || "").trim(),
+    sourceType: "discogs",
+    matchConfidence: Math.max(Number(detail.matchConfidence || 0), Number(search.matchConfidence || 0)),
+    researchSources: mergeResearchSources(detail.researchSources, search.researchSources)
+  };
+}
+
+function mergeResearchSources(...lists) {
+  const seen = new Set();
+  return lists
+    .flatMap((list) => Array.isArray(list) ? list : [])
+    .filter((entry) => entry && typeof entry === "object")
+    .filter((entry) => {
+      const key = `${String(entry.source || "").trim().toLowerCase()}|${String(entry.url || "").trim()}`;
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
 }
 
 export function assessMusicBrainzReleaseCandidates(releases = [], { stock = {}, expectedTitle = "", format = "", barcode = "", catalogNumber = "" } = {}) {
