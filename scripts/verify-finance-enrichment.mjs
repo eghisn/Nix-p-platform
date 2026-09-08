@@ -168,7 +168,7 @@ const discogsOnlyEditorial = composeDiscogsEditorial({
   researchSources: [{ source: "Discogs", url: "https://www.discogs.com/release/5986176", confidence: 95 }]
 });
 assert.equal(discogsOnlyEditorial.reviewQuote, "", "Discogs object data must never be rendered as a review.");
-assert.equal(isEditorialDescriptionQuality(discogsOnlyEditorial.description, discogsOnlyEditorial.descriptionSource), false);
+assert.equal(isEditorialDescriptionQuality(discogsOnlyEditorial.description, discogsOnlyEditorial.descriptionSource), true, "Verified physical-release facts remain valid product description copy.");
 const discogsWithOfficialEditorial = composeDiscogsEditorial(discogsOnlyEditorial, {
   bandcamp: {
     description: "Creative Adult's release note describes the record's sound and origin in source-backed editorial detail.",
@@ -181,6 +181,16 @@ const discogsWithOfficialEditorial = composeDiscogsEditorial(discogsOnlyEditoria
 });
 assert.equal(discogsWithOfficialEditorial.descriptionSource, "Official Bandcamp release page");
 assert.equal(discogsWithOfficialEditorial.reviewQuote, "", "Editorial copy is not silently promoted to a review without an explicit source selection.");
+const discogsWithVerifiedReview = composeDiscogsEditorial(discogsOnlyEditorial, {
+  review: {
+    quote: "A concise source-backed description from an independently verified review.",
+    source: "Stereogum (quoted)",
+    url: "https://stereogum.com/example"
+  }
+});
+assert.equal(discogsWithVerifiedReview.descriptionSource, "Stereogum (quoted)");
+assert.equal(discogsWithVerifiedReview.description, "A concise source-backed description from an independently verified review.");
+assert.equal(discogsWithVerifiedReview.researchSources.every((source) => !Array.isArray(source)), true, "Research evidence must remain a flat list of source objects.");
 const ambiguousDiscogsAssessment = assessDiscogsReleaseCandidates([
   ...negativeLoversDiscogs,
   { ...negativeLoversDiscogs[0], id: 9967525, resource_url: "https://api.discogs.com/releases/9967525" }

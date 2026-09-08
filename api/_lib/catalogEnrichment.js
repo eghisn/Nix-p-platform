@@ -1681,10 +1681,13 @@ export function composeDiscogsEditorial(discogs = {}, { bandcamp = null, review 
   const officialDescription = bandcamp && isEditorialDescriptionQuality(bandcamp.description, bandcamp.descriptionSource)
     ? { description: bandcamp.description, descriptionSource: bandcamp.descriptionSource }
     : null;
+  const reviewedDescription = !officialDescription && String(review?.quote || "").trim() && String(review?.source || "").trim()
+    ? { description: String(review.quote).trim(), descriptionSource: String(review.source).trim() }
+    : null;
   const sources = [
     ...(discogs.researchSources || []),
     ...(bandcamp?.researchSources || []),
-    review?.url ? [{ source: review.source || "Editorial source", url: review.url, confidence: 85 }] : []
+    ...(review?.url ? [{ source: review.source || "Editorial source", url: review.url, confidence: 85 }] : [])
   ];
   const deduplicatedSources = [];
   const seenSourceUrls = new Set();
@@ -1697,7 +1700,7 @@ export function composeDiscogsEditorial(discogs = {}, { bandcamp = null, review 
   }
   return {
     ...discogs,
-    ...(officialDescription || {}),
+    ...(officialDescription || reviewedDescription || {}),
     // No source-backed review is preferable to a fabricated one. This keeps
     // the public-facing quotation block honest when a review cannot be found.
     reviewQuote: String(review?.quote || "").trim(),
@@ -1718,28 +1721,39 @@ async function discoverDiscogsRelease(stock) {
   const format = String(stock.format || stock.item || "").trim();
   const barcode = String(stock.barcode || "").replace(/\D/g, "");
   const catalogNumber = normalizedText(stock.catalogNumber);
-  const params = new URLSearchParams({
-    type: "release",
-    per_page: "20",
-    artist: String(stock.artist || "").trim(),
-    release_title: String(stock.title || "").trim(),
-    format
-  });
-  if (barcode) params.set("barcode", barcode);
-  const response = await fetchWithTimeout(`https://api.discogs.com/database/search?${params.toString()}`, {
-    headers: { accept: "application/json", "user-agent": USER_AGENT }
-  }, 7000, "discogs");
-  if (!response) return { sourceUnavailable: true, sourceType: "discogs" };
-  if (!response?.ok) return null;
-  const payload = await jsonObject(response);
-  const assessment = assessDiscogsReleaseCandidates(payload?.results || [], { stock, format, barcode, catalogNumber });
+  const baseParams = { type: "release", per_page: "20", format };
+  const queryVariants = [
+    barcode ? { ...baseParams, barcode } : null,
+    catalogNumber ? { ...baseParams, catno: String(stock.catalogNumber || "").trim() } : null,
+    {
+      ...baseParams,
+      artist: String(stock.artist || "").trim(),
+      release_title: String(stock.title || "").trim()
+    }
+  ].filter(Boolean);
+  const releases = [];
+  let sourceUnavailable = false;
+  for (const query of queryVariants) {
+    const response = await fetchWithTimeout(`https://api.discogs.com/database/search?${new URLSearchParams(query).toString()}`, {
+      headers: { accept: "application/json", "user-agent": USER_AGENT }
+    }, 7000, "discogs");
+    if (!response || isExternalSourceUnavailable(response)) {
+      sourceUnavailable = true;
+      continue;
+    }
+    if (!response.ok) continue;
+    const payload = await jsonObject(response);
+    releases.push(...(payload?.results || []));
+  }
+  if (!releases.length) return sourceUnavailable ? { sourceUnavailable: true, sourceType: "discogs" } : null;
+  const assessment = assessDiscogsReleaseCandidates(releases, { stock, format, barcode, catalogNumber });
   if (assessment.needsPressingIdentifier) return { needsPressingIdentifier: true };
   if (!assessment.release?.resource_url) return null;
 
   const detailResponse = await fetchWithTimeout(assessment.release.resource_url, {
     headers: { accept: "application/json", "user-agent": USER_AGENT }
   }, 7000, "discogs");
-  if (!detailResponse) return { sourceUnavailable: true, sourceType: "discogs" };
+  if (!detailResponse || isExternalSourceUnavailable(detailResponse)) return { sourceUnavailable: true, sourceType: "discogs" };
   if (!detailResponse?.ok) return null;
   const release = await jsonObject(detailResponse);
   if (!release?.id) return null;
@@ -2294,6 +2308,11 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = 6000, source = "e
   return null;
 }
 
+function isExternalSourceUnavailable(response) {
+  const status = Number(response?.status || 0);
+  return !status || status === 401 || status === 403 || status === 408 || status === 425 || status === 429 || status >= 500;
+}
+
 async function discoverPitchforkReview({ artist, title }) {
   const query = `${artist} ${title}`.trim();
   if (!query) return null;
@@ -2382,7 +2401,10 @@ function usedCondition(value) {
 export function isEditorialDescriptionQuality(description, descriptionSource = "") {
   const text = String(description || "").trim();
   const source = String(descriptionSource || "").trim();
-  if (!text || /^(?:MusicBrainz|Discogs release data)$/i.test(source)) return false;
+  // Discogs can provide a precise, attributable physical-release description
+  // (pressing, label, track list, and styles). It is valid product copy, but
+  // never valid as a review quote; review handling is kept separate above.
+  if (!text || /^MusicBrainz$/i.test(source)) return false;
   if (/^.+(?:'s|’s)\s+(?:\d{4}\s+)?release\s+.+\s+is\s+a\s+(?:Vinyl|CD|Cassette)\s+edition\s+issued\s+by\s+.+(?:,\s+documented\s+by\s+MusicBrainz\s+as\s+.+)?\.$/i.test(text)) return false;
   if (/current NIXP records selection/i.test(text)) return false;
   return true;
