@@ -2631,7 +2631,7 @@
       "year": 2007,
       "color": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0052/cover.jpg",
-      "label": "Ipecac Recordings / Retrofit Recording / Southern Records / MPO",
+      "label": "Ipecac Recordings",
       "price": 235000,
       "sizes": [],
       "stock": {
@@ -2650,7 +2650,8 @@
         "SKU: NXP-2026-CD-0052",
         "Format: CD",
         "Condition: Used Excellent",
-        "Edition: CD, Album",
+        "Edition: CD",
+        "Album",
         "Catalog number: IPC 83",
         "Barcode: 383 / 039 / 122 / 112806041538 / 689230008323"
       ],
@@ -2690,6 +2691,7 @@
       "description": "Irony is a pale, sullen bitch with bruises all over her legs and an &#8216;insert here&#8217; tattoo above her bloated",
       "reviewQuote": "Irony is a pale, sullen bitch with bruises all over her legs and an &#8216;insert here&#8217; tattoo above her bloated",
       "sourceTitle": "there s no 666 in outer space",
+      "editRevision": 8,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/2507875-Hella-Theres-No-666-In-Outer-Space",
@@ -2942,8 +2944,10 @@
       },
       "catalogNumber": "IPC 83",
       "displayFormat": "CD",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtpheev02pouz0",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Zach Hill",
@@ -2952,6 +2956,7 @@
         "Lightning Bolt",
         "Tera Melos"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/2507875-Hella-Theres-No-666-In-Outer-Space",
@@ -2964,12 +2969,15 @@
           "confidence": 85
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Tiny Mix Tapes (quoted)",
       "metadataSourceUrl": "https://www.discogs.com/release/2507875-Hella-Theres-No-666-In-Outer-Space",
+      "editorialUpdatedAt": "2026-09-08T19:28:04.514+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-08",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
@@ -3205,22 +3213,21 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 7,
-      "editorialUpdatedAt": "2026-09-08T18:40:12.628+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
@@ -89193,17 +89200,17 @@
       "status": "Published"
     },
     {
-      "id": "bloc-party",
-      "name": "Bloc Party",
-      "sort": 110,
-      "origin": "finance-inventory",
-      "status": "Published"
-    },
-    {
       "id": "fire-toolz",
       "bio": "",
       "name": "Fire-Toolz",
       "sort": 110,
+      "status": "Published"
+    },
+    {
+      "id": "bloc-party",
+      "name": "Bloc Party",
+      "sort": 110,
+      "origin": "finance-inventory",
       "status": "Published"
     },
     {
@@ -89281,6 +89288,13 @@
       "name": "Avey Tare's Slasher Flicks",
       "sort": 121,
       "origin": "finance-inventory",
+      "status": "Published"
+    },
+    {
+      "id": "hella",
+      "bio": "",
+      "name": "Hella",
+      "sort": 9999,
       "status": "Published"
     },
     {
