@@ -39,6 +39,15 @@ const TRUSTED_REVIEW_SOURCES = new Map([
   ["factmag.com", "FACT (quoted)"]
 ]);
 
+function discogsHeaders() {
+  const token = String(process.env.DISCOGS_TOKEN || "").trim();
+  return {
+    accept: "application/json",
+    "user-agent": USER_AGENT,
+    ...(token ? { authorization: `Discogs token=${token}` } : {})
+  };
+}
+
 // NIXP keeps a local, optimized copy of the public catalog artwork. The
 // original source remains in imageCredits; this mapping prevents third-party
 // artwork URLs from becoming a storefront runtime dependency.
@@ -1738,7 +1747,7 @@ async function discoverDiscogsRelease(stock) {
   let sourceUnavailable = false;
   for (const query of queryVariants) {
     const response = await fetchWithTimeout(`https://api.discogs.com/database/search?${new URLSearchParams(query.params).toString()}`, {
-      headers: { accept: "application/json", "user-agent": USER_AGENT }
+      headers: discogsHeaders()
     }, 7000, "discogs");
     if (!response || !response.ok || isExternalSourceUnavailable(response)) {
       console.warn("Catalog research source unavailable", {
@@ -1759,7 +1768,7 @@ async function discoverDiscogsRelease(stock) {
   if (!assessment.release?.resource_url) return null;
 
   const detailResponse = await fetchWithTimeout(assessment.release.resource_url, {
-    headers: { accept: "application/json", "user-agent": USER_AGENT }
+    headers: discogsHeaders()
   }, 7000, "discogs");
   if (!detailResponse || !detailResponse.ok || isExternalSourceUnavailable(detailResponse)) {
     console.warn("Catalog research source unavailable", {

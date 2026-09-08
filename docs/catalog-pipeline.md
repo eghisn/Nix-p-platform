@@ -20,9 +20,14 @@ Supabase, GitHub, Vercel, and the public storefront.
 1. A purchase creates or updates one inventory stock row by normalized SKU.
 2. After title and selling price exist, the server synchronizes the SKU to Admin.
 3. Exact reviewed matches use the curated enrichment registry.
-4. Other record releases are matched through MusicBrainz using artist, title,
-   format, and, when supplied, barcode or catalog number. The matched cover is
-   copied into NIXP's Supabase Storage before it is used publicly.
+4. Other record releases use Discogs as the exact physical-pressing source,
+   queried first by barcode or catalog number when supplied. Bandcamp and
+   trusted review sources supply official release notes and editorial evidence;
+   MusicBrainz and Cover Art Archive remain a narrowly verified fallback, not
+   the publishing gate. Production uses a server-only `DISCOGS_TOKEN` so its
+   exact-release research does not depend on the shared anonymous API quota.
+   The matched cover is copied into NIXP's Supabase Storage before it is used
+   publicly.
 5. Edition, barcode, and catalog number should be entered whenever known. They
    are required to distinguish pressings that share artist, title, and format.
 6. A release is public only when it has artist, title, label, release year,
