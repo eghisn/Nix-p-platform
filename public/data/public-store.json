@@ -15519,11 +15519,14 @@
         "ambient",
         "darkcore",
         "dubstep",
-        "electronic"
+        "electronic",
+        "UK Garage",
+        "Ambient",
+        "Electronic"
       ],
       "year": 2019,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/cover.jpg",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/detail-1.jpg",
       "label": "Hyperdub",
       "price": 474750,
       "sizes": [],
@@ -15539,22 +15542,32 @@
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/detail-1.jpg",
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/cover.jpg"
       ],
-      "barcode": "",
+      "barcode": "5055869558952 / 12061406011 / 12061406011",
       "details": [
         "SKU: NXP-2026-VNL-0058",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, 12\", 45 RPM",
+        "Edition: Vinyl",
+        "12\"",
+        "45 RPM",
         "Catalog number: HDB120",
-        "Barcode: 5055869558952"
+        "Barcode: 5055869558952",
+        "Barcode: 5055869558952 / 12061406011 / 12061406011"
       ],
       "edition": "Vinyl, 12\", 45 RPM",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/cover.jpg",
       "condition": "New-Sealed",
-      "reviewUrl": "https://pitchfork.com/news/burial-shares-new-song-state-forest-listen/",
+      "reviewUrl": "",
       "syncAudit": [
+        {
+          "at": "2026-09-09T16:54:40.376Z",
+          "sku": "NXP-2026-VNL-0058",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-09-07T16:32:24.143Z",
           "sku": "NXP-2026-VNL-0058",
@@ -15603,33 +15616,28 @@
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.232Z",
-          "sku": "NXP-2026-VNL-0058",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
         }
       ],
       "updatedAt": "2026-09-09",
       "collection": "Hyperdub",
       "syncStatus": {
-        "at": "2026-09-07T16:32:24.143Z",
+        "at": "2026-09-09T16:54:40.376Z",
         "sku": "NXP-2026-VNL-0058",
-        "action": "Inventory identity synchronized to catalog",
+        "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Burial's 2019 release Claustro / State Forest is a Vinyl edition issued by Hyperdub.",
-      "reviewQuote": "The second track from his new EP Claustro / State Forest",
+      "description": "Burial's 2019 Claustro / State Forest 12-inch returns to the UK producer's garage shuffle while pushing his sound toward harder-to-decipher emotions: Claustro lands as a banger, while State Forest opens into a more ambient, impressionistic space.",
+      "reviewQuote": "",
+      "sourceTitle": "claustro state forest",
+      "editRevision": 4,
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/0be38c63-7f4b-472c-acdd-e2afa2f6f450",
+          "url": "https://www.discogs.com/release/20577763-Burial-Claustro-State-Forest",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/cover.jpg",
-          "credit": "Cover Art Archive / MusicBrainz front artwork"
+          "credit": "Discogs physical-release artwork"
         },
         {
           "url": "https://musicbrainz.org/release/0be38c63-7f4b-472c-acdd-e2afa2f6f450",
@@ -15637,20 +15645,20 @@
           "credit": "Cover Art Archive / MusicBrainz physical release scan"
         }
       ],
-      "reviewSource": "Pitchfork (quoted)",
+      "reviewSource": "",
       "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/news/burial-shares-new-song-state-forest-listen/",
-        "description": "Burial's 2019 release Claustro / State Forest is a Vinyl edition issued by Hyperdub.",
-        "reviewQuote": "The second track from his new EP Claustro / State Forest",
-        "reviewSource": "Pitchfork (quoted)",
+        "reviewUrl": "",
+        "description": "Burial's 2019 Claustro / State Forest 12-inch returns to the UK producer's garage shuffle while pushing his sound toward harder-to-decipher emotions: Claustro lands as a banger, while State Forest opens into a more ambient, impressionistic space.",
+        "reviewQuote": "",
+        "reviewSource": "",
         "relatedArtists": [
           "Burial & Four Tet",
           "Burial & Four Tet & Thom Yorke",
           "Kode9",
           "Zomby",
-          "Blackdown"
+          "Four Tet"
         ],
-        "descriptionSource": "MusicBrainz",
+        "descriptionSource": "Resident Advisor / Pitchfork",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -15664,47 +15672,47 @@
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.738831,
+            "match": 0.809908,
             "artist": "Burial & Four Tet & Thom Yorke",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Burial",
-            "confidence": 0.738831,
+            "confidence": 0.809908,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.714951,
+            "match": 0.763407,
             "artist": "Kode9",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Burial",
-            "confidence": 0.714951,
+            "confidence": 0.763407,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.556232,
+            "match": 0.529579,
             "artist": "Zomby",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Burial",
-            "confidence": 0.556232,
+            "confidence": 0.529579,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.545554,
-            "artist": "Blackdown",
+            "match": 0.473338,
+            "artist": "Four Tet",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Burial",
-            "confidence": 0.545554,
+            "confidence": 0.473338,
             "relationType": "artist-similarity"
           }
         ],
@@ -15717,12 +15725,12 @@
               "Burial & Four Tet & Thom Yorke",
               "Kode9",
               "Zomby",
-              "Blackdown",
               "Four Tet",
+              "Blackdown",
               "Aphex Twin",
               "Skream",
               "Mala",
-              "Clubroot"
+              "Oneohtrix Point Never"
             ],
             "evidence": [
               {
@@ -15734,75 +15742,75 @@
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.738831,
+                "match": 0.809908,
                 "artist": "Burial & Four Tet & Thom Yorke",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Burial",
-                "confidence": 0.738831,
+                "confidence": 0.809908,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.714951,
+                "match": 0.763407,
                 "artist": "Kode9",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Burial",
-                "confidence": 0.714951,
+                "confidence": 0.763407,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.556232,
+                "match": 0.529579,
                 "artist": "Zomby",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Burial",
-                "confidence": 0.556232,
+                "confidence": 0.529579,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.545554,
-                "artist": "Blackdown",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Burial",
-                "confidence": 0.545554,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.464675,
+                "match": 0.473338,
                 "artist": "Four Tet",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Burial",
-                "confidence": 0.464675,
+                "confidence": 0.473338,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.44516,
+                "match": 0.423023,
+                "artist": "Blackdown",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Burial",
+                "confidence": 0.423023,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.409806,
                 "artist": "Aphex Twin",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Burial",
-                "confidence": 0.44516,
+                "confidence": 0.409806,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.406385,
+                "match": 0.383942,
                 "artist": "Skream",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Burial",
-                "confidence": 0.406385,
+                "confidence": 0.383942,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.400576,
+                "match": 0.35927,
                 "artist": "Mala",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Burial",
-                "confidence": 0.400576,
+                "confidence": 0.35927,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.376888,
-                "artist": "Clubroot",
+                "match": 0.353218,
+                "artist": "Oneohtrix Point Never",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Burial",
-                "confidence": 0.376888,
+                "confidence": 0.353218,
                 "relationType": "artist-similarity"
               }
             ],
@@ -15815,7 +15823,7 @@
             "Burial & Four Tet & Thom Yorke",
             "Kode9",
             "Zomby",
-            "Blackdown"
+            "Four Tet"
           ],
           "evidence": [
             {
@@ -15830,47 +15838,47 @@
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.738831,
+              "match": 0.809908,
               "artist": "Burial & Four Tet & Thom Yorke",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.738831,
+              "confidence": 0.809908,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.714951,
+              "match": 0.763407,
               "artist": "Kode9",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.714951,
+              "confidence": 0.763407,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.556232,
+              "match": 0.529579,
               "artist": "Zomby",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.556232,
+              "confidence": 0.529579,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.545554,
-              "artist": "Blackdown",
+              "match": 0.473338,
+              "artist": "Four Tet",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.545554,
+              "confidence": 0.473338,
               "relationType": "artist-similarity"
             }
           ],
@@ -15892,20 +15900,29 @@
         "Burial & Four Tet & Thom Yorke",
         "Kode9",
         "Zomby",
-        "Blackdown"
+        "Four Tet"
       ],
       "homeCollections": [],
+      "researchSources": [
+        {
+          "url": "https://www.discogs.com/release/20577763-Burial-Claustro-State-Forest",
+          "source": "Discogs",
+          "confidence": 100
+        }
+      ],
       "sleeveCondition": "",
       "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/detail-1.jpg",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "MusicBrainz",
-      "metadataSourceUrl": "https://musicbrainz.org/release/0be38c63-7f4b-472c-acdd-e2afa2f6f450",
-      "enrichmentUpdatedAt": "2026-08-22",
+      "enrichmentOrigin": "source+curated-editorial",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Resident Advisor / Pitchfork",
+      "metadataSourceUrl": "https://www.discogs.com/release/20577763-Burial-Claustro-State-Forest",
+      "editorialUpdatedAt": "2026-09-09T16:55:35.128+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "enrichmentUpdatedAt": "2026-09-09",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "0be38c63-7f4b-472c-acdd-e2afa2f6f450",
-      "publishAfterResearch": true,
-      "enrichmentAttemptedAt": "2026-08-22T13:43:06.388Z",
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-09-09T16:54:40.375Z",
       "enrichmentFingerprint": "burial|claustro state forest|vinyl||hdb120",
       "relatedArtistEvidence": [
         {
@@ -15920,47 +15937,47 @@
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.738831,
+          "match": 0.809908,
           "artist": "Burial & Four Tet & Thom Yorke",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
           "sourceUrl": "https://www.last.fm/music/Burial",
-          "confidence": 0.738831,
+          "confidence": 0.809908,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.714951,
+          "match": 0.763407,
           "artist": "Kode9",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
           "sourceUrl": "https://www.last.fm/music/Burial",
-          "confidence": 0.714951,
+          "confidence": 0.763407,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.556232,
+          "match": 0.529579,
           "artist": "Zomby",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
           "sourceUrl": "https://www.last.fm/music/Burial",
-          "confidence": 0.556232,
+          "confidence": 0.529579,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.545554,
-          "artist": "Blackdown",
+          "match": 0.473338,
+          "artist": "Four Tet",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
           "sourceUrl": "https://www.last.fm/music/Burial",
-          "confidence": 0.545554,
+          "confidence": 0.473338,
           "relationType": "artist-similarity"
         }
       ],
@@ -15974,12 +15991,12 @@
             "Burial & Four Tet & Thom Yorke",
             "Kode9",
             "Zomby",
-            "Blackdown",
             "Four Tet",
+            "Blackdown",
             "Aphex Twin",
             "Skream",
             "Mala",
-            "Clubroot"
+            "Oneohtrix Point Never"
           ],
           "evidence": [
             {
@@ -15991,75 +16008,75 @@
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.738831,
+              "match": 0.809908,
               "artist": "Burial & Four Tet & Thom Yorke",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.738831,
+              "confidence": 0.809908,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.714951,
+              "match": 0.763407,
               "artist": "Kode9",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.714951,
+              "confidence": 0.763407,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.556232,
+              "match": 0.529579,
               "artist": "Zomby",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.556232,
+              "confidence": 0.529579,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.545554,
-              "artist": "Blackdown",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.545554,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.464675,
+              "match": 0.473338,
               "artist": "Four Tet",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.464675,
+              "confidence": 0.473338,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.44516,
+              "match": 0.423023,
+              "artist": "Blackdown",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Burial",
+              "confidence": 0.423023,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.409806,
               "artist": "Aphex Twin",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.44516,
+              "confidence": 0.409806,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.406385,
+              "match": 0.383942,
               "artist": "Skream",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.406385,
+              "confidence": 0.383942,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.400576,
+              "match": 0.35927,
               "artist": "Mala",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.400576,
+              "confidence": 0.35927,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.376888,
-              "artist": "Clubroot",
+              "match": 0.353218,
+              "artist": "Oneohtrix Point Never",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Burial",
-              "confidence": 0.376888,
+              "confidence": 0.353218,
               "relationType": "artist-similarity"
             }
           ],
@@ -16072,7 +16089,7 @@
           "Burial & Four Tet & Thom Yorke",
           "Kode9",
           "Zomby",
-          "Blackdown"
+          "Four Tet"
         ],
         "evidence": [
           {
@@ -16087,47 +16104,47 @@
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.738831,
+            "match": 0.809908,
             "artist": "Burial & Four Tet & Thom Yorke",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Burial",
-            "confidence": 0.738831,
+            "confidence": 0.809908,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.714951,
+            "match": 0.763407,
             "artist": "Kode9",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Burial",
-            "confidence": 0.714951,
+            "confidence": 0.763407,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.556232,
+            "match": 0.529579,
             "artist": "Zomby",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Burial",
-            "confidence": 0.556232,
+            "confidence": 0.529579,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.545554,
-            "artist": "Blackdown",
+            "match": 0.473338,
+            "artist": "Four Tet",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Burial",
-            "confidence": 0.545554,
+            "confidence": 0.473338,
             "relationType": "artist-similarity"
           }
         ],
@@ -16137,16 +16154,14 @@
       },
       "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 2,
-      "editorialUpdatedAt": "2026-09-07T16:32:36.078+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-22",
+        "updatedAt": "2026-09-09",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -75704,6 +75719,632 @@
       }
     },
     {
+      "id": "nxp-2026-vnl-0004",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0004",
+      "tags": [
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0004"
+      ],
+      "year": 2019,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+      "label": "Rough Trade",
+      "price": 700000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "The Talkies",
+      "artist": "Girl Band",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+        "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
+      ],
+      "barcode": "1 91402 00651 3",
+      "details": [
+        "SKU: NXP-2026-VNL-0004",
+        "Format: Vinyl 12\"",
+        "Condition: New-Sealed"
+      ],
+      "edition": "Vinyl, LP, Album",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.793Z",
+          "sku": "NXP-2026-VNL-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-VNL-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.174Z",
+          "sku": "NXP-2026-VNL-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.932Z",
+          "sku": "NXP-2026-VNL-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-VNL-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.735Z",
+          "sku": "NXP-2026-VNL-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.222Z",
+          "sku": "NXP-2026-VNL-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.310Z",
+          "sku": "NXP-2026-VNL-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.793Z",
+        "sku": "NXP-2026-VNL-0004",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Girl Band's 2019 Rough Trade album The Talkies turns Dublin post-punk into a physical study in distortion, repetition, panic and ecstatic release.",
+      "reviewQuote": "pure, visceral panic",
+      "editRevision": 2,
+      "imageCredits": [
+        {
+          "url": "https://gillaband.bandcamp.com/album/the-talkies",
+          "image": "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg",
+          "credit": "Gilla Band Bandcamp"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "relatedArtists": [
+          "Gilla Band",
+          "Psychic Graveyard",
+          "Cherubs",
+          "METZ",
+          "USA Nails"
+        ],
+        "enrichmentStatus": "complete-no-related-artists",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Gilla Band",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.236825,
+            "artist": "Psychic Graveyard",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.236825,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.234008,
+            "artist": "Cherubs",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.234008,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.217313,
+            "artist": "METZ",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.217313,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.213973,
+            "artist": "USA Nails",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.213973,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Gilla Band",
+              "Psychic Graveyard",
+              "Cherubs",
+              "METZ",
+              "USA Nails",
+              "Shellac",
+              "Viet Cong",
+              "Ought",
+              "Black Eyes",
+              "Liars"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Gilla Band",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.236825,
+                "artist": "Psychic Graveyard",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.236825,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.234008,
+                "artist": "Cherubs",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.234008,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.217313,
+                "artist": "METZ",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.217313,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.213973,
+                "artist": "USA Nails",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.213973,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.209239,
+                "artist": "Shellac",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.209239,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.195974,
+                "artist": "Viet Cong",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.195974,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.189864,
+                "artist": "Ought",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.189864,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.183968,
+                "artist": "Black Eyes",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.183968,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.171072,
+                "artist": "Liars",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.171072,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Gilla Band",
+            "Psychic Graveyard",
+            "Cherubs",
+            "METZ",
+            "USA Nails"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Gilla Band",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.236825,
+              "artist": "Psychic Graveyard",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.236825,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.234008,
+              "artist": "Cherubs",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.234008,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.217313,
+              "artist": "METZ",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.217313,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.213973,
+              "artist": "USA Nails",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.213973,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "RT0065LP",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 8,
+      "publishStatus": "Published",
+      "financeStockId": "mr6m870z88pwyb",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Gilla Band",
+        "Psychic Graveyard",
+        "Cherubs",
+        "METZ",
+        "USA Nails"
+      ],
+      "homeCollections": [
+        "limited-pressing"
+      ],
+      "sleeveCondition": "",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "Pitchfork",
+      "editorialUpdatedAt": "2026-09-08T13:03:13.446+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "manualRelatedArtists": [],
+      "enrichmentAttemptedAt": "2026-08-18T16:55:23.325Z",
+      "enrichmentFingerprint": "girl band|the talkies|vinyl||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Gilla Band",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.236825,
+          "artist": "Psychic Graveyard",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.236825,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.234008,
+          "artist": "Cherubs",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.234008,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.217313,
+          "artist": "METZ",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.217313,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.213973,
+          "artist": "USA Nails",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.213973,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Gilla Band",
+            "Psychic Graveyard",
+            "Cherubs",
+            "METZ",
+            "USA Nails",
+            "Shellac",
+            "Viet Cong",
+            "Ought",
+            "Black Eyes",
+            "Liars"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Gilla Band",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.236825,
+              "artist": "Psychic Graveyard",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.236825,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.234008,
+              "artist": "Cherubs",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.234008,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.217313,
+              "artist": "METZ",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.217313,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.213973,
+              "artist": "USA Nails",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.213973,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.209239,
+              "artist": "Shellac",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.209239,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.195974,
+              "artist": "Viet Cong",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.195974,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.189864,
+              "artist": "Ought",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.189864,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.183968,
+              "artist": "Black Eyes",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.183968,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.171072,
+              "artist": "Liars",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.171072,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Gilla Band",
+          "Psychic Graveyard",
+          "Cherubs",
+          "METZ",
+          "USA Nails"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Gilla Band",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.236825,
+            "artist": "Psychic Graveyard",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.236825,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.234008,
+            "artist": "Cherubs",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.234008,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.217313,
+            "artist": "METZ",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.217313,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.213973,
+            "artist": "USA Nails",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.213973,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-08",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "nxp-2026-cd-0007",
       "qty": 1,
       "sku": "NXP-2026-CD-0007",
@@ -76821,632 +77462,6 @@
       }
     },
     {
-      "id": "nxp-2026-cd-0020",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0020",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0020"
-      ],
-      "year": 1988,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg",
-      "label": "Creation Records",
-      "price": 200000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Isn't Anything",
-      "artist": "My Bloody Valentine",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0020",
-        "Format: CD",
-        "Condition: Used Good"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0020/cover.jpg",
-      "condition": "Used Good",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.794Z",
-          "sku": "NXP-2026-CD-0020",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.964Z",
-          "sku": "NXP-2026-CD-0020",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.175Z",
-          "sku": "NXP-2026-CD-0020",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.933Z",
-          "sku": "NXP-2026-CD-0020",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.764Z",
-          "sku": "NXP-2026-CD-0020",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-CD-0020",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-CD-0020",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.311Z",
-          "sku": "NXP-2026-CD-0020",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.794Z",
-        "sku": "NXP-2026-CD-0020",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
-      "reviewQuote": "livid, lurid and lucid",
-      "imageCredits": [],
-      "reviewSource": "The Quietus (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
-        "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
-        "reviewQuote": "livid, lurid and lucid",
-        "reviewSource": "The Quietus (quoted)",
-        "relatedArtists": [
-          "Slowdive",
-          "Drop Nineteens",
-          "Swirlies",
-          "Lush",
-          "Ride"
-        ],
-        "descriptionSource": "The Quietus / AllMusic",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Slowdive",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.761078,
-            "artist": "Drop Nineteens",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.761078,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.746951,
-            "artist": "Swirlies",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.746951,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.676043,
-            "artist": "Lush",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.676043,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.666016,
-            "artist": "Ride",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.666016,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Slowdive",
-              "Drop Nineteens",
-              "Swirlies",
-              "Lush",
-              "Ride",
-              "LSD and the Search for God",
-              "Astrobrite",
-              "Chapterhouse",
-              "Fleeting Joys",
-              "lovesliescrushing"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Slowdive",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.761078,
-                "artist": "Drop Nineteens",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.761078,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.746951,
-                "artist": "Swirlies",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.746951,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.676043,
-                "artist": "Lush",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.676043,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.666016,
-                "artist": "Ride",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.666016,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.650864,
-                "artist": "LSD and the Search for God",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.650864,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.642117,
-                "artist": "Astrobrite",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.642117,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.610429,
-                "artist": "Chapterhouse",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.610429,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.588989,
-                "artist": "Fleeting Joys",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.588989,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.554478,
-                "artist": "lovesliescrushing",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.554478,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Slowdive",
-            "Drop Nineteens",
-            "Swirlies",
-            "Lush",
-            "Ride"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Slowdive",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.761078,
-              "artist": "Drop Nineteens",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.761078,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.746951,
-              "artist": "Swirlies",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.746951,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.676043,
-              "artist": "Lush",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.676043,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.666016,
-              "artist": "Ride",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.666016,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-          "sourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": 31,
-      "publishStatus": "Published",
-      "financeStockId": "mrfavlnv4xrz5g",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Slowdive",
-        "Drop Nineteens",
-        "Swirlies",
-        "Lush",
-        "Ride"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "The Quietus / AllMusic",
-      "metadataSourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-      "enrichmentUpdatedAt": "2026-08-18",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-      "enrichmentAttemptedAt": "2026-08-18T16:59:31.060Z",
-      "enrichmentFingerprint": "my bloody valentine|isn t anything|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Slowdive",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.761078,
-          "artist": "Drop Nineteens",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-          "confidence": 0.761078,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.746951,
-          "artist": "Swirlies",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-          "confidence": 0.746951,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.676043,
-          "artist": "Lush",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-          "confidence": 0.676043,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.666016,
-          "artist": "Ride",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-          "confidence": 0.666016,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Slowdive",
-            "Drop Nineteens",
-            "Swirlies",
-            "Lush",
-            "Ride",
-            "LSD and the Search for God",
-            "Astrobrite",
-            "Chapterhouse",
-            "Fleeting Joys",
-            "lovesliescrushing"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Slowdive",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.761078,
-              "artist": "Drop Nineteens",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.761078,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.746951,
-              "artist": "Swirlies",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.746951,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.676043,
-              "artist": "Lush",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.676043,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.666016,
-              "artist": "Ride",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.666016,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.650864,
-              "artist": "LSD and the Search for God",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.650864,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.642117,
-              "artist": "Astrobrite",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.642117,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.610429,
-              "artist": "Chapterhouse",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.610429,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.588989,
-              "artist": "Fleeting Joys",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.588989,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.554478,
-              "artist": "lovesliescrushing",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.554478,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Slowdive",
-          "Drop Nineteens",
-          "Swirlies",
-          "Lush",
-          "Ride"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Slowdive",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.761078,
-            "artist": "Drop Nineteens",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.761078,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.746951,
-            "artist": "Swirlies",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.746951,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.676043,
-            "artist": "Lush",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.676043,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.666016,
-            "artist": "Ride",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.666016,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-        "sourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "nxp-2026-cst-0008",
       "qty": 1,
       "sku": "NXP-2026-CST-0008",
@@ -78072,95 +78087,95 @@
       }
     },
     {
-      "id": "nxp-2026-vnl-0004",
+      "id": "nxp-2026-cd-0020",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0004",
+      "sku": "NXP-2026-CD-0020",
       "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0004"
+        "CD",
+        "NXP-2026-CD-0020"
       ],
-      "year": 2019,
+      "year": 1988,
       "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
-      "label": "Rough Trade",
-      "price": 700000,
+      "image": "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg",
+      "label": "Creation Records",
+      "price": 200000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "The Talkies",
-      "artist": "Girl Band",
-      "format": "Vinyl",
+      "title": "Isn't Anything",
+      "artist": "My Bloody Valentine",
+      "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
-        "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
+        "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg"
       ],
-      "barcode": "1 91402 00651 3",
+      "barcode": "",
       "details": [
-        "SKU: NXP-2026-VNL-0004",
-        "Format: Vinyl 12\"",
-        "Condition: New-Sealed"
+        "SKU: NXP-2026-CD-0020",
+        "Format: CD",
+        "Condition: Used Good"
       ],
-      "edition": "Vinyl, LP, Album",
+      "edition": "",
       "category": "Records",
       "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0020/cover.jpg",
+      "condition": "Used Good",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
       "syncAudit": [
         {
-          "at": "2026-08-30T02:14:08.793Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-30T02:14:08.794Z",
+          "sku": "NXP-2026-CD-0020",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-29T10:09:43.964Z",
+          "sku": "NXP-2026-CD-0020",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T09:54:26.174Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-29T09:54:26.175Z",
+          "sku": "NXP-2026-CD-0020",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.932Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-29T02:23:49.933Z",
+          "sku": "NXP-2026-CD-0020",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-28T09:19:04.764Z",
+          "sku": "NXP-2026-CD-0020",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T02:12:08.735Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-28T02:12:08.736Z",
+          "sku": "NXP-2026-CD-0020",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-VNL-0004",
+          "sku": "NXP-2026-CD-0020",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:01:51.310Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-27T15:01:51.311Z",
+          "sku": "NXP-2026-CD-0020",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -78169,88 +78184,85 @@
       "updatedAt": "2026-09-09",
       "collection": "NIXP Selection",
       "syncStatus": {
-        "at": "2026-08-30T02:14:08.793Z",
-        "sku": "NXP-2026-VNL-0004",
+        "at": "2026-08-30T02:14:08.794Z",
+        "sku": "NXP-2026-CD-0020",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Girl Band's 2019 Rough Trade album The Talkies turns Dublin post-punk into a physical study in distortion, repetition, panic and ecstatic release.",
-      "reviewQuote": "pure, visceral panic",
-      "editRevision": 2,
-      "imageCredits": [
-        {
-          "url": "https://gillaband.bandcamp.com/album/the-talkies",
-          "image": "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg",
-          "credit": "Gilla Band Bandcamp"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
+      "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
+      "reviewQuote": "livid, lurid and lucid",
+      "imageCredits": [],
+      "reviewSource": "The Quietus (quoted)",
       "autoEditorial": {
+        "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
+        "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
+        "reviewQuote": "livid, lurid and lucid",
+        "reviewSource": "The Quietus (quoted)",
         "relatedArtists": [
-          "Gilla Band",
-          "Psychic Graveyard",
-          "Cherubs",
-          "METZ",
-          "USA Nails"
+          "Slowdive",
+          "Drop Nineteens",
+          "Swirlies",
+          "Lush",
+          "Ride"
         ],
-        "enrichmentStatus": "complete-no-related-artists",
+        "descriptionSource": "The Quietus / AllMusic",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Gilla Band",
+            "artist": "Slowdive",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.236825,
-            "artist": "Psychic Graveyard",
+            "match": 0.761078,
+            "artist": "Drop Nineteens",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.236825,
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.761078,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.234008,
-            "artist": "Cherubs",
+            "match": 0.746951,
+            "artist": "Swirlies",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.234008,
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.746951,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.217313,
-            "artist": "METZ",
+            "match": 0.676043,
+            "artist": "Lush",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.217313,
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.676043,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.213973,
-            "artist": "USA Nails",
+            "match": 0.666016,
+            "artist": "Ride",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.213973,
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.666016,
             "relationType": "artist-similarity"
           }
         ],
@@ -78259,252 +78271,253 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Gilla Band",
-              "Psychic Graveyard",
-              "Cherubs",
-              "METZ",
-              "USA Nails",
-              "Shellac",
-              "Viet Cong",
-              "Ought",
-              "Black Eyes",
-              "Liars"
+              "Slowdive",
+              "Drop Nineteens",
+              "Swirlies",
+              "Lush",
+              "Ride",
+              "LSD and the Search for God",
+              "Astrobrite",
+              "Chapterhouse",
+              "Fleeting Joys",
+              "lovesliescrushing"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Gilla Band",
+                "artist": "Slowdive",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.236825,
-                "artist": "Psychic Graveyard",
+                "match": 0.761078,
+                "artist": "Drop Nineteens",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.236825,
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.761078,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.234008,
-                "artist": "Cherubs",
+                "match": 0.746951,
+                "artist": "Swirlies",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.234008,
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.746951,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.217313,
-                "artist": "METZ",
+                "match": 0.676043,
+                "artist": "Lush",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.217313,
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.676043,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.213973,
-                "artist": "USA Nails",
+                "match": 0.666016,
+                "artist": "Ride",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.213973,
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.666016,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.209239,
-                "artist": "Shellac",
+                "match": 0.650864,
+                "artist": "LSD and the Search for God",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.209239,
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.650864,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.195974,
-                "artist": "Viet Cong",
+                "match": 0.642117,
+                "artist": "Astrobrite",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.195974,
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.642117,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.189864,
-                "artist": "Ought",
+                "match": 0.610429,
+                "artist": "Chapterhouse",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.189864,
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.610429,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.183968,
-                "artist": "Black Eyes",
+                "match": 0.588989,
+                "artist": "Fleeting Joys",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.183968,
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.588989,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.171072,
-                "artist": "Liars",
+                "match": 0.554478,
+                "artist": "lovesliescrushing",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.171072,
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.554478,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band"
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Gilla Band",
-            "Psychic Graveyard",
-            "Cherubs",
-            "METZ",
-            "USA Nails"
+            "Slowdive",
+            "Drop Nineteens",
+            "Swirlies",
+            "Lush",
+            "Ride"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Gilla Band",
+              "artist": "Slowdive",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.236825,
-              "artist": "Psychic Graveyard",
+              "match": 0.761078,
+              "artist": "Drop Nineteens",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.236825,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.761078,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.234008,
-              "artist": "Cherubs",
+              "match": 0.746951,
+              "artist": "Swirlies",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.234008,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.746951,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.217313,
-              "artist": "METZ",
+              "match": 0.676043,
+              "artist": "Lush",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.217313,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.676043,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.213973,
-              "artist": "USA Nails",
+              "match": 0.666016,
+              "artist": "Ride",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.213973,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.666016,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "",
-          "sourceUrl": "",
+          "releaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+          "sourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "RT0065LP",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 8,
+      "catalogNumber": "",
+      "displayFormat": "CD",
+      "homeSlideSort": 31,
       "publishStatus": "Published",
-      "financeStockId": "mr6m870z88pwyb",
+      "financeStockId": "mrfavlnv4xrz5g",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Gilla Band",
-        "Psychic Graveyard",
-        "Cherubs",
-        "METZ",
-        "USA Nails"
+        "Slowdive",
+        "Drop Nineteens",
+        "Swirlies",
+        "Lush",
+        "Ride"
       ],
-      "homeCollections": [
-        "limited-pressing"
-      ],
+      "homeCollections": [],
       "sleeveCondition": "",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "Pitchfork",
-      "editorialUpdatedAt": "2026-09-08T13:03:13.446+00:00",
-      "editorialUpdatedBy": "operatorwebsite",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "The Quietus / AllMusic",
+      "metadataSourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+      "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:55:23.325Z",
-      "enrichmentFingerprint": "girl band|the talkies|vinyl||",
+      "musicBrainzReleaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+      "enrichmentAttemptedAt": "2026-08-18T16:59:31.060Z",
+      "enrichmentFingerprint": "my bloody valentine|isn t anything|cd||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Gilla Band",
+          "artist": "Slowdive",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.236825,
-          "artist": "Psychic Graveyard",
+          "match": 0.761078,
+          "artist": "Drop Nineteens",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.236825,
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "confidence": 0.761078,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.234008,
-          "artist": "Cherubs",
+          "match": 0.746951,
+          "artist": "Swirlies",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.234008,
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "confidence": 0.746951,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.217313,
-          "artist": "METZ",
+          "match": 0.676043,
+          "artist": "Lush",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.217313,
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "confidence": 0.676043,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.213973,
-          "artist": "USA Nails",
+          "match": 0.666016,
+          "artist": "Ride",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.213973,
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "confidence": 0.666016,
           "relationType": "artist-similarity"
         }
       ],
@@ -78514,186 +78527,188 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Gilla Band",
-            "Psychic Graveyard",
-            "Cherubs",
-            "METZ",
-            "USA Nails",
-            "Shellac",
-            "Viet Cong",
-            "Ought",
-            "Black Eyes",
-            "Liars"
+            "Slowdive",
+            "Drop Nineteens",
+            "Swirlies",
+            "Lush",
+            "Ride",
+            "LSD and the Search for God",
+            "Astrobrite",
+            "Chapterhouse",
+            "Fleeting Joys",
+            "lovesliescrushing"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Gilla Band",
+              "artist": "Slowdive",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.236825,
-              "artist": "Psychic Graveyard",
+              "match": 0.761078,
+              "artist": "Drop Nineteens",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.236825,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.761078,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.234008,
-              "artist": "Cherubs",
+              "match": 0.746951,
+              "artist": "Swirlies",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.234008,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.746951,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.217313,
-              "artist": "METZ",
+              "match": 0.676043,
+              "artist": "Lush",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.217313,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.676043,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.213973,
-              "artist": "USA Nails",
+              "match": 0.666016,
+              "artist": "Ride",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.213973,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.666016,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.209239,
-              "artist": "Shellac",
+              "match": 0.650864,
+              "artist": "LSD and the Search for God",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.209239,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.650864,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.195974,
-              "artist": "Viet Cong",
+              "match": 0.642117,
+              "artist": "Astrobrite",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.195974,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.642117,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.189864,
-              "artist": "Ought",
+              "match": 0.610429,
+              "artist": "Chapterhouse",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.189864,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.610429,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.183968,
-              "artist": "Black Eyes",
+              "match": 0.588989,
+              "artist": "Fleeting Joys",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.183968,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.588989,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.171072,
-              "artist": "Liars",
+              "match": 0.554478,
+              "artist": "lovesliescrushing",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.171072,
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.554478,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band"
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Gilla Band",
-          "Psychic Graveyard",
-          "Cherubs",
-          "METZ",
-          "USA Nails"
+          "Slowdive",
+          "Drop Nineteens",
+          "Swirlies",
+          "Lush",
+          "Ride"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Gilla Band",
+            "artist": "Slowdive",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.236825,
-            "artist": "Psychic Graveyard",
+            "match": 0.761078,
+            "artist": "Drop Nineteens",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.236825,
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.761078,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.234008,
-            "artist": "Cherubs",
+            "match": 0.746951,
+            "artist": "Swirlies",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.234008,
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.746951,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.217313,
-            "artist": "METZ",
+            "match": 0.676043,
+            "artist": "Lush",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.217313,
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.676043,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.213973,
-            "artist": "USA Nails",
+            "match": 0.666016,
+            "artist": "Ride",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.213973,
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.666016,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "",
-        "sourceUrl": "",
+        "releaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+        "sourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": true,
+      "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-09-08",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
@@ -79325,6 +79340,169 @@
       }
     },
     {
+      "id": "app-002",
+      "qty": 4,
+      "sku": "NXP-2026-APP-0002",
+      "tags": [
+        "knitsweater",
+        "apparel"
+      ],
+      "year": 2026,
+      "color": "Black",
+      "image": "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
+      "label": "NIXP Apparel",
+      "price": 650000,
+      "sizes": [
+        {
+          "label": "S",
+          "soldOut": false,
+          "quantity": 1
+        },
+        {
+          "label": "M",
+          "soldOut": false,
+          "quantity": 1
+        },
+        {
+          "label": "L",
+          "soldOut": false,
+          "quantity": 1
+        },
+        {
+          "label": "XL",
+          "soldOut": false,
+          "quantity": 1
+        }
+      ],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 4
+      },
+      "title": "Flesh Knitsweater",
+      "artist": "NIXP Apparel",
+      "format": "Apparel",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
+        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08676-jpg-1783940136800.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-APP-0002",
+        "Knit sweater",
+        "Black"
+      ],
+      "edition": "",
+      "category": "Apparel",
+      "material": "Knit cotton blend",
+      "condition": "New-Sealed",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.796Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-29T10:09:43.965Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-29T09:54:26.176Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-29T02:23:49.934Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-28T09:19:04.765Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-28T02:12:08.737Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-27T15:01:51.313Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Apparel",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.796Z",
+        "sku": "NXP-2026-APP-0002",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 4
+      },
+      "visibility": "Public",
+      "apparelType": "Tops",
+      "description": "Flesh Knitsweater apparel item.",
+      "reviewQuote": "",
+      "imageCredits": [],
+      "reviewSource": "",
+      "catalogNumber": "",
+      "displayFormat": "",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "catalog-app-002",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "",
+      "manualRelatedArtists": [],
+      "minimumAcceptableOffer": 0,
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
+        "status": "format_reference",
+        "widthCm": 32,
+        "heightCm": 7,
+        "lengthCm": 40,
+        "updatedAt": "2026-09-02",
+        "packageType": "zip-lock-polybag-shipping-wrap",
+        "weightGrams": 800,
+        "shippingClass": "apparel-soft-zip-lock-wrap",
+        "packagingGroup": "SOFT_APPAREL",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "nxp-2026-cd-0001",
       "qty": 1,
       "sku": "NXP-2026-CD-0001",
@@ -79946,169 +80124,6 @@
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "app-002",
-      "qty": 4,
-      "sku": "NXP-2026-APP-0002",
-      "tags": [
-        "knitsweater",
-        "apparel"
-      ],
-      "year": 2026,
-      "color": "Black",
-      "image": "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
-      "label": "NIXP Apparel",
-      "price": 650000,
-      "sizes": [
-        {
-          "label": "S",
-          "soldOut": false,
-          "quantity": 1
-        },
-        {
-          "label": "M",
-          "soldOut": false,
-          "quantity": 1
-        },
-        {
-          "label": "L",
-          "soldOut": false,
-          "quantity": 1
-        },
-        {
-          "label": "XL",
-          "soldOut": false,
-          "quantity": 1
-        }
-      ],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 4
-      },
-      "title": "Flesh Knitsweater",
-      "artist": "NIXP Apparel",
-      "format": "Apparel",
-      "images": [
-        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
-        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08676-jpg-1783940136800.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-APP-0002",
-        "Knit sweater",
-        "Black"
-      ],
-      "edition": "",
-      "category": "Apparel",
-      "material": "Knit cotton blend",
-      "condition": "New-Sealed",
-      "reviewUrl": "",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.796Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-29T10:09:43.965Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-29T09:54:26.176Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-29T02:23:49.934Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-28T02:12:08.737Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-27T15:01:51.313Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Apparel",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.796Z",
-        "sku": "NXP-2026-APP-0002",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 4
-      },
-      "visibility": "Public",
-      "apparelType": "Tops",
-      "description": "Flesh Knitsweater apparel item.",
-      "reviewQuote": "",
-      "imageCredits": [],
-      "reviewSource": "",
-      "catalogNumber": "",
-      "displayFormat": "",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "catalog-app-002",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "descriptionSource": "",
-      "manualRelatedArtists": [],
-      "minimumAcceptableOffer": 0,
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "relatedArtistsResearch": null,
-      "shipping": {
-        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
-        "status": "format_reference",
-        "widthCm": 32,
-        "heightCm": 7,
-        "lengthCm": 40,
-        "updatedAt": "2026-09-02",
-        "packageType": "zip-lock-polybag-shipping-wrap",
-        "weightGrams": 800,
-        "shippingClass": "apparel-soft-zip-lock-wrap",
-        "packagingGroup": "SOFT_APPAREL",
         "vinylWeightClass": "",
         "manualShippingOverride": false
       }
