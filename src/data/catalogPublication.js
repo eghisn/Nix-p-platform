@@ -1,5 +1,18 @@
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 
+export function hasDuplicateEditorialCopy(description, reviewQuote) {
+  const normalizedDescription = normalizeEditorialCopy(description);
+  const normalizedReview = normalizeEditorialCopy(reviewQuote);
+  return normalizedDescription.length >= 40
+    && normalizedReview.length >= 40
+    && normalizedDescription === normalizedReview;
+}
+
+export function hasDuplicateProductEditorialCopy(product = {}) {
+  const raw = product.raw || {};
+  return hasDuplicateEditorialCopy(product.description || raw.description, product.reviewQuote || raw.reviewQuote);
+}
+
 export function isFinanceCatalogProduct(product = {}) {
   return Boolean(
     String(product.id || "").startsWith("finance-") ||
@@ -91,6 +104,7 @@ export function isResearchPublicationReady(product = {}) {
       condition &&
       label &&
       description &&
+      !hasDuplicateProductEditorialCopy(product) &&
       isManagedProductImage(image) &&
       ["complete", "complete-no-related-artists"].includes(enrichmentStatus) &&
       (openToOffers ? minimumOffer > 0 : price > 0)
@@ -125,6 +139,15 @@ export function applyCatalogPublicationSafety(store = {}) {
 
 function normalizedCategory(product = {}) {
   return String(product.category || product.raw?.category || "").trim().toLowerCase();
+}
+
+function normalizeEditorialCopy(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201c\u201d]/g, '"')
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 }
 
 function arrayValue(primary, fallback) {

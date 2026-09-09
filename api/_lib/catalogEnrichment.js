@@ -1,4 +1,5 @@
 import { artistCreditNames, canonicalArtistName, canonicalLabelName, canonicalRelatedArtistName } from "../../src/data/catalogIdentity.js";
+import { hasDuplicateEditorialCopy } from "../../src/data/catalogPublication.js";
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 import { archiveRemoteProductImage, isManagedProductImage } from "./productImageStorage.js";
 
@@ -1494,12 +1495,16 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     discovered.barcode ? `Barcode: ${discovered.barcode}` : ""
   ]).filter((detail) => detail && !detail.startsWith("Created from finance inventory"));
   const automatic = raw.autoEditorial || {};
+  // Legacy data could contain a review quote copied into Description. It is
+  // never a manual editorial override, even if the old automatic baseline is
+  // incomplete, so a deliberate refresh must replace both fields.
+  const legacyDuplicateEditorial = hasDuplicateEditorialCopy(row.description, raw.reviewQuote);
   const editorial = removeDuplicateEditorialCopy({
-    description: chooseEditorialValue(row.description, automatic.description, discovered.description),
-    descriptionSource: chooseEditorialValue(raw.descriptionSource, automatic.descriptionSource, discovered.descriptionSource),
-    reviewQuote: chooseEditorialValue(raw.reviewQuote, automatic.reviewQuote, discovered.reviewQuote || ""),
-    reviewSource: chooseEditorialValue(raw.reviewSource, automatic.reviewSource, discovered.reviewSource || ""),
-    reviewUrl: chooseEditorialValue(raw.reviewUrl, automatic.reviewUrl, discovered.reviewUrl || "")
+    description: chooseEditorialValue(legacyDuplicateEditorial ? "" : row.description, automatic.description, discovered.description),
+    descriptionSource: chooseEditorialValue(legacyDuplicateEditorial ? "" : raw.descriptionSource, automatic.descriptionSource, discovered.descriptionSource),
+    reviewQuote: chooseEditorialValue(legacyDuplicateEditorial ? "" : raw.reviewQuote, automatic.reviewQuote, discovered.reviewQuote || ""),
+    reviewSource: chooseEditorialValue(legacyDuplicateEditorial ? "" : raw.reviewSource, automatic.reviewSource, discovered.reviewSource || ""),
+    reviewUrl: chooseEditorialValue(legacyDuplicateEditorial ? "" : raw.reviewUrl, automatic.reviewUrl, discovered.reviewUrl || "")
   });
   const { description, descriptionSource, reviewQuote, reviewSource, reviewUrl } = editorial;
   const researchedRelatedArtists = discovered.relatedArtistResearch || await researchRelatedArtists({
@@ -2733,11 +2738,7 @@ export function removeDuplicateEditorialCopy({
   reviewUrl = "",
   ...rest
 } = {}) {
-  const normalizedDescription = normalizeEditorialCopy(description);
-  const normalizedReview = normalizeEditorialCopy(reviewQuote);
-  const duplicate = normalizedDescription.length >= 40
-    && normalizedReview.length >= 40
-    && normalizedDescription === normalizedReview;
+  const duplicate = hasDuplicateEditorialCopy(description, reviewQuote);
   return {
     ...rest,
     description: String(description || "").trim(),
@@ -2746,15 +2747,6 @@ export function removeDuplicateEditorialCopy({
     reviewSource: duplicate ? "" : String(reviewSource || "").trim(),
     reviewUrl: duplicate ? "" : String(reviewUrl || "").trim()
   };
-}
-
-function normalizeEditorialCopy(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/[\u2018\u2019]/g, "'")
-    .replace(/[\u201c\u201d]/g, '"')
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
 }
 
 function hasCatalogCore(row) {

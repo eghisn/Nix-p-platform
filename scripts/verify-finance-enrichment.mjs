@@ -19,6 +19,7 @@ import {
 } from "../api/_lib/catalogEnrichment.js";
 import {
   applyCatalogPublicationSafety,
+  hasDuplicateEditorialCopy,
   isResearchPublicationReady,
   isRecordPublicationReady,
   recordPublicationIssues
@@ -277,6 +278,25 @@ const duplicateEditorial = removeDuplicateEditorialCopy({
 assert.equal(duplicateEditorial.reviewQuote, "", "Exact duplicate editorial text must not produce a second public quote block.");
 assert.equal(duplicateEditorial.reviewSource, "");
 assert.equal(duplicateEditorial.reviewUrl, "");
+assert.equal(hasDuplicateEditorialCopy(duplicateEditorial.description, duplicateEditorial.description), true);
+const legacyDuplicateCandidate = {
+  id: "finance-nxp-2026-vnl-legacy-duplicate",
+  category: "Records",
+  format: "Vinyl",
+  title: "Legacy Duplicate",
+  artist: "Example Artist",
+  condition: "New-Sealed",
+  label: "Example Label",
+  price: 250000,
+  image: "https://example.supabase.co/storage/v1/object/public/product-images/catalog/legacy/cover.jpg",
+  description: duplicateEditorial.description,
+  raw: {
+    enrichmentStatus: "complete",
+    reviewQuote: duplicateEditorial.description,
+    reviewSource: "Example review"
+  }
+};
+assert.equal(isResearchPublicationReady(legacyDuplicateCandidate), false, "A legacy duplicate must never be accepted as a completed research result.");
 const ambiguousDiscogsAssessment = assessDiscogsReleaseCandidates([
   ...negativeLoversDiscogs,
   { ...negativeLoversDiscogs[0], id: 9967525, resource_url: "https://api.discogs.com/releases/9967525" }

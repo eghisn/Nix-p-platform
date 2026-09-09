@@ -8,7 +8,7 @@ import {
   researchRelatedArtists
 } from "./catalogEnrichment.js";
 import { artistCreditNames, productArtistCreditNames, canonicalArtistName, canonicalLabelName, canonicalProductArtist } from "../../src/data/catalogIdentity.js";
-import { catalogPublicationIssues, isResearchPublicationReady, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
+import { catalogPublicationIssues, hasDuplicateProductEditorialCopy, isResearchPublicationReady, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 
 const STATE_KEY = "main";
@@ -681,6 +681,7 @@ function hasCompletedCatalogData(row = {}) {
     String(row.description || "").trim() &&
     String(raw.reviewQuote || "").trim() &&
     String(raw.reviewSource || "").trim() &&
+    !hasDuplicateProductEditorialCopy(row) &&
     (relatedResearchComplete || (Array.isArray(raw.relatedArtists) && raw.relatedArtists.length)) &&
     ["complete", "complete-no-related-artists"].includes(String(raw.enrichmentStatus || "").toLowerCase())
   );
