@@ -7831,7 +7831,7 @@
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg"
       ],
-      "barcode": "",
+      "barcode": "9312 / 9312",
       "details": [
         "SKU: NXP-2026-VNL-0071",
         "Format: Vinyl",
@@ -7847,15 +7847,30 @@
         "Embossed",
         "Catalog number: FAC 93",
         "Barcode: 9312 / 9312",
-        "Edition: Vinyl, 12\", 45 RPM, Single, Reissue, Remastered, Stereo, 180g, Embossed"
+        "Edition: Vinyl",
+        "12\"",
+        "45 RPM",
+        "Single",
+        "Reissue",
+        "Remastered",
+        "Stereo",
+        "180g",
+        "Embossed"
       ],
       "edition": "Vinyl, 12\", 45 RPM, Single, Reissue, Remastered, Stereo, 180g, Embossed",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg",
       "condition": "New-Sealed",
-      "reviewUrl": "",
+      "reviewUrl": "https://www.allmusic.com/album/confusion-mw0000374808",
       "syncAudit": [
+        {
+          "at": "2026-09-09T10:43:47.829Z",
+          "sku": "NXP-2026-VNL-0071",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-09-09T03:15:57.302Z",
           "sku": "NXP-2026-VNL-0071",
@@ -7895,18 +7910,18 @@
       "updatedAt": "2026-09-09",
       "collection": "Factory",
       "syncStatus": {
-        "at": "2026-09-09T03:15:57.302Z",
+        "at": "2026-09-09T10:43:47.829Z",
         "sku": "NXP-2026-VNL-0071",
-        "action": "Inventory identity synchronized to catalog",
+        "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "New Order 1983 confusion is a verified Vinyl, 12\", Single, 45 RPM edition on Factory. The release is indexed under Electro, Synth-pop, Electronic.",
-      "reviewQuote": "",
+      "description": "New Order's 1983 FAC 93 12-inch takes the band into New York electro through its collaboration with Arthur Baker, presenting Confusion alongside Confused Beats, an instrumental version, and a rough mix. Phill Pennington designed the embossed sleeve at Peter Saville Associates, with a colour code that spells FAC93.",
+      "reviewQuote": "a Planet Rock-like set of drum beats and electronic pulses",
       "sourceTitle": "confusion",
-      "editRevision": 11,
+      "editRevision": 13,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/1347678-New-Order-Confusion",
@@ -7914,244 +7929,44 @@
           "credit": "Discogs physical-release artwork"
         }
       ],
-      "reviewSource": "",
+      "reviewSource": "AllMusic (quoted)",
       "autoEditorial": {
-        "reviewUrl": "",
-        "description": "New Order 1983 confusion is a verified Vinyl, 12\", Single, 45 RPM edition on Factory. The release is indexed under Electro, Synth-pop, Electronic.",
-        "reviewQuote": "",
-        "reviewSource": "",
+        "reviewUrl": "https://www.allmusic.com/album/confusion-mw0000374808",
+        "description": "New Order's 1983 FAC 93 12-inch takes the band into New York electro through its collaboration with Arthur Baker, presenting Confusion alongside Confused Beats, an instrumental version, and a rough mix. Phill Pennington designed the embossed sleeve at Peter Saville Associates, with a colour code that spells FAC93.",
+        "reviewQuote": "a Planet Rock-like set of drum beats and electronic pulses",
+        "reviewSource": "AllMusic (quoted)",
         "relatedArtists": [
-          "1,000 UK Artists",
-          "Electronic",
           "Joy Division",
+          "Electronic",
           "The Other Two",
           "Monaco"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Factory Records Catalogue / AllMusic",
         "relatedArtistEvidence": [
           {
-            "artist": "1,000 UK Artists",
-            "source": "MusicBrainz artist relationship",
-            "sources": [
-              "MusicBrainz"
-            ],
-            "sourceUrl": "https://musicbrainz.org/artist/f1106b17-dcbb-45f6-b938-199ccfab50cc",
-            "confidence": "medium",
-            "relationType": "collaboration"
-          },
-          {
-            "match": 1,
-            "artist": "Electronic",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/New%20Order",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.933958,
-            "artist": "Joy Division",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/New%20Order",
-            "confidence": 0.933958,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.578722,
-            "artist": "The Other Two",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/New%20Order",
-            "confidence": 0.578722,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.554913,
-            "artist": "Monaco",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/New%20Order",
-            "confidence": 0.554913,
-            "relationType": "artist-similarity"
+            "source": "NIXP verified New Order member projects",
+            "sourceUrl": "https://www.neworder.com/",
+            "confidence": "verified",
+            "relationType": "member-project"
           }
         ],
         "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Electronic",
-              "Joy Division",
-              "The Other Two",
-              "Monaco",
-              "Pet Shop Boys",
-              "Depeche Mode",
-              "Orchestral Manoeuvres in the Dark",
-              "Echo & the Bunnymen",
-              "The Cure",
-              "Section 25"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Electronic",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.933958,
-                "artist": "Joy Division",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 0.933958,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.578722,
-                "artist": "The Other Two",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 0.578722,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.554913,
-                "artist": "Monaco",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 0.554913,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.425111,
-                "artist": "Pet Shop Boys",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 0.425111,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.416589,
-                "artist": "Depeche Mode",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 0.416589,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.40219,
-                "artist": "Orchestral Manoeuvres in the Dark",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 0.40219,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.396175,
-                "artist": "Echo & the Bunnymen",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 0.396175,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.390889,
-                "artist": "The Cure",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 0.390889,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.366427,
-                "artist": "Section 25",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/New%20Order",
-                "confidence": 0.366427,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/New%20Order"
-          },
-          "source": "MusicBrainz + Last.fm",
-          "status": "combined",
+          "source": "NIXP verified New Order member projects",
+          "status": "curated-exact-artist-relationships",
           "artists": [
-            "1,000 UK Artists",
-            "Electronic",
             "Joy Division",
+            "Electronic",
             "The Other Two",
             "Monaco"
           ],
           "evidence": [
             {
-              "artist": "1,000 UK Artists",
-              "source": "MusicBrainz artist relationship",
-              "sources": [
-                "MusicBrainz"
-              ],
-              "sourceUrl": "https://musicbrainz.org/artist/f1106b17-dcbb-45f6-b938-199ccfab50cc",
-              "confidence": "medium",
-              "relationType": "collaboration"
-            },
-            {
-              "match": 1,
-              "artist": "Electronic",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.933958,
-              "artist": "Joy Division",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.933958,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.578722,
-              "artist": "The Other Two",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.578722,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.554913,
-              "artist": "Monaco",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.554913,
-              "relationType": "artist-similarity"
+              "source": "NIXP verified New Order member projects",
+              "sourceUrl": "https://www.neworder.com/",
+              "confidence": "verified",
+              "relationType": "member-project"
             }
-          ],
-          "releaseId": "dcb70ad3-9030-4c59-9bb2-e1b3fc5844d6",
-          "sourceUrl": "https://musicbrainz.org/release/dcb70ad3-9030-4c59-9bb2-e1b3fc5844d6",
-          "engineVersion": "musicbrainz-lastfm-v2"
+          ]
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
@@ -8180,13 +7995,13 @@
       ],
       "sleeveCondition": "",
       "autoProductPhoto": "",
-      "enrichmentOrigin": "discogs",
+      "enrichmentOrigin": "source+curated-editorial",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Factory Records Catalogue / AllMusic",
       "metadataSourceUrl": "https://www.discogs.com/release/1347678-New-Order-Confusion",
-      "editorialUpdatedAt": "2026-09-09T03:15:57.591+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-09T10:46:24.212+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
       "manualRelatedArtists": [
@@ -8199,233 +8014,34 @@
       ],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
-      "enrichmentAttemptedAt": "2026-09-09T03:15:24.875Z",
+      "enrichmentAttemptedAt": "2026-09-09T10:43:47.829Z",
       "enrichmentFingerprint": "new order|confusion|vinyl||fac93",
       "relatedArtistEvidence": [
         {
-          "artist": "1,000 UK Artists",
-          "source": "MusicBrainz artist relationship",
-          "sources": [
-            "MusicBrainz"
-          ],
-          "sourceUrl": "https://musicbrainz.org/artist/f1106b17-dcbb-45f6-b938-199ccfab50cc",
-          "confidence": "medium",
-          "relationType": "collaboration"
-        },
-        {
-          "match": 1,
-          "artist": "Electronic",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/New%20Order",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.933958,
-          "artist": "Joy Division",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/New%20Order",
-          "confidence": 0.933958,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.578722,
-          "artist": "The Other Two",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/New%20Order",
-          "confidence": 0.578722,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.554913,
-          "artist": "Monaco",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/New%20Order",
-          "confidence": 0.554913,
-          "relationType": "artist-similarity"
+          "source": "NIXP verified New Order member projects",
+          "sourceUrl": "https://www.neworder.com/",
+          "confidence": "verified",
+          "relationType": "member-project"
         }
       ],
       "minimumAcceptableOffer": 0,
       "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Electronic",
-            "Joy Division",
-            "The Other Two",
-            "Monaco",
-            "Pet Shop Boys",
-            "Depeche Mode",
-            "Orchestral Manoeuvres in the Dark",
-            "Echo & the Bunnymen",
-            "The Cure",
-            "Section 25"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Electronic",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.933958,
-              "artist": "Joy Division",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.933958,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.578722,
-              "artist": "The Other Two",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.578722,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.554913,
-              "artist": "Monaco",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.554913,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.425111,
-              "artist": "Pet Shop Boys",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.425111,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.416589,
-              "artist": "Depeche Mode",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.416589,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.40219,
-              "artist": "Orchestral Manoeuvres in the Dark",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.40219,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.396175,
-              "artist": "Echo & the Bunnymen",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.396175,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.390889,
-              "artist": "The Cure",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.390889,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.366427,
-              "artist": "Section 25",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/New%20Order",
-              "confidence": 0.366427,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/New%20Order"
-        },
-        "source": "MusicBrainz + Last.fm",
-        "status": "combined",
+        "source": "NIXP verified New Order member projects",
+        "status": "curated-exact-artist-relationships",
         "artists": [
-          "1,000 UK Artists",
-          "Electronic",
           "Joy Division",
+          "Electronic",
           "The Other Two",
           "Monaco"
         ],
         "evidence": [
           {
-            "artist": "1,000 UK Artists",
-            "source": "MusicBrainz artist relationship",
-            "sources": [
-              "MusicBrainz"
-            ],
-            "sourceUrl": "https://musicbrainz.org/artist/f1106b17-dcbb-45f6-b938-199ccfab50cc",
-            "confidence": "medium",
-            "relationType": "collaboration"
-          },
-          {
-            "match": 1,
-            "artist": "Electronic",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/New%20Order",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.933958,
-            "artist": "Joy Division",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/New%20Order",
-            "confidence": 0.933958,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.578722,
-            "artist": "The Other Two",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/New%20Order",
-            "confidence": 0.578722,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.554913,
-            "artist": "Monaco",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/New%20Order",
-            "confidence": 0.554913,
-            "relationType": "artist-similarity"
+            "source": "NIXP verified New Order member projects",
+            "sourceUrl": "https://www.neworder.com/",
+            "confidence": "verified",
+            "relationType": "member-project"
           }
-        ],
-        "releaseId": "dcb70ad3-9030-4c59-9bb2-e1b3fc5844d6",
-        "sourceUrl": "https://musicbrainz.org/release/dcb70ad3-9030-4c59-9bb2-e1b3fc5844d6",
-        "engineVersion": "musicbrainz-lastfm-v2"
+        ]
       },
       "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
@@ -8436,7 +8052,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-08",
+        "updatedAt": "2026-09-09",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -83418,95 +83034,95 @@
       }
     },
     {
-      "id": "nxp-2026-vnl-0006",
+      "id": "nxp-2026-vnl-0004",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0006",
+      "sku": "NXP-2026-VNL-0004",
       "tags": [
         "Vinyl 12\"",
-        "NXP-2026-VNL-0006"
+        "NXP-2026-VNL-0004"
       ],
-      "year": 2013,
+      "year": 2019,
       "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg",
-      "label": "Alter",
-      "price": 350000,
+      "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+      "label": "Rough Trade",
+      "price": 700000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "First Burning Attraction",
-      "artist": "Damien Dubrovnik",
+      "title": "The Talkies",
+      "artist": "Girl Band",
       "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg"
+        "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+        "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
       ],
-      "barcode": "",
+      "barcode": "1 91402 00651 3",
       "details": [
-        "SKU: NXP-2026-VNL-0006",
+        "SKU: NXP-2026-VNL-0004",
         "Format: Vinyl 12\"",
-        "Condition: Used Good"
+        "Condition: New-Sealed"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0006/cover.jpg",
-      "condition": "Used Good",
-      "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/",
       "syncAudit": [
         {
-          "at": "2026-08-30T02:14:08.794Z",
-          "sku": "NXP-2026-VNL-0006",
+          "at": "2026-08-30T02:14:08.793Z",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-VNL-0006",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T09:54:26.174Z",
-          "sku": "NXP-2026-VNL-0006",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T02:23:49.932Z",
-          "sku": "NXP-2026-VNL-0006",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-VNL-0006",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-VNL-0006",
+          "at": "2026-08-28T02:12:08.735Z",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-VNL-0006",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:01:51.310Z",
-          "sku": "NXP-2026-VNL-0006",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -83515,85 +83131,88 @@
       "updatedAt": "2026-09-09",
       "collection": "NIXP Selection",
       "syncStatus": {
-        "at": "2026-08-30T02:14:08.794Z",
-        "sku": "NXP-2026-VNL-0006",
+        "at": "2026-08-30T02:14:08.793Z",
+        "sku": "NXP-2026-VNL-0004",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
-      "reviewQuote": "richer, more refined approach to texture",
-      "imageCredits": [],
-      "reviewSource": "The Quietus (quoted)",
+      "description": "Girl Band's 2019 Rough Trade album The Talkies turns Dublin post-punk into a physical study in distortion, repetition, panic and ecstatic release.",
+      "reviewQuote": "pure, visceral panic",
+      "editRevision": 2,
+      "imageCredits": [
+        {
+          "url": "https://gillaband.bandcamp.com/album/the-talkies",
+          "image": "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg",
+          "credit": "Gilla Band Bandcamp"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
-        "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
-        "reviewQuote": "richer, more refined approach to texture",
-        "reviewSource": "The Quietus (quoted)",
         "relatedArtists": [
-          "Olymphia",
-          "Amphetamine Logic",
-          "LR & Puce Mary",
-          "Rose alliance",
-          "Caucasian Colony"
+          "Gilla Band",
+          "Psychic Graveyard",
+          "Cherubs",
+          "METZ",
+          "USA Nails"
         ],
-        "descriptionSource": "The Quietus",
+        "enrichmentStatus": "complete-no-related-artists",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Olymphia",
+            "artist": "Gilla Band",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.879535,
-            "artist": "Amphetamine Logic",
+            "match": 0.236825,
+            "artist": "Psychic Graveyard",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.879535,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.236825,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.799355,
-            "artist": "LR & Puce Mary",
+            "match": 0.234008,
+            "artist": "Cherubs",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.799355,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.234008,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.782118,
-            "artist": "Rose alliance",
+            "match": 0.217313,
+            "artist": "METZ",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.782118,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.217313,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.781438,
-            "artist": "Caucasian Colony",
+            "match": 0.213973,
+            "artist": "USA Nails",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.781438,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.213973,
             "relationType": "artist-similarity"
           }
         ],
@@ -83602,255 +83221,252 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Olymphia",
-              "Amphetamine Logic",
-              "LR & Puce Mary",
-              "Rose alliance",
-              "Caucasian Colony",
-              "Hvide Sejl",
-              "LR",
-              "Croatian Amor & Lust For Youth",
-              "Rosen & Spyddet",
-              "Arv & Miljö"
+              "Gilla Band",
+              "Psychic Graveyard",
+              "Cherubs",
+              "METZ",
+              "USA Nails",
+              "Shellac",
+              "Viet Cong",
+              "Ought",
+              "Black Eyes",
+              "Liars"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Olymphia",
+                "artist": "Gilla Band",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.879535,
-                "artist": "Amphetamine Logic",
+                "match": 0.236825,
+                "artist": "Psychic Graveyard",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.879535,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.236825,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.799355,
-                "artist": "LR & Puce Mary",
+                "match": 0.234008,
+                "artist": "Cherubs",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.799355,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.234008,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.782118,
-                "artist": "Rose alliance",
+                "match": 0.217313,
+                "artist": "METZ",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.782118,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.217313,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.781438,
-                "artist": "Caucasian Colony",
+                "match": 0.213973,
+                "artist": "USA Nails",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.781438,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.213973,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.774984,
-                "artist": "Hvide Sejl",
+                "match": 0.209239,
+                "artist": "Shellac",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.774984,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.209239,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.77304,
-                "artist": "LR",
+                "match": 0.195974,
+                "artist": "Viet Cong",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.77304,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.195974,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.702665,
-                "artist": "Croatian Amor & Lust For Youth",
+                "match": 0.189864,
+                "artist": "Ought",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.702665,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.189864,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.686069,
-                "artist": "Rosen & Spyddet",
+                "match": 0.183968,
+                "artist": "Black Eyes",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.686069,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.183968,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.663513,
-                "artist": "Arv & Miljö",
+                "match": 0.171072,
+                "artist": "Liars",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.663513,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.171072,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik"
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Olymphia",
-            "Amphetamine Logic",
-            "LR & Puce Mary",
-            "Rose alliance",
-            "Caucasian Colony"
+            "Gilla Band",
+            "Psychic Graveyard",
+            "Cherubs",
+            "METZ",
+            "USA Nails"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Olymphia",
+              "artist": "Gilla Band",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.879535,
-              "artist": "Amphetamine Logic",
+              "match": 0.236825,
+              "artist": "Psychic Graveyard",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.879535,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.236825,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.799355,
-              "artist": "LR & Puce Mary",
+              "match": 0.234008,
+              "artist": "Cherubs",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.799355,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.234008,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.782118,
-              "artist": "Rose alliance",
+              "match": 0.217313,
+              "artist": "METZ",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.782118,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.217313,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.781438,
-              "artist": "Caucasian Colony",
+              "match": 0.213973,
+              "artist": "USA Nails",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.781438,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.213973,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
-          "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
+          "releaseId": "",
+          "sourceUrl": "",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "RT0065LP",
       "displayFormat": "Vinyl",
-      "homeSlideSort": 1,
+      "homeSlideSort": 8,
       "publishStatus": "Published",
-      "financeStockId": "mr6qvv4xl23arz",
+      "financeStockId": "mr6m870z88pwyb",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Olymphia",
-        "Amphetamine Logic",
-        "LR & Puce Mary",
-        "Rose alliance",
-        "Caucasian Colony"
+        "Gilla Band",
+        "Psychic Graveyard",
+        "Cherubs",
+        "METZ",
+        "USA Nails"
       ],
       "homeCollections": [
-        "nixp-selection"
+        "limited-pressing"
       ],
       "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "The Quietus",
-      "metadataSourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
-      "enrichmentUpdatedAt": "2026-08-18",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "Pitchfork",
+      "editorialUpdatedAt": "2026-09-08T13:03:13.446+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
-      "enrichmentAttemptedAt": "2026-08-18T16:54:02.209Z",
-      "enrichmentFingerprint": "damien dubrovnik|first burning attraction|vinyl||",
+      "enrichmentAttemptedAt": "2026-08-18T16:55:23.325Z",
+      "enrichmentFingerprint": "girl band|the talkies|vinyl||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Olymphia",
+          "artist": "Gilla Band",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.879535,
-          "artist": "Amphetamine Logic",
+          "match": 0.236825,
+          "artist": "Psychic Graveyard",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-          "confidence": 0.879535,
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.236825,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.799355,
-          "artist": "LR & Puce Mary",
+          "match": 0.234008,
+          "artist": "Cherubs",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-          "confidence": 0.799355,
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.234008,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.782118,
-          "artist": "Rose alliance",
+          "match": 0.217313,
+          "artist": "METZ",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-          "confidence": 0.782118,
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.217313,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.781438,
-          "artist": "Caucasian Colony",
+          "match": 0.213973,
+          "artist": "USA Nails",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-          "confidence": 0.781438,
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.213973,
           "relationType": "artist-similarity"
         }
       ],
@@ -83860,183 +83476,181 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Olymphia",
-            "Amphetamine Logic",
-            "LR & Puce Mary",
-            "Rose alliance",
-            "Caucasian Colony",
-            "Hvide Sejl",
-            "LR",
-            "Croatian Amor & Lust For Youth",
-            "Rosen & Spyddet",
-            "Arv & Miljö"
+            "Gilla Band",
+            "Psychic Graveyard",
+            "Cherubs",
+            "METZ",
+            "USA Nails",
+            "Shellac",
+            "Viet Cong",
+            "Ought",
+            "Black Eyes",
+            "Liars"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Olymphia",
+              "artist": "Gilla Band",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.879535,
-              "artist": "Amphetamine Logic",
+              "match": 0.236825,
+              "artist": "Psychic Graveyard",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.879535,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.236825,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.799355,
-              "artist": "LR & Puce Mary",
+              "match": 0.234008,
+              "artist": "Cherubs",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.799355,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.234008,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.782118,
-              "artist": "Rose alliance",
+              "match": 0.217313,
+              "artist": "METZ",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.782118,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.217313,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.781438,
-              "artist": "Caucasian Colony",
+              "match": 0.213973,
+              "artist": "USA Nails",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.781438,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.213973,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.774984,
-              "artist": "Hvide Sejl",
+              "match": 0.209239,
+              "artist": "Shellac",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.774984,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.209239,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.77304,
-              "artist": "LR",
+              "match": 0.195974,
+              "artist": "Viet Cong",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.77304,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.195974,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.702665,
-              "artist": "Croatian Amor & Lust For Youth",
+              "match": 0.189864,
+              "artist": "Ought",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.702665,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.189864,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.686069,
-              "artist": "Rosen & Spyddet",
+              "match": 0.183968,
+              "artist": "Black Eyes",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.686069,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.183968,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.663513,
-              "artist": "Arv & Miljö",
+              "match": 0.171072,
+              "artist": "Liars",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.663513,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.171072,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik"
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Olymphia",
-          "Amphetamine Logic",
-          "LR & Puce Mary",
-          "Rose alliance",
-          "Caucasian Colony"
+          "Gilla Band",
+          "Psychic Graveyard",
+          "Cherubs",
+          "METZ",
+          "USA Nails"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Olymphia",
+            "artist": "Gilla Band",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.879535,
-            "artist": "Amphetamine Logic",
+            "match": 0.236825,
+            "artist": "Psychic Graveyard",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.879535,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.236825,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.799355,
-            "artist": "LR & Puce Mary",
+            "match": 0.234008,
+            "artist": "Cherubs",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.799355,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.234008,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.782118,
-            "artist": "Rose alliance",
+            "match": 0.217313,
+            "artist": "METZ",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.782118,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.217313,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.781438,
-            "artist": "Caucasian Colony",
+            "match": 0.213973,
+            "artist": "USA Nails",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.781438,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.213973,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
-        "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
+        "releaseId": "",
+        "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -84673,95 +84287,95 @@
       }
     },
     {
-      "id": "nxp-2026-vnl-0004",
+      "id": "nxp-2026-vnl-0006",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0004",
+      "sku": "NXP-2026-VNL-0006",
       "tags": [
         "Vinyl 12\"",
-        "NXP-2026-VNL-0004"
+        "NXP-2026-VNL-0006"
       ],
-      "year": 2019,
+      "year": 2013,
       "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
-      "label": "Rough Trade",
-      "price": 700000,
+      "image": "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg",
+      "label": "Alter",
+      "price": 350000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "The Talkies",
-      "artist": "Girl Band",
+      "title": "First Burning Attraction",
+      "artist": "Damien Dubrovnik",
       "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
-        "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
+        "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg"
       ],
-      "barcode": "1 91402 00651 3",
+      "barcode": "",
       "details": [
-        "SKU: NXP-2026-VNL-0004",
+        "SKU: NXP-2026-VNL-0006",
         "Format: Vinyl 12\"",
-        "Condition: New-Sealed"
+        "Condition: Used Good"
       ],
-      "edition": "Vinyl, LP, Album",
+      "edition": "",
       "category": "Records",
       "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0006/cover.jpg",
+      "condition": "Used Good",
+      "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
       "syncAudit": [
         {
-          "at": "2026-08-30T02:14:08.793Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-30T02:14:08.794Z",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-VNL-0004",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T09:54:26.174Z",
-          "sku": "NXP-2026-VNL-0004",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T02:23:49.932Z",
-          "sku": "NXP-2026-VNL-0004",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-VNL-0004",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T02:12:08.735Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-28T02:12:08.736Z",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-VNL-0004",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:01:51.310Z",
-          "sku": "NXP-2026-VNL-0004",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -84770,88 +84384,85 @@
       "updatedAt": "2026-09-09",
       "collection": "NIXP Selection",
       "syncStatus": {
-        "at": "2026-08-30T02:14:08.793Z",
-        "sku": "NXP-2026-VNL-0004",
+        "at": "2026-08-30T02:14:08.794Z",
+        "sku": "NXP-2026-VNL-0006",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Girl Band's 2019 Rough Trade album The Talkies turns Dublin post-punk into a physical study in distortion, repetition, panic and ecstatic release.",
-      "reviewQuote": "pure, visceral panic",
-      "editRevision": 2,
-      "imageCredits": [
-        {
-          "url": "https://gillaband.bandcamp.com/album/the-talkies",
-          "image": "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg",
-          "credit": "Gilla Band Bandcamp"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
+      "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
+      "reviewQuote": "richer, more refined approach to texture",
+      "imageCredits": [],
+      "reviewSource": "The Quietus (quoted)",
       "autoEditorial": {
+        "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
+        "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
+        "reviewQuote": "richer, more refined approach to texture",
+        "reviewSource": "The Quietus (quoted)",
         "relatedArtists": [
-          "Gilla Band",
-          "Psychic Graveyard",
-          "Cherubs",
-          "METZ",
-          "USA Nails"
+          "Olymphia",
+          "Amphetamine Logic",
+          "LR & Puce Mary",
+          "Rose alliance",
+          "Caucasian Colony"
         ],
-        "enrichmentStatus": "complete-no-related-artists",
+        "descriptionSource": "The Quietus",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Gilla Band",
+            "artist": "Olymphia",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.236825,
-            "artist": "Psychic Graveyard",
+            "match": 0.879535,
+            "artist": "Amphetamine Logic",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.236825,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.879535,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.234008,
-            "artist": "Cherubs",
+            "match": 0.799355,
+            "artist": "LR & Puce Mary",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.234008,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.799355,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.217313,
-            "artist": "METZ",
+            "match": 0.782118,
+            "artist": "Rose alliance",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.217313,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.782118,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.213973,
-            "artist": "USA Nails",
+            "match": 0.781438,
+            "artist": "Caucasian Colony",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.213973,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.781438,
             "relationType": "artist-similarity"
           }
         ],
@@ -84860,252 +84471,255 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Gilla Band",
-              "Psychic Graveyard",
-              "Cherubs",
-              "METZ",
-              "USA Nails",
-              "Shellac",
-              "Viet Cong",
-              "Ought",
-              "Black Eyes",
-              "Liars"
+              "Olymphia",
+              "Amphetamine Logic",
+              "LR & Puce Mary",
+              "Rose alliance",
+              "Caucasian Colony",
+              "Hvide Sejl",
+              "LR",
+              "Croatian Amor & Lust For Youth",
+              "Rosen & Spyddet",
+              "Arv & Miljö"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Gilla Band",
+                "artist": "Olymphia",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.236825,
-                "artist": "Psychic Graveyard",
+                "match": 0.879535,
+                "artist": "Amphetamine Logic",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.236825,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.879535,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.234008,
-                "artist": "Cherubs",
+                "match": 0.799355,
+                "artist": "LR & Puce Mary",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.234008,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.799355,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.217313,
-                "artist": "METZ",
+                "match": 0.782118,
+                "artist": "Rose alliance",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.217313,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.782118,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.213973,
-                "artist": "USA Nails",
+                "match": 0.781438,
+                "artist": "Caucasian Colony",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.213973,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.781438,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.209239,
-                "artist": "Shellac",
+                "match": 0.774984,
+                "artist": "Hvide Sejl",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.209239,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.774984,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.195974,
-                "artist": "Viet Cong",
+                "match": 0.77304,
+                "artist": "LR",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.195974,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.77304,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.189864,
-                "artist": "Ought",
+                "match": 0.702665,
+                "artist": "Croatian Amor & Lust For Youth",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.189864,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.702665,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.183968,
-                "artist": "Black Eyes",
+                "match": 0.686069,
+                "artist": "Rosen & Spyddet",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.183968,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.686069,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.171072,
-                "artist": "Liars",
+                "match": 0.663513,
+                "artist": "Arv & Miljö",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.171072,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.663513,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band"
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Gilla Band",
-            "Psychic Graveyard",
-            "Cherubs",
-            "METZ",
-            "USA Nails"
+            "Olymphia",
+            "Amphetamine Logic",
+            "LR & Puce Mary",
+            "Rose alliance",
+            "Caucasian Colony"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Gilla Band",
+              "artist": "Olymphia",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.236825,
-              "artist": "Psychic Graveyard",
+              "match": 0.879535,
+              "artist": "Amphetamine Logic",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.236825,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.879535,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.234008,
-              "artist": "Cherubs",
+              "match": 0.799355,
+              "artist": "LR & Puce Mary",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.234008,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.799355,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.217313,
-              "artist": "METZ",
+              "match": 0.782118,
+              "artist": "Rose alliance",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.217313,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.782118,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.213973,
-              "artist": "USA Nails",
+              "match": 0.781438,
+              "artist": "Caucasian Colony",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.213973,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.781438,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "",
-          "sourceUrl": "",
+          "releaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
+          "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "RT0065LP",
+      "catalogNumber": "",
       "displayFormat": "Vinyl",
-      "homeSlideSort": 8,
+      "homeSlideSort": 1,
       "publishStatus": "Published",
-      "financeStockId": "mr6m870z88pwyb",
+      "financeStockId": "mr6qvv4xl23arz",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Gilla Band",
-        "Psychic Graveyard",
-        "Cherubs",
-        "METZ",
-        "USA Nails"
+        "Olymphia",
+        "Amphetamine Logic",
+        "LR & Puce Mary",
+        "Rose alliance",
+        "Caucasian Colony"
       ],
       "homeCollections": [
-        "limited-pressing"
+        "nixp-selection"
       ],
       "sleeveCondition": "",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "Pitchfork",
-      "editorialUpdatedAt": "2026-09-08T13:03:13.446+00:00",
-      "editorialUpdatedBy": "operatorwebsite",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "The Quietus",
+      "metadataSourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
+      "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:55:23.325Z",
-      "enrichmentFingerprint": "girl band|the talkies|vinyl||",
+      "musicBrainzReleaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
+      "enrichmentAttemptedAt": "2026-08-18T16:54:02.209Z",
+      "enrichmentFingerprint": "damien dubrovnik|first burning attraction|vinyl||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Gilla Band",
+          "artist": "Olymphia",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.236825,
-          "artist": "Psychic Graveyard",
+          "match": 0.879535,
+          "artist": "Amphetamine Logic",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.236825,
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "confidence": 0.879535,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.234008,
-          "artist": "Cherubs",
+          "match": 0.799355,
+          "artist": "LR & Puce Mary",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.234008,
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "confidence": 0.799355,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.217313,
-          "artist": "METZ",
+          "match": 0.782118,
+          "artist": "Rose alliance",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.217313,
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "confidence": 0.782118,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.213973,
-          "artist": "USA Nails",
+          "match": 0.781438,
+          "artist": "Caucasian Colony",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.213973,
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "confidence": 0.781438,
           "relationType": "artist-similarity"
         }
       ],
@@ -85115,181 +84729,183 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Gilla Band",
-            "Psychic Graveyard",
-            "Cherubs",
-            "METZ",
-            "USA Nails",
-            "Shellac",
-            "Viet Cong",
-            "Ought",
-            "Black Eyes",
-            "Liars"
+            "Olymphia",
+            "Amphetamine Logic",
+            "LR & Puce Mary",
+            "Rose alliance",
+            "Caucasian Colony",
+            "Hvide Sejl",
+            "LR",
+            "Croatian Amor & Lust For Youth",
+            "Rosen & Spyddet",
+            "Arv & Miljö"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Gilla Band",
+              "artist": "Olymphia",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.236825,
-              "artist": "Psychic Graveyard",
+              "match": 0.879535,
+              "artist": "Amphetamine Logic",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.236825,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.879535,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.234008,
-              "artist": "Cherubs",
+              "match": 0.799355,
+              "artist": "LR & Puce Mary",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.234008,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.799355,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.217313,
-              "artist": "METZ",
+              "match": 0.782118,
+              "artist": "Rose alliance",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.217313,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.782118,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.213973,
-              "artist": "USA Nails",
+              "match": 0.781438,
+              "artist": "Caucasian Colony",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.213973,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.781438,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.209239,
-              "artist": "Shellac",
+              "match": 0.774984,
+              "artist": "Hvide Sejl",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.209239,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.774984,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.195974,
-              "artist": "Viet Cong",
+              "match": 0.77304,
+              "artist": "LR",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.195974,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.77304,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.189864,
-              "artist": "Ought",
+              "match": 0.702665,
+              "artist": "Croatian Amor & Lust For Youth",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.189864,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.702665,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.183968,
-              "artist": "Black Eyes",
+              "match": 0.686069,
+              "artist": "Rosen & Spyddet",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.183968,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.686069,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.171072,
-              "artist": "Liars",
+              "match": 0.663513,
+              "artist": "Arv & Miljö",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.171072,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.663513,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band"
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Gilla Band",
-          "Psychic Graveyard",
-          "Cherubs",
-          "METZ",
-          "USA Nails"
+          "Olymphia",
+          "Amphetamine Logic",
+          "LR & Puce Mary",
+          "Rose alliance",
+          "Caucasian Colony"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Gilla Band",
+            "artist": "Olymphia",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.236825,
-            "artist": "Psychic Graveyard",
+            "match": 0.879535,
+            "artist": "Amphetamine Logic",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.236825,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.879535,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.234008,
-            "artist": "Cherubs",
+            "match": 0.799355,
+            "artist": "LR & Puce Mary",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.234008,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.799355,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.217313,
-            "artist": "METZ",
+            "match": 0.782118,
+            "artist": "Rose alliance",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.217313,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.782118,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.213973,
-            "artist": "USA Nails",
+            "match": 0.781438,
+            "artist": "Caucasian Colony",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.213973,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.781438,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "",
-        "sourceUrl": "",
+        "releaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
+        "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": true,
+      "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-08",
+        "updatedAt": "2026-08-11",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
