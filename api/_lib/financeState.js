@@ -679,6 +679,7 @@ function hasCompletedCatalogData(row = {}) {
     hasUsableProductImage(row) &&
     String(row.label || "").trim() &&
     String(row.description || "").trim() &&
+    isEditorialDescriptionQuality(row.description, raw.descriptionSource || row.descriptionSource || "") &&
     String(raw.reviewQuote || "").trim() &&
     String(raw.reviewSource || "").trim() &&
     !hasDuplicateProductEditorialCopy(row) &&

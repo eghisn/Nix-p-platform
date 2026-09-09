@@ -88,6 +88,12 @@ assert.equal(needsFinanceEnrichment({
 }, stock), true);
 assert.equal(needsFinanceEnrichment({
   ...enriched,
+  description: "Example Artist's exact pressing is documented by Discogs with a track list and label.",
+  descriptionSource: "Discogs release data",
+  raw: { ...enriched.raw, enrichmentStatus: "complete" }
+}, stock), true);
+assert.equal(needsFinanceEnrichment({
+  ...enriched,
   raw: { ...enriched.raw, relatedArtistResearchVersion: "legacy-related-artists-engine" }
 }, stock), true);
 assert.equal(enriched.raw.enrichmentFingerprint, inventoryFingerprint(stock));
@@ -246,7 +252,7 @@ const discogsOnlyEditorial = composeDiscogsEditorial({
   researchSources: [{ source: "Discogs", url: "https://www.discogs.com/release/5986176", confidence: 95 }]
 });
 assert.equal(discogsOnlyEditorial.reviewQuote, "", "Discogs object data must never be rendered as a review.");
-assert.equal(isEditorialDescriptionQuality(discogsOnlyEditorial.description, discogsOnlyEditorial.descriptionSource), true, "Verified physical-release facts remain valid product description copy.");
+assert.equal(isEditorialDescriptionQuality(discogsOnlyEditorial.description, discogsOnlyEditorial.descriptionSource), false, "Discogs metadata must not be accepted as public editorial copy.");
 const discogsWithOfficialEditorial = composeDiscogsEditorial(discogsOnlyEditorial, {
   bandcamp: {
     description: "Creative Adult's release note describes the record's sound and origin in source-backed editorial detail.",
@@ -426,6 +432,22 @@ assert.equal(applyCatalogPublicationSafety({ products: [researchedPartial] }).pr
 const bauhausEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0041"];
 assert.equal(isEditorialDescriptionQuality("Artist's 2026 release Title is a Vinyl edition issued by Label, documented by MusicBrainz as rock.", "MusicBrainz"), false);
 assert.equal(isEditorialDescriptionQuality(bauhausEditorial.description, bauhausEditorial.descriptionSource), true);
+for (const sku of ["NXP-2026-VNL-0065", "NXP-2026-VNL-0061"]) {
+  const editorial = CURATED_EDITORIAL_OVERRIDES[sku];
+  assert.ok(editorial?.reviewUrl, `${sku} must retain a source URL for its curated review.`);
+  assert.equal(isEditorialDescriptionQuality(editorial.description, editorial.descriptionSource), true, `${sku} must have source-backed editorial copy.`);
+  assert.notEqual(editorial.description, editorial.reviewQuote, `${sku} must not reuse review copy as its description.`);
+  const merged = applyCuratedEditorialOverride({
+    cover: "/public/covers/exact-edition.jpg",
+    edition: "Vinyl, 12\", Limited Edition",
+    barcode: "1234567890123",
+    catalogNumber: "EXACT-001"
+  }, sku);
+  assert.equal(merged.cover, "/public/covers/exact-edition.jpg", `${sku} must retain its matched cover.`);
+  assert.equal(merged.edition, "Vinyl, 12\", Limited Edition", `${sku} must retain its matched edition.`);
+  assert.equal(merged.barcode, "1234567890123", `${sku} must retain its barcode.`);
+  assert.equal(merged.catalogNumber, "EXACT-001", `${sku} must retain its catalog number.`);
+}
 assert.equal(bauhausEditorial.reviewSource, "AllMusic (quoted)");
 assert.match(bauhausEditorial.reviewUrl, /^https:\/\/www\.allmusic\.com\/album\//);
 assert.ok(bauhausEditorial.reviewQuote.includes("She's in Parties"));

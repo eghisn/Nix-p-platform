@@ -18,7 +18,7 @@ export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 // A versioned research request means editorial rule changes only run for an
 // item when an editor explicitly asks to research it again. This keeps a
 // deployment from silently rewriting live catalogue copy.
-export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v5";
+export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v6";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -1384,6 +1384,20 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // They are used when a trusted publication is not reliably crawlable from a
 // serverless runtime but the exact source has been reviewed by NIXP.
 export const CURATED_EDITORIAL_OVERRIDES = {
+  "NXP-2026-VNL-0065": {
+    description: "Ford & Lopatin's 2011 Emergency Room marks Joel Ford and Daniel Lopatin's move from Games into the Software era: a compact burst of synthetic pop built around rubbery bass, electronic bounce, processed vocals, and a guitar break that unsettles its bright surface.",
+    descriptionSource: "Pitchfork / Software Recording Co.",
+    reviewQuote: "pulsates with a synthetic joy",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/tracks/12153-ford-lopatin-emergency-room/"
+  },
+  "NXP-2026-VNL-0061": {
+    description: "Teengirl Fantasy's 2012 Tracer sharpens the Brooklyn duo's hazy house-and-R&B palette into more tactile techno, synth-pop, and ambient club music. Guest turns from Kelela, Panda Bear, Laurel Halo, and Romanthony widen the record without displacing Nick Weiss and Logan Takahashi's detailed production.",
+    descriptionSource: "Pitchfork / FACT",
+    reviewQuote: "rich and tactile instrumentals",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/16939-tracer/"
+  },
   "NXP-2026-VNL-0080": {
     description: "Savage Imperial Death March brings Melvins and Napalm Death's 2016 touring lineup into the studio: Buzz Osborne and Dale Crover work alongside Barney Greenway, John Cooke, and Shane Embury in a collaboration that leans into noise, sludge, and grind without reducing either band to a guest appearance.",
     descriptionSource: "The Quietus / Melvins official Bandcamp",
@@ -2814,10 +2828,11 @@ function usedCondition(value) {
 export function isEditorialDescriptionQuality(description, descriptionSource = "") {
   const text = String(description || "").trim();
   const source = String(descriptionSource || "").trim();
-  // Discogs can provide a precise, attributable physical-release description
-  // (pressing, label, track list, and styles). It is valid product copy, but
-  // never valid as a review quote; review handling is kept separate above.
-  if (!text || /^MusicBrainz$/i.test(source)) return false;
+  // Exact release databases prove what object NIXP is selling, but their
+  // metadata template is not the editorial voice of the storefront. Keep
+  // Discogs and MusicBrainz in research evidence while requiring an official,
+  // critical, or curated source before an automatic description is publishable.
+  if (!text || /^(?:discogs(?:\s+release\s+data)?|musicbrainz(?:\s+catalog\s+data)?|verified physical-release metadata)$/i.test(source)) return false;
   if (/^.+(?:'s|’s)\s+(?:\d{4}\s+)?release\s+.+\s+is\s+a\s+(?:Vinyl|CD|Cassette)\s+edition\s+issued\s+by\s+.+(?:,\s+documented\s+by\s+MusicBrainz\s+as\s+.+)?\.$/i.test(text)) return false;
   if (/current NIXP records selection/i.test(text)) return false;
   return true;
