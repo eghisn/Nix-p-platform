@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {
+  ARCHIVED_CATALOG_IMAGES,
   CURATED_EDITORIAL_OVERRIDES,
   CURATED_FINANCE_ENRICHMENTS,
   CURATED_RELATED_ARTIST_OVERRIDES,
@@ -470,6 +471,21 @@ assert.equal(chromeNeonJesusDiscovered.cover, "/public/cover.jpg");
 assert.equal(chromeNeonJesusDiscovered.edition, "Vinyl, LP, Album, Limited Edition");
 assert.equal(chromeNeonJesusDiscovered.barcode, "045778759214");
 assert.equal(chromeNeonJesusDiscovered.catalogNumber, "87592-1");
+
+for (const [sku, source] of [
+  ["NXP-2026-VNL-0081", "Arca official Bandcamp artwork"],
+  ["NXP-2026-VNL-0080", "Melvins official Bandcamp artwork"],
+  ["NXP-2026-VNL-0079", "Sam Gendel official Bandcamp artwork"],
+  ["NXP-2026-VNL-0078", "Cover Art Archive / Third Worlds / Harvest Records"],
+  ["NXP-2026-VNL-0076", "Unknown Mortal Orchestra official Bandcamp artwork"],
+  ["NXP-2026-VNL-0075", "Cover Art Archive / Dedicated Records"],
+  ["NXP-2026-VNL-0073", "Apple Music / The Null Corporation artwork"]
+]) {
+  const artwork = ARCHIVED_CATALOG_IMAGES[sku];
+  assert.match(artwork.cover, /^\/public\/assets\/catalog-archive\//);
+  assert.equal(artwork.imageCredits?.[0]?.image, artwork.cover);
+  assert.equal(artwork.imageCredits?.[0]?.credit, source);
+}
 
 for (const [sku, sourceDomain] of [
   ["NXP-2026-VNL-0080", "thequietus.com"],

@@ -55,7 +55,35 @@ function discogsHeaders() {
 // NIXP keeps a local, optimized copy of the public catalog artwork. The
 // original source remains in imageCredits; this mapping prevents third-party
 // artwork URLs from becoming a storefront runtime dependency.
-const ARCHIVED_CATALOG_IMAGES = {
+export const ARCHIVED_CATALOG_IMAGES = {
+  "NXP-2026-VNL-0081": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg",
+    imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg", credit: "Arca official Bandcamp artwork", url: "https://arca1000000.bandcamp.com/album/kick-iiii" }]
+  },
+  "NXP-2026-VNL-0080": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
+    imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg", credit: "Melvins official Bandcamp artwork", url: "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march" }]
+  },
+  "NXP-2026-VNL-0079": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
+    imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg", credit: "Sam Gendel official Bandcamp artwork", url: "https://samgendel.bandcamp.com/album/drm" }]
+  },
+  "NXP-2026-VNL-0078": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg",
+    imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg", credit: "Cover Art Archive / Third Worlds / Harvest Records", url: "https://musicbrainz.org/release/d92b2734-f2b9-4337-b3f5-1bb8d4e27cd0/cover-art" }]
+  },
+  "NXP-2026-VNL-0076": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0076-unknown-mortal-orchestra-multi-love-bandcamp.jpg",
+    imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0076-unknown-mortal-orchestra-multi-love-bandcamp.jpg", credit: "Unknown Mortal Orchestra official Bandcamp artwork", url: "https://unknown-mortal-orchestra.bandcamp.com/album/multi-love-2" }]
+  },
+  "NXP-2026-VNL-0075": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0075-chapterhouse-whirlpool-cover-art.jpg",
+    imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0075-chapterhouse-whirlpool-cover-art.jpg", credit: "Cover Art Archive / Dedicated Records", url: "https://musicbrainz.org/release/cab51a22-baed-4920-9bbf-b8a408091b56/cover-art" }]
+  },
+  "NXP-2026-VNL-0073": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
+    imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg", credit: "Apple Music / The Null Corporation artwork", url: "https://music.apple.com/us/album/bad-witch/1847482590" }]
+  },
   "NXP-2026-CD-0045": { cover: "/public/covers/nxp-2026-cd-0045-tim-hecker-konoyo.jpg" },
   "NXP-2026-VNL-0013": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0013-cover.webp" },
   "NXP-2026-VNL-0019": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp" },
@@ -1763,7 +1791,7 @@ function applyArchivedCatalogImages(discovered, sku) {
     ...discovered,
     cover: archived.cover || discovered.cover,
     productPhoto: hasArchivedProductPhoto ? archived.productPhoto : discovered.productPhoto,
-    imageCredits: (discovered.imageCredits || []).map((credit) => ({ ...credit, image: mapImage(credit.image) }))
+    imageCredits: archived.imageCredits || (discovered.imageCredits || []).map((credit) => ({ ...credit, image: mapImage(credit.image) }))
   };
 }
 
