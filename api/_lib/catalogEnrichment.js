@@ -1356,6 +1356,13 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // They are used when a trusted publication is not reliably crawlable from a
 // serverless runtime but the exact source has been reviewed by NIXP.
 export const CURATED_EDITORIAL_OVERRIDES = {
+  "NXP-2026-VNL-0072": {
+    description: "Teenage Wrist's 2018 debut Chrome Neon Jesus builds its grunge-and-shoegaze foundation into a wide alternative-rock record, pairing fuzzed guitars with clean production, melodic hooks, and the push-pull dynamics of its three-piece lineup.",
+    descriptionSource: "AllMusic",
+    reviewQuote: "filtered through the three decades of rock music that came after",
+    reviewSource: "AllMusic (quoted)",
+    reviewUrl: "https://www.allmusic.com/album/chrome-neon-jesus-mw0003140250"
+  },
   "NXP-2026-VNL-0071": {
     description: "New Order's 1983 FAC 93 12-inch takes the band into New York electro through its collaboration with Arthur Baker, presenting Confusion alongside Confused Beats, an instrumental version, and a rough mix. Phill Pennington designed the embossed sleeve at Peter Saville Associates, with a colour code that spells FAC93.",
     descriptionSource: "Factory Records Catalogue / AllMusic",

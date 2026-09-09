@@ -453,6 +453,24 @@ assert.equal(bimaSaktiDiscovered.edition, "Vinyl, LP, Album, Limited Edition, Vi
 assert.equal(bimaSaktiDiscovered.barcode, "1234567890123");
 assert.equal(bimaSaktiDiscovered.catalogNumber, "iDEAL198");
 
+const chromeNeonJesusEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0072"];
+assert.equal(chromeNeonJesusEditorial.reviewSource, "AllMusic (quoted)");
+assert.match(chromeNeonJesusEditorial.reviewUrl, /^https:\/\/www\.allmusic\.com\/album\//);
+assert.equal(isEditorialDescriptionQuality(chromeNeonJesusEditorial.description, chromeNeonJesusEditorial.descriptionSource), true);
+const chromeNeonJesusDiscovered = applyCuratedEditorialOverride(
+  {
+    cover: "/public/cover.jpg",
+    edition: "Vinyl, LP, Album, Limited Edition",
+    barcode: "045778759214",
+    catalogNumber: "87592-1"
+  },
+  "NXP-2026-VNL-0072"
+);
+assert.equal(chromeNeonJesusDiscovered.cover, "/public/cover.jpg");
+assert.equal(chromeNeonJesusDiscovered.edition, "Vinyl, LP, Album, Limited Edition");
+assert.equal(chromeNeonJesusDiscovered.barcode, "045778759214");
+assert.equal(chromeNeonJesusDiscovered.catalogNumber, "87592-1");
+
 const thievesLikeUsEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0070"];
 assert.equal(thievesLikeUsEditorial.reviewSource, "AllMusic (quoted)");
 assert.match(thievesLikeUsEditorial.reviewUrl, /^https:\/\/www\.allmusic\.com\/song\//);
