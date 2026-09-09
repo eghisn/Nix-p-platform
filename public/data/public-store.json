@@ -7921,7 +7921,7 @@
       "description": "New Order's 1983 FAC 93 12-inch takes the band into New York electro through its collaboration with Arthur Baker, presenting Confusion alongside Confused Beats, an instrumental version, and a rough mix. Phill Pennington designed the embossed sleeve at Peter Saville Associates, with a colour code that spells FAC93.",
       "reviewQuote": "a Planet Rock-like set of drum beats and electronic pulses",
       "sourceTitle": "confusion",
-      "editRevision": 14,
+      "editRevision": 15,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/1347678-New-Order-Confusion",
@@ -7978,9 +7978,7 @@
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Joy Division",
-        "The Other Two",
-        "Monaco"
+        "Joy Division"
       ],
       "homeCollections": [],
       "researchSources": [
@@ -7997,14 +7995,12 @@
       "publicationState": "live",
       "descriptionSource": "Factory Records Catalogue / AllMusic",
       "metadataSourceUrl": "https://www.discogs.com/release/1347678-New-Order-Confusion",
-      "editorialUpdatedAt": "2026-09-09T10:51:21.002+00:00",
+      "editorialUpdatedAt": "2026-09-09T10:53:05.821+00:00",
       "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
       "manualRelatedArtists": [
-        "Joy Division",
-        "The Other Two",
-        "Monaco"
+        "Joy Division"
       ],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
