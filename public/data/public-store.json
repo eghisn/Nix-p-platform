@@ -2113,15 +2113,24 @@
         "Album",
         "Catalog number: 2567785408",
         "Barcode: 602567785408",
-        "Edition: Vinyl, LP, Album"
+        "Edition: Vinyl",
+        "LP",
+        "Album"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0078/cover.jpg",
       "condition": "New-Sealed",
       "reviewUrl": "https://pitchfork.com/reviews/albums/death-grips-year-of-the-snitch/",
       "syncAudit": [
+        {
+          "at": "2026-09-09T10:09:57.706Z",
+          "sku": "NXP-2026-VNL-0078",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-09-09T03:10:03.035Z",
           "sku": "NXP-2026-VNL-0078",
@@ -2161,18 +2170,18 @@
       "updatedAt": "2026-09-09",
       "collection": "Third Worlds",
       "syncStatus": {
-        "at": "2026-09-09T03:10:03.035Z",
+        "at": "2026-09-09T10:09:57.706Z",
         "sku": "NXP-2026-VNL-0078",
-        "action": "Inventory identity synchronized to catalog",
+        "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
+      "description": "Death Grips 2018 year of the snitch is a verified Vinyl, LP, Album edition on Third Worlds. The release is indexed under Experimental, Noise, Hardcore Hip-Hop.",
       "reviewQuote": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
       "sourceTitle": "year of the snitch",
-      "editRevision": 11,
+      "editRevision": 13,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/12485858-Death-Grips-Year-Of-The-Snitch",
@@ -2183,7 +2192,7 @@
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://pitchfork.com/reviews/albums/death-grips-year-of-the-snitch/",
-        "description": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
+        "description": "Death Grips 2018 year of the snitch is a verified Vinyl, LP, Album edition on Third Worlds. The release is indexed under Experimental, Noise, Hardcore Hip-Hop.",
         "reviewQuote": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
         "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
@@ -2193,7 +2202,7 @@
           "dälek",
           "Lil Ugly Mane"
         ],
-        "descriptionSource": "Pitchfork (quoted)",
+        "descriptionSource": "Verified physical-release metadata",
         "relatedArtistEvidence": [
           {
             "artist": "Andrew Adamson",
@@ -2453,16 +2462,16 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Pitchfork (quoted)",
+      "descriptionSource": "Verified physical-release metadata",
       "metadataSourceUrl": "https://www.discogs.com/release/12485858-Death-Grips-Year-Of-The-Snitch",
-      "editorialUpdatedAt": "2026-09-09T03:10:03.38+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-09T10:11:43.013+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
-      "enrichmentAttemptedAt": "2026-09-09T03:09:32.469Z",
+      "enrichmentAttemptedAt": "2026-09-09T10:09:57.705Z",
       "enrichmentFingerprint": "death grips|year of the snitch|vinyl|602567785408|2567785408",
       "relatedArtistEvidence": [
         {
@@ -2690,7 +2699,7 @@
         "sourceUrl": "https://musicbrainz.org/release/d4aeb9ee-285d-4bbb-8d2d-11005df53f3b",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
       "shipping": {
@@ -2699,7 +2708,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-08",
+        "updatedAt": "2026-09-09",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -67294,6 +67303,153 @@
       }
     },
     {
+      "id": "nxp-2026-obj-0002-preform",
+      "qty": 9,
+      "sku": "NXP-2026-OBJ-0002",
+      "tags": [],
+      "year": 2026,
+      "color": "Palladio",
+      "image": "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg",
+      "label": "Nix Powell",
+      "price": 480000,
+      "sizes": [
+        {
+          "label": "9",
+          "soldOut": false,
+          "quantity": 4
+        },
+        {
+          "label": "11",
+          "soldOut": false,
+          "quantity": 5
+        }
+      ],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 9
+      },
+      "title": "Preform",
+      "artist": "Cold Metal Breathes Too",
+      "format": "Object",
+      "images": [
+        "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "Brass Ring"
+      ],
+      "edition": "",
+      "category": "Objects",
+      "material": "White Brass",
+      "condition": "New-Sealed",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.795Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-29T10:09:43.965Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-29T09:54:26.176Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-29T02:23:49.934Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-28T09:19:04.765Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-28T02:12:08.737Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-27T15:01:51.312Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "Cold Metal Breathes Too",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.795Z",
+        "sku": "NXP-2026-OBJ-0002",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 9
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "PREFORM RINGNIX POWELL \"PREFORM\" RING IN BRASS\nTHESE JEWELLERY PIECES ARE CRAFTED WITH THE INDIVIDUAL HANDWORK OF THE ARTISAN, MAKING EACH PIECE UNIQUE.\nWHITE BRASS WITH A BRUSHED PALLADIUM FINISH\n\n\nCOLOR: PALLADIO\nMATERIAL: 100% BRASS",
+      "reviewQuote": "",
+      "imageCredits": [],
+      "reviewSource": "",
+      "catalogNumber": "",
+      "displayFormat": "",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "catalog-nxp-2026-obj-0002-preform",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "",
+      "manualRelatedArtists": [],
+      "minimumAcceptableOffer": 0,
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packing standard: measured object in cardboard and bubble wrap",
+        "status": "measured_manual",
+        "widthCm": 25,
+        "heightCm": 12,
+        "lengthCm": 30,
+        "updatedAt": "2026-09-02",
+        "packageType": "protective-box",
+        "weightGrams": 650,
+        "shippingClass": "object-protective-box",
+        "packagingGroup": "MANUAL_OVERRIDE",
+        "vinylWeightClass": "",
+        "manualShippingOverride": true
+      }
+    },
+    {
       "id": "nxp-2026-cst-0009",
       "qty": 1,
       "sku": "NXP-2026-CST-0009",
@@ -67915,153 +68071,6 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "nxp-2026-obj-0002-preform",
-      "qty": 9,
-      "sku": "NXP-2026-OBJ-0002",
-      "tags": [],
-      "year": 2026,
-      "color": "Palladio",
-      "image": "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg",
-      "label": "Nix Powell",
-      "price": 480000,
-      "sizes": [
-        {
-          "label": "9",
-          "soldOut": false,
-          "quantity": 4
-        },
-        {
-          "label": "11",
-          "soldOut": false,
-          "quantity": 5
-        }
-      ],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 9
-      },
-      "title": "Preform",
-      "artist": "Cold Metal Breathes Too",
-      "format": "Object",
-      "images": [
-        "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "Brass Ring"
-      ],
-      "edition": "",
-      "category": "Objects",
-      "material": "White Brass",
-      "condition": "New-Sealed",
-      "reviewUrl": "",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.795Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-29T10:09:43.965Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-29T09:54:26.176Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-29T02:23:49.934Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-28T02:12:08.737Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-27T15:01:51.312Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "Cold Metal Breathes Too",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.795Z",
-        "sku": "NXP-2026-OBJ-0002",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 9
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "PREFORM RINGNIX POWELL \"PREFORM\" RING IN BRASS\nTHESE JEWELLERY PIECES ARE CRAFTED WITH THE INDIVIDUAL HANDWORK OF THE ARTISAN, MAKING EACH PIECE UNIQUE.\nWHITE BRASS WITH A BRUSHED PALLADIUM FINISH\n\n\nCOLOR: PALLADIO\nMATERIAL: 100% BRASS",
-      "reviewQuote": "",
-      "imageCredits": [],
-      "reviewSource": "",
-      "catalogNumber": "",
-      "displayFormat": "",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "catalog-nxp-2026-obj-0002-preform",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "descriptionSource": "",
-      "manualRelatedArtists": [],
-      "minimumAcceptableOffer": 0,
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "relatedArtistsResearch": null,
-      "shipping": {
-        "source": "NIXP packing standard: measured object in cardboard and bubble wrap",
-        "status": "measured_manual",
-        "widthCm": 25,
-        "heightCm": 12,
-        "lengthCm": 30,
-        "updatedAt": "2026-09-02",
-        "packageType": "protective-box",
-        "weightGrams": 650,
-        "shippingClass": "object-protective-box",
-        "packagingGroup": "MANUAL_OVERRIDE",
-        "vinylWeightClass": "",
-        "manualShippingOverride": true
       }
     },
     {
@@ -74274,6 +74283,631 @@
       }
     },
     {
+      "id": "nxp-2026-cst-0008",
+      "qty": 1,
+      "sku": "NXP-2026-CST-0008",
+      "tags": [
+        "Cassette",
+        "NXP-2026-CST-0008"
+      ],
+      "year": 2025,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
+      "label": "Trouble In Mind",
+      "price": 450000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Wish Defense",
+      "artist": "FACS",
+      "format": "Cassette",
+      "images": [
+        "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
+        "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CST-0008",
+        "Format: Cassette",
+        "Condition: New-Sealed"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://newnoisemagazine.com/reviews/album-review-facs-wish-defense/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.794Z",
+          "sku": "NXP-2026-CST-0008",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.964Z",
+          "sku": "NXP-2026-CST-0008",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.175Z",
+          "sku": "NXP-2026-CST-0008",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.933Z",
+          "sku": "NXP-2026-CST-0008",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.764Z",
+          "sku": "NXP-2026-CST-0008",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.736Z",
+          "sku": "NXP-2026-CST-0008",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-CST-0008",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.311Z",
+          "sku": "NXP-2026-CST-0008",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.794Z",
+        "sku": "NXP-2026-CST-0008",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "FACS' 2025 Wish Defense is brooding post-punk with wiry guitars, hypnotic drums and dirty bass, and the final recording made by Steve Albini at Electrical Audio.",
+      "reviewQuote": "a cavernous uneasiness",
+      "imageCredits": [
+        {
+          "url": "https://troubleinmindrecs.com/",
+          "image": "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg",
+          "credit": "Trouble In Mind Records"
+        }
+      ],
+      "reviewSource": "New Noise Magazine (quoted)",
+      "autoEditorial": {
+        "relatedArtists": [
+          "Disappears",
+          "Open Head",
+          "Ditz",
+          "Bambara",
+          "Preoccupations"
+        ],
+        "enrichmentStatus": "complete-no-related-artists",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Disappears",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.909834,
+            "artist": "Open Head",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.909834,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.78611,
+            "artist": "Ditz",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.78611,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.642194,
+            "artist": "Bambara",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.642194,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.501882,
+            "artist": "Preoccupations",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.501882,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Disappears",
+              "Open Head",
+              "Ditz",
+              "Bambara",
+              "Preoccupations",
+              "Haunted Horses",
+              "The Men",
+              "Moin",
+              "Snapped Ankles",
+              "The Murder Capital"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Disappears",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.909834,
+                "artist": "Open Head",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.909834,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.78611,
+                "artist": "Ditz",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.78611,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.642194,
+                "artist": "Bambara",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.642194,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.501882,
+                "artist": "Preoccupations",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.501882,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.486282,
+                "artist": "Haunted Horses",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.486282,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.482102,
+                "artist": "The Men",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.482102,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.461738,
+                "artist": "Moin",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.461738,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.439289,
+                "artist": "Snapped Ankles",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.439289,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.414935,
+                "artist": "The Murder Capital",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.414935,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Disappears",
+            "Open Head",
+            "Ditz",
+            "Bambara",
+            "Preoccupations"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Disappears",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.909834,
+              "artist": "Open Head",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.909834,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.78611,
+              "artist": "Ditz",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.78611,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.642194,
+              "artist": "Bambara",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.642194,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.501882,
+              "artist": "Preoccupations",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.501882,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "",
+      "displayFormat": "Cassette",
+      "homeSlideSort": 35,
+      "publishStatus": "Published",
+      "financeStockId": "mrfb4t2smb08x6",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Disappears",
+        "Open Head",
+        "Ditz",
+        "Bambara",
+        "Preoccupations"
+      ],
+      "homeCollections": [
+        "recent-releases",
+        "limited-pressing"
+      ],
+      "sleeveCondition": "",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "New Noise Magazine",
+      "manualRelatedArtists": [],
+      "enrichmentAttemptedAt": "2026-08-18T16:56:07.861Z",
+      "enrichmentFingerprint": "facs|wish defense|cassette||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Disappears",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/FACS",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.909834,
+          "artist": "Open Head",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/FACS",
+          "confidence": 0.909834,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.78611,
+          "artist": "Ditz",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/FACS",
+          "confidence": 0.78611,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.642194,
+          "artist": "Bambara",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/FACS",
+          "confidence": 0.642194,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.501882,
+          "artist": "Preoccupations",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/FACS",
+          "confidence": 0.501882,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Disappears",
+            "Open Head",
+            "Ditz",
+            "Bambara",
+            "Preoccupations",
+            "Haunted Horses",
+            "The Men",
+            "Moin",
+            "Snapped Ankles",
+            "The Murder Capital"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Disappears",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.909834,
+              "artist": "Open Head",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.909834,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.78611,
+              "artist": "Ditz",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.78611,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.642194,
+              "artist": "Bambara",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.642194,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.501882,
+              "artist": "Preoccupations",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.501882,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.486282,
+              "artist": "Haunted Horses",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.486282,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.482102,
+              "artist": "The Men",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.482102,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.461738,
+              "artist": "Moin",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.461738,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.439289,
+              "artist": "Snapped Ankles",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.439289,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.414935,
+              "artist": "The Murder Capital",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.414935,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/FACS"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Disappears",
+          "Open Head",
+          "Ditz",
+          "Bambara",
+          "Preoccupations"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Disappears",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.909834,
+            "artist": "Open Head",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.909834,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.78611,
+            "artist": "Ditz",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.78611,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.642194,
+            "artist": "Bambara",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.642194,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.501882,
+            "artist": "Preoccupations",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.501882,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 8,
+        "lengthCm": 16,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 90,
+        "shippingClass": "small-media-cassette-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "nxp-2026-cd-0007",
       "qty": 1,
       "sku": "NXP-2026-CD-0007",
@@ -74750,630 +75384,6 @@
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "nxp-2026-vnl-0009",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0009",
-      "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0009"
-      ],
-      "year": 2019,
-      "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
-      "label": "Domino",
-      "price": 550000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Buoys",
-      "artist": "Panda Bear",
-      "format": "Vinyl",
-      "images": [
-        "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
-        "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-VNL-0009",
-        "Format: Vinyl 12\"",
-        "Condition: New-Sealed"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/panda-bear-buoys/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.794Z",
-          "sku": "NXP-2026-VNL-0009",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-VNL-0009",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.175Z",
-          "sku": "NXP-2026-VNL-0009",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.932Z",
-          "sku": "NXP-2026-VNL-0009",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-VNL-0009",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-VNL-0009",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-VNL-0009",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.311Z",
-          "sku": "NXP-2026-VNL-0009",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.794Z",
-        "sku": "NXP-2026-VNL-0009",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Panda Bear's 2019 Buoys strips Noah Lennox's songwriting toward acoustic guitar, sparse digital production and voice, creating a direct and solitary Domino album.",
-      "reviewQuote": "unusually unified listen",
-      "imageCredits": [
-        {
-          "url": "https://www.dominomusic.com/releases/panda-bear/buoys/deluxe-lp",
-          "image": "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg",
-          "credit": "Domino"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "relatedArtists": [
-          "Animal Collective",
-          "Avey Tare",
-          "Deakin",
-          "Avey Tare's Slasher Flicks",
-          "Deerhunter"
-        ],
-        "enrichmentStatus": "complete",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Animal Collective",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.877539,
-            "artist": "Avey Tare",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.877539,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.696062,
-            "artist": "Deakin",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.696062,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.436592,
-            "artist": "Avey Tare's Slasher Flicks",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.436592,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.26728,
-            "artist": "Deerhunter",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.26728,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Animal Collective",
-              "Avey Tare",
-              "Deakin",
-              "Avey Tare's Slasher Flicks",
-              "Deerhunter",
-              "Atlas Sound",
-              "Geologist",
-              "Dirty Projectors",
-              "Grizzly Bear",
-              "Panda Bear & Sonic Boom"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Animal Collective",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.877539,
-                "artist": "Avey Tare",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.877539,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.696062,
-                "artist": "Deakin",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.696062,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.436592,
-                "artist": "Avey Tare's Slasher Flicks",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.436592,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.26728,
-                "artist": "Deerhunter",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.26728,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.266403,
-                "artist": "Atlas Sound",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.266403,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.226988,
-                "artist": "Geologist",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.226988,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.220454,
-                "artist": "Dirty Projectors",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.220454,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.207574,
-                "artist": "Grizzly Bear",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.207574,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.177207,
-                "artist": "Panda Bear & Sonic Boom",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.177207,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Animal Collective",
-            "Avey Tare",
-            "Deakin",
-            "Avey Tare's Slasher Flicks",
-            "Deerhunter"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Animal Collective",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.877539,
-              "artist": "Avey Tare",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.877539,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.696062,
-              "artist": "Deakin",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.696062,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.436592,
-              "artist": "Avey Tare's Slasher Flicks",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.436592,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.26728,
-              "artist": "Deerhunter",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.26728,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "",
-          "sourceUrl": "",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 39,
-      "publishStatus": "Published",
-      "financeStockId": "mr9rjti7q8f9uz",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Animal Collective",
-        "Avey Tare",
-        "Deakin",
-        "Avey Tare's Slasher Flicks",
-        "Deerhunter"
-      ],
-      "homeCollections": [
-        "limited-pressing"
-      ],
-      "sleeveCondition": "",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Pitchfork / The Guardian",
-      "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:54:05.356Z",
-      "enrichmentFingerprint": "panda bear|buoys|vinyl||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Animal Collective",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.877539,
-          "artist": "Avey Tare",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-          "confidence": 0.877539,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.696062,
-          "artist": "Deakin",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-          "confidence": 0.696062,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.436592,
-          "artist": "Avey Tare's Slasher Flicks",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-          "confidence": 0.436592,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.26728,
-          "artist": "Deerhunter",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-          "confidence": 0.26728,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Animal Collective",
-            "Avey Tare",
-            "Deakin",
-            "Avey Tare's Slasher Flicks",
-            "Deerhunter",
-            "Atlas Sound",
-            "Geologist",
-            "Dirty Projectors",
-            "Grizzly Bear",
-            "Panda Bear & Sonic Boom"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Animal Collective",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.877539,
-              "artist": "Avey Tare",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.877539,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.696062,
-              "artist": "Deakin",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.696062,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.436592,
-              "artist": "Avey Tare's Slasher Flicks",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.436592,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.26728,
-              "artist": "Deerhunter",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.26728,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.266403,
-              "artist": "Atlas Sound",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.266403,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.226988,
-              "artist": "Geologist",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.226988,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.220454,
-              "artist": "Dirty Projectors",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.220454,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.207574,
-              "artist": "Grizzly Bear",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.207574,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.177207,
-              "artist": "Panda Bear & Sonic Boom",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.177207,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Animal Collective",
-          "Avey Tare",
-          "Deakin",
-          "Avey Tare's Slasher Flicks",
-          "Deerhunter"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Animal Collective",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.877539,
-            "artist": "Avey Tare",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.877539,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.696062,
-            "artist": "Deakin",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.696062,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.436592,
-            "artist": "Avey Tare's Slasher Flicks",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.436592,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.26728,
-            "artist": "Deerhunter",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.26728,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "",
-        "sourceUrl": "",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
@@ -78058,95 +78068,95 @@
       }
     },
     {
-      "id": "nxp-2026-cst-0008",
+      "id": "nxp-2026-vnl-0009",
       "qty": 1,
-      "sku": "NXP-2026-CST-0008",
+      "sku": "NXP-2026-VNL-0009",
       "tags": [
-        "Cassette",
-        "NXP-2026-CST-0008"
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0009"
       ],
-      "year": 2025,
+      "year": 2019,
       "color": "",
-      "image": "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
-      "label": "Trouble In Mind",
-      "price": 450000,
+      "image": "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
+      "label": "Domino",
+      "price": 550000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Wish Defense",
-      "artist": "FACS",
-      "format": "Cassette",
+      "title": "Buoys",
+      "artist": "Panda Bear",
+      "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
-        "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg"
+        "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
+        "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg"
       ],
       "barcode": "",
       "details": [
-        "SKU: NXP-2026-CST-0008",
-        "Format: Cassette",
+        "SKU: NXP-2026-VNL-0009",
+        "Format: Vinyl 12\"",
         "Condition: New-Sealed"
       ],
       "edition": "",
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
-      "reviewUrl": "https://newnoisemagazine.com/reviews/album-review-facs-wish-defense/",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/panda-bear-buoys/",
       "syncAudit": [
         {
           "at": "2026-08-30T02:14:08.794Z",
-          "sku": "NXP-2026-CST-0008",
+          "sku": "NXP-2026-VNL-0009",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.964Z",
-          "sku": "NXP-2026-CST-0008",
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-VNL-0009",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T09:54:26.175Z",
-          "sku": "NXP-2026-CST-0008",
+          "sku": "NXP-2026-VNL-0009",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.933Z",
-          "sku": "NXP-2026-CST-0008",
+          "at": "2026-08-29T02:23:49.932Z",
+          "sku": "NXP-2026-VNL-0009",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T09:19:04.764Z",
-          "sku": "NXP-2026-CST-0008",
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-VNL-0009",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-CST-0008",
+          "sku": "NXP-2026-VNL-0009",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-CST-0008",
+          "at": "2026-08-27T15:04:16.222Z",
+          "sku": "NXP-2026-VNL-0009",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:01:51.311Z",
-          "sku": "NXP-2026-CST-0008",
+          "sku": "NXP-2026-VNL-0009",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -78156,86 +78166,86 @@
       "collection": "NIXP Selection",
       "syncStatus": {
         "at": "2026-08-30T02:14:08.794Z",
-        "sku": "NXP-2026-CST-0008",
+        "sku": "NXP-2026-VNL-0009",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "FACS' 2025 Wish Defense is brooding post-punk with wiry guitars, hypnotic drums and dirty bass, and the final recording made by Steve Albini at Electrical Audio.",
-      "reviewQuote": "a cavernous uneasiness",
+      "description": "Panda Bear's 2019 Buoys strips Noah Lennox's songwriting toward acoustic guitar, sparse digital production and voice, creating a direct and solitary Domino album.",
+      "reviewQuote": "unusually unified listen",
       "imageCredits": [
         {
-          "url": "https://troubleinmindrecs.com/",
-          "image": "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg",
-          "credit": "Trouble In Mind Records"
+          "url": "https://www.dominomusic.com/releases/panda-bear/buoys/deluxe-lp",
+          "image": "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg",
+          "credit": "Domino"
         }
       ],
-      "reviewSource": "New Noise Magazine (quoted)",
+      "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
         "relatedArtists": [
-          "Disappears",
-          "Open Head",
-          "Ditz",
-          "Bambara",
-          "Preoccupations"
+          "Animal Collective",
+          "Avey Tare",
+          "Deakin",
+          "Avey Tare's Slasher Flicks",
+          "Deerhunter"
         ],
-        "enrichmentStatus": "complete-no-related-artists",
+        "enrichmentStatus": "complete",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Disappears",
+            "artist": "Animal Collective",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.909834,
-            "artist": "Open Head",
+            "match": 0.877539,
+            "artist": "Avey Tare",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.909834,
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.877539,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.78611,
-            "artist": "Ditz",
+            "match": 0.696062,
+            "artist": "Deakin",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.78611,
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.696062,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.642194,
-            "artist": "Bambara",
+            "match": 0.436592,
+            "artist": "Avey Tare's Slasher Flicks",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.642194,
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.436592,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.501882,
-            "artist": "Preoccupations",
+            "match": 0.26728,
+            "artist": "Deerhunter",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.501882,
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.26728,
             "relationType": "artist-similarity"
           }
         ],
@@ -78244,164 +78254,164 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Disappears",
-              "Open Head",
-              "Ditz",
-              "Bambara",
-              "Preoccupations",
-              "Haunted Horses",
-              "The Men",
-              "Moin",
-              "Snapped Ankles",
-              "The Murder Capital"
+              "Animal Collective",
+              "Avey Tare",
+              "Deakin",
+              "Avey Tare's Slasher Flicks",
+              "Deerhunter",
+              "Atlas Sound",
+              "Geologist",
+              "Dirty Projectors",
+              "Grizzly Bear",
+              "Panda Bear & Sonic Boom"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Disappears",
+                "artist": "Animal Collective",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.909834,
-                "artist": "Open Head",
+                "match": 0.877539,
+                "artist": "Avey Tare",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.909834,
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.877539,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.78611,
-                "artist": "Ditz",
+                "match": 0.696062,
+                "artist": "Deakin",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.78611,
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.696062,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.642194,
-                "artist": "Bambara",
+                "match": 0.436592,
+                "artist": "Avey Tare's Slasher Flicks",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.642194,
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.436592,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.501882,
-                "artist": "Preoccupations",
+                "match": 0.26728,
+                "artist": "Deerhunter",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.501882,
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.26728,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.486282,
-                "artist": "Haunted Horses",
+                "match": 0.266403,
+                "artist": "Atlas Sound",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.486282,
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.266403,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.482102,
-                "artist": "The Men",
+                "match": 0.226988,
+                "artist": "Geologist",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.482102,
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.226988,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.461738,
-                "artist": "Moin",
+                "match": 0.220454,
+                "artist": "Dirty Projectors",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.461738,
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.220454,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.439289,
-                "artist": "Snapped Ankles",
+                "match": 0.207574,
+                "artist": "Grizzly Bear",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.439289,
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.207574,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.414935,
-                "artist": "The Murder Capital",
+                "match": 0.177207,
+                "artist": "Panda Bear & Sonic Boom",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.414935,
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.177207,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS"
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Disappears",
-            "Open Head",
-            "Ditz",
-            "Bambara",
-            "Preoccupations"
+            "Animal Collective",
+            "Avey Tare",
+            "Deakin",
+            "Avey Tare's Slasher Flicks",
+            "Deerhunter"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Disappears",
+              "artist": "Animal Collective",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.909834,
-              "artist": "Open Head",
+              "match": 0.877539,
+              "artist": "Avey Tare",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.909834,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.877539,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.78611,
-              "artist": "Ditz",
+              "match": 0.696062,
+              "artist": "Deakin",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.78611,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.696062,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.642194,
-              "artist": "Bambara",
+              "match": 0.436592,
+              "artist": "Avey Tare's Slasher Flicks",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.642194,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.436592,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.501882,
-              "artist": "Preoccupations",
+              "match": 0.26728,
+              "artist": "Deerhunter",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.501882,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.26728,
               "relationType": "artist-similarity"
             }
           ],
@@ -78412,83 +78422,82 @@
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "",
-      "displayFormat": "Cassette",
-      "homeSlideSort": 35,
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 39,
       "publishStatus": "Published",
-      "financeStockId": "mrfb4t2smb08x6",
+      "financeStockId": "mr9rjti7q8f9uz",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Disappears",
-        "Open Head",
-        "Ditz",
-        "Bambara",
-        "Preoccupations"
+        "Animal Collective",
+        "Avey Tare",
+        "Deakin",
+        "Avey Tare's Slasher Flicks",
+        "Deerhunter"
       ],
       "homeCollections": [
-        "recent-releases",
         "limited-pressing"
       ],
       "sleeveCondition": "",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "New Noise Magazine",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Pitchfork / The Guardian",
       "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:56:07.861Z",
-      "enrichmentFingerprint": "facs|wish defense|cassette||",
+      "enrichmentAttemptedAt": "2026-08-18T16:54:05.356Z",
+      "enrichmentFingerprint": "panda bear|buoys|vinyl||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Disappears",
+          "artist": "Animal Collective",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.909834,
-          "artist": "Open Head",
+          "match": 0.877539,
+          "artist": "Avey Tare",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
-          "confidence": 0.909834,
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "confidence": 0.877539,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.78611,
-          "artist": "Ditz",
+          "match": 0.696062,
+          "artist": "Deakin",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
-          "confidence": 0.78611,
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "confidence": 0.696062,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.642194,
-          "artist": "Bambara",
+          "match": 0.436592,
+          "artist": "Avey Tare's Slasher Flicks",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
-          "confidence": 0.642194,
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "confidence": 0.436592,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.501882,
-          "artist": "Preoccupations",
+          "match": 0.26728,
+          "artist": "Deerhunter",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
-          "confidence": 0.501882,
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "confidence": 0.26728,
           "relationType": "artist-similarity"
         }
       ],
@@ -78498,164 +78507,164 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Disappears",
-            "Open Head",
-            "Ditz",
-            "Bambara",
-            "Preoccupations",
-            "Haunted Horses",
-            "The Men",
-            "Moin",
-            "Snapped Ankles",
-            "The Murder Capital"
+            "Animal Collective",
+            "Avey Tare",
+            "Deakin",
+            "Avey Tare's Slasher Flicks",
+            "Deerhunter",
+            "Atlas Sound",
+            "Geologist",
+            "Dirty Projectors",
+            "Grizzly Bear",
+            "Panda Bear & Sonic Boom"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Disappears",
+              "artist": "Animal Collective",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.909834,
-              "artist": "Open Head",
+              "match": 0.877539,
+              "artist": "Avey Tare",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.909834,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.877539,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.78611,
-              "artist": "Ditz",
+              "match": 0.696062,
+              "artist": "Deakin",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.78611,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.696062,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.642194,
-              "artist": "Bambara",
+              "match": 0.436592,
+              "artist": "Avey Tare's Slasher Flicks",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.642194,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.436592,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.501882,
-              "artist": "Preoccupations",
+              "match": 0.26728,
+              "artist": "Deerhunter",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.501882,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.26728,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.486282,
-              "artist": "Haunted Horses",
+              "match": 0.266403,
+              "artist": "Atlas Sound",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.486282,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.266403,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.482102,
-              "artist": "The Men",
+              "match": 0.226988,
+              "artist": "Geologist",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.482102,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.226988,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.461738,
-              "artist": "Moin",
+              "match": 0.220454,
+              "artist": "Dirty Projectors",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.461738,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.220454,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.439289,
-              "artist": "Snapped Ankles",
+              "match": 0.207574,
+              "artist": "Grizzly Bear",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.439289,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.207574,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.414935,
-              "artist": "The Murder Capital",
+              "match": 0.177207,
+              "artist": "Panda Bear & Sonic Boom",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.414935,
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.177207,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/FACS"
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Disappears",
-          "Open Head",
-          "Ditz",
-          "Bambara",
-          "Preoccupations"
+          "Animal Collective",
+          "Avey Tare",
+          "Deakin",
+          "Avey Tare's Slasher Flicks",
+          "Deerhunter"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Disappears",
+            "artist": "Animal Collective",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.909834,
-            "artist": "Open Head",
+            "match": 0.877539,
+            "artist": "Avey Tare",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.909834,
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.877539,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.78611,
-            "artist": "Ditz",
+            "match": 0.696062,
+            "artist": "Deakin",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.78611,
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.696062,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.642194,
-            "artist": "Bambara",
+            "match": 0.436592,
+            "artist": "Avey Tare's Slasher Flicks",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.642194,
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.436592,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.501882,
-            "artist": "Preoccupations",
+            "match": 0.26728,
+            "artist": "Deerhunter",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.501882,
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.26728,
             "relationType": "artist-similarity"
           }
         ],
@@ -78670,15 +78679,15 @@
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 12,
-        "heightCm": 8,
-        "lengthCm": 16,
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
         "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 90,
-        "shippingClass": "small-media-cassette-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
