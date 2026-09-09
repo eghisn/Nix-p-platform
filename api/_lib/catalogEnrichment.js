@@ -17,7 +17,7 @@ export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 // A versioned research request means editorial rule changes only run for an
 // item when an editor explicitly asks to research it again. This keeps a
 // deployment from silently rewriting live catalogue copy.
-export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v4";
+export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v5";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -1355,6 +1355,13 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // They are used when a trusted publication is not reliably crawlable from a
 // serverless runtime but the exact source has been reviewed by NIXP.
 export const CURATED_EDITORIAL_OVERRIDES = {
+  "NXP-2026-VNL-0018": {
+    description: "Alan Vega's 2022 Sacred Bones 12-inch brings together two unreleased recordings from different eras: Invasion, cut during 2012-15 sessions for the posthumous It, and Murder One, recorded in 1997-98.",
+    descriptionSource: "Resident Advisor / Sacred Bones",
+    reviewQuote: "Two unreleased singles comprise a new EP called Invasion b/w Murder One.",
+    reviewSource: "Resident Advisor (reported)",
+    reviewUrl: "https://ra.co/news/76692"
+  },
   "NXP-2026-VNL-0027": {
     description: "Suuns' 2011 Bambi b/w Red Song is a compact Secretly Canadian single that turns the Montreal band's dark rocktronica into something both creepy and danceable, with stabby guitars, electronic pulse, and Ben Shemie's detached vocal.",
     descriptionSource: "Secretly Canadian / KEXP"
@@ -1382,6 +1389,13 @@ export const CURATED_EDITORIAL_OVERRIDES = {
   "NXP-2026-VNL-0058": {
     description: "Burial's 2019 Claustro / State Forest 12-inch returns to the UK producer's garage shuffle while pushing his sound toward harder-to-decipher emotions: Claustro lands as a banger, while State Forest opens into a more ambient, impressionistic space.",
     descriptionSource: "Resident Advisor / Pitchfork"
+  },
+  "NXP-2026-VNL-0081": {
+    description: "Arca's kick iiii is the tender, synth-led fourth chapter of the five-volume KiCk cycle. Its most contemplative songs bring piano, strings and vocal harmonies into the series' wider field of experimental club sound.",
+    descriptionSource: "Pitchfork",
+    reviewQuote: "tenderness comes to the fore on kick iiii",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/arca-kick-ii-kick-iii-kick-iiii-kick-iiiii/"
   }
 };
 
@@ -1480,11 +1494,14 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     discovered.barcode ? `Barcode: ${discovered.barcode}` : ""
   ]).filter((detail) => detail && !detail.startsWith("Created from finance inventory"));
   const automatic = raw.autoEditorial || {};
-  const description = chooseEditorialValue(row.description, automatic.description, discovered.description);
-  const descriptionSource = chooseEditorialValue(raw.descriptionSource, automatic.descriptionSource, discovered.descriptionSource);
-  const reviewQuote = chooseEditorialValue(raw.reviewQuote, automatic.reviewQuote, discovered.reviewQuote || "");
-  const reviewSource = chooseEditorialValue(raw.reviewSource, automatic.reviewSource, discovered.reviewSource || "");
-  const reviewUrl = chooseEditorialValue(raw.reviewUrl, automatic.reviewUrl, discovered.reviewUrl || "");
+  const editorial = removeDuplicateEditorialCopy({
+    description: chooseEditorialValue(row.description, automatic.description, discovered.description),
+    descriptionSource: chooseEditorialValue(raw.descriptionSource, automatic.descriptionSource, discovered.descriptionSource),
+    reviewQuote: chooseEditorialValue(raw.reviewQuote, automatic.reviewQuote, discovered.reviewQuote || ""),
+    reviewSource: chooseEditorialValue(raw.reviewSource, automatic.reviewSource, discovered.reviewSource || ""),
+    reviewUrl: chooseEditorialValue(raw.reviewUrl, automatic.reviewUrl, discovered.reviewUrl || "")
+  });
+  const { description, descriptionSource, reviewQuote, reviewSource, reviewUrl } = editorial;
   const researchedRelatedArtists = discovered.relatedArtistResearch || await researchRelatedArtists({
     artist,
     title: discovered.title || title,
@@ -1722,9 +1739,6 @@ export function composeDiscogsEditorial(discogs = {}, { bandcamp = null, review 
   const officialDescription = bandcamp && isEditorialDescriptionQuality(bandcamp.description, bandcamp.descriptionSource)
     ? { description: bandcamp.description, descriptionSource: bandcamp.descriptionSource }
     : null;
-  const reviewedDescription = !officialDescription && String(review?.quote || "").trim() && String(review?.source || "").trim()
-    ? { description: String(review.quote).trim(), descriptionSource: String(review.source).trim() }
-    : null;
   const sources = [
     ...(discogs.researchSources || []),
     ...(bandcamp?.researchSources || []),
@@ -1739,16 +1753,16 @@ export function composeDiscogsEditorial(discogs = {}, { bandcamp = null, review 
     seenSourceUrls.add(key);
     deduplicatedSources.push(source);
   }
-  return {
+  return removeDuplicateEditorialCopy({
     ...discogs,
-    ...(officialDescription || reviewedDescription || {}),
+    ...(officialDescription || {}),
     // No source-backed review is preferable to a fabricated one. This keeps
     // the public-facing quotation block honest when a review cannot be found.
     reviewQuote: String(review?.quote || "").trim(),
     reviewSource: String(review?.source || "").trim(),
     reviewUrl: String(review?.url || "").trim(),
     researchSources: deduplicatedSources
-  };
+  });
 }
 
 function sourceBackedReleaseNote(release) {
@@ -2709,6 +2723,38 @@ function chooseEditorialValue(current, previousAutomatic, nextAutomatic) {
   const value = String(current || "").trim();
   if (!value || value === String(previousAutomatic || "").trim()) return String(nextAutomatic || "").trim();
   return value;
+}
+
+export function removeDuplicateEditorialCopy({
+  description = "",
+  descriptionSource = "",
+  reviewQuote = "",
+  reviewSource = "",
+  reviewUrl = "",
+  ...rest
+} = {}) {
+  const normalizedDescription = normalizeEditorialCopy(description);
+  const normalizedReview = normalizeEditorialCopy(reviewQuote);
+  const duplicate = normalizedDescription.length >= 40
+    && normalizedReview.length >= 40
+    && normalizedDescription === normalizedReview;
+  return {
+    ...rest,
+    description: String(description || "").trim(),
+    descriptionSource: String(descriptionSource || "").trim(),
+    reviewQuote: duplicate ? "" : String(reviewQuote || "").trim(),
+    reviewSource: duplicate ? "" : String(reviewSource || "").trim(),
+    reviewUrl: duplicate ? "" : String(reviewUrl || "").trim()
+  };
+}
+
+function normalizeEditorialCopy(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201c\u201d]/g, '"')
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 }
 
 function hasCatalogCore(row) {

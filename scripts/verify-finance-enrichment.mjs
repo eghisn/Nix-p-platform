@@ -12,6 +12,7 @@ import {
   inventoryFingerprint,
   isExactDiscogsSearchEvidence,
   isEditorialDescriptionQuality,
+  removeDuplicateEditorialCopy,
   mergeExactDiscogsEvidence,
   normalizeDiscogsSearchRelease,
   selectTrustedRecordLabel
@@ -262,9 +263,20 @@ const discogsWithVerifiedReview = composeDiscogsEditorial(discogsOnlyEditorial, 
     url: "https://stereogum.com/example"
   }
 });
-assert.equal(discogsWithVerifiedReview.descriptionSource, "Stereogum (quoted)");
-assert.equal(discogsWithVerifiedReview.description, "A concise source-backed description from an independently verified review.");
+assert.equal(discogsWithVerifiedReview.descriptionSource, "Discogs release data", "A review must never be reused as product-description copy.");
+assert.equal(discogsWithVerifiedReview.description, "Exact physical-release metadata.");
+assert.equal(discogsWithVerifiedReview.reviewQuote, "A concise source-backed description from an independently verified review.");
 assert.equal(discogsWithVerifiedReview.researchSources.every((source) => !Array.isArray(source)), true, "Research evidence must remain a flat list of source objects.");
+const duplicateEditorial = removeDuplicateEditorialCopy({
+  description: "A source-backed sentence that must appear once in the product page only.",
+  descriptionSource: "Example source",
+  reviewQuote: "A source-backed sentence that must appear once in the product page only.",
+  reviewSource: "Example review",
+  reviewUrl: "https://example.test/review"
+});
+assert.equal(duplicateEditorial.reviewQuote, "", "Exact duplicate editorial text must not produce a second public quote block.");
+assert.equal(duplicateEditorial.reviewSource, "");
+assert.equal(duplicateEditorial.reviewUrl, "");
 const ambiguousDiscogsAssessment = assessDiscogsReleaseCandidates([
   ...negativeLoversDiscogs,
   { ...negativeLoversDiscogs[0], id: 9967525, resource_url: "https://api.discogs.com/releases/9967525" }
