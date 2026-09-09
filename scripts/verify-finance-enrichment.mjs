@@ -471,6 +471,20 @@ assert.equal(chromeNeonJesusDiscovered.edition, "Vinyl, LP, Album, Limited Editi
 assert.equal(chromeNeonJesusDiscovered.barcode, "045778759214");
 assert.equal(chromeNeonJesusDiscovered.catalogNumber, "87592-1");
 
+for (const [sku, sourceDomain] of [
+  ["NXP-2026-VNL-0080", "thequietus.com"],
+  ["NXP-2026-VNL-0079", "boomkat.com"],
+  ["NXP-2026-VNL-0077", "pitchfork.com"],
+  ["NXP-2026-VNL-0075", "allmusic.com"],
+  ["NXP-2026-VNL-0072", "allmusic.com"]
+]) {
+  const editorial = CURATED_EDITORIAL_OVERRIDES[sku];
+  assert.equal(isEditorialDescriptionQuality(editorial.description, editorial.descriptionSource), true);
+  assert.ok(editorial.reviewQuote);
+  assert.ok(editorial.reviewSource.endsWith("(quoted)"));
+  assert.equal(new URL(editorial.reviewUrl).hostname.replace(/^www\./, ""), sourceDomain);
+}
+
 const thievesLikeUsEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0070"];
 assert.equal(thievesLikeUsEditorial.reviewSource, "AllMusic (quoted)");
 assert.match(thievesLikeUsEditorial.reviewUrl, /^https:\/\/www\.allmusic\.com\/song\//);

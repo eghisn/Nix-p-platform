@@ -1356,6 +1356,34 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // They are used when a trusted publication is not reliably crawlable from a
 // serverless runtime but the exact source has been reviewed by NIXP.
 export const CURATED_EDITORIAL_OVERRIDES = {
+  "NXP-2026-VNL-0080": {
+    description: "Savage Imperial Death March brings Melvins and Napalm Death's 2016 touring lineup into the studio: Buzz Osborne and Dale Crover work alongside Barney Greenway, John Cooke, and Shane Embury in a collaboration that leans into noise, sludge, and grind without reducing either band to a guest appearance.",
+    descriptionSource: "The Quietus / Melvins official Bandcamp",
+    reviewQuote: "a truly collaborative record",
+    reviewSource: "The Quietus (quoted)",
+    reviewUrl: "https://thequietus.com/quietus-reviews/melvins-napalm-death-savage-imperial-death-march-review/"
+  },
+  "NXP-2026-VNL-0079": {
+    description: "On DRM, Sam Gendel works solo with vintage instruments, voice, guitar fragments, and the Electro-Harmonix DRM32 drum machine. The result recasts contemporary R&B and pop-rap through oblique electronics and acoustic textures, including a dismantled reading of Lil Nas X's Old Town Road.",
+    descriptionSource: "Nonesuch / Pitchfork",
+    reviewQuote: "Beat scene-inflected jazz funq sketches informed by the brittle Electro Harmonix DRM32 drum machine.",
+    reviewSource: "Boomkat (quoted)",
+    reviewUrl: "https://boomkat.com/products/drm-e28b84f8-1fa2-4362-97a6-87e4c6a15b7c"
+  },
+  "NXP-2026-VNL-0077": {
+    description: "Hella's 2004 The Devil Isn't Red is the Sacramento duo of guitarist Spencer Seim and drummer Zach Hill at their most tightly wound: instrumental rock built from knotted guitar figures, abrupt shifts, and relentlessly precise percussion. This later vinyl edition returns to the original 5 Rue Christine album.",
+    descriptionSource: "Pitchfork / Kill Rock Stars",
+    reviewQuote: "Hella couldn't get no tighter.",
+    reviewSource: "Pitchfork (quoted)",
+    reviewUrl: "https://pitchfork.com/reviews/albums/3961-the-devil-isnt-red/"
+  },
+  "NXP-2026-VNL-0075": {
+    description: "Chapterhouse's 1991 debut Whirlpool expands the Reading band's earlier EP material into a shoegaze record with a sharper rhythmic pull: hazy vocals and dense guitars meet dance-floor momentum, garage-punk energy, and the lingering feedback of early-90s UK indie.",
+    descriptionSource: "AllMusic",
+    reviewQuote: "more dance-flirting and garage-punky than most",
+    reviewSource: "AllMusic (quoted)",
+    reviewUrl: "https://www.allmusic.com/album/whirlpool-mw0000674924"
+  },
   "NXP-2026-VNL-0072": {
     description: "Teenage Wrist's 2018 debut Chrome Neon Jesus builds its grunge-and-shoegaze foundation into a wide alternative-rock record, pairing fuzzed guitars with clean production, melodic hooks, and the push-pull dynamics of its three-piece lineup.",
     descriptionSource: "AllMusic",
