@@ -9095,12 +9095,13 @@
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0068/cover.jpg"
       ],
-      "barcode": "",
+      "barcode": "80139008215 / 982 / 982",
       "details": [
         "SKU: NXP-2026-VNL-0068",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, 12\"",
+        "Edition: Vinyl",
+        "12\"",
         "Catalog number: DNO 982",
         "Barcode: 80139008215 / 982 / 982"
       ],
@@ -9109,8 +9110,15 @@
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0068/cover.jpg",
       "condition": "New-Sealed",
-      "reviewUrl": "",
+      "reviewUrl": "https://www.stereogum.com/7686/new_these_new_puritans_navigate_navigate/news/",
       "syncAudit": [
+        {
+          "at": "2026-09-09T10:22:15.500Z",
+          "sku": "NXP-2026-VNL-0068",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-09-09T03:17:56.789Z",
           "sku": "NXP-2026-VNL-0068",
@@ -9150,17 +9158,18 @@
       "updatedAt": "2026-09-09",
       "collection": "Domino",
       "syncStatus": {
-        "at": "2026-09-09T03:17:56.789Z",
+        "at": "2026-09-09T10:22:15.500Z",
         "sku": "NXP-2026-VNL-0068",
-        "action": "Inventory identity synchronized to catalog",
+        "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
       "description": "These New Puritans 2008 navigate navigate is a verified Vinyl, 12\" edition on Domino. The release is indexed under Indie Rock, Rock.",
-      "reviewQuote": "",
+      "reviewQuote": "A ways back we posted the centrifugal, darkly dissolving, flesh rippling video for These New Puritan’s Mark E. Smith-barked “Elvis.”",
       "sourceTitle": "navigate navigate",
+      "editRevision": 12,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
@@ -9168,12 +9177,12 @@
           "credit": "Discogs physical-release artwork"
         }
       ],
-      "reviewSource": "",
+      "reviewSource": "Stereogum (quoted)",
       "autoEditorial": {
-        "reviewUrl": "",
+        "reviewUrl": "https://www.stereogum.com/7686/new_these_new_puritans_navigate_navigate/news/",
         "description": "These New Puritans 2008 navigate navigate is a verified Vinyl, 12\" edition on Domino. The release is indexed under Indie Rock, Rock.",
-        "reviewQuote": "",
-        "reviewSource": "",
+        "reviewQuote": "A ways back we posted the centrifugal, darkly dissolving, flesh rippling video for These New Puritan’s Mark E. Smith-barked “Elvis.”",
+        "reviewSource": "Stereogum (quoted)",
         "relatedArtists": [
           "The Horrors",
           "Moin",
@@ -9413,8 +9422,10 @@
       },
       "catalogNumber": "DNO 982",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtn2j5otjeqr6v",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "The Horrors",
@@ -9423,25 +9434,34 @@
         "Heartworms",
         "Wild Beasts"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
           "source": "Discogs",
           "confidence": 100
+        },
+        {
+          "url": "https://www.stereogum.com/7686/new_these_new_puritans_navigate_navigate/news/",
+          "source": "Stereogum (quoted)",
+          "confidence": 85
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Verified physical-release metadata",
       "metadataSourceUrl": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
+      "editorialUpdatedAt": "2026-09-09T10:22:46.678+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
-      "enrichmentAttemptedAt": "2026-09-09T03:17:34.627Z",
+      "enrichmentAttemptedAt": "2026-09-09T10:22:15.500Z",
       "enrichmentFingerprint": "these new puritans|navigate navigate|vinyl||dno 982",
       "relatedArtistEvidence": [
         {
@@ -9671,18 +9691,16 @@
         "sourceUrl": "https://musicbrainz.org/release/3dc72fb6-6623-4ed4-9bc5-dbd243aaccee",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 10,
-      "editorialUpdatedAt": "2026-09-09T03:17:57.066+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-04",
+        "updatedAt": "2026-09-09",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
