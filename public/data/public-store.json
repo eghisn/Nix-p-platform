@@ -3401,7 +3401,14 @@
         "SKU: NXP-2026-VNL-0077",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album, Limited Edition, Mispress, Reissue, Remastered, Red",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Limited Edition",
+        "Mispress",
+        "Reissue",
+        "Remastered",
+        "Red",
         "Catalog number: GER082",
         "Barcode: 759656108218 / 35177 / 101064500822856381 / 101064500822856382"
       ],
@@ -3410,8 +3417,15 @@
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0077/cover.jpg",
       "condition": "New-Sealed",
-      "reviewUrl": "",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/3961-the-devil-isnt-red/",
       "syncAudit": [
+        {
+          "at": "2026-09-09T11:01:30.984Z",
+          "sku": "NXP-2026-VNL-0077",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-09-08T22:00:11.356Z",
           "sku": "NXP-2026-VNL-0077",
@@ -3451,7 +3465,7 @@
       "updatedAt": "2026-09-09",
       "collection": "5 Rue Christine",
       "syncStatus": {
-        "at": "2026-09-08T22:00:11.356Z",
+        "at": "2026-09-09T11:01:30.984Z",
         "sku": "NXP-2026-VNL-0077",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
@@ -3459,9 +3473,10 @@
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Hella 2024 the devil isnt red is a verified Vinyl, LP, Album, Limited Edition, Mispress, Reissue, Remastered edition on 5 Rue Christine. The release is indexed under Punk, Experimental, Indie Rock.",
-      "reviewQuote": "",
+      "description": "Hella's 2004 The Devil Isn't Red is the Sacramento duo of guitarist Spencer Seim and drummer Zach Hill at their most tightly wound: instrumental rock built from knotted guitar figures, abrupt shifts, and relentlessly precise percussion. This later vinyl edition returns to the original 5 Rue Christine album.",
+      "reviewQuote": "Hella couldn't get no tighter.",
       "sourceTitle": "the devil isnt red",
+      "editRevision": 12,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/31855538-Hella-The-Devil-Isnt-Red",
@@ -3469,12 +3484,12 @@
           "credit": "Discogs physical-release artwork"
         }
       ],
-      "reviewSource": "",
+      "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
-        "reviewUrl": "",
-        "description": "Hella 2024 the devil isnt red is a verified Vinyl, LP, Album, Limited Edition, Mispress, Reissue, Remastered edition on 5 Rue Christine. The release is indexed under Punk, Experimental, Indie Rock.",
-        "reviewQuote": "",
-        "reviewSource": "",
+        "reviewUrl": "https://pitchfork.com/reviews/albums/3961-the-devil-isnt-red/",
+        "description": "Hella's 2004 The Devil Isn't Red is the Sacramento duo of guitarist Spencer Seim and drummer Zach Hill at their most tightly wound: instrumental rock built from knotted guitar figures, abrupt shifts, and relentlessly precise percussion. This later vinyl edition returns to the original 5 Rue Christine album.",
+        "reviewQuote": "Hella couldn't get no tighter.",
+        "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
           "Zach Hill",
           "bygones",
@@ -3482,7 +3497,7 @@
           "Lightning Bolt",
           "Tera Melos"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Pitchfork / Kill Rock Stars",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -3714,8 +3729,10 @@
       },
       "catalogNumber": "GER082",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtph8t19gakw0e",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
         "Zach Hill",
@@ -3724,6 +3741,7 @@
         "Lightning Bolt",
         "Tera Melos"
       ],
+      "homeCollections": [],
       "researchSources": [
         {
           "url": "https://www.discogs.com/release/31855538-Hella-The-Devil-Isnt-Red",
@@ -3731,18 +3749,21 @@
           "confidence": 125
         }
       ],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
-      "enrichmentOrigin": "discogs",
+      "enrichmentOrigin": "source+curated-editorial",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Pitchfork / Kill Rock Stars",
       "metadataSourceUrl": "https://www.discogs.com/release/31855538-Hella-The-Devil-Isnt-Red",
-      "enrichmentUpdatedAt": "2026-09-08",
+      "editorialUpdatedAt": "2026-09-09T11:02:32.256+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
-      "enrichmentAttemptedAt": "2026-09-08T22:00:11.356Z",
+      "enrichmentAttemptedAt": "2026-09-09T11:01:30.983Z",
       "enrichmentFingerprint": "hella|the devil isn t red|vinyl|7 59656 10821 8|ger082",
       "relatedArtistEvidence": [
         {
@@ -3972,18 +3993,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 10,
-      "editorialUpdatedAt": "2026-09-08T22:00:12.414+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-09",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -73594,486 +73613,6 @@
       }
     },
     {
-      "id": "nxp-2026-cd-0007",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0007",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0007"
-      ],
-      "year": 2025,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
-      "label": "True Panther",
-      "price": 450000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Pirouette",
-      "artist": "Model Actriz",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
-        "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0007",
-        "Format: CD",
-        "Condition: New-Sealed"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.793Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.174Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.931Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.735Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.309Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.793Z",
-        "sku": "NXP-2026-CD-0007",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
-      "reviewQuote": "savor their own powerlessness",
-      "imageCredits": [
-        {
-          "url": "https://truepanther.com/",
-          "image": "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png",
-          "credit": "True Panther"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
-        "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
-        "reviewQuote": "savor their own powerlessness",
-        "reviewSource": "Pitchfork (quoted)",
-        "relatedArtists": [
-          "Osees",
-          "thirtytwobitwhore",
-          "Los Yolos",
-          "The WAEVE"
-        ],
-        "enrichmentStatus": "complete-no-related-artists",
-        "descriptionSource": "Pitchfork / The Guardian",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Osees",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.26087,
-            "artist": "thirtytwobitwhore",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.26087,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.169578,
-            "artist": "Los Yolos",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.169578,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.153794,
-            "artist": "The WAEVE",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.153794,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Osees",
-              "thirtytwobitwhore",
-              "Los Yolos",
-              "The WAEVE"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Osees",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.26087,
-                "artist": "thirtytwobitwhore",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-                "confidence": 0.26087,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.169578,
-                "artist": "Los Yolos",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-                "confidence": 0.169578,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.153794,
-                "artist": "The WAEVE",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-                "confidence": 0.153794,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Osees",
-            "thirtytwobitwhore",
-            "Los Yolos",
-            "The WAEVE"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Osees",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.26087,
-              "artist": "thirtytwobitwhore",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.26087,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.169578,
-              "artist": "Los Yolos",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.169578,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.153794,
-              "artist": "The WAEVE",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.153794,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-          "sourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": 16,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47vdluske",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Osees",
-        "thirtytwobitwhore",
-        "Los Yolos",
-        "The WAEVE"
-      ],
-      "homeCollections": [
-        "recent-releases"
-      ],
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "Pitchfork / The Guardian",
-      "metadataSourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-      "enrichmentUpdatedAt": "2026-08-18",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-      "enrichmentAttemptedAt": "2026-08-18T16:53:50.120Z",
-      "enrichmentFingerprint": "model actriz|pirouette|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Osees",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.26087,
-          "artist": "thirtytwobitwhore",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-          "confidence": 0.26087,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.169578,
-          "artist": "Los Yolos",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-          "confidence": 0.169578,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.153794,
-          "artist": "The WAEVE",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-          "confidence": 0.153794,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Osees",
-            "thirtytwobitwhore",
-            "Los Yolos",
-            "The WAEVE"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Osees",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.26087,
-              "artist": "thirtytwobitwhore",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.26087,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.169578,
-              "artist": "Los Yolos",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.169578,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.153794,
-              "artist": "The WAEVE",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.153794,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Osees",
-          "thirtytwobitwhore",
-          "Los Yolos",
-          "The WAEVE"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Osees",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.26087,
-            "artist": "thirtytwobitwhore",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.26087,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.169578,
-            "artist": "Los Yolos",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.169578,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.153794,
-            "artist": "The WAEVE",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.153794,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-        "sourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "nxp-2026-vnl-0009",
       "qty": 1,
       "sku": "NXP-2026-VNL-0009",
@@ -75326,6 +74865,1270 @@
       }
     },
     {
+      "id": "nxp-2026-cd-0007",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0007",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0007"
+      ],
+      "year": 2025,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
+      "label": "True Panther",
+      "price": 450000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Pirouette",
+      "artist": "Model Actriz",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
+        "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CD-0007",
+        "Format: CD",
+        "Condition: New-Sealed"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "autoCover": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.793Z",
+          "sku": "NXP-2026-CD-0007",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-CD-0007",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.174Z",
+          "sku": "NXP-2026-CD-0007",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.931Z",
+          "sku": "NXP-2026-CD-0007",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-CD-0007",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.735Z",
+          "sku": "NXP-2026-CD-0007",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.222Z",
+          "sku": "NXP-2026-CD-0007",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.309Z",
+          "sku": "NXP-2026-CD-0007",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.793Z",
+        "sku": "NXP-2026-CD-0007",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
+      "reviewQuote": "savor their own powerlessness",
+      "imageCredits": [
+        {
+          "url": "https://truepanther.com/",
+          "image": "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png",
+          "credit": "True Panther"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
+        "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
+        "reviewQuote": "savor their own powerlessness",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Osees",
+          "thirtytwobitwhore",
+          "Los Yolos",
+          "The WAEVE"
+        ],
+        "enrichmentStatus": "complete-no-related-artists",
+        "descriptionSource": "Pitchfork / The Guardian",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Osees",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.26087,
+            "artist": "thirtytwobitwhore",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.26087,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.169578,
+            "artist": "Los Yolos",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.169578,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.153794,
+            "artist": "The WAEVE",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.153794,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Osees",
+              "thirtytwobitwhore",
+              "Los Yolos",
+              "The WAEVE"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Osees",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.26087,
+                "artist": "thirtytwobitwhore",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 0.26087,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.169578,
+                "artist": "Los Yolos",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 0.169578,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.153794,
+                "artist": "The WAEVE",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 0.153794,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Osees",
+            "thirtytwobitwhore",
+            "Los Yolos",
+            "The WAEVE"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Osees",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.26087,
+              "artist": "thirtytwobitwhore",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.26087,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.169578,
+              "artist": "Los Yolos",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.169578,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.153794,
+              "artist": "The WAEVE",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.153794,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+          "sourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "",
+      "displayFormat": "CD",
+      "homeSlideSort": 16,
+      "publishStatus": "Published",
+      "financeStockId": "mr6ja47vdluske",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Osees",
+        "thirtytwobitwhore",
+        "Los Yolos",
+        "The WAEVE"
+      ],
+      "homeCollections": [
+        "recent-releases"
+      ],
+      "sleeveCondition": "",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "Pitchfork / The Guardian",
+      "metadataSourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+      "enrichmentUpdatedAt": "2026-08-18",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+      "enrichmentAttemptedAt": "2026-08-18T16:53:50.120Z",
+      "enrichmentFingerprint": "model actriz|pirouette|cd||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Osees",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.26087,
+          "artist": "thirtytwobitwhore",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 0.26087,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.169578,
+          "artist": "Los Yolos",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 0.169578,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.153794,
+          "artist": "The WAEVE",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 0.153794,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Osees",
+            "thirtytwobitwhore",
+            "Los Yolos",
+            "The WAEVE"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Osees",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.26087,
+              "artist": "thirtytwobitwhore",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.26087,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.169578,
+              "artist": "Los Yolos",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.169578,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.153794,
+              "artist": "The WAEVE",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.153794,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Osees",
+          "thirtytwobitwhore",
+          "Los Yolos",
+          "The WAEVE"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Osees",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.26087,
+            "artist": "thirtytwobitwhore",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.26087,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.169578,
+            "artist": "Los Yolos",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.169578,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.153794,
+            "artist": "The WAEVE",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.153794,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+        "sourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-cd-0004",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0004",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0004"
+      ],
+      "year": 2010,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg",
+      "label": "Freestyle Dust / Parlophone",
+      "price": 150000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Further",
+      "artist": "The Chemical Brothers",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg"
+      ],
+      "barcode": "4988006880009",
+      "details": [
+        "SKU: NXP-2026-CD-0004",
+        "Format: CD",
+        "Condition: Used Excellent"
+      ],
+      "edition": "CD / DVD-Video",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0004/cover.jpg",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://www.theguardian.com/music/2010/may/21/the-chemical-brothers-review",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.792Z",
+          "sku": "NXP-2026-CD-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.962Z",
+          "sku": "NXP-2026-CD-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.172Z",
+          "sku": "NXP-2026-CD-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.931Z",
+          "sku": "NXP-2026-CD-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.762Z",
+          "sku": "NXP-2026-CD-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.734Z",
+          "sku": "NXP-2026-CD-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.221Z",
+          "sku": "NXP-2026-CD-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.308Z",
+          "sku": "NXP-2026-CD-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.792Z",
+        "sku": "NXP-2026-CD-0004",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "The Chemical Brothers' 2010 Further is a sequence of electronic songs designed as an audio-visual experience, balancing psychedelic repetition with the duo's club-scale impact.",
+      "reviewQuote": "audio-visual experience",
+      "imageCredits": [],
+      "reviewSource": "The Guardian (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.theguardian.com/music/2010/may/21/the-chemical-brothers-review",
+        "description": "The Chemical Brothers' 2010 Further is a sequence of electronic songs designed as an audio-visual experience, balancing psychedelic repetition with the duo's club-scale impact.",
+        "reviewQuote": "audio-visual experience",
+        "reviewSource": "The Guardian (quoted)",
+        "relatedArtists": [
+          "Fatboy Slim",
+          "The Crystal Method",
+          "The Prodigy",
+          "Propellerheads",
+          "Leftfield"
+        ],
+        "descriptionSource": "The Guardian",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Fatboy Slim",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.674978,
+            "artist": "The Crystal Method",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 0.674978,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.610528,
+            "artist": "The Prodigy",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 0.610528,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.536361,
+            "artist": "Propellerheads",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 0.536361,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.529311,
+            "artist": "Leftfield",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 0.529311,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Fatboy Slim",
+              "The Crystal Method",
+              "The Prodigy",
+              "Propellerheads",
+              "Leftfield",
+              "Orbital",
+              "Apollo 440",
+              "Underworld",
+              "Fluke",
+              "Groove Armada"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Fatboy Slim",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.674978,
+                "artist": "The Crystal Method",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 0.674978,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.610528,
+                "artist": "The Prodigy",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 0.610528,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.536361,
+                "artist": "Propellerheads",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 0.536361,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.529311,
+                "artist": "Leftfield",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 0.529311,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.483002,
+                "artist": "Orbital",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 0.483002,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.475069,
+                "artist": "Apollo 440",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 0.475069,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.461111,
+                "artist": "Underworld",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 0.461111,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.444155,
+                "artist": "Fluke",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 0.444155,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.422527,
+                "artist": "Groove Armada",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+                "confidence": 0.422527,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Fatboy Slim",
+            "The Crystal Method",
+            "The Prodigy",
+            "Propellerheads",
+            "Leftfield"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Fatboy Slim",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.674978,
+              "artist": "The Crystal Method",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.674978,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.610528,
+              "artist": "The Prodigy",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.610528,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.536361,
+              "artist": "Propellerheads",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.536361,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.529311,
+              "artist": "Leftfield",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.529311,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "0a0bf421-dd43-42eb-8031-61a505bce031",
+          "sourceUrl": "https://musicbrainz.org/release/0a0bf421-dd43-42eb-8031-61a505bce031",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "TOCP-66961",
+      "displayFormat": "CD",
+      "homeSlideSort": 13,
+      "publishStatus": "Published",
+      "financeStockId": "mr6ja47umhud0m",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Fatboy Slim",
+        "The Crystal Method",
+        "The Prodigy",
+        "Propellerheads",
+        "Leftfield"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "The Guardian",
+      "metadataSourceUrl": "https://musicbrainz.org/release/0a0bf421-dd43-42eb-8031-61a505bce031",
+      "enrichmentUpdatedAt": "2026-08-18",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "0a0bf421-dd43-42eb-8031-61a505bce031",
+      "enrichmentAttemptedAt": "2026-08-18T16:52:36.839Z",
+      "enrichmentFingerprint": "the chemical brothers|further|cd||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Fatboy Slim",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.674978,
+          "artist": "The Crystal Method",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+          "confidence": 0.674978,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.610528,
+          "artist": "The Prodigy",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+          "confidence": 0.610528,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.536361,
+          "artist": "Propellerheads",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+          "confidence": 0.536361,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.529311,
+          "artist": "Leftfield",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+          "confidence": 0.529311,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Fatboy Slim",
+            "The Crystal Method",
+            "The Prodigy",
+            "Propellerheads",
+            "Leftfield",
+            "Orbital",
+            "Apollo 440",
+            "Underworld",
+            "Fluke",
+            "Groove Armada"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Fatboy Slim",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.674978,
+              "artist": "The Crystal Method",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.674978,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.610528,
+              "artist": "The Prodigy",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.610528,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.536361,
+              "artist": "Propellerheads",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.536361,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.529311,
+              "artist": "Leftfield",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.529311,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.483002,
+              "artist": "Orbital",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.483002,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.475069,
+              "artist": "Apollo 440",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.475069,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.461111,
+              "artist": "Underworld",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.461111,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.444155,
+              "artist": "Fluke",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.444155,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.422527,
+              "artist": "Groove Armada",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+              "confidence": 0.422527,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Fatboy Slim",
+          "The Crystal Method",
+          "The Prodigy",
+          "Propellerheads",
+          "Leftfield"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Fatboy Slim",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.674978,
+            "artist": "The Crystal Method",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 0.674978,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.610528,
+            "artist": "The Prodigy",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 0.610528,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.536361,
+            "artist": "Propellerheads",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 0.536361,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.529311,
+            "artist": "Leftfield",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
+            "confidence": 0.529311,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "0a0bf421-dd43-42eb-8031-61a505bce031",
+        "sourceUrl": "https://musicbrainz.org/release/0a0bf421-dd43-42eb-8031-61a505bce031",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-app-0004-mesh-black-longsleeve",
+      "qty": 15,
+      "sku": "NXP-2026-APP-0004",
+      "tags": [],
+      "year": 2026,
+      "color": "Black",
+      "image": "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+      "label": "Nix Powell",
+      "price": 380000,
+      "sizes": [
+        {
+          "label": "S",
+          "soldOut": false,
+          "quantity": 1
+        },
+        {
+          "label": "M",
+          "soldOut": false,
+          "quantity": 4
+        },
+        {
+          "label": "L",
+          "soldOut": false,
+          "quantity": 6
+        },
+        {
+          "label": "XL",
+          "soldOut": false,
+          "quantity": 4
+        }
+      ],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 15
+      },
+      "title": "Mesh Black Longsleeve",
+      "artist": "Cold Metal Breathes Too",
+      "format": "Apparel",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08839j-jpg-1783936997925.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08615-jpg-1783940071226.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08635-jpg-1783940071368.jpg"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "",
+      "category": "Apparel",
+      "material": "Heavy Cotton 16s 250GSM",
+      "condition": "New-Sealed",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.796Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-29T10:09:43.965Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-29T09:54:26.176Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-29T02:23:49.934Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-28T09:19:04.765Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-28T02:12:08.737Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-27T15:01:51.312Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "Cold Metal Breathes Too",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.796Z",
+        "sku": "NXP-2026-APP-0004",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 15
+      },
+      "visibility": "Public",
+      "apparelType": "Tops",
+      "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
+      "reviewQuote": "",
+      "imageCredits": [],
+      "reviewSource": "",
+      "catalogNumber": "",
+      "displayFormat": "",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "catalog-nxp-2026-app-0004-mesh-black-longsleeve",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "",
+      "manualRelatedArtists": [],
+      "minimumAcceptableOffer": 0,
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
+        "status": "format_reference",
+        "widthCm": 28,
+        "heightCm": 4,
+        "lengthCm": 36,
+        "updatedAt": "2026-09-02",
+        "packageType": "zip-lock-polybag-shipping-wrap",
+        "weightGrams": 360,
+        "shippingClass": "apparel-soft-zip-lock-wrap",
+        "packagingGroup": "SOFT_APPAREL",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "nxp-2026-vnl-0008",
       "qty": 1,
       "sku": "NXP-2026-VNL-0008",
@@ -75963,632 +76766,6 @@
       }
     },
     {
-      "id": "nxp-2026-cd-0004",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0004",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0004"
-      ],
-      "year": 2010,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg",
-      "label": "Freestyle Dust / Parlophone",
-      "price": 150000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Further",
-      "artist": "The Chemical Brothers",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg"
-      ],
-      "barcode": "4988006880009",
-      "details": [
-        "SKU: NXP-2026-CD-0004",
-        "Format: CD",
-        "Condition: Used Excellent"
-      ],
-      "edition": "CD / DVD-Video",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0004/cover.jpg",
-      "condition": "Used Excellent",
-      "reviewUrl": "https://www.theguardian.com/music/2010/may/21/the-chemical-brothers-review",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.792Z",
-          "sku": "NXP-2026-CD-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.962Z",
-          "sku": "NXP-2026-CD-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.172Z",
-          "sku": "NXP-2026-CD-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.931Z",
-          "sku": "NXP-2026-CD-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.762Z",
-          "sku": "NXP-2026-CD-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.734Z",
-          "sku": "NXP-2026-CD-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.221Z",
-          "sku": "NXP-2026-CD-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.308Z",
-          "sku": "NXP-2026-CD-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.792Z",
-        "sku": "NXP-2026-CD-0004",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "The Chemical Brothers' 2010 Further is a sequence of electronic songs designed as an audio-visual experience, balancing psychedelic repetition with the duo's club-scale impact.",
-      "reviewQuote": "audio-visual experience",
-      "imageCredits": [],
-      "reviewSource": "The Guardian (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://www.theguardian.com/music/2010/may/21/the-chemical-brothers-review",
-        "description": "The Chemical Brothers' 2010 Further is a sequence of electronic songs designed as an audio-visual experience, balancing psychedelic repetition with the duo's club-scale impact.",
-        "reviewQuote": "audio-visual experience",
-        "reviewSource": "The Guardian (quoted)",
-        "relatedArtists": [
-          "Fatboy Slim",
-          "The Crystal Method",
-          "The Prodigy",
-          "Propellerheads",
-          "Leftfield"
-        ],
-        "descriptionSource": "The Guardian",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Fatboy Slim",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.674978,
-            "artist": "The Crystal Method",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 0.674978,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.610528,
-            "artist": "The Prodigy",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 0.610528,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.536361,
-            "artist": "Propellerheads",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 0.536361,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.529311,
-            "artist": "Leftfield",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 0.529311,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Fatboy Slim",
-              "The Crystal Method",
-              "The Prodigy",
-              "Propellerheads",
-              "Leftfield",
-              "Orbital",
-              "Apollo 440",
-              "Underworld",
-              "Fluke",
-              "Groove Armada"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Fatboy Slim",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.674978,
-                "artist": "The Crystal Method",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 0.674978,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.610528,
-                "artist": "The Prodigy",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 0.610528,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.536361,
-                "artist": "Propellerheads",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 0.536361,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.529311,
-                "artist": "Leftfield",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 0.529311,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.483002,
-                "artist": "Orbital",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 0.483002,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.475069,
-                "artist": "Apollo 440",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 0.475069,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.461111,
-                "artist": "Underworld",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 0.461111,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.444155,
-                "artist": "Fluke",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 0.444155,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.422527,
-                "artist": "Groove Armada",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-                "confidence": 0.422527,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Fatboy Slim",
-            "The Crystal Method",
-            "The Prodigy",
-            "Propellerheads",
-            "Leftfield"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Fatboy Slim",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.674978,
-              "artist": "The Crystal Method",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.674978,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.610528,
-              "artist": "The Prodigy",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.610528,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.536361,
-              "artist": "Propellerheads",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.536361,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.529311,
-              "artist": "Leftfield",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.529311,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "0a0bf421-dd43-42eb-8031-61a505bce031",
-          "sourceUrl": "https://musicbrainz.org/release/0a0bf421-dd43-42eb-8031-61a505bce031",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "TOCP-66961",
-      "displayFormat": "CD",
-      "homeSlideSort": 13,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47umhud0m",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Fatboy Slim",
-        "The Crystal Method",
-        "The Prodigy",
-        "Propellerheads",
-        "Leftfield"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "The Guardian",
-      "metadataSourceUrl": "https://musicbrainz.org/release/0a0bf421-dd43-42eb-8031-61a505bce031",
-      "enrichmentUpdatedAt": "2026-08-18",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "0a0bf421-dd43-42eb-8031-61a505bce031",
-      "enrichmentAttemptedAt": "2026-08-18T16:52:36.839Z",
-      "enrichmentFingerprint": "the chemical brothers|further|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Fatboy Slim",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.674978,
-          "artist": "The Crystal Method",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-          "confidence": 0.674978,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.610528,
-          "artist": "The Prodigy",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-          "confidence": 0.610528,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.536361,
-          "artist": "Propellerheads",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-          "confidence": 0.536361,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.529311,
-          "artist": "Leftfield",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-          "confidence": 0.529311,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Fatboy Slim",
-            "The Crystal Method",
-            "The Prodigy",
-            "Propellerheads",
-            "Leftfield",
-            "Orbital",
-            "Apollo 440",
-            "Underworld",
-            "Fluke",
-            "Groove Armada"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Fatboy Slim",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.674978,
-              "artist": "The Crystal Method",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.674978,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.610528,
-              "artist": "The Prodigy",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.610528,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.536361,
-              "artist": "Propellerheads",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.536361,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.529311,
-              "artist": "Leftfield",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.529311,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.483002,
-              "artist": "Orbital",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.483002,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.475069,
-              "artist": "Apollo 440",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.475069,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.461111,
-              "artist": "Underworld",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.461111,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.444155,
-              "artist": "Fluke",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.444155,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.422527,
-              "artist": "Groove Armada",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-              "confidence": 0.422527,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Fatboy Slim",
-          "The Crystal Method",
-          "The Prodigy",
-          "Propellerheads",
-          "Leftfield"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Fatboy Slim",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.674978,
-            "artist": "The Crystal Method",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 0.674978,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.610528,
-            "artist": "The Prodigy",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 0.610528,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.536361,
-            "artist": "Propellerheads",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 0.536361,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.529311,
-            "artist": "Leftfield",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/The%20Chemical%20Brothers",
-            "confidence": 0.529311,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "0a0bf421-dd43-42eb-8031-61a505bce031",
-        "sourceUrl": "https://musicbrainz.org/release/0a0bf421-dd43-42eb-8031-61a505bce031",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "nxp-2026-cd-0020",
       "qty": 1,
       "sku": "NXP-2026-CD-0020",
@@ -77210,164 +77387,6 @@
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "nxp-2026-app-0004-mesh-black-longsleeve",
-      "qty": 15,
-      "sku": "NXP-2026-APP-0004",
-      "tags": [],
-      "year": 2026,
-      "color": "Black",
-      "image": "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
-      "label": "Nix Powell",
-      "price": 380000,
-      "sizes": [
-        {
-          "label": "S",
-          "soldOut": false,
-          "quantity": 1
-        },
-        {
-          "label": "M",
-          "soldOut": false,
-          "quantity": 4
-        },
-        {
-          "label": "L",
-          "soldOut": false,
-          "quantity": 6
-        },
-        {
-          "label": "XL",
-          "soldOut": false,
-          "quantity": 4
-        }
-      ],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 15
-      },
-      "title": "Mesh Black Longsleeve",
-      "artist": "Cold Metal Breathes Too",
-      "format": "Apparel",
-      "images": [
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08839j-jpg-1783936997925.jpg",
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08615-jpg-1783940071226.jpg",
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08635-jpg-1783940071368.jpg"
-      ],
-      "barcode": "",
-      "details": [],
-      "edition": "",
-      "category": "Apparel",
-      "material": "Heavy Cotton 16s 250GSM",
-      "condition": "New-Sealed",
-      "reviewUrl": "",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.796Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-29T10:09:43.965Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-29T09:54:26.176Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-29T02:23:49.934Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-28T02:12:08.737Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-27T15:01:51.312Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "Cold Metal Breathes Too",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.796Z",
-        "sku": "NXP-2026-APP-0004",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 15
-      },
-      "visibility": "Public",
-      "apparelType": "Tops",
-      "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
-      "reviewQuote": "",
-      "imageCredits": [],
-      "reviewSource": "",
-      "catalogNumber": "",
-      "displayFormat": "",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "catalog-nxp-2026-app-0004-mesh-black-longsleeve",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "descriptionSource": "",
-      "manualRelatedArtists": [],
-      "minimumAcceptableOffer": 0,
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "relatedArtistsResearch": null,
-      "shipping": {
-        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
-        "status": "format_reference",
-        "widthCm": 28,
-        "heightCm": 4,
-        "lengthCm": 36,
-        "updatedAt": "2026-09-02",
-        "packageType": "zip-lock-polybag-shipping-wrap",
-        "weightGrams": 360,
-        "shippingClass": "apparel-soft-zip-lock-wrap",
-        "packagingGroup": "SOFT_APPAREL",
         "vinylWeightClass": "",
         "manualShippingOverride": false
       }
