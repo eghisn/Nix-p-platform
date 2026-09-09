@@ -27084,7 +27084,9 @@
         "sexual",
         "summer",
         "urban",
-        "warm"
+        "warm",
+        "New Wave",
+        "Rock"
       ],
       "year": 1982,
       "color": "",
@@ -27103,21 +27105,32 @@
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0040/cover.jpg"
       ],
-      "barcode": "",
+      "barcode": "31191420111 / 31191420111",
       "details": [
         "SKU: NXP-2026-VNL-0040",
         "Format: Vinyl",
         "Condition: Used Good",
-        "Edition: Vinyl, LP, Album, Reissue",
-        "Catalog number: SHM 3119"
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Reissue",
+        "Catalog number: SHM 3119",
+        "Barcode: 31191420111 / 31191420111"
       ],
       "edition": "Vinyl, LP, Album, Reissue",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0040/cover.jpg",
       "condition": "Used Good",
-      "reviewUrl": "https://www.allmusic.com/album/blondie-mw0000590317",
+      "reviewUrl": "",
       "syncAudit": [
+        {
+          "at": "2026-09-09T17:03:37.292Z",
+          "sku": "NXp-2026-VNL-0040",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-08-30T02:14:08.800Z",
           "sku": "NXp-2026-VNL-0040",
@@ -27166,19 +27179,12 @@
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.324Z",
-          "sku": "NXp-2026-VNL-0040",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
         }
       ],
       "updatedAt": "2026-09-09",
       "collection": "Pickwick Records",
       "syncStatus": {
-        "at": "2026-08-30T02:14:08.800Z",
+        "at": "2026-09-09T17:03:37.292Z",
         "sku": "NXp-2026-VNL-0040",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
@@ -27186,13 +27192,15 @@
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Blondie's 1982 release Blondie is a Vinyl edition issued by Pickwick Records, documented by MusicBrainz as alternative, beach, cbgb punk.",
-      "reviewQuote": "Blondie by Blondie released in 1976. Find Blondie reviews, track lists, credits, awards and more at AllMusic.",
+      "description": "Blondie's self-titled 1976 debut places the New York band at the intersection of CBGB punk, pop melody, and downtown cool, with Debbie Harry's voice and Chris Stein's guitar giving its sharpest songs a stylish charge. This Pickwick issue documents the album in a later budget reissue form.",
+      "reviewQuote": "",
+      "sourceTitle": "blondie",
+      "editRevision": 3,
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/cd361727-c32f-42f9-8d35-6514916d994f",
+          "url": "https://www.discogs.com/release/20254000-Blondie-Blondie",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0040/cover.jpg",
-          "credit": "Cover Art Archive / MusicBrainz front artwork"
+          "credit": "Discogs physical-release artwork"
         },
         {
           "url": "https://musicbrainz.org/release/cd361727-c32f-42f9-8d35-6514916d994f",
@@ -27200,12 +27208,12 @@
           "credit": "Cover Art Archive / MusicBrainz physical release scan"
         }
       ],
-      "reviewSource": "AllMusic (quoted)",
+      "reviewSource": "",
       "autoEditorial": {
-        "reviewUrl": "https://www.allmusic.com/album/blondie-mw0000590317",
-        "description": "Blondie's 1982 release Blondie is a Vinyl edition issued by Pickwick Records, documented by MusicBrainz as alternative, beach, cbgb punk.",
-        "reviewQuote": "Blondie by Blondie released in 1976. Find Blondie reviews, track lists, credits, awards and more at AllMusic.",
-        "reviewSource": "AllMusic (quoted)",
+        "reviewUrl": "",
+        "description": "Blondie's self-titled 1976 debut places the New York band at the intersection of CBGB punk, pop melody, and downtown cool, with Debbie Harry's voice and Chris Stein's guitar giving its sharpest songs a stylish charge. This Pickwick issue documents the album in a later budget reissue form.",
+        "reviewQuote": "",
+        "reviewSource": "",
         "relatedArtists": [
           "Deborah Harry",
           "The Pretenders",
@@ -27213,7 +27221,7 @@
           "The Go-Go's",
           "Eurythmics"
         ],
-        "descriptionSource": "MusicBrainz",
+        "descriptionSource": "Rock & Roll Hall of Fame / Private Stock",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -27227,47 +27235,47 @@
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.391184,
+            "match": 0.426724,
             "artist": "The Pretenders",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Blondie",
-            "confidence": 0.391184,
+            "confidence": 0.426724,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.359142,
+            "match": 0.386525,
             "artist": "The B-52's",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Blondie",
-            "confidence": 0.359142,
+            "confidence": 0.386525,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.323914,
+            "match": 0.348313,
             "artist": "The Go-Go's",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Blondie",
-            "confidence": 0.323914,
+            "confidence": 0.348313,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.300571,
+            "match": 0.328256,
             "artist": "Eurythmics",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Blondie",
-            "confidence": 0.300571,
+            "confidence": 0.328256,
             "relationType": "artist-similarity"
           }
         ],
@@ -27284,7 +27292,7 @@
               "The Bangles",
               "Cyndi Lauper",
               "The Cars",
-              "The Police",
+              "Pat Benatar",
               "Kim Wilde"
             ],
             "evidence": [
@@ -27297,75 +27305,75 @@
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.391184,
+                "match": 0.426724,
                 "artist": "The Pretenders",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Blondie",
-                "confidence": 0.391184,
+                "confidence": 0.426724,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.359142,
+                "match": 0.386525,
                 "artist": "The B-52's",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Blondie",
-                "confidence": 0.359142,
+                "confidence": 0.386525,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.323914,
+                "match": 0.348313,
                 "artist": "The Go-Go's",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Blondie",
-                "confidence": 0.323914,
+                "confidence": 0.348313,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.300571,
+                "match": 0.328256,
                 "artist": "Eurythmics",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Blondie",
-                "confidence": 0.300571,
+                "confidence": 0.328256,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.286181,
+                "match": 0.309133,
                 "artist": "The Bangles",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Blondie",
-                "confidence": 0.286181,
+                "confidence": 0.309133,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.275368,
+                "match": 0.292031,
                 "artist": "Cyndi Lauper",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Blondie",
-                "confidence": 0.275368,
+                "confidence": 0.292031,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.268068,
+                "match": 0.276943,
                 "artist": "The Cars",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Blondie",
-                "confidence": 0.268068,
+                "confidence": 0.276943,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.265036,
-                "artist": "The Police",
+                "match": 0.274821,
+                "artist": "Pat Benatar",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Blondie",
-                "confidence": 0.265036,
+                "confidence": 0.274821,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.248387,
+                "match": 0.263216,
                 "artist": "Kim Wilde",
                 "source": "Last.fm similar artist",
                 "sourceUrl": "https://www.last.fm/music/Blondie",
-                "confidence": 0.248387,
+                "confidence": 0.263216,
                 "relationType": "artist-similarity"
               }
             ],
@@ -27393,47 +27401,47 @@
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.391184,
+              "match": 0.426724,
               "artist": "The Pretenders",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.391184,
+              "confidence": 0.426724,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.359142,
+              "match": 0.386525,
               "artist": "The B-52's",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.359142,
+              "confidence": 0.386525,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.323914,
+              "match": 0.348313,
               "artist": "The Go-Go's",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.323914,
+              "confidence": 0.348313,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.300571,
+              "match": 0.328256,
               "artist": "Eurythmics",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.300571,
+              "confidence": 0.328256,
               "relationType": "artist-similarity"
             }
           ],
@@ -27458,21 +27466,31 @@
         "Eurythmics"
       ],
       "homeCollections": [],
+      "researchSources": [
+        {
+          "url": "https://www.discogs.com/release/20254000-Blondie-Blondie",
+          "source": "Discogs",
+          "confidence": 100
+        }
+      ],
       "sleeveCondition": "",
       "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
+      "enrichmentOrigin": "source+curated-editorial",
       "enrichmentStatus": "complete",
-      "descriptionSource": "MusicBrainz",
-      "metadataSourceUrl": "https://musicbrainz.org/release/cd361727-c32f-42f9-8d35-6514916d994f",
+      "descriptionSource": "Rock & Roll Hall of Fame / Private Stock",
+      "metadataSourceUrl": "https://www.discogs.com/release/20254000-Blondie-Blondie",
       "publicationIssues": [
         "review",
         "review source",
         "related artists available in inventory"
       ],
-      "enrichmentUpdatedAt": "2026-08-11",
+      "editorialUpdatedAt": "2026-09-09T17:04:52.969+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "enrichmentUpdatedAt": "2026-09-09",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "cd361727-c32f-42f9-8d35-6514916d994f",
-      "enrichmentAttemptedAt": "2026-08-11T13:29:01.377Z",
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-09-09T17:03:37.292Z",
       "enrichmentFingerprint": "blondie|blondie|vinyl||shm 3119",
       "relatedArtistEvidence": [
         {
@@ -27487,47 +27505,47 @@
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.391184,
+          "match": 0.426724,
           "artist": "The Pretenders",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
           "sourceUrl": "https://www.last.fm/music/Blondie",
-          "confidence": 0.391184,
+          "confidence": 0.426724,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.359142,
+          "match": 0.386525,
           "artist": "The B-52's",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
           "sourceUrl": "https://www.last.fm/music/Blondie",
-          "confidence": 0.359142,
+          "confidence": 0.386525,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.323914,
+          "match": 0.348313,
           "artist": "The Go-Go's",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
           "sourceUrl": "https://www.last.fm/music/Blondie",
-          "confidence": 0.323914,
+          "confidence": 0.348313,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.300571,
+          "match": 0.328256,
           "artist": "Eurythmics",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
           "sourceUrl": "https://www.last.fm/music/Blondie",
-          "confidence": 0.300571,
+          "confidence": 0.328256,
           "relationType": "artist-similarity"
         }
       ],
@@ -27545,7 +27563,7 @@
             "The Bangles",
             "Cyndi Lauper",
             "The Cars",
-            "The Police",
+            "Pat Benatar",
             "Kim Wilde"
           ],
           "evidence": [
@@ -27558,75 +27576,75 @@
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.391184,
+              "match": 0.426724,
               "artist": "The Pretenders",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.391184,
+              "confidence": 0.426724,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.359142,
+              "match": 0.386525,
               "artist": "The B-52's",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.359142,
+              "confidence": 0.386525,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.323914,
+              "match": 0.348313,
               "artist": "The Go-Go's",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.323914,
+              "confidence": 0.348313,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.300571,
+              "match": 0.328256,
               "artist": "Eurythmics",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.300571,
+              "confidence": 0.328256,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.286181,
+              "match": 0.309133,
               "artist": "The Bangles",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.286181,
+              "confidence": 0.309133,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.275368,
+              "match": 0.292031,
               "artist": "Cyndi Lauper",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.275368,
+              "confidence": 0.292031,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.268068,
+              "match": 0.276943,
               "artist": "The Cars",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.268068,
+              "confidence": 0.276943,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.265036,
-              "artist": "The Police",
+              "match": 0.274821,
+              "artist": "Pat Benatar",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.265036,
+              "confidence": 0.274821,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.248387,
+              "match": 0.263216,
               "artist": "Kim Wilde",
               "source": "Last.fm similar artist",
               "sourceUrl": "https://www.last.fm/music/Blondie",
-              "confidence": 0.248387,
+              "confidence": 0.263216,
               "relationType": "artist-similarity"
             }
           ],
@@ -27654,47 +27672,47 @@
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.391184,
+            "match": 0.426724,
             "artist": "The Pretenders",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Blondie",
-            "confidence": 0.391184,
+            "confidence": 0.426724,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.359142,
+            "match": 0.386525,
             "artist": "The B-52's",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Blondie",
-            "confidence": 0.359142,
+            "confidence": 0.386525,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.323914,
+            "match": 0.348313,
             "artist": "The Go-Go's",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Blondie",
-            "confidence": 0.323914,
+            "confidence": 0.348313,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.300571,
+            "match": 0.328256,
             "artist": "Eurythmics",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
             "sourceUrl": "https://www.last.fm/music/Blondie",
-            "confidence": 0.300571,
+            "confidence": 0.328256,
             "relationType": "artist-similarity"
           }
         ],
@@ -27702,18 +27720,16 @@
         "sourceUrl": "https://musicbrainz.org/release/cd361727-c32f-42f9-8d35-6514916d994f",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-09",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -36026,648 +36042,6 @@
       }
     },
     {
-      "id": "finance-nxp-2026-vnl-0035",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0035",
-      "tags": [
-        "electronic",
-        "experimental pop",
-        "2LP",
-        "Warp"
-      ],
-      "year": 2023,
-      "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-      "label": "Warp Records",
-      "price": 0,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Again",
-      "artist": "Oneohtrix Point Never",
-      "format": "Vinyl",
-      "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg"
-      ],
-      "barcode": "4523132135243",
-      "details": [
-        "SKU: NXP-2026-VNL-0035",
-        "Format: Vinyl",
-        "Condition: New-Unsealed",
-        "Edition: Blue 2xLP",
-        "Catalog number: WARPLP365I"
-      ],
-      "edition": "2 x Vinyl, LP, Album, Blue",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-      "condition": "New-Unsealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.799Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.968Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.184Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.937Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.767Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.740Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.230Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.322Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "Warp Records",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.799Z",
-        "sku": "NXP-2026-VNL-0035",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
-      "reviewQuote": "a nostalgic jam session",
-      "imageCredits": [
-        {
-          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-          "credit": "Oneohtrix Point Never Bandcamp artwork"
-        },
-        {
-          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
-          "credit": "Oneohtrix Point Never Bandcamp product photography"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
-        "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
-        "reviewQuote": "a nostalgic jam session",
-        "reviewSource": "Pitchfork (quoted)",
-        "relatedArtists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "descriptionSource": "Warp Records / Bleep",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Tim Hecker",
-              "Autechre",
-              "James Ferraro",
-              "Emeralds",
-              "Laurel Halo",
-              "Tim Hecker & Daniel Lopatin",
-              "Boards of Canada",
-              "Fennesz",
-              "Steve Hauschildt",
-              "Huerco S."
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Tim Hecker",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.725642,
-                "artist": "Autechre",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.725642,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.688586,
-                "artist": "James Ferraro",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.688586,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.622036,
-                "artist": "Emeralds",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.622036,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.596252,
-                "artist": "Laurel Halo",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.596252,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.570321,
-                "artist": "Tim Hecker & Daniel Lopatin",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.570321,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.556456,
-                "artist": "Boards of Canada",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.556456,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.547454,
-                "artist": "Fennesz",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.547454,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.534696,
-                "artist": "Steve Hauschildt",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.534696,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.492442,
-                "artist": "Huerco S.",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.492442,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-          "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "WARPLP365IBR",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "msm6l1la14ehw1",
-      "mediaCondition": "",
-      "open_to_offers": true,
-      "relatedArtists": [
-        "Tim Hecker",
-        "Autechre",
-        "James Ferraro",
-        "Emeralds",
-        "Laurel Halo"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
-      "enrichmentOrigin": "curated-exact",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Warp Records / Bleep",
-      "metadataSourceUrl": "https://warp.net/products/410494-again",
-      "enrichmentUpdatedAt": "2026-08-09",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-      "enrichmentAttemptedAt": "2026-08-09T20:36:39.408Z",
-      "enrichmentFingerprint": "oneohtrix point never|again|vinyl|4523132135243|warplp365ibr",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Tim Hecker",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.725642,
-          "artist": "Autechre",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.725642,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.688586,
-          "artist": "James Ferraro",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.688586,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.622036,
-          "artist": "Emeralds",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.622036,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.596252,
-          "artist": "Laurel Halo",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.596252,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 1500000,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo",
-            "Tim Hecker & Daniel Lopatin",
-            "Boards of Canada",
-            "Fennesz",
-            "Steve Hauschildt",
-            "Huerco S."
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.570321,
-              "artist": "Tim Hecker & Daniel Lopatin",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.570321,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.556456,
-              "artist": "Boards of Canada",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.556456,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.547454,
-              "artist": "Fennesz",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.547454,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.534696,
-              "artist": "Steve Hauschildt",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.534696,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.492442,
-              "artist": "Huerco S.",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.492442,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-        "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 750,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "heavy",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "finance-nxp-2026-vnl-0034",
       "qty": 1,
       "sku": "NXP-2026-VNL-0034",
@@ -37309,6 +36683,648 @@
         "shippingClass": "vinyl-cardboard-bubble",
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0035",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0035",
+      "tags": [
+        "electronic",
+        "experimental pop",
+        "2LP",
+        "Warp"
+      ],
+      "year": 2023,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+      "label": "Warp Records",
+      "price": 0,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Again",
+      "artist": "Oneohtrix Point Never",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg"
+      ],
+      "barcode": "4523132135243",
+      "details": [
+        "SKU: NXP-2026-VNL-0035",
+        "Format: Vinyl",
+        "Condition: New-Unsealed",
+        "Edition: Blue 2xLP",
+        "Catalog number: WARPLP365I"
+      ],
+      "edition": "2 x Vinyl, LP, Album, Blue",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+      "condition": "New-Unsealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.799Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.968Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.184Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.937Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.767Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.740Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.230Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.322Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "Warp Records",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.799Z",
+        "sku": "NXP-2026-VNL-0035",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
+      "reviewQuote": "a nostalgic jam session",
+      "imageCredits": [
+        {
+          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+          "credit": "Oneohtrix Point Never Bandcamp artwork"
+        },
+        {
+          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
+          "credit": "Oneohtrix Point Never Bandcamp product photography"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
+        "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
+        "reviewQuote": "a nostalgic jam session",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
+        ],
+        "descriptionSource": "Warp Records / Bleep",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Tim Hecker",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725642,
+            "artist": "Autechre",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.688586,
+            "artist": "James Ferraro",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.622036,
+            "artist": "Emeralds",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.596252,
+            "artist": "Laurel Halo",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Tim Hecker",
+              "Autechre",
+              "James Ferraro",
+              "Emeralds",
+              "Laurel Halo",
+              "Tim Hecker & Daniel Lopatin",
+              "Boards of Canada",
+              "Fennesz",
+              "Steve Hauschildt",
+              "Huerco S."
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Tim Hecker",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.725642,
+                "artist": "Autechre",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.725642,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.688586,
+                "artist": "James Ferraro",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.688586,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.622036,
+                "artist": "Emeralds",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.622036,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.596252,
+                "artist": "Laurel Halo",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.596252,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.570321,
+                "artist": "Tim Hecker & Daniel Lopatin",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.570321,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.556456,
+                "artist": "Boards of Canada",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.556456,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.547454,
+                "artist": "Fennesz",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.547454,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.534696,
+                "artist": "Steve Hauschildt",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.534696,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.492442,
+                "artist": "Huerco S.",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.492442,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tim Hecker",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725642,
+              "artist": "Autechre",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.688586,
+              "artist": "James Ferraro",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.622036,
+              "artist": "Emeralds",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.596252,
+              "artist": "Laurel Halo",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+          "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "WARPLP365IBR",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "msm6l1la14ehw1",
+      "mediaCondition": "",
+      "open_to_offers": true,
+      "relatedArtists": [
+        "Tim Hecker",
+        "Autechre",
+        "James Ferraro",
+        "Emeralds",
+        "Laurel Halo"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Warp Records / Bleep",
+      "metadataSourceUrl": "https://warp.net/products/410494-again",
+      "enrichmentUpdatedAt": "2026-08-09",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+      "enrichmentAttemptedAt": "2026-08-09T20:36:39.408Z",
+      "enrichmentFingerprint": "oneohtrix point never|again|vinyl|4523132135243|warplp365ibr",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Tim Hecker",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.725642,
+          "artist": "Autechre",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.725642,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.688586,
+          "artist": "James Ferraro",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.688586,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.622036,
+          "artist": "Emeralds",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.622036,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.596252,
+          "artist": "Laurel Halo",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.596252,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 1500000,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo",
+            "Tim Hecker & Daniel Lopatin",
+            "Boards of Canada",
+            "Fennesz",
+            "Steve Hauschildt",
+            "Huerco S."
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tim Hecker",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725642,
+              "artist": "Autechre",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.688586,
+              "artist": "James Ferraro",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.622036,
+              "artist": "Emeralds",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.596252,
+              "artist": "Laurel Halo",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.570321,
+              "artist": "Tim Hecker & Daniel Lopatin",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.570321,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.556456,
+              "artist": "Boards of Canada",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.556456,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.547454,
+              "artist": "Fennesz",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.547454,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.534696,
+              "artist": "Steve Hauschildt",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.534696,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.492442,
+              "artist": "Huerco S.",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.492442,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Tim Hecker",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725642,
+            "artist": "Autechre",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.688586,
+            "artist": "James Ferraro",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.622036,
+            "artist": "Emeralds",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.596252,
+            "artist": "Laurel Halo",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+        "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 750,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "heavy",
         "manualShippingOverride": false
       }
     },
@@ -61973,211 +61989,6 @@
       }
     },
     {
-      "id": "nxp-2026-cst-0001",
-      "qty": 1,
-      "sku": "NXP-2026-CST-0001",
-      "tags": [
-        "Cassette",
-        "NXP-2026-CST-0001"
-      ],
-      "year": 2000,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg",
-      "label": "Nothing Records / Interscope",
-      "price": 180000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Things Falling Apart",
-      "artist": "Nine Inch Nails",
-      "format": "Cassette",
-      "images": [
-        "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CST-0001",
-        "Format: Cassette",
-        "Condition: Used Good"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "Used Good",
-      "reviewUrl": "https://www.allmusic.com/album/things-falling-apart-mw0000101953",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.792Z",
-          "sku": "NXP-2026-CST-0001",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.962Z",
-          "sku": "NXP-2026-CST-0001",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.172Z",
-          "sku": "NXP-2026-CST-0001",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.930Z",
-          "sku": "NXP-2026-CST-0001",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.762Z",
-          "sku": "NXP-2026-CST-0001",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.734Z",
-          "sku": "NXP-2026-CST-0001",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.221Z",
-          "sku": "NXP-2026-CST-0001",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.308Z",
-          "sku": "NXP-2026-CST-0001",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.792Z",
-        "sku": "NXP-2026-CST-0001",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Nine Inch Nails' 2000 Things Falling Apart is a remix companion to The Fragile, rebuilding its industrial songs through altered rhythms, harsher electronics and new production perspectives.",
-      "reviewQuote": "a completely different beast",
-      "imageCredits": [],
-      "reviewSource": "AllMusic (quoted)",
-      "autoEditorial": {
-        "relatedArtists": [
-          "Nine Inch Noize"
-        ],
-        "enrichmentStatus": "complete",
-        "relatedArtistEvidence": [
-          {
-            "artist": "Nine Inch Noize",
-            "source": "MusicBrainz artist relationship",
-            "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
-            "confidence": "medium",
-            "relationType": "collaboration"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "source": "MusicBrainz",
-          "status": "verified",
-          "artists": [
-            "Nine Inch Noize"
-          ],
-          "evidence": [
-            {
-              "artist": "Nine Inch Noize",
-              "source": "MusicBrainz artist relationship",
-              "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
-              "confidence": "medium",
-              "relationType": "collaboration"
-            }
-          ],
-          "releaseId": "",
-          "sourceUrl": ""
-        }
-      },
-      "catalogNumber": "",
-      "displayFormat": "Cassette",
-      "homeSlideSort": 19,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47udtm7zc",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Nine Inch Noize"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Pitchfork / AllMusic",
-      "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:58:37.331Z",
-      "enrichmentFingerprint": "nine inch nails|things falling apart|cassette||",
-      "relatedArtistEvidence": [
-        {
-          "artist": "Nine Inch Noize",
-          "source": "MusicBrainz artist relationship",
-          "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
-          "confidence": "medium",
-          "relationType": "collaboration"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "source": "MusicBrainz",
-        "status": "verified",
-        "artists": [
-          "Nine Inch Noize"
-        ],
-        "evidence": [
-          {
-            "artist": "Nine Inch Noize",
-            "source": "MusicBrainz artist relationship",
-            "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
-            "confidence": "medium",
-            "relationType": "collaboration"
-          }
-        ],
-        "releaseId": "",
-        "sourceUrl": ""
-      },
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 12,
-        "heightCm": 8,
-        "lengthCm": 16,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 90,
-        "shippingClass": "small-media-cassette-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "nxp-2026-cd-0005",
       "qty": 1,
       "sku": "NXP-2026-CD-0005",
@@ -62787,6 +62598,211 @@
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-cst-0001",
+      "qty": 1,
+      "sku": "NXP-2026-CST-0001",
+      "tags": [
+        "Cassette",
+        "NXP-2026-CST-0001"
+      ],
+      "year": 2000,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg",
+      "label": "Nothing Records / Interscope",
+      "price": 180000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Things Falling Apart",
+      "artist": "Nine Inch Nails",
+      "format": "Cassette",
+      "images": [
+        "/public/covers/nxp-2026-cst-0001-nine-inch-nails-things-falling-apart.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CST-0001",
+        "Format: Cassette",
+        "Condition: Used Good"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "condition": "Used Good",
+      "reviewUrl": "https://www.allmusic.com/album/things-falling-apart-mw0000101953",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.792Z",
+          "sku": "NXP-2026-CST-0001",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.962Z",
+          "sku": "NXP-2026-CST-0001",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.172Z",
+          "sku": "NXP-2026-CST-0001",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.930Z",
+          "sku": "NXP-2026-CST-0001",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.762Z",
+          "sku": "NXP-2026-CST-0001",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.734Z",
+          "sku": "NXP-2026-CST-0001",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.221Z",
+          "sku": "NXP-2026-CST-0001",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.308Z",
+          "sku": "NXP-2026-CST-0001",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.792Z",
+        "sku": "NXP-2026-CST-0001",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Nine Inch Nails' 2000 Things Falling Apart is a remix companion to The Fragile, rebuilding its industrial songs through altered rhythms, harsher electronics and new production perspectives.",
+      "reviewQuote": "a completely different beast",
+      "imageCredits": [],
+      "reviewSource": "AllMusic (quoted)",
+      "autoEditorial": {
+        "relatedArtists": [
+          "Nine Inch Noize"
+        ],
+        "enrichmentStatus": "complete",
+        "relatedArtistEvidence": [
+          {
+            "artist": "Nine Inch Noize",
+            "source": "MusicBrainz artist relationship",
+            "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
+            "confidence": "medium",
+            "relationType": "collaboration"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "source": "MusicBrainz",
+          "status": "verified",
+          "artists": [
+            "Nine Inch Noize"
+          ],
+          "evidence": [
+            {
+              "artist": "Nine Inch Noize",
+              "source": "MusicBrainz artist relationship",
+              "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
+              "confidence": "medium",
+              "relationType": "collaboration"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": ""
+        }
+      },
+      "catalogNumber": "",
+      "displayFormat": "Cassette",
+      "homeSlideSort": 19,
+      "publishStatus": "Published",
+      "financeStockId": "mr6ja47udtm7zc",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Nine Inch Noize"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Pitchfork / AllMusic",
+      "manualRelatedArtists": [],
+      "enrichmentAttemptedAt": "2026-08-18T16:58:37.331Z",
+      "enrichmentFingerprint": "nine inch nails|things falling apart|cassette||",
+      "relatedArtistEvidence": [
+        {
+          "artist": "Nine Inch Noize",
+          "source": "MusicBrainz artist relationship",
+          "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
+          "confidence": "medium",
+          "relationType": "collaboration"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "source": "MusicBrainz",
+        "status": "verified",
+        "artists": [
+          "Nine Inch Noize"
+        ],
+        "evidence": [
+          {
+            "artist": "Nine Inch Noize",
+            "source": "MusicBrainz artist relationship",
+            "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
+            "confidence": "medium",
+            "relationType": "collaboration"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": ""
+      },
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 8,
+        "lengthCm": 16,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 90,
+        "shippingClass": "small-media-cassette-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
