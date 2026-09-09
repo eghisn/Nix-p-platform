@@ -1517,15 +1517,24 @@
         "Album",
         "Catalog number: 0075597917178",
         "Barcode: 075597917178 / 3142110755979171781645897 / 1645897314211075597917178",
-        "Edition: Vinyl, LP, Album"
+        "Edition: Vinyl",
+        "LP",
+        "Album"
       ],
       "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0079/cover.jpg",
       "condition": "New-Sealed",
-      "reviewUrl": "",
+      "reviewUrl": "https://boomkat.com/products/drm-e28b84f8-1fa2-4362-97a6-87e4c6a15b7c",
       "syncAudit": [
+        {
+          "at": "2026-09-09T11:05:19.962Z",
+          "sku": "NXP-2026-VNL-0079",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-09-08T22:05:03.584Z",
           "sku": "NXP-2026-VNL-0079",
@@ -1551,7 +1560,7 @@
       "updatedAt": "2026-09-09",
       "collection": "Nonesuch",
       "syncStatus": {
-        "at": "2026-09-08T22:05:03.584Z",
+        "at": "2026-09-09T11:05:19.962Z",
         "sku": "NXP-2026-VNL-0079",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
@@ -1559,10 +1568,10 @@
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Sam Gendel 2021 drm is a verified Vinyl, LP, Album edition on Nonesuch. The release is indexed under Free Jazz, Avant-garde Jazz, Contemporary Jazz.",
-      "reviewQuote": "",
+      "description": "On DRM, Sam Gendel works solo with vintage instruments, voice, guitar fragments, and the Electro-Harmonix DRM32 drum machine. The result recasts contemporary R&B and pop-rap through oblique electronics and acoustic textures, including a dismantled reading of Lil Nas X's Old Town Road.",
+      "reviewQuote": "Beat scene-inflected jazz funq sketches informed by the brittle Electro Harmonix DRM32 drum machine.",
       "sourceTitle": "drm",
-      "editRevision": 9,
+      "editRevision": 11,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/18242311-Sam-Gendel-DRM",
@@ -1570,12 +1579,12 @@
           "credit": "Discogs physical-release artwork"
         }
       ],
-      "reviewSource": "",
+      "reviewSource": "Boomkat (quoted)",
       "autoEditorial": {
-        "reviewUrl": "",
-        "description": "Sam Gendel 2021 drm is a verified Vinyl, LP, Album edition on Nonesuch. The release is indexed under Free Jazz, Avant-garde Jazz, Contemporary Jazz.",
-        "reviewQuote": "",
-        "reviewSource": "",
+        "reviewUrl": "https://boomkat.com/products/drm-e28b84f8-1fa2-4362-97a6-87e4c6a15b7c",
+        "description": "On DRM, Sam Gendel works solo with vintage instruments, voice, guitar fragments, and the Electro-Harmonix DRM32 drum machine. The result recasts contemporary R&B and pop-rap through oblique electronics and acoustic textures, including a dismantled reading of Lil Nas X's Old Town Road.",
+        "reviewQuote": "Beat scene-inflected jazz funq sketches informed by the brittle Electro Harmonix DRM32 drum machine.",
+        "reviewSource": "Boomkat (quoted)",
         "relatedArtists": [
           "Sam Wilkes",
           "Sam Gendel, Sam Wilkes",
@@ -1583,7 +1592,7 @@
           "Joseph Shabason",
           "Jeff Parker"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Nonesuch / Pitchfork",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -1837,14 +1846,14 @@
       ],
       "sleeveCondition": "",
       "autoProductPhoto": "",
-      "enrichmentOrigin": "discogs",
+      "enrichmentOrigin": "source+curated-editorial",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Nonesuch / Pitchfork",
       "metadataSourceUrl": "https://www.discogs.com/release/18242311-Sam-Gendel-DRM",
-      "editorialUpdatedAt": "2026-09-08T22:05:03.894+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "enrichmentUpdatedAt": "2026-09-08",
+      "editorialUpdatedAt": "2026-09-09T11:08:04.949+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
       "manualRelatedArtists": [
         "Sam Wilkes",
@@ -1855,7 +1864,7 @@
       ],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
-      "enrichmentAttemptedAt": "2026-09-08T22:05:03.584Z",
+      "enrichmentAttemptedAt": "2026-09-09T11:05:19.961Z",
       "enrichmentFingerprint": "sam gendel|drm|vinyl|0 75597 91717 8|0075597917178",
       "relatedArtistEvidence": [
         {
@@ -2094,7 +2103,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-08",
+        "updatedAt": "2026-09-09",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -35938,6 +35947,648 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0035",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0035",
+      "tags": [
+        "electronic",
+        "experimental pop",
+        "2LP",
+        "Warp"
+      ],
+      "year": 2023,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+      "label": "Warp Records",
+      "price": 0,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Again",
+      "artist": "Oneohtrix Point Never",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg"
+      ],
+      "barcode": "4523132135243",
+      "details": [
+        "SKU: NXP-2026-VNL-0035",
+        "Format: Vinyl",
+        "Condition: New-Unsealed",
+        "Edition: Blue 2xLP",
+        "Catalog number: WARPLP365I"
+      ],
+      "edition": "2 x Vinyl, LP, Album, Blue",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+      "condition": "New-Unsealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.799Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.968Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.184Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.937Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.767Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.740Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.230Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.322Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "Warp Records",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.799Z",
+        "sku": "NXP-2026-VNL-0035",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
+      "reviewQuote": "a nostalgic jam session",
+      "imageCredits": [
+        {
+          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+          "credit": "Oneohtrix Point Never Bandcamp artwork"
+        },
+        {
+          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
+          "credit": "Oneohtrix Point Never Bandcamp product photography"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
+        "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
+        "reviewQuote": "a nostalgic jam session",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
+        ],
+        "descriptionSource": "Warp Records / Bleep",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Tim Hecker",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725642,
+            "artist": "Autechre",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.688586,
+            "artist": "James Ferraro",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.622036,
+            "artist": "Emeralds",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.596252,
+            "artist": "Laurel Halo",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Tim Hecker",
+              "Autechre",
+              "James Ferraro",
+              "Emeralds",
+              "Laurel Halo",
+              "Tim Hecker & Daniel Lopatin",
+              "Boards of Canada",
+              "Fennesz",
+              "Steve Hauschildt",
+              "Huerco S."
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Tim Hecker",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.725642,
+                "artist": "Autechre",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.725642,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.688586,
+                "artist": "James Ferraro",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.688586,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.622036,
+                "artist": "Emeralds",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.622036,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.596252,
+                "artist": "Laurel Halo",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.596252,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.570321,
+                "artist": "Tim Hecker & Daniel Lopatin",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.570321,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.556456,
+                "artist": "Boards of Canada",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.556456,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.547454,
+                "artist": "Fennesz",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.547454,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.534696,
+                "artist": "Steve Hauschildt",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.534696,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.492442,
+                "artist": "Huerco S.",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.492442,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tim Hecker",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725642,
+              "artist": "Autechre",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.688586,
+              "artist": "James Ferraro",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.622036,
+              "artist": "Emeralds",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.596252,
+              "artist": "Laurel Halo",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+          "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "WARPLP365IBR",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "msm6l1la14ehw1",
+      "mediaCondition": "",
+      "open_to_offers": true,
+      "relatedArtists": [
+        "Tim Hecker",
+        "Autechre",
+        "James Ferraro",
+        "Emeralds",
+        "Laurel Halo"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Warp Records / Bleep",
+      "metadataSourceUrl": "https://warp.net/products/410494-again",
+      "enrichmentUpdatedAt": "2026-08-09",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+      "enrichmentAttemptedAt": "2026-08-09T20:36:39.408Z",
+      "enrichmentFingerprint": "oneohtrix point never|again|vinyl|4523132135243|warplp365ibr",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Tim Hecker",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.725642,
+          "artist": "Autechre",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.725642,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.688586,
+          "artist": "James Ferraro",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.688586,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.622036,
+          "artist": "Emeralds",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.622036,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.596252,
+          "artist": "Laurel Halo",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.596252,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 1500000,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo",
+            "Tim Hecker & Daniel Lopatin",
+            "Boards of Canada",
+            "Fennesz",
+            "Steve Hauschildt",
+            "Huerco S."
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tim Hecker",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725642,
+              "artist": "Autechre",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.688586,
+              "artist": "James Ferraro",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.622036,
+              "artist": "Emeralds",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.596252,
+              "artist": "Laurel Halo",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.570321,
+              "artist": "Tim Hecker & Daniel Lopatin",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.570321,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.556456,
+              "artist": "Boards of Canada",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.556456,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.547454,
+              "artist": "Fennesz",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.547454,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.534696,
+              "artist": "Steve Hauschildt",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.534696,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.492442,
+              "artist": "Huerco S.",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.492442,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Tim Hecker",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725642,
+            "artist": "Autechre",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.688586,
+            "artist": "James Ferraro",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.622036,
+            "artist": "Emeralds",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.596252,
+            "artist": "Laurel Halo",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+        "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 750,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "heavy",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0034",
       "qty": 1,
       "sku": "NXP-2026-VNL-0034",
@@ -36579,648 +37230,6 @@
         "shippingClass": "vinyl-cardboard-bubble",
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "finance-nxp-2026-vnl-0035",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0035",
-      "tags": [
-        "electronic",
-        "experimental pop",
-        "2LP",
-        "Warp"
-      ],
-      "year": 2023,
-      "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-      "label": "Warp Records",
-      "price": 0,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Again",
-      "artist": "Oneohtrix Point Never",
-      "format": "Vinyl",
-      "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg"
-      ],
-      "barcode": "4523132135243",
-      "details": [
-        "SKU: NXP-2026-VNL-0035",
-        "Format: Vinyl",
-        "Condition: New-Unsealed",
-        "Edition: Blue 2xLP",
-        "Catalog number: WARPLP365I"
-      ],
-      "edition": "2 x Vinyl, LP, Album, Blue",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-      "condition": "New-Unsealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.799Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.968Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.184Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.937Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.767Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.740Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.230Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.322Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "Warp Records",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.799Z",
-        "sku": "NXP-2026-VNL-0035",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
-      "reviewQuote": "a nostalgic jam session",
-      "imageCredits": [
-        {
-          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-          "credit": "Oneohtrix Point Never Bandcamp artwork"
-        },
-        {
-          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
-          "credit": "Oneohtrix Point Never Bandcamp product photography"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
-        "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
-        "reviewQuote": "a nostalgic jam session",
-        "reviewSource": "Pitchfork (quoted)",
-        "relatedArtists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "descriptionSource": "Warp Records / Bleep",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Tim Hecker",
-              "Autechre",
-              "James Ferraro",
-              "Emeralds",
-              "Laurel Halo",
-              "Tim Hecker & Daniel Lopatin",
-              "Boards of Canada",
-              "Fennesz",
-              "Steve Hauschildt",
-              "Huerco S."
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Tim Hecker",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.725642,
-                "artist": "Autechre",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.725642,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.688586,
-                "artist": "James Ferraro",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.688586,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.622036,
-                "artist": "Emeralds",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.622036,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.596252,
-                "artist": "Laurel Halo",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.596252,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.570321,
-                "artist": "Tim Hecker & Daniel Lopatin",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.570321,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.556456,
-                "artist": "Boards of Canada",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.556456,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.547454,
-                "artist": "Fennesz",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.547454,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.534696,
-                "artist": "Steve Hauschildt",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.534696,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.492442,
-                "artist": "Huerco S.",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.492442,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-          "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "WARPLP365IBR",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "msm6l1la14ehw1",
-      "mediaCondition": "",
-      "open_to_offers": true,
-      "relatedArtists": [
-        "Tim Hecker",
-        "Autechre",
-        "James Ferraro",
-        "Emeralds",
-        "Laurel Halo"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
-      "enrichmentOrigin": "curated-exact",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Warp Records / Bleep",
-      "metadataSourceUrl": "https://warp.net/products/410494-again",
-      "enrichmentUpdatedAt": "2026-08-09",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-      "enrichmentAttemptedAt": "2026-08-09T20:36:39.408Z",
-      "enrichmentFingerprint": "oneohtrix point never|again|vinyl|4523132135243|warplp365ibr",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Tim Hecker",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.725642,
-          "artist": "Autechre",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.725642,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.688586,
-          "artist": "James Ferraro",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.688586,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.622036,
-          "artist": "Emeralds",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.622036,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.596252,
-          "artist": "Laurel Halo",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.596252,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 1500000,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo",
-            "Tim Hecker & Daniel Lopatin",
-            "Boards of Canada",
-            "Fennesz",
-            "Steve Hauschildt",
-            "Huerco S."
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.570321,
-              "artist": "Tim Hecker & Daniel Lopatin",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.570321,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.556456,
-              "artist": "Boards of Canada",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.556456,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.547454,
-              "artist": "Fennesz",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.547454,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.534696,
-              "artist": "Steve Hauschildt",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.534696,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.492442,
-              "artist": "Huerco S.",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.492442,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-        "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 750,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "heavy",
         "manualShippingOverride": false
       }
     },
@@ -76766,95 +76775,95 @@
       }
     },
     {
-      "id": "nxp-2026-cd-0020",
+      "id": "nxp-2026-vnl-0004",
       "qty": 1,
-      "sku": "NXP-2026-CD-0020",
+      "sku": "NXP-2026-VNL-0004",
       "tags": [
-        "CD",
-        "NXP-2026-CD-0020"
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0004"
       ],
-      "year": 1988,
+      "year": 2019,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg",
-      "label": "Creation Records",
-      "price": 200000,
+      "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+      "label": "Rough Trade",
+      "price": 700000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Isn't Anything",
-      "artist": "My Bloody Valentine",
-      "format": "CD",
+      "title": "The Talkies",
+      "artist": "Girl Band",
+      "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg"
+        "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
+        "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
       ],
-      "barcode": "",
+      "barcode": "1 91402 00651 3",
       "details": [
-        "SKU: NXP-2026-CD-0020",
-        "Format: CD",
-        "Condition: Used Good"
+        "SKU: NXP-2026-VNL-0004",
+        "Format: Vinyl 12\"",
+        "Condition: New-Sealed"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0020/cover.jpg",
-      "condition": "Used Good",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/",
       "syncAudit": [
         {
-          "at": "2026-08-30T02:14:08.794Z",
-          "sku": "NXP-2026-CD-0020",
+          "at": "2026-08-30T02:14:08.793Z",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.964Z",
-          "sku": "NXP-2026-CD-0020",
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T09:54:26.175Z",
-          "sku": "NXP-2026-CD-0020",
+          "at": "2026-08-29T09:54:26.174Z",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.933Z",
-          "sku": "NXP-2026-CD-0020",
+          "at": "2026-08-29T02:23:49.932Z",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T09:19:04.764Z",
-          "sku": "NXP-2026-CD-0020",
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-CD-0020",
+          "at": "2026-08-28T02:12:08.735Z",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-CD-0020",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:01:51.311Z",
-          "sku": "NXP-2026-CD-0020",
+          "at": "2026-08-27T15:01:51.310Z",
+          "sku": "NXP-2026-VNL-0004",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -76863,85 +76872,88 @@
       "updatedAt": "2026-09-09",
       "collection": "NIXP Selection",
       "syncStatus": {
-        "at": "2026-08-30T02:14:08.794Z",
-        "sku": "NXP-2026-CD-0020",
+        "at": "2026-08-30T02:14:08.793Z",
+        "sku": "NXP-2026-VNL-0004",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
-      "reviewQuote": "livid, lurid and lucid",
-      "imageCredits": [],
-      "reviewSource": "The Quietus (quoted)",
+      "description": "Girl Band's 2019 Rough Trade album The Talkies turns Dublin post-punk into a physical study in distortion, repetition, panic and ecstatic release.",
+      "reviewQuote": "pure, visceral panic",
+      "editRevision": 2,
+      "imageCredits": [
+        {
+          "url": "https://gillaband.bandcamp.com/album/the-talkies",
+          "image": "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg",
+          "credit": "Gilla Band Bandcamp"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
-        "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
-        "reviewQuote": "livid, lurid and lucid",
-        "reviewSource": "The Quietus (quoted)",
         "relatedArtists": [
-          "Slowdive",
-          "Drop Nineteens",
-          "Swirlies",
-          "Lush",
-          "Ride"
+          "Gilla Band",
+          "Psychic Graveyard",
+          "Cherubs",
+          "METZ",
+          "USA Nails"
         ],
-        "descriptionSource": "The Quietus / AllMusic",
+        "enrichmentStatus": "complete-no-related-artists",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Slowdive",
+            "artist": "Gilla Band",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.761078,
-            "artist": "Drop Nineteens",
+            "match": 0.236825,
+            "artist": "Psychic Graveyard",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.761078,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.236825,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.746951,
-            "artist": "Swirlies",
+            "match": 0.234008,
+            "artist": "Cherubs",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.746951,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.234008,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.676043,
-            "artist": "Lush",
+            "match": 0.217313,
+            "artist": "METZ",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.676043,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.217313,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.666016,
-            "artist": "Ride",
+            "match": 0.213973,
+            "artist": "USA Nails",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.666016,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.213973,
             "relationType": "artist-similarity"
           }
         ],
@@ -76950,253 +76962,252 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Slowdive",
-              "Drop Nineteens",
-              "Swirlies",
-              "Lush",
-              "Ride",
-              "LSD and the Search for God",
-              "Astrobrite",
-              "Chapterhouse",
-              "Fleeting Joys",
-              "lovesliescrushing"
+              "Gilla Band",
+              "Psychic Graveyard",
+              "Cherubs",
+              "METZ",
+              "USA Nails",
+              "Shellac",
+              "Viet Cong",
+              "Ought",
+              "Black Eyes",
+              "Liars"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Slowdive",
+                "artist": "Gilla Band",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.761078,
-                "artist": "Drop Nineteens",
+                "match": 0.236825,
+                "artist": "Psychic Graveyard",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.761078,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.236825,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.746951,
-                "artist": "Swirlies",
+                "match": 0.234008,
+                "artist": "Cherubs",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.746951,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.234008,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.676043,
-                "artist": "Lush",
+                "match": 0.217313,
+                "artist": "METZ",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.676043,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.217313,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.666016,
-                "artist": "Ride",
+                "match": 0.213973,
+                "artist": "USA Nails",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.666016,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.213973,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.650864,
-                "artist": "LSD and the Search for God",
+                "match": 0.209239,
+                "artist": "Shellac",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.650864,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.209239,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.642117,
-                "artist": "Astrobrite",
+                "match": 0.195974,
+                "artist": "Viet Cong",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.642117,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.195974,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.610429,
-                "artist": "Chapterhouse",
+                "match": 0.189864,
+                "artist": "Ought",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.610429,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.189864,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.588989,
-                "artist": "Fleeting Joys",
+                "match": 0.183968,
+                "artist": "Black Eyes",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.588989,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.183968,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.554478,
-                "artist": "lovesliescrushing",
+                "match": 0.171072,
+                "artist": "Liars",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-                "confidence": 0.554478,
+                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "confidence": 0.171072,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine"
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Slowdive",
-            "Drop Nineteens",
-            "Swirlies",
-            "Lush",
-            "Ride"
+            "Gilla Band",
+            "Psychic Graveyard",
+            "Cherubs",
+            "METZ",
+            "USA Nails"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Slowdive",
+              "artist": "Gilla Band",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.761078,
-              "artist": "Drop Nineteens",
+              "match": 0.236825,
+              "artist": "Psychic Graveyard",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.761078,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.236825,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.746951,
-              "artist": "Swirlies",
+              "match": 0.234008,
+              "artist": "Cherubs",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.746951,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.234008,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.676043,
-              "artist": "Lush",
+              "match": 0.217313,
+              "artist": "METZ",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.676043,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.217313,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.666016,
-              "artist": "Ride",
+              "match": 0.213973,
+              "artist": "USA Nails",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.666016,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.213973,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-          "sourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+          "releaseId": "",
+          "sourceUrl": "",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": 31,
+      "catalogNumber": "RT0065LP",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 8,
       "publishStatus": "Published",
-      "financeStockId": "mrfavlnv4xrz5g",
+      "financeStockId": "mr6m870z88pwyb",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Slowdive",
-        "Drop Nineteens",
-        "Swirlies",
-        "Lush",
-        "Ride"
+        "Gilla Band",
+        "Psychic Graveyard",
+        "Cherubs",
+        "METZ",
+        "USA Nails"
       ],
-      "homeCollections": [],
+      "homeCollections": [
+        "limited-pressing"
+      ],
       "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "The Quietus / AllMusic",
-      "metadataSourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-      "enrichmentUpdatedAt": "2026-08-18",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "Pitchfork",
+      "editorialUpdatedAt": "2026-09-08T13:03:13.446+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-      "enrichmentAttemptedAt": "2026-08-18T16:59:31.060Z",
-      "enrichmentFingerprint": "my bloody valentine|isn t anything|cd||",
+      "enrichmentAttemptedAt": "2026-08-18T16:55:23.325Z",
+      "enrichmentFingerprint": "girl band|the talkies|vinyl||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Slowdive",
+          "artist": "Gilla Band",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.761078,
-          "artist": "Drop Nineteens",
+          "match": 0.236825,
+          "artist": "Psychic Graveyard",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-          "confidence": 0.761078,
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.236825,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.746951,
-          "artist": "Swirlies",
+          "match": 0.234008,
+          "artist": "Cherubs",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-          "confidence": 0.746951,
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.234008,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.676043,
-          "artist": "Lush",
+          "match": 0.217313,
+          "artist": "METZ",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-          "confidence": 0.676043,
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.217313,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.666016,
-          "artist": "Ride",
+          "match": 0.213973,
+          "artist": "USA Nails",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-          "confidence": 0.666016,
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "confidence": 0.213973,
           "relationType": "artist-similarity"
         }
       ],
@@ -77206,188 +77217,186 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Slowdive",
-            "Drop Nineteens",
-            "Swirlies",
-            "Lush",
-            "Ride",
-            "LSD and the Search for God",
-            "Astrobrite",
-            "Chapterhouse",
-            "Fleeting Joys",
-            "lovesliescrushing"
+            "Gilla Band",
+            "Psychic Graveyard",
+            "Cherubs",
+            "METZ",
+            "USA Nails",
+            "Shellac",
+            "Viet Cong",
+            "Ought",
+            "Black Eyes",
+            "Liars"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Slowdive",
+              "artist": "Gilla Band",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.761078,
-              "artist": "Drop Nineteens",
+              "match": 0.236825,
+              "artist": "Psychic Graveyard",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.761078,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.236825,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.746951,
-              "artist": "Swirlies",
+              "match": 0.234008,
+              "artist": "Cherubs",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.746951,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.234008,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.676043,
-              "artist": "Lush",
+              "match": 0.217313,
+              "artist": "METZ",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.676043,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.217313,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.666016,
-              "artist": "Ride",
+              "match": 0.213973,
+              "artist": "USA Nails",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.666016,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.213973,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.650864,
-              "artist": "LSD and the Search for God",
+              "match": 0.209239,
+              "artist": "Shellac",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.650864,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.209239,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.642117,
-              "artist": "Astrobrite",
+              "match": 0.195974,
+              "artist": "Viet Cong",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.642117,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.195974,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.610429,
-              "artist": "Chapterhouse",
+              "match": 0.189864,
+              "artist": "Ought",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.610429,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.189864,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.588989,
-              "artist": "Fleeting Joys",
+              "match": 0.183968,
+              "artist": "Black Eyes",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.588989,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.183968,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.554478,
-              "artist": "lovesliescrushing",
+              "match": 0.171072,
+              "artist": "Liars",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-              "confidence": 0.554478,
+              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "confidence": 0.171072,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine"
+          "sourceUrl": "https://www.last.fm/music/Girl%20Band"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Slowdive",
-          "Drop Nineteens",
-          "Swirlies",
-          "Lush",
-          "Ride"
+          "Gilla Band",
+          "Psychic Graveyard",
+          "Cherubs",
+          "METZ",
+          "USA Nails"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Slowdive",
+            "artist": "Gilla Band",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.761078,
-            "artist": "Drop Nineteens",
+            "match": 0.236825,
+            "artist": "Psychic Graveyard",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.761078,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.236825,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.746951,
-            "artist": "Swirlies",
+            "match": 0.234008,
+            "artist": "Cherubs",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.746951,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.234008,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.676043,
-            "artist": "Lush",
+            "match": 0.217313,
+            "artist": "METZ",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.676043,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.217313,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.666016,
-            "artist": "Ride",
+            "match": 0.213973,
+            "artist": "USA Nails",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
-            "confidence": 0.666016,
+            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "confidence": 0.213973,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
-        "sourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+        "releaseId": "",
+        "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-08",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
@@ -78012,169 +78021,6 @@
         "weightGrams": 90,
         "shippingClass": "small-media-cassette-bubble",
         "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "app-002",
-      "qty": 4,
-      "sku": "NXP-2026-APP-0002",
-      "tags": [
-        "knitsweater",
-        "apparel"
-      ],
-      "year": 2026,
-      "color": "Black",
-      "image": "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
-      "label": "NIXP Apparel",
-      "price": 650000,
-      "sizes": [
-        {
-          "label": "S",
-          "soldOut": false,
-          "quantity": 1
-        },
-        {
-          "label": "M",
-          "soldOut": false,
-          "quantity": 1
-        },
-        {
-          "label": "L",
-          "soldOut": false,
-          "quantity": 1
-        },
-        {
-          "label": "XL",
-          "soldOut": false,
-          "quantity": 1
-        }
-      ],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 4
-      },
-      "title": "Flesh Knitsweater",
-      "artist": "NIXP Apparel",
-      "format": "Apparel",
-      "images": [
-        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
-        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08676-jpg-1783940136800.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-APP-0002",
-        "Knit sweater",
-        "Black"
-      ],
-      "edition": "",
-      "category": "Apparel",
-      "material": "Knit cotton blend",
-      "condition": "New-Sealed",
-      "reviewUrl": "",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.796Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-29T10:09:43.965Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-29T09:54:26.176Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-29T02:23:49.934Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-28T02:12:08.737Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        },
-        {
-          "at": "2026-08-27T15:01:51.313Z",
-          "sku": "NXP-2026-APP-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 4
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Apparel",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.796Z",
-        "sku": "NXP-2026-APP-0002",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 4
-      },
-      "visibility": "Public",
-      "apparelType": "Tops",
-      "description": "Flesh Knitsweater apparel item.",
-      "reviewQuote": "",
-      "imageCredits": [],
-      "reviewSource": "",
-      "catalogNumber": "",
-      "displayFormat": "",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "catalog-app-002",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "descriptionSource": "",
-      "manualRelatedArtists": [],
-      "minimumAcceptableOffer": 0,
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "relatedArtistsResearch": null,
-      "shipping": {
-        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
-        "status": "format_reference",
-        "widthCm": 32,
-        "heightCm": 7,
-        "lengthCm": 40,
-        "updatedAt": "2026-09-02",
-        "packageType": "zip-lock-polybag-shipping-wrap",
-        "weightGrams": 800,
-        "shippingClass": "apparel-soft-zip-lock-wrap",
-        "packagingGroup": "SOFT_APPAREL",
         "vinylWeightClass": "",
         "manualShippingOverride": false
       }
@@ -78807,6 +78653,632 @@
       }
     },
     {
+      "id": "nxp-2026-cd-0020",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0020",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0020"
+      ],
+      "year": 1988,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg",
+      "label": "Creation Records",
+      "price": 200000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Isn't Anything",
+      "artist": "My Bloody Valentine",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CD-0020",
+        "Format: CD",
+        "Condition: Used Good"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0020/cover.jpg",
+      "condition": "Used Good",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.794Z",
+          "sku": "NXP-2026-CD-0020",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.964Z",
+          "sku": "NXP-2026-CD-0020",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.175Z",
+          "sku": "NXP-2026-CD-0020",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.933Z",
+          "sku": "NXP-2026-CD-0020",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.764Z",
+          "sku": "NXP-2026-CD-0020",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.736Z",
+          "sku": "NXP-2026-CD-0020",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.222Z",
+          "sku": "NXP-2026-CD-0020",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.311Z",
+          "sku": "NXP-2026-CD-0020",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.794Z",
+        "sku": "NXP-2026-CD-0020",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
+      "reviewQuote": "livid, lurid and lucid",
+      "imageCredits": [],
+      "reviewSource": "The Quietus (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
+        "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
+        "reviewQuote": "livid, lurid and lucid",
+        "reviewSource": "The Quietus (quoted)",
+        "relatedArtists": [
+          "Slowdive",
+          "Drop Nineteens",
+          "Swirlies",
+          "Lush",
+          "Ride"
+        ],
+        "descriptionSource": "The Quietus / AllMusic",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Slowdive",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.761078,
+            "artist": "Drop Nineteens",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.761078,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.746951,
+            "artist": "Swirlies",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.746951,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.676043,
+            "artist": "Lush",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.676043,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.666016,
+            "artist": "Ride",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.666016,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Slowdive",
+              "Drop Nineteens",
+              "Swirlies",
+              "Lush",
+              "Ride",
+              "LSD and the Search for God",
+              "Astrobrite",
+              "Chapterhouse",
+              "Fleeting Joys",
+              "lovesliescrushing"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Slowdive",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.761078,
+                "artist": "Drop Nineteens",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.761078,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.746951,
+                "artist": "Swirlies",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.746951,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.676043,
+                "artist": "Lush",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.676043,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.666016,
+                "artist": "Ride",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.666016,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.650864,
+                "artist": "LSD and the Search for God",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.650864,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.642117,
+                "artist": "Astrobrite",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.642117,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.610429,
+                "artist": "Chapterhouse",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.610429,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.588989,
+                "artist": "Fleeting Joys",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.588989,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.554478,
+                "artist": "lovesliescrushing",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+                "confidence": 0.554478,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Slowdive",
+            "Drop Nineteens",
+            "Swirlies",
+            "Lush",
+            "Ride"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Slowdive",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.761078,
+              "artist": "Drop Nineteens",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.761078,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.746951,
+              "artist": "Swirlies",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.746951,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.676043,
+              "artist": "Lush",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.676043,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.666016,
+              "artist": "Ride",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.666016,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+          "sourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "",
+      "displayFormat": "CD",
+      "homeSlideSort": 31,
+      "publishStatus": "Published",
+      "financeStockId": "mrfavlnv4xrz5g",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Slowdive",
+        "Drop Nineteens",
+        "Swirlies",
+        "Lush",
+        "Ride"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "The Quietus / AllMusic",
+      "metadataSourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+      "enrichmentUpdatedAt": "2026-08-18",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+      "enrichmentAttemptedAt": "2026-08-18T16:59:31.060Z",
+      "enrichmentFingerprint": "my bloody valentine|isn t anything|cd||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Slowdive",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.761078,
+          "artist": "Drop Nineteens",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "confidence": 0.761078,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.746951,
+          "artist": "Swirlies",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "confidence": 0.746951,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.676043,
+          "artist": "Lush",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "confidence": 0.676043,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.666016,
+          "artist": "Ride",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+          "confidence": 0.666016,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Slowdive",
+            "Drop Nineteens",
+            "Swirlies",
+            "Lush",
+            "Ride",
+            "LSD and the Search for God",
+            "Astrobrite",
+            "Chapterhouse",
+            "Fleeting Joys",
+            "lovesliescrushing"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Slowdive",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.761078,
+              "artist": "Drop Nineteens",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.761078,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.746951,
+              "artist": "Swirlies",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.746951,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.676043,
+              "artist": "Lush",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.676043,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.666016,
+              "artist": "Ride",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.666016,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.650864,
+              "artist": "LSD and the Search for God",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.650864,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.642117,
+              "artist": "Astrobrite",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.642117,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.610429,
+              "artist": "Chapterhouse",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.610429,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.588989,
+              "artist": "Fleeting Joys",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.588989,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.554478,
+              "artist": "lovesliescrushing",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+              "confidence": 0.554478,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Slowdive",
+          "Drop Nineteens",
+          "Swirlies",
+          "Lush",
+          "Ride"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Slowdive",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.761078,
+            "artist": "Drop Nineteens",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.761078,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.746951,
+            "artist": "Swirlies",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.746951,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.676043,
+            "artist": "Lush",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.676043,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.666016,
+            "artist": "Ride",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/My%20Bloody%20Valentine",
+            "confidence": 0.666016,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+        "sourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "nxp-2026-cd-0001",
       "qty": 1,
       "sku": "NXP-2026-CD-0001",
@@ -79433,6 +79905,169 @@
       }
     },
     {
+      "id": "app-002",
+      "qty": 4,
+      "sku": "NXP-2026-APP-0002",
+      "tags": [
+        "knitsweater",
+        "apparel"
+      ],
+      "year": 2026,
+      "color": "Black",
+      "image": "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
+      "label": "NIXP Apparel",
+      "price": 650000,
+      "sizes": [
+        {
+          "label": "S",
+          "soldOut": false,
+          "quantity": 1
+        },
+        {
+          "label": "M",
+          "soldOut": false,
+          "quantity": 1
+        },
+        {
+          "label": "L",
+          "soldOut": false,
+          "quantity": 1
+        },
+        {
+          "label": "XL",
+          "soldOut": false,
+          "quantity": 1
+        }
+      ],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 4
+      },
+      "title": "Flesh Knitsweater",
+      "artist": "NIXP Apparel",
+      "format": "Apparel",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg",
+        "/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08676-jpg-1783940136800.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-APP-0002",
+        "Knit sweater",
+        "Black"
+      ],
+      "edition": "",
+      "category": "Apparel",
+      "material": "Knit cotton blend",
+      "condition": "New-Sealed",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.796Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-29T10:09:43.965Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-29T09:54:26.176Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-29T02:23:49.934Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-28T09:19:04.765Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-28T02:12:08.737Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        },
+        {
+          "at": "2026-08-27T15:01:51.313Z",
+          "sku": "NXP-2026-APP-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 4
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Apparel",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.796Z",
+        "sku": "NXP-2026-APP-0002",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 4
+      },
+      "visibility": "Public",
+      "apparelType": "Tops",
+      "description": "Flesh Knitsweater apparel item.",
+      "reviewQuote": "",
+      "imageCredits": [],
+      "reviewSource": "",
+      "catalogNumber": "",
+      "displayFormat": "",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "catalog-app-002",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "",
+      "manualRelatedArtists": [],
+      "minimumAcceptableOffer": 0,
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
+        "status": "format_reference",
+        "widthCm": 32,
+        "heightCm": 7,
+        "lengthCm": 40,
+        "updatedAt": "2026-09-02",
+        "packageType": "zip-lock-polybag-shipping-wrap",
+        "weightGrams": 800,
+        "shippingClass": "apparel-soft-zip-lock-wrap",
+        "packagingGroup": "SOFT_APPAREL",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "app-001",
       "qty": 3,
       "sku": "NXP-2023-APP-0001",
@@ -79599,635 +80234,6 @@
         "weightGrams": 800,
         "shippingClass": "apparel-soft-zip-lock-wrap",
         "packagingGroup": "SOFT_APPAREL",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "nxp-2026-cd-0023",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0023",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0023"
-      ],
-      "year": 2025,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg",
-      "label": "Warp Records",
-      "price": 300000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Tranquilizer",
-      "artist": "Oneohtrix Point Never",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0023",
-        "Format: CD",
-        "Condition: Used Excellence"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0023/cover.jpg",
-      "condition": "Used Excellent",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.795Z",
-          "sku": "NXP-2026-CD-0023",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.964Z",
-          "sku": "NXP-2026-CD-0023",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.175Z",
-          "sku": "NXP-2026-CD-0023",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.933Z",
-          "sku": "NXP-2026-CD-0023",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.764Z",
-          "sku": "NXP-2026-CD-0023",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-CD-0023",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-CD-0023",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.311Z",
-          "sku": "NXP-2026-CD-0023",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.795Z",
-        "sku": "NXP-2026-CD-0023",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
-      "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
-      "imageCredits": [],
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
-        "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
-        "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
-        "reviewSource": "Pitchfork (quoted)",
-        "relatedArtists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "descriptionSource": "Pitchfork",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Tim Hecker",
-              "Autechre",
-              "James Ferraro",
-              "Emeralds",
-              "Laurel Halo",
-              "Tim Hecker & Daniel Lopatin",
-              "Boards of Canada",
-              "Fennesz",
-              "Steve Hauschildt",
-              "Huerco S."
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Tim Hecker",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.725642,
-                "artist": "Autechre",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.725642,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.688586,
-                "artist": "James Ferraro",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.688586,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.622036,
-                "artist": "Emeralds",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.622036,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.596252,
-                "artist": "Laurel Halo",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.596252,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.570321,
-                "artist": "Tim Hecker & Daniel Lopatin",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.570321,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.556456,
-                "artist": "Boards of Canada",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.556456,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.547454,
-                "artist": "Fennesz",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.547454,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.534696,
-                "artist": "Steve Hauschildt",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.534696,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.492442,
-                "artist": "Huerco S.",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.492442,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
-          "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": 43,
-      "publishStatus": "Published",
-      "financeStockId": "mrhvkn2udt4bqn",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Tim Hecker",
-        "Autechre",
-        "James Ferraro",
-        "Emeralds",
-        "Laurel Halo"
-      ],
-      "homeCollections": [
-        "recent-releases",
-        "nixp-selection"
-      ],
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Pitchfork",
-      "metadataSourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
-      "enrichmentUpdatedAt": "2026-08-18",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
-      "enrichmentAttemptedAt": "2026-08-18T16:58:16.154Z",
-      "enrichmentFingerprint": "oneohtrix point never|tranquilizer|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Tim Hecker",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.725642,
-          "artist": "Autechre",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.725642,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.688586,
-          "artist": "James Ferraro",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.688586,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.622036,
-          "artist": "Emeralds",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.622036,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.596252,
-          "artist": "Laurel Halo",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.596252,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo",
-            "Tim Hecker & Daniel Lopatin",
-            "Boards of Canada",
-            "Fennesz",
-            "Steve Hauschildt",
-            "Huerco S."
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.570321,
-              "artist": "Tim Hecker & Daniel Lopatin",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.570321,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.556456,
-              "artist": "Boards of Canada",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.556456,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.547454,
-              "artist": "Fennesz",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.547454,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.534696,
-              "artist": "Steve Hauschildt",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.534696,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.492442,
-              "artist": "Huerco S.",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.492442,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
-        "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
       }
@@ -83066,95 +83072,95 @@
       }
     },
     {
-      "id": "nxp-2026-vnl-0004",
+      "id": "nxp-2026-cd-0023",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0004",
+      "sku": "NXP-2026-CD-0023",
       "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0004"
+        "CD",
+        "NXP-2026-CD-0023"
       ],
-      "year": 2019,
+      "year": 2025,
       "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
-      "label": "Rough Trade",
-      "price": 700000,
+      "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg",
+      "label": "Warp Records",
+      "price": 300000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "The Talkies",
-      "artist": "Girl Band",
-      "format": "Vinyl",
+      "title": "Tranquilizer",
+      "artist": "Oneohtrix Point Never",
+      "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-vnl-0004-girl-band-the-talkies.jpg",
-        "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg"
+        "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
       ],
-      "barcode": "1 91402 00651 3",
+      "barcode": "",
       "details": [
-        "SKU: NXP-2026-VNL-0004",
-        "Format: Vinyl 12\"",
-        "Condition: New-Sealed"
+        "SKU: NXP-2026-CD-0023",
+        "Format: CD",
+        "Condition: Used Excellence"
       ],
-      "edition": "Vinyl, LP, Album",
+      "edition": "",
       "category": "Records",
       "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/girl-band-the-talkies/",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0023/cover.jpg",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
       "syncAudit": [
         {
-          "at": "2026-08-30T02:14:08.793Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-30T02:14:08.795Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-29T10:09:43.964Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T09:54:26.174Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-29T09:54:26.175Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.932Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-29T02:23:49.933Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-28T09:19:04.764Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T02:12:08.735Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-28T02:12:08.736Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:01:51.310Z",
-          "sku": "NXP-2026-VNL-0004",
+          "at": "2026-08-27T15:01:51.311Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -83163,88 +83169,85 @@
       "updatedAt": "2026-09-09",
       "collection": "NIXP Selection",
       "syncStatus": {
-        "at": "2026-08-30T02:14:08.793Z",
-        "sku": "NXP-2026-VNL-0004",
+        "at": "2026-08-30T02:14:08.795Z",
+        "sku": "NXP-2026-CD-0023",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Girl Band's 2019 Rough Trade album The Talkies turns Dublin post-punk into a physical study in distortion, repetition, panic and ecstatic release.",
-      "reviewQuote": "pure, visceral panic",
-      "editRevision": 2,
-      "imageCredits": [
-        {
-          "url": "https://gillaband.bandcamp.com/album/the-talkies",
-          "image": "/public/mockups/nxp-2026-vnl-0004-girl-band-the-talkies-vinyl.jpg",
-          "credit": "Gilla Band Bandcamp"
-        }
-      ],
+      "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
+      "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
+      "imageCredits": [],
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
+        "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
+        "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
+        "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
-          "Gilla Band",
-          "Psychic Graveyard",
-          "Cherubs",
-          "METZ",
-          "USA Nails"
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
         ],
-        "enrichmentStatus": "complete-no-related-artists",
+        "descriptionSource": "Pitchfork",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Gilla Band",
+            "artist": "Tim Hecker",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.236825,
-            "artist": "Psychic Graveyard",
+            "match": 0.725642,
+            "artist": "Autechre",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.236825,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.234008,
-            "artist": "Cherubs",
+            "match": 0.688586,
+            "artist": "James Ferraro",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.234008,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.217313,
-            "artist": "METZ",
+            "match": 0.622036,
+            "artist": "Emeralds",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.217313,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.213973,
-            "artist": "USA Nails",
+            "match": 0.596252,
+            "artist": "Laurel Halo",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.213973,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
             "relationType": "artist-similarity"
           }
         ],
@@ -83253,252 +83256,256 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Gilla Band",
-              "Psychic Graveyard",
-              "Cherubs",
-              "METZ",
-              "USA Nails",
-              "Shellac",
-              "Viet Cong",
-              "Ought",
-              "Black Eyes",
-              "Liars"
+              "Tim Hecker",
+              "Autechre",
+              "James Ferraro",
+              "Emeralds",
+              "Laurel Halo",
+              "Tim Hecker & Daniel Lopatin",
+              "Boards of Canada",
+              "Fennesz",
+              "Steve Hauschildt",
+              "Huerco S."
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Gilla Band",
+                "artist": "Tim Hecker",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.236825,
-                "artist": "Psychic Graveyard",
+                "match": 0.725642,
+                "artist": "Autechre",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.236825,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.725642,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.234008,
-                "artist": "Cherubs",
+                "match": 0.688586,
+                "artist": "James Ferraro",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.234008,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.688586,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.217313,
-                "artist": "METZ",
+                "match": 0.622036,
+                "artist": "Emeralds",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.217313,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.622036,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.213973,
-                "artist": "USA Nails",
+                "match": 0.596252,
+                "artist": "Laurel Halo",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.213973,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.596252,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.209239,
-                "artist": "Shellac",
+                "match": 0.570321,
+                "artist": "Tim Hecker & Daniel Lopatin",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.209239,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.570321,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.195974,
-                "artist": "Viet Cong",
+                "match": 0.556456,
+                "artist": "Boards of Canada",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.195974,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.556456,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.189864,
-                "artist": "Ought",
+                "match": 0.547454,
+                "artist": "Fennesz",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.189864,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.547454,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.183968,
-                "artist": "Black Eyes",
+                "match": 0.534696,
+                "artist": "Steve Hauschildt",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.183968,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.534696,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.171072,
-                "artist": "Liars",
+                "match": 0.492442,
+                "artist": "Huerco S.",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-                "confidence": 0.171072,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.492442,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band"
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Gilla Band",
-            "Psychic Graveyard",
-            "Cherubs",
-            "METZ",
-            "USA Nails"
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Gilla Band",
+              "artist": "Tim Hecker",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.236825,
-              "artist": "Psychic Graveyard",
+              "match": 0.725642,
+              "artist": "Autechre",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.236825,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.234008,
-              "artist": "Cherubs",
+              "match": 0.688586,
+              "artist": "James Ferraro",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.234008,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.217313,
-              "artist": "METZ",
+              "match": 0.622036,
+              "artist": "Emeralds",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.217313,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.213973,
-              "artist": "USA Nails",
+              "match": 0.596252,
+              "artist": "Laurel Halo",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.213973,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "",
-          "sourceUrl": "",
+          "releaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+          "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "RT0065LP",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 8,
+      "catalogNumber": "",
+      "displayFormat": "CD",
+      "homeSlideSort": 43,
       "publishStatus": "Published",
-      "financeStockId": "mr6m870z88pwyb",
+      "financeStockId": "mrhvkn2udt4bqn",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Gilla Band",
-        "Psychic Graveyard",
-        "Cherubs",
-        "METZ",
-        "USA Nails"
+        "Tim Hecker",
+        "Autechre",
+        "James Ferraro",
+        "Emeralds",
+        "Laurel Halo"
       ],
       "homeCollections": [
-        "limited-pressing"
+        "recent-releases",
+        "nixp-selection"
       ],
       "sleeveCondition": "",
-      "enrichmentStatus": "complete-no-related-artists",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete",
       "descriptionSource": "Pitchfork",
-      "editorialUpdatedAt": "2026-09-08T13:03:13.446+00:00",
-      "editorialUpdatedBy": "operatorwebsite",
+      "metadataSourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+      "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:55:23.325Z",
-      "enrichmentFingerprint": "girl band|the talkies|vinyl||",
+      "musicBrainzReleaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+      "enrichmentAttemptedAt": "2026-08-18T16:58:16.154Z",
+      "enrichmentFingerprint": "oneohtrix point never|tranquilizer|cd||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Gilla Band",
+          "artist": "Tim Hecker",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.236825,
-          "artist": "Psychic Graveyard",
+          "match": 0.725642,
+          "artist": "Autechre",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.236825,
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.725642,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.234008,
-          "artist": "Cherubs",
+          "match": 0.688586,
+          "artist": "James Ferraro",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.234008,
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.688586,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.217313,
-          "artist": "METZ",
+          "match": 0.622036,
+          "artist": "Emeralds",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.217313,
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.622036,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.213973,
-          "artist": "USA Nails",
+          "match": 0.596252,
+          "artist": "Laurel Halo",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-          "confidence": 0.213973,
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.596252,
           "relationType": "artist-similarity"
         }
       ],
@@ -83508,186 +83515,188 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Gilla Band",
-            "Psychic Graveyard",
-            "Cherubs",
-            "METZ",
-            "USA Nails",
-            "Shellac",
-            "Viet Cong",
-            "Ought",
-            "Black Eyes",
-            "Liars"
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo",
+            "Tim Hecker & Daniel Lopatin",
+            "Boards of Canada",
+            "Fennesz",
+            "Steve Hauschildt",
+            "Huerco S."
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Gilla Band",
+              "artist": "Tim Hecker",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.236825,
-              "artist": "Psychic Graveyard",
+              "match": 0.725642,
+              "artist": "Autechre",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.236825,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.234008,
-              "artist": "Cherubs",
+              "match": 0.688586,
+              "artist": "James Ferraro",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.234008,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.217313,
-              "artist": "METZ",
+              "match": 0.622036,
+              "artist": "Emeralds",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.217313,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.213973,
-              "artist": "USA Nails",
+              "match": 0.596252,
+              "artist": "Laurel Halo",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.213973,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.209239,
-              "artist": "Shellac",
+              "match": 0.570321,
+              "artist": "Tim Hecker & Daniel Lopatin",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.209239,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.570321,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.195974,
-              "artist": "Viet Cong",
+              "match": 0.556456,
+              "artist": "Boards of Canada",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.195974,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.556456,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.189864,
-              "artist": "Ought",
+              "match": 0.547454,
+              "artist": "Fennesz",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.189864,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.547454,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.183968,
-              "artist": "Black Eyes",
+              "match": 0.534696,
+              "artist": "Steve Hauschildt",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.183968,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.534696,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.171072,
-              "artist": "Liars",
+              "match": 0.492442,
+              "artist": "Huerco S.",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-              "confidence": 0.171072,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.492442,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Girl%20Band"
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Gilla Band",
-          "Psychic Graveyard",
-          "Cherubs",
-          "METZ",
-          "USA Nails"
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Gilla Band",
+            "artist": "Tim Hecker",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.236825,
-            "artist": "Psychic Graveyard",
+            "match": 0.725642,
+            "artist": "Autechre",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.236825,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.234008,
-            "artist": "Cherubs",
+            "match": 0.688586,
+            "artist": "James Ferraro",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.234008,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.217313,
-            "artist": "METZ",
+            "match": 0.622036,
+            "artist": "Emeralds",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.217313,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.213973,
-            "artist": "USA Nails",
+            "match": 0.596252,
+            "artist": "Laurel Halo",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Girl%20Band",
-            "confidence": 0.213973,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "",
-        "sourceUrl": "",
+        "releaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+        "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": true,
+      "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-09-08",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
