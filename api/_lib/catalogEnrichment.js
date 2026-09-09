@@ -1356,6 +1356,13 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // They are used when a trusted publication is not reliably crawlable from a
 // serverless runtime but the exact source has been reviewed by NIXP.
 export const CURATED_EDITORIAL_OVERRIDES = {
+  "NXP-2026-VNL-0066": {
+    description: "Senyawa & Stephen O'Malley's 2020 Bima Sakti documents a January 2018 live performance in Brussels, bringing Stephen O'Malley's electric guitar into contact with Rully Shabara's voice and Wukir Suryadi's self-built instruments. The six-piece LP was mixed by Randall Dunn and released by iDEAL.",
+    descriptionSource: "iDEAL Recordings",
+    reviewQuote: "visceral, elemental results",
+    reviewSource: "The Quietus (quoted)",
+    reviewUrl: "https://thequietus.com/quietus-reviews/senyawa-stephen-omalley-bima-sakti-review/"
+  },
   "NXP-2026-VNL-0018": {
     description: "Alan Vega's 2022 Sacred Bones 12-inch brings together two unreleased recordings from different eras: Invasion, cut during 2012-15 sessions for the posthumous It, and Murder One, recorded in 1997-98.",
     descriptionSource: "Resident Advisor / Sacred Bones",

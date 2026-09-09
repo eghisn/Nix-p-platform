@@ -435,12 +435,30 @@ assert.equal(bauhausDiscovered.reviewSource, "AllMusic (quoted)");
 assert.deepEqual(bauhausDiscovered.relatedArtists, ["Suicide"]);
 assert.equal(bauhausDiscovered.cover, "/public/cover.jpg");
 
+const bimaSaktiEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0066"];
+assert.equal(bimaSaktiEditorial.reviewSource, "The Quietus (quoted)");
+assert.match(bimaSaktiEditorial.reviewUrl, /^https:\/\/thequietus\.com\/quietus-reviews\//);
+const bimaSaktiDiscovered = applyCuratedEditorialOverride(
+  {
+    cover: "/public/cover.jpg",
+    edition: "Vinyl, LP, Album, Limited Edition, Violet",
+    barcode: "1234567890123",
+    catalogNumber: "iDEAL198"
+  },
+  "NXP-2026-VNL-0066"
+);
+assert.equal(bimaSaktiDiscovered.cover, "/public/cover.jpg");
+assert.equal(bimaSaktiDiscovered.edition, "Vinyl, LP, Album, Limited Edition, Violet");
+assert.equal(bimaSaktiDiscovered.barcode, "1234567890123");
+assert.equal(bimaSaktiDiscovered.catalogNumber, "iDEAL198");
+
 for (const sku of [
   "NXP-2026-VNL-0027",
   "NXP-2026-VNL-0038",
   "NXP-2026-VNL-0039",
   "NXP-2026-VNL-0040",
   "NXP-2026-VNL-0041",
+  "NXP-2026-VNL-0066",
   "NXP-2026-VNL-0058"
 ]) {
   const editorial = CURATED_EDITORIAL_OVERRIDES[sku];
