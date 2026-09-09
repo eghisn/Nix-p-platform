@@ -6503,7 +6503,11 @@
         "180g",
         "Catalog number: B002818021",
         "Barcode: 602567473367 / 602567473367 / 00281802148045 / 00281802148045",
-        "Edition: Vinyl, LP, Album, Stereo, 180g",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Stereo",
+        "180g",
         "Barcode: 602567473367 / 602567473367 / 0028180214255213 / 0028180214255223"
       ],
       "edition": "Vinyl, LP, Album, Stereo, 180g",
@@ -6513,6 +6517,13 @@
       "condition": "New-Sealed",
       "reviewUrl": "https://pitchfork.com/reviews/albums/nine-inch-nails-bad-witch/",
       "syncAudit": [
+        {
+          "at": "2026-09-09T09:18:39.662Z",
+          "sku": "NXP-2026-VNL-0073",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-09-09T03:13:25.043Z",
           "sku": "NXP-2026-VNL-0073",
@@ -6538,7 +6549,7 @@
       "updatedAt": "2026-09-09",
       "collection": "Capitol Records",
       "syncStatus": {
-        "at": "2026-09-09T03:13:25.043Z",
+        "at": "2026-09-09T09:18:39.662Z",
         "sku": "NXP-2026-VNL-0073",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
@@ -6546,10 +6557,10 @@
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Trent Reznor’s third EP-length NIN release in the last two years is the best of the lot, with a raw",
+      "description": "Nine Inch Nails 2023 bad witch is a verified Vinyl, LP, Album, Reissue edition on Capitol Records. The release is indexed under Art Rock, Industrial, Avant-garde Jazz.",
       "reviewQuote": "Trent Reznor’s third EP-length NIN release in the last two years is the best of the lot, with a raw",
       "sourceTitle": "bad witch",
-      "editRevision": 9,
+      "editRevision": 11,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/30000718-Nine-Inch-Nails-Bad-Witch",
@@ -6560,28 +6571,18 @@
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://pitchfork.com/reviews/albums/nine-inch-nails-bad-witch/",
-        "description": "Trent Reznor’s third EP-length NIN release in the last two years is the best of the lot, with a raw",
+        "description": "Nine Inch Nails 2023 bad witch is a verified Vinyl, LP, Album, Reissue edition on Capitol Records. The release is indexed under Art Rock, Industrial, Avant-garde Jazz.",
         "reviewQuote": "Trent Reznor’s third EP-length NIN release in the last two years is the best of the lot, with a raw",
         "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
-          "Nine Inch Noize",
           "How to Destroy Angels",
           "Trent Reznor and Atticus Ross",
           "Filter",
-          "Skinny Puppy"
+          "Skinny Puppy",
+          "Orgy"
         ],
-        "descriptionSource": "Pitchfork (quoted)",
+        "descriptionSource": "Verified physical-release metadata",
         "relatedArtistEvidence": [
-          {
-            "artist": "Nine Inch Noize",
-            "source": "MusicBrainz artist relationship",
-            "sources": [
-              "MusicBrainz"
-            ],
-            "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
-            "confidence": "medium",
-            "relationType": "collaboration"
-          },
           {
             "match": 1,
             "artist": "How to Destroy Angels",
@@ -6624,6 +6625,17 @@
             ],
             "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails",
             "confidence": 0.301607,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.298069,
+            "artist": "Orgy",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails",
+            "confidence": 0.298069,
             "relationType": "artist-similarity"
           }
         ],
@@ -6727,26 +6739,16 @@
             ],
             "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails"
           },
-          "source": "MusicBrainz + Last.fm",
-          "status": "combined",
+          "source": "Last.fm",
+          "status": "lastfm",
           "artists": [
-            "Nine Inch Noize",
             "How to Destroy Angels",
             "Trent Reznor and Atticus Ross",
             "Filter",
-            "Skinny Puppy"
+            "Skinny Puppy",
+            "Orgy"
           ],
           "evidence": [
-            {
-              "artist": "Nine Inch Noize",
-              "source": "MusicBrainz artist relationship",
-              "sources": [
-                "MusicBrainz"
-              ],
-              "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
-              "confidence": "medium",
-              "relationType": "collaboration"
-            },
             {
               "match": 1,
               "artist": "How to Destroy Angels",
@@ -6790,10 +6792,21 @@
               "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails",
               "confidence": 0.301607,
               "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.298069,
+              "artist": "Orgy",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails",
+              "confidence": 0.298069,
+              "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "491d093d-2970-4e3b-b01d-aa19d3089436",
-          "sourceUrl": "https://musicbrainz.org/release/491d093d-2970-4e3b-b01d-aa19d3089436",
+          "releaseId": "",
+          "sourceUrl": "",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
@@ -6806,11 +6819,11 @@
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Nine Inch Noize",
         "How to Destroy Angels",
         "Trent Reznor and Atticus Ross",
         "Filter",
-        "Skinny Puppy"
+        "Skinny Puppy",
+        "Orgy"
       ],
       "homeCollections": [],
       "researchSources": [
@@ -6830,28 +6843,18 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Pitchfork (quoted)",
+      "descriptionSource": "Verified physical-release metadata",
       "metadataSourceUrl": "https://www.discogs.com/release/30000718-Nine-Inch-Nails-Bad-Witch",
-      "editorialUpdatedAt": "2026-09-09T03:13:25.869+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-09T09:19:33.963+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
-      "enrichmentAttemptedAt": "2026-09-09T03:13:25.043Z",
+      "enrichmentAttemptedAt": "2026-09-09T09:18:39.662Z",
       "enrichmentFingerprint": "nine inch nails|bad witch|vinyl|602567473367|b002818021 00602567473367z 00602567473367",
       "relatedArtistEvidence": [
-        {
-          "artist": "Nine Inch Noize",
-          "source": "MusicBrainz artist relationship",
-          "sources": [
-            "MusicBrainz"
-          ],
-          "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
-          "confidence": "medium",
-          "relationType": "collaboration"
-        },
         {
           "match": 1,
           "artist": "How to Destroy Angels",
@@ -6894,6 +6897,17 @@
           ],
           "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails",
           "confidence": 0.301607,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.298069,
+          "artist": "Orgy",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails",
+          "confidence": 0.298069,
           "relationType": "artist-similarity"
         }
       ],
@@ -6998,26 +7012,16 @@
           ],
           "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails"
         },
-        "source": "MusicBrainz + Last.fm",
-        "status": "combined",
+        "source": "Last.fm",
+        "status": "lastfm",
         "artists": [
-          "Nine Inch Noize",
           "How to Destroy Angels",
           "Trent Reznor and Atticus Ross",
           "Filter",
-          "Skinny Puppy"
+          "Skinny Puppy",
+          "Orgy"
         ],
         "evidence": [
-          {
-            "artist": "Nine Inch Noize",
-            "source": "MusicBrainz artist relationship",
-            "sources": [
-              "MusicBrainz"
-            ],
-            "sourceUrl": "https://musicbrainz.org/artist/b7ffd2af-418f-4be2-bdd1-22f8b48613da",
-            "confidence": "medium",
-            "relationType": "collaboration"
-          },
           {
             "match": 1,
             "artist": "How to Destroy Angels",
@@ -7061,13 +7065,24 @@
             "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails",
             "confidence": 0.301607,
             "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.298069,
+            "artist": "Orgy",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nine%20Inch%20Nails",
+            "confidence": 0.298069,
+            "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "491d093d-2970-4e3b-b01d-aa19d3089436",
-        "sourceUrl": "https://musicbrainz.org/release/491d093d-2970-4e3b-b01d-aa19d3089436",
+        "releaseId": "",
+        "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
       "shipping": {
@@ -7076,7 +7091,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-08",
+        "updatedAt": "2026-09-09",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -65159,6 +65174,632 @@
       }
     },
     {
+      "id": "nxp-2026-vnl-0002",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0002",
+      "tags": [
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0002"
+      ],
+      "year": 2024,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+      "label": "A-Zap",
+      "price": 750000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "3+5",
+      "artist": "Melt-Banana",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+        "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
+      ],
+      "barcode": "6 57628 44481 7",
+      "details": [
+        "SKU: NXP-2026-VNL-0002",
+        "Format: Vinyl 12\"",
+        "Condition: New-Sealed"
+      ],
+      "edition": "Vinyl, LP, Silver Metallic",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.793Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.173Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.931Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.735Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.222Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.309Z",
+          "sku": "NXP-2026-VNL-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.793Z",
+        "sku": "NXP-2026-VNL-0002",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
+      "reviewQuote": "frantic sensibilities",
+      "editRevision": 2,
+      "imageCredits": [
+        {
+          "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp",
+          "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
+          "credit": "Turntable Lab"
+        }
+      ],
+      "reviewSource": "The Quietus (quoted)",
+      "autoEditorial": {
+        "relatedArtists": [
+          "Lightning Bolt",
+          "Boredoms",
+          "Ruins",
+          "OOIOO",
+          "Otoboke Beaver"
+        ],
+        "enrichmentStatus": "complete",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Lightning Bolt",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.631121,
+            "artist": "Boredoms",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.631121,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.598863,
+            "artist": "Ruins",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.598863,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.568415,
+            "artist": "OOIOO",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.568415,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.554159,
+            "artist": "Otoboke Beaver",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.554159,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Lightning Bolt",
+              "Boredoms",
+              "Ruins",
+              "OOIOO",
+              "Otoboke Beaver",
+              "Black Eyes",
+              "Hella",
+              "Big Black",
+              "Boris",
+              "The Locust"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Lightning Bolt",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.631121,
+                "artist": "Boredoms",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.631121,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.598863,
+                "artist": "Ruins",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.598863,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.568415,
+                "artist": "OOIOO",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.568415,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.554159,
+                "artist": "Otoboke Beaver",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.554159,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.545315,
+                "artist": "Black Eyes",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.545315,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.538107,
+                "artist": "Hella",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.538107,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.528056,
+                "artist": "Big Black",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.528056,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.524238,
+                "artist": "Boris",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.524238,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.507644,
+                "artist": "The Locust",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.507644,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Lightning Bolt",
+            "Boredoms",
+            "Ruins",
+            "OOIOO",
+            "Otoboke Beaver"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Lightning Bolt",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.631121,
+              "artist": "Boredoms",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.631121,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.598863,
+              "artist": "Ruins",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.598863,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.568415,
+              "artist": "OOIOO",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.568415,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.554159,
+              "artist": "Otoboke Beaver",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.554159,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "AZLP-0011",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 24,
+      "publishStatus": "Published",
+      "financeStockId": "mr6ja47v7cvrh3",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Lightning Bolt",
+        "Boredoms",
+        "Ruins",
+        "OOIOO",
+        "Otoboke Beaver"
+      ],
+      "homeCollections": [
+        "limited-pressing"
+      ],
+      "sleeveCondition": "",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "The Quietus / AllMusic",
+      "editorialUpdatedAt": "2026-09-08T13:16:42.276+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "manualRelatedArtists": [],
+      "enrichmentAttemptedAt": "2026-08-18T16:56:07.703Z",
+      "enrichmentFingerprint": "melt banana|3 5|vinyl||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Lightning Bolt",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.631121,
+          "artist": "Boredoms",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.631121,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.598863,
+          "artist": "Ruins",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.598863,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.568415,
+          "artist": "OOIOO",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.568415,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.554159,
+          "artist": "Otoboke Beaver",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.554159,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Lightning Bolt",
+            "Boredoms",
+            "Ruins",
+            "OOIOO",
+            "Otoboke Beaver",
+            "Black Eyes",
+            "Hella",
+            "Big Black",
+            "Boris",
+            "The Locust"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Lightning Bolt",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.631121,
+              "artist": "Boredoms",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.631121,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.598863,
+              "artist": "Ruins",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.598863,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.568415,
+              "artist": "OOIOO",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.568415,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.554159,
+              "artist": "Otoboke Beaver",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.554159,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.545315,
+              "artist": "Black Eyes",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.545315,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.538107,
+              "artist": "Hella",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.538107,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.528056,
+              "artist": "Big Black",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.528056,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.524238,
+              "artist": "Boris",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.524238,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.507644,
+              "artist": "The Locust",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.507644,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Lightning Bolt",
+          "Boredoms",
+          "Ruins",
+          "OOIOO",
+          "Otoboke Beaver"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Lightning Bolt",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.631121,
+            "artist": "Boredoms",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.631121,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.598863,
+            "artist": "Ruins",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.598863,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.568415,
+            "artist": "OOIOO",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.568415,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.554159,
+            "artist": "Otoboke Beaver",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.554159,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-08",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "nxp-2026-cst-0005",
       "qty": 1,
       "sku": "NXP-2026-CST-0005",
@@ -65792,632 +66433,6 @@
         "shippingClass": "small-media-cassette-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "nxp-2026-vnl-0002",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0002",
-      "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0002"
-      ],
-      "year": 2024,
-      "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
-      "label": "A-Zap",
-      "price": 750000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "3+5",
-      "artist": "Melt-Banana",
-      "format": "Vinyl",
-      "images": [
-        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
-        "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
-      ],
-      "barcode": "6 57628 44481 7",
-      "details": [
-        "SKU: NXP-2026-VNL-0002",
-        "Format: Vinyl 12\"",
-        "Condition: New-Sealed"
-      ],
-      "edition": "Vinyl, LP, Silver Metallic",
-      "category": "Records",
-      "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.793Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.173Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.931Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.735Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.309Z",
-          "sku": "NXP-2026-VNL-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.793Z",
-        "sku": "NXP-2026-VNL-0002",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
-      "reviewQuote": "frantic sensibilities",
-      "editRevision": 2,
-      "imageCredits": [
-        {
-          "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp",
-          "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
-          "credit": "Turntable Lab"
-        }
-      ],
-      "reviewSource": "The Quietus (quoted)",
-      "autoEditorial": {
-        "relatedArtists": [
-          "Lightning Bolt",
-          "Boredoms",
-          "Ruins",
-          "OOIOO",
-          "Otoboke Beaver"
-        ],
-        "enrichmentStatus": "complete",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Lightning Bolt",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.631121,
-            "artist": "Boredoms",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.631121,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.598863,
-            "artist": "Ruins",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.598863,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.568415,
-            "artist": "OOIOO",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.568415,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.554159,
-            "artist": "Otoboke Beaver",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.554159,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Lightning Bolt",
-              "Boredoms",
-              "Ruins",
-              "OOIOO",
-              "Otoboke Beaver",
-              "Black Eyes",
-              "Hella",
-              "Big Black",
-              "Boris",
-              "The Locust"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Lightning Bolt",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.631121,
-                "artist": "Boredoms",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.631121,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.598863,
-                "artist": "Ruins",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.598863,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.568415,
-                "artist": "OOIOO",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.568415,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.554159,
-                "artist": "Otoboke Beaver",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.554159,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.545315,
-                "artist": "Black Eyes",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.545315,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.538107,
-                "artist": "Hella",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.538107,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.528056,
-                "artist": "Big Black",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.528056,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.524238,
-                "artist": "Boris",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.524238,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.507644,
-                "artist": "The Locust",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.507644,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Lightning Bolt",
-            "Boredoms",
-            "Ruins",
-            "OOIOO",
-            "Otoboke Beaver"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Lightning Bolt",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.631121,
-              "artist": "Boredoms",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.631121,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.598863,
-              "artist": "Ruins",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.598863,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.568415,
-              "artist": "OOIOO",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.568415,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.554159,
-              "artist": "Otoboke Beaver",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.554159,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "",
-          "sourceUrl": "",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "AZLP-0011",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 24,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47v7cvrh3",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Lightning Bolt",
-        "Boredoms",
-        "Ruins",
-        "OOIOO",
-        "Otoboke Beaver"
-      ],
-      "homeCollections": [
-        "limited-pressing"
-      ],
-      "sleeveCondition": "",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "The Quietus / AllMusic",
-      "editorialUpdatedAt": "2026-09-08T13:16:42.276+00:00",
-      "editorialUpdatedBy": "operatorwebsite",
-      "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:56:07.703Z",
-      "enrichmentFingerprint": "melt banana|3 5|vinyl||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Lightning Bolt",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.631121,
-          "artist": "Boredoms",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.631121,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.598863,
-          "artist": "Ruins",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.598863,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.568415,
-          "artist": "OOIOO",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.568415,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.554159,
-          "artist": "Otoboke Beaver",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.554159,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Lightning Bolt",
-            "Boredoms",
-            "Ruins",
-            "OOIOO",
-            "Otoboke Beaver",
-            "Black Eyes",
-            "Hella",
-            "Big Black",
-            "Boris",
-            "The Locust"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Lightning Bolt",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.631121,
-              "artist": "Boredoms",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.631121,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.598863,
-              "artist": "Ruins",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.598863,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.568415,
-              "artist": "OOIOO",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.568415,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.554159,
-              "artist": "Otoboke Beaver",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.554159,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.545315,
-              "artist": "Black Eyes",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.545315,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.538107,
-              "artist": "Hella",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.538107,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.528056,
-              "artist": "Big Black",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.528056,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.524238,
-              "artist": "Boris",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.524238,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.507644,
-              "artist": "The Locust",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.507644,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Lightning Bolt",
-          "Boredoms",
-          "Ruins",
-          "OOIOO",
-          "Otoboke Beaver"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Lightning Bolt",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.631121,
-            "artist": "Boredoms",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.631121,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.598863,
-            "artist": "Ruins",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.598863,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.568415,
-            "artist": "OOIOO",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.568415,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.554159,
-            "artist": "Otoboke Beaver",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.554159,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "",
-        "sourceUrl": "",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": true,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "manualRelatedArtistsOverrideSource": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-09-08",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
@@ -67238,153 +67253,6 @@
       }
     },
     {
-      "id": "nxp-2026-obj-0002-preform",
-      "qty": 9,
-      "sku": "NXP-2026-OBJ-0002",
-      "tags": [],
-      "year": 2026,
-      "color": "Palladio",
-      "image": "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg",
-      "label": "Nix Powell",
-      "price": 480000,
-      "sizes": [
-        {
-          "label": "9",
-          "soldOut": false,
-          "quantity": 4
-        },
-        {
-          "label": "11",
-          "soldOut": false,
-          "quantity": 5
-        }
-      ],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 9
-      },
-      "title": "Preform",
-      "artist": "Cold Metal Breathes Too",
-      "format": "Object",
-      "images": [
-        "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "Brass Ring"
-      ],
-      "edition": "",
-      "category": "Objects",
-      "material": "White Brass",
-      "condition": "New-Sealed",
-      "reviewUrl": "",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.795Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-29T10:09:43.965Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-29T09:54:26.176Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-29T02:23:49.934Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-28T02:12:08.737Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        },
-        {
-          "at": "2026-08-27T15:01:51.312Z",
-          "sku": "NXP-2026-OBJ-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 9
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "Cold Metal Breathes Too",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.795Z",
-        "sku": "NXP-2026-OBJ-0002",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 9
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "PREFORM RINGNIX POWELL \"PREFORM\" RING IN BRASS\nTHESE JEWELLERY PIECES ARE CRAFTED WITH THE INDIVIDUAL HANDWORK OF THE ARTISAN, MAKING EACH PIECE UNIQUE.\nWHITE BRASS WITH A BRUSHED PALLADIUM FINISH\n\n\nCOLOR: PALLADIO\nMATERIAL: 100% BRASS",
-      "reviewQuote": "",
-      "imageCredits": [],
-      "reviewSource": "",
-      "catalogNumber": "",
-      "displayFormat": "",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "catalog-nxp-2026-obj-0002-preform",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "descriptionSource": "",
-      "manualRelatedArtists": [],
-      "minimumAcceptableOffer": 0,
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "relatedArtistsResearch": null,
-      "shipping": {
-        "source": "NIXP packing standard: measured object in cardboard and bubble wrap",
-        "status": "measured_manual",
-        "widthCm": 25,
-        "heightCm": 12,
-        "lengthCm": 30,
-        "updatedAt": "2026-09-02",
-        "packageType": "protective-box",
-        "weightGrams": 650,
-        "shippingClass": "object-protective-box",
-        "packagingGroup": "MANUAL_OVERRIDE",
-        "vinylWeightClass": "",
-        "manualShippingOverride": true
-      }
-    },
-    {
       "id": "nxp-2026-cst-0009",
       "qty": 1,
       "sku": "NXP-2026-CST-0009",
@@ -68006,6 +67874,153 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-obj-0002-preform",
+      "qty": 9,
+      "sku": "NXP-2026-OBJ-0002",
+      "tags": [],
+      "year": 2026,
+      "color": "Palladio",
+      "image": "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg",
+      "label": "Nix Powell",
+      "price": 480000,
+      "sizes": [
+        {
+          "label": "9",
+          "soldOut": false,
+          "quantity": 4
+        },
+        {
+          "label": "11",
+          "soldOut": false,
+          "quantity": 5
+        }
+      ],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 9
+      },
+      "title": "Preform",
+      "artist": "Cold Metal Breathes Too",
+      "format": "Object",
+      "images": [
+        "/public/uploads/products/nxp-2026-obj-0002-preform-dsc08746j-jpg-1783846293637.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "Brass Ring"
+      ],
+      "edition": "",
+      "category": "Objects",
+      "material": "White Brass",
+      "condition": "New-Sealed",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.795Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-29T10:09:43.965Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-29T09:54:26.176Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-29T02:23:49.934Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-28T09:19:04.765Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-28T02:12:08.737Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        },
+        {
+          "at": "2026-08-27T15:01:51.312Z",
+          "sku": "NXP-2026-OBJ-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 9
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "Cold Metal Breathes Too",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.795Z",
+        "sku": "NXP-2026-OBJ-0002",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 9
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "PREFORM RINGNIX POWELL \"PREFORM\" RING IN BRASS\nTHESE JEWELLERY PIECES ARE CRAFTED WITH THE INDIVIDUAL HANDWORK OF THE ARTISAN, MAKING EACH PIECE UNIQUE.\nWHITE BRASS WITH A BRUSHED PALLADIUM FINISH\n\n\nCOLOR: PALLADIO\nMATERIAL: 100% BRASS",
+      "reviewQuote": "",
+      "imageCredits": [],
+      "reviewSource": "",
+      "catalogNumber": "",
+      "displayFormat": "",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "catalog-nxp-2026-obj-0002-preform",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "",
+      "manualRelatedArtists": [],
+      "minimumAcceptableOffer": 0,
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packing standard: measured object in cardboard and bubble wrap",
+        "status": "measured_manual",
+        "widthCm": 25,
+        "heightCm": 12,
+        "lengthCm": 30,
+        "updatedAt": "2026-09-02",
+        "packageType": "protective-box",
+        "weightGrams": 650,
+        "shippingClass": "object-protective-box",
+        "packagingGroup": "MANUAL_OVERRIDE",
+        "vinylWeightClass": "",
+        "manualShippingOverride": true
       }
     },
     {
@@ -74218,631 +74233,6 @@
       }
     },
     {
-      "id": "nxp-2026-cst-0008",
-      "qty": 1,
-      "sku": "NXP-2026-CST-0008",
-      "tags": [
-        "Cassette",
-        "NXP-2026-CST-0008"
-      ],
-      "year": 2025,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
-      "label": "Trouble In Mind",
-      "price": 450000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Wish Defense",
-      "artist": "FACS",
-      "format": "Cassette",
-      "images": [
-        "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
-        "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CST-0008",
-        "Format: Cassette",
-        "Condition: New-Sealed"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://newnoisemagazine.com/reviews/album-review-facs-wish-defense/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.794Z",
-          "sku": "NXP-2026-CST-0008",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.964Z",
-          "sku": "NXP-2026-CST-0008",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.175Z",
-          "sku": "NXP-2026-CST-0008",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.933Z",
-          "sku": "NXP-2026-CST-0008",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.764Z",
-          "sku": "NXP-2026-CST-0008",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-CST-0008",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-CST-0008",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.311Z",
-          "sku": "NXP-2026-CST-0008",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.794Z",
-        "sku": "NXP-2026-CST-0008",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "FACS' 2025 Wish Defense is brooding post-punk with wiry guitars, hypnotic drums and dirty bass, and the final recording made by Steve Albini at Electrical Audio.",
-      "reviewQuote": "a cavernous uneasiness",
-      "imageCredits": [
-        {
-          "url": "https://troubleinmindrecs.com/",
-          "image": "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg",
-          "credit": "Trouble In Mind Records"
-        }
-      ],
-      "reviewSource": "New Noise Magazine (quoted)",
-      "autoEditorial": {
-        "relatedArtists": [
-          "Disappears",
-          "Open Head",
-          "Ditz",
-          "Bambara",
-          "Preoccupations"
-        ],
-        "enrichmentStatus": "complete-no-related-artists",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Disappears",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.909834,
-            "artist": "Open Head",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.909834,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.78611,
-            "artist": "Ditz",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.78611,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.642194,
-            "artist": "Bambara",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.642194,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.501882,
-            "artist": "Preoccupations",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.501882,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Disappears",
-              "Open Head",
-              "Ditz",
-              "Bambara",
-              "Preoccupations",
-              "Haunted Horses",
-              "The Men",
-              "Moin",
-              "Snapped Ankles",
-              "The Murder Capital"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Disappears",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.909834,
-                "artist": "Open Head",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.909834,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.78611,
-                "artist": "Ditz",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.78611,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.642194,
-                "artist": "Bambara",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.642194,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.501882,
-                "artist": "Preoccupations",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.501882,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.486282,
-                "artist": "Haunted Horses",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.486282,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.482102,
-                "artist": "The Men",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.482102,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.461738,
-                "artist": "Moin",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.461738,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.439289,
-                "artist": "Snapped Ankles",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.439289,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.414935,
-                "artist": "The Murder Capital",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/FACS",
-                "confidence": 0.414935,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Disappears",
-            "Open Head",
-            "Ditz",
-            "Bambara",
-            "Preoccupations"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Disappears",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.909834,
-              "artist": "Open Head",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.909834,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.78611,
-              "artist": "Ditz",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.78611,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.642194,
-              "artist": "Bambara",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.642194,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.501882,
-              "artist": "Preoccupations",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.501882,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "",
-          "sourceUrl": "",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "Cassette",
-      "homeSlideSort": 35,
-      "publishStatus": "Published",
-      "financeStockId": "mrfb4t2smb08x6",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Disappears",
-        "Open Head",
-        "Ditz",
-        "Bambara",
-        "Preoccupations"
-      ],
-      "homeCollections": [
-        "recent-releases",
-        "limited-pressing"
-      ],
-      "sleeveCondition": "",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "New Noise Magazine",
-      "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:56:07.861Z",
-      "enrichmentFingerprint": "facs|wish defense|cassette||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Disappears",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.909834,
-          "artist": "Open Head",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
-          "confidence": 0.909834,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.78611,
-          "artist": "Ditz",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
-          "confidence": 0.78611,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.642194,
-          "artist": "Bambara",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
-          "confidence": 0.642194,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.501882,
-          "artist": "Preoccupations",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/FACS",
-          "confidence": 0.501882,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Disappears",
-            "Open Head",
-            "Ditz",
-            "Bambara",
-            "Preoccupations",
-            "Haunted Horses",
-            "The Men",
-            "Moin",
-            "Snapped Ankles",
-            "The Murder Capital"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Disappears",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.909834,
-              "artist": "Open Head",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.909834,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.78611,
-              "artist": "Ditz",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.78611,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.642194,
-              "artist": "Bambara",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.642194,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.501882,
-              "artist": "Preoccupations",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.501882,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.486282,
-              "artist": "Haunted Horses",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.486282,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.482102,
-              "artist": "The Men",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.482102,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.461738,
-              "artist": "Moin",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.461738,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.439289,
-              "artist": "Snapped Ankles",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.439289,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.414935,
-              "artist": "The Murder Capital",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/FACS",
-              "confidence": 0.414935,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/FACS"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Disappears",
-          "Open Head",
-          "Ditz",
-          "Bambara",
-          "Preoccupations"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Disappears",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.909834,
-            "artist": "Open Head",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.909834,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.78611,
-            "artist": "Ditz",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.78611,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.642194,
-            "artist": "Bambara",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.642194,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.501882,
-            "artist": "Preoccupations",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/FACS",
-            "confidence": 0.501882,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "",
-        "sourceUrl": "",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 12,
-        "heightCm": 8,
-        "lengthCm": 16,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 90,
-        "shippingClass": "small-media-cassette-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "nxp-2026-cd-0007",
       "qty": 1,
       "sku": "NXP-2026-CD-0007",
@@ -75319,6 +74709,630 @@
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-vnl-0009",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0009",
+      "tags": [
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0009"
+      ],
+      "year": 2019,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
+      "label": "Domino",
+      "price": 550000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Buoys",
+      "artist": "Panda Bear",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
+        "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-VNL-0009",
+        "Format: Vinyl 12\"",
+        "Condition: New-Sealed"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/panda-bear-buoys/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.794Z",
+          "sku": "NXP-2026-VNL-0009",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-VNL-0009",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.175Z",
+          "sku": "NXP-2026-VNL-0009",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.932Z",
+          "sku": "NXP-2026-VNL-0009",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-VNL-0009",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.736Z",
+          "sku": "NXP-2026-VNL-0009",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.222Z",
+          "sku": "NXP-2026-VNL-0009",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.311Z",
+          "sku": "NXP-2026-VNL-0009",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.794Z",
+        "sku": "NXP-2026-VNL-0009",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Panda Bear's 2019 Buoys strips Noah Lennox's songwriting toward acoustic guitar, sparse digital production and voice, creating a direct and solitary Domino album.",
+      "reviewQuote": "unusually unified listen",
+      "imageCredits": [
+        {
+          "url": "https://www.dominomusic.com/releases/panda-bear/buoys/deluxe-lp",
+          "image": "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg",
+          "credit": "Domino"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "relatedArtists": [
+          "Animal Collective",
+          "Avey Tare",
+          "Deakin",
+          "Avey Tare's Slasher Flicks",
+          "Deerhunter"
+        ],
+        "enrichmentStatus": "complete",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Animal Collective",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.877539,
+            "artist": "Avey Tare",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.877539,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.696062,
+            "artist": "Deakin",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.696062,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.436592,
+            "artist": "Avey Tare's Slasher Flicks",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.436592,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.26728,
+            "artist": "Deerhunter",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.26728,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Animal Collective",
+              "Avey Tare",
+              "Deakin",
+              "Avey Tare's Slasher Flicks",
+              "Deerhunter",
+              "Atlas Sound",
+              "Geologist",
+              "Dirty Projectors",
+              "Grizzly Bear",
+              "Panda Bear & Sonic Boom"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Animal Collective",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.877539,
+                "artist": "Avey Tare",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.877539,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.696062,
+                "artist": "Deakin",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.696062,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.436592,
+                "artist": "Avey Tare's Slasher Flicks",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.436592,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.26728,
+                "artist": "Deerhunter",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.26728,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.266403,
+                "artist": "Atlas Sound",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.266403,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.226988,
+                "artist": "Geologist",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.226988,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.220454,
+                "artist": "Dirty Projectors",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.220454,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.207574,
+                "artist": "Grizzly Bear",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.207574,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.177207,
+                "artist": "Panda Bear & Sonic Boom",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "confidence": 0.177207,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Animal Collective",
+            "Avey Tare",
+            "Deakin",
+            "Avey Tare's Slasher Flicks",
+            "Deerhunter"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Animal Collective",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.877539,
+              "artist": "Avey Tare",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.877539,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.696062,
+              "artist": "Deakin",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.696062,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.436592,
+              "artist": "Avey Tare's Slasher Flicks",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.436592,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.26728,
+              "artist": "Deerhunter",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.26728,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 39,
+      "publishStatus": "Published",
+      "financeStockId": "mr9rjti7q8f9uz",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Animal Collective",
+        "Avey Tare",
+        "Deakin",
+        "Avey Tare's Slasher Flicks",
+        "Deerhunter"
+      ],
+      "homeCollections": [
+        "limited-pressing"
+      ],
+      "sleeveCondition": "",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Pitchfork / The Guardian",
+      "manualRelatedArtists": [],
+      "enrichmentAttemptedAt": "2026-08-18T16:54:05.356Z",
+      "enrichmentFingerprint": "panda bear|buoys|vinyl||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Animal Collective",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.877539,
+          "artist": "Avey Tare",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "confidence": 0.877539,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.696062,
+          "artist": "Deakin",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "confidence": 0.696062,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.436592,
+          "artist": "Avey Tare's Slasher Flicks",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "confidence": 0.436592,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.26728,
+          "artist": "Deerhunter",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "confidence": 0.26728,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Animal Collective",
+            "Avey Tare",
+            "Deakin",
+            "Avey Tare's Slasher Flicks",
+            "Deerhunter",
+            "Atlas Sound",
+            "Geologist",
+            "Dirty Projectors",
+            "Grizzly Bear",
+            "Panda Bear & Sonic Boom"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Animal Collective",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.877539,
+              "artist": "Avey Tare",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.877539,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.696062,
+              "artist": "Deakin",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.696062,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.436592,
+              "artist": "Avey Tare's Slasher Flicks",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.436592,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.26728,
+              "artist": "Deerhunter",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.26728,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.266403,
+              "artist": "Atlas Sound",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.266403,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.226988,
+              "artist": "Geologist",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.226988,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.220454,
+              "artist": "Dirty Projectors",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.220454,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.207574,
+              "artist": "Grizzly Bear",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.207574,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.177207,
+              "artist": "Panda Bear & Sonic Boom",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "confidence": 0.177207,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Panda%20Bear"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Animal Collective",
+          "Avey Tare",
+          "Deakin",
+          "Avey Tare's Slasher Flicks",
+          "Deerhunter"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Animal Collective",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.877539,
+            "artist": "Avey Tare",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.877539,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.696062,
+            "artist": "Deakin",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.696062,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.436592,
+            "artist": "Avey Tare's Slasher Flicks",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.436592,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.26728,
+            "artist": "Deerhunter",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "confidence": 0.26728,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
@@ -78003,95 +78017,95 @@
       }
     },
     {
-      "id": "nxp-2026-vnl-0009",
+      "id": "nxp-2026-cst-0008",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0009",
+      "sku": "NXP-2026-CST-0008",
       "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0009"
+        "Cassette",
+        "NXP-2026-CST-0008"
       ],
-      "year": 2019,
+      "year": 2025,
       "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
-      "label": "Domino",
-      "price": 550000,
+      "image": "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
+      "label": "Trouble In Mind",
+      "price": 450000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Buoys",
-      "artist": "Panda Bear",
-      "format": "Vinyl",
+      "title": "Wish Defense",
+      "artist": "FACS",
+      "format": "Cassette",
       "images": [
-        "/public/covers/nxp-2026-vnl-0009-panda-bear-buoys.jpg",
-        "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg"
+        "/public/covers/nxp-2026-cst-0008-facs-wish-defense.jpg",
+        "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg"
       ],
       "barcode": "",
       "details": [
-        "SKU: NXP-2026-VNL-0009",
-        "Format: Vinyl 12\"",
+        "SKU: NXP-2026-CST-0008",
+        "Format: Cassette",
         "Condition: New-Sealed"
       ],
       "edition": "",
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/panda-bear-buoys/",
+      "reviewUrl": "https://newnoisemagazine.com/reviews/album-review-facs-wish-defense/",
       "syncAudit": [
         {
           "at": "2026-08-30T02:14:08.794Z",
-          "sku": "NXP-2026-VNL-0009",
+          "sku": "NXP-2026-CST-0008",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-VNL-0009",
+          "at": "2026-08-29T10:09:43.964Z",
+          "sku": "NXP-2026-CST-0008",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T09:54:26.175Z",
-          "sku": "NXP-2026-VNL-0009",
+          "sku": "NXP-2026-CST-0008",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.932Z",
-          "sku": "NXP-2026-VNL-0009",
+          "at": "2026-08-29T02:23:49.933Z",
+          "sku": "NXP-2026-CST-0008",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-VNL-0009",
+          "at": "2026-08-28T09:19:04.764Z",
+          "sku": "NXP-2026-CST-0008",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-VNL-0009",
+          "sku": "NXP-2026-CST-0008",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-VNL-0009",
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-CST-0008",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:01:51.311Z",
-          "sku": "NXP-2026-VNL-0009",
+          "sku": "NXP-2026-CST-0008",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -78101,86 +78115,86 @@
       "collection": "NIXP Selection",
       "syncStatus": {
         "at": "2026-08-30T02:14:08.794Z",
-        "sku": "NXP-2026-VNL-0009",
+        "sku": "NXP-2026-CST-0008",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Panda Bear's 2019 Buoys strips Noah Lennox's songwriting toward acoustic guitar, sparse digital production and voice, creating a direct and solitary Domino album.",
-      "reviewQuote": "unusually unified listen",
+      "description": "FACS' 2025 Wish Defense is brooding post-punk with wiry guitars, hypnotic drums and dirty bass, and the final recording made by Steve Albini at Electrical Audio.",
+      "reviewQuote": "a cavernous uneasiness",
       "imageCredits": [
         {
-          "url": "https://www.dominomusic.com/releases/panda-bear/buoys/deluxe-lp",
-          "image": "/public/mockups/nxp-2026-vnl-0009-panda-bear-buoys-vinyl.jpg",
-          "credit": "Domino"
+          "url": "https://troubleinmindrecs.com/",
+          "image": "/public/mockups/nxp-2026-cst-0008-facs-wish-defense-cassette.jpg",
+          "credit": "Trouble In Mind Records"
         }
       ],
-      "reviewSource": "Pitchfork (quoted)",
+      "reviewSource": "New Noise Magazine (quoted)",
       "autoEditorial": {
         "relatedArtists": [
-          "Animal Collective",
-          "Avey Tare",
-          "Deakin",
-          "Avey Tare's Slasher Flicks",
-          "Deerhunter"
+          "Disappears",
+          "Open Head",
+          "Ditz",
+          "Bambara",
+          "Preoccupations"
         ],
-        "enrichmentStatus": "complete",
+        "enrichmentStatus": "complete-no-related-artists",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Animal Collective",
+            "artist": "Disappears",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "sourceUrl": "https://www.last.fm/music/FACS",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.877539,
-            "artist": "Avey Tare",
+            "match": 0.909834,
+            "artist": "Open Head",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.877539,
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.909834,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.696062,
-            "artist": "Deakin",
+            "match": 0.78611,
+            "artist": "Ditz",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.696062,
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.78611,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.436592,
-            "artist": "Avey Tare's Slasher Flicks",
+            "match": 0.642194,
+            "artist": "Bambara",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.436592,
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.642194,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.26728,
-            "artist": "Deerhunter",
+            "match": 0.501882,
+            "artist": "Preoccupations",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.26728,
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.501882,
             "relationType": "artist-similarity"
           }
         ],
@@ -78189,164 +78203,164 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Animal Collective",
-              "Avey Tare",
-              "Deakin",
-              "Avey Tare's Slasher Flicks",
-              "Deerhunter",
-              "Atlas Sound",
-              "Geologist",
-              "Dirty Projectors",
-              "Grizzly Bear",
-              "Panda Bear & Sonic Boom"
+              "Disappears",
+              "Open Head",
+              "Ditz",
+              "Bambara",
+              "Preoccupations",
+              "Haunted Horses",
+              "The Men",
+              "Moin",
+              "Snapped Ankles",
+              "The Murder Capital"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Animal Collective",
+                "artist": "Disappears",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+                "sourceUrl": "https://www.last.fm/music/FACS",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.877539,
-                "artist": "Avey Tare",
+                "match": 0.909834,
+                "artist": "Open Head",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.877539,
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.909834,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.696062,
-                "artist": "Deakin",
+                "match": 0.78611,
+                "artist": "Ditz",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.696062,
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.78611,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.436592,
-                "artist": "Avey Tare's Slasher Flicks",
+                "match": 0.642194,
+                "artist": "Bambara",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.436592,
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.642194,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.26728,
-                "artist": "Deerhunter",
+                "match": 0.501882,
+                "artist": "Preoccupations",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.26728,
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.501882,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.266403,
-                "artist": "Atlas Sound",
+                "match": 0.486282,
+                "artist": "Haunted Horses",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.266403,
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.486282,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.226988,
-                "artist": "Geologist",
+                "match": 0.482102,
+                "artist": "The Men",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.226988,
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.482102,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.220454,
-                "artist": "Dirty Projectors",
+                "match": 0.461738,
+                "artist": "Moin",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.220454,
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.461738,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.207574,
-                "artist": "Grizzly Bear",
+                "match": 0.439289,
+                "artist": "Snapped Ankles",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.207574,
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.439289,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.177207,
-                "artist": "Panda Bear & Sonic Boom",
+                "match": 0.414935,
+                "artist": "The Murder Capital",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-                "confidence": 0.177207,
+                "sourceUrl": "https://www.last.fm/music/FACS",
+                "confidence": 0.414935,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear"
+            "sourceUrl": "https://www.last.fm/music/FACS"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Animal Collective",
-            "Avey Tare",
-            "Deakin",
-            "Avey Tare's Slasher Flicks",
-            "Deerhunter"
+            "Disappears",
+            "Open Head",
+            "Ditz",
+            "Bambara",
+            "Preoccupations"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Animal Collective",
+              "artist": "Disappears",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "sourceUrl": "https://www.last.fm/music/FACS",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.877539,
-              "artist": "Avey Tare",
+              "match": 0.909834,
+              "artist": "Open Head",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.877539,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.909834,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.696062,
-              "artist": "Deakin",
+              "match": 0.78611,
+              "artist": "Ditz",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.696062,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.78611,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.436592,
-              "artist": "Avey Tare's Slasher Flicks",
+              "match": 0.642194,
+              "artist": "Bambara",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.436592,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.642194,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.26728,
-              "artist": "Deerhunter",
+              "match": 0.501882,
+              "artist": "Preoccupations",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.26728,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.501882,
               "relationType": "artist-similarity"
             }
           ],
@@ -78357,82 +78371,83 @@
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 39,
+      "displayFormat": "Cassette",
+      "homeSlideSort": 35,
       "publishStatus": "Published",
-      "financeStockId": "mr9rjti7q8f9uz",
+      "financeStockId": "mrfb4t2smb08x6",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Animal Collective",
-        "Avey Tare",
-        "Deakin",
-        "Avey Tare's Slasher Flicks",
-        "Deerhunter"
+        "Disappears",
+        "Open Head",
+        "Ditz",
+        "Bambara",
+        "Preoccupations"
       ],
       "homeCollections": [
+        "recent-releases",
         "limited-pressing"
       ],
       "sleeveCondition": "",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Pitchfork / The Guardian",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "New Noise Magazine",
       "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:54:05.356Z",
-      "enrichmentFingerprint": "panda bear|buoys|vinyl||",
+      "enrichmentAttemptedAt": "2026-08-18T16:56:07.861Z",
+      "enrichmentFingerprint": "facs|wish defense|cassette||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Animal Collective",
+          "artist": "Disappears",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+          "sourceUrl": "https://www.last.fm/music/FACS",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.877539,
-          "artist": "Avey Tare",
+          "match": 0.909834,
+          "artist": "Open Head",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-          "confidence": 0.877539,
+          "sourceUrl": "https://www.last.fm/music/FACS",
+          "confidence": 0.909834,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.696062,
-          "artist": "Deakin",
+          "match": 0.78611,
+          "artist": "Ditz",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-          "confidence": 0.696062,
+          "sourceUrl": "https://www.last.fm/music/FACS",
+          "confidence": 0.78611,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.436592,
-          "artist": "Avey Tare's Slasher Flicks",
+          "match": 0.642194,
+          "artist": "Bambara",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-          "confidence": 0.436592,
+          "sourceUrl": "https://www.last.fm/music/FACS",
+          "confidence": 0.642194,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.26728,
-          "artist": "Deerhunter",
+          "match": 0.501882,
+          "artist": "Preoccupations",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-          "confidence": 0.26728,
+          "sourceUrl": "https://www.last.fm/music/FACS",
+          "confidence": 0.501882,
           "relationType": "artist-similarity"
         }
       ],
@@ -78442,164 +78457,164 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Animal Collective",
-            "Avey Tare",
-            "Deakin",
-            "Avey Tare's Slasher Flicks",
-            "Deerhunter",
-            "Atlas Sound",
-            "Geologist",
-            "Dirty Projectors",
-            "Grizzly Bear",
-            "Panda Bear & Sonic Boom"
+            "Disappears",
+            "Open Head",
+            "Ditz",
+            "Bambara",
+            "Preoccupations",
+            "Haunted Horses",
+            "The Men",
+            "Moin",
+            "Snapped Ankles",
+            "The Murder Capital"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Animal Collective",
+              "artist": "Disappears",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+              "sourceUrl": "https://www.last.fm/music/FACS",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.877539,
-              "artist": "Avey Tare",
+              "match": 0.909834,
+              "artist": "Open Head",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.877539,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.909834,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.696062,
-              "artist": "Deakin",
+              "match": 0.78611,
+              "artist": "Ditz",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.696062,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.78611,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.436592,
-              "artist": "Avey Tare's Slasher Flicks",
+              "match": 0.642194,
+              "artist": "Bambara",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.436592,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.642194,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.26728,
-              "artist": "Deerhunter",
+              "match": 0.501882,
+              "artist": "Preoccupations",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.26728,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.501882,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.266403,
-              "artist": "Atlas Sound",
+              "match": 0.486282,
+              "artist": "Haunted Horses",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.266403,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.486282,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.226988,
-              "artist": "Geologist",
+              "match": 0.482102,
+              "artist": "The Men",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.226988,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.482102,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.220454,
-              "artist": "Dirty Projectors",
+              "match": 0.461738,
+              "artist": "Moin",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.220454,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.461738,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.207574,
-              "artist": "Grizzly Bear",
+              "match": 0.439289,
+              "artist": "Snapped Ankles",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.207574,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.439289,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.177207,
-              "artist": "Panda Bear & Sonic Boom",
+              "match": 0.414935,
+              "artist": "The Murder Capital",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-              "confidence": 0.177207,
+              "sourceUrl": "https://www.last.fm/music/FACS",
+              "confidence": 0.414935,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Panda%20Bear"
+          "sourceUrl": "https://www.last.fm/music/FACS"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Animal Collective",
-          "Avey Tare",
-          "Deakin",
-          "Avey Tare's Slasher Flicks",
-          "Deerhunter"
+          "Disappears",
+          "Open Head",
+          "Ditz",
+          "Bambara",
+          "Preoccupations"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Animal Collective",
+            "artist": "Disappears",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
+            "sourceUrl": "https://www.last.fm/music/FACS",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.877539,
-            "artist": "Avey Tare",
+            "match": 0.909834,
+            "artist": "Open Head",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.877539,
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.909834,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.696062,
-            "artist": "Deakin",
+            "match": 0.78611,
+            "artist": "Ditz",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.696062,
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.78611,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.436592,
-            "artist": "Avey Tare's Slasher Flicks",
+            "match": 0.642194,
+            "artist": "Bambara",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.436592,
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.642194,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.26728,
-            "artist": "Deerhunter",
+            "match": 0.501882,
+            "artist": "Preoccupations",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Panda%20Bear",
-            "confidence": 0.26728,
+            "sourceUrl": "https://www.last.fm/music/FACS",
+            "confidence": 0.501882,
             "relationType": "artist-similarity"
           }
         ],
@@ -78607,791 +78622,6 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "nxp-2026-app-0004-mesh-black-longsleeve",
-      "qty": 15,
-      "sku": "NXP-2026-APP-0004",
-      "tags": [],
-      "year": 2026,
-      "color": "Black",
-      "image": "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
-      "label": "Nix Powell",
-      "price": 380000,
-      "sizes": [
-        {
-          "label": "S",
-          "soldOut": false,
-          "quantity": 1
-        },
-        {
-          "label": "M",
-          "soldOut": false,
-          "quantity": 4
-        },
-        {
-          "label": "L",
-          "soldOut": false,
-          "quantity": 6
-        },
-        {
-          "label": "XL",
-          "soldOut": false,
-          "quantity": 4
-        }
-      ],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 15
-      },
-      "title": "Mesh Black Longsleeve",
-      "artist": "Cold Metal Breathes Too",
-      "format": "Apparel",
-      "images": [
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08839j-jpg-1783936997925.jpg",
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08615-jpg-1783940071226.jpg",
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08635-jpg-1783940071368.jpg"
-      ],
-      "barcode": "",
-      "details": [],
-      "edition": "",
-      "category": "Apparel",
-      "material": "Heavy Cotton 16s 250GSM",
-      "condition": "New-Sealed",
-      "reviewUrl": "",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.796Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-29T10:09:43.965Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-29T09:54:26.176Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-29T02:23:49.934Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-28T02:12:08.737Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        },
-        {
-          "at": "2026-08-27T15:01:51.312Z",
-          "sku": "NXP-2026-APP-0004",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 15
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "Cold Metal Breathes Too",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.796Z",
-        "sku": "NXP-2026-APP-0004",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 15
-      },
-      "visibility": "Public",
-      "apparelType": "Tops",
-      "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
-      "reviewQuote": "",
-      "imageCredits": [],
-      "reviewSource": "",
-      "catalogNumber": "",
-      "displayFormat": "",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "catalog-nxp-2026-app-0004-mesh-black-longsleeve",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "descriptionSource": "",
-      "manualRelatedArtists": [],
-      "minimumAcceptableOffer": 0,
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "relatedArtistsResearch": null,
-      "shipping": {
-        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
-        "status": "format_reference",
-        "widthCm": 28,
-        "heightCm": 4,
-        "lengthCm": 36,
-        "updatedAt": "2026-09-02",
-        "packageType": "zip-lock-polybag-shipping-wrap",
-        "weightGrams": 360,
-        "shippingClass": "apparel-soft-zip-lock-wrap",
-        "packagingGroup": "SOFT_APPAREL",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "nxp-2026-cst-0002",
-      "qty": 1,
-      "sku": "NXP-2026-CST-0002",
-      "tags": [
-        "Cassette",
-        "NXP-2026-CST-0002"
-      ],
-      "year": 2002,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg",
-      "label": "Undying Music",
-      "price": 197000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Tear From The red",
-      "artist": "Poison The Well",
-      "format": "Cassette",
-      "images": [
-        "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CST-0002",
-        "Format: Cassette",
-        "Condition: Used Excellent"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "",
-      "condition": "Used Excellent",
-      "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.792Z",
-          "sku": "NXP-2026-CST-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.962Z",
-          "sku": "NXP-2026-CST-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.173Z",
-          "sku": "NXP-2026-CST-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.931Z",
-          "sku": "NXP-2026-CST-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.762Z",
-          "sku": "NXP-2026-CST-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.734Z",
-          "sku": "NXP-2026-CST-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.221Z",
-          "sku": "NXP-2026-CST-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.309Z",
-          "sku": "NXP-2026-CST-0002",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.792Z",
-        "sku": "NXP-2026-CST-0002",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Poison the Well's 2002 Tear From the Red captures the Florida band's transition from hardcore extremity toward a more melodic, emotionally expansive form of metalcore.",
-      "reviewQuote": "most accessible album",
-      "imageCredits": [],
-      "reviewSource": "Sputnikmusic (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/",
-        "description": "Poison the Well's 2002 Tear From the Red captures the Florida band's transition from hardcore extremity toward a more melodic, emotionally expansive form of metalcore.",
-        "reviewQuote": "most accessible album",
-        "reviewSource": "Sputnikmusic (quoted)",
-        "relatedArtists": [
-          "On Broken Wings",
-          "Hopesfall",
-          "Skycamefalling",
-          "7 Angels 7 Plagues",
-          "Misery Signals"
-        ],
-        "enrichmentStatus": "complete-no-related-artists",
-        "descriptionSource": "Sputnikmusic",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "On Broken Wings",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.998954,
-            "artist": "Hopesfall",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 0.998954,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.949961,
-            "artist": "Skycamefalling",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 0.949961,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.916323,
-            "artist": "7 Angels 7 Plagues",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 0.916323,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.899128,
-            "artist": "Misery Signals",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 0.899128,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "On Broken Wings",
-              "Hopesfall",
-              "Skycamefalling",
-              "7 Angels 7 Plagues",
-              "Misery Signals",
-              "The Bled",
-              "Glassjaw",
-              "Every Time I Die",
-              "This Day Forward",
-              "Converge"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "On Broken Wings",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.998954,
-                "artist": "Hopesfall",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 0.998954,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.949961,
-                "artist": "Skycamefalling",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 0.949961,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.916323,
-                "artist": "7 Angels 7 Plagues",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 0.916323,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.899128,
-                "artist": "Misery Signals",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 0.899128,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.827972,
-                "artist": "The Bled",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 0.827972,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.817209,
-                "artist": "Glassjaw",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 0.817209,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.786276,
-                "artist": "Every Time I Die",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 0.786276,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.761857,
-                "artist": "This Day Forward",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 0.761857,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.744676,
-                "artist": "Converge",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-                "confidence": 0.744676,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "On Broken Wings",
-            "Hopesfall",
-            "Skycamefalling",
-            "7 Angels 7 Plagues",
-            "Misery Signals"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "On Broken Wings",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.998954,
-              "artist": "Hopesfall",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.998954,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.949961,
-              "artist": "Skycamefalling",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.949961,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.916323,
-              "artist": "7 Angels 7 Plagues",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.916323,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.899128,
-              "artist": "Misery Signals",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.899128,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "e43ef3ee-521a-4f45-9202-f539802b4106",
-          "sourceUrl": "https://musicbrainz.org/release/e43ef3ee-521a-4f45-9202-f539802b4106",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "Cassette",
-      "homeSlideSort": 20,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47v3zm15l",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "On Broken Wings",
-        "Hopesfall",
-        "Skycamefalling",
-        "7 Angels 7 Plagues",
-        "Misery Signals"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "Sputnikmusic",
-      "metadataSourceUrl": "https://musicbrainz.org/release/e43ef3ee-521a-4f45-9202-f539802b4106",
-      "enrichmentUpdatedAt": "2026-08-18",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "e43ef3ee-521a-4f45-9202-f539802b4106",
-      "enrichmentAttemptedAt": "2026-08-18T16:55:55.963Z",
-      "enrichmentFingerprint": "poison the well|tear from the red|cassette||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "On Broken Wings",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.998954,
-          "artist": "Hopesfall",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-          "confidence": 0.998954,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.949961,
-          "artist": "Skycamefalling",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-          "confidence": 0.949961,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.916323,
-          "artist": "7 Angels 7 Plagues",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-          "confidence": 0.916323,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.899128,
-          "artist": "Misery Signals",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-          "confidence": 0.899128,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "On Broken Wings",
-            "Hopesfall",
-            "Skycamefalling",
-            "7 Angels 7 Plagues",
-            "Misery Signals",
-            "The Bled",
-            "Glassjaw",
-            "Every Time I Die",
-            "This Day Forward",
-            "Converge"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "On Broken Wings",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.998954,
-              "artist": "Hopesfall",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.998954,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.949961,
-              "artist": "Skycamefalling",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.949961,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.916323,
-              "artist": "7 Angels 7 Plagues",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.916323,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.899128,
-              "artist": "Misery Signals",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.899128,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.827972,
-              "artist": "The Bled",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.827972,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.817209,
-              "artist": "Glassjaw",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.817209,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.786276,
-              "artist": "Every Time I Die",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.786276,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.761857,
-              "artist": "This Day Forward",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.761857,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.744676,
-              "artist": "Converge",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-              "confidence": 0.744676,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "On Broken Wings",
-          "Hopesfall",
-          "Skycamefalling",
-          "7 Angels 7 Plagues",
-          "Misery Signals"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "On Broken Wings",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.998954,
-            "artist": "Hopesfall",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 0.998954,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.949961,
-            "artist": "Skycamefalling",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 0.949961,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.916323,
-            "artist": "7 Angels 7 Plagues",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 0.916323,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.899128,
-            "artist": "Misery Signals",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
-            "confidence": 0.899128,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "e43ef3ee-521a-4f45-9202-f539802b4106",
-        "sourceUrl": "https://musicbrainz.org/release/e43ef3ee-521a-4f45-9202-f539802b4106",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "editRevision": 1,
       "editorialUpdatedAt": "",
@@ -80033,6 +79263,791 @@
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-cst-0002",
+      "qty": 1,
+      "sku": "NXP-2026-CST-0002",
+      "tags": [
+        "Cassette",
+        "NXP-2026-CST-0002"
+      ],
+      "year": 2002,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg",
+      "label": "Undying Music",
+      "price": 197000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Tear From The red",
+      "artist": "Poison The Well",
+      "format": "Cassette",
+      "images": [
+        "/public/covers/nxp-2026-cst-0002-poison-the-well-tear-from-the-red.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CST-0002",
+        "Format: Cassette",
+        "Condition: Used Excellent"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "autoCover": "",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.792Z",
+          "sku": "NXP-2026-CST-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.962Z",
+          "sku": "NXP-2026-CST-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.173Z",
+          "sku": "NXP-2026-CST-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.931Z",
+          "sku": "NXP-2026-CST-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.762Z",
+          "sku": "NXP-2026-CST-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.734Z",
+          "sku": "NXP-2026-CST-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.221Z",
+          "sku": "NXP-2026-CST-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.309Z",
+          "sku": "NXP-2026-CST-0002",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.792Z",
+        "sku": "NXP-2026-CST-0002",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Poison the Well's 2002 Tear From the Red captures the Florida band's transition from hardcore extremity toward a more melodic, emotionally expansive form of metalcore.",
+      "reviewQuote": "most accessible album",
+      "imageCredits": [],
+      "reviewSource": "Sputnikmusic (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.sputnikmusic.com/review/40126/Poison-the-Well-Tear-From-the-Red/",
+        "description": "Poison the Well's 2002 Tear From the Red captures the Florida band's transition from hardcore extremity toward a more melodic, emotionally expansive form of metalcore.",
+        "reviewQuote": "most accessible album",
+        "reviewSource": "Sputnikmusic (quoted)",
+        "relatedArtists": [
+          "On Broken Wings",
+          "Hopesfall",
+          "Skycamefalling",
+          "7 Angels 7 Plagues",
+          "Misery Signals"
+        ],
+        "enrichmentStatus": "complete-no-related-artists",
+        "descriptionSource": "Sputnikmusic",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "On Broken Wings",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.998954,
+            "artist": "Hopesfall",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 0.998954,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.949961,
+            "artist": "Skycamefalling",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 0.949961,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.916323,
+            "artist": "7 Angels 7 Plagues",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 0.916323,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.899128,
+            "artist": "Misery Signals",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 0.899128,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "On Broken Wings",
+              "Hopesfall",
+              "Skycamefalling",
+              "7 Angels 7 Plagues",
+              "Misery Signals",
+              "The Bled",
+              "Glassjaw",
+              "Every Time I Die",
+              "This Day Forward",
+              "Converge"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "On Broken Wings",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.998954,
+                "artist": "Hopesfall",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 0.998954,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.949961,
+                "artist": "Skycamefalling",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 0.949961,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.916323,
+                "artist": "7 Angels 7 Plagues",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 0.916323,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.899128,
+                "artist": "Misery Signals",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 0.899128,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.827972,
+                "artist": "The Bled",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 0.827972,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.817209,
+                "artist": "Glassjaw",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 0.817209,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.786276,
+                "artist": "Every Time I Die",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 0.786276,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.761857,
+                "artist": "This Day Forward",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 0.761857,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.744676,
+                "artist": "Converge",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+                "confidence": 0.744676,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "On Broken Wings",
+            "Hopesfall",
+            "Skycamefalling",
+            "7 Angels 7 Plagues",
+            "Misery Signals"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "On Broken Wings",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.998954,
+              "artist": "Hopesfall",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.998954,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.949961,
+              "artist": "Skycamefalling",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.949961,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.916323,
+              "artist": "7 Angels 7 Plagues",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.916323,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.899128,
+              "artist": "Misery Signals",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.899128,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "e43ef3ee-521a-4f45-9202-f539802b4106",
+          "sourceUrl": "https://musicbrainz.org/release/e43ef3ee-521a-4f45-9202-f539802b4106",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "",
+      "displayFormat": "Cassette",
+      "homeSlideSort": 20,
+      "publishStatus": "Published",
+      "financeStockId": "mr6ja47v3zm15l",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "On Broken Wings",
+        "Hopesfall",
+        "Skycamefalling",
+        "7 Angels 7 Plagues",
+        "Misery Signals"
+      ],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "Sputnikmusic",
+      "metadataSourceUrl": "https://musicbrainz.org/release/e43ef3ee-521a-4f45-9202-f539802b4106",
+      "enrichmentUpdatedAt": "2026-08-18",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "e43ef3ee-521a-4f45-9202-f539802b4106",
+      "enrichmentAttemptedAt": "2026-08-18T16:55:55.963Z",
+      "enrichmentFingerprint": "poison the well|tear from the red|cassette||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "On Broken Wings",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.998954,
+          "artist": "Hopesfall",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+          "confidence": 0.998954,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.949961,
+          "artist": "Skycamefalling",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+          "confidence": 0.949961,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.916323,
+          "artist": "7 Angels 7 Plagues",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+          "confidence": 0.916323,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.899128,
+          "artist": "Misery Signals",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+          "confidence": 0.899128,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "On Broken Wings",
+            "Hopesfall",
+            "Skycamefalling",
+            "7 Angels 7 Plagues",
+            "Misery Signals",
+            "The Bled",
+            "Glassjaw",
+            "Every Time I Die",
+            "This Day Forward",
+            "Converge"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "On Broken Wings",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.998954,
+              "artist": "Hopesfall",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.998954,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.949961,
+              "artist": "Skycamefalling",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.949961,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.916323,
+              "artist": "7 Angels 7 Plagues",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.916323,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.899128,
+              "artist": "Misery Signals",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.899128,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.827972,
+              "artist": "The Bled",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.827972,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.817209,
+              "artist": "Glassjaw",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.817209,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.786276,
+              "artist": "Every Time I Die",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.786276,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.761857,
+              "artist": "This Day Forward",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.761857,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.744676,
+              "artist": "Converge",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+              "confidence": 0.744676,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "On Broken Wings",
+          "Hopesfall",
+          "Skycamefalling",
+          "7 Angels 7 Plagues",
+          "Misery Signals"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "On Broken Wings",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.998954,
+            "artist": "Hopesfall",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 0.998954,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.949961,
+            "artist": "Skycamefalling",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 0.949961,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.916323,
+            "artist": "7 Angels 7 Plagues",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 0.916323,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.899128,
+            "artist": "Misery Signals",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Poison%20The%20Well",
+            "confidence": 0.899128,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "e43ef3ee-521a-4f45-9202-f539802b4106",
+        "sourceUrl": "https://musicbrainz.org/release/e43ef3ee-521a-4f45-9202-f539802b4106",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 8,
+        "lengthCm": 16,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 90,
+        "shippingClass": "small-media-cassette-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-app-0004-mesh-black-longsleeve",
+      "qty": 15,
+      "sku": "NXP-2026-APP-0004",
+      "tags": [],
+      "year": 2026,
+      "color": "Black",
+      "image": "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+      "label": "Nix Powell",
+      "price": 380000,
+      "sizes": [
+        {
+          "label": "S",
+          "soldOut": false,
+          "quantity": 1
+        },
+        {
+          "label": "M",
+          "soldOut": false,
+          "quantity": 4
+        },
+        {
+          "label": "L",
+          "soldOut": false,
+          "quantity": 6
+        },
+        {
+          "label": "XL",
+          "soldOut": false,
+          "quantity": 4
+        }
+      ],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 15
+      },
+      "title": "Mesh Black Longsleeve",
+      "artist": "Cold Metal Breathes Too",
+      "format": "Apparel",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08839j-jpg-1783936997925.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08615-jpg-1783940071226.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08635-jpg-1783940071368.jpg"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "",
+      "category": "Apparel",
+      "material": "Heavy Cotton 16s 250GSM",
+      "condition": "New-Sealed",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.796Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-29T10:09:43.965Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-29T09:54:26.176Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-29T02:23:49.934Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-28T09:19:04.765Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-28T02:12:08.737Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-27T15:01:51.312Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "Cold Metal Breathes Too",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.796Z",
+        "sku": "NXP-2026-APP-0004",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 15
+      },
+      "visibility": "Public",
+      "apparelType": "Tops",
+      "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
+      "reviewQuote": "",
+      "imageCredits": [],
+      "reviewSource": "",
+      "catalogNumber": "",
+      "displayFormat": "",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "catalog-nxp-2026-app-0004-mesh-black-longsleeve",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "",
+      "manualRelatedArtists": [],
+      "minimumAcceptableOffer": 0,
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
+        "status": "format_reference",
+        "widthCm": 28,
+        "heightCm": 4,
+        "lengthCm": 36,
+        "updatedAt": "2026-09-02",
+        "packageType": "zip-lock-polybag-shipping-wrap",
+        "weightGrams": 360,
+        "shippingClass": "apparel-soft-zip-lock-wrap",
+        "packagingGroup": "SOFT_APPAREL",
         "vinylWeightClass": "",
         "manualShippingOverride": false
       }
