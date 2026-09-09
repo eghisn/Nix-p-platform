@@ -16,6 +16,7 @@
     "test:routes": "node scripts/verify-public-routes.mjs",
     "test:commerce": "node scripts/verify-commerce-contract.mjs && node scripts/verify-atomic-checkout-reservation.mjs && node scripts/verify-order-security-hardening.mjs",
     "test:payment-receipt": "node scripts/verify-payment-receipt-email.mjs",
+    "test:site-address": "node scripts/verify-site-address.mjs",
     "test:shipping": "node scripts/verify-shipping-calculator.mjs",
     "test:jne": "node scripts/verify-jne-official-client.mjs",
     "test:shipping-integration": "node scripts/verify-shipping-integration.mjs",

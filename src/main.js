@@ -16,6 +16,7 @@ import { checkoutMarketingAttribution, initializeAnalytics, trackAnalytics, trac
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup } from "./components/catalogPage.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "./components/labelsPage.js";
+import { NIXP_ADDRESS } from "./data/siteDetails.js";
 
 const app = document.querySelector("#app");
 const CHECKOUT_SESSION_STORAGE_KEY = "nixp-checkout-session";
@@ -875,7 +876,7 @@ function aboutPage() {
         <div class="editorial-copy">
           <p>NIXP is an extension of Nix Powell, built around a growing catalogue of records, tapes, discs, printed matter, and objects selected through personal taste, research, and repeat listening.</p>
           <p>The focus moves across experimental music, heavy music, electronic music, contemporary composition, independent publishing, and their surrounding edges.</p>
-          <p>Based online and operating from Aesthetic Pleasure Gallery, Grand Wijaya Center, Jakarta.</p>
+          <p>Based online and operating from ${NIXP_ADDRESS}.</p>
         </div>
       </div>
     </section>
@@ -888,7 +889,7 @@ function contactPage() {
       <div class="editorial-shell">
         <h1>Contact</h1>
         <div class="editorial-copy contact-copy">
-          <address>Aesthetic Pleasure Gallery Wijaya Grand Centre, Jl. Darmawangsa Raya Blok G 9 2rd Floor, RT.6/RW.1, Pulo, Kebayoran Baru, South Jakarta City, Jakarta 12160</address>
+          <address>${NIXP_ADDRESS}</address>
           <p><a href="https://wa.me/6282122876289">+628 2122 8762 89</a><br><a href="mailto:contact@nix-p.com">contact@nix-p.com</a></p>
         </div>
       </div>
