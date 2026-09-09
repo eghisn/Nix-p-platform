@@ -1299,7 +1299,7 @@
       ],
       "year": 2026,
       "color": "",
-      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-cover.png",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
       "label": "Ipecac Recordings",
       "price": 924840,
       "sizes": [],
@@ -1312,24 +1312,35 @@
       "artist": "Melvins, Napalm Death",
       "format": "Vinyl",
       "images": [
-        "/public/assets/catalog-archive/nxp-2026-vnl-0080-cover.png"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg"
       ],
       "barcode": "6 89230 02971 7",
       "details": [
         "SKU: NXP-2026-VNL-0080",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album, Reissue, Stereo",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Reissue",
+        "Stereo",
         "Catalog number: IPC297LP",
         "Barcode: 689230029717"
       ],
       "edition": "Vinyl, LP, Album, Reissue, Stereo",
       "category": "Records",
       "material": "",
-      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0080-cover.png",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
       "condition": "New-Sealed",
-      "reviewUrl": "",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/melvins-napalm-death-savage-imperial-death-march-review/",
       "syncAudit": [
+        {
+          "at": "2026-09-09T12:25:10.184Z",
+          "sku": "NXP-2026-VNL-0080",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
         {
           "at": "2026-09-08T22:03:50.534Z",
           "sku": "NXP-2026-VNL-0080",
@@ -1383,7 +1394,7 @@
       "updatedAt": "2026-09-09",
       "collection": "Ipecac Recordings",
       "syncStatus": {
-        "at": "2026-09-08T22:03:50.534Z",
+        "at": "2026-09-09T12:25:10.184Z",
         "sku": "NXP-2026-VNL-0080",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
@@ -1391,9 +1402,10 @@
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Savage Imperial Death March is a 2026 vinyl reissue pairing Melvins with Napalm Death, issued by Ipecac Recordings as IPC297LP. The one-LP stereo album is documented as a rock release with grindcore and sludge-metal affiliations.",
-      "reviewQuote": "",
+      "description": "Savage Imperial Death March brings Melvins and Napalm Death's 2016 touring lineup into the studio: Buzz Osborne and Dale Crover work alongside Barney Greenway, John Cooke, and Shane Embury in a collaboration that leans into noise, sludge, and grind without reducing either band to a guest appearance.",
+      "reviewQuote": "It’s all entertaining enough without breaking too much of a sweat. Savage Imperial Death March heaves along at a leisurely mid-pace, neither going for Scum’s smash and grab approach nor sitting with the riffs for the protracted period of something like Lysol. In this political climate, with that album title, this does feel a little like the horses have been led to a suitable source of H20 but have resisted taking a sip.",
       "sourceTitle": "Savage Imperial Death March",
+      "editRevision": 14,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/37039197-The-Melvins-With-Napalm-Death-Savage-Imperial-Death-March",
@@ -1404,16 +1416,21 @@
           "url": "https://www.roughtrade.com/en-us/product/melvins-with-napalm-death/savage-imperial-death-march",
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-cover.png",
           "credit": "Rough Trade product artwork"
+        },
+        {
+          "url": "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
+          "credit": "Melvins official Bandcamp artwork"
         }
       ],
-      "reviewSource": "",
+      "reviewSource": "The Quietus (quoted)",
       "autoEditorial": {
-        "reviewUrl": "",
-        "description": "Savage Imperial Death March is a 2026 vinyl reissue pairing Melvins with Napalm Death, issued by Ipecac Recordings as IPC297LP. The one-LP stereo album is documented as a rock release with grindcore and sludge-metal affiliations.",
-        "reviewQuote": "",
-        "reviewSource": "",
+        "reviewUrl": "https://thequietus.com/quietus-reviews/melvins-napalm-death-savage-imperial-death-march-review/",
+        "description": "Savage Imperial Death March brings Melvins and Napalm Death's 2016 touring lineup into the studio: Buzz Osborne and Dale Crover work alongside Barney Greenway, John Cooke, and Shane Embury in a collaboration that leans into noise, sludge, and grind without reducing either band to a guest appearance.",
+        "reviewQuote": "a truly collaborative record",
+        "reviewSource": "The Quietus (quoted)",
         "relatedArtists": [],
-        "descriptionSource": "Discogs release 37039197",
+        "descriptionSource": "The Quietus / Melvins official Bandcamp",
         "relatedArtistEvidence": [],
         "relatedArtistsResearch": {
           "source": "Exact release artist credits",
@@ -1425,23 +1442,31 @@
       },
       "catalogNumber": "IPC297LP",
       "displayFormat": "Vinyl",
+      "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtpi28x0okrzs0",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [],
+      "homeCollections": [
+        "recent-releases"
+      ],
       "researchSources": [],
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete-no-related-artists",
       "publicationState": "live",
-      "descriptionSource": "Discogs release 37039197",
+      "descriptionSource": "The Quietus / Melvins official Bandcamp",
       "metadataSourceUrl": "https://www.discogs.com/release/37039197-The-Melvins-With-Napalm-Death-Savage-Imperial-Death-March",
-      "enrichmentUpdatedAt": "2026-09-08",
+      "editorialUpdatedAt": "2026-09-09T12:27:49.248+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
-      "enrichmentAttemptedAt": "2026-09-08T22:03:50.534Z",
+      "enrichmentAttemptedAt": "2026-09-09T12:25:10.184Z",
       "enrichmentFingerprint": "melvins napalm death|savage imperial death march|vinyl|6 89230 02971 7|ipc297lp",
       "relatedArtistEvidence": [],
       "minimumAcceptableOffer": 0,
@@ -1453,16 +1478,14 @@
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 12,
-      "editorialUpdatedAt": "2026-09-08T22:03:50.863+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-06",
+        "updatedAt": "2026-09-09",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -50913,6 +50936,636 @@
       }
     },
     {
+      "id": "finance-nxp-2026-cd-0028",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0028",
+      "tags": [],
+      "year": 2002,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
+      "label": "V2 / Junior Boy's Own",
+      "price": 125000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "A Hundred Days Off",
+      "artist": "Underworld",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CD-0028",
+        "Format: CD",
+        "Condition: Used Good"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0028/cover.jpg",
+      "condition": "Used Good",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.797Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.967Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.182Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.935Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.765Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.738Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.224Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.314Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "V2 / Junior Boy's Own",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.797Z",
+        "sku": "NXP-2026-CD-0028",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
+      "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
+      "imageCredits": [
+        {
+          "url": "https://music.apple.com/us/album/a-hundred-days-off/1440856881",
+          "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
+          "credit": "Apple Music artwork / V2"
+        }
+      ],
+      "reviewSource": "AllMusic (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/8350-a-hundred-days-off/",
+        "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
+        "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
+        "reviewSource": "AllMusic (quoted)",
+        "relatedArtists": [
+          "Orbital",
+          "Leftfield",
+          "The Orb",
+          "Fluke",
+          "System 7"
+        ],
+        "descriptionSource": "AllMusic / MusicBrainz",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Orbital",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.958347,
+            "artist": "Leftfield",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.958347,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.73428,
+            "artist": "The Orb",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.73428,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.618522,
+            "artist": "Fluke",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.618522,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.612107,
+            "artist": "System 7",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.612107,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Orbital",
+              "Leftfield",
+              "The Orb",
+              "Fluke",
+              "System 7",
+              "The Chemical Brothers",
+              "808 State",
+              "The Future Sound of London",
+              "Sasha",
+              "The KLF"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Orbital",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.958347,
+                "artist": "Leftfield",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.958347,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.73428,
+                "artist": "The Orb",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.73428,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.618522,
+                "artist": "Fluke",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.618522,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.612107,
+                "artist": "System 7",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.612107,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.606556,
+                "artist": "The Chemical Brothers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.606556,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.567863,
+                "artist": "808 State",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.567863,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.524434,
+                "artist": "The Future Sound of London",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.524434,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.42185,
+                "artist": "Sasha",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.42185,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.409601,
+                "artist": "The KLF",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.409601,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Orbital",
+            "Leftfield",
+            "The Orb",
+            "Fluke",
+            "System 7"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Orbital",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.958347,
+              "artist": "Leftfield",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.958347,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.73428,
+              "artist": "The Orb",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.73428,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.618522,
+              "artist": "Fluke",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.618522,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.612107,
+              "artist": "System 7",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.612107,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
+          "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "",
+      "displayFormat": "CD",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "ms1t6rhsto1tce",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Orbital",
+        "Leftfield",
+        "The Orb",
+        "Fluke",
+        "System 7"
+      ],
+      "homeCollections": [],
+      "reviewSourceUrl": "https://www.allmusic.com/album/a-hundred-days-off-mw0000223914",
+      "sleeveCondition": "",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "AllMusic / MusicBrainz",
+      "metadataSourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+      "enrichmentUpdatedAt": "2026-08-18",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
+      "enrichmentAttemptedAt": "2026-08-18T16:49:54.069Z",
+      "enrichmentFingerprint": "underworld|a hundred days off|cd||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Orbital",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.958347,
+          "artist": "Leftfield",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.958347,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.73428,
+          "artist": "The Orb",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.73428,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.618522,
+          "artist": "Fluke",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.618522,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.612107,
+          "artist": "System 7",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.612107,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Orbital",
+            "Leftfield",
+            "The Orb",
+            "Fluke",
+            "System 7",
+            "The Chemical Brothers",
+            "808 State",
+            "The Future Sound of London",
+            "Sasha",
+            "The KLF"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Orbital",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.958347,
+              "artist": "Leftfield",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.958347,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.73428,
+              "artist": "The Orb",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.73428,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.618522,
+              "artist": "Fluke",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.618522,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.612107,
+              "artist": "System 7",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.612107,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.606556,
+              "artist": "The Chemical Brothers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.606556,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.567863,
+              "artist": "808 State",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.567863,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.524434,
+              "artist": "The Future Sound of London",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.524434,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.42185,
+              "artist": "Sasha",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.42185,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.409601,
+              "artist": "The KLF",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.409601,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Orbital",
+          "Leftfield",
+          "The Orb",
+          "Fluke",
+          "System 7"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Orbital",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.958347,
+            "artist": "Leftfield",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.958347,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.73428,
+            "artist": "The Orb",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.73428,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.618522,
+            "artist": "Fluke",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.618522,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.612107,
+            "artist": "System 7",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.612107,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
+        "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-cd-0032",
       "qty": 1,
       "sku": "NXP-2026-CD-0032",
@@ -52202,636 +52855,6 @@
         ],
         "releaseId": "dde87be9-76ac-47cb-a4a8-40ec53cb135f",
         "sourceUrl": "https://musicbrainz.org/release/dde87be9-76ac-47cb-a4a8-40ec53cb135f",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "finance-nxp-2026-cd-0028",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0028",
-      "tags": [],
-      "year": 2002,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
-      "label": "V2 / Junior Boy's Own",
-      "price": 125000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "A Hundred Days Off",
-      "artist": "Underworld",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0028",
-        "Format: CD",
-        "Condition: Used Good"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0028/cover.jpg",
-      "condition": "Used Good",
-      "reviewUrl": "",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.797Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.967Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.182Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.935Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.738Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.224Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.314Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "V2 / Junior Boy's Own",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.797Z",
-        "sku": "NXP-2026-CD-0028",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
-      "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
-      "imageCredits": [
-        {
-          "url": "https://music.apple.com/us/album/a-hundred-days-off/1440856881",
-          "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
-          "credit": "Apple Music artwork / V2"
-        }
-      ],
-      "reviewSource": "AllMusic (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/8350-a-hundred-days-off/",
-        "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
-        "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
-        "reviewSource": "AllMusic (quoted)",
-        "relatedArtists": [
-          "Orbital",
-          "Leftfield",
-          "The Orb",
-          "Fluke",
-          "System 7"
-        ],
-        "descriptionSource": "AllMusic / MusicBrainz",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Orbital",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.958347,
-            "artist": "Leftfield",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.958347,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.73428,
-            "artist": "The Orb",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.73428,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.618522,
-            "artist": "Fluke",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.618522,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.612107,
-            "artist": "System 7",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.612107,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Orbital",
-              "Leftfield",
-              "The Orb",
-              "Fluke",
-              "System 7",
-              "The Chemical Brothers",
-              "808 State",
-              "The Future Sound of London",
-              "Sasha",
-              "The KLF"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Orbital",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.958347,
-                "artist": "Leftfield",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.958347,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.73428,
-                "artist": "The Orb",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.73428,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.618522,
-                "artist": "Fluke",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.618522,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.612107,
-                "artist": "System 7",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.612107,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.606556,
-                "artist": "The Chemical Brothers",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.606556,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.567863,
-                "artist": "808 State",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.567863,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.524434,
-                "artist": "The Future Sound of London",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.524434,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.42185,
-                "artist": "Sasha",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.42185,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.409601,
-                "artist": "The KLF",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.409601,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Orbital",
-            "Leftfield",
-            "The Orb",
-            "Fluke",
-            "System 7"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Orbital",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.958347,
-              "artist": "Leftfield",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.958347,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.73428,
-              "artist": "The Orb",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.73428,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.618522,
-              "artist": "Fluke",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.618522,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.612107,
-              "artist": "System 7",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.612107,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
-          "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "ms1t6rhsto1tce",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Orbital",
-        "Leftfield",
-        "The Orb",
-        "Fluke",
-        "System 7"
-      ],
-      "homeCollections": [],
-      "reviewSourceUrl": "https://www.allmusic.com/album/a-hundred-days-off-mw0000223914",
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "AllMusic / MusicBrainz",
-      "metadataSourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
-      "enrichmentUpdatedAt": "2026-08-18",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
-      "enrichmentAttemptedAt": "2026-08-18T16:49:54.069Z",
-      "enrichmentFingerprint": "underworld|a hundred days off|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Orbital",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.958347,
-          "artist": "Leftfield",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.958347,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.73428,
-          "artist": "The Orb",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.73428,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.618522,
-          "artist": "Fluke",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.618522,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.612107,
-          "artist": "System 7",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.612107,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Orbital",
-            "Leftfield",
-            "The Orb",
-            "Fluke",
-            "System 7",
-            "The Chemical Brothers",
-            "808 State",
-            "The Future Sound of London",
-            "Sasha",
-            "The KLF"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Orbital",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.958347,
-              "artist": "Leftfield",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.958347,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.73428,
-              "artist": "The Orb",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.73428,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.618522,
-              "artist": "Fluke",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.618522,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.612107,
-              "artist": "System 7",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.612107,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.606556,
-              "artist": "The Chemical Brothers",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.606556,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.567863,
-              "artist": "808 State",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.567863,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.524434,
-              "artist": "The Future Sound of London",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.524434,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.42185,
-              "artist": "Sasha",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.42185,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.409601,
-              "artist": "The KLF",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.409601,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Orbital",
-          "Leftfield",
-          "The Orb",
-          "Fluke",
-          "System 7"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Orbital",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.958347,
-            "artist": "Leftfield",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.958347,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.73428,
-            "artist": "The Orb",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.73428,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.618522,
-            "artist": "Fluke",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.618522,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.612107,
-            "artist": "System 7",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.612107,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
-        "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": false,
@@ -68039,622 +68062,6 @@
       }
     },
     {
-      "id": "nxp-2026-cd-0013",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0013",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0013"
-      ],
-      "year": 2012,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi-bandcamp.jpg",
-      "label": "Innocent Records / Contra-Disc",
-      "price": 150000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Senyawa with Kazuhisa Uchihashi",
-      "artist": "Senyawa, Kazuhisa Uchihashi",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi-bandcamp.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0013",
-        "Format: CD",
-        "Condition: Used Good"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi-bandcamp.jpg",
-      "condition": "Used Good",
-      "reviewUrl": "https://escholarship.org/content/qt49b8n6x2/qt49b8n6x2_noSplash_c4fedc01d7808f9361783420c843047c.pdf",
-      "syncAudit": [
-        {
-          "at": "2026-08-30T02:14:08.793Z",
-          "sku": "NXP-2026-CD-0013",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-CD-0013",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.174Z",
-          "sku": "NXP-2026-CD-0013",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.932Z",
-          "sku": "NXP-2026-CD-0013",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-CD-0013",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T02:12:08.735Z",
-          "sku": "NXP-2026-CD-0013",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-CD-0013",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-27T15:01:51.310Z",
-          "sku": "NXP-2026-CD-0013",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-09",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-08-30T02:14:08.793Z",
-        "sku": "NXP-2026-CD-0013",
-        "action": "Inventory synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Senyawa and Kazuhisa Uchihashi's 2012 collaboration joins Rully Shabara and Wukir Suryadi's vocal and percussive practice with the Japanese improviser's prepared and electric guitar.",
-      "reviewQuote": "Japanese guitar improv great",
-      "imageCredits": [],
-      "reviewSource": "The Wire (quoted)",
-      "autoEditorial": {
-        "relatedArtists": [
-          "Wukir Suryadi",
-          "Colin Stetson",
-          "Širom",
-          "Ex-Easter Island Head",
-          "Circuit des Yeux"
-        ],
-        "enrichmentStatus": "complete",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Wukir Suryadi",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.747127,
-            "artist": "Colin Stetson",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 0.747127,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.475392,
-            "artist": "Širom",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 0.475392,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.402362,
-            "artist": "Ex-Easter Island Head",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 0.402362,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.386813,
-            "artist": "Circuit des Yeux",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 0.386813,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Wukir Suryadi",
-              "Colin Stetson",
-              "Širom",
-              "Ex-Easter Island Head",
-              "Circuit des Yeux",
-              "Richard Dawson",
-              "Laura Cannell",
-              "KUNTARI",
-              "sealionwoman",
-              "Sun City Girls"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Wukir Suryadi",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.747127,
-                "artist": "Colin Stetson",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 0.747127,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.475392,
-                "artist": "Širom",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 0.475392,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.402362,
-                "artist": "Ex-Easter Island Head",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 0.402362,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.386813,
-                "artist": "Circuit des Yeux",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 0.386813,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.36495,
-                "artist": "Richard Dawson",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 0.36495,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.358538,
-                "artist": "Laura Cannell",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 0.358538,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.358146,
-                "artist": "KUNTARI",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 0.358146,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.355311,
-                "artist": "sealionwoman",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 0.355311,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.325478,
-                "artist": "Sun City Girls",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Senyawa",
-                "confidence": 0.325478,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Wukir Suryadi",
-            "Colin Stetson",
-            "Širom",
-            "Ex-Easter Island Head",
-            "Circuit des Yeux"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Wukir Suryadi",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.747127,
-              "artist": "Colin Stetson",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.747127,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.475392,
-              "artist": "Širom",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.475392,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.402362,
-              "artist": "Ex-Easter Island Head",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.402362,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.386813,
-              "artist": "Circuit des Yeux",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.386813,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "",
-          "sourceUrl": "",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": 26,
-      "publishStatus": "Published",
-      "financeStockId": "mr6qjmb35c7lcl",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Wukir Suryadi",
-        "Colin Stetson",
-        "Širom",
-        "Ex-Easter Island Head",
-        "Circuit des Yeux"
-      ],
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "The Wire / Innocent Records",
-      "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:56:15.407Z",
-      "enrichmentFingerprint": "senyawa kazuhisa uchihashi|senyawa with kazuhisa uchihashi|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Wukir Suryadi",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Senyawa",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.747127,
-          "artist": "Colin Stetson",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Senyawa",
-          "confidence": 0.747127,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.475392,
-          "artist": "Širom",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Senyawa",
-          "confidence": 0.475392,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.402362,
-          "artist": "Ex-Easter Island Head",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Senyawa",
-          "confidence": 0.402362,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.386813,
-          "artist": "Circuit des Yeux",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Senyawa",
-          "confidence": 0.386813,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Wukir Suryadi",
-            "Colin Stetson",
-            "Širom",
-            "Ex-Easter Island Head",
-            "Circuit des Yeux",
-            "Richard Dawson",
-            "Laura Cannell",
-            "KUNTARI",
-            "sealionwoman",
-            "Sun City Girls"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Wukir Suryadi",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.747127,
-              "artist": "Colin Stetson",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.747127,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.475392,
-              "artist": "Širom",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.475392,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.402362,
-              "artist": "Ex-Easter Island Head",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.402362,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.386813,
-              "artist": "Circuit des Yeux",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.386813,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.36495,
-              "artist": "Richard Dawson",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.36495,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.358538,
-              "artist": "Laura Cannell",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.358538,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.358146,
-              "artist": "KUNTARI",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.358146,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.355311,
-              "artist": "sealionwoman",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.355311,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.325478,
-              "artist": "Sun City Girls",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Senyawa",
-              "confidence": 0.325478,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Senyawa"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Wukir Suryadi",
-          "Colin Stetson",
-          "Širom",
-          "Ex-Easter Island Head",
-          "Circuit des Yeux"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Wukir Suryadi",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.747127,
-            "artist": "Colin Stetson",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 0.747127,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.475392,
-            "artist": "Širom",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 0.475392,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.402362,
-            "artist": "Ex-Easter Island Head",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 0.402362,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.386813,
-            "artist": "Circuit des Yeux",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Senyawa",
-            "confidence": 0.386813,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "",
-        "sourceUrl": "",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 1,
-      "editorialUpdatedAt": "",
-      "editorialUpdatedBy": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "nxp-2026-cd-0015",
       "qty": 1,
       "sku": "NXP-2026-CD-0015",
@@ -71755,17 +71162,17 @@
       }
     },
     {
-      "id": "nxp-2026-cd-0011",
+      "id": "nxp-2026-cd-0013",
       "qty": 1,
-      "sku": "NXP-2026-CD-0011",
+      "sku": "NXP-2026-CD-0013",
       "tags": [
         "CD",
-        "NXP-2026-CD-0011"
+        "NXP-2026-CD-0013"
       ],
-      "year": 2016,
+      "year": 2012,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif",
-      "label": "ISO Records / Columbia",
+      "image": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi-bandcamp.jpg",
+      "label": "Innocent Records / Contra-Disc",
       "price": 150000,
       "sizes": [],
       "stock": {
@@ -71773,76 +71180,77 @@
         "reserved": 0,
         "available": 1
       },
-      "title": "Blackstar",
-      "artist": "David Bowie",
+      "title": "Senyawa with Kazuhisa Uchihashi",
+      "artist": "Senyawa, Kazuhisa Uchihashi",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif"
+        "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi-bandcamp.jpg"
       ],
       "barcode": "",
       "details": [
-        "SKU: NXP-2026-CD-0011",
+        "SKU: NXP-2026-CD-0013",
         "Format: CD",
-        "Condition: Used Excellent"
+        "Condition: Used Good"
       ],
       "edition": "",
       "category": "Records",
       "material": "",
-      "condition": "Used Excellent",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/21332-blackstar/",
+      "autoCover": "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi-bandcamp.jpg",
+      "condition": "Used Good",
+      "reviewUrl": "https://escholarship.org/content/qt49b8n6x2/qt49b8n6x2_noSplash_c4fedc01d7808f9361783420c843047c.pdf",
       "syncAudit": [
         {
           "at": "2026-08-30T02:14:08.793Z",
-          "sku": "NXP-2026-CD-0011",
+          "sku": "NXP-2026-CD-0013",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-CD-0011",
+          "sku": "NXP-2026-CD-0013",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T09:54:26.174Z",
-          "sku": "NXP-2026-CD-0011",
+          "sku": "NXP-2026-CD-0013",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T02:23:49.932Z",
-          "sku": "NXP-2026-CD-0011",
+          "sku": "NXP-2026-CD-0013",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-CD-0011",
+          "sku": "NXP-2026-CD-0013",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T02:12:08.735Z",
-          "sku": "NXP-2026-CD-0011",
+          "sku": "NXP-2026-CD-0013",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-CD-0011",
+          "sku": "NXP-2026-CD-0013",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-27T15:01:51.310Z",
-          "sku": "NXP-2026-CD-0011",
+          "sku": "NXP-2026-CD-0013",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -71852,79 +71260,80 @@
       "collection": "NIXP Selection",
       "syncStatus": {
         "at": "2026-08-30T02:14:08.793Z",
-        "sku": "NXP-2026-CD-0011",
+        "sku": "NXP-2026-CD-0013",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "David Bowie's 2016 Blackstar folds exploratory jazz, coded drama and alienation into a final act of reinvention, recorded with a New York jazz ensemble.",
-      "reviewQuote": "exploratory jazz and the echoes of various mad men",
+      "description": "Senyawa and Kazuhisa Uchihashi's 2012 collaboration joins Rully Shabara and Wukir Suryadi's vocal and percussive practice with the Japanese improviser's prepared and electric guitar.",
+      "reviewQuote": "Japanese guitar improv great",
       "imageCredits": [],
-      "reviewSource": "Pitchfork (quoted)",
+      "reviewSource": "The Wire (quoted)",
       "autoEditorial": {
         "relatedArtists": [
-          "Band Aid",
-          "Tin Machine",
-          "Iggy Pop",
-          "Lou Reed",
-          "T. Rex"
+          "Wukir Suryadi",
+          "Colin Stetson",
+          "Širom",
+          "Ex-Easter Island Head",
+          "Circuit des Yeux"
         ],
-        "enrichmentStatus": "complete-no-related-artists",
+        "enrichmentStatus": "complete",
         "relatedArtistEvidence": [
           {
-            "artist": "Band Aid",
-            "source": "MusicBrainz artist relationship",
-            "sources": [
-              "MusicBrainz"
-            ],
-            "sourceUrl": "https://musicbrainz.org/artist/5441c29d-3602-4898-b1a1-b77fa23b8e50",
-            "confidence": "medium",
-            "relationType": "collaboration"
-          },
-          {
             "match": 1,
-            "artist": "Tin Machine",
+            "artist": "Wukir Suryadi",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.52265,
-            "artist": "Iggy Pop",
+            "match": 0.747127,
+            "artist": "Colin Stetson",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-            "confidence": 0.52265,
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
+            "confidence": 0.747127,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.448189,
-            "artist": "Lou Reed",
+            "match": 0.475392,
+            "artist": "Širom",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-            "confidence": 0.448189,
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
+            "confidence": 0.475392,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.403845,
-            "artist": "T. Rex",
+            "match": 0.402362,
+            "artist": "Ex-Easter Island Head",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-            "confidence": 0.403845,
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
+            "confidence": 0.402362,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.386813,
+            "artist": "Circuit des Yeux",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
+            "confidence": 0.386813,
             "relationType": "artist-similarity"
           }
         ],
@@ -71933,248 +71342,248 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Tin Machine",
-              "Iggy Pop",
-              "Lou Reed",
-              "T. Rex",
-              "Roxy Music",
-              "Queen",
-              "David Bowie & Mick Jagger",
-              "The Velvet Underground",
-              "The Rolling Stones",
-              "Mott the Hoople"
+              "Wukir Suryadi",
+              "Colin Stetson",
+              "Širom",
+              "Ex-Easter Island Head",
+              "Circuit des Yeux",
+              "Richard Dawson",
+              "Laura Cannell",
+              "KUNTARI",
+              "sealionwoman",
+              "Sun City Girls"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Tin Machine",
+                "artist": "Wukir Suryadi",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.52265,
-                "artist": "Iggy Pop",
+                "match": 0.747127,
+                "artist": "Colin Stetson",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-                "confidence": 0.52265,
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
+                "confidence": 0.747127,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.448189,
-                "artist": "Lou Reed",
+                "match": 0.475392,
+                "artist": "Širom",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-                "confidence": 0.448189,
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
+                "confidence": 0.475392,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.403845,
-                "artist": "T. Rex",
+                "match": 0.402362,
+                "artist": "Ex-Easter Island Head",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-                "confidence": 0.403845,
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
+                "confidence": 0.402362,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.369499,
-                "artist": "Roxy Music",
+                "match": 0.386813,
+                "artist": "Circuit des Yeux",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-                "confidence": 0.369499,
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
+                "confidence": 0.386813,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.365751,
-                "artist": "Queen",
+                "match": 0.36495,
+                "artist": "Richard Dawson",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-                "confidence": 0.365751,
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
+                "confidence": 0.36495,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.325117,
-                "artist": "David Bowie & Mick Jagger",
+                "match": 0.358538,
+                "artist": "Laura Cannell",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-                "confidence": 0.325117,
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
+                "confidence": 0.358538,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.319087,
-                "artist": "The Velvet Underground",
+                "match": 0.358146,
+                "artist": "KUNTARI",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-                "confidence": 0.319087,
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
+                "confidence": 0.358146,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.317252,
-                "artist": "The Rolling Stones",
+                "match": 0.355311,
+                "artist": "sealionwoman",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-                "confidence": 0.317252,
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
+                "confidence": 0.355311,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.309285,
-                "artist": "Mott the Hoople",
+                "match": 0.325478,
+                "artist": "Sun City Girls",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-                "confidence": 0.309285,
+                "sourceUrl": "https://www.last.fm/music/Senyawa",
+                "confidence": 0.325478,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/David%20Bowie"
+            "sourceUrl": "https://www.last.fm/music/Senyawa"
           },
-          "source": "MusicBrainz + Last.fm",
-          "status": "combined",
+          "source": "Last.fm",
+          "status": "lastfm",
           "artists": [
-            "Band Aid",
-            "Tin Machine",
-            "Iggy Pop",
-            "Lou Reed",
-            "T. Rex"
+            "Wukir Suryadi",
+            "Colin Stetson",
+            "Širom",
+            "Ex-Easter Island Head",
+            "Circuit des Yeux"
           ],
           "evidence": [
             {
-              "artist": "Band Aid",
-              "source": "MusicBrainz artist relationship",
-              "sources": [
-                "MusicBrainz"
-              ],
-              "sourceUrl": "https://musicbrainz.org/artist/5441c29d-3602-4898-b1a1-b77fa23b8e50",
-              "confidence": "medium",
-              "relationType": "collaboration"
-            },
-            {
               "match": 1,
-              "artist": "Tin Machine",
+              "artist": "Wukir Suryadi",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.52265,
-              "artist": "Iggy Pop",
+              "match": 0.747127,
+              "artist": "Colin Stetson",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.52265,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.747127,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.448189,
-              "artist": "Lou Reed",
+              "match": 0.475392,
+              "artist": "Širom",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.448189,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.475392,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.403845,
-              "artist": "T. Rex",
+              "match": 0.402362,
+              "artist": "Ex-Easter Island Head",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.403845,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.402362,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.386813,
+              "artist": "Circuit des Yeux",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.386813,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "56c67a5e-2f62-4d39-86f3-3bce7678278d",
-          "sourceUrl": "https://musicbrainz.org/release/56c67a5e-2f62-4d39-86f3-3bce7678278d",
+          "releaseId": "",
+          "sourceUrl": "",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "",
       "displayFormat": "CD",
-      "homeSlideSort": 5,
+      "homeSlideSort": 26,
       "publishStatus": "Published",
-      "financeStockId": "mr6pcndyfh76py",
+      "financeStockId": "mr6qjmb35c7lcl",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Band Aid",
-        "Tin Machine",
-        "Iggy Pop",
-        "Lou Reed",
-        "T. Rex"
+        "Wukir Suryadi",
+        "Colin Stetson",
+        "Širom",
+        "Ex-Easter Island Head",
+        "Circuit des Yeux"
       ],
-      "homeCollections": [
-        "nixp-selection"
-      ],
+      "homeCollections": [],
       "sleeveCondition": "",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "Pitchfork",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "The Wire / Innocent Records",
       "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:59:58.225Z",
-      "enrichmentFingerprint": "david bowie|blackstar|cd||",
+      "enrichmentAttemptedAt": "2026-08-18T16:56:15.407Z",
+      "enrichmentFingerprint": "senyawa kazuhisa uchihashi|senyawa with kazuhisa uchihashi|cd||",
       "relatedArtistEvidence": [
         {
-          "artist": "Band Aid",
-          "source": "MusicBrainz artist relationship",
-          "sources": [
-            "MusicBrainz"
-          ],
-          "sourceUrl": "https://musicbrainz.org/artist/5441c29d-3602-4898-b1a1-b77fa23b8e50",
-          "confidence": "medium",
-          "relationType": "collaboration"
-        },
-        {
           "match": 1,
-          "artist": "Tin Machine",
+          "artist": "Wukir Suryadi",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+          "sourceUrl": "https://www.last.fm/music/Senyawa",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.52265,
-          "artist": "Iggy Pop",
+          "match": 0.747127,
+          "artist": "Colin Stetson",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-          "confidence": 0.52265,
+          "sourceUrl": "https://www.last.fm/music/Senyawa",
+          "confidence": 0.747127,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.448189,
-          "artist": "Lou Reed",
+          "match": 0.475392,
+          "artist": "Širom",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-          "confidence": 0.448189,
+          "sourceUrl": "https://www.last.fm/music/Senyawa",
+          "confidence": 0.475392,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.403845,
-          "artist": "T. Rex",
+          "match": 0.402362,
+          "artist": "Ex-Easter Island Head",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-          "confidence": 0.403845,
+          "sourceUrl": "https://www.last.fm/music/Senyawa",
+          "confidence": 0.402362,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.386813,
+          "artist": "Circuit des Yeux",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Senyawa",
+          "confidence": 0.386813,
           "relationType": "artist-similarity"
         }
       ],
@@ -72184,168 +71593,169 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Tin Machine",
-            "Iggy Pop",
-            "Lou Reed",
-            "T. Rex",
-            "Roxy Music",
-            "Queen",
-            "David Bowie & Mick Jagger",
-            "The Velvet Underground",
-            "The Rolling Stones",
-            "Mott the Hoople"
+            "Wukir Suryadi",
+            "Colin Stetson",
+            "Širom",
+            "Ex-Easter Island Head",
+            "Circuit des Yeux",
+            "Richard Dawson",
+            "Laura Cannell",
+            "KUNTARI",
+            "sealionwoman",
+            "Sun City Girls"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Tin Machine",
+              "artist": "Wukir Suryadi",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.52265,
-              "artist": "Iggy Pop",
+              "match": 0.747127,
+              "artist": "Colin Stetson",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.52265,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.747127,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.448189,
-              "artist": "Lou Reed",
+              "match": 0.475392,
+              "artist": "Širom",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.448189,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.475392,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.403845,
-              "artist": "T. Rex",
+              "match": 0.402362,
+              "artist": "Ex-Easter Island Head",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.403845,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.402362,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.369499,
-              "artist": "Roxy Music",
+              "match": 0.386813,
+              "artist": "Circuit des Yeux",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.369499,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.386813,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.365751,
-              "artist": "Queen",
+              "match": 0.36495,
+              "artist": "Richard Dawson",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.365751,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.36495,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.325117,
-              "artist": "David Bowie & Mick Jagger",
+              "match": 0.358538,
+              "artist": "Laura Cannell",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.325117,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.358538,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.319087,
-              "artist": "The Velvet Underground",
+              "match": 0.358146,
+              "artist": "KUNTARI",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.319087,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.358146,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.317252,
-              "artist": "The Rolling Stones",
+              "match": 0.355311,
+              "artist": "sealionwoman",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.317252,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.355311,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.309285,
-              "artist": "Mott the Hoople",
+              "match": 0.325478,
+              "artist": "Sun City Girls",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-              "confidence": 0.309285,
+              "sourceUrl": "https://www.last.fm/music/Senyawa",
+              "confidence": 0.325478,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/David%20Bowie"
+          "sourceUrl": "https://www.last.fm/music/Senyawa"
         },
-        "source": "MusicBrainz + Last.fm",
-        "status": "combined",
+        "source": "Last.fm",
+        "status": "lastfm",
         "artists": [
-          "Band Aid",
-          "Tin Machine",
-          "Iggy Pop",
-          "Lou Reed",
-          "T. Rex"
+          "Wukir Suryadi",
+          "Colin Stetson",
+          "Širom",
+          "Ex-Easter Island Head",
+          "Circuit des Yeux"
         ],
         "evidence": [
           {
-            "artist": "Band Aid",
-            "source": "MusicBrainz artist relationship",
-            "sources": [
-              "MusicBrainz"
-            ],
-            "sourceUrl": "https://musicbrainz.org/artist/5441c29d-3602-4898-b1a1-b77fa23b8e50",
-            "confidence": "medium",
-            "relationType": "collaboration"
-          },
-          {
             "match": 1,
-            "artist": "Tin Machine",
+            "artist": "Wukir Suryadi",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.52265,
-            "artist": "Iggy Pop",
+            "match": 0.747127,
+            "artist": "Colin Stetson",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-            "confidence": 0.52265,
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
+            "confidence": 0.747127,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.448189,
-            "artist": "Lou Reed",
+            "match": 0.475392,
+            "artist": "Širom",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-            "confidence": 0.448189,
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
+            "confidence": 0.475392,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.403845,
-            "artist": "T. Rex",
+            "match": 0.402362,
+            "artist": "Ex-Easter Island Head",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
-            "confidence": 0.403845,
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
+            "confidence": 0.402362,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.386813,
+            "artist": "Circuit des Yeux",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Senyawa",
+            "confidence": 0.386813,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "56c67a5e-2f62-4d39-86f3-3bce7678278d",
-        "sourceUrl": "https://musicbrainz.org/release/56c67a5e-2f62-4d39-86f3-3bce7678278d",
+        "releaseId": "",
+        "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
@@ -73618,6 +73028,619 @@
         "shippingClass": "vinyl-cardboard-bubble",
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-cd-0011",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0011",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0011"
+      ],
+      "year": 2016,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif",
+      "label": "ISO Records / Columbia",
+      "price": 150000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Blackstar",
+      "artist": "David Bowie",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CD-0011",
+        "Format: CD",
+        "Condition: Used Excellent"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/21332-blackstar/",
+      "syncAudit": [
+        {
+          "at": "2026-08-30T02:14:08.793Z",
+          "sku": "NXP-2026-CD-0011",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-CD-0011",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.174Z",
+          "sku": "NXP-2026-CD-0011",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.932Z",
+          "sku": "NXP-2026-CD-0011",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-CD-0011",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T02:12:08.735Z",
+          "sku": "NXP-2026-CD-0011",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:04:16.222Z",
+          "sku": "NXP-2026-CD-0011",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-27T15:01:51.310Z",
+          "sku": "NXP-2026-CD-0011",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-09",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-08-30T02:14:08.793Z",
+        "sku": "NXP-2026-CD-0011",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "David Bowie's 2016 Blackstar folds exploratory jazz, coded drama and alienation into a final act of reinvention, recorded with a New York jazz ensemble.",
+      "reviewQuote": "exploratory jazz and the echoes of various mad men",
+      "imageCredits": [],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "relatedArtists": [
+          "Band Aid",
+          "Tin Machine",
+          "Iggy Pop",
+          "Lou Reed",
+          "T. Rex"
+        ],
+        "enrichmentStatus": "complete-no-related-artists",
+        "relatedArtistEvidence": [
+          {
+            "artist": "Band Aid",
+            "source": "MusicBrainz artist relationship",
+            "sources": [
+              "MusicBrainz"
+            ],
+            "sourceUrl": "https://musicbrainz.org/artist/5441c29d-3602-4898-b1a1-b77fa23b8e50",
+            "confidence": "medium",
+            "relationType": "collaboration"
+          },
+          {
+            "match": 1,
+            "artist": "Tin Machine",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.52265,
+            "artist": "Iggy Pop",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "confidence": 0.52265,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.448189,
+            "artist": "Lou Reed",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "confidence": 0.448189,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.403845,
+            "artist": "T. Rex",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "confidence": 0.403845,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Tin Machine",
+              "Iggy Pop",
+              "Lou Reed",
+              "T. Rex",
+              "Roxy Music",
+              "Queen",
+              "David Bowie & Mick Jagger",
+              "The Velvet Underground",
+              "The Rolling Stones",
+              "Mott the Hoople"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Tin Machine",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.52265,
+                "artist": "Iggy Pop",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 0.52265,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.448189,
+                "artist": "Lou Reed",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 0.448189,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.403845,
+                "artist": "T. Rex",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 0.403845,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.369499,
+                "artist": "Roxy Music",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 0.369499,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.365751,
+                "artist": "Queen",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 0.365751,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.325117,
+                "artist": "David Bowie & Mick Jagger",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 0.325117,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.319087,
+                "artist": "The Velvet Underground",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 0.319087,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.317252,
+                "artist": "The Rolling Stones",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 0.317252,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.309285,
+                "artist": "Mott the Hoople",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+                "confidence": 0.309285,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/David%20Bowie"
+          },
+          "source": "MusicBrainz + Last.fm",
+          "status": "combined",
+          "artists": [
+            "Band Aid",
+            "Tin Machine",
+            "Iggy Pop",
+            "Lou Reed",
+            "T. Rex"
+          ],
+          "evidence": [
+            {
+              "artist": "Band Aid",
+              "source": "MusicBrainz artist relationship",
+              "sources": [
+                "MusicBrainz"
+              ],
+              "sourceUrl": "https://musicbrainz.org/artist/5441c29d-3602-4898-b1a1-b77fa23b8e50",
+              "confidence": "medium",
+              "relationType": "collaboration"
+            },
+            {
+              "match": 1,
+              "artist": "Tin Machine",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.52265,
+              "artist": "Iggy Pop",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.52265,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.448189,
+              "artist": "Lou Reed",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.448189,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.403845,
+              "artist": "T. Rex",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.403845,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "56c67a5e-2f62-4d39-86f3-3bce7678278d",
+          "sourceUrl": "https://musicbrainz.org/release/56c67a5e-2f62-4d39-86f3-3bce7678278d",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "",
+      "displayFormat": "CD",
+      "homeSlideSort": 5,
+      "publishStatus": "Published",
+      "financeStockId": "mr6pcndyfh76py",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Band Aid",
+        "Tin Machine",
+        "Iggy Pop",
+        "Lou Reed",
+        "T. Rex"
+      ],
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "sleeveCondition": "",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "Pitchfork",
+      "manualRelatedArtists": [],
+      "enrichmentAttemptedAt": "2026-08-18T16:59:58.225Z",
+      "enrichmentFingerprint": "david bowie|blackstar|cd||",
+      "relatedArtistEvidence": [
+        {
+          "artist": "Band Aid",
+          "source": "MusicBrainz artist relationship",
+          "sources": [
+            "MusicBrainz"
+          ],
+          "sourceUrl": "https://musicbrainz.org/artist/5441c29d-3602-4898-b1a1-b77fa23b8e50",
+          "confidence": "medium",
+          "relationType": "collaboration"
+        },
+        {
+          "match": 1,
+          "artist": "Tin Machine",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.52265,
+          "artist": "Iggy Pop",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+          "confidence": 0.52265,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.448189,
+          "artist": "Lou Reed",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+          "confidence": 0.448189,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.403845,
+          "artist": "T. Rex",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+          "confidence": 0.403845,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Tin Machine",
+            "Iggy Pop",
+            "Lou Reed",
+            "T. Rex",
+            "Roxy Music",
+            "Queen",
+            "David Bowie & Mick Jagger",
+            "The Velvet Underground",
+            "The Rolling Stones",
+            "Mott the Hoople"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tin Machine",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.52265,
+              "artist": "Iggy Pop",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.52265,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.448189,
+              "artist": "Lou Reed",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.448189,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.403845,
+              "artist": "T. Rex",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.403845,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.369499,
+              "artist": "Roxy Music",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.369499,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.365751,
+              "artist": "Queen",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.365751,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.325117,
+              "artist": "David Bowie & Mick Jagger",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.325117,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.319087,
+              "artist": "The Velvet Underground",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.319087,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.317252,
+              "artist": "The Rolling Stones",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.317252,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.309285,
+              "artist": "Mott the Hoople",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+              "confidence": 0.309285,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/David%20Bowie"
+        },
+        "source": "MusicBrainz + Last.fm",
+        "status": "combined",
+        "artists": [
+          "Band Aid",
+          "Tin Machine",
+          "Iggy Pop",
+          "Lou Reed",
+          "T. Rex"
+        ],
+        "evidence": [
+          {
+            "artist": "Band Aid",
+            "source": "MusicBrainz artist relationship",
+            "sources": [
+              "MusicBrainz"
+            ],
+            "sourceUrl": "https://musicbrainz.org/artist/5441c29d-3602-4898-b1a1-b77fa23b8e50",
+            "confidence": "medium",
+            "relationType": "collaboration"
+          },
+          {
+            "match": 1,
+            "artist": "Tin Machine",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.52265,
+            "artist": "Iggy Pop",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "confidence": 0.52265,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.448189,
+            "artist": "Lou Reed",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "confidence": 0.448189,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.403845,
+            "artist": "T. Rex",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/David%20Bowie",
+            "confidence": 0.403845,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "56c67a5e-2f62-4d39-86f3-3bce7678278d",
+        "sourceUrl": "https://musicbrainz.org/release/56c67a5e-2f62-4d39-86f3-3bce7678278d",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 1,
+      "editorialUpdatedAt": "",
+      "editorialUpdatedBy": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
@@ -83072,95 +83095,95 @@
       }
     },
     {
-      "id": "nxp-2026-cd-0023",
+      "id": "nxp-2026-vnl-0006",
       "qty": 1,
-      "sku": "NXP-2026-CD-0023",
+      "sku": "NXP-2026-VNL-0006",
       "tags": [
-        "CD",
-        "NXP-2026-CD-0023"
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0006"
       ],
-      "year": 2025,
+      "year": 2013,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg",
-      "label": "Warp Records",
-      "price": 300000,
+      "image": "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg",
+      "label": "Alter",
+      "price": 350000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Tranquilizer",
-      "artist": "Oneohtrix Point Never",
-      "format": "CD",
+      "title": "First Burning Attraction",
+      "artist": "Damien Dubrovnik",
+      "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
+        "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg"
       ],
       "barcode": "",
       "details": [
-        "SKU: NXP-2026-CD-0023",
-        "Format: CD",
-        "Condition: Used Excellence"
+        "SKU: NXP-2026-VNL-0006",
+        "Format: Vinyl 12\"",
+        "Condition: Used Good"
       ],
       "edition": "",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0023/cover.jpg",
-      "condition": "Used Excellent",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0006/cover.jpg",
+      "condition": "Used Good",
+      "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
       "syncAudit": [
         {
-          "at": "2026-08-30T02:14:08.795Z",
-          "sku": "NXP-2026-CD-0023",
+          "at": "2026-08-30T02:14:08.794Z",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.964Z",
-          "sku": "NXP-2026-CD-0023",
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T09:54:26.175Z",
-          "sku": "NXP-2026-CD-0023",
+          "at": "2026-08-29T09:54:26.174Z",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.933Z",
-          "sku": "NXP-2026-CD-0023",
+          "at": "2026-08-29T02:23:49.932Z",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T09:19:04.764Z",
-          "sku": "NXP-2026-CD-0023",
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-CD-0023",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:04:16.223Z",
-          "sku": "NXP-2026-CD-0023",
+          "at": "2026-08-27T15:04:16.222Z",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:01:51.311Z",
-          "sku": "NXP-2026-CD-0023",
+          "at": "2026-08-27T15:01:51.310Z",
+          "sku": "NXP-2026-VNL-0006",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -83169,85 +83192,85 @@
       "updatedAt": "2026-09-09",
       "collection": "NIXP Selection",
       "syncStatus": {
-        "at": "2026-08-30T02:14:08.795Z",
-        "sku": "NXP-2026-CD-0023",
+        "at": "2026-08-30T02:14:08.794Z",
+        "sku": "NXP-2026-VNL-0006",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
-      "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
+      "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
+      "reviewQuote": "richer, more refined approach to texture",
       "imageCredits": [],
-      "reviewSource": "Pitchfork (quoted)",
+      "reviewSource": "The Quietus (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
-        "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
-        "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
-        "reviewSource": "Pitchfork (quoted)",
+        "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
+        "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
+        "reviewQuote": "richer, more refined approach to texture",
+        "reviewSource": "The Quietus (quoted)",
         "relatedArtists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
+          "Olymphia",
+          "Amphetamine Logic",
+          "LR & Puce Mary",
+          "Rose alliance",
+          "Caucasian Colony"
         ],
-        "descriptionSource": "Pitchfork",
+        "descriptionSource": "The Quietus",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Tim Hecker",
+            "artist": "Olymphia",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.725642,
-            "artist": "Autechre",
+            "match": 0.879535,
+            "artist": "Amphetamine Logic",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.879535,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.688586,
-            "artist": "James Ferraro",
+            "match": 0.799355,
+            "artist": "LR & Puce Mary",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.799355,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.622036,
-            "artist": "Emeralds",
+            "match": 0.782118,
+            "artist": "Rose alliance",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.782118,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
+            "match": 0.781438,
+            "artist": "Caucasian Colony",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.781438,
             "relationType": "artist-similarity"
           }
         ],
@@ -83256,256 +83279,255 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Tim Hecker",
-              "Autechre",
-              "James Ferraro",
-              "Emeralds",
-              "Laurel Halo",
-              "Tim Hecker & Daniel Lopatin",
-              "Boards of Canada",
-              "Fennesz",
-              "Steve Hauschildt",
-              "Huerco S."
+              "Olymphia",
+              "Amphetamine Logic",
+              "LR & Puce Mary",
+              "Rose alliance",
+              "Caucasian Colony",
+              "Hvide Sejl",
+              "LR",
+              "Croatian Amor & Lust For Youth",
+              "Rosen & Spyddet",
+              "Arv & Miljö"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Tim Hecker",
+                "artist": "Olymphia",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.725642,
-                "artist": "Autechre",
+                "match": 0.879535,
+                "artist": "Amphetamine Logic",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.725642,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.879535,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.688586,
-                "artist": "James Ferraro",
+                "match": 0.799355,
+                "artist": "LR & Puce Mary",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.688586,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.799355,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.622036,
-                "artist": "Emeralds",
+                "match": 0.782118,
+                "artist": "Rose alliance",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.622036,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.782118,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.596252,
-                "artist": "Laurel Halo",
+                "match": 0.781438,
+                "artist": "Caucasian Colony",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.596252,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.781438,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.570321,
-                "artist": "Tim Hecker & Daniel Lopatin",
+                "match": 0.774984,
+                "artist": "Hvide Sejl",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.570321,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.774984,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.556456,
-                "artist": "Boards of Canada",
+                "match": 0.77304,
+                "artist": "LR",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.556456,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.77304,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.547454,
-                "artist": "Fennesz",
+                "match": 0.702665,
+                "artist": "Croatian Amor & Lust For Youth",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.547454,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.702665,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.534696,
-                "artist": "Steve Hauschildt",
+                "match": 0.686069,
+                "artist": "Rosen & Spyddet",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.534696,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.686069,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.492442,
-                "artist": "Huerco S.",
+                "match": 0.663513,
+                "artist": "Arv & Miljö",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.492442,
+                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "confidence": 0.663513,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo"
+            "Olymphia",
+            "Amphetamine Logic",
+            "LR & Puce Mary",
+            "Rose alliance",
+            "Caucasian Colony"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Tim Hecker",
+              "artist": "Olymphia",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.725642,
-              "artist": "Autechre",
+              "match": 0.879535,
+              "artist": "Amphetamine Logic",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.879535,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.688586,
-              "artist": "James Ferraro",
+              "match": 0.799355,
+              "artist": "LR & Puce Mary",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.799355,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.622036,
-              "artist": "Emeralds",
+              "match": 0.782118,
+              "artist": "Rose alliance",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.782118,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
+              "match": 0.781438,
+              "artist": "Caucasian Colony",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.781438,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
-          "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+          "releaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
+          "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": 43,
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 1,
       "publishStatus": "Published",
-      "financeStockId": "mrhvkn2udt4bqn",
+      "financeStockId": "mr6qvv4xl23arz",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Tim Hecker",
-        "Autechre",
-        "James Ferraro",
-        "Emeralds",
-        "Laurel Halo"
+        "Olymphia",
+        "Amphetamine Logic",
+        "LR & Puce Mary",
+        "Rose alliance",
+        "Caucasian Colony"
       ],
       "homeCollections": [
-        "recent-releases",
         "nixp-selection"
       ],
       "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
-      "descriptionSource": "Pitchfork",
-      "metadataSourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+      "descriptionSource": "The Quietus",
+      "metadataSourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
-      "enrichmentAttemptedAt": "2026-08-18T16:58:16.154Z",
-      "enrichmentFingerprint": "oneohtrix point never|tranquilizer|cd||",
+      "musicBrainzReleaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
+      "enrichmentAttemptedAt": "2026-08-18T16:54:02.209Z",
+      "enrichmentFingerprint": "damien dubrovnik|first burning attraction|vinyl||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Tim Hecker",
+          "artist": "Olymphia",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.725642,
-          "artist": "Autechre",
+          "match": 0.879535,
+          "artist": "Amphetamine Logic",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.725642,
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "confidence": 0.879535,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.688586,
-          "artist": "James Ferraro",
+          "match": 0.799355,
+          "artist": "LR & Puce Mary",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.688586,
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "confidence": 0.799355,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.622036,
-          "artist": "Emeralds",
+          "match": 0.782118,
+          "artist": "Rose alliance",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.622036,
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "confidence": 0.782118,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.596252,
-          "artist": "Laurel Halo",
+          "match": 0.781438,
+          "artist": "Caucasian Colony",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.596252,
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "confidence": 0.781438,
           "relationType": "artist-similarity"
         }
       ],
@@ -83515,169 +83537,169 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo",
-            "Tim Hecker & Daniel Lopatin",
-            "Boards of Canada",
-            "Fennesz",
-            "Steve Hauschildt",
-            "Huerco S."
+            "Olymphia",
+            "Amphetamine Logic",
+            "LR & Puce Mary",
+            "Rose alliance",
+            "Caucasian Colony",
+            "Hvide Sejl",
+            "LR",
+            "Croatian Amor & Lust For Youth",
+            "Rosen & Spyddet",
+            "Arv & Miljö"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Tim Hecker",
+              "artist": "Olymphia",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.725642,
-              "artist": "Autechre",
+              "match": 0.879535,
+              "artist": "Amphetamine Logic",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.879535,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.688586,
-              "artist": "James Ferraro",
+              "match": 0.799355,
+              "artist": "LR & Puce Mary",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.799355,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.622036,
-              "artist": "Emeralds",
+              "match": 0.782118,
+              "artist": "Rose alliance",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.782118,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
+              "match": 0.781438,
+              "artist": "Caucasian Colony",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.781438,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.570321,
-              "artist": "Tim Hecker & Daniel Lopatin",
+              "match": 0.774984,
+              "artist": "Hvide Sejl",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.570321,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.774984,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.556456,
-              "artist": "Boards of Canada",
+              "match": 0.77304,
+              "artist": "LR",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.556456,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.77304,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.547454,
-              "artist": "Fennesz",
+              "match": 0.702665,
+              "artist": "Croatian Amor & Lust For Youth",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.547454,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.702665,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.534696,
-              "artist": "Steve Hauschildt",
+              "match": 0.686069,
+              "artist": "Rosen & Spyddet",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.534696,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.686069,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.492442,
-              "artist": "Huerco S.",
+              "match": 0.663513,
+              "artist": "Arv & Miljö",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.492442,
+              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "confidence": 0.663513,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
+          "Olymphia",
+          "Amphetamine Logic",
+          "LR & Puce Mary",
+          "Rose alliance",
+          "Caucasian Colony"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Tim Hecker",
+            "artist": "Olymphia",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.725642,
-            "artist": "Autechre",
+            "match": 0.879535,
+            "artist": "Amphetamine Logic",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.879535,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.688586,
-            "artist": "James Ferraro",
+            "match": 0.799355,
+            "artist": "LR & Puce Mary",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.799355,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.622036,
-            "artist": "Emeralds",
+            "match": 0.782118,
+            "artist": "Rose alliance",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.782118,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
+            "match": 0.781438,
+            "artist": "Caucasian Colony",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
+            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "confidence": 0.781438,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
-        "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+        "releaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
+        "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": false,
@@ -83688,15 +83710,15 @@
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
         "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
@@ -84328,95 +84350,95 @@
       }
     },
     {
-      "id": "nxp-2026-vnl-0006",
+      "id": "nxp-2026-cd-0023",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0006",
+      "sku": "NXP-2026-CD-0023",
       "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0006"
+        "CD",
+        "NXP-2026-CD-0023"
       ],
-      "year": 2013,
+      "year": 2025,
       "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg",
-      "label": "Alter",
-      "price": 350000,
+      "image": "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg",
+      "label": "Warp Records",
+      "price": 300000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "First Burning Attraction",
-      "artist": "Damien Dubrovnik",
-      "format": "Vinyl",
+      "title": "Tranquilizer",
+      "artist": "Oneohtrix Point Never",
+      "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg"
+        "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
       ],
       "barcode": "",
       "details": [
-        "SKU: NXP-2026-VNL-0006",
-        "Format: Vinyl 12\"",
-        "Condition: Used Good"
+        "SKU: NXP-2026-CD-0023",
+        "Format: CD",
+        "Condition: Used Excellence"
       ],
       "edition": "",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0006/cover.jpg",
-      "condition": "Used Good",
-      "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0023/cover.jpg",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
       "syncAudit": [
         {
-          "at": "2026-08-30T02:14:08.794Z",
-          "sku": "NXP-2026-VNL-0006",
+          "at": "2026-08-30T02:14:08.795Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-VNL-0006",
+          "at": "2026-08-29T10:09:43.964Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T09:54:26.174Z",
-          "sku": "NXP-2026-VNL-0006",
+          "at": "2026-08-29T09:54:26.175Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.932Z",
-          "sku": "NXP-2026-VNL-0006",
+          "at": "2026-08-29T02:23:49.933Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-VNL-0006",
+          "at": "2026-08-28T09:19:04.764Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T02:12:08.736Z",
-          "sku": "NXP-2026-VNL-0006",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:04:16.222Z",
-          "sku": "NXP-2026-VNL-0006",
+          "at": "2026-08-27T15:04:16.223Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-27T15:01:51.310Z",
-          "sku": "NXP-2026-VNL-0006",
+          "at": "2026-08-27T15:01:51.311Z",
+          "sku": "NXP-2026-CD-0023",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -84425,85 +84447,85 @@
       "updatedAt": "2026-09-09",
       "collection": "NIXP Selection",
       "syncStatus": {
-        "at": "2026-08-30T02:14:08.794Z",
-        "sku": "NXP-2026-VNL-0006",
+        "at": "2026-08-30T02:14:08.795Z",
+        "sku": "NXP-2026-CD-0023",
         "action": "Inventory synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
-      "reviewQuote": "richer, more refined approach to texture",
+      "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
+      "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
       "imageCredits": [],
-      "reviewSource": "The Quietus (quoted)",
+      "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
-        "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
-        "reviewQuote": "richer, more refined approach to texture",
-        "reviewSource": "The Quietus (quoted)",
+        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-tranquilizer/",
+        "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
+        "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
+        "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
-          "Olymphia",
-          "Amphetamine Logic",
-          "LR & Puce Mary",
-          "Rose alliance",
-          "Caucasian Colony"
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
         ],
-        "descriptionSource": "The Quietus",
+        "descriptionSource": "Pitchfork",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Olymphia",
+            "artist": "Tim Hecker",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.879535,
-            "artist": "Amphetamine Logic",
+            "match": 0.725642,
+            "artist": "Autechre",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.879535,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.799355,
-            "artist": "LR & Puce Mary",
+            "match": 0.688586,
+            "artist": "James Ferraro",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.799355,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.782118,
-            "artist": "Rose alliance",
+            "match": 0.622036,
+            "artist": "Emeralds",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.782118,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.781438,
-            "artist": "Caucasian Colony",
+            "match": 0.596252,
+            "artist": "Laurel Halo",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.781438,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
             "relationType": "artist-similarity"
           }
         ],
@@ -84512,255 +84534,256 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Olymphia",
-              "Amphetamine Logic",
-              "LR & Puce Mary",
-              "Rose alliance",
-              "Caucasian Colony",
-              "Hvide Sejl",
-              "LR",
-              "Croatian Amor & Lust For Youth",
-              "Rosen & Spyddet",
-              "Arv & Miljö"
+              "Tim Hecker",
+              "Autechre",
+              "James Ferraro",
+              "Emeralds",
+              "Laurel Halo",
+              "Tim Hecker & Daniel Lopatin",
+              "Boards of Canada",
+              "Fennesz",
+              "Steve Hauschildt",
+              "Huerco S."
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Olymphia",
+                "artist": "Tim Hecker",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.879535,
-                "artist": "Amphetamine Logic",
+                "match": 0.725642,
+                "artist": "Autechre",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.879535,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.725642,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.799355,
-                "artist": "LR & Puce Mary",
+                "match": 0.688586,
+                "artist": "James Ferraro",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.799355,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.688586,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.782118,
-                "artist": "Rose alliance",
+                "match": 0.622036,
+                "artist": "Emeralds",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.782118,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.622036,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.781438,
-                "artist": "Caucasian Colony",
+                "match": 0.596252,
+                "artist": "Laurel Halo",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.781438,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.596252,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.774984,
-                "artist": "Hvide Sejl",
+                "match": 0.570321,
+                "artist": "Tim Hecker & Daniel Lopatin",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.774984,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.570321,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.77304,
-                "artist": "LR",
+                "match": 0.556456,
+                "artist": "Boards of Canada",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.77304,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.556456,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.702665,
-                "artist": "Croatian Amor & Lust For Youth",
+                "match": 0.547454,
+                "artist": "Fennesz",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.702665,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.547454,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.686069,
-                "artist": "Rosen & Spyddet",
+                "match": 0.534696,
+                "artist": "Steve Hauschildt",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.686069,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.534696,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.663513,
-                "artist": "Arv & Miljö",
+                "match": 0.492442,
+                "artist": "Huerco S.",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-                "confidence": 0.663513,
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.492442,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik"
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Olymphia",
-            "Amphetamine Logic",
-            "LR & Puce Mary",
-            "Rose alliance",
-            "Caucasian Colony"
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Olymphia",
+              "artist": "Tim Hecker",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.879535,
-              "artist": "Amphetamine Logic",
+              "match": 0.725642,
+              "artist": "Autechre",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.879535,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.799355,
-              "artist": "LR & Puce Mary",
+              "match": 0.688586,
+              "artist": "James Ferraro",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.799355,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.782118,
-              "artist": "Rose alliance",
+              "match": 0.622036,
+              "artist": "Emeralds",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.782118,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.781438,
-              "artist": "Caucasian Colony",
+              "match": 0.596252,
+              "artist": "Laurel Halo",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.781438,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
-          "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
+          "releaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+          "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 1,
+      "displayFormat": "CD",
+      "homeSlideSort": 43,
       "publishStatus": "Published",
-      "financeStockId": "mr6qvv4xl23arz",
+      "financeStockId": "mrhvkn2udt4bqn",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Olymphia",
-        "Amphetamine Logic",
-        "LR & Puce Mary",
-        "Rose alliance",
-        "Caucasian Colony"
+        "Tim Hecker",
+        "Autechre",
+        "James Ferraro",
+        "Emeralds",
+        "Laurel Halo"
       ],
       "homeCollections": [
+        "recent-releases",
         "nixp-selection"
       ],
       "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
-      "descriptionSource": "The Quietus",
-      "metadataSourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
+      "descriptionSource": "Pitchfork",
+      "metadataSourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
-      "enrichmentAttemptedAt": "2026-08-18T16:54:02.209Z",
-      "enrichmentFingerprint": "damien dubrovnik|first burning attraction|vinyl||",
+      "musicBrainzReleaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+      "enrichmentAttemptedAt": "2026-08-18T16:58:16.154Z",
+      "enrichmentFingerprint": "oneohtrix point never|tranquilizer|cd||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Olymphia",
+          "artist": "Tim Hecker",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.879535,
-          "artist": "Amphetamine Logic",
+          "match": 0.725642,
+          "artist": "Autechre",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-          "confidence": 0.879535,
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.725642,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.799355,
-          "artist": "LR & Puce Mary",
+          "match": 0.688586,
+          "artist": "James Ferraro",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-          "confidence": 0.799355,
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.688586,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.782118,
-          "artist": "Rose alliance",
+          "match": 0.622036,
+          "artist": "Emeralds",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-          "confidence": 0.782118,
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.622036,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.781438,
-          "artist": "Caucasian Colony",
+          "match": 0.596252,
+          "artist": "Laurel Halo",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-          "confidence": 0.781438,
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.596252,
           "relationType": "artist-similarity"
         }
       ],
@@ -84770,169 +84793,169 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Olymphia",
-            "Amphetamine Logic",
-            "LR & Puce Mary",
-            "Rose alliance",
-            "Caucasian Colony",
-            "Hvide Sejl",
-            "LR",
-            "Croatian Amor & Lust For Youth",
-            "Rosen & Spyddet",
-            "Arv & Miljö"
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo",
+            "Tim Hecker & Daniel Lopatin",
+            "Boards of Canada",
+            "Fennesz",
+            "Steve Hauschildt",
+            "Huerco S."
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Olymphia",
+              "artist": "Tim Hecker",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.879535,
-              "artist": "Amphetamine Logic",
+              "match": 0.725642,
+              "artist": "Autechre",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.879535,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.799355,
-              "artist": "LR & Puce Mary",
+              "match": 0.688586,
+              "artist": "James Ferraro",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.799355,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.782118,
-              "artist": "Rose alliance",
+              "match": 0.622036,
+              "artist": "Emeralds",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.782118,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.781438,
-              "artist": "Caucasian Colony",
+              "match": 0.596252,
+              "artist": "Laurel Halo",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.781438,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.774984,
-              "artist": "Hvide Sejl",
+              "match": 0.570321,
+              "artist": "Tim Hecker & Daniel Lopatin",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.774984,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.570321,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.77304,
-              "artist": "LR",
+              "match": 0.556456,
+              "artist": "Boards of Canada",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.77304,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.556456,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.702665,
-              "artist": "Croatian Amor & Lust For Youth",
+              "match": 0.547454,
+              "artist": "Fennesz",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.702665,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.547454,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.686069,
-              "artist": "Rosen & Spyddet",
+              "match": 0.534696,
+              "artist": "Steve Hauschildt",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.686069,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.534696,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.663513,
-              "artist": "Arv & Miljö",
+              "match": 0.492442,
+              "artist": "Huerco S.",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-              "confidence": 0.663513,
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.492442,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik"
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Olymphia",
-          "Amphetamine Logic",
-          "LR & Puce Mary",
-          "Rose alliance",
-          "Caucasian Colony"
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Olymphia",
+            "artist": "Tim Hecker",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.879535,
-            "artist": "Amphetamine Logic",
+            "match": 0.725642,
+            "artist": "Autechre",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.879535,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.799355,
-            "artist": "LR & Puce Mary",
+            "match": 0.688586,
+            "artist": "James Ferraro",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.799355,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.782118,
-            "artist": "Rose alliance",
+            "match": 0.622036,
+            "artist": "Emeralds",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.782118,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.781438,
-            "artist": "Caucasian Colony",
+            "match": 0.596252,
+            "artist": "Laurel Halo",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Damien%20Dubrovnik",
-            "confidence": 0.781438,
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
-        "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
+        "releaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+        "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": false,
@@ -84943,15 +84966,15 @@
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
         "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
@@ -88460,16 +88483,16 @@
       "status": "Published"
     },
     {
-      "id": "lust-for-youth",
+      "id": "soft-moon",
       "bio": "",
-      "name": "Lust For Youth",
+      "name": "Soft Moon",
       "sort": 31,
       "status": "Published"
     },
     {
-      "id": "soft-moon",
+      "id": "lust-for-youth",
       "bio": "",
-      "name": "Soft Moon",
+      "name": "Lust For Youth",
       "sort": 31,
       "status": "Published"
     },
@@ -89098,27 +89121,6 @@
       "status": "Published"
     },
     {
-      "id": "senyawa-stephen-o-malley",
-      "bio": "",
-      "name": "Senyawa & Stephen O' Malley",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "sam-gendel",
-      "bio": "",
-      "name": "Sam Gendel",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "hella",
-      "bio": "",
-      "name": "Hella",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
       "id": "alan-vega",
       "bio": "",
       "name": "Alan Vega",
@@ -89136,6 +89138,34 @@
       "id": "chapterhouse",
       "bio": "",
       "name": "Chapterhouse",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "melvins-napalm-death",
+      "bio": "",
+      "name": "Melvins, Napalm Death",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "senyawa-stephen-o-malley",
+      "bio": "",
+      "name": "Senyawa & Stephen O' Malley",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "hella",
+      "bio": "",
+      "name": "Hella",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "sam-gendel",
+      "bio": "",
+      "name": "Sam Gendel",
       "sort": 9999,
       "status": "Published"
     },
