@@ -157,7 +157,7 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
     if (!updated?.idempotent) {
       await Promise.allSettled([
         sendOrderPaymentNotification(paidOrder || order, { queueOnly: true }),
-        sendCustomerPaymentConfirmation(paidOrder || order, { queueOnly: true })
+        sendCustomerPaymentConfirmation(paidOrder || order, { queueOnly: true, payment: verified })
       ]);
     }
     await completeWebhookReceipt(eventKey);

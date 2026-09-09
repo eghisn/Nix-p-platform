@@ -26,7 +26,7 @@ export async function getOrderRecord(orderId, { includeEvents = false } = {}) {
   const encodedId = encodeURIComponent(String(orderId || ""));
   const [orders, lines, events] = await Promise.all([
     supabaseFetch(`order_records?select=*&id=eq.${encodedId}&limit=1`, { service: true }),
-    supabaseFetch(`order_lines?select=*&order_id=eq.${encodedId}&order=created_at.asc`, { service: true }),
+    supabaseFetch(`order_lines?select=id,order_id,product_id,sku,artist,title,size_label,quantity,unit_price,line_total,created_at,products(image)&order_id=eq.${encodedId}&order=created_at.asc`, { service: true }),
     includeEvents
       ? supabaseFetch(`order_events?select=*&order_id=eq.${encodedId}&order=created_at.desc`, { service: true })
       : Promise.resolve([])

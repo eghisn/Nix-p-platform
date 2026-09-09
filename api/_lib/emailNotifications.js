@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { isSupabaseConfigured, supabaseFetch } from "./supabase.js";
+import { renderPaymentReceipt } from "./paymentReceipt.js";
 
 const DEFAULT_TO = "contact@nix-p.com";
 const DEFAULT_FROM = "NIXP <contact@nix-p.com>";
@@ -130,15 +131,16 @@ export async function sendOrderPaymentNotification(order, { queueOnly = false } 
   }, { queueOnly });
 }
 
-export async function sendCustomerPaymentConfirmation(order, { queueOnly = false } = {}) {
+export async function sendCustomerPaymentConfirmation(order, { queueOnly = false, payment = {} } = {}) {
   const customer = order?.customer || {};
   if (!customer.email) return { delivered: false, reason: "customer-email-missing" };
+  const receipt = renderPaymentReceipt(order, { payment, catalogImages: receiptCatalogImages(order) });
   return sendNotificationEmail({
     to: customer.email,
-    subject: `NIXP payment confirmed: ${orderReference(order)}`,
+    subject: `NIXP payment receipt: ${orderReference(order)}`,
     replyTo: DEFAULT_TO,
-    text: statusEmailText(order, "Payment confirmed", "We have securely verified your payment. Your order is now being prepared."),
-    html: statusEmailHtml(order, "Payment confirmed", "We have securely verified your payment. Your order is now being prepared."),
+    text: receipt.text,
+    html: receipt.html,
     idempotencyKey: `customer-payment-confirmation-${order?.id}`
   }, { queueOnly });
 }
@@ -602,6 +604,15 @@ function orderItems(order) {
     const price = item.lineTotal || item.total || item.price;
     return `${quantity} x ${sku}${title}${size}${price ? ` / ${rupiah(price)}` : ""}`;
   });
+}
+
+function receiptCatalogImages(order) {
+  return new Map((Array.isArray(order?.items) ? order.items : [])
+    .map((item) => [
+      String(item?.product_id || item?.productId || "").trim(),
+      String(item?.products?.image || item?.product?.image || "").trim()
+    ])
+    .filter(([productId, image]) => productId && image));
 }
 
 function rupiah(value) {
