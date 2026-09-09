@@ -1356,6 +1356,20 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // They are used when a trusted publication is not reliably crawlable from a
 // serverless runtime but the exact source has been reviewed by NIXP.
 export const CURATED_EDITORIAL_OVERRIDES = {
+  "NXP-2026-VNL-0071": {
+    description: "New Order's 1983 FAC 93 12-inch takes the band into New York electro through its collaboration with Arthur Baker, presenting Confusion alongside Confused Beats, an instrumental version, and a rough mix. Phill Pennington designed the embossed sleeve at Peter Saville Associates, with a colour code that spells FAC93.",
+    descriptionSource: "Factory Records Catalogue / AllMusic",
+    reviewQuote: "a Planet Rock-like set of drum beats and electronic pulses",
+    reviewSource: "AllMusic (quoted)",
+    reviewUrl: "https://www.allmusic.com/album/confusion-mw0000374808"
+  },
+  "NXP-2026-VNL-0070": {
+    description: "New Order's 1984 FAC 103 single pairs Thieves Like Us with Lonesome Tonight. The band's second collaboration with Arthur Baker recasts the rhythmic ideas behind Confusion into a slower, warmer meeting of deep bass, electronic drums, guitar feedback, and synth strings; Peter Saville's sleeve design draws on an old game whose rules were lost.",
+    descriptionSource: "Factory Records Catalogue / AllMusic",
+    reviewQuote: "sly, smooth seventies derived funk and soul",
+    reviewSource: "AllMusic (quoted)",
+    reviewUrl: "https://www.allmusic.com/song/thieves-like-us-mt0053595345"
+  },
   "NXP-2026-VNL-0066": {
     description: "Senyawa & Stephen O'Malley's 2020 Bima Sakti documents a January 2018 live performance in Brussels, bringing Stephen O'Malley's electric guitar into contact with Rully Shabara's voice and Wukir Suryadi's self-built instruments. The six-piece LP was mixed by Randall Dunn and released by iDEAL.",
     descriptionSource: "iDEAL Recordings",
@@ -1404,6 +1418,37 @@ export const CURATED_EDITORIAL_OVERRIDES = {
     reviewQuote: "tenderness comes to the fore on kick iiii",
     reviewSource: "Pitchfork (quoted)",
     reviewUrl: "https://pitchfork.com/reviews/albums/arca-kick-ii-kick-iii-kick-iiii-kick-iiiii/"
+  }
+};
+
+// Exact artist relationship curation is intentionally narrower than similarity
+// search. It is used only where a verified release has a known, coherent set
+// of member projects that source discovery can otherwise pollute with aliases
+// or compilation credits.
+export const CURATED_RELATED_ARTIST_OVERRIDES = {
+  "NXP-2026-VNL-0071": {
+    source: "NIXP verified New Order member projects",
+    artists: ["Joy Division", "Electronic", "The Other Two", "Monaco"],
+    evidence: [
+      {
+        source: "NIXP verified New Order member projects",
+        sourceUrl: "https://www.neworder.com/",
+        confidence: "verified",
+        relationType: "member-project"
+      }
+    ]
+  },
+  "NXP-2026-VNL-0070": {
+    source: "NIXP verified New Order member projects",
+    artists: ["Joy Division", "Electronic", "The Other Two", "Monaco"],
+    evidence: [
+      {
+        source: "NIXP verified New Order member projects",
+        sourceUrl: "https://www.neworder.com/",
+        confidence: "verified",
+        relationType: "member-project"
+      }
+    ]
   }
 };
 
@@ -1523,8 +1568,16 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const manualRelatedArtists = Array.isArray(raw.manualRelatedArtists)
     ? raw.manualRelatedArtists.map(canonicalRelatedArtistName)
     : [];
+  const curatedRelatedArtistOverride = CURATED_RELATED_ARTIST_OVERRIDES[sku];
   const curatedRelatedArtists = unique((discovered.relatedArtists || []).map(canonicalRelatedArtistName));
-  const relatedArtistResearch = researchedRelatedArtists?.artists?.length || !curatedRelatedArtists.length
+  const relatedArtistResearch = curatedRelatedArtistOverride
+    ? {
+        source: curatedRelatedArtistOverride.source,
+        status: "curated-exact-artist-relationships",
+        artists: unique(curatedRelatedArtistOverride.artists.map(canonicalRelatedArtistName)),
+        evidence: curatedRelatedArtistOverride.evidence || []
+      }
+    : researchedRelatedArtists?.artists?.length || !curatedRelatedArtists.length
     ? researchedRelatedArtists
     : {
         ...researchedRelatedArtists,

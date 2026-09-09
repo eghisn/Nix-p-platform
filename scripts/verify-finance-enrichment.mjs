@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   CURATED_EDITORIAL_OVERRIDES,
   CURATED_FINANCE_ENRICHMENTS,
+  CURATED_RELATED_ARTIST_OVERRIDES,
   RELATED_ARTIST_RESEARCH_VERSION,
   assessMusicBrainzReleaseCandidates,
   assessDiscogsReleaseCandidates,
@@ -451,6 +452,23 @@ assert.equal(bimaSaktiDiscovered.cover, "/public/cover.jpg");
 assert.equal(bimaSaktiDiscovered.edition, "Vinyl, LP, Album, Limited Edition, Violet");
 assert.equal(bimaSaktiDiscovered.barcode, "1234567890123");
 assert.equal(bimaSaktiDiscovered.catalogNumber, "iDEAL198");
+
+const thievesLikeUsEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0070"];
+assert.equal(thievesLikeUsEditorial.reviewSource, "AllMusic (quoted)");
+assert.match(thievesLikeUsEditorial.reviewUrl, /^https:\/\/www\.allmusic\.com\/song\//);
+assert.ok(thievesLikeUsEditorial.description.includes("FAC 103"));
+assert.deepEqual(
+  CURATED_RELATED_ARTIST_OVERRIDES["NXP-2026-VNL-0070"].artists,
+  ["Joy Division", "Electronic", "The Other Two", "Monaco"]
+);
+const confusionEditorial = CURATED_EDITORIAL_OVERRIDES["NXP-2026-VNL-0071"];
+assert.equal(confusionEditorial.reviewSource, "AllMusic (quoted)");
+assert.match(confusionEditorial.reviewUrl, /^https:\/\/www\.allmusic\.com\/album\//);
+assert.ok(confusionEditorial.description.includes("FAC 93"));
+assert.deepEqual(
+  CURATED_RELATED_ARTIST_OVERRIDES["NXP-2026-VNL-0071"].artists,
+  ["Joy Division", "Electronic", "The Other Two", "Monaco"]
+);
 
 for (const sku of [
   "NXP-2026-VNL-0027",
