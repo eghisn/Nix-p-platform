@@ -3,6 +3,7 @@
 // `source` stays with the repository so a logo can be re-verified or replaced
 // without guessing where it came from later.
 export const verifiedLabelLogos = Object.freeze({
+  "5-rue-christine": { extension: "png", source: "https://en.wikipedia.org/wiki/5_Rue_Christine" },
   "a24-music": { extension: "svg", source: "https://a24films.com/" },
   alter: { extension: "png", source: "https://www.discogs.com/label/145634-Alter" },
   "avalanche-recordings": { extension: "png", source: "https://www.discogs.com/label/9039-Avalanche-Recordings" },
@@ -11,6 +12,8 @@ export const verifiedLabelLogos = Object.freeze({
   bmg: { extension: "svg", source: "https://www.bmg.com/" },
   "boysnoize-records": { extension: "png", source: "https://www.discogs.com/label/46768-Boysnoize-Records" },
   brainfeeder: { extension: "png", source: "https://brainfeederstore.com/" },
+  "capitol-records": { extension: "svg", source: "https://commons.wikimedia.org/wiki/File:Capitol-Records-Logo.svg" },
+  "captured-tracks": { extension: "png", source: "https://capturedtracks.com/" },
   "cav-empt": { extension: "png", source: "https://i.discogs.com/Y1A0NmtKLCongFjIdwcTgJqnaD7ffimmr55Q1gzkdyw/rs:fit/g:sm/q:90/h:400/w:400/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9MLTE0MzMw/NTktMTU3NTkxMjg3/MC02NjQ0LmpwZWc.jpeg" },
   columbia: { extension: "svg", source: "https://www.sonymusic.com/" },
   "creation-records": { extension: "png", source: "https://www.discogs.com/label/1658-Creation-Records" },
@@ -19,6 +22,7 @@ export const verifiedLabelLogos = Object.freeze({
   "dress-up": { extension: "png", source: "https://www.discogs.com/label/36910-Dress-Up" },
   domino: { extension: "svg", source: "https://www.dominomusic.com/uk" },
   epitaph: { extension: "png", source: "https://www.epitaph.com/" },
+  factory: { extension: "png", source: "https://www.factoryrecords.org/categories/logo.php" },
   "ferret-music": { extension: "png", source: "https://www.discogs.com/label/42942-Ferret-Music" },
   "freestyle-dust": { extension: "png", source: "https://www.discogs.com/label/1606-Freestyle-Dust" },
   "future-classic": { extension: "png", source: "https://www.discogs.com/label/31970-Future-Classic" },
@@ -57,6 +61,7 @@ export const verifiedLabelLogos = Object.freeze({
   "prosthetic-records": { extension: "png", source: "https://www.discogs.com/label/35695-Prosthetic-Records" },
   "rodriguez-lopez-productions": { extension: "png", source: "https://www.discogs.com/label/162544-Rodriguez-Lopez-Productions" },
   "rough-trade": { extension: "png", source: "https://www.discogs.com/label/51167-Rough-Trade" },
+  "run-for-cover-records": { extension: "png", source: "https://runforcoverrecords.com/" },
   "sacred-bones-records": { extension: "svg", source: "https://www.sacredbonesrecords.com/" },
   "sargent-house": { extension: "png", source: "https://www.discogs.com/label/116554-Sargent-House" },
   "season-of-mist": { extension: "png", source: "https://www.discogs.com/label/33674-Season-Of-Mist" },
