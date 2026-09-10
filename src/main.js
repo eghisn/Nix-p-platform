@@ -824,9 +824,6 @@ function blogPage() {
 }
 
 async function requestItemPage() {
-  // The public page never needs the private request inbox. Keep only the
-  // visitor's in-session confirmation after a successful submission.
-  const requests = state.requests;
   return `
     <section class="section form-layout">
       <form class="request-form" data-request-form>
@@ -847,22 +844,10 @@ async function requestItemPage() {
         ${state.requestNotice ? `<p class="form-message ${state.requestNoticeTone === "error" ? "is-error" : "is-success"}">${escapeHtml(state.requestNotice)}</p>` : ""}
       </form>
       <aside class="status-panel">
-        <p class="eyebrow">Request status</p>
-        <div class="status-stack">
-          ${requestStatuses.map((status) => `<span>${status}</span>`).join("")}
-        </div>
-        <div class="mini-list">
-          ${requests
-            .map(
-              (request) => `
-                <article>
-                  <strong>${request.itemName}</strong>
-                  <span>${request.artistName} / ${request.format} / ${request.status}</span>
-                </article>
-              `
-            )
-            .join("")}
-        </div>
+        <p class="eyebrow">Looking for something?</p>
+        <h2>Tell us what you want us to find.</h2>
+        <p>Share the artist, title, and format. We will check availability and contact you using the details above.</p>
+        <p>Your request is handled privately and is not displayed publicly.</p>
       </aside>
     </section>
   `;

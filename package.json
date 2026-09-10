@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.mjs",
-    "build": "node scripts/build.mjs && node scripts/verify-artist-directory-consistency.mjs",
+    "build": "node scripts/build.mjs && node scripts/verify-artist-directory-consistency.mjs && node scripts/verify-public-request-item.mjs",
     "test:catalog": "node scripts/verify-catalog-integrity.mjs",
     "test:records-filter": "node scripts/verify-records-artist-filter.mjs",
     "test:labels": "node scripts/verify-label-assets.mjs",
@@ -14,6 +14,7 @@
     "test:artist-directory": "node scripts/verify-artist-directory-consistency.mjs",
     "test:recommendations": "node scripts/verify-product-recommendations.mjs",
     "test:routes": "node scripts/verify-public-routes.mjs",
+    "test:request-item": "node scripts/verify-public-request-item.mjs",
     "test:commerce": "node scripts/verify-commerce-contract.mjs && node scripts/verify-atomic-checkout-reservation.mjs && node scripts/verify-order-security-hardening.mjs",
     "test:payment-receipt": "node scripts/verify-payment-receipt-email.mjs",
     "test:site-address": "node scripts/verify-site-address.mjs",

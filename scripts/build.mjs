@@ -564,11 +564,10 @@ function staticPublicRouteMarkup(route) {
         <button class="button button-dark" type="submit">Submit request</button>
       </form>
       <aside class="status-panel">
-        <p class="eyebrow">Request status</p>
-        <div class="status-stack">
-          ${["New", "Searching", "Found", "Unavailable", "Contacted", "Closed"].map((status) => `<span>${status}</span>`).join("")}
-        </div>
-        <div class="mini-list"></div>
+        <p class="eyebrow">Looking for something?</p>
+        <h2>Tell us what you want us to find.</h2>
+        <p>Share the artist, title, and format. We will check availability and contact you using the details above.</p>
+        <p>Your request is handled privately and is not displayed publicly.</p>
       </aside>
     </section>`;
   }
