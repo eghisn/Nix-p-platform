@@ -777,50 +777,11 @@ async function makeOfferPage() {
 }
 
 function blogPage() {
-  const articles = [
-    {
-      number: "01",
-      title: "Listening Notes: The First NIXP Selection",
-      type: "Editorial",
-      date: "2026",
-      summary: "A short introduction to the records, CDs, cassettes, books and objects shaping the first NIXP catalog."
-    },
-    {
-      number: "02",
-      title: "Inside Aesthetic Pleasure Gallery",
-      type: "Place",
-      date: "2026",
-      summary: "Notes from the listening space, the shop table, and the culture around the gallery floor."
-    },
-    {
-      number: "03",
-      title: "Format Notes: Vinyl, CD, Cassette",
-      type: "Guide",
-      date: "2026",
-      summary: "A practical media index for collectors moving between physical formats."
-    }
-  ];
-
   return `
     <section class="section editorial-page blog-page">
       <div class="editorial-shell">
         <h1>Blog</h1>
-        <div class="blog-list">
-        ${articles
-          .map(
-            (article) => `
-              <article class="blog-row">
-                <span>${article.number} / ${article.type} / ${article.date}</span>
-                <div>
-                  <h2>${article.title}</h2>
-                  <p>${article.summary}</p>
-                </div>
-                <a href="#" aria-label="Read ${article.title}">Read</a>
-              </article>
-            `
-          )
-          .join("")}
-        </div>
+        <p class="empty-state">No journal entries are published at the moment.</p>
       </div>
     </section>
   `;

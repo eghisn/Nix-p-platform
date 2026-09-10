@@ -522,28 +522,10 @@ function staticPublicRouteMarkup(route) {
     return labelProductsPageMarkup(label, products, { availableArtistNames: inventoryArtistMap(publicProducts) });
   }
   if (route === "blog") {
-    const articles = [
-      ["01", "Listening Notes: The First NIXP Selection", "Editorial", "2026", "A short introduction to the records, CDs, cassettes, books and objects shaping the first NIXP catalog."],
-      ["02", "Inside Aesthetic Pleasure Gallery", "Place", "2026", "Notes from the listening space, the shop table, and the culture around the gallery floor."],
-      ["03", "Format Notes: Vinyl, CD, Cassette", "Guide", "2026", "A practical media index for collectors moving between physical formats."]
-    ];
     return `<section class="section editorial-page blog-page">
       <div class="editorial-shell">
         <h1>Blog</h1>
-        <div class="blog-list">
-          ${articles
-            .map(
-              ([number, title, type, date, summary]) => `<article class="blog-row">
-                <span>${number} / ${type} / ${date}</span>
-                <div>
-                  <h2>${escapeHtml(title)}</h2>
-                  <p>${escapeHtml(summary)}</p>
-                </div>
-                <a href="#" aria-label="Read ${escapeHtml(title)}">Read</a>
-              </article>`
-            )
-            .join("")}
-        </div>
+        <p class="empty-state">No journal entries are published at the moment.</p>
       </div>
     </section>`;
   }
