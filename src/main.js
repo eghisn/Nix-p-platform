@@ -7,7 +7,7 @@ import { termsOfUseContent } from "./data/termsOfUse.js";
 import { privacyPolicyContent } from "./data/privacyPolicy.js";
 import { shippingReturnsContent } from "./data/shippingReturns.js";
 import { labelEntries, labelSlug } from "./data/labelCatalog.js";
-import { isRecentReleaseProduct, recentReleaseSortComparator } from "./data/homeCollections.js";
+import { isLimitedPressingProduct, isRecentReleaseProduct, recentReleaseSortComparator } from "./data/homeCollections.js";
 import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "./data/recordMetadata.js";
 import { recordArtistInitial, validRecordArtistInitial } from "./components/recordsPage.js";
 import { adminStore } from "./services/adminStore.js";
@@ -441,7 +441,7 @@ async function homePage() {
     : homeCollectionOptions[0][0];
   const collectionProducts = products
     .filter((product) => homeCollectionMatch(product, selectedCollection))
-    .sort(selectedCollection === "recent-releases" ? recentReleaseSortComparator : homeSlideSortComparator);
+    .sort(["recent-releases", "limited-pressing"].includes(selectedCollection) ? recentReleaseSortComparator : homeSlideSortComparator);
   const featured = collectionProducts.filter((product) => product.image && !product.image.includes("nixp-product-example"));
   const slides = featured.length ? featured : products;
   const loopSlides = [...slides, ...slides];
@@ -502,6 +502,9 @@ async function homePage() {
 function homeCollectionMatch(product, collectionId) {
   if (collectionId === "recent-releases") {
     return isRecentReleaseProduct(product);
+  }
+  if (collectionId === "limited-pressing") {
+    return isLimitedPressingProduct(product);
   }
   if (collectionId === "private-collection") {
     return product.open_to_offers === true;
