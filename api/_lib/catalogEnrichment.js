@@ -84,6 +84,14 @@ export const ARCHIVED_CATALOG_IMAGES = {
     cover: "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
     imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg", credit: "Apple Music / The Null Corporation artwork", url: "https://music.apple.com/us/album/bad-witch/1847482590" }]
   },
+  "NXP-2026-VNL-0058": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0058-burial-claustro-state-forest-cover.png",
+    imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0058-burial-claustro-state-forest-cover.png", credit: "Hyperdub official release artwork", url: "https://hyperdub.net/en-us/products/burial-claustro-state-forest" }]
+  },
+  "NXP-2026-VNL-0040": {
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0040-blondie-cover-art.jpg",
+    imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0040-blondie-cover-art.jpg", credit: "Blondie album sleeve artwork", url: "https://smarthomesounds.co.uk/blondie-lp-blondie" }]
+  },
   "NXP-2026-CD-0045": { cover: "/public/covers/nxp-2026-cd-0045-tim-hecker-konoyo.jpg" },
   "NXP-2026-VNL-0013": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0013-cover.webp" },
   "NXP-2026-VNL-0019": { cover: "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp" },
@@ -1599,18 +1607,30 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     : title;
   const previousAutoCover = String(raw.autoCover || "").trim();
   const previousAutoProductPhoto = String(raw.autoProductPhoto || "").trim();
+  const archivedImageLock = ARCHIVED_CATALOG_IMAGES[sku] || null;
   const currentImages = unique([row.image, ...(Array.isArray(row.images) ? row.images : [])])
     .filter(isUsableImage)
     .filter((image) => image !== previousAutoCover)
-    .filter((image) => !used || image !== previousAutoProductPhoto);
+    // A product photo is never a storefront cover, including New-Sealed
+    // records. Older rows could have saved it as `image` before this rule.
+    .filter((image) => image !== previousAutoProductPhoto);
+  const approvedCover = archivedImageLock?.cover || discovered.cover;
+  const approvedProductPhoto = Object.prototype.hasOwnProperty.call(archivedImageLock || {}, "productPhoto")
+    ? archivedImageLock.productPhoto
+    : discovered.productPhoto;
   const discoveredImages = used
-    ? unique([discovered.cover])
-    : unique([discovered.cover, discovered.productPhoto]);
-  const images = currentImages.length ? unique([...currentImages, ...discoveredImages]) : discoveredImages;
+    ? unique([approvedCover])
+    : unique([approvedCover, approvedProductPhoto]);
+  // An approved archive is authoritative for the complete storefront image
+  // set. This prevents a later Finance/Admin refresh from reintroducing a
+  // seller photo or a physical-release scan beside the approved cover.
+  const images = archivedImageLock
+    ? discoveredImages
+    : currentImages.length ? unique([...currentImages, ...discoveredImages]) : discoveredImages;
   const existingCover =
-    isUsableImage(row.image) && row.image !== previousAutoCover && (!used || row.image !== previousAutoProductPhoto) ? row.image : "";
-  const cover = existingCover || discovered.cover || images[0] || "";
-  const imageCredits = mergeCredits(row.image_credits || raw.imageCredits, discovered.imageCredits);
+    isUsableImage(row.image) && row.image !== previousAutoCover && row.image !== previousAutoProductPhoto ? row.image : "";
+  const cover = archivedImageLock?.cover || existingCover || approvedCover || images[0] || "";
+  const imageCredits = archivedImageLock?.imageCredits || mergeCredits(row.image_credits || raw.imageCredits, discovered.imageCredits);
   const savedEdition = String(raw.edition || "").trim();
   const edition = editionMatchesFormat(savedEdition, format) ? savedEdition || discovered.edition || "" : discovered.edition || savedEdition;
   const replaceStoredEdition = Boolean(savedEdition && discovered.edition && !editionMatchesFormat(savedEdition, format));

@@ -15,7 +15,9 @@ const curatedCoverSources = new Map([
   ["NXP-2026-VNL-0078", "Cover Art Archive / Third Worlds / Harvest Records"],
   ["NXP-2026-VNL-0076", "Unknown Mortal Orchestra official Bandcamp artwork"],
   ["NXP-2026-VNL-0075", "Cover Art Archive / Dedicated Records"],
-  ["NXP-2026-VNL-0073", "Apple Music / The Null Corporation artwork"]
+  ["NXP-2026-VNL-0073", "Apple Music / The Null Corporation artwork"],
+  ["NXP-2026-VNL-0058", "Hyperdub official release artwork"],
+  ["NXP-2026-VNL-0040", "Blondie album sleeve artwork"]
 ]);
 
 function managedImage(value) {
@@ -43,7 +45,7 @@ for (const product of publicProducts) {
 }
 
 for (const [sku, credit] of curatedCoverSources) {
-  const product = publicProducts.find((candidate) => candidate.sku === sku);
+  const product = publicProducts.find((candidate) => String(candidate.sku || "").toUpperCase() === sku);
   if (!product) {
     issues.push(`${sku}: missing curated public product`);
     continue;

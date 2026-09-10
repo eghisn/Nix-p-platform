@@ -655,7 +655,7 @@
       ],
       "year": 2023,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0081/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg",
       "label": "XL Recordings",
       "price": 618140,
       "sizes": [],
@@ -668,7 +668,7 @@
       "artist": "Arca",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0081/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg"
       ],
       "barcode": "191404122303",
       "details": [
@@ -691,7 +691,7 @@
       "edition": "Vinyl, LP, Album, Limited Edition, Stereo",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0081/cover.jpg",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg",
       "condition": "New-Sealed",
       "reviewUrl": "https://pitchfork.com/reviews/albums/arca-kick-ii-kick-iii-kick-iiii-kick-iiiii/",
       "syncAudit": [
@@ -755,9 +755,9 @@
       "editRevision": 13,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/27162723-Arca-Kick-iiii",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0081/cover.jpg",
-          "credit": "Discogs physical-release artwork"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg",
+          "credit": "Arca official Bandcamp artwork",
+          "url": "https://arca1000000.bandcamp.com/album/kick-iiii"
         }
       ],
       "reviewSource": "Pitchfork (quoted)",
@@ -1408,19 +1408,9 @@
       "editRevision": 14,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/37039197-The-Melvins-With-Napalm-Death-Savage-Imperial-Death-March",
-          "image": "https://i.discogs.com/u9ZJwrmVRvUImS6KhEwhuc2s8KLD8aBLw7E7yHM2B0E/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dzLWRhdGFiYXNlLWltYWdlcy9SLTM3MDM5MTk3LTE3NzU5MzMwOTQtMjM5OC5qcGVn.jpeg",
-          "credit": "Discogs physical-release artwork"
-        },
-        {
-          "url": "https://www.roughtrade.com/en-us/product/melvins-with-napalm-death/savage-imperial-death-march",
-          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-cover.png",
-          "credit": "Rough Trade product artwork"
-        },
-        {
-          "url": "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march",
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
-          "credit": "Melvins official Bandcamp artwork"
+          "credit": "Melvins official Bandcamp artwork",
+          "url": "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march"
         }
       ],
       "reviewSource": "The Quietus (quoted)",
@@ -1515,7 +1505,7 @@
       ],
       "year": 2021,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0079/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
       "label": "Nonesuch",
       "price": 631000,
       "sizes": [],
@@ -1528,7 +1518,7 @@
       "artist": "Sam Gendel",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0079/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg"
       ],
       "barcode": "0 75597 91717 8",
       "details": [
@@ -1547,7 +1537,7 @@
       "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0079/cover.jpg",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
       "condition": "New-Sealed",
       "reviewUrl": "https://boomkat.com/products/drm-e28b84f8-1fa2-4362-97a6-87e4c6a15b7c",
       "syncAudit": [
@@ -1597,9 +1587,9 @@
       "editRevision": 11,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/18242311-Sam-Gendel-DRM",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0079/cover.jpg",
-          "credit": "Discogs physical-release artwork"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
+          "credit": "Sam Gendel official Bandcamp artwork",
+          "url": "https://samgendel.bandcamp.com/album/drm"
         }
       ],
       "reviewSource": "Boomkat (quoted)",
@@ -2149,7 +2139,7 @@
       ],
       "year": 2018,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0078/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg",
       "label": "Third Worlds",
       "price": 823000,
       "sizes": [],
@@ -2162,7 +2152,7 @@
       "artist": "Death Grips",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0078/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg"
       ],
       "barcode": "602567785408",
       "details": [
@@ -2181,7 +2171,7 @@
       "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0078/cover.jpg",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg",
       "condition": "New-Sealed",
       "reviewUrl": "https://pitchfork.com/reviews/albums/death-grips-year-of-the-snitch/",
       "syncAudit": [
@@ -2245,9 +2235,9 @@
       "editRevision": 13,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/12485858-Death-Grips-Year-Of-The-Snitch",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0078/cover.jpg",
-          "credit": "Discogs physical-release artwork"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg",
+          "credit": "Cover Art Archive / Third Worlds / Harvest Records",
+          "url": "https://musicbrainz.org/release/d92b2734-f2b9-4337-b3f5-1bb8d4e27cd0/cover-art"
         }
       ],
       "reviewSource": "Pitchfork (quoted)",
@@ -4055,7 +4045,7 @@
       ],
       "year": 2015,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0076/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0076-unknown-mortal-orchestra-multi-love-bandcamp.jpg",
       "label": "Jagjaguwar",
       "price": 645000,
       "sizes": [],
@@ -4068,7 +4058,7 @@
       "artist": "Unknown Mortal Orchestra",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0076/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0076-unknown-mortal-orchestra-multi-love-bandcamp.jpg"
       ],
       "barcode": "656605226217",
       "details": [
@@ -4084,7 +4074,7 @@
       "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0076/cover.jpg",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0076-unknown-mortal-orchestra-multi-love-bandcamp.jpg",
       "condition": "New-Sealed",
       "reviewUrl": "https://pitchfork.com/reviews/albums/20590-unknown-mortal-orchestra-multi-love/",
       "syncAudit": [
@@ -4148,9 +4138,9 @@
       "editRevision": 12,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/27228903-Unknown-Mortal-Orchestra-Multi-Love",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0076/cover.jpg",
-          "credit": "Discogs physical-release artwork"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0076-unknown-mortal-orchestra-multi-love-bandcamp.jpg",
+          "credit": "Unknown Mortal Orchestra official Bandcamp artwork",
+          "url": "https://unknown-mortal-orchestra.bandcamp.com/album/multi-love-2"
         }
       ],
       "reviewSource": "Pitchfork (quoted)",
@@ -4696,7 +4686,7 @@
       ],
       "year": 2026,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0075/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0075-chapterhouse-whirlpool-cover-art.jpg",
       "label": "Sony Records Int'l",
       "price": 868000,
       "sizes": [],
@@ -4709,7 +4699,7 @@
       "artist": "Chapterhouse",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0075/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0075-chapterhouse-whirlpool-cover-art.jpg"
       ],
       "barcode": "4547366817294",
       "details": [
@@ -4733,7 +4723,7 @@
       "edition": "Vinyl, LP, Album, Limited Edition, Reissue, White & Black Marbled",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0075/cover.jpg",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0075-chapterhouse-whirlpool-cover-art.jpg",
       "condition": "New-Sealed",
       "reviewUrl": "https://www.allmusic.com/album/whirlpool-mw0000674924",
       "syncAudit": [
@@ -4783,9 +4773,9 @@
       "editRevision": 11,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/38005602-Chapterhouse-Whirlpool",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0075/cover.jpg",
-          "credit": "Discogs physical-release artwork"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0075-chapterhouse-whirlpool-cover-art.jpg",
+          "credit": "Cover Art Archive / Dedicated Records",
+          "url": "https://musicbrainz.org/release/cab51a22-baed-4920-9bbf-b8a408091b56/cover-art"
         }
       ],
       "reviewSource": "AllMusic (quoted)",
@@ -6618,7 +6608,7 @@
       ],
       "year": 2023,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0073/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
       "label": "Capitol Records",
       "price": 850000,
       "sizes": [],
@@ -6631,7 +6621,7 @@
       "artist": "Nine Inch Nails",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0073/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg"
       ],
       "barcode": "602567473367",
       "details": [
@@ -6655,7 +6645,7 @@
       "edition": "Vinyl, LP, Album, Stereo, 180g",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0073/cover.jpg",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
       "condition": "New-Sealed",
       "reviewUrl": "https://pitchfork.com/reviews/albums/nine-inch-nails-bad-witch/",
       "syncAudit": [
@@ -6705,9 +6695,9 @@
       "editRevision": 11,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/30000718-Nine-Inch-Nails-Bad-Witch",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0073/cover.jpg",
-          "credit": "Discogs physical-release artwork"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
+          "credit": "Apple Music / The Null Corporation artwork",
+          "url": "https://music.apple.com/us/album/bad-witch/1847482590"
         }
       ],
       "reviewSource": "Pitchfork (quoted)",
@@ -15526,7 +15516,7 @@
       ],
       "year": 2019,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/detail-1.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0058-burial-claustro-state-forest-cover.png",
       "label": "Hyperdub",
       "price": 474750,
       "sizes": [],
@@ -15539,8 +15529,7 @@
       "artist": "Burial",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/detail-1.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0058-burial-claustro-state-forest-cover.png"
       ],
       "barcode": "5055869558952 / 12061406011 / 12061406011",
       "details": [
@@ -15557,7 +15546,7 @@
       "edition": "Vinyl, 12\", 45 RPM",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/cover.jpg",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0058-burial-claustro-state-forest-cover.png",
       "condition": "New-Sealed",
       "reviewUrl": "",
       "syncAudit": [
@@ -15635,14 +15624,9 @@
       "editRevision": 4,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/20577763-Burial-Claustro-State-Forest",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/cover.jpg",
-          "credit": "Discogs physical-release artwork"
-        },
-        {
-          "url": "https://musicbrainz.org/release/0be38c63-7f4b-472c-acdd-e2afa2f6f450",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/detail-1.jpg",
-          "credit": "Cover Art Archive / MusicBrainz physical release scan"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0058-burial-claustro-state-forest-cover.png",
+          "credit": "Hyperdub official release artwork",
+          "url": "https://hyperdub.net/en-us/products/burial-claustro-state-forest"
         }
       ],
       "reviewSource": "",
@@ -15911,7 +15895,7 @@
         }
       ],
       "sleeveCondition": "",
-      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0058/detail-1.jpg",
+      "autoProductPhoto": "",
       "enrichmentOrigin": "source+curated-editorial",
       "enrichmentStatus": "complete",
       "descriptionSource": "Resident Advisor / Pitchfork",
@@ -27090,7 +27074,7 @@
       ],
       "year": 1982,
       "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0040/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0040-blondie-cover-art.jpg",
       "label": "Pickwick Records",
       "price": 357263,
       "sizes": [],
@@ -27103,7 +27087,7 @@
       "artist": "Blondie",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0040/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0040-blondie-cover-art.jpg"
       ],
       "barcode": "31191420111 / 31191420111",
       "details": [
@@ -27120,7 +27104,7 @@
       "edition": "Vinyl, LP, Album, Reissue",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0040/cover.jpg",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0040-blondie-cover-art.jpg",
       "condition": "Used Good",
       "reviewUrl": "",
       "syncAudit": [
@@ -27198,14 +27182,9 @@
       "editRevision": 3,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/20254000-Blondie-Blondie",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0040/cover.jpg",
-          "credit": "Discogs physical-release artwork"
-        },
-        {
-          "url": "https://musicbrainz.org/release/cd361727-c32f-42f9-8d35-6514916d994f",
-          "image": "http://coverartarchive.org/release/cd361727-c32f-42f9-8d35-6514916d994f/14842646747.jpg",
-          "credit": "Cover Art Archive / MusicBrainz physical release scan"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0040-blondie-cover-art.jpg",
+          "credit": "Blondie album sleeve artwork",
+          "url": "https://smarthomesounds.co.uk/blondie-lp-blondie"
         }
       ],
       "reviewSource": "",

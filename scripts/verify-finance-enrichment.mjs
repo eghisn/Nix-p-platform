@@ -501,7 +501,9 @@ for (const [sku, source] of [
   ["NXP-2026-VNL-0078", "Cover Art Archive / Third Worlds / Harvest Records"],
   ["NXP-2026-VNL-0076", "Unknown Mortal Orchestra official Bandcamp artwork"],
   ["NXP-2026-VNL-0075", "Cover Art Archive / Dedicated Records"],
-  ["NXP-2026-VNL-0073", "Apple Music / The Null Corporation artwork"]
+  ["NXP-2026-VNL-0073", "Apple Music / The Null Corporation artwork"],
+  ["NXP-2026-VNL-0058", "Hyperdub official release artwork"],
+  ["NXP-2026-VNL-0040", "Blondie album sleeve artwork"]
 ]) {
   const artwork = ARCHIVED_CATALOG_IMAGES[sku];
   assert.match(artwork.cover, /^\/public\/assets\/catalog-archive\//);
