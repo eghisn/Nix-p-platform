@@ -70,7 +70,6 @@ export function recordsPageMarkup({
               .join("")}
           </div>
           <div class="artist-alphabet-filter" role="group" aria-label="Filter records by artist initial">
-            <span class="artist-alphabet-filter-label">Artist</span>
             <div class="artist-alphabet-filter-options">
               <button class="chip artist-alphabet-chip ${!artistInitialFilter ? "is-active" : ""}" type="button" data-record-letter="" aria-pressed="${!artistInitialFilter}">All</button>
               ${recordArtistInitials

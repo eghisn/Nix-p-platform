@@ -2270,15 +2270,6 @@ tr:last-child td {
 .artist-alphabet-filter {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-
-.artist-alphabet-filter-label {
-  flex: 0 0 auto;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 760;
-  text-transform: uppercase;
 }
 
 .artist-alphabet-filter-options {
@@ -3352,8 +3343,6 @@ body:has(.cart-view) .site-footer {
 
   .artist-alphabet-filter {
     align-items: flex-start;
-    flex-direction: column;
-    gap: 8px;
   }
 
   .artist-alphabet-filter-options {
