@@ -3,6 +3,7 @@ import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonic
 import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicProductSlug } from "./data/publicUrls.js";
 import { recommendedProducts } from "./data/productRecommendations.js";
 import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
+import { searchCheckoutDestinations, checkoutQuoteError } from "./data/checkoutDestinations.js";
 import { termsOfUseContent } from "./data/termsOfUse.js";
 import { privacyPolicyContent } from "./data/privacyPolicy.js";
 import { shippingReturnsContent } from "./data/shippingReturns.js";
@@ -190,9 +191,9 @@ const homeCollectionOptions = [
 
 const indonesiaRegionByCode = new Map(indonesiaRegencies.map((region) => [region.code, region]));
 
-function checkoutCityOptions() {
+function checkoutCityOptions(regions = indonesiaRegencies) {
   const byProvince = new Map();
-  for (const region of indonesiaRegencies) {
+  for (const region of regions) {
     const cities = byProvince.get(region.province) || [];
     cities.push(region);
     byProvince.set(region.province, cities);
@@ -917,8 +918,12 @@ async function cartPage() {
                     <label class="admin-form-span" data-checkout-address-field>Address<input name="shippingAddress1" required autocomplete="shipping address-line1" /></label>
                     <label class="admin-form-span" data-checkout-address-field>Address details<input name="shippingAddress2" autocomplete="shipping address-line2" placeholder="Building, unit, or landmark (optional)" /></label>
                     <label data-checkout-address-field>District<input name="shippingDistrict" required autocomplete="shipping address-level3" /></label>
+                    <label data-checkout-address-field>Search city / province
+                      <input type="search" data-checkout-city-search autocomplete="off" placeholder="Jakarta, Bandung, Bali, Yogya..." aria-label="Search city / province" aria-controls="checkout-city" />
+                      <span class="checkout-city-results" data-checkout-city-results aria-live="polite"></span>
+                    </label>
                     <label data-checkout-address-field>City / regency
-                      <select name="shippingCity" required autocomplete="shipping address-level2" data-checkout-city>
+                      <select id="checkout-city" name="shippingCity" required autocomplete="shipping address-level2" data-checkout-city>
                         <option value="" selected disabled>Select city or regency</option>
                         ${checkoutCityOptions()}
                       </select>
@@ -935,6 +940,7 @@ async function cartPage() {
                     <strong>Shipping quote</strong>
                     <span>Select a city or regency to calculate the packed shipment and available service.</span>
                   </div>
+                  <button class="button" type="button" data-checkout-shipping-retry hidden>Retry shipping calculation</button>
                   <div class="admin-form-actions">
                     <button class="button button-dark" type="submit" data-checkout-submit>Request delivery quote</button>
                     <p class="admin-form-note" data-tone="${escapeAttr(state.checkoutTone)}">${escapeHtml(state.checkoutMessage)}</p>
@@ -3077,6 +3083,9 @@ function bindEvents() {
   const shippingMethod = document.querySelector("[data-checkout-shipping-method]");
   const checkoutForm = document.querySelector("[data-checkout-form]");
   const checkoutCity = document.querySelector("[data-checkout-city]");
+  const checkoutCitySearch = document.querySelector("[data-checkout-city-search]");
+  const checkoutCityResults = document.querySelector("[data-checkout-city-results]");
+  const checkoutShippingRetry = document.querySelector("[data-checkout-shipping-retry]");
   const checkoutProvince = document.querySelector("[data-checkout-province]");
   const checkoutService = document.querySelector("[data-checkout-shipping-option]");
   const checkoutServiceField = document.querySelector("[data-checkout-service-field]");
@@ -3123,6 +3132,9 @@ function bindEvents() {
   const requestCheckoutShippingQuote = async () => {
     if (!checkoutCity || shippingMethod?.value !== "JNE" || !checkoutCity.value) return;
     const requestId = ++checkoutQuoteRequest;
+    const destinationCode = checkoutCity.value;
+    state.checkoutShippingQuote = null;
+    if (checkoutShippingRetry) checkoutShippingRetry.hidden = true;
     const submit = document.querySelector("[data-checkout-submit]");
     if (submit) submit.disabled = true;
     if (checkoutMobileDeliveryTotal) checkoutMobileDeliveryTotal.textContent = "Calculating...";
@@ -3130,11 +3142,12 @@ function bindEvents() {
     if (checkoutServiceField) checkoutServiceField.hidden = true;
     try {
       const { rows, total } = await cartSummary();
+      if (requestId !== checkoutQuoteRequest || !checkoutForm.isConnected) return;
       const requestOptions = {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-          destinationCode: checkoutCity.value,
+          destinationCode,
           items: rows.map((row) => ({ id: row.productId, size: row.size, quantity: row.quantity }))
         })
       };
@@ -3145,13 +3158,13 @@ function bindEvents() {
         response = await fetch("/api/checkout?commerceAction=shipping-quote", requestOptions);
       }
       const payload = await response.json().catch(() => ({}));
-      if (requestId !== checkoutQuoteRequest) return;
-      if (!response.ok) throw new Error(payload.error || "Shipping quote could not be calculated.");
+      if (requestId !== checkoutQuoteRequest || !checkoutForm.isConnected) return;
+      if (!response.ok) throw new Error(checkoutQuoteError(response.status, payload.error));
       state.checkoutShippingQuote = payload;
       clearTimeout(checkoutQuoteExpiryTimer);
       const expiresIn = Math.max(0, new Date(payload.expiresAt).getTime() - Date.now());
       checkoutQuoteExpiryTimer = setTimeout(() => {
-        if (state.checkoutShippingQuote?.quoteToken !== payload.quoteToken) return;
+        if (!checkoutForm.isConnected || state.checkoutShippingQuote?.quoteToken !== payload.quoteToken) return;
         state.checkoutShippingQuote = null;
         if (submit) submit.disabled = true;
         if (checkoutServiceField) checkoutServiceField.hidden = true;
@@ -3165,6 +3178,7 @@ function bindEvents() {
         setCheckoutTotals("Unavailable", money.format(total));
         if (submit) submit.disabled = true;
         showCheckoutQuote("Shipping is currently unavailable for this destination.", "error");
+        if (checkoutShippingRetry) checkoutShippingRetry.hidden = false;
         return;
       }
       if (checkoutService) {
@@ -3180,13 +3194,15 @@ function bindEvents() {
       applyCheckoutShippingOption(total);
       syncCheckoutSubmitAvailability();
     } catch (error) {
-      if (requestId !== checkoutQuoteRequest) return;
+      if (requestId !== checkoutQuoteRequest || !checkoutForm.isConnected) return;
       state.checkoutShippingQuote = null;
       if (checkoutServiceField) checkoutServiceField.hidden = true;
       if (submit) submit.disabled = true;
       const { total } = await cartSummary();
+      if (requestId !== checkoutQuoteRequest || !checkoutForm.isConnected) return;
       setCheckoutTotals("Unavailable", money.format(total));
-      showCheckoutQuote("Shipping is currently unavailable for this destination.");
+      showCheckoutQuote(error instanceof Error && !(error instanceof TypeError) ? error.message : checkoutQuoteError(0), "error");
+      if (checkoutShippingRetry) checkoutShippingRetry.hidden = false;
       syncCheckoutSubmitAvailability();
     }
   };
@@ -3195,38 +3211,30 @@ function bindEvents() {
     checkoutQuoteTimer = setTimeout(requestCheckoutShippingQuote, 180);
   };
   const syncCheckoutProvince = () => {
+    ++checkoutQuoteRequest;
+    clearTimeout(checkoutQuoteTimer);
+    clearTimeout(checkoutQuoteExpiryTimer);
     const region = indonesiaRegionByCode.get(checkoutCity?.value || "");
     if (checkoutProvince) checkoutProvince.value = region?.province || "";
     state.checkoutShippingQuote = null;
     if (checkoutService) checkoutService.innerHTML = "";
+    if (checkoutServiceField) checkoutServiceField.hidden = true;
+    if (checkoutShippingRetry) checkoutShippingRetry.hidden = true;
+    if (shippingMethod?.value === "JNE") {
+      setCheckoutTotals("Pending", "Pending");
+      showCheckoutQuote(region ? "Calculating shipping..." : "Select a city or regency to calculate shipping.");
+    }
+    syncCheckoutSubmitAvailability();
     scheduleCheckoutShippingQuote();
   };
-  const normalizeCitySearch = (value) =>
-    String(value || "")
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim();
-  const citySearchName = (region) => normalizeCitySearch(region.city).replace(/^(kota|kabupaten)\s+/, "");
-  let cityTypeahead = "";
-  let cityTypeaheadReset;
-  const selectCityByTypeahead = () => {
-    const query = normalizeCitySearch(cityTypeahead);
-    if (!query || !checkoutCity) return false;
-    const match = indonesiaRegencies
-      .map((region) => {
-        const name = citySearchName(region);
-        const startsAt = name.startsWith(query) ? 0 : name.includes(query) ? 1 : 2;
-        const cityPriority = normalizeCitySearch(region.city).startsWith("kota ") ? 0 : 1;
-        return { region, score: startsAt * 1000 + Math.max(name.length - query.length, 0) * 10 + cityPriority };
-      })
-      .filter(({ score }) => score < 2000)
-      .sort((a, b) => a.score - b.score || a.region.city.localeCompare(b.region.city, "id"))[0]?.region;
-    if (!match) return false;
-    checkoutCity.value = match.code;
-    syncCheckoutProvince();
-    return true;
-  };
+  checkoutCitySearch?.addEventListener("input", () => {
+    const selected = checkoutCity.value;
+    const matches = searchCheckoutDestinations(checkoutCitySearch.value);
+    checkoutCity.innerHTML = `<option value="" selected disabled>${matches.length ? "Select city or regency" : "No matching cities"}</option>${checkoutCityOptions(matches)}`;
+    checkoutCity.value = matches.some((region) => region.code === selected) ? selected : "";
+    if (checkoutCityResults) checkoutCityResults.textContent = `${matches.length} cities / regencies`;
+    if (checkoutCity.value !== selected) syncCheckoutProvince();
+  });
   const syncCheckoutAddressRequirements = () => {
     const pickup = shippingMethod?.value === "Store Pickup";
     const manual = shippingMethod?.value === "GoSend Manual";
@@ -3235,7 +3243,7 @@ function bindEvents() {
     document.querySelectorAll("[data-checkout-address-field]").forEach((field) => {
       field.hidden = pickup;
       field.querySelectorAll("input, select").forEach((input) => {
-        if (input.name !== "shippingAddress2" && input.name !== "shippingCountry") input.required = !pickup;
+        if (input.name && input.name !== "shippingAddress2" && input.name !== "shippingCountry") input.required = !pickup;
       });
     });
     if (checkoutServiceField) checkoutServiceField.hidden = shippingMethod?.value !== "JNE" || !state.checkoutShippingQuote?.options?.length;
@@ -3251,20 +3259,15 @@ function bindEvents() {
     }
     syncCheckoutSubmitAvailability();
   };
-  shippingMethod?.addEventListener("change", syncCheckoutAddressRequirements);
+  shippingMethod?.addEventListener("change", () => {
+    syncCheckoutProvince();
+    syncCheckoutAddressRequirements();
+  });
+  checkoutShippingRetry?.addEventListener("click", requestCheckoutShippingQuote);
   checkoutCity?.addEventListener("change", syncCheckoutProvince);
   checkoutService?.addEventListener("change", async () => applyCheckoutShippingOption((await cartSummary()).total));
   checkoutForm?.addEventListener("input", syncCheckoutSubmitAvailability);
   checkoutForm?.addEventListener("change", syncCheckoutSubmitAvailability);
-  checkoutCity?.addEventListener("keydown", (event) => {
-    if (event.ctrlKey || event.metaKey || event.altKey || event.key.length !== 1) return;
-    cityTypeahead += event.key;
-    clearTimeout(cityTypeaheadReset);
-    cityTypeaheadReset = setTimeout(() => {
-      cityTypeahead = "";
-    }, 850);
-    if (selectCityByTypeahead()) event.preventDefault();
-  });
   syncCheckoutProvince();
   syncCheckoutAddressRequirements();
 

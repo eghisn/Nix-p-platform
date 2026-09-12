@@ -2425,6 +2425,23 @@ body:has(.cart-view) .site-footer {
   line-height: 1.4;
 }
 
+.checkout-city-results {
+  min-height: 14px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+@media (max-width: 960px) {
+  .checkout-form input,
+  .checkout-form select,
+  .checkout-form textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+}
+
 .checkout-shipping-quote strong {
   font-size: 10px;
   font-weight: 760;
