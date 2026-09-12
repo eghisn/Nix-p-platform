@@ -3353,7 +3353,9 @@ function bindEvents() {
           : `Product saved in the protected Admin catalog. Ready for a new product.${financeSyncNote}`;
         state.adminNoticeTone = result.financeSync?.synced === false ? "warning" : "success";
       } else if (result.publicConfirmed) {
-        state.adminNotice = `${wasEditing ? "Product updated" : "Product saved"} and confirmed live on the public site${sha}.${financeSyncNote}`;
+        state.adminNotice = result.publicAction === "unpublish"
+          ? `Product saved and confirmed removed from the public site${sha}.${financeSyncNote}`
+          : `${wasEditing ? "Product updated" : "Product saved"} and confirmed live on the public site${sha}.${financeSyncNote}`;
         state.adminNoticeTone = result.financeSync?.synced === false ? "warning" : "success";
       } else if (result.deploymentError) {
         state.adminNotice = `Product saved safely in Admin, but public deployment is pending: ${result.deploymentError}${financeSyncNote}`;

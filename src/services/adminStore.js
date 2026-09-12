@@ -301,10 +301,16 @@ function normalizeVerifiedCommerce(row = {}) {
     id: String(row.id || ""),
     price: Number.isFinite(price) ? price : null,
     qty: Number.isFinite(qty) ? Math.max(0, qty) : null,
-    sizes: Array.isArray(row.sizes) ? normalizeSizes(row.sizes) : null,
-    publishStatus: String(row.publishStatus || row.publish_status || ""),
-    visibility: String(row.visibility || "")
+    sizes: Array.isArray(row.sizes) ? normalizeSizes(row.sizes) : null
   };
+}
+
+export function publicCatalogAction(previousProduct = null, nextProduct = null) {
+  const wasPublic = previousProduct?.publishStatus === "Published" && previousProduct?.visibility === "Public";
+  const isPublic = nextProduct?.publishStatus === "Published" && nextProduct?.visibility === "Public";
+  if (!isPublic && !wasPublic) return "none";
+  if (wasPublic && !isPublic) return "unpublish";
+  return wasPublic ? "update" : "publish";
 }
 
 async function fetchVerifiedCommerce(ids = []) {
@@ -340,9 +346,7 @@ async function reconcilePublicCommerce(store) {
         ...product,
         ...(live.price === null ? {} : { price: live.price }),
         ...(live.qty === null ? {} : { qty: live.qty }),
-        ...(live.sizes === null ? {} : { sizes: live.sizes }),
-        ...(live.publishStatus ? { publishStatus: live.publishStatus } : {}),
-        ...(live.visibility ? { visibility: live.visibility } : {})
+        ...(live.sizes === null ? {} : { sizes: live.sizes })
       };
     })
   };
@@ -1026,30 +1030,34 @@ export const adminStore = {
     });
   },
   async saveProductAndPublish(data) {
+    const previousProduct = this.getSnapshot().products.find((item) => item.id === data.id) || null;
     const saved = await this.saveProduct(data);
     const financeSync = saved.financeSync || null;
-    // Draft and private listings deliberately stop at the protected database.
-    // Public listings deploy from a fresh server snapshot so a browser cache
-    // can never overwrite another editor's current catalog fields.
+    // Catalog membership belongs to the versioned public snapshot. A change
+    // from public to draft must therefore deploy too, otherwise a browser can
+    // render the old product until an unrelated future catalog release.
     await this.refreshPrivateStore({ force: true });
     const product = this.getSnapshot().products.find((item) => item.id === saved.id) || saved;
-    if (product.publishStatus !== "Published" || product.visibility !== "Public") {
+    const publicAction = publicCatalogAction(previousProduct, product);
+    if (publicAction === "none") {
       return { product, financeSync, savedOnly: true, publicConfirmed: false };
     }
     try {
       const deployment = await this.deployCurrentCatalog({
-        message: `Update ${product.sku || product.title} from Admin Editor`
+        message: `${publicAction === "unpublish" ? "Unpublish" : "Update"} ${product.sku || product.title} from Admin Editor`
       });
       return {
         product,
         financeSync,
         deployment,
+        publicAction,
         publicConfirmed: !deployment.github?.skipped && deployment.deployment?.confirmed === true
       };
     } catch (error) {
       return {
         product,
         financeSync,
+        publicAction,
         deploymentError: error instanceof Error ? error.message : "Public catalog deployment failed.",
         publicConfirmed: false
       };

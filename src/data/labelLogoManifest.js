@@ -22,7 +22,7 @@ export const verifiedLabelLogos = Object.freeze({
   "dress-up": { extension: "png", source: "https://www.discogs.com/label/36910-Dress-Up" },
   domino: { extension: "svg", source: "https://www.dominomusic.com/uk" },
   epitaph: { extension: "png", source: "https://www.epitaph.com/" },
-  factory: { extension: "png", source: "https://www.factoryrecords.org/categories/logo.php" },
+  factory: { extension: "png", source: "https://www.thecurrent.org/episode/2022/10/13/transmission-factory-records", tone: "color" },
   "ferret-music": { extension: "png", source: "https://www.discogs.com/label/42942-Ferret-Music" },
   "freestyle-dust": { extension: "png", source: "https://www.discogs.com/label/1606-Freestyle-Dust" },
   "future-classic": { extension: "png", source: "https://www.discogs.com/label/31970-Future-Classic" },

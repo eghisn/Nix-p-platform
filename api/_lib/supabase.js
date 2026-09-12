@@ -280,7 +280,7 @@ export async function verifiedPrices(ids = []) {
   const uniqueIds = [...new Set(ids.map(String).filter(Boolean))];
   if (!uniqueIds.length) return [];
   const inList = uniqueIds.map((id) => `"${id.replaceAll('"', '\\"')}"`).join(",");
-  return supabaseFetch(`products?select=id,price,qty,sizes,publish_status,visibility&id=in.(${inList})`);
+  return supabaseFetch(`products?select=id,price,qty,sizes&id=in.(${inList})`);
 }
 
 export async function saveStore(store, { inventoryProduct = null, syncCatalogProducts = false, tables = TABLES } = {}) {

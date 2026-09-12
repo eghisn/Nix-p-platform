@@ -1098,6 +1098,10 @@ html {
   filter: brightness(0) grayscale(1) contrast(1.08);
 }
 
+.label-logo--color {
+  filter: none;
+}
+
 .label-logo-link:hover .label-logo,
 .label-logo-link:focus-visible .label-logo {
   opacity: 0.62;

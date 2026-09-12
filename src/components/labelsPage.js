@@ -20,7 +20,7 @@ export function labelsPageMarkup(labels = []) {
             (label) => `
               <article class="label-tile">
                 <a class="label-logo-link" href="/labels/${escapeHtml(label.slug)}" data-link aria-label="View ${escapeHtml(label.name)} products">
-                  <img class="label-logo${verifiedLabelLogos[label.slug]?.tone === "preserve" ? " label-logo--preserve" : ""}" src="${labelLogoPath(label.name)}" alt="${escapeHtml(label.name)}" loading="lazy" decoding="async" />
+                  <img class="label-logo${verifiedLabelLogos[label.slug]?.tone === "preserve" ? " label-logo--preserve" : verifiedLabelLogos[label.slug]?.tone === "color" ? " label-logo--color" : ""}" src="${labelLogoPath(label.name)}" alt="${escapeHtml(label.name)}" loading="lazy" decoding="async" />
                 </a>
                 <a class="label-products-link" href="/labels/${escapeHtml(label.slug)}" data-link>View products</a>
               </article>
