@@ -4245,6 +4245,8 @@ function publicDocumentHasServerMarkup() {
 }
 
 function publicDocumentNeedsClientRender() {
+  // A build-time cart is always empty; it cannot represent this browser's cart.
+  if (normalizePath(location.pathname) === "/cart") return true;
   // The static Records page cannot represent a query-specific artist letter.
   // Render only this explicit view so default public pages retain their stable
   // server markup and do not transition between catalogue snapshots on refresh.

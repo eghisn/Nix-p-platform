@@ -4,6 +4,16 @@ import { runInNewContext } from "node:vm";
 
 // Execute the actual registered submit handler with a failing transport: no orders or emails.
 const source = await readFile(new URL("../src/main.js", import.meta.url), "utf8");
+const clientRenderFunction = source.slice(source.indexOf("function publicDocumentNeedsClientRender()"), source.indexOf("async function hydratePublicServerMarkup()"));
+for (const [path, expected] of [["/cart", true], ["/records", false], ["/artists", false], ["/", false]]) {
+  const result = runInNewContext(`${clientRenderFunction}; publicDocumentNeedsClientRender()`, {
+    normalizePath: (value) => value,
+    location: { pathname: path, search: "" },
+    validRecordArtistInitial: () => "",
+    URLSearchParams
+  });
+  assert.equal(result, expected, `Client rendering boundary: ${path}`);
+}
 const start = source.indexOf('  document.querySelector("[data-checkout-form]")?.addEventListener("submit"');
 const end = source.indexOf('\n  const shippingMethod = document.querySelector', start);
 assert(start > 0 && end > start);
