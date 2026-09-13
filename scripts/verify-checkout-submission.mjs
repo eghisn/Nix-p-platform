@@ -5,7 +5,7 @@ import { runInNewContext } from "node:vm";
 // Execute the actual registered submit handler with a failing transport: no orders or emails.
 const source = await readFile(new URL("../src/main.js", import.meta.url), "utf8");
 const clientRenderFunction = source.slice(source.indexOf("function publicDocumentNeedsClientRender()"), source.indexOf("async function hydratePublicServerMarkup()"));
-for (const [path, expected] of [["/cart", true], ["/records", false], ["/artists", false], ["/", false]]) {
+for (const [path, expected] of [["/cart", true], ["/order-status", true], ["/records", false], ["/artists", false], ["/", false]]) {
   const result = runInNewContext(`${clientRenderFunction}; publicDocumentNeedsClientRender()`, {
     normalizePath: (value) => value,
     location: { pathname: path, search: "" },
@@ -72,7 +72,9 @@ assert.match(linkBinding, /link\.hasAttribute\("data-cart-checkout"\)\) setCartO
 assert(linkBinding.indexOf("setCartOpen(false)") < linkBinding.indexOf("navigateInternal(href)"), "Drawer close must happen before checkout navigation.");
 
 assert.match(source, /function checkoutOrderStatusUrl\(\)/, "Checkout must be able to reconstruct its secure order-status link from the local session.");
-assert.match(source, /path === "\/cart" && replaceCheckoutHistoryWithOrderStatus\(\)/, "Returning to the cart must recover an existing secure pending order session.");
+assert.doesNotMatch(source, /path === "\/cart" && replaceCheckoutHistoryWithOrderStatus\(\)/, "Opening the cart must never redirect a customer based only on a stale local checkout session.");
+assert.match(source, /data-order-return-cart/, "Terminal order status must offer a route back to the cart.");
+assert.match(source, /\[data-order-return-cart\][\s\S]*clearCheckoutSession\(\)[\s\S]*navigateInternal\("\/cart"\)/, "Returning to the cart must clear only the local checkout session before navigation.");
 const paymentRedirectStart = source.indexOf("if (payload.payment?.redirectUrl)");
 const paymentRedirectEnd = source.indexOf("if (payload.order.paymentStatus", paymentRedirectStart);
 const paymentRedirect = source.slice(paymentRedirectStart, paymentRedirectEnd);

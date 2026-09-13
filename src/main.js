@@ -272,7 +272,6 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   const requestId = ++renderRequestId;
   const previousScrollTop = preserveScroll ? window.scrollY : 0;
   let path = normalizePath(location.pathname);
-  if (path === "/cart" && replaceCheckoutHistoryWithOrderStatus()) path = normalizePath(location.pathname);
   await loadAuthSession();
   const legacyProduct = path.startsWith("/product/")
     ? adminStore.getProduct(decodeRoutePart(path.replace("/product/", "")), { includeDrafts: true })
@@ -1044,7 +1043,7 @@ async function customerOrderStatusPage() {
               ${order.trackingNumber ? `<p><span>Tracking</span><strong>${escapeHtml(order.trackingNumber)}</strong></p>` : ""}
             </div>
           </div>
-          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p><div class="order-status-actions"><button class="button button-dark" type="button" data-order-pay>Continue to payment</button><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>`}
+          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p><div class="order-status-actions"><button class="button button-dark" type="button" data-order-pay>Continue to payment</button><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div>`}
           <p class="admin-form-note" data-order-status-message aria-live="polite"></p>
         </div>
       </section>
@@ -3301,6 +3300,10 @@ function bindEvents() {
   syncCheckoutAddressRequirements();
 
   document.querySelector("[data-order-status-refresh]")?.addEventListener("click", () => render({ preserveScroll: true }));
+  document.querySelector("[data-order-return-cart]")?.addEventListener("click", () => {
+    clearCheckoutSession();
+    navigateInternal("/cart");
+  });
   document.querySelector("[data-order-pay]")?.addEventListener("click", async (event) => {
     const button = event.currentTarget;
     const notice = document.querySelector("[data-order-status-message]");
@@ -4269,12 +4272,14 @@ function publicDocumentHasServerMarkup() {
 }
 
 function publicDocumentNeedsClientRender() {
-  // A build-time cart is always empty; it cannot represent this browser's cart.
-  if (normalizePath(location.pathname) === "/cart") return true;
+  const path = normalizePath(location.pathname);
+  // A build-time cart is always empty, and order status needs the secure
+  // fragment token from this browser. Neither can use static route markup.
+  if (path === "/cart" || path === "/order-status") return true;
   // The static Records page cannot represent a query-specific artist letter.
   // Render only this explicit view so default public pages retain their stable
   // server markup and do not transition between catalogue snapshots on refresh.
-  return normalizePath(location.pathname) === "/records" &&
+  return path === "/records" &&
     Boolean(validRecordArtistInitial(new URLSearchParams(location.search).get("letter")));
 }
 
