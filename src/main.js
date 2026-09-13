@@ -1517,7 +1517,7 @@ async function adminProductsPage({ embedded = false } = {}) {
         <div class="admin-panel-head">
           <h2>${editing ? "Edit product" : "New product"}</h2>
           <div class="admin-panel-actions">
-            ${legacyVinylSizesPending ? `<button class="button button-outline" type="button" data-admin-vinyl-backfill>Apply ${legacyVinylSizesPending} verified legacy vinyl sizes</button>` : ""}
+            <button class="button button-outline" type="button" data-admin-vinyl-backfill>${legacyVinylSizesPending ? `Apply ${legacyVinylSizesPending}` : "Confirm"} verified legacy vinyl sizes</button>
             ${editing ? `<button class="button button-outline" type="button" data-admin-new-product>New</button>` : ""}
           </div>
         </div>

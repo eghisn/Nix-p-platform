@@ -218,6 +218,10 @@ async function handleVinylSizeBackfill(req, res) {
       updated.push(saved.product.sku);
     }
 
+    if (!updated.length) {
+      return json(res, 200, { ok: true, alreadyCurrent: true, updated: [] });
+    }
+
     const refreshed = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
     let deployment = null;
     if (isGitHubDeployConfigured()) {
