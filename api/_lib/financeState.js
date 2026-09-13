@@ -33,6 +33,12 @@ function normalizeVinylSize(value) {
   return ["12", "10", "7"].includes(normalized) ? normalized : "";
 }
 
+function vinylItemSelection(value) {
+  const item = String(value || "").trim();
+  const match = item.match(/^Vinyl\s+(12|10|7)[\"\u2033]?$/i);
+  return match ? { item: "Vinyl", vinylSize: match[1] } : { item, vinylSize: "" };
+}
+
 export function isFinanceState(value) {
   return (
     value &&
@@ -840,7 +846,8 @@ function withSyncAudit(row, { source, action, sku, quantity } = {}) {
 }
 
 export function productRowFromFinanceStock(row, stock, quantity) {
-  const item = String(stock.item || row.format || "Vinyl").trim();
+  const itemSelection = vinylItemSelection(stock.item || row.format || "Vinyl");
+  const item = itemSelection.item;
   const category = RECORD_FORMATS.has(item)
     ? "Records"
     : APPAREL_TYPES.has(item)
@@ -855,7 +862,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const financeEdition = stockIdentityValue(stock, "edition", row.raw?.edition);
   const financeBarcode = stockIdentityValue(stock, "barcode", row.raw?.barcode);
   const financeCatalogNumber = stockIdentityValue(stock, "catalogNumber", row.raw?.catalogNumber);
-  const financeVinylSize = normalizeVinylSize(stockIdentityValue(stock, "vinylSize", row.raw?.vinylSize));
+  const financeVinylSize = itemSelection.vinylSize || normalizeVinylSize(stockIdentityValue(stock, "vinylSize", row.raw?.vinylSize));
   const financePrice = Number(stock.sellingPrice || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
   const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer);
@@ -1208,7 +1215,8 @@ export function normalizeFinanceState(state) {
 }
 
 export function draftProductFromFinanceStock(stock, quantity) {
-  const item = String(stock.item || "Vinyl").trim();
+  const itemSelection = vinylItemSelection(stock.item || "Vinyl");
+  const item = itemSelection.item;
   const category = RECORD_FORMATS.has(item) ? "Records" : APPAREL_TYPES.has(item) ? "Apparel" : "Objects";
   const id = `finance-${slugify(stock.sku)}`;
   const product = {
@@ -1247,7 +1255,7 @@ export function draftProductFromFinanceStock(stock, quantity) {
   product.edition = String(stock.edition || "").trim();
   product.barcode = String(stock.barcode || "").trim();
   product.catalogNumber = String(stock.catalogNumber || "").trim();
-  product.vinylSize = normalizeVinylSize(stock.vinylSize);
+  product.vinylSize = itemSelection.vinylSize || normalizeVinylSize(stock.vinylSize);
   product.shipping = referenceShippingProfile(product);
   return {
     id,

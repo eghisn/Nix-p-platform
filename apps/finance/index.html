@@ -1428,7 +1428,8 @@
     const paymentMethods = ["Cash", "Bank Transfer", "Debit Card", "Credit Card", "EDC", "QRIS", "E-Wallet", "Marketplace"];
     const investorDestinationAccounts = ["Jenius account", "BCA account"];
     const inventorySources = ["Business Purchase", "Personal Collection", "Consignment", "Founder Purchase / Awaiting Reimbursement"];
-    const itemTypes = ["Vinyl", "CD", "Cassette", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap", "Object"];
+    const vinylItemTypes = ["Vinyl", "Vinyl 12\"", "Vinyl 10\"", "Vinyl 7\""];
+    const itemTypes = [...vinylItemTypes, "CD", "Cassette", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap", "Object"];
     const itemConditions = ["New-Sealed", "New-Unsealed", "Used Excellent", "Used Good"];
     const listingModes = ["Standard Sale", "Private Collection / Offer Only"];
     const ownerDueCategory = "Owner Personal Use / Reimbursement Due";
@@ -1937,11 +1938,29 @@
       return ["12", "10", "7"].includes(size) ? size : "";
     }
 
+    function vinylItemSelection(value) {
+      const item = String(value || "").trim();
+      const match = item.match(/^Vinyl\s+(12|10|7)[\"\u2033]?$/i);
+      return match ? { item: "Vinyl", vinylSize: match[1] } : { item, vinylSize: "" };
+    }
+
+    function itemTypeForForm(item, vinylSize) {
+      const normalized = vinylItemSelection(item);
+      const size = normalized.vinylSize || normalizeVinylSize(vinylSize);
+      return normalized.item === "Vinyl" && size ? `Vinyl ${size}\"` : normalized.item || "Vinyl";
+    }
+
+    function displayItemType(item, vinylSize) {
+      return itemTypeForForm(item, vinylSize);
+    }
+
     function syncVinylSizeField(form, itemField) {
       const wrapper = form?.querySelector("[data-vinyl-size-field]");
       if (!wrapper) return;
-      const isVinyl = String(form.elements[itemField]?.value || "").trim().toLowerCase() === "vinyl";
-      wrapper.hidden = !isVinyl;
+      const selection = vinylItemSelection(form.elements[itemField]?.value);
+      const isVinyl = selection.item.toLowerCase() === "vinyl";
+      wrapper.hidden = !isVinyl || Boolean(selection.vinylSize);
+      if (selection.vinylSize) form.elements.vinylSize.value = `${selection.vinylSize}\"`;
       if (!isVinyl) form.elements.vinylSize.value = "";
     }
 
@@ -2401,7 +2420,7 @@
         const qty = numeric(item.qty);
         const unitCost = numeric(item.unitCost);
         const totalCost = qty * unitCost;
-        const itemType = itemTypes.includes(item.itemType) ? item.itemType : "Vinyl";
+        const itemType = vinylItemSelection(item.itemType).item;
         const itemCondition = itemConditions.includes(item.itemCondition) ? item.itemCondition : "New-Sealed";
         return {
           ...item,
@@ -2467,8 +2486,8 @@
         supplier: data.supplier.trim(),
         category: data.category,
         source: data.source,
-        itemType: data.itemType,
-        vinylSize: normalizeVinylSize(data.vinylSize),
+        itemType: vinylItemSelection(data.itemType).item,
+        vinylSize: vinylItemSelection(data.itemType).vinylSize || normalizeVinylSize(data.vinylSize),
         itemCondition: data.itemCondition,
         listingMode: data.listingMode,
         sku: data.sku.trim(),
@@ -2479,7 +2498,7 @@
         cashflowImpact,
         paymentMethod: data.paymentMethod,
         minimumAcceptableOffer: wholeAmount(data.minimumAcceptableOffer),
-        inventoryFamily: inventoryFamilyForValue(data.itemType, data.sku)
+        inventoryFamily: inventoryFamilyForValue(vinylItemSelection(data.itemType).item, data.sku)
       };
     }
 
@@ -2488,8 +2507,8 @@
         id: existing.id || uid(),
         purchaseId: existing.purchaseId,
         sku: data.sku.trim(),
-        item: data.item,
-        vinylSize: normalizeVinylSize(data.vinylSize),
+        item: vinylItemSelection(data.item).item,
+        vinylSize: vinylItemSelection(data.item).vinylSize || normalizeVinylSize(data.vinylSize),
         itemCondition: data.itemCondition,
         artist: data.artist.trim(),
         title: data.title.trim(),
@@ -2504,7 +2523,7 @@
         soldPrice: numeric(data.soldPrice),
         listingMode: data.listingMode,
         minimumAcceptableOffer: wholeAmount(data.minimumAcceptableOffer),
-        inventoryFamily: existing.inventoryFamily || inventoryFamilyForValue(data.item, data.sku)
+        inventoryFamily: existing.inventoryFamily || inventoryFamilyForValue(vinylItemSelection(data.item).item, data.sku)
       });
     }
 
@@ -2639,7 +2658,7 @@
       setFormValue(el.inventoryForm, "supplier", item.supplier);
       setFormValue(el.inventoryForm, "category", item.category || "Retail");
       setFormValue(el.inventoryForm, "source", item.source || "Business Purchase");
-      setFormValue(el.inventoryForm, "itemType", item.itemType || "Vinyl");
+      setFormValue(el.inventoryForm, "itemType", itemTypeForForm(item.itemType, item.vinylSize));
       setFormValue(el.inventoryForm, "vinylSize", normalizeVinylSize(item.vinylSize) ? `${normalizeVinylSize(item.vinylSize)}\"` : "");
       syncVinylSizeField(el.inventoryForm, "itemType");
       setFormValue(el.inventoryForm, "itemCondition", item.itemCondition || "New-Sealed");
@@ -2673,7 +2692,7 @@
       showView("stock");
       setFormValue(el.stockForm, "editId", item.id);
       setFormValue(el.stockForm, "sku", item.sku);
-      setFormValue(el.stockForm, "item", item.item);
+      setFormValue(el.stockForm, "item", itemTypeForForm(item.item, item.vinylSize));
       setFormValue(el.stockForm, "vinylSize", normalizeVinylSize(item.vinylSize) ? `${normalizeVinylSize(item.vinylSize)}\"` : "");
       syncVinylSizeField(el.stockForm, "item");
       setFormValue(el.stockForm, "itemCondition", item.itemCondition || "New-Sealed");
@@ -3018,7 +3037,7 @@
           <td>${escapeHTML(item.supplier)}</td>
           <td>${escapeHTML(item.category)}</td>
           <td>${escapeHTML(item.source)}</td>
-          <td>${escapeHTML(item.itemType || "")}</td>
+          <td>${escapeHTML(displayItemType(item.itemType, item.vinylSize))}</td>
           <td>${escapeHTML(item.vinylSize ? `${normalizeVinylSize(item.vinylSize)}\"` : "")}</td>
           <td>${escapeHTML(item.itemCondition || "New-Sealed")}</td>
           <td>${escapeHTML(item.listingMode || "Standard Sale")}</td>
@@ -3073,7 +3092,7 @@
       el.stockBody.innerHTML = rows.length ? rows.map(item => `
         <tr>
           <td>${escapeHTML(item.sku)}</td>
-          <td>${escapeHTML(item.item)}</td>
+          <td>${escapeHTML(displayItemType(item.item, item.vinylSize))}</td>
           <td>${escapeHTML(item.vinylSize ? `${normalizeVinylSize(item.vinylSize)}\"` : "")}</td>
           <td>${escapeHTML(item.itemCondition || "New-Sealed")}</td>
           <td>${escapeHTML(item.artist)}</td>
