@@ -1142,7 +1142,7 @@ async function cartDrawer() {
         </div>
         <div class="drawer-foot">
           <div class="cart-total"><span>Subtotal</span><strong>${money.format(total)}</strong></div>
-          <a class="button button-dark" href="/cart" data-link>Checkout</a>
+          <a class="button button-dark" href="/cart" data-link data-cart-checkout>Checkout</a>
         </div>
       </aside>
     </div>
@@ -2863,6 +2863,7 @@ function bindEvents() {
       const href = link.getAttribute("href");
       if (!href || href.startsWith("http") || href.startsWith("mailto:")) return;
       event.preventDefault();
+      if (link.hasAttribute("data-cart-checkout")) setCartOpen(false);
       navigateInternal(href);
     });
   });

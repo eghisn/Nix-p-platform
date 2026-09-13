@@ -41,6 +41,12 @@ assert.match(webhook, /queueOnly: true/, "Webhook email work must be queued, not
 assert.match(webhook, /scheduleNotificationOutboxDrain\(\)/, "Queued email delivery must be scheduled after the webhook response path is durable.");
 assert.match(handlers, /waitUntil\(/, "Webhook background email work must use the serverless background-task API.");
 assert.match(notifications, /queue_notification_outbox/, "Notification helpers must persist queued messages before background delivery.");
+const paymentBranchStart = handlers.indexOf('if ((status === "settlement" || status === "capture")');
+const paymentBranchEnd = handlers.indexOf('if (["expire", "cancel", "deny", "failure"]', paymentBranchStart);
+const paymentBranch = handlers.slice(paymentBranchStart, paymentBranchEnd);
+assert.match(paymentBranch, /await queueVerifiedPaymentNotifications/, "Paid webhooks must persist receipt notifications before acknowledgement.");
+assert.doesNotMatch(paymentBranch, /Promise\.allSettled/, "A notification queue failure must make the webhook retryable.");
+assert.match(handlers, /async function queueVerifiedPaymentNotifications[\s\S]*await Promise\.all\(/, "Paid receipt notifications must be queued together and reject on a persistence failure.");
 
 const tokenStart = handlers.indexOf("export async function handleMidtransToken");
 const webhookStartIndex = handlers.indexOf("export async function handleMidtransWebhook");
@@ -53,7 +59,10 @@ assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protect
 assert.match(checkout, /ORDER_ACCESS_COOKIE_NAME/, "Order access must use a dedicated HttpOnly cookie.");
 assert.match(checkout, /exchange-access-token/, "The order page must exchange a one-time URL token for a cookie.");
 assert.match(checkout, /HttpOnly/, "Order access cookies must not be readable by page JavaScript.");
-assert.match(checkout, /existingOrder && !sameToken\(body\.orderAccessToken/, "Repeated checkout submissions must prove ownership of an existing order.");
+assert.match(checkout, /existingOrder && !existingOrderAuthorized/, "Repeated checkout submissions must prove ownership of an existing order.");
+assert.match(checkout, /hasCheckoutOrderAccess/, "A partial checkout must be recoverable only by the originating browser or secure token.");
+assert.match(checkout, /CHECKOUT_ACCESS_COOKIE_NAME/, "Checkout recovery must use a dedicated HttpOnly cookie.");
+assert.match(checkout, /setAccessCookie\(req, res, CHECKOUT_ACCESS_COOKIE_NAME, "\/api\/checkout", orderId, token\)/, "Checkout recovery cookies must be scoped only to checkout.");
 assert.match(checkout, /\/order-status#order=/, "New order links must keep the secret token in the URL fragment.");
 assert.match(handlers, /\/order-status#order=/, "Midtrans callbacks must keep the secret token in the URL fragment.");
 assert.match(client, /location\.hash/, "The public order page must read secure link tokens from the fragment.");

@@ -154,12 +154,10 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
       }
     });
     const paidOrder = await getOrderRecord(order.id);
-    if (!updated?.idempotent) {
-      await Promise.allSettled([
-        sendOrderPaymentNotification(paidOrder || order, { queueOnly: true }),
-        sendCustomerPaymentConfirmation(paidOrder || order, { queueOnly: true, payment: verified })
-      ]);
-    }
+    // Queueing must succeed before the webhook is acknowledged. If the outbox
+    // is temporarily unavailable, Midtrans retries and the idempotency keys
+    // safely fill only the message that was missed.
+    await queueVerifiedPaymentNotifications(paidOrder || order, verified);
     await completeWebhookReceipt(eventKey);
     scheduleNotificationOutboxDrain();
     return { action: "paid", order: updated };
@@ -484,6 +482,13 @@ function scheduleNotificationOutboxDrain() {
   } catch (error) {
     console.warn("Webhook notification delivery could not be scheduled", error instanceof Error ? error.message : error);
   }
+}
+
+async function queueVerifiedPaymentNotifications(order, payment) {
+  await Promise.all([
+    sendOrderPaymentNotification(order, { queueOnly: true }),
+    sendCustomerPaymentConfirmation(order, { queueOnly: true, payment })
+  ]);
 }
 
 function adminOrderListRow(order) {

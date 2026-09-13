@@ -14,6 +14,7 @@ import { recordSystemEvent } from "./_lib/observability.js";
 import { attachOrderMarketingAttribution } from "./_lib/orderMarketingAttribution.js";
 
 const ORDER_ACCESS_COOKIE_NAME = "nixp_order_access";
+const CHECKOUT_ACCESS_COOKIE_NAME = "nixp_checkout_access";
 const ORDER_ACCESS_MAX_AGE_SECONDS = 60 * 60 * 24 * 14;
 
 export default async function handler(req, res) {
@@ -44,7 +45,8 @@ export default async function handler(req, res) {
     const shippingAddress = normalizeShippingAddress(body.shippingAddress);
     validateCheckoutDetails(customer, shippingMethod, shippingAddress);
     const existingOrder = await getOrderRecord(orderId);
-    if (existingOrder && !sameToken(body.orderAccessToken, existingOrder.customer_access_token)) {
+    const existingOrderAuthorized = existingOrder && hasCheckoutOrderAccess(req, body.orderAccessToken, existingOrder);
+    if (existingOrder && !existingOrderAuthorized) {
       return json(res, 409, { ok: false, error: "This checkout session already belongs to an order. Open the secure order link from your NIXP email to continue." });
     }
     if (!existingOrder && !(await consumeCommerceRateLimit("checkout-submit", `${requestClientAddress(req)}:${customer.email.toLowerCase()}`, { limit: 8, windowSeconds: 900 }))) {
@@ -66,6 +68,10 @@ export default async function handler(req, res) {
         p_shipping_method: shippingMethod
       }
     });
+    // A JNE order is created before the quoted delivery price is committed.
+    // Persist an HttpOnly recovery credential immediately so a temporary
+    // failure in that second step can be safely resumed from this browser.
+    if (order.customerAccessToken) setCheckoutAccessCookie(req, res, orderId, order.customerAccessToken);
     let orderBeforeQuote = await getOrderRecord(orderId);
     if (ruleQuote?.selectedOption && orderBeforeQuote?.order_status === "Draft" && orderBeforeQuote?.shipping_status === "Awaiting Quote") {
       const option = ruleQuote.selectedOption;
@@ -94,25 +100,21 @@ export default async function handler(req, res) {
       recordSystemEvent({ level: "warning", source: "checkout-marketing-attribution", req, error, details: { orderId } }).catch(() => undefined);
     });
     const emailResult = (label) => (error) => ({ delivered: false, label, error: error instanceof Error ? error.message : "Notification delivery failed." });
-    // A token is returned only when this browser just created the order. A
-    // retried checkout proves access by sending its locally-held token instead.
-    const customerAccessToken = existingOrder ? "" : order.customerAccessToken || currentOrder?.customer_access_token || "";
-    const statusUrl = customerAccessToken
-      ? customerOrderStatusUrl(orderId, customerAccessToken)
-      : existingOrder && sameToken(body.orderAccessToken, currentOrder?.customer_access_token)
-        ? customerOrderStatusUrl(orderId, body.orderAccessToken)
-        : "";
-    const [internal, customerConfirmation] = existingOrder
-      ? [{ delivered: true, reason: "existing-order" }, { delivered: true, reason: "existing-order" }]
-      : await Promise.all([
-          sendOrderNotification(currentOrder || order, customer).catch(emailResult("internal")),
-          (manualShippingQuote
-            ? sendCustomerShippingQuoteRequest(currentOrder || order, customer, statusUrl)
-            : shippingMethod === "JNE"
-              ? sendCustomerShippingQuoteNotification(currentOrder || order, statusUrl)
-            : sendCustomerOrderConfirmation(currentOrder || order, customer, { shippingMethod, shippingAddress })
-          ).catch(emailResult("customer"))
-        ]);
+    const customerAccessToken = order.customerAccessToken || currentOrder?.customer_access_token || "";
+    if (customerAccessToken) setCheckoutAccessCookie(req, res, orderId, customerAccessToken);
+    const statusUrl = customerAccessToken ? customerOrderStatusUrl(orderId, customerAccessToken) : "";
+    // All messages use idempotency keys. Retrying after a partial checkout
+    // failure therefore repairs a missed message without sending duplicates.
+    const notificationCustomer = currentOrder?.customer || customer;
+    const [internal, customerConfirmation] = await Promise.all([
+      sendOrderNotification(currentOrder || order, notificationCustomer).catch(emailResult("internal")),
+      (manualShippingQuote
+        ? sendCustomerShippingQuoteRequest(currentOrder || order, notificationCustomer, statusUrl)
+        : shippingMethod === "JNE"
+          ? sendCustomerShippingQuoteNotification(currentOrder || order, statusUrl)
+          : sendCustomerOrderConfirmation(currentOrder || order, notificationCustomer, { shippingMethod, shippingAddress })
+      ).catch(emailResult("customer"))
+    ]);
     const notification = { internal, customer: customerConfirmation };
     if (!internal.delivered) console.warn("Internal order notification not delivered", { orderId: order.id, reason: internal.reason || internal.error || "unknown" });
     if (!customerConfirmation.delivered) console.warn("Customer order confirmation not delivered", { orderId: order.id, reason: customerConfirmation.reason || customerConfirmation.error || "unknown" });
@@ -319,13 +321,21 @@ function sameToken(provided, stored) {
 }
 
 function readOrderAccessCookie(req) {
+  return readAccessCookie(req, ORDER_ACCESS_COOKIE_NAME);
+}
+
+function readCheckoutAccessCookie(req) {
+  return readAccessCookie(req, CHECKOUT_ACCESS_COOKIE_NAME);
+}
+
+function readAccessCookie(req, name) {
   const value = String(req.headers.cookie || "")
     .split(";")
     .map((part) => part.trim())
-    .find((part) => part.startsWith(`${ORDER_ACCESS_COOKIE_NAME}=`));
+    .find((part) => part.startsWith(`${name}=`));
   if (!value) return null;
   try {
-    const parsed = JSON.parse(Buffer.from(value.slice(ORDER_ACCESS_COOKIE_NAME.length + 1), "base64url").toString("utf8"));
+    const parsed = JSON.parse(Buffer.from(value.slice(name.length + 1), "base64url").toString("utf8"));
     const orderId = String(parsed?.orderId || "").trim();
     const token = String(parsed?.token || "").trim();
     return /^order-[A-Za-z0-9_-]{8,96}$/.test(orderId) && /^[a-f0-9]{32,96}$/i.test(token) ? { orderId, token } : null;
@@ -335,14 +345,28 @@ function readOrderAccessCookie(req) {
 }
 
 function setOrderAccessCookie(req, res, orderId, token) {
+  setAccessCookie(req, res, ORDER_ACCESS_COOKIE_NAME, "/api/order-status", orderId, token);
+}
+
+function setCheckoutAccessCookie(req, res, orderId, token) {
+  setAccessCookie(req, res, CHECKOUT_ACCESS_COOKIE_NAME, "/api/checkout", orderId, token);
+}
+
+function setAccessCookie(req, res, name, path, orderId, token) {
   const payload = Buffer.from(JSON.stringify({ orderId, token })).toString("base64url");
   const host = String(req.headers.host || "");
   const proto = String(req.headers["x-forwarded-proto"] || "");
   const secure = proto === "https" || (!host.includes("localhost") && !host.startsWith("127.0.0.1"));
   res.setHeader(
     "Set-Cookie",
-    `${ORDER_ACCESS_COOKIE_NAME}=${payload}; Path=/api/order-status; Max-Age=${ORDER_ACCESS_MAX_AGE_SECONDS}; HttpOnly; ${secure ? "Secure; " : ""}SameSite=Lax`
+    `${name}=${payload}; Path=${path}; Max-Age=${ORDER_ACCESS_MAX_AGE_SECONDS}; HttpOnly; ${secure ? "Secure; " : ""}SameSite=Lax`
   );
+}
+
+function hasCheckoutOrderAccess(req, providedToken, order) {
+  if (sameToken(providedToken, order.customer_access_token)) return true;
+  const cookieAccess = readCheckoutAccessCookie(req);
+  return cookieAccess?.orderId === order.id && sameToken(cookieAccess.token, order.customer_access_token);
 }
 
 function validCronSecret(header, secret) {

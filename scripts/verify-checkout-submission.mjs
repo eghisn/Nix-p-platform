@@ -60,4 +60,14 @@ assert.equal(fields.get("shippingAddress1"), "Test address");
 assert.equal(form.dataset.submitting, undefined);
 assert.equal(changes, 1);
 assert(messages.length >= 2);
+
+const drawerStart = source.indexOf("async function cartDrawer()");
+const drawerEnd = source.indexOf("async function searchOverlay()", drawerStart);
+const drawer = source.slice(drawerStart, drawerEnd);
+assert.match(drawer, /data-cart-checkout/, "The cart checkout control must explicitly identify its drawer-to-page transition.");
+const linkBindingStart = source.indexOf('document.querySelectorAll("[data-link]")');
+const linkBindingEnd = source.indexOf('document.querySelector("[data-nav-toggle]")', linkBindingStart);
+const linkBinding = source.slice(linkBindingStart, linkBindingEnd);
+assert.match(linkBinding, /link\.hasAttribute\("data-cart-checkout"\)\) setCartOpen\(false\);/, "Checkout must close the cart drawer before internal navigation.");
+assert(linkBinding.indexOf("setCartOpen(false)") < linkBinding.indexOf("navigateInternal(href)"), "Drawer close must happen before checkout navigation.");
 console.log("Actual checkout submit handler verified: stable quote token, duplicate prevention, preserved form on failure.");
