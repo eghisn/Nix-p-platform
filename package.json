@@ -23,6 +23,7 @@
     "test:site-address": "node scripts/verify-site-address.mjs",
     "test:shipping": "node scripts/verify-shipping-calculator.mjs",
     "test:checkout-destinations": "node scripts/verify-checkout-destinations.mjs",
+    "test:checkout-submission": "node scripts/verify-checkout-submission.mjs",
     "test:jne": "node scripts/verify-jne-official-client.mjs",
     "test:shipping-integration": "node scripts/verify-shipping-integration.mjs",
     "test:shipping-catalog": "node scripts/verify-shipping-catalog.mjs",

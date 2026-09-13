@@ -943,7 +943,7 @@ async function cartPage() {
                   <button class="button" type="button" data-checkout-shipping-retry hidden>Retry shipping calculation</button>
                   <div class="admin-form-actions">
                     <button class="button button-dark" type="submit" data-checkout-submit>Request delivery quote</button>
-                    <p class="admin-form-note" data-tone="${escapeAttr(state.checkoutTone)}">${escapeHtml(state.checkoutMessage)}</p>
+                    <p class="admin-form-note" data-admin-form-message aria-live="polite" data-tone="${escapeAttr(state.checkoutTone)}">${escapeHtml(state.checkoutMessage)}</p>
                   </div>
                 </form>
               </div>
@@ -2993,7 +2993,9 @@ function bindEvents() {
   document.querySelector("[data-checkout-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
+    if (form.dataset.submitting === "true") return;
     const formData = new FormData(form);
+    const shippingQuoteToken = state.checkoutShippingQuote?.quoteToken || "";
     const customer = {
       name: formData.get("name"),
       email: formData.get("email"),
@@ -3015,10 +3017,11 @@ function bindEvents() {
       country: formData.get("shippingCountry")
     };
     const button = form.querySelector('button[type="submit"]');
+    form.dataset.submitting = "true";
     button.disabled = true;
     state.checkoutMessage = "Preparing your order...";
     state.checkoutTone = "";
-    await render();
+    setFormMessage(form, state.checkoutMessage);
     try {
       const { rows } = await cartSummary();
       const orderId = getCheckoutOrderToken();
@@ -3030,7 +3033,7 @@ function bindEvents() {
           customer,
           shippingMethod,
           shippingOption: formData.get("shippingOption"),
-          shippingQuoteToken: state.checkoutShippingQuote?.quoteToken || "",
+          shippingQuoteToken,
           shippingAddress,
           orderId,
           orderAccessToken: state.checkoutOrderAccessToken,
@@ -3076,7 +3079,9 @@ function bindEvents() {
     } catch (error) {
       state.checkoutMessage = error instanceof Error ? error.message : "Checkout failed.";
       state.checkoutTone = "error";
-      await render({ preserveScroll: true });
+      delete form.dataset.submitting;
+      setFormMessage(form, state.checkoutMessage, "error");
+      form.dispatchEvent(new Event("change", { bubbles: true }));
     }
   });
 
@@ -3121,7 +3126,7 @@ function bindEvents() {
       && checkoutService?.value
     );
     const deliveryIsReady = ["Store Pickup", "GoSend Manual"].includes(method) || (method === "JNE" && quoteIsCurrent);
-    submit.disabled = !checkoutForm.checkValidity() || !deliveryIsReady;
+    submit.disabled = checkoutForm.dataset.submitting === "true" || !checkoutForm.checkValidity() || !deliveryIsReady;
   };
   const applyCheckoutShippingOption = (merchandiseTotal) => {
     const option = state.checkoutShippingQuote?.options?.find((item) => item.key === checkoutService?.value) || state.checkoutShippingQuote?.options?.[0];
