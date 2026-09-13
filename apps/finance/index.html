@@ -2420,7 +2420,8 @@
         const qty = numeric(item.qty);
         const unitCost = numeric(item.unitCost);
         const totalCost = qty * unitCost;
-        const itemType = vinylItemSelection(item.itemType).item;
+        const normalizedItemType = vinylItemSelection(item.itemType).item;
+        const itemType = itemTypes.includes(normalizedItemType) ? normalizedItemType : "Vinyl";
         const itemCondition = itemConditions.includes(item.itemCondition) ? item.itemCondition : "New-Sealed";
         return {
           ...item,
