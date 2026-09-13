@@ -13,6 +13,7 @@ const baseProduct = {
   edition: "Black vinyl",
   barcode: "1234567890123",
   catalogNumber: "TEST-01",
+  vinylSize: "12",
   condition: "New-Unsealed",
   mediaCondition: "Mint",
   sleeveCondition: "Near Mint",
@@ -35,6 +36,7 @@ assert.equal(
 );
 for (const [field, value] of [
   ["barcode", "9999999999999"],
+  ["vinylSize", "7"],
   ["edition", "Gold vinyl"],
   ["sleeveCondition", "Corner crease"],
   ["description", "Different editorial copy."],
@@ -78,6 +80,8 @@ assert.doesNotMatch(
 const serverStoreSource = await readFile(new URL("../api/admin/store.js", import.meta.url), "utf8");
 assert.match(serverStoreSource, /tables:\s*\["artists", "collections", "requests", "offers"\]/);
 assert.match(serverStoreSource, /commerceAction=home-slider|action === "home-slider"/);
+assert.match(serverStoreSource, /action === "vinyl-size-backfill"/);
+assert.match(serverStoreSource, /isExplicitLegacyVinylSize/);
 
 const researchSource = await readFile(new URL("../api/_lib/catalogResearchJobs.js", import.meta.url), "utf8");
 assert.match(researchSource, /lease_expires_at/);
@@ -115,6 +119,7 @@ const publishControlSource = mainSource.slice(
 );
 assert.doesNotMatch(publishControlSource, /completeProduct\(id\)/, "Publish must not re-run internet research over a manual product edit.");
 assert.match(publishControlSource, /publishProduct\(id, requestedStatus\)/, "Publish must remain the explicit deployment action.");
+assert.match(mainSource, /data-admin-vinyl-backfill/);
 
 const researchControlSource = mainSource.slice(mainSource.indexOf('root.querySelectorAll("[data-admin-complete-product]")'));
 assert.match(researchControlSource, /wasPublished/, "Published records must be able to refresh research without invoking Publish.");

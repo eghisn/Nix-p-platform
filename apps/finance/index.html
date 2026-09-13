@@ -1244,6 +1244,7 @@
                       <th data-sort-section="inventory" data-sort-key="category">Category</th>
                       <th data-sort-section="inventory" data-sort-key="source">Source</th>
                       <th data-sort-section="inventory" data-sort-key="itemType">Item Type</th>
+                      <th data-sort-section="inventory" data-sort-key="vinylSize">Vinyl Size</th>
                       <th data-sort-section="inventory" data-sort-key="itemCondition">Item Condition</th>
                       <th data-sort-section="inventory" data-sort-key="listingMode">Listing</th>
                       <th data-sort-section="inventory" data-sort-key="sku">SKU</th>
@@ -1296,6 +1297,7 @@
                     <tr>
                       <th data-sort-section="stock" data-sort-key="sku">SKU</th>
                       <th data-sort-section="stock" data-sort-key="item">Item</th>
+                      <th data-sort-section="stock" data-sort-key="vinylSize">Vinyl Size</th>
                       <th data-sort-section="stock" data-sort-key="itemCondition">Item Condition</th>
                       <th data-sort-section="stock" data-sort-key="artist">Artist</th>
                       <th data-sort-section="stock" data-sort-key="title">Title</th>
@@ -1851,6 +1853,7 @@
           ${selectField("Category", "category", ["Retail", "Wholesale", "Marketplace", "Raw Material", "Packaging", "Other"], true, "Retail")}
           ${selectField("Source", "source", inventorySources, true, "Business Purchase")}
           ${selectField("Item Type", "itemType", itemTypes, true, "Vinyl")}
+          ${selectField("Vinyl Size", "vinylSize", ["", "12\"", "10\"", "7\""], false, "", "data-vinyl-size-field")}
           ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
           ${selectField("Listing mode", "listingMode", listingModes, true, "Standard Sale")}
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
@@ -1873,6 +1876,7 @@
         <div class="fields">
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
           ${selectField("Item", "item", itemTypes, true, "Vinyl")}
+          ${selectField("Vinyl Size", "vinylSize", ["", "12\"", "10\"", "7\""], false, "", "data-vinyl-size-field")}
           ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
           ${field("Artist", "artist", "text", "", false, "Artist name")}
           ${field("Title", "title", "text", "", true, "Artwork / item title")}
@@ -1895,6 +1899,8 @@
         </div>
       `;
       syncGeneralInvestorFields();
+      syncVinylSizeField(el.inventoryForm, "itemType");
+      syncVinylSizeField(el.stockForm, "item");
     }
 
     function field(label, name, type, value, required, placeholder = "", step = "", wrapperAttributes = "") {
@@ -1924,6 +1930,19 @@
           </select>
         </div>
       `;
+    }
+
+    function normalizeVinylSize(value) {
+      const size = String(value || "").trim().replace(/[\"\u2033]/g, "");
+      return ["12", "10", "7"].includes(size) ? size : "";
+    }
+
+    function syncVinylSizeField(form, itemField) {
+      const wrapper = form?.querySelector("[data-vinyl-size-field]");
+      if (!wrapper) return;
+      const isVinyl = String(form.elements[itemField]?.value || "").trim().toLowerCase() === "vinyl";
+      wrapper.hidden = !isVinyl;
+      if (!isVinyl) form.elements.vinylSize.value = "";
     }
 
     function attachExportControls() {
@@ -2135,6 +2154,10 @@
         render();
       });
 
+      el.inventoryForm.addEventListener("change", event => {
+        if (event.target.name === "itemType") syncVinylSizeField(el.inventoryForm, "itemType");
+      });
+
       el.stockForm.addEventListener("submit", async event => {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(el.stockForm));
@@ -2165,6 +2188,10 @@
         resetForm(el.stockForm);
         resetStockEditMode();
         render();
+      });
+
+      el.stockForm.addEventListener("change", event => {
+        if (event.target.name === "item") syncVinylSizeField(el.stockForm, "item");
       });
 
       document.addEventListener("click", async event => {
@@ -2441,6 +2468,7 @@
         category: data.category,
         source: data.source,
         itemType: data.itemType,
+        vinylSize: normalizeVinylSize(data.vinylSize),
         itemCondition: data.itemCondition,
         listingMode: data.listingMode,
         sku: data.sku.trim(),
@@ -2461,6 +2489,7 @@
         purchaseId: existing.purchaseId,
         sku: data.sku.trim(),
         item: data.item,
+        vinylSize: normalizeVinylSize(data.vinylSize),
         itemCondition: data.itemCondition,
         artist: data.artist.trim(),
         title: data.title.trim(),
@@ -2508,6 +2537,7 @@
         edition: existing.edition || "",
         barcode: existing.barcode || "",
         catalogNumber: existing.catalogNumber || "",
+        vinylSize: normalizeVinylSize(purchase.vinylSize) || normalizeVinylSize(existing.vinylSize),
         source: purchase.source || existing.source || "Business Purchase",
         acquisitionMonth: monthOf(purchase.date) || existing.acquisitionMonth || currentMonth,
         qty: numeric(purchase.qty) || numeric(existing.qty) || 1,
@@ -2537,6 +2567,7 @@
         ...item,
         qty,
         itemCondition: itemConditions.includes(item.itemCondition) ? item.itemCondition : "New-Sealed",
+        vinylSize: normalizeVinylSize(item.vinylSize),
         costBasis,
         sellingPrice: numeric(item.sellingPrice),
         soldPrice,
@@ -2609,6 +2640,8 @@
       setFormValue(el.inventoryForm, "category", item.category || "Retail");
       setFormValue(el.inventoryForm, "source", item.source || "Business Purchase");
       setFormValue(el.inventoryForm, "itemType", item.itemType || "Vinyl");
+      setFormValue(el.inventoryForm, "vinylSize", normalizeVinylSize(item.vinylSize) ? `${normalizeVinylSize(item.vinylSize)}\"` : "");
+      syncVinylSizeField(el.inventoryForm, "itemType");
       setFormValue(el.inventoryForm, "itemCondition", item.itemCondition || "New-Sealed");
       setFormValue(el.inventoryForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.inventoryForm, "sku", item.sku);
@@ -2641,6 +2674,8 @@
       setFormValue(el.stockForm, "editId", item.id);
       setFormValue(el.stockForm, "sku", item.sku);
       setFormValue(el.stockForm, "item", item.item);
+      setFormValue(el.stockForm, "vinylSize", normalizeVinylSize(item.vinylSize) ? `${normalizeVinylSize(item.vinylSize)}\"` : "");
+      syncVinylSizeField(el.stockForm, "item");
       setFormValue(el.stockForm, "itemCondition", item.itemCondition || "New-Sealed");
       setFormValue(el.stockForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.stockForm, "artist", item.artist);
@@ -2970,6 +3005,7 @@
         item.category,
         item.source,
         item.itemType,
+        item.vinylSize,
         item.itemCondition,
         item.sku,
         item.artistName,
@@ -2983,6 +3019,7 @@
           <td>${escapeHTML(item.category)}</td>
           <td>${escapeHTML(item.source)}</td>
           <td>${escapeHTML(item.itemType || "")}</td>
+          <td>${escapeHTML(item.vinylSize ? `${normalizeVinylSize(item.vinylSize)}\"` : "")}</td>
           <td>${escapeHTML(item.itemCondition || "New-Sealed")}</td>
           <td>${escapeHTML(item.listingMode || "Standard Sale")}</td>
           <td>${escapeHTML(item.sku)}</td>
@@ -2995,7 +3032,7 @@
           <td>${escapeHTML(item.paymentMethod)}</td>
           <td class="row-actions">${editButton("inventory", item.id)} ${deleteButton("inventory", item.id)}</td>
         </tr>
-      `).join("") : emptyRow(16, "No inventory purchases yet.");
+      `).join("") : emptyRow(17, "No inventory purchases yet.");
       const totals = rows.reduce((total, item) => ({
         qty: total.qty + numeric(item.qty),
         unitCost: total.unitCost + numeric(item.unitCost),
@@ -3004,7 +3041,7 @@
       }), { qty: 0, unitCost: 0, totalCost: 0, cashflowImpact: 0 });
       el.inventoryTotals.innerHTML = `
         <tr>
-          <td colspan="9">Total</td>
+          <td colspan="10">Total</td>
           <td class="money">${totals.qty}</td>
           <td class="money">${rupiah(totals.unitCost)}</td>
           <td class="money">${rupiah(totals.totalCost)}</td>
@@ -3022,6 +3059,7 @@
       const rows = sortRows("stock", filterRows(state.inventoryStock.filter(item => matchesInventoryFamily(item, family)), query, item => [
         item.sku,
         item.item,
+        item.vinylSize,
         item.itemCondition,
         item.artist,
         item.title,
@@ -3036,6 +3074,7 @@
         <tr>
           <td>${escapeHTML(item.sku)}</td>
           <td>${escapeHTML(item.item)}</td>
+          <td>${escapeHTML(item.vinylSize ? `${normalizeVinylSize(item.vinylSize)}\"` : "")}</td>
           <td>${escapeHTML(item.itemCondition || "New-Sealed")}</td>
           <td>${escapeHTML(item.artist)}</td>
           <td>${escapeHTML(item.title)}</td>
@@ -3049,7 +3088,7 @@
           <td class="money">${formatMargin(item.margin)}</td>
           <td class="row-actions">${editButton("inventoryStock", item.id)} ${deleteButton("inventoryStock", item.id)}</td>
         </tr>
-      `).join("") : emptyRow(14, "No inventory stock recorded yet.");
+      `).join("") : emptyRow(15, "No inventory stock recorded yet.");
       const totals = rows.reduce((total, item) => {
         const qty = numeric(item.qty);
         return {
@@ -3063,7 +3102,7 @@
       const margin = totals.soldPrice > 0 ? totals.grossProfit / totals.soldPrice * 100 : 0;
       el.stockTotals.innerHTML = `
         <tr>
-          <td colspan="7">Total value (quantity x unit)</td>
+          <td colspan="8">Total value (quantity x unit)</td>
           <td class="money">${totals.qty}</td>
           <td class="money">${rupiah(totals.costBasis)}</td>
           <td class="money">${rupiah(totals.sellingPrice)}</td>

@@ -8,6 +8,7 @@ import { labelLogoAvailable } from "../../src/data/labelLogoManifest.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../../src/components/labelsPage.js";
 import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "../../src/data/recordMetadata.js";
 import { loadStore } from "./supabase.js";
+import { recordDisplayFormat } from "../../src/data/vinylSize.js";
 
 const ORIGIN = "https://www.nix-p.com";
 const RELEASE_REVISION = String(process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA || "local")
@@ -135,7 +136,7 @@ function sendPublicSnapshotHeaders(res) {
 
 async function productDocument(product, path, store) {
   const title = `${product.artist} - ${product.title} | NIXP`;
-  const format = product.displayFormat || product.format || "Product";
+  const format = recordDisplayFormat(product);
   const price = formatPrice(product.price);
   const description = product.open_to_offers
     ? `${product.artist} - ${product.title}. Private Collection item available by offer.`
@@ -181,7 +182,7 @@ async function pageDocument({ title, description, canonicalUrl, image, type = "w
 
 function productMarkup(product, store = {}) {
   const images = [...new Set((Array.isArray(product.images) && product.images.length ? product.images : [product.image]).filter(Boolean))];
-  const format = product.displayFormat || product.format || "Product";
+  const format = recordDisplayFormat(product);
   const isRecord = product.category === "Records";
   const isOfferOnly = product.open_to_offers === true;
   const hasRecordConditionDetails = needsRecordConditionDetails(product);

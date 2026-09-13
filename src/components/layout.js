@@ -1,6 +1,7 @@
 import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalLabelName } from "../data/catalogIdentity.js";
 import { publicProductPath } from "../data/publicUrls.js";
 import { productCardImageAttributes } from "../data/productThumbnails.js";
+import { recordDisplayFormat } from "../data/vinylSize.js";
 
 const leftPublicLinks = [
   ["Records", "/records"],
@@ -167,7 +168,7 @@ export function productGrid(products, options = {}) {
 }
 
 export function productCard(product, { hrefFor, availableArtistNames, deferCard = false } = {}) {
-  const meta = product.condition ? `${product.displayFormat || product.format}/${product.condition}` : product.year;
+  const meta = product.condition ? `${recordDisplayFormat(product)}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
   const href = hrefFor ? hrefFor(product) : publicProductPath(product);
   const soldOut = productQuantity(product) <= 0;

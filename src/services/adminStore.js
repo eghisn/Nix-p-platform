@@ -4,6 +4,7 @@ import { isRecentReleaseProduct } from "../data/homeCollections.js";
 import { isRecordPublicationReady } from "../data/catalogPublication.js";
 import { needsRecordConditionDetails } from "../data/recordMetadata.js";
 import { referenceShippingProfile } from "../data/shippingProfiles.js";
+import { isVinylRecord, normalizeVinylSize } from "../data/vinylSize.js";
 
 const STORAGE_KEY = "nixp-admin-store-v1";
 const STORE_VERSION = "home-slider-related-artists-2026-07-15";
@@ -116,6 +117,7 @@ function withDefaults(product) {
     edition: String(product.edition || "").trim(),
     barcode: String(product.barcode || "").trim(),
     catalogNumber: String(product.catalogNumber || "").trim(),
+    vinylSize: normalizeVinylSize(product.vinylSize),
     mediaCondition: String(product.mediaCondition || "").trim(),
     sleeveCondition: String(product.sleeveCondition || "").trim(),
     tags: product.tags || [],
@@ -221,6 +223,7 @@ export function reconcilePublicCatalog(remoteStore, snapshotStore) {
     "musicBrainzReleaseId",
     "edition",
     "catalogNumber",
+    "vinylSize",
     "barcode",
     "details"
   ];
@@ -1307,6 +1310,9 @@ export const adminStore = {
       edition: isRecord ? data.edition?.trim() || "" : "",
       barcode: isRecord ? data.barcode?.trim() || "" : "",
       catalogNumber: isRecord ? data.catalogNumber?.trim() || "" : "",
+      vinylSize: isVinylRecord({ category, format })
+        ? normalizeVinylSize(data.vinylSize !== undefined ? data.vinylSize : existing?.vinylSize)
+        : "",
       apparelType: normalizeApparelType(data.apparelType),
       condition: data.condition?.trim() || "",
       mediaCondition: needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: data.condition }) ? data.mediaCondition?.trim() || "" : "",

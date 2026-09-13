@@ -200,6 +200,7 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
     "collection",
     "edition",
     "catalogNumber",
+    "vinylSize",
     "barcode",
     "details"
   ];
@@ -219,6 +220,7 @@ export function reconcilePublicRevision(remoteProducts = [], snapshotProducts = 
     "musicBrainzReleaseId",
     "edition",
     "catalogNumber",
+    "vinylSize",
     "barcode",
     "details"
   ];

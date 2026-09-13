@@ -9,6 +9,7 @@ import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuot
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
 import { drainNotificationOutbox, getNotificationOutboxHealth, retryFailedNotificationOutbox, sendProductStatusNotification } from "../_lib/emailNotifications.js";
 import { applyCatalogPublicationSafety, catalogPublicationIssues, isResearchPublicationReady } from "../../src/data/catalogPublication.js";
+import { LEGACY_VINYL_SIZE_BY_SKU, normalizeVinylSize } from "../../src/data/vinylSize.js";
 
 export default async function handler(req, res) {
   const action = new URL(req.url || "/", "https://admin.nix-p.com").searchParams.get("commerceAction");
@@ -16,6 +17,7 @@ export default async function handler(req, res) {
   if (action === "inventory") return handleAdminInventory(req, res);
   if (action === "shipping-rates") return handleAdminShipping(req, res);
   if (action === "product") return handleAdminProductSave(req, res);
+  if (action === "vinyl-size-backfill") return handleVinylSizeBackfill(req, res);
   if (action === "home-slider") return handleAdminHomeSliderSave(req, res);
   if (action === "backups") {
     if (req.method !== "GET") return json(res, 405, { ok: false, error: "Method not allowed" });
@@ -186,6 +188,59 @@ export default async function handler(req, res) {
       : message;
     json(res, 500, { ok: false, error: friendlyMessage });
   }
+}
+
+async function handleVinylSizeBackfill(req, res) {
+  if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+  if (!requireWorkspace(req, res, "admin")) return;
+  try {
+    const store = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
+    const targets = (store.products || []).filter((product) => LEGACY_VINYL_SIZE_BY_SKU[product.sku]);
+    const expectedSkus = Object.keys(LEGACY_VINYL_SIZE_BY_SKU);
+    const foundSkus = new Set(targets.map((product) => product.sku));
+    const missing = expectedSkus.filter((sku) => !foundSkus.has(sku));
+    if (missing.length) throw new Error(`Legacy vinyl backfill stopped: missing SKU(s) ${missing.join(", ")}.`);
+    for (const product of targets) {
+      const size = LEGACY_VINYL_SIZE_BY_SKU[product.sku];
+      if (!isExplicitLegacyVinylSize(product, size)) {
+        throw new Error(`Legacy vinyl backfill stopped: ${product.sku} no longer has an explicit ${size}-inch Edition value.`);
+      }
+    }
+
+    const updated = [];
+    for (const product of targets) {
+      const size = LEGACY_VINYL_SIZE_BY_SKU[product.sku];
+      if (normalizeVinylSize(product.vinylSize) === size) continue;
+      const saved = await saveAdminProduct({ ...product, vinylSize: size }, {
+        expectedRevision: product.editRevision,
+        actor: "vinyl-size-backfill"
+      });
+      updated.push(saved.product.sku);
+    }
+
+    const refreshed = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
+    let deployment = null;
+    if (isGitHubDeployConfigured()) {
+      const github = await commitPublicStore(refreshed, { message: "Add explicit vinyl sizes to legacy NIXP records" });
+      deployment = { github, ...(await verifyPublicCatalogRevision(refreshed.products || [], expectedSkus)) };
+    }
+    return json(res, 200, {
+      ok: true,
+      updated,
+      skipped: expectedSkus.length - updated.length,
+      deployment,
+      message: deployment?.confirmed
+        ? "Legacy vinyl sizes are confirmed live."
+        : "Legacy vinyl sizes are saved; public deployment is pending verification."
+    });
+  } catch (error) {
+    return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Legacy vinyl size backfill failed." });
+  }
+}
+
+function isExplicitLegacyVinylSize(product, size) {
+  if (product.category !== "Records" || String(product.format || "").trim() !== "Vinyl") return false;
+  return new RegExp(`\\b${size}(?:\\s*[\"\\u2033]|[-\\s]*inch)`, "i").test(String(product.edition || ""));
 }
 
 async function handleAdminInventory(req, res) {

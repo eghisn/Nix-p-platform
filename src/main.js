@@ -18,6 +18,7 @@ import { pageHero, productGrid, shell, table } from "./components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup } from "./components/catalogPage.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "./components/labelsPage.js";
 import { NIXP_ADDRESS } from "./data/siteDetails.js";
+import { LEGACY_VINYL_SIZE_BY_SKU, VINYL_SIZES, isVinylRecord, normalizeVinylSize, recordDisplayFormat } from "./data/vinylSize.js";
 
 const app = document.querySelector("#app");
 const CHECKOUT_SESSION_STORAGE_KEY = "nixp-checkout-session";
@@ -596,7 +597,7 @@ async function productDetailMarkup(product) {
   const allProducts = await catalogService.listProducts();
   const availableArtistNames = inventoryArtistNames(allProducts);
   const related = product.category === "Records" ? recommendedProducts(product, allProducts) : [];
-  const displayFormat = product.displayFormat || product.format;
+  const displayFormat = recordDisplayFormat(product);
   const conditionLabel = product.condition || "Available";
   const isApparel = product.category === "Apparel";
   const isRecord = product.category === "Records";
@@ -1505,13 +1506,20 @@ async function adminProductsPage({ embedded = false } = {}) {
     : null;
   const product = editing || {};
   const productCategory = product.category || "Records";
+  const legacyVinylSizesPending = products.filter((item) => {
+    const size = LEGACY_VINYL_SIZE_BY_SKU[item.sku];
+    return size && normalizeVinylSize(item.vinylSize) !== size;
+  }).length;
   return `
     ${embedded ? "" : adminHero("Products", "Create product drafts, upload images, publish items, and keep the storefront clean.")}
     <div class="admin-workspace">
       <form class="admin-panel admin-product-form" data-admin-product-form>
         <div class="admin-panel-head">
           <h2>${editing ? "Edit product" : "New product"}</h2>
-          ${editing ? `<button class="button button-outline" type="button" data-admin-new-product>New</button>` : ""}
+          <div class="admin-panel-actions">
+            ${legacyVinylSizesPending ? `<button class="button button-outline" type="button" data-admin-vinyl-backfill>Apply ${legacyVinylSizesPending} verified legacy vinyl sizes</button>` : ""}
+            ${editing ? `<button class="button button-outline" type="button" data-admin-new-product>New</button>` : ""}
+          </div>
         </div>
         ${productSyncMarkup(product)}
         <div class="admin-form-grid">
@@ -1524,6 +1532,9 @@ async function adminProductsPage({ embedded = false } = {}) {
             ${input("format", "Format", product.format || "", "Vinyl, CD, Book")}
             ${input("displayFormat", "Display format", product.displayFormat || "", "Vinyl 12&quot;")}
             <div data-admin-edition-field ${productCategory === "Records" ? "" : "hidden"}>
+              <div data-admin-vinyl-size-field ${isVinylRecord(product) ? "" : "hidden"}>
+                ${select("vinylSize", "Vinyl size", VINYL_SIZES.map((size) => size ? `${size}\"` : ""), normalizeVinylSize(product.vinylSize) ? `${normalizeVinylSize(product.vinylSize)}\"` : "")}
+              </div>
               ${input("edition", "Edition", product.edition || "", "Original pressing, reissue, limited edition")}
               ${input("barcode", "Barcode", product.barcode || "", "Exact release barcode")}
               ${input("catalogNumber", "Catalog number", product.catalogNumber || "", "Label catalog number")}
@@ -3342,6 +3353,7 @@ function bindEvents() {
     form.querySelector("[data-admin-product-fields]").hidden = !isProductCategory;
     form.querySelector("[data-admin-apparel-field]").hidden = event.currentTarget.value !== "Apparel";
     form.querySelector("[data-admin-edition-field]").hidden = !isRecord;
+    form.querySelector("[data-admin-vinyl-size-field]").hidden = !isVinylRecord({ category: event.currentTarget.value, format: form.elements.format.value });
     form.querySelector("[data-admin-used-condition-fields]").hidden =
       !needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: form.elements.condition.value });
     form.querySelectorAll("[data-admin-record-editorial-field]").forEach((field) => {
@@ -3352,6 +3364,36 @@ function bindEvents() {
       form.elements.format.value = event.currentTarget.value.replace(/s$/, "");
       form.elements.displayFormat.value = "";
     }
+  });
+
+  document.querySelector("[data-admin-vinyl-backfill]")?.addEventListener("click", async (event) => {
+    const button = event.currentTarget;
+    button.disabled = true;
+    state.adminNotice = "Applying verified legacy vinyl sizes...";
+    state.adminNoticeTone = "";
+    render({ preserveScroll: true });
+    try {
+      const response = await fetch("/api/admin/store?commerceAction=vinyl-size-backfill", {
+        method: "POST",
+        headers: { accept: "application/json" }
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || "Legacy vinyl sizes could not be saved.");
+      state.adminNotice = result.message || "Legacy vinyl sizes saved.";
+      state.adminNoticeTone = "success";
+      await catalogService.refresh({ includeDrafts: true });
+    } catch (error) {
+      state.adminNotice = error instanceof Error ? error.message : "Legacy vinyl sizes could not be saved.";
+      state.adminNoticeTone = "error";
+    }
+    render({ preserveScroll: true });
+  });
+
+  document.querySelector("[data-admin-product-form] input[name='format']")?.addEventListener("input", (event) => {
+    const form = event.currentTarget.closest("[data-admin-product-form]");
+    const visible = isVinylRecord({ category: form.elements.category.value, format: event.currentTarget.value });
+    form.querySelector("[data-admin-vinyl-size-field]").hidden = !visible;
+    if (!visible) form.elements.vinylSize.value = "";
   });
 
   document.querySelector("[data-admin-product-form]")?.addEventListener("submit", async (event) => {

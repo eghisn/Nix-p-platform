@@ -18,6 +18,7 @@ const incompleteStock = {
   edition: "",
   barcode: "",
   catalogNumber: "",
+  vinylSize: "",
   qty: 1,
   sellingPrice: 0,
   listingMode: "Standard Sale"
@@ -34,6 +35,7 @@ const completedStock = {
   edition: "Vinyl, LP, Album, 180 gram",
   barcode: "644110028518",
   catalogNumber: "PRC-285",
+  vinylSize: "12",
   sellingPrice: 340625
 };
 
@@ -48,6 +50,7 @@ assert.equal(repaired.price, 340625);
 assert.equal(repaired.raw.edition, "Vinyl, LP, Album, 180 gram");
 assert.equal(repaired.raw.barcode, "644110028518");
 assert.equal(repaired.raw.catalogNumber, "PRC-285");
+assert.equal(repaired.raw.vinylSize, "12");
 assert.deepEqual(repaired.details, []);
 assert.equal(financeProduct.edit_revision, 17);
 assert.equal(hasFinanceCatalogIdentityDrift(versionedPlaceholder, repaired), true);
@@ -56,9 +59,11 @@ assert.equal(hasFinanceCatalogIdentityDrift(repaired, mergeFinanceStockIdentity(
 const financeUi = await readFile(new URL("../apps/finance/index.html", import.meta.url), "utf8");
 assert.match(financeUi, /field\("Title", "title", "text", "", true, "Artwork \/ item title"\)/);
 assert.match(financeUi, /one SKU keeps one catalog identity/);
+assert.match(financeUi, /Vinyl Size/, "Finance must collect a structured vinyl size.");
 
 const financeSyncSource = await readFile(new URL("../api/_lib/financeState.js", import.meta.url), "utf8");
 assert.match(financeSyncSource, /edit_revision: revision \+ 1/);
 assert.match(financeSyncSource, /editorial_updated_by: "finance-stock"/);
+assert.match(financeSyncSource, /financeVinylSize/);
 
 console.log("Finance catalog identity synchronization contract passed.");

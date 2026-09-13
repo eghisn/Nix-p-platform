@@ -19,6 +19,7 @@ import { labelProductsPageMarkup, labelsPageMarkup } from "../src/components/lab
 import { canGenerateProductCardThumbnail, productCardThumbnailUrl, productCardThumbnailWidths } from "../src/data/productThumbnails.js";
 import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "../src/data/recordMetadata.js";
 import { NIXP_ADDRESS } from "../src/data/siteDetails.js";
+import { recordDisplayFormat } from "../src/data/vinylSize.js";
 
 const root = process.cwd();
 const dist = `${root}/dist`;
@@ -402,7 +403,7 @@ function homeAppMarkup() {
 
 function staticProductDetailMarkup(product) {
   const images = [...new Set((Array.isArray(product.images) && product.images.length ? product.images : [product.image]).filter(Boolean))];
-  const format = product.displayFormat || product.format || "Product";
+  const format = recordDisplayFormat(product);
   const isRecord = product.category === "Records";
   const isApparel = product.category === "Apparel";
   const soldOut = Number(product.qty || 0) <= 0;
@@ -443,7 +444,7 @@ function productDocument(product) {
   const url = `${siteOrigin}${publicProductPath(product)}`;
   const image = absoluteUrl(product.image || product.images?.[0]);
   const price = formatPrice(product.price);
-  const format = product.displayFormat || product.format || "Product";
+  const format = recordDisplayFormat(product);
   const description = product.open_to_offers
     ? `${product.artist} - ${product.title}. Private Collection item available by offer. Minimum Acceptable Offer is reviewed by NIXP after submission.`
     : `${product.artist} - ${product.title}. ${format}${product.condition ? ` / ${product.condition}` : ""}. ${price}.`;

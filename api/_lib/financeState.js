@@ -28,6 +28,11 @@ const APPAREL_TYPES = new Set(["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "J
 const FINANCE_CATALOG_SYNC_LEASE_MS = 2 * 60 * 1000;
 const FINANCE_CATALOG_SYNC_MAX_ATTEMPTS = 5;
 
+function normalizeVinylSize(value) {
+  const normalized = String(value || "").trim().replace(/[\"\u2033]/g, "");
+  return ["12", "10", "7"].includes(normalized) ? normalized : "";
+}
+
 export function isFinanceState(value) {
   return (
     value &&
@@ -850,6 +855,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const financeEdition = stockIdentityValue(stock, "edition", row.raw?.edition);
   const financeBarcode = stockIdentityValue(stock, "barcode", row.raw?.barcode);
   const financeCatalogNumber = stockIdentityValue(stock, "catalogNumber", row.raw?.catalogNumber);
+  const financeVinylSize = normalizeVinylSize(stockIdentityValue(stock, "vinylSize", row.raw?.vinylSize));
   const financePrice = Number(stock.sellingPrice || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
   const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer);
@@ -931,6 +937,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
       edition: financeEdition,
       barcode: financeBarcode,
       catalogNumber: financeCatalogNumber,
+      vinylSize: financeVinylSize,
       publishStatus,
       visibility
     }
@@ -985,7 +992,8 @@ export function mergeFinanceStockIdentity(existing = {}, financeProduct = {}) {
     minimumAcceptableOffer: financeProduct.minimum_acceptable_offer,
     edition: String(financeRaw.edition || "").trim(),
     barcode: String(financeRaw.barcode || "").trim(),
-    catalogNumber: String(financeRaw.catalogNumber || "").trim()
+    catalogNumber: String(financeRaw.catalogNumber || "").trim(),
+    vinylSize: normalizeVinylSize(financeRaw.vinylSize)
   };
   return productRowFromExisting(existing, {
     title: financeProduct.title,
@@ -1020,6 +1028,7 @@ function financeCatalogIdentitySignature(row = {}) {
     edition: String(raw.edition || "").trim(),
     barcode: String(raw.barcode || "").trim(),
     catalogNumber: String(raw.catalogNumber || "").trim(),
+    vinylSize: normalizeVinylSize(raw.vinylSize),
     details: Array.isArray(row.details) ? row.details : [],
     shipping: raw.shipping || null
   });
@@ -1238,6 +1247,7 @@ export function draftProductFromFinanceStock(stock, quantity) {
   product.edition = String(stock.edition || "").trim();
   product.barcode = String(stock.barcode || "").trim();
   product.catalogNumber = String(stock.catalogNumber || "").trim();
+  product.vinylSize = normalizeVinylSize(stock.vinylSize);
   product.shipping = referenceShippingProfile(product);
   return {
     id,
