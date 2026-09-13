@@ -21,6 +21,7 @@
     "test:commerce": "node scripts/verify-commerce-contract.mjs && node scripts/verify-atomic-checkout-reservation.mjs && node scripts/verify-order-security-hardening.mjs",
     "test:payment-receipt": "node scripts/verify-payment-receipt-email.mjs",
     "test:delivery-quote": "node scripts/verify-delivery-quote-email.mjs",
+    "test:api-security": "node scripts/verify-api-security-headers.mjs",
     "test:site-address": "node scripts/verify-site-address.mjs",
     "test:shipping": "node scripts/verify-shipping-calculator.mjs",
     "test:checkout-destinations": "node scripts/verify-checkout-destinations.mjs",

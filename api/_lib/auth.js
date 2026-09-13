@@ -100,5 +100,11 @@ export function json(res, status, payload) {
   res.statusCode = status;
   res.setHeader("content-type", "application/json; charset=utf-8");
   res.setHeader("cache-control", "no-store");
+  res.setHeader("strict-transport-security", "max-age=31536000; includeSubDomains");
+  res.setHeader("x-content-type-options", "nosniff");
+  res.setHeader("x-frame-options", "DENY");
+  res.setHeader("referrer-policy", "no-referrer");
+  res.setHeader("cross-origin-resource-policy", "same-origin");
+  res.setHeader("content-security-policy", "default-src 'none'; base-uri 'none'; frame-ancestors 'none'");
   res.end(JSON.stringify(payload));
 }
