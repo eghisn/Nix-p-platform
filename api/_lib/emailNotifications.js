@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { isSupabaseConfigured, supabaseFetch } from "./supabase.js";
+import { renderDeliveryQuote } from "./deliveryQuote.js";
 import { renderPaymentReceipt } from "./paymentReceipt.js";
 
 const DEFAULT_TO = "contact@nix-p.com";
@@ -100,15 +101,13 @@ export async function sendCustomerShippingQuoteRequest(order, customer = {}, sta
 export async function sendCustomerShippingQuoteNotification(order, statusUrl = "") {
   const customer = order?.customer || {};
   if (!customer.email) return { delivered: false, reason: "customer-email-missing" };
-  const shipping = Number(order?.shipping_total || 0);
-  const merchandise = Number(order?.merchandise_total || 0);
-  const message = `Your delivery quote is ready. Items: ${rupiah(merchandise)}. Shipping: ${rupiah(shipping)}. Total: ${rupiah(order?.grand_total)}. Stock is reserved for one hour once you open payment.`;
+  const quote = renderDeliveryQuote(order, { statusUrl, catalogImages: receiptCatalogImages(order) });
   return sendNotificationEmail({
     to: customer.email,
     subject: `NIXP delivery quote ready: ${orderReference(order)}`,
     replyTo: DEFAULT_TO,
-    text: statusEmailText(order, "Delivery quote ready", `${message}${statusUrl ? `\nPay securely: ${statusUrl}` : ""}`),
-    html: `${statusEmailHtml(order, "Delivery quote ready", message)}${statusUrl ? `<p><a href="${escapeHtml(statusUrl)}">Review quote and pay securely</a></p>` : ""}`,
+    text: quote.text,
+    html: quote.html,
     idempotencyKey: `customer-shipping-quote-issued-${order?.id}`
   });
 }
