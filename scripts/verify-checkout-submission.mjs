@@ -70,4 +70,13 @@ const linkBindingEnd = source.indexOf('document.querySelector("[data-nav-toggle]
 const linkBinding = source.slice(linkBindingStart, linkBindingEnd);
 assert.match(linkBinding, /link\.hasAttribute\("data-cart-checkout"\)\) setCartOpen\(false\);/, "Checkout must close the cart drawer before internal navigation.");
 assert(linkBinding.indexOf("setCartOpen(false)") < linkBinding.indexOf("navigateInternal(href)"), "Drawer close must happen before checkout navigation.");
+
+assert.match(source, /function checkoutOrderStatusUrl\(\)/, "Checkout must be able to reconstruct its secure order-status link from the local session.");
+assert.match(source, /path === "\/cart" && replaceCheckoutHistoryWithOrderStatus\(\)/, "Returning to the cart must recover an existing secure pending order session.");
+const paymentRedirectStart = source.indexOf("if (payload.payment?.redirectUrl)");
+const paymentRedirectEnd = source.indexOf("if (payload.order.paymentStatus", paymentRedirectStart);
+const paymentRedirect = source.slice(paymentRedirectStart, paymentRedirectEnd);
+assert.match(paymentRedirect, /replaceCheckoutHistoryWithOrderStatus\(payload\.statusUrl\);/, "Initial payment must replace cart history with the secure order status URL.");
+assert(paymentRedirect.indexOf("replaceCheckoutHistoryWithOrderStatus(payload.statusUrl)") < paymentRedirect.indexOf("window.location.assign(payload.payment.redirectUrl)"), "Order status history must be established before leaving for Midtrans.");
+assert(source.includes('history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);'), "Checkout recovery must retain access credentials in the URL fragment, never the server-visible query string.");
 console.log("Actual checkout submit handler verified: stable quote token, duplicate prevention, preserved form on failure.");

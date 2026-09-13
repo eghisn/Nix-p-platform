@@ -147,6 +147,27 @@ function clearCheckoutSession() {
   localStorage.removeItem(CHECKOUT_SESSION_STORAGE_KEY);
 }
 
+function checkoutOrderStatusUrl() {
+  const session = readCheckoutSession();
+  const orderId = String(session?.orderId || "").trim();
+  const token = String(session?.customerAccessToken || "").trim();
+  if (!/^order-[A-Za-z0-9_-]{8,96}$/.test(orderId) || !/^[a-f0-9]{32,96}$/i.test(token)) return "";
+  return `/order-status#order=${encodeURIComponent(orderId)}&token=${encodeURIComponent(token)}`;
+}
+
+function replaceCheckoutHistoryWithOrderStatus(statusUrl = "") {
+  const candidate = checkoutOrderStatusUrl() || String(statusUrl || "").trim();
+  if (!candidate) return false;
+  try {
+    const url = new URL(candidate, location.origin);
+    if (url.origin !== location.origin || normalizePath(url.pathname) !== "/order-status" || !url.hash) return false;
+    history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function cartKey(productId, size = "") {
   const cleanId = String(productId || "").trim();
   const cleanSize = String(size || "").trim();
@@ -251,6 +272,7 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   const requestId = ++renderRequestId;
   const previousScrollTop = preserveScroll ? window.scrollY : 0;
   let path = normalizePath(location.pathname);
+  if (path === "/cart" && replaceCheckoutHistoryWithOrderStatus()) path = normalizePath(location.pathname);
   await loadAuthSession();
   const legacyProduct = path.startsWith("/product/")
     ? adminStore.getProduct(decodeRoutePart(path.replace("/product/", "")), { includeDrafts: true })
@@ -3060,6 +3082,7 @@ function bindEvents() {
       if (payload.payment?.redirectUrl) {
         state.checkoutMessage = `Your order is reserved until ${expiresAt}. Opening secure payment...`;
         state.checkoutTone = "success";
+        replaceCheckoutHistoryWithOrderStatus(payload.statusUrl);
         await render({ preserveScroll: true });
         window.location.assign(payload.payment.redirectUrl);
         return;
