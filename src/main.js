@@ -4312,6 +4312,12 @@ function bindSearch() {
 }
 
 window.addEventListener("popstate", render);
+window.addEventListener("pageshow", (event) => {
+  // Safari may restore a complete old catalog page from its back/forward
+  // cache without requesting the current release. Revalidate it once so a
+  // Draft or unpublished product can never remain purchasable in that view.
+  if (event.persisted) window.location.reload();
+});
 window.addEventListener("nixp:private-store-refreshed", () => {
   if (!normalizePath(location.pathname).startsWith("/admin")) return;
   if (document.activeElement?.matches("input, textarea, select, [contenteditable='true']")) return;

@@ -484,7 +484,10 @@ function readStore() {
   const scope = currentStoreScope();
   const seeded = seed({ publicOnly });
   if (activeStore && activeStoreScope === scope) return mergeStore(seeded, activeStore, { publicOnly });
-  if (publicOnly) return seeded;
+  // Sample data is useful as an editor fallback, but it is never a valid
+  // storefront fallback. Returning it here could resurrect a Draft product
+  // from an older bundle when the deploy-owned public snapshot is unavailable.
+  if (publicOnly) return { ...seeded, products: [], artists: [] };
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
     if (!saved) return seeded;
@@ -559,7 +562,7 @@ function storeRowId(item = {}, table = "items", index = 0) {
   return `${table}-${slugify(source)}`;
 }
 
-function mergeStore(seeded, saved, { publicOnly = false } = {}) {
+export function mergeStore(seeded, saved, { publicOnly = false } = {}) {
   const savedProducts = (saved.products || [])
     .filter((product) => !REMOVED_PRODUCT_IDS.has(product.id))
     .map(withDefaults);
@@ -595,7 +598,10 @@ function mergeStore(seeded, saved, { publicOnly = false } = {}) {
       }
       return mergedProduct;
     }),
-    ...seededProducts.filter((seedProduct) => !savedProducts.some((product) => product.id === seedProduct.id))
+    // The public snapshot is the complete allow-list for the storefront. Do
+    // not append records from the development seed here: a removed/Draft SKU
+    // must disappear as soon as it is absent from that release.
+    ...(publicOnly ? [] : seededProducts.filter((seedProduct) => !savedProducts.some((product) => product.id === seedProduct.id)))
   ];
   return {
     ...seeded,
