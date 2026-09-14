@@ -19,6 +19,7 @@ const dashboard = buildRollupMarketingDashboard({
   },
   products: [{ id: "p1", title: "Release", artist: "Artist", views: 2, added: 1, orders: 2, units: 2, sales: 900_000 }],
   contactsSummary: { knownCustomers: 501, returningCustomers: 10, contacts: [{ name: "Test", email: "test@example.com", orders: 2, sales: 1_000_000, lastOrder: "2026-08-29T00:00:00Z" }] },
+  instagram: { status: "connected", message: "Latest post activity is refreshed automatically from Meta.", account: "NIXP Instagram", posts: [{ id: "post-1", caption: "New release", mediaType: "IMAGE", permalink: "https://www.instagram.com/p/example/", timestamp: "2026-08-29T00:00:00Z", likes: 12, comments: 3 }] },
   recentEvents: [{ event_type: "page_view", anonymous_session_id: "a", page_path: "/records", source: "instagram", occurred_at: "2026-08-29T00:00:00Z" }],
   newestOrder: { updated_at: "2026-08-29T00:00:00Z" }
 });
@@ -37,6 +38,8 @@ assert.equal(dashboard.daily.length, 7, "The chart needs zero-filled reporting d
 assert.equal(dashboard.orderOutcomes.expired, 1);
 assert.equal(dashboard.orderOutcomes.cancelled, 1);
 assert.equal(dashboard.metrics.checkoutCreatedRate, 1, "Checkout creation rate must be measured from consented checkout sessions, not all paid orders.");
+assert.equal(dashboard.instagram.status, "connected");
+assert.equal(dashboard.instagram.posts[0].likes, 12);
 
 const validEvent = {
   eventId: "2b6f2b09-4be9-4b58-8b81-0ace022ddd84",

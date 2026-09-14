@@ -30,13 +30,10 @@
         </div>
         <nav class="nav-list">
           <button class="nav-item is-active" type="button" data-view="overview">Overview <span>01</span></button>
-          <button class="nav-item" type="button" data-view="monthly">Monthly Report <span>02</span></button>
-          <button class="nav-item" type="button" data-view="audience">Audience <span>03</span></button>
-          <button class="nav-item" type="button" data-view="funnel">Funnel <span>04</span></button>
-          <button class="nav-item" type="button" data-view="campaigns">Campaigns <span>05</span></button>
-          <button class="nav-item" type="button" data-view="consent">Consent <span>06</span></button>
-          <button class="nav-item" type="button" data-view="contacts">Contacts <span>07</span></button>
-          <button class="nav-item" type="button" data-view="data">Data <span>08</span></button>
+          <button class="nav-item" type="button" data-view="catalog">Catalog <span>02</span></button>
+          <button class="nav-item" type="button" data-view="checkout">Checkout <span>03</span></button>
+          <button class="nav-item" type="button" data-view="instagram">Instagram <span>04</span></button>
+          <button class="nav-item" type="button" data-view="reports">Reports <span>05</span></button>
         </nav>
         <div class="sidebar-foot">
           <span class="status-dot"><i></i> Live data</span>
@@ -54,6 +51,7 @@
           <div class="topbar-actions">
             <label class="period-control">Period
               <select data-period aria-label="Reporting period">
+                <option value="7">Last 7 days</option>
                 <option value="30">Last 30 days</option>
                 <option value="90">Last 90 days</option>
                 <option value="365">This year</option>
@@ -80,7 +78,7 @@
             <article class="metric-panel"><span>Cash net sales</span><strong data-metric="sales">Rp 0</strong><small>Verified payments minus verified refunds</small></article>
             <article class="metric-panel"><span>Paid orders</span><strong data-metric="orders">0</strong><small>Selected reporting period</small></article>
             <article class="metric-panel"><span>Visitors</span><strong data-metric="visitors">0</strong><small>Consented anonymous sessions</small></article>
-            <article class="metric-panel"><span>Checkout creation rate</span><strong data-metric="conversion">0%</strong><small>Consented sessions that created an order</small></article>
+            <article class="metric-panel"><span>Checkout starts</span><strong data-metric="conversion">0%</strong><small>Of consented sessions in this period</small></article>
           </div>
           <div class="split-grid">
             <section class="panel chart-panel">
@@ -97,13 +95,55 @@
             </section>
           </div>
           <section class="panel table-panel">
-            <div class="panel-heading"><div><p class="eyebrow">Merchandise</p><h3>Top products</h3></div><a href="#" data-view-link="campaigns">View full report</a></div>
+            <div class="panel-heading"><div><p class="eyebrow">Merchandise</p><h3>Top products</h3></div><a href="#" data-view-link="catalog">View opportunities</a></div>
             <div class="data-table-wrap"><table data-sort-table="products"><thead><tr><th><button type="button" data-sort-key="title">Product</button></th><th><button type="button" data-sort-key="artist">Artist</button></th><th><button type="button" data-sort-key="productViews">Views</button></th><th><button type="button" data-sort-key="productClicks">Clicks</button></th><th><button type="button" data-sort-key="added">Added</button></th><th><button type="button" data-sort-key="orders">Paid orders</button></th><th class="number"><button type="button" data-sort-key="sales">Gross item sales</button></th></tr></thead><tbody data-products-table></tbody></table></div>
           </section>
         </section>
 
-        <section class="view" data-view-panel="monthly" aria-labelledby="monthly-title" hidden>
-          <div class="section-heading"><div><p class="eyebrow">02 / Monthly report</p><h2 id="monthly-title">Marketing review</h2></div><p class="section-note">A calendar-month view for operating decisions and investor updates. Commerce remains verified; behavioural figures are consented sessions only.</p></div>
+        <section class="view" data-view-panel="catalog" aria-labelledby="catalog-title" hidden>
+          <div class="section-heading"><div><p class="eyebrow">02 / Catalog</p><h2 id="catalog-title">What deserves a move</h2></div><p class="section-note">Sort this table to find releases with interest but no cart activity, cart interest without a sale, and products already converting.</p></div>
+          <section class="panel table-panel opportunity-panel">
+            <div class="panel-heading"><div><p class="eyebrow">Decision queue</p><h3>Product opportunities</h3></div><span class="muted-label">Signal first, not raw traffic</span></div>
+            <div class="data-table-wrap"><table data-sort-table="opportunities"><thead><tr><th><button type="button" data-sort-key="priority">Priority</button></th><th><button type="button" data-sort-key="title">Product</button></th><th><button type="button" data-sort-key="signal">Signal</button></th><th><button type="button" data-sort-key="productViews">Views</button></th><th><button type="button" data-sort-key="added">Carts</button></th><th><button type="button" data-sort-key="orders">Orders</button></th><th class="number"><button type="button" data-sort-key="sales">Sales</button></th></tr></thead><tbody data-opportunities-table></tbody></table></div>
+          </section>
+          <section class="panel table-panel">
+            <div class="panel-heading"><div><p class="eyebrow">Full ranking</p><h3>All active product signals</h3></div><span class="muted-label">Click a heading to sort</span></div>
+            <div class="data-table-wrap"><table data-sort-table="catalog-products"><thead><tr><th><button type="button" data-sort-key="title">Product</button></th><th><button type="button" data-sort-key="artist">Artist</button></th><th><button type="button" data-sort-key="productViews">Views</button></th><th><button type="button" data-sort-key="productClicks">Clicks</button></th><th><button type="button" data-sort-key="added">Carts</button></th><th><button type="button" data-sort-key="orders">Paid orders</button></th><th class="number"><button type="button" data-sort-key="sales">Sales</button></th></tr></thead><tbody data-catalog-products-table></tbody></table></div>
+          </section>
+        </section>
+
+        <section class="view" data-view-panel="checkout" aria-labelledby="checkout-title" hidden>
+          <div class="section-heading"><div><p class="eyebrow">03 / Checkout</p><h2 id="checkout-title">Where orders stop</h2></div><p class="section-note">Operational order outcomes are complete. Funnel events reflect visitors who agreed to analytics.</p></div>
+          <div class="metrics-grid">
+            <article class="metric-panel"><span>Cart abandonment</span><strong data-checkout-metric="abandonment">0%</strong><small>Measured carts that did not reach checkout</small></article>
+            <article class="metric-panel"><span>Paid</span><strong data-checkout-metric="paid">0</strong><small>Provider-verified orders</small></article>
+            <article class="metric-panel"><span>Expired</span><strong data-checkout-metric="expired">0</strong><small>Payment windows that closed</small></article>
+            <article class="metric-panel"><span>Refunded</span><strong data-checkout-metric="refunded">0</strong><small>Verified refund records</small></article>
+          </div>
+          <div class="split-grid">
+            <section class="panel funnel-panel"><div class="panel-heading"><div><p class="eyebrow">Measured journey</p><h3>Storefront funnel</h3></div></div><div class="funnel-list" data-checkout-funnel></div></section>
+            <section class="panel insight-panel"><div class="panel-heading"><div><p class="eyebrow">Next check</p><h3>Checkout attention</h3></div></div><ul class="insight-list" data-checkout-insights></ul></section>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="instagram" aria-labelledby="instagram-title" hidden>
+          <div class="section-heading"><div><p class="eyebrow">04 / Instagram</p><h2 id="instagram-title">Post to storefront</h2></div><p class="section-note">Website outcomes come from Instagram attribution. Post engagement can refresh automatically once the NIXP Meta connection is enabled.</p></div>
+          <div class="metrics-grid">
+            <article class="metric-panel"><span>Instagram sessions</span><strong data-instagram-metric="sessions">0</strong><small>Consented visits attributed to Instagram</small></article>
+            <article class="metric-panel"><span>Product views</span><strong data-instagram-metric="views">0</strong><small>From Instagram-attributed sessions</small></article>
+            <article class="metric-panel"><span>Paid orders</span><strong data-instagram-metric="orders">0</strong><small>Attributed order records</small></article>
+            <article class="metric-panel"><span>Attributed sales</span><strong data-instagram-metric="sales">Rp 0</strong><small>Consent-based attribution</small></article>
+          </div>
+          <div class="split-grid">
+            <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Connection</p><h3>Instagram post data</h3></div><span class="consent-badge" data-instagram-status>Checking</span></div><p class="panel-copy" data-instagram-copy>Checking the Instagram connection.</p><div class="rule-grid instagram-setup"><span>01</span><p>Use a distinct <strong>utm_campaign</strong> for each post or reel, and the post shortcode as <strong>utm_content</strong>.</p><span>02</span><p>Website sessions, carts, and paid orders appear here even before Meta post metrics are connected.</p></div></section>
+            <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Website signal</p><h3>Instagram campaigns</h3></div></div><div class="rank-list" data-instagram-campaign-list></div></section>
+          </div>
+          <section class="panel table-panel"><div class="panel-heading"><div><p class="eyebrow">Latest posts</p><h3>Post engagement</h3></div><span class="muted-label">Meta connection required</span></div><div class="data-table-wrap"><table data-sort-table="instagram-posts"><thead><tr><th><button type="button" data-sort-key="timestamp">Published</button></th><th><button type="button" data-sort-key="caption">Post</button></th><th><button type="button" data-sort-key="mediaType">Type</button></th><th><button type="button" data-sort-key="likes">Likes</button></th><th><button type="button" data-sort-key="comments">Comments</button></th><th>Open</th></tr></thead><tbody data-instagram-posts-table></tbody></table></div></section>
+        </section>
+
+        <section class="view" data-view-panel="reports" aria-labelledby="monthly-title" hidden>
+          <div class="section-heading"><div><p class="eyebrow">05 / Reports</p><h2 id="monthly-title">Read the rhythm</h2></div><p class="section-note">Switch between daily, weekly, and monthly rollups. Tables remain sortable so the useful change rises to the top.</p></div>
+          <section class="panel table-panel"><div class="toolbar-row"><div><p class="eyebrow">Time comparison</p><h3>Performance over time</h3></div><label class="period-control">Group by<select data-report-grain aria-label="Report time grouping"><option value="daily">Daily</option><option value="weekly" selected>Weekly</option><option value="monthly">Monthly</option></select></label></div><div class="data-table-wrap"><table data-sort-table="time-series"><thead><tr><th><button type="button" data-sort-key="label">Period</button></th><th><button type="button" data-sort-key="visitors">Visitors</button></th><th><button type="button" data-sort-key="productViews">Product views</button></th><th><button type="button" data-sort-key="added">Carts</button></th><th><button type="button" data-sort-key="checkouts">Checkouts</button></th><th><button type="button" data-sort-key="orders">Paid orders</button></th><th class="number"><button type="button" data-sort-key="cashNetSales">Cash sales</button></th></tr></thead><tbody data-time-series-table></tbody></table></div></section>
           <div class="toolbar-row"><div><p class="eyebrow">Reporting month</p><h3 data-monthly-title>Current month</h3></div><div class="monthly-actions"><label class="period-control">Month <input type="month" data-monthly-month aria-label="Monthly report month" /></label><button class="button" type="button" data-export-monthly-jpg>Export JPEG</button><button class="button button-dark" type="button" data-export-monthly-pdf>Export PDF</button></div></div>
           <div class="metrics-grid">
             <article class="metric-panel"><span>Cash net sales</span><strong data-monthly-metric="sales">Rp 0</strong><small data-monthly-compare="sales">No previous-month comparison</small></article>

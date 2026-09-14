@@ -172,6 +172,13 @@ td.number { font-variant-numeric: tabular-nums; }
 .health-list p:first-child { border-top: 0; padding-top: 0; }
 .health-list span { color: var(--muted); text-align: right; }
 .page-foot { display: flex; justify-content: space-between; gap: 16px; margin-top: 38px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); }
+.priority { display: inline-block; min-width: 72px; font-size: 9px; letter-spacing: .06em; text-transform: uppercase; }
+.priority-1 { color: #9a2c00; }
+.priority-2 { color: var(--orange); }
+.priority-3 { color: var(--green); }
+.priority-4 { color: var(--muted); }
+.outbound-link { border-bottom: 1px solid var(--ink); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.instagram-setup { margin-top: 18px; }
 
 @media (max-width: 960px) {
   .app-shell { grid-template-columns: minmax(0, 1fr); width: 100%; }

@@ -1,4 +1,4 @@
-const state = { dashboard: null, view: "overview", sorts: {} };
+const state = { dashboard: null, view: "overview", sorts: {}, reportGrain: "weekly" };
 const money = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat("id-ID", { style: "percent", maximumFractionDigits: 2 });
@@ -6,6 +6,10 @@ const sortDefaults = {
   products: { key: "sales", direction: "desc" },
   "monthly-campaigns": { key: "sales", direction: "desc" },
   "monthly-products": { key: "sales", direction: "desc" },
+  opportunities: { key: "priority", direction: "asc" },
+  "catalog-products": { key: "sales", direction: "desc" },
+  "instagram-posts": { key: "timestamp", direction: "desc" },
+  "time-series": { key: "label", direction: "desc" },
   sources: { key: "sessions", direction: "desc" },
   campaigns: { key: "sales", direction: "desc" },
   contacts: { key: "lastOrder", direction: "desc" },
@@ -71,6 +75,11 @@ function renderDashboard(data) {
   document.querySelector("[data-status-copy]").textContent = `${integer.format(data.health.eventRows)} consented events and ${integer.format(data.health.orderRows)} commerce records loaded.`;
   renderChart(data.daily);
   renderProducts(data.products);
+  renderOpportunities(data.products);
+  renderCatalogProducts(data.products);
+  renderCheckout(data);
+  renderInstagram(data);
+  renderTimeSeries(data.daily);
   renderAudience(data);
   renderInsights(data);
   renderMonthly(data.monthly || {});
@@ -106,6 +115,128 @@ function renderInsights(data) {
 function renderProducts(rows) {
   const sorted = sortRows("products", rows, (item, key) => item[key]);
   document.querySelector("[data-products-table]").innerHTML = sorted.map((item) => `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.productClicks)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(7, "No product activity in this period.");
+}
+
+function renderCatalogProducts(rows) {
+  const sorted = sortRows("catalog-products", rows, (item, key) => item[key]);
+  const target = document.querySelector("[data-catalog-products-table]");
+  if (!target) return;
+  target.innerHTML = sorted.map((item) => productTableRow(item)).join("") || emptyRow(7, "No product activity in this period.");
+}
+
+function renderOpportunities(rows) {
+  const opportunities = rows.map(productOpportunity);
+  const sorted = sortRows("opportunities", opportunities, (item, key) => item[key]);
+  const target = document.querySelector("[data-opportunities-table]");
+  if (!target) return;
+  target.innerHTML = sorted.map((item) => `<tr><td><strong class="priority priority-${item.priority}">${escapeHtml(item.priorityLabel)}</strong></td><td><strong>${escapeHtml(item.title)}</strong><br><span>${escapeHtml(item.artist || "-")}</span></td><td>${escapeHtml(item.signal)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`).join("") || emptyRow(7, "No product signals in this period.");
+}
+
+function productTableRow(item) {
+  return `<tr><td><strong>${escapeHtml(item.title)}</strong></td><td>${escapeHtml(item.artist || "-")}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.productClicks)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.sales)}</td></tr>`;
+}
+
+function productOpportunity(item) {
+  const views = Number(item.productViews || 0);
+  const added = Number(item.added || 0);
+  const orders = Number(item.orders || 0);
+  if (added > 0 && orders === 0) return { ...item, priority: 1, priorityLabel: "Check now", signal: "Cart interest, no paid order" };
+  if (views >= 3 && added === 0) return { ...item, priority: 2, priorityLabel: "Improve", signal: "Interest without a cart" };
+  if (orders > 0) return { ...item, priority: 3, priorityLabel: "Working", signal: "Already converting" };
+  return { ...item, priority: 4, priorityLabel: "Watch", signal: views ? "Early product attention" : "No measured signal" };
+}
+
+function renderCheckout(data) {
+  const outcomes = data.orderOutcomes || {};
+  setText('[data-checkout-metric="abandonment"]', percent.format(data.metrics.cartAbandonment || 0));
+  setText('[data-checkout-metric="paid"]', integer.format(outcomes.paid || 0));
+  setText('[data-checkout-metric="expired"]', integer.format(outcomes.expired || 0));
+  setText('[data-checkout-metric="refunded"]', integer.format(outcomes.refunded || 0));
+
+  const funnel = document.querySelector("[data-checkout-funnel]");
+  const steps = Array.isArray(data.funnel) ? data.funnel : [];
+  const max = Math.max(1, steps[0]?.value || 0);
+  if (funnel) {
+    funnel.innerHTML = steps.map((step) => `<div class="funnel-step"><span>${escapeHtml(step.label)}</span><div class="funnel-track"><i data-bar-width="${Math.max(step.value ? 2 : 0, Number(step.value || 0) / max * 100)}"></i></div><strong>${integer.format(step.value || 0)}</strong></div>`).join("") || `<p class="panel-copy">No measured checkout activity in this period.</p>`;
+    applyDynamicBarSizes(funnel);
+  }
+
+  const messages = [];
+  if (Number(outcomes.expired || 0)) messages.push(["Payment expiry", `${integer.format(outcomes.expired)} payment window${Number(outcomes.expired) === 1 ? "" : "s"} expired. Check whether the payment window and customer follow-up are appropriate.`]);
+  if (Number(data.metrics.addToCart || 0)) messages.push(["Cart to checkout", `${percent.format(data.metrics.cartAbandonment || 0)} of measured cart sessions did not begin checkout.`]);
+  if (Number(outcomes.refunded || 0)) messages.push(["Refunds", `${integer.format(outcomes.refunded)} verified refund${Number(outcomes.refunded) === 1 ? "" : "s"} in this period.`]);
+  if (!messages.length) messages.push(["No operational warning", "No expired payments, refunds, or measured cart activity in this period."]);
+  const target = document.querySelector("[data-checkout-insights]");
+  if (target) target.innerHTML = messages.map(([title, copy]) => `<li><strong>${escapeHtml(title)}</strong><span>${escapeHtml(copy)}</span></li>`).join("");
+}
+
+function renderInstagram(data) {
+  const sources = (data.sources || []).filter((item) => String(item.source || "").toLowerCase() === "instagram");
+  const totals = sources.reduce((sum, item) => ({
+    sessions: sum.sessions + Number(item.sessions || 0),
+    productViews: sum.productViews + Number(item.productViews || 0),
+    paidOrders: sum.paidOrders + Number(item.paidOrders || 0),
+    sales: sum.sales + Number(item.sales || 0)
+  }), { sessions: 0, productViews: 0, paidOrders: 0, sales: 0 });
+  setText('[data-instagram-metric="sessions"]', integer.format(totals.sessions));
+  setText('[data-instagram-metric="views"]', integer.format(totals.productViews));
+  setText('[data-instagram-metric="orders"]', integer.format(totals.paidOrders));
+  setText('[data-instagram-metric="sales"]', money.format(totals.sales));
+
+  const instagram = data.instagram || {};
+  const status = document.querySelector("[data-instagram-status]");
+  if (status) {
+    const connected = instagram.status === "connected";
+    status.textContent = connected ? "Connected" : instagram.status === "unavailable" ? "Unavailable" : "Setup required";
+    status.classList.toggle("is-on", connected);
+  }
+  setText("[data-instagram-copy]", instagram.message || "Instagram post metrics are not configured. Website attribution remains available.");
+
+  const campaignTarget = document.querySelector("[data-instagram-campaign-list]");
+  if (campaignTarget) {
+    const ranked = [...sources].sort((left, right) => Number(right.sales || 0) - Number(left.sales || 0));
+    campaignTarget.innerHTML = ranked.map((item) => `<div class="rank-row"><span>${escapeHtml(item.campaign || "Untagged Instagram link")}</span><div class="rank-bar"><i data-bar-width="${Math.max(2, totals.sessions ? Number(item.sessions || 0) / totals.sessions * 100 : 0)}"></i></div><strong>${money.format(item.sales || 0)}</strong></div>`).join("") || `<p class="panel-copy">No Instagram-attributed website visits in this period. Add UTM tags to links in bio, stories, and post links.</p>`;
+    applyDynamicBarSizes(campaignTarget);
+  }
+
+  const posts = sortRows("instagram-posts", instagram.posts || [], (item, key) => item[key]);
+  const postTarget = document.querySelector("[data-instagram-posts-table]");
+  if (postTarget) postTarget.innerHTML = posts.map((item) => `<tr><td>${formatDate(item.timestamp)}</td><td><strong>${escapeHtml(item.caption)}</strong></td><td>${escapeHtml(item.mediaType)}</td><td>${integer.format(item.likes)}</td><td>${integer.format(item.comments)}</td><td><a class="outbound-link" href="${escapeHtml(item.permalink)}" target="_blank" rel="noreferrer">View</a></td></tr>`).join("") || emptyRow(6, instagram.status === "setup_required" ? "Connect Meta to see post engagement. Website attribution is already measured through UTM links." : "No Instagram posts returned for this account.");
+}
+
+function renderTimeSeries(rows) {
+  const grain = document.querySelector("[data-report-grain]")?.value || state.reportGrain;
+  state.reportGrain = grain;
+  const periods = rollupTimeSeries(rows || [], grain);
+  const sorted = sortRows("time-series", periods, (item, key) => item[key]);
+  const target = document.querySelector("[data-time-series-table]");
+  if (!target) return;
+  target.innerHTML = sorted.map((item) => `<tr><td><strong>${escapeHtml(item.label)}</strong></td><td>${integer.format(item.visitors)}</td><td>${integer.format(item.productViews)}</td><td>${integer.format(item.added)}</td><td>${integer.format(item.checkouts)}</td><td>${integer.format(item.orders)}</td><td class="number">${money.format(item.cashNetSales)}</td></tr>`).join("") || emptyRow(7, "No activity in this reporting period.");
+}
+
+function rollupTimeSeries(rows, grain) {
+  const grouped = new Map();
+  rows.forEach((row) => {
+    const label = timeSeriesLabel(row.date, grain);
+    const previous = grouped.get(label) || { label, visitors: 0, productViews: 0, added: 0, checkouts: 0, orders: 0, cashNetSales: 0 };
+    previous.visitors += Number(row.visitors || 0);
+    previous.productViews += Number(row.productViews || 0);
+    previous.added += Number(row.added || 0);
+    previous.checkouts += Number(row.checkouts || 0);
+    previous.orders += Number(row.orders || 0);
+    previous.cashNetSales += Number(row.cashNetSales || 0);
+    grouped.set(label, previous);
+  });
+  return [...grouped.values()];
+}
+
+function timeSeriesLabel(date, grain) {
+  if (grain === "daily") return String(date || "");
+  if (grain === "monthly") return String(date || "").slice(0, 7);
+  const value = new Date(`${String(date || "").slice(0, 10)}T00:00:00Z`);
+  if (Number.isNaN(value.getTime())) return String(date || "");
+  value.setUTCDate(value.getUTCDate() - ((value.getUTCDay() + 6) % 7));
+  return `Week of ${value.toISOString().slice(0, 10)}`;
 }
 
 function renderChart(rows) {
@@ -270,6 +401,10 @@ function updateSortIndicators() {
 function refreshSortedTable(table) {
   if (!state.dashboard) return;
   if (table === "products") renderProducts(state.dashboard.products);
+  if (table === "opportunities") renderOpportunities(state.dashboard.products);
+  if (table === "catalog-products") renderCatalogProducts(state.dashboard.products);
+  if (table === "instagram-posts") renderInstagram(state.dashboard);
+  if (table === "time-series") renderTimeSeries(state.dashboard.daily || []);
   if (table === "monthly-campaigns" || table === "monthly-products") renderMonthly(state.dashboard.monthly || {});
   if (table === "sources") renderAudience(state.dashboard);
   if (table === "campaigns") renderCampaigns(document.querySelector("[data-campaign-search]").value || "");
@@ -336,6 +471,11 @@ document.querySelector("[data-refresh]").addEventListener("click", loadDashboard
 document.querySelector("[data-logout]").addEventListener("click", async () => { await request("/api/auth/logout", { method: "POST" }).catch(() => {}); showLogin(); });
 document.querySelector("[data-period]").addEventListener("change", loadDashboard);
 document.querySelector("[data-monthly-month]").addEventListener("change", loadDashboard);
+document.querySelector("[data-report-grain]").addEventListener("change", (event) => {
+  state.reportGrain = event.target.value;
+  renderTimeSeries(state.dashboard?.daily || []);
+  updateSortIndicators();
+});
 document.querySelector("[data-campaign-search]").addEventListener("input", (event) => renderCampaigns(event.target.value));
 document.querySelector("[data-contact-search]").addEventListener("input", (event) => renderContacts(event.target.value));
 document.addEventListener("click", (event) => {

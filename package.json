@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.mjs",
-    "build": "node scripts/build.mjs && node scripts/verify-public-release-lock.mjs && node scripts/verify-api-security-headers.mjs && node scripts/verify-jne-official-client.mjs && node scripts/verify-artist-directory-consistency.mjs && node scripts/verify-home-collections.mjs && node scripts/verify-public-blog.mjs && node scripts/verify-public-request-item.mjs && node scripts/verify-public-commerce-boundary.mjs",
+    "build": "node scripts/build.mjs && node scripts/verify-public-release-lock.mjs && node scripts/verify-api-security-headers.mjs && node scripts/verify-jne-official-client.mjs && node scripts/verify-instagram-insights.mjs && node scripts/verify-artist-directory-consistency.mjs && node scripts/verify-home-collections.mjs && node scripts/verify-public-blog.mjs && node scripts/verify-public-request-item.mjs && node scripts/verify-public-commerce-boundary.mjs",
     "test:catalog": "node scripts/verify-catalog-integrity.mjs",
     "test:records-filter": "node scripts/verify-records-artist-filter.mjs",
     "test:labels": "node scripts/verify-label-assets.mjs",
@@ -40,6 +40,7 @@
     "test:finance-storage": "node scripts/verify-finance-section-storage.mjs",
     "test:finance-catalog-sync": "node scripts/verify-finance-catalog-identity-sync.mjs",
     "test:marketing": "node scripts/verify-marketing-dashboard.mjs",
+    "test:instagram": "node scripts/verify-instagram-insights.mjs",
     "seed:admin": "node scripts/seed-admin-store.mjs",
     "sync:catalog": "node scripts/sync-catalog-snapshots.mjs",
     "collect:jne-tariffs": "node scripts/collect-jne-tariff-snapshot.mjs",

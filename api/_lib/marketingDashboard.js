@@ -1,6 +1,7 @@
 import { requireWorkspace } from "./auth.js";
 import { consumeCommerceRateLimit, requestClientAddress } from "./commerce.js";
 import { isSupabaseConfigured, supabaseFetch } from "./supabase.js";
+import { getInstagramInsights } from "./instagramInsights.js";
 
 const REPORTING_TIME_ZONE = "Asia/Jakarta";
 
@@ -19,7 +20,7 @@ export async function handleMarketingDashboard(req, res, url) {
   const { fromDate, toDate } = reportingRange(days);
   const queryRange = `metric_date=gte.${fromDate}&metric_date=lte.${toDate}&order=metric_date.asc`;
   const eventSince = encodeURIComponent(`${fromDate}T00:00:00+07:00`);
-  const [dailyRows, sessionPayload, productPayload, contactPayload, monthlyPayload, recentEvents, newestOrder] = await Promise.all([
+  const [dailyRows, sessionPayload, productPayload, contactPayload, monthlyPayload, recentEvents, newestOrder, instagram] = await Promise.all([
     supabaseFetch(`marketing_daily_metrics?select=*&${queryRange}`, { service: true }),
     supabaseFetch("rpc/marketing_dashboard_session_summary", { method: "POST", service: true, body: { p_from_date: fromDate, p_to_date: toDate } }),
     supabaseFetch("rpc/marketing_dashboard_products", { method: "POST", service: true, body: { p_from_date: fromDate, p_to_date: toDate } }),
@@ -28,7 +29,8 @@ export async function handleMarketingDashboard(req, res, url) {
     // This is only the latest-activity panel. Dashboard totals never read
     // raw event rows in the API, so a high-volume event stream cannot truncate metrics.
     supabaseFetch(`marketing_events?select=event_type,anonymous_session_id,page_path,source,occurred_at&occurred_at=gte.${eventSince}&order=occurred_at.desc&limit=50`, { service: true }),
-    supabaseFetch("order_records?select=updated_at,created_at&order=updated_at.desc&limit=1", { service: true })
+    supabaseFetch("order_records?select=updated_at,created_at&order=updated_at.desc&limit=1", { service: true }),
+    getInstagramInsights()
   ]);
 
   return respond(res, 200, {
@@ -43,7 +45,8 @@ export async function handleMarketingDashboard(req, res, url) {
       contactsSummary: contactPayload || {},
       monthlyReport: monthlyPayload || {},
       recentEvents: recentEvents || [],
-      newestOrder: newestOrder?.[0] || null
+      newestOrder: newestOrder?.[0] || null,
+      instagram
     })
   });
 }
@@ -58,7 +61,8 @@ export function buildRollupMarketingDashboard({
   contactsSummary = {},
   monthlyReport = {},
   recentEvents = [],
-  newestOrder = null
+  newestOrder = null,
+  instagram = {}
 } = {}) {
   const sessionMetrics = sessionSummary.metrics || {};
   const totals = dailyRows.reduce((sum, row) => ({
@@ -123,6 +127,12 @@ export function buildRollupMarketingDashboard({
     orderOutcomes: { paid: totals.paidOrders, unpaid: 0, expired: totals.expired, cancelled: totals.cancelled, refunded: totals.refundedOrders },
     contacts: Array.isArray(contactsSummary.contacts) ? contactsSummary.contacts : [],
     monthly: monthlyReport,
+    instagram: {
+      status: String(instagram.status || "setup_required"),
+      message: String(instagram.message || "Instagram connection is not configured."),
+      account: String(instagram.account || ""),
+      posts: Array.isArray(instagram.posts) ? instagram.posts : []
+    },
     events: recentEvents.map((event) => ({
       time: event.occurred_at,
       event: event.event_type,
