@@ -4,6 +4,7 @@ import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicPr
 import { recommendedProducts } from "./data/productRecommendations.js";
 import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
 import { searchCheckoutDestinations, checkoutQuoteError } from "./data/checkoutDestinations.js";
+import { checkoutShippingServiceLabel } from "./data/jneServiceLabels.js";
 import { termsOfUseContent } from "./data/termsOfUse.js";
 import { privacyPolicyContent } from "./data/privacyPolicy.js";
 import { shippingReturnsContent } from "./data/shippingReturns.js";
@@ -3181,7 +3182,7 @@ function bindEvents() {
     const option = state.checkoutShippingQuote?.options?.find((item) => item.key === checkoutService?.value) || state.checkoutShippingQuote?.options?.[0];
     if (!option) return;
     setCheckoutTotals(money.format(option.shippingTotal), money.format(merchandiseTotal + option.shippingTotal));
-    showCheckoutQuote(`${state.checkoutShippingQuote.packages.length} package${state.checkoutShippingQuote.packages.length === 1 ? "" : "s"} / ${state.checkoutShippingQuote.totalChargeableWeightKg} kg chargeable / ${option.courier} ${option.service}${option.eta ? ` / ${option.eta}` : ""}.`, "success");
+    showCheckoutQuote(`${state.checkoutShippingQuote.packages.length} package${state.checkoutShippingQuote.packages.length === 1 ? "" : "s"} / ${state.checkoutShippingQuote.totalChargeableWeightKg} kg chargeable / ${checkoutShippingServiceLabel(option)}${option.eta ? ` / ${option.eta}` : ""}.`, "success");
   };
   const requestCheckoutShippingQuote = async () => {
     if (!checkoutCity || shippingMethod?.value !== "JNE" || !checkoutCity.value) return;
@@ -3240,7 +3241,7 @@ function bindEvents() {
         payload.options.forEach((option) => {
           const node = document.createElement("option");
           node.value = option.key;
-          node.textContent = `${option.courier} ${option.service} / ${money.format(option.shippingTotal)}${option.eta ? ` / ${option.eta}` : ""}`;
+          node.textContent = `${checkoutShippingServiceLabel(option)} / ${money.format(option.shippingTotal)}${option.eta ? ` / ${option.eta}` : ""}`;
           checkoutService.append(node);
         });
       }
