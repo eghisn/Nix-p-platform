@@ -26,4 +26,14 @@ const login = await readFile(new URL("../api/auth/login.js", import.meta.url), "
 assert.match(login, /consumeCommerceRateLimit\("workspace-login", subject, \{ limit: 8, windowSeconds: 900 \}\)/, "Workspace login must use a server-side rate limit.");
 assert.match(login, /Too many login attempts/, "Login throttling must return a clear retry response.");
 
-console.log("API security headers and login throttling contract passed.");
+const catalog = await readFile(new URL("../api/catalog.js", import.meta.url), "utf8");
+const requestHandler = catalog.slice(catalog.indexOf("async function handleRequestItem"), catalog.indexOf("async function handleMakeOffer"));
+const offerHandler = catalog.slice(catalog.indexOf("async function handleMakeOffer"), catalog.indexOf("async function handleOfferStatus"));
+assert.match(requestHandler, /consumeCommerceRateLimit\("catalog-request-item", requestClientAddress\(req\), \{ limit: 5, windowSeconds: 900 \}\)/, "Request Item must have a server-side, per-client submission limit.");
+assert.match(requestHandler, /Too many item requests/, "Request Item must return a clear retry response when limited.");
+assert.ok(requestHandler.indexOf("consumeCommerceRateLimit") < requestHandler.indexOf('upsertRawRows("requests"'), "Request Item must be limited before a row or email can be created.");
+assert.match(offerHandler, /consumeCommerceRateLimit\("catalog-make-offer", requestClientAddress\(req\), \{ limit: 6, windowSeconds: 900 \}\)/, "Make an Offer must have a server-side, per-client submission limit.");
+assert.match(offerHandler, /Too many offers/, "Make an Offer must return a clear retry response when limited.");
+assert.ok(offerHandler.indexOf("consumeCommerceRateLimit") < offerHandler.indexOf('upsertRawRows("offers"'), "Make an Offer must be limited before a row or email can be created.");
+
+console.log("API security headers and public submission rate-limit contracts passed.");

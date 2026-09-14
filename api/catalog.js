@@ -6,6 +6,7 @@ import { renderCatalogPage } from "./_lib/catalogPage.js";
 import { recordSystemEvent } from "./_lib/observability.js";
 import { handleAnalyticsEvent } from "./_lib/analytics.js";
 import { handleMarketingDashboard } from "./_lib/marketingDashboard.js";
+import { consumeCommerceRateLimit, requestClientAddress } from "./_lib/commerce.js";
 
 export default async function handler(req, res) {
   try {
@@ -96,6 +97,9 @@ async function handleRequestItem(req, res) {
   const body = parseBody(req.body);
   if (String(body.company || "").trim()) return json(res, 400, { ok: false, error: "Request could not be submitted." });
   const request = normalizeRequest(body);
+  if (!(await consumeCommerceRateLimit("catalog-request-item", requestClientAddress(req), { limit: 5, windowSeconds: 900 }))) {
+    return json(res, 429, { ok: false, error: "Too many item requests. Please wait a few minutes and try again." });
+  }
   await upsertRawRows("requests", request);
   const [internal, customer] = await Promise.all([
     sendRequestNotification(request).catch((error) => ({ delivered: false, error: error instanceof Error ? error.message : "Notification delivery failed." })),
@@ -144,6 +148,9 @@ async function handleMakeOffer(req, res) {
     const error = new Error(`Offer must be at least ${formatRupiah(minimum)}.`);
     error.statusCode = 422;
     throw error;
+  }
+  if (!(await consumeCommerceRateLimit("catalog-make-offer", requestClientAddress(req), { limit: 6, windowSeconds: 900 }))) {
+    return json(res, 429, { ok: false, error: "Too many offers. Please wait a few minutes and try again." });
   }
   const offer = {
     id: `offer-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
