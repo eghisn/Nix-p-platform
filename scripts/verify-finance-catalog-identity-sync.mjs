@@ -70,7 +70,7 @@ const posterStock = {
   listingMode: "Standard Sale"
 };
 const posterDraft = draftProductFromFinanceStock(posterStock, 1);
-assert.equal(posterDraft.category, "Objects");
+assert.equal(posterDraft.category, "Publishing");
 assert.equal(posterDraft.format, "Poster");
 assert.equal(posterDraft.display_format, "Poster");
 assert.equal(posterDraft.raw.financeItemType, "Poster");

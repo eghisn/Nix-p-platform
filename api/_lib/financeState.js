@@ -25,8 +25,8 @@ const EMPTY_FINANCE_STATE = {
 };
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const APPAREL_TYPES = new Set(["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap"]);
-const PUBLISHING_TYPES = new Set(["Book", "Zine", "Magazine"]);
-const OBJECT_TYPES = new Set(["Object", "Poster"]);
+const PUBLISHING_TYPES = new Set(["Poster", "Book", "Zine", "Magazine"]);
+const OBJECT_TYPES = new Set(["Object"]);
 const FINANCE_ITEM_TYPES = new Set([...RECORD_FORMATS, ...APPAREL_TYPES, ...PUBLISHING_TYPES, ...OBJECT_TYPES]);
 const FINANCE_CATALOG_SYNC_LEASE_MS = 2 * 60 * 1000;
 const FINANCE_CATALOG_SYNC_MAX_ATTEMPTS = 5;
