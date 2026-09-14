@@ -59,7 +59,7 @@ await build({
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 
-for (const entry of ["index.html", "src", "public", "marketing", "vercel.json"]) {
+for (const entry of ["index.html", "public", "marketing", "vercel.json"]) {
   if (existsSync(`${root}/${entry}`)) {
     await cp(`${root}/${entry}`, `${dist}/${entry}`, { recursive: true });
   }
@@ -67,20 +67,32 @@ for (const entry of ["index.html", "src", "public", "marketing", "vercel.json"])
 
 await rm(`${dist}/public/data/admin-store.json`, { force: true });
 
-const dataModule = `${dist}/src/data/sampleData.js`;
-if (existsSync(dataModule)) {
-  const source = await readFile(dataModule, "utf8");
-  const sanitized = source
-    .replace(/export const inventory = products\.map\(\(product, index\) => \(\{[\s\S]*?\}\)\);\r?\n/, "export const inventory = [];\n")
-    .replace(/export const orders = \[[\s\S]*?\r?\n\];\r?\n/, "export const orders = [];\n")
-    .replace(/export const requestItems = \[[\s\S]*?\r?\n\];\r?\n/, "export const requestItems = [];\n")
-    .replace(/export const cashflow = \[[\s\S]*?\r?\n\];\r?\n/, "export const cashflow = [];\n");
-  await writeFile(dataModule, sanitized);
-}
+// Build the browser bundle from a private staging copy. The seed catalog is useful
+// for local development and server-side tooling, but it must never be shipped in a
+// public deployment where an old Draft record could be inspected or restored.
+const browserSource = `${dist}/.build-src`;
+await cp(`${root}/src`, browserSource, { recursive: true });
+await writeFile(
+  `${browserSource}/data/sampleData.js`,
+  [
+    'export const requestStatuses = ["New", "Searching", "Found", "Unavailable", "Contacted", "Closed"];',
+    "export const artistNames = [];",
+    "export const products = [];",
+    "export const inventory = [];",
+    "export const orders = [];",
+    "export const requestItems = [];",
+    "export const cashflow = [];",
+    ""
+  ].join("\n")
+);
+
+// The stylesheet is the only source asset served directly by the static site.
+await mkdir(`${dist}/src`, { recursive: true });
+await cp(`${root}/src/styles`, `${dist}/src/styles`, { recursive: true });
 
 await mkdir(`${dist}/assets`, { recursive: true });
 await build({
-  entryPoints: [`${dist}/src/main.js`],
+  entryPoints: [`${browserSource}/main.js`],
   outdir: `${dist}/assets`,
   bundle: true,
   format: "esm",
@@ -91,6 +103,7 @@ await build({
   target: "es2022",
   legalComments: "none"
 });
+await rm(browserSource, { recursive: true, force: true });
 
 const bundleUrl = `/assets/app-${releaseRevision}.js`;
 const publicStorePath = `${dist}/public/data/public-store.json`;

@@ -37,8 +37,18 @@ const snapshotPath = join(dist, "public", "data", "releases", `${expectedRevisio
 const bundlePath = join(dist, "assets", `app-${expectedRevision}.js`);
 if (!existsSync(snapshotPath)) throw new Error("Revisioned catalog snapshot was not built.");
 if (!existsSync(bundlePath)) throw new Error("Revisioned application bundle was not built.");
+if (existsSync(join(dist, "src", "data", "sampleData.js"))) {
+  throw new Error("Seed catalog source must not be deployed in the public release.");
+}
 
 const snapshot = JSON.parse(await readFile(snapshotPath, "utf8"));
 if (snapshot.releaseRevision !== expectedRevision) throw new Error("Catalog payload revision does not match its URL.");
+
+const bundle = await readFile(bundlePath, "utf8");
+for (const privateMarker of ["NXP-2026-CST-0007", "NXP-2026-PUB-0001"]) {
+  if (bundle.includes(privateMarker)) {
+    throw new Error(`Seed catalog marker ${privateMarker} leaked into the public application bundle.`);
+  }
+}
 
 console.log(`Verified ${files.length} public pages on release ${expectedRevision}.`);
