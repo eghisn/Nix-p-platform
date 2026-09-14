@@ -1429,7 +1429,7 @@
     const investorDestinationAccounts = ["Jenius account", "BCA account"];
     const inventorySources = ["Business Purchase", "Personal Collection", "Consignment", "Founder Purchase / Awaiting Reimbursement"];
     const vinylItemTypes = ["Vinyl", "Vinyl 12\"", "Vinyl 10\"", "Vinyl 7\""];
-    const itemTypes = [...vinylItemTypes, "CD", "Cassette", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap", "Object"];
+    const itemTypes = [...vinylItemTypes, "CD", "Cassette", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap", "Poster", "Book", "Zine", "Magazine", "Object"];
     const itemConditions = ["New-Sealed", "New-Unsealed", "Used Excellent", "Used Good"];
     const listingModes = ["Standard Sale", "Private Collection / Offer Only"];
     const ownerDueCategory = "Owner Personal Use / Reimbursement Due";
@@ -1855,6 +1855,21 @@
           ${selectField("Source", "source", inventorySources, true, "Business Purchase")}
           ${selectField("Item Type", "itemType", itemTypes, true, "Vinyl")}
           ${selectField("Vinyl Size", "vinylSize", ["", "12\"", "10\"", "7\""], false, "", "data-vinyl-size-field")}
+          <div class="field full" data-finance-poster-fields hidden>
+            <div class="fields">
+              ${field("Dimensions", "dimensions", "text", "", false, "A2 / 42 x 59.4 cm")}
+              ${field("Print Details", "printDetails", "text", "", false, "Screen print, signed edition of 50")}
+            </div>
+          </div>
+          <div class="field full" data-finance-publication-fields hidden>
+            <div class="fields">
+              ${field("Publisher", "publisher", "text", "", false, "Publisher / imprint")}
+              ${field("ISBN / ISSN", "isbn", "text", "", false, "If assigned")}
+              ${field("Pages", "pages", "text", "", false, "Page count")}
+              ${field("Binding", "binding", "text", "", false, "Perfect bound, staple bound, hardcover")}
+              ${field("Language", "language", "text", "", false, "Primary language")}
+            </div>
+          </div>
           ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
           ${selectField("Listing mode", "listingMode", listingModes, true, "Standard Sale")}
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
@@ -1878,6 +1893,21 @@
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
           ${selectField("Item", "item", itemTypes, true, "Vinyl")}
           ${selectField("Vinyl Size", "vinylSize", ["", "12\"", "10\"", "7\""], false, "", "data-vinyl-size-field")}
+          <div class="field full" data-finance-poster-fields hidden>
+            <div class="fields">
+              ${field("Dimensions", "dimensions", "text", "", false, "A2 / 42 x 59.4 cm")}
+              ${field("Print Details", "printDetails", "text", "", false, "Screen print, signed edition of 50")}
+            </div>
+          </div>
+          <div class="field full" data-finance-publication-fields hidden>
+            <div class="fields">
+              ${field("Publisher", "publisher", "text", "", false, "Publisher / imprint")}
+              ${field("ISBN / ISSN", "isbn", "text", "", false, "If assigned")}
+              ${field("Pages", "pages", "text", "", false, "Page count")}
+              ${field("Binding", "binding", "text", "", false, "Perfect bound, staple bound, hardcover")}
+              ${field("Language", "language", "text", "", false, "Primary language")}
+            </div>
+          </div>
           ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
           ${field("Artist", "artist", "text", "", false, "Artist name")}
           ${field("Title", "title", "text", "", true, "Artwork / item title")}
@@ -1900,8 +1930,8 @@
         </div>
       `;
       syncGeneralInvestorFields();
-      syncVinylSizeField(el.inventoryForm, "itemType");
-      syncVinylSizeField(el.stockForm, "item");
+      syncItemTypeFields(el.inventoryForm, "itemType");
+      syncItemTypeFields(el.stockForm, "item");
     }
 
     function field(label, name, type, value, required, placeholder = "", step = "", wrapperAttributes = "") {
@@ -1962,6 +1992,19 @@
       wrapper.hidden = !isVinyl || Boolean(selection.vinylSize);
       if (selection.vinylSize) form.elements.vinylSize.value = `${selection.vinylSize}\"`;
       if (!isVinyl) form.elements.vinylSize.value = "";
+    }
+
+    function syncItemTypeFields(form, itemField) {
+      syncVinylSizeField(form, itemField);
+      const item = vinylItemSelection(form?.elements[itemField]?.value).item;
+      const isPoster = item === "Poster";
+      const isPublication = ["Book", "Zine", "Magazine"].includes(item);
+      form?.querySelectorAll("[data-finance-poster-fields]").forEach(wrapper => {
+        wrapper.hidden = !isPoster;
+      });
+      form?.querySelectorAll("[data-finance-publication-fields]").forEach(wrapper => {
+        wrapper.hidden = !isPublication;
+      });
     }
 
     function attachExportControls() {
@@ -2174,7 +2217,7 @@
       });
 
       el.inventoryForm.addEventListener("change", event => {
-        if (event.target.name === "itemType") syncVinylSizeField(el.inventoryForm, "itemType");
+        if (event.target.name === "itemType") syncItemTypeFields(el.inventoryForm, "itemType");
       });
 
       el.stockForm.addEventListener("submit", async event => {
@@ -2210,7 +2253,7 @@
       });
 
       el.stockForm.addEventListener("change", event => {
-        if (event.target.name === "item") syncVinylSizeField(el.stockForm, "item");
+        if (event.target.name === "item") syncItemTypeFields(el.stockForm, "item");
       });
 
       document.addEventListener("click", async event => {
@@ -2482,13 +2525,14 @@
       const unitCost = numeric(data.unitCost);
       const totalCost = qty * unitCost;
       const cashflowImpact = String(data.cashflowImpact ?? "").trim() === "" ? totalCost : numeric(data.cashflowImpact);
+      const itemSelection = vinylItemSelection(data.itemType);
       return {
         date: data.date,
         supplier: data.supplier.trim(),
         category: data.category,
         source: data.source,
-        itemType: vinylItemSelection(data.itemType).item,
-        vinylSize: vinylItemSelection(data.itemType).vinylSize || normalizeVinylSize(data.vinylSize),
+        itemType: itemSelection.item,
+        vinylSize: itemSelection.vinylSize || normalizeVinylSize(data.vinylSize),
         itemCondition: data.itemCondition,
         listingMode: data.listingMode,
         sku: data.sku.trim(),
@@ -2499,17 +2543,19 @@
         cashflowImpact,
         paymentMethod: data.paymentMethod,
         minimumAcceptableOffer: wholeAmount(data.minimumAcceptableOffer),
-        inventoryFamily: inventoryFamilyForValue(vinylItemSelection(data.itemType).item, data.sku)
+        inventoryFamily: inventoryFamilyForValue(itemSelection.item, data.sku),
+        ...itemTypeMetadata(data, itemSelection.item)
       };
     }
 
     function stockPayload(data, existing = {}) {
+      const itemSelection = vinylItemSelection(data.item);
       return recalculateStock({
         id: existing.id || uid(),
         purchaseId: existing.purchaseId,
         sku: data.sku.trim(),
-        item: vinylItemSelection(data.item).item,
-        vinylSize: vinylItemSelection(data.item).vinylSize || normalizeVinylSize(data.vinylSize),
+        item: itemSelection.item,
+        vinylSize: itemSelection.vinylSize || normalizeVinylSize(data.vinylSize),
         itemCondition: data.itemCondition,
         artist: data.artist.trim(),
         title: data.title.trim(),
@@ -2524,8 +2570,44 @@
         soldPrice: numeric(data.soldPrice),
         listingMode: data.listingMode,
         minimumAcceptableOffer: wholeAmount(data.minimumAcceptableOffer),
-        inventoryFamily: existing.inventoryFamily || inventoryFamilyForValue(vinylItemSelection(data.item).item, data.sku)
+        inventoryFamily: existing.inventoryFamily || inventoryFamilyForValue(itemSelection.item, data.sku),
+        ...itemTypeMetadata(data, itemSelection.item)
       });
+    }
+
+    function itemTypeMetadata(data, item) {
+      const value = name => String(data[name] || "").trim();
+      if (item === "Poster") {
+        return {
+          dimensions: value("dimensions"),
+          printDetails: value("printDetails"),
+          publisher: "",
+          isbn: "",
+          pages: "",
+          binding: "",
+          language: ""
+        };
+      }
+      if (["Book", "Zine", "Magazine"].includes(item)) {
+        return {
+          dimensions: "",
+          printDetails: "",
+          publisher: value("publisher"),
+          isbn: value("isbn"),
+          pages: value("pages"),
+          binding: value("binding"),
+          language: value("language")
+        };
+      }
+      return {
+        dimensions: "",
+        printDetails: "",
+        publisher: "",
+        isbn: "",
+        pages: "",
+        binding: "",
+        language: ""
+      };
     }
 
     function syncAllInventoryPurchases() {
@@ -2558,6 +2640,13 @@
         barcode: existing.barcode || "",
         catalogNumber: existing.catalogNumber || "",
         vinylSize: normalizeVinylSize(purchase.vinylSize) || normalizeVinylSize(existing.vinylSize),
+        dimensions: purchase.dimensions ?? existing.dimensions ?? "",
+        printDetails: purchase.printDetails ?? existing.printDetails ?? "",
+        publisher: purchase.publisher ?? existing.publisher ?? "",
+        isbn: purchase.isbn ?? existing.isbn ?? "",
+        pages: purchase.pages ?? existing.pages ?? "",
+        binding: purchase.binding ?? existing.binding ?? "",
+        language: purchase.language ?? existing.language ?? "",
         source: purchase.source || existing.source || "Business Purchase",
         acquisitionMonth: monthOf(purchase.date) || existing.acquisitionMonth || currentMonth,
         qty: numeric(purchase.qty) || numeric(existing.qty) || 1,
@@ -2661,11 +2750,18 @@
       setFormValue(el.inventoryForm, "source", item.source || "Business Purchase");
       setFormValue(el.inventoryForm, "itemType", itemTypeForForm(item.itemType, item.vinylSize));
       setFormValue(el.inventoryForm, "vinylSize", normalizeVinylSize(item.vinylSize) ? `${normalizeVinylSize(item.vinylSize)}\"` : "");
-      syncVinylSizeField(el.inventoryForm, "itemType");
+      syncItemTypeFields(el.inventoryForm, "itemType");
       setFormValue(el.inventoryForm, "itemCondition", item.itemCondition || "New-Sealed");
       setFormValue(el.inventoryForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.inventoryForm, "sku", item.sku);
       setFormValue(el.inventoryForm, "artistName", item.artistName);
+      setFormValue(el.inventoryForm, "dimensions", item.dimensions || "");
+      setFormValue(el.inventoryForm, "printDetails", item.printDetails || "");
+      setFormValue(el.inventoryForm, "publisher", item.publisher || "");
+      setFormValue(el.inventoryForm, "isbn", item.isbn || "");
+      setFormValue(el.inventoryForm, "pages", item.pages || "");
+      setFormValue(el.inventoryForm, "binding", item.binding || "");
+      setFormValue(el.inventoryForm, "language", item.language || "");
       setFormValue(el.inventoryForm, "qty", item.qty);
       setFormValue(el.inventoryForm, "unitCost", item.unitCost);
       setFormValue(el.inventoryForm, "cashflowImpact", inventoryCashflow(item));
@@ -2695,7 +2791,7 @@
       setFormValue(el.stockForm, "sku", item.sku);
       setFormValue(el.stockForm, "item", itemTypeForForm(item.item, item.vinylSize));
       setFormValue(el.stockForm, "vinylSize", normalizeVinylSize(item.vinylSize) ? `${normalizeVinylSize(item.vinylSize)}\"` : "");
-      syncVinylSizeField(el.stockForm, "item");
+      syncItemTypeFields(el.stockForm, "item");
       setFormValue(el.stockForm, "itemCondition", item.itemCondition || "New-Sealed");
       setFormValue(el.stockForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.stockForm, "artist", item.artist);
@@ -2703,6 +2799,13 @@
       setFormValue(el.stockForm, "edition", item.edition || "");
       setFormValue(el.stockForm, "barcode", item.barcode || "");
       setFormValue(el.stockForm, "catalogNumber", item.catalogNumber || "");
+      setFormValue(el.stockForm, "dimensions", item.dimensions || "");
+      setFormValue(el.stockForm, "printDetails", item.printDetails || "");
+      setFormValue(el.stockForm, "publisher", item.publisher || "");
+      setFormValue(el.stockForm, "isbn", item.isbn || "");
+      setFormValue(el.stockForm, "pages", item.pages || "");
+      setFormValue(el.stockForm, "binding", item.binding || "");
+      setFormValue(el.stockForm, "language", item.language || "");
       setFormValue(el.stockForm, "source", item.source || "Business Purchase");
       setFormValue(el.stockForm, "acquisitionMonth", item.acquisitionMonth || currentMonth);
       setFormValue(el.stockForm, "qty", item.qty || 1);

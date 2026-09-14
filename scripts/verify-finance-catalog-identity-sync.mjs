@@ -56,14 +56,62 @@ assert.equal(financeProduct.edit_revision, 17);
 assert.equal(hasFinanceCatalogIdentityDrift(versionedPlaceholder, repaired), true);
 assert.equal(hasFinanceCatalogIdentityDrift(repaired, mergeFinanceStockIdentity(repaired, productRowFromFinanceStock(repaired, completedStock, 1))), false);
 
+const posterStock = {
+  id: "stock-poster",
+  sku: "NXP-2026-OBJ-0001",
+  item: "Poster",
+  itemCondition: "New-Sealed",
+  artist: "NIXP",
+  title: "Launch Poster",
+  dimensions: "A2 / 42 x 59.4 cm",
+  printDetails: "Screen print, signed edition of 50",
+  qty: 1,
+  sellingPrice: 250000,
+  listingMode: "Standard Sale"
+};
+const posterDraft = draftProductFromFinanceStock(posterStock, 1);
+assert.equal(posterDraft.category, "Objects");
+assert.equal(posterDraft.format, "Poster");
+assert.equal(posterDraft.display_format, "Poster");
+assert.equal(posterDraft.raw.financeItemType, "Poster");
+assert.equal(posterDraft.raw.financeMetadata.dimensions, "A2 / 42 x 59.4 cm");
+assert.match(posterDraft.details.join(" "), /Dimensions: A2/);
+
+const bookStock = {
+  id: "stock-book",
+  sku: "NXP-2026-PUB-0001",
+  item: "Book",
+  itemCondition: "New-Sealed",
+  artist: "",
+  title: "NIXP Reader",
+  publisher: "NIXP Publishing",
+  isbn: "978-1-23456-789-0",
+  pages: "128",
+  binding: "Perfect bound",
+  language: "English",
+  qty: 1,
+  sellingPrice: 180000,
+  listingMode: "Standard Sale"
+};
+assert.equal(canCreateFinanceCatalogDraft(bookStock), true);
+const bookDraft = draftProductFromFinanceStock(bookStock, 1);
+assert.equal(bookDraft.category, "Publishing");
+assert.equal(bookDraft.format, "Book");
+assert.equal(bookDraft.raw.financeMetadata.publisher, "NIXP Publishing");
+assert.match(bookDraft.details.join(" "), /ISBN \/ ISSN/);
+
 const financeUi = await readFile(new URL("../apps/finance/index.html", import.meta.url), "utf8");
 assert.match(financeUi, /field\("Title", "title", "text", "", true, "Artwork \/ item title"\)/);
 assert.match(financeUi, /one SKU keeps one catalog identity/);
 assert.match(financeUi, /Vinyl Size/, "Finance must collect a structured vinyl size.");
+assert.match(financeUi, /"Poster", "Book", "Zine", "Magazine"/);
+assert.match(financeUi, /data-finance-publication-fields/);
 
 const financeSyncSource = await readFile(new URL("../api/_lib/financeState.js", import.meta.url), "utf8");
 assert.match(financeSyncSource, /edit_revision: revision \+ 1/);
 assert.match(financeSyncSource, /editorial_updated_by: "finance-stock"/);
 assert.match(financeSyncSource, /financeVinylSize/);
+assert.match(financeSyncSource, /catalogCategoryForFinanceItem/);
+assert.match(financeSyncSource, /financeItemType/);
 
 console.log("Finance catalog identity synchronization contract passed.");

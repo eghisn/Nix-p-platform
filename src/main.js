@@ -687,6 +687,7 @@ async function productDetailMarkup(product) {
                  }
                  <div><dt>Notes</dt><dd>${productNotesMarkup(product)}</dd></div>`
                 : `<div><dt>Format</dt><dd>${escapeHtml(displayFormat)}</dd></div>
+                   ${financeItemMetadataMarkup(product)}
                    <div><dt>Label</dt><dd>${escapeHtml(product.label || "-")}</dd></div>
                    <div><dt>Year</dt><dd>${product.year}</dd></div>
                    <div><dt>Notes</dt><dd>${productNotesMarkup(product)}</dd></div>`
@@ -705,6 +706,20 @@ async function productDetailMarkup(product) {
 
 function productNotesMarkup(product = {}) {
   return escapeHtml(recordNotes(product).join(" / "));
+}
+
+function financeItemMetadataMarkup(product = {}) {
+  const metadata = product.raw?.financeMetadata || {};
+  const item = String(product.raw?.financeItemType || product.format || "").trim();
+  const rows = item === "Poster"
+    ? [["Dimensions", metadata.dimensions], ["Print details", metadata.printDetails]]
+    : ["Book", "Zine", "Magazine"].includes(item)
+      ? [["Publisher", metadata.publisher], ["ISBN / ISSN", metadata.isbn], ["Pages", metadata.pages], ["Binding", metadata.binding], ["Language", metadata.language]]
+      : [];
+  return rows
+    .filter(([, value]) => String(value || "").trim())
+    .map(([label, value]) => `<div><dt>${label}</dt><dd>${escapeHtml(value)}</dd></div>`)
+    .join("");
 }
 
 function applyDynamicInlineStyles(root) {

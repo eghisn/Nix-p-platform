@@ -25,6 +25,9 @@ const EMPTY_FINANCE_STATE = {
 };
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const APPAREL_TYPES = new Set(["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap"]);
+const PUBLISHING_TYPES = new Set(["Book", "Zine", "Magazine"]);
+const OBJECT_TYPES = new Set(["Object", "Poster"]);
+const FINANCE_ITEM_TYPES = new Set([...RECORD_FORMATS, ...APPAREL_TYPES, ...PUBLISHING_TYPES, ...OBJECT_TYPES]);
 const FINANCE_CATALOG_SYNC_LEASE_MS = 2 * 60 * 1000;
 const FINANCE_CATALOG_SYNC_MAX_ATTEMPTS = 5;
 
@@ -37,6 +40,37 @@ function vinylItemSelection(value) {
   const item = String(value || "").trim();
   const match = item.match(/^Vinyl\s+(12|10|7)[\"\u2033]?$/i);
   return match ? { item: "Vinyl", vinylSize: match[1] } : { item, vinylSize: "" };
+}
+
+function catalogCategoryForFinanceItem(item, fallback = "Objects") {
+  if (RECORD_FORMATS.has(item)) return "Records";
+  if (APPAREL_TYPES.has(item)) return "Apparel";
+  if (PUBLISHING_TYPES.has(item)) return "Publishing";
+  if (OBJECT_TYPES.has(item)) return "Objects";
+  return fallback;
+}
+
+function financeItemMetadata(stock = {}, fallback = {}) {
+  const value = key => stockIdentityValue(stock, key, fallback[key]);
+  return {
+    dimensions: value("dimensions"),
+    printDetails: value("printDetails"),
+    publisher: value("publisher"),
+    isbn: value("isbn"),
+    pages: value("pages"),
+    binding: value("binding"),
+    language: value("language")
+  };
+}
+
+function financeMetadataDetails(item, metadata = {}) {
+  if (item === "Poster") {
+    return [metadata.dimensions ? `Dimensions: ${metadata.dimensions}` : "", metadata.printDetails ? `Print details: ${metadata.printDetails}` : ""].filter(Boolean);
+  }
+  if (PUBLISHING_TYPES.has(item)) {
+    return [metadata.publisher ? `Publisher: ${metadata.publisher}` : "", metadata.isbn ? `ISBN / ISSN: ${metadata.isbn}` : "", metadata.pages ? `Pages: ${metadata.pages}` : "", metadata.binding ? `Binding: ${metadata.binding}` : "", metadata.language ? `Language: ${metadata.language}` : ""].filter(Boolean);
+  }
+  return [];
 }
 
 export function isFinanceState(value) {
@@ -848,11 +882,7 @@ function withSyncAudit(row, { source, action, sku, quantity } = {}) {
 export function productRowFromFinanceStock(row, stock, quantity) {
   const itemSelection = vinylItemSelection(stock.item || row.format || "Vinyl");
   const item = itemSelection.item;
-  const category = RECORD_FORMATS.has(item)
-    ? "Records"
-    : APPAREL_TYPES.has(item)
-      ? "Apparel"
-      : row.category || "Objects";
+  const category = catalogCategoryForFinanceItem(item, row.category || "Objects");
   // Finance can contain a temporary placeholder while the editorial match is
   // still being completed. It must never erase a real title already stored in
   // Admin or returned by the enrichment step.
@@ -863,12 +893,15 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const financeBarcode = stockIdentityValue(stock, "barcode", row.raw?.barcode);
   const financeCatalogNumber = stockIdentityValue(stock, "catalogNumber", row.raw?.catalogNumber);
   const financeVinylSize = itemSelection.vinylSize || normalizeVinylSize(stockIdentityValue(stock, "vinylSize", row.raw?.vinylSize));
+  const financeMetadata = financeItemMetadata(stock, row.raw?.financeMetadata || row.raw || {});
   const financePrice = Number(stock.sellingPrice || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
   const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer);
   const raw = {
     ...(row.raw || {}),
     financeStockId: stock.id || row.raw?.financeStockId || null,
+    financeItemType: item,
+    financeMetadata,
     // Existing catalog quantities can have active checkout reservations. The
     // database reconciler applies Finance quantity minus those reservations.
     qty: normalizedQuantity(row.qty),
@@ -876,7 +909,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
     shipping: referenceShippingProfile({
       ...row,
       category,
-      format: category === "Records" ? item : row.format,
+      format: item || row.format,
       apparelType: category === "Apparel" ? item : row.apparel_type,
       apparel_type: category === "Apparel" ? item : row.apparel_type,
       edition: financeEdition
@@ -919,8 +952,8 @@ export function productRowFromFinanceStock(row, stock, quantity) {
     title: financeTitle || row.title,
     artist: canonicalProductArtist({ ...row, artist: financeArtist || row.artist }),
     category,
-    format: category === "Records" ? item : row.format || "",
-    display_format: category === "Records" ? item : row.display_format || "",
+    format: item || row.format || "",
+    display_format: item || row.display_format || "",
     apparel_type: category === "Apparel" ? row.apparel_type || "Accessories" : row.apparel_type || "",
     condition: String(stock.itemCondition || row.condition || "").trim(),
     price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(row.price || 0),
@@ -935,8 +968,8 @@ export function productRowFromFinanceStock(row, stock, quantity) {
       title: financeTitle || raw.title || row.title,
       artist: canonicalProductArtist({ ...row, ...raw, artist: financeArtist || raw.artist || row.artist }),
       category,
-      format: category === "Records" ? item : raw.format || row.format || "",
-      displayFormat: category === "Records" ? item : raw.displayFormat || row.display_format || "",
+      format: item || raw.format || row.format || "",
+      displayFormat: item || raw.displayFormat || row.display_format || "",
       condition: String(stock.itemCondition || raw.condition || row.condition || "").trim(),
       price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(raw.price || row.price || 0),
       open_to_offers: openToOffers,
@@ -945,6 +978,8 @@ export function productRowFromFinanceStock(row, stock, quantity) {
       barcode: financeBarcode,
       catalogNumber: financeCatalogNumber,
       vinylSize: financeVinylSize,
+      financeItemType: item,
+      financeMetadata,
       publishStatus,
       visibility
     }
@@ -1000,7 +1035,9 @@ export function mergeFinanceStockIdentity(existing = {}, financeProduct = {}) {
     edition: String(financeRaw.edition || "").trim(),
     barcode: String(financeRaw.barcode || "").trim(),
     catalogNumber: String(financeRaw.catalogNumber || "").trim(),
-    vinylSize: normalizeVinylSize(financeRaw.vinylSize)
+    vinylSize: normalizeVinylSize(financeRaw.vinylSize),
+    financeItemType: String(financeRaw.financeItemType || "").trim(),
+    financeMetadata: financeRaw.financeMetadata || {}
   };
   return productRowFromExisting(existing, {
     title: financeProduct.title,
@@ -1036,6 +1073,8 @@ function financeCatalogIdentitySignature(row = {}) {
     barcode: String(raw.barcode || "").trim(),
     catalogNumber: String(raw.catalogNumber || "").trim(),
     vinylSize: normalizeVinylSize(raw.vinylSize),
+    financeItemType: String(raw.financeItemType || "").trim(),
+    financeMetadata: raw.financeMetadata || {},
     details: Array.isArray(row.details) ? row.details : [],
     shipping: raw.shipping || null
   });
@@ -1156,6 +1195,13 @@ export async function syncAdminCatalogInventory(products = []) {
       edition: product.edition ?? existing.edition ?? "",
       barcode: product.barcode ?? existing.barcode ?? "",
       catalogNumber: product.catalogNumber ?? existing.catalogNumber ?? "",
+      dimensions: product.raw?.financeMetadata?.dimensions ?? existing.dimensions ?? "",
+      printDetails: product.raw?.financeMetadata?.printDetails ?? existing.printDetails ?? "",
+      publisher: product.raw?.financeMetadata?.publisher ?? existing.publisher ?? "",
+      isbn: product.raw?.financeMetadata?.isbn ?? existing.isbn ?? "",
+      pages: product.raw?.financeMetadata?.pages ?? existing.pages ?? "",
+      binding: product.raw?.financeMetadata?.binding ?? existing.binding ?? "",
+      language: product.raw?.financeMetadata?.language ?? existing.language ?? "",
       mediaCondition: product.mediaCondition ?? existing.mediaCondition ?? "",
       sleeveCondition: product.sleeveCondition ?? existing.sleeveCondition ?? "",
       source: existing.source || "Admin editor",
@@ -1217,7 +1263,8 @@ export function normalizeFinanceState(state) {
 export function draftProductFromFinanceStock(stock, quantity) {
   const itemSelection = vinylItemSelection(stock.item || "Vinyl");
   const item = itemSelection.item;
-  const category = RECORD_FORMATS.has(item) ? "Records" : APPAREL_TYPES.has(item) ? "Apparel" : "Objects";
+  const category = catalogCategoryForFinanceItem(item);
+  const metadata = financeItemMetadata(stock);
   const id = `finance-${slugify(stock.sku)}`;
   const product = {
     id,
@@ -1225,8 +1272,8 @@ export function draftProductFromFinanceStock(stock, quantity) {
     title: String(stock.title || "Untitled inventory item").trim(),
     artist: String(stock.artist || "NIXP").trim(),
     category,
-    format: category === "Records" ? item : category === "Apparel" ? "Apparel" : "Object",
-    displayFormat: category === "Records" ? item : "",
+    format: category === "Apparel" ? "Apparel" : item,
+    displayFormat: item,
     apparelType: category === "Apparel" ? item : "",
     condition: String(stock.itemCondition || "").trim(),
     price: stock.listingMode === "Private Collection / Offer Only" ? 0 : Number(stock.sellingPrice || 0),
@@ -1241,7 +1288,7 @@ export function draftProductFromFinanceStock(stock, quantity) {
     images: [],
     imageCredits: [],
     tags: [],
-    details: ["Created from finance inventory. Complete this draft in NIXP Admin before publishing."],
+    details: ["Created from finance inventory. Complete this draft in NIXP Admin before publishing.", ...financeMetadataDetails(item, metadata)],
     sizes: [],
     description: "",
     qty: quantity,
@@ -1256,6 +1303,8 @@ export function draftProductFromFinanceStock(stock, quantity) {
   product.barcode = String(stock.barcode || "").trim();
   product.catalogNumber = String(stock.catalogNumber || "").trim();
   product.vinylSize = itemSelection.vinylSize || normalizeVinylSize(stock.vinylSize);
+  product.financeItemType = item;
+  product.financeMetadata = metadata;
   product.shipping = referenceShippingProfile(product);
   return {
     id,
@@ -1338,8 +1387,12 @@ function financeStockRow(item, productIdBySku) {
 }
 
 function financeItemForProduct(product) {
+  const rememberedItem = String(product.raw?.financeItemType || "").trim();
+  if (FINANCE_ITEM_TYPES.has(rememberedItem)) return rememberedItem;
   if (product.category === "Records") return product.format || "Vinyl";
   if (product.category === "Apparel") return product.apparelType === "Accessories" ? "Cap" : product.title || "Apparel";
+  if (product.category === "Publishing" && PUBLISHING_TYPES.has(product.format)) return product.format;
+  if (product.category === "Objects" && OBJECT_TYPES.has(product.format)) return product.format;
   return "Object";
 }
 
