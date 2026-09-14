@@ -1195,6 +1195,7 @@ export async function syncAdminCatalogInventory(products = []) {
       edition: product.edition ?? existing.edition ?? "",
       barcode: product.barcode ?? existing.barcode ?? "",
       catalogNumber: product.catalogNumber ?? existing.catalogNumber ?? "",
+      vinylSize: normalizeVinylSize(product.vinylSize) || normalizeVinylSize(existing.vinylSize),
       dimensions: product.raw?.financeMetadata?.dimensions ?? existing.dimensions ?? "",
       printDetails: product.raw?.financeMetadata?.printDetails ?? existing.printDetails ?? "",
       publisher: product.raw?.financeMetadata?.publisher ?? existing.publisher ?? "",

@@ -3,7 +3,7 @@ import { isSupabaseConfigured, loadStore, saveAdminHomeSlider, saveAdminProduct,
 import { commitPublicStore, isGitHubDeployConfigured } from "../_lib/github.js";
 import { verifyPublicCatalogRevision } from "../_lib/publicCatalogDeployment.js";
 import { handleAdminOrders } from "../_lib/commerceHandlers.js";
-import { processCatalogResearchJobs, readFinanceState, refreshRelatedArtistsOnly, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
+import { processCatalogResearchJobs, readFinanceState, refreshRelatedArtistsOnly, syncAdminCatalogInventory, syncFinanceInventoryToCatalog } from "../_lib/financeState.js";
 import { enqueueAdminFinanceSyncJob, processAdminFinanceSyncJobs } from "../_lib/adminFinanceSyncJobs.js";
 import { getShippingDashboard, saveShippingSettings } from "../_lib/shippingQuotes.js";
 import { importPublicTariffSnapshot, refreshRecentTariffs, runShippingMaintenance, syncDestinationsNow } from "../_lib/nixpShippingEngine.js";
@@ -218,24 +218,28 @@ async function handleVinylSizeBackfill(req, res) {
       updated.push(saved.product.sku);
     }
 
-    if (!updated.length) {
-      return json(res, 200, { ok: true, alreadyCurrent: true, updated: [] });
-    }
-
     const refreshed = applyCatalogPublicationSafety(await loadStore({ privateScope: true }));
+    const refreshedTargets = (refreshed.products || []).filter((product) => LEGACY_VINYL_SIZE_BY_SKU[product.sku]);
+    // The field already exists in Admin for many legacy rows. Mirror the
+    // verified values to Finance even when this call did not need to edit
+    // Admin, while preserving Finance-owned quantity and cost fields.
+    await syncAdminCatalogInventory(refreshedTargets);
+
     let deployment = null;
-    if (isGitHubDeployConfigured()) {
+    if (updated.length && isGitHubDeployConfigured()) {
       const github = await commitPublicStore(refreshed, { message: "Add explicit vinyl sizes to legacy NIXP records" });
       deployment = { github, ...(await verifyPublicCatalogRevision(refreshed.products || [], expectedSkus)) };
     }
     return json(res, 200, {
       ok: true,
+      alreadyCurrent: !updated.length,
       updated,
       skipped: expectedSkus.length - updated.length,
+      financeSynced: refreshedTargets.length,
       deployment,
       message: deployment?.confirmed
         ? "Legacy vinyl sizes are confirmed live."
-        : "Legacy vinyl sizes are saved; public deployment is pending verification."
+        : `Legacy vinyl sizes are synchronized to Finance for ${refreshedTargets.length} verified SKU(s).`
     });
   } catch (error) {
     return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Legacy vinyl size backfill failed." });

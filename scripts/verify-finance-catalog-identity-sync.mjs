@@ -113,5 +113,9 @@ assert.match(financeSyncSource, /editorial_updated_by: "finance-stock"/);
 assert.match(financeSyncSource, /financeVinylSize/);
 assert.match(financeSyncSource, /catalogCategoryForFinanceItem/);
 assert.match(financeSyncSource, /financeItemType/);
+assert.match(financeSyncSource, /vinylSize: normalizeVinylSize\(product\.vinylSize\)/, "Admin edits must mirror vinyl size to Finance.");
+
+const adminStoreSource = await readFile(new URL("../api/admin/store.js", import.meta.url), "utf8");
+assert.match(adminStoreSource, /syncAdminCatalogInventory\(refreshedTargets\)/, "The legacy backfill must also repair Finance rows that already existed.");
 
 console.log("Finance catalog identity synchronization contract passed.");
