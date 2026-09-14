@@ -129,6 +129,38 @@ export const ARCHIVED_CATALOG_IMAGES = {
   "NXP-2026-VNL-0047": { cover: "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg" }
 };
 
+// These covers were individually reviewed and approved after the initial
+// research imported seller scans. They are immutable storefront artwork.
+const FINAL_REVIEWED_COVER_SKUS = new Set([
+  "NXP-2026-VNL-0081", "NXP-2026-VNL-0080", "NXP-2026-VNL-0079",
+  "NXP-2026-VNL-0078", "NXP-2026-VNL-0076", "NXP-2026-VNL-0075",
+  "NXP-2026-VNL-0073", "NXP-2026-VNL-0058", "NXP-2026-VNL-0040"
+]);
+
+// Enforce the approved assets at persistence and deployment boundaries. This
+// is deliberately independent from research, so an ordinary catalog deploy
+// cannot revive the older Supabase seller scan.
+export function applyFinalReviewedCoverLock(product = {}) {
+  const sku = String(product.sku || "").trim().toUpperCase();
+  if (!FINAL_REVIEWED_COVER_SKUS.has(sku)) return product;
+  const lock = ARCHIVED_CATALOG_IMAGES[sku];
+  if (!lock?.cover) return product;
+  const images = [lock.cover];
+  const imageCredits = Array.isArray(lock.imageCredits) && lock.imageCredits.length
+    ? lock.imageCredits
+    : Array.isArray(product.imageCredits) ? product.imageCredits : [];
+  const raw = product.raw && typeof product.raw === "object" ? product.raw : {};
+  return {
+    ...product,
+    image: lock.cover,
+    images,
+    imageCredits,
+    autoCover: lock.cover,
+    autoProductPhoto: "",
+    raw: { ...raw, image: lock.cover, images, imageCredits, autoCover: lock.cover, autoProductPhoto: "" }
+  };
+}
+
 // Exact, reviewed matches take precedence over discovery. These records also
 // document the source used for every locally archived catalog image.
 export const CURATED_FINANCE_ENRICHMENTS = {

@@ -40,10 +40,12 @@ async function githubFetch(path, options = {}) {
   return payload;
 }
 
-function toPublicStore(store) {
+export function toPublicStore(store) {
   return {
     version: store.version || null,
-    products: (store.products || []).filter((product) => product.publishStatus === "Published" && product.visibility === "Public"),
+    products: (store.products || [])
+      .filter((product) => product.publishStatus === "Published" && product.visibility === "Public")
+      .map(applyFinalReviewedCoverLock),
     artists: (store.artists || []).filter((artist) => artist.status !== "Draft" && artist.status !== "Archived"),
     collections: (store.collections || []).filter((collection) => collection.status !== "Draft" && collection.status !== "Archived"),
     requests: [],
@@ -75,3 +77,4 @@ export async function commitPublicStore(store, { message } = {}) {
     commitUrl: result.commit?.html_url || null
   };
 }
+import { applyFinalReviewedCoverLock } from "./catalogEnrichment.js";

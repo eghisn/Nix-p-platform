@@ -1,7 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import assert from "node:assert/strict";
 import { artistCreditNames, artistIdentityKey } from "../src/data/catalogIdentity.js";
 import { isFinanceCatalogProduct, recordPublicationIssues } from "../src/data/catalogPublication.js";
+import { toPublicStore } from "../api/_lib/github.js";
+import { ARCHIVED_CATALOG_IMAGES } from "../api/_lib/catalogEnrichment.js";
 
 const root = process.cwd();
 const store = JSON.parse(await fs.readFile(path.join(root, "public", "data", "public-store.json"), "utf8"));
@@ -19,6 +22,20 @@ const curatedCoverSources = new Map([
   ["NXP-2026-VNL-0058", "Hyperdub official release artwork"],
   ["NXP-2026-VNL-0040", "Blondie album sleeve artwork"]
 ]);
+
+const staleArca = toPublicStore({
+  products: [{
+    sku: "NXP-2026-VNL-0081",
+    title: "Kick iiii",
+    artist: "Arca",
+    publishStatus: "Published",
+    visibility: "Public",
+    image: "https://example.test/old-seller-scan.jpg",
+    images: ["https://example.test/old-seller-scan.jpg"]
+  }]
+}).products[0];
+assert.equal(staleArca.image, ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0081"].cover, "Public deployment must preserve reviewed Arca cover art.");
+assert.deepEqual(staleArca.images, [staleArca.image], "A reviewed cover must be the only storefront gallery image.");
 
 function managedImage(value) {
   const image = String(value || "");

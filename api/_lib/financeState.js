@@ -1,5 +1,6 @@
 import {
   RELATED_ARTIST_RESEARCH_VERSION,
+  applyFinalReviewedCoverLock,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
   isEditorialDescriptionQuality,
@@ -276,7 +277,9 @@ export async function syncFinanceInventoryToCatalog(
   const latestById = new Map(latestCatalogRows.map((row) => [String(row.id), row]));
   const stockBySku = new Map(stockRows.map((stock) => [String(stock.sku || "").trim().toLowerCase(), stock]));
   const protectedProductRows = uniqueProductRows.map((row) =>
-    preserveCompletedCatalogData(latestById.get(String(row.id)), row, stockBySku.get(String(row.sku || "").trim().toLowerCase()))
+    applyFinalReviewedCoverLock(
+      preserveCompletedCatalogData(latestById.get(String(row.id)), row, stockBySku.get(String(row.sku || "").trim().toLowerCase()))
+    )
   );
   for (const row of protectedProductRows) {
     const latest = latestById.get(String(row.id));

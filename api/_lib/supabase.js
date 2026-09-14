@@ -1,4 +1,5 @@
 import { syncAdminCatalogInventory, syncAdminProductInventory } from "./financeState.js";
+import { applyFinalReviewedCoverLock } from "./catalogEnrichment.js";
 import { applyCatalogPublicationSafety, isFinanceCatalogProduct, isRecordPublicationReady } from "../../src/data/catalogPublication.js";
 import { canonicalProductArtist, canonicalRelatedArtistName } from "../../src/data/catalogIdentity.js";
 
@@ -94,7 +95,7 @@ export async function loadStore({ privateScope = false, publicSnapshotUrl = "", 
     privateScope && !editorMode ? supabaseFetch("cashflow?select=*&order=created_at.desc", { service: true }) : [],
     privateScope && !editorMode ? supabaseFetch("inventory?select=*&order=created_at.desc", { service: true }) : []
   ]);
-  const mappedProducts = products.map((row) => fromProductRow(row, { privateScope, compactAdmin: editorMode }));
+  const mappedProducts = products.map((row) => applyFinalReviewedCoverLock(fromProductRow(row, { privateScope, compactAdmin: editorMode })));
   const store = {
     version: "supabase-live-2026-07-13",
     products: privateScope
@@ -286,7 +287,10 @@ export async function verifiedPrices(ids = []) {
 }
 
 export async function saveStore(store, { inventoryProduct = null, syncCatalogProducts = false, tables = TABLES } = {}) {
-  const safeStore = applyCatalogPublicationSafety(store);
+  const safeStore = applyCatalogPublicationSafety({
+    ...store,
+    products: (store.products || []).map(applyFinalReviewedCoverLock)
+  });
   validateStore(safeStore);
   await backupStore("admin-store", safeStore);
   const rowsByTable = {
@@ -415,7 +419,7 @@ export async function saveAdminProduct(product, { expectedRevision = 0, actor = 
     id: productId,
     raw: currentRow?.raw || product.raw || {}
   });
-  const safeProduct = applyCatalogPublicationSafety({ products: [merged] }).products[0];
+  const safeProduct = applyFinalReviewedCoverLock(applyCatalogPublicationSafety({ products: [merged] }).products[0]);
   const nextRevision = currentRow ? currentRevision + 1 : 1;
   const savedAt = new Date().toISOString();
   const row = {
