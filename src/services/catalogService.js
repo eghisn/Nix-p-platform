@@ -15,6 +15,15 @@ function normalizeApparelType(value) {
   return String(value || "").trim();
 }
 
+function normalizePublishingType(value) {
+  const type = String(value || "").trim().toLowerCase();
+  if (type === "poster" || type === "posters") return "Poster";
+  if (type === "book" || type === "books") return "Book";
+  if (type === "zine" || type === "zines") return "Zine";
+  if (type === "magazine" || type === "magazines") return "Magazine";
+  return String(value || "").trim();
+}
+
 function numericQuantity(value) {
   const quantity = Number(value);
   return Number.isFinite(quantity) ? Math.max(0, Math.floor(quantity)) : null;
@@ -80,6 +89,12 @@ export const catalogService = {
     return adminStore.listProducts().filter((product) => {
       const isApparel = product.category === "Apparel";
       return type === "All Apparel" ? isApparel : isApparel && normalizeApparelType(product.apparelType) === type;
+    });
+  },
+  async listPublishing(type = "All") {
+    return adminStore.listProducts().filter((product) => {
+      const isPublishing = product.category === "Publishing";
+      return type === "All" ? isPublishing : isPublishing && normalizePublishingType(product.format) === type;
     });
   },
   async listArtists() {

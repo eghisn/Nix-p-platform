@@ -16,7 +16,7 @@ import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
 import { checkoutMarketingAttribution, initializeAnalytics, trackAnalytics, trackCurrentPageView } from "./services/analytics.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
-import { apparelPageMarkup, catalogGridPageMarkup } from "./components/catalogPage.js";
+import { apparelPageMarkup, catalogGridPageMarkup, publishingPageMarkup } from "./components/catalogPage.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "./components/labelsPage.js";
 import { NIXP_ADDRESS } from "./data/siteDetails.js";
 import { LEGACY_VINYL_SIZE_BY_SKU, VINYL_SIZES, isVinylRecord, normalizeVinylSize, recordDisplayFormat } from "./data/vinylSize.js";
@@ -39,6 +39,7 @@ const state = {
   recordsSort: "artist-asc",
   homeCollectionFilter: "recent-releases",
   apparelFilter: "All Apparel",
+  publishingFilter: "All",
   cart: readCart(),
   requests: [],
   cartOpen: false,
@@ -238,7 +239,7 @@ const routes = {
   "/apparel": () => apparelPage(),
   "/accessories": () => apparelPage("Accessories"),
   "/accesories": () => apparelPage("Accessories"),
-  "/publishing": categoryPage("Publishing", "Publishing", "Printed matter, books, magazines, and text-led editions."),
+  "/publishing": () => publishingPage(),
   "/artists": artistsPage,
   "/labels": labelsPage,
   "/blog": blogPage,
@@ -707,6 +708,12 @@ async function productDetailMarkup(product) {
 
 function productNotesMarkup(product = {}) {
   return escapeHtml(recordNotes(product).join(" / "));
+}
+
+async function publishingPage(filter = state.publishingFilter) {
+  const activeFilter = filter || "All";
+  const items = await catalogService.listPublishing(activeFilter);
+  return publishingPageMarkup(items, activeFilter);
 }
 
 function financeItemMetadataMarkup(product = {}) {
@@ -3289,6 +3296,13 @@ function bindEvents() {
     checkoutCity.value = matches.some((region) => region.code === selected) ? selected : "";
     if (checkoutCityResults) checkoutCityResults.textContent = `${matches.length} cities / regencies`;
     if (checkoutCity.value !== selected) syncCheckoutProvince();
+  });
+
+  document.querySelectorAll("[data-publishing-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.publishingFilter = button.dataset.publishingFilter;
+      render({ preserveScroll: true });
+    });
   });
   const syncCheckoutAddressRequirements = () => {
     const pickup = shippingMethod?.value === "Store Pickup";
