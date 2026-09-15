@@ -4,7 +4,7 @@ import { resolve, sep } from "node:path";
 import { build } from "esbuild";
 import sharp from "sharp";
 import { productGrid, shell } from "../src/components/layout.js";
-import { apparelPageMarkup, catalogGridPageMarkup } from "../src/components/catalogPage.js";
+import { apparelPageMarkup, catalogGridPageMarkup, publishingPageMarkup } from "../src/components/catalogPage.js";
 import { recordsPageMarkup } from "../src/components/recordsPage.js";
 import { artistCreditNames, productArtistCreditNames, canonicalLabelName } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
@@ -527,7 +527,7 @@ function staticPublicRouteMarkup(route) {
   if (route === "objects") return catalogGridPageMarkup(productsByCategory("Objects"));
   if (route === "apparel") return apparelPageMarkup(productsByCategory("Apparel"));
   if (route === "accessories" || route === "accesories") return apparelPageMarkup(productsByCategory("Accessories"), "Accessories");
-  if (route === "publishing") return catalogGridPageMarkup(productsByCategory("Publishing"));
+  if (route === "publishing") return publishingPageMarkup(productsByCategory("Publishing"));
   if (route === "labels") return labelsPageMarkup(publicLabels);
   if (route.startsWith("labels/")) {
     const label = publicLabels.find((entry) => entry.slug === route.slice("labels/".length));

@@ -44,6 +44,9 @@ for (const route of paths) {
   if (route === "/apparel" && !body.includes("data-apparel-filter")) {
     throw new Error("/apparel static markup does not match the interactive apparel controls.");
   }
+  if (route === "/publishing" && !body.includes("data-publishing-filter")) {
+    throw new Error("/publishing static markup does not match the interactive publishing controls.");
+  }
   if (route === "/shipping-returns") {
     if (!body.includes("JNE rates are calculated from the packed order")) {
       throw new Error("/shipping-returns did not return the launch shipping policy.");
