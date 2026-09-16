@@ -75363,17 +75363,17 @@
       "images": [
         "/public/covers/nxp-2026-cd-0020-my-bloody-valentine-isnt-anything.jpg"
       ],
-      "barcode": "",
+      "barcode": "4 988010 770228",
       "details": [
         "SKU: NXP-2026-CD-0020",
         "Format: CD",
         "Condition: Used Good"
       ],
-      "edition": "",
+      "edition": "CD, Album, Reissue",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0020/cover.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "https://thequietus.com/quietus-reviews/my-bloody-valentine-isnt-anything-and-lovelessreissues-reviewed/",
       "syncAudit": [
         {
@@ -75447,6 +75447,7 @@
       "apparelType": "",
       "description": "My Bloody Valentine's 1988 Isn't Anything is an early statement of the band's noise-pop language, balancing ear-splitting guitar texture with intimate melody and fragile vocals.",
       "reviewQuote": "livid, lurid and lucid",
+      "editRevision": 5,
       "imageCredits": [],
       "reviewSource": "The Quietus (quoted)",
       "autoEditorial": {
@@ -75691,7 +75692,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "ESCA 7702",
       "displayFormat": "CD",
       "homeSlideSort": 31,
       "publishStatus": "Published",
@@ -75722,6 +75723,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "The Quietus / AllMusic",
       "metadataSourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
+      "editorialUpdatedAt": "2026-09-16T13:43:43.121+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
@@ -75955,18 +75958,16 @@
         "sourceUrl": "https://musicbrainz.org/release/7b413a27-9f63-368a-b2e2-5bbd9938c4d6",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:14.224+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
