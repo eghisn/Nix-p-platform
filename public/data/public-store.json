@@ -53820,13 +53820,13 @@
       "images": [
         "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg"
       ],
-      "barcode": "",
+      "barcode": "6 56605 22602 6",
       "details": [
         "SKU: NXP-2026-CD-0032",
         "Format: CD",
         "Condition: Used Good"
       ],
-      "edition": "",
+      "edition": "CD, Album",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0032/cover.jpg",
@@ -53904,6 +53904,7 @@
       "apparelType": "",
       "description": "Viet Cong's self-titled 2015 album is the band's lone full-length under that name before becoming Preoccupations, built from shadowed post-punk, art-punk, and noise-rock pressure.",
       "reviewQuote": "unusually obsessed with the mechanics and process",
+      "editRevision": 5,
       "imageCredits": [
         {
           "url": "https://music.apple.com/us/album/viet-cong/931381276",
@@ -54174,7 +54175,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "JAG260",
       "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
@@ -54206,6 +54207,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Pitchfork / MusicBrainz",
       "metadataSourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+      "editorialUpdatedAt": "2026-09-16T13:46:27.112+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "5d5fc614-25fe-4b89-8747-f4357f7a7757",
@@ -54459,18 +54462,16 @@
         "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:28.31+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
