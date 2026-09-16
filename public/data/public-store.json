@@ -39553,14 +39553,14 @@
       "images": [
         "/public/assets/catalog-archive/nxp-2026-vnl-0031-cover.webp"
       ],
-      "barcode": "",
+      "barcode": "4 260038 310816",
       "details": [
         "SKU: NXP-2026-VNL-0031",
         "Format: Vinyl",
         "Condition: New-Sealed",
         "Edition: 12-inch EP"
       ],
-      "edition": "Green Transparent",
+      "edition": "Vinyl, 12\", 45 RPM, Green, Transparent",
       "category": "Records",
       "material": "",
       "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0031-cover.webp",
@@ -39638,6 +39638,7 @@
       "apparelType": "",
       "description": "Trans Am's 2016 Speechless is a compact electronic and techno-leaning collaboration from the Washington, D.C. trio, issued through Berlin label SPE:C as a 12-inch release.",
       "reviewQuote": "Techno / House",
+      "editRevision": 5,
       "imageCredits": [
         {
           "url": "https://specrecords.bandcamp.com/album/trans-am-speechless-spe-c-002",
@@ -39915,6 +39916,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "SPE:C official Bandcamp / Boomkat",
       "metadataSourceUrl": "https://specrecords.bandcamp.com/album/trans-am-speechless-spe-c-002",
+      "editorialUpdatedAt": "2026-09-16T10:42:33.726+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-27",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
@@ -40144,18 +40147,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:34.562+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
