@@ -76622,497 +76622,6 @@
       }
     },
     {
-      "id": "nxp-2026-cd-0007",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0007",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0007"
-      ],
-      "year": 2025,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
-      "label": "True Panther",
-      "price": 450000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Pirouette",
-      "artist": "Model Actriz",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
-        "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0007",
-        "Format: CD",
-        "Condition: New-Sealed"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
-      "syncAudit": [
-        {
-          "at": "2026-09-16T02:00:45.446Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-15T11:52:07.971Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-15T02:00:44.784Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-30T02:14:08.793Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.963Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.174Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.931Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.763Z",
-          "sku": "NXP-2026-CD-0007",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-16",
-      "vinylSize": "",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-09-16T02:00:45.446Z",
-        "sku": "NXP-2026-CD-0007",
-        "action": "Inventory identity synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
-      "reviewQuote": "savor their own powerlessness",
-      "imageCredits": [
-        {
-          "url": "https://truepanther.com/",
-          "image": "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png",
-          "credit": "True Panther"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
-        "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
-        "reviewQuote": "savor their own powerlessness",
-        "reviewSource": "Pitchfork (quoted)",
-        "relatedArtists": [
-          "Osees",
-          "thirtytwobitwhore",
-          "Los Yolos",
-          "The WAEVE"
-        ],
-        "enrichmentStatus": "complete-no-related-artists",
-        "descriptionSource": "Pitchfork / The Guardian",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Osees",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.26087,
-            "artist": "thirtytwobitwhore",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.26087,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.169578,
-            "artist": "Los Yolos",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.169578,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.153794,
-            "artist": "The WAEVE",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.153794,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Osees",
-              "thirtytwobitwhore",
-              "Los Yolos",
-              "The WAEVE"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Osees",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.26087,
-                "artist": "thirtytwobitwhore",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-                "confidence": 0.26087,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.169578,
-                "artist": "Los Yolos",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-                "confidence": 0.169578,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.153794,
-                "artist": "The WAEVE",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-                "confidence": 0.153794,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Osees",
-            "thirtytwobitwhore",
-            "Los Yolos",
-            "The WAEVE"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Osees",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.26087,
-              "artist": "thirtytwobitwhore",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.26087,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.169578,
-              "artist": "Los Yolos",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.169578,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.153794,
-              "artist": "The WAEVE",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.153794,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-          "sourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": 16,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47vdluske",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Osees",
-        "thirtytwobitwhore",
-        "Los Yolos",
-        "The WAEVE"
-      ],
-      "financeItemType": "CD",
-      "financeMetadata": {
-        "isbn": "",
-        "pages": "",
-        "binding": "",
-        "language": "",
-        "publisher": "",
-        "dimensions": "",
-        "printDetails": ""
-      },
-      "homeCollections": [
-        "recent-releases"
-      ],
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "Pitchfork / The Guardian",
-      "metadataSourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-      "enrichmentUpdatedAt": "2026-08-18",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-      "enrichmentAttemptedAt": "2026-08-18T16:53:50.120Z",
-      "enrichmentFingerprint": "model actriz|pirouette|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Osees",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.26087,
-          "artist": "thirtytwobitwhore",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-          "confidence": 0.26087,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.169578,
-          "artist": "Los Yolos",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-          "confidence": 0.169578,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.153794,
-          "artist": "The WAEVE",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-          "confidence": 0.153794,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Osees",
-            "thirtytwobitwhore",
-            "Los Yolos",
-            "The WAEVE"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Osees",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.26087,
-              "artist": "thirtytwobitwhore",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.26087,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.169578,
-              "artist": "Los Yolos",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.169578,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.153794,
-              "artist": "The WAEVE",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-              "confidence": 0.153794,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Osees",
-          "thirtytwobitwhore",
-          "Los Yolos",
-          "The WAEVE"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Osees",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.26087,
-            "artist": "thirtytwobitwhore",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.26087,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.169578,
-            "artist": "Los Yolos",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.169578,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.153794,
-            "artist": "The WAEVE",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
-            "confidence": 0.153794,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-        "sourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:00:53.209+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "nxp-2026-vnl-0004",
       "qty": 1,
       "sku": "NXP-2026-VNL-0004",
@@ -77746,6 +77255,175 @@
         "shippingClass": "vinyl-cardboard-bubble",
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-app-0004-mesh-black-longsleeve",
+      "qty": 15,
+      "sku": "NXP-2026-APP-0004",
+      "tags": [],
+      "year": 2026,
+      "color": "Black",
+      "image": "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+      "label": "Nix Powell",
+      "price": 380000,
+      "sizes": [
+        {
+          "label": "S",
+          "soldOut": false,
+          "quantity": 1
+        },
+        {
+          "label": "M",
+          "soldOut": false,
+          "quantity": 4
+        },
+        {
+          "label": "L",
+          "soldOut": false,
+          "quantity": 6
+        },
+        {
+          "label": "XL",
+          "soldOut": false,
+          "quantity": 4
+        }
+      ],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 15
+      },
+      "title": "Mesh Black Longsleeve",
+      "artist": "Cold Metal Breathes Too",
+      "format": "Mesh Black Longsleeve",
+      "images": [
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08839j-jpg-1783936997925.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08615-jpg-1783940071226.jpg",
+        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08635-jpg-1783940071368.jpg"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "",
+      "category": "Apparel",
+      "material": "Heavy Cotton 16s 250GSM",
+      "condition": "New-Sealed",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-09-16T02:00:45.451Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-09-15T11:52:07.981Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-09-15T02:00:44.796Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-30T02:14:08.796Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-29T10:09:43.965Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-29T09:54:26.176Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-29T02:23:49.934Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        },
+        {
+          "at": "2026-08-28T09:19:04.765Z",
+          "sku": "NXP-2026-APP-0004",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 15
+        }
+      ],
+      "updatedAt": "2026-09-16",
+      "vinylSize": "",
+      "collection": "Cold Metal Breathes Too",
+      "syncStatus": {
+        "at": "2026-09-16T02:00:45.451Z",
+        "sku": "NXP-2026-APP-0004",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 15
+      },
+      "visibility": "Public",
+      "apparelType": "Tops",
+      "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
+      "reviewQuote": "",
+      "imageCredits": [],
+      "reviewSource": "",
+      "catalogNumber": "",
+      "displayFormat": "Mesh Black Longsleeve",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "catalog-nxp-2026-app-0004-mesh-black-longsleeve",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "financeItemType": "Mesh Black Longsleeve",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "descriptionSource": "",
+      "manualRelatedArtists": [],
+      "minimumAcceptableOffer": 0,
+      "editRevision": 4,
+      "editorialUpdatedAt": "2026-09-16T02:01:20.843+00:00",
+      "editorialUpdatedBy": "finance-stock",
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
+        "status": "format_reference",
+        "widthCm": 28,
+        "heightCm": 4,
+        "lengthCm": 36,
+        "updatedAt": "2026-09-02",
+        "packageType": "zip-lock-polybag-shipping-wrap",
+        "weightGrams": 360,
+        "shippingClass": "apparel-soft-zip-lock-wrap",
+        "packagingGroup": "SOFT_APPAREL",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
@@ -83984,141 +83662,303 @@
       }
     },
     {
-      "id": "nxp-2026-app-0004-mesh-black-longsleeve",
-      "qty": 15,
-      "sku": "NXP-2026-APP-0004",
-      "tags": [],
-      "year": 2026,
-      "color": "Black",
-      "image": "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
-      "label": "Nix Powell",
-      "price": 380000,
-      "sizes": [
-        {
-          "label": "S",
-          "soldOut": false,
-          "quantity": 1
-        },
-        {
-          "label": "M",
-          "soldOut": false,
-          "quantity": 4
-        },
-        {
-          "label": "L",
-          "soldOut": false,
-          "quantity": 6
-        },
-        {
-          "label": "XL",
-          "soldOut": false,
-          "quantity": 4
-        }
+      "id": "nxp-2026-cd-0007",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0007",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0007"
       ],
+      "year": 2025,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
+      "label": "True Panther",
+      "price": 450000,
+      "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
-        "available": 15
+        "available": 1
       },
-      "title": "Mesh Black Longsleeve",
-      "artist": "Cold Metal Breathes Too",
-      "format": "Mesh Black Longsleeve",
+      "title": "Pirouette",
+      "artist": "Model Actriz",
+      "format": "CD",
       "images": [
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg",
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08839j-jpg-1783936997925.jpg",
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08615-jpg-1783940071226.jpg",
-        "/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08635-jpg-1783940071368.jpg"
+        "/public/covers/nxp-2026-cd-0007-model-actriz-pirouette.jpg",
+        "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png"
       ],
-      "barcode": "",
-      "details": [],
-      "edition": "",
-      "category": "Apparel",
-      "material": "Heavy Cotton 16s 250GSM",
+      "barcode": "5060257965298",
+      "details": [
+        "SKU: NXP-2026-CD-0007",
+        "Format: CD",
+        "Condition: New-Sealed"
+      ],
+      "edition": "CD, Album",
+      "category": "Records",
+      "material": "",
+      "autoCover": "",
       "condition": "New-Sealed",
-      "reviewUrl": "",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
       "syncAudit": [
         {
-          "at": "2026-09-16T02:00:45.451Z",
-          "sku": "NXP-2026-APP-0004",
+          "at": "2026-09-16T02:00:45.446Z",
+          "sku": "NXP-2026-CD-0007",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
-          "quantity": 15
+          "quantity": 1
         },
         {
-          "at": "2026-09-15T11:52:07.981Z",
-          "sku": "NXP-2026-APP-0004",
+          "at": "2026-09-15T11:52:07.971Z",
+          "sku": "NXP-2026-CD-0007",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
-          "quantity": 15
+          "quantity": 1
         },
         {
-          "at": "2026-09-15T02:00:44.796Z",
-          "sku": "NXP-2026-APP-0004",
+          "at": "2026-09-15T02:00:44.784Z",
+          "sku": "NXP-2026-CD-0007",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
-          "quantity": 15
+          "quantity": 1
         },
         {
-          "at": "2026-08-30T02:14:08.796Z",
-          "sku": "NXP-2026-APP-0004",
+          "at": "2026-08-30T02:14:08.793Z",
+          "sku": "NXP-2026-CD-0007",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
-          "quantity": 15
+          "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.965Z",
-          "sku": "NXP-2026-APP-0004",
+          "at": "2026-08-29T10:09:43.963Z",
+          "sku": "NXP-2026-CD-0007",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
-          "quantity": 15
+          "quantity": 1
         },
         {
-          "at": "2026-08-29T09:54:26.176Z",
-          "sku": "NXP-2026-APP-0004",
+          "at": "2026-08-29T09:54:26.174Z",
+          "sku": "NXP-2026-CD-0007",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
-          "quantity": 15
+          "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.934Z",
-          "sku": "NXP-2026-APP-0004",
+          "at": "2026-08-29T02:23:49.931Z",
+          "sku": "NXP-2026-CD-0007",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
-          "quantity": 15
+          "quantity": 1
         },
         {
-          "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-APP-0004",
+          "at": "2026-08-28T09:19:04.763Z",
+          "sku": "NXP-2026-CD-0007",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
-          "quantity": 15
+          "quantity": 1
         }
       ],
       "updatedAt": "2026-09-16",
       "vinylSize": "",
-      "collection": "Cold Metal Breathes Too",
+      "collection": "NIXP Selection",
       "syncStatus": {
-        "at": "2026-09-16T02:00:45.451Z",
-        "sku": "NXP-2026-APP-0004",
+        "at": "2026-09-16T02:00:45.446Z",
+        "sku": "NXP-2026-CD-0007",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
-        "quantity": 15
+        "quantity": 1
       },
       "visibility": "Public",
-      "apparelType": "Tops",
-      "description": "MESH BLACK LONGSLEEVE\n16s 250GSM\n\nMESH ART SCREENPRINTED ON FRONT\nMESH ART SCREENPRINTED ON SLEEVES",
-      "reviewQuote": "",
-      "imageCredits": [],
-      "reviewSource": "",
-      "catalogNumber": "",
-      "displayFormat": "Mesh Black Longsleeve",
-      "homeSlideSort": null,
+      "apparelType": "",
+      "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
+      "reviewQuote": "savor their own powerlessness",
+      "editRevision": 5,
+      "imageCredits": [
+        {
+          "url": "https://truepanther.com/",
+          "image": "/public/mockups/nxp-2026-cd-0007-model-actriz-pirouette-cd.png",
+          "credit": "True Panther"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
+        "description": "Model/Actriz's 2025 Pirouette is a tense second album from the New York band, turning noise, dance-rock and club rhythm into songs about desire, power and exposure.",
+        "reviewQuote": "savor their own powerlessness",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Osees",
+          "thirtytwobitwhore",
+          "Los Yolos",
+          "The WAEVE"
+        ],
+        "enrichmentStatus": "complete-no-related-artists",
+        "descriptionSource": "Pitchfork / The Guardian",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Osees",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.26087,
+            "artist": "thirtytwobitwhore",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.26087,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.169578,
+            "artist": "Los Yolos",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.169578,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.153794,
+            "artist": "The WAEVE",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.153794,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Osees",
+              "thirtytwobitwhore",
+              "Los Yolos",
+              "The WAEVE"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Osees",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.26087,
+                "artist": "thirtytwobitwhore",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 0.26087,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.169578,
+                "artist": "Los Yolos",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 0.169578,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.153794,
+                "artist": "The WAEVE",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 0.153794,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Osees",
+            "thirtytwobitwhore",
+            "Los Yolos",
+            "The WAEVE"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Osees",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.26087,
+              "artist": "thirtytwobitwhore",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.26087,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.169578,
+              "artist": "Los Yolos",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.169578,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.153794,
+              "artist": "The WAEVE",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.153794,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+          "sourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "DH02208",
+      "displayFormat": "CD",
+      "homeSlideSort": 16,
       "publishStatus": "Published",
-      "financeStockId": "catalog-nxp-2026-app-0004-mesh-black-longsleeve",
+      "financeStockId": "mr6ja47vdluske",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [],
-      "financeItemType": "Mesh Black Longsleeve",
+      "relatedArtists": [
+        "Osees",
+        "thirtytwobitwhore",
+        "Los Yolos",
+        "The WAEVE"
+      ],
+      "financeItemType": "CD",
       "financeMetadata": {
         "isbn": "",
         "pages": "",
@@ -84128,26 +83968,187 @@
         "dimensions": "",
         "printDetails": ""
       },
-      "homeCollections": [],
+      "homeCollections": [
+        "recent-releases"
+      ],
       "sleeveCondition": "",
-      "descriptionSource": "",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "Pitchfork / The Guardian",
+      "metadataSourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+      "editorialUpdatedAt": "2026-09-16T13:37:09.218+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+      "enrichmentAttemptedAt": "2026-08-18T16:53:50.120Z",
+      "enrichmentFingerprint": "model actriz|pirouette|cd||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Osees",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.26087,
+          "artist": "thirtytwobitwhore",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 0.26087,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.169578,
+          "artist": "Los Yolos",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 0.169578,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.153794,
+          "artist": "The WAEVE",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 0.153794,
+          "relationType": "artist-similarity"
+        }
+      ],
       "minimumAcceptableOffer": 0,
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:20.843+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "relatedArtistsResearch": null,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Osees",
+            "thirtytwobitwhore",
+            "Los Yolos",
+            "The WAEVE"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Osees",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.26087,
+              "artist": "thirtytwobitwhore",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.26087,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.169578,
+              "artist": "Los Yolos",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.169578,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.153794,
+              "artist": "The WAEVE",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.153794,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Osees",
+          "thirtytwobitwhore",
+          "Los Yolos",
+          "The WAEVE"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Osees",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.26087,
+            "artist": "thirtytwobitwhore",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.26087,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.169578,
+            "artist": "Los Yolos",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.169578,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.153794,
+            "artist": "The WAEVE",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.153794,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+        "sourceUrl": "https://musicbrainz.org/release/1e5a07cf-b2f6-4e84-a9df-84aebf815f0e",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
-        "source": "NIXP packing standard: zip-lock plastic plus protective shipping wrap",
+        "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 28,
-        "heightCm": 4,
-        "lengthCm": 36,
-        "updatedAt": "2026-09-02",
-        "packageType": "zip-lock-polybag-shipping-wrap",
-        "weightGrams": 360,
-        "shippingClass": "apparel-soft-zip-lock-wrap",
-        "packagingGroup": "SOFT_APPAREL",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-09-16",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
       }
