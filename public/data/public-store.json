@@ -51215,14 +51215,14 @@
         "/public/covers/nxp-2026-vnl-0015-suicide-suicide.jpg",
         "/public/product-photos/nxp-2026-vnl-0015-suicide-suicide-vinyl.jpg"
       ],
-      "barcode": "",
+      "barcode": "4 050538 253610 >",
       "details": [
         "SKU: NXP-2026-VNL-0015",
         "Format: Vinyl",
         "Condition: New-Sealed",
         "Edition: 2019 remastered limited red vinyl reissue"
       ],
-      "edition": "2019 remastered limited red vinyl reissue",
+      "edition": "Vinyl, LP, Album, Deluxe Edition, Limited Edition, Reissue, Stereo, Red",
       "category": "Records",
       "material": "",
       "autoCover": "/public/covers/nxp-2026-vnl-0015-suicide-suicide.jpg",
@@ -51300,6 +51300,7 @@
       "apparelType": "",
       "description": "Suicide's 1977 debut reduced rock music to Martin Rev's stark electronics and Alan Vega's exposed voice, producing a confrontational New York record whose pulse became foundational to synth-punk, industrial music and electronic pop.",
       "reviewQuote": "Immeasurably influential record that has lost little of its bite",
+      "editRevision": 5,
       "imageCredits": [
         {
           "url": "https://coverartarchive.org/release/aa329b8c-6dd0-3279-9fa2-96e3a995cd4c",
@@ -51555,7 +51556,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "SUICIDELP01",
       "displayFormat": "Vinyl",
       "homeSlideSort": null,
       "publishStatus": "Published",
@@ -51586,6 +51587,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Mute / The Guardian",
       "metadataSourceUrl": "https://mutebank.co.uk/collections/suicide/products/suicide-suicide-lp",
+      "editorialUpdatedAt": "2026-09-16T12:54:17.644+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-26",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
@@ -51819,18 +51822,16 @@
         "sourceUrl": "https://musicbrainz.org/release/62ecc025-9126-3698-81de-e446dbcad4f6",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:24.472+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
