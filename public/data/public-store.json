@@ -71161,7 +71161,7 @@
         "Format: Vinyl 12\"",
         "Condition: New-Sealed"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Album, Limited Edition, Stereo",
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
@@ -71238,6 +71238,7 @@
       "apparelType": "",
       "description": "Blawan's 2025 SickElixir balances industrial abrasion with dance-floor pleasure, turning modular percussion, distorted voices and mutated techno into an unusually entrancing second album.",
       "reviewQuote": "grotesque, gorgeous dance music",
+      "editRevision": 5,
       "imageCredits": [
         {
           "url": "https://www.turntablelab.com/products/blawan-sickelixir-vinyl-lp",
@@ -71484,7 +71485,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "XL1560LPE",
       "displayFormat": "Vinyl",
       "homeSlideSort": 42,
       "publishStatus": "Published",
@@ -71516,6 +71517,8 @@
       "sleeveCondition": "",
       "enrichmentStatus": "complete-no-related-artists",
       "descriptionSource": "The FADER / Resident Advisor",
+      "editorialUpdatedAt": "2026-09-16T13:17:47.517+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "manualRelatedArtists": [],
       "enrichmentAttemptedAt": "2026-08-18T16:58:27.477Z",
       "enrichmentFingerprint": "blawan|sickelixir|vinyl||",
@@ -71747,17 +71750,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:18.285+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
