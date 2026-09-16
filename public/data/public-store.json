@@ -24927,7 +24927,9 @@
         "SKU: NXP-2026-VNL-0039",
         "Format: Vinyl",
         "Condition: Used Good",
-        "Edition: Vinyl, LP, Album,",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
         "Catalog number: K 52072 / K52072"
       ],
       "edition": "Vinyl, LP, Album,",
@@ -25008,6 +25010,7 @@
       "apparelType": "",
       "description": "Television's 1978 release Adventure is a Vinyl edition issued by Elektra, documented by MusicBrainz as cbgb scene, new wave, post-punk.",
       "reviewQuote": "Adventure by Television released in 1978. Find Adventure reviews, track lists, credits, awards and more at AllMusic.",
+      "editRevision": 6,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/a672416a-005f-3dbc-8f78-952f5e18a7e0",
@@ -25264,7 +25267,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "P-10499E",
       "displayFormat": "Vinyl",
       "homeSlideSort": null,
       "publishStatus": "Published",
@@ -25300,6 +25303,8 @@
         "review source",
         "related artists available in inventory"
       ],
+      "editorialUpdatedAt": "2026-09-16T10:04:54.224+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-11",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "a672416a-005f-3dbc-8f78-952f5e18a7e0",
@@ -25534,17 +25539,16 @@
         "sourceUrl": "https://musicbrainz.org/release/a672416a-005f-3dbc-8f78-952f5e18a7e0",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 5,
-      "editorialUpdatedAt": "2026-09-16T02:01:44.185+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
