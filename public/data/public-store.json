@@ -60416,13 +60416,13 @@
       "images": [
         "/public/covers/nxp-2026-cd-0023-oneohtrix-point-never-tranquilizer.jpg"
       ],
-      "barcode": "",
+      "barcode": "4523132160504",
       "details": [
         "SKU: NXP-2026-CD-0023",
         "Format: CD",
         "Condition: Used Excellence"
       ],
-      "edition": "",
+      "edition": "CD, Album",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0023/cover.jpg",
@@ -60500,6 +60500,7 @@
       "apparelType": "",
       "description": "Oneohtrix Point Never's 2025 Tranquilizer turns unstable commercial sample archives into dense, transportive electronic music about impermanence.",
       "reviewQuote": "most immediately pleasurable Oneohtrix Point Never album",
+      "editRevision": 5,
       "imageCredits": [],
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
@@ -60744,7 +60745,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "BRC805,  WARPCD411",
       "displayFormat": "CD",
       "homeSlideSort": 43,
       "publishStatus": "Published",
@@ -60778,6 +60779,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Pitchfork",
       "metadataSourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
+      "editorialUpdatedAt": "2026-09-16T11:47:24.497+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
@@ -61011,18 +61014,16 @@
         "sourceUrl": "https://musicbrainz.org/release/b4a1acba-ba6a-4ba0-ab3a-354c89c34279",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:18.575+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
