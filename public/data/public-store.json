@@ -38902,14 +38902,14 @@
         "/public/assets/catalog-archive/nxp-2026-vnl-0032-cover.webp",
         "/public/assets/catalog-archive/nxp-2026-vnl-0032-detail-1.webp"
       ],
-      "barcode": "",
+      "barcode": "616892438342",
       "details": [
         "SKU: NXP-2026-VNL-0032",
         "Format: Vinyl",
         "Condition: New-Sealed",
         "Edition: LP"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
       "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0032-cover.webp",
@@ -38987,6 +38987,7 @@
       "apparelType": "",
       "description": "Uniform's 2017 Wake in Fright is industrial metal built from hardcore aggression, programmed percussion and power-electronic abrasion, confronting war and self-medication with relentless force.",
       "reviewQuote": "fighting back",
+      "editRevision": 6,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff",
@@ -39273,6 +39274,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Sacred Bones Records / Pitchfork",
       "metadataSourceUrl": "https://www.sacredbonesrecords.com/products/sbr170-uniform-wake-in-fright",
+      "editorialUpdatedAt": "2026-09-16T10:32:15.078+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-27",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "d2192ea8-df3e-42ab-94a2-a0b0d0b3e9ff",
@@ -39509,16 +39512,13 @@
       "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 5,
-      "editorialUpdatedAt": "2026-09-16T02:01:35.362+00:00",
-      "editorialUpdatedBy": "finance-stock",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-24",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -47929,92 +47929,97 @@
       }
     },
     {
-      "id": "finance-nxp-2026-cd-0028",
+      "id": "finance-nxp-2026-cst-0010",
       "qty": 1,
-      "sku": "NXP-2026-CD-0028",
-      "tags": [],
-      "year": 2002,
+      "sku": "NXP-2026-CST-0010",
+      "tags": [
+        "death metal",
+        "technical death metal"
+      ],
+      "year": 1993,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
-      "label": "V2 / Junior Boy's Own",
-      "price": 125000,
+      "image": "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
+      "label": "Roadrunner Records",
+      "price": 245000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "A Hundred Days Off",
-      "artist": "Underworld",
-      "format": "CD",
+      "title": "Breeding the Spawn",
+      "artist": "Suffocation",
+      "format": "Cassette",
       "images": [
-        "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg"
+        "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
+        "/public/product-photos/nxp-2026-cst-0010-suffocation-breeding-the-spawn-cassette.png"
       ],
       "barcode": "",
       "details": [
-        "SKU: NXP-2026-CD-0028",
-        "Format: CD",
-        "Condition: Used Good"
+        "SKU: NXP-2026-CST-0010",
+        "Format: Cassette",
+        "Condition: New-Sealed",
+        "Edition: Cassette"
       ],
-      "edition": "",
+      "edition": "Cassette",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0028/cover.jpg",
-      "condition": "Used Good",
-      "reviewUrl": "",
+      "autoCover": "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://metalstorm.net/pub/review.php?review_id=18574",
       "syncAudit": [
         {
-          "at": "2026-09-16T02:00:45.453Z",
-          "sku": "NXP-2026-CD-0028",
+          "at": "2026-09-16T02:00:45.452Z",
+          "sku": "NXP-2026-CST-0010",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-15T11:52:07.983Z",
-          "sku": "NXP-2026-CD-0028",
+          "at": "2026-09-15T11:52:07.982Z",
+          "sku": "NXP-2026-CST-0010",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-15T02:00:44.798Z",
-          "sku": "NXP-2026-CD-0028",
+          "at": "2026-09-15T02:00:44.797Z",
+          "sku": "NXP-2026-CST-0010",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-30T02:14:08.797Z",
-          "sku": "NXP-2026-CD-0028",
+          "at": "2026-08-30T02:14:08.796Z",
+          "sku": "NXP-2026-CST-0010",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.967Z",
-          "sku": "NXP-2026-CD-0028",
+          "at": "2026-08-29T10:09:43.966Z",
+          "sku": "NXP-2026-CST-0010",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T09:54:26.182Z",
-          "sku": "NXP-2026-CD-0028",
+          "sku": "NXP-2026-CST-0010",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T02:23:49.935Z",
-          "sku": "NXP-2026-CD-0028",
+          "sku": "NXP-2026-CST-0010",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-CD-0028",
+          "sku": "NXP-2026-CST-0010",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -48022,93 +48027,98 @@
       ],
       "updatedAt": "2026-09-16",
       "vinylSize": "",
-      "collection": "V2 / Junior Boy's Own",
+      "collection": "Roadrunner Records",
       "syncStatus": {
-        "at": "2026-09-16T02:00:45.453Z",
-        "sku": "NXP-2026-CD-0028",
+        "at": "2026-09-16T02:00:45.452Z",
+        "sku": "NXP-2026-CST-0010",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
-      "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
+      "description": "Suffocation's 1993 second album Breeding the Spawn pushed the New York band's dense riffing, abrupt rhythmic turns and low-register brutality further into the technical death-metal language they helped establish.",
+      "reviewQuote": "The blueprint that many latter-day tech death bands would borrow from",
       "imageCredits": [
         {
-          "url": "https://music.apple.com/us/album/a-hundred-days-off/1440856881",
-          "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
-          "credit": "Apple Music artwork / V2"
+          "url": "https://listenable-records.bandcamp.com/album/breeding-the-spawn-sorry-digital-is-not-available",
+          "image": "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
+          "credit": "Listenable Records Bandcamp artwork"
+        },
+        {
+          "url": "https://direct-merch.com/products/suffocation-breeding-the-spawn-cassette",
+          "image": "/public/product-photos/nxp-2026-cst-0010-suffocation-breeding-the-spawn-cassette.png",
+          "credit": "Suffocation Direct Merch product photography"
         }
       ],
-      "reviewSource": "AllMusic (quoted)",
+      "reviewSource": "Metal Storm (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/8350-a-hundred-days-off/",
-        "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
-        "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
-        "reviewSource": "AllMusic (quoted)",
+        "reviewUrl": "https://metalstorm.net/pub/review.php?review_id=18574",
+        "description": "Suffocation's 1993 second album Breeding the Spawn pushed the New York band's dense riffing, abrupt rhythmic turns and low-register brutality further into the technical death-metal language they helped establish.",
+        "reviewQuote": "The blueprint that many latter-day tech death bands would borrow from",
+        "reviewSource": "Metal Storm (quoted)",
         "relatedArtists": [
-          "Orbital",
-          "Leftfield",
-          "The Orb",
-          "Fluke",
-          "System 7"
+          "Deeds of Flesh",
+          "Cryptopsy",
+          "Defeated Sanity",
+          "Morbid Angel",
+          "Immolation"
         ],
-        "descriptionSource": "AllMusic / MusicBrainz",
+        "descriptionSource": "Suffocation / MusicBrainz",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Orbital",
+            "artist": "Deeds of Flesh",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.958347,
-            "artist": "Leftfield",
+            "match": 0.999706,
+            "artist": "Cryptopsy",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.958347,
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "confidence": 0.999706,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.73428,
-            "artist": "The Orb",
+            "match": 0.953651,
+            "artist": "Defeated Sanity",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.73428,
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "confidence": 0.953651,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.618522,
-            "artist": "Fluke",
+            "match": 0.942018,
+            "artist": "Morbid Angel",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.618522,
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "confidence": 0.942018,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.612107,
-            "artist": "System 7",
+            "match": 0.93131,
+            "artist": "Immolation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.612107,
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "confidence": 0.93131,
             "relationType": "artist-similarity"
           }
         ],
@@ -48117,188 +48127,188 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Orbital",
-              "Leftfield",
-              "The Orb",
-              "Fluke",
-              "System 7",
-              "The Chemical Brothers",
-              "808 State",
-              "The Future Sound of London",
-              "Sasha",
-              "The KLF"
+              "Deeds of Flesh",
+              "Cryptopsy",
+              "Defeated Sanity",
+              "Morbid Angel",
+              "Immolation",
+              "Gorguts",
+              "Dying Fetus",
+              "Deicide",
+              "Nile",
+              "Incantation"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Orbital",
+                "artist": "Deeds of Flesh",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.958347,
-                "artist": "Leftfield",
+                "match": 0.999706,
+                "artist": "Cryptopsy",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.958347,
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "confidence": 0.999706,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.73428,
-                "artist": "The Orb",
+                "match": 0.953651,
+                "artist": "Defeated Sanity",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.73428,
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "confidence": 0.953651,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.618522,
-                "artist": "Fluke",
+                "match": 0.942018,
+                "artist": "Morbid Angel",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.618522,
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "confidence": 0.942018,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.612107,
-                "artist": "System 7",
+                "match": 0.93131,
+                "artist": "Immolation",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.612107,
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "confidence": 0.93131,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.606556,
-                "artist": "The Chemical Brothers",
+                "match": 0.922222,
+                "artist": "Gorguts",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.606556,
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "confidence": 0.922222,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.567863,
-                "artist": "808 State",
+                "match": 0.91683,
+                "artist": "Dying Fetus",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.567863,
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "confidence": 0.91683,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.524434,
-                "artist": "The Future Sound of London",
+                "match": 0.883418,
+                "artist": "Deicide",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.524434,
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "confidence": 0.883418,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.42185,
-                "artist": "Sasha",
+                "match": 0.857888,
+                "artist": "Nile",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.42185,
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "confidence": 0.857888,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.409601,
-                "artist": "The KLF",
+                "match": 0.84218,
+                "artist": "Incantation",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.409601,
+                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "confidence": 0.84218,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld"
+            "sourceUrl": "https://www.last.fm/music/Suffocation"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Orbital",
-            "Leftfield",
-            "The Orb",
-            "Fluke",
-            "System 7"
+            "Deeds of Flesh",
+            "Cryptopsy",
+            "Defeated Sanity",
+            "Morbid Angel",
+            "Immolation"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Orbital",
+              "artist": "Deeds of Flesh",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.958347,
-              "artist": "Leftfield",
+              "match": 0.999706,
+              "artist": "Cryptopsy",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.958347,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.999706,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.73428,
-              "artist": "The Orb",
+              "match": 0.953651,
+              "artist": "Defeated Sanity",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.73428,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.953651,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.618522,
-              "artist": "Fluke",
+              "match": 0.942018,
+              "artist": "Morbid Angel",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.618522,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.942018,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.612107,
-              "artist": "System 7",
+              "match": 0.93131,
+              "artist": "Immolation",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.612107,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.93131,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
-          "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+          "releaseId": "bc9f0c79-5f69-4f60-9681-087caba79c18",
+          "sourceUrl": "https://musicbrainz.org/release/bc9f0c79-5f69-4f60-9681-087caba79c18",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "",
-      "displayFormat": "CD",
+      "displayFormat": "Cassette",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1t6rhsto1tce",
+      "financeStockId": "ms1g40ijr47v91",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Orbital",
-        "Leftfield",
-        "The Orb",
-        "Fluke",
-        "System 7"
+        "Deeds of Flesh",
+        "Cryptopsy",
+        "Defeated Sanity",
+        "Morbid Angel",
+        "Immolation"
       ],
-      "financeItemType": "CD",
+      "financeItemType": "Cassette",
       "financeMetadata": {
         "isbn": "",
         "pages": "",
@@ -48309,72 +48319,71 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "reviewSourceUrl": "https://www.allmusic.com/album/a-hundred-days-off-mw0000223914",
       "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
+      "autoProductPhoto": "/public/product-photos/nxp-2026-cst-0010-suffocation-breeding-the-spawn-cassette.png",
+      "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
-      "descriptionSource": "AllMusic / MusicBrainz",
-      "metadataSourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
-      "enrichmentUpdatedAt": "2026-08-18",
+      "descriptionSource": "Suffocation / MusicBrainz",
+      "metadataSourceUrl": "https://direct-merch.com/products/suffocation-breeding-the-spawn-cassette",
+      "enrichmentUpdatedAt": "2026-07-26",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
-      "enrichmentAttemptedAt": "2026-08-18T16:49:54.069Z",
-      "enrichmentFingerprint": "underworld|a hundred days off|cd||",
+      "musicBrainzReleaseId": "bc9f0c79-5f69-4f60-9681-087caba79c18",
+      "enrichmentAttemptedAt": "2026-08-18T16:46:34.032Z",
+      "enrichmentFingerprint": "suffocation|breeding the spawn|cassette||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Orbital",
+          "artist": "Deeds of Flesh",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "sourceUrl": "https://www.last.fm/music/Suffocation",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.958347,
-          "artist": "Leftfield",
+          "match": 0.999706,
+          "artist": "Cryptopsy",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.958347,
+          "sourceUrl": "https://www.last.fm/music/Suffocation",
+          "confidence": 0.999706,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.73428,
-          "artist": "The Orb",
+          "match": 0.953651,
+          "artist": "Defeated Sanity",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.73428,
+          "sourceUrl": "https://www.last.fm/music/Suffocation",
+          "confidence": 0.953651,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.618522,
-          "artist": "Fluke",
+          "match": 0.942018,
+          "artist": "Morbid Angel",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.618522,
+          "sourceUrl": "https://www.last.fm/music/Suffocation",
+          "confidence": 0.942018,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.612107,
-          "artist": "System 7",
+          "match": 0.93131,
+          "artist": "Immolation",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.612107,
+          "sourceUrl": "https://www.last.fm/music/Suffocation",
+          "confidence": 0.93131,
           "relationType": "artist-similarity"
         }
       ],
@@ -48384,186 +48393,186 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Orbital",
-            "Leftfield",
-            "The Orb",
-            "Fluke",
-            "System 7",
-            "The Chemical Brothers",
-            "808 State",
-            "The Future Sound of London",
-            "Sasha",
-            "The KLF"
+            "Deeds of Flesh",
+            "Cryptopsy",
+            "Defeated Sanity",
+            "Morbid Angel",
+            "Immolation",
+            "Gorguts",
+            "Dying Fetus",
+            "Deicide",
+            "Nile",
+            "Incantation"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Orbital",
+              "artist": "Deeds of Flesh",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.958347,
-              "artist": "Leftfield",
+              "match": 0.999706,
+              "artist": "Cryptopsy",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.958347,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.999706,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.73428,
-              "artist": "The Orb",
+              "match": 0.953651,
+              "artist": "Defeated Sanity",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.73428,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.953651,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.618522,
-              "artist": "Fluke",
+              "match": 0.942018,
+              "artist": "Morbid Angel",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.618522,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.942018,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.612107,
-              "artist": "System 7",
+              "match": 0.93131,
+              "artist": "Immolation",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.612107,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.93131,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.606556,
-              "artist": "The Chemical Brothers",
+              "match": 0.922222,
+              "artist": "Gorguts",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.606556,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.922222,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.567863,
-              "artist": "808 State",
+              "match": 0.91683,
+              "artist": "Dying Fetus",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.567863,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.91683,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.524434,
-              "artist": "The Future Sound of London",
+              "match": 0.883418,
+              "artist": "Deicide",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.524434,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.883418,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.42185,
-              "artist": "Sasha",
+              "match": 0.857888,
+              "artist": "Nile",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.42185,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.857888,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.409601,
-              "artist": "The KLF",
+              "match": 0.84218,
+              "artist": "Incantation",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.409601,
+              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "confidence": 0.84218,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Underworld"
+          "sourceUrl": "https://www.last.fm/music/Suffocation"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Orbital",
-          "Leftfield",
-          "The Orb",
-          "Fluke",
-          "System 7"
+          "Deeds of Flesh",
+          "Cryptopsy",
+          "Defeated Sanity",
+          "Morbid Angel",
+          "Immolation"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Orbital",
+            "artist": "Deeds of Flesh",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.958347,
-            "artist": "Leftfield",
+            "match": 0.999706,
+            "artist": "Cryptopsy",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.958347,
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "confidence": 0.999706,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.73428,
-            "artist": "The Orb",
+            "match": 0.953651,
+            "artist": "Defeated Sanity",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.73428,
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "confidence": 0.953651,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.618522,
-            "artist": "Fluke",
+            "match": 0.942018,
+            "artist": "Morbid Angel",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.618522,
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "confidence": 0.942018,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.612107,
-            "artist": "System 7",
+            "match": 0.93131,
+            "artist": "Immolation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.612107,
+            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "confidence": 0.93131,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
-        "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+        "releaseId": "bc9f0c79-5f69-4f60-9681-087caba79c18",
+        "sourceUrl": "https://musicbrainz.org/release/bc9f0c79-5f69-4f60-9681-087caba79c18",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:27.088+00:00",
+      "editorialUpdatedAt": "2026-09-16T02:01:24.153+00:00",
       "editorialUpdatedBy": "finance-stock",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
+        "widthCm": 12,
+        "heightCm": 8,
+        "lengthCm": 16,
         "updatedAt": "2026-08-11",
         "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
+        "weightGrams": 90,
+        "shippingClass": "small-media-cassette-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
@@ -56379,97 +56388,92 @@
       }
     },
     {
-      "id": "finance-nxp-2026-cst-0010",
+      "id": "finance-nxp-2026-cd-0028",
       "qty": 1,
-      "sku": "NXP-2026-CST-0010",
-      "tags": [
-        "death metal",
-        "technical death metal"
-      ],
-      "year": 1993,
+      "sku": "NXP-2026-CD-0028",
+      "tags": [],
+      "year": 2002,
       "color": "",
-      "image": "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
-      "label": "Roadrunner Records",
-      "price": 245000,
+      "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
+      "label": "V2 / Junior Boy's Own",
+      "price": 125000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Breeding the Spawn",
-      "artist": "Suffocation",
-      "format": "Cassette",
+      "title": "A Hundred Days Off",
+      "artist": "Underworld",
+      "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
-        "/public/product-photos/nxp-2026-cst-0010-suffocation-breeding-the-spawn-cassette.png"
+        "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg"
       ],
       "barcode": "",
       "details": [
-        "SKU: NXP-2026-CST-0010",
-        "Format: Cassette",
-        "Condition: New-Sealed",
-        "Edition: Cassette"
+        "SKU: NXP-2026-CD-0028",
+        "Format: CD",
+        "Condition: Used Good"
       ],
-      "edition": "Cassette",
+      "edition": "",
       "category": "Records",
       "material": "",
-      "autoCover": "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://metalstorm.net/pub/review.php?review_id=18574",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0028/cover.jpg",
+      "condition": "Used Good",
+      "reviewUrl": "",
       "syncAudit": [
         {
-          "at": "2026-09-16T02:00:45.452Z",
-          "sku": "NXP-2026-CST-0010",
+          "at": "2026-09-16T02:00:45.453Z",
+          "sku": "NXP-2026-CD-0028",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-15T11:52:07.982Z",
-          "sku": "NXP-2026-CST-0010",
+          "at": "2026-09-15T11:52:07.983Z",
+          "sku": "NXP-2026-CD-0028",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-15T02:00:44.797Z",
-          "sku": "NXP-2026-CST-0010",
+          "at": "2026-09-15T02:00:44.798Z",
+          "sku": "NXP-2026-CD-0028",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-30T02:14:08.796Z",
-          "sku": "NXP-2026-CST-0010",
+          "at": "2026-08-30T02:14:08.797Z",
+          "sku": "NXP-2026-CD-0028",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T10:09:43.966Z",
-          "sku": "NXP-2026-CST-0010",
+          "at": "2026-08-29T10:09:43.967Z",
+          "sku": "NXP-2026-CD-0028",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T09:54:26.182Z",
-          "sku": "NXP-2026-CST-0010",
+          "sku": "NXP-2026-CD-0028",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T02:23:49.935Z",
-          "sku": "NXP-2026-CST-0010",
+          "sku": "NXP-2026-CD-0028",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T09:19:04.765Z",
-          "sku": "NXP-2026-CST-0010",
+          "sku": "NXP-2026-CD-0028",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -56477,98 +56481,93 @@
       ],
       "updatedAt": "2026-09-16",
       "vinylSize": "",
-      "collection": "Roadrunner Records",
+      "collection": "V2 / Junior Boy's Own",
       "syncStatus": {
-        "at": "2026-09-16T02:00:45.452Z",
-        "sku": "NXP-2026-CST-0010",
+        "at": "2026-09-16T02:00:45.453Z",
+        "sku": "NXP-2026-CD-0028",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Suffocation's 1993 second album Breeding the Spawn pushed the New York band's dense riffing, abrupt rhythmic turns and low-register brutality further into the technical death-metal language they helped establish.",
-      "reviewQuote": "The blueprint that many latter-day tech death bands would borrow from",
+      "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
+      "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
       "imageCredits": [
         {
-          "url": "https://listenable-records.bandcamp.com/album/breeding-the-spawn-sorry-digital-is-not-available",
-          "image": "/public/covers/nxp-2026-cst-0010-suffocation-breeding-the-spawn.jpg",
-          "credit": "Listenable Records Bandcamp artwork"
-        },
-        {
-          "url": "https://direct-merch.com/products/suffocation-breeding-the-spawn-cassette",
-          "image": "/public/product-photos/nxp-2026-cst-0010-suffocation-breeding-the-spawn-cassette.png",
-          "credit": "Suffocation Direct Merch product photography"
+          "url": "https://music.apple.com/us/album/a-hundred-days-off/1440856881",
+          "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
+          "credit": "Apple Music artwork / V2"
         }
       ],
-      "reviewSource": "Metal Storm (quoted)",
+      "reviewSource": "AllMusic (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://metalstorm.net/pub/review.php?review_id=18574",
-        "description": "Suffocation's 1993 second album Breeding the Spawn pushed the New York band's dense riffing, abrupt rhythmic turns and low-register brutality further into the technical death-metal language they helped establish.",
-        "reviewQuote": "The blueprint that many latter-day tech death bands would borrow from",
-        "reviewSource": "Metal Storm (quoted)",
+        "reviewUrl": "https://pitchfork.com/reviews/albums/8350-a-hundred-days-off/",
+        "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
+        "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
+        "reviewSource": "AllMusic (quoted)",
         "relatedArtists": [
-          "Deeds of Flesh",
-          "Cryptopsy",
-          "Defeated Sanity",
-          "Morbid Angel",
-          "Immolation"
+          "Orbital",
+          "Leftfield",
+          "The Orb",
+          "Fluke",
+          "System 7"
         ],
-        "descriptionSource": "Suffocation / MusicBrainz",
+        "descriptionSource": "AllMusic / MusicBrainz",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Deeds of Flesh",
+            "artist": "Orbital",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "sourceUrl": "https://www.last.fm/music/Underworld",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.999706,
-            "artist": "Cryptopsy",
+            "match": 0.958347,
+            "artist": "Leftfield",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
-            "confidence": 0.999706,
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.958347,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.953651,
-            "artist": "Defeated Sanity",
+            "match": 0.73428,
+            "artist": "The Orb",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
-            "confidence": 0.953651,
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.73428,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.942018,
-            "artist": "Morbid Angel",
+            "match": 0.618522,
+            "artist": "Fluke",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
-            "confidence": 0.942018,
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.618522,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.93131,
-            "artist": "Immolation",
+            "match": 0.612107,
+            "artist": "System 7",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
-            "confidence": 0.93131,
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.612107,
             "relationType": "artist-similarity"
           }
         ],
@@ -56577,188 +56576,188 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Deeds of Flesh",
-              "Cryptopsy",
-              "Defeated Sanity",
-              "Morbid Angel",
-              "Immolation",
-              "Gorguts",
-              "Dying Fetus",
-              "Deicide",
-              "Nile",
-              "Incantation"
+              "Orbital",
+              "Leftfield",
+              "The Orb",
+              "Fluke",
+              "System 7",
+              "The Chemical Brothers",
+              "808 State",
+              "The Future Sound of London",
+              "Sasha",
+              "The KLF"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Deeds of Flesh",
+                "artist": "Orbital",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.999706,
-                "artist": "Cryptopsy",
+                "match": 0.958347,
+                "artist": "Leftfield",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
-                "confidence": 0.999706,
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.958347,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.953651,
-                "artist": "Defeated Sanity",
+                "match": 0.73428,
+                "artist": "The Orb",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
-                "confidence": 0.953651,
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.73428,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.942018,
-                "artist": "Morbid Angel",
+                "match": 0.618522,
+                "artist": "Fluke",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
-                "confidence": 0.942018,
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.618522,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.93131,
-                "artist": "Immolation",
+                "match": 0.612107,
+                "artist": "System 7",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
-                "confidence": 0.93131,
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.612107,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.922222,
-                "artist": "Gorguts",
+                "match": 0.606556,
+                "artist": "The Chemical Brothers",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
-                "confidence": 0.922222,
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.606556,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.91683,
-                "artist": "Dying Fetus",
+                "match": 0.567863,
+                "artist": "808 State",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
-                "confidence": 0.91683,
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.567863,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.883418,
-                "artist": "Deicide",
+                "match": 0.524434,
+                "artist": "The Future Sound of London",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
-                "confidence": 0.883418,
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.524434,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.857888,
-                "artist": "Nile",
+                "match": 0.42185,
+                "artist": "Sasha",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
-                "confidence": 0.857888,
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.42185,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.84218,
-                "artist": "Incantation",
+                "match": 0.409601,
+                "artist": "The KLF",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suffocation",
-                "confidence": 0.84218,
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.409601,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation"
+            "sourceUrl": "https://www.last.fm/music/Underworld"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Deeds of Flesh",
-            "Cryptopsy",
-            "Defeated Sanity",
-            "Morbid Angel",
-            "Immolation"
+            "Orbital",
+            "Leftfield",
+            "The Orb",
+            "Fluke",
+            "System 7"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Deeds of Flesh",
+              "artist": "Orbital",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.999706,
-              "artist": "Cryptopsy",
+              "match": 0.958347,
+              "artist": "Leftfield",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.999706,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.958347,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.953651,
-              "artist": "Defeated Sanity",
+              "match": 0.73428,
+              "artist": "The Orb",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.953651,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.73428,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.942018,
-              "artist": "Morbid Angel",
+              "match": 0.618522,
+              "artist": "Fluke",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.942018,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.618522,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.93131,
-              "artist": "Immolation",
+              "match": 0.612107,
+              "artist": "System 7",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.93131,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.612107,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "bc9f0c79-5f69-4f60-9681-087caba79c18",
-          "sourceUrl": "https://musicbrainz.org/release/bc9f0c79-5f69-4f60-9681-087caba79c18",
+          "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
+          "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "",
-      "displayFormat": "Cassette",
+      "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1g40ijr47v91",
+      "financeStockId": "ms1t6rhsto1tce",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Deeds of Flesh",
-        "Cryptopsy",
-        "Defeated Sanity",
-        "Morbid Angel",
-        "Immolation"
+        "Orbital",
+        "Leftfield",
+        "The Orb",
+        "Fluke",
+        "System 7"
       ],
-      "financeItemType": "Cassette",
+      "financeItemType": "CD",
       "financeMetadata": {
         "isbn": "",
         "pages": "",
@@ -56769,71 +56768,72 @@
         "printDetails": ""
       },
       "homeCollections": [],
+      "reviewSourceUrl": "https://www.allmusic.com/album/a-hundred-days-off-mw0000223914",
       "sleeveCondition": "",
-      "autoProductPhoto": "/public/product-photos/nxp-2026-cst-0010-suffocation-breeding-the-spawn-cassette.png",
-      "enrichmentOrigin": "curated-exact",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
-      "descriptionSource": "Suffocation / MusicBrainz",
-      "metadataSourceUrl": "https://direct-merch.com/products/suffocation-breeding-the-spawn-cassette",
-      "enrichmentUpdatedAt": "2026-07-26",
+      "descriptionSource": "AllMusic / MusicBrainz",
+      "metadataSourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+      "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "bc9f0c79-5f69-4f60-9681-087caba79c18",
-      "enrichmentAttemptedAt": "2026-08-18T16:46:34.032Z",
-      "enrichmentFingerprint": "suffocation|breeding the spawn|cassette||",
+      "musicBrainzReleaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
+      "enrichmentAttemptedAt": "2026-08-18T16:49:54.069Z",
+      "enrichmentFingerprint": "underworld|a hundred days off|cd||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Deeds of Flesh",
+          "artist": "Orbital",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suffocation",
+          "sourceUrl": "https://www.last.fm/music/Underworld",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.999706,
-          "artist": "Cryptopsy",
+          "match": 0.958347,
+          "artist": "Leftfield",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suffocation",
-          "confidence": 0.999706,
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.958347,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.953651,
-          "artist": "Defeated Sanity",
+          "match": 0.73428,
+          "artist": "The Orb",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suffocation",
-          "confidence": 0.953651,
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.73428,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.942018,
-          "artist": "Morbid Angel",
+          "match": 0.618522,
+          "artist": "Fluke",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suffocation",
-          "confidence": 0.942018,
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.618522,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.93131,
-          "artist": "Immolation",
+          "match": 0.612107,
+          "artist": "System 7",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suffocation",
-          "confidence": 0.93131,
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.612107,
           "relationType": "artist-similarity"
         }
       ],
@@ -56843,186 +56843,186 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Deeds of Flesh",
-            "Cryptopsy",
-            "Defeated Sanity",
-            "Morbid Angel",
-            "Immolation",
-            "Gorguts",
-            "Dying Fetus",
-            "Deicide",
-            "Nile",
-            "Incantation"
+            "Orbital",
+            "Leftfield",
+            "The Orb",
+            "Fluke",
+            "System 7",
+            "The Chemical Brothers",
+            "808 State",
+            "The Future Sound of London",
+            "Sasha",
+            "The KLF"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Deeds of Flesh",
+              "artist": "Orbital",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.999706,
-              "artist": "Cryptopsy",
+              "match": 0.958347,
+              "artist": "Leftfield",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.999706,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.958347,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.953651,
-              "artist": "Defeated Sanity",
+              "match": 0.73428,
+              "artist": "The Orb",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.953651,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.73428,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.942018,
-              "artist": "Morbid Angel",
+              "match": 0.618522,
+              "artist": "Fluke",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.942018,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.618522,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.93131,
-              "artist": "Immolation",
+              "match": 0.612107,
+              "artist": "System 7",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.93131,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.612107,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.922222,
-              "artist": "Gorguts",
+              "match": 0.606556,
+              "artist": "The Chemical Brothers",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.922222,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.606556,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.91683,
-              "artist": "Dying Fetus",
+              "match": 0.567863,
+              "artist": "808 State",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.91683,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.567863,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.883418,
-              "artist": "Deicide",
+              "match": 0.524434,
+              "artist": "The Future Sound of London",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.883418,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.524434,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.857888,
-              "artist": "Nile",
+              "match": 0.42185,
+              "artist": "Sasha",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.857888,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.42185,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.84218,
-              "artist": "Incantation",
+              "match": 0.409601,
+              "artist": "The KLF",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suffocation",
-              "confidence": 0.84218,
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.409601,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Suffocation"
+          "sourceUrl": "https://www.last.fm/music/Underworld"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Deeds of Flesh",
-          "Cryptopsy",
-          "Defeated Sanity",
-          "Morbid Angel",
-          "Immolation"
+          "Orbital",
+          "Leftfield",
+          "The Orb",
+          "Fluke",
+          "System 7"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Deeds of Flesh",
+            "artist": "Orbital",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
+            "sourceUrl": "https://www.last.fm/music/Underworld",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.999706,
-            "artist": "Cryptopsy",
+            "match": 0.958347,
+            "artist": "Leftfield",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
-            "confidence": 0.999706,
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.958347,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.953651,
-            "artist": "Defeated Sanity",
+            "match": 0.73428,
+            "artist": "The Orb",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
-            "confidence": 0.953651,
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.73428,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.942018,
-            "artist": "Morbid Angel",
+            "match": 0.618522,
+            "artist": "Fluke",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
-            "confidence": 0.942018,
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.618522,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.93131,
-            "artist": "Immolation",
+            "match": 0.612107,
+            "artist": "System 7",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suffocation",
-            "confidence": 0.93131,
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.612107,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "bc9f0c79-5f69-4f60-9681-087caba79c18",
-        "sourceUrl": "https://musicbrainz.org/release/bc9f0c79-5f69-4f60-9681-087caba79c18",
+        "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
+        "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:24.153+00:00",
+      "editorialUpdatedAt": "2026-09-16T02:01:27.088+00:00",
       "editorialUpdatedBy": "finance-stock",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 12,
-        "heightCm": 8,
-        "lengthCm": 16,
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
         "updatedAt": "2026-08-11",
         "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 90,
-        "shippingClass": "small-media-cassette-bubble",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
