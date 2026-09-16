@@ -17804,12 +17804,16 @@
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0054/cover.jpg",
         "/public/mockups/nxp-2026-vnl-0054-kelela-new-avatar-purple-vinyl.jpg"
       ],
-      "barcode": "",
+      "barcode": "5056818809347",
       "details": [
         "SKU: NXP-2026-VNL-0054",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album, Limited Edition, Purple Vinyl"
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Limited Edition",
+        "Purple Vinyl"
       ],
       "edition": "Vinyl, LP, Album, Limited Edition, Purple Vinyl",
       "category": "Records",
@@ -17875,7 +17879,8 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-16",
+      "vinylSize": "",
       "collection": "Warp Records",
       "syncStatus": {
         "at": "2026-08-30T02:14:08.801Z",
@@ -17888,6 +17893,7 @@
       "apparelType": "",
       "description": "Kelela's 2026 New Avatar turns her alternative R&B language toward shoegaze guitars, grunge textures and electronic space, drawing on the D.C. indie roots that preceded her club work.",
       "reviewQuote": "another immersive evolution",
+      "editRevision": 3,
       "imageCredits": [
         {
           "url": "https://kelela.bandcamp.com/album/new-avatar-2",
@@ -18173,6 +18179,8 @@
         "managed cover art",
         "verified related-artist research"
       ],
+      "editorialUpdatedAt": "2026-09-16T12:59:45.992+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-22",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
@@ -18407,18 +18415,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 2,
-      "editorialUpdatedAt": "2026-09-02T10:31:35.293788+00:00",
-      "editorialUpdatedBy": "catalog-media-maintenance",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-22",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
