@@ -40191,14 +40191,14 @@
         "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp",
         "/public/mockups/nxp-2026-vnl-0030-preoccupations-clear-vinyl.jpg"
       ],
-      "barcode": "",
+      "barcode": "656605229034",
       "details": [
         "SKU: NXP-2026-VNL-0030",
         "Format: Vinyl",
         "Condition: New-Sealed",
         "Edition: LP"
       ],
-      "edition": "Limited Clear Vinyl",
+      "edition": "Vinyl, LP, Album, Limited Edition, Clear",
       "category": "Records",
       "material": "",
       "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0030-cover.webp",
@@ -40276,6 +40276,7 @@
       "apparelType": "",
       "description": "Preoccupations' 2016 self-titled album is a tense, melodic post-punk record that follows the Calgary group beyond its earlier Viet Cong identity into sharper, more expansive arrangements.",
       "reviewQuote": "the vitality of the music",
+      "editRevision": 6,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
@@ -40564,6 +40565,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Jagjaguwar / Pitchfork",
       "metadataSourceUrl": "https://musicbrainz.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
+      "editorialUpdatedAt": "2026-09-16T10:39:04.629+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-27",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
@@ -40797,18 +40800,16 @@
         "sourceUrl": "https://musicbrainz.org/release/e8747635-0bd4-4cfc-97b5-97f224b0b2cd",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 5,
-      "editorialUpdatedAt": "2026-09-16T02:01:33.438+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
