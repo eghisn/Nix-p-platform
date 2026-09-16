@@ -40845,14 +40845,14 @@
       "images": [
         "/public/assets/catalog-archive/nxp-2026-vnl-0029-cover.webp"
       ],
-      "barcode": "",
+      "barcode": "0801061943912",
       "details": [
         "SKU: NXP-2026-VNL-0029",
         "Format: Vinyl",
         "Condition: New-Sealed",
         "Edition: 12-inch single"
       ],
-      "edition": "",
+      "edition": "Vinyl, 12\", 45 RPM, EP",
       "category": "Records",
       "material": "",
       "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0029-cover.webp",
@@ -40930,6 +40930,7 @@
       "apparelType": "",
       "description": "Squarepusher's 2020 Vortrack is an eerie Warp single built from submerged acid, intricate breakbeats and the futuristic hardware sound that drives Be Up a Hello.",
       "reviewQuote": "devilish and danceable",
+      "editRevision": 6,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b",
@@ -41211,6 +41212,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Warp Records / The Guardian",
       "metadataSourceUrl": "https://www.theguardian.com/music/2020/jan/31/squarepusher-be-up-a-hello-review-warp-records",
+      "editorialUpdatedAt": "2026-09-16T10:46:18.822+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-27",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "d7373248-ae08-4bd8-a848-8b12c70bd88b",
@@ -41447,16 +41450,13 @@
       "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 5,
-      "editorialUpdatedAt": "2026-09-16T02:01:33.125+00:00",
-      "editorialUpdatedBy": "finance-stock",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-24",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
