@@ -61685,17 +61685,17 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0006-damien-dubrovnik-first-burning-attraction.jpg"
       ],
-      "barcode": "",
+      "barcode": "5055300357755",
       "details": [
         "SKU: NXP-2026-VNL-0006",
         "Format: Vinyl 12\"",
         "Condition: Used Good"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0006/cover.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellence",
       "reviewUrl": "https://thequietus.com/articles/13272-damien-dubrovnik-interview",
       "syncAudit": [
         {
@@ -61769,6 +61769,7 @@
       "apparelType": "",
       "description": "Damien Dubrovnik's 2013 Alter LP is a collaboration between Loke Rahbek and Christian Stadsgaard, moving from harsh black-metal intensity toward denser, more dimensional noise textures.",
       "reviewQuote": "richer, more refined approach to texture",
+      "editRevision": 5,
       "imageCredits": [],
       "reviewSource": "The Quietus (quoted)",
       "autoEditorial": {
@@ -62013,7 +62014,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "ALT08",
       "displayFormat": "Vinyl",
       "homeSlideSort": 1,
       "publishStatus": "Published",
@@ -62046,6 +62047,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "The Quietus",
       "metadataSourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
+      "editorialUpdatedAt": "2026-09-16T12:46:11.308+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "6efb8976-81fa-41f4-8130-e26f9625d02f",
@@ -62279,18 +62282,16 @@
         "sourceUrl": "https://musicbrainz.org/release/6efb8976-81fa-41f4-8130-e26f9625d02f",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:10.495+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
