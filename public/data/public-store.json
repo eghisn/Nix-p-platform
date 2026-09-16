@@ -82078,13 +82078,13 @@
       "images": [
         "/public/covers/nxp-2026-cd-0018-cave-in-antenna.jpg"
       ],
-      "barcode": "",
+      "barcode": "8 28765 15552 6",
       "details": [
         "SKU: NXP-2026-CD-0018",
         "Format: CD",
         "Condition: Used Good"
       ],
-      "edition": "",
+      "edition": "CD, Album, Copy Protected",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0018/cover.jpg",
@@ -82162,6 +82162,7 @@
       "apparelType": "",
       "description": "Cave In's 2003 Antenna moves the Massachusetts band's experimental metal toward concise hooks and major-label scale while keeping its guitars intelligently warped.",
       "reviewQuote": "intelligently warped sound",
+      "editRevision": 5,
       "imageCredits": [],
       "reviewSource": "AllMusic (quoted)",
       "autoEditorial": {
@@ -82406,7 +82407,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "RCA – 82876 51555-2",
       "displayFormat": "CD",
       "homeSlideSort": 29,
       "publishStatus": "Published",
@@ -82437,6 +82438,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "AllMusic / Pitchfork",
       "metadataSourceUrl": "https://musicbrainz.org/release/309326d4-b735-4036-a162-67abc3052233",
+      "editorialUpdatedAt": "2026-09-16T11:52:56.523+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "309326d4-b735-4036-a162-67abc3052233",
@@ -82670,18 +82673,16 @@
         "sourceUrl": "https://musicbrainz.org/release/309326d4-b735-4036-a162-67abc3052233",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:13.03+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
