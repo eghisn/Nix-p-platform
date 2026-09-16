@@ -73289,13 +73289,13 @@
       "images": [
         "/public/covers/nxp-2026-cd-0011-david-bowie-blackstar.avif"
       ],
-      "barcode": "",
+      "barcode": "8 88751 73862 1",
       "details": [
         "SKU: NXP-2026-CD-0011",
         "Format: CD",
         "Condition: Used Excellent"
       ],
-      "edition": "",
+      "edition": "CD, Album,  Stereo, Digipack",
       "category": "Records",
       "material": "",
       "condition": "Used Excellent",
@@ -73372,6 +73372,7 @@
       "apparelType": "",
       "description": "David Bowie's 2016 Blackstar folds exploratory jazz, coded drama and alienation into a final act of reinvention, recorded with a New York jazz ensemble.",
       "reviewQuote": "exploratory jazz and the echoes of various mad men",
+      "editRevision": 5,
       "imageCredits": [],
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
@@ -73610,7 +73611,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "88875173862",
       "displayFormat": "CD",
       "homeSlideSort": 5,
       "publishStatus": "Published",
@@ -73640,6 +73641,8 @@
       "sleeveCondition": "",
       "enrichmentStatus": "complete-no-related-artists",
       "descriptionSource": "Pitchfork",
+      "editorialUpdatedAt": "2026-09-16T13:40:36.24+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "manualRelatedArtists": [],
       "enrichmentAttemptedAt": "2026-08-18T16:59:58.225Z",
       "enrichmentFingerprint": "david bowie|blackstar|cd||",
@@ -73869,17 +73872,16 @@
         "sourceUrl": "https://musicbrainz.org/release/56c67a5e-2f62-4d39-86f3-3bce7678278d",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:00:59.222+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
