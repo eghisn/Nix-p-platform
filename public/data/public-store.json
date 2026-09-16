@@ -42792,14 +42792,14 @@
       "images": [
         "/public/assets/catalog-archive/nxp-2026-vnl-0026-cover.webp"
       ],
-      "barcode": "",
+      "barcode": "5 060165 483570 >",
       "details": [
         "SKU: NXP-2026-VNL-0026",
         "Format: Vinyl",
         "Condition: New-Sealed",
         "Edition: LP"
       ],
-      "edition": "Clear Vinyl",
+      "edition": "Vinyl, LP, Album, Clear",
       "category": "Records",
       "material": "",
       "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0026-cover.webp",
@@ -42877,6 +42877,7 @@
       "apparelType": "",
       "description": "Amnesia Scanner and Bill Kouligas' 2019 Lexachast expands an audiovisual collaboration into a PAN album of algorithmic, cybernetic and uncanny electronic sound.",
       "reviewQuote": "decisive inquietude",
+      "editRevision": 5,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/69cf0f01-df57-4ec6-ad3d-e43573ba958f",
@@ -43159,6 +43160,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "PAN / The FADER",
       "metadataSourceUrl": "https://boomkat.com/products/lexachast",
+      "editorialUpdatedAt": "2026-09-16T10:57:59.823+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-27",
       "manualRelatedArtists": [
         "Freeka Tet",
@@ -43399,16 +43402,14 @@
       },
       "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:32.197+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-18",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
