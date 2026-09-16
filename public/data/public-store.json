@@ -57712,13 +57712,13 @@
         "/public/mockups/nxp-2026-cd-0024-antemasque-cd-disc.jpg",
         "/public/mockups/nxp-2026-cd-0024-antemasque-cd-package.jpg"
       ],
-      "barcode": "",
+      "barcode": "4988044012592",
       "details": [
         "SKU: NXP-2026-CD-0024",
         "Format: CD",
         "Condition: Used Excellent"
       ],
-      "edition": "",
+      "edition": "CD, Album",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0024/cover.jpg",
@@ -57796,6 +57796,7 @@
       "apparelType": "",
       "description": "Antemasque's 2014 self-titled album is the debut full-length from Cedric Bixler-Zavala and Omar Rodriguez-Lopez's post-Mars Volta project, joined in the studio by Dave Elitch and Flea, tightening their post-hardcore and prog history into direct, uptempo rock.",
       "reviewQuote": "a more straightforward rock album",
+      "editRevision": 5,
       "imageCredits": [
         {
           "url": "https://music.apple.com/us/album/antemasque/1443624940",
@@ -58061,7 +58062,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "DYMC-232",
       "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
@@ -58093,6 +58094,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "AllMusic / Pitchfork / MusicBrainz",
       "metadataSourceUrl": "https://musicbrainz.org/release/46ca1149-5527-4c0d-9dd1-5d4ca2fbd8fc",
+      "editorialUpdatedAt": "2026-09-16T13:23:10.805+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [
         "The Mars Volta",
@@ -58333,16 +58336,14 @@
       },
       "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:23.501+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-18",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
