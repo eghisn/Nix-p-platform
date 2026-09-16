@@ -23,8 +23,12 @@ assert.match(headers.get("content-security-policy"), /default-src 'none'/, "JSON
 assert.deepEqual(JSON.parse(body), { ok: true }, "Security headers must not change the JSON payload.");
 
 const login = await readFile(new URL("../api/auth/login.js", import.meta.url), "utf8");
+const auth = await readFile(new URL("../api/_lib/auth.js", import.meta.url), "utf8");
 assert.match(login, /consumeCommerceRateLimit\("workspace-login", subject, \{ limit: 8, windowSeconds: 900 \}\)/, "Workspace login must use a server-side rate limit.");
 assert.match(login, /Too many login attempts/, "Login throttling must return a clear retry response.");
+assert.match(login, /hasSessionSecret\(\)/, "Login must fail closed when session signing is not configured.");
+assert.match(auth, /NIXP_SESSION_SECRET is required for session signing/, "Session signing must require the dedicated secret.");
+assert.doesNotMatch(auth, /NIXP_ADMIN_PASSWORD \|\||NIXP_FINANCE_PASSWORD \|\||nixp-local-session-secret/, "Session signing must never fall back to workspace credentials or a local default.");
 
 const catalog = await readFile(new URL("../api/catalog.js", import.meta.url), "utf8");
 const requestHandler = catalog.slice(catalog.indexOf("async function handleRequestItem"), catalog.indexOf("async function handleMakeOffer"));

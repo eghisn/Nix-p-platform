@@ -4,12 +4,13 @@ const COOKIE_NAME = "nixp_session";
 const MAX_AGE_SECONDS = 60 * 60 * 12;
 
 function secret() {
-  return (
-    process.env.NIXP_SESSION_SECRET ||
-    process.env.NIXP_ADMIN_PASSWORD ||
-    process.env.NIXP_FINANCE_PASSWORD ||
-    "nixp-local-session-secret"
-  );
+  const value = String(process.env.NIXP_SESSION_SECRET || "").trim();
+  if (!value) throw new Error("NIXP_SESSION_SECRET is required for session signing.");
+  return value;
+}
+
+export function hasSessionSecret() {
+  return Boolean(String(process.env.NIXP_SESSION_SECRET || "").trim());
 }
 
 function sign(value) {
@@ -36,6 +37,7 @@ function parseCookies(req) {
 }
 
 export function getSession(req) {
+  if (!hasSessionSecret()) return null;
   const token = parseCookies(req)[COOKIE_NAME];
   if (!token) return null;
   const [payload, signature] = token.split(".");
@@ -56,6 +58,7 @@ function secureCookie(req) {
 }
 
 export function createSession(req, res, workspace, username) {
+  if (!hasSessionSecret()) throw new Error("NIXP_SESSION_SECRET is required for session signing.");
   const payload = Buffer.from(
     JSON.stringify({
       id: randomBytes(12).toString("hex"),

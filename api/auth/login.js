@@ -1,9 +1,10 @@
-import { createSession, json, validLogin } from "../_lib/auth.js";
+import { createSession, hasSessionSecret, json, validLogin } from "../_lib/auth.js";
 import { consumeCommerceRateLimit, requestClientAddress } from "../_lib/commerce.js";
 import { isSupabaseConfigured } from "../_lib/supabase.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
+  if (!hasSessionSecret()) return json(res, 503, { ok: false, error: "Session signing is not configured." });
   const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
   const workspace = ["admin", "finance", "marketing"].includes(body.workspace) ? body.workspace : "admin";
   if (isSupabaseConfigured({ requireServiceRole: true })) {

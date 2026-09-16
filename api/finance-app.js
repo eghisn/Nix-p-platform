@@ -1,12 +1,13 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { randomBytes } from "node:crypto";
-import { clearSession, createSession, getSession, validLogin } from "./_lib/auth.js";
+import { clearSession, createSession, getSession, hasSessionSecret, validLogin } from "./_lib/auth.js";
 import { readFinanceStateWithVersion } from "./_lib/financeState.js";
 
 export default async function handler(req, res) {
   const url = new URL(req.url || "/", "https://finance.nix-p.com");
   const pathname = url.searchParams.get("financePath") || url.pathname;
+  if (!hasSessionSecret()) return html(res, 503, loginPage("Session signing is not configured."));
   if (pathname === "/login") return loginHandler(req, res);
   if (pathname === "/logout") return logoutHandler(req, res);
 
