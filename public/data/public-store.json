@@ -78094,17 +78094,17 @@
       "images": [
         "/public/uploads/products/nxp-2026-cd-0001-chaosphere-cover-425412532019-r-jpg-1783885419677.jpg"
       ],
-      "barcode": "",
+      "barcode": "7 27361 63362 2",
       "details": [
         "SKU: NXP-2026-CD-0001",
         "Format: CD",
         "Condition: Used Good"
       ],
-      "edition": "",
+      "edition": "CD, Album",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0001/cover.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "https://www.allmusic.com/album/chaosphere-mw0000045171",
       "syncAudit": [
         {
@@ -78178,6 +78178,7 @@
       "apparelType": "",
       "description": "Meshuggah's 1998 Chaosphere is a landmark of extreme, rhythm-led metal, built from downtuned guitars, machine-like drumming and tightly interlocked polyrhythms.",
       "reviewQuote": "a landmark of extreme metal",
+      "editRevision": 5,
       "imageCredits": [],
       "reviewSource": "AllMusic (quoted)",
       "autoEditorial": {
@@ -78422,7 +78423,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "NB 336-2",
       "displayFormat": "CD",
       "homeSlideSort": 10,
       "publishStatus": "Published",
@@ -78453,6 +78454,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "AllMusic",
       "metadataSourceUrl": "https://musicbrainz.org/release/8cd8cca3-7e09-3f0a-a670-87bf0e8e09fa",
+      "editorialUpdatedAt": "2026-09-16T13:49:22.243+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "8cd8cca3-7e09-3f0a-a670-87bf0e8e09fa",
@@ -78686,18 +78689,16 @@
         "sourceUrl": "https://musicbrainz.org/release/8cd8cca3-7e09-3f0a-a670-87bf0e8e09fa",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:00:47.469+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
