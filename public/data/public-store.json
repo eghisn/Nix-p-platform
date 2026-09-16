@@ -59766,632 +59766,6 @@
       }
     },
     {
-      "id": "nxp-2026-cd-0005",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0005",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0005"
-      ],
-      "year": 2009,
-      "color": "",
-      "image": "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg",
-      "label": "Dress Up / Interscope",
-      "price": 147000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "It's Blitz!",
-      "artist": "Yeah Yeah Yeahs",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0005",
-        "Format: CD",
-        "Condition: Used Good"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "condition": "Used Good",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/12855-its-blitz/",
-      "syncAudit": [
-        {
-          "at": "2026-09-16T02:00:45.444Z",
-          "sku": "NXP-2026-CD-0005",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-15T11:52:07.957Z",
-          "sku": "NXP-2026-CD-0005",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-15T02:00:44.783Z",
-          "sku": "NXP-2026-CD-0005",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-30T02:14:08.792Z",
-          "sku": "NXP-2026-CD-0005",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T10:09:43.962Z",
-          "sku": "NXP-2026-CD-0005",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T09:54:26.173Z",
-          "sku": "NXP-2026-CD-0005",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-29T02:23:49.931Z",
-          "sku": "NXP-2026-CD-0005",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-08-28T09:19:04.762Z",
-          "sku": "NXP-2026-CD-0005",
-          "action": "Inventory synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-16",
-      "vinylSize": "",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-09-16T02:00:45.444Z",
-        "sku": "NXP-2026-CD-0005",
-        "action": "Inventory identity synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Yeah Yeah Yeahs' 2009 It's Blitz! recombines rock, synths and dance-floor instincts into a bracing, emotionally open third album.",
-      "reviewQuote": "familiar shapes and tools",
-      "imageCredits": [],
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "relatedArtists": [
-          "Metric",
-          "The Kills",
-          "TV on the Radio",
-          "Arcade Fire",
-          "Karen O"
-        ],
-        "enrichmentStatus": "complete",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Metric",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.701242,
-            "artist": "The Kills",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 0.701242,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.665511,
-            "artist": "TV on the Radio",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 0.665511,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.64794,
-            "artist": "Arcade Fire",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 0.64794,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.604343,
-            "artist": "Karen O",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 0.604343,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Metric",
-              "The Kills",
-              "TV on the Radio",
-              "Arcade Fire",
-              "Karen O",
-              "Bloc Party",
-              "Santigold",
-              "Rilo Kiley",
-              "Spoon",
-              "Foals"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Metric",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.701242,
-                "artist": "The Kills",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 0.701242,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.665511,
-                "artist": "TV on the Radio",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 0.665511,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.64794,
-                "artist": "Arcade Fire",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 0.64794,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.604343,
-                "artist": "Karen O",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 0.604343,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.56944,
-                "artist": "Bloc Party",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 0.56944,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.52603,
-                "artist": "Santigold",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 0.52603,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.525174,
-                "artist": "Rilo Kiley",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 0.525174,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.5002,
-                "artist": "Spoon",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 0.5002,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.490171,
-                "artist": "Foals",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-                "confidence": 0.490171,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Metric",
-            "The Kills",
-            "TV on the Radio",
-            "Arcade Fire",
-            "Karen O"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Metric",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.701242,
-              "artist": "The Kills",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.701242,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.665511,
-              "artist": "TV on the Radio",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.665511,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.64794,
-              "artist": "Arcade Fire",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.64794,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.604343,
-              "artist": "Karen O",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.604343,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "",
-          "sourceUrl": "",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": 14,
-      "publishStatus": "Published",
-      "financeStockId": "mr6ja47vzrq3wb",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Metric",
-        "The Kills",
-        "TV on the Radio",
-        "Arcade Fire",
-        "Karen O"
-      ],
-      "financeItemType": "CD",
-      "financeMetadata": {
-        "isbn": "",
-        "pages": "",
-        "binding": "",
-        "language": "",
-        "publisher": "",
-        "dimensions": "",
-        "printDetails": ""
-      },
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Pitchfork",
-      "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:53:01.708Z",
-      "enrichmentFingerprint": "yeah yeah yeahs|it s blitz|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Metric",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.701242,
-          "artist": "The Kills",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-          "confidence": 0.701242,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.665511,
-          "artist": "TV on the Radio",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-          "confidence": 0.665511,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.64794,
-          "artist": "Arcade Fire",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-          "confidence": 0.64794,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.604343,
-          "artist": "Karen O",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-          "confidence": 0.604343,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Metric",
-            "The Kills",
-            "TV on the Radio",
-            "Arcade Fire",
-            "Karen O",
-            "Bloc Party",
-            "Santigold",
-            "Rilo Kiley",
-            "Spoon",
-            "Foals"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Metric",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.701242,
-              "artist": "The Kills",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.701242,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.665511,
-              "artist": "TV on the Radio",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.665511,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.64794,
-              "artist": "Arcade Fire",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.64794,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.604343,
-              "artist": "Karen O",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.604343,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.56944,
-              "artist": "Bloc Party",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.56944,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.52603,
-              "artist": "Santigold",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.52603,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.525174,
-              "artist": "Rilo Kiley",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.525174,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.5002,
-              "artist": "Spoon",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.5002,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.490171,
-              "artist": "Foals",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-              "confidence": 0.490171,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Metric",
-          "The Kills",
-          "TV on the Radio",
-          "Arcade Fire",
-          "Karen O"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Metric",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.701242,
-            "artist": "The Kills",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 0.701242,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.665511,
-            "artist": "TV on the Radio",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 0.665511,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.64794,
-            "artist": "Arcade Fire",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 0.64794,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.604343,
-            "artist": "Karen O",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
-            "confidence": 0.604343,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "",
-        "sourceUrl": "",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:00:49.566+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "nxp-2026-cd-0023",
       "qty": 1,
       "sku": "NXP-2026-CD-0023",
@@ -61650,6 +61024,634 @@
         "heightCm": 6,
         "lengthCm": 18,
         "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "nxp-2026-cd-0005",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0005",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0005"
+      ],
+      "year": 2009,
+      "color": "",
+      "image": "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg",
+      "label": "Dress Up / Interscope",
+      "price": 147000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "It's Blitz!",
+      "artist": "Yeah Yeah Yeahs",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0005-yeah-yeah-yeahs-its-blitz.jpg"
+      ],
+      "barcode": "602527032146",
+      "details": [
+        "SKU: NXP-2026-CD-0005",
+        "Format: CD",
+        "Condition: Used Good"
+      ],
+      "edition": "CD, Album",
+      "category": "Records",
+      "material": "",
+      "condition": "Used Good",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/12855-its-blitz/",
+      "syncAudit": [
+        {
+          "at": "2026-09-16T02:00:45.444Z",
+          "sku": "NXP-2026-CD-0005",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-15T11:52:07.957Z",
+          "sku": "NXP-2026-CD-0005",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-15T02:00:44.783Z",
+          "sku": "NXP-2026-CD-0005",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-30T02:14:08.792Z",
+          "sku": "NXP-2026-CD-0005",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T10:09:43.962Z",
+          "sku": "NXP-2026-CD-0005",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T09:54:26.173Z",
+          "sku": "NXP-2026-CD-0005",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-29T02:23:49.931Z",
+          "sku": "NXP-2026-CD-0005",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-08-28T09:19:04.762Z",
+          "sku": "NXP-2026-CD-0005",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-16",
+      "vinylSize": "",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-09-16T02:00:45.444Z",
+        "sku": "NXP-2026-CD-0005",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Yeah Yeah Yeahs' 2009 It's Blitz! recombines rock, synths and dance-floor instincts into a bracing, emotionally open third album.",
+      "reviewQuote": "familiar shapes and tools",
+      "editRevision": 5,
+      "imageCredits": [],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "relatedArtists": [
+          "Metric",
+          "The Kills",
+          "TV on the Radio",
+          "Arcade Fire",
+          "Karen O"
+        ],
+        "enrichmentStatus": "complete",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Metric",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.701242,
+            "artist": "The Kills",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 0.701242,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.665511,
+            "artist": "TV on the Radio",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 0.665511,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.64794,
+            "artist": "Arcade Fire",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 0.64794,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.604343,
+            "artist": "Karen O",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 0.604343,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Metric",
+              "The Kills",
+              "TV on the Radio",
+              "Arcade Fire",
+              "Karen O",
+              "Bloc Party",
+              "Santigold",
+              "Rilo Kiley",
+              "Spoon",
+              "Foals"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Metric",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.701242,
+                "artist": "The Kills",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 0.701242,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.665511,
+                "artist": "TV on the Radio",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 0.665511,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.64794,
+                "artist": "Arcade Fire",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 0.64794,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.604343,
+                "artist": "Karen O",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 0.604343,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.56944,
+                "artist": "Bloc Party",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 0.56944,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.52603,
+                "artist": "Santigold",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 0.52603,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.525174,
+                "artist": "Rilo Kiley",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 0.525174,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.5002,
+                "artist": "Spoon",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 0.5002,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.490171,
+                "artist": "Foals",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+                "confidence": 0.490171,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Metric",
+            "The Kills",
+            "TV on the Radio",
+            "Arcade Fire",
+            "Karen O"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Metric",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.701242,
+              "artist": "The Kills",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.701242,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.665511,
+              "artist": "TV on the Radio",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.665511,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.64794,
+              "artist": "Arcade Fire",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.64794,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.604343,
+              "artist": "Karen O",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.604343,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "2703214",
+      "displayFormat": "CD",
+      "homeSlideSort": 14,
+      "publishStatus": "Published",
+      "financeStockId": "mr6ja47vzrq3wb",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Metric",
+        "The Kills",
+        "TV on the Radio",
+        "Arcade Fire",
+        "Karen O"
+      ],
+      "financeItemType": "CD",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Pitchfork",
+      "editorialUpdatedAt": "2026-09-16T12:08:08.575+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "manualRelatedArtists": [],
+      "enrichmentAttemptedAt": "2026-08-18T16:53:01.708Z",
+      "enrichmentFingerprint": "yeah yeah yeahs|it s blitz|cd||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Metric",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.701242,
+          "artist": "The Kills",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+          "confidence": 0.701242,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.665511,
+          "artist": "TV on the Radio",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+          "confidence": 0.665511,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.64794,
+          "artist": "Arcade Fire",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+          "confidence": 0.64794,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.604343,
+          "artist": "Karen O",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+          "confidence": 0.604343,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Metric",
+            "The Kills",
+            "TV on the Radio",
+            "Arcade Fire",
+            "Karen O",
+            "Bloc Party",
+            "Santigold",
+            "Rilo Kiley",
+            "Spoon",
+            "Foals"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Metric",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.701242,
+              "artist": "The Kills",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.701242,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.665511,
+              "artist": "TV on the Radio",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.665511,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.64794,
+              "artist": "Arcade Fire",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.64794,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.604343,
+              "artist": "Karen O",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.604343,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.56944,
+              "artist": "Bloc Party",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.56944,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.52603,
+              "artist": "Santigold",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.52603,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.525174,
+              "artist": "Rilo Kiley",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.525174,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.5002,
+              "artist": "Spoon",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.5002,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.490171,
+              "artist": "Foals",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+              "confidence": 0.490171,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Metric",
+          "The Kills",
+          "TV on the Radio",
+          "Arcade Fire",
+          "Karen O"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Metric",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.701242,
+            "artist": "The Kills",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 0.701242,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.665511,
+            "artist": "TV on the Radio",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 0.665511,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.64794,
+            "artist": "Arcade Fire",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 0.64794,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.604343,
+            "artist": "Karen O",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yeah%20Yeah%20Yeahs",
+            "confidence": 0.604343,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
