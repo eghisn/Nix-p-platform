@@ -47321,14 +47321,14 @@
       "images": [
         "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp"
       ],
-      "barcode": "",
+      "barcode": "UPC887828053117",
       "details": [
         "SKU: NXP-2026-VNL-0019",
         "Format: Vinyl",
         "Condition: New-Sealed",
         "Edition: LP"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Album",
       "category": "Records",
       "material": "",
       "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
@@ -47406,6 +47406,7 @@
       "apparelType": "",
       "description": "Porches' 2024 Shirt is Aaron Maine's heaviest and most distorted album, turning existential anxiety and everyday distress into raw, uncanny rock songs.",
       "reviewQuote": "the heaviest songs he's recorded to date",
+      "editRevision": 6,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0",
@@ -47656,7 +47657,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "WIGLP531",
       "displayFormat": "Vinyl",
       "homeSlideSort": null,
       "publishStatus": "Published",
@@ -47687,6 +47688,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Domino / Pitchfork",
       "metadataSourceUrl": "https://porchesmusic.bandcamp.com/album/shirt",
+      "editorialUpdatedAt": "2026-09-16T13:02:17.512+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-27",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "6ae505ac-d729-4388-9c74-b9e7e041a7d0",
@@ -47920,18 +47923,16 @@
         "sourceUrl": "https://musicbrainz.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 5,
-      "editorialUpdatedAt": "2026-09-16T02:01:30.24+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
