@@ -44734,7 +44734,7 @@
       "images": [
         "/public/assets/catalog-archive/nxp-2026-vnl-0023-cover.webp"
       ],
-      "barcode": "",
+      "barcode": "8 27170 34956 8",
       "details": [
         "SKU: NXP-2026-VNL-0023",
         "Format: Vinyl",
@@ -44743,7 +44743,7 @@
         "Catalog number: BNR045",
         "Sleeve condition: Corner crease from shipping"
       ],
-      "edition": "",
+      "edition": "Vinyl, 12\", 33 ⅓ RPM",
       "category": "Records",
       "material": "",
       "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0023-cover.webp",
@@ -44821,6 +44821,7 @@
       "apparelType": "",
       "description": "Boys Noize's 2010 Kontact Me is a remix-led electronic single on Boysnoize Records, built around a hard-edged club track and four reworks.",
       "reviewQuote": "brutal effectiveness",
+      "editRevision": 6,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de",
@@ -45100,6 +45101,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "AllMusic / Resident Advisor",
       "metadataSourceUrl": "https://musicbrainz.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de",
+      "editorialUpdatedAt": "2026-09-16T10:52:51.612+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-27",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "c7346893-8ee5-4a84-87aa-9105d6ff66de",
@@ -45329,18 +45332,16 @@
         "sourceUrl": "https://musicbrainz.org/release/c7346893-8ee5-4a84-87aa-9105d6ff66de",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 5,
-      "editorialUpdatedAt": "2026-09-16T02:01:33.759+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
