@@ -51850,92 +51850,92 @@
       }
     },
     {
-      "id": "finance-nxp-2026-cd-0033",
+      "id": "finance-nxp-2026-cd-0035",
       "qty": 1,
-      "sku": "NXP-2026-CD-0033",
+      "sku": "NXP-2026-CD-0035",
       "tags": [],
-      "year": 2008,
+      "year": 2012,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg",
-      "label": "Ferret Music",
-      "price": 280000,
+      "image": "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg",
+      "label": "Domino",
+      "price": 150000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Controller",
-      "artist": "Misery Signals",
+      "title": "Swing Lo Magellan",
+      "artist": "Dirty Projectors",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg"
+        "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg"
       ],
-      "barcode": "",
+      "barcode": "5034202027263",
       "details": [
-        "SKU: NXP-2026-CD-0033",
+        "SKU: NXP-2026-CD-0035",
         "Format: CD",
-        "Condition: Used Excellent"
+        "Condition: New-Sealed"
       ],
-      "edition": "",
+      "edition": "CD, Album",
       "category": "Records",
       "material": "",
-      "autoCover": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0035/cover.jpg",
       "condition": "Used Excellent",
-      "reviewUrl": "",
+      "reviewUrl": "https://www.theguardian.com/music/2012/jul/08/dirty-projectors-swing-magellan-review",
       "syncAudit": [
         {
-          "at": "2026-09-16T02:00:45.453Z",
-          "sku": "NXP-2026-CD-0033",
+          "at": "2026-09-16T02:00:45.454Z",
+          "sku": "NXP-2026-CD-0035",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-15T11:52:07.983Z",
-          "sku": "NXP-2026-CD-0033",
+          "at": "2026-09-15T11:52:07.984Z",
+          "sku": "NXP-2026-CD-0035",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-15T02:00:44.798Z",
-          "sku": "NXP-2026-CD-0033",
+          "sku": "NXP-2026-CD-0035",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-30T02:14:08.797Z",
-          "sku": "NXP-2026-CD-0033",
+          "sku": "NXP-2026-CD-0035",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T10:09:43.967Z",
-          "sku": "NXP-2026-CD-0033",
+          "sku": "NXP-2026-CD-0035",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T09:54:26.183Z",
-          "sku": "NXP-2026-CD-0033",
+          "sku": "NXP-2026-CD-0035",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.935Z",
-          "sku": "NXP-2026-CD-0033",
+          "at": "2026-08-29T02:23:49.936Z",
+          "sku": "NXP-2026-CD-0035",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T09:19:04.766Z",
-          "sku": "NXP-2026-CD-0033",
+          "sku": "NXP-2026-CD-0035",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -51943,94 +51943,94 @@
       ],
       "updatedAt": "2026-09-16",
       "vinylSize": "",
-      "collection": "Ferret Music",
+      "collection": "Domino",
       "syncStatus": {
-        "at": "2026-09-16T02:00:45.453Z",
-        "sku": "NXP-2026-CD-0033",
+        "at": "2026-09-16T02:00:45.454Z",
+        "sku": "NXP-2026-CD-0035",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Misery Signals' Controller is the 2008 Ferret Music album produced with Devin Townsend, folding melodic hardcore and metalcore weight into a tightly engineered emotional arc.",
-      "reviewQuote": "a return to form",
+      "description": "Dirty Projectors' 2012 Swing Lo Magellan is a more direct, song-centered turn from Dave Longstreth's Brooklyn collective, balancing intricate harmony with warm melody and art-rock detail.",
+      "reviewQuote": "a new directness to the songs",
+      "editRevision": 5,
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/2790bd40-2eac-4f1d-9618-e029b0cfc2e5",
-          "image": "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release 2790bd40"
+          "url": "https://musicbrainz.org/release/adfe4b45-1847-4877-8e6c-cad1771b2798/cover-art",
+          "image": "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg",
+          "credit": "MusicBrainz / Cover Art Archive"
         }
       ],
-      "reviewSource": "Sputnikmusic (quoted)",
+      "reviewSource": "The Guardian (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://www.allmusic.com/album/controller-mw0000790694",
-        "description": "Misery Signals' Controller is the 2008 Ferret Music album produced with Devin Townsend, folding melodic hardcore and metalcore weight into a tightly engineered emotional arc.",
-        "reviewQuote": "a return to form",
-        "reviewSource": "Sputnikmusic (quoted)",
+        "reviewUrl": "https://www.theguardian.com/music/2012/jul/08/dirty-projectors-swing-magellan-review",
+        "description": "Dirty Projectors' 2012 Swing Lo Magellan is a more direct, song-centered turn from Dave Longstreth's Brooklyn collective, balancing intricate harmony with warm melody and art-rock detail.",
+        "reviewQuote": "a new directness to the songs",
+        "reviewSource": "The Guardian (quoted)",
         "relatedArtists": [
-          "7 Angels 7 Plagues",
-          "Counterparts",
-          "Hopesfall",
-          "Poison the Well",
-          "Shai Hulud"
+          "Avey Tare",
+          "Department of Eagles",
+          "Grizzly Bear",
+          "Dirty Projectors + Björk",
+          "Tune-Yards"
         ],
-        "enrichmentStatus": "complete-no-related-artists",
-        "descriptionSource": "AllMusic / Sputnikmusic",
+        "descriptionSource": "Pitchfork / The Guardian",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "7 Angels 7 Plagues",
+            "artist": "Avey Tare",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.951424,
-            "artist": "Counterparts",
+            "match": 0.991922,
+            "artist": "Department of Eagles",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-            "confidence": 0.951424,
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "confidence": 0.991922,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.906102,
-            "artist": "Hopesfall",
+            "match": 0.986605,
+            "artist": "Grizzly Bear",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-            "confidence": 0.906102,
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "confidence": 0.986605,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.817188,
-            "artist": "Poison the Well",
+            "match": 0.972381,
+            "artist": "Dirty Projectors + Björk",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-            "confidence": 0.817188,
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "confidence": 0.972381,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.777654,
-            "artist": "Shai Hulud",
+            "match": 0.968753,
+            "artist": "Tune-Yards",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-            "confidence": 0.777654,
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "confidence": 0.968753,
             "relationType": "artist-similarity"
           }
         ],
@@ -52039,186 +52039,186 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "7 Angels 7 Plagues",
-              "Counterparts",
-              "Hopesfall",
-              "Poison the Well",
-              "Shai Hulud",
-              "Foreign Hands",
-              "It Prevails",
-              "Skycamefalling",
-              "On Broken Wings",
-              "It Dies Today"
+              "Avey Tare",
+              "Department of Eagles",
+              "Grizzly Bear",
+              "Dirty Projectors + Björk",
+              "Tune-Yards",
+              "Panda Bear",
+              "Animal Collective",
+              "The Fiery Furnaces",
+              "Daniel Rossen",
+              "Destroyer"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "7 Angels 7 Plagues",
+                "artist": "Avey Tare",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.951424,
-                "artist": "Counterparts",
+                "match": 0.991922,
+                "artist": "Department of Eagles",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-                "confidence": 0.951424,
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "confidence": 0.991922,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.906102,
-                "artist": "Hopesfall",
+                "match": 0.986605,
+                "artist": "Grizzly Bear",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-                "confidence": 0.906102,
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "confidence": 0.986605,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.817188,
-                "artist": "Poison the Well",
+                "match": 0.972381,
+                "artist": "Dirty Projectors + Björk",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-                "confidence": 0.817188,
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "confidence": 0.972381,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.777654,
-                "artist": "Shai Hulud",
+                "match": 0.968753,
+                "artist": "Tune-Yards",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-                "confidence": 0.777654,
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "confidence": 0.968753,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.753418,
-                "artist": "Foreign Hands",
+                "match": 0.961986,
+                "artist": "Panda Bear",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-                "confidence": 0.753418,
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "confidence": 0.961986,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.707701,
-                "artist": "It Prevails",
+                "match": 0.890669,
+                "artist": "Animal Collective",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-                "confidence": 0.707701,
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "confidence": 0.890669,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.700134,
-                "artist": "Skycamefalling",
+                "match": 0.756992,
+                "artist": "The Fiery Furnaces",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-                "confidence": 0.700134,
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "confidence": 0.756992,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.635899,
-                "artist": "On Broken Wings",
+                "match": 0.668014,
+                "artist": "Daniel Rossen",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-                "confidence": 0.635899,
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "confidence": 0.668014,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.626006,
-                "artist": "It Dies Today",
+                "match": 0.576857,
+                "artist": "Destroyer",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-                "confidence": 0.626006,
+                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "confidence": 0.576857,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals"
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "7 Angels 7 Plagues",
-            "Counterparts",
-            "Hopesfall",
-            "Poison the Well",
-            "Shai Hulud"
+            "Avey Tare",
+            "Department of Eagles",
+            "Grizzly Bear",
+            "Dirty Projectors + Björk",
+            "Tune-Yards"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "7 Angels 7 Plagues",
+              "artist": "Avey Tare",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.951424,
-              "artist": "Counterparts",
+              "match": 0.991922,
+              "artist": "Department of Eagles",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.951424,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.991922,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.906102,
-              "artist": "Hopesfall",
+              "match": 0.986605,
+              "artist": "Grizzly Bear",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.906102,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.986605,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.817188,
-              "artist": "Poison the Well",
+              "match": 0.972381,
+              "artist": "Dirty Projectors + Björk",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.817188,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.972381,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.777654,
-              "artist": "Shai Hulud",
+              "match": 0.968753,
+              "artist": "Tune-Yards",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.777654,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.968753,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "923a19ba-3905-42b5-9c55-7fc87914a51f",
-          "sourceUrl": "https://musicbrainz.org/release/923a19ba-3905-42b5-9c55-7fc87914a51f",
+          "releaseId": "f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
+          "sourceUrl": "https://musicbrainz.org/release/f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "WIGCD272S",
       "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1tiz0nuej19e",
+      "financeStockId": "ms1u4t8pnl9i79",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "7 Angels 7 Plagues",
-        "Counterparts",
-        "Hopesfall",
-        "Poison the Well",
-        "Shai Hulud"
+        "Avey Tare",
+        "Department of Eagles",
+        "Grizzly Bear",
+        "Dirty Projectors + Björk",
+        "Tune-Yards"
       ],
       "financeItemType": "CD",
       "financeMetadata": {
@@ -52231,72 +52231,73 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "reviewSourceUrl": "https://www.sputnikmusic.com/review/72160/Misery-Signals-Controller/",
       "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "AllMusic / Sputnikmusic",
-      "metadataSourceUrl": "https://musicbrainz.org/release/923a19ba-3905-42b5-9c55-7fc87914a51f",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Pitchfork / The Guardian",
+      "metadataSourceUrl": "https://musicbrainz.org/release/f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
+      "editorialUpdatedAt": "2026-09-16T13:26:45.667+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "923a19ba-3905-42b5-9c55-7fc87914a51f",
-      "enrichmentAttemptedAt": "2026-08-18T16:51:57.636Z",
-      "enrichmentFingerprint": "misery signals|controller|cd||",
+      "musicBrainzReleaseId": "f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
+      "enrichmentAttemptedAt": "2026-08-18T16:50:31.003Z",
+      "enrichmentFingerprint": "dirty projectors|swing lo magellan|cd||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "7 Angels 7 Plagues",
+          "artist": "Avey Tare",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.951424,
-          "artist": "Counterparts",
+          "match": 0.991922,
+          "artist": "Department of Eagles",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-          "confidence": 0.951424,
+          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+          "confidence": 0.991922,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.906102,
-          "artist": "Hopesfall",
+          "match": 0.986605,
+          "artist": "Grizzly Bear",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-          "confidence": 0.906102,
+          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+          "confidence": 0.986605,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.817188,
-          "artist": "Poison the Well",
+          "match": 0.972381,
+          "artist": "Dirty Projectors + Björk",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-          "confidence": 0.817188,
+          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+          "confidence": 0.972381,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.777654,
-          "artist": "Shai Hulud",
+          "match": 0.968753,
+          "artist": "Tune-Yards",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-          "confidence": 0.777654,
+          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+          "confidence": 0.968753,
           "relationType": "artist-similarity"
         }
       ],
@@ -52306,183 +52307,181 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "7 Angels 7 Plagues",
-            "Counterparts",
-            "Hopesfall",
-            "Poison the Well",
-            "Shai Hulud",
-            "Foreign Hands",
-            "It Prevails",
-            "Skycamefalling",
-            "On Broken Wings",
-            "It Dies Today"
+            "Avey Tare",
+            "Department of Eagles",
+            "Grizzly Bear",
+            "Dirty Projectors + Björk",
+            "Tune-Yards",
+            "Panda Bear",
+            "Animal Collective",
+            "The Fiery Furnaces",
+            "Daniel Rossen",
+            "Destroyer"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "7 Angels 7 Plagues",
+              "artist": "Avey Tare",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.951424,
-              "artist": "Counterparts",
+              "match": 0.991922,
+              "artist": "Department of Eagles",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.951424,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.991922,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.906102,
-              "artist": "Hopesfall",
+              "match": 0.986605,
+              "artist": "Grizzly Bear",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.906102,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.986605,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.817188,
-              "artist": "Poison the Well",
+              "match": 0.972381,
+              "artist": "Dirty Projectors + Björk",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.817188,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.972381,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.777654,
-              "artist": "Shai Hulud",
+              "match": 0.968753,
+              "artist": "Tune-Yards",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.777654,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.968753,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.753418,
-              "artist": "Foreign Hands",
+              "match": 0.961986,
+              "artist": "Panda Bear",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.753418,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.961986,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.707701,
-              "artist": "It Prevails",
+              "match": 0.890669,
+              "artist": "Animal Collective",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.707701,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.890669,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.700134,
-              "artist": "Skycamefalling",
+              "match": 0.756992,
+              "artist": "The Fiery Furnaces",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.700134,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.756992,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.635899,
-              "artist": "On Broken Wings",
+              "match": 0.668014,
+              "artist": "Daniel Rossen",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.635899,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.668014,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.626006,
-              "artist": "It Dies Today",
+              "match": 0.576857,
+              "artist": "Destroyer",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-              "confidence": 0.626006,
+              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "confidence": 0.576857,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Misery%20Signals"
+          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "7 Angels 7 Plagues",
-          "Counterparts",
-          "Hopesfall",
-          "Poison the Well",
-          "Shai Hulud"
+          "Avey Tare",
+          "Department of Eagles",
+          "Grizzly Bear",
+          "Dirty Projectors + Björk",
+          "Tune-Yards"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "7 Angels 7 Plagues",
+            "artist": "Avey Tare",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.951424,
-            "artist": "Counterparts",
+            "match": 0.991922,
+            "artist": "Department of Eagles",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-            "confidence": 0.951424,
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "confidence": 0.991922,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.906102,
-            "artist": "Hopesfall",
+            "match": 0.986605,
+            "artist": "Grizzly Bear",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-            "confidence": 0.906102,
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "confidence": 0.986605,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.817188,
-            "artist": "Poison the Well",
+            "match": 0.972381,
+            "artist": "Dirty Projectors + Björk",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-            "confidence": 0.817188,
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "confidence": 0.972381,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.777654,
-            "artist": "Shai Hulud",
+            "match": 0.968753,
+            "artist": "Tune-Yards",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
-            "confidence": 0.777654,
+            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "confidence": 0.968753,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "923a19ba-3905-42b5-9c55-7fc87914a51f",
-        "sourceUrl": "https://musicbrainz.org/release/923a19ba-3905-42b5-9c55-7fc87914a51f",
+        "releaseId": "f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
+        "sourceUrl": "https://musicbrainz.org/release/f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:28.639+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
@@ -57045,92 +57044,92 @@
       }
     },
     {
-      "id": "finance-nxp-2026-cd-0035",
+      "id": "finance-nxp-2026-cd-0033",
       "qty": 1,
-      "sku": "NXP-2026-CD-0035",
+      "sku": "NXP-2026-CD-0033",
       "tags": [],
-      "year": 2012,
+      "year": 2008,
       "color": "",
-      "image": "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg",
-      "label": "Domino",
-      "price": 150000,
+      "image": "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg",
+      "label": "Ferret Music",
+      "price": 280000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Swing Lo Magellan",
-      "artist": "Dirty Projectors",
+      "title": "Controller",
+      "artist": "Misery Signals",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg"
+        "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg"
       ],
       "barcode": "",
       "details": [
-        "SKU: NXP-2026-CD-0035",
+        "SKU: NXP-2026-CD-0033",
         "Format: CD",
-        "Condition: New-Sealed"
+        "Condition: Used Excellent"
       ],
       "edition": "",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0035/cover.jpg",
+      "autoCover": "",
       "condition": "Used Excellent",
-      "reviewUrl": "https://www.theguardian.com/music/2012/jul/08/dirty-projectors-swing-magellan-review",
+      "reviewUrl": "",
       "syncAudit": [
         {
-          "at": "2026-09-16T02:00:45.454Z",
-          "sku": "NXP-2026-CD-0035",
+          "at": "2026-09-16T02:00:45.453Z",
+          "sku": "NXP-2026-CD-0033",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-15T11:52:07.984Z",
-          "sku": "NXP-2026-CD-0035",
+          "at": "2026-09-15T11:52:07.983Z",
+          "sku": "NXP-2026-CD-0033",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-15T02:00:44.798Z",
-          "sku": "NXP-2026-CD-0035",
+          "sku": "NXP-2026-CD-0033",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-30T02:14:08.797Z",
-          "sku": "NXP-2026-CD-0035",
+          "sku": "NXP-2026-CD-0033",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T10:09:43.967Z",
-          "sku": "NXP-2026-CD-0035",
+          "sku": "NXP-2026-CD-0033",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-29T09:54:26.183Z",
-          "sku": "NXP-2026-CD-0035",
+          "sku": "NXP-2026-CD-0033",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-08-29T02:23:49.936Z",
-          "sku": "NXP-2026-CD-0035",
+          "at": "2026-08-29T02:23:49.935Z",
+          "sku": "NXP-2026-CD-0033",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-08-28T09:19:04.766Z",
-          "sku": "NXP-2026-CD-0035",
+          "sku": "NXP-2026-CD-0033",
           "action": "Inventory synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -57138,93 +57137,94 @@
       ],
       "updatedAt": "2026-09-16",
       "vinylSize": "",
-      "collection": "Domino",
+      "collection": "Ferret Music",
       "syncStatus": {
-        "at": "2026-09-16T02:00:45.454Z",
-        "sku": "NXP-2026-CD-0035",
+        "at": "2026-09-16T02:00:45.453Z",
+        "sku": "NXP-2026-CD-0033",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Dirty Projectors' 2012 Swing Lo Magellan is a more direct, song-centered turn from Dave Longstreth's Brooklyn collective, balancing intricate harmony with warm melody and art-rock detail.",
-      "reviewQuote": "a new directness to the songs",
+      "description": "Misery Signals' Controller is the 2008 Ferret Music album produced with Devin Townsend, folding melodic hardcore and metalcore weight into a tightly engineered emotional arc.",
+      "reviewQuote": "a return to form",
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/adfe4b45-1847-4877-8e6c-cad1771b2798/cover-art",
-          "image": "/public/covers/nxp-2026-cd-0035-dirty-projectors-swing-lo-magellan.jpg",
-          "credit": "MusicBrainz / Cover Art Archive"
+          "url": "https://musicbrainz.org/release/2790bd40-2eac-4f1d-9618-e029b0cfc2e5",
+          "image": "/public/covers/nxp-2026-cd-0033-misery-signals-controller.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release 2790bd40"
         }
       ],
-      "reviewSource": "The Guardian (quoted)",
+      "reviewSource": "Sputnikmusic (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://www.theguardian.com/music/2012/jul/08/dirty-projectors-swing-magellan-review",
-        "description": "Dirty Projectors' 2012 Swing Lo Magellan is a more direct, song-centered turn from Dave Longstreth's Brooklyn collective, balancing intricate harmony with warm melody and art-rock detail.",
-        "reviewQuote": "a new directness to the songs",
-        "reviewSource": "The Guardian (quoted)",
+        "reviewUrl": "https://www.allmusic.com/album/controller-mw0000790694",
+        "description": "Misery Signals' Controller is the 2008 Ferret Music album produced with Devin Townsend, folding melodic hardcore and metalcore weight into a tightly engineered emotional arc.",
+        "reviewQuote": "a return to form",
+        "reviewSource": "Sputnikmusic (quoted)",
         "relatedArtists": [
-          "Avey Tare",
-          "Department of Eagles",
-          "Grizzly Bear",
-          "Dirty Projectors + Björk",
-          "Tune-Yards"
+          "7 Angels 7 Plagues",
+          "Counterparts",
+          "Hopesfall",
+          "Poison the Well",
+          "Shai Hulud"
         ],
-        "descriptionSource": "Pitchfork / The Guardian",
+        "enrichmentStatus": "complete-no-related-artists",
+        "descriptionSource": "AllMusic / Sputnikmusic",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Avey Tare",
+            "artist": "7 Angels 7 Plagues",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.991922,
-            "artist": "Department of Eagles",
+            "match": 0.951424,
+            "artist": "Counterparts",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-            "confidence": 0.991922,
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "confidence": 0.951424,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.986605,
-            "artist": "Grizzly Bear",
+            "match": 0.906102,
+            "artist": "Hopesfall",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-            "confidence": 0.986605,
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "confidence": 0.906102,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.972381,
-            "artist": "Dirty Projectors + Björk",
+            "match": 0.817188,
+            "artist": "Poison the Well",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-            "confidence": 0.972381,
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "confidence": 0.817188,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.968753,
-            "artist": "Tune-Yards",
+            "match": 0.777654,
+            "artist": "Shai Hulud",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-            "confidence": 0.968753,
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "confidence": 0.777654,
             "relationType": "artist-similarity"
           }
         ],
@@ -57233,169 +57233,169 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Avey Tare",
-              "Department of Eagles",
-              "Grizzly Bear",
-              "Dirty Projectors + Björk",
-              "Tune-Yards",
-              "Panda Bear",
-              "Animal Collective",
-              "The Fiery Furnaces",
-              "Daniel Rossen",
-              "Destroyer"
+              "7 Angels 7 Plagues",
+              "Counterparts",
+              "Hopesfall",
+              "Poison the Well",
+              "Shai Hulud",
+              "Foreign Hands",
+              "It Prevails",
+              "Skycamefalling",
+              "On Broken Wings",
+              "It Dies Today"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Avey Tare",
+                "artist": "7 Angels 7 Plagues",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.991922,
-                "artist": "Department of Eagles",
+                "match": 0.951424,
+                "artist": "Counterparts",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-                "confidence": 0.991922,
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "confidence": 0.951424,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.986605,
-                "artist": "Grizzly Bear",
+                "match": 0.906102,
+                "artist": "Hopesfall",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-                "confidence": 0.986605,
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "confidence": 0.906102,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.972381,
-                "artist": "Dirty Projectors + Björk",
+                "match": 0.817188,
+                "artist": "Poison the Well",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-                "confidence": 0.972381,
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "confidence": 0.817188,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.968753,
-                "artist": "Tune-Yards",
+                "match": 0.777654,
+                "artist": "Shai Hulud",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-                "confidence": 0.968753,
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "confidence": 0.777654,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.961986,
-                "artist": "Panda Bear",
+                "match": 0.753418,
+                "artist": "Foreign Hands",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-                "confidence": 0.961986,
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "confidence": 0.753418,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.890669,
-                "artist": "Animal Collective",
+                "match": 0.707701,
+                "artist": "It Prevails",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-                "confidence": 0.890669,
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "confidence": 0.707701,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.756992,
-                "artist": "The Fiery Furnaces",
+                "match": 0.700134,
+                "artist": "Skycamefalling",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-                "confidence": 0.756992,
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "confidence": 0.700134,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.668014,
-                "artist": "Daniel Rossen",
+                "match": 0.635899,
+                "artist": "On Broken Wings",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-                "confidence": 0.668014,
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "confidence": 0.635899,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.576857,
-                "artist": "Destroyer",
+                "match": 0.626006,
+                "artist": "It Dies Today",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-                "confidence": 0.576857,
+                "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+                "confidence": 0.626006,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors"
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Avey Tare",
-            "Department of Eagles",
-            "Grizzly Bear",
-            "Dirty Projectors + Björk",
-            "Tune-Yards"
+            "7 Angels 7 Plagues",
+            "Counterparts",
+            "Hopesfall",
+            "Poison the Well",
+            "Shai Hulud"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Avey Tare",
+              "artist": "7 Angels 7 Plagues",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.991922,
-              "artist": "Department of Eagles",
+              "match": 0.951424,
+              "artist": "Counterparts",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.991922,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.951424,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.986605,
-              "artist": "Grizzly Bear",
+              "match": 0.906102,
+              "artist": "Hopesfall",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.986605,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.906102,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.972381,
-              "artist": "Dirty Projectors + Björk",
+              "match": 0.817188,
+              "artist": "Poison the Well",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.972381,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.817188,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.968753,
-              "artist": "Tune-Yards",
+              "match": 0.777654,
+              "artist": "Shai Hulud",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.968753,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.777654,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
-          "sourceUrl": "https://musicbrainz.org/release/f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
+          "releaseId": "923a19ba-3905-42b5-9c55-7fc87914a51f",
+          "sourceUrl": "https://musicbrainz.org/release/923a19ba-3905-42b5-9c55-7fc87914a51f",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
@@ -57404,15 +57404,15 @@
       "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1u4t8pnl9i79",
+      "financeStockId": "ms1tiz0nuej19e",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Avey Tare",
-        "Department of Eagles",
-        "Grizzly Bear",
-        "Dirty Projectors + Björk",
-        "Tune-Yards"
+        "7 Angels 7 Plagues",
+        "Counterparts",
+        "Hopesfall",
+        "Poison the Well",
+        "Shai Hulud"
       ],
       "financeItemType": "CD",
       "financeMetadata": {
@@ -57425,71 +57425,72 @@
         "printDetails": ""
       },
       "homeCollections": [],
+      "reviewSourceUrl": "https://www.sputnikmusic.com/review/72160/Misery-Signals-Controller/",
       "sleeveCondition": "",
       "autoProductPhoto": "",
       "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Pitchfork / The Guardian",
-      "metadataSourceUrl": "https://musicbrainz.org/release/f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "AllMusic / Sputnikmusic",
+      "metadataSourceUrl": "https://musicbrainz.org/release/923a19ba-3905-42b5-9c55-7fc87914a51f",
       "enrichmentUpdatedAt": "2026-08-18",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
-      "enrichmentAttemptedAt": "2026-08-18T16:50:31.003Z",
-      "enrichmentFingerprint": "dirty projectors|swing lo magellan|cd||",
+      "musicBrainzReleaseId": "923a19ba-3905-42b5-9c55-7fc87914a51f",
+      "enrichmentAttemptedAt": "2026-08-18T16:51:57.636Z",
+      "enrichmentFingerprint": "misery signals|controller|cd||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Avey Tare",
+          "artist": "7 Angels 7 Plagues",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.991922,
-          "artist": "Department of Eagles",
+          "match": 0.951424,
+          "artist": "Counterparts",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-          "confidence": 0.991922,
+          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+          "confidence": 0.951424,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.986605,
-          "artist": "Grizzly Bear",
+          "match": 0.906102,
+          "artist": "Hopesfall",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-          "confidence": 0.986605,
+          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+          "confidence": 0.906102,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.972381,
-          "artist": "Dirty Projectors + Björk",
+          "match": 0.817188,
+          "artist": "Poison the Well",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-          "confidence": 0.972381,
+          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+          "confidence": 0.817188,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.968753,
-          "artist": "Tune-Yards",
+          "match": 0.777654,
+          "artist": "Shai Hulud",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-          "confidence": 0.968753,
+          "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+          "confidence": 0.777654,
           "relationType": "artist-similarity"
         }
       ],
@@ -57499,175 +57500,175 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Avey Tare",
-            "Department of Eagles",
-            "Grizzly Bear",
-            "Dirty Projectors + Björk",
-            "Tune-Yards",
-            "Panda Bear",
-            "Animal Collective",
-            "The Fiery Furnaces",
-            "Daniel Rossen",
-            "Destroyer"
+            "7 Angels 7 Plagues",
+            "Counterparts",
+            "Hopesfall",
+            "Poison the Well",
+            "Shai Hulud",
+            "Foreign Hands",
+            "It Prevails",
+            "Skycamefalling",
+            "On Broken Wings",
+            "It Dies Today"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Avey Tare",
+              "artist": "7 Angels 7 Plagues",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.991922,
-              "artist": "Department of Eagles",
+              "match": 0.951424,
+              "artist": "Counterparts",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.991922,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.951424,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.986605,
-              "artist": "Grizzly Bear",
+              "match": 0.906102,
+              "artist": "Hopesfall",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.986605,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.906102,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.972381,
-              "artist": "Dirty Projectors + Björk",
+              "match": 0.817188,
+              "artist": "Poison the Well",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.972381,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.817188,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.968753,
-              "artist": "Tune-Yards",
+              "match": 0.777654,
+              "artist": "Shai Hulud",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.968753,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.777654,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.961986,
-              "artist": "Panda Bear",
+              "match": 0.753418,
+              "artist": "Foreign Hands",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.961986,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.753418,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.890669,
-              "artist": "Animal Collective",
+              "match": 0.707701,
+              "artist": "It Prevails",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.890669,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.707701,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.756992,
-              "artist": "The Fiery Furnaces",
+              "match": 0.700134,
+              "artist": "Skycamefalling",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.756992,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.700134,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.668014,
-              "artist": "Daniel Rossen",
+              "match": 0.635899,
+              "artist": "On Broken Wings",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.668014,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.635899,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.576857,
-              "artist": "Destroyer",
+              "match": 0.626006,
+              "artist": "It Dies Today",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-              "confidence": 0.576857,
+              "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+              "confidence": 0.626006,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors"
+          "sourceUrl": "https://www.last.fm/music/Misery%20Signals"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Avey Tare",
-          "Department of Eagles",
-          "Grizzly Bear",
-          "Dirty Projectors + Björk",
-          "Tune-Yards"
+          "7 Angels 7 Plagues",
+          "Counterparts",
+          "Hopesfall",
+          "Poison the Well",
+          "Shai Hulud"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Avey Tare",
+            "artist": "7 Angels 7 Plagues",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.991922,
-            "artist": "Department of Eagles",
+            "match": 0.951424,
+            "artist": "Counterparts",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-            "confidence": 0.991922,
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "confidence": 0.951424,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.986605,
-            "artist": "Grizzly Bear",
+            "match": 0.906102,
+            "artist": "Hopesfall",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-            "confidence": 0.986605,
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "confidence": 0.906102,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.972381,
-            "artist": "Dirty Projectors + Björk",
+            "match": 0.817188,
+            "artist": "Poison the Well",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-            "confidence": 0.972381,
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "confidence": 0.817188,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.968753,
-            "artist": "Tune-Yards",
+            "match": 0.777654,
+            "artist": "Shai Hulud",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Dirty%20Projectors",
-            "confidence": 0.968753,
+            "sourceUrl": "https://www.last.fm/music/Misery%20Signals",
+            "confidence": 0.777654,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
-        "sourceUrl": "https://musicbrainz.org/release/f5bd7e34-b7f5-45db-9d4e-99ce2b9d60cd",
+        "releaseId": "923a19ba-3905-42b5-9c55-7fc87914a51f",
+        "sourceUrl": "https://musicbrainz.org/release/923a19ba-3905-42b5-9c55-7fc87914a51f",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-16T02:01:29.926+00:00",
+      "editorialUpdatedAt": "2026-09-16T02:01:28.639+00:00",
       "editorialUpdatedBy": "finance-stock",
       "shipping": {
         "source": "NIXP packaging rules v1",
