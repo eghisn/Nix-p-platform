@@ -42141,7 +42141,7 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg"
       ],
-      "barcode": "",
+      "barcode": "656605025315",
       "details": [
         "SKU: NXP-2026-VNL-0027",
         "Format: Vinyl",
@@ -42151,7 +42151,7 @@
         "Barcode: 656605025315",
         "Edition: 12-inch single"
       ],
-      "edition": "",
+      "edition": "Vinyl, 12\", 45 RPM",
       "category": "Records",
       "material": "",
       "autoCover": "/public/covers/nxp-2026-vnl-0027-suuns-bambi-discogs-3255271.jpg",
@@ -42229,6 +42229,7 @@
       "apparelType": "",
       "description": "Suuns's release Bambi on Vinyl, issued by Secretly Canadian.",
       "reviewQuote": "terrifying power",
+      "editRevision": 6,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/3255271-Suuns-Bambi",
@@ -42510,6 +42511,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "MusicBrainz",
       "metadataSourceUrl": "https://www.discogs.com/release/3255271-Suuns-Bambi",
+      "editorialUpdatedAt": "2026-09-16T10:35:00.84+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "enrichmentUpdatedAt": "2026-07-27",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "ac2611e4-fa10-47f1-a328-8fad3c73cb49",
@@ -42743,18 +42746,16 @@
         "sourceUrl": "https://musicbrainz.org/release/ac2611e4-fa10-47f1-a328-8fad3c73cb49",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 5,
-      "editorialUpdatedAt": "2026-09-16T02:01:32.516+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
