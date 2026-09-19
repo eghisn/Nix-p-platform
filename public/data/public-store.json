@@ -4595,7 +4595,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Third Worlds",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.149Z",
@@ -4609,7 +4609,7 @@
       "description": "Death Grips 2018 year of the snitch is a verified Vinyl, LP, Album edition on Third Worlds. The release is indexed under Experimental, Noise, Hardcore Hip-Hop.",
       "reviewQuote": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
       "sourceTitle": "year of the snitch",
-      "editRevision": 15,
+      "editRevision": 16,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg",
@@ -4902,13 +4902,17 @@
       "publicationState": "live",
       "descriptionSource": "Verified physical-release metadata",
       "metadataSourceUrl": "https://www.discogs.com/release/12485858-Death-Grips-Year-Of-The-Snitch",
-      "editorialUpdatedAt": "2026-09-19T11:53:03.887+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T20:46:07.686+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T10:09:57.705Z",
       "enrichmentFingerprint": "death grips|year of the snitch|vinyl|602567785408|2567785408",
       "relatedArtistEvidence": [
@@ -5146,7 +5150,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
