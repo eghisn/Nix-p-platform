@@ -19766,7 +19766,10 @@
         "SKU: NXP-2026-VNL-0055",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album, Lavender Marble",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Lavender Marble",
         "Catalog number: WARPLP509"
       ],
       "edition": "Vinyl, LP, Album, Lavender Marble",
@@ -19834,7 +19837,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Warp Records",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.147Z",
@@ -19847,6 +19850,7 @@
       "apparelType": "",
       "description": "Fire-Toolz's 2026 Lavender Networks is Angel Marcloid's Warp debut, a maximalist collision of black and death metal, scorched electronics, jazz fusion and moments of melodramatic beauty.",
       "reviewQuote": "a step up on the approachable scale",
+      "editRevision": 5,
       "imageCredits": [
         {
           "url": "https://fire-toolz.bandcamp.com/album/lavender-networks",
@@ -20138,7 +20142,12 @@
         "source-backed review",
         "managed cover art"
       ],
+      "editorialUpdatedAt": "2026-09-19T21:24:58.791+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-08-22",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "manualRelatedArtists": [
         "Giant Claw",
         "Oneohtrix Point Never",
@@ -20146,6 +20155,7 @@
       ],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": true,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-08-22T11:42:30.290Z",
       "enrichmentFingerprint": "fire toolz|lavender networks|vinyl|5056818808036|wap509",
       "relatedArtistEvidence": [
@@ -20378,16 +20388,14 @@
       },
       "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 4,
-      "editorialUpdatedAt": "2026-09-19T11:52:55.414+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-22",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
