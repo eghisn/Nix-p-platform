@@ -18410,7 +18410,9 @@
         "SKU: NXP-2026-VNL-0057",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, 12\", EP",
+        "Edition: Vinyl",
+        "12\"",
+        "EP",
         "Catalog number: RS1408",
         "Barcode: 5055274704265"
       ],
@@ -18418,7 +18420,7 @@
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0057/cover.jpg",
-      "condition": "New-Sealed",
+      "condition": "New-Unsealed",
       "reviewUrl": "https://boomkat.com/products/alma-construct-ep",
       "syncAudit": [
         {
@@ -18492,7 +18494,7 @@
       "apparelType": "",
       "description": "Alma Construct's self-titled 2014 EP is the debut of Josh Thompson, a five-track R&S Records release built from pulverising basslines, moody atmospherics, tape machines and guitar pedals, with its sci-fi mood inspired by La Planete Sauvage.",
       "reviewQuote": "Space-headed slo-mo techno / hip hop trips from R&S's new signing",
-      "editRevision": 69,
+      "editRevision": 70,
       "imageCredits": [
         {
           "url": "https://music.apple.com/us/album/alma-construct-ep/1114573830",
@@ -18748,7 +18750,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mt4f06tulblx9o",
-      "mediaCondition": "",
+      "mediaCondition": "New",
       "open_to_offers": false,
       "relatedArtists": [
         "Akkord",
@@ -18768,17 +18770,21 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "sleeveCondition": "",
+      "sleeveCondition": "Very Good Plus - Corner crease from shipping, paper loss on front cover, likely from tape or sticker removal",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "R&S Records / Norman Records",
       "metadataSourceUrl": "https://www.normanrecords.com/records/148979-alma-construct-alma-construct",
-      "editorialUpdatedAt": "2026-09-19T18:42:10.715+00:00",
-      "editorialUpdatedBy": "vinyl-size-backfill",
+      "editorialUpdatedAt": "2026-09-19T19:39:06.066+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-08-22",
+      "mediaConditionGrade": "New",
+      "sleeveConditionNote": "Corner crease from shipping, paper loss on front cover, likely from tape or sticker removal",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "6d6deb39-4b80-4cee-947f-6512d963a76d",
       "publishAfterResearch": true,
+      "sleeveConditionGrade": "Very Good Plus",
       "enrichmentAttemptedAt": "2026-08-22T14:42:04.221Z",
       "enrichmentFingerprint": "alma construct|alma construct|vinyl||rs1408",
       "relatedArtistEvidence": [
@@ -19009,15 +19015,16 @@
         "sourceUrl": "https://musicbrainz.org/release/6d6deb39-4b80-4cee-947f-6512d963a76d",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-22",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -36035,6 +36042,659 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0035",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0035",
+      "tags": [
+        "electronic",
+        "experimental pop",
+        "2LP",
+        "Warp"
+      ],
+      "year": 2023,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+      "label": "Warp Records",
+      "price": 0,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Again",
+      "artist": "Oneohtrix Point Never",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg"
+      ],
+      "barcode": "4523132135243",
+      "details": [
+        "SKU: NXP-2026-VNL-0035",
+        "Format: Vinyl",
+        "Condition: New-Unsealed",
+        "Edition: Blue 2xLP",
+        "Catalog number: WARPLP365I"
+      ],
+      "edition": "2 x Vinyl, LP, Album, Blue",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+      "condition": "New-Unsealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
+      "syncAudit": [
+        {
+          "at": "2026-09-19T11:52:12.144Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:51:10.824Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:38:27.217Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:37:44.705Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T02:00:50.074Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-18T02:00:47.021Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-17T02:00:44.594Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-16T17:47:37.730Z",
+          "sku": "NXP-2026-VNL-0035",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-19",
+      "vinylSize": "",
+      "collection": "Warp Records",
+      "syncStatus": {
+        "at": "2026-09-19T11:52:12.144Z",
+        "sku": "NXP-2026-VNL-0035",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
+      "reviewQuote": "a nostalgic jam session",
+      "imageCredits": [
+        {
+          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
+          "credit": "Oneohtrix Point Never Bandcamp artwork"
+        },
+        {
+          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
+          "credit": "Oneohtrix Point Never Bandcamp product photography"
+        }
+      ],
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
+        "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
+        "reviewQuote": "a nostalgic jam session",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
+        ],
+        "descriptionSource": "Warp Records / Bleep",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Tim Hecker",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725642,
+            "artist": "Autechre",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.688586,
+            "artist": "James Ferraro",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.622036,
+            "artist": "Emeralds",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.596252,
+            "artist": "Laurel Halo",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Tim Hecker",
+              "Autechre",
+              "James Ferraro",
+              "Emeralds",
+              "Laurel Halo",
+              "Tim Hecker & Daniel Lopatin",
+              "Boards of Canada",
+              "Fennesz",
+              "Steve Hauschildt",
+              "Huerco S."
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Tim Hecker",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.725642,
+                "artist": "Autechre",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.725642,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.688586,
+                "artist": "James Ferraro",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.688586,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.622036,
+                "artist": "Emeralds",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.622036,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.596252,
+                "artist": "Laurel Halo",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.596252,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.570321,
+                "artist": "Tim Hecker & Daniel Lopatin",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.570321,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.556456,
+                "artist": "Boards of Canada",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.556456,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.547454,
+                "artist": "Fennesz",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.547454,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.534696,
+                "artist": "Steve Hauschildt",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.534696,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.492442,
+                "artist": "Huerco S.",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+                "confidence": 0.492442,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tim Hecker",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725642,
+              "artist": "Autechre",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.688586,
+              "artist": "James Ferraro",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.622036,
+              "artist": "Emeralds",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.596252,
+              "artist": "Laurel Halo",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+          "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "WARPLP365IBR",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "msm6l1la14ehw1",
+      "mediaCondition": "",
+      "open_to_offers": true,
+      "relatedArtists": [
+        "Tim Hecker",
+        "Autechre",
+        "James Ferraro",
+        "Emeralds",
+        "Laurel Halo"
+      ],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Warp Records / Bleep",
+      "metadataSourceUrl": "https://warp.net/products/410494-again",
+      "enrichmentUpdatedAt": "2026-08-09",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+      "enrichmentAttemptedAt": "2026-08-09T20:36:39.408Z",
+      "enrichmentFingerprint": "oneohtrix point never|again|vinyl|4523132135243|warplp365ibr",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Tim Hecker",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.725642,
+          "artist": "Autechre",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.725642,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.688586,
+          "artist": "James Ferraro",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.688586,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.622036,
+          "artist": "Emeralds",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.622036,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.596252,
+          "artist": "Laurel Halo",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+          "confidence": 0.596252,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 1500000,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Tim Hecker",
+            "Autechre",
+            "James Ferraro",
+            "Emeralds",
+            "Laurel Halo",
+            "Tim Hecker & Daniel Lopatin",
+            "Boards of Canada",
+            "Fennesz",
+            "Steve Hauschildt",
+            "Huerco S."
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tim Hecker",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725642,
+              "artist": "Autechre",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.725642,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.688586,
+              "artist": "James Ferraro",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.688586,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.622036,
+              "artist": "Emeralds",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.622036,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.596252,
+              "artist": "Laurel Halo",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.596252,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.570321,
+              "artist": "Tim Hecker & Daniel Lopatin",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.570321,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.556456,
+              "artist": "Boards of Canada",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.556456,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.547454,
+              "artist": "Fennesz",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.547454,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.534696,
+              "artist": "Steve Hauschildt",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.534696,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.492442,
+              "artist": "Huerco S.",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+              "confidence": 0.492442,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Tim Hecker",
+          "Autechre",
+          "James Ferraro",
+          "Emeralds",
+          "Laurel Halo"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Tim Hecker",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725642,
+            "artist": "Autechre",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.725642,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.688586,
+            "artist": "James Ferraro",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.688586,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.622036,
+            "artist": "Emeralds",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.622036,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.596252,
+            "artist": "Laurel Halo",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
+            "confidence": 0.596252,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
+        "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 15,
+      "editorialUpdatedAt": "2026-09-19T11:52:46.096+00:00",
+      "editorialUpdatedBy": "finance-stock",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 750,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "heavy",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0034",
       "qty": 1,
       "sku": "NXP-2026-VNL-0034",
@@ -36687,659 +37347,6 @@
         "shippingClass": "vinyl-cardboard-bubble",
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "finance-nxp-2026-vnl-0035",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0035",
-      "tags": [
-        "electronic",
-        "experimental pop",
-        "2LP",
-        "Warp"
-      ],
-      "year": 2023,
-      "color": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-      "label": "Warp Records",
-      "price": 0,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Again",
-      "artist": "Oneohtrix Point Never",
-      "format": "Vinyl",
-      "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg"
-      ],
-      "barcode": "4523132135243",
-      "details": [
-        "SKU: NXP-2026-VNL-0035",
-        "Format: Vinyl",
-        "Condition: New-Unsealed",
-        "Edition: Blue 2xLP",
-        "Catalog number: WARPLP365I"
-      ],
-      "edition": "2 x Vinyl, LP, Album, Blue",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-      "condition": "New-Unsealed",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
-      "syncAudit": [
-        {
-          "at": "2026-09-19T11:52:12.144Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:51:10.824Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:38:27.217Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:37:44.705Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T02:00:50.074Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-18T02:00:47.021Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-17T02:00:44.594Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-16T17:47:37.730Z",
-          "sku": "NXP-2026-VNL-0035",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-19",
-      "vinylSize": "",
-      "collection": "Warp Records",
-      "syncStatus": {
-        "at": "2026-09-19T11:52:12.144Z",
-        "sku": "NXP-2026-VNL-0035",
-        "action": "Inventory identity synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
-      "reviewQuote": "a nostalgic jam session",
-      "imageCredits": [
-        {
-          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/cover.jpg",
-          "credit": "Oneohtrix Point Never Bandcamp artwork"
-        },
-        {
-          "url": "https://oneohtrixpointnever.bandcamp.com/album/again",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
-          "credit": "Oneohtrix Point Never Bandcamp product photography"
-        }
-      ],
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/oneohtrix-point-never-again/",
-        "description": "Oneohtrix Point Never's 2023 Again is Daniel Lopatin's speculative autobiography in album form, moving between orchestral electronics, distorted rock colour and intimate synthetic pop across a blue double-vinyl edition.",
-        "reviewQuote": "a nostalgic jam session",
-        "reviewSource": "Pitchfork (quoted)",
-        "relatedArtists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "descriptionSource": "Warp Records / Bleep",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Tim Hecker",
-              "Autechre",
-              "James Ferraro",
-              "Emeralds",
-              "Laurel Halo",
-              "Tim Hecker & Daniel Lopatin",
-              "Boards of Canada",
-              "Fennesz",
-              "Steve Hauschildt",
-              "Huerco S."
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Tim Hecker",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.725642,
-                "artist": "Autechre",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.725642,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.688586,
-                "artist": "James Ferraro",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.688586,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.622036,
-                "artist": "Emeralds",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.622036,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.596252,
-                "artist": "Laurel Halo",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.596252,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.570321,
-                "artist": "Tim Hecker & Daniel Lopatin",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.570321,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.556456,
-                "artist": "Boards of Canada",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.556456,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.547454,
-                "artist": "Fennesz",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.547454,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.534696,
-                "artist": "Steve Hauschildt",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.534696,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.492442,
-                "artist": "Huerco S.",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-                "confidence": 0.492442,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-          "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "WARPLP365IBR",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "msm6l1la14ehw1",
-      "mediaCondition": "",
-      "open_to_offers": true,
-      "relatedArtists": [
-        "Tim Hecker",
-        "Autechre",
-        "James Ferraro",
-        "Emeralds",
-        "Laurel Halo"
-      ],
-      "financeItemType": "Vinyl",
-      "financeMetadata": {
-        "isbn": "",
-        "pages": "",
-        "binding": "",
-        "language": "",
-        "publisher": "",
-        "dimensions": "",
-        "printDetails": ""
-      },
-      "homeCollections": [],
-      "sleeveCondition": "",
-      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0035/detail-1.jpg",
-      "enrichmentOrigin": "curated-exact",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Warp Records / Bleep",
-      "metadataSourceUrl": "https://warp.net/products/410494-again",
-      "enrichmentUpdatedAt": "2026-08-09",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-      "enrichmentAttemptedAt": "2026-08-09T20:36:39.408Z",
-      "enrichmentFingerprint": "oneohtrix point never|again|vinyl|4523132135243|warplp365ibr",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Tim Hecker",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.725642,
-          "artist": "Autechre",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.725642,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.688586,
-          "artist": "James Ferraro",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.688586,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.622036,
-          "artist": "Emeralds",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.622036,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.596252,
-          "artist": "Laurel Halo",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-          "confidence": 0.596252,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 1500000,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Tim Hecker",
-            "Autechre",
-            "James Ferraro",
-            "Emeralds",
-            "Laurel Halo",
-            "Tim Hecker & Daniel Lopatin",
-            "Boards of Canada",
-            "Fennesz",
-            "Steve Hauschildt",
-            "Huerco S."
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Tim Hecker",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.725642,
-              "artist": "Autechre",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.725642,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.688586,
-              "artist": "James Ferraro",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.688586,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.622036,
-              "artist": "Emeralds",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.622036,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.596252,
-              "artist": "Laurel Halo",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.596252,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.570321,
-              "artist": "Tim Hecker & Daniel Lopatin",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.570321,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.556456,
-              "artist": "Boards of Canada",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.556456,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.547454,
-              "artist": "Fennesz",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.547454,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.534696,
-              "artist": "Steve Hauschildt",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.534696,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.492442,
-              "artist": "Huerco S.",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-              "confidence": 0.492442,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Tim Hecker",
-          "Autechre",
-          "James Ferraro",
-          "Emeralds",
-          "Laurel Halo"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Tim Hecker",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.725642,
-            "artist": "Autechre",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.725642,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.688586,
-            "artist": "James Ferraro",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.688586,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.622036,
-            "artist": "Emeralds",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.622036,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.596252,
-            "artist": "Laurel Halo",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Oneohtrix%20Point%20Never",
-            "confidence": 0.596252,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "facdf955-7ded-45f1-ad9b-835e16bbebd2",
-        "sourceUrl": "https://musicbrainz.org/release/facdf955-7ded-45f1-ad9b-835e16bbebd2",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 15,
-      "editorialUpdatedAt": "2026-09-19T11:52:46.096+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 750,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "heavy",
         "manualShippingOverride": false
       }
     },
