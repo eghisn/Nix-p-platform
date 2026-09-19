@@ -81909,6 +81909,649 @@
       }
     },
     {
+      "id": "nxp-2026-vnl-0012",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0012",
+      "tags": [
+        "Vinyl 12\"",
+        "NXP-2026-VNL-0012"
+      ],
+      "year": 2025,
+      "color": "",
+      "image": "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
+      "label": "XL Recordings",
+      "price": 850000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "SickElixir",
+      "artist": "Blawan",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
+        "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-VNL-0012",
+        "Format: Vinyl 12\"",
+        "Condition: New-Sealed"
+      ],
+      "edition": "Vinyl, LP, Album, Limited Edition, Stereo",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.thefader.com/2025/10/10/blawan-sickelixir-review",
+      "syncAudit": [
+        {
+          "at": "2026-09-19T11:52:12.121Z",
+          "sku": "NXP-2026-VNL-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:51:10.819Z",
+          "sku": "NXP-2026-VNL-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:38:27.212Z",
+          "sku": "NXP-2026-VNL-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:37:44.700Z",
+          "sku": "NXP-2026-VNL-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T02:00:50.069Z",
+          "sku": "NXP-2026-VNL-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-18T02:00:47.011Z",
+          "sku": "NXP-2026-VNL-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-17T02:00:44.589Z",
+          "sku": "NXP-2026-VNL-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-16T17:47:37.724Z",
+          "sku": "NXP-2026-VNL-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-19",
+      "vinylSize": "12",
+      "collection": "NIXP Selection",
+      "syncStatus": {
+        "at": "2026-09-19T11:52:12.121Z",
+        "sku": "NXP-2026-VNL-0012",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Blawan's 2025 SickElixir balances industrial abrasion with dance-floor pleasure, turning modular percussion, distorted voices and mutated techno into an unusually entrancing second album.",
+      "reviewQuote": "grotesque, gorgeous dance music",
+      "editRevision": 17,
+      "imageCredits": [
+        {
+          "url": "https://www.turntablelab.com/products/blawan-sickelixir-vinyl-lp",
+          "image": "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg",
+          "credit": "Turntable Lab"
+        }
+      ],
+      "reviewSource": "The FADER (quoted)",
+      "autoEditorial": {
+        "relatedArtists": [
+          "Karenn",
+          "Djrum",
+          "Carrier",
+          "Polygonia",
+          "Surgeon"
+        ],
+        "enrichmentStatus": "complete-no-related-artists",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Karenn",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.8668,
+            "artist": "Djrum",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 0.8668,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.856547,
+            "artist": "Carrier",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 0.856547,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.628636,
+            "artist": "Polygonia",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 0.628636,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.61981,
+            "artist": "Surgeon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 0.61981,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Karenn",
+              "Djrum",
+              "Carrier",
+              "Polygonia",
+              "Surgeon",
+              "Objekt",
+              "Shackleton",
+              "Barker",
+              "Verraco",
+              "Nick León"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Karenn",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.8668,
+                "artist": "Djrum",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 0.8668,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.856547,
+                "artist": "Carrier",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 0.856547,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.628636,
+                "artist": "Polygonia",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 0.628636,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.61981,
+                "artist": "Surgeon",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 0.61981,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.609746,
+                "artist": "Objekt",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 0.609746,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.608147,
+                "artist": "Shackleton",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 0.608147,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.585262,
+                "artist": "Barker",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 0.585262,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.580652,
+                "artist": "Verraco",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 0.580652,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.560002,
+                "artist": "Nick León",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Blawan",
+                "confidence": 0.560002,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Karenn",
+            "Djrum",
+            "Carrier",
+            "Polygonia",
+            "Surgeon"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Karenn",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.8668,
+              "artist": "Djrum",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.8668,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.856547,
+              "artist": "Carrier",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.856547,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.628636,
+              "artist": "Polygonia",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.628636,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.61981,
+              "artist": "Surgeon",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.61981,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "XL1560LPE",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": 42,
+      "publishStatus": "Published",
+      "financeStockId": "mrfb6in9tjnx3v",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Karenn",
+        "Djrum",
+        "Carrier",
+        "Polygonia",
+        "Surgeon"
+      ],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [
+        "recent-releases",
+        "nixp-selection",
+        "limited-pressing"
+      ],
+      "sleeveCondition": "",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "The FADER / Resident Advisor",
+      "editorialUpdatedAt": "2026-09-19T21:10:08.75+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
+      "manualRelatedArtists": [],
+      "sleeveConditionGrade": "",
+      "enrichmentAttemptedAt": "2026-08-18T16:58:27.477Z",
+      "enrichmentFingerprint": "blawan|sickelixir|vinyl||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Karenn",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Blawan",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.8668,
+          "artist": "Djrum",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Blawan",
+          "confidence": 0.8668,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.856547,
+          "artist": "Carrier",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Blawan",
+          "confidence": 0.856547,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.628636,
+          "artist": "Polygonia",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Blawan",
+          "confidence": 0.628636,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.61981,
+          "artist": "Surgeon",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Blawan",
+          "confidence": 0.61981,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Karenn",
+            "Djrum",
+            "Carrier",
+            "Polygonia",
+            "Surgeon",
+            "Objekt",
+            "Shackleton",
+            "Barker",
+            "Verraco",
+            "Nick León"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Karenn",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.8668,
+              "artist": "Djrum",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.8668,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.856547,
+              "artist": "Carrier",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.856547,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.628636,
+              "artist": "Polygonia",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.628636,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.61981,
+              "artist": "Surgeon",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.61981,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.609746,
+              "artist": "Objekt",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.609746,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.608147,
+              "artist": "Shackleton",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.608147,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.585262,
+              "artist": "Barker",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.585262,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.580652,
+              "artist": "Verraco",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.580652,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.560002,
+              "artist": "Nick León",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Blawan",
+              "confidence": 0.560002,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Blawan"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Karenn",
+          "Djrum",
+          "Carrier",
+          "Polygonia",
+          "Surgeon"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Karenn",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.8668,
+            "artist": "Djrum",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 0.8668,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.856547,
+            "artist": "Carrier",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 0.856547,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.628636,
+            "artist": "Polygonia",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 0.628636,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.61981,
+            "artist": "Surgeon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Blawan",
+            "confidence": 0.61981,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-19",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "nxp-2026-cd-0010",
       "qty": 1,
       "sku": "NXP-2026-CD-0010",
@@ -82544,645 +83187,6 @@
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "nxp-2026-vnl-0012",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0012",
-      "tags": [
-        "Vinyl 12\"",
-        "NXP-2026-VNL-0012"
-      ],
-      "year": 2025,
-      "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
-      "label": "XL Recordings",
-      "price": 850000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "SickElixir",
-      "artist": "Blawan",
-      "format": "Vinyl",
-      "images": [
-        "/public/covers/nxp-2026-vnl-0012-blawan-sickelixir.jpg",
-        "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-VNL-0012",
-        "Format: Vinyl 12\"",
-        "Condition: New-Sealed"
-      ],
-      "edition": "Vinyl, LP, Album, Limited Edition, Stereo",
-      "category": "Records",
-      "material": "",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://www.thefader.com/2025/10/10/blawan-sickelixir-review",
-      "syncAudit": [
-        {
-          "at": "2026-09-19T11:52:12.121Z",
-          "sku": "NXP-2026-VNL-0012",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:51:10.819Z",
-          "sku": "NXP-2026-VNL-0012",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:38:27.212Z",
-          "sku": "NXP-2026-VNL-0012",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:37:44.700Z",
-          "sku": "NXP-2026-VNL-0012",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T02:00:50.069Z",
-          "sku": "NXP-2026-VNL-0012",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-18T02:00:47.011Z",
-          "sku": "NXP-2026-VNL-0012",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-17T02:00:44.589Z",
-          "sku": "NXP-2026-VNL-0012",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-16T17:47:37.724Z",
-          "sku": "NXP-2026-VNL-0012",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-19",
-      "vinylSize": "",
-      "collection": "NIXP Selection",
-      "syncStatus": {
-        "at": "2026-09-19T11:52:12.121Z",
-        "sku": "NXP-2026-VNL-0012",
-        "action": "Inventory identity synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "apparelType": "",
-      "description": "Blawan's 2025 SickElixir balances industrial abrasion with dance-floor pleasure, turning modular percussion, distorted voices and mutated techno into an unusually entrancing second album.",
-      "reviewQuote": "grotesque, gorgeous dance music",
-      "editRevision": 16,
-      "imageCredits": [
-        {
-          "url": "https://www.turntablelab.com/products/blawan-sickelixir-vinyl-lp",
-          "image": "/public/mockups/nxp-2026-vnl-0012-blawan-sickelixir-vinyl.jpg",
-          "credit": "Turntable Lab"
-        }
-      ],
-      "reviewSource": "The FADER (quoted)",
-      "autoEditorial": {
-        "relatedArtists": [
-          "Karenn",
-          "Djrum",
-          "Carrier",
-          "Polygonia",
-          "Surgeon"
-        ],
-        "enrichmentStatus": "complete-no-related-artists",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Karenn",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.8668,
-            "artist": "Djrum",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 0.8668,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.856547,
-            "artist": "Carrier",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 0.856547,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.628636,
-            "artist": "Polygonia",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 0.628636,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.61981,
-            "artist": "Surgeon",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 0.61981,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Karenn",
-              "Djrum",
-              "Carrier",
-              "Polygonia",
-              "Surgeon",
-              "Objekt",
-              "Shackleton",
-              "Barker",
-              "Verraco",
-              "Nick León"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Karenn",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.8668,
-                "artist": "Djrum",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 0.8668,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.856547,
-                "artist": "Carrier",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 0.856547,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.628636,
-                "artist": "Polygonia",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 0.628636,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.61981,
-                "artist": "Surgeon",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 0.61981,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.609746,
-                "artist": "Objekt",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 0.609746,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.608147,
-                "artist": "Shackleton",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 0.608147,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.585262,
-                "artist": "Barker",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 0.585262,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.580652,
-                "artist": "Verraco",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 0.580652,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.560002,
-                "artist": "Nick León",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Blawan",
-                "confidence": 0.560002,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Karenn",
-            "Djrum",
-            "Carrier",
-            "Polygonia",
-            "Surgeon"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Karenn",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.8668,
-              "artist": "Djrum",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.8668,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.856547,
-              "artist": "Carrier",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.856547,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.628636,
-              "artist": "Polygonia",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.628636,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.61981,
-              "artist": "Surgeon",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.61981,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "",
-          "sourceUrl": "",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "XL1560LPE",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": 42,
-      "publishStatus": "Published",
-      "financeStockId": "mrfb6in9tjnx3v",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Karenn",
-        "Djrum",
-        "Carrier",
-        "Polygonia",
-        "Surgeon"
-      ],
-      "financeItemType": "Vinyl",
-      "financeMetadata": {
-        "isbn": "",
-        "pages": "",
-        "binding": "",
-        "language": "",
-        "publisher": "",
-        "dimensions": "",
-        "printDetails": ""
-      },
-      "homeCollections": [
-        "recent-releases",
-        "nixp-selection",
-        "limited-pressing"
-      ],
-      "sleeveCondition": "",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "The FADER / Resident Advisor",
-      "editorialUpdatedAt": "2026-09-19T11:52:28.068+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:58:27.477Z",
-      "enrichmentFingerprint": "blawan|sickelixir|vinyl||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Karenn",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Blawan",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.8668,
-          "artist": "Djrum",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Blawan",
-          "confidence": 0.8668,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.856547,
-          "artist": "Carrier",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Blawan",
-          "confidence": 0.856547,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.628636,
-          "artist": "Polygonia",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Blawan",
-          "confidence": 0.628636,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.61981,
-          "artist": "Surgeon",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Blawan",
-          "confidence": 0.61981,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Karenn",
-            "Djrum",
-            "Carrier",
-            "Polygonia",
-            "Surgeon",
-            "Objekt",
-            "Shackleton",
-            "Barker",
-            "Verraco",
-            "Nick León"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Karenn",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.8668,
-              "artist": "Djrum",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.8668,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.856547,
-              "artist": "Carrier",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.856547,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.628636,
-              "artist": "Polygonia",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.628636,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.61981,
-              "artist": "Surgeon",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.61981,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.609746,
-              "artist": "Objekt",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.609746,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.608147,
-              "artist": "Shackleton",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.608147,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.585262,
-              "artist": "Barker",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.585262,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.580652,
-              "artist": "Verraco",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.580652,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.560002,
-              "artist": "Nick León",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Blawan",
-              "confidence": 0.560002,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Blawan"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Karenn",
-          "Djrum",
-          "Carrier",
-          "Polygonia",
-          "Surgeon"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Karenn",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.8668,
-            "artist": "Djrum",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 0.8668,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.856547,
-            "artist": "Carrier",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 0.856547,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.628636,
-            "artist": "Polygonia",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 0.628636,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.61981,
-            "artist": "Surgeon",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Blawan",
-            "confidence": 0.61981,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "",
-        "sourceUrl": "",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": true,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "manualRelatedArtistsOverrideSource": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-09-16",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
