@@ -21108,7 +21108,10 @@
         "SKU: NXP-2026-VNL-0053",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: 2 x Vinyl, LP, Album, Limited Edition",
+        "Edition: 2 x Vinyl",
+        "LP",
+        "Album",
+        "Limited Edition",
         "Catalog number: WIGLP528"
       ],
       "edition": "2 x Vinyl, LP, Album, Limited Edition",
@@ -21176,7 +21179,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Domino",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.147Z",
@@ -21189,6 +21192,7 @@
       "apparelType": "",
       "description": "Animal Collective's 2023 double LP Isn't It Now? is their longest album, drawing its psychedelic pop, layered vocals and open-ended arrangements from the same songwriting period as Time Skiffs.",
       "reviewQuote": "one of the album's most thrilling highs",
+      "editRevision": 4,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/28429408-Animal-Collective-Isnt-It-Now",
@@ -21470,10 +21474,16 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Domino / Pitchfork",
       "metadataSourceUrl": "https://www.discogs.com/release/28429408-Animal-Collective-Isnt-It-Now",
+      "editorialUpdatedAt": "2026-09-19T21:26:33.859+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-08-17",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": true,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-08-17T17:28:21.260Z",
       "enrichmentFingerprint": "animal collective|isn t it now|vinyl||wiglp528",
       "relatedArtistEvidence": [
@@ -21704,18 +21714,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 3,
-      "editorialUpdatedAt": "2026-09-19T11:52:54.806+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-17",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
