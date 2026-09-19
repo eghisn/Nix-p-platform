@@ -57,7 +57,9 @@ async function syncCatalog(payload) {
       });
       const result = await response.json().catch(() => ({}));
       if (response.ok) return result;
-      const message = result.error || `Catalog research returned HTTP ${response.status}.`;
+      const message = typeof result.error === "string"
+        ? result.error
+        : String(result.error?.message || `Catalog research returned HTTP ${response.status}.`);
       if (response.status >= 500 && attempt === 0) {
         lastError = new Error(message);
         await wait(700);

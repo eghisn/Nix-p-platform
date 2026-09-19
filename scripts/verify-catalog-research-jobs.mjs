@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, publicationJobsForProducts, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
 import { CATALOG_RESEARCH_VERSION } from "../api/_lib/catalogEnrichment.js";
-import { draftProductFromFinanceStock, preserveResearchPublicationState, productRowForPersistence } from "../api/_lib/financeState.js";
+import { draftProductFromFinanceStock, preserveResearchPublicationState, productRowForPersistence, researchCatalogSyncOptions } from "../api/_lib/financeState.js";
 import { applyFinalReviewedCoverLock, normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
 
 const completeRecord = {
@@ -71,6 +71,14 @@ const researchedDraft = preserveResearchPublicationState({
 assert.equal(researchedDraft.publish_status, "Draft", "Research completion must not publish a Draft without an explicit Publish action.");
 assert.equal(researchedDraft.visibility, "Private");
 assert.equal(researchedDraft.raw.enrichmentStatus, "complete", "Research data must be retained when publication remains Draft.");
+
+assert.deepEqual(researchCatalogSyncOptions(completeRecord.sku), {
+  enrich: true,
+  forceEnrichment: true,
+  targetSkus: [completeRecord.sku],
+  syncSkus: [completeRecord.sku],
+  publishAfterResearch: false
+}, "Research & Complete must only synchronize the SKU it was asked to research.");
 
 const automatic = normalizeRelatedArtistsPayload({
   raw: {},

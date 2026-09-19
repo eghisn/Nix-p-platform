@@ -602,12 +602,7 @@ export async function processCatalogResearchJobs({ limit = 1, skus = [], force =
       continue;
     }
     try {
-      await syncFinanceInventoryToCatalog(state, {
-        enrich: true,
-        forceEnrichment: true,
-        targetSkus: [job.sku],
-        publishAfterResearch
-      });
+      await syncFinanceInventoryToCatalog(state, researchCatalogSyncOptions(job.sku, publishAfterResearch));
       const rows = await supabaseFetch(`products?select=*&sku=eq.${encodeURIComponent(job.sku)}&limit=1`);
       const product = rows?.[0] || null;
       const issues = product ? catalogPublicationIssues(product) : ["Catalog product was not written after research."];
@@ -652,6 +647,19 @@ export async function processCatalogResearchJobs({ limit = 1, skus = [], force =
     }
   }
   return { queued: jobs.length, processed: results.length, results };
+}
+
+// Research & Complete is deliberately SKU-scoped. It must not turn a single
+// editorial request into an inventory-wide synchronization with external APIs.
+export function researchCatalogSyncOptions(sku, publishAfterResearch = false) {
+  const targetSku = String(sku || "").trim();
+  return {
+    enrich: true,
+    forceEnrichment: true,
+    targetSkus: [targetSku],
+    syncSkus: [targetSku],
+    publishAfterResearch
+  };
 }
 
 function preserveCompletedCatalogData(latest, next, stock = {}) {

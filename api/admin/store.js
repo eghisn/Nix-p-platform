@@ -100,9 +100,14 @@ export default async function handler(req, res) {
         .map((sku) => String(sku || "").trim())
         .filter(Boolean))].slice(0, 25);
       const financeState = await readFinanceState();
-      await syncFinanceInventoryToCatalog(financeState, {
-        enrich: false
-      });
+      // A named Research & Complete request performs its own SKU-scoped
+      // inventory sync below. Avoid a redundant full-catalog pass that can
+      // consume the function duration before the requested research begins.
+      if (!requestedSkus.length) {
+        await syncFinanceInventoryToCatalog(financeState, {
+          enrich: false
+        });
+      }
       // A catalog sync is allowed to create or refresh Admin drafts, but it
       // must never claim a research job unless the caller named exact SKU(s).
       // This keeps Finance saves and incidental Admin refreshes from turning
