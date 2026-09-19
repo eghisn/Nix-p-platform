@@ -9295,7 +9295,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Capitol Records",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.149Z",
@@ -9309,7 +9309,7 @@
       "description": "Nine Inch Nails 2023 bad witch is a verified Vinyl, LP, Album, Reissue edition on Capitol Records. The release is indexed under Art Rock, Industrial, Avant-garde Jazz.",
       "reviewQuote": "Trent Reznor’s third EP-length NIN release in the last two years is the best of the lot, with a raw",
       "sourceTitle": "bad witch",
-      "editRevision": 13,
+      "editRevision": 14,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
@@ -9604,13 +9604,17 @@
       "publicationState": "live",
       "descriptionSource": "Verified physical-release metadata",
       "metadataSourceUrl": "https://www.discogs.com/release/30000718-Nine-Inch-Nails-Bad-Witch",
-      "editorialUpdatedAt": "2026-09-19T11:53:01.754+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T21:18:39.627+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T09:18:39.662Z",
       "enrichmentFingerprint": "nine inch nails|bad witch|vinyl|602567473367|b002818021 00602567473367z 00602567473367",
       "relatedArtistEvidence": [
@@ -9850,7 +9854,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
