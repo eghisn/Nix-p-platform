@@ -6,7 +6,7 @@ import { publicCategoryPath, publicProductPath } from "../../src/data/publicUrls
 import { labelEntries, labelSlug, productMatchesLabel } from "../../src/data/labelCatalog.js";
 import { labelLogoAvailable } from "../../src/data/labelLogoManifest.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../../src/components/labelsPage.js";
-import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "../../src/data/recordMetadata.js";
+import { needsRecordConditionDetails, recordConditionDisplayValue, recordMetadataValue, recordNotes } from "../../src/data/recordMetadata.js";
 import { loadStore } from "./supabase.js";
 import { recordDisplayFormat } from "../../src/data/vinylSize.js";
 
@@ -190,7 +190,7 @@ function productMarkup(product, store = {}) {
     ? `<a class="record-label-link" href="/labels/${encodeURIComponent(labelSlug(product.label))}" data-link>${escapeHtml(canonicalLabelName(product.label))}</a>`
     : escapeHtml(product.label || "-");
   const details = isRecord
-    ? `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div><div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div><div><dt>Label</dt><dd>${labelMarkup}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div><div><dt>Catalog number</dt><dd>${escapeHtml(recordMetadataValue(product, "catalogNumber") || "Not specified")}</dd></div><div><dt>Barcode</dt><dd>${escapeHtml(recordMetadataValue(product, "barcode") || "Not specified")}</dd></div>${hasRecordConditionDetails ? `<div><dt>Media condition</dt><dd>${escapeHtml(product.mediaCondition || "Not specified")}</dd></div><div><dt>Sleeve condition</dt><dd>${escapeHtml(product.sleeveCondition || "Not specified")}</dd></div>` : ""}<div><dt>Notes</dt><dd>${escapeHtml(recordNotes(product).join(" / "))}</dd></div>`
+    ? `<div><dt>Format</dt><dd>${escapeHtml(format)}</dd></div><div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div><div><dt>Edition</dt><dd>${escapeHtml(product.edition || "Not specified")}</dd></div><div><dt>Label</dt><dd>${labelMarkup}</dd></div><div><dt>Year</dt><dd>${escapeHtml(product.year || "-")}</dd></div><div><dt>Catalog number</dt><dd>${escapeHtml(recordMetadataValue(product, "catalogNumber") || "Not specified")}</dd></div><div><dt>Barcode</dt><dd>${escapeHtml(recordMetadataValue(product, "barcode") || "Not specified")}</dd></div>${hasRecordConditionDetails ? `<div><dt>Media condition</dt><dd>${escapeHtml(recordConditionDisplayValue(product, "media") || "Not specified")}</dd></div><div><dt>Sleeve condition</dt><dd>${escapeHtml(recordConditionDisplayValue(product, "sleeve") || "Not specified")}</dd></div>` : ""}<div><dt>Notes</dt><dd>${escapeHtml(recordNotes(product).join(" / "))}</dd></div>`
     : `<div><dt>Condition</dt><dd>${escapeHtml(product.condition || "Available")}</dd></div>`;
   const review = product.reviewQuote
     ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${reviewSourceMarkup(product)}</cite></blockquote>`

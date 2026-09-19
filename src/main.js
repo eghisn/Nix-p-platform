@@ -10,7 +10,14 @@ import { privacyPolicyContent } from "./data/privacyPolicy.js";
 import { shippingReturnsContent } from "./data/shippingReturns.js";
 import { labelEntries, labelSlug } from "./data/labelCatalog.js";
 import { isLimitedPressingProduct, isRecentReleaseProduct, recentReleaseSortComparator } from "./data/homeCollections.js";
-import { needsRecordConditionDetails, recordMetadataValue, recordNotes } from "./data/recordMetadata.js";
+import {
+  RECORD_CONDITION_GRADES,
+  needsRecordConditionDetails,
+  recordConditionDisplayValue,
+  recordConditionEditorValue,
+  recordMetadataValue,
+  recordNotes
+} from "./data/recordMetadata.js";
 import { recordArtistInitial, validRecordArtistInitial } from "./components/recordsPage.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
@@ -683,8 +690,8 @@ async function productDetailMarkup(product) {
                  <div><dt>Barcode</dt><dd>${escapeHtml(recordMetadataValue(product, "barcode") || "Not specified")}</dd></div>
                  ${
                    hasRecordConditionDetails
-                     ? `<div><dt>Media condition</dt><dd>${escapeHtml(product.mediaCondition || "Not specified")}</dd></div>
-                        <div><dt>Sleeve condition</dt><dd>${escapeHtml(product.sleeveCondition || "Not specified")}</dd></div>`
+                     ? `<div><dt>Media condition</dt><dd>${escapeHtml(recordConditionDisplayValue(product, "media") || "Not specified")}</dd></div>
+                        <div><dt>Sleeve condition</dt><dd>${escapeHtml(recordConditionDisplayValue(product, "sleeve") || "Not specified")}</dd></div>`
                      : ""
                  }
                  <div><dt>Notes</dt><dd>${productNotesMarkup(product)}</dd></div>`
@@ -1574,8 +1581,10 @@ async function adminProductsPage({ embedded = false } = {}) {
           </div>
           ${select("condition", "Condition", ["", "New-Sealed", "New-Unsealed", "Used Mint", "Used Excellent", "Used Excellence", "Used Good", "Used Fair", "Used Poor"], product.condition || "")}
           <div class="admin-used-condition-fields" data-admin-used-condition-fields ${needsRecordConditionDetails(product) ? "" : "hidden"}>
-            ${input("mediaCondition", "Media condition", product.mediaCondition || "", "Grade the disc, record, or tape")}
-            ${input("sleeveCondition", "Sleeve condition", product.sleeveCondition || "", "Grade the sleeve or case")}
+            ${select("mediaConditionGrade", "Media condition grade", ["", ...RECORD_CONDITION_GRADES], recordConditionEditorValue(product, "media").grade)}
+            ${input("mediaConditionNote", "Media condition notes", recordConditionEditorValue(product, "media").note, "e.g. Light surface noise between tracks")}
+            ${select("sleeveConditionGrade", "Sleeve condition grade", ["", ...RECORD_CONDITION_GRADES], recordConditionEditorValue(product, "sleeve").grade)}
+            ${input("sleeveConditionNote", "Sleeve condition notes", recordConditionEditorValue(product, "sleeve").note, "e.g. Sleeve has a small tear")}
           </div>
           ${select("listingMode", "Listing mode", ["Standard Sale", "Private Collection / Offer Only"], product.open_to_offers ? "Private Collection / Offer Only" : "Standard Sale")}
           ${input("price", "Price IDR", product.open_to_offers ? "" : product.price || "", "640000", "number")}

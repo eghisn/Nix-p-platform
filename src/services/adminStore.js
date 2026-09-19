@@ -2,7 +2,11 @@ import { artistNames, cashflow, inventory, orders, products, requestItems } from
 import { canonicalProductArtist, canonicalLabelName, canonicalRelatedArtistName } from "../data/catalogIdentity.js";
 import { isRecentReleaseProduct } from "../data/homeCollections.js";
 import { isRecordPublicationReady } from "../data/catalogPublication.js";
-import { needsRecordConditionDetails } from "../data/recordMetadata.js";
+import {
+  needsRecordConditionDetails,
+  normalizeRecordConditionGrade,
+  recordConditionLabel
+} from "../data/recordMetadata.js";
 import { referenceShippingProfile } from "../data/shippingProfiles.js";
 import { isVinylRecord, normalizeVinylSize } from "../data/vinylSize.js";
 
@@ -122,6 +126,10 @@ function withDefaults(product) {
     vinylSize: normalizeVinylSize(product.vinylSize),
     mediaCondition: String(product.mediaCondition || "").trim(),
     sleeveCondition: String(product.sleeveCondition || "").trim(),
+    mediaConditionGrade: normalizeRecordConditionGrade(product.mediaConditionGrade),
+    mediaConditionNote: String(product.mediaConditionNote || "").trim(),
+    sleeveConditionGrade: normalizeRecordConditionGrade(product.sleeveConditionGrade),
+    sleeveConditionNote: String(product.sleeveConditionNote || "").trim(),
     tags: product.tags || [],
     details: product.details || [],
     sizes: normalizeSizes(product.sizes || []),
@@ -585,7 +593,11 @@ export function mergeStore(seeded, saved, { publicOnly = false } = {}) {
         "barcode",
         "catalogNumber",
         "mediaCondition",
-        "sleeveCondition"
+        "sleeveCondition",
+        "mediaConditionGrade",
+        "mediaConditionNote",
+        "sleeveConditionGrade",
+        "sleeveConditionNote"
       ];
       for (const field of editorialFields) {
         const savedValue = String(product[field] || "").trim();
@@ -1301,6 +1313,11 @@ export const adminStore = {
     const openToOffers = data.open_to_offers === true || data.open_to_offers === "true" || data.open_to_offers === "Yes" || data.listingMode === "Private Collection / Offer Only" || (data.open_to_offers === undefined && existing?.open_to_offers === true);
     const minimumAcceptableOffer = wholeAmount(data.minimumAcceptableOffer ?? existing?.minimumAcceptableOffer);
     if (openToOffers && !minimumAcceptableOffer) throw new Error("Private Collection items require a Minimum Acceptable Offer in whole rupiah.");
+    const recordConditionDetails = needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: data.condition });
+    const mediaConditionGrade = recordConditionDetails ? normalizeRecordConditionGrade(data.mediaConditionGrade) : "";
+    const mediaConditionNote = recordConditionDetails ? data.mediaConditionNote?.trim() || "" : "";
+    const sleeveConditionGrade = recordConditionDetails ? normalizeRecordConditionGrade(data.sleeveConditionGrade) : "";
+    const sleeveConditionNote = recordConditionDetails ? data.sleeveConditionNote?.trim() || "" : "";
     const product = withDefaults({
       ...existing,
       id,
@@ -1320,8 +1337,12 @@ export const adminStore = {
         : "",
       apparelType: normalizeApparelType(data.apparelType),
       condition: data.condition?.trim() || "",
-      mediaCondition: needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: data.condition }) ? data.mediaCondition?.trim() || "" : "",
-      sleeveCondition: needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: data.condition }) ? data.sleeveCondition?.trim() || "" : "",
+      mediaCondition: recordConditionDetails ? recordConditionLabel({ grade: mediaConditionGrade, note: mediaConditionNote }) : "",
+      sleeveCondition: recordConditionDetails ? recordConditionLabel({ grade: sleeveConditionGrade, note: sleeveConditionNote }) : "",
+      mediaConditionGrade,
+      mediaConditionNote,
+      sleeveConditionGrade,
+      sleeveConditionNote,
       price: Number(data.price || 0),
       year: Number(data.year || new Date().getFullYear()),
       label: data.label?.trim() || collection || "NIXP Selection",
