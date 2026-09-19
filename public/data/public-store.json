@@ -95,7 +95,7 @@
       "description": "Bastard Priest have taken their time, yet undo the almost 10 years lasting waiting period easily with these 4 new tracks. “Vengeance…Of The Damned” continues exactly the same way where they left their fans rotting. Evil death metal for the underground.",
       "reviewQuote": "the EP “Vengeance… of the Damned” is there and is filled with crunchy, grinding and pounding Old School Death Metal in the vein of Entombed, Under the Church and Pyre…the effective hack, slash and bash on guitars and drums with the well-known groove.\n\nCompared with “Ghouls Of The Endless Night” this one is sounding even more possessed enhanced by the filthier vocals, therefore “Vengeance…of the Damned” is a great EP.",
       "sourceTitle": "vengeance of the damned",
-      "editRevision": 11,
+      "editRevision": 13,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/15954869-Bastard-Priest-VengeanceOf-The-Damned",
@@ -382,11 +382,11 @@
       "autoProductPhoto": "",
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "needs-editorial-quality",
-      "publicationState": "deployment_pending",
+      "publicationState": "live",
       "descriptionSource": "Dying Victims Website",
       "metadataSourceUrl": "https://www.discogs.com/release/15954869-Bastard-Priest-VengeanceOf-The-Damned",
-      "editorialUpdatedAt": "2026-09-19T18:11:23.622+00:00",
-      "editorialUpdatedBy": "admin-publication",
+      "editorialUpdatedAt": "2026-09-19T18:18:11.788+00:00",
+      "editorialUpdatedBy": "publication-reconciliation",
       "enrichmentUpdatedAt": "2026-09-19",
       "adminPublishOverride": "Published",
       "manualRelatedArtists": [],
@@ -635,6 +635,642 @@
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 90,
         "shippingClass": "small-media-cassette-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-cd-0053",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0053",
+      "tags": [
+        "Punk",
+        "Rock"
+      ],
+      "year": 2013,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0053/cover.jpg",
+      "label": "Fat Wreck Chords",
+      "price": 230000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Less Talk, More Rock",
+      "artist": "Propagandhi",
+      "format": "CD",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0053/cover.jpg"
+      ],
+      "barcode": "7 51097 0666-2 1",
+      "details": [
+        "SKU: NXP-2026-CD-0053",
+        "Format: CD",
+        "Condition: Used Excellent",
+        "Edition: CD",
+        "Album",
+        "Reissue",
+        "Catalog number: FAT 666-2",
+        "Barcode: 751097066621 / 751097066621 / 098195301 / 08 / 103"
+      ],
+      "edition": "CD, Album, Reissue",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0053/cover.jpg",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://www.vice.com/en/article/propagandhi-less-talk-more-rock-20-year-anniversary/",
+      "syncAudit": [
+        {
+          "at": "2026-09-19T18:14:43.687Z",
+          "sku": "NXP-2026-CD-0053",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:52:12.159Z",
+          "sku": "NXP-2026-CD-0053",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:51:10.831Z",
+          "sku": "NXP-2026-CD-0053",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-16T09:48:55.333Z",
+          "sku": "NXP-2026-CD-0053",
+          "action": "Inventory created catalog item",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-19",
+      "vinylSize": "",
+      "collection": "Fat Wreck Chords",
+      "syncStatus": {
+        "at": "2026-09-19T18:14:43.687Z",
+        "sku": "NXP-2026-CD-0053",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Less Talk, More Rock is the second studio album by the Canadian punk rock band Propagandhi, and the last album to feature bassist John K. Samson. It was released in 1996.",
+      "reviewQuote": "Half of their early skater-bro audience vanished, turned off by the band’s increasingly openness about its political views. Bigots and outright Nazis turned up at their shows, hoping to start a fight with the band.",
+      "sourceTitle": "less talk more rock",
+      "editRevision": 8,
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/7026703-Propagandhi-Less-Talk-More-Rock",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0053/cover.jpg",
+          "credit": "Discogs physical-release artwork"
+        }
+      ],
+      "reviewSource": "Vice",
+      "autoEditorial": {
+        "reviewUrl": "",
+        "description": "Propagandhi 2013 less talk more rock is a verified CD, Album, Reissue edition on Fat Wreck Chords. The release is indexed under Punk, Rock.",
+        "reviewQuote": "",
+        "reviewSource": "",
+        "relatedArtists": [
+          "Good Riddance",
+          "Strung Out",
+          "A Wilhelm Scream",
+          "Lagwagon",
+          "The Lawrence Arms"
+        ],
+        "descriptionSource": "Verified physical-release metadata",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Good Riddance",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.832017,
+            "artist": "Strung Out",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 0.832017,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.821914,
+            "artist": "A Wilhelm Scream",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 0.821914,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.782821,
+            "artist": "Lagwagon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 0.782821,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.765952,
+            "artist": "The Lawrence Arms",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 0.765952,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Good Riddance",
+              "Strung Out",
+              "A Wilhelm Scream",
+              "Lagwagon",
+              "The Lawrence Arms",
+              "Strike Anywhere",
+              "Bad Religion",
+              "Dillinger Four",
+              "NOFX",
+              "No Use for a Name"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Good Riddance",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.832017,
+                "artist": "Strung Out",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 0.832017,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.821914,
+                "artist": "A Wilhelm Scream",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 0.821914,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.782821,
+                "artist": "Lagwagon",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 0.782821,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.765952,
+                "artist": "The Lawrence Arms",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 0.765952,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.751305,
+                "artist": "Strike Anywhere",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 0.751305,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.733698,
+                "artist": "Bad Religion",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 0.733698,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.729496,
+                "artist": "Dillinger Four",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 0.729496,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.722454,
+                "artist": "NOFX",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 0.722454,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.714946,
+                "artist": "No Use for a Name",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Propagandhi",
+                "confidence": 0.714946,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Good Riddance",
+            "Strung Out",
+            "A Wilhelm Scream",
+            "Lagwagon",
+            "The Lawrence Arms"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Good Riddance",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.832017,
+              "artist": "Strung Out",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.832017,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.821914,
+              "artist": "A Wilhelm Scream",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.821914,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.782821,
+              "artist": "Lagwagon",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.782821,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.765952,
+              "artist": "The Lawrence Arms",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.765952,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "3bb4e162-8b8a-4bbb-ae60-b0e73321dd18",
+          "sourceUrl": "https://musicbrainz.org/release/3bb4e162-8b8a-4bbb-ae60-b0e73321dd18",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "FAT 666-2",
+      "displayFormat": "CD",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "mu3wfeoc5kb5eq",
+      "mediaCondition": "Mint",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Good Riddance",
+        "Strung Out",
+        "A Wilhelm Scream",
+        "Lagwagon",
+        "The Lawrence Arms"
+      ],
+      "financeItemType": "CD",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "researchSources": [
+        {
+          "url": "https://www.discogs.com/release/7026703-Propagandhi-Less-Talk-More-Rock",
+          "source": "Discogs",
+          "confidence": 125
+        }
+      ],
+      "sleeveCondition": "Mint",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "discogs",
+      "enrichmentStatus": "needs-editorial-quality",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Wikipedia",
+      "metadataSourceUrl": "https://www.discogs.com/release/7026703-Propagandhi-Less-Talk-More-Rock",
+      "editorialUpdatedAt": "2026-09-19T18:36:53.854+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "mediaConditionNote": "",
+      "enrichmentUpdatedAt": "2026-09-19",
+      "mediaConditionGrade": "Mint",
+      "sleeveConditionNote": "",
+      "adminPublishOverride": "Published",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "sleeveConditionGrade": "Mint",
+      "enrichmentAttemptedAt": "2026-09-19T18:14:43.687Z",
+      "enrichmentFingerprint": "propagandhi|less talk more rock|cd|7 51097 0666 2 1|fat 666 2",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Good Riddance",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Propagandhi",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.832017,
+          "artist": "Strung Out",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Propagandhi",
+          "confidence": 0.832017,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.821914,
+          "artist": "A Wilhelm Scream",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Propagandhi",
+          "confidence": 0.821914,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.782821,
+          "artist": "Lagwagon",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Propagandhi",
+          "confidence": 0.782821,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.765952,
+          "artist": "The Lawrence Arms",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Propagandhi",
+          "confidence": 0.765952,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Good Riddance",
+            "Strung Out",
+            "A Wilhelm Scream",
+            "Lagwagon",
+            "The Lawrence Arms",
+            "Strike Anywhere",
+            "Bad Religion",
+            "Dillinger Four",
+            "NOFX",
+            "No Use for a Name"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Good Riddance",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.832017,
+              "artist": "Strung Out",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.832017,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.821914,
+              "artist": "A Wilhelm Scream",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.821914,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.782821,
+              "artist": "Lagwagon",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.782821,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.765952,
+              "artist": "The Lawrence Arms",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.765952,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.751305,
+              "artist": "Strike Anywhere",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.751305,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.733698,
+              "artist": "Bad Religion",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.733698,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.729496,
+              "artist": "Dillinger Four",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.729496,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.722454,
+              "artist": "NOFX",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.722454,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.714946,
+              "artist": "No Use for a Name",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Propagandhi",
+              "confidence": 0.714946,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Propagandhi"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Good Riddance",
+          "Strung Out",
+          "A Wilhelm Scream",
+          "Lagwagon",
+          "The Lawrence Arms"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Good Riddance",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.832017,
+            "artist": "Strung Out",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 0.832017,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.821914,
+            "artist": "A Wilhelm Scream",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 0.821914,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.782821,
+            "artist": "Lagwagon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 0.782821,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.765952,
+            "artist": "The Lawrence Arms",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Propagandhi",
+            "confidence": 0.765952,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "3bb4e162-8b8a-4bbb-ae60-b0e73321dd18",
+        "sourceUrl": "https://musicbrainz.org/release/3bb4e162-8b8a-4bbb-ae60-b0e73321dd18",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-09-19",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
@@ -87701,16 +88337,16 @@
       "status": "Published"
     },
     {
-      "id": "soft-moon",
+      "id": "lust-for-youth",
       "bio": "",
-      "name": "Soft Moon",
+      "name": "Lust For Youth",
       "sort": 31,
       "status": "Published"
     },
     {
-      "id": "lust-for-youth",
+      "id": "soft-moon",
       "bio": "",
-      "name": "Lust For Youth",
+      "name": "Soft Moon",
       "sort": 31,
       "status": "Published"
     },
@@ -88339,20 +88975,6 @@
       "status": "Published"
     },
     {
-      "id": "teenage-wrist",
-      "bio": "",
-      "name": "Teenage Wrist",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "chapterhouse",
-      "bio": "",
-      "name": "Chapterhouse",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
       "id": "melvins-napalm-death",
       "bio": "",
       "name": "Melvins, Napalm Death",
@@ -88360,37 +88982,9 @@
       "status": "Published"
     },
     {
-      "id": "senyawa-stephen-o-malley",
-      "bio": "",
-      "name": "Senyawa & Stephen O' Malley",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "varg",
-      "bio": "",
-      "name": "Varg²™",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
       "id": "alan-vega",
       "bio": "",
       "name": "Alan Vega",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "skudge-san-proper",
-      "bio": "",
-      "name": "Skudge / San Proper",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "sam-gendel",
-      "bio": "",
-      "name": "Sam Gendel",
       "sort": 9999,
       "status": "Published"
     },
@@ -88405,6 +88999,55 @@
       "id": "hella",
       "bio": "",
       "name": "Hella",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "teenage-wrist",
+      "bio": "",
+      "name": "Teenage Wrist",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "propagandhi",
+      "bio": "",
+      "name": "Propagandhi",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "sam-gendel",
+      "bio": "",
+      "name": "Sam Gendel",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "chapterhouse",
+      "bio": "",
+      "name": "Chapterhouse",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "skudge-san-proper",
+      "bio": "",
+      "name": "Skudge / San Proper",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "senyawa-stephen-o-malley",
+      "bio": "",
+      "name": "Senyawa & Stephen O' Malley",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "varg",
+      "bio": "",
+      "name": "Varg²™",
       "sort": 9999,
       "status": "Published"
     },
