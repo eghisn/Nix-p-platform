@@ -849,19 +849,13 @@ export const adminStore = {
       activeStore = mergeStore(seed({ publicOnly: false }), initialStore, { publicOnly: false });
       activeStoreScope = scope;
       privateStoreRefreshedAt = Date.now();
-      // Render the last known private snapshot immediately. Previously this
-      // awaited a full Supabase read of products, inventory, orders, cashflow,
-      // requests, and offers, leaving a blank workspace for several seconds.
-      // The authoritative response still replaces this snapshot in the
-      // background, while writes remain guarded until that refresh is done.
-      this.refreshPrivateStore({ force: true })
-        .then(() => {
-          notifyPrivateStoreRefreshed();
-          reconcilePublicationInBackground();
-        })
-        .catch(() => {
-          // Keep the last local snapshot available when the private API is down.
-        });
+      // A cached workspace is useful as a bootstrap, but publication badges
+      // and actions must only be rendered after the authoritative Admin
+      // response arrives. Otherwise an older local snapshot can briefly show
+      // a product as Published even when the server has already kept it Draft.
+      await this.refreshPrivateStore({ force: true });
+      notifyPrivateStoreRefreshed();
+      reconcilePublicationInBackground();
       return;
     }
 
@@ -1088,7 +1082,10 @@ export const adminStore = {
               visibility: publishStatus === "Published" ? "Public" : "Private",
               raw: {
                 ...(item.raw || {}),
-                adminPublishOverride: publishStatus === "Draft" ? "Draft" : null
+                // Finance owns stock identity, not an editor's deliberate
+                // storefront decision. Persist both directions explicitly so
+                // a later stock sync cannot silently reverse a manual status.
+                adminPublishOverride: publishStatus
               },
               updatedAt: today()
             }

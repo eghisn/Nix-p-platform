@@ -56,6 +56,28 @@ assert.equal(financeProduct.edit_revision, 17);
 assert.equal(hasFinanceCatalogIdentityDrift(versionedPlaceholder, repaired), true);
 assert.equal(hasFinanceCatalogIdentityDrift(repaired, mergeFinanceStockIdentity(repaired, productRowFromFinanceStock(repaired, completedStock, 1))), false);
 
+const manuallyPublished = productRowFromFinanceStock(
+  {
+    ...versionedPlaceholder,
+    raw: { adminPublishOverride: "Published" }
+  },
+  completedStock,
+  1
+);
+assert.equal(manuallyPublished.publish_status, "Published");
+assert.equal(manuallyPublished.visibility, "Public");
+
+const manuallyDrafted = productRowFromFinanceStock(
+  {
+    ...versionedPlaceholder,
+    raw: { adminPublishOverride: "Draft" }
+  },
+  completedStock,
+  1
+);
+assert.equal(manuallyDrafted.publish_status, "Draft");
+assert.equal(manuallyDrafted.visibility, "Private");
+
 const posterStock = {
   id: "stock-poster",
   sku: "NXP-2026-OBJ-0001",

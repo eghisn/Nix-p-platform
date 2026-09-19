@@ -951,14 +951,15 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const readyFromFinance = category === "Records"
     ? isRecordPublicationReady({ ...row, ...raw, title: financeTitle || row.title, artist: financeArtist || row.artist, price: openToOffers ? 0 : financePrice || row.price, open_to_offers: openToOffers, minimum_acceptable_offer: minimumAcceptableOffer })
     : Boolean(financeTitle && (openToOffers ? minimumAcceptableOffer : financePrice > 0) && hasUsableProductImage(row));
-  const adminUnpublished = row.raw?.adminPublishOverride === "Draft";
-  const publishStatus = adminUnpublished
-    ? "Draft"
+  const adminPublishOverride = String(row.raw?.adminPublishOverride || "").trim();
+  const hasExplicitAdminPublication = ["Draft", "Published"].includes(adminPublishOverride);
+  const publishStatus = hasExplicitAdminPublication
+    ? adminPublishOverride
     : wasFinanceDraft
       ? (readyFromFinance ? "Published" : "Draft")
       : row.publish_status || "Published";
-  const visibility = adminUnpublished
-    ? "Private"
+  const visibility = hasExplicitAdminPublication
+    ? (adminPublishOverride === "Published" ? "Public" : "Private")
     : wasFinanceDraft
       ? (readyFromFinance ? "Public" : "Private")
       : row.visibility || "Public";
