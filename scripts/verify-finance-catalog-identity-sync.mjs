@@ -53,8 +53,22 @@ assert.equal(repaired.raw.catalogNumber, "PRC-285");
 assert.equal(repaired.raw.vinylSize, "12");
 assert.deepEqual(repaired.details, []);
 assert.equal(financeProduct.edit_revision, 17);
+assert.equal(financeProduct.publish_status, "Draft", "Finance completion must not publish a catalog draft.");
+assert.equal(financeProduct.visibility, "Private", "Finance completion must not expose a catalog draft.");
 assert.equal(hasFinanceCatalogIdentityDrift(versionedPlaceholder, repaired), true);
 assert.equal(hasFinanceCatalogIdentityDrift(repaired, mergeFinanceStockIdentity(repaired, productRowFromFinanceStock(repaired, completedStock, 1))), false);
+
+const legacyPublished = productRowFromFinanceStock(
+  {
+    ...versionedPlaceholder,
+    publish_status: "Published",
+    visibility: "Public"
+  },
+  completedStock,
+  1
+);
+assert.equal(legacyPublished.publish_status, "Published", "A previously live legacy item must remain live during Finance sync.");
+assert.equal(legacyPublished.visibility, "Public", "A previously live legacy item must remain public during Finance sync.");
 
 const manuallyPublished = productRowFromFinanceStock(
   {

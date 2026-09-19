@@ -944,25 +944,17 @@ export function productRowFromFinanceStock(row, stock, quantity) {
     delete raw.autoEditorial;
   }
 
-  const wasFinanceDraft =
-    String(row.id || "").startsWith("finance-") ||
-    row.raw?.financeStockId ||
-    String(row.raw?.details?.[0] || "").includes("Created from finance inventory");
-  const readyFromFinance = category === "Records"
-    ? isRecordPublicationReady({ ...row, ...raw, title: financeTitle || row.title, artist: financeArtist || row.artist, price: openToOffers ? 0 : financePrice || row.price, open_to_offers: openToOffers, minimum_acceptable_offer: minimumAcceptableOffer })
-    : Boolean(financeTitle && (openToOffers ? minimumAcceptableOffer : financePrice > 0) && hasUsableProductImage(row));
   const adminPublishOverride = String(row.raw?.adminPublishOverride || "").trim();
   const hasExplicitAdminPublication = ["Draft", "Published"].includes(adminPublishOverride);
+  const existingPublishStatus = String(row.publish_status || row.publishStatus || "Draft").trim() || "Draft";
+  const existingVisibility = String(row.visibility || (existingPublishStatus === "Published" ? "Public" : "Private")).trim()
+    || (existingPublishStatus === "Published" ? "Public" : "Private");
   const publishStatus = hasExplicitAdminPublication
     ? adminPublishOverride
-    : wasFinanceDraft
-      ? (readyFromFinance ? "Published" : "Draft")
-      : row.publish_status || "Published";
+    : existingPublishStatus;
   const visibility = hasExplicitAdminPublication
     ? (adminPublishOverride === "Published" ? "Public" : "Private")
-    : wasFinanceDraft
-      ? (readyFromFinance ? "Public" : "Private")
-      : row.visibility || "Public";
+    : existingVisibility;
 
   return productRowFromExisting(row, {
     title: financeTitle || row.title,
