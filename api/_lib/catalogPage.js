@@ -180,11 +180,12 @@ async function pageDocument({ title, description, canonicalUrl, image, type = "w
   return template;
 }
 
-function productMarkup(product, store = {}) {
+export function productMarkup(product, store = {}) {
   const images = [...new Set((Array.isArray(product.images) && product.images.length ? product.images : [product.image]).filter(Boolean))];
   const format = recordDisplayFormat(product);
   const isRecord = product.category === "Records";
   const isOfferOnly = product.open_to_offers === true;
+  const soldOut = productQuantity(product) <= 0;
   const hasRecordConditionDetails = needsRecordConditionDetails(product);
   const labelMarkup = isRecord && product.label
     ? `<a class="record-label-link" href="/labels/${encodeURIComponent(labelSlug(product.label))}" data-link>${escapeHtml(canonicalLabelName(product.label))}</a>`
@@ -213,7 +214,17 @@ function productMarkup(product, store = {}) {
           : `<span>${escapeHtml(artist)}</span>`;
       }).join("")}</div>`
     : "";
-  return `<section class="product-detail"><div class="detail-gallery">${images.map((image, index) => `<figure class="product-art product-art-large"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" /></figure>`).join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link>Make an Offer</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}">Add to cart</button>`}</div><dl class="detail-list">${details}</dl>${relatedMarkup}</aside></section>`;
+  return `<section class="product-detail"><div class="detail-gallery">${images.map((image, index) => `<figure class="product-art product-art-large"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" /></figure>`).join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link ${soldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${soldOut ? "Sold out" : "Make an Offer"}</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>`}</div><dl class="detail-list">${details}</dl>${relatedMarkup}</aside></section>`;
+}
+
+function productQuantity(product = {}) {
+  if (Array.isArray(product.sizes) && product.sizes.length) {
+    return product.sizes.reduce(
+      (sum, size) => sum + Math.max(0, Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1)) || 0),
+      0
+    );
+  }
+  return Math.max(0, Number(product.qty ?? 1) || 0);
 }
 
 function normalizePath(value) {

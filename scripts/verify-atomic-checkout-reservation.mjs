@@ -34,6 +34,8 @@ const payment = functionBody("apply_verified_payment");
 
 assertStableReservationOrder(checkout, "Direct checkout");
 assertStableReservationOrder(shippingQuote, "Shipping quote");
+assert.match(checkout, /if v_request\.quantity > v_available_before then raise exception 'OUT_OF_STOCK:/, "Direct checkout must reject any request that exceeds live stock.");
+assert.match(shippingQuote, /if v_line\.quantity > v_available_before then raise exception 'OUT_OF_STOCK:/, "Shipping quote checkout must reject any request that exceeds live stock.");
 assert.match(checkout, /interval '1 hour'/, "Direct checkout must use the one-hour payment window.");
 assert.match(shippingQuote, /interval '1 hour'/, "Shipping quotes must use the one-hour payment window.");
 assert.match(expiry, /payment_expires_at <= now\(\) - interval '5 minutes'/, "Expiry maintenance must retain the callback grace period.");
