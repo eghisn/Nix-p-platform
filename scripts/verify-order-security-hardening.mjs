@@ -55,6 +55,7 @@ assert.doesNotMatch(paymentSession, /drainNotificationOutbox/, "Payment session 
 assert.doesNotMatch(paymentSession, /expirePendingOrders/, "Payment session creation must not run catalogue or expiry maintenance.");
 assert.match(handlers, /reconcilePendingMidtransPayments/, "Pending Midtrans payments must have a provider reconciliation path.");
 assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protected payment-health summary.");
+assert.match(handlers, /activePendingOrderIds\.has\(String\(row\.order_id\)\)/, "Payment health must only flag attempts that still belong to active pending orders.");
 
 assert.match(checkout, /ORDER_ACCESS_COOKIE_NAME/, "Order access must use a dedicated HttpOnly cookie.");
 assert.match(checkout, /exchange-access-token/, "The order page must exchange a one-time URL token for a cookie.");

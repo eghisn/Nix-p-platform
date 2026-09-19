@@ -266,11 +266,16 @@ export async function getCommerceHealthSnapshot() {
     supabaseFetch("payment_attempts?select=order_id,status,updated_at&provider=eq.Midtrans&order=updated_at.desc&limit=100", { service: true }),
     supabaseFetch("webhook_receipts?select=status,last_error,updated_at&provider=eq.Midtrans&order=updated_at.desc&limit=100", { service: true }),
     supabaseFetch("inventory_reservations?select=order_id,status,expires_at&status=eq.Active&order=expires_at.asc&limit=100", { service: true }),
-    supabaseFetch("order_records?select=id,public_reference,payment_status,payment_expires_at&payment_status=eq.Pending&order=payment_expires_at.asc&limit=100", { service: true }),
+    supabaseFetch("order_records?select=id,public_reference,payment_status,payment_expires_at&order_status=eq.Active&payment_status=eq.Pending&order=payment_expires_at.asc&limit=100", { service: true }),
     supabaseFetch("notification_outbox?select=status,updated_at&status=in.(Pending,Failed,Sending)&order=updated_at.asc&limit=100", { service: true })
   ]);
   const now = Date.now();
-  const staleAttempts = (attempts || []).filter((row) => ["Creating", "Creation Failed", "Provider Pending"].includes(row.status) && new Date(row.updated_at).getTime() < now - 5 * 60_000);
+  const activePendingOrderIds = new Set((orders || []).map((row) => String(row.id)));
+  const staleAttempts = (attempts || []).filter((row) => (
+    activePendingOrderIds.has(String(row.order_id))
+    && ["Creating", "Creation Failed", "Provider Pending"].includes(row.status)
+    && new Date(row.updated_at).getTime() < now - 5 * 60_000
+  ));
   const failedWebhooks = (receipts || []).filter((row) => row.status === "Failed");
   const overdueReservations = (reservations || []).filter((row) => new Date(row.expires_at).getTime() < now - 10 * 60_000);
   const overdueOrders = (orders || []).filter((row) => new Date(row.payment_expires_at).getTime() < now - 10 * 60_000);
