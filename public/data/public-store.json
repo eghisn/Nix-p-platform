@@ -2,6 +2,645 @@
   "version": "supabase-live-2026-07-13",
   "products": [
     {
+      "id": "finance-nxp-2026-cst-0012",
+      "qty": 1,
+      "sku": "NXP-2026-CST-0012",
+      "tags": [
+        "Death Metal",
+        "Thrash",
+        "Rock"
+      ],
+      "year": 2020,
+      "color": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cst-0012/cover.jpg",
+      "label": "Dying Victims Productions",
+      "price": 260000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Vengeance...Of The Damned",
+      "artist": "Bastard Priest",
+      "format": "Cassette",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cst-0012/cover.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CST-0012",
+        "Format: Cassette",
+        "Condition: New-Sealed",
+        "Edition: Cassette",
+        "EP",
+        "Limited Edition",
+        "Catalog number: DVP 164"
+      ],
+      "edition": "Cassette, EP, Limited Edition",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cst-0012/cover.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.vm-underground.com/review/bastard-priest-vengeance-of-the-damned-ep/",
+      "syncAudit": [
+        {
+          "at": "2026-09-19T14:50:06.850Z",
+          "sku": "NXP-2026-CST-0012",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:58:14.130Z",
+          "sku": "NXP-2026-CST-0012",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:52:12.159Z",
+          "sku": "NXP-2026-CST-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:51:10.831Z",
+          "sku": "NXP-2026-CST-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-16T09:52:22.714Z",
+          "sku": "NXP-2026-CST-0012",
+          "action": "Inventory created catalog item",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-19",
+      "vinylSize": "",
+      "collection": "Dying Victims Productions",
+      "syncStatus": {
+        "at": "2026-09-19T14:50:06.850Z",
+        "sku": "NXP-2026-CST-0012",
+        "action": "Inventory synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "apparelType": "",
+      "description": "Bastard Priest have taken their time, yet undo the almost 10 years lasting waiting period easily with these 4 new tracks. “Vengeance…Of The Damned” continues exactly the same way where they left their fans rotting. Evil death metal for the underground.",
+      "reviewQuote": "the EP “Vengeance… of the Damned” is there and is filled with crunchy, grinding and pounding Old School Death Metal in the vein of Entombed, Under the Church and Pyre…the effective hack, slash and bash on guitars and drums with the well-known groove.\n\nCompared with “Ghouls Of The Endless Night” this one is sounding even more possessed enhanced by the filthier vocals, therefore “Vengeance…of the Damned” is a great EP.",
+      "sourceTitle": "vengeance of the damned",
+      "editRevision": 11,
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/15954869-Bastard-Priest-VengeanceOf-The-Damned",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cst-0012/cover.jpg",
+          "credit": "Discogs physical-release artwork"
+        }
+      ],
+      "reviewSource": "VM Underground",
+      "autoEditorial": {
+        "reviewUrl": "",
+        "description": "Bastard Priest 2020 vengeance of the damned is a verified Cassette, EP, Limited Edition edition on Dying Victims Productions. The release is indexed under Death Metal, Thrash, Rock.",
+        "reviewQuote": "",
+        "reviewSource": "",
+        "relatedArtists": [
+          "Maim",
+          "Miasmal",
+          "Necrovation",
+          "Bombs of Hades",
+          "Excoriate"
+        ],
+        "descriptionSource": "Verified physical-release metadata",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Maim",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.883991,
+            "artist": "Miasmal",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 0.883991,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.771335,
+            "artist": "Necrovation",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 0.771335,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.759058,
+            "artist": "Bombs of Hades",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 0.759058,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.720788,
+            "artist": "Excoriate",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 0.720788,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Maim",
+              "Miasmal",
+              "Necrovation",
+              "Bombs of Hades",
+              "Excoriate",
+              "Tormented",
+              "Vanhelgd",
+              "Degial",
+              "Kaamos",
+              "Verminous"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Maim",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.883991,
+                "artist": "Miasmal",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 0.883991,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.771335,
+                "artist": "Necrovation",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 0.771335,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.759058,
+                "artist": "Bombs of Hades",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 0.759058,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.720788,
+                "artist": "Excoriate",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 0.720788,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.670852,
+                "artist": "Tormented",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 0.670852,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.63762,
+                "artist": "Vanhelgd",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 0.63762,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.59226,
+                "artist": "Degial",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 0.59226,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.568815,
+                "artist": "Kaamos",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 0.568815,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.543698,
+                "artist": "Verminous",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+                "confidence": 0.543698,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Maim",
+            "Miasmal",
+            "Necrovation",
+            "Bombs of Hades",
+            "Excoriate"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Maim",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.883991,
+              "artist": "Miasmal",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.883991,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.771335,
+              "artist": "Necrovation",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.771335,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.759058,
+              "artist": "Bombs of Hades",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.759058,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.720788,
+              "artist": "Excoriate",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.720788,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "DVP 164",
+      "displayFormat": "Cassette",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "mu3wmn0h5mnolj",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Maim",
+        "Miasmal",
+        "Necrovation",
+        "Bombs of Hades",
+        "Excoriate"
+      ],
+      "financeItemType": "Cassette",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "researchSources": [
+        {
+          "url": "https://www.discogs.com/release/15954869-Bastard-Priest-VengeanceOf-The-Damned",
+          "source": "Discogs",
+          "confidence": 100
+        }
+      ],
+      "sleeveCondition": "",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "discogs",
+      "enrichmentStatus": "needs-editorial-quality",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Dying Victims Website",
+      "metadataSourceUrl": "https://www.discogs.com/release/15954869-Bastard-Priest-VengeanceOf-The-Damned",
+      "editorialUpdatedAt": "2026-09-19T18:11:23.622+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "enrichmentUpdatedAt": "2026-09-19",
+      "adminPublishOverride": "Published",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-09-19T14:50:06.850Z",
+      "enrichmentFingerprint": "bastard priest|vengeance of the damned|cassette||dvp 164",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Maim",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.883991,
+          "artist": "Miasmal",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+          "confidence": 0.883991,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.771335,
+          "artist": "Necrovation",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+          "confidence": 0.771335,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.759058,
+          "artist": "Bombs of Hades",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+          "confidence": 0.759058,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.720788,
+          "artist": "Excoriate",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+          "confidence": 0.720788,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Maim",
+            "Miasmal",
+            "Necrovation",
+            "Bombs of Hades",
+            "Excoriate",
+            "Tormented",
+            "Vanhelgd",
+            "Degial",
+            "Kaamos",
+            "Verminous"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Maim",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.883991,
+              "artist": "Miasmal",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.883991,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.771335,
+              "artist": "Necrovation",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.771335,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.759058,
+              "artist": "Bombs of Hades",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.759058,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.720788,
+              "artist": "Excoriate",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.720788,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.670852,
+              "artist": "Tormented",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.670852,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.63762,
+              "artist": "Vanhelgd",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.63762,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.59226,
+              "artist": "Degial",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.59226,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.568815,
+              "artist": "Kaamos",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.568815,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.543698,
+              "artist": "Verminous",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+              "confidence": 0.543698,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bastard%20Priest"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Maim",
+          "Miasmal",
+          "Necrovation",
+          "Bombs of Hades",
+          "Excoriate"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Maim",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.883991,
+            "artist": "Miasmal",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 0.883991,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.771335,
+            "artist": "Necrovation",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 0.771335,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.759058,
+            "artist": "Bombs of Hades",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 0.759058,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.720788,
+            "artist": "Excoriate",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bastard%20Priest",
+            "confidence": 0.720788,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 8,
+        "lengthCm": 16,
+        "updatedAt": "2026-09-19",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 90,
+        "shippingClass": "small-media-cassette-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "nixp-payment-test-1000-b-20260913",
       "qty": 1,
       "sku": "NXP-TEST-PAY-1000-B-20260913",
