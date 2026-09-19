@@ -1430,7 +1430,9 @@
     const inventorySources = ["Business Purchase", "Personal Collection", "Consignment", "Founder Purchase / Awaiting Reimbursement"];
     const vinylItemTypes = ["Vinyl", "Vinyl 12\"", "Vinyl 10\"", "Vinyl 7\""];
     const itemTypes = [...vinylItemTypes, "CD", "Cassette", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap", "Poster", "Book", "Zine", "Magazine", "Object"];
-    const itemConditions = ["New-Sealed", "New-Unsealed", "Used Excellent", "Used Good"];
+    const recordItemConditions = ["New-Sealed", "New-Unsealed", "Used Excellent", "Used Good"];
+    const apparelItemTypes = ["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap"];
+    const apparelItemConditions = ["New With Tags", "New Without Tags", "Tried On / Like New", "Excellent Used", "Very Good Used", "Worn / Vintage", "Damaged / Repair Needed"];
     const listingModes = ["Standard Sale", "Private Collection / Offer Only"];
     const ownerDueCategory = "Owner Personal Use / Reimbursement Due";
     const ownerReimbursementCategory = "Owner Reimbursement";
@@ -1870,7 +1872,8 @@
               ${field("Language", "language", "text", "", false, "Primary language")}
             </div>
           </div>
-          ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
+          ${conditionField()}
+          ${apparelConditionFields()}
           ${selectField("Listing mode", "listingMode", listingModes, true, "Standard Sale")}
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
           ${field("Artist Name", "artistName", "text", "", false, "Artist / creator")}
@@ -1908,7 +1911,8 @@
               ${field("Language", "language", "text", "", false, "Primary language")}
             </div>
           </div>
-          ${selectField("Item Condition", "itemCondition", itemConditions, true, "New-Sealed")}
+          ${conditionField()}
+          ${apparelConditionFields()}
           ${field("Artist", "artist", "text", "", false, "Artist name")}
           ${field("Title", "title", "text", "", true, "Artwork / item title")}
           ${field("Edition", "edition", "text", "", false, "Pressing / packaging, if known")}
@@ -1963,6 +1967,28 @@
       `;
     }
 
+    function conditionField() {
+      return selectField("Item Condition", "itemCondition", recordItemConditions, true, "New-Sealed", "data-finance-condition-field");
+    }
+
+    function apparelConditionFields() {
+      return `
+        <div class="fields full" data-finance-apparel-fields hidden>
+          ${field("Condition notes", "garmentConditionNote", "text", "", false, "e.g. Minor fading at collar")}
+          <div class="field"><label>Original tags</label><label><input name="originalTags" type="checkbox"> Included</label></div>
+          ${field("Pit to pit (cm)", "apparelPitToPit", "number", "", false, "", "0.1")}
+          ${field("Length (cm)", "apparelLength", "number", "", false, "", "0.1")}
+          ${field("Shoulder (cm)", "apparelShoulder", "number", "", false, "", "0.1")}
+          ${field("Sleeve (cm)", "apparelSleeve", "number", "", false, "", "0.1")}
+          ${field("Waist (cm)", "apparelWaist", "number", "", false, "", "0.1")}
+          ${field("Inseam (cm)", "apparelInseam", "number", "", false, "", "0.1")}
+          ${field("Alterations", "alterations", "text", "", false, "e.g. Hem shortened")}
+          ${field("Flaws", "flaws", "text", "", false, "e.g. Small repair on left cuff")}
+          ${field("Fabric care", "fabricCare", "text", "", false, "e.g. Cold wash, line dry")}
+        </div>
+      `;
+    }
+
     function normalizeVinylSize(value) {
       const size = String(value || "").trim().replace(/[\"\u2033]/g, "");
       return ["12", "10", "7"].includes(size) ? size : "";
@@ -1997,6 +2023,11 @@
     function syncItemTypeFields(form, itemField) {
       syncVinylSizeField(form, itemField);
       const item = vinylItemSelection(form?.elements[itemField]?.value).item;
+      syncConditionField(form, item);
+      const isApparel = apparelItemTypes.includes(item);
+      form?.querySelectorAll("[data-finance-apparel-fields]").forEach(wrapper => {
+        wrapper.hidden = !isApparel;
+      });
       const isPoster = item === "Poster";
       const isPublication = ["Book", "Zine", "Magazine"].includes(item);
       form?.querySelectorAll("[data-finance-poster-fields]").forEach(wrapper => {
@@ -2005,6 +2036,22 @@
       form?.querySelectorAll("[data-finance-publication-fields]").forEach(wrapper => {
         wrapper.hidden = !isPublication;
       });
+    }
+
+    function conditionOptionsForItem(item, current = "") {
+      const options = apparelItemTypes.includes(item) ? apparelItemConditions : recordItemConditions;
+      return current && !options.includes(current) ? [current, ...options] : options;
+    }
+
+    function syncConditionField(form, item, preferredValue = "") {
+      const select = form?.elements?.itemCondition;
+      const field = form?.querySelector("[data-finance-condition-field]");
+      if (!select || !field) return;
+      const current = String(preferredValue || select.value || "").trim();
+      field.querySelector("label").childNodes[0].nodeValue = apparelItemTypes.includes(item) ? "Garment condition" : "Item Condition";
+      select.innerHTML = conditionOptionsForItem(item, current)
+        .map(option => `<option value="${option}" ${option === current ? "selected" : ""}>${option}</option>`)
+        .join("");
     }
 
     function attachExportControls() {
@@ -2357,6 +2404,7 @@
         setFormValue(form, "category", "Retail");
         setFormValue(form, "source", "Business Purchase");
         setFormValue(form, "itemType", "Vinyl");
+        syncItemTypeFields(form, "itemType");
         setFormValue(form, "itemCondition", "New-Sealed");
         setFormValue(form, "listingMode", "Standard Sale");
         setFormValue(form, "paymentMethod", "Bank Transfer");
@@ -2365,6 +2413,7 @@
       const qtyInput = form.querySelector("[name=qty]");
       if (dateInput) dateInput.value = todayISO;
       if (qtyInput) qtyInput.value = "1";
+      if (form === el.stockForm) syncItemTypeFields(form, "item");
       if (form === el.generalForm) syncGeneralInvestorFields();
     }
 
@@ -2465,7 +2514,7 @@
         const totalCost = qty * unitCost;
         const normalizedItemType = vinylItemSelection(item.itemType).item;
         const itemType = itemTypes.includes(normalizedItemType) ? normalizedItemType : "Vinyl";
-        const itemCondition = itemConditions.includes(item.itemCondition) ? item.itemCondition : "New-Sealed";
+        const itemCondition = normalizeItemCondition(item.itemCondition, itemType);
         return {
           ...item,
           itemType,
@@ -2544,6 +2593,7 @@
         paymentMethod: data.paymentMethod,
         minimumAcceptableOffer: wholeAmount(data.minimumAcceptableOffer),
         inventoryFamily: inventoryFamilyForValue(itemSelection.item, data.sku),
+        ...apparelConditionData(data, itemSelection.item),
         ...itemTypeMetadata(data, itemSelection.item)
       };
     }
@@ -2571,6 +2621,7 @@
         listingMode: data.listingMode,
         minimumAcceptableOffer: wholeAmount(data.minimumAcceptableOffer),
         inventoryFamily: existing.inventoryFamily || inventoryFamilyForValue(itemSelection.item, data.sku),
+        ...apparelConditionData(data, itemSelection.item),
         ...itemTypeMetadata(data, itemSelection.item)
       });
     }
@@ -2607,6 +2658,38 @@
         pages: "",
         binding: "",
         language: ""
+      };
+    }
+
+    function apparelConditionData(data, item) {
+      if (!apparelItemTypes.includes(item)) {
+        return {
+          garmentConditionNote: "",
+          apparelMeasurements: {},
+          originalTags: false,
+          alterations: "",
+          flaws: "",
+          fabricCare: ""
+        };
+      }
+      const value = name => String(data[name] || "").trim();
+      const measurementFields = [
+        ["pitToPit", "apparelPitToPit"],
+        ["length", "apparelLength"],
+        ["shoulder", "apparelShoulder"],
+        ["sleeve", "apparelSleeve"],
+        ["waist", "apparelWaist"],
+        ["inseam", "apparelInseam"]
+      ];
+      return {
+        garmentConditionNote: value("garmentConditionNote"),
+        apparelMeasurements: Object.fromEntries(measurementFields
+          .map(([key, name]) => [key, value(name)])
+          .filter(([, measurement]) => measurement)),
+        originalTags: data.originalTags === "on" || data.originalTags === true,
+        alterations: value("alterations"),
+        flaws: value("flaws"),
+        fabricCare: value("fabricCare")
       };
     }
 
@@ -2647,6 +2730,12 @@
         pages: purchase.pages ?? existing.pages ?? "",
         binding: purchase.binding ?? existing.binding ?? "",
         language: purchase.language ?? existing.language ?? "",
+        garmentConditionNote: purchase.garmentConditionNote ?? existing.garmentConditionNote ?? "",
+        apparelMeasurements: purchase.apparelMeasurements ?? existing.apparelMeasurements ?? {},
+        originalTags: purchase.originalTags ?? existing.originalTags ?? false,
+        alterations: purchase.alterations ?? existing.alterations ?? "",
+        flaws: purchase.flaws ?? existing.flaws ?? "",
+        fabricCare: purchase.fabricCare ?? existing.fabricCare ?? "",
         source: purchase.source || existing.source || "Business Purchase",
         acquisitionMonth: monthOf(purchase.date) || existing.acquisitionMonth || currentMonth,
         qty: numeric(purchase.qty) || numeric(existing.qty) || 1,
@@ -2675,7 +2764,7 @@
       return {
         ...item,
         qty,
-        itemCondition: itemConditions.includes(item.itemCondition) ? item.itemCondition : "New-Sealed",
+        itemCondition: normalizeItemCondition(item.itemCondition, item.item),
         vinylSize: normalizeVinylSize(item.vinylSize),
         costBasis,
         sellingPrice: numeric(item.sellingPrice),
@@ -2685,6 +2774,13 @@
         grossProfit,
         margin: soldPrice > 0 ? grossProfit / soldPrice * 100 : 0
       };
+    }
+
+    function normalizeItemCondition(value, item) {
+      const condition = String(value || "").trim();
+      return conditionOptionsForItem(vinylItemSelection(item).item, condition).includes(condition)
+        ? condition
+        : apparelItemTypes.includes(vinylItemSelection(item).item) ? "New Without Tags" : "New-Sealed";
     }
 
     function startSalesEdit(id) {
@@ -2751,6 +2847,7 @@
       setFormValue(el.inventoryForm, "itemType", itemTypeForForm(item.itemType, item.vinylSize));
       setFormValue(el.inventoryForm, "vinylSize", normalizeVinylSize(item.vinylSize) ? `${normalizeVinylSize(item.vinylSize)}\"` : "");
       syncItemTypeFields(el.inventoryForm, "itemType");
+      syncConditionField(el.inventoryForm, vinylItemSelection(item.itemType).item, item.itemCondition || "");
       setFormValue(el.inventoryForm, "itemCondition", item.itemCondition || "New-Sealed");
       setFormValue(el.inventoryForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.inventoryForm, "sku", item.sku);
@@ -2762,6 +2859,7 @@
       setFormValue(el.inventoryForm, "pages", item.pages || "");
       setFormValue(el.inventoryForm, "binding", item.binding || "");
       setFormValue(el.inventoryForm, "language", item.language || "");
+      setApparelConditionFormValues(el.inventoryForm, item);
       setFormValue(el.inventoryForm, "qty", item.qty);
       setFormValue(el.inventoryForm, "unitCost", item.unitCost);
       setFormValue(el.inventoryForm, "cashflowImpact", inventoryCashflow(item));
@@ -2775,6 +2873,26 @@
     function setFormValue(form, name, value) {
       const field = form.querySelector(`[name="${name}"]`);
       if (field) field.value = value ?? "";
+    }
+
+    function setFormChecked(form, name, checked) {
+      const field = form.querySelector(`[name="${name}"]`);
+      if (field) field.checked = checked === true;
+    }
+
+    function setApparelConditionFormValues(form, item) {
+      const measurements = item.apparelMeasurements || {};
+      setFormValue(form, "garmentConditionNote", item.garmentConditionNote || "");
+      setFormValue(form, "apparelPitToPit", measurements.pitToPit || "");
+      setFormValue(form, "apparelLength", measurements.length || "");
+      setFormValue(form, "apparelShoulder", measurements.shoulder || "");
+      setFormValue(form, "apparelSleeve", measurements.sleeve || "");
+      setFormValue(form, "apparelWaist", measurements.waist || "");
+      setFormValue(form, "apparelInseam", measurements.inseam || "");
+      setFormChecked(form, "originalTags", item.originalTags === true);
+      setFormValue(form, "alterations", item.alterations || "");
+      setFormValue(form, "flaws", item.flaws || "");
+      setFormValue(form, "fabricCare", item.fabricCare || "");
     }
 
     function resetInventoryEditMode() {
@@ -2792,6 +2910,7 @@
       setFormValue(el.stockForm, "item", itemTypeForForm(item.item, item.vinylSize));
       setFormValue(el.stockForm, "vinylSize", normalizeVinylSize(item.vinylSize) ? `${normalizeVinylSize(item.vinylSize)}\"` : "");
       syncItemTypeFields(el.stockForm, "item");
+      syncConditionField(el.stockForm, vinylItemSelection(item.item).item, item.itemCondition || "");
       setFormValue(el.stockForm, "itemCondition", item.itemCondition || "New-Sealed");
       setFormValue(el.stockForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.stockForm, "artist", item.artist);
@@ -2806,6 +2925,7 @@
       setFormValue(el.stockForm, "pages", item.pages || "");
       setFormValue(el.stockForm, "binding", item.binding || "");
       setFormValue(el.stockForm, "language", item.language || "");
+      setApparelConditionFormValues(el.stockForm, item);
       setFormValue(el.stockForm, "source", item.source || "Business Purchase");
       setFormValue(el.stockForm, "acquisitionMonth", item.acquisitionMonth || currentMonth);
       setFormValue(el.stockForm, "qty", item.qty || 1);

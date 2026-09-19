@@ -18,6 +18,15 @@ import {
   recordMetadataValue,
   recordNotes
 } from "./data/recordMetadata.js";
+import {
+  APPAREL_MEASUREMENT_FIELDS,
+  apparelConditionOptions,
+  apparelDetailValue,
+  apparelMeasurementSummary,
+  apparelMeasurements,
+  hasOriginalTags,
+  normalizeApparelCondition
+} from "./data/apparelCondition.js";
 import { recordArtistInitial, validRecordArtistInitial } from "./components/recordsPage.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
@@ -678,8 +687,7 @@ async function productDetailMarkup(product) {
         <dl class="detail-list">
           ${
             isApparel
-              ? `<div><dt>Material</dt><dd>${product.material}</dd></div>
-                 <div><dt>Color</dt><dd>${product.color}</dd></div>`
+              ? apparelDetailMarkup(product)
               : isRecord
                 ? `<div><dt>Format</dt><dd>${escapeHtml(displayFormat)}</dd></div>
                  <div><dt>Condition</dt><dd>${escapeHtml(conditionLabel)}</dd></div>
@@ -1579,7 +1587,10 @@ async function adminProductsPage({ embedded = false } = {}) {
             </div>
             ${sizeInventoryFields(product)}
           </div>
-          ${select("condition", "Condition", ["", "New-Sealed", "New-Unsealed", "Used Mint", "Used Excellent", "Used Excellence", "Used Good", "Used Fair", "Used Poor"], product.condition || "")}
+          <div data-admin-condition-field>
+            ${select("condition", productCategory === "Apparel" ? "Garment condition" : "Condition", productCategory === "Apparel" ? apparelConditionOptions(product.condition) : ["", "New-Sealed", "New-Unsealed", "Used Mint", "Used Excellent", "Used Excellence", "Used Good", "Used Fair", "Used Poor"], product.condition || "")}
+          </div>
+          ${apparelConditionEditorFields(product, productCategory === "Apparel")}
           <div class="admin-used-condition-fields" data-admin-used-condition-fields ${needsRecordConditionDetails(product) ? "" : "hidden"}>
             ${select("mediaConditionGrade", "Media condition grade", ["", ...RECORD_CONDITION_GRADES], recordConditionEditorValue(product, "media").grade)}
             ${input("mediaConditionNote", "Media condition notes", recordConditionEditorValue(product, "media").note, "e.g. Light surface noise between tracks")}
@@ -2261,6 +2272,58 @@ function select(name, label, options, value = "") {
       </select>
     </label>
   `;
+}
+
+function apparelConditionEditorFields(product = {}, visible = false) {
+  const measurements = apparelMeasurements(product);
+  return `
+    <fieldset class="admin-size-fieldset admin-form-span" data-admin-apparel-condition-fields ${visible ? "" : "hidden"}>
+      <legend>Garment details</legend>
+      <div class="admin-size-grid">
+        ${input("garmentConditionNote", "Condition notes", apparelDetailValue(product, "garmentConditionNote"), "e.g. Small repair on left cuff")}
+        <label>Original tags<input name="originalTags" type="checkbox" ${hasOriginalTags(product) ? "checked" : ""} /></label>
+      </div>
+      <div class="admin-size-grid">
+        ${APPAREL_MEASUREMENT_FIELDS.map(([key, label]) => input(`apparelMeasurement${key[0].toUpperCase()}${key.slice(1)}`, `${label} (cm)`, measurements[key] || "", "", "number")).join("")}
+      </div>
+      <div class="admin-size-grid">
+        ${input("alterations", "Alterations", apparelDetailValue(product, "alterations"), "e.g. Hem shortened")}
+        ${input("flaws", "Flaws", apparelDetailValue(product, "flaws"), "e.g. Minor fading at collar")}
+        ${input("fabricCare", "Fabric care", apparelDetailValue(product, "fabricCare"), "e.g. Cold wash, line dry")}
+      </div>
+    </fieldset>
+  `;
+}
+
+function apparelDetailMarkup(product = {}) {
+  const condition = normalizeApparelCondition(product.condition) || "Not specified";
+  const rows = [
+    ["Condition", condition],
+    ["Condition notes", apparelDetailValue(product, "garmentConditionNote")],
+    ["Material", String(product.material || "").trim()],
+    ["Color", String(product.color || "").trim()],
+    ["Measurements", apparelMeasurementSummary(product).join(" | ")],
+    ["Original tags", hasOriginalTags(product) ? "Included" : ""],
+    ["Alterations", apparelDetailValue(product, "alterations")],
+    ["Flaws", apparelDetailValue(product, "flaws")],
+    ["Fabric care", apparelDetailValue(product, "fabricCare")]
+  ].filter(([, value]) => value);
+  return rows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("");
+}
+
+function syncAdminConditionFields(form) {
+  const selectElement = form?.elements?.condition;
+  const field = form?.querySelector("[data-admin-condition-field]");
+  if (!selectElement || !field) return;
+  const isApparel = form.elements.category?.value === "Apparel";
+  const current = String(selectElement.value || "").trim();
+  const options = isApparel
+    ? apparelConditionOptions(current)
+    : ["", "New-Sealed", "New-Unsealed", "Used Mint", "Used Excellent", "Used Excellence", "Used Good", "Used Fair", "Used Poor"];
+  field.querySelector("label").childNodes[0].nodeValue = isApparel ? "Garment condition" : "Condition";
+  selectElement.innerHTML = options
+    .map((option) => `<option value="${escapeAttr(option)}" ${option === current ? "selected" : ""}>${escapeHtml(option)}</option>`)
+    .join("");
 }
 
 function statusPill(status) {
@@ -3388,11 +3451,14 @@ function bindEvents() {
     const form = event.currentTarget.closest("[data-admin-product-form]");
     const isProductCategory = event.currentTarget.value === "Apparel" || event.currentTarget.value === "Objects";
     const isRecord = event.currentTarget.value === "Records";
+    const isApparel = event.currentTarget.value === "Apparel";
     form.querySelector("[data-admin-record-fields]").hidden = isProductCategory;
     form.querySelector("[data-admin-product-fields]").hidden = !isProductCategory;
     form.querySelector("[data-admin-apparel-field]").hidden = event.currentTarget.value !== "Apparel";
     form.querySelector("[data-admin-edition-field]").hidden = !isRecord;
     form.querySelector("[data-admin-vinyl-size-field]").hidden = !isVinylRecord({ category: event.currentTarget.value, format: form.elements.format.value });
+    syncAdminConditionFields(form);
+    form.querySelector("[data-admin-apparel-condition-fields]").hidden = !isApparel;
     form.querySelector("[data-admin-used-condition-fields]").hidden =
       !needsRecordConditionDetails({ category: isRecord ? "Records" : "", condition: form.elements.condition.value });
     form.querySelectorAll("[data-admin-record-editorial-field]").forEach((field) => {
@@ -3444,6 +3510,12 @@ function bindEvents() {
     setFormMessage(form, "Saving product...");
     try {
       const data = Object.fromEntries(new FormData(form).entries());
+      data.apparelMeasurements = Object.fromEntries(
+        APPAREL_MEASUREMENT_FIELDS.map(([key]) => {
+          const fieldName = `apparelMeasurement${key[0].toUpperCase()}${key.slice(1)}`;
+          return [key, String(data[fieldName] || "").trim()];
+        }).filter(([, value]) => value)
+      );
       const existing = state.adminEditingProductId
         ? await catalogService.getProduct(state.adminEditingProductId, { includeDrafts: true })
         : {};

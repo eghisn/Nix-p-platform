@@ -909,6 +909,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const financeCatalogNumber = stockIdentityValue(stock, "catalogNumber", row.raw?.catalogNumber);
   const financeVinylSize = itemSelection.vinylSize || normalizeVinylSize(stockIdentityValue(stock, "vinylSize", row.raw?.vinylSize));
   const financeMetadata = financeItemMetadata(stock, row.raw?.financeMetadata || row.raw || {});
+  const financeApparelDetails = financeApparelDetailsForStock(stock, row.raw || {}, category);
   const financePrice = Number(stock.sellingPrice || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
   const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer);
@@ -917,6 +918,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
     financeStockId: stock.id || row.raw?.financeStockId || null,
     financeItemType: item,
     financeMetadata,
+    ...financeApparelDetails,
     // Existing catalog quantities can have active checkout reservations. The
     // database reconciler applies Finance quantity minus those reservations.
     qty: normalizedQuantity(row.qty),
@@ -988,6 +990,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
       vinylSize: financeVinylSize,
       financeItemType: item,
       financeMetadata,
+      ...financeApparelDetails,
       publishStatus,
       visibility
     }
@@ -1018,6 +1021,33 @@ function stockIdentityValue(stock, key, fallback = "") {
   return String(fallback ?? "").trim();
 }
 
+function financeApparelDetailsForStock(stock = {}, existingRaw = {}, category = "") {
+  if (category !== "Apparel") {
+    return {
+      garmentConditionNote: "",
+      apparelMeasurements: {},
+      originalTags: false,
+      alterations: "",
+      flaws: "",
+      fabricCare: ""
+    };
+  }
+  const value = (key) => stockIdentityValue(stock, key, existingRaw[key]);
+  const measurements = stock.apparelMeasurements && typeof stock.apparelMeasurements === "object"
+    ? stock.apparelMeasurements
+    : existingRaw.apparelMeasurements || {};
+  return {
+    garmentConditionNote: value("garmentConditionNote"),
+    apparelMeasurements: Object.fromEntries(Object.entries(measurements)
+      .map(([key, measurement]) => [key, String(measurement || "").trim()])
+      .filter(([, measurement]) => measurement)),
+    originalTags: stock.originalTags === undefined ? existingRaw.originalTags === true : stock.originalTags === true,
+    alterations: value("alterations"),
+    flaws: value("flaws"),
+    fabricCare: value("fabricCare")
+  };
+}
+
 function removeFinanceDraftDetail(details = [], title = "") {
   if (!String(title || "").trim()) return Array.isArray(details) ? details : [];
   return (Array.isArray(details) ? details : []).filter(
@@ -1045,7 +1075,13 @@ export function mergeFinanceStockIdentity(existing = {}, financeProduct = {}) {
     catalogNumber: String(financeRaw.catalogNumber || "").trim(),
     vinylSize: normalizeVinylSize(financeRaw.vinylSize),
     financeItemType: String(financeRaw.financeItemType || "").trim(),
-    financeMetadata: financeRaw.financeMetadata || {}
+    financeMetadata: financeRaw.financeMetadata || {},
+    garmentConditionNote: String(financeRaw.garmentConditionNote || "").trim(),
+    apparelMeasurements: financeRaw.apparelMeasurements || {},
+    originalTags: financeRaw.originalTags === true,
+    alterations: String(financeRaw.alterations || "").trim(),
+    flaws: String(financeRaw.flaws || "").trim(),
+    fabricCare: String(financeRaw.fabricCare || "").trim()
   };
   return productRowFromExisting(existing, {
     title: financeProduct.title,
@@ -1083,6 +1119,12 @@ function financeCatalogIdentitySignature(row = {}) {
     vinylSize: normalizeVinylSize(raw.vinylSize),
     financeItemType: String(raw.financeItemType || "").trim(),
     financeMetadata: raw.financeMetadata || {},
+    garmentConditionNote: String(raw.garmentConditionNote || "").trim(),
+    apparelMeasurements: raw.apparelMeasurements || {},
+    originalTags: raw.originalTags === true,
+    alterations: String(raw.alterations || "").trim(),
+    flaws: String(raw.flaws || "").trim(),
+    fabricCare: String(raw.fabricCare || "").trim(),
     details: Array.isArray(row.details) ? row.details : [],
     shipping: raw.shipping || null
   });
@@ -1213,6 +1255,12 @@ export async function syncAdminCatalogInventory(products = []) {
       language: product.raw?.financeMetadata?.language ?? existing.language ?? "",
       mediaCondition: product.mediaCondition ?? existing.mediaCondition ?? "",
       sleeveCondition: product.sleeveCondition ?? existing.sleeveCondition ?? "",
+      garmentConditionNote: product.garmentConditionNote ?? product.raw?.garmentConditionNote ?? existing.garmentConditionNote ?? "",
+      apparelMeasurements: product.apparelMeasurements ?? product.raw?.apparelMeasurements ?? existing.apparelMeasurements ?? {},
+      originalTags: product.originalTags ?? product.raw?.originalTags ?? existing.originalTags ?? false,
+      alterations: product.alterations ?? product.raw?.alterations ?? existing.alterations ?? "",
+      flaws: product.flaws ?? product.raw?.flaws ?? existing.flaws ?? "",
+      fabricCare: product.fabricCare ?? product.raw?.fabricCare ?? existing.fabricCare ?? "",
       source: existing.source || "Admin editor",
       acquisitionMonth: existing.acquisitionMonth || new Date().toISOString().slice(0, 7),
       qty: quantity,
@@ -1314,6 +1362,7 @@ export function draftProductFromFinanceStock(stock, quantity) {
   product.vinylSize = itemSelection.vinylSize || normalizeVinylSize(stock.vinylSize);
   product.financeItemType = item;
   product.financeMetadata = metadata;
+  Object.assign(product, financeApparelDetailsForStock(stock, {}, category));
   product.shipping = referenceShippingProfile(product);
   return {
     id,
@@ -1399,7 +1448,11 @@ function financeItemForProduct(product) {
   const rememberedItem = String(product.raw?.financeItemType || "").trim();
   if (FINANCE_ITEM_TYPES.has(rememberedItem)) return rememberedItem;
   if (product.category === "Records") return product.format || "Vinyl";
-  if (product.category === "Apparel") return product.apparelType === "Accessories" ? "Cap" : product.title || "Apparel";
+  if (product.category === "Apparel") {
+    return APPAREL_TYPES.has(product.apparelType)
+      ? product.apparelType
+      : product.apparelType === "Accessories" ? "Cap" : "T-shirt";
+  }
   if (product.category === "Publishing" && PUBLISHING_TYPES.has(product.format)) return product.format;
   if (product.category === "Objects" && OBJECT_TYPES.has(product.format)) return product.format;
   return "Object";

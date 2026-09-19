@@ -7,6 +7,12 @@ import {
   normalizeRecordConditionGrade,
   recordConditionLabel
 } from "../data/recordMetadata.js";
+import {
+  apparelDetailValue,
+  apparelMeasurements,
+  hasOriginalTags,
+  normalizeApparelMeasurements
+} from "../data/apparelCondition.js";
 import { referenceShippingProfile } from "../data/shippingProfiles.js";
 import { isVinylRecord, normalizeVinylSize } from "../data/vinylSize.js";
 
@@ -130,6 +136,12 @@ function withDefaults(product) {
     mediaConditionNote: String(product.mediaConditionNote || "").trim(),
     sleeveConditionGrade: normalizeRecordConditionGrade(product.sleeveConditionGrade),
     sleeveConditionNote: String(product.sleeveConditionNote || "").trim(),
+    garmentConditionNote: apparelDetailValue(product, "garmentConditionNote"),
+    apparelMeasurements: apparelMeasurements(product),
+    originalTags: hasOriginalTags(product),
+    alterations: apparelDetailValue(product, "alterations"),
+    flaws: apparelDetailValue(product, "flaws"),
+    fabricCare: apparelDetailValue(product, "fabricCare"),
     tags: product.tags || [],
     details: product.details || [],
     sizes: normalizeSizes(product.sizes || []),
@@ -1287,6 +1299,7 @@ export const adminStore = {
     const category = data.category || "Records";
     const isProductCategory = category === "Apparel" || category === "Objects";
     const isRecord = category === "Records";
+    const isApparel = category === "Apparel";
     const id = data.id?.trim() || slugify(`${data.sku || data.artist}-${data.title}`) || `item-${Date.now()}`;
     const existing = store.products.find((product) => product.id === id);
     const incomingRelatedArtists = isRecord ? splitList(data.relatedArtists).map(canonicalRelatedArtistName) : [];
@@ -1343,6 +1356,12 @@ export const adminStore = {
       mediaConditionNote,
       sleeveConditionGrade,
       sleeveConditionNote,
+      garmentConditionNote: isApparel ? data.garmentConditionNote?.trim() || "" : "",
+      apparelMeasurements: isApparel ? normalizeApparelMeasurements(data.apparelMeasurements) : {},
+      originalTags: isApparel && (data.originalTags === true || data.originalTags === "on" || data.originalTags === "true"),
+      alterations: isApparel ? data.alterations?.trim() || "" : "",
+      flaws: isApparel ? data.flaws?.trim() || "" : "",
+      fabricCare: isApparel ? data.fabricCare?.trim() || "" : "",
       price: Number(data.price || 0),
       year: Number(data.year || new Date().getFullYear()),
       label: data.label?.trim() || collection || "NIXP Selection",

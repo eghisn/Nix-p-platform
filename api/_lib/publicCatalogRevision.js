@@ -4,6 +4,7 @@ const PUBLIC_EDITORIAL_FIELDS = [
   "id", "sku", "title", "artist", "category", "format", "displayFormat", "apparelType",
   "edition", "barcode", "catalogNumber", "vinylSize", "condition", "mediaCondition", "sleeveCondition",
   "mediaConditionGrade", "mediaConditionNote", "sleeveConditionGrade", "sleeveConditionNote",
+  "garmentConditionNote", "apparelMeasurements", "originalTags", "alterations", "flaws", "fabricCare",
   "year", "label", "collection", "color", "material", "image", "images", "imageCredits",
   "tags", "details", "sizes", "description", "descriptionSource", "reviewQuote", "reviewSource",
   "reviewUrl", "relatedArtists", "homeCollections", "homeSlideSort", "open_to_offers",
