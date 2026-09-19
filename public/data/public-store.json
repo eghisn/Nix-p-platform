@@ -3684,7 +3684,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Ipecac Recordings",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.157Z",
@@ -3698,7 +3698,7 @@
       "description": "Savage Imperial Death March brings Melvins and Napalm Death's 2016 touring lineup into the studio: Buzz Osborne and Dale Crover work alongside Barney Greenway, John Cooke, and Shane Embury in a collaboration that leans into noise, sludge, and grind without reducing either band to a guest appearance.",
       "reviewQuote": "It’s all entertaining enough without breaking too much of a sweat. Savage Imperial Death March heaves along at a leisurely mid-pace, neither going for Scum’s smash and grab approach nor sitting with the riffs for the protracted period of something like Lysol. In this political climate, with that album title, this does feel a little like the horses have been led to a suitable source of H20 but have resisted taking a sip.",
       "sourceTitle": "Savage Imperial Death March",
-      "editRevision": 16,
+      "editRevision": 17,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
@@ -3752,13 +3752,17 @@
       "publicationState": "live",
       "descriptionSource": "The Quietus / Melvins official Bandcamp",
       "metadataSourceUrl": "https://www.discogs.com/release/37039197-The-Melvins-With-Napalm-Death-Savage-Imperial-Death-March",
-      "editorialUpdatedAt": "2026-09-19T11:53:04.495+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T20:44:09.662+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T12:25:10.184Z",
       "enrichmentFingerprint": "melvins napalm death|savage imperial death march|vinyl|6 89230 02971 7|ipc297lp",
       "relatedArtistEvidence": [],
@@ -3778,7 +3782,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -56509,98 +56513,99 @@
       }
     },
     {
-      "id": "finance-nxp-2026-vnl-0017",
+      "id": "finance-nxp-2026-vnl-0014",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0017",
+      "sku": "NXP-2026-VNL-0014",
       "tags": [
-        "technical death metal",
-        "death metal",
-        "reissue"
+        "electronic",
+        "experimental pop",
+        "2LP"
       ],
-      "year": 1993,
+      "year": 2024,
       "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-      "label": "Listenable Records",
-      "price": 755000,
+      "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+      "label": "Transgressive / Future Classic",
+      "price": 801000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "The Erosion of Sanity",
-      "artist": "Gorguts",
+      "title": "SOPHIE",
+      "artist": "Sophie",
       "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-        "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg"
+        "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+        "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg"
       ],
-      "barcode": "3760053846860",
+      "barcode": "5 400863 167936",
       "details": [
-        "SKU: NXP-2026-VNL-0017",
+        "SKU: NXP-2026-VNL-0014",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: 2023 limited picture disc vinyl reissue"
+        "Edition: 2LP gatefold",
+        "Catalog number: TRANS809X"
       ],
-      "edition": "Vinyl, LP, Album, Limited Edition, Picture Disc, Reissue",
+      "edition": "2 x Vinyl, LP, Album, Stereo, Clear",
       "category": "Records",
       "material": "",
-      "autoCover": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+      "autoCover": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
       "condition": "New-Sealed",
-      "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
+      "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
       "syncAudit": [
         {
           "at": "2026-09-19T11:52:12.142Z",
-          "sku": "NXP-2026-VNL-0017",
+          "sku": "NXP-2026-VNL-0014",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-19T11:51:10.821Z",
-          "sku": "NXP-2026-VNL-0017",
+          "sku": "NXP-2026-VNL-0014",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-19T11:38:27.214Z",
-          "sku": "NXP-2026-VNL-0017",
+          "sku": "NXP-2026-VNL-0014",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-19T11:37:44.702Z",
-          "sku": "NXP-2026-VNL-0017",
+          "sku": "NXP-2026-VNL-0014",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T02:00:50.072Z",
-          "sku": "NXP-2026-VNL-0017",
+          "at": "2026-09-19T02:00:50.071Z",
+          "sku": "NXP-2026-VNL-0014",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-18T02:00:47.014Z",
-          "sku": "NXP-2026-VNL-0017",
+          "sku": "NXP-2026-VNL-0014",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-17T02:00:44.591Z",
-          "sku": "NXP-2026-VNL-0017",
+          "sku": "NXP-2026-VNL-0014",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-16T17:47:37.727Z",
-          "sku": "NXP-2026-VNL-0017",
+          "sku": "NXP-2026-VNL-0014",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -56608,99 +56613,99 @@
       ],
       "updatedAt": "2026-09-19",
       "vinylSize": "",
-      "collection": "Listenable Records",
+      "collection": "Transgressive / Future Classic",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.142Z",
-        "sku": "NXP-2026-VNL-0017",
+        "sku": "NXP-2026-VNL-0014",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
-      "reviewQuote": "a bona-fide tech-death classic",
+      "description": "SOPHIE's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping bright pop abstraction, collaborative songwriting and industrial club textures in conversation.",
+      "reviewQuote": "still sounds like the future of pop music",
       "editRevision": 16,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
-          "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-          "credit": "Discogs / Listenable Records"
+          "url": "https://transgressiverecords.com/artist/sophie/",
+          "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+          "credit": "Transgressive / Future Classic artwork"
         },
         {
-          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
-          "image": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
-          "credit": "Discogs release photography / Listenable Records"
+          "url": "https://impressedrecordings.com/products/sophie-sophie-vinyl-lp",
+          "image": "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg",
+          "credit": "Impressed Recordings product photography"
         }
       ],
-      "reviewSource": "Sputnikmusic (quoted)",
+      "reviewSource": "Associated Press (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
-        "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
-        "reviewQuote": "a bona-fide tech-death classic",
-        "reviewSource": "Sputnikmusic (quoted)",
+        "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
+        "description": "SOPHIE's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping bright pop abstraction, collaborative songwriting and industrial club textures in conversation.",
+        "reviewQuote": "still sounds like the future of pop music",
+        "reviewSource": "Associated Press (quoted)",
         "relatedArtists": [
-          "Suffocation",
-          "Ulcerate",
-          "Cryptopsy",
-          "Immolation",
-          "Demilich"
+          "GFOTY",
+          "Arca",
+          "QT",
+          "A. G. Cook",
+          "Evita Manji"
         ],
-        "descriptionSource": "AllMusic / MusicBrainz",
+        "descriptionSource": "Transgressive / Associated Press",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Suffocation",
+            "artist": "GFOTY",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "sourceUrl": "https://www.last.fm/music/Sophie",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.837056,
-            "artist": "Ulcerate",
+            "match": 0.928334,
+            "artist": "Arca",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.837056,
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.928334,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.831834,
-            "artist": "Cryptopsy",
+            "match": 0.900414,
+            "artist": "QT",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.831834,
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.900414,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.815457,
-            "artist": "Immolation",
+            "match": 0.832849,
+            "artist": "A. G. Cook",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.815457,
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.832849,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.796857,
-            "artist": "Demilich",
+            "match": 0.703883,
+            "artist": "Evita Manji",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.796857,
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.703883,
             "relationType": "artist-similarity"
           }
         ],
@@ -56709,186 +56714,186 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Suffocation",
-              "Ulcerate",
-              "Cryptopsy",
-              "Immolation",
-              "Demilich",
-              "Defeated Sanity",
-              "Artificial Brain",
-              "Pestilence",
-              "Morbid Angel",
-              "Incantation"
+              "GFOTY",
+              "Arca",
+              "QT",
+              "A. G. Cook",
+              "Evita Manji",
+              "BABYNYMPH",
+              "Charli xcx",
+              "Hannah Diamond",
+              "Lipgloss Twins",
+              "Hyd"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Suffocation",
+                "artist": "GFOTY",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.837056,
-                "artist": "Ulcerate",
+                "match": 0.928334,
+                "artist": "Arca",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.837056,
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.928334,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.831834,
-                "artist": "Cryptopsy",
+                "match": 0.900414,
+                "artist": "QT",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.831834,
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.900414,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.815457,
-                "artist": "Immolation",
+                "match": 0.832849,
+                "artist": "A. G. Cook",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.815457,
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.832849,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.796857,
-                "artist": "Demilich",
+                "match": 0.703883,
+                "artist": "Evita Manji",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.796857,
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.703883,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.775733,
-                "artist": "Defeated Sanity",
+                "match": 0.68506,
+                "artist": "BABYNYMPH",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.775733,
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.68506,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.773532,
-                "artist": "Artificial Brain",
+                "match": 0.648014,
+                "artist": "Charli xcx",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.773532,
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.648014,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.763513,
-                "artist": "Pestilence",
+                "match": 0.607643,
+                "artist": "Hannah Diamond",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.763513,
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.607643,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.740151,
-                "artist": "Morbid Angel",
+                "match": 0.588156,
+                "artist": "Lipgloss Twins",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.740151,
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.588156,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.735335,
-                "artist": "Incantation",
+                "match": 0.578553,
+                "artist": "Hyd",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.735335,
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.578553,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts"
+            "sourceUrl": "https://www.last.fm/music/Sophie"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Suffocation",
-            "Ulcerate",
-            "Cryptopsy",
-            "Immolation",
-            "Demilich"
+            "GFOTY",
+            "Arca",
+            "QT",
+            "A. G. Cook",
+            "Evita Manji"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Suffocation",
+              "artist": "GFOTY",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.837056,
-              "artist": "Ulcerate",
+              "match": 0.928334,
+              "artist": "Arca",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.837056,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.928334,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.831834,
-              "artist": "Cryptopsy",
+              "match": 0.900414,
+              "artist": "QT",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.831834,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.900414,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.815457,
-              "artist": "Immolation",
+              "match": 0.832849,
+              "artist": "A. G. Cook",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.815457,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.832849,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.796857,
-              "artist": "Demilich",
+              "match": 0.703883,
+              "artist": "Evita Manji",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.796857,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.703883,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "",
-          "sourceUrl": "",
+          "releaseId": "c585d0e3-3651-4f14-af37-41844fd544e4",
+          "sourceUrl": "https://musicbrainz.org/release/c585d0e3-3651-4f14-af37-41844fd544e4",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "POSH686",
+      "catalogNumber": "TRANS809X",
       "displayFormat": "Vinyl",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1gm2hww9witl",
+      "financeStockId": "ms1g1muz69eef7",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Suffocation",
-        "Ulcerate",
-        "Cryptopsy",
-        "Immolation",
-        "Demilich"
+        "GFOTY",
+        "Arca",
+        "QT",
+        "A. G. Cook",
+        "Evita Manji"
       ],
       "financeItemType": "Vinyl",
       "financeMetadata": {
@@ -56900,76 +56905,74 @@
         "dimensions": "",
         "printDetails": ""
       },
-      "homeCollections": [
-        "nixp-selection"
-      ],
+      "homeCollections": [],
       "sleeveCondition": "",
-      "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
+      "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
-      "descriptionSource": "AllMusic / MusicBrainz",
-      "metadataSourceUrl": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
-      "editorialUpdatedAt": "2026-09-19T11:52:35.106+00:00",
+      "descriptionSource": "Transgressive / Associated Press",
+      "metadataSourceUrl": "https://sophie.ochre.store/?lang=en_GB",
+      "editorialUpdatedAt": "2026-09-19T11:52:34.197+00:00",
       "editorialUpdatedBy": "finance-stock",
       "enrichmentUpdatedAt": "2026-07-26",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
-      "enrichmentAttemptedAt": "2026-08-18T16:49:07.501Z",
-      "enrichmentFingerprint": "gorguts|the erosion of sanity|vinyl||",
+      "enrichmentAttemptedAt": "2026-08-18T16:51:04.401Z",
+      "enrichmentFingerprint": "sophie|sophie|vinyl||trans809x",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Suffocation",
+          "artist": "GFOTY",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "sourceUrl": "https://www.last.fm/music/Sophie",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.837056,
-          "artist": "Ulcerate",
+          "match": 0.928334,
+          "artist": "Arca",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
-          "confidence": 0.837056,
+          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "confidence": 0.928334,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.831834,
-          "artist": "Cryptopsy",
+          "match": 0.900414,
+          "artist": "QT",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
-          "confidence": 0.831834,
+          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "confidence": 0.900414,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.815457,
-          "artist": "Immolation",
+          "match": 0.832849,
+          "artist": "A. G. Cook",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
-          "confidence": 0.815457,
+          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "confidence": 0.832849,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.796857,
-          "artist": "Demilich",
+          "match": 0.703883,
+          "artist": "Evita Manji",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
-          "confidence": 0.796857,
+          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "confidence": 0.703883,
           "relationType": "artist-similarity"
         }
       ],
@@ -56979,169 +56982,169 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Suffocation",
-            "Ulcerate",
-            "Cryptopsy",
-            "Immolation",
-            "Demilich",
-            "Defeated Sanity",
-            "Artificial Brain",
-            "Pestilence",
-            "Morbid Angel",
-            "Incantation"
+            "GFOTY",
+            "Arca",
+            "QT",
+            "A. G. Cook",
+            "Evita Manji",
+            "BABYNYMPH",
+            "Charli xcx",
+            "Hannah Diamond",
+            "Lipgloss Twins",
+            "Hyd"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Suffocation",
+              "artist": "GFOTY",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.837056,
-              "artist": "Ulcerate",
+              "match": 0.928334,
+              "artist": "Arca",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.837056,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.928334,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.831834,
-              "artist": "Cryptopsy",
+              "match": 0.900414,
+              "artist": "QT",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.831834,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.900414,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.815457,
-              "artist": "Immolation",
+              "match": 0.832849,
+              "artist": "A. G. Cook",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.815457,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.832849,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.796857,
-              "artist": "Demilich",
+              "match": 0.703883,
+              "artist": "Evita Manji",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.796857,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.703883,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.775733,
-              "artist": "Defeated Sanity",
+              "match": 0.68506,
+              "artist": "BABYNYMPH",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.775733,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.68506,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.773532,
-              "artist": "Artificial Brain",
+              "match": 0.648014,
+              "artist": "Charli xcx",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.773532,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.648014,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.763513,
-              "artist": "Pestilence",
+              "match": 0.607643,
+              "artist": "Hannah Diamond",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.763513,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.607643,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.740151,
-              "artist": "Morbid Angel",
+              "match": 0.588156,
+              "artist": "Lipgloss Twins",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.740151,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.588156,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.735335,
-              "artist": "Incantation",
+              "match": 0.578553,
+              "artist": "Hyd",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.735335,
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.578553,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts"
+          "sourceUrl": "https://www.last.fm/music/Sophie"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Suffocation",
-          "Ulcerate",
-          "Cryptopsy",
-          "Immolation",
-          "Demilich"
+          "GFOTY",
+          "Arca",
+          "QT",
+          "A. G. Cook",
+          "Evita Manji"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Suffocation",
+            "artist": "GFOTY",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "sourceUrl": "https://www.last.fm/music/Sophie",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.837056,
-            "artist": "Ulcerate",
+            "match": 0.928334,
+            "artist": "Arca",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.837056,
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.928334,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.831834,
-            "artist": "Cryptopsy",
+            "match": 0.900414,
+            "artist": "QT",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.831834,
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.900414,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.815457,
-            "artist": "Immolation",
+            "match": 0.832849,
+            "artist": "A. G. Cook",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.815457,
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.832849,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.796857,
-            "artist": "Demilich",
+            "match": 0.703883,
+            "artist": "Evita Manji",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.796857,
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.703883,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "",
-        "sourceUrl": "",
+        "releaseId": "c585d0e3-3651-4f14-af37-41844fd544e4",
+        "sourceUrl": "https://musicbrainz.org/release/c585d0e3-3651-4f14-af37-41844fd544e4",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": true,
@@ -57153,7 +57156,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-08",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -59097,99 +59100,98 @@
       }
     },
     {
-      "id": "finance-nxp-2026-vnl-0014",
+      "id": "finance-nxp-2026-vnl-0017",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0014",
+      "sku": "NXP-2026-VNL-0017",
       "tags": [
-        "electronic",
-        "experimental pop",
-        "2LP"
+        "technical death metal",
+        "death metal",
+        "reissue"
       ],
-      "year": 2024,
+      "year": 1993,
       "color": "",
-      "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
-      "label": "Transgressive / Future Classic",
-      "price": 801000,
+      "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+      "label": "Listenable Records",
+      "price": 755000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "SOPHIE",
-      "artist": "Sophie",
+      "title": "The Erosion of Sanity",
+      "artist": "Gorguts",
       "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
-        "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg"
+        "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+        "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg"
       ],
-      "barcode": "5 400863 167936",
+      "barcode": "3760053846860",
       "details": [
-        "SKU: NXP-2026-VNL-0014",
+        "SKU: NXP-2026-VNL-0017",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: 2LP gatefold",
-        "Catalog number: TRANS809X"
+        "Edition: 2023 limited picture disc vinyl reissue"
       ],
-      "edition": "2 x Vinyl, LP, Album, Stereo, Clear",
+      "edition": "Vinyl, LP, Album, Limited Edition, Picture Disc, Reissue",
       "category": "Records",
       "material": "",
-      "autoCover": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+      "autoCover": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
       "condition": "New-Sealed",
-      "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
+      "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
       "syncAudit": [
         {
           "at": "2026-09-19T11:52:12.142Z",
-          "sku": "NXP-2026-VNL-0014",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-19T11:51:10.821Z",
-          "sku": "NXP-2026-VNL-0014",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-19T11:38:27.214Z",
-          "sku": "NXP-2026-VNL-0014",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-19T11:37:44.702Z",
-          "sku": "NXP-2026-VNL-0014",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T02:00:50.071Z",
-          "sku": "NXP-2026-VNL-0014",
+          "at": "2026-09-19T02:00:50.072Z",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-18T02:00:47.014Z",
-          "sku": "NXP-2026-VNL-0014",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-17T02:00:44.591Z",
-          "sku": "NXP-2026-VNL-0014",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-16T17:47:37.727Z",
-          "sku": "NXP-2026-VNL-0014",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -59197,99 +59199,99 @@
       ],
       "updatedAt": "2026-09-19",
       "vinylSize": "",
-      "collection": "Transgressive / Future Classic",
+      "collection": "Listenable Records",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.142Z",
-        "sku": "NXP-2026-VNL-0014",
+        "sku": "NXP-2026-VNL-0017",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
       },
       "visibility": "Public",
       "apparelType": "",
-      "description": "SOPHIE's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping bright pop abstraction, collaborative songwriting and industrial club textures in conversation.",
-      "reviewQuote": "still sounds like the future of pop music",
+      "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
+      "reviewQuote": "a bona-fide tech-death classic",
       "editRevision": 16,
       "imageCredits": [
         {
-          "url": "https://transgressiverecords.com/artist/sophie/",
-          "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
-          "credit": "Transgressive / Future Classic artwork"
+          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
+          "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+          "credit": "Discogs / Listenable Records"
         },
         {
-          "url": "https://impressedrecordings.com/products/sophie-sophie-vinyl-lp",
-          "image": "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg",
-          "credit": "Impressed Recordings product photography"
+          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
+          "image": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
+          "credit": "Discogs release photography / Listenable Records"
         }
       ],
-      "reviewSource": "Associated Press (quoted)",
+      "reviewSource": "Sputnikmusic (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
-        "description": "SOPHIE's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping bright pop abstraction, collaborative songwriting and industrial club textures in conversation.",
-        "reviewQuote": "still sounds like the future of pop music",
-        "reviewSource": "Associated Press (quoted)",
+        "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
+        "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
+        "reviewQuote": "a bona-fide tech-death classic",
+        "reviewSource": "Sputnikmusic (quoted)",
         "relatedArtists": [
-          "GFOTY",
-          "Arca",
-          "QT",
-          "A. G. Cook",
-          "Evita Manji"
+          "Suffocation",
+          "Ulcerate",
+          "Cryptopsy",
+          "Immolation",
+          "Demilich"
         ],
-        "descriptionSource": "Transgressive / Associated Press",
+        "descriptionSource": "AllMusic / MusicBrainz",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "GFOTY",
+            "artist": "Suffocation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.928334,
-            "artist": "Arca",
+            "match": 0.837056,
+            "artist": "Ulcerate",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.928334,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.837056,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.900414,
-            "artist": "QT",
+            "match": 0.831834,
+            "artist": "Cryptopsy",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.900414,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.831834,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.832849,
-            "artist": "A. G. Cook",
+            "match": 0.815457,
+            "artist": "Immolation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.832849,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.815457,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.703883,
-            "artist": "Evita Manji",
+            "match": 0.796857,
+            "artist": "Demilich",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.703883,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.796857,
             "relationType": "artist-similarity"
           }
         ],
@@ -59298,186 +59300,186 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "GFOTY",
-              "Arca",
-              "QT",
-              "A. G. Cook",
-              "Evita Manji",
-              "BABYNYMPH",
-              "Charli xcx",
-              "Hannah Diamond",
-              "Lipgloss Twins",
-              "Hyd"
+              "Suffocation",
+              "Ulcerate",
+              "Cryptopsy",
+              "Immolation",
+              "Demilich",
+              "Defeated Sanity",
+              "Artificial Brain",
+              "Pestilence",
+              "Morbid Angel",
+              "Incantation"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "GFOTY",
+                "artist": "Suffocation",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.928334,
-                "artist": "Arca",
+                "match": 0.837056,
+                "artist": "Ulcerate",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.928334,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.837056,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.900414,
-                "artist": "QT",
+                "match": 0.831834,
+                "artist": "Cryptopsy",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.900414,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.831834,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.832849,
-                "artist": "A. G. Cook",
+                "match": 0.815457,
+                "artist": "Immolation",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.832849,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.815457,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.703883,
-                "artist": "Evita Manji",
+                "match": 0.796857,
+                "artist": "Demilich",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.703883,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.796857,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.68506,
-                "artist": "BABYNYMPH",
+                "match": 0.775733,
+                "artist": "Defeated Sanity",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.68506,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.775733,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.648014,
-                "artist": "Charli xcx",
+                "match": 0.773532,
+                "artist": "Artificial Brain",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.648014,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.773532,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.607643,
-                "artist": "Hannah Diamond",
+                "match": 0.763513,
+                "artist": "Pestilence",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.607643,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.763513,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.588156,
-                "artist": "Lipgloss Twins",
+                "match": 0.740151,
+                "artist": "Morbid Angel",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.588156,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.740151,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.578553,
-                "artist": "Hyd",
+                "match": 0.735335,
+                "artist": "Incantation",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.578553,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.735335,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie"
+            "sourceUrl": "https://www.last.fm/music/Gorguts"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "GFOTY",
-            "Arca",
-            "QT",
-            "A. G. Cook",
-            "Evita Manji"
+            "Suffocation",
+            "Ulcerate",
+            "Cryptopsy",
+            "Immolation",
+            "Demilich"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "GFOTY",
+              "artist": "Suffocation",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.928334,
-              "artist": "Arca",
+              "match": 0.837056,
+              "artist": "Ulcerate",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.928334,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.837056,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.900414,
-              "artist": "QT",
+              "match": 0.831834,
+              "artist": "Cryptopsy",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.900414,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.831834,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.832849,
-              "artist": "A. G. Cook",
+              "match": 0.815457,
+              "artist": "Immolation",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.832849,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.815457,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.703883,
-              "artist": "Evita Manji",
+              "match": 0.796857,
+              "artist": "Demilich",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.703883,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.796857,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "c585d0e3-3651-4f14-af37-41844fd544e4",
-          "sourceUrl": "https://musicbrainz.org/release/c585d0e3-3651-4f14-af37-41844fd544e4",
+          "releaseId": "",
+          "sourceUrl": "",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "TRANS809X",
+      "catalogNumber": "POSH686",
       "displayFormat": "Vinyl",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1g1muz69eef7",
+      "financeStockId": "ms1gm2hww9witl",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "GFOTY",
-        "Arca",
-        "QT",
-        "A. G. Cook",
-        "Evita Manji"
+        "Suffocation",
+        "Ulcerate",
+        "Cryptopsy",
+        "Immolation",
+        "Demilich"
       ],
       "financeItemType": "Vinyl",
       "financeMetadata": {
@@ -59489,74 +59491,76 @@
         "dimensions": "",
         "printDetails": ""
       },
-      "homeCollections": [],
+      "homeCollections": [
+        "nixp-selection"
+      ],
       "sleeveCondition": "",
-      "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg",
+      "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
-      "descriptionSource": "Transgressive / Associated Press",
-      "metadataSourceUrl": "https://sophie.ochre.store/?lang=en_GB",
-      "editorialUpdatedAt": "2026-09-19T11:52:34.197+00:00",
+      "descriptionSource": "AllMusic / MusicBrainz",
+      "metadataSourceUrl": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
+      "editorialUpdatedAt": "2026-09-19T11:52:35.106+00:00",
       "editorialUpdatedBy": "finance-stock",
       "enrichmentUpdatedAt": "2026-07-26",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
-      "enrichmentAttemptedAt": "2026-08-18T16:51:04.401Z",
-      "enrichmentFingerprint": "sophie|sophie|vinyl||trans809x",
+      "enrichmentAttemptedAt": "2026-08-18T16:49:07.501Z",
+      "enrichmentFingerprint": "gorguts|the erosion of sanity|vinyl||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "GFOTY",
+          "artist": "Suffocation",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.928334,
-          "artist": "Arca",
+          "match": 0.837056,
+          "artist": "Ulcerate",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
-          "confidence": 0.928334,
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "confidence": 0.837056,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.900414,
-          "artist": "QT",
+          "match": 0.831834,
+          "artist": "Cryptopsy",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
-          "confidence": 0.900414,
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "confidence": 0.831834,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.832849,
-          "artist": "A. G. Cook",
+          "match": 0.815457,
+          "artist": "Immolation",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
-          "confidence": 0.832849,
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "confidence": 0.815457,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.703883,
-          "artist": "Evita Manji",
+          "match": 0.796857,
+          "artist": "Demilich",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
-          "confidence": 0.703883,
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "confidence": 0.796857,
           "relationType": "artist-similarity"
         }
       ],
@@ -59566,169 +59570,169 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "GFOTY",
-            "Arca",
-            "QT",
-            "A. G. Cook",
-            "Evita Manji",
-            "BABYNYMPH",
-            "Charli xcx",
-            "Hannah Diamond",
-            "Lipgloss Twins",
-            "Hyd"
+            "Suffocation",
+            "Ulcerate",
+            "Cryptopsy",
+            "Immolation",
+            "Demilich",
+            "Defeated Sanity",
+            "Artificial Brain",
+            "Pestilence",
+            "Morbid Angel",
+            "Incantation"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "GFOTY",
+              "artist": "Suffocation",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.928334,
-              "artist": "Arca",
+              "match": 0.837056,
+              "artist": "Ulcerate",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.928334,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.837056,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.900414,
-              "artist": "QT",
+              "match": 0.831834,
+              "artist": "Cryptopsy",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.900414,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.831834,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.832849,
-              "artist": "A. G. Cook",
+              "match": 0.815457,
+              "artist": "Immolation",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.832849,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.815457,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.703883,
-              "artist": "Evita Manji",
+              "match": 0.796857,
+              "artist": "Demilich",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.703883,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.796857,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.68506,
-              "artist": "BABYNYMPH",
+              "match": 0.775733,
+              "artist": "Defeated Sanity",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.68506,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.775733,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.648014,
-              "artist": "Charli xcx",
+              "match": 0.773532,
+              "artist": "Artificial Brain",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.648014,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.773532,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.607643,
-              "artist": "Hannah Diamond",
+              "match": 0.763513,
+              "artist": "Pestilence",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.607643,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.763513,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.588156,
-              "artist": "Lipgloss Twins",
+              "match": 0.740151,
+              "artist": "Morbid Angel",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.588156,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.740151,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.578553,
-              "artist": "Hyd",
+              "match": 0.735335,
+              "artist": "Incantation",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.578553,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.735335,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie"
+          "sourceUrl": "https://www.last.fm/music/Gorguts"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "GFOTY",
-          "Arca",
-          "QT",
-          "A. G. Cook",
-          "Evita Manji"
+          "Suffocation",
+          "Ulcerate",
+          "Cryptopsy",
+          "Immolation",
+          "Demilich"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "GFOTY",
+            "artist": "Suffocation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.928334,
-            "artist": "Arca",
+            "match": 0.837056,
+            "artist": "Ulcerate",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.928334,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.837056,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.900414,
-            "artist": "QT",
+            "match": 0.831834,
+            "artist": "Cryptopsy",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.900414,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.831834,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.832849,
-            "artist": "A. G. Cook",
+            "match": 0.815457,
+            "artist": "Immolation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.832849,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.815457,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.703883,
-            "artist": "Evita Manji",
+            "match": 0.796857,
+            "artist": "Demilich",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.703883,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.796857,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "c585d0e3-3651-4f14-af37-41844fd544e4",
-        "sourceUrl": "https://musicbrainz.org/release/c585d0e3-3651-4f14-af37-41844fd544e4",
+        "releaseId": "",
+        "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": true,
@@ -59740,7 +59744,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-16",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
