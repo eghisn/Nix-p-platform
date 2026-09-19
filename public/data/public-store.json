@@ -44927,7 +44927,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Secretly Canadian",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.143Z",
@@ -44940,7 +44940,7 @@
       "apparelType": "",
       "description": "Suuns's release Bambi on Vinyl, issued by Secretly Canadian.",
       "reviewQuote": "terrifying power",
-      "editRevision": 17,
+      "editRevision": 18,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/3255271-Suuns-Bambi",
@@ -45222,11 +45222,15 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "MusicBrainz",
       "metadataSourceUrl": "https://www.discogs.com/release/3255271-Suuns-Bambi",
-      "editorialUpdatedAt": "2026-09-19T11:52:41.395+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T20:07:57.125+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-07-27",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "ac2611e4-fa10-47f1-a328-8fad3c73cb49",
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-08-18T16:42:05.695Z",
       "enrichmentFingerprint": "suuns|bambi|vinyl||sc253",
       "relatedArtistEvidence": [
@@ -45466,7 +45470,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-16",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
