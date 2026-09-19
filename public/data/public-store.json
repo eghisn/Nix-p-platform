@@ -6596,7 +6596,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Jagjaguwar",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.149Z",
@@ -6610,7 +6610,7 @@
       "description": "Unknown Mortal Orchestra 2015 multi love is a verified Vinyl, LP, Album edition on Jagjaguwar. The release is indexed under Psychedelic, Funk, Funk / Soul.",
       "reviewQuote": "The production on Unknown Mortal Orchestra&#x27;s third album is so central it’s almost another character on the album, corroding and",
       "sourceTitle": "multi love",
-      "editRevision": 14,
+      "editRevision": 15,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0076-unknown-mortal-orchestra-multi-love-bandcamp.jpg",
@@ -6905,13 +6905,17 @@
       "publicationState": "live",
       "descriptionSource": "Verified physical-release metadata",
       "metadataSourceUrl": "https://www.discogs.com/release/27228903-Unknown-Mortal-Orchestra-Multi-Love",
-      "editorialUpdatedAt": "2026-09-19T11:53:02.979+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T20:49:04.929+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T10:00:45.001Z",
       "enrichmentFingerprint": "unknown mortal orchestra|multi love|vinyl|656605226217|jag262",
       "relatedArtistEvidence": [
@@ -7151,7 +7155,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
