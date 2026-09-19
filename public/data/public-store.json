@@ -43618,7 +43618,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Warp Records",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.143Z",
@@ -43631,7 +43631,7 @@
       "apparelType": "",
       "description": "Squarepusher's 2020 Vortrack is an eerie Warp single built from submerged acid, intricate breakbeats and the futuristic hardware sound that drives Be Up a Hello.",
       "reviewQuote": "devilish and danceable",
-      "editRevision": 17,
+      "editRevision": 18,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/d7373248-ae08-4bd8-a848-8b12c70bd88b",
@@ -43913,11 +43913,15 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Warp Records / The Guardian",
       "metadataSourceUrl": "https://www.theguardian.com/music/2020/jan/31/squarepusher-be-up-a-hello-review-warp-records",
-      "editorialUpdatedAt": "2026-09-19T11:52:41.994+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T19:56:02.525+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-07-27",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "d7373248-ae08-4bd8-a848-8b12c70bd88b",
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-08-18T16:42:19.022Z",
       "enrichmentFingerprint": "squarepusher|vortrack|vinyl||wap439",
       "relatedArtistEvidence": [
@@ -44157,7 +44161,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-16",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
