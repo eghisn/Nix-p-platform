@@ -19102,7 +19102,11 @@
         "SKU: NXP-2026-VNL-0056",
         "Format: Vinyl",
         "Condition: New-Sealed",
-        "Edition: Vinyl, LP, Album, Stereo, Black & Red [\"Ink Spot\"]",
+        "Edition: Vinyl",
+        "LP",
+        "Album",
+        "Stereo",
+        "Black & Red [\"Ink Spot\"]",
         "Catalog number: BFDNL112",
         "Barcode: 5054429148053"
       ],
@@ -19171,7 +19175,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Brainfeeder",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.147Z",
@@ -19184,6 +19188,7 @@
       "apparelType": "",
       "description": "Hiatus Kaiyote's 2021 Mood Valiant is a focused Brainfeeder album where future soul, jazz, strings and pop songwriting meet the Melbourne quartet's detailed rhythmic language.",
       "reviewQuote": "their most focused album with more classic songs than epic jams",
+      "editRevision": 72,
       "imageCredits": [
         {
           "url": "https://hiatuskaiyote.bandcamp.com/album/mood-valiant",
@@ -19470,10 +19475,16 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Hiatus Kaiyote official Bandcamp / NME",
       "metadataSourceUrl": "https://hiatuskaiyote.bandcamp.com/album/mood-valiant",
+      "editorialUpdatedAt": "2026-09-19T21:23:39.209+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-08-22",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": true,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-08-22T15:49:46.689Z",
       "enrichmentFingerprint": "hiatus kaiyote|mood valiant|vinyl||bf112nt",
       "relatedArtistEvidence": [
@@ -19704,18 +19715,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 71,
-      "editorialUpdatedAt": "2026-09-19T11:52:55.706+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-22",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
