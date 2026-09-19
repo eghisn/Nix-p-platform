@@ -9981,7 +9981,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Epitaph",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.149Z",
@@ -9995,7 +9995,7 @@
       "description": "Teenage Wrist's 2018 debut Chrome Neon Jesus builds its grunge-and-shoegaze foundation into a wide alternative-rock record, pairing fuzzed guitars with clean production, melodic hooks, and the push-pull dynamics of its three-piece lineup.",
       "reviewQuote": "filtered through the three decades of rock music that came after",
       "sourceTitle": "chrome neon jesus",
-      "editRevision": 14,
+      "editRevision": 15,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/12310962-Teenage-Wrist-Chrome-Neon-Jesus",
@@ -10285,13 +10285,17 @@
       "publicationState": "live",
       "descriptionSource": "AllMusic",
       "metadataSourceUrl": "https://www.discogs.com/release/12310962-Teenage-Wrist-Chrome-Neon-Jesus",
-      "editorialUpdatedAt": "2026-09-19T11:53:01.445+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T21:20:21.543+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T10:54:22.120Z",
       "enrichmentFingerprint": "teenage wrist|chrome neon jesus|vinyl|8 714092 756319|7563 1",
       "relatedArtistEvidence": [
@@ -10531,7 +10535,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
