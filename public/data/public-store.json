@@ -20475,7 +20475,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Warp Records",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.147Z",
@@ -20488,7 +20488,7 @@
       "apparelType": "",
       "description": "Kelela's 2026 New Avatar turns her alternative R&B language toward shoegaze guitars, grunge textures and electronic space, drawing on the D.C. indie roots that preceded her club work.",
       "reviewQuote": "another immersive evolution",
-      "editRevision": 5,
+      "editRevision": 6,
       "imageCredits": [
         {
           "url": "https://kelela.bandcamp.com/album/new-avatar-2",
@@ -20784,12 +20784,16 @@
         "managed cover art",
         "verified related-artist research"
       ],
-      "editorialUpdatedAt": "2026-09-19T11:52:55.116+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T21:11:23.038+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-08-22",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": true,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-08-22T15:49:41.302Z",
       "enrichmentFingerprint": "kelela|new avatar|vinyl||warplp405pbr",
       "relatedArtistEvidence": [
@@ -21029,7 +21033,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-16",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
