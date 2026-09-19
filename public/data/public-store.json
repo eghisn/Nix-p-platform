@@ -42322,7 +42322,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "SPE:C",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.144Z",
@@ -42335,7 +42335,7 @@
       "apparelType": "",
       "description": "Trans Am's 2016 Speechless is a compact electronic and techno-leaning collaboration from the Washington, D.C. trio, issued through Berlin label SPE:C as a 12-inch release.",
       "reviewQuote": "Techno / House",
-      "editRevision": 16,
+      "editRevision": 17,
       "imageCredits": [
         {
           "url": "https://specrecords.bandcamp.com/album/trans-am-speechless-spe-c-002",
@@ -42613,11 +42613,15 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "SPE:C official Bandcamp / Boomkat",
       "metadataSourceUrl": "https://specrecords.bandcamp.com/album/trans-am-speechless-spe-c-002",
-      "editorialUpdatedAt": "2026-09-19T11:52:43.04+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T19:41:24.957+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-07-27",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-08-18T16:41:51.259Z",
       "enrichmentFingerprint": "trans am|speechless|vinyl||spe c 015 02",
       "relatedArtistEvidence": [
@@ -42853,7 +42857,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-16",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
