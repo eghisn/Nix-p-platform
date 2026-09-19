@@ -154,9 +154,11 @@ export function applyFinalReviewedCoverLock(product = {}) {
     ...product,
     image: lock.cover,
     images,
-    imageCredits,
-    autoCover: lock.cover,
-    autoProductPhoto: "",
+    // Keep research bookkeeping in `raw`. This helper can run immediately
+    // before a database write, where top-level keys are physical columns.
+    ...(Object.prototype.hasOwnProperty.call(product, "image_credits")
+      ? { image_credits: imageCredits }
+      : { imageCredits }),
     raw: { ...raw, image: lock.cover, images, imageCredits, autoCover: lock.cover, autoProductPhoto: "" }
   };
 }

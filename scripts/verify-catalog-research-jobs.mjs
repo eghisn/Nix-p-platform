@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, publicationJobsForProducts, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
 import { CATALOG_RESEARCH_VERSION } from "../api/_lib/catalogEnrichment.js";
-import { draftProductFromFinanceStock, preserveResearchPublicationState } from "../api/_lib/financeState.js";
-import { normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
+import { draftProductFromFinanceStock, preserveResearchPublicationState, productRowForPersistence } from "../api/_lib/financeState.js";
+import { applyFinalReviewedCoverLock, normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
 
 const completeRecord = {
   sku: "NXP-2026-VNL-TEST",
@@ -49,6 +49,18 @@ assert.deepEqual(unscoped, { queued: 0, jobs: [] }, "Finance saves must not enqu
 const financeDraft = draftProductFromFinanceStock(completeRecord, 1);
 assert.equal(financeDraft.publish_status, "Draft", "A new Finance item must enter Admin as a Draft.");
 assert.equal(financeDraft.visibility, "Private", "A new Finance item must not be public before an Admin action.");
+
+const coverLockedRow = applyFinalReviewedCoverLock({
+  ...financeDraft,
+  sku: "NXP-2026-VNL-0080",
+  image_credits: [],
+  raw: {}
+});
+const coverLockedWrite = productRowForPersistence(coverLockedRow);
+assert.equal(Object.hasOwn(coverLockedWrite, "autoCover"), false, "Research cover metadata must never be sent as a products column.");
+assert.equal(Object.hasOwn(coverLockedWrite, "autoProductPhoto"), false, "Research photo metadata must never be sent as a products column.");
+assert.equal(Object.hasOwn(coverLockedWrite, "imageCredits"), false, "Camel-case display aliases must never be sent as products columns.");
+assert.equal(coverLockedWrite.raw.autoCover, coverLockedRow.raw.autoCover, "Cover-lock metadata must remain durable inside raw.");
 
 const researchedDraft = preserveResearchPublicationState({
   ...financeDraft,

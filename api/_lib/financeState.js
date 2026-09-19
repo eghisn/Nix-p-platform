@@ -282,11 +282,15 @@ export async function syncFinanceInventoryToCatalog(
     )
   );
   for (const row of protectedProductRows) {
+    // Supabase's REST endpoint treats every top-level property as a database
+    // column. Research metadata belongs in `raw`; never let an accidental UI
+    // or enrichment field invalidate an otherwise safe catalog sync.
+    const productWriteRow = productRowForPersistence(row);
     const latest = latestById.get(String(row.id));
     if (!latest) {
       await supabaseFetch("products?on_conflict=id", {
         method: "POST",
-        body: [row],
+        body: [productWriteRow],
         prefer: "resolution=ignore-duplicates,return=minimal"
       });
       continue;
@@ -297,7 +301,7 @@ export async function syncFinanceInventoryToCatalog(
       {
         method: "PATCH",
         body: {
-          ...row,
+          ...productWriteRow,
           edit_revision: revision + 1,
           editorial_updated_at: new Date().toISOString(),
           editorial_updated_by: "finance-stock"
@@ -1398,6 +1402,50 @@ function financeItemForProduct(product) {
   if (product.category === "Publishing" && PUBLISHING_TYPES.has(product.format)) return product.format;
   if (product.category === "Objects" && OBJECT_TYPES.has(product.format)) return product.format;
   return "Object";
+}
+
+const PRODUCT_PERSISTENCE_COLUMNS = new Set([
+  "id",
+  "sku",
+  "title",
+  "artist",
+  "category",
+  "format",
+  "display_format",
+  "apparel_type",
+  "condition",
+  "price",
+  "year",
+  "label",
+  "collection",
+  "color",
+  "material",
+  "image",
+  "images",
+  "image_credits",
+  "tags",
+  "details",
+  "sizes",
+  "description",
+  "qty",
+  "open_to_offers",
+  "minimum_acceptable_offer",
+  "publish_status",
+  "visibility",
+  "updated_at",
+  "raw",
+  "edit_revision",
+  "editorial_updated_at",
+  "editorial_updated_by"
+]);
+
+// This is intentionally an allowlist, rather than removing only currently
+// known aliases. New editor or research fields must not become SQL columns by
+// accident and break a whole catalog synchronization batch.
+export function productRowForPersistence(row = {}) {
+  return Object.fromEntries(
+    Object.entries(row).filter(([key, value]) => PRODUCT_PERSISTENCE_COLUMNS.has(key) && value !== undefined)
+  );
 }
 
 // Related-artist maintenance must never run the full finance/catalog
