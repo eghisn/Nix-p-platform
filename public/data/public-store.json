@@ -44269,7 +44269,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Sacred Bones Records",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.143Z",
@@ -44282,7 +44282,7 @@
       "apparelType": "",
       "description": "Blanck Mass' 2018 Odd Scene / Shit Luck single pushes Benjamin John Power's electronics toward industrial metal, combining blown-out synths, noise and physical rhythmic impact.",
       "reviewQuote": "immensely danceable",
-      "editRevision": 86,
+      "editRevision": 87,
       "imageCredits": [
         {
           "url": "https://blanckmass.bandcamp.com/album/odd-scene-shit-luck",
@@ -44569,11 +44569,15 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Sacred Bones / The Skinny",
       "metadataSourceUrl": "https://blanckmass.bandcamp.com/album/odd-scene-shit-luck",
-      "editorialUpdatedAt": "2026-09-19T11:52:41.684+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T19:58:18.205+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-07-27",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-08-18T16:42:07.186Z",
       "enrichmentFingerprint": "blanck mass|odd scene shit luck|vinyl||sbr202",
       "relatedArtistEvidence": [
@@ -44813,7 +44817,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-16",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
