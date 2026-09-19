@@ -5930,7 +5930,7 @@
         }
       ],
       "updatedAt": "2026-09-19",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "5 Rue Christine",
       "syncStatus": {
         "at": "2026-09-19T11:52:12.149Z",
@@ -5944,7 +5944,7 @@
       "description": "Hella's 2004 The Devil Isn't Red is the Sacramento duo of guitarist Spencer Seim and drummer Zach Hill at their most tightly wound: instrumental rock built from knotted guitar figures, abrupt shifts, and relentlessly precise percussion. This later vinyl edition returns to the original 5 Rue Christine album.",
       "reviewQuote": "Hella couldn't get no tighter.",
       "sourceTitle": "the devil isnt red",
-      "editRevision": 14,
+      "editRevision": 15,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/31855538-Hella-The-Devil-Isnt-Red",
@@ -6234,13 +6234,17 @@
       "publicationState": "live",
       "descriptionSource": "Pitchfork / Kill Rock Stars",
       "metadataSourceUrl": "https://www.discogs.com/release/31855538-Hella-The-Devil-Isnt-Red",
-      "editorialUpdatedAt": "2026-09-19T11:53:03.294+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-19T20:47:35.798+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T11:01:30.983Z",
       "enrichmentFingerprint": "hella|the devil isn t red|vinyl|7 59656 10821 8|ger082",
       "relatedArtistEvidence": [
@@ -6480,7 +6484,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
