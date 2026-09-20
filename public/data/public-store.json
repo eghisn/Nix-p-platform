@@ -23766,16 +23766,16 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg"
       ],
-      "barcode": "",
+      "barcode": "6 02537 10692 9",
       "details": [
         "Edition: 7-inch single",
         "Catalog number: FKR061A"
       ],
-      "edition": "7\"",
+      "edition": "Vinyl, 7\", Single, Limited Edition, Red",
       "category": "Records",
       "material": "",
       "autoCover": "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg",
-      "condition": "New-Sealed",
+      "condition": "New-Unsealed",
       "reviewUrl": "https://www.nme.com/news/music/bloc-party-56-1268623",
       "syncAudit": [
         {
@@ -23851,7 +23851,7 @@
       "apparelType": "",
       "description": "Bloc Party's 2012 Octopus is a sharp, abrasive 7-inch from the Four era, channeling serrated guitars, nervous dance-punk motion and Kele Okereke's clipped vocal into a compact rush.",
       "reviewQuote": "a raucous, snarling return",
-      "editRevision": 6,
+      "editRevision": 7,
       "imageCredits": [
         {
           "url": "https://music.apple.com/us/album/octopus-single/674606375",
@@ -24108,7 +24108,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "msxf8p60x1ywyg",
-      "mediaCondition": "",
+      "mediaCondition": "New",
       "open_to_offers": false,
       "relatedArtists": [
         "Kele",
@@ -24128,20 +24128,24 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "sleeveCondition": "",
+      "sleeveCondition": "Mint",
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "[PIAS] Cooperative / NME",
       "metadataSourceUrl": "https://store.pias.com/release/168770-bloc-party-octopus-rac-remix?lang=en_US",
-      "editorialUpdatedAt": "2026-09-20T02:01:35.725+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-20T09:55:46.772+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-17",
+      "mediaConditionGrade": "New",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "77e1ac48-b3d8-4b2b-b7de-dd6908abbf92",
       "publishAfterResearch": true,
+      "sleeveConditionGrade": "Mint",
       "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
       "enrichmentFingerprint": "bloc party|octopus|vinyl||fkr061a",
       "relatedArtistEvidence": [
@@ -24372,15 +24376,16 @@
         "sourceUrl": "https://musicbrainz.org/release/77e1ac48-b3d8-4b2b-b7de-dd6908abbf92",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-17",
+        "updatedAt": "2026-09-20",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
