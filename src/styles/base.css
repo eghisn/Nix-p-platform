@@ -551,6 +551,21 @@ body {
   line-height: 1.42;
 }
 
+body:has(.site-footer:not(.site-footer-home)):not(.preview-lock) {
+  padding-bottom: 0;
+}
+
+body:not(.preview-lock) #app:has(> .site-footer:not(.site-footer-home)) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+body:not(.preview-lock) #app:has(> .site-footer:not(.site-footer-home)) > main {
+  flex: 1 0 auto;
+}
+
 body.page-lock {
   height: 100vh;
   overflow: hidden;
@@ -2926,19 +2941,24 @@ body:has(.cart-view) .site-footer {
 }
 
 .site-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 28px var(--page-pad);
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.site-footer-home {
   position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 25;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 18px;
-  align-items: center;
-  max-width: var(--max);
-  margin-inline: auto;
-  padding: 28px var(--page-pad);
-  border-top: 1px solid var(--line);
   background: rgba(241, 241, 241, 0.95);
   backdrop-filter: blur(18px);
 }
@@ -2988,7 +3008,7 @@ body:has(.cart-view) .site-footer {
   position: fixed;
   z-index: 40;
   left: 50%;
-  bottom: calc(var(--footer-h) + 18px);
+  bottom: 18px;
   width: min(760px, calc(100vw - (var(--page-pad) * 2)));
   border: 1px solid var(--ink);
   background: var(--paper);
@@ -2996,6 +3016,11 @@ body:has(.cart-view) .site-footer {
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
   transform: translateX(-50%);
   text-align: center;
+}
+
+body:has(.site-footer-home) .cookie-consent,
+body.preview-lock .cookie-consent {
+  bottom: calc(var(--footer-h) + 18px);
 }
 
 .cookie-consent p {
@@ -3195,8 +3220,13 @@ body:has(.cart-view) .site-footer {
   }
 
   .cookie-consent {
-    bottom: calc(var(--footer-h) + 12px);
+    bottom: 12px;
     width: calc(100vw - (var(--page-pad) * 2));
+  }
+
+  body:has(.site-footer-home) .cookie-consent,
+  body.preview-lock .cookie-consent {
+    bottom: calc(var(--footer-h) + 12px);
   }
 
   .home-collections::-webkit-scrollbar {

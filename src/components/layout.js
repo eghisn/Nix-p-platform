@@ -51,7 +51,7 @@ export function shell(content, path, cartCount = 0, cartDrawer = "", searchOverl
   const logoHref = isFinanceShell ? "/finance" : isAdmin ? "/admin" : "/";
   const publicFooter = isPrivate
     ? ""
-    : `<footer class="site-footer">
+    : `<footer class="site-footer${path === "/" ? " site-footer-home" : ""}">
       <nav class="footer-left">
         <a href="/about" data-link>About</a>
         <a href="/contact" data-link>Contact</a>

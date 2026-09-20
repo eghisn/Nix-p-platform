@@ -325,7 +325,7 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   }
   if (requestId !== renderRequestId) return;
   const isLoginView = path === "/login" || (requiredWorkspace && !hasWorkspaceAccess(requiredWorkspace));
-  document.body.classList.toggle("page-lock", path === "/" || path === "/about" || path === "/contact" || isLoginView);
+  document.body.classList.toggle("page-lock", path === "/" || isLoginView);
   document.body.classList.toggle("login-lock", isLoginView);
   document.body.classList.toggle("preview-lock", path === "/admin/preview");
   const [drawerMarkup, searchMarkup] = await Promise.all([cartDrawer(), searchOverlay()]);
