@@ -21736,7 +21736,7 @@
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0051/cover.jpg",
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0051/detail-1.jpg"
       ],
-      "barcode": "",
+      "barcode": "883870080712",
       "details": [
         "Edition: 12-inch single",
         "Catalog number: RTRADST807"
@@ -21821,7 +21821,7 @@
       "apparelType": "",
       "description": "Performing Human is Parquet Courts' 2016 Rough Trade 12-inch, extending the nervous guitars, deadpan hooks and emotional unease of the Human Performance period.",
       "reviewQuote": "sublime slice of brooding garage rock",
-      "editRevision": 7,
+      "editRevision": 8,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/9045497-Parquet-Courts-Performing-Human",
@@ -22104,14 +22104,18 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Rough Trade / The Guardian",
       "metadataSourceUrl": "https://www.discogs.com/release/9045497-Parquet-Courts-Performing-Human",
-      "editorialUpdatedAt": "2026-09-20T02:01:36.961+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-20T09:17:05.119+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-17",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "20c0fcec-ac2f-4364-93d7-fa185bb06278",
       "publishAfterResearch": true,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-08-17 18:11:09.993429+00",
       "enrichmentFingerprint": "parquet courts|performing human|vinyl||rtradst807",
       "relatedArtistEvidence": [
@@ -22342,15 +22346,16 @@
         "sourceUrl": "https://musicbrainz.org/release/20c0fcec-ac2f-4364-93d7-fa185bb06278",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-17",
+        "updatedAt": "2026-09-20",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
