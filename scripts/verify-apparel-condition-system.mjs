@@ -70,5 +70,10 @@ for (const field of ["garmentConditionNote", "apparelMeasurements", "originalTag
   assert.match(financeSource, new RegExp(field));
   assert.match(publicSource, new RegExp(field));
 }
+assert.match(
+  financeSource,
+  /<div class="field full" data-finance-apparel-fields hidden>/,
+  "Finance must use a hideable field wrapper for apparel-only inputs."
+);
 
 console.log("Apparel condition workflow contracts verified.");

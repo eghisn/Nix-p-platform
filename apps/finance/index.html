@@ -1973,18 +1973,20 @@
 
     function apparelConditionFields() {
       return `
-        <div class="fields full" data-finance-apparel-fields hidden>
-          ${field("Condition notes", "garmentConditionNote", "text", "", false, "e.g. Minor fading at collar")}
-          <div class="field"><label>Original tags</label><label><input name="originalTags" type="checkbox"> Included</label></div>
-          ${field("Pit to pit (cm)", "apparelPitToPit", "number", "", false, "", "0.1")}
-          ${field("Length (cm)", "apparelLength", "number", "", false, "", "0.1")}
-          ${field("Shoulder (cm)", "apparelShoulder", "number", "", false, "", "0.1")}
-          ${field("Sleeve (cm)", "apparelSleeve", "number", "", false, "", "0.1")}
-          ${field("Waist (cm)", "apparelWaist", "number", "", false, "", "0.1")}
-          ${field("Inseam (cm)", "apparelInseam", "number", "", false, "", "0.1")}
-          ${field("Alterations", "alterations", "text", "", false, "e.g. Hem shortened")}
-          ${field("Flaws", "flaws", "text", "", false, "e.g. Small repair on left cuff")}
-          ${field("Fabric care", "fabricCare", "text", "", false, "e.g. Cold wash, line dry")}
+        <div class="field full" data-finance-apparel-fields hidden>
+          <div class="fields">
+            ${field("Condition notes", "garmentConditionNote", "text", "", false, "e.g. Minor fading at collar")}
+            <div class="field"><label>Original tags</label><label><input name="originalTags" type="checkbox"> Included</label></div>
+            ${field("Pit to pit (cm)", "apparelPitToPit", "number", "", false, "", "0.1")}
+            ${field("Length (cm)", "apparelLength", "number", "", false, "", "0.1")}
+            ${field("Shoulder (cm)", "apparelShoulder", "number", "", false, "", "0.1")}
+            ${field("Sleeve (cm)", "apparelSleeve", "number", "", false, "", "0.1")}
+            ${field("Waist (cm)", "apparelWaist", "number", "", false, "", "0.1")}
+            ${field("Inseam (cm)", "apparelInseam", "number", "", false, "", "0.1")}
+            ${field("Alterations", "alterations", "text", "", false, "e.g. Hem shortened")}
+            ${field("Flaws", "flaws", "text", "", false, "e.g. Small repair on left cuff")}
+            ${field("Fabric care", "fabricCare", "text", "", false, "e.g. Cold wash, line dry")}
+          </div>
         </div>
       `;
     }
