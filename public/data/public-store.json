@@ -10402,7 +10402,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg",
       "label": "Factory",
-      "price": 436250,
+      "price": 450000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -10415,7 +10415,7 @@
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg"
       ],
-      "barcode": "9312 / 9312",
+      "barcode": "0 190295 665906",
       "details": [
         "SKU: NXP-2026-VNL-0071",
         "Format: Vinyl",
@@ -10522,7 +10522,7 @@
       "description": "New Order's 1983 FAC 93 12-inch takes the band into New York electro through its collaboration with Arthur Baker, presenting Confusion alongside Confused Beats, an instrumental version, and a rough mix. Phill Pennington designed the embossed sleeve at Peter Saville Associates, with a colour code that spells FAC93.",
       "reviewQuote": "a Planet Rock-like set of drum beats and electronic pulses",
       "sourceTitle": "confusion",
-      "editRevision": 20,
+      "editRevision": 21,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/1347678-New-Order-Confusion",
@@ -10607,10 +10607,13 @@
       "publicationState": "live",
       "descriptionSource": "Factory Records Catalogue / AllMusic",
       "metadataSourceUrl": "https://www.discogs.com/release/1347678-New-Order-Confusion",
-      "editorialUpdatedAt": "2026-09-20T02:01:46.171+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-20T09:30:25.903+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "garmentConditionNote": "",
       "manualRelatedArtists": [
@@ -10618,6 +10621,7 @@
       ],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T10:43:47.829Z",
       "enrichmentFingerprint": "new order|confusion|vinyl||fac93",
       "relatedArtistEvidence": [
@@ -10656,7 +10660,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-20",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
