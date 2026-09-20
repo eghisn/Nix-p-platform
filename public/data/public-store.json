@@ -13679,7 +13679,7 @@
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0016/cover.jpg"
       ],
-      "barcode": "",
+      "barcode": "811774020602",
       "details": [
         "SKU: NXP-2026-VNL-0016",
         "Format: Vinyl",
@@ -13770,7 +13770,7 @@
       "description": "Creative Adult 2014 deep end b w momentary lapse is a verified Vinyl, 7\", 45 RPM edition on Run For Cover Records. The release is indexed under Psychedelic Rock, Post-Punk, Shoegaze.",
       "reviewQuote": "San Fran punks Creative Adult pal around with the likes of Ceremony, Trash Talk, and Touché Amore, and Efrim Menuck",
       "sourceTitle": "deep end b w momentary lapse",
-      "editRevision": 36,
+      "editRevision": 37,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/5986176-Creative-Adult-Deep-End-bw-Momentary-Lapse",
@@ -14066,15 +14066,19 @@
       "publicationState": "live",
       "descriptionSource": "Verified physical-release metadata",
       "metadataSourceUrl": "https://www.discogs.com/release/5986176-Creative-Adult-Deep-End-bw-Momentary-Lapse",
-      "editorialUpdatedAt": "2026-09-20T02:01:42.963+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-20T09:53:34.164+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T06:21:07.344Z",
       "enrichmentFingerprint": "creative adult|deep end|vinyl||rfc097",
       "relatedArtistEvidence": [
@@ -14314,7 +14318,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-20",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
