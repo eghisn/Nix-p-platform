@@ -2036,7 +2036,8 @@
     function syncVinylSizeField(form, itemField) {
       const wrapper = form?.querySelector("[data-vinyl-size-field]");
       if (!wrapper) return;
-      const selection = vinylItemSelection(form.elements[itemField]?.value);
+      const itemInput = form.elements.namedItem(itemField);
+      const selection = vinylItemSelection(itemInput?.value);
       const isVinyl = selection.item.toLowerCase() === "vinyl";
       wrapper.hidden = !isVinyl || Boolean(selection.vinylSize);
       if (selection.vinylSize) form.elements.vinylSize.value = `${selection.vinylSize}\"`;
@@ -2045,7 +2046,8 @@
 
     function syncItemTypeFields(form, itemField) {
       syncVinylSizeField(form, itemField);
-      const item = vinylItemSelection(form?.elements[itemField]?.value).item;
+      const itemInput = form?.elements.namedItem(itemField);
+      const item = vinylItemSelection(itemInput?.value).item;
       syncConditionField(form, item);
       const isApparel = apparelItemTypes.includes(item);
       form?.querySelectorAll("[data-finance-apparel-fields]").forEach(wrapper => {
