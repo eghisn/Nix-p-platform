@@ -12342,7 +12342,7 @@
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0066/cover.jpg",
-      "condition": "New-Sealed",
+      "condition": "New-Unsealed",
       "reviewUrl": "https://thequietus.com/quietus-reviews/senyawa-stephen-omalley-bima-sakti-review/",
       "syncAudit": [
         {
@@ -12419,7 +12419,7 @@
       "description": "Senyawa & Stephen O'Malley's 2020 Bima Sakti documents a January 2018 live performance in Brussels, bringing Stephen O'Malley's electric guitar into contact with Rully Shabara's voice and Wukir Suryadi's self-built instruments. The six-piece LP was mixed by Randall Dunn and released by iDEAL.",
       "reviewQuote": "visceral, elemental results",
       "sourceTitle": "senyawa stephen o malley bima sakti",
-      "editRevision": 22,
+      "editRevision": 23,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/15665190-Senyawa-Stephen-OMalley-Bima-Sakti",
@@ -12676,7 +12676,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "mtn25asdbvoacr",
-      "mediaCondition": "",
+      "mediaCondition": "Mint",
       "open_to_offers": false,
       "relatedArtists": [
         "Wukir Suryadi",
@@ -12703,26 +12703,26 @@
           "confidence": 100
         }
       ],
-      "sleeveCondition": "",
+      "sleeveCondition": "Mint",
       "autoProductPhoto": "",
       "enrichmentOrigin": "source+curated-editorial",
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "iDEAL Recordings",
       "metadataSourceUrl": "https://www.discogs.com/release/15665190-Senyawa-Stephen-OMalley-Bima-Sakti",
-      "editorialUpdatedAt": "2026-09-20T02:01:44.078+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-20T09:12:37.334+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
-      "mediaConditionGrade": "",
+      "mediaConditionGrade": "Mint",
       "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
-      "sleeveConditionGrade": "",
+      "sleeveConditionGrade": "Mint",
       "enrichmentAttemptedAt": "2026-09-09T09:02:05.034Z",
       "enrichmentFingerprint": "senyawa stephen o malley|bima sakti|vinyl||ideal198",
       "relatedArtistEvidence": [
@@ -12962,7 +12962,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-19",
+        "updatedAt": "2026-09-20",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
