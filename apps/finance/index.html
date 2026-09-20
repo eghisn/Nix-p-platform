@@ -4144,20 +4144,22 @@
       const expenses = Array.isArray(data.operatingExpenseBreakdown) ? data.operatingExpenseBreakdown : [];
       const ytd = data.ytd || data;
       const expenseRows = Math.max(1, expenses.length);
-      const reportWarnings = [];
-      if (data.missingCogsUnits > 0) reportWarnings.push(`MISSING COGS: ${data.missingCogsUnits} SOLD UNIT${data.missingCogsUnits === 1 ? "" : "S"}`);
-      if (data.orphanedCogsAmount > 0) reportWarnings.push(`UNMATCHED COGS EXCLUDED: ${rupiah(data.orphanedCogsAmount)}`);
-      if (data.missingInventoryUnits > 0) reportWarnings.push(`INVENTORY COST COVERAGE: ${reportPercent(data.inventoryCostCoverage)}`);
-      if (data.endingCash === null) reportWarnings.push("ENDING CASH: OPENING BALANCE REQUIRED");
+      const reportNotes = [];
+      if (data.missingCogsUnits > 0) reportNotes.push(["Cost of goods", `${data.missingCogsUnits} sold unit${data.missingCogsUnits === 1 ? " is" : "s are"} missing cost basis`]);
+      if (data.orphanedCogsAmount > 0) reportNotes.push(["Unmatched COGS", `${rupiah(data.orphanedCogsAmount)} excluded because no recognized sale is linked`]);
+      if (data.missingInventoryUnits > 0) reportNotes.push(["Inventory valuation", `${reportPercent(data.inventoryCostCoverage)} cost coverage; ${data.missingInventoryUnits} remaining unit${data.missingInventoryUnits === 1 ? "" : "s"} missing cost basis`]);
+      if (data.endingCash === null) reportNotes.push(["Cash position", "Opening cash balance required to calculate ending cash"]);
       const executiveSummaryY = 282;
-      const lastSummaryRowY = executiveSummaryY + 102 + 6 * 42;
-      const warningHeadingY = lastSummaryRowY + 64;
-      const warningStartY = warningHeadingY + 32;
-      const executiveSummaryBottom = reportWarnings.length ? warningStartY + reportWarnings.length * 28 + 20 : lastSummaryRowY + 48;
-      const statementTop = executiveSummaryBottom + 66;
+      const summaryRowHeight = 52;
+      const lastSummaryRowY = executiveSummaryY + 108 + 6 * summaryRowHeight;
+      const executiveSummaryBottom = lastSummaryRowY + 32;
+      const notesTop = executiveSummaryBottom + 30;
+      const notesHeight = reportNotes.length ? 76 + reportNotes.length * 52 : 0;
+      const notesBottom = reportNotes.length ? notesTop + notesHeight : executiveSummaryBottom;
+      const statementTop = notesBottom + 64;
       const statementBottom = estimateReportStatementBottom(data, expenses.length, statementTop);
       canvas.width = 1800;
-      canvas.height = Math.max(1540, 1420 + expenseRows * 48, statementBottom + 170);
+      canvas.height = Math.max(1640, 1510 + expenseRows * 48, statementBottom + 170);
       const context = canvas.getContext("2d");
       const ink = "#292929";
       const paper = "#f1f1f1";
@@ -4216,14 +4218,15 @@
         ["Ending Cash", data.endingCash, null, ytd.endingCash, "money"],
         ["Inventory Value at Cost", data.inventoryValueAtCost, null, ytd.inventoryValueAtCost, "money"]
       ];
-      summaryRows.forEach((row, index) => drawCanvasSummaryRow(context, row, summaryX, summaryRight, summaryColumns, executiveSummaryY + 102 + index * 42, ink));
-      if (reportWarnings.length) {
-        drawCanvasRule(context, summaryX, summaryRight, lastSummaryRowY + 32);
+      summaryRows.forEach((row, index) => drawCanvasSummaryRow(context, row, summaryX, summaryRight, summaryColumns, executiveSummaryY + 108 + index * summaryRowHeight, ink, summaryRowHeight));
+      if (reportNotes.length) {
+        context.strokeStyle = ink;
+        context.lineWidth = 1;
+        context.strokeRect(left, notesTop, right - left, notesHeight);
         context.font = "600 14px 'Founders Grotesk Web', Arial";
         context.fillStyle = ink;
-        context.fillText("REPORT NOTES", summaryX, warningHeadingY);
-        context.font = "500 15px 'Founders Grotesk Web', Arial";
-        reportWarnings.forEach((warning, index) => context.fillText(warning, summaryX, warningStartY + index * 28));
+        context.fillText("DATA QUALITY NOTES", summaryX, notesTop + 34);
+        reportNotes.forEach((note, index) => drawCanvasReportNote(context, note, summaryX, summaryRight, notesTop + 76 + index * 52, ink));
       }
 
       let y = statementTop;
@@ -4295,9 +4298,9 @@
       }, "image/jpeg", 0.92);
     }
 
-    function drawCanvasSummaryRow(context, row, left, right, columns, y, ink) {
+    function drawCanvasSummaryRow(context, row, left, right, columns, y, ink, rowHeight = 42) {
       const [label, current, target, ytd, kind] = row;
-      drawCanvasRule(context, left, right, y - 22);
+      drawCanvasRule(context, left, right, y - Math.floor(rowHeight * 0.58));
       context.fillStyle = ink;
       context.font = "500 18px 'Founders Grotesk Web', Arial";
       context.fillText(String(label).toUpperCase(), left, y);
@@ -4308,6 +4311,16 @@
       context.fillText(reportFormat(target, kind), columns[2], y);
       context.fillText(reportFormat(ytd, kind), columns[3], y);
       context.textAlign = "left";
+    }
+
+    function drawCanvasReportNote(context, note, left, right, y, ink) {
+      const [label, detail] = note;
+      drawCanvasRule(context, left, right, y - 28);
+      context.fillStyle = ink;
+      context.font = "600 15px 'Founders Grotesk Web', Arial";
+      context.fillText(String(label).toUpperCase(), left, y);
+      context.font = "500 17px 'Founders Grotesk Web', Arial";
+      context.fillText(detail, left, y + 23);
     }
 
     function drawReportAmountLine(context, label, value, x, y, options = {}) {
