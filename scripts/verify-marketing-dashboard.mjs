@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { buildRollupMarketingDashboard } from "../api/_lib/marketingDashboard.js";
+import { buildContentPlanDashboard, buildRollupMarketingDashboard } from "../api/_lib/marketingDashboard.js";
 import { normalizeAnalyticsEvent, sameOriginAnalyticsRequest } from "../api/_lib/analytics.js";
 import { normalizeMarketingAttribution } from "../api/_lib/marketingAttribution.js";
 
@@ -20,6 +20,13 @@ const dashboard = buildRollupMarketingDashboard({
   products: [{ id: "p1", title: "Release", artist: "Artist", views: 2, added: 1, orders: 2, units: 2, sales: 900_000 }],
   contactsSummary: { knownCustomers: 501, returningCustomers: 10, contacts: [{ name: "Test", email: "test@example.com", orders: 2, sales: 1_000_000, lastOrder: "2026-08-29T00:00:00Z" }] },
   instagram: { status: "connected", message: "Latest post activity is refreshed automatically from Meta.", account: "NIXP Instagram", posts: [{ id: "post-1", caption: "New release", mediaType: "IMAGE", permalink: "https://www.instagram.com/p/example/", timestamp: "2026-08-29T00:00:00Z", likes: 12, comments: 3 }] },
+  contentPlans: [{
+    id: "b2b4cb20-5ed8-4b0c-9d1f-2fc590a223b3", title: "Content A", content_type: "Reel", objective: "Store visits", status: "Published",
+    planned_at: "2026-08-29", campaign: "august-launch", tracking_content: "content-a", destination_path: "/records",
+    instagram_permalink: "https://www.instagram.com/p/example/", target_likes: 10, target_comments: 2, target_sessions: 8,
+    target_carts: 1, target_paid_orders: 1, target_revenue: 100000
+  }],
+  contentPerformance: [{ tracking_content: "content-a", sessions: 8, product_views: 5, carts: 2, checkouts: 1, paid_orders: 1, revenue: 125000 }],
   recentEvents: [{ event_type: "page_view", anonymous_session_id: "a", page_path: "/records", source: "instagram", occurred_at: "2026-08-29T00:00:00Z" }],
   newestOrder: { updated_at: "2026-08-29T00:00:00Z" }
 });
@@ -40,6 +47,18 @@ assert.equal(dashboard.orderOutcomes.cancelled, 1);
 assert.equal(dashboard.metrics.checkoutCreatedRate, 1, "Checkout creation rate must be measured from consented checkout sessions, not all paid orders.");
 assert.equal(dashboard.instagram.status, "connected");
 assert.equal(dashboard.instagram.posts[0].likes, 12);
+assert.equal(dashboard.contentPlans.length, 1);
+assert.equal(dashboard.contentPlans[0].actual.sessions, 8);
+assert.equal(dashboard.contentPlans[0].actual.revenue, 125000);
+assert.equal(dashboard.contentPlans[0].result, "Ahead");
+assert.match(dashboard.contentPlans[0].trackingUrl, /utm_content=content-a/);
+
+const plannedContent = buildContentPlanDashboard([{
+  id: "251e214d-7702-4df6-b11b-a02352bbdd35", title: "Future post", content_type: "Feed post", objective: "Awareness", status: "Planned",
+  tracking_content: "future-post", destination_path: "/", campaign: "", instagram_permalink: "", target_likes: 0, target_comments: 0,
+  target_sessions: 0, target_carts: 0, target_paid_orders: 0, target_revenue: 0
+}]);
+assert.equal(plannedContent[0].result, "Planned", "Planned content must not be marked as underperforming before it is published.");
 
 const validEvent = {
   eventId: "2b6f2b09-4be9-4b58-8b81-0ace022ddd84",

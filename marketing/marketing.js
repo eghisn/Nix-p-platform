@@ -1,4 +1,4 @@
-const state = { dashboard: null, view: "overview", sorts: {}, reportGrain: "weekly" };
+const state = { dashboard: null, view: "overview", sorts: {}, reportGrain: "weekly", contentPlanSort: "plannedAt", editingContentPlanId: "" };
 const money = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat("id-ID", { style: "percent", maximumFractionDigits: 2 });
@@ -79,6 +79,7 @@ function renderDashboard(data) {
   renderCatalogProducts(data.products);
   renderCheckout(data);
   renderInstagram(data);
+  renderContentPlans(data.contentPlans || []);
   renderTimeSeries(data.daily);
   renderAudience(data);
   renderInsights(data);
@@ -202,6 +203,127 @@ function renderInstagram(data) {
   const posts = sortRows("instagram-posts", instagram.posts || [], (item, key) => item[key]);
   const postTarget = document.querySelector("[data-instagram-posts-table]");
   if (postTarget) postTarget.innerHTML = posts.map((item) => `<tr><td>${formatDate(item.timestamp)}</td><td><strong>${escapeHtml(item.caption)}</strong></td><td>${escapeHtml(item.mediaType)}</td><td>${integer.format(item.likes)}</td><td>${integer.format(item.comments)}</td><td><a class="outbound-link" href="${escapeHtml(item.permalink)}" target="_blank" rel="noreferrer">View</a></td></tr>`).join("") || emptyRow(6, instagram.status === "setup_required" ? "Connect Meta to see post engagement. Website attribution is already measured through UTM links." : "No Instagram posts returned for this account.");
+}
+
+function renderContentPlans(plans) {
+  const target = document.querySelector("[data-content-plan-list]");
+  if (!target) return;
+  const sort = document.querySelector("[data-content-plan-sort]")?.value || state.contentPlanSort;
+  state.contentPlanSort = sort;
+  const sorted = [...plans].sort((left, right) => {
+    if (sort === "progress") return Number(right.progress ?? -1) - Number(left.progress ?? -1);
+    if (sort === "revenue") return Number(right.actual?.revenue || 0) - Number(left.actual?.revenue || 0);
+    if (sort === "sessions") return Number(right.actual?.sessions || 0) - Number(left.actual?.sessions || 0);
+    return String(right.plannedAt || "").localeCompare(String(left.plannedAt || "")) || String(right.title).localeCompare(String(left.title));
+  });
+  target.innerHTML = sorted.map((plan) => contentPlanCard(plan)).join("") || `<p class="content-plan-empty">Add a content plan to compare its targets with Instagram and website results.</p>`;
+}
+
+function contentPlanCard(plan) {
+  const target = plan.target || {};
+  const actual = plan.actual || {};
+  const progress = plan.progress === null || plan.progress === undefined ? "No targets" : percent.format(plan.progress);
+  const postStatus = plan.instagramPermalink ? (plan.instagramPostFound ? "Post linked" : "Post metrics pending") : "Add post URL";
+  return `
+    <article class="content-plan-card">
+      <header class="content-plan-card-heading">
+        <div><span>${escapeHtml(plan.contentType)}</span><h4>${escapeHtml(plan.title)}</h4><p>${escapeHtml(plan.objective)}${plan.plannedAt ? ` / ${escapeHtml(formatDate(plan.plannedAt))}` : ""}</p></div>
+        <div class="content-plan-status"><strong class="content-result content-result-${escapeHtml(String(plan.result || "tracking").toLowerCase().replace(/\s+/g, "-"))}">${escapeHtml(plan.result || "Tracking")}</strong><span>${progress}</span></div>
+      </header>
+      <div class="content-plan-metrics">
+        ${contentPlanMetric("Likes", target.likes, actual.likes, integer)}
+        ${contentPlanMetric("Comments", target.comments, actual.comments, integer)}
+        ${contentPlanMetric("Website visits", target.sessions, actual.sessions, integer)}
+        ${contentPlanMetric("Carts", target.carts, actual.carts, integer)}
+        ${contentPlanMetric("Paid orders", target.paidOrders, actual.paidOrders, integer)}
+        ${contentPlanMetric("Revenue", target.revenue, actual.revenue, money)}
+      </div>
+      <footer class="content-plan-card-foot">
+        <div class="content-plan-tracking"><span>${escapeHtml(postStatus)}</span><code>${escapeHtml(plan.trackingContent)}</code></div>
+        <div class="content-plan-card-actions"><button class="button button-compact" type="button" data-content-plan-copy="${escapeHtml(plan.trackingUrl)}">Copy link</button><button class="button button-compact" type="button" data-content-plan-edit="${escapeHtml(plan.id)}">Edit</button><button class="button button-compact button-danger" type="button" data-content-plan-delete="${escapeHtml(plan.id)}">Delete</button></div>
+      </footer>
+    </article>`;
+}
+
+function contentPlanMetric(label, target, actual, formatter) {
+  const planned = Number(target || 0);
+  const result = Number(actual || 0);
+  const progress = planned ? Math.min(100, Math.round(result / planned * 100)) : null;
+  return `<div class="content-plan-metric"><span>${escapeHtml(label)}</span><strong>${formatter.format(result)}</strong><small>${planned ? `${formatter.format(planned)} target / ${progress}%` : "No target"}</small></div>`;
+}
+
+function contentTrackingId(value) {
+  return String(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
+}
+
+function contentPlanPayload(form) {
+  const value = (name) => String(form.elements[name]?.value || "").trim();
+  return {
+    title: value("title"), contentType: value("contentType"), objective: value("objective"), status: value("status"),
+    plannedAt: value("plannedAt"), campaign: value("campaign"), trackingContent: value("trackingContent"),
+    destinationPath: value("destinationPath"), instagramPermalink: value("instagramPermalink"), targetLikes: value("targetLikes"),
+    targetComments: value("targetComments"), targetSessions: value("targetSessions"), targetCarts: value("targetCarts"),
+    targetPaidOrders: value("targetPaidOrders"), targetRevenue: value("targetRevenue")
+  };
+}
+
+function updateContentPlanLinkPreview(form) {
+  if (!form) return;
+  const preview = document.querySelector("[data-content-plan-link-preview]");
+  const value = document.querySelector("[data-content-plan-link-value]");
+  if (!preview || !value) return;
+  const payload = contentPlanPayload(form);
+  const content = contentTrackingId(payload.trackingContent || payload.title);
+  if (!content) return preview.hidden = true;
+  try {
+    const url = new URL(payload.destinationPath?.startsWith("/") ? payload.destinationPath : "/", "https://www.nix-p.com");
+    url.searchParams.set("utm_source", "instagram");
+    url.searchParams.set("utm_medium", "social");
+    url.searchParams.set("utm_campaign", contentTrackingId(payload.campaign) || content);
+    url.searchParams.set("utm_content", content);
+    value.textContent = url.toString();
+    preview.hidden = false;
+  } catch {
+    preview.hidden = true;
+  }
+}
+
+function resetContentPlanForm() {
+  const form = document.querySelector("[data-content-plan-form]");
+  if (!form) return;
+  form.reset();
+  form.elements.destinationPath.value = "/";
+  delete form.elements.trackingContent.dataset.manual;
+  state.editingContentPlanId = "";
+  setText("[data-content-plan-form-title]", "New content");
+  document.querySelector("[data-content-plan-cancel]")?.setAttribute("hidden", "");
+  setText("[data-content-plan-message]", "");
+  updateContentPlanLinkPreview(form);
+}
+
+function editContentPlan(id) {
+  const plan = (state.dashboard?.contentPlans || []).find((item) => item.id === id);
+  const form = document.querySelector("[data-content-plan-form]");
+  if (!plan || !form) return;
+  state.editingContentPlanId = plan.id;
+  const values = {
+    title: plan.title, contentType: plan.contentType, objective: plan.objective, status: plan.status, plannedAt: plan.plannedAt || "",
+    campaign: plan.campaign === plan.trackingContent ? "" : plan.campaign, trackingContent: plan.trackingContent, destinationPath: plan.destinationPath,
+    instagramPermalink: plan.instagramPermalink, targetLikes: plan.target.likes, targetComments: plan.target.comments, targetSessions: plan.target.sessions,
+    targetCarts: plan.target.carts, targetPaidOrders: plan.target.paidOrders, targetRevenue: plan.target.revenue
+  };
+  Object.entries(values).forEach(([name, value]) => { if (form.elements[name]) form.elements[name].value = value; });
+  form.elements.trackingContent.dataset.manual = "true";
+  setText("[data-content-plan-form-title]", `Edit: ${plan.title}`);
+  document.querySelector("[data-content-plan-cancel]")?.removeAttribute("hidden");
+  updateContentPlanLinkPreview(form);
+  form.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderTimeSeries(rows) {
@@ -478,7 +600,61 @@ document.querySelector("[data-report-grain]").addEventListener("change", (event)
 });
 document.querySelector("[data-campaign-search]").addEventListener("input", (event) => renderCampaigns(event.target.value));
 document.querySelector("[data-contact-search]").addEventListener("input", (event) => renderContacts(event.target.value));
+document.querySelector("[data-content-plan-sort]")?.addEventListener("change", (event) => {
+  state.contentPlanSort = event.target.value;
+  renderContentPlans(state.dashboard?.contentPlans || []);
+});
+const contentPlanForm = document.querySelector("[data-content-plan-form]");
+contentPlanForm?.addEventListener("input", (event) => {
+  const tracking = contentPlanForm.elements.trackingContent;
+  if (event.target === contentPlanForm.elements.title && tracking.dataset.manual !== "true") tracking.value = contentTrackingId(event.target.value);
+  if (event.target === tracking) tracking.dataset.manual = tracking.value ? "true" : "";
+  updateContentPlanLinkPreview(contentPlanForm);
+});
+contentPlanForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const message = document.querySelector("[data-content-plan-message]");
+  const submit = form.querySelector('[type="submit"]');
+  submit.disabled = true;
+  setText("[data-content-plan-message]", "Saving content plan...");
+  try {
+    const action = state.editingContentPlanId ? "PATCH" : "POST";
+    const suffix = state.editingContentPlanId ? `&id=${encodeURIComponent(state.editingContentPlanId)}` : "";
+    await request(`/api/marketing?resource=content-plans${suffix}`, { method: action, headers: { "content-type": "application/json" }, body: JSON.stringify(contentPlanPayload(form)) });
+    resetContentPlanForm();
+    await loadDashboard();
+  } catch (error) {
+    if (message) message.textContent = error.message || "Content plan could not be saved.";
+  } finally {
+    submit.disabled = false;
+  }
+});
+document.querySelector("[data-content-plan-cancel]")?.addEventListener("click", resetContentPlanForm);
 document.addEventListener("click", (event) => {
+  const copy = event.target.closest("[data-content-plan-copy]");
+  if (copy) {
+    navigator.clipboard?.writeText(copy.dataset.contentPlanCopy || "").then(() => {
+      const original = copy.textContent;
+      copy.textContent = "Copied";
+      setTimeout(() => { copy.textContent = original; }, 1200);
+    }).catch(() => { document.querySelector("[data-status-copy]").textContent = "Copy the tracking link from the content plan field."; });
+    return;
+  }
+  const edit = event.target.closest("[data-content-plan-edit]");
+  if (edit) {
+    editContentPlan(edit.dataset.contentPlanEdit || "");
+    return;
+  }
+  const remove = event.target.closest("[data-content-plan-delete]");
+  if (remove) {
+    const plan = (state.dashboard?.contentPlans || []).find((item) => item.id === remove.dataset.contentPlanDelete);
+    if (!plan || !window.confirm(`Delete ${plan.title}? This only removes the plan, not Instagram or website analytics.`)) return;
+    request(`/api/marketing?resource=content-plans&id=${encodeURIComponent(plan.id)}`, { method: "DELETE", headers: { "content-type": "application/json" }, body: "{}" })
+      .then(() => { if (state.editingContentPlanId === plan.id) resetContentPlanForm(); return loadDashboard(); })
+      .catch((error) => { document.querySelector("[data-status-copy]").textContent = error.message || "Content plan could not be deleted."; });
+    return;
+  }
   const button = event.target.closest("[data-sort-key]");
   if (!button) return;
   const table = button.closest("[data-sort-table]");
@@ -503,4 +679,5 @@ function formatDateTime(value) { return value ? new Intl.DateTimeFormat("id-ID",
 function formatFreshness(value) { if (!value) return "No events yet"; const minutes = Math.max(0, Math.round((Date.now() - new Date(value).getTime()) / 60000)); return minutes < 2 ? "Current" : `${minutes} min ago`; }
 
 renderAccountingBasis();
+updateContentPlanLinkPreview(contentPlanForm);
 boot();

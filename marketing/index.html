@@ -127,13 +127,46 @@
         </section>
 
         <section class="view" data-view-panel="instagram" aria-labelledby="instagram-title" hidden>
-          <div class="section-heading"><div><p class="eyebrow">04 / Instagram</p><h2 id="instagram-title">Post to storefront</h2></div><p class="section-note">Website outcomes come from Instagram attribution. Post engagement can refresh automatically once the NIXP Meta connection is enabled.</p></div>
+          <div class="section-heading"><div><p class="eyebrow">04 / Instagram</p><h2 id="instagram-title">Content plan vs reality</h2></div><p class="section-note">Give each post one tracking ID. NIXP then compares its targets with Instagram engagement and the storefront activity it creates.</p></div>
+          <section class="panel content-plan-composer">
+            <div class="panel-heading"><div><p class="eyebrow">Plan a post</p><h3 data-content-plan-form-title>New content</h3></div><span class="muted-label">Private planning</span></div>
+            <form data-content-plan-form>
+              <div class="content-plan-form-grid">
+                <label>Content name<input name="title" required maxlength="140" placeholder="Content A" /></label>
+                <label>Format<select name="contentType"><option>Reel</option><option>Feed post</option><option>Carousel</option><option>Story</option><option>Other</option></select></label>
+                <label>Objective<select name="objective"><option>Awareness</option><option>Community</option><option selected>Store visits</option><option>Conversion</option></select></label>
+                <label>Status<select name="status"><option selected>Planned</option><option>Published</option><option>Archived</option></select></label>
+                <label>Publish date<input name="plannedAt" type="date" /></label>
+                <label>Campaign<input name="campaign" maxlength="120" placeholder="September arrivals" /></label>
+                <label>Tracking ID<input name="trackingContent" required maxlength="80" pattern="[A-Za-z0-9_-]+" placeholder="content-a" /></label>
+                <label>Destination path<input name="destinationPath" required maxlength="240" value="/" placeholder="/records" /></label>
+                <label class="content-plan-span">Instagram post URL <input name="instagramPermalink" type="url" maxlength="300" placeholder="https://www.instagram.com/p/... (add after publishing)" /></label>
+              </div>
+              <fieldset class="content-target-fieldset">
+                <legend>Targets</legend>
+                <div class="content-target-grid">
+                  <label>Likes<input name="targetLikes" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
+                  <label>Comments<input name="targetComments" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
+                  <label>Website visits<input name="targetSessions" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
+                  <label>Carts<input name="targetCarts" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
+                  <label>Paid orders<input name="targetPaidOrders" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
+                  <label>Revenue<input name="targetRevenue" type="number" min="0" step="1000" value="0" inputmode="numeric" /></label>
+                </div>
+              </fieldset>
+              <div class="content-plan-link" data-content-plan-link-preview hidden><span>Tracking link</span><code data-content-plan-link-value></code></div>
+              <div class="content-plan-actions"><button class="button button-dark" type="submit">Save content plan</button><button class="button" type="button" data-content-plan-cancel hidden>Cancel edit</button><p class="form-message" data-content-plan-message role="status"></p></div>
+            </form>
+          </section>
           <div class="metrics-grid">
             <article class="metric-panel"><span>Instagram sessions</span><strong data-instagram-metric="sessions">0</strong><small>Consented visits attributed to Instagram</small></article>
             <article class="metric-panel"><span>Product views</span><strong data-instagram-metric="views">0</strong><small>From Instagram-attributed sessions</small></article>
             <article class="metric-panel"><span>Paid orders</span><strong data-instagram-metric="orders">0</strong><small>Attributed order records</small></article>
             <article class="metric-panel"><span>Attributed sales</span><strong data-instagram-metric="sales">Rp 0</strong><small>Consent-based attribution</small></article>
           </div>
+          <section class="panel content-plan-monitor">
+            <div class="toolbar-row"><div><p class="eyebrow">Content tracker</p><h3>What happened after each post</h3></div><label class="period-control">Sort by<select data-content-plan-sort aria-label="Sort content plans"><option value="plannedAt">Latest plan</option><option value="progress">Target progress</option><option value="revenue">Revenue</option><option value="sessions">Website visits</option></select></label></div>
+            <div class="content-plan-list" data-content-plan-list></div>
+          </section>
           <div class="split-grid">
             <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Connection</p><h3>Instagram post data</h3></div><span class="consent-badge" data-instagram-status>Checking</span></div><p class="panel-copy" data-instagram-copy>Checking the Instagram connection.</p><div class="rule-grid instagram-setup"><span>01</span><p>Use a distinct <strong>utm_campaign</strong> for each post or reel, and the post shortcode as <strong>utm_content</strong>.</p><span>02</span><p>Website sessions, carts, and paid orders appear here even before Meta post metrics are connected.</p></div></section>
             <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Website signal</p><h3>Instagram campaigns</h3></div></div><div class="rank-list" data-instagram-campaign-list></div></section>
