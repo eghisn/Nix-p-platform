@@ -26,6 +26,7 @@ const EMPTY_FINANCE_STATE = {
 };
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const APPAREL_TYPES = new Set(["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap"]);
+const APPAREL_SIZE_LABELS = new Set(["S", "M", "L", "XL", "XXL", "One Size"]);
 const PUBLISHING_TYPES = new Set(["Poster", "Book", "Zine", "Magazine"]);
 const OBJECT_TYPES = new Set(["Object"]);
 const FINANCE_ITEM_TYPES = new Set([...RECORD_FORMATS, ...APPAREL_TYPES, ...PUBLISHING_TYPES, ...OBJECT_TYPES]);
@@ -72,6 +73,24 @@ function financeMetadataDetails(item, metadata = {}) {
     return [metadata.publisher ? `Publisher: ${metadata.publisher}` : "", metadata.isbn ? `ISBN / ISSN: ${metadata.isbn}` : "", metadata.pages ? `Pages: ${metadata.pages}` : "", metadata.binding ? `Binding: ${metadata.binding}` : "", metadata.language ? `Language: ${metadata.language}` : ""].filter(Boolean);
   }
   return [];
+}
+
+function normalizeApparelSizes(sizes = []) {
+  const quantities = new Map();
+  for (const size of Array.isArray(sizes) ? sizes : []) {
+    const label = String(size?.label || "").trim();
+    if (!APPAREL_SIZE_LABELS.has(label)) continue;
+    const quantity = Math.max(0, Math.floor(Number(size?.quantity ?? size?.qty ?? 0) || 0));
+    quantities.set(label, quantity);
+  }
+  return [...APPAREL_SIZE_LABELS]
+    .map((label) => ({ label, quantity: quantities.get(label) || 0, soldOut: (quantities.get(label) || 0) <= 0 }))
+    .filter((size) => size.quantity > 0);
+}
+
+function financeApparelSizesForStock(stock = {}, category = "", fallback = []) {
+  if (category !== "Apparel") return [];
+  return Array.isArray(stock.sizes) ? normalizeApparelSizes(stock.sizes) : normalizeApparelSizes(fallback);
 }
 
 export function isFinanceState(value) {
@@ -910,6 +929,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const financeVinylSize = itemSelection.vinylSize || normalizeVinylSize(stockIdentityValue(stock, "vinylSize", row.raw?.vinylSize));
   const financeMetadata = financeItemMetadata(stock, row.raw?.financeMetadata || row.raw || {});
   const financeApparelDetails = financeApparelDetailsForStock(stock, row.raw || {}, category);
+  const financeApparelSizes = financeApparelSizesForStock(stock, category, row.sizes);
   const financePrice = Number(stock.sellingPrice || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
   const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer);
@@ -965,6 +985,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
     format: item || row.format || "",
     display_format: item || row.display_format || "",
     apparel_type: category === "Apparel" ? row.apparel_type || "Accessories" : row.apparel_type || "",
+    sizes: financeApparelSizes,
     condition: String(stock.itemCondition || row.condition || "").trim(),
     price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(row.price || 0),
     open_to_offers: openToOffers,
@@ -991,6 +1012,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
       financeItemType: item,
       financeMetadata,
       ...financeApparelDetails,
+      sizes: financeApparelSizes,
       publishStatus,
       visibility
     }
@@ -1081,7 +1103,8 @@ export function mergeFinanceStockIdentity(existing = {}, financeProduct = {}) {
     originalTags: financeRaw.originalTags === true,
     alterations: String(financeRaw.alterations || "").trim(),
     flaws: String(financeRaw.flaws || "").trim(),
-    fabricCare: String(financeRaw.fabricCare || "").trim()
+    fabricCare: String(financeRaw.fabricCare || "").trim(),
+    sizes: Array.isArray(financeProduct.sizes) ? financeProduct.sizes : []
   };
   return productRowFromExisting(existing, {
     title: financeProduct.title,
@@ -1094,6 +1117,7 @@ export function mergeFinanceStockIdentity(existing = {}, financeProduct = {}) {
     price: financeProduct.price,
     open_to_offers: financeProduct.open_to_offers === true,
     minimum_acceptable_offer: financeProduct.minimum_acceptable_offer,
+    sizes: Array.isArray(financeProduct.sizes) ? financeProduct.sizes : [],
     details: removeFinanceDraftDetail(existing.details, financeProduct.title),
     updated_at: financeProduct.updated_at,
     raw: nextRaw
@@ -1119,6 +1143,7 @@ function financeCatalogIdentitySignature(row = {}) {
     vinylSize: normalizeVinylSize(raw.vinylSize),
     financeItemType: String(raw.financeItemType || "").trim(),
     financeMetadata: raw.financeMetadata || {},
+    sizes: Array.isArray(row.sizes) ? row.sizes : [],
     garmentConditionNote: String(raw.garmentConditionNote || "").trim(),
     apparelMeasurements: raw.apparelMeasurements || {},
     originalTags: raw.originalTags === true,
@@ -1246,6 +1271,7 @@ export async function syncAdminCatalogInventory(products = []) {
       barcode: product.barcode ?? existing.barcode ?? "",
       catalogNumber: product.catalogNumber ?? existing.catalogNumber ?? "",
       vinylSize: normalizeVinylSize(product.vinylSize) || normalizeVinylSize(existing.vinylSize),
+      sizes: product.category === "Apparel" ? normalizeApparelSizes(product.sizes) : [],
       dimensions: product.raw?.financeMetadata?.dimensions ?? existing.dimensions ?? "",
       printDetails: product.raw?.financeMetadata?.printDetails ?? existing.printDetails ?? "",
       publisher: product.raw?.financeMetadata?.publisher ?? existing.publisher ?? "",
@@ -1346,7 +1372,7 @@ export function draftProductFromFinanceStock(stock, quantity) {
     imageCredits: [],
     tags: [],
     details: ["Created from finance inventory. Complete this draft in NIXP Admin before publishing.", ...financeMetadataDetails(item, metadata)],
-    sizes: [],
+    sizes: financeApparelSizesForStock(stock, category),
     description: "",
     qty: quantity,
     // Finance creates an operational inventory draft only. Publication and

@@ -1,17 +1,18 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const migration = await readFile(new URL("../supabase/migrations/20260831184251_atomic_checkout_reservation_and_one_hour_expiry.sql", import.meta.url), "utf8");
+const checkoutMigration = await readFile(new URL("../supabase/migrations/20260831184251_atomic_checkout_reservation_and_one_hour_expiry.sql", import.meta.url), "utf8");
+const settlementMigration = await readFile(new URL("../supabase/migrations/20260921120000_reconcile_apparel_size_inventory.sql", import.meta.url), "utf8");
 const handlers = await readFile(new URL("../api/_lib/commerceHandlers.js", import.meta.url), "utf8");
 const client = await readFile(new URL("../src/main.js", import.meta.url), "utf8");
 const email = await readFile(new URL("../api/_lib/emailNotifications.js", import.meta.url), "utf8");
 
-function functionBody(name) {
-  const start = migration.indexOf(`create or replace function public.${name}(`);
+function functionBody(source, name) {
+  const start = source.indexOf(`create or replace function public.${name}(`);
   assert.notEqual(start, -1, `${name} must be defined by the latest migration.`);
-  const end = migration.indexOf("\n$$;", start);
+  const end = source.indexOf("\n$$;", start);
   assert.notEqual(end, -1, `${name} must have a complete SQL body.`);
-  return migration.slice(start, end);
+  return source.slice(start, end);
 }
 
 function assertStableReservationOrder(body, label) {
@@ -27,10 +28,11 @@ function assertStableReservationOrder(body, label) {
   assert(productUpdate > reservationInsert, `${label} must insert the reservation before publishing computed availability.`);
 }
 
-const checkout = functionBody("create_checkout_order");
-const shippingQuote = functionBody("issue_shipping_quote");
-const expiry = functionBody("release_expired_orders");
-const payment = functionBody("apply_verified_payment");
+const checkout = functionBody(checkoutMigration, "create_checkout_order");
+const shippingQuote = functionBody(checkoutMigration, "issue_shipping_quote");
+const expiry = functionBody(checkoutMigration, "release_expired_orders");
+const payment = functionBody(settlementMigration, "apply_verified_payment");
+const reconciliation = functionBody(settlementMigration, "reconcile_finance_stock_to_catalog");
 
 assertStableReservationOrder(checkout, "Direct checkout");
 assertStableReservationOrder(shippingQuote, "Shipping quote");
@@ -41,6 +43,8 @@ assert.match(shippingQuote, /interval '1 hour'/, "Shipping quotes must use the o
 assert.match(expiry, /payment_expires_at <= now\(\) - interval '5 minutes'/, "Expiry maintenance must retain the callback grace period.");
 assert.match(expiry, /release_order_reservations/, "Expiry must use the Finance-aware release transaction.");
 assert.match(payment, /payment_expires_at \+ interval '5 minutes' <= now\(\)/, "Verified payment must accept only the narrow callback grace period.");
+assert.match(payment, /ordered_by_size/, "Settled payments must debit the matching Finance apparel size.");
+assert.match(reconciliation, /size_label = size_item\.value->>'label'/, "Reconciliation must subtract active reservations from each size.");
 assert.match(handlers, /expiry: \{ unit: "hour", duration: 1 \}/, "Midtrans must expire at the same one-hour customer deadline.");
 assert.doesNotMatch(email, /two-hour payment window/i, "Current customer email copy must not advertise two hours.");
 assert.match(client, /nixp:public-commerce-refreshed/, "The public client must listen for live commerce changes.");

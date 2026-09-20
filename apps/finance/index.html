@@ -1435,6 +1435,7 @@
     const recordItemConditions = ["New-Sealed", "New-Unsealed", "Used Excellent", "Used Good"];
     const apparelItemTypes = ["T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Jacket", "Shirt", "Cap"];
     const apparelItemConditions = ["New With Tags", "New Without Tags", "Tried On / Like New", "Excellent Used", "Very Good Used", "Worn / Vintage", "Damaged / Repair Needed"];
+    const apparelSizeLabels = ["S", "M", "L", "XL", "XXL", "One Size"];
     const listingModes = ["Standard Sale", "Private Collection / Offer Only"];
     const ownerDueCategory = "Owner Personal Use / Reimbursement Due";
     const ownerReimbursementCategory = "Owner Reimbursement";
@@ -1880,6 +1881,7 @@
           </div>
           ${conditionField()}
           ${apparelConditionFields()}
+          ${apparelSizeFields()}
           ${selectField("Listing mode", "listingMode", listingModes, true, "Standard Sale")}
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
           ${field("Artist Name", "artistName", "text", "", false, "Artist / creator")}
@@ -1919,6 +1921,7 @@
           </div>
           ${conditionField()}
           ${apparelConditionFields()}
+          ${apparelSizeFields()}
           ${field("Artist", "artist", "text", "", false, "Artist name")}
           ${field("Title", "title", "text", "", true, "Artwork / item title")}
           ${field("Edition", "edition", "text", "", false, "Pressing / packaging, if known")}
@@ -1997,6 +2000,18 @@
       `;
     }
 
+    function apparelSizeFields() {
+      return `
+        <div class="field full" data-finance-apparel-size-fields hidden>
+          <label>Available size quantities</label>
+          <p class="tiny">Enter stock per size. When any size is set, the total must equal Qty.</p>
+          <div class="fields">
+            ${apparelSizeLabels.map(label => field(label, `apparelSize:${label}`, "number", "0", false, "0", "1")).join("")}
+          </div>
+        </div>
+      `;
+    }
+
     function normalizeVinylSize(value) {
       const size = String(value || "").trim().replace(/[\"\u2033]/g, "");
       return ["12", "10", "7"].includes(size) ? size : "";
@@ -2034,6 +2049,9 @@
       syncConditionField(form, item);
       const isApparel = apparelItemTypes.includes(item);
       form?.querySelectorAll("[data-finance-apparel-fields]").forEach(wrapper => {
+        wrapper.hidden = !isApparel;
+      });
+      form?.querySelectorAll("[data-finance-apparel-size-fields]").forEach(wrapper => {
         wrapper.hidden = !isApparel;
       });
       const isPoster = item === "Poster";
@@ -2243,7 +2261,13 @@
       el.inventoryForm.addEventListener("submit", async event => {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(el.inventoryForm));
-        const purchase = inventoryPayload(data);
+        let purchase;
+        try {
+          purchase = inventoryPayload(data);
+        } catch (error) {
+          alert(error instanceof Error ? error.message : "Check apparel size quantities before saving.");
+          return;
+        }
         const editId = data.editId;
         const previousInventory = state.inventory.map(item => ({ ...item }));
         const previousStock = state.inventoryStock.map(item => ({ ...item }));
@@ -2288,13 +2312,20 @@
           return;
         }
         const previousStock = state.inventoryStock.map(item => ({ ...item }));
+        let nextStock;
+        try {
+          nextStock = stockPayload(data, editId ? state.inventoryStock.find(item => item.id === editId) || {} : { id: uid() });
+        } catch (error) {
+          alert(error instanceof Error ? error.message : "Check apparel size quantities before saving.");
+          return;
+        }
         if (editId) {
           const index = state.inventoryStock.findIndex(item => item.id === editId);
           if (index >= 0) {
-            state.inventoryStock[index] = stockPayload(data, state.inventoryStock[index]);
+            state.inventoryStock[index] = nextStock;
           }
         } else {
-          state.inventoryStock.push(stockPayload(data, { id: uid() }));
+          state.inventoryStock.push(nextStock);
         }
         const saved = await commitState();
         if (!saved) {
@@ -2537,6 +2568,7 @@
           ...item,
           itemType,
           itemCondition,
+          sizes: apparelItemTypes.includes(itemType) ? normalizeApparelSizes(item.sizes) : [],
           listingMode: listingModes.includes(item.listingMode) ? item.listingMode : "Standard Sale",
           minimumAcceptableOffer: wholeAmount(item.minimumAcceptableOffer),
           qty,
@@ -2607,6 +2639,7 @@
         sku: data.sku.trim(),
         artistName: data.artistName.trim(),
         qty,
+        sizes: apparelSizeData(data, itemSelection.item, qty),
         unitCost,
         totalCost,
         cashflowImpact,
@@ -2620,6 +2653,7 @@
 
     function stockPayload(data, existing = {}) {
       const itemSelection = vinylItemSelection(data.item);
+      const qty = numeric(data.qty);
       return recalculateStock({
         id: existing.id || uid(),
         purchaseId: existing.purchaseId,
@@ -2634,7 +2668,8 @@
         catalogNumber: data.catalogNumber.trim(),
         source: data.source,
         acquisitionMonth: data.acquisitionMonth,
-        qty: numeric(data.qty),
+        qty,
+        sizes: apparelSizeData(data, itemSelection.item, qty),
         costBasis: numeric(data.costBasis),
         sellingPrice: numeric(data.sellingPrice),
         soldPrice: numeric(data.soldPrice),
@@ -2713,6 +2748,29 @@
       };
     }
 
+    function normalizeApparelSizes(value) {
+      const values = Array.isArray(value) ? value : [];
+      return apparelSizeLabels.map(label => {
+        const match = values.find(size => String(size?.label || "").trim() === label);
+        const quantity = Math.max(0, Math.floor(Number(match?.quantity ?? match?.qty ?? 0) || 0));
+        return quantity ? { label, quantity, soldOut: false } : null;
+      }).filter(Boolean);
+    }
+
+    function apparelSizeData(data, item, qty) {
+      if (!apparelItemTypes.includes(item)) return [];
+      const sizes = apparelSizeLabels.map(label => {
+        const raw = String(data[`apparelSize:${label}`] ?? "").trim();
+        if (!raw) return null;
+        const quantity = Number(raw);
+        if (!Number.isInteger(quantity) || quantity < 0) throw new Error("Apparel size quantities must be whole numbers.");
+        return quantity ? { label, quantity, soldOut: false } : null;
+      }).filter(Boolean);
+      const total = sizes.reduce((sum, size) => sum + size.quantity, 0);
+      if (total && total !== qty) throw new Error("Apparel size quantities must equal Qty before saving.");
+      return sizes;
+    }
+
     function syncAllInventoryPurchases() {
       state.inventory.forEach(syncStockFromPurchase);
     }
@@ -2742,6 +2800,7 @@
         edition: existing.edition || "",
         barcode: existing.barcode || "",
         catalogNumber: existing.catalogNumber || "",
+        sizes: Array.isArray(purchase.sizes) ? purchase.sizes : existing.sizes || [],
         vinylSize: normalizeVinylSize(purchase.vinylSize) || normalizeVinylSize(existing.vinylSize),
         dimensions: purchase.dimensions ?? existing.dimensions ?? "",
         printDetails: purchase.printDetails ?? existing.printDetails ?? "",
@@ -2785,6 +2844,7 @@
         ...item,
         qty,
         itemCondition: normalizeItemCondition(item.itemCondition, item.item),
+        sizes: apparelItemTypes.includes(vinylItemSelection(item.item).item) ? normalizeApparelSizes(item.sizes) : [],
         vinylSize: normalizeVinylSize(item.vinylSize),
         costBasis,
         sellingPrice: numeric(item.sellingPrice),
@@ -2882,6 +2942,7 @@
       setFormValue(el.inventoryForm, "binding", item.binding || "");
       setFormValue(el.inventoryForm, "language", item.language || "");
       setApparelConditionFormValues(el.inventoryForm, item);
+      setApparelSizeFormValues(el.inventoryForm, item);
       setFormValue(el.inventoryForm, "qty", item.qty);
       setFormValue(el.inventoryForm, "unitCost", item.unitCost);
       setFormValue(el.inventoryForm, "cashflowImpact", inventoryCashflow(item));
@@ -2917,6 +2978,11 @@
       setFormValue(form, "fabricCare", item.fabricCare || "");
     }
 
+    function setApparelSizeFormValues(form, item) {
+      const sizes = new Map(normalizeApparelSizes(item.sizes).map(size => [size.label, size.quantity]));
+      apparelSizeLabels.forEach(label => setFormValue(form, `apparelSize:${label}`, sizes.get(label) || 0));
+    }
+
     function resetInventoryEditMode() {
       setFormValue(el.inventoryForm, "editId", "");
       document.getElementById("inventorySubmitBtn").textContent = "Save purchase";
@@ -2948,6 +3014,7 @@
       setFormValue(el.stockForm, "binding", item.binding || "");
       setFormValue(el.stockForm, "language", item.language || "");
       setApparelConditionFormValues(el.stockForm, item);
+      setApparelSizeFormValues(el.stockForm, item);
       setFormValue(el.stockForm, "source", item.source || "Business Purchase");
       setFormValue(el.stockForm, "acquisitionMonth", item.acquisitionMonth || currentMonth);
       setFormValue(el.stockForm, "qty", item.qty || 1);

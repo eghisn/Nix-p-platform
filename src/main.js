@@ -2514,7 +2514,7 @@ function refreshVisiblePublicCommerce() {
 }
 
 function sizeInventoryFields(product = {}) {
-  const sizeOptions = ["S", "M", "L", "XL", "XXL", "7", "9", "11"];
+  const sizeOptions = ["S", "M", "L", "XL", "XXL", "One Size", "7", "9", "11"];
   const savedSizes = new Map((product.sizes || []).map((size) => [size.label, size]));
   return `
     <fieldset class="admin-size-fieldset">

@@ -136,12 +136,44 @@ assert.equal(bookDraft.format, "Book");
 assert.equal(bookDraft.raw.financeMetadata.publisher, "NIXP Publishing");
 assert.match(bookDraft.details.join(" "), /ISBN \/ ISSN/);
 
+const apparelStock = {
+  id: "stock-apparel",
+  sku: "NXP-2026-APP-0001",
+  item: "T-shirt",
+  itemCondition: "New With Tags",
+  artist: "NIXP",
+  title: "Logo T-shirt",
+  qty: 3,
+  sizes: [
+    { label: "S", quantity: 1 },
+    { label: "M", quantity: 2 }
+  ],
+  sellingPrice: 250000,
+  listingMode: "Standard Sale"
+};
+const apparelDraft = draftProductFromFinanceStock(apparelStock, 3);
+assert.equal(apparelDraft.category, "Apparel");
+assert.deepEqual(apparelDraft.sizes, [
+  { label: "S", quantity: 1, soldOut: false },
+  { label: "M", quantity: 2, soldOut: false }
+]);
+const syncedApparel = productRowFromFinanceStock(apparelDraft, apparelStock, 3);
+assert.deepEqual(syncedApparel.sizes, apparelDraft.sizes);
+const changedApparel = productRowFromFinanceStock(syncedApparel, {
+  ...apparelStock,
+  qty: 4,
+  sizes: [...apparelStock.sizes, { label: "L", quantity: 1 }]
+}, 4);
+assert.equal(hasFinanceCatalogIdentityDrift(syncedApparel, changedApparel), true, "A per-size stock edit must synchronize to the catalog.");
+
 const financeUi = await readFile(new URL("../apps/finance/index.html", import.meta.url), "utf8");
 assert.match(financeUi, /field\("Title", "title", "text", "", true, "Artwork \/ item title"\)/);
 assert.match(financeUi, /one SKU keeps one catalog identity/);
 assert.match(financeUi, /Vinyl Size/, "Finance must collect a structured vinyl size.");
 assert.match(financeUi, /"Poster", "Book", "Zine", "Magazine"/);
 assert.match(financeUi, /data-finance-publication-fields/);
+assert.match(financeUi, /Available size quantities/);
+assert.match(financeUi, /Apparel size quantities must equal Qty before saving/);
 
 const financeSyncSource = await readFile(new URL("../api/_lib/financeState.js", import.meta.url), "utf8");
 assert.match(financeSyncSource, /edit_revision: revision \+ 1/);
@@ -149,6 +181,7 @@ assert.match(financeSyncSource, /editorial_updated_by: "finance-stock"/);
 assert.match(financeSyncSource, /financeVinylSize/);
 assert.match(financeSyncSource, /catalogCategoryForFinanceItem/);
 assert.match(financeSyncSource, /financeItemType/);
+assert.match(financeSyncSource, /financeApparelSizesForStock/);
 assert.match(financeSyncSource, /vinylSize: normalizeVinylSize\(product\.vinylSize\)/, "Admin edits must mirror vinyl size to Finance.");
 
 const adminStoreSource = await readFile(new URL("../api/admin/store.js", import.meta.url), "utf8");
