@@ -837,6 +837,7 @@ function normalizeCommerceOrder(row = {}) {
     email: customer.email || row.email || "",
     whatsapp: customer.whatsapp || row.whatsapp || "",
     channel: row.shipping_method ? `Website / ${row.shipping_method}` : row.channel || "Website",
+    orderClass: row.order_class || row.orderClass || "Customer",
     status: row.order_status || row.orderStatus || row.status || "Draft",
     orderStatus: row.order_status || row.orderStatus || row.status || "Draft",
     paymentStatus: row.payment_status || row.paymentStatus || "Unpaid",

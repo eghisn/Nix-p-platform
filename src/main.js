@@ -1284,16 +1284,20 @@ async function adminDashboardPage() {
   ]);
   const products = await catalogService.listAllProducts();
   const stockUnits = inventory.reduce((sum, item) => sum + numericValue(item.stock), 0);
-  const orderValue = orders.reduce((sum, order) => sum + numericValue(order.total), 0);
+  const isTestOrder = (order) => String(order.orderClass || order.raw?.order_class || "Customer").toLowerCase() === "test";
+  const isPaidOrder = (order) => ["paid", "settlement", "capture", "completed"].includes(String(order.paymentStatus || "").toLowerCase());
+  const paidCustomerOrders = orders.filter((order) => !isTestOrder(order)).filter(isPaidOrder);
+  const testOrders = orders.filter(isTestOrder);
   return `
     ${adminHero("Admin Dashboard", "Operations snapshot for catalog, stock, orders, requests, and shop health.")}
     <section class="section metric-grid">
       ${metric("Products", products.length)}
       ${metric("Drafts", products.filter((product) => product.publishStatus !== "Published").length)}
       ${metric("Stock units", stockUnits)}
-      ${metric("Open orders", orders.filter((order) => order.status !== "Closed").length)}
+      ${metric("Customer paid orders", paidCustomerOrders.length)}
       ${metric("Requests", requests.length)}
-      ${metric("Order value", money.format(orderValue))}
+      ${metric("Customer website revenue", money.format(paidCustomerOrders.reduce((sum, order) => sum + numericValue(order.total), 0)))}
+      ${metric("Test orders excluded", testOrders.length)}
     </section>
   `;
 }
@@ -1960,6 +1964,7 @@ async function ordersPage({ embedded = false } = {}) {
       order.paymentStatus,
       order.fulfillmentStatus,
       order.shippingStatus,
+      order.orderClass,
       order.date,
       order.total,
       orderItemSummary(order)
@@ -1992,13 +1997,15 @@ async function ordersPage({ embedded = false } = {}) {
         ["date", "Date"],
         ["customer", "Customer"],
         ["status", "Order status"],
+        ["orderClass", "Record class"],
         ["total", "Total"],
         ["id", "Order ID"]
       ])}
       ${table(
-        ["Order", "Customer", "Items", "Payment", "Fulfillment", "Shipping", "Action required", "Total"],
+        ["Order", "Class", "Customer", "Items", "Payment", "Fulfillment", "Shipping", "Action required", "Total"],
         visibleOrders.map((order) => [
           escapeHtml(order.reference || order.id),
+          statusBadge(order.orderClass || "Customer"),
           `${escapeHtml(order.customer || "-")}<br><small>${escapeHtml(order.email || order.whatsapp || order.channel || "")}</small>`,
           `${escapeHtml(orderItemSummary(order))}${orderPackageBreakdownMarkup(order)}`,
           statusBadge(order.paymentStatus || order.status || "-"),

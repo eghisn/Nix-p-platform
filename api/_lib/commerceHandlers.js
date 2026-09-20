@@ -381,7 +381,7 @@ export async function handleAdminOrders(req, res) {
       }
       const orderId = url.searchParams.get("orderId");
       if (orderId) { const order = await getOrderRecord(orderId, { includeEvents: true }); return order ? json(res, 200, { ok: true, order }) : json(res, 404, { ok: false, error: "Order not found." }); }
-      const orders = await supabaseFetch("order_records?select=id,public_reference,customer,metadata,order_status,payment_status,fulfillment_status,shipping_status,shipping_method,courier,tracking_number,merchandise_total,shipping_total,grand_total,payment_expires_at,created_at,updated_at&order=created_at.desc", { service: true });
+      const orders = await supabaseFetch("order_records?select=id,public_reference,customer,metadata,order_class,order_status,payment_status,fulfillment_status,shipping_status,shipping_method,courier,tracking_number,merchandise_total,shipping_total,grand_total,payment_expires_at,created_at,updated_at&order=created_at.desc", { service: true });
       return json(res, 200, { ok: true, orders: (orders || []).map(adminOrderListRow) });
     }
     if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });

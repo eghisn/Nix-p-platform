@@ -1101,7 +1101,7 @@
               </div>
               <div class="ledger-search">
                 <label for="salesSearch">Search daily sales</label>
-                <input id="salesSearch" type="search" placeholder="Invoice, SKU, category, payment">
+                <input id="salesSearch" type="search" placeholder="Invoice, SKU, channel, class, payment">
               </div>
               <div class="table-wrap">
                 <table>
@@ -1110,6 +1110,8 @@
                       <th data-sort-section="sales" data-sort-key="date">Date</th>
                       <th data-sort-section="sales" data-sort-key="invoice">Invoice</th>
                       <th data-sort-section="sales" data-sort-key="category">Category</th>
+                      <th data-sort-section="sales" data-sort-key="salesChannel">Channel</th>
+                      <th data-sort-section="sales" data-sort-key="orderClass">Record</th>
                       <th data-sort-section="sales" data-sort-key="sku">SKU</th>
                       <th class="money" data-sort-section="sales" data-sort-key="qty">Qty</th>
                       <th class="money" data-sort-section="sales" data-sort-key="revenue">Revenue</th>
@@ -1472,6 +1474,8 @@
         date: { type: "date", value: item => item.date },
         invoice: { type: "text", value: item => item.invoice },
         category: { type: "text", value: item => item.category },
+        salesChannel: { type: "text", value: item => item.salesChannel },
+        orderClass: { type: "text", value: item => item.orderClass },
         sku: { type: "text", value: item => item.sku },
         qty: { type: "number", value: item => item.qty },
         revenue: { type: "number", value: item => item.revenue },
@@ -1814,6 +1818,8 @@
           ${field("Date", "date", "date", todayISO, true)}
           ${field("Invoice", "invoice", "text", "", true, "INV-001")}
           ${selectField("Category", "category", ["Retail", "Wholesale", "Marketplace", "Service", "Other"], true, "Retail")}
+          ${selectField("Sales channel", "salesChannel", ["Website", "Instagram", "WhatsApp", "Marketplace", "Offline", "Other"], true, "Other")}
+          ${selectField("Record class", "orderClass", ["Customer", "Test"], true, "Customer")}
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
           ${field("Qty", "qty", "number", "1", true, "", "0.01")}
           ${field("Revenue", "revenue", "number", "", true, "0", "1")}
@@ -2505,7 +2511,17 @@
         const revenue = numeric(item.revenue);
         const discount = numeric(item.discount);
         const cogs = numeric(item.cogs);
-        return { ...item, qty: numeric(item.qty), revenue, discount, discountContext: item.discountContext || "", cogs, grossProfit: revenue - (revenue * discount / 100) - cogs };
+        return {
+          ...item,
+          qty: numeric(item.qty),
+          revenue,
+          discount,
+          discountContext: item.discountContext || "",
+          cogs,
+          orderClass: saleOrderClass(item),
+          salesChannel: saleChannel(item),
+          grossProfit: revenue - (revenue * discount / 100) - cogs
+        };
       });
 
       state.expenses = state.expenses.map(item => ({ ...item, amount: numeric(item.amount) }));
@@ -2545,6 +2561,8 @@
         date: data.date,
         invoice: data.invoice.trim(),
         category: data.category,
+        salesChannel: saleChannel({ salesChannel: data.salesChannel }),
+        orderClass: saleOrderClass({ orderClass: data.orderClass }),
         sku: data.sku.trim(),
         qty: numeric(data.qty),
         revenue,
@@ -2793,6 +2811,8 @@
       setFormValue(el.salesForm, "date", item.date);
       setFormValue(el.salesForm, "invoice", item.invoice);
       setFormValue(el.salesForm, "category", item.category || "Retail");
+      setFormValue(el.salesForm, "salesChannel", saleChannel(item));
+      setFormValue(el.salesForm, "orderClass", saleOrderClass(item));
       setFormValue(el.salesForm, "sku", item.sku);
       setFormValue(el.salesForm, "qty", item.qty);
       setFormValue(el.salesForm, "revenue", item.revenue);
@@ -3066,7 +3086,7 @@
       const search = el.dashboardSearch.value.trim().toLowerCase();
 
       const generalYear = state.general.filter(item => yearOf(item.date) === year);
-      const salesYear = state.sales.filter(item => yearOf(item.date) === year);
+      const salesYear = state.sales.filter(item => yearOf(item.date) === year && isRecognizedCustomerSale(item));
       const expensesYear = state.expenses.filter(item => yearOf(item.date) === year);
       const inventoryYear = state.inventory.filter(item => yearOf(item.date) === year && !isRawMaterialPurchase(item));
 
@@ -3109,10 +3129,10 @@
           <td class="row-actions">${editButton(item.section, item.id)} ${deleteButton(item.section, item.id)}</td>
         </tr>
       `).join("") : emptyRow(12, "No cash flow entries yet.");
-      const totalAmount = rows.reduce((total, item) => total + numeric(item.amount), 0);
+      const totalAmount = rows.filter(item => item.recognized !== false).reduce((total, item) => total + numeric(item.amount), 0);
       el.generalTotals.innerHTML = `
         <tr>
-          <td colspan="7">Total</td>
+          <td colspan="7">Customer total</td>
           <td class="money">${rupiah(totalAmount)}</td>
           <td colspan="4"></td>
         </tr>
@@ -3125,6 +3145,8 @@
         item.date,
         item.invoice,
         item.category,
+        item.salesChannel,
+        item.orderClass,
         item.sku,
         item.qty,
         item.revenue,
@@ -3133,12 +3155,16 @@
         ...(item.missingCogsSkus || []),
         item.paymentMethod
       ]));
-      document.getElementById("salesCount").textContent = rows.length + " entries";
+      const testCount = rows.filter(isTestSale).length;
+      const customerCount = rows.length - testCount;
+      document.getElementById("salesCount").textContent = `${customerCount} customer${customerCount === 1 ? "" : "s"}, ${testCount} test`;
       el.salesBody.innerHTML = rows.length ? rows.map(item => `
         <tr>
           <td>${escapeHTML(item.date)}</td>
           <td>${escapeHTML(item.invoice)}</td>
           <td>${escapeHTML(item.category)}</td>
+          <td>${escapeHTML(saleChannel(item))}</td>
+          <td>${escapeHTML(saleOrderClass(item))}</td>
           <td>${escapeHTML(item.sku)}</td>
           <td class="money">${item.qty}</td>
           <td class="money">${rupiah(item.revenue)}</td>
@@ -3149,8 +3175,8 @@
           <td>${escapeHTML(item.paymentMethod)}</td>
           <td class="row-actions">${editButton("sales", item.id)} ${deleteButton("sales", item.id)}</td>
         </tr>
-      `).join("") : emptyRow(12, "No sales entries yet.");
-      const totals = rows.reduce((total, item) => ({
+      `).join("") : emptyRow(14, "No sales entries yet.");
+      const totals = rows.filter(item => !isTestSale(item)).reduce((total, item) => ({
         qty: total.qty + numeric(item.qty),
         revenue: total.revenue + numeric(item.revenue),
         cogs: total.cogs + numeric(item.cogs),
@@ -3158,7 +3184,7 @@
       }), { qty: 0, revenue: 0, cogs: 0, grossProfit: 0 });
       el.salesTotals.innerHTML = `
         <tr>
-          <td colspan="4">Total</td>
+          <td colspan="6">Customer total</td>
           <td class="money">${totals.qty}</td>
           <td class="money">${rupiah(totals.revenue)}</td>
           <td></td>
@@ -3361,7 +3387,7 @@
 
     function renderPnl() {
       const month = el.pnlMonth.value || currentMonth;
-      const sales = state.sales.filter(item => monthOf(item.date) === month);
+      const sales = state.sales.filter(item => monthOf(item.date) === month && isRecognizedCustomerSale(item));
       const expenses = state.expenses.filter(item => monthOf(item.date) === month);
       const inventory = state.inventory.filter(item => monthOf(item.date) === month && !isRawMaterialPurchase(item));
       const revenue = sales.reduce((total, item) => total + numeric(item.revenue), 0);
@@ -3537,7 +3563,7 @@
       }
 
       const soldBySku = (Array.isArray(state.sales) ? state.sales : [])
-        .filter(item => monthOf(item.date) <= month && isRecognizedSale(item))
+        .filter(item => monthOf(item.date) <= month && isRecognizedCustomerSale(item))
         .reduce((result, item) => {
           const key = String(item.sku || "").trim().toLowerCase();
           if (key) result.set(key, (result.get(key) || 0) + Math.max(0, numeric(item.qty)));
@@ -3583,7 +3609,7 @@
       const taxRows = outcomeRows.filter(item => item.category === "Tax");
       const salesInPeriod = state.sales.filter(item => {
         const saleMonth = monthOf(item.date);
-        return saleMonth >= startMonth && saleMonth <= month && isRecognizedSale(item);
+        return saleMonth >= startMonth && saleMonth <= month && isRecognizedCustomerSale(item);
       });
       const recognizedSaleIds = new Set(salesInPeriod
         .filter(item => numeric(item.revenue) > 0)
@@ -3820,14 +3846,32 @@
       `).join("");
     }
 
+    function saleOrderClass(item) {
+      return String(item?.orderClass || item?.order_class || "Customer").trim().toLowerCase() === "test" ? "Test" : "Customer";
+    }
+
+    function saleChannel(item) {
+      const channel = String(item?.salesChannel || item?.sales_channel || "").trim();
+      if (["Website", "Instagram", "WhatsApp", "Marketplace", "Offline", "Other"].includes(channel)) return channel;
+      return String(item?.invoice || "").trim().toLowerCase().startsWith("order-") ? "Website" : "Other";
+    }
+
+    function isTestSale(item) {
+      return saleOrderClass(item) === "Test";
+    }
+
     function isRecognizedSale(item) {
       const paymentStatus = String(item?.paymentStatus || item?.payment_status || item?.status || "").trim().toLowerCase();
       if (paymentStatus) return ["paid", "completed", "processing", "packed", "shipped", "fulfilled", "delivered"].includes(paymentStatus);
       return String(item?.paymentMethod || "").trim().toLowerCase() !== "pending";
     }
 
+    function isRecognizedCustomerSale(item) {
+      return !isTestSale(item) && isRecognizedSale(item);
+    }
+
     function saleHasMissingCogs(item) {
-      if (!isRecognizedSale(item)) return false;
+      if (!isRecognizedCustomerSale(item)) return false;
       const missingSkus = Array.isArray(item?.missingCogsSkus) ? item.missingCogsSkus.filter(Boolean) : [];
       const status = String(item?.cogsStatus || "").trim().toLowerCase();
       if (missingSkus.length || status.includes("missing")) return true;
@@ -3857,7 +3901,7 @@
           section: "sales",
           id: item.id,
           date: item.date,
-          source: "Daily Sales",
+          source: `Daily Sales / ${saleChannel(item)}`,
           reference: item.invoice,
           type: "Income",
           category: "Sales",
@@ -3865,8 +3909,9 @@
           qty: item.qty,
           amount: item.revenue,
           paymentMethod: item.paymentMethod,
-          recognized: isRecognizedSale(item),
+          recognized: isRecognizedCustomerSale(item),
           notes: [
+            isTestSale(item) ? "Test record / excluded from reporting" : "Customer record",
             "Revenue",
             numeric(item.discount) ? `Discount: ${formatPercent(item.discount)}` : "",
             item.discountContext ? `Context: ${item.discountContext}` : "",
@@ -3878,7 +3923,7 @@
             section: "sales",
             id: item.id,
             date: item.date,
-            source: "Daily Sales",
+            source: `Daily Sales / ${saleChannel(item)}`,
             reference: item.invoice,
             type: "Outcome",
             category: "Sales COGS",
@@ -3886,8 +3931,8 @@
             qty: item.qty,
             amount: item.cogs,
             paymentMethod: item.paymentMethod,
-            recognized: isRecognizedSale(item),
-            notes: "COGS from sales entry"
+            recognized: isRecognizedCustomerSale(item),
+            notes: isTestSale(item) ? "Test record / excluded from reporting" : "COGS from sales entry"
           });
         }
         return rows;
@@ -3932,7 +3977,7 @@
       const rows = [
         ["Section", "Date/Month", "Invoice/Supplier/Vendor", "Type", "Category/Source", "Item", "Item Condition", "Artist Name", "Title", "Qty", "Income", "Outcome", "Discount (%)", "Discount Context", "Cashflow Impact", "Cost Basis", "Selling Price", "Sold Price", "Gross Profit", "Margin (%)", "Fixed/Variable", "Payment Method", "Money Sent To", "Notes"],
         ...[...state.general].sort(byDateAsc).map(item => ["General", item.date, item.invoice, item.type, item.category, item.sku, "", "", "", item.qty, item.type === "Income" ? item.amount : "", item.type === "Outcome" ? item.amount : "", "", "", "", "", "", "", "", "", "", item.paymentMethod, item.moneySentTo || "", item.notes]),
-        ...[...state.sales].sort(byDateAsc).map(item => ["Sales", item.date, item.invoice, "Income", item.category, item.sku, "", "", "", item.qty, item.revenue, item.cogs, item.discount, item.discountContext, "", "", "", "", item.grossProfit, "", "", item.paymentMethod, "", "Gross profit: " + item.grossProfit]),
+        ...[...state.sales].sort(byDateAsc).map(item => ["Sales", item.date, item.invoice, "Income", item.category, item.sku, "", "", "", item.qty, item.revenue, item.cogs, item.discount, item.discountContext, "", "", "", "", item.grossProfit, "", "", item.paymentMethod, "", `Channel: ${saleChannel(item)} / Record: ${saleOrderClass(item)} / Gross profit: ${item.grossProfit}`]),
         ...[...state.expenses].sort(byDateAsc).map(item => ["Expenses", item.date, item.vendor, "Outcome", item.category, item.expense, "", "", "", "", "", item.amount, "", "", "", "", "", "", "", "", item.costType, item.paymentMethod, "", item.notes]),
         ...[...state.inventory].sort(byDateAsc).map(item => ["Inventory Purchase", item.date, item.supplier, "Outcome", item.source || "Business Purchase", item.itemType || "Vinyl", item.itemCondition || "New-Sealed", item.artistName || "", "SKU: " + item.sku, item.qty, "", item.totalCost, "", "", inventoryCashflow(item), "", "", "", "", "", "", item.paymentMethod, "", "Unit cost: " + item.unitCost]),
         ...[...state.inventoryStock].sort((a, b) => String(a.acquisitionMonth).localeCompare(String(b.acquisitionMonth))).map(item => ["Inventory Stock", item.acquisitionMonth, "", "", item.source, item.item, item.itemCondition || "New-Sealed", item.artist, item.title, item.qty, "", "", "", "", "", item.costBasis, item.sellingPrice, item.soldPrice, item.grossProfit, formatMargin(item.margin), "", "", "", "SKU: " + item.sku]),

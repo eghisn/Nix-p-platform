@@ -39,6 +39,11 @@ function extractFunction(name) {
 }
 
 const reportSource = [
+  extractFunction("saleOrderClass"),
+  extractFunction("isTestSale"),
+  extractFunction("isRecognizedSale"),
+  extractFunction("isRecognizedCustomerSale"),
+  extractFunction("saleHasMissingCogs"),
   extractFunction("reportTarget"),
   extractFunction("inventoryValueAtCost"),
   extractFunction("reportCalculation")
@@ -50,9 +55,6 @@ const numeric = value => {
 };
 const rupiah = value => `Rp ${numeric(value)}`;
 const formatMonthLabel = month => month;
-const isRecognizedSale = item => item.recognized !== false;
-const saleHasMissingCogs = item => isRecognizedSale(item) && numeric(item.revenue) > 0 && numeric(item.qty) > 0 && numeric(item.cogs) <= 0;
-
 function getReport(state, rows, month = "2026-08") {
   const buildDashboardRows = () => rows;
   const factory = new Function(
@@ -61,8 +63,6 @@ function getReport(state, rows, month = "2026-08") {
     "ownerReimbursementCategory",
     "ownerDueCategory",
     "buildDashboardRows",
-    "isRecognizedSale",
-    "saleHasMissingCogs",
     "monthOf",
     "numeric",
     "rupiah",
@@ -76,8 +76,6 @@ function getReport(state, rows, month = "2026-08") {
     "Owner Reimbursement",
     "Owner Due",
     buildDashboardRows,
-    isRecognizedSale,
-    saleHasMissingCogs,
     date => String(date || "").slice(0, 7),
     numeric,
     rupiah,
@@ -128,6 +126,17 @@ const saleRows = [
 const sale = getReport(saleState, saleRows);
 if (sale.cogs !== 100000 || sale.grossProfit !== 100000 || sale.unitsSold !== 2) {
   throw new Error(`Recognized-sale regression failed: ${JSON.stringify({ cogs: sale.cogs, grossProfit: sale.grossProfit, unitsSold: sale.unitsSold })}`);
+}
+
+const testSale = getReport(
+  { sales: [{ id: "sale-test", date: "2026-08-08", qty: 1, revenue: 5000, cogs: 1000, paymentStatus: "Paid", orderClass: "Test" }], inventoryStock: [], openingCash: null, targets: {} },
+  [
+    { date: "2026-08-08", type: "Income", category: "Sales", amount: 5000, id: "sale-test", recognized: false },
+    { date: "2026-08-08", type: "Outcome", category: "Sales COGS", amount: 1000, id: "sale-test", recognized: false }
+  ]
+);
+if (testSale.salesRevenue !== 0 || testSale.cogs !== 0 || testSale.unitsSold !== 0) {
+  throw new Error(`Test-sale exclusion regression failed: ${JSON.stringify({ salesRevenue: testSale.salesRevenue, cogs: testSale.cogs, unitsSold: testSale.unitsSold })}`);
 }
 
 const november = getReport(
