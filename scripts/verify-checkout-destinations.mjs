@@ -24,5 +24,8 @@ assert.match(source, /const destinationCode = checkoutCity.value/);
 assert.match(source, /const syncCheckoutProvince = \(\) => \{\s*\+\+checkoutQuoteRequest/);
 assert.match(source, /requestId !== checkoutQuoteRequest \|\| !checkoutForm.isConnected/);
 assert.match(source, /input.name && input.name !== "shippingAddress2"/);
+assert.match(source, /class="admin-form-span checkout-location-search"/, "City search should span the address grid for a stable layout.");
+assert.match(source, /data-checkout-manual-contact/, "Manual GoSend must offer a direct contact path.");
+assert.match(source, /checkoutManualContact.hidden = !manual/, "The GoSend contact controls must only show for GoSend Manual.");
 assert(!source.includes("cityTypeahead"));
 console.log("Checkout destination search, quote invalidation, safe errors, and test package verified.");

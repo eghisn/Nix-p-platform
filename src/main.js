@@ -977,23 +977,33 @@ async function cartPage() {
                     <label data-checkout-address-field>Recipient phone<input name="shippingPhone" required autocomplete="shipping tel" inputmode="tel" /></label>
                     <label class="admin-form-span" data-checkout-address-field>Address<input name="shippingAddress1" required autocomplete="shipping address-line1" /></label>
                     <label class="admin-form-span" data-checkout-address-field>Address details<input name="shippingAddress2" autocomplete="shipping address-line2" placeholder="Building, unit, or landmark (optional)" /></label>
-                    <label data-checkout-address-field>District<input name="shippingDistrict" required autocomplete="shipping address-level3" /></label>
-                    <label data-checkout-address-field>Search city / province
+                    <label class="admin-form-span checkout-location-search" data-checkout-address-field>Search city / province
                       <input type="search" data-checkout-city-search autocomplete="off" placeholder="Jakarta, Bandung, Bali, Yogya..." aria-label="Search city / province" aria-controls="checkout-city" />
                       <span class="checkout-city-results" data-checkout-city-results aria-live="polite"></span>
                     </label>
-                    <label data-checkout-address-field>City / regency
+                    <label class="checkout-city-field" data-checkout-address-field>City / regency
                       <select id="checkout-city" name="shippingCity" required autocomplete="shipping address-level2" data-checkout-city>
                         <option value="" selected disabled>Select city or regency</option>
                         ${checkoutCityOptions()}
                       </select>
                     </label>
-                    <label data-checkout-address-field>Province<input name="shippingProvince" required readonly autocomplete="shipping address-level1" data-checkout-province /></label>
-                    <label data-checkout-address-field>Postal code<input name="shippingPostalCode" required autocomplete="shipping postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" /></label>
-                    <label data-checkout-address-field>Country<input name="shippingCountry" value="Indonesia" readonly /></label>
+                    <label class="checkout-province-field" data-checkout-address-field>Province<input name="shippingProvince" required readonly autocomplete="shipping address-level1" data-checkout-province /></label>
+                    <label class="checkout-district-field" data-checkout-address-field>District<input name="shippingDistrict" required autocomplete="shipping address-level3" /></label>
+                    <label class="checkout-postal-code-field" data-checkout-address-field>Postal code<input name="shippingPostalCode" required autocomplete="shipping postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" /></label>
+                    <label class="admin-form-span checkout-country-field" data-checkout-address-field>Country<input name="shippingCountry" value="Indonesia" readonly /></label>
                     <label class="admin-form-span" data-checkout-service-field hidden>Shipping service
                       <select name="shippingOption" data-checkout-shipping-option></select>
                     </label>
+                    <div class="admin-form-span checkout-manual-contact" data-checkout-manual-contact hidden>
+                      <div>
+                        <strong>Arrange GoSend directly</strong>
+                        <span>For eligible Jakarta deliveries, confirm the final delivery cost with NIXP before payment.</span>
+                      </div>
+                      <div class="checkout-manual-contact-actions">
+                        <a class="button button-dark" href="https://wa.me/6282122876289?text=Hello%20NIXP%2C%20I%20would%20like%20to%20arrange%20a%20GoSend%20delivery." target="_blank" rel="noreferrer">WhatsApp NIXP</a>
+                        <a class="button" href="mailto:contact@nix-p.com?subject=GoSend%20delivery%20enquiry">Email NIXP</a>
+                      </div>
+                    </div>
                     <a class="button checkout-international-order" href="/international-order" data-link>Ordering from outside Indonesia?</a>
                   </div>
                   <div class="checkout-shipping-quote" data-checkout-shipping-quote aria-live="polite">
@@ -3230,6 +3240,7 @@ function bindEvents() {
   const checkoutProvince = document.querySelector("[data-checkout-province]");
   const checkoutService = document.querySelector("[data-checkout-shipping-option]");
   const checkoutServiceField = document.querySelector("[data-checkout-service-field]");
+  const checkoutManualContact = document.querySelector("[data-checkout-manual-contact]");
   const checkoutQuote = document.querySelector("[data-checkout-shipping-quote]");
   const checkoutDeliveryTotal = document.querySelector("[data-checkout-delivery-total]");
   const checkoutGrandTotal = document.querySelector("[data-checkout-grand-total]");
@@ -3395,12 +3406,13 @@ function bindEvents() {
       });
     });
     if (checkoutServiceField) checkoutServiceField.hidden = shippingMethod?.value !== "JNE" || !state.checkoutShippingQuote?.options?.length;
+    if (checkoutManualContact) checkoutManualContact.hidden = !manual;
     if (pickup) {
       cartSummary().then(({ total }) => setCheckoutTotals(money.format(0), money.format(total)));
       showCheckoutQuote("Store pickup does not add a delivery charge.", "success");
     } else if (manual) {
       cartSummary().then(({ total }) => setCheckoutTotals("Manual quote", `${money.format(total)} + delivery`));
-      showCheckoutQuote("GoSend is confirmed manually for eligible Jakarta addresses before payment.");
+      showCheckoutQuote("GoSend delivery is confirmed manually for eligible Jakarta addresses before payment.", "manual");
     } else {
       if (!checkoutCity?.value) showCheckoutQuote("Enter your delivery address to view shipping options.");
       scheduleCheckoutShippingQuote();

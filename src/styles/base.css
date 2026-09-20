@@ -2459,12 +2459,68 @@ body:has(.cart-view) .site-footer {
   text-transform: none;
 }
 
+.checkout-location-search,
+.checkout-country-field {
+  grid-column: 1 / -1;
+}
+
+.checkout-manual-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px 24px;
+  align-items: end;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+}
+
+.checkout-manual-contact > div:first-child {
+  display: grid;
+  gap: 5px;
+}
+
+.checkout-manual-contact strong {
+  font-size: 10px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.checkout-manual-contact span {
+  max-width: 54ch;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.checkout-manual-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.checkout-manual-contact .button {
+  min-height: 40px;
+  padding: 9px 14px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
 @media (max-width: 960px) {
   .checkout-form input,
   .checkout-form select,
   .checkout-form textarea {
     min-height: 44px;
     font-size: 16px;
+  }
+
+  .checkout-manual-contact {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .checkout-manual-contact-actions {
+    justify-content: flex-start;
   }
 }
 
