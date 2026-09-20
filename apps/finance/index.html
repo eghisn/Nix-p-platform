@@ -4093,11 +4093,23 @@
 
     async function exportMonthlyReportJPEG(data, filename) {
       if (document.fonts?.ready) await document.fonts.ready;
+      const logo = document.querySelector(".brand-mark");
+      if (logo?.decode && !logo.complete) await logo.decode();
       const canvas = document.createElement("canvas");
       const expenses = Array.isArray(data.operatingExpenseBreakdown) ? data.operatingExpenseBreakdown : [];
       const ytd = data.ytd || data;
       const expenseRows = Math.max(1, expenses.length);
-      const statementTop = 766;
+      const reportWarnings = [];
+      if (data.missingCogsUnits > 0) reportWarnings.push(`MISSING COGS: ${data.missingCogsUnits} SOLD UNIT${data.missingCogsUnits === 1 ? "" : "S"}`);
+      if (data.orphanedCogsAmount > 0) reportWarnings.push(`UNMATCHED COGS EXCLUDED: ${rupiah(data.orphanedCogsAmount)}`);
+      if (data.missingInventoryUnits > 0) reportWarnings.push(`INVENTORY COST COVERAGE: ${reportPercent(data.inventoryCostCoverage)}`);
+      if (data.endingCash === null) reportWarnings.push("ENDING CASH: OPENING BALANCE REQUIRED");
+      const executiveSummaryY = 282;
+      const lastSummaryRowY = executiveSummaryY + 102 + 6 * 42;
+      const warningHeadingY = lastSummaryRowY + 64;
+      const warningStartY = warningHeadingY + 32;
+      const executiveSummaryBottom = reportWarnings.length ? warningStartY + reportWarnings.length * 28 + 20 : lastSummaryRowY + 48;
+      const statementTop = executiveSummaryBottom + 66;
       const statementBottom = estimateReportStatementBottom(data, expenses.length, statementTop);
       canvas.width = 1800;
       canvas.height = Math.max(1540, 1420 + expenseRows * 48, statementBottom + 170);
@@ -4111,8 +4123,6 @@
       const rightX = 1034;
       const headerRuleY = 246;
       const footerRuleY = canvas.height - 94;
-      const executiveSummaryY = 282;
-      const executiveSummaryBottom = 700;
       context.fillStyle = paper;
       context.fillRect(0, 0, canvas.width, canvas.height);
       context.strokeStyle = ink;
@@ -4129,9 +4139,12 @@
       context.textAlign = "right";
       context.fillText(data.monthLabel.toUpperCase(), right, 88);
       context.textAlign = "left";
-      context.font = "700 76px 'Founders Grotesk Web', Arial";
-      context.fillText("NIXP", left, 158);
-      context.fillText("MONTHLY INVESTOR REPORT", left, 218);
+      if (logo?.naturalWidth) {
+        const logoWidth = 230;
+        context.drawImage(logo, left, 106, logoWidth, logoWidth * logo.naturalHeight / logo.naturalWidth);
+      }
+      context.font = "700 64px 'Founders Grotesk Web', Arial";
+      context.fillText("MONTHLY INVESTOR REPORT", left + 290, 190);
 
       context.font = "600 18px 'Founders Grotesk Web', Arial";
       context.fillText("EXECUTIVE SUMMARY", left, executiveSummaryY);
@@ -4159,22 +4172,14 @@
         ["Inventory Value at Cost", data.inventoryValueAtCost, null, ytd.inventoryValueAtCost, "money"]
       ];
       summaryRows.forEach((row, index) => drawCanvasSummaryRow(context, row, summaryX, summaryRight, summaryColumns, executiveSummaryY + 102 + index * 42, ink));
-      context.font = "600 14px 'Founders Grotesk Web', Arial";
-      context.fillStyle = ink;
-      let summaryWarningY = executiveSummaryBottom - 34;
-      if (data.missingCogsUnits > 0) {
-        context.fillText(`MISSING COGS: ${data.missingCogsUnits} SOLD UNIT${data.missingCogsUnits === 1 ? "" : "S"}`, summaryX, summaryWarningY);
-        summaryWarningY -= 20;
+      if (reportWarnings.length) {
+        drawCanvasRule(context, summaryX, summaryRight, lastSummaryRowY + 32);
+        context.font = "600 14px 'Founders Grotesk Web', Arial";
+        context.fillStyle = ink;
+        context.fillText("REPORT NOTES", summaryX, warningHeadingY);
+        context.font = "500 15px 'Founders Grotesk Web', Arial";
+        reportWarnings.forEach((warning, index) => context.fillText(warning, summaryX, warningStartY + index * 28));
       }
-      if (data.orphanedCogsAmount > 0) {
-        context.fillText(`UNMATCHED COGS EXCLUDED: ${rupiah(data.orphanedCogsAmount)}`, summaryX, summaryWarningY);
-        summaryWarningY -= 20;
-      }
-      if (data.missingInventoryUnits > 0) {
-        context.fillText(`INVENTORY COST COVERAGE: ${reportPercent(data.inventoryCostCoverage)}`, summaryX, summaryWarningY);
-        summaryWarningY -= 20;
-      }
-      if (data.endingCash === null) context.fillText("ENDING CASH: OPENING BALANCE REQUIRED", summaryX, summaryWarningY);
 
       let y = statementTop;
       context.font = "600 18px 'Founders Grotesk Web', Arial";
@@ -4220,30 +4225,9 @@
       drawCanvasFact(context, "NET CASH MOVEMENT", reportMoney(data.netCashMovement), rightX + 330, statementTop + 122);
       drawCanvasFact(context, "OPERATING PROFIT", reportMoney(data.operatingProfit), rightX + 30, statementTop + 236);
       drawCanvasFact(context, "NET INCOME", reportMoney(data.netIncome), rightX + 330, statementTop + 236);
-      let summaryPanelBottom = statementTop + 330;
-      if (data.missingCogsUnits > 0 || data.orphanedCogsAmount > 0 || data.missingInventoryUnits > 0 || data.endingCash === null) {
-        drawCanvasRule(context, rightX + 30, right - 30, summaryPanelBottom);
-        context.font = "600 15px 'Founders Grotesk Web', Arial";
-        let warningY = summaryPanelBottom + 34;
-        if (data.missingCogsUnits > 0) {
-          context.fillText(`MISSING COGS: ${data.missingCogsUnits} SOLD UNIT${data.missingCogsUnits === 1 ? "" : "S"}`, rightX + 30, warningY);
-          warningY += 28;
-        }
-        if (data.orphanedCogsAmount > 0) {
-          context.fillText(`UNMATCHED COGS EXCLUDED: ${rupiah(data.orphanedCogsAmount)}`, rightX + 30, warningY);
-          warningY += 28;
-        }
-        if (data.missingInventoryUnits > 0) {
-          context.fillText(`INVENTORY COST COVERAGE: ${reportPercent(data.inventoryCostCoverage)}`, rightX + 30, warningY);
-          warningY += 28;
-        }
-        if (data.endingCash === null) context.fillText("ENDING CASH: OPENING BALANCE REQUIRED", rightX + 30, warningY);
-        summaryPanelBottom = warningY + 24;
-      }
-      summaryPanelBottom = Math.min(footerRuleY - 28, summaryPanelBottom);
       context.strokeStyle = ink;
       context.lineWidth = 1;
-      context.strokeRect(rightX, statementTop, right - rightX, summaryPanelBottom - statementTop);
+      context.strokeRect(rightX, statementTop, right - rightX, 330);
 
       drawCanvasRule(context, left, right, footerRuleY);
       context.font = "500 16px 'Founders Grotesk Web', Arial";
