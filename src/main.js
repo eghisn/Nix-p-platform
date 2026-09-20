@@ -880,7 +880,7 @@ async function requestItemPage() {
 
 function aboutPage() {
   return `
-    <section class="section editorial-page">
+    <section class="section editorial-page about-page">
       <div class="editorial-shell">
         <h1>About</h1>
         <div class="editorial-copy">

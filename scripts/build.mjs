@@ -571,7 +571,7 @@ function staticPublicRouteMarkup(route) {
     return `<section class="section editorial-page"><div class="editorial-shell"><h1>Make an Offer</h1><p>Select a Private Collection item to submit an offer.</p></div></section>`;
   }
   if (route === "about") {
-    return `<section class="section editorial-page">
+    return `<section class="section editorial-page about-page">
       <div class="editorial-shell">
         <h1>About</h1>
         <div class="editorial-copy">

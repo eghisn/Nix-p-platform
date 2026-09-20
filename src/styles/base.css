@@ -1330,6 +1330,17 @@ p {
   padding-block: clamp(80px, 13vw, 190px);
 }
 
+body:has(.about-page) #app > main {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.about-page {
+  width: 100%;
+  min-height: 0;
+  padding-block: clamp(24px, 4vh, 48px);
+}
+
 .page-lock .editorial-page {
   min-height: calc(100vh - var(--header-h) - var(--footer-h));
   padding-block: 0;
