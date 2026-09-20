@@ -37571,7 +37571,7 @@
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0041/cover.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "https://www.sputnikmusic.com/review/1681/The-Dillinger-Escape-Plan-Irony-Is-a-Dead-Scene/",
       "syncAudit": [
         {
@@ -37647,6 +37647,7 @@
       "apparelType": "",
       "description": "The Dillinger Escape Plan's 2002 EP with Mike Patton captures the group between vocal eras, expanding its mathcore precision with Patton's volatile range, noise experiments and a cover of Aphex Twin's Come to Daddy.",
       "reviewQuote": "Equal parts noise, chaos, and insanity",
+      "editRevision": 18,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/1a1d7f1a-0a98-4290-b0dd-a8424e4be7ce",
@@ -37908,7 +37909,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "msdk6pkie8aou7",
-      "mediaCondition": "",
+      "mediaCondition": "Near Mint",
       "open_to_offers": false,
       "relatedArtists": [
         "Botch",
@@ -37928,17 +37929,23 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "sleeveCondition": "",
+      "sleeveCondition": "Very Good - Jewel case cracked; disc and inserts unaffected",
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "AllMusic / MusicBrainz",
       "metadataSourceUrl": "https://www.allmusic.com/album/irony-is-a-dead-scene-mw0000726595",
+      "editorialUpdatedAt": "2026-09-20T09:02:39.821+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-09",
+      "mediaConditionGrade": "Near Mint",
+      "sleeveConditionNote": "Jewel case cracked; disc and inserts unaffected",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "1a1d7f1a-0a98-4290-b0dd-a8424e4be7ce",
+      "sleeveConditionGrade": "Very Good",
       "enrichmentAttemptedAt": "2026-08-09T20:41:34.972Z",
       "enrichmentFingerprint": "the dillinger escape plan with mike patton|irony is a dead scene|cd|8 714092 665826|6658 2",
       "relatedArtistEvidence": [
@@ -38169,18 +38176,16 @@
         "sourceUrl": "https://musicbrainz.org/release/1a1d7f1a-0a98-4290-b0dd-a8424e4be7ce",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 17,
-      "editorialUpdatedAt": "2026-09-20T02:01:27.579+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-20",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
@@ -90281,17 +90286,17 @@
       "status": "Published"
     },
     {
-      "id": "bloc-party",
-      "name": "Bloc Party",
-      "sort": 110,
-      "origin": "finance-inventory",
-      "status": "Published"
-    },
-    {
       "id": "fire-toolz",
       "bio": "",
       "name": "Fire-Toolz",
       "sort": 110,
+      "status": "Published"
+    },
+    {
+      "id": "bloc-party",
+      "name": "Bloc Party",
+      "sort": 110,
+      "origin": "finance-inventory",
       "status": "Published"
     },
     {
@@ -90372,16 +90377,9 @@
       "status": "Published"
     },
     {
-      "id": "melvins-napalm-death",
+      "id": "senyawa-stephen-o-malley",
       "bio": "",
-      "name": "Melvins, Napalm Death",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "alan-vega",
-      "bio": "",
-      "name": "Alan Vega",
+      "name": "Senyawa & Stephen O' Malley",
       "sort": 9999,
       "status": "Published"
     },
@@ -90393,30 +90391,9 @@
       "status": "Published"
     },
     {
-      "id": "hella",
-      "bio": "",
-      "name": "Hella",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "teenage-wrist",
-      "bio": "",
-      "name": "Teenage Wrist",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
       "id": "propagandhi",
       "bio": "",
       "name": "Propagandhi",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "sam-gendel",
-      "bio": "",
-      "name": "Sam Gendel",
       "sort": 9999,
       "status": "Published"
     },
@@ -90428,9 +90405,30 @@
       "status": "Published"
     },
     {
-      "id": "chapterhouse",
+      "id": "hella",
       "bio": "",
-      "name": "Chapterhouse",
+      "name": "Hella",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "alan-vega",
+      "bio": "",
+      "name": "Alan Vega",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "teenage-wrist",
+      "bio": "",
+      "name": "Teenage Wrist",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "sam-gendel",
+      "bio": "",
+      "name": "Sam Gendel",
       "sort": 9999,
       "status": "Published"
     },
@@ -90442,9 +90440,23 @@
       "status": "Published"
     },
     {
-      "id": "senyawa-stephen-o-malley",
+      "id": "chapterhouse",
       "bio": "",
-      "name": "Senyawa & Stephen O' Malley",
+      "name": "Chapterhouse",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "melvins-napalm-death",
+      "bio": "",
+      "name": "Melvins, Napalm Death",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "the-dillinger-escape-plan-with-mike-patton",
+      "bio": "",
+      "name": "The Dillinger Escape Plan with Mike Patton",
       "sort": 9999,
       "status": "Published"
     },
