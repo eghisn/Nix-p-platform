@@ -27162,7 +27162,7 @@
       "flaws": "",
       "image": "/public/assets/catalog-archive/nxp-2026-vnl-0040-blondie-cover-art.jpg",
       "label": "Pickwick Records",
-      "price": 357263,
+      "price": 360000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -27191,7 +27191,7 @@
       "category": "Records",
       "material": "",
       "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0040-blondie-cover-art.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "",
       "syncAudit": [
         {
@@ -27268,7 +27268,7 @@
       "description": "Blondie's self-titled 1976 debut places the New York band at the intersection of CBGB punk, pop melody, and downtown cool, with Debbie Harry's voice and Chris Stein's guitar giving its sharpest songs a stylish charge. This Pickwick issue documents the album in a later budget reissue form.",
       "reviewQuote": "",
       "sourceTitle": "blondie",
-      "editRevision": 7,
+      "editRevision": 8,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0040-blondie-cover-art.jpg",
@@ -27525,7 +27525,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "msohoykwowfo51",
-      "mediaCondition": "",
+      "mediaCondition": "Very Good",
       "open_to_offers": false,
       "relatedArtists": [
         "Deborah Harry",
@@ -27552,7 +27552,7 @@
           "confidence": 100
         }
       ],
-      "sleeveCondition": "",
+      "sleeveCondition": "Very Good Plus",
       "autoProductPhoto": "",
       "enrichmentOrigin": "source+curated-editorial",
       "enrichmentStatus": "complete",
@@ -27563,14 +27563,18 @@
         "review source",
         "related artists available in inventory"
       ],
-      "editorialUpdatedAt": "2026-09-21T02:01:26.213+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T16:54:31.885+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "Very Good",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "Very Good Plus",
       "enrichmentAttemptedAt": "2026-09-09T17:03:37.292Z",
       "enrichmentFingerprint": "blondie|blondie|vinyl||shm 3119",
       "relatedArtistEvidence": [
@@ -27810,7 +27814,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
