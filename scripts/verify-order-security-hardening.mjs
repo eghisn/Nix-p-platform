@@ -25,6 +25,7 @@ assert.match(handlers, /AbortSignal\.timeout\(4_000\)/, "Webhook verification mu
 assert.match(handlers, /"Idempotency-Key": idempotencyKey/, "Snap session creation must send a stable Midtrans idempotency key.");
 assert.match(handlers, /midtransIdempotencyKey\(order\.id\)/, "The Midtrans idempotency key must be derived from the stored order.");
 assert.match(handlers, /validMidtransRedirectUrl/, "Midtrans redirect URLs must be restricted to the configured provider origin.");
+assert.match(handlers, /Stored Midtrans payment URL does not match the active environment/, "Stored redirects must never cross from sandbox into production or vice versa.");
 assert.match(handlers, /buildMidtransItemDetails\(order\)/, "Midtrans payloads must validate variant IDs and order totals before leaving NIXP.");
 assert.match(handlers, /isMidtransDashboardNotificationTest\(body\)/, "The signed Midtrans dashboard test must be acknowledged without treating it as a customer order.");
 assert.match(handlers, /payment_notif_test_\$\{merchantId\}_/, "Dashboard-test acknowledgement must be bound to the configured merchant ID.");
@@ -42,8 +43,8 @@ assert.match(webhook, /queueOnly: true/, "Webhook email work must be queued, not
 assert.match(webhook, /scheduleNotificationOutboxDrain\(\)/, "Queued email delivery must be scheduled after the webhook response path is durable.");
 assert.match(handlers, /waitUntil\(/, "Webhook background email work must use the serverless background-task API.");
 assert.match(notifications, /queue_notification_outbox/, "Notification helpers must persist queued messages before background delivery.");
-const paymentBranchStart = handlers.indexOf('if ((status === "settlement" || status === "capture")');
-const paymentBranchEnd = handlers.indexOf('if (["expire", "cancel", "deny", "failure"]', paymentBranchStart);
+const paymentBranchStart = handlers.indexOf('if (eventType === "paid")');
+const paymentBranchEnd = handlers.indexOf('if (eventType === "reversal-review")', paymentBranchStart);
 const paymentBranch = handlers.slice(paymentBranchStart, paymentBranchEnd);
 assert.match(paymentBranch, /await queueVerifiedPaymentNotifications/, "Paid webhooks must persist receipt notifications before acknowledgement.");
 assert.doesNotMatch(paymentBranch, /Promise\.allSettled/, "A notification queue failure must make the webhook retryable.");
@@ -59,9 +60,18 @@ assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protect
 assert.match(handlers, /rpc\/merge_midtrans_payment_attempt/, "Payment updates must merge provider status without erasing the stored redirect session.");
 assert.match(retentionMigration, /payload = coalesce\(payload, '\{\}'::jsonb\) \|\| coalesce\(p_payload, '\{\}'::jsonb\)/, "Payment updates must preserve the existing token and redirect URL atomically.");
 assert.match(checkout, /customerPaymentSummary/, "The protected customer order response must include resumability and safe payment instructions.");
-assert.match(checkout, /startAvailable: !instructions/, "A failed pre-payment session must remain safely retryable.");
+assert.match(checkout, /hasUsableMidtransRedirect\(attempt\?\.payload\?\.redirectUrl, process\.env\.MIDTRANS_ENV\)/, "Customer payment recovery must match the active Midtrans environment.");
+assert.match(checkout, /startAvailable: !resumeAvailable && !actionableInstructions/, "A failed pre-payment session must remain safely retryable without duplicating an actionable payment.");
 assert.match(client, /payment\.resumeAvailable \|\| payment\.startAvailable/, "The payment CTA must only render for a stored redirect or a safe pre-payment retry.");
 assert.match(client, /data-copy-payment-code/, "Bank-transfer orders must retain a customer-usable payment instruction path.");
+assert.match(client, /payment-session-preparing/, "A customer must get an automatic retry while the secure payment session is still being created.");
+assert.match(client, /orderPaymentSupportMarkup/, "A customer must have a direct support path when provider recovery is unavailable.");
+assert.match(client, /order-status-message/, "Payment failures must render in a dedicated non-overlapping status region.");
+assert.match(handlers, /sendOrderPaymentAssistanceNotification\(order, reason, \{ queueOnly: true \}\)/, "A payment-session failure must durably alert NIXP without delaying the customer response on email delivery.");
+assert.match(notifications, /payment-assistance-required-\$\{order\?\.id\}/, "Payment assistance alerts must be idempotent per order.");
+assert.match(handlers, /Provider Reversal Review/, "Late provider reversals must not silently downgrade paid orders.");
+assert.match(handlers, /stale-status-ignored/, "Out-of-order pending callbacks must not downgrade a financially final order.");
+assert.match(handlers, /paymentReviews: reviewAttempts\.length/, "Payment health must surface provider reversals and chargebacks.");
 assert.match(checkout, /level: status >= 500 \? "error"/, "Expected checkout validation failures must not be recorded as server errors.");
 assert.match(handlers, /activePendingOrderIds\.has\(String\(row\.order_id\)\)/, "Payment health must only flag attempts that still belong to active pending orders.");
 

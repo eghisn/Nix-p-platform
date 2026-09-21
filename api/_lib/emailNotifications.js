@@ -130,6 +130,18 @@ export async function sendOrderPaymentNotification(order, { queueOnly = false } 
   }, { queueOnly });
 }
 
+export async function sendOrderPaymentAssistanceNotification(order, reason = "", { queueOnly = false } = {}) {
+  const reference = orderReference(order);
+  const message = `A customer could not open or recover the secure payment session. Contact them using the order record before the reservation expires.${reason ? ` Technical reason: ${reason}` : ""}`;
+  return sendNotificationEmail({
+    subject: `NIXP payment assistance required: ${reference}`,
+    replyTo: order?.customer?.email,
+    text: statusEmailText(order, "Payment assistance required", message),
+    html: statusEmailHtml(order, "Payment assistance required", message),
+    idempotencyKey: `payment-assistance-required-${order?.id}`
+  }, { queueOnly });
+}
+
 export async function sendCustomerPaymentConfirmation(order, { queueOnly = false, payment = {} } = {}) {
   const customer = order?.customer || {};
   if (!customer.email) return { delivered: false, reason: "customer-email-missing" };

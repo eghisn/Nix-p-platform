@@ -1099,8 +1099,7 @@ async function customerOrderStatusPage() {
               ${order.trackingNumber ? `<p><span>Tracking</span><strong>${escapeHtml(order.trackingNumber)}</strong></p>` : ""}
             </div>
           </div>
-          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${!paymentActionAvailable && !paymentInstructions ? `<p class="admin-form-note" data-tone="warning">The secure payment session cannot be reopened. Contact NIXP before the reservation expires.</p>` : ""}` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div>`}
-          <p class="admin-form-note" data-order-status-message aria-live="polite"></p>
+          ${paymentPending ? `<div class="order-status-payment"><p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${orderPaymentSupportMarkup(order.reference || order.id)}<p class="order-status-message" data-order-status-message aria-live="polite"></p></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div>`}
         </div>
       </section>
     `;
@@ -2304,12 +2303,19 @@ function orderPaymentInstructionsMarkup(instructions, total) {
     return `<div class="order-payment-instructions"><p><span>Bank transfer</span><strong>${escapeHtml(instructions.bank || "Virtual Account")}</strong></p><p><span>Virtual account</span><strong>${escapeHtml(instructions.vaNumber)}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p><button class="button button-outline" type="button" data-copy-payment-code="${escapeAttr(instructions.vaNumber)}">Copy VA number</button></div>`;
   }
   if (instructions.billKey) {
-    return `<div class="order-payment-instructions"><p><span>Biller code</span><strong>${escapeHtml(instructions.billerCode || "-")}</strong></p><p><span>Bill key</span><strong>${escapeHtml(instructions.billKey)}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p></div>`;
+    return `<div class="order-payment-instructions"><p><span>Mandiri biller code</span><strong>${escapeHtml(instructions.billerCode || "-")}</strong></p><p><span>Bill key</span><strong>${escapeHtml(instructions.billKey)}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p><button class="button button-outline" type="button" data-copy-payment-code="${escapeAttr(instructions.billKey)}">Copy bill key</button></div>`;
   }
   if (instructions.paymentCode) {
-    return `<div class="order-payment-instructions"><p><span>Payment code</span><strong>${escapeHtml(instructions.paymentCode)}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p></div>`;
+    return `<div class="order-payment-instructions"><p><span>Payment code</span><strong>${escapeHtml(instructions.paymentCode)}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p><button class="button button-outline" type="button" data-copy-payment-code="${escapeAttr(instructions.paymentCode)}">Copy payment code</button></div>`;
   }
+  if (instructions.actionUrl) return `<div class="order-payment-instructions"><p><span>Payment method</span><strong>${escapeHtml(instructions.paymentType || "E-wallet")}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p><a class="button button-dark" href="${escapeAttr(instructions.actionUrl)}" target="_blank" rel="noreferrer">${escapeHtml(instructions.actionLabel || "Open payment app")}</a></div>`;
   return "";
+}
+
+function orderPaymentSupportMarkup(reference) {
+  const subject = encodeURIComponent(`Payment assistance for ${reference}`);
+  const message = encodeURIComponent(`Hello NIXP, I need payment assistance for order ${reference}.`);
+  return `<aside class="order-payment-support" role="status"><strong>Need payment assistance?</strong><p>Your order remains reserved until the time shown above. Contact NIXP directly from here; you do not need to find us on Instagram.</p><div><a class="button button-dark" href="https://wa.me/6282122876289?text=${message}" target="_blank" rel="noreferrer">WhatsApp NIXP</a><a class="button button-outline" href="mailto:orders@nix-p.com?subject=${subject}">Email NIXP</a></div></aside>`;
 }
 
 function apparelConditionEditorFields(product = {}, visible = false) {
@@ -3474,17 +3480,32 @@ function bindEvents() {
     button.disabled = true;
     if (notice) notice.textContent = "Opening secure payment...";
     try {
-      const response = await fetch("/api/order-status", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ action: "start-payment" })
-      });
-      const payload = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(payload.error || "Payment could not be started.");
-      if (!payload.payment?.redirectUrl) throw new Error(payload.payment?.reason === "midtrans-not-configured" ? "Online payment is not activated yet. NIXP has been notified of your quote." : "Payment is not available for this order.");
-      window.location.assign(payload.payment.redirectUrl);
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        const response = await fetch("/api/order-status", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ action: "start-payment" })
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || "Payment could not be started.");
+        if (payload.payment?.redirectUrl) {
+          window.location.assign(payload.payment.redirectUrl);
+          return;
+        }
+        if (payload.payment?.reason === "payment-session-preparing" && attempt === 0) {
+          if (notice) notice.textContent = "Secure payment is being prepared. Retrying...";
+          await new Promise((resolve) => setTimeout(resolve, Math.max(1, Number(payload.payment.retryAfterSeconds || 3)) * 1000));
+          continue;
+        }
+        if (payload.payment?.reason === "midtrans-not-configured") throw new Error("Online payment is not activated yet. NIXP has been notified of your quote.");
+        await render({ preserveScroll: true });
+        return;
+      }
     } catch (error) {
-      if (notice) notice.textContent = error instanceof Error ? error.message : "Payment could not be started.";
+      if (notice) {
+        notice.textContent = error instanceof Error ? error.message : "Payment could not be started.";
+        notice.dataset.tone = "error";
+      }
       button.disabled = false;
     }
   });

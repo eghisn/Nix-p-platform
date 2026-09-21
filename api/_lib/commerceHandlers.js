@@ -8,13 +8,14 @@ import {
   sendCustomerRefundNotification,
   sendCustomerShippingQuoteNotification,
   sendCustomerShippingNotification,
+  sendOrderPaymentAssistanceNotification,
   sendOrderPaymentNotification,
   sendOrderRefundNotification
 } from "./emailNotifications.js";
 import { drainNotificationOutbox } from "./emailNotifications.js";
 import { recordSystemEvent } from "./observability.js";
 import { supabaseFetch } from "./supabase.js";
-import { safeMidtransPaymentInstructions } from "./paymentState.js";
+import { classifyMidtransEvent, midtransIdempotencyKey, safeMidtransPaymentInstructions } from "./paymentState.js";
 
 export async function handleMidtransToken(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
@@ -42,12 +43,26 @@ export async function createMidtransPaymentSession(orderId) {
   if (order.payment_status !== "Pending" || order.order_status !== "Active") throw new Error("This order is no longer awaiting payment.");
   if (new Date(order.payment_expires_at).getTime() <= Date.now()) throw new Error("This order reservation has expired.");
 
+  try {
+    return await createMidtransPaymentSessionForOrder(order);
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : "Midtrans payment session failed.";
+    await Promise.allSettled([
+      sendOrderPaymentAssistanceNotification(order, reason, { queueOnly: true }),
+      recordSystemEvent({ level: "critical", source: "midtrans-payment-session", error, details: { orderId: order.id } })
+    ]);
+    throw error;
+  }
+}
+
+async function createMidtransPaymentSessionForOrder(order) {
   const claim = await supabaseFetch("rpc/claim_midtrans_payment_session", {
     method: "POST",
     service: true,
     body: { p_order_id: order.id }
   });
   if (claim?.action === "reuse") {
+    if (!validMidtransRedirectUrl(claim.redirectUrl)) throw new Error("Stored Midtrans payment URL does not match the active environment.");
     return { available: true, token: claim.token, redirectUrl: claim.redirectUrl, expiresAt: claim.expiresAt || order.payment_expires_at, reused: true };
   }
   if (claim?.action === "wait") {
@@ -58,12 +73,14 @@ export async function createMidtransPaymentSession(orderId) {
   if (claim.action === "recover") {
     const existingProviderPayment = await fetchMidtransStatus(order.id, { allowMissing: true });
     if (existingProviderPayment) {
-      await updateMidtransAttempt(order.id, "Provider Pending", {
-        providerStatus: String(existingProviderPayment.transaction_status || "unknown"),
-        providerTransactionId: String(existingProviderPayment.transaction_id || ""),
-        recoveryCheckedAt: new Date().toISOString()
-      });
-      return { available: false, reason: "payment-session-provider-pending", expiresAt: order.payment_expires_at };
+      const paymentInstructions = safeMidtransPaymentInstructions(existingProviderPayment);
+      const recovery = await processVerifiedMidtransEvent(existingProviderPayment);
+      return {
+        available: false,
+        reason: recovery.action === "recorded" || recovery.action === "duplicate" ? "payment-session-provider-pending" : "payment-status-updated",
+        instructions: paymentInstructions,
+        expiresAt: order.payment_expires_at
+      };
     }
   }
 
@@ -140,7 +157,12 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
 
   const status = String(verified.transaction_status || "").toLowerCase();
   const fraud = String(verified.fraud_status || "").toLowerCase();
-  if ((status === "settlement" || status === "capture") && (!fraud || fraud === "accept")) {
+  const eventType = classifyMidtransEvent({ transactionStatus: status, fraudStatus: fraud, paymentStatus: order.payment_status });
+  if (eventType === "stale") {
+    await completeWebhookReceipt(eventKey);
+    return { action: "stale-status-ignored", status };
+  }
+  if (eventType === "paid") {
     assertSuccessfulMidtransPayment(verified, order);
     const updated = await supabaseFetch("rpc/apply_verified_payment", {
       method: "POST",
@@ -164,7 +186,22 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
     return { action: "paid", order: updated };
   }
 
-  if (["expire", "cancel", "deny", "failure"].includes(status)) {
+  if (eventType === "reversal-review") {
+    await updateMidtransAttempt(order.id, "Provider Reversal Review", {
+      providerStatus: status,
+      providerTransactionId: String(verified.transaction_id || ""),
+      reversalReviewAt: new Date().toISOString()
+    });
+    await recordSystemEvent({
+      level: "critical",
+      source: "midtrans-payment-reversal-review",
+      details: { orderId: order.id, providerStatus: status, paymentStatus: order.payment_status }
+    });
+    await completeWebhookReceipt(eventKey);
+    return { action: "reversal-review", status };
+  }
+
+  if (eventType === "release") {
     const updated = await supabaseFetch("rpc/release_order_reservations", {
       method: "POST",
       service: true,
@@ -183,7 +220,7 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
     return { action: "released", order: updated };
   }
 
-  if (["refund", "partial_refund"].includes(status)) {
+  if (eventType === "refund") {
     const fullRefund = status === "refund";
     const refundAmount = fullRefund ? Number(order.grand_total) : Number(verified.refund_amount || 0);
     const updated = await supabaseFetch("rpc/apply_verified_refund", {
@@ -208,6 +245,21 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
     await completeWebhookReceipt(eventKey);
     scheduleNotificationOutboxDrain();
     return { action: fullRefund ? "refunded" : "partially-refunded", order: updated };
+  }
+
+  if (eventType === "chargeback") {
+    await updateMidtransAttempt(order.id, status === "chargeback" ? "Chargeback Review" : "Partial Chargeback Review", {
+      providerStatus: status,
+      providerTransactionId: String(verified.transaction_id || ""),
+      chargebackReviewAt: new Date().toISOString()
+    });
+    await recordSystemEvent({
+      level: "critical",
+      source: "midtrans-chargeback-review",
+      details: { orderId: order.id, providerStatus: status, paymentStatus: order.payment_status }
+    });
+    await completeWebhookReceipt(eventKey);
+    return { action: "chargeback-review", status };
   }
 
   await updateMidtransAttempt(order.id, "Provider Pending", {
@@ -278,6 +330,7 @@ export async function getCommerceHealthSnapshot() {
     && ["Creating", "Creation Failed", "Provider Pending"].includes(row.status)
     && new Date(row.updated_at).getTime() < now - 5 * 60_000
   ));
+  const reviewAttempts = (attempts || []).filter((row) => /Review$/.test(String(row.status || "")));
   const failedWebhooks = (receipts || []).filter((row) => row.status === "Failed");
   const overdueReservations = (reservations || []).filter((row) => new Date(row.expires_at).getTime() < now - 10 * 60_000);
   const overdueOrders = (orders || []).filter((row) => new Date(row.payment_expires_at).getTime() < now - 10 * 60_000);
@@ -287,6 +340,7 @@ export async function getCommerceHealthSnapshot() {
   if (configuration.enabled && !configuration.hasMerchantId) issues.push("Midtrans merchant ID is missing.");
   if (configuration.enabled && !configuration.hasServerKey) issues.push("Midtrans server key is missing.");
   if (staleAttempts.length) issues.push(`${staleAttempts.length} payment attempt${staleAttempts.length === 1 ? " is" : "s are"} stuck.`);
+  if (reviewAttempts.length) issues.push(`${reviewAttempts.length} provider reversal or chargeback ${reviewAttempts.length === 1 ? "requires" : "require"} review.`);
   if (failedWebhooks.length) issues.push(`${failedWebhooks.length} Midtrans webhook${failedWebhooks.length === 1 ? " has" : "s have"} failed.`);
   if (overdueReservations.length || overdueOrders.length) issues.push(`${Math.max(overdueReservations.length, overdueOrders.length)} expired order reservation${Math.max(overdueReservations.length, overdueOrders.length) === 1 ? " needs" : "s need"} cleanup.`);
   if (failedOutbox.length) issues.push(`${failedOutbox.length} order notification${failedOutbox.length === 1 ? " has" : "s have"} failed delivery.`);
@@ -297,6 +351,7 @@ export async function getCommerceHealthSnapshot() {
       pendingPayments: (orders || []).length,
       activeReservations: (reservations || []).length,
       staleAttempts: staleAttempts.length,
+      paymentReviews: reviewAttempts.length,
       failedWebhooks: failedWebhooks.length,
       overdueReservations: Math.max(overdueReservations.length, overdueOrders.length),
       failedNotifications: failedOutbox.length
@@ -319,10 +374,6 @@ function assertSuccessfulMidtransPayment(verified, order) {
   if (String(verified.status_code || "") !== "200") throw new Error("Midtrans did not verify a successful payment status code.");
   const amount = Number(verified.gross_amount);
   if (!Number.isInteger(amount) || amount !== Number(order.grand_total)) throw new Error("Midtrans payment amount does not match the order total.");
-}
-
-function midtransIdempotencyKey(orderId) {
-  return `nixp-snap-${createHash("sha256").update(`midtrans:${orderId}`).digest("hex").slice(0, 48)}`;
 }
 
 function buildMidtransItemDetails(order) {

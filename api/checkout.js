@@ -6,7 +6,7 @@ import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShi
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
 import { runShippingMaintenance } from "./_lib/nixpShippingEngine.js";
-import { hasUsableMidtransRedirect, safeMidtransPaymentInstructions } from "./_lib/paymentState.js";
+import { hasActionableMidtransInstructions, hasUsableMidtransRedirect, safeMidtransPaymentInstructions } from "./_lib/paymentState.js";
 import { processFinanceCatalogSyncJobs, readFinanceState, syncFinanceInventoryToCatalog } from "./_lib/financeState.js";
 import { processAdminFinanceSyncJobs } from "./_lib/adminFinanceSyncJobs.js";
 import { reconcileCatalogPublicationState } from "./_lib/catalogPublicationReconciliation.js";
@@ -271,13 +271,11 @@ async function handleCommerceMaintenance(req, res) {
   if (!isSupabaseConfigured({ requireServiceRole: true })) return json(res, 503, { ok: false, error: "Commerce maintenance is not configured." });
   if (!validCronSecret(req.headers.authorization, process.env.CRON_SECRET)) return json(res, 401, { ok: false, error: "Unauthorized." });
   try {
-    // Release first. Reconciliation reads active reservations, so it must not
-    // race the release transaction and publish an intermediate stock count.
+    // Verify provider state before releasing expired reservations. A payment
+    // completed near the deadline must be recorded before stock can be freed.
+    const paymentReconciliation = await reconcilePendingMidtransPayments({ limit: 20, source: "scheduled-maintenance" });
     const maintenance = await expirePendingOrders();
-    const [outbox, paymentReconciliation] = await Promise.all([
-      drainNotificationOutbox(50),
-      reconcilePendingMidtransPayments({ limit: 20, source: "scheduled-maintenance" })
-    ]);
+    const outbox = await drainNotificationOutbox(50);
     // The five-minute Pro cron is deliberately limited to customer-facing
     // commerce recovery. It must not trigger catalog research or broad data
     // synchronization repeatedly throughout the day.
@@ -406,19 +404,23 @@ function customerOrderSummary(order) {
 async function customerPaymentSummary(orderId) {
   const attempts = await supabaseFetch(`payment_attempts?select=status,payload&order_id=eq.${encodeURIComponent(orderId)}&provider=eq.Midtrans&limit=1`, { service: true });
   const attempt = Array.isArray(attempts) ? attempts[0] : null;
-  let instructions = attempt?.payload?.paymentInstructions || null;
+  let instructions = safeMidtransPaymentInstructions(attempt?.payload?.paymentInstructions || {});
 
   if (!instructions) {
     const receipts = await supabaseFetch(`webhook_receipts?select=payload,created_at&provider=eq.Midtrans&payload->>order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc&limit=1`, { service: true });
     instructions = safeMidtransPaymentInstructions(Array.isArray(receipts) ? receipts[0]?.payload : null);
   }
 
+  const resumeAvailable = hasUsableMidtransRedirect(attempt?.payload?.redirectUrl, process.env.MIDTRANS_ENV);
+  const actionableInstructions = hasActionableMidtransInstructions(instructions);
+  const attemptStatus = attempt?.status || "Unavailable";
   return {
     provider: "Midtrans",
-    attemptStatus: attempt?.status || "Unavailable",
-    resumeAvailable: hasUsableMidtransRedirect(attempt?.payload?.redirectUrl),
-    startAvailable: !instructions && ["Unavailable", "Creation Failed", "Pending"].includes(attempt?.status || "Unavailable"),
-    instructions
+    attemptStatus,
+    resumeAvailable,
+    startAvailable: !resumeAvailable && !actionableInstructions && ["Unavailable", "Creation Failed", "Pending"].includes(attemptStatus),
+    assistanceRequired: !resumeAvailable && !actionableInstructions && attemptStatus === "Provider Pending",
+    instructions: actionableInstructions ? instructions : null
   };
 }
 

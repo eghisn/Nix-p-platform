@@ -2784,11 +2784,33 @@ body:has(.cart-view) .site-footer {
   line-height: 1.45;
 }
 
+.order-status-payment {
+  display: grid;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.order-status-payment .order-status-note,
+.order-status-payment .order-payment-instructions,
+.order-status-payment .order-status-actions {
+  margin-block: 0;
+}
+
 .order-status-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 9px;
   margin-top: 18px;
+}
+
+.order-status-actions .button {
+  width: 100%;
+  min-width: 0;
+  min-height: 52px;
+  padding-inline: 14px;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
 }
 
 .order-payment-instructions {
@@ -2820,6 +2842,51 @@ body:has(.cart-view) .site-footer {
 .order-payment-instructions .button {
   justify-self: start;
   margin: 12px 0;
+}
+
+.order-payment-support {
+  border: 1px solid var(--line);
+  padding: 16px;
+}
+
+.order-payment-support > strong {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.order-payment-support > p {
+  max-width: 560px;
+  margin: 7px 0 14px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.order-payment-support > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.order-status-message {
+  display: block;
+  min-height: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.order-status-message:empty {
+  display: none;
+}
+
+.order-status-message[data-tone="error"] {
+  color: #b00020;
 }
 
 .admin-shipping-quote-form {
@@ -2878,6 +2945,19 @@ body:has(.cart-view) .site-footer {
   .order-status-lines p,
   .order-status-meta p {
     font-size: 12px;
+  }
+
+  .order-status-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .order-payment-support > div {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .order-payment-support .button {
+    width: 100%;
   }
 }
 
