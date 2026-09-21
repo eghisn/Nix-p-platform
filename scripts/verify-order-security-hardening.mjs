@@ -62,6 +62,7 @@ assert.match(checkout, /customerPaymentSummary/, "The protected customer order r
 assert.match(checkout, /startAvailable: !instructions/, "A failed pre-payment session must remain safely retryable.");
 assert.match(client, /payment\.resumeAvailable \|\| payment\.startAvailable/, "The payment CTA must only render for a stored redirect or a safe pre-payment retry.");
 assert.match(client, /data-copy-payment-code/, "Bank-transfer orders must retain a customer-usable payment instruction path.");
+assert.match(checkout, /level: status >= 500 \? "error"/, "Expected checkout validation failures must not be recorded as server errors.");
 assert.match(handlers, /activePendingOrderIds\.has\(String\(row\.order_id\)\)/, "Payment health must only flag attempts that still belong to active pending orders.");
 
 assert.match(checkout, /ORDER_ACCESS_COOKIE_NAME/, "Order access must use a dedicated HttpOnly cookie.");

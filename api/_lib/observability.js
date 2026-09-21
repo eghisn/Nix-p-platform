@@ -14,7 +14,8 @@ export async function recordSystemEvent({ level = "error", source = "api", req, 
     details,
     requestId: String(req?.headers?.["x-vercel-id"] || "") || null
   };
-  console.error(JSON.stringify(event));
+  const log = level === "critical" || level === "error" ? console.error : level === "warning" ? console.warn : console.info;
+  log(JSON.stringify(event));
   if (!isSupabaseConfigured({ requireServiceRole: true })) {
     return { recorded: false, reason: "supabase-not-configured" };
   }

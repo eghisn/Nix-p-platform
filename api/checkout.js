@@ -155,7 +155,7 @@ export default async function handler(req, res) {
     const status = message.startsWith("OUT_OF_STOCK") || message.startsWith("ITEM_UNAVAILABLE") || message.startsWith("SIZE_")
       ? 409
       : Number(error?.statusCode || 500);
-    await recordSystemEvent({ source: "checkout-api", req, error, details: { action: action || "checkout", status } });
+    await recordSystemEvent({ level: status >= 500 ? "error" : status === 429 ? "warning" : "info", source: "checkout-api", req, error, details: { action: action || "checkout", status } });
     return json(res, status, { ok: false, error: friendlyError(message) });
   }
 }
@@ -182,8 +182,9 @@ async function handleRuleShippingQuote(req, res) {
       quotedAt: quote.quotedAt
     });
   } catch (error) {
-    await recordSystemEvent({ source: "shipping-quote-api", req, error });
-    return json(res, Number(error?.statusCode || 500), { ok: false, error: friendlyError(error instanceof Error ? error.message : "Shipping quote failed.") });
+    const status = Number(error?.statusCode || 500);
+    await recordSystemEvent({ level: status >= 500 ? "error" : status === 429 ? "warning" : "info", source: "shipping-quote-api", req, error, details: { status } });
+    return json(res, status, { ok: false, error: friendlyError(error instanceof Error ? error.message : "Shipping quote failed.") });
   }
 }
 
