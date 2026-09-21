@@ -9779,7 +9779,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0072/cover.jpg",
       "label": "Epitaph",
-      "price": 607000,
+      "price": 610000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -9891,7 +9891,7 @@
       "description": "Teenage Wrist's 2018 debut Chrome Neon Jesus builds its grunge-and-shoegaze foundation into a wide alternative-rock record, pairing fuzzed guitars with clean production, melodic hooks, and the push-pull dynamics of its three-piece lineup.",
       "reviewQuote": "filtered through the three decades of rock music that came after",
       "sourceTitle": "chrome neon jesus",
-      "editRevision": 17,
+      "editRevision": 18,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/12310962-Teenage-Wrist-Chrome-Neon-Jesus",
@@ -10182,8 +10182,8 @@
       "publicationState": "live",
       "descriptionSource": "AllMusic",
       "metadataSourceUrl": "https://www.discogs.com/release/12310962-Teenage-Wrist-Chrome-Neon-Jesus",
-      "editorialUpdatedAt": "2026-09-21T02:01:37.787+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T06:04:05.068+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -10434,7 +10434,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-19",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
