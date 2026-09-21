@@ -33772,7 +33772,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0044/cover.jpg",
       "label": "Daymare Recordings",
-      "price": 213000,
+      "price": 215000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -33874,6 +33874,7 @@
       "apparelType": "",
       "description": "Daughters' 2006 Hell Songs recasts the Providence group's earlier grindcore velocity as a more angular, queasy and theatrical noise-rock record, with Alexis Marshall's vocals shifting from screams to strained spoken and sung forms.",
       "reviewQuote": "techy grindcore",
+      "editRevision": 19,
       "imageCredits": [
         {
           "url": "https://daughters.bandcamp.com/album/hell-songs",
@@ -34130,7 +34131,7 @@
       "homeSlideSort": 112,
       "publishStatus": "Published",
       "financeStockId": "msmqgmu94kyjez",
-      "mediaCondition": "",
+      "mediaCondition": "Near Mint",
       "open_to_offers": false,
       "relatedArtists": [
         "As The Sun Sets",
@@ -34152,17 +34153,23 @@
       "homeCollections": [
         "nixp-selection"
       ],
-      "sleeveCondition": "",
+      "sleeveCondition": "Near Mint",
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Daughters official Bandcamp / Pitchfork",
       "metadataSourceUrl": "https://daughters.bandcamp.com/album/hell-songs",
+      "editorialUpdatedAt": "2026-09-21T16:57:42.941+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-10",
+      "mediaConditionGrade": "Near Mint",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "666d4e9f-0b12-42ba-afe4-e1627d5072d0",
+      "sleeveConditionGrade": "Near Mint",
       "enrichmentAttemptedAt": "2026-08-10T08:39:56.324Z",
       "enrichmentFingerprint": "daughters|hell songs|cd||dymc 003",
       "relatedArtistEvidence": [
@@ -34393,18 +34400,16 @@
         "sourceUrl": "https://musicbrainz.org/release/666d4e9f-0b12-42ba-afe4-e1627d5072d0",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 18,
-      "editorialUpdatedAt": "2026-09-21T02:01:23.083+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
