@@ -10739,7 +10739,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0070/cover.jpg",
       "label": "Factory",
-      "price": 436250,
+      "price": 440000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -10857,7 +10857,7 @@
       "description": "New Order's 1984 FAC 103 single pairs Thieves Like Us with Lonesome Tonight. The band's second collaboration with Arthur Baker recasts the rhythmic ideas behind Confusion into a slower, warmer meeting of deep bass, electronic drums, guitar feedback, and synth strings; Peter Saville's sleeve design draws on an old game whose rules were lost.",
       "reviewQuote": "sly, smooth seventies derived funk and soul",
       "sourceTitle": "thieves like us",
-      "editRevision": 24,
+      "editRevision": 25,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/1144914-New-Order-Thieves-Like-Us",
@@ -10945,8 +10945,8 @@
       "publicationState": "live",
       "descriptionSource": "Factory Records Catalogue / AllMusic",
       "metadataSourceUrl": "https://www.discogs.com/release/1144914-New-Order-Thieves-Like-Us",
-      "editorialUpdatedAt": "2026-09-21T02:01:37.19+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T05:44:34.748+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -10996,7 +10996,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-20",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
