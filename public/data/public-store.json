@@ -11018,7 +11018,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0068/cover.jpg",
       "label": "Domino",
-      "price": 416250,
+      "price": 420000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -11122,7 +11122,7 @@
       "description": "These New Puritans 2008 navigate navigate is a verified Vinyl, 12\" edition on Domino. The release is indexed under Indie Rock, Rock.",
       "reviewQuote": "A ways back we posted the centrifugal, darkly dissolving, flesh rippling video for These New Puritan’s Mark E. Smith-barked “Elvis.”",
       "sourceTitle": "navigate navigate",
-      "editRevision": 19,
+      "editRevision": 20,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
@@ -11418,8 +11418,8 @@
       "publicationState": "live",
       "descriptionSource": "Verified physical-release metadata",
       "metadataSourceUrl": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
-      "editorialUpdatedAt": "2026-09-21T02:01:36.611+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T05:46:04.776+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -11670,7 +11670,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-20",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
