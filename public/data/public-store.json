@@ -7035,7 +7035,7 @@
       "flaws": "",
       "image": "/public/assets/catalog-archive/nxp-2026-vnl-0075-chapterhouse-whirlpool-cover-art.jpg",
       "label": "Sony Records Int'l",
-      "price": 868000,
+      "price": 870000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -7148,7 +7148,7 @@
       "description": "Chapterhouse's 1991 debut Whirlpool expands the Reading band's earlier EP material into a shoegaze record with a sharper rhythmic pull: hazy vocals and dense guitars meet dance-floor momentum, garage-punk energy, and the lingering feedback of early-90s UK indie.",
       "reviewQuote": "more dance-flirting and garage-punky than most",
       "sourceTitle": "whirlpool",
-      "editRevision": 16,
+      "editRevision": 17,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0075-chapterhouse-whirlpool-cover-art.jpg",
@@ -7441,8 +7441,8 @@
       "publicationState": "live",
       "descriptionSource": "AllMusic",
       "metadataSourceUrl": "https://www.discogs.com/release/38005602-Chapterhouse-Whirlpool",
-      "editorialUpdatedAt": "2026-09-21T02:01:38.988+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T06:16:27.249+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -7693,7 +7693,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-19",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
