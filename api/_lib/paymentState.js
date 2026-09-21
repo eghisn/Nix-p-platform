@@ -10,8 +10,9 @@ export function safeMidtransPaymentInstructions(payload = {}) {
   const paymentCode = String(payload?.payment_code || payload?.paymentCode || "").trim().slice(0, 64);
   const actionUrl = safeMidtransActionUrl(payload?.actions) || safeHttpsUrl(payload?.actionUrl);
   const actionLabel = actionUrl ? paymentActionLabel(paymentType) : "";
+  const qrCodeUrl = safeMidtransQrCodeUrl(payload?.actions) || safeMidtransQrCodeUrl([{ name: "generate-qr-code", method: "GET", url: payload?.qrCodeUrl }]);
 
-  if (!paymentType && !vaNumber && !billKey && !paymentCode && !actionUrl) return null;
+  if (!paymentType && !vaNumber && !billKey && !paymentCode && !actionUrl && !qrCodeUrl) return null;
   return {
     paymentType,
     bank,
@@ -20,7 +21,8 @@ export function safeMidtransPaymentInstructions(payload = {}) {
     billerCode,
     paymentCode,
     actionUrl,
-    actionLabel
+    actionLabel,
+    qrCodeUrl
   };
 }
 
@@ -30,6 +32,7 @@ export function hasActionableMidtransInstructions(instructions) {
     || instructions?.billKey
     || instructions?.paymentCode
     || instructions?.actionUrl
+    || instructions?.qrCodeUrl
   );
 }
 
@@ -74,6 +77,27 @@ function safeMidtransActionUrl(actions) {
     .find((entry) => String(entry?.name || "").toLowerCase() === "deeplink-redirect"
       && ["", "get"].includes(String(entry?.method || "").toLowerCase()));
   return safeHttpsUrl(action?.url);
+}
+
+function safeMidtransQrCodeUrl(actions) {
+  const candidates = Array.isArray(actions) ? actions : [];
+  const action = ["generate-qr-code-v2", "generate-qr-code"]
+    .map((name) => candidates.find((entry) => String(entry?.name || "").toLowerCase() === name
+      && ["", "get"].includes(String(entry?.method || "").toLowerCase())))
+    .find(Boolean);
+  if (!action) return "";
+  try {
+    const url = new URL(String(action.url || ""));
+    const trustedHosts = new Set([
+      "api.midtrans.com",
+      "api.sandbox.midtrans.com",
+      "api.veritrans.co.id",
+      "api.sandbox.veritrans.co.id"
+    ]);
+    return url.protocol === "https:" && trustedHosts.has(url.hostname) && url.href.length <= 2048 ? url.href : "";
+  } catch {
+    return "";
+  }
 }
 
 function safeHttpsUrl(value) {

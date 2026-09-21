@@ -14,7 +14,8 @@ assert.deepEqual(bni, {
   billerCode: "",
   paymentCode: "",
   actionUrl: "",
-  actionLabel: ""
+  actionLabel: "",
+  qrCodeUrl: ""
 });
 
 const permata = safeMidtransPaymentInstructions({ payment_type: "bank_transfer", permata_va_number: "8524-0000-1234" });
@@ -35,6 +36,17 @@ const shopeePay = safeMidtransPaymentInstructions({
 assert.equal(shopeePay.actionLabel, "Open ShopeePay");
 assert.equal(shopeePay.actionUrl, "https://shopee.co.id/universal-link/payment");
 assert.equal(hasActionableMidtransInstructions(shopeePay), true);
+const qris = safeMidtransPaymentInstructions({
+  payment_type: "qris",
+  actions: [
+    { name: "generate-qr-code", method: "GET", url: "https://api.midtrans.com/v2/qris/example/qr-code" },
+    { name: "generate-qr-code-v2", method: "GET", url: "https://api.midtrans.com/v4/qris/example/qr-code" }
+  ]
+});
+assert.equal(qris.qrCodeUrl, "https://api.midtrans.com/v4/qris/example/qr-code");
+assert.equal(hasActionableMidtransInstructions(qris), true);
+assert.equal(safeMidtransPaymentInstructions({ payment_type: "qris", actions: [{ name: "generate-qr-code", method: "POST", url: "https://api.midtrans.com/v2/qris/example/qr-code" }] }).qrCodeUrl, "");
+assert.equal(safeMidtransPaymentInstructions({ payment_type: "qris", actions: [{ name: "generate-qr-code", method: "GET", url: "https://api.midtrans.com.attacker.example/qr" }] }).qrCodeUrl, "");
 assert.equal(hasActionableMidtransInstructions(safeMidtransPaymentInstructions({ payment_type: "ovo" })), false);
 assert.equal(safeMidtransPaymentInstructions({ payment_type: "dana", actions: [{ name: "deeplink-redirect", method: "POST", url: "https://m.dana.id/pay" }] }).actionUrl, "");
 assert.equal(safeMidtransPaymentInstructions({ payment_type: "dana", actions: [{ name: "deeplink-redirect", method: "GET", url: "javascript:alert(1)" }] }).actionUrl, "");

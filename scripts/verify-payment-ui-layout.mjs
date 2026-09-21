@@ -15,11 +15,13 @@ assert.doesNotMatch(orderStatusPage, /admin-form-note/, "Order status must not r
 assert.match(orderStatusPage, /order-status-payment/, "Pending payment content must have a dedicated layout container.");
 assert.match(orderStatusPage, /order-status-message/, "Payment feedback must render in its own status region.");
 assert.match(orderStatusPage, /orderPaymentSupportMarkup/, "Payment recovery must retain direct customer support actions.");
+assert.match(client, /order-payment-qr/, "Pending QRIS payments must render a recoverable QR code.");
 
 assert.match(styles, /\.order-status-payment\s*\{[^}]*display:\s*grid;[^}]*gap:\s*18px;/s, "Payment controls must keep stable vertical spacing.");
 assert.match(styles, /\.order-status-message\s*\{[^}]*margin:\s*0;[^}]*overflow-wrap:\s*anywhere;/s, "Payment messages must wrap without negative margins.");
 assert.match(styles, /\.order-status-message:empty\s*\{[^}]*display:\s*none;/s, "An empty payment message must not reserve stray space.");
 assert.match(styles, /@media \(max-width:\s*640px\)[\s\S]*\.order-status-actions\s*\{[^}]*grid-template-columns:\s*1fr;/, "Mobile payment actions must stack into one column.");
 assert.match(styles, /\.order-status-actions \.button\s*\{[^}]*white-space:\s*normal;/s, "Long payment labels must wrap inside their buttons.");
+assert.match(styles, /\.order-payment-qr img\s*\{[^}]*width:\s*min\(240px, 100%\);[^}]*aspect-ratio:\s*1;/s, "Recovered QRIS codes must have stable responsive dimensions.");
 
 console.log("Payment recovery layout regression guard verified.");

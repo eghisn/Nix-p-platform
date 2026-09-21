@@ -31,6 +31,13 @@ assert.match(auth, /NIXP_SESSION_SECRET is required for session signing/, "Sessi
 assert.doesNotMatch(auth, /NIXP_ADMIN_PASSWORD \|\||NIXP_FINANCE_PASSWORD \|\||nixp-local-session-secret/, "Session signing must never fall back to workspace credentials or a local default.");
 
 const catalog = await readFile(new URL("../api/catalog.js", import.meta.url), "utf8");
+const vercel = JSON.parse(await readFile(new URL("../vercel.json", import.meta.url), "utf8"));
+const publicCsp = vercel.headers
+  .flatMap((rule) => rule.headers || [])
+  .find((header) => header.key === "Content-Security-Policy" && String(header.value).includes("https://app.midtrans.com"))?.value || "";
+assert.match(publicCsp, /img-src[^;]*https:\/\/api\.midtrans\.com/, "Production QRIS recovery images must be allowed by the public CSP.");
+assert.match(publicCsp, /img-src[^;]*https:\/\/api\.sandbox\.midtrans\.com/, "Sandbox QRIS recovery images must be allowed by the public CSP.");
+assert.doesNotMatch(publicCsp, /img-src[^;]*https:\/\/\*\.midtrans\.com/, "QRIS recovery must not broaden image access to every Midtrans subdomain.");
 const requestHandler = catalog.slice(catalog.indexOf("async function handleRequestItem"), catalog.indexOf("async function handleMakeOffer"));
 const offerHandler = catalog.slice(catalog.indexOf("async function handleMakeOffer"), catalog.indexOf("async function handleOfferStatus"));
 assert.match(requestHandler, /consumeCommerceRateLimit\("catalog-request-item", requestClientAddress\(req\), \{ limit: 5, windowSeconds: 900 \}\)/, "Request Item must have a server-side, per-client submission limit.");

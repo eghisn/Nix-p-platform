@@ -2308,7 +2308,9 @@ function orderPaymentInstructionsMarkup(instructions, total) {
   if (instructions.paymentCode) {
     return `<div class="order-payment-instructions"><p><span>Payment code</span><strong>${escapeHtml(instructions.paymentCode)}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p><button class="button button-outline" type="button" data-copy-payment-code="${escapeAttr(instructions.paymentCode)}">Copy payment code</button></div>`;
   }
-  if (instructions.actionUrl) return `<div class="order-payment-instructions"><p><span>Payment method</span><strong>${escapeHtml(instructions.paymentType || "E-wallet")}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p><a class="button button-dark" href="${escapeAttr(instructions.actionUrl)}" target="_blank" rel="noreferrer">${escapeHtml(instructions.actionLabel || "Open payment app")}</a></div>`;
+  if (instructions.actionUrl || instructions.qrCodeUrl) {
+    return `<div class="order-payment-instructions"><p><span>Payment method</span><strong>${escapeHtml(instructions.paymentType === "qris" ? "QRIS" : instructions.paymentType || "E-wallet")}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p>${instructions.qrCodeUrl ? `<div class="order-payment-qr"><img src="${escapeAttr(instructions.qrCodeUrl)}" alt="QRIS payment code" /><span>Scan with any compatible QRIS payment app.</span></div>` : ""}<div class="order-payment-instruction-actions">${instructions.actionUrl ? `<a class="button button-dark" href="${escapeAttr(instructions.actionUrl)}" target="_blank" rel="noreferrer">${escapeHtml(instructions.actionLabel || "Open payment app")}</a>` : ""}${instructions.qrCodeUrl ? `<a class="button button-outline" href="${escapeAttr(instructions.qrCodeUrl)}" target="_blank" rel="noreferrer">Open QR code</a>` : ""}</div></div>`;
+  }
   return "";
 }
 

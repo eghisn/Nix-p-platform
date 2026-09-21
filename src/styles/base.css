@@ -2844,6 +2844,33 @@ body:has(.cart-view) .site-footer {
   margin: 12px 0;
 }
 
+.order-payment-qr {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.order-payment-qr img {
+  width: min(240px, 100%);
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  background: #fff;
+  object-fit: contain;
+}
+
+.order-payment-qr span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.order-payment-instruction-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
 .order-payment-support {
   border: 1px solid var(--line);
   padding: 16px;
