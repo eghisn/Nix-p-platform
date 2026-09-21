@@ -13058,7 +13058,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0018/cover.jpg",
       "label": "Sacred Bones Records",
-      "price": 466250,
+      "price": 470000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -13163,7 +13163,7 @@
       "description": "Alan Vega's 2022 Sacred Bones 12-inch brings together two unreleased recordings from different eras: Invasion, cut during 2012-15 sessions for the posthumous It, and Murder One, recorded in 1997-98.",
       "reviewQuote": "The 12-inch combines two different chapters of Vega's solo career. \"Murder One,\" recorded sometime between 1997 and 1998, was originally slated for the 2007 album, but was never used. \"Invasion\" is one of the musician's last recordings. Developed during the latter part of the 2012 to 2015 era, it was intended for the album It, which was released a year following Vega's death in 2016, but never made it.",
       "sourceTitle": "invasion murder one",
-      "editRevision": 19,
+      "editRevision": 20,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/22269763-Alan-Vega-Invasion-Murder-One",
@@ -13458,15 +13458,19 @@
         "description",
         "managed cover art"
       ],
-      "editorialUpdatedAt": "2026-09-21T02:01:35.669+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T06:01:28.282+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T05:35:51.328Z",
       "enrichmentFingerprint": "alan vega|invasion murder one|vinyl|843563147245|sbr289",
       "relatedArtistEvidence": [
@@ -13706,7 +13710,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
