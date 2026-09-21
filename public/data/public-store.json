@@ -3360,7 +3360,7 @@
       "flaws": "",
       "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
       "label": "Ipecac Recordings",
-      "price": 924840,
+      "price": 925000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -3467,7 +3467,7 @@
       "description": "Savage Imperial Death March brings Melvins and Napalm Death's 2016 touring lineup into the studio: Buzz Osborne and Dale Crover work alongside Barney Greenway, John Cooke, and Shane Embury in a collaboration that leans into noise, sludge, and grind without reducing either band to a guest appearance.",
       "reviewQuote": "It’s all entertaining enough without breaking too much of a sweat. Savage Imperial Death March heaves along at a leisurely mid-pace, neither going for Scum’s smash and grab approach nor sitting with the riffs for the protracted period of something like Lysol. In this political climate, with that album title, this does feel a little like the horses have been led to a suitable source of H20 but have resisted taking a sip.",
       "sourceTitle": "Savage Imperial Death March",
-      "editRevision": 19,
+      "editRevision": 20,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
@@ -3522,8 +3522,8 @@
       "publicationState": "live",
       "descriptionSource": "The Quietus / Melvins official Bandcamp",
       "metadataSourceUrl": "https://www.discogs.com/release/37039197-The-Melvins-With-Napalm-Death-Savage-Imperial-Death-March",
-      "editorialUpdatedAt": "2026-09-21T02:01:40.81+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T05:37:33.721+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -3554,7 +3554,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-19",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
