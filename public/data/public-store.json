@@ -32461,7 +32461,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0046/cover.jpg",
       "label": "Kranky",
-      "price": 198700,
+      "price": 199000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -32479,7 +32479,8 @@
         "SKU: NXP-2026-CD-0046",
         "Format: CD",
         "Condition: Used Excellent",
-        "Edition: CD, Album",
+        "Edition: CD",
+        "Album",
         "Catalog number: KRANK151"
       ],
       "edition": "CD, Album",
@@ -32562,6 +32563,7 @@
       "apparelType": "",
       "description": "Disappears' 2011 Guider is a Chicago post-punk record that turns repetition, motorik momentum and blown-out guitar into long-form, darkly physical songs for Kranky.",
       "reviewQuote": "deliciously dense and dark",
+      "editRevision": 18,
       "imageCredits": [
         {
           "url": "https://disappears.bandcamp.com/album/guider",
@@ -32818,7 +32820,7 @@
       "homeSlideSort": 110,
       "publishStatus": "Published",
       "financeStockId": "msmxiuccfelqfy",
-      "mediaCondition": "",
+      "mediaCondition": "Near Mint",
       "open_to_offers": false,
       "relatedArtists": [
         "FACS",
@@ -32840,17 +32842,23 @@
       "homeCollections": [
         "nixp-selection"
       ],
-      "sleeveCondition": "",
+      "sleeveCondition": "Near Mint",
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Disappears official Bandcamp / MusicBrainz",
       "metadataSourceUrl": "https://disappears.bandcamp.com/album/guider",
+      "editorialUpdatedAt": "2026-09-21T17:01:24.106+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-10",
+      "mediaConditionGrade": "Near Mint",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "3c312340-b5c1-4bee-aa83-eec6167a8d79",
+      "sleeveConditionGrade": "Near Mint",
       "enrichmentAttemptedAt": "2026-08-10T08:39:56.958Z",
       "enrichmentFingerprint": "disappears|guider|cd|7 96441 81512 8|krank151",
       "relatedArtistEvidence": [
@@ -33081,18 +33089,16 @@
         "sourceUrl": "https://musicbrainz.org/release/3c312340-b5c1-4bee-aa83-eec6167a8d79",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 17,
-      "editorialUpdatedAt": "2026-09-21T02:01:23.734+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
