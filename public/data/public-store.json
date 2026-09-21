@@ -15639,7 +15639,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0062/cover.jpg",
       "label": "Picture In My Ear",
-      "price": 327500,
+      "price": 330000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -15743,7 +15743,7 @@
       "apparelType": "",
       "description": "Negative Lovers' 2014 Faster Lover EP is a six-track 12-inch release on Picture In My Ear. The title track is joined by Jagz Kooner's remix and dub, while Hit & Run, Last Sex, and Class War extend the band's abrasive, psychedelic post-punk.",
       "reviewQuote": "12-inch EP with remixes from Jagz Kooner",
-      "editRevision": 8,
+      "editRevision": 9,
       "imageCredits": [
         {
           "url": "https://pictureinmyearrecords.bandcamp.com/album/faster-lover-ep",
@@ -16026,8 +16026,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Picture In My Ear official Bandcamp",
       "metadataSourceUrl": "https://pictureinmyearrecords.bandcamp.com/album/faster-lover-ep",
-      "editorialUpdatedAt": "2026-09-21T02:01:33.654+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T17:06:47.972+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-26",
@@ -16277,7 +16277,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-20",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
