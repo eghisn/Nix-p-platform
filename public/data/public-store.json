@@ -26462,7 +26462,7 @@
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0041/cover.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "https://www.allmusic.com/album/burning-from-the-inside-mw0000652112",
       "syncAudit": [
         {
@@ -26539,7 +26539,7 @@
       "description": "Bauhaus' 1983 She's in Parties single turns the band's gothic drama toward an easier, dub-inflected groove, with a tense guitar figure and Peter Murphy's theatrical vocal riding a leaner pop structure. It became one of the band's best-known late-period songs on Beggars Banquet.",
       "reviewQuote": "the most notable and successful being the dub-inflected, heavily dramatic ‘She's in Parties’",
       "sourceTitle": "she s in parties",
-      "editRevision": 9,
+      "editRevision": 10,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/3392954-Bauhaus-Shes-In-Parties",
@@ -26801,7 +26801,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "msohu3rm2mkw9g",
-      "mediaCondition": "",
+      "mediaCondition": "Very Good Plus",
       "open_to_offers": false,
       "relatedArtists": [
         "Siouxsie And The Banshees",
@@ -26828,7 +26828,7 @@
           "confidence": 100
         }
       ],
-      "sleeveCondition": "",
+      "sleeveCondition": "Very Good",
       "autoProductPhoto": "",
       "enrichmentOrigin": "source+curated-editorial",
       "enrichmentStatus": "complete",
@@ -26838,15 +26838,19 @@
         "source-backed review",
         "related artists available in inventory"
       ],
-      "editorialUpdatedAt": "2026-09-21T02:01:26.534+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T05:04:25.618+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "Very Good",
       "enrichmentAttemptedAt": "2026-09-09T16:59:23.295Z",
       "enrichmentFingerprint": "bauhaus|she s in parties|vinyl||beg 91t",
       "relatedArtistEvidence": [
@@ -27086,7 +27090,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
