@@ -36,7 +36,7 @@ export async function handleMarketingDashboard(req, res, url) {
     // raw event rows in the API, so a high-volume event stream cannot truncate metrics.
     supabaseFetch(`marketing_events?select=event_type,anonymous_session_id,page_path,source,occurred_at&occurred_at=gte.${eventSince}&order=occurred_at.desc&limit=50`, { service: true }),
     supabaseFetch("order_records?select=updated_at,created_at&order=updated_at.desc&limit=1", { service: true }),
-    getInstagramInsights(),
+    getInstagramInsights({ fromDate, toDate }),
     supabaseFetch("marketing_content_plans?select=*&order=planned_at.desc.nullslast,created_at.desc", { service: true }),
     supabaseFetch("rpc/marketing_dashboard_content_performance", { method: "POST", service: true, body: { p_from_date: fromDate, p_to_date: toDate } })
   ]);
@@ -107,7 +107,8 @@ export function buildRollupMarketingDashboard({
     status: String(instagram.status || "setup_required"),
     message: String(instagram.message || "Instagram connection is not configured."),
     account: String(instagram.account || ""),
-    posts: Array.isArray(instagram.posts) ? instagram.posts : []
+    posts: Array.isArray(instagram.posts) ? instagram.posts : [],
+    accountMetrics: { bioLinkTaps: nullableNumber(instagram.accountMetrics?.bioLinkTaps) }
   };
 
   return {
@@ -276,8 +277,10 @@ function normalizeContentPlan(value = {}) {
     target_saves_shares: targetNumber(value.targetSavesShares),
     target_profile_visits: targetNumber(value.targetProfileVisits),
     target_new_followers: targetNumber(value.targetNewFollowers),
+    target_bio_link_taps: targetNumber(value.targetBioLinkTaps),
     actual_profile_visits: optionalActualNumber(value.actualProfileVisits),
     actual_new_followers: optionalActualNumber(value.actualNewFollowers),
+    actual_bio_link_taps: optionalActualNumber(value.actualBioLinkTaps),
     target_likes: targetNumber(value.targetLikes),
     target_comments: targetNumber(value.targetComments),
     target_sessions: targetNumber(value.targetSessions),
@@ -358,19 +361,19 @@ export function buildContentPlanDashboard(plans = [], performanceRows = [], inst
     const row = performance.get(trackingContent) || {};
     const post = postByPermalink.get(normalizeComparablePermalink(plan.instagram_permalink));
     const target = {
-      reach: number(plan.target_reach), savesShares: number(plan.target_saves_shares), profileVisits: number(plan.target_profile_visits), newFollowers: number(plan.target_new_followers),
+      reach: number(plan.target_reach), savesShares: number(plan.target_saves_shares), profileVisits: number(plan.target_profile_visits), newFollowers: number(plan.target_new_followers), bioLinkTaps: number(plan.target_bio_link_taps),
       likes: number(plan.target_likes), comments: number(plan.target_comments), sessions: number(plan.target_sessions),
       carts: number(plan.target_carts), paidOrders: number(plan.target_paid_orders), revenue: number(plan.target_revenue)
     };
     const actual = {
       // Meta does not attribute these account-level outcomes to one post. Keep
       // only an intentional manual value; otherwise null is not a failed zero.
-      reach: nullableNumber(post?.reach), savesShares: combinedMetric(post?.saves, post?.shares), profileVisits: nullableNumber(plan.actual_profile_visits), newFollowers: nullableNumber(plan.actual_new_followers),
+      reach: nullableNumber(post?.reach), savesShares: combinedMetric(post?.saves, post?.shares), profileVisits: nullableNumber(plan.actual_profile_visits), newFollowers: nullableNumber(plan.actual_new_followers), bioLinkTaps: nullableNumber(plan.actual_bio_link_taps),
       likes: number(post?.likes), comments: number(post?.comments), sessions: number(row.sessions), productViews: number(row.product_views),
       carts: number(row.carts), checkouts: number(row.checkouts), paidOrders: number(row.paid_orders), revenue: number(row.revenue)
     };
     const comparisons = [
-      ['reach', target.reach, actual.reach], ['savesShares', target.savesShares, actual.savesShares], ['likes', target.likes, actual.likes], ['comments', target.comments, actual.comments], ['sessions', target.sessions, actual.sessions],
+      ['reach', target.reach, actual.reach], ['savesShares', target.savesShares, actual.savesShares], ['bioLinkTaps', target.bioLinkTaps, actual.bioLinkTaps], ['likes', target.likes, actual.likes], ['comments', target.comments, actual.comments], ['sessions', target.sessions, actual.sessions],
       ['carts', target.carts, actual.carts], ['paidOrders', target.paidOrders, actual.paidOrders], ['revenue', target.revenue, actual.revenue]
     ].filter(([, planned, result]) => planned > 0 && result !== null);
     const progress = comparisons.length ? comparisons.reduce((sum, [, planned, result]) => sum + Math.min(1.5, result / planned), 0) / comparisons.length : null;

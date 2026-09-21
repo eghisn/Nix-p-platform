@@ -31,9 +31,14 @@ const requestUrls = [];
 let requestHeaders = {};
 const insights = await getInstagramInsights({
   now: 0,
+  fromDate: "2026-09-14",
+  toDate: "2026-09-15",
   fetchImpl: async (url, options) => {
     requestUrls.push(String(url));
     requestHeaders = options.headers;
+    if (String(url).includes("/17841400000000000/insights")) {
+      return { ok: true, json: async () => ({ data: [{ name: "profile_links_taps", values: [{ value: 3 }, { value: 8 }] }] }) };
+    }
     if (String(url).includes("/insights")) {
       return { ok: true, json: async () => ({ data: [
         { name: "reach", values: [{ value: 120 }] },
@@ -52,6 +57,8 @@ assert.equal(insights.posts[0].likes, 42);
 assert.equal(insights.posts[0].reach, 120);
 assert.equal(insights.posts[0].saves, 4);
 assert.equal(insights.posts[0].shares, 6);
+assert.equal(insights.accountMetrics.bioLinkTaps, 11);
+assert.equal(requestUrls.some((url) => url.includes("profile_links_taps")), true);
 assert.equal(requestUrls.some((url) => url.includes("test-access-token")), false, "Instagram access tokens must not be put in request URLs.");
 assert.equal(requestHeaders.authorization, "Bearer test-access-token");
 console.log("Instagram insight normalization verified.");

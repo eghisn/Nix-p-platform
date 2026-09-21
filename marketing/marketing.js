@@ -196,6 +196,9 @@ function renderInstagram(data) {
     status.classList.toggle("is-on", connected);
   }
   setText("[data-instagram-copy]", instagram.message || "Instagram post metrics are not configured. Website attribution remains available.");
+  const bioLinkTaps = instagram.accountMetrics?.bioLinkTaps;
+  setText("[data-instagram-bio-link-taps]", bioLinkTaps === null || bioLinkTaps === undefined ? "--" : integer.format(bioLinkTaps));
+  setText("[data-instagram-bio-link-taps-note]", bioLinkTaps === null || bioLinkTaps === undefined ? "Account-level / unavailable from Meta" : "Account-level / selected period");
 
   const campaignTarget = document.querySelector("[data-instagram-campaign-list]");
   if (campaignTarget) {
@@ -239,8 +242,9 @@ function contentPlanCard(plan) {
       <div class="content-plan-metrics">
         ${contentPlanMetric("Reach", target.reach, actual.reach, integer)}
         ${contentPlanMetric("Saves + shares", target.savesShares, actual.savesShares, integer)}
-        ${contentPlanMetric("Profile visits", target.profileVisits, actual.profileVisits, integer, "Not available per post")}
-        ${contentPlanMetric("New followers", target.newFollowers, actual.newFollowers, integer, "Account-level metric")}
+        ${contentPlanMetric("Profile visits", target.profileVisits, actual.profileVisits, integer, "Enter manual actual")}
+        ${contentPlanMetric("New followers", target.newFollowers, actual.newFollowers, integer, "Enter manual actual")}
+        ${contentPlanMetric("Bio link taps", target.bioLinkTaps, actual.bioLinkTaps, integer, "Add manually per plan")}
         ${contentPlanMetric("Likes", target.likes, actual.likes, integer)}
         ${contentPlanMetric("Comments", target.comments, actual.comments, integer)}
         ${contentPlanMetric("Website visits", target.sessions, actual.sessions, integer)}
@@ -261,7 +265,7 @@ function contentPlanMetric(label, target, actual, formatter, unavailableCopy = "
   const result = hasActual ? Number(actual) : 0;
   const progress = planned && hasActual ? Math.min(100, Math.round(result / planned * 100)) : null;
   const outcome = hasActual ? formatter.format(result) : "--";
-  const detail = !planned ? "No target" : !hasActual ? unavailableCopy || `${formatter.format(planned)} target / Waiting for data` : `${formatter.format(planned)} target / ${progress}%`;
+  const detail = !planned ? "No target" : !hasActual ? `${formatter.format(planned)} target / ${unavailableCopy || "Waiting for data"}` : `${formatter.format(planned)} target / ${progress}%`;
   return `<div class="content-plan-metric"><span>${escapeHtml(label)}</span><strong>${outcome}</strong><small>${detail}</small></div>`;
 }
 
@@ -281,8 +285,8 @@ function contentPlanPayload(form) {
     title: value("title"), contentType: value("contentType"), objective: value("objective"), status: value("status"),
     plannedAt: value("plannedAt"), campaign: value("campaign"), trackingContent: value("trackingContent"),
     destinationPath: value("destinationPath"), instagramPermalink: value("instagramPermalink"), targetReach: value("targetReach"),
-    targetSavesShares: value("targetSavesShares"), targetProfileVisits: value("targetProfileVisits"), targetNewFollowers: value("targetNewFollowers"), targetLikes: value("targetLikes"),
-    targetComments: value("targetComments"), actualProfileVisits: value("actualProfileVisits"), actualNewFollowers: value("actualNewFollowers"), targetSessions: value("targetSessions"), targetCarts: value("targetCarts"),
+    targetSavesShares: value("targetSavesShares"), targetProfileVisits: value("targetProfileVisits"), targetNewFollowers: value("targetNewFollowers"), targetBioLinkTaps: value("targetBioLinkTaps"), targetLikes: value("targetLikes"),
+    targetComments: value("targetComments"), actualProfileVisits: value("actualProfileVisits"), actualNewFollowers: value("actualNewFollowers"), actualBioLinkTaps: value("actualBioLinkTaps"), targetSessions: value("targetSessions"), targetCarts: value("targetCarts"),
     targetPaidOrders: value("targetPaidOrders"), targetRevenue: value("targetRevenue")
   };
 }
@@ -330,7 +334,7 @@ function editContentPlan(id) {
     title: plan.title, contentType: plan.contentType, objective: plan.objective, status: plan.status, plannedAt: plan.plannedAt || "",
     campaign: plan.campaign === plan.trackingContent ? "" : plan.campaign, trackingContent: plan.trackingContent, destinationPath: plan.destinationPath,
     instagramPermalink: plan.instagramPermalink, targetReach: plan.target.reach, targetSavesShares: plan.target.savesShares,
-    targetProfileVisits: plan.target.profileVisits, targetNewFollowers: plan.target.newFollowers, targetLikes: plan.target.likes, targetComments: plan.target.comments, actualProfileVisits: plan.actual.profileVisits ?? "", actualNewFollowers: plan.actual.newFollowers ?? "", targetSessions: plan.target.sessions,
+    targetProfileVisits: plan.target.profileVisits, targetNewFollowers: plan.target.newFollowers, targetBioLinkTaps: plan.target.bioLinkTaps, targetLikes: plan.target.likes, targetComments: plan.target.comments, actualProfileVisits: plan.actual.profileVisits ?? "", actualNewFollowers: plan.actual.newFollowers ?? "", actualBioLinkTaps: plan.actual.bioLinkTaps ?? "", targetSessions: plan.target.sessions,
     targetCarts: plan.target.carts, targetPaidOrders: plan.target.paidOrders, targetRevenue: plan.target.revenue
   };
   Object.entries(values).forEach(([name, value]) => { if (form.elements[name]) form.elements[name].value = value; });

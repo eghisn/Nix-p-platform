@@ -23,7 +23,7 @@ const dashboard = buildRollupMarketingDashboard({
   contentPlans: [{
     id: "b2b4cb20-5ed8-4b0c-9d1f-2fc590a223b3", title: "Content A", content_type: "Reel", objective: "Store visits", status: "Published",
     planned_at: "2026-08-29", campaign: "august-launch", tracking_content: "content-a", destination_path: "/records",
-    instagram_permalink: "https://www.instagram.com/p/example/", target_reach: 100, target_saves_shares: 10, target_profile_visits: 4, target_new_followers: 2, actual_profile_visits: 5, actual_new_followers: 1,
+    instagram_permalink: "https://www.instagram.com/p/example/", target_reach: 100, target_saves_shares: 10, target_profile_visits: 4, target_new_followers: 2, target_bio_link_taps: 3, actual_profile_visits: 5, actual_new_followers: 1, actual_bio_link_taps: 2,
     target_likes: 10, target_comments: 2, target_sessions: 8,
     target_carts: 1, target_paid_orders: 1, target_revenue: 100000
   }],
@@ -51,10 +51,13 @@ assert.equal(dashboard.instagram.posts[0].likes, 12);
 assert.equal(dashboard.contentPlans.length, 1);
 assert.equal(dashboard.contentPlans[0].actual.sessions, 8);
 assert.equal(dashboard.contentPlans[0].target.reach, 100);
+assert.equal(dashboard.contentPlans[0].target.profileVisits, 4, "A profile-visit target must remain independent from its manual actual.");
 assert.equal(dashboard.contentPlans[0].actual.reach, 100);
 assert.equal(dashboard.contentPlans[0].actual.savesShares, 5);
 assert.equal(dashboard.contentPlans[0].actual.profileVisits, 5, "A manually entered profile-visit result must be preserved.");
 assert.equal(dashboard.contentPlans[0].actual.newFollowers, 1, "A manually entered follower result must be preserved.");
+assert.equal(dashboard.contentPlans[0].target.bioLinkTaps, 3);
+assert.equal(dashboard.contentPlans[0].actual.bioLinkTaps, 2);
 assert.equal(dashboard.contentPlans[0].instagramPostFound, true, "A saved /p/ URL must match Meta's canonical /reel/ URL for the same post.");
 assert.equal(dashboard.contentPlans[0].actual.revenue, 125000);
 assert.equal(dashboard.contentPlans[0].result, "Ahead");

@@ -155,6 +155,7 @@
                   <label>Saves + shares<input name="targetSavesShares" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
                   <label>Profile visits<input name="targetProfileVisits" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
                   <label>New followers<input name="targetNewFollowers" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
+                  <label>Bio link taps<input name="targetBioLinkTaps" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
                   <label>Likes<input name="targetLikes" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
                   <label>Comments<input name="targetComments" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
                   <label>Website visits<input name="targetSessions" type="number" min="0" step="1" value="0" inputmode="numeric" /></label>
@@ -168,6 +169,7 @@
                 <div class="content-target-grid content-target-grid-compact">
                   <label>Profile visits<input name="actualProfileVisits" type="number" min="0" step="1" inputmode="numeric" placeholder="Enter actual" /></label>
                   <label>New followers<input name="actualNewFollowers" type="number" min="0" step="1" inputmode="numeric" placeholder="Enter actual" /></label>
+                  <label>Bio link taps<input name="actualBioLinkTaps" type="number" min="0" step="1" inputmode="numeric" placeholder="Enter actual" /></label>
                 </div>
               </fieldset>
               <div class="content-plan-link" data-content-plan-link-preview hidden><span>Tracking link</span><code data-content-plan-link-value></code></div>
@@ -185,7 +187,7 @@
             <div class="content-plan-list" data-content-plan-list></div>
           </section>
           <div class="split-grid">
-            <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Connection</p><h3>Instagram post data</h3></div><span class="consent-badge" data-instagram-status>Checking</span></div><p class="panel-copy" data-instagram-copy>Checking the Instagram connection.</p><div class="rule-grid instagram-setup"><span>01</span><p>Use a distinct <strong>utm_campaign</strong> for each post or reel, and the post shortcode as <strong>utm_content</strong>.</p><span>02</span><p>Website sessions, carts, and paid orders appear here even before Meta post metrics are connected.</p></div></section>
+            <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Connection</p><h3>Instagram post data</h3></div><span class="consent-badge" data-instagram-status>Checking</span></div><p class="panel-copy" data-instagram-copy>Checking the Instagram connection.</p><div class="instagram-account-metric"><span>Bio link taps</span><strong data-instagram-bio-link-taps>--</strong><small data-instagram-bio-link-taps-note>Account-level / selected period</small></div><div class="rule-grid instagram-setup"><span>01</span><p>Use a distinct <strong>utm_campaign</strong> for each post or reel, and the post shortcode as <strong>utm_content</strong>.</p><span>02</span><p>Website sessions, carts, and paid orders appear here even before Meta post metrics are connected.</p></div></section>
             <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Website signal</p><h3>Instagram campaigns</h3></div></div><div class="rank-list" data-instagram-campaign-list></div></section>
           </div>
           <section class="panel table-panel"><div class="panel-heading"><div><p class="eyebrow">Latest posts</p><h3>Post engagement</h3></div><span class="muted-label">Meta connection required</span></div><div class="data-table-wrap"><table data-sort-table="instagram-posts"><thead><tr><th><button type="button" data-sort-key="timestamp">Published</button></th><th><button type="button" data-sort-key="caption">Post</button></th><th><button type="button" data-sort-key="mediaType">Type</button></th><th><button type="button" data-sort-key="likes">Likes</button></th><th><button type="button" data-sort-key="comments">Comments</button></th><th>Open</th></tr></thead><tbody data-instagram-posts-table></tbody></table></div></section>
