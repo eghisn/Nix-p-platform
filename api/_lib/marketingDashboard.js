@@ -352,14 +352,14 @@ export function buildContentPlanDashboard(plans = [], performanceRows = [], inst
     const actual = {
       // Meta does not attribute these account-level outcomes to one post. Do
       // not display zero as though a plan has failed while data is unavailable.
-      reach: null, savesShares: null, profileVisits: null, newFollowers: null,
+      reach: nullableNumber(post?.reach), savesShares: combinedMetric(post?.saves, post?.shares), profileVisits: null, newFollowers: null,
       likes: number(post?.likes), comments: number(post?.comments), sessions: number(row.sessions), productViews: number(row.product_views),
       carts: number(row.carts), checkouts: number(row.checkouts), paidOrders: number(row.paid_orders), revenue: number(row.revenue)
     };
     const comparisons = [
-      ['likes', target.likes, actual.likes], ['comments', target.comments, actual.comments], ['sessions', target.sessions, actual.sessions],
+      ['reach', target.reach, actual.reach], ['savesShares', target.savesShares, actual.savesShares], ['likes', target.likes, actual.likes], ['comments', target.comments, actual.comments], ['sessions', target.sessions, actual.sessions],
       ['carts', target.carts, actual.carts], ['paidOrders', target.paidOrders, actual.paidOrders], ['revenue', target.revenue, actual.revenue]
-    ].filter(([, planned]) => planned > 0);
+    ].filter(([, planned, result]) => planned > 0 && result !== null);
     const progress = comparisons.length ? comparisons.reduce((sum, [, planned, result]) => sum + Math.min(1.5, result / planned), 0) / comparisons.length : null;
     const campaign = String(plan.campaign || '').trim() || trackingContent;
     const destination = String(plan.destination_path || '/');
@@ -424,6 +424,17 @@ function respond(res, status, payload) {
 function number(value) {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function nullableNumber(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function combinedMetric(...values) {
+  const parsed = values.map(nullableNumber);
+  return parsed.some((value) => value === null) ? null : parsed.reduce((sum, value) => sum + value, 0);
 }
 
 function shortId(value) {
