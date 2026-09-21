@@ -282,7 +282,7 @@ function contentPlanPayload(form) {
     plannedAt: value("plannedAt"), campaign: value("campaign"), trackingContent: value("trackingContent"),
     destinationPath: value("destinationPath"), instagramPermalink: value("instagramPermalink"), targetReach: value("targetReach"),
     targetSavesShares: value("targetSavesShares"), targetProfileVisits: value("targetProfileVisits"), targetNewFollowers: value("targetNewFollowers"), targetLikes: value("targetLikes"),
-    targetComments: value("targetComments"), targetSessions: value("targetSessions"), targetCarts: value("targetCarts"),
+    targetComments: value("targetComments"), actualProfileVisits: value("actualProfileVisits"), actualNewFollowers: value("actualNewFollowers"), targetSessions: value("targetSessions"), targetCarts: value("targetCarts"),
     targetPaidOrders: value("targetPaidOrders"), targetRevenue: value("targetRevenue")
   };
 }
@@ -330,7 +330,7 @@ function editContentPlan(id) {
     title: plan.title, contentType: plan.contentType, objective: plan.objective, status: plan.status, plannedAt: plan.plannedAt || "",
     campaign: plan.campaign === plan.trackingContent ? "" : plan.campaign, trackingContent: plan.trackingContent, destinationPath: plan.destinationPath,
     instagramPermalink: plan.instagramPermalink, targetReach: plan.target.reach, targetSavesShares: plan.target.savesShares,
-    targetProfileVisits: plan.target.profileVisits, targetNewFollowers: plan.target.newFollowers, targetLikes: plan.target.likes, targetComments: plan.target.comments, targetSessions: plan.target.sessions,
+    targetProfileVisits: plan.target.profileVisits, targetNewFollowers: plan.target.newFollowers, targetLikes: plan.target.likes, targetComments: plan.target.comments, actualProfileVisits: plan.actual.profileVisits ?? "", actualNewFollowers: plan.actual.newFollowers ?? "", targetSessions: plan.target.sessions,
     targetCarts: plan.target.carts, targetPaidOrders: plan.target.paidOrders, targetRevenue: plan.target.revenue
   };
   Object.entries(values).forEach(([name, value]) => { if (form.elements[name]) form.elements[name].value = value; });

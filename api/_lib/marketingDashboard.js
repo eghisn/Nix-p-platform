@@ -276,6 +276,8 @@ function normalizeContentPlan(value = {}) {
     target_saves_shares: targetNumber(value.targetSavesShares),
     target_profile_visits: targetNumber(value.targetProfileVisits),
     target_new_followers: targetNumber(value.targetNewFollowers),
+    actual_profile_visits: optionalActualNumber(value.actualProfileVisits),
+    actual_new_followers: optionalActualNumber(value.actualNewFollowers),
     target_likes: targetNumber(value.targetLikes),
     target_comments: targetNumber(value.targetComments),
     target_sessions: targetNumber(value.targetSessions),
@@ -289,6 +291,17 @@ function targetNumber(value) {
   const parsed = Number(value || 0);
   if (!Number.isFinite(parsed) || parsed < 0 || parsed > 2_000_000_000) {
     const error = new Error('Targets must be positive whole numbers.');
+    error.statusCode = 400;
+    throw error;
+  }
+  return Math.floor(parsed);
+}
+
+function optionalActualNumber(value) {
+  if (value === null || value === undefined || String(value).trim() === '') return null;
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed) || parsed < 0 || parsed > 2_000_000_000) {
+    const error = new Error('Manual actuals must be positive whole numbers.');
     error.statusCode = 400;
     throw error;
   }
@@ -350,9 +363,9 @@ export function buildContentPlanDashboard(plans = [], performanceRows = [], inst
       carts: number(plan.target_carts), paidOrders: number(plan.target_paid_orders), revenue: number(plan.target_revenue)
     };
     const actual = {
-      // Meta does not attribute these account-level outcomes to one post. Do
-      // not display zero as though a plan has failed while data is unavailable.
-      reach: nullableNumber(post?.reach), savesShares: combinedMetric(post?.saves, post?.shares), profileVisits: null, newFollowers: null,
+      // Meta does not attribute these account-level outcomes to one post. Keep
+      // only an intentional manual value; otherwise null is not a failed zero.
+      reach: nullableNumber(post?.reach), savesShares: combinedMetric(post?.saves, post?.shares), profileVisits: nullableNumber(plan.actual_profile_visits), newFollowers: nullableNumber(plan.actual_new_followers),
       likes: number(post?.likes), comments: number(post?.comments), sessions: number(row.sessions), productViews: number(row.product_views),
       carts: number(row.carts), checkouts: number(row.checkouts), paidOrders: number(row.paid_orders), revenue: number(row.revenue)
     };

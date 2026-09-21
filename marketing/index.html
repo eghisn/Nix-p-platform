@@ -163,6 +163,13 @@
                   <label>Revenue<input name="targetRevenue" type="number" min="0" step="1000" value="0" inputmode="numeric" /></label>
                 </div>
               </fieldset>
+              <fieldset class="content-target-fieldset content-manual-fieldset">
+                <legend>Manual actuals / account-level</legend>
+                <div class="content-target-grid content-target-grid-compact">
+                  <label>Profile visits<input name="actualProfileVisits" type="number" min="0" step="1" inputmode="numeric" placeholder="Enter actual" /></label>
+                  <label>New followers<input name="actualNewFollowers" type="number" min="0" step="1" inputmode="numeric" placeholder="Enter actual" /></label>
+                </div>
+              </fieldset>
               <div class="content-plan-link" data-content-plan-link-preview hidden><span>Tracking link</span><code data-content-plan-link-value></code></div>
               <div class="content-plan-actions"><button class="button button-dark" type="submit">Save content plan</button><button class="button" type="button" data-content-plan-cancel hidden>Cancel edit</button><p class="form-message" data-content-plan-message role="status"></p></div>
             </form>

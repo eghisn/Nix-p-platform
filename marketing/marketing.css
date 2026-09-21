@@ -195,6 +195,7 @@ td.number { font-variant-numeric: tabular-nums; }
 .content-target-fieldset { margin: 0; border: 1px solid var(--line); padding: 12px; }
 .content-target-fieldset legend { padding: 0 5px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
 .content-target-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.content-target-grid-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 340px; }
 .content-plan-link { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 10px 0; border-block: 1px solid var(--line); }
 .content-plan-link span, .content-plan-tracking span { color: var(--muted); font-size: 10px; font-weight: 700; text-transform: uppercase; }
 .content-plan-link code, .content-plan-tracking code { overflow: hidden; color: var(--ink); font-family: inherit; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
