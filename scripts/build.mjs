@@ -577,7 +577,7 @@ function staticPublicRouteMarkup(route) {
         <div class="editorial-copy">
           <p>NIXP is an extension of Nix Powell, built around a growing catalogue of records, tapes, discs, printed matter, and objects selected through personal taste, research, and repeat listening.</p>
           <p>The focus moves across experimental music, heavy music, electronic music, contemporary composition, independent publishing, and their surrounding edges.</p>
-          <p>Based online and operating from ${NIXP_ADDRESS}.</p>
+          <p>Currently based online. Our physical store will open at ${NIXP_ADDRESS} in late 2026.</p>
         </div>
       </div>
     </section>`;
