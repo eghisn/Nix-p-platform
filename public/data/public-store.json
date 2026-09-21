@@ -40692,7 +40692,7 @@
       "category": "Records",
       "material": "",
       "autoCover": "/public/covers/nxp-2026-cd-0036-dysrhythmia-no-interference.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "https://www.allmusic.com/artist/dysrhythmia-mn0000127155",
       "syncAudit": [
         {
@@ -40768,6 +40768,7 @@
       "apparelType": "",
       "description": "Dysrhythmia's No Interference was originally self-released in 2001 and later reissued by Translation Loss with five live bonus tracks. Across guitar, bass and drums, the trio treats progressive metal as a precise, restless instrumental conversation rather than verse-chorus songwriting.",
       "reviewQuote": "mathy, funky interludes",
+      "editRevision": 18,
       "imageCredits": [
         {
           "url": "https://dysrhythmia.bandcamp.com/album/no-interference",
@@ -41024,7 +41025,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "ms69f4adp588gk",
-      "mediaCondition": "",
+      "mediaCondition": "Near Mint",
       "open_to_offers": false,
       "relatedArtists": [
         "Behold... the Arctopus",
@@ -41044,17 +41045,23 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "sleeveCondition": "",
+      "sleeveCondition": "Near Mint",
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Dysrhythmia Bandcamp / AllMusic",
       "metadataSourceUrl": "https://dysrhythmia.bandcamp.com/album/no-interference",
+      "editorialUpdatedAt": "2026-09-21T05:36:20.31+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-07-31",
+      "mediaConditionGrade": "Near Mint",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "",
+      "sleeveConditionGrade": "Near Mint",
       "enrichmentAttemptedAt": "2026-08-18T16:41:10.852Z",
       "enrichmentFingerprint": "dysrhythmia|no interference|cd|6 76941 77312 1|tl11",
       "relatedArtistEvidence": [
@@ -41285,18 +41292,16 @@
         "sourceUrl": "https://musicbrainz.org/release/dc0a1553-cf2d-478c-9fb1-ecec7f76f715",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 17,
-      "editorialUpdatedAt": "2026-09-21T02:01:19.652+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP SMALL_MEDIA packing rule v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-02",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-small-media-box",
         "weightGrams": 200,
         "shippingClass": "cd-cardboard-bubble",
