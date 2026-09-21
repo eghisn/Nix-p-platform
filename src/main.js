@@ -1071,8 +1071,9 @@ async function customerOrderStatusPage() {
     const quotePending = order.shippingStatus === "Awaiting Quote";
     const expiresAt = order.paymentExpiresAt ? new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(new Date(order.paymentExpiresAt)) : "";
     const paymentInstructions = orderPaymentInstructionsMarkup(payment.instructions, order.total);
+    const paymentActionAvailable = payment.resumeAvailable || payment.startAvailable;
     const pendingPaymentActions = [
-      payment.resumeAvailable ? `<button class="button button-dark" type="button" data-order-pay>Continue to payment</button>` : "",
+      paymentActionAvailable ? `<button class="button button-dark" type="button" data-order-pay>${payment.resumeAvailable ? "Continue to payment" : "Open secure payment"}</button>` : "",
       `<button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button>`
     ].filter(Boolean).join("");
     return `
@@ -1098,7 +1099,7 @@ async function customerOrderStatusPage() {
               ${order.trackingNumber ? `<p><span>Tracking</span><strong>${escapeHtml(order.trackingNumber)}</strong></p>` : ""}
             </div>
           </div>
-          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${!payment.resumeAvailable && !paymentInstructions ? `<p class="admin-form-note" data-tone="warning">The secure payment session cannot be reopened. Contact NIXP before the reservation expires.</p>` : ""}` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div>`}
+          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${!paymentActionAvailable && !paymentInstructions ? `<p class="admin-form-note" data-tone="warning">The secure payment session cannot be reopened. Contact NIXP before the reservation expires.</p>` : ""}` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div>`}
           <p class="admin-form-note" data-order-status-message aria-live="polite"></p>
         </div>
       </section>

@@ -59,7 +59,8 @@ assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protect
 assert.match(handlers, /rpc\/merge_midtrans_payment_attempt/, "Payment updates must merge provider status without erasing the stored redirect session.");
 assert.match(retentionMigration, /payload = coalesce\(payload, '\{\}'::jsonb\) \|\| coalesce\(p_payload, '\{\}'::jsonb\)/, "Payment updates must preserve the existing token and redirect URL atomically.");
 assert.match(checkout, /customerPaymentSummary/, "The protected customer order response must include resumability and safe payment instructions.");
-assert.match(client, /payment\.resumeAvailable \?/, "The payment CTA must only render when a usable Midtrans redirect is stored.");
+assert.match(checkout, /startAvailable: !instructions/, "A failed pre-payment session must remain safely retryable.");
+assert.match(client, /payment\.resumeAvailable \|\| payment\.startAvailable/, "The payment CTA must only render for a stored redirect or a safe pre-payment retry.");
 assert.match(client, /data-copy-payment-code/, "Bank-transfer orders must retain a customer-usable payment instruction path.");
 assert.match(handlers, /activePendingOrderIds\.has\(String\(row\.order_id\)\)/, "Payment health must only flag attempts that still belong to active pending orders.");
 

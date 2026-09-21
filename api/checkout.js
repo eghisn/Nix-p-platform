@@ -416,6 +416,7 @@ async function customerPaymentSummary(orderId) {
     provider: "Midtrans",
     attemptStatus: attempt?.status || "Unavailable",
     resumeAvailable: hasUsableMidtransRedirect(attempt?.payload?.redirectUrl),
+    startAvailable: !instructions && ["Unavailable", "Creation Failed", "Pending"].includes(attempt?.status || "Unavailable"),
     instructions
   };
 }
