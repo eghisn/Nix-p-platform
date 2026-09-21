@@ -20,7 +20,7 @@ export async function handleMarketingDashboard(req, res, url) {
   const allowed = await consumeCommerceRateLimit("marketing-dashboard", requestClientAddress(req), { limit: 90, windowSeconds: 60 });
   if (!allowed) return respond(res, 429, { ok: false, error: "Too many dashboard requests." });
 
-  const days = [7, 30, 90, 365].includes(Number(url.searchParams.get("days"))) ? Number(url.searchParams.get("days")) : 30;
+  const days = [1, 3, 7, 30, 90, 365].includes(Number(url.searchParams.get("days"))) ? Number(url.searchParams.get("days")) : 30;
   const requestedMonth = String(url.searchParams.get("month") || "");
   const month = /^\d{4}-(0[1-9]|1[0-2])$/.test(requestedMonth) ? `${requestedMonth}-01` : null;
   const { fromDate, toDate } = reportingRange(days);
