@@ -15353,7 +15353,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0063/cover.jpg",
       "label": "Domino",
-      "price": 359375,
+      "price": 360000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -15458,7 +15458,7 @@
       "apparelType": "",
       "description": "Avey Tare's Slasher Flicks brings Dave Portner together with Angel Deradoorian and drummer Jeremy Hyman for a brightly physical psychedelic-pop record made with minimal overdubs. Enter The Slasher House moves from serrated guitar and analog-synth color to the buoyant hooks of Little Fang, keeping the trio's live, slightly unhinged momentum intact.",
       "reviewQuote": "a balance of more accessible and introspective sounds",
-      "editRevision": 6,
+      "editRevision": 7,
       "imageCredits": [
         {
           "url": "https://aveytare.bandcamp.com/album/enter-the-slasher-house",
@@ -15554,8 +15554,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Avey Tare official Bandcamp / Pitchfork",
       "metadataSourceUrl": "https://aveytare.bandcamp.com/album/enter-the-slasher-house",
-      "editorialUpdatedAt": "2026-09-21T02:01:33.947+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T16:47:17.449+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-27",
@@ -15614,7 +15614,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-20",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
