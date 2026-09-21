@@ -28512,14 +28512,18 @@
         "SKU: NXP-2026-VNL-0038",
         "Format: Vinyl",
         "Condition: Used Good",
-        "Edition: Vinyl, 12\", EP, 45 RPM, Gold Text",
+        "Edition: Vinyl",
+        "12\"",
+        "EP",
+        "45 RPM",
+        "Gold Text",
         "Catalog number: BEG 74t / BEG 74 (T)"
       ],
       "edition": "Vinyl, 12\", EP, 45 RPM, Gold Text",
       "category": "Records",
       "material": "",
       "autoCover": "/public/covers/nxp-2026-vnl-0038-bauhaus-kick-in-the-eye-gold-text.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "https://www.allmusic.com/album/1979-1983-vol-2-mw0000471790",
       "syncAudit": [
         {
@@ -28595,7 +28599,7 @@
       "apparelType": "",
       "description": "Bauhaus's 1982 release Kick in the Eye (Searching for Satori E.P.) is a Vinyl edition issued by Beggars Banquet, documented by MusicBrainz as dub, goth rock, gothic rock.",
       "reviewQuote": "1979-1983, Vol. 2 by Bauhaus released in 1986. Find 1979-1983, Vol. 2 reviews, track lists, credits, awards and more at",
-      "editRevision": 18,
+      "editRevision": 19,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/9a7f56ad-de7d-4ed4-9fdf-800878316a8f",
@@ -28853,7 +28857,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "msoh9k8yadscxk",
-      "mediaCondition": "",
+      "mediaCondition": "Very Good Plus",
       "open_to_offers": false,
       "relatedArtists": [
         "Siouxsie And The Banshees",
@@ -28873,7 +28877,7 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "sleeveCondition": "",
+      "sleeveCondition": "Very Good",
       "autoProductPhoto": "",
       "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
@@ -28884,13 +28888,17 @@
         "review source",
         "related artists available in inventory"
       ],
-      "editorialUpdatedAt": "2026-09-21T02:01:25.578+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T05:10:45.929+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-11",
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "9a7f56ad-de7d-4ed4-9fdf-800878316a8f",
+      "sleeveConditionGrade": "Very Good",
       "enrichmentAttemptedAt": "2026-08-11T13:28:24.705Z",
       "enrichmentFingerprint": "bauhaus|kick in the eye searching for satori e p|vinyl||beg 74 t",
       "relatedArtistEvidence": [
@@ -29121,14 +29129,16 @@
         "sourceUrl": "https://musicbrainz.org/release/9a7f56ad-de7d-4ed4-9fdf-800878316a8f",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
