@@ -21171,7 +21171,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0053/cover.jpg",
       "label": "Domino",
-      "price": 618750,
+      "price": 620000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -21276,7 +21276,7 @@
       "apparelType": "",
       "description": "Animal Collective's 2023 double LP Isn't It Now? is their longest album, drawing its psychedelic pop, layered vocals and open-ended arrangements from the same songwriting period as Time Skiffs.",
       "reviewQuote": "one of the album's most thrilling highs",
-      "editRevision": 7,
+      "editRevision": 8,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/28429408-Animal-Collective-Isnt-It-Now",
@@ -21559,8 +21559,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Domino / Pitchfork",
       "metadataSourceUrl": "https://www.discogs.com/release/28429408-Animal-Collective-Isnt-It-Now",
-      "editorialUpdatedAt": "2026-09-21T02:01:30.652+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T16:36:33.541+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-17",
@@ -21810,7 +21810,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-20",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
