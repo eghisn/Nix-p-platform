@@ -231,6 +231,10 @@ function contentPlanCard(plan) {
         <div class="content-plan-status"><strong class="content-result content-result-${escapeHtml(String(plan.result || "tracking").toLowerCase().replace(/\s+/g, "-"))}">${escapeHtml(plan.result || "Tracking")}</strong><span>${progress}</span></div>
       </header>
       <div class="content-plan-metrics">
+        ${contentPlanMetric("Reach", target.reach, actual.reach, integer)}
+        ${contentPlanMetric("Saves + shares", target.savesShares, actual.savesShares, integer)}
+        ${contentPlanMetric("Profile visits", target.profileVisits, actual.profileVisits, integer)}
+        ${contentPlanMetric("New followers", target.newFollowers, actual.newFollowers, integer)}
         ${contentPlanMetric("Likes", target.likes, actual.likes, integer)}
         ${contentPlanMetric("Comments", target.comments, actual.comments, integer)}
         ${contentPlanMetric("Website visits", target.sessions, actual.sessions, integer)}
@@ -247,9 +251,12 @@ function contentPlanCard(plan) {
 
 function contentPlanMetric(label, target, actual, formatter) {
   const planned = Number(target || 0);
-  const result = Number(actual || 0);
-  const progress = planned ? Math.min(100, Math.round(result / planned * 100)) : null;
-  return `<div class="content-plan-metric"><span>${escapeHtml(label)}</span><strong>${formatter.format(result)}</strong><small>${planned ? `${formatter.format(planned)} target / ${progress}%` : "No target"}</small></div>`;
+  const hasActual = actual !== null && actual !== undefined && actual !== "" && Number.isFinite(Number(actual));
+  const result = hasActual ? Number(actual) : 0;
+  const progress = planned && hasActual ? Math.min(100, Math.round(result / planned * 100)) : null;
+  const outcome = hasActual ? formatter.format(result) : "--";
+  const detail = !planned ? "No target" : !hasActual ? `${formatter.format(planned)} target / Waiting for data` : `${formatter.format(planned)} target / ${progress}%`;
+  return `<div class="content-plan-metric"><span>${escapeHtml(label)}</span><strong>${outcome}</strong><small>${detail}</small></div>`;
 }
 
 function contentTrackingId(value) {
@@ -267,7 +274,8 @@ function contentPlanPayload(form) {
   return {
     title: value("title"), contentType: value("contentType"), objective: value("objective"), status: value("status"),
     plannedAt: value("plannedAt"), campaign: value("campaign"), trackingContent: value("trackingContent"),
-    destinationPath: value("destinationPath"), instagramPermalink: value("instagramPermalink"), targetLikes: value("targetLikes"),
+    destinationPath: value("destinationPath"), instagramPermalink: value("instagramPermalink"), targetReach: value("targetReach"),
+    targetSavesShares: value("targetSavesShares"), targetProfileVisits: value("targetProfileVisits"), targetNewFollowers: value("targetNewFollowers"), targetLikes: value("targetLikes"),
     targetComments: value("targetComments"), targetSessions: value("targetSessions"), targetCarts: value("targetCarts"),
     targetPaidOrders: value("targetPaidOrders"), targetRevenue: value("targetRevenue")
   };
@@ -315,7 +323,8 @@ function editContentPlan(id) {
   const values = {
     title: plan.title, contentType: plan.contentType, objective: plan.objective, status: plan.status, plannedAt: plan.plannedAt || "",
     campaign: plan.campaign === plan.trackingContent ? "" : plan.campaign, trackingContent: plan.trackingContent, destinationPath: plan.destinationPath,
-    instagramPermalink: plan.instagramPermalink, targetLikes: plan.target.likes, targetComments: plan.target.comments, targetSessions: plan.target.sessions,
+    instagramPermalink: plan.instagramPermalink, targetReach: plan.target.reach, targetSavesShares: plan.target.savesShares,
+    targetProfileVisits: plan.target.profileVisits, targetNewFollowers: plan.target.newFollowers, targetLikes: plan.target.likes, targetComments: plan.target.comments, targetSessions: plan.target.sessions,
     targetCarts: plan.target.carts, targetPaidOrders: plan.target.paidOrders, targetRevenue: plan.target.revenue
   };
   Object.entries(values).forEach(([name, value]) => { if (form.elements[name]) form.elements[name].value = value; });

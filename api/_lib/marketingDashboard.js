@@ -272,6 +272,10 @@ function normalizeContentPlan(value = {}) {
     tracking_content: trackingContent,
     destination_path: destinationPath(value.destinationPath),
     instagram_permalink: instagramPermalink ? normalizeInstagramPermalink(instagramPermalink) : '',
+    target_reach: targetNumber(value.targetReach),
+    target_saves_shares: targetNumber(value.targetSavesShares),
+    target_profile_visits: targetNumber(value.targetProfileVisits),
+    target_new_followers: targetNumber(value.targetNewFollowers),
     target_likes: targetNumber(value.targetLikes),
     target_comments: targetNumber(value.targetComments),
     target_sessions: targetNumber(value.targetSessions),
@@ -341,10 +345,14 @@ export function buildContentPlanDashboard(plans = [], performanceRows = [], inst
     const row = performance.get(trackingContent) || {};
     const post = postByPermalink.get(normalizeComparablePermalink(plan.instagram_permalink));
     const target = {
+      reach: number(plan.target_reach), savesShares: number(plan.target_saves_shares), profileVisits: number(plan.target_profile_visits), newFollowers: number(plan.target_new_followers),
       likes: number(plan.target_likes), comments: number(plan.target_comments), sessions: number(plan.target_sessions),
       carts: number(plan.target_carts), paidOrders: number(plan.target_paid_orders), revenue: number(plan.target_revenue)
     };
     const actual = {
+      // Meta does not attribute these account-level outcomes to one post. Do
+      // not display zero as though a plan has failed while data is unavailable.
+      reach: null, savesShares: null, profileVisits: null, newFollowers: null,
       likes: number(post?.likes), comments: number(post?.comments), sessions: number(row.sessions), productViews: number(row.product_views),
       carts: number(row.carts), checkouts: number(row.checkouts), paidOrders: number(row.paid_orders), revenue: number(row.revenue)
     };

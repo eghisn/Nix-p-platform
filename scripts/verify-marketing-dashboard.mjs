@@ -23,7 +23,8 @@ const dashboard = buildRollupMarketingDashboard({
   contentPlans: [{
     id: "b2b4cb20-5ed8-4b0c-9d1f-2fc590a223b3", title: "Content A", content_type: "Reel", objective: "Store visits", status: "Published",
     planned_at: "2026-08-29", campaign: "august-launch", tracking_content: "content-a", destination_path: "/records",
-    instagram_permalink: "https://www.instagram.com/p/example/", target_likes: 10, target_comments: 2, target_sessions: 8,
+    instagram_permalink: "https://www.instagram.com/p/example/", target_reach: 100, target_saves_shares: 10, target_profile_visits: 4, target_new_followers: 2,
+    target_likes: 10, target_comments: 2, target_sessions: 8,
     target_carts: 1, target_paid_orders: 1, target_revenue: 100000
   }],
   contentPerformance: [{ tracking_content: "content-a", sessions: 8, product_views: 5, carts: 2, checkouts: 1, paid_orders: 1, revenue: 125000 }],
@@ -49,13 +50,16 @@ assert.equal(dashboard.instagram.status, "connected");
 assert.equal(dashboard.instagram.posts[0].likes, 12);
 assert.equal(dashboard.contentPlans.length, 1);
 assert.equal(dashboard.contentPlans[0].actual.sessions, 8);
+assert.equal(dashboard.contentPlans[0].target.reach, 100);
+assert.equal(dashboard.contentPlans[0].actual.reach, null);
 assert.equal(dashboard.contentPlans[0].actual.revenue, 125000);
 assert.equal(dashboard.contentPlans[0].result, "Ahead");
 assert.match(dashboard.contentPlans[0].trackingUrl, /utm_content=content-a/);
 
 const plannedContent = buildContentPlanDashboard([{
   id: "251e214d-7702-4df6-b11b-a02352bbdd35", title: "Future post", content_type: "Feed post", objective: "Awareness", status: "Planned",
-  tracking_content: "future-post", destination_path: "/", campaign: "", instagram_permalink: "", target_likes: 0, target_comments: 0,
+  tracking_content: "future-post", destination_path: "/", campaign: "", instagram_permalink: "", target_reach: 0, target_saves_shares: 0,
+  target_profile_visits: 0, target_new_followers: 0, target_likes: 0, target_comments: 0,
   target_sessions: 0, target_carts: 0, target_paid_orders: 0, target_revenue: 0
 }]);
 assert.equal(plannedContent[0].result, "Planned", "Planned content must not be marked as underperforming before it is published.");
