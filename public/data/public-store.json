@@ -15084,7 +15084,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0064/cover.jpg",
       "label": "Dekmantel",
-      "price": 322500,
+      "price": 325000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -15189,7 +15189,7 @@
       "apparelType": "",
       "description": "Dekmantel's 2012 anniversary-series installment pairs Skudge's Silent Running with San Proper's Rattle (Station 2 Station). The 12-inch keeps the label's early club language concise: stripped, machine-led techno on one side, a rougher house cut on the other.",
       "reviewQuote": "raw and lively tracks dripping dirty funk and dusty machine",
-      "editRevision": 8,
+      "editRevision": 9,
       "imageCredits": [
         {
           "url": "https://www.juno.co.uk/products/skudge-san-proper-dekmantel-anniversary-series-part-4-vinyl/445694-01/",
@@ -15275,8 +15275,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "HHV / Juno Records",
       "metadataSourceUrl": "https://www.hhv.de/en/records/item/skudge-san-proper-dekmantel-anniversary-series-part-4-1255668",
-      "editorialUpdatedAt": "2026-09-21T02:01:34.241+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T17:09:16.934+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-27",
@@ -15329,7 +15329,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-20",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
