@@ -39370,7 +39370,7 @@
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0038/cover.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "https://pitchfork.com/reviews/albums/12965-post-nothing/",
       "syncAudit": [
         {
@@ -39446,6 +39446,7 @@
       "apparelType": "",
       "description": "Japandroids' Post-Nothing is the Vancouver duo's 2009 debut: ten concise, overdriven songs built from Brian King and David Prowse's guitars, drums, hooks and shouted release.",
       "reviewQuote": "terminally catchy music played with punk's enthusiasm and velocity",
+      "editRevision": 19,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/2b6bb8ca-6b18-3ece-afc7-3e72ef3145d6",
@@ -39702,7 +39703,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "msdjyvxbrhrbyw",
-      "mediaCondition": "",
+      "mediaCondition": "Very Good",
       "open_to_offers": false,
       "relatedArtists": [
         "Cloud Nothings",
@@ -39722,17 +39723,23 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "sleeveCondition": "",
+      "sleeveCondition": "Very Good",
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Japandroids Bandcamp / MusicBrainz",
       "metadataSourceUrl": "https://japandroids.bandcamp.com/album/post-nothing",
+      "editorialUpdatedAt": "2026-09-21T05:39:37.092+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-09",
+      "mediaConditionGrade": "Very Good",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "2b6bb8ca-6b18-3ece-afc7-3e72ef3145d6",
+      "sleeveConditionGrade": "Very Good",
       "enrichmentAttemptedAt": "2026-08-09T20:36:32.436Z",
       "enrichmentFingerprint": "japandroids|post nothing|cd|44110 01842|prc 184 2",
       "relatedArtistEvidence": [
@@ -39963,18 +39970,16 @@
         "sourceUrl": "https://musicbrainz.org/release/2b6bb8ca-6b18-3ece-afc7-3e72ef3145d6",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 18,
-      "editorialUpdatedAt": "2026-09-21T02:01:20.266+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
