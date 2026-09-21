@@ -19,7 +19,7 @@ const dashboard = buildRollupMarketingDashboard({
   },
   products: [{ id: "p1", title: "Release", artist: "Artist", views: 2, added: 1, orders: 2, units: 2, sales: 900_000 }],
   contactsSummary: { knownCustomers: 501, returningCustomers: 10, contacts: [{ name: "Test", email: "test@example.com", orders: 2, sales: 1_000_000, lastOrder: "2026-08-29T00:00:00Z" }] },
-  instagram: { status: "connected", message: "Latest post activity is refreshed automatically from Meta.", account: "NIXP Instagram", posts: [{ id: "post-1", caption: "New release", mediaType: "IMAGE", permalink: "https://www.instagram.com/p/example/", timestamp: "2026-08-29T00:00:00Z", likes: 12, comments: 3, reach: 100, saves: 2, shares: 3 }] },
+  instagram: { status: "connected", message: "Latest post activity is refreshed automatically from Meta.", account: "NIXP Instagram", posts: [{ id: "post-1", caption: "New release", mediaType: "VIDEO", permalink: "https://www.instagram.com/reel/example/", timestamp: "2026-08-29T00:00:00Z", likes: 12, comments: 3, reach: 100, saves: 2, shares: 3 }] },
   contentPlans: [{
     id: "b2b4cb20-5ed8-4b0c-9d1f-2fc590a223b3", title: "Content A", content_type: "Reel", objective: "Store visits", status: "Published",
     planned_at: "2026-08-29", campaign: "august-launch", tracking_content: "content-a", destination_path: "/records",
@@ -53,6 +53,7 @@ assert.equal(dashboard.contentPlans[0].actual.sessions, 8);
 assert.equal(dashboard.contentPlans[0].target.reach, 100);
 assert.equal(dashboard.contentPlans[0].actual.reach, 100);
 assert.equal(dashboard.contentPlans[0].actual.savesShares, 5);
+assert.equal(dashboard.contentPlans[0].instagramPostFound, true, "A saved /p/ URL must match Meta's canonical /reel/ URL for the same post.");
 assert.equal(dashboard.contentPlans[0].actual.revenue, 125000);
 assert.equal(dashboard.contentPlans[0].result, "Ahead");
 assert.match(dashboard.contentPlans[0].trackingUrl, /utm_content=content-a/);

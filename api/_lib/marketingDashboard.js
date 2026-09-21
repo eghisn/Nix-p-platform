@@ -383,6 +383,10 @@ function normalizeComparablePermalink(value) {
   if (!raw) return '';
   try {
     const url = new URL(raw);
+    // Meta may canonicalize the exact same media as /p/, /reel/, or /tv/.
+    // Match its immutable shortcode rather than the presentation-specific path.
+    const shortcode = url.pathname.match(/^\/(?:p|reel|tv)\/([^/?#]+)\/?$/i)?.[1];
+    if (shortcode) return `instagram-media:${shortcode}`;
     return `${url.protocol}//${url.hostname.toLowerCase()}${url.pathname.replace(/\/+$/, '')}/`;
   } catch {
     return '';
