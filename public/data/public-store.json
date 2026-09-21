@@ -27872,7 +27872,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0039/cover.jpg",
       "label": "Elektra",
-      "price": 446578,
+      "price": 450000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -27899,7 +27899,7 @@
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0039/cover.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "https://www.allmusic.com/album/adventure-mw0000201050",
       "syncAudit": [
         {
@@ -27960,7 +27960,7 @@
         }
       ],
       "updatedAt": "2026-09-21",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "Elektra",
       "fabricCare": "",
       "syncStatus": {
@@ -27975,7 +27975,7 @@
       "apparelType": "",
       "description": "Television's 1978 release Adventure is a Vinyl edition issued by Elektra, documented by MusicBrainz as cbgb scene, new wave, post-punk.",
       "reviewQuote": "Adventure by Television released in 1978. Find Adventure reviews, track lists, credits, awards and more at AllMusic.",
-      "editRevision": 18,
+      "editRevision": 19,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/a672416a-005f-3dbc-8f78-952f5e18a7e0",
@@ -28238,7 +28238,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "msohfpgeqelev4",
-      "mediaCondition": "",
+      "mediaCondition": "Very Good",
       "open_to_offers": false,
       "relatedArtists": [
         "Tom Verlaine",
@@ -28258,7 +28258,7 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "sleeveCondition": "",
+      "sleeveCondition": "Very Good",
       "autoProductPhoto": "",
       "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
@@ -28269,14 +28269,18 @@
         "review source",
         "related artists available in inventory"
       ],
-      "editorialUpdatedAt": "2026-09-21T02:01:25.882+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T17:10:15.552+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-11",
+      "mediaConditionGrade": "Very Good",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "a672416a-005f-3dbc-8f78-952f5e18a7e0",
       "publishAfterResearch": true,
+      "sleeveConditionGrade": "Very Good",
       "enrichmentAttemptedAt": "2026-08-11T15:16:52.330Z",
       "enrichmentFingerprint": "television|adventure|vinyl||",
       "relatedArtistEvidence": [
@@ -28516,7 +28520,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-16",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -52501,6 +52505,665 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0014",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0014",
+      "tags": [
+        "electronic",
+        "experimental pop",
+        "2LP"
+      ],
+      "year": 2024,
+      "color": "",
+      "flaws": "",
+      "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+      "label": "Transgressive / Future Classic",
+      "price": 801000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "SOPHIE",
+      "artist": "Sophie",
+      "format": "Vinyl",
+      "images": [
+        "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+        "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg"
+      ],
+      "barcode": "5 400863 167936",
+      "details": [
+        "SKU: NXP-2026-VNL-0014",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: 2LP gatefold",
+        "Catalog number: TRANS809X"
+      ],
+      "edition": "2 x Vinyl, LP, Album, Stereo, Clear",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
+      "syncAudit": [
+        {
+          "at": "2026-09-21T02:00:47.711Z",
+          "sku": "NXP-2026-VNL-0014",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-20T02:00:48.340Z",
+          "sku": "NXP-2026-VNL-0014",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:52:12.142Z",
+          "sku": "NXP-2026-VNL-0014",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:51:10.821Z",
+          "sku": "NXP-2026-VNL-0014",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:38:27.214Z",
+          "sku": "NXP-2026-VNL-0014",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:37:44.702Z",
+          "sku": "NXP-2026-VNL-0014",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T02:00:50.071Z",
+          "sku": "NXP-2026-VNL-0014",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-18T02:00:47.014Z",
+          "sku": "NXP-2026-VNL-0014",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-21",
+      "vinylSize": "",
+      "collection": "Transgressive / Future Classic",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-09-21T02:00:47.711Z",
+        "sku": "NXP-2026-VNL-0014",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "SOPHIE's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping bright pop abstraction, collaborative songwriting and industrial club textures in conversation.",
+      "reviewQuote": "still sounds like the future of pop music",
+      "editRevision": 18,
+      "imageCredits": [
+        {
+          "url": "https://transgressiverecords.com/artist/sophie/",
+          "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
+          "credit": "Transgressive / Future Classic artwork"
+        },
+        {
+          "url": "https://impressedrecordings.com/products/sophie-sophie-vinyl-lp",
+          "image": "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg",
+          "credit": "Impressed Recordings product photography"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Associated Press (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
+        "description": "SOPHIE's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping bright pop abstraction, collaborative songwriting and industrial club textures in conversation.",
+        "reviewQuote": "still sounds like the future of pop music",
+        "reviewSource": "Associated Press (quoted)",
+        "relatedArtists": [
+          "GFOTY",
+          "Arca",
+          "QT",
+          "A. G. Cook",
+          "Evita Manji"
+        ],
+        "descriptionSource": "Transgressive / Associated Press",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "GFOTY",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.928334,
+            "artist": "Arca",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.928334,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.900414,
+            "artist": "QT",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.900414,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.832849,
+            "artist": "A. G. Cook",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.832849,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.703883,
+            "artist": "Evita Manji",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.703883,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "GFOTY",
+              "Arca",
+              "QT",
+              "A. G. Cook",
+              "Evita Manji",
+              "BABYNYMPH",
+              "Charli xcx",
+              "Hannah Diamond",
+              "Lipgloss Twins",
+              "Hyd"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "GFOTY",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.928334,
+                "artist": "Arca",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.928334,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.900414,
+                "artist": "QT",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.900414,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.832849,
+                "artist": "A. G. Cook",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.832849,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.703883,
+                "artist": "Evita Manji",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.703883,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.68506,
+                "artist": "BABYNYMPH",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.68506,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.648014,
+                "artist": "Charli xcx",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.648014,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.607643,
+                "artist": "Hannah Diamond",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.607643,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.588156,
+                "artist": "Lipgloss Twins",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.588156,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.578553,
+                "artist": "Hyd",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "confidence": 0.578553,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "GFOTY",
+            "Arca",
+            "QT",
+            "A. G. Cook",
+            "Evita Manji"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "GFOTY",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.928334,
+              "artist": "Arca",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.928334,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.900414,
+              "artist": "QT",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.900414,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.832849,
+              "artist": "A. G. Cook",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.832849,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.703883,
+              "artist": "Evita Manji",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.703883,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "c585d0e3-3651-4f14-af37-41844fd544e4",
+          "sourceUrl": "https://musicbrainz.org/release/c585d0e3-3651-4f14-af37-41844fd544e4",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "TRANS809X",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "ms1g1muz69eef7",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "GFOTY",
+        "Arca",
+        "QT",
+        "A. G. Cook",
+        "Evita Manji"
+      ],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg",
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Transgressive / Associated Press",
+      "metadataSourceUrl": "https://sophie.ochre.store/?lang=en_GB",
+      "editorialUpdatedAt": "2026-09-21T02:01:09.356+00:00",
+      "editorialUpdatedBy": "finance-stock",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-07-26",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "",
+      "enrichmentAttemptedAt": "2026-08-18T16:51:04.401Z",
+      "enrichmentFingerprint": "sophie|sophie|vinyl||trans809x",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "GFOTY",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.928334,
+          "artist": "Arca",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "confidence": 0.928334,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.900414,
+          "artist": "QT",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "confidence": 0.900414,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.832849,
+          "artist": "A. G. Cook",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "confidence": 0.832849,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.703883,
+          "artist": "Evita Manji",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Sophie",
+          "confidence": 0.703883,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "GFOTY",
+            "Arca",
+            "QT",
+            "A. G. Cook",
+            "Evita Manji",
+            "BABYNYMPH",
+            "Charli xcx",
+            "Hannah Diamond",
+            "Lipgloss Twins",
+            "Hyd"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "GFOTY",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.928334,
+              "artist": "Arca",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.928334,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.900414,
+              "artist": "QT",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.900414,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.832849,
+              "artist": "A. G. Cook",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.832849,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.703883,
+              "artist": "Evita Manji",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.703883,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.68506,
+              "artist": "BABYNYMPH",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.68506,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.648014,
+              "artist": "Charli xcx",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.648014,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.607643,
+              "artist": "Hannah Diamond",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.607643,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.588156,
+              "artist": "Lipgloss Twins",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.588156,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.578553,
+              "artist": "Hyd",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "confidence": 0.578553,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Sophie"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "GFOTY",
+          "Arca",
+          "QT",
+          "A. G. Cook",
+          "Evita Manji"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "GFOTY",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.928334,
+            "artist": "Arca",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.928334,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.900414,
+            "artist": "QT",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.900414,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.832849,
+            "artist": "A. G. Cook",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.832849,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.703883,
+            "artist": "Evita Manji",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Sophie",
+            "confidence": 0.703883,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "c585d0e3-3651-4f14-af37-41844fd544e4",
+        "sourceUrl": "https://musicbrainz.org/release/c585d0e3-3651-4f14-af37-41844fd544e4",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-16",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-cd-0034",
       "qty": 1,
       "sku": "NXP-2026-CD-0034",
@@ -53807,100 +54470,93 @@
       }
     },
     {
-      "id": "finance-nxp-2026-vnl-0014",
+      "id": "finance-nxp-2026-cd-0032",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0014",
-      "tags": [
-        "electronic",
-        "experimental pop",
-        "2LP"
-      ],
-      "year": 2024,
+      "sku": "NXP-2026-CD-0032",
+      "tags": [],
+      "year": 2015,
       "color": "",
       "flaws": "",
-      "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
-      "label": "Transgressive / Future Classic",
-      "price": 801000,
+      "image": "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg",
+      "label": "Jagjaguwar",
+      "price": 197000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "SOPHIE",
-      "artist": "Sophie",
-      "format": "Vinyl",
+      "title": "Viet Cong",
+      "artist": "Viet Cong",
+      "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
-        "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg"
+        "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg"
       ],
-      "barcode": "5 400863 167936",
+      "barcode": "6 56605 22602 6",
       "details": [
-        "SKU: NXP-2026-VNL-0014",
-        "Format: Vinyl",
-        "Condition: New-Sealed",
-        "Edition: 2LP gatefold",
-        "Catalog number: TRANS809X"
+        "SKU: NXP-2026-CD-0032",
+        "Format: CD",
+        "Condition: Used Good"
       ],
-      "edition": "2 x Vinyl, LP, Album, Stereo, Clear",
+      "edition": "CD, Album",
       "category": "Records",
       "material": "",
-      "autoCover": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0032/cover.jpg",
+      "condition": "Used Good",
+      "reviewUrl": "",
       "syncAudit": [
         {
-          "at": "2026-09-21T02:00:47.711Z",
-          "sku": "NXP-2026-VNL-0014",
+          "at": "2026-09-21T02:00:47.712Z",
+          "sku": "NXP-2026-CD-0032",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-20T02:00:48.340Z",
-          "sku": "NXP-2026-VNL-0014",
+          "at": "2026-09-20T02:00:48.341Z",
+          "sku": "NXP-2026-CD-0032",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T11:52:12.142Z",
-          "sku": "NXP-2026-VNL-0014",
+          "at": "2026-09-19T11:52:12.143Z",
+          "sku": "NXP-2026-CD-0032",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T11:51:10.821Z",
-          "sku": "NXP-2026-VNL-0014",
+          "at": "2026-09-19T11:51:10.822Z",
+          "sku": "NXP-2026-CD-0032",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T11:38:27.214Z",
-          "sku": "NXP-2026-VNL-0014",
+          "at": "2026-09-19T11:38:27.215Z",
+          "sku": "NXP-2026-CD-0032",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T11:37:44.702Z",
-          "sku": "NXP-2026-VNL-0014",
+          "at": "2026-09-19T11:37:44.703Z",
+          "sku": "NXP-2026-CD-0032",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T02:00:50.071Z",
-          "sku": "NXP-2026-VNL-0014",
+          "at": "2026-09-19T02:00:50.072Z",
+          "sku": "NXP-2026-CD-0032",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-18T02:00:47.014Z",
-          "sku": "NXP-2026-VNL-0014",
+          "at": "2026-09-18T02:00:47.015Z",
+          "sku": "NXP-2026-CD-0032",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -53908,11 +54564,11 @@
       ],
       "updatedAt": "2026-09-21",
       "vinylSize": "",
-      "collection": "Transgressive / Future Classic",
+      "collection": "Jagjaguwar",
       "fabricCare": "",
       "syncStatus": {
-        "at": "2026-09-21T02:00:47.711Z",
-        "sku": "NXP-2026-VNL-0014",
+        "at": "2026-09-21T02:00:47.712Z",
+        "sku": "NXP-2026-CD-0032",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
@@ -53920,90 +54576,95 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "SOPHIE's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping bright pop abstraction, collaborative songwriting and industrial club textures in conversation.",
-      "reviewQuote": "still sounds like the future of pop music",
+      "description": "Viet Cong's self-titled 2015 album is the band's lone full-length under that name before becoming Preoccupations, built from shadowed post-punk, art-punk, and noise-rock pressure.",
+      "reviewQuote": "unusually obsessed with the mechanics and process",
       "editRevision": 18,
       "imageCredits": [
         {
-          "url": "https://transgressiverecords.com/artist/sophie/",
-          "image": "/public/covers/nxp-2026-vnl-0014-sophie-sophie.jpg",
-          "credit": "Transgressive / Future Classic artwork"
-        },
-        {
-          "url": "https://impressedrecordings.com/products/sophie-sophie-vinyl-lp",
-          "image": "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg",
-          "credit": "Impressed Recordings product photography"
+          "url": "https://music.apple.com/us/album/viet-cong/931381276",
+          "image": "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg",
+          "credit": "Apple Music artwork / Jagjaguwar"
         }
       ],
       "originalTags": false,
-      "reviewSource": "Associated Press (quoted)",
+      "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://apnews.com/article/cfc8b0365229cfe0d05a350f9f748bd3",
-        "description": "SOPHIE's posthumous 2024 self-titled album was assembled by Benny Long from the artist's final recordings, keeping bright pop abstraction, collaborative songwriting and industrial club textures in conversation.",
-        "reviewQuote": "still sounds like the future of pop music",
-        "reviewSource": "Associated Press (quoted)",
+        "reviewUrl": "https://pitchfork.com/reviews/albums/20086-viet-cong/",
+        "description": "Viet Cong's self-titled 2015 album is the band's lone full-length under that name before becoming Preoccupations, built from shadowed post-punk, art-punk, and noise-rock pressure.",
+        "reviewQuote": "unusually obsessed with the mechanics and process",
+        "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
-          "GFOTY",
-          "Arca",
-          "QT",
-          "A. G. Cook",
-          "Evita Manji"
+          "Preoccupations",
+          "Women",
+          "Ought",
+          "Protomartyr",
+          "Gilla Band"
         ],
-        "descriptionSource": "Transgressive / Associated Press",
+        "descriptionSource": "Pitchfork / MusicBrainz",
         "relatedArtistEvidence": [
           {
-            "match": 1,
-            "artist": "GFOTY",
+            "artist": "Preoccupations",
+            "source": "MusicBrainz release artist credit + Last.fm similar artist",
+            "sources": [
+              "MusicBrainz",
+              "Last.fm"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Preoccupations",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+            "confidence": "high",
+            "relationType": "release-track-credit"
+          },
+          {
+            "match": 0.68576,
+            "artist": "Women",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 1,
+            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+            "confidence": 0.68576,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.928334,
-            "artist": "Arca",
+            "match": 0.500085,
+            "artist": "Ought",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.928334,
+            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+            "confidence": 0.500085,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.900414,
-            "artist": "QT",
+            "match": 0.404207,
+            "artist": "Protomartyr",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.900414,
+            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+            "confidence": 0.404207,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.832849,
-            "artist": "A. G. Cook",
+            "match": 0.298344,
+            "artist": "Gilla Band",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.832849,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.703883,
-            "artist": "Evita Manji",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.703883,
+            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+            "confidence": 0.298344,
             "relationType": "artist-similarity"
           }
         ],
@@ -54012,188 +54673,198 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "GFOTY",
-              "Arca",
-              "QT",
-              "A. G. Cook",
-              "Evita Manji",
-              "BABYNYMPH",
-              "Charli xcx",
-              "Hannah Diamond",
-              "Lipgloss Twins",
-              "Hyd"
+              "Preoccupations",
+              "Women",
+              "Ought",
+              "Protomartyr",
+              "Gilla Band",
+              "This Heat",
+              "Parquet Courts",
+              "Liars",
+              "Telstar Drugs",
+              "Mission of Burma"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "GFOTY",
+                "artist": "Preoccupations",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.928334,
-                "artist": "Arca",
+                "match": 0.68576,
+                "artist": "Women",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.928334,
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 0.68576,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.900414,
-                "artist": "QT",
+                "match": 0.500085,
+                "artist": "Ought",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.900414,
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 0.500085,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.832849,
-                "artist": "A. G. Cook",
+                "match": 0.404207,
+                "artist": "Protomartyr",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.832849,
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 0.404207,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.703883,
-                "artist": "Evita Manji",
+                "match": 0.298344,
+                "artist": "Gilla Band",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.703883,
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 0.298344,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.68506,
-                "artist": "BABYNYMPH",
+                "match": 0.297876,
+                "artist": "This Heat",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.68506,
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 0.297876,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.648014,
-                "artist": "Charli xcx",
+                "match": 0.292275,
+                "artist": "Parquet Courts",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.648014,
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 0.292275,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.607643,
-                "artist": "Hannah Diamond",
+                "match": 0.28306,
+                "artist": "Liars",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.607643,
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 0.28306,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.588156,
-                "artist": "Lipgloss Twins",
+                "match": 0.275622,
+                "artist": "Telstar Drugs",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.588156,
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 0.275622,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.578553,
-                "artist": "Hyd",
+                "match": 0.274859,
+                "artist": "Mission of Burma",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Sophie",
-                "confidence": 0.578553,
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "confidence": 0.274859,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Sophie"
+            "sourceUrl": "https://www.last.fm/music/Viet%20Cong"
           },
-          "source": "Last.fm",
-          "status": "lastfm",
+          "source": "MusicBrainz + Last.fm",
+          "status": "combined",
           "artists": [
-            "GFOTY",
-            "Arca",
-            "QT",
-            "A. G. Cook",
-            "Evita Manji"
+            "Preoccupations",
+            "Women",
+            "Ought",
+            "Protomartyr",
+            "Gilla Band"
           ],
           "evidence": [
             {
-              "match": 1,
-              "artist": "GFOTY",
+              "artist": "Preoccupations",
+              "source": "MusicBrainz release artist credit + Last.fm similar artist",
+              "sources": [
+                "MusicBrainz",
+                "Last.fm"
+              ],
+              "evidence": [
+                {
+                  "match": 1,
+                  "artist": "Preoccupations",
+                  "source": "Last.fm similar artist",
+                  "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                  "confidence": 1,
+                  "relationType": "artist-similarity"
+                }
+              ],
+              "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+              "confidence": "high",
+              "relationType": "release-track-credit"
+            },
+            {
+              "match": 0.68576,
+              "artist": "Women",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 1,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.68576,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.928334,
-              "artist": "Arca",
+              "match": 0.500085,
+              "artist": "Ought",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.928334,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.500085,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.900414,
-              "artist": "QT",
+              "match": 0.404207,
+              "artist": "Protomartyr",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.900414,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.404207,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.832849,
-              "artist": "A. G. Cook",
+              "match": 0.298344,
+              "artist": "Gilla Band",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.832849,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.703883,
-              "artist": "Evita Manji",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.703883,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.298344,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "c585d0e3-3651-4f14-af37-41844fd544e4",
-          "sourceUrl": "https://musicbrainz.org/release/c585d0e3-3651-4f14-af37-41844fd544e4",
+          "releaseId": "5d5fc614-25fe-4b89-8747-f4357f7a7757",
+          "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "TRANS809X",
-      "displayFormat": "Vinyl",
+      "catalogNumber": "JAG260",
+      "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1g1muz69eef7",
+      "financeStockId": "ms1thtxkzrwjdx",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "GFOTY",
-        "Arca",
-        "QT",
-        "A. G. Cook",
-        "Evita Manji"
+        "Preoccupations",
+        "Women",
+        "Ought",
+        "Protomartyr",
+        "Gilla Band"
       ],
-      "financeItemType": "Vinyl",
+      "financeItemType": "CD",
       "financeMetadata": {
         "isbn": "",
         "pages": "",
@@ -54204,75 +54875,86 @@
         "printDetails": ""
       },
       "homeCollections": [],
+      "reviewSourceUrl": "https://pitchfork.com/reviews/albums/20086-viet-cong/",
       "sleeveCondition": "",
-      "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0014-sophie-sophie-vinyl.jpg",
-      "enrichmentOrigin": "curated-exact",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
-      "descriptionSource": "Transgressive / Associated Press",
-      "metadataSourceUrl": "https://sophie.ochre.store/?lang=en_GB",
-      "editorialUpdatedAt": "2026-09-21T02:01:09.356+00:00",
+      "descriptionSource": "Pitchfork / MusicBrainz",
+      "metadataSourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+      "editorialUpdatedAt": "2026-09-21T02:01:12.795+00:00",
       "editorialUpdatedBy": "finance-stock",
       "apparelMeasurements": {},
-      "enrichmentUpdatedAt": "2026-07-26",
+      "enrichmentUpdatedAt": "2026-08-18",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "",
-      "enrichmentAttemptedAt": "2026-08-18T16:51:04.401Z",
-      "enrichmentFingerprint": "sophie|sophie|vinyl||trans809x",
+      "musicBrainzReleaseId": "5d5fc614-25fe-4b89-8747-f4357f7a7757",
+      "enrichmentAttemptedAt": "2026-08-18T16:49:23.046Z",
+      "enrichmentFingerprint": "viet cong|viet cong|cd||",
       "relatedArtistEvidence": [
         {
-          "match": 1,
-          "artist": "GFOTY",
+          "artist": "Preoccupations",
+          "source": "MusicBrainz release artist credit + Last.fm similar artist",
+          "sources": [
+            "MusicBrainz",
+            "Last.fm"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Preoccupations",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+          "confidence": "high",
+          "relationType": "release-track-credit"
+        },
+        {
+          "match": 0.68576,
+          "artist": "Women",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
-          "confidence": 1,
+          "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+          "confidence": 0.68576,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.928334,
-          "artist": "Arca",
+          "match": 0.500085,
+          "artist": "Ought",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
-          "confidence": 0.928334,
+          "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+          "confidence": 0.500085,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.900414,
-          "artist": "QT",
+          "match": 0.404207,
+          "artist": "Protomartyr",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
-          "confidence": 0.900414,
+          "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+          "confidence": 0.404207,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.832849,
-          "artist": "A. G. Cook",
+          "match": 0.298344,
+          "artist": "Gilla Band",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
-          "confidence": 0.832849,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.703883,
-          "artist": "Evita Manji",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Sophie",
-          "confidence": 0.703883,
+          "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+          "confidence": 0.298344,
           "relationType": "artist-similarity"
         }
       ],
@@ -54282,829 +54964,179 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "GFOTY",
-            "Arca",
-            "QT",
-            "A. G. Cook",
-            "Evita Manji",
-            "BABYNYMPH",
-            "Charli xcx",
-            "Hannah Diamond",
-            "Lipgloss Twins",
-            "Hyd"
+            "Preoccupations",
+            "Women",
+            "Ought",
+            "Protomartyr",
+            "Gilla Band",
+            "This Heat",
+            "Parquet Courts",
+            "Liars",
+            "Telstar Drugs",
+            "Mission of Burma"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "GFOTY",
+              "artist": "Preoccupations",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.928334,
-              "artist": "Arca",
+              "match": 0.68576,
+              "artist": "Women",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.928334,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.68576,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.900414,
-              "artist": "QT",
+              "match": 0.500085,
+              "artist": "Ought",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.900414,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.500085,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.832849,
-              "artist": "A. G. Cook",
+              "match": 0.404207,
+              "artist": "Protomartyr",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.832849,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.404207,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.703883,
-              "artist": "Evita Manji",
+              "match": 0.298344,
+              "artist": "Gilla Band",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.703883,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.298344,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.68506,
-              "artist": "BABYNYMPH",
+              "match": 0.297876,
+              "artist": "This Heat",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.68506,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.297876,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.648014,
-              "artist": "Charli xcx",
+              "match": 0.292275,
+              "artist": "Parquet Courts",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.648014,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.292275,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.607643,
-              "artist": "Hannah Diamond",
+              "match": 0.28306,
+              "artist": "Liars",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.607643,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.28306,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.588156,
-              "artist": "Lipgloss Twins",
+              "match": 0.275622,
+              "artist": "Telstar Drugs",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.588156,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.275622,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.578553,
-              "artist": "Hyd",
+              "match": 0.274859,
+              "artist": "Mission of Burma",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Sophie",
-              "confidence": 0.578553,
+              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "confidence": 0.274859,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Sophie"
+          "sourceUrl": "https://www.last.fm/music/Viet%20Cong"
         },
-        "source": "Last.fm",
-        "status": "lastfm",
+        "source": "MusicBrainz + Last.fm",
+        "status": "combined",
         "artists": [
-          "GFOTY",
-          "Arca",
-          "QT",
-          "A. G. Cook",
-          "Evita Manji"
+          "Preoccupations",
+          "Women",
+          "Ought",
+          "Protomartyr",
+          "Gilla Band"
         ],
         "evidence": [
           {
-            "match": 1,
-            "artist": "GFOTY",
-            "source": "Last.fm similar artist",
+            "artist": "Preoccupations",
+            "source": "MusicBrainz release artist credit + Last.fm similar artist",
             "sources": [
+              "MusicBrainz",
               "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.928334,
-            "artist": "Arca",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.928334,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.900414,
-            "artist": "QT",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.900414,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.832849,
-            "artist": "A. G. Cook",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.832849,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.703883,
-            "artist": "Evita Manji",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Sophie",
-            "confidence": 0.703883,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "c585d0e3-3651-4f14-af37-41844fd544e4",
-        "sourceUrl": "https://musicbrainz.org/release/c585d0e3-3651-4f14-af37-41844fd544e4",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": true,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "manualRelatedArtistsOverrideSource": "",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-09-16",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "finance-nxp-2026-vnl-0017",
-      "qty": 1,
-      "sku": "NXP-2026-VNL-0017",
-      "tags": [
-        "technical death metal",
-        "death metal",
-        "reissue"
-      ],
-      "year": 1993,
-      "color": "",
-      "flaws": "",
-      "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-      "label": "Listenable Records",
-      "price": 755000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "The Erosion of Sanity",
-      "artist": "Gorguts",
-      "format": "Vinyl",
-      "images": [
-        "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-        "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg"
-      ],
-      "barcode": "3760053846860",
-      "details": [
-        "SKU: NXP-2026-VNL-0017",
-        "Format: Vinyl",
-        "Condition: New-Sealed",
-        "Edition: 2023 limited picture disc vinyl reissue"
-      ],
-      "edition": "Vinyl, LP, Album, Limited Edition, Picture Disc, Reissue",
-      "category": "Records",
-      "material": "",
-      "autoCover": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-      "condition": "New-Sealed",
-      "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
-      "syncAudit": [
-        {
-          "at": "2026-09-21T02:00:47.711Z",
-          "sku": "NXP-2026-VNL-0017",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-20T02:00:48.340Z",
-          "sku": "NXP-2026-VNL-0017",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:52:12.142Z",
-          "sku": "NXP-2026-VNL-0017",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:51:10.821Z",
-          "sku": "NXP-2026-VNL-0017",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:38:27.214Z",
-          "sku": "NXP-2026-VNL-0017",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:37:44.702Z",
-          "sku": "NXP-2026-VNL-0017",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T02:00:50.072Z",
-          "sku": "NXP-2026-VNL-0017",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-18T02:00:47.014Z",
-          "sku": "NXP-2026-VNL-0017",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-21",
-      "vinylSize": "",
-      "collection": "Listenable Records",
-      "fabricCare": "",
-      "syncStatus": {
-        "at": "2026-09-21T02:00:47.711Z",
-        "sku": "NXP-2026-VNL-0017",
-        "action": "Inventory identity synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "alterations": "",
-      "apparelType": "",
-      "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
-      "reviewQuote": "a bona-fide tech-death classic",
-      "editRevision": 18,
-      "imageCredits": [
-        {
-          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
-          "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
-          "credit": "Discogs / Listenable Records"
-        },
-        {
-          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
-          "image": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
-          "credit": "Discogs release photography / Listenable Records"
-        }
-      ],
-      "originalTags": false,
-      "reviewSource": "Sputnikmusic (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
-        "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
-        "reviewQuote": "a bona-fide tech-death classic",
-        "reviewSource": "Sputnikmusic (quoted)",
-        "relatedArtists": [
-          "Suffocation",
-          "Ulcerate",
-          "Cryptopsy",
-          "Immolation",
-          "Demilich"
-        ],
-        "descriptionSource": "AllMusic / MusicBrainz",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Suffocation",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.837056,
-            "artist": "Ulcerate",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.837056,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.831834,
-            "artist": "Cryptopsy",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.831834,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.815457,
-            "artist": "Immolation",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.815457,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.796857,
-            "artist": "Demilich",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.796857,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Suffocation",
-              "Ulcerate",
-              "Cryptopsy",
-              "Immolation",
-              "Demilich",
-              "Defeated Sanity",
-              "Artificial Brain",
-              "Pestilence",
-              "Morbid Angel",
-              "Incantation"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Suffocation",
+                "artist": "Preoccupations",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
                 "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.837056,
-                "artist": "Ulcerate",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.837056,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.831834,
-                "artist": "Cryptopsy",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.831834,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.815457,
-                "artist": "Immolation",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.815457,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.796857,
-                "artist": "Demilich",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.796857,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.775733,
-                "artist": "Defeated Sanity",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.775733,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.773532,
-                "artist": "Artificial Brain",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.773532,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.763513,
-                "artist": "Pestilence",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.763513,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.740151,
-                "artist": "Morbid Angel",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.740151,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.735335,
-                "artist": "Incantation",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Gorguts",
-                "confidence": 0.735335,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts"
+            "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+            "confidence": "high",
+            "relationType": "release-track-credit"
           },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Suffocation",
-            "Ulcerate",
-            "Cryptopsy",
-            "Immolation",
-            "Demilich"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Suffocation",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.837056,
-              "artist": "Ulcerate",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.837056,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.831834,
-              "artist": "Cryptopsy",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.831834,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.815457,
-              "artist": "Immolation",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.815457,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.796857,
-              "artist": "Demilich",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.796857,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "",
-          "sourceUrl": "",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "POSH686",
-      "displayFormat": "Vinyl",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "ms1gm2hww9witl",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Suffocation",
-        "Ulcerate",
-        "Cryptopsy",
-        "Immolation",
-        "Demilich"
-      ],
-      "financeItemType": "Vinyl",
-      "financeMetadata": {
-        "isbn": "",
-        "pages": "",
-        "binding": "",
-        "language": "",
-        "publisher": "",
-        "dimensions": "",
-        "printDetails": ""
-      },
-      "homeCollections": [
-        "nixp-selection"
-      ],
-      "sleeveCondition": "",
-      "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
-      "enrichmentOrigin": "curated-exact",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "AllMusic / MusicBrainz",
-      "metadataSourceUrl": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
-      "editorialUpdatedAt": "2026-09-21T02:01:10.328+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "apparelMeasurements": {},
-      "enrichmentUpdatedAt": "2026-07-26",
-      "garmentConditionNote": "",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "",
-      "enrichmentAttemptedAt": "2026-08-18T16:49:07.501Z",
-      "enrichmentFingerprint": "gorguts|the erosion of sanity|vinyl||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Suffocation",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.837056,
-          "artist": "Ulcerate",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
-          "confidence": 0.837056,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.831834,
-          "artist": "Cryptopsy",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
-          "confidence": 0.831834,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.815457,
-          "artist": "Immolation",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
-          "confidence": 0.815457,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.796857,
-          "artist": "Demilich",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts",
-          "confidence": 0.796857,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Suffocation",
-            "Ulcerate",
-            "Cryptopsy",
-            "Immolation",
-            "Demilich",
-            "Defeated Sanity",
-            "Artificial Brain",
-            "Pestilence",
-            "Morbid Angel",
-            "Incantation"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Suffocation",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.837056,
-              "artist": "Ulcerate",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.837056,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.831834,
-              "artist": "Cryptopsy",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.831834,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.815457,
-              "artist": "Immolation",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.815457,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.796857,
-              "artist": "Demilich",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.796857,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.775733,
-              "artist": "Defeated Sanity",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.775733,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.773532,
-              "artist": "Artificial Brain",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.773532,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.763513,
-              "artist": "Pestilence",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.763513,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.740151,
-              "artist": "Morbid Angel",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.740151,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.735335,
-              "artist": "Incantation",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Gorguts",
-              "confidence": 0.735335,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Gorguts"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Suffocation",
-          "Ulcerate",
-          "Cryptopsy",
-          "Immolation",
-          "Demilich"
-        ],
-        "evidence": [
           {
-            "match": 1,
-            "artist": "Suffocation",
+            "match": 0.68576,
+            "artist": "Women",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 1,
+            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+            "confidence": 0.68576,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.837056,
-            "artist": "Ulcerate",
+            "match": 0.500085,
+            "artist": "Ought",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.837056,
+            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+            "confidence": 0.500085,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.831834,
-            "artist": "Cryptopsy",
+            "match": 0.404207,
+            "artist": "Protomartyr",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.831834,
+            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+            "confidence": 0.404207,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.815457,
-            "artist": "Immolation",
+            "match": 0.298344,
+            "artist": "Gilla Band",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.815457,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.796857,
-            "artist": "Demilich",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Gorguts",
-            "confidence": 0.796857,
+            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+            "confidence": 0.298344,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "",
-        "sourceUrl": "",
+        "releaseId": "5d5fc614-25fe-4b89-8747-f4357f7a7757",
+        "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": true,
@@ -55113,15 +55145,15 @@
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 34,
-        "heightCm": 4,
-        "lengthCm": 34,
-        "updatedAt": "2026-09-08",
-        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
-        "weightGrams": 550,
-        "shippingClass": "vinyl-cardboard-bubble",
-        "packagingGroup": "VINYL",
-        "vinylWeightClass": "standard",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-09-16",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
@@ -58403,93 +58435,99 @@
       }
     },
     {
-      "id": "finance-nxp-2026-cd-0032",
+      "id": "finance-nxp-2026-vnl-0017",
       "qty": 1,
-      "sku": "NXP-2026-CD-0032",
-      "tags": [],
-      "year": 2015,
+      "sku": "NXP-2026-VNL-0017",
+      "tags": [
+        "technical death metal",
+        "death metal",
+        "reissue"
+      ],
+      "year": 1993,
       "color": "",
       "flaws": "",
-      "image": "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg",
-      "label": "Jagjaguwar",
-      "price": 197000,
+      "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+      "label": "Listenable Records",
+      "price": 755000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Viet Cong",
-      "artist": "Viet Cong",
-      "format": "CD",
+      "title": "The Erosion of Sanity",
+      "artist": "Gorguts",
+      "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg"
+        "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+        "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg"
       ],
-      "barcode": "6 56605 22602 6",
+      "barcode": "3760053846860",
       "details": [
-        "SKU: NXP-2026-CD-0032",
-        "Format: CD",
-        "Condition: Used Good"
+        "SKU: NXP-2026-VNL-0017",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: 2023 limited picture disc vinyl reissue"
       ],
-      "edition": "CD, Album",
+      "edition": "Vinyl, LP, Album, Limited Edition, Picture Disc, Reissue",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0032/cover.jpg",
-      "condition": "Used Good",
-      "reviewUrl": "",
+      "autoCover": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
       "syncAudit": [
         {
-          "at": "2026-09-21T02:00:47.712Z",
-          "sku": "NXP-2026-CD-0032",
+          "at": "2026-09-21T02:00:47.711Z",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-20T02:00:48.341Z",
-          "sku": "NXP-2026-CD-0032",
+          "at": "2026-09-20T02:00:48.340Z",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T11:52:12.143Z",
-          "sku": "NXP-2026-CD-0032",
+          "at": "2026-09-19T11:52:12.142Z",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T11:51:10.822Z",
-          "sku": "NXP-2026-CD-0032",
+          "at": "2026-09-19T11:51:10.821Z",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T11:38:27.215Z",
-          "sku": "NXP-2026-CD-0032",
+          "at": "2026-09-19T11:38:27.214Z",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-19T11:37:44.703Z",
-          "sku": "NXP-2026-CD-0032",
+          "at": "2026-09-19T11:37:44.702Z",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-09-19T02:00:50.072Z",
-          "sku": "NXP-2026-CD-0032",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-09-18T02:00:47.015Z",
-          "sku": "NXP-2026-CD-0032",
+          "at": "2026-09-18T02:00:47.014Z",
+          "sku": "NXP-2026-VNL-0017",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -58497,11 +58535,11 @@
       ],
       "updatedAt": "2026-09-21",
       "vinylSize": "",
-      "collection": "Jagjaguwar",
+      "collection": "Listenable Records",
       "fabricCare": "",
       "syncStatus": {
-        "at": "2026-09-21T02:00:47.712Z",
-        "sku": "NXP-2026-CD-0032",
+        "at": "2026-09-21T02:00:47.711Z",
+        "sku": "NXP-2026-VNL-0017",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
@@ -58509,95 +58547,90 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Viet Cong's self-titled 2015 album is the band's lone full-length under that name before becoming Preoccupations, built from shadowed post-punk, art-punk, and noise-rock pressure.",
-      "reviewQuote": "unusually obsessed with the mechanics and process",
+      "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
+      "reviewQuote": "a bona-fide tech-death classic",
       "editRevision": 18,
       "imageCredits": [
         {
-          "url": "https://music.apple.com/us/album/viet-cong/931381276",
-          "image": "/public/covers/nxp-2026-cd-0032-viet-cong-viet-cong.jpg",
-          "credit": "Apple Music artwork / Jagjaguwar"
+          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
+          "image": "/public/covers/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity.jpg",
+          "credit": "Discogs / Listenable Records"
+        },
+        {
+          "url": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
+          "image": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
+          "credit": "Discogs release photography / Listenable Records"
         }
       ],
       "originalTags": false,
-      "reviewSource": "Pitchfork (quoted)",
+      "reviewSource": "Sputnikmusic (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/20086-viet-cong/",
-        "description": "Viet Cong's self-titled 2015 album is the band's lone full-length under that name before becoming Preoccupations, built from shadowed post-punk, art-punk, and noise-rock pressure.",
-        "reviewQuote": "unusually obsessed with the mechanics and process",
-        "reviewSource": "Pitchfork (quoted)",
+        "reviewUrl": "https://www.sputnikmusic.com/review/81442/Gorguts-The-Erosion-of-Sanity/",
+        "description": "Gorguts' 1993 second album The Erosion of Sanity sharpened the Canadian band's old-school death metal into more dissonant, rhythmically unstable and technically demanding compositions before the later break made by Obscura.",
+        "reviewQuote": "a bona-fide tech-death classic",
+        "reviewSource": "Sputnikmusic (quoted)",
         "relatedArtists": [
-          "Preoccupations",
-          "Women",
-          "Ought",
-          "Protomartyr",
-          "Gilla Band"
+          "Suffocation",
+          "Ulcerate",
+          "Cryptopsy",
+          "Immolation",
+          "Demilich"
         ],
-        "descriptionSource": "Pitchfork / MusicBrainz",
+        "descriptionSource": "AllMusic / MusicBrainz",
         "relatedArtistEvidence": [
           {
-            "artist": "Preoccupations",
-            "source": "MusicBrainz release artist credit + Last.fm similar artist",
-            "sources": [
-              "MusicBrainz",
-              "Last.fm"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Preoccupations",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
-            "confidence": "high",
-            "relationType": "release-track-credit"
-          },
-          {
-            "match": 0.68576,
-            "artist": "Women",
+            "match": 1,
+            "artist": "Suffocation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-            "confidence": 0.68576,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.500085,
-            "artist": "Ought",
+            "match": 0.837056,
+            "artist": "Ulcerate",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-            "confidence": 0.500085,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.837056,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.404207,
-            "artist": "Protomartyr",
+            "match": 0.831834,
+            "artist": "Cryptopsy",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-            "confidence": 0.404207,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.831834,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.298344,
-            "artist": "Gilla Band",
+            "match": 0.815457,
+            "artist": "Immolation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-            "confidence": 0.298344,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.815457,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.796857,
+            "artist": "Demilich",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.796857,
             "relationType": "artist-similarity"
           }
         ],
@@ -58606,198 +58639,188 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Preoccupations",
-              "Women",
-              "Ought",
-              "Protomartyr",
-              "Gilla Band",
-              "This Heat",
-              "Parquet Courts",
-              "Liars",
-              "Telstar Drugs",
-              "Mission of Burma"
+              "Suffocation",
+              "Ulcerate",
+              "Cryptopsy",
+              "Immolation",
+              "Demilich",
+              "Defeated Sanity",
+              "Artificial Brain",
+              "Pestilence",
+              "Morbid Angel",
+              "Incantation"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Preoccupations",
+                "artist": "Suffocation",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.68576,
-                "artist": "Women",
+                "match": 0.837056,
+                "artist": "Ulcerate",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 0.68576,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.837056,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.500085,
-                "artist": "Ought",
+                "match": 0.831834,
+                "artist": "Cryptopsy",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 0.500085,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.831834,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.404207,
-                "artist": "Protomartyr",
+                "match": 0.815457,
+                "artist": "Immolation",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 0.404207,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.815457,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.298344,
-                "artist": "Gilla Band",
+                "match": 0.796857,
+                "artist": "Demilich",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 0.298344,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.796857,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.297876,
-                "artist": "This Heat",
+                "match": 0.775733,
+                "artist": "Defeated Sanity",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 0.297876,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.775733,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.292275,
-                "artist": "Parquet Courts",
+                "match": 0.773532,
+                "artist": "Artificial Brain",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 0.292275,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.773532,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.28306,
-                "artist": "Liars",
+                "match": 0.763513,
+                "artist": "Pestilence",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 0.28306,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.763513,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.275622,
-                "artist": "Telstar Drugs",
+                "match": 0.740151,
+                "artist": "Morbid Angel",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 0.275622,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.740151,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.274859,
-                "artist": "Mission of Burma",
+                "match": 0.735335,
+                "artist": "Incantation",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 0.274859,
+                "sourceUrl": "https://www.last.fm/music/Gorguts",
+                "confidence": 0.735335,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Viet%20Cong"
+            "sourceUrl": "https://www.last.fm/music/Gorguts"
           },
-          "source": "MusicBrainz + Last.fm",
-          "status": "combined",
+          "source": "Last.fm",
+          "status": "lastfm",
           "artists": [
-            "Preoccupations",
-            "Women",
-            "Ought",
-            "Protomartyr",
-            "Gilla Band"
+            "Suffocation",
+            "Ulcerate",
+            "Cryptopsy",
+            "Immolation",
+            "Demilich"
           ],
           "evidence": [
             {
-              "artist": "Preoccupations",
-              "source": "MusicBrainz release artist credit + Last.fm similar artist",
-              "sources": [
-                "MusicBrainz",
-                "Last.fm"
-              ],
-              "evidence": [
-                {
-                  "match": 1,
-                  "artist": "Preoccupations",
-                  "source": "Last.fm similar artist",
-                  "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                  "confidence": 1,
-                  "relationType": "artist-similarity"
-                }
-              ],
-              "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
-              "confidence": "high",
-              "relationType": "release-track-credit"
-            },
-            {
-              "match": 0.68576,
-              "artist": "Women",
+              "match": 1,
+              "artist": "Suffocation",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.68576,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.500085,
-              "artist": "Ought",
+              "match": 0.837056,
+              "artist": "Ulcerate",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.500085,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.837056,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.404207,
-              "artist": "Protomartyr",
+              "match": 0.831834,
+              "artist": "Cryptopsy",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.404207,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.831834,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.298344,
-              "artist": "Gilla Band",
+              "match": 0.815457,
+              "artist": "Immolation",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.298344,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.815457,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.796857,
+              "artist": "Demilich",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.796857,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "5d5fc614-25fe-4b89-8747-f4357f7a7757",
-          "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+          "releaseId": "",
+          "sourceUrl": "",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "JAG260",
-      "displayFormat": "CD",
+      "catalogNumber": "POSH686",
+      "displayFormat": "Vinyl",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1thtxkzrwjdx",
+      "financeStockId": "ms1gm2hww9witl",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Preoccupations",
-        "Women",
-        "Ought",
-        "Protomartyr",
-        "Gilla Band"
+        "Suffocation",
+        "Ulcerate",
+        "Cryptopsy",
+        "Immolation",
+        "Demilich"
       ],
-      "financeItemType": "CD",
+      "financeItemType": "Vinyl",
       "financeMetadata": {
         "isbn": "",
         "pages": "",
@@ -58807,87 +58830,78 @@
         "dimensions": "",
         "printDetails": ""
       },
-      "homeCollections": [],
-      "reviewSourceUrl": "https://pitchfork.com/reviews/albums/20086-viet-cong/",
+      "homeCollections": [
+        "nixp-selection"
+      ],
       "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
+      "autoProductPhoto": "/public/product-photos/nxp-2026-vnl-0017-gorguts-the-erosion-of-sanity-discogs-26971880.jpg",
+      "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
-      "descriptionSource": "Pitchfork / MusicBrainz",
-      "metadataSourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
-      "editorialUpdatedAt": "2026-09-21T02:01:12.795+00:00",
+      "descriptionSource": "AllMusic / MusicBrainz",
+      "metadataSourceUrl": "https://www.discogs.com/release/26971880-Gorguts-The-Erosion-Of-Sanity",
+      "editorialUpdatedAt": "2026-09-21T02:01:10.328+00:00",
       "editorialUpdatedBy": "finance-stock",
       "apparelMeasurements": {},
-      "enrichmentUpdatedAt": "2026-08-18",
+      "enrichmentUpdatedAt": "2026-07-26",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "5d5fc614-25fe-4b89-8747-f4357f7a7757",
-      "enrichmentAttemptedAt": "2026-08-18T16:49:23.046Z",
-      "enrichmentFingerprint": "viet cong|viet cong|cd||",
+      "musicBrainzReleaseId": "",
+      "enrichmentAttemptedAt": "2026-08-18T16:49:07.501Z",
+      "enrichmentFingerprint": "gorguts|the erosion of sanity|vinyl||",
       "relatedArtistEvidence": [
         {
-          "artist": "Preoccupations",
-          "source": "MusicBrainz release artist credit + Last.fm similar artist",
-          "sources": [
-            "MusicBrainz",
-            "Last.fm"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Preoccupations",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
-          "confidence": "high",
-          "relationType": "release-track-credit"
-        },
-        {
-          "match": 0.68576,
-          "artist": "Women",
+          "match": 1,
+          "artist": "Suffocation",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-          "confidence": 0.68576,
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.500085,
-          "artist": "Ought",
+          "match": 0.837056,
+          "artist": "Ulcerate",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-          "confidence": 0.500085,
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "confidence": 0.837056,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.404207,
-          "artist": "Protomartyr",
+          "match": 0.831834,
+          "artist": "Cryptopsy",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-          "confidence": 0.404207,
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "confidence": 0.831834,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.298344,
-          "artist": "Gilla Band",
+          "match": 0.815457,
+          "artist": "Immolation",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-          "confidence": 0.298344,
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "confidence": 0.815457,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.796857,
+          "artist": "Demilich",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Gorguts",
+          "confidence": 0.796857,
           "relationType": "artist-similarity"
         }
       ],
@@ -58897,179 +58911,169 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Preoccupations",
-            "Women",
-            "Ought",
-            "Protomartyr",
-            "Gilla Band",
-            "This Heat",
-            "Parquet Courts",
-            "Liars",
-            "Telstar Drugs",
-            "Mission of Burma"
+            "Suffocation",
+            "Ulcerate",
+            "Cryptopsy",
+            "Immolation",
+            "Demilich",
+            "Defeated Sanity",
+            "Artificial Brain",
+            "Pestilence",
+            "Morbid Angel",
+            "Incantation"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Preoccupations",
+              "artist": "Suffocation",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.68576,
-              "artist": "Women",
+              "match": 0.837056,
+              "artist": "Ulcerate",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.68576,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.837056,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.500085,
-              "artist": "Ought",
+              "match": 0.831834,
+              "artist": "Cryptopsy",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.500085,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.831834,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.404207,
-              "artist": "Protomartyr",
+              "match": 0.815457,
+              "artist": "Immolation",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.404207,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.815457,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.298344,
-              "artist": "Gilla Band",
+              "match": 0.796857,
+              "artist": "Demilich",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.298344,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.796857,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.297876,
-              "artist": "This Heat",
+              "match": 0.775733,
+              "artist": "Defeated Sanity",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.297876,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.775733,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.292275,
-              "artist": "Parquet Courts",
+              "match": 0.773532,
+              "artist": "Artificial Brain",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.292275,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.773532,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.28306,
-              "artist": "Liars",
+              "match": 0.763513,
+              "artist": "Pestilence",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.28306,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.763513,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.275622,
-              "artist": "Telstar Drugs",
+              "match": 0.740151,
+              "artist": "Morbid Angel",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.275622,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.740151,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.274859,
-              "artist": "Mission of Burma",
+              "match": 0.735335,
+              "artist": "Incantation",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-              "confidence": 0.274859,
+              "sourceUrl": "https://www.last.fm/music/Gorguts",
+              "confidence": 0.735335,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Viet%20Cong"
+          "sourceUrl": "https://www.last.fm/music/Gorguts"
         },
-        "source": "MusicBrainz + Last.fm",
-        "status": "combined",
+        "source": "Last.fm",
+        "status": "lastfm",
         "artists": [
-          "Preoccupations",
-          "Women",
-          "Ought",
-          "Protomartyr",
-          "Gilla Band"
+          "Suffocation",
+          "Ulcerate",
+          "Cryptopsy",
+          "Immolation",
+          "Demilich"
         ],
         "evidence": [
           {
-            "artist": "Preoccupations",
-            "source": "MusicBrainz release artist credit + Last.fm similar artist",
-            "sources": [
-              "MusicBrainz",
-              "Last.fm"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Preoccupations",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
-            "confidence": "high",
-            "relationType": "release-track-credit"
-          },
-          {
-            "match": 0.68576,
-            "artist": "Women",
+            "match": 1,
+            "artist": "Suffocation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-            "confidence": 0.68576,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.500085,
-            "artist": "Ought",
+            "match": 0.837056,
+            "artist": "Ulcerate",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-            "confidence": 0.500085,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.837056,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.404207,
-            "artist": "Protomartyr",
+            "match": 0.831834,
+            "artist": "Cryptopsy",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-            "confidence": 0.404207,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.831834,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.298344,
-            "artist": "Gilla Band",
+            "match": 0.815457,
+            "artist": "Immolation",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Viet%20Cong",
-            "confidence": 0.298344,
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.815457,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.796857,
+            "artist": "Demilich",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Gorguts",
+            "confidence": 0.796857,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "5d5fc614-25fe-4b89-8747-f4357f7a7757",
-        "sourceUrl": "https://musicbrainz.org/release/5d5fc614-25fe-4b89-8747-f4357f7a7757",
+        "releaseId": "",
+        "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": true,
@@ -59078,15 +59082,15 @@
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-09-16",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-08",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
