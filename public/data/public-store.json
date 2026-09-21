@@ -4304,7 +4304,7 @@
       "flaws": "",
       "image": "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg",
       "label": "Third Worlds",
-      "price": 823000,
+      "price": 825000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -4412,7 +4412,7 @@
       "description": "Death Grips 2018 year of the snitch is a verified Vinyl, LP, Album edition on Third Worlds. The release is indexed under Experimental, Noise, Hardcore Hip-Hop.",
       "reviewQuote": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
       "sourceTitle": "year of the snitch",
-      "editRevision": 19,
+      "editRevision": 20,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg",
@@ -4708,8 +4708,8 @@
       "publicationState": "live",
       "descriptionSource": "Verified physical-release metadata",
       "metadataSourceUrl": "https://www.discogs.com/release/12485858-Death-Grips-Year-Of-The-Snitch",
-      "editorialUpdatedAt": "2026-09-21T02:01:40.189+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T07:07:57.21+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -4958,7 +4958,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-19",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
