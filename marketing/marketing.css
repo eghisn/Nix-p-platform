@@ -32,6 +32,9 @@ a { text-decoration: none; }
 [hidden] { display: none !important; }
 
 .login-gate { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); min-height: 100vh; }
+.auth-pending { display: grid; min-height: 100vh; place-content: center; justify-items: center; gap: 16px; padding: 24px; }
+.auth-pending img { width: 112px; height: auto; }
+.auth-pending p { margin: 0; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .login-copy, .login-form { display: grid; align-content: center; padding: clamp(28px, 7vw, 110px); }
 .login-copy { border-right: 1px solid var(--ink); }
 .login-copy img { width: 112px; margin-bottom: 54px; }
@@ -180,6 +183,9 @@ td.number { font-variant-numeric: tabular-nums; }
 .outbound-link { border-bottom: 1px solid var(--ink); font-size: 10px; font-weight: 700; text-transform: uppercase; }
 .instagram-setup { margin-top: 18px; }
 .content-plan-composer, .content-plan-monitor { margin-top: 10px; }
+.content-plan-scope { display: inline-flex; gap: 6px; margin-top: 16px; }
+.content-plan-scope button { min-height: 31px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px; background: transparent; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.content-plan-scope button:hover, .content-plan-scope button.is-active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
 .content-plan-composer form { display: grid; gap: 16px; }
 .content-plan-form-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .content-plan-form-grid label, .content-target-grid label { display: grid; gap: 6px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }

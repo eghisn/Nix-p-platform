@@ -1,4 +1,4 @@
-const state = { dashboard: null, view: "overview", sorts: {}, reportGrain: "weekly", contentPlanSort: "plannedAt", editingContentPlanId: "" };
+const state = { dashboard: null, view: "overview", sorts: {}, reportGrain: "weekly", contentPlanSort: "plannedAt", contentPlanScope: "active", editingContentPlanId: "" };
 const money = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat("id-ID", { style: "percent", maximumFractionDigits: 2 });
@@ -41,11 +41,15 @@ async function boot() {
 }
 
 function showLogin() {
+  document.body.dataset.authState = "login";
+  document.querySelector("[data-auth-pending]").hidden = true;
   document.querySelector("[data-login-gate]").hidden = false;
   document.querySelector("[data-dashboard]").hidden = true;
 }
 
 async function showDashboard() {
+  document.body.dataset.authState = "dashboard";
+  document.querySelector("[data-auth-pending]").hidden = true;
   document.querySelector("[data-login-gate]").hidden = true;
   document.querySelector("[data-dashboard]").hidden = false;
   await loadDashboard();
@@ -210,13 +214,15 @@ function renderContentPlans(plans) {
   if (!target) return;
   const sort = document.querySelector("[data-content-plan-sort]")?.value || state.contentPlanSort;
   state.contentPlanSort = sort;
-  const sorted = [...plans].sort((left, right) => {
+  const archived = state.contentPlanScope === "archived";
+  const filtered = (plans || []).filter((plan) => archived ? plan.status === "Archived" : plan.status !== "Archived");
+  const sorted = filtered.sort((left, right) => {
     if (sort === "progress") return Number(right.progress ?? -1) - Number(left.progress ?? -1);
     if (sort === "revenue") return Number(right.actual?.revenue || 0) - Number(left.actual?.revenue || 0);
     if (sort === "sessions") return Number(right.actual?.sessions || 0) - Number(left.actual?.sessions || 0);
     return String(right.plannedAt || "").localeCompare(String(left.plannedAt || "")) || String(right.title).localeCompare(String(left.title));
   });
-  target.innerHTML = sorted.map((plan) => contentPlanCard(plan)).join("") || `<p class="content-plan-empty">Add a content plan to compare its targets with Instagram and website results.</p>`;
+  target.innerHTML = sorted.map((plan) => contentPlanCard(plan)).join("") || `<p class="content-plan-empty">${archived ? "No archived content plans yet. Archive a finished plan from Edit when you no longer need it in the active tracker." : "Add a content plan to compare its targets with Instagram and website results."}</p>`;
 }
 
 function contentPlanCard(plan) {
@@ -233,8 +239,8 @@ function contentPlanCard(plan) {
       <div class="content-plan-metrics">
         ${contentPlanMetric("Reach", target.reach, actual.reach, integer)}
         ${contentPlanMetric("Saves + shares", target.savesShares, actual.savesShares, integer)}
-        ${contentPlanMetric("Profile visits", target.profileVisits, actual.profileVisits, integer)}
-        ${contentPlanMetric("New followers", target.newFollowers, actual.newFollowers, integer)}
+        ${contentPlanMetric("Profile visits", target.profileVisits, actual.profileVisits, integer, "Not available per post")}
+        ${contentPlanMetric("New followers", target.newFollowers, actual.newFollowers, integer, "Account-level metric")}
         ${contentPlanMetric("Likes", target.likes, actual.likes, integer)}
         ${contentPlanMetric("Comments", target.comments, actual.comments, integer)}
         ${contentPlanMetric("Website visits", target.sessions, actual.sessions, integer)}
@@ -249,13 +255,13 @@ function contentPlanCard(plan) {
     </article>`;
 }
 
-function contentPlanMetric(label, target, actual, formatter) {
+function contentPlanMetric(label, target, actual, formatter, unavailableCopy = "") {
   const planned = Number(target || 0);
   const hasActual = actual !== null && actual !== undefined && actual !== "" && Number.isFinite(Number(actual));
   const result = hasActual ? Number(actual) : 0;
   const progress = planned && hasActual ? Math.min(100, Math.round(result / planned * 100)) : null;
   const outcome = hasActual ? formatter.format(result) : "--";
-  const detail = !planned ? "No target" : !hasActual ? `${formatter.format(planned)} target / Waiting for data` : `${formatter.format(planned)} target / ${progress}%`;
+  const detail = !planned ? "No target" : !hasActual ? unavailableCopy || `${formatter.format(planned)} target / Waiting for data` : `${formatter.format(planned)} target / ${progress}%`;
   return `<div class="content-plan-metric"><span>${escapeHtml(label)}</span><strong>${outcome}</strong><small>${detail}</small></div>`;
 }
 
@@ -613,6 +619,15 @@ document.querySelector("[data-content-plan-sort]")?.addEventListener("change", (
   state.contentPlanSort = event.target.value;
   renderContentPlans(state.dashboard?.contentPlans || []);
 });
+document.querySelectorAll("[data-content-plan-scope]").forEach((button) => button.addEventListener("click", () => {
+  state.contentPlanScope = button.dataset.contentPlanScope === "archived" ? "archived" : "active";
+  document.querySelectorAll("[data-content-plan-scope]").forEach((item) => {
+    const selected = item.dataset.contentPlanScope === state.contentPlanScope;
+    item.classList.toggle("is-active", selected);
+    item.setAttribute("aria-pressed", String(selected));
+  });
+  renderContentPlans(state.dashboard?.contentPlans || []);
+}));
 const contentPlanForm = document.querySelector("[data-content-plan-form]");
 contentPlanForm?.addEventListener("input", (event) => {
   const tracking = contentPlanForm.elements.trackingContent;

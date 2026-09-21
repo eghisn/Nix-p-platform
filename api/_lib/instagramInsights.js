@@ -30,7 +30,7 @@ export async function getInstagramInsights({ fetchImpl = fetch, now = Date.now()
     const posts = Array.isArray(payload?.data) ? payload.data.map(normalizeInstagramPost).filter(Boolean) : [];
     const result = {
       status: "connected",
-      message: "Latest post activity is refreshed automatically from Meta.",
+      message: "Latest post activity is refreshed automatically from Meta. Profile visits and follower movement are account-level metrics, so they are not assigned to an individual post.",
       account: "NIXP Instagram",
       posts: await Promise.all(posts.map((post) => loadPostInsights({ fetchImpl, graphBase, version, accessToken, post })))
     };

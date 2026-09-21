@@ -7,8 +7,12 @@
     <title>NIXP Analytics</title>
     <link rel="stylesheet" href="/marketing/marketing.css" />
   </head>
-  <body>
-    <section class="login-gate" data-login-gate>
+  <body data-auth-state="checking">
+    <section class="auth-pending" data-auth-pending aria-live="polite">
+      <img src="/public/nixp-logo.png" alt="NIXP" />
+      <p>Checking secure access</p>
+    </section>
+    <section class="login-gate" data-login-gate hidden>
       <div class="login-copy">
         <img src="/public/nixp-logo.png" alt="NIXP" />
         <p class="eyebrow">Private workspace</p>
@@ -170,7 +174,7 @@
             <article class="metric-panel"><span>Attributed sales</span><strong data-instagram-metric="sales">Rp 0</strong><small>Consent-based attribution</small></article>
           </div>
           <section class="panel content-plan-monitor">
-            <div class="toolbar-row"><div><p class="eyebrow">Content tracker</p><h3>What happened after each post</h3></div><label class="period-control">Sort by<select data-content-plan-sort aria-label="Sort content plans"><option value="plannedAt">Latest plan</option><option value="progress">Target progress</option><option value="revenue">Revenue</option><option value="sessions">Website visits</option></select></label></div>
+            <div class="toolbar-row"><div><p class="eyebrow">Content tracker</p><h3>What happened after each post</h3><div class="content-plan-scope" role="group" aria-label="Content plan status"><button class="is-active" type="button" data-content-plan-scope="active" aria-pressed="true">Active</button><button type="button" data-content-plan-scope="archived" aria-pressed="false">Archived</button></div></div><label class="period-control">Sort by<select data-content-plan-sort aria-label="Sort content plans"><option value="plannedAt">Latest plan</option><option value="progress">Target progress</option><option value="revenue">Revenue</option><option value="sessions">Website visits</option></select></label></div>
             <div class="content-plan-list" data-content-plan-list></div>
           </section>
           <div class="split-grid">
