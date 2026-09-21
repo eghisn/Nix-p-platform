@@ -10457,7 +10457,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg",
       "label": "Factory",
-      "price": 436250,
+      "price": 440000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -10577,7 +10577,7 @@
       "description": "New Order's 1983 FAC 93 12-inch takes the band into New York electro through its collaboration with Arthur Baker, presenting Confusion alongside Confused Beats, an instrumental version, and a rough mix. Phill Pennington designed the embossed sleeve at Peter Saville Associates, with a colour code that spells FAC93.",
       "reviewQuote": "a Planet Rock-like set of drum beats and electronic pulses",
       "sourceTitle": "confusion",
-      "editRevision": 22,
+      "editRevision": 23,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/1347678-New-Order-Confusion",
@@ -10662,8 +10662,8 @@
       "publicationState": "live",
       "descriptionSource": "Factory Records Catalogue / AllMusic",
       "metadataSourceUrl": "https://www.discogs.com/release/1347678-New-Order-Confusion",
-      "editorialUpdatedAt": "2026-09-21T02:01:37.482+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T05:44:02.462+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -10715,7 +10715,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-20",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
