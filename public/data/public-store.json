@@ -3606,7 +3606,7 @@
       "flaws": "",
       "image": "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
       "label": "Nonesuch",
-      "price": 631000,
+      "price": 635000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -3714,7 +3714,7 @@
       "description": "On DRM, Sam Gendel works solo with vintage instruments, voice, guitar fragments, and the Electro-Harmonix DRM32 drum machine. The result recasts contemporary R&B and pop-rap through oblique electronics and acoustic textures, including a dismantled reading of Lil Nas X's Old Town Road.",
       "reviewQuote": "Beat scene-inflected jazz funq sketches informed by the brittle Electro Harmonix DRM32 drum machine.",
       "sourceTitle": "drm",
-      "editRevision": 15,
+      "editRevision": 16,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
@@ -4005,10 +4005,13 @@
       "publicationState": "live",
       "descriptionSource": "Nonesuch / Pitchfork",
       "metadataSourceUrl": "https://www.discogs.com/release/18242311-Sam-Gendel-DRM",
-      "editorialUpdatedAt": "2026-09-21T02:01:40.508+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T06:08:14.945+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
       "adminPublishOverride": null,
       "garmentConditionNote": "",
       "manualRelatedArtists": [
@@ -4020,6 +4023,7 @@
       ],
       "musicBrainzReleaseId": "",
       "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
       "enrichmentAttemptedAt": "2026-09-09T11:05:19.961Z",
       "enrichmentFingerprint": "sam gendel|drm|vinyl|0 75597 91717 8|0075597917178",
       "relatedArtistEvidence": [
@@ -4259,7 +4263,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-09",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
