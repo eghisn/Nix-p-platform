@@ -25157,7 +25157,7 @@
       "flaws": "",
       "image": "/public/assets/varg2-sky-city-cover.jpg",
       "label": "Northern Electronics",
-      "price": 357263,
+      "price": 360000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -25257,7 +25257,7 @@
       "apparelType": "",
       "description": "Varg's 2019 Sky City EP for Northern Electronics moves between raw techno pressure, melancholic programming and unstable electronic detail.",
       "reviewQuote": "Varg clearly remains one of the standout producers around today.",
-      "editRevision": 7,
+      "editRevision": 8,
       "imageCredits": [
         {
           "url": "https://music.apple.com/us/album/sky-city-even-in-the-heart-of-heaven-angels-can/1470308619",
@@ -25510,7 +25510,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "msoia8gy0kthtu",
-      "mediaCondition": "",
+      "mediaCondition": "Very Good Plus",
       "open_to_offers": false,
       "relatedArtists": [
         "SHXCXCHCXSH",
@@ -25532,19 +25532,23 @@
       "homeCollections": [
         "nixp-selection"
       ],
-      "sleeveCondition": "",
+      "sleeveCondition": "Very Good Plus",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Northern Electronics / Yoyaku",
       "metadataSourceUrl": "https://northernelectronics.bandcamp.com/album/sky-city-even-in-the-heart-of-heaven-angels-can-still-feel-fear",
       "publicationIssues": [],
-      "editorialUpdatedAt": "2026-09-21T02:01:27.644+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-21T17:11:52.746+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-17",
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "publishAfterResearch": true,
+      "sleeveConditionGrade": "Very Good Plus",
       "enrichmentAttemptedAt": "2026-08-17T16:53:08.687Z",
       "enrichmentFingerprint": "varg2tm|sky city even in the heart of heaven angels can still feel fear|vinyl||ne57",
       "relatedArtistEvidence": [
@@ -25784,7 +25788,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-16",
+        "updatedAt": "2026-09-21",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
