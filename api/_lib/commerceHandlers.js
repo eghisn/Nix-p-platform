@@ -14,6 +14,7 @@ import {
 import { drainNotificationOutbox } from "./emailNotifications.js";
 import { recordSystemEvent } from "./observability.js";
 import { supabaseFetch } from "./supabase.js";
+import { safeMidtransPaymentInstructions } from "./paymentState.js";
 
 export async function handleMidtransToken(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
@@ -212,6 +213,7 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
   await updateMidtransAttempt(order.id, "Provider Pending", {
     providerStatus: status || "unknown",
     providerTransactionId: String(verified.transaction_id || ""),
+    paymentInstructions: safeMidtransPaymentInstructions(verified),
     verifiedAt: new Date().toISOString()
   });
   await completeWebhookReceipt(eventKey);
@@ -455,11 +457,10 @@ async function fetchMidtransStatus(orderId, { allowMissing = false } = {}) {
 }
 
 async function updateMidtransAttempt(orderId, status, payload) {
-  return supabaseFetch(`payment_attempts?provider=eq.Midtrans&provider_order_id=eq.${encodeURIComponent(orderId)}`, {
-    method: "PATCH",
+  return supabaseFetch("rpc/merge_midtrans_payment_attempt", {
+    method: "POST",
     service: true,
-    prefer: "return=minimal",
-    body: { status, payload }
+    body: { p_order_id: orderId, p_status: status, p_payload: payload || {} }
   });
 }
 

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
-const [checkout, client, handlers, notifications, financeApp, marketing, vercel, migration] = await Promise.all([
+const [checkout, client, handlers, notifications, financeApp, marketing, vercel, migration, retentionMigration] = await Promise.all([
   read("api/checkout.js"),
   read("src/main.js"),
   read("api/_lib/commerceHandlers.js"),
@@ -10,7 +10,8 @@ const [checkout, client, handlers, notifications, financeApp, marketing, vercel,
   read("api/finance-app.js"),
   read("marketing/marketing.js"),
   read("vercel.json"),
-  read("supabase/migrations/20260901153355_harden_payment_sessions_and_order_access.sql")
+  read("supabase/migrations/20260901153355_harden_payment_sessions_and_order_access.sql"),
+  read("supabase/migrations/20260921224000_preserve_midtrans_payment_session.sql")
 ]);
 
 assert.match(migration, /claim_midtrans_payment_session/, "Payment session creation must be claimed atomically in PostgreSQL.");
@@ -55,6 +56,11 @@ assert.doesNotMatch(paymentSession, /drainNotificationOutbox/, "Payment session 
 assert.doesNotMatch(paymentSession, /expirePendingOrders/, "Payment session creation must not run catalogue or expiry maintenance.");
 assert.match(handlers, /reconcilePendingMidtransPayments/, "Pending Midtrans payments must have a provider reconciliation path.");
 assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protected payment-health summary.");
+assert.match(handlers, /rpc\/merge_midtrans_payment_attempt/, "Payment updates must merge provider status without erasing the stored redirect session.");
+assert.match(retentionMigration, /payload = coalesce\(payload, '\{\}'::jsonb\) \|\| coalesce\(p_payload, '\{\}'::jsonb\)/, "Payment updates must preserve the existing token and redirect URL atomically.");
+assert.match(checkout, /customerPaymentSummary/, "The protected customer order response must include resumability and safe payment instructions.");
+assert.match(client, /payment\.resumeAvailable \?/, "The payment CTA must only render when a usable Midtrans redirect is stored.");
+assert.match(client, /data-copy-payment-code/, "Bank-transfer orders must retain a customer-usable payment instruction path.");
 assert.match(handlers, /activePendingOrderIds\.has\(String\(row\.order_id\)\)/, "Payment health must only flag attempts that still belong to active pending orders.");
 
 assert.match(checkout, /ORDER_ACCESS_COOKIE_NAME/, "Order access must use a dedicated HttpOnly cookie.");

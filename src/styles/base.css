@@ -2791,6 +2791,37 @@ body:has(.cart-view) .site-footer {
   margin-top: 18px;
 }
 
+.order-payment-instructions {
+  display: grid;
+  gap: 0;
+  margin: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.order-payment-instructions p {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.order-payment-instructions p:last-of-type {
+  border-bottom: 0;
+}
+
+.order-payment-instructions strong {
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.order-payment-instructions .button {
+  justify-self: start;
+  margin: 12px 0;
+}
+
 .admin-shipping-quote-form {
   margin-bottom: 26px;
 }

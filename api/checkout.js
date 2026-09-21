@@ -6,6 +6,7 @@ import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShi
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
 import { runShippingMaintenance } from "./_lib/nixpShippingEngine.js";
+import { hasUsableMidtransRedirect, safeMidtransPaymentInstructions } from "./_lib/paymentState.js";
 import { processFinanceCatalogSyncJobs, readFinanceState, syncFinanceInventoryToCatalog } from "./_lib/financeState.js";
 import { processAdminFinanceSyncJobs } from "./_lib/adminFinanceSyncJobs.js";
 import { reconcileCatalogPublicationState } from "./_lib/catalogPublicationReconciliation.js";
@@ -254,8 +255,11 @@ async function handleCustomerOrderStatus(req, res) {
     // Compatibility for old email links. New links place credentials after #,
     // so browsers do not send them to Vercel, logs, analytics, or referrers.
     if (suppliedOrderId && suppliedToken) setOrderAccessCookie(req, res, orderId, token);
-    const quotes = await supabaseFetch(`shipping_quotes?select=courier,service,amount,eta,status,created_at,expires_at&order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc`, { service: true });
-    return json(res, 200, { ok: true, order: customerOrderSummary(order), quotes: quotes || [] });
+    const [quotes, payment] = await Promise.all([
+      supabaseFetch(`shipping_quotes?select=courier,service,amount,eta,status,created_at,expires_at&order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc`, { service: true }),
+      customerPaymentSummary(orderId)
+    ]);
+    return json(res, 200, { ok: true, order: customerOrderSummary(order), quotes: quotes || [], payment });
   } catch (error) {
     return json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Order status is unavailable." });
   }
@@ -395,6 +399,24 @@ function customerOrderSummary(order) {
     paymentExpiresAt: order.payment_expires_at,
     createdAt: order.created_at,
     items: (order.items || []).map((item) => ({ artist: item.artist, title: item.title, size: item.size_label, quantity: item.quantity, lineTotal: item.line_total }))
+  };
+}
+
+async function customerPaymentSummary(orderId) {
+  const attempts = await supabaseFetch(`payment_attempts?select=status,payload&order_id=eq.${encodeURIComponent(orderId)}&provider=eq.Midtrans&limit=1`, { service: true });
+  const attempt = Array.isArray(attempts) ? attempts[0] : null;
+  let instructions = attempt?.payload?.paymentInstructions || null;
+
+  if (!instructions) {
+    const receipts = await supabaseFetch(`webhook_receipts?select=payload,created_at&provider=eq.Midtrans&payload->>order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc&limit=1`, { service: true });
+    instructions = safeMidtransPaymentInstructions(Array.isArray(receipts) ? receipts[0]?.payload : null);
+  }
+
+  return {
+    provider: "Midtrans",
+    attemptStatus: attempt?.status || "Unavailable",
+    resumeAvailable: hasUsableMidtransRedirect(attempt?.payload?.redirectUrl),
+    instructions
   };
 }
 

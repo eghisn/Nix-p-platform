@@ -1065,10 +1065,16 @@ async function customerOrderStatusPage() {
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(payload.error || "Order status is unavailable.");
     const order = payload.order || {};
+    const payment = payload.payment || {};
     const activeQuote = (payload.quotes || []).find((quote) => quote.status === "Sent") || (payload.quotes || [])[0];
     const paymentPending = order.paymentStatus === "Pending" && order.orderStatus === "Active";
     const quotePending = order.shippingStatus === "Awaiting Quote";
     const expiresAt = order.paymentExpiresAt ? new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(new Date(order.paymentExpiresAt)) : "";
+    const paymentInstructions = orderPaymentInstructionsMarkup(payment.instructions, order.total);
+    const pendingPaymentActions = [
+      payment.resumeAvailable ? `<button class="button button-dark" type="button" data-order-pay>Continue to payment</button>` : "",
+      `<button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button>`
+    ].filter(Boolean).join("");
     return `
       <section class="section order-status-page">
         <div class="order-status-shell">
@@ -1092,7 +1098,7 @@ async function customerOrderStatusPage() {
               ${order.trackingNumber ? `<p><span>Tracking</span><strong>${escapeHtml(order.trackingNumber)}</strong></p>` : ""}
             </div>
           </div>
-          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p><div class="order-status-actions"><button class="button button-dark" type="button" data-order-pay>Continue to payment</button><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div>`}
+          ${paymentPending ? `<p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${!payment.resumeAvailable && !paymentInstructions ? `<p class="admin-form-note" data-tone="warning">The secure payment session cannot be reopened. Contact NIXP before the reservation expires.</p>` : ""}` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div>`}
           <p class="admin-form-note" data-order-status-message aria-live="polite"></p>
         </div>
       </section>
@@ -2291,6 +2297,20 @@ function select(name, label, options, value = "") {
   `;
 }
 
+function orderPaymentInstructionsMarkup(instructions, total) {
+  if (!instructions) return "";
+  if (instructions.vaNumber) {
+    return `<div class="order-payment-instructions"><p><span>Bank transfer</span><strong>${escapeHtml(instructions.bank || "Virtual Account")}</strong></p><p><span>Virtual account</span><strong>${escapeHtml(instructions.vaNumber)}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p><button class="button button-outline" type="button" data-copy-payment-code="${escapeAttr(instructions.vaNumber)}">Copy VA number</button></div>`;
+  }
+  if (instructions.billKey) {
+    return `<div class="order-payment-instructions"><p><span>Biller code</span><strong>${escapeHtml(instructions.billerCode || "-")}</strong></p><p><span>Bill key</span><strong>${escapeHtml(instructions.billKey)}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p></div>`;
+  }
+  if (instructions.paymentCode) {
+    return `<div class="order-payment-instructions"><p><span>Payment code</span><strong>${escapeHtml(instructions.paymentCode)}</strong></p><p><span>Amount</span><strong>${money.format(total || 0)}</strong></p></div>`;
+  }
+  return "";
+}
+
 function apparelConditionEditorFields(product = {}, visible = false) {
   const measurements = apparelMeasurements(product);
   return `
@@ -3432,6 +3452,17 @@ function bindEvents() {
   syncCheckoutAddressRequirements();
 
   document.querySelector("[data-order-status-refresh]")?.addEventListener("click", () => render({ preserveScroll: true }));
+  document.querySelector("[data-copy-payment-code]")?.addEventListener("click", async (event) => {
+    const button = event.currentTarget;
+    const code = String(button.dataset.copyPaymentCode || "");
+    if (!code) return;
+    try {
+      await navigator.clipboard.writeText(code);
+      button.textContent = "Copied";
+    } catch {
+      button.textContent = code;
+    }
+  });
   document.querySelector("[data-order-return-cart]")?.addEventListener("click", () => {
     clearCheckoutSession();
     navigateInternal("/cart");
