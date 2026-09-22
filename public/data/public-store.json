@@ -35180,7 +35180,7 @@
       "images": [
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0042/cover.jpg"
       ],
-      "barcode": "",
+      "barcode": "4523132111704",
       "details": [
         "SKU: NXP-2026-CD-0042",
         "Format: CD",
@@ -35269,6 +35269,7 @@
       "apparelType": "",
       "description": "Oneohtrix Point Never's 2018 Age Of frames Daniel Lopatin's electronic collage work as a fractured pop record, with synthesized medievalism, orchestral colour and vocals from collaborators including ANOHNI and James Blake.",
       "reviewQuote": "his most apocalyptic record",
+      "editRevision": 20,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/46f66a2f-b782-47b4-9095-2ef933e1e7c7",
@@ -35525,7 +35526,7 @@
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "msm7eagbo1efm9",
-      "mediaCondition": "",
+      "mediaCondition": "Near Mint",
       "open_to_offers": true,
       "relatedArtists": [
         "Tim Hecker",
@@ -35545,17 +35546,23 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "sleeveCondition": "",
+      "sleeveCondition": "Near Mint",
       "autoProductPhoto": "",
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
       "descriptionSource": "Beatink / Warp Records",
       "metadataSourceUrl": "https://www.beatink.com/products/detail.php?product_id=9576",
+      "editorialUpdatedAt": "2026-09-22T11:57:51.024+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-09",
+      "mediaConditionGrade": "Near Mint",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "46f66a2f-b782-47b4-9095-2ef933e1e7c7",
+      "sleeveConditionGrade": "Near Mint",
       "enrichmentAttemptedAt": "2026-08-09T20:36:44.361Z",
       "enrichmentFingerprint": "oneohtrix point never|age of|cd||brc 570",
       "relatedArtistEvidence": [
@@ -35786,18 +35793,16 @@
         "sourceUrl": "https://musicbrainz.org/release/46f66a2f-b782-47b4-9095-2ef933e1e7c7",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 19,
-      "editorialUpdatedAt": "2026-09-22T02:01:28.672+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-22",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
@@ -53261,13 +53266,13 @@
       "images": [
         "/public/covers/nxp-2026-cd-0026-fever-ray-plunge.jpg"
       ],
-      "barcode": "",
+      "barcode": "5 414940 006094",
       "details": [
         "SKU: NXP-2026-CD-0026",
         "Format: CD",
         "Condition: Used Excellent"
       ],
-      "edition": "",
+      "edition": "CD, Album",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0026/cover.jpg",
@@ -53347,6 +53352,7 @@
       "apparelType": "",
       "description": "Fever Ray's Plunge is Karin Dreijer's second album under the Fever Ray name, pushing experimental electropop into desire, movement, and sharper club pressure.",
       "reviewQuote": "more conflicted, more manic, and more in love",
+      "editRevision": 20,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/ea370f56-48c2-4ea9-b6ae-ba7f447dd08a",
@@ -53598,12 +53604,12 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "RABID061CD",
       "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
       "financeStockId": "ms1snrc04axq58",
-      "mediaCondition": "",
+      "mediaCondition": "Very Good Plus",
       "open_to_offers": false,
       "relatedArtists": [
         "The Knife",
@@ -53624,17 +53630,23 @@
       },
       "homeCollections": [],
       "reviewSourceUrl": "https://pitchfork.com/reviews/albums/fever-ray-plunge/",
-      "sleeveCondition": "",
+      "sleeveCondition": "Near Mint",
       "autoProductPhoto": "",
       "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
       "descriptionSource": "Pitchfork / MusicBrainz",
       "metadataSourceUrl": "https://musicbrainz.org/release/ea370f56-48c2-4ea9-b6ae-ba7f447dd08a",
+      "editorialUpdatedAt": "2026-09-22T11:51:20.392+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-18",
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "ea370f56-48c2-4ea9-b6ae-ba7f447dd08a",
+      "sleeveConditionGrade": "Near Mint",
       "enrichmentAttemptedAt": "2026-08-18T16:46:51.612Z",
       "enrichmentFingerprint": "fever ray|plunge|cd||",
       "relatedArtistEvidence": [
@@ -53865,18 +53877,16 @@
         "sourceUrl": "https://musicbrainz.org/release/ea370f56-48c2-4ea9-b6ae-ba7f447dd08a",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 19,
-      "editorialUpdatedAt": "2026-09-22T02:01:16.255+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-22",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
