@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import {
   canCreateFinanceCatalogDraft,
   draftProductFromFinanceStock,
+  financeSellingPriceForAdminProduct,
   hasFinanceCatalogIdentityDrift,
   mergeFinanceStockIdentity,
   productRowFromFinanceStock
@@ -57,6 +58,27 @@ assert.equal(financeProduct.publish_status, "Draft", "Finance completion must no
 assert.equal(financeProduct.visibility, "Private", "Finance completion must not expose a catalog draft.");
 assert.equal(hasFinanceCatalogIdentityDrift(versionedPlaceholder, repaired), true);
 assert.equal(hasFinanceCatalogIdentityDrift(repaired, mergeFinanceStockIdentity(repaired, productRowFromFinanceStock(repaired, completedStock, 1))), false);
+
+assert.equal(
+  financeSellingPriceForAdminProduct({ price: 720000 }, { sellingPrice: 717525 }),
+  720000,
+  "A newly saved Admin price must replace an older Finance price."
+);
+assert.equal(
+  financeSellingPriceForAdminProduct({ price: "" }, { sellingPrice: 717525 }),
+  717525,
+  "An absent Admin price must not erase a valid Finance price."
+);
+const barcodeProtected = productRowFromFinanceStock(
+  { ...versionedPlaceholder, raw: { barcode: "5054429148466" } },
+  { ...completedStock, barcode: "" },
+  1
+);
+assert.equal(
+  barcodeProtected.raw.barcode,
+  "5054429148466",
+  "A blank Finance barcode must not erase a completed catalog barcode."
+);
 
 const legacyPublished = productRowFromFinanceStock(
   {

@@ -924,7 +924,9 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const financeTitle = isPlaceholderInventoryTitle(submittedTitle) ? "" : submittedTitle;
   const financeArtist = String(stock.artist || "").trim();
   const financeEdition = stockIdentityValue(stock, "edition", row.raw?.edition);
-  const financeBarcode = stockIdentityValue(stock, "barcode", row.raw?.barcode);
+  // A blank value in Finance is not evidence that a verified catalog barcode
+  // should be removed. Preserve the catalog value until Finance supplies one.
+  const financeBarcode = nonEmptyStockIdentityValue(stock, "barcode", row.raw?.barcode);
   const financeCatalogNumber = stockIdentityValue(stock, "catalogNumber", row.raw?.catalogNumber);
   const financeVinylSize = itemSelection.vinylSize || normalizeVinylSize(stockIdentityValue(stock, "vinylSize", row.raw?.vinylSize));
   const financeMetadata = financeItemMetadata(stock, row.raw?.financeMetadata || row.raw || {});
@@ -1041,6 +1043,11 @@ export function preserveResearchPublicationState(researchedProduct = {}, existin
 function stockIdentityValue(stock, key, fallback = "") {
   if (Object.prototype.hasOwnProperty.call(stock || {}, key)) return String(stock[key] ?? "").trim();
   return String(fallback ?? "").trim();
+}
+
+function nonEmptyStockIdentityValue(stock, key, fallback = "") {
+  const value = stockIdentityValue(stock, key);
+  return value || String(fallback ?? "").trim();
 }
 
 function financeApparelDetailsForStock(stock = {}, existingRaw = {}, category = "") {
@@ -1237,6 +1244,16 @@ export async function syncAdminProductInventory(product) {
   return syncAdminCatalogInventory([product]);
 }
 
+export function financeSellingPriceForAdminProduct(product = {}, existing = {}) {
+  if (product.open_to_offers) return 0;
+  const submittedPrice = product.price;
+  if (submittedPrice !== null && submittedPrice !== undefined && String(submittedPrice).trim() !== "") {
+    const price = Number(submittedPrice);
+    if (Number.isFinite(price) && price >= 0) return price;
+  }
+  return Math.max(0, Number(existing.sellingPrice || 0));
+}
+
 // Apply a full Admin catalog deployment in one state write. Writing each product
 // individually would allow concurrent writes to overwrite one another.
 export async function syncAdminCatalogInventory(products = []) {
@@ -1291,7 +1308,7 @@ export async function syncAdminCatalogInventory(products = []) {
       acquisitionMonth: existing.acquisitionMonth || new Date().toISOString().slice(0, 7),
       qty: quantity,
       costBasis: Number(existing.costBasis || 0),
-      sellingPrice: product.open_to_offers ? 0 : Number(existing.sellingPrice || product.price || 0),
+      sellingPrice: financeSellingPriceForAdminProduct(product, existing),
       listingMode: product.open_to_offers ? "Private Collection / Offer Only" : existing.listingMode || "Standard Sale",
       minimumAcceptableOffer: wholeAmount(product.minimumAcceptableOffer ?? existing.minimumAcceptableOffer),
       inventoryFamily: catalogInventoryFamily(product) || existing.inventoryFamily || "Other",
