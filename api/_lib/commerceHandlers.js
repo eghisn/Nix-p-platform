@@ -275,13 +275,10 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
 export async function reconcilePendingMidtransPayments({ limit = 20, source = "manual" } = {}) {
   if (!isMidtransConfigured()) return { configured: false, checked: 0, changed: 0, failed: 0 };
   const attempts = await supabaseFetch(
-    `payment_attempts?select=order_id,status,payload,updated_at&provider=eq.Midtrans&order=updated_at.asc&limit=100`,
-    { service: true }
+    "rpc/pending_midtrans_attempts",
+    { method: "POST", service: true, body: { p_limit: 50 } }
   );
-  const eligibleStatuses = new Set(["Creating", "Creation Failed", "Pending", "Provider Pending"]);
-  const minimumAge = Date.now() - 30_000;
   const eligible = (Array.isArray(attempts) ? attempts : [])
-    .filter((attempt) => eligibleStatuses.has(attempt.status) && new Date(attempt.updated_at).getTime() <= minimumAge)
     .slice(0, Math.max(1, Math.min(Number(limit) || 20, 50)));
   const summary = { configured: true, checked: 0, changed: 0, missing: 0, failed: 0, source };
 

@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (file) => readFile(path.join(root, file), "utf8");
-const [checkout, client, adminStore, handlers, shippingEngine, migration, policies, outboxRecovery, shippingFoundation, stockLedger, stockWriteGuard, atomicReservation, pricedOrders, financeState, vercelConfig] = await Promise.all([
+const [checkout, client, adminStore, handlers, shippingEngine, migration, policies, outboxRecovery, shippingFoundation, stockLedger, stockWriteGuard, atomicReservation, providerProtection, pricedOrders, financeState, vercelConfig] = await Promise.all([
   read("api/checkout.js"),
   read("src/main.js"),
   read("src/services/adminStore.js"),
@@ -17,6 +17,7 @@ const [checkout, client, adminStore, handlers, shippingEngine, migration, polici
   read("supabase/migrations/20260828163000_atomic_finance_stock_ledger.sql"),
   read("supabase/migrations/20260828163553_enforce_finance_stock_on_catalog_writes.sql"),
   read("supabase/migrations/20260831184251_atomic_checkout_reservation_and_one_hour_expiry.sql"),
+  read("supabase/migrations/20260922064958_protect_pending_provider_payments.sql"),
   read("supabase/migrations/20260903181500_reject_unpriced_order_lines.sql"),
   read("api/_lib/financeState.js"),
   read("vercel.json")
@@ -56,6 +57,9 @@ const requirements = [
   [atomicReservation.includes("v_physical_quantity - v_reserved_before"), "Checkout must reserve Finance quantity minus active reservations."],
   [atomicReservation.includes("interval '1 hour'"), "Checkout and shipping quote reservations must use a one-hour payment window."],
   [atomicReservation.includes("release_order_reservations"), "Expired orders must use the Finance-aware reservation release transaction."],
+  [providerProtection.includes("select 1 from public.payment_attempts"), "Database expiry must hold stock while a provider attempt may still settle."],
+  [providerProtection.includes("RESERVATION_NOT_ACTIVE"), "Late provider settlement must require a live stock reservation."],
+  [handlers.includes("rpc/pending_midtrans_attempts"), "Payment maintenance must prioritize attempts on active orders."],
   [handlers.includes("expiry: midtransExpiryForOrder(order.payment_expires_at)"), "Midtrans must share the stored one-hour reservation deadline."],
   [handlers.includes('"Idempotency-Key": idempotencyKey'), "Midtrans session creation must be idempotent."],
   [handlers.includes("buildMidtransItemDetails(order)"), "Midtrans item variants and totals must be validated before payment creation."],
