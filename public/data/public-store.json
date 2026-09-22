@@ -17204,7 +17204,7 @@
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0059/cover.jpg",
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0059/detail-1.jpg"
       ],
-      "barcode": "",
+      "barcode": "184923117615",
       "details": [
         "SKU: NXP-2026-VNL-0059",
         "Format: Vinyl",
@@ -17298,7 +17298,7 @@
       "apparelType": "",
       "description": "No Joy's 2013 Pastel and Pass Out is a three-track Mexican Summer EP that turns the band's shoegaze density into tighter structures, sharper dynamics and a more playful sense of movement.",
       "reviewQuote": "a small but strong release that should tide fans over until No Joy's next major statement",
-      "editRevision": 11,
+      "editRevision": 12,
       "imageCredits": [
         {
           "url": "https://music.apple.com/us/album/pastel-and-pass-out-single/1775741802",
@@ -17586,8 +17586,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Mexican Summer / Pitchfork",
       "metadataSourceUrl": "https://pitchfork.com/reviews/albums/18707-no-joy-pastel-and-pass-out-ep/",
-      "editorialUpdatedAt": "2026-09-22T02:01:39.477+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-22T11:32:12.441+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-22",
@@ -17837,7 +17837,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-21",
+        "updatedAt": "2026-09-22",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
