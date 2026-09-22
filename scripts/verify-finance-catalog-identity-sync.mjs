@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import {
   canCreateFinanceCatalogDraft,
+  catalogPriceForFinanceStock,
   draftProductFromFinanceStock,
+  financePriceMayUpdateCatalog,
   financeSellingPriceForAdminProduct,
   hasFinanceCatalogIdentityDrift,
   mergeFinanceStockIdentity,
@@ -68,6 +70,38 @@ assert.equal(
   financeSellingPriceForAdminProduct({ price: "" }, { sellingPrice: 717525 }),
   717525,
   "An absent Admin price must not erase a valid Finance price."
+);
+const adminPricedProduct = {
+  ...versionedPlaceholder,
+  price: 720000,
+  raw: { catalogPriceSync: 720000 }
+};
+const unchangedFinancePrice = { ...completedStock, sellingPrice: 720000, catalogPriceSync: 720000 };
+assert.equal(
+  financePriceMayUpdateCatalog(adminPricedProduct, unchangedFinancePrice),
+  false,
+  "A scheduled Finance sync must not overwrite an already-synchronized Admin price."
+);
+assert.equal(
+  catalogPriceForFinanceStock(adminPricedProduct, unchangedFinancePrice),
+  720000
+);
+const changedFinancePrice = { ...unchangedFinancePrice, sellingPrice: 730000 };
+assert.equal(
+  financePriceMayUpdateCatalog(adminPricedProduct, changedFinancePrice),
+  true,
+  "A later Finance price edit must still be allowed to update the catalog."
+);
+assert.equal(catalogPriceForFinanceStock(adminPricedProduct, changedFinancePrice), 730000);
+assert.equal(
+  catalogPriceForFinanceStock({ ...versionedPlaceholder, price: 0 }, completedStock),
+  340625,
+  "A Finance-created draft needs its first valid selling price."
+);
+assert.equal(
+  catalogPriceForFinanceStock({ ...versionedPlaceholder, price: 720000 }, { ...completedStock, sellingPrice: 466250 }),
+  720000,
+  "An unmarked legacy Finance value must not erase a priced Admin catalog row."
 );
 const barcodeProtected = productRowFromFinanceStock(
   { ...versionedPlaceholder, raw: { barcode: "5054429148466" } },

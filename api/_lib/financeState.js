@@ -932,8 +932,9 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const financeMetadata = financeItemMetadata(stock, row.raw?.financeMetadata || row.raw || {});
   const financeApparelDetails = financeApparelDetailsForStock(stock, row.raw || {}, category);
   const financeApparelSizes = financeApparelSizesForStock(stock, category, row.sizes);
-  const financePrice = Number(stock.sellingPrice || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
+  const financePrice = Number(stock.sellingPrice || 0);
+  const catalogPrice = catalogPriceForFinanceStock(row, stock);
   const minimumAcceptableOffer = wholeAmount(stock.minimumAcceptableOffer);
   const raw = {
     ...(row.raw || {}),
@@ -989,7 +990,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
     apparel_type: category === "Apparel" ? row.apparel_type || "Accessories" : row.apparel_type || "",
     sizes: financeApparelSizes,
     condition: String(stock.itemCondition || row.condition || "").trim(),
-    price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(row.price || 0),
+    price: catalogPrice,
     open_to_offers: openToOffers,
     minimum_acceptable_offer: openToOffers ? minimumAcceptableOffer : null,
     qty: normalizedQuantity(row.qty),
@@ -1004,7 +1005,11 @@ export function productRowFromFinanceStock(row, stock, quantity) {
       format: item || raw.format || row.format || "",
       displayFormat: item || raw.displayFormat || row.display_format || "",
       condition: String(stock.itemCondition || raw.condition || row.condition || "").trim(),
-      price: openToOffers ? 0 : financePrice > 0 ? financePrice : Number(raw.price || row.price || 0),
+      price: catalogPrice,
+      // This marker makes a full Finance maintenance pass idempotent for
+      // price. It records the Finance amount that this catalog row last saw;
+      // only a later Finance edit may change the catalog price again.
+      catalogPriceSync: financePrice,
       open_to_offers: openToOffers,
       minimumAcceptableOffer: openToOffers ? minimumAcceptableOffer : null,
       edition: financeEdition,
@@ -1097,6 +1102,7 @@ export function mergeFinanceStockIdentity(existing = {}, financeProduct = {}) {
     displayFormat: financeProduct.display_format,
     condition: financeProduct.condition,
     price: financeProduct.price,
+    catalogPriceSync: financeRaw.catalogPriceSync,
     open_to_offers: financeProduct.open_to_offers === true,
     minimumAcceptableOffer: financeProduct.minimum_acceptable_offer,
     edition: String(financeRaw.edition || "").trim(),
@@ -1142,6 +1148,7 @@ function financeCatalogIdentitySignature(row = {}) {
     apparelType: String(row.apparel_type || "").trim(),
     condition: String(row.condition || "").trim(),
     price: Number(row.price || 0),
+    catalogPriceSync: Number.isFinite(Number(raw.catalogPriceSync)) ? Number(raw.catalogPriceSync) : null,
     openToOffers: row.open_to_offers === true,
     minimumAcceptableOffer: wholeAmount(row.minimum_acceptable_offer),
     edition: String(raw.edition || "").trim(),
@@ -1254,6 +1261,42 @@ export function financeSellingPriceForAdminProduct(product = {}, existing = {}) 
   return Math.max(0, Number(existing.sellingPrice || 0));
 }
 
+function normalizedCatalogPrice(value) {
+  const price = Number(value);
+  return Number.isFinite(price) && price >= 0 ? Math.round(price) : 0;
+}
+
+function catalogPriceSyncMarker(row = {}, stock = {}) {
+  const candidates = [stock?.catalogPriceSync, row?.raw?.catalogPriceSync];
+  for (const candidate of candidates) {
+    if (candidate === null || candidate === undefined || String(candidate).trim() === "") continue;
+    const price = Number(candidate);
+    if (Number.isFinite(price) && price >= 0) return Math.round(price);
+  }
+  return null;
+}
+
+export function financePriceMayUpdateCatalog(row = {}, stock = {}) {
+  const marker = catalogPriceSyncMarker(row, stock);
+  const catalogPrice = normalizedCatalogPrice(row.price);
+  const financePrice = normalizedCatalogPrice(stock.sellingPrice);
+  // Finance-created drafts need their first usable selling price. For an
+  // existing priced catalog row without a marker, preserve Admin's value and
+  // establish the marker instead of treating an old Finance snapshot as a
+  // new price edit.
+  if (marker === null) return catalogPrice <= 0;
+  return financePrice !== marker;
+}
+
+export function catalogPriceForFinanceStock(row = {}, stock = {}) {
+  const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true;
+  if (openToOffers) return 0;
+  const financePrice = normalizedCatalogPrice(stock.sellingPrice);
+  return financePriceMayUpdateCatalog(row, stock)
+    ? financePrice
+    : normalizedCatalogPrice(row.price);
+}
+
 // Apply a full Admin catalog deployment in one state write. Writing each product
 // individually would allow concurrent writes to overwrite one another.
 export async function syncAdminCatalogInventory(products = []) {
@@ -1276,6 +1319,7 @@ export async function syncAdminCatalogInventory(products = []) {
     // Admin owns editorial fields. Once a Finance stock row exists, Admin
     // saves must not replace its quantity with a stale catalog snapshot.
     const quantity = index === undefined ? catalogQuantity : normalizedQuantity(existing.qty);
+    const sellingPrice = financeSellingPriceForAdminProduct(product, existing);
     const nextStock = recalculateStock({
       ...existing,
       id: existing.id || `catalog-${product.id}`,
@@ -1308,7 +1352,10 @@ export async function syncAdminCatalogInventory(products = []) {
       acquisitionMonth: existing.acquisitionMonth || new Date().toISOString().slice(0, 7),
       qty: quantity,
       costBasis: Number(existing.costBasis || 0),
-      sellingPrice: financeSellingPriceForAdminProduct(product, existing),
+      sellingPrice,
+      // Finance keeps this with the stock row so scheduled full syncs can
+      // distinguish a new Finance edit from an already-applied Admin price.
+      catalogPriceSync: sellingPrice,
       listingMode: product.open_to_offers ? "Private Collection / Offer Only" : existing.listingMode || "Standard Sale",
       minimumAcceptableOffer: wholeAmount(product.minimumAcceptableOffer ?? existing.minimumAcceptableOffer),
       inventoryFamily: catalogInventoryFamily(product) || existing.inventoryFamily || "Other",
