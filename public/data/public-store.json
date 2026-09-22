@@ -19212,7 +19212,7 @@
       "flaws": "",
       "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0056/cover.jpg",
       "label": "Brainfeeder",
-      "price": 717525,
+      "price": 720000,
       "sizes": [],
       "stock": {
         "sold": 0,
@@ -19226,7 +19226,7 @@
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0056/cover.jpg",
         "/public/mockups/nxp-2026-vnl-0056-hiatus-kaiyote-mood-valiant-inkspot-vinyl.png"
       ],
-      "barcode": "",
+      "barcode": "5054429148466",
       "details": [
         "SKU: NXP-2026-VNL-0056",
         "Format: Vinyl",
@@ -19319,7 +19319,7 @@
       "apparelType": "",
       "description": "Hiatus Kaiyote's 2021 Mood Valiant is a focused Brainfeeder album where future soul, jazz, strings and pop songwriting meet the Melbourne quartet's detailed rhythmic language.",
       "reviewQuote": "their most focused album with more classic songs than epic jams",
-      "editRevision": 77,
+      "editRevision": 78,
       "imageCredits": [
         {
           "url": "https://hiatuskaiyote.bandcamp.com/album/mood-valiant",
@@ -19607,8 +19607,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Hiatus Kaiyote official Bandcamp / NME",
       "metadataSourceUrl": "https://hiatuskaiyote.bandcamp.com/album/mood-valiant",
-      "editorialUpdatedAt": "2026-09-22T02:01:37.999+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-22T11:03:16.185+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-22",
@@ -19858,7 +19858,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-21",
+        "updatedAt": "2026-09-22",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
