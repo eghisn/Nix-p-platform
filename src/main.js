@@ -2020,7 +2020,7 @@ async function ordersPage({ embedded = false } = {}) {
       ${table(
         ["Order", "Class", "Customer", "Items", "Payment", "Fulfillment", "Shipping", "Action required", "Total"],
         visibleOrders.map((order) => [
-          escapeHtml(order.reference || order.id),
+          `${escapeHtml(order.reference || order.id)}<br><button class="admin-order-detail-trigger" type="button" data-admin-order-view="${escapeAttr(order.id)}">View order</button>`,
           statusBadge(order.orderClass || "Customer"),
           `${escapeHtml(order.customer || "-")}<br><small>${escapeHtml(order.email || order.whatsapp || order.channel || "")}</small>`,
           `${escapeHtml(orderItemSummary(order))}${orderPackageBreakdownMarkup(order)}`,
@@ -2031,8 +2031,55 @@ async function ordersPage({ embedded = false } = {}) {
           money.format(order.total)
         ])
       )}
+      <dialog class="admin-order-dialog" data-admin-order-dialog aria-labelledby="admin-order-dialog-title">
+        <div class="admin-order-dialog-head">
+          <div><p class="eyebrow">Order details</p><h2 id="admin-order-dialog-title">Order</h2></div>
+          <button class="button button-outline" type="button" data-admin-order-close>Close</button>
+        </div>
+        <div data-admin-order-content aria-live="polite"></div>
+      </dialog>
     </div>
   `;
+}
+
+function adminOrderDetailMarkup(order) {
+  const address = order.shippingAddress || {};
+  const contact = order.customer || {};
+  const destination = [address.district, address.city, address.province, address.postalCode].filter(Boolean).join(", ");
+  const addressText = [address.recipient || contact.name, address.phone || contact.whatsapp, address.address1, address.address2, destination, address.country].filter(Boolean).join("\n");
+  return {
+    addressText,
+    markup: `
+      <div class="admin-order-detail-meta">
+        <p><span>Payment</span>${statusBadge(order.paymentStatus || "-")}</p>
+        <p><span>Fulfillment</span>${statusBadge(order.fulfillmentStatus || "-")}</p>
+        <p><span>Shipping</span>${statusBadge(order.shippingStatus || "-")}</p>
+      </div>
+      <section class="admin-order-detail-section">
+        <h3>Delivery address</h3>
+        ${address.address1 ? `<address>
+          <strong>${escapeHtml(address.recipient || contact.name || "-")}</strong>
+          <span>${escapeHtml(address.phone || contact.whatsapp || "-")}</span>
+          <span>${escapeHtml(address.address1)}</span>
+          ${address.address2 ? `<span>${escapeHtml(address.address2)}</span>` : ""}
+          <span>${escapeHtml(destination)}</span>
+          <span>${escapeHtml(address.country || "Indonesia")}</span>
+        </address><button class="button button-outline admin-order-copy" type="button" data-admin-order-copy>Copy address</button>` : `<p>No delivery address recorded. Check this order before arranging shipment.</p>`}
+        <p class="admin-order-copy-message" data-admin-order-copy-message aria-live="polite"></p>
+      </section>
+      <section class="admin-order-detail-section">
+        <h3>Contact &amp; courier</h3>
+        <p>${escapeHtml(contact.email || "No email recorded")}</p>
+        <p>${escapeHtml(order.shippingMethod || "No shipping method")} ${order.courier ? ` / ${escapeHtml(order.courier)}` : ""}</p>
+        ${order.trackingNumber ? `<p>Tracking: ${escapeHtml(order.trackingNumber)}</p>` : ""}
+      </section>
+      <section class="admin-order-detail-section">
+        <h3>Items</h3>
+        ${order.items?.length ? `<ul class="admin-order-detail-items">${order.items.map((item) => `<li><span>${escapeHtml([item.artist, item.title].filter(Boolean).join(" - ") || item.sku)}${item.size ? ` / ${escapeHtml(item.size)}` : ""}<small>${escapeHtml(item.sku)}</small></span><strong>x${Number(item.quantity) || 0}</strong></li>`).join("")}</ul>` : "<p>No item lines recorded.</p>"}
+        <p class="admin-order-detail-total"><span>Total</span><strong>${money.format(order.total)}</strong></p>
+      </section>
+    `
+  };
 }
 
 async function cashflowPage() {
@@ -2832,9 +2879,9 @@ function setupAdminOrdersLiveRefresh(path) {
   }
   if (path !== "/admin/orders" || !hasWorkspaceAccess("admin")) return;
   const refreshOrders = () => {
-    if (document.hidden || normalizePath(location.pathname) !== "/admin/orders") return;
+    if (document.hidden || normalizePath(location.pathname) !== "/admin/orders" || document.querySelector("[data-admin-order-dialog]")?.open) return;
     adminStore.refreshOrdersIfChanged().then(({ changed }) => {
-      if (changed) render({ preserveScroll: true });
+      if (changed && !document.querySelector("[data-admin-order-dialog]")?.open) render({ preserveScroll: true });
     }).catch(() => undefined);
   };
   adminOrdersRefreshTimer = setInterval(refreshOrders, 3_000);
@@ -2985,6 +3032,42 @@ function bindProductImageFallbacks(root) {
 function bindEvents() {
   activateDeferredProductCards();
   bindHomeSlider();
+  const orderDialog = document.querySelector("[data-admin-order-dialog]");
+  orderDialog?.querySelector("[data-admin-order-close]")?.addEventListener("click", () => orderDialog.close());
+  orderDialog?.addEventListener("close", () => {
+    delete orderDialog.dataset.activeOrderId;
+    orderDialog.querySelector("[data-admin-order-content]")?.replaceChildren();
+  });
+  document.querySelectorAll("[data-admin-order-view]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      if (!orderDialog) return;
+      const content = orderDialog.querySelector("[data-admin-order-content]");
+      const title = orderDialog.querySelector("#admin-order-dialog-title");
+      const orderId = button.getAttribute("data-admin-order-view");
+      orderDialog.dataset.activeOrderId = orderId;
+      title.textContent = "Loading order";
+      content.textContent = "Loading delivery details...";
+      orderDialog.showModal();
+      try {
+        const order = await adminStore.orderDetail(orderId);
+        if (!orderDialog.open || orderDialog.dataset.activeOrderId !== orderId) return;
+        title.textContent = order.reference || order.id;
+        const detail = adminOrderDetailMarkup(order);
+        content.innerHTML = detail.markup;
+        content.querySelector("[data-admin-order-copy]")?.addEventListener("click", async () => {
+          const message = content.querySelector("[data-admin-order-copy-message]");
+          try {
+            await navigator.clipboard.writeText(detail.addressText);
+            message.textContent = "Address copied.";
+          } catch {
+            message.textContent = "Could not copy automatically. Select the address above instead.";
+          }
+        });
+      } catch (error) {
+        if (orderDialog.open && orderDialog.dataset.activeOrderId === orderId) content.textContent = error instanceof Error ? error.message : "Could not load order details.";
+      }
+    });
+  });
   document.querySelector("[data-login-form]")?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.currentTarget;

@@ -960,6 +960,13 @@ export const adminStore = {
     await this.refreshPrivateStore({ force: true });
     return this.getSnapshot().orders;
   },
+  async orderDetail(orderId) {
+    if (!canUsePrivateStore()) throw new Error("Admin access required.");
+    const response = await fetch(`/api/admin/orders?orderId=${encodeURIComponent(orderId)}`, { cache: "no-store" });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Could not load order details.");
+    return payload.order;
+  },
   async refreshInventory() {
     if (!canUsePrivateStore()) return this.getSnapshot().inventory;
     const response = await fetch(`/api/admin/store?commerceAction=inventory&v=${Date.now()}`, { cache: "no-store" });

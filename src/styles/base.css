@@ -2957,6 +2957,142 @@ body:has(.cart-view) .site-footer {
   line-height: 1.35;
 }
 
+.admin-order-detail-trigger {
+  margin-top: 5px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.admin-order-dialog {
+  width: min(640px, calc(100% - 28px));
+  max-height: calc(100dvh - 28px);
+  margin: auto;
+  padding: 24px;
+  overflow: auto;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: #fff;
+  color: var(--ink);
+}
+
+.admin-order-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.admin-order-dialog-head,
+.admin-order-detail-meta p,
+.admin-order-detail-items li,
+.admin-order-detail-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.admin-order-dialog-head {
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.admin-order-dialog-head .eyebrow {
+  margin: 0 0 5px;
+}
+
+.admin-order-dialog-head h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 1.15rem;
+}
+
+.admin-order-detail-meta {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-order-detail-meta p,
+.admin-order-detail-total {
+  margin: 0;
+}
+
+.admin-order-detail-meta span:first-child,
+.admin-order-detail-total span {
+  color: var(--muted);
+}
+
+.admin-order-detail-section {
+  margin-top: 22px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+}
+
+.admin-order-detail-section h3 {
+  margin: 0 0 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.admin-order-detail-section p {
+  margin: 5px 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-order-detail-section address {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 14px;
+  overflow-wrap: anywhere;
+  font-style: normal;
+  line-height: 1.45;
+}
+
+.admin-order-copy-message:empty {
+  display: none;
+}
+
+.admin-order-detail-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-order-detail-items li {
+  align-items: flex-start;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.admin-order-detail-items li span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-order-detail-items small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+}
+
+.admin-order-detail-total {
+  padding-top: 13px;
+}
+
+@media (max-width: 640px) {
+  .admin-order-dialog {
+    padding: 18px;
+  }
+
+  .admin-order-dialog-head .button {
+    flex: 0 0 auto;
+  }
+}
+
 @media (max-width: 640px) {
   .order-status-page {
     place-items: start;

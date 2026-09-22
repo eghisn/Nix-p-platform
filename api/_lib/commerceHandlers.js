@@ -1,7 +1,7 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { waitUntil } from "@vercel/functions";
 import { json, requireWorkspace } from "./auth.js";
-import { consumeCommerceRateLimit, getOrderRecord, isMidtransConfigured, midtransApiBaseUrl, midtransConfiguration, midtransSnapBaseUrl, requestClientAddress } from "./commerce.js";
+import { consumeCommerceRateLimit, getOrderRecord, isMidtransConfigured, midtransApiBaseUrl, midtransConfiguration, midtransSnapBaseUrl, normalizeShippingAddress, requestClientAddress } from "./commerce.js";
 import {
   sendCustomerCancellationNotification,
   sendCustomerPaymentConfirmation,
@@ -430,7 +430,11 @@ export async function handleAdminOrders(req, res) {
         return json(res, 200, { ok: true, health: await getCommerceHealthSnapshot() });
       }
       const orderId = url.searchParams.get("orderId");
-      if (orderId) { const order = await getOrderRecord(orderId, { includeEvents: true }); return order ? json(res, 200, { ok: true, order }) : json(res, 404, { ok: false, error: "Order not found." }); }
+      if (orderId) {
+        if (!/^order-[A-Za-z0-9_-]{8,96}$/.test(orderId)) return json(res, 400, { ok: false, error: "Invalid order ID." });
+        const order = await getOrderRecord(orderId);
+        return order ? json(res, 200, { ok: true, order: adminOrderDetailRow(order) }) : json(res, 404, { ok: false, error: "Order not found." });
+      }
       const orders = await supabaseFetch("order_records?select=id,public_reference,customer,metadata,order_class,order_status,payment_status,fulfillment_status,shipping_status,shipping_method,courier,tracking_number,merchandise_total,shipping_total,grand_total,payment_expires_at,created_at,updated_at&order=created_at.desc", { service: true });
       return json(res, 200, { ok: true, orders: (orders || []).map(adminOrderListRow) });
     }
@@ -554,5 +558,35 @@ function adminOrderListRow(order) {
       email: String(customer.email || "").slice(0, 254),
       whatsapp: String(customer.whatsapp || "").slice(0, 48)
     }
+  };
+}
+
+export function adminOrderDetailRow(order) {
+  const customer = order?.customer || {};
+  return {
+    id: order.id,
+    reference: order.public_reference || order.id,
+    createdAt: order.created_at,
+    customer: {
+      name: String(customer.name || ""),
+      email: String(customer.email || ""),
+      whatsapp: String(customer.whatsapp || "")
+    },
+    shippingAddress: order.shipping_address ? normalizeShippingAddress(order.shipping_address) : null,
+    shippingMethod: order.shipping_method || "",
+    courier: order.courier || "",
+    trackingNumber: order.tracking_number || "",
+    orderStatus: order.order_status || "",
+    paymentStatus: order.payment_status || "",
+    fulfillmentStatus: order.fulfillment_status || "",
+    shippingStatus: order.shipping_status || "",
+    total: Number(order.grand_total || 0),
+    items: (Array.isArray(order.items) ? order.items : []).map((item) => ({
+      sku: String(item.sku || ""),
+      artist: String(item.artist || ""),
+      title: String(item.title || ""),
+      size: String(item.size_label || ""),
+      quantity: Number(item.quantity || 0)
+    }))
   };
 }
