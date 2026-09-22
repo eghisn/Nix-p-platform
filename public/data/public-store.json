@@ -16533,7 +16533,7 @@
       "images": [
         "/public/covers/nxp-2026-vnl-0060-battles-dross-glop-1.jpg"
       ],
-      "barcode": "",
+      "barcode": "0 801061 932718",
       "details": [
         "SKU: NXP-2026-VNL-0060",
         "Format: Vinyl",
@@ -16627,7 +16627,7 @@
       "apparelType": "",
       "description": "Battles' Dross Glop 1 is the first 12-inch in a four-part remix series, pairing Gui Boratto's 'Wall Street' rework with The Field's 'Sweetie & Shag' remix.",
       "reviewQuote": "Dancefloor-readied remixes of Battles by The Field and Gui Boratto.",
-      "editRevision": 11,
+      "editRevision": 12,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/fd94c8bd-3289-4d15-9ba0-2a61542d4a6f",
@@ -16915,8 +16915,8 @@
       "enrichmentStatus": "complete",
       "descriptionSource": "Battles official Warp / Resident Advisor",
       "metadataSourceUrl": "https://battles.warp.net/release/60919-battles-dross-glop-1",
-      "editorialUpdatedAt": "2026-09-22T02:01:39.801+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-22T11:08:07.114+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-22",
@@ -17166,7 +17166,7 @@
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-21",
+        "updatedAt": "2026-09-22",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
