@@ -52597,653 +52597,6 @@
       }
     },
     {
-      "id": "finance-nxp-2026-cd-0031",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0031",
-      "tags": [],
-      "year": 2016,
-      "color": "",
-      "flaws": "",
-      "image": "/public/covers/nxp-2026-cd-0031-preoccupations-preoccupations.jpg",
-      "label": "Jagjaguwar",
-      "price": 215000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Preoccupations",
-      "artist": "Preoccupations",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0031-preoccupations-preoccupations.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0031",
-        "Format: CD",
-        "Condition: Used Excellent"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0031/cover.jpg",
-      "condition": "Used Excellent",
-      "reviewUrl": "",
-      "syncAudit": [
-        {
-          "at": "2026-09-22T02:00:48.694Z",
-          "sku": "NXP-2026-CD-0031",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-21T19:16:54.560Z",
-          "sku": "NXP-2026-CD-0031",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-21T02:00:47.712Z",
-          "sku": "NXP-2026-CD-0031",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-20T02:00:48.342Z",
-          "sku": "NXP-2026-CD-0031",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:52:12.143Z",
-          "sku": "NXP-2026-CD-0031",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:51:10.822Z",
-          "sku": "NXP-2026-CD-0031",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:38:27.215Z",
-          "sku": "NXP-2026-CD-0031",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-09-19T11:37:44.703Z",
-          "sku": "NXP-2026-CD-0031",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-09-22",
-      "vinylSize": "",
-      "collection": "Jagjaguwar",
-      "fabricCare": "",
-      "syncStatus": {
-        "at": "2026-09-22T02:00:48.694Z",
-        "sku": "NXP-2026-CD-0031",
-        "action": "Inventory identity synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "alterations": "",
-      "apparelType": "",
-      "description": "Preoccupations' self-titled 2016 album marks the band's renamed continuation after Viet Cong, keeping the anxious post-punk architecture around Matt Flegel and Mike Wallace intact.",
-      "reviewQuote": "The successor band to the brilliant, inscrutable Women",
-      "imageCredits": [
-        {
-          "url": "https://musicbrainz.org/release/d2a9d069-efd0-4a57-93e0-a43f5299817f",
-          "image": "/public/covers/nxp-2026-cd-0031-preoccupations-preoccupations.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release d2a9d069"
-        }
-      ],
-      "originalTags": false,
-      "reviewSource": "Drowned in Sound (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/22407-preoccupations/",
-        "description": "Preoccupations' self-titled 2016 album marks the band's renamed continuation after Viet Cong, keeping the anxious post-punk architecture around Matt Flegel and Mike Wallace intact.",
-        "reviewQuote": "The successor band to the brilliant, inscrutable Women",
-        "reviewSource": "Drowned in Sound (quoted)",
-        "relatedArtists": [
-          "Viet Cong",
-          "Protomartyr",
-          "Ought",
-          "METZ",
-          "Omni"
-        ],
-        "descriptionSource": "Drowned in Sound / MusicBrainz",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Viet Cong",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.908883,
-            "artist": "Protomartyr",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 0.908883,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.716158,
-            "artist": "Ought",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 0.716158,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.471267,
-            "artist": "METZ",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 0.471267,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.451035,
-            "artist": "Omni",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 0.451035,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Viet Cong",
-              "Protomartyr",
-              "Ought",
-              "METZ",
-              "Omni",
-              "Gilla Band",
-              "Bambara",
-              "Deeper",
-              "Cola",
-              "Squid"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Viet Cong",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.908883,
-                "artist": "Protomartyr",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 0.908883,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.716158,
-                "artist": "Ought",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 0.716158,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.471267,
-                "artist": "METZ",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 0.471267,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.451035,
-                "artist": "Omni",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 0.451035,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.435017,
-                "artist": "Gilla Band",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 0.435017,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.428577,
-                "artist": "Bambara",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 0.428577,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.405423,
-                "artist": "Deeper",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 0.405423,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.395718,
-                "artist": "Cola",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 0.395718,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.384195,
-                "artist": "Squid",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Preoccupations",
-                "confidence": 0.384195,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Viet Cong",
-            "Protomartyr",
-            "Ought",
-            "METZ",
-            "Omni"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Viet Cong",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.908883,
-              "artist": "Protomartyr",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.908883,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.716158,
-              "artist": "Ought",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.716158,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.471267,
-              "artist": "METZ",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.471267,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.451035,
-              "artist": "Omni",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.451035,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "d2a9d069-efd0-4a57-93e0-a43f5299817f",
-          "sourceUrl": "https://musicbrainz.org/release/d2a9d069-efd0-4a57-93e0-a43f5299817f",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "ms1u16k0mrlvo2",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Viet Cong",
-        "Protomartyr",
-        "Ought",
-        "METZ",
-        "Omni"
-      ],
-      "financeItemType": "CD",
-      "financeMetadata": {
-        "isbn": "",
-        "pages": "",
-        "binding": "",
-        "language": "",
-        "publisher": "",
-        "dimensions": "",
-        "printDetails": ""
-      },
-      "homeCollections": [],
-      "reviewSourceUrl": "https://drownedinsound.com/releases/19605/reviews/4150385",
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Drowned in Sound / MusicBrainz",
-      "metadataSourceUrl": "https://musicbrainz.org/release/d2a9d069-efd0-4a57-93e0-a43f5299817f",
-      "apparelMeasurements": {},
-      "enrichmentUpdatedAt": "2026-08-18",
-      "garmentConditionNote": "",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "d2a9d069-efd0-4a57-93e0-a43f5299817f",
-      "enrichmentAttemptedAt": "2026-08-18T16:45:35.355Z",
-      "enrichmentFingerprint": "preoccupations|preoccupations|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Viet Cong",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Preoccupations",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.908883,
-          "artist": "Protomartyr",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Preoccupations",
-          "confidence": 0.908883,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.716158,
-          "artist": "Ought",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Preoccupations",
-          "confidence": 0.716158,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.471267,
-          "artist": "METZ",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Preoccupations",
-          "confidence": 0.471267,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.451035,
-          "artist": "Omni",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Preoccupations",
-          "confidence": 0.451035,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Viet Cong",
-            "Protomartyr",
-            "Ought",
-            "METZ",
-            "Omni",
-            "Gilla Band",
-            "Bambara",
-            "Deeper",
-            "Cola",
-            "Squid"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Viet Cong",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.908883,
-              "artist": "Protomartyr",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.908883,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.716158,
-              "artist": "Ought",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.716158,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.471267,
-              "artist": "METZ",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.471267,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.451035,
-              "artist": "Omni",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.451035,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.435017,
-              "artist": "Gilla Band",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.435017,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.428577,
-              "artist": "Bambara",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.428577,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.405423,
-              "artist": "Deeper",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.405423,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.395718,
-              "artist": "Cola",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.395718,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.384195,
-              "artist": "Squid",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Preoccupations",
-              "confidence": 0.384195,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Preoccupations"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Viet Cong",
-          "Protomartyr",
-          "Ought",
-          "METZ",
-          "Omni"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Viet Cong",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.908883,
-            "artist": "Protomartyr",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 0.908883,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.716158,
-            "artist": "Ought",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 0.716158,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.471267,
-            "artist": "METZ",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 0.471267,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.451035,
-            "artist": "Omni",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Preoccupations",
-            "confidence": 0.451035,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "d2a9d069-efd0-4a57-93e0-a43f5299817f",
-        "sourceUrl": "https://musicbrainz.org/release/d2a9d069-efd0-4a57-93e0-a43f5299817f",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 19,
-      "editorialUpdatedAt": "2026-09-22T02:01:18.998+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
       "id": "finance-nxp-2026-cd-0026",
       "qty": 1,
       "sku": "NXP-2026-CD-0026",
@@ -53875,6 +53228,658 @@
         ],
         "releaseId": "ea370f56-48c2-4ea9-b6ae-ba7f447dd08a",
         "sourceUrl": "https://musicbrainz.org/release/ea370f56-48c2-4ea9-b6ae-ba7f447dd08a",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-09-22",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-cd-0031",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0031",
+      "tags": [],
+      "year": 2016,
+      "color": "",
+      "flaws": "",
+      "image": "/public/covers/nxp-2026-cd-0031-preoccupations-preoccupations.jpg",
+      "label": "Jagjaguwar",
+      "price": 215000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Preoccupations",
+      "artist": "Preoccupations",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0031-preoccupations-preoccupations.jpg"
+      ],
+      "barcode": "6 56605 22902 7",
+      "details": [
+        "SKU: NXP-2026-CD-0031",
+        "Format: CD",
+        "Condition: Used Excellent"
+      ],
+      "edition": "CD, Album",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0031/cover.jpg",
+      "condition": "Used Excellent",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-09-22T02:00:48.694Z",
+          "sku": "NXP-2026-CD-0031",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-21T19:16:54.560Z",
+          "sku": "NXP-2026-CD-0031",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-21T02:00:47.712Z",
+          "sku": "NXP-2026-CD-0031",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-20T02:00:48.342Z",
+          "sku": "NXP-2026-CD-0031",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:52:12.143Z",
+          "sku": "NXP-2026-CD-0031",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:51:10.822Z",
+          "sku": "NXP-2026-CD-0031",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:38:27.215Z",
+          "sku": "NXP-2026-CD-0031",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-09-19T11:37:44.703Z",
+          "sku": "NXP-2026-CD-0031",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-09-22",
+      "vinylSize": "",
+      "collection": "Jagjaguwar",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-09-22T02:00:48.694Z",
+        "sku": "NXP-2026-CD-0031",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Preoccupations' self-titled 2016 album marks the band's renamed continuation after Viet Cong, keeping the anxious post-punk architecture around Matt Flegel and Mike Wallace intact.",
+      "reviewQuote": "The successor band to the brilliant, inscrutable Women",
+      "editRevision": 20,
+      "imageCredits": [
+        {
+          "url": "https://musicbrainz.org/release/d2a9d069-efd0-4a57-93e0-a43f5299817f",
+          "image": "/public/covers/nxp-2026-cd-0031-preoccupations-preoccupations.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release d2a9d069"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Drowned in Sound (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/22407-preoccupations/",
+        "description": "Preoccupations' self-titled 2016 album marks the band's renamed continuation after Viet Cong, keeping the anxious post-punk architecture around Matt Flegel and Mike Wallace intact.",
+        "reviewQuote": "The successor band to the brilliant, inscrutable Women",
+        "reviewSource": "Drowned in Sound (quoted)",
+        "relatedArtists": [
+          "Viet Cong",
+          "Protomartyr",
+          "Ought",
+          "METZ",
+          "Omni"
+        ],
+        "descriptionSource": "Drowned in Sound / MusicBrainz",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Viet Cong",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.908883,
+            "artist": "Protomartyr",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 0.908883,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.716158,
+            "artist": "Ought",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 0.716158,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.471267,
+            "artist": "METZ",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 0.471267,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.451035,
+            "artist": "Omni",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 0.451035,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Viet Cong",
+              "Protomartyr",
+              "Ought",
+              "METZ",
+              "Omni",
+              "Gilla Band",
+              "Bambara",
+              "Deeper",
+              "Cola",
+              "Squid"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Viet Cong",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.908883,
+                "artist": "Protomartyr",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 0.908883,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.716158,
+                "artist": "Ought",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 0.716158,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.471267,
+                "artist": "METZ",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 0.471267,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.451035,
+                "artist": "Omni",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 0.451035,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.435017,
+                "artist": "Gilla Band",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 0.435017,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.428577,
+                "artist": "Bambara",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 0.428577,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.405423,
+                "artist": "Deeper",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 0.405423,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.395718,
+                "artist": "Cola",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 0.395718,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.384195,
+                "artist": "Squid",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Preoccupations",
+                "confidence": 0.384195,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Viet Cong",
+            "Protomartyr",
+            "Ought",
+            "METZ",
+            "Omni"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Viet Cong",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.908883,
+              "artist": "Protomartyr",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.908883,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.716158,
+              "artist": "Ought",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.716158,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.471267,
+              "artist": "METZ",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.471267,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.451035,
+              "artist": "Omni",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.451035,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "d2a9d069-efd0-4a57-93e0-a43f5299817f",
+          "sourceUrl": "https://musicbrainz.org/release/d2a9d069-efd0-4a57-93e0-a43f5299817f",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "JAG290",
+      "displayFormat": "CD",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "ms1u16k0mrlvo2",
+      "mediaCondition": "Very Good Plus",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Viet Cong",
+        "Protomartyr",
+        "Ought",
+        "METZ",
+        "Omni"
+      ],
+      "financeItemType": "CD",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "reviewSourceUrl": "https://drownedinsound.com/releases/19605/reviews/4150385",
+      "sleeveCondition": "Near Mint",
+      "autoProductPhoto": "",
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Drowned in Sound / MusicBrainz",
+      "metadataSourceUrl": "https://musicbrainz.org/release/d2a9d069-efd0-4a57-93e0-a43f5299817f",
+      "editorialUpdatedAt": "2026-09-22T12:09:44.821+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-08-18",
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "d2a9d069-efd0-4a57-93e0-a43f5299817f",
+      "sleeveConditionGrade": "Near Mint",
+      "enrichmentAttemptedAt": "2026-08-18T16:45:35.355Z",
+      "enrichmentFingerprint": "preoccupations|preoccupations|cd||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Viet Cong",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Preoccupations",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.908883,
+          "artist": "Protomartyr",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Preoccupations",
+          "confidence": 0.908883,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.716158,
+          "artist": "Ought",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Preoccupations",
+          "confidence": 0.716158,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.471267,
+          "artist": "METZ",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Preoccupations",
+          "confidence": 0.471267,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.451035,
+          "artist": "Omni",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Preoccupations",
+          "confidence": 0.451035,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Viet Cong",
+            "Protomartyr",
+            "Ought",
+            "METZ",
+            "Omni",
+            "Gilla Band",
+            "Bambara",
+            "Deeper",
+            "Cola",
+            "Squid"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Viet Cong",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.908883,
+              "artist": "Protomartyr",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.908883,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.716158,
+              "artist": "Ought",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.716158,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.471267,
+              "artist": "METZ",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.471267,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.451035,
+              "artist": "Omni",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.451035,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.435017,
+              "artist": "Gilla Band",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.435017,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.428577,
+              "artist": "Bambara",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.428577,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.405423,
+              "artist": "Deeper",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.405423,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.395718,
+              "artist": "Cola",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.395718,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.384195,
+              "artist": "Squid",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Preoccupations",
+              "confidence": 0.384195,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Preoccupations"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Viet Cong",
+          "Protomartyr",
+          "Ought",
+          "METZ",
+          "Omni"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Viet Cong",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.908883,
+            "artist": "Protomartyr",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 0.908883,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.716158,
+            "artist": "Ought",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 0.716158,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.471267,
+            "artist": "METZ",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 0.471267,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.451035,
+            "artist": "Omni",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Preoccupations",
+            "confidence": 0.451035,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "d2a9d069-efd0-4a57-93e0-a43f5299817f",
+        "sourceUrl": "https://musicbrainz.org/release/d2a9d069-efd0-4a57-93e0-a43f5299817f",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": true,
