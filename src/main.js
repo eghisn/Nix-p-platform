@@ -61,6 +61,8 @@ const state = {
   cartOpen: false,
   checkoutMessage: "",
   checkoutTone: "",
+  orderStatusNotice: "",
+  orderStatusNoticeTone: "",
   checkoutShippingQuote: null,
   checkoutOrderToken: readCheckoutSession()?.orderId || "",
   checkoutOrderAccessToken: readCheckoutSession()?.customerAccessToken || "",
@@ -1099,7 +1101,7 @@ async function customerOrderStatusPage() {
               ${order.trackingNumber ? `<p><span>Tracking</span><strong>${escapeHtml(order.trackingNumber)}</strong></p>` : ""}
             </div>
           </div>
-          ${paymentPending ? `<div class="order-status-payment"><p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${orderPaymentSupportMarkup(order.reference || order.id)}<p class="order-status-message" data-order-status-message aria-live="polite"></p></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div>`}
+          ${paymentPending ? `<div class="order-status-payment"><p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${orderPaymentSupportMarkup(order.reference || order.id)}<p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div><p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p>`}
         </div>
       </section>
     `;
@@ -2934,6 +2936,18 @@ function escapeAttr(value) {
   return escapeHtml(value);
 }
 
+function customerPaymentRefreshMessage(refresh = {}) {
+  if (refresh.checked) {
+    if (refresh.action === "paid") return "Payment confirmed by Midtrans.";
+    if (refresh.action === "released") return "Midtrans reports this payment is no longer available.";
+    if (refresh.action === "refunded" || refresh.action === "partially-refunded") return "Midtrans payment status has been updated.";
+    return "Payment status checked directly with Midtrans.";
+  }
+  if (refresh.reason === "provider-session-not-found") return "No Midtrans payment session has been opened for this order yet.";
+  if (refresh.reason === "midtrans-not-configured") return "Online payment is not available for this order.";
+  return "This order no longer needs a payment status check.";
+}
+
 function notFoundPage() {
   return pageHero({
     eyebrow: "404",
@@ -3543,7 +3557,35 @@ function bindEvents() {
   syncCheckoutProvince();
   syncCheckoutAddressRequirements();
 
-  document.querySelector("[data-order-status-refresh]")?.addEventListener("click", () => render({ preserveScroll: true }));
+  document.querySelector("[data-order-status-refresh]")?.addEventListener("click", async (event) => {
+    const button = event.currentTarget;
+    const notice = document.querySelector("[data-order-status-message]");
+    button.disabled = true;
+    if (notice) {
+      notice.textContent = "Checking payment directly with Midtrans...";
+      notice.dataset.tone = "";
+    }
+    try {
+      const response = await fetch("/api/order-status", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "refresh-payment-status" })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Payment status could not be checked.");
+      state.orderStatusNotice = customerPaymentRefreshMessage(payload.refresh);
+      state.orderStatusNoticeTone = payload.refresh?.checked ? "success" : "";
+      await render({ preserveScroll: true });
+    } catch (error) {
+      state.orderStatusNotice = error instanceof Error ? error.message : "Payment status could not be checked.";
+      state.orderStatusNoticeTone = "error";
+      if (notice) {
+        notice.textContent = state.orderStatusNotice;
+        notice.dataset.tone = "error";
+      }
+      button.disabled = false;
+    }
+  });
   document.querySelector("[data-copy-payment-code]")?.addEventListener("click", async (event) => {
     const button = event.currentTarget;
     const code = String(button.dataset.copyPaymentCode || "");

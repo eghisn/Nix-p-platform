@@ -272,6 +272,26 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
   return { action: "recorded", status };
 }
 
+// Customer-initiated refreshes use the same provider verification and state
+// transition path as webhooks. This never trusts a browser-supplied status.
+export async function refreshCustomerMidtransPayment(orderId) {
+  if (!isMidtransConfigured()) return { checked: false, reason: "midtrans-not-configured" };
+  const order = await getOrderRecord(orderId);
+  if (!order) return { checked: false, reason: "order-not-found" };
+  if (order.order_status !== "Active" || order.payment_status !== "Pending") {
+    return { checked: false, reason: "order-not-pending" };
+  }
+
+  const verified = await fetchMidtransStatus(order.id, { allowMissing: true });
+  if (!verified) return { checked: false, reason: "provider-session-not-found" };
+  const result = await processVerifiedMidtransEvent(verified);
+  return {
+    checked: true,
+    action: result.action,
+    providerStatus: String(verified.transaction_status || "unknown").toLowerCase()
+  };
+}
+
 export async function reconcilePendingMidtransPayments({ limit = 20, source = "manual" } = {}) {
   if (!isMidtransConfigured()) return { configured: false, checked: 0, changed: 0, failed: 0 };
   const attempts = await supabaseFetch(

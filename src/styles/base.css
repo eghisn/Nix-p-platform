@@ -2916,6 +2916,10 @@ body:has(.cart-view) .site-footer {
   color: #b00020;
 }
 
+.order-status-message[data-tone="success"] {
+  color: #167545;
+}
+
 .admin-shipping-quote-form {
   margin-bottom: 26px;
 }

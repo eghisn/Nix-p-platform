@@ -1,7 +1,7 @@
 import { timingSafeEqual } from "node:crypto";
 import { json } from "./_lib/auth.js";
 import { consumeCommerceRateLimit, expirePendingOrders, getOrderRecord, normalizeShippingAddress, requestClientAddress } from "./_lib/commerce.js";
-import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhook, reconcilePendingMidtransPayments } from "./_lib/commerceHandlers.js";
+import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhook, reconcilePendingMidtransPayments, refreshCustomerMidtransPayment } from "./_lib/commerceHandlers.js";
 import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShippingQuoteNotification, sendCustomerShippingQuoteRequest, sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
@@ -247,6 +247,24 @@ async function handleCustomerOrderStatus(req, res) {
       return json(res, 200, { ok: true });
     }
     if (req.method === "POST") {
+      if (body.action === "refresh-payment-status") {
+        if (!(await consumeCommerceRateLimit("customer-payment-refresh", `${requestClientAddress(req)}:${orderId}`, { limit: 12, windowSeconds: 900 }))) {
+          return json(res, 429, { ok: false, error: "Please wait a moment before checking payment again." });
+        }
+        let refresh;
+        try {
+          refresh = await refreshCustomerMidtransPayment(orderId);
+        } catch (error) {
+          await recordSystemEvent({ level: "warning", source: "customer-payment-refresh", req, error, details: { orderId } }).catch(() => undefined);
+          return json(res, 503, { ok: false, error: "Payment provider is temporarily unavailable. Your order remains active; please try again shortly." });
+        }
+        const latestOrder = await getOrderRecord(orderId);
+        const [quotes, payment] = await Promise.all([
+          supabaseFetch(`shipping_quotes?select=courier,service,amount,eta,status,created_at,expires_at&order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc`, { service: true }),
+          customerPaymentSummary(orderId)
+        ]);
+        return json(res, 200, { ok: true, refresh, order: customerOrderSummary(latestOrder || order), quotes: quotes || [], payment });
+      }
       if (body.action !== "start-payment") return json(res, 400, { ok: false, error: "Unsupported order action." });
       if (suppliedOrderId && suppliedToken) setOrderAccessCookie(req, res, orderId, token);
       const payment = await createMidtransPaymentSession(orderId);
