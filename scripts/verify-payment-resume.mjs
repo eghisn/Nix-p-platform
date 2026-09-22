@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { classifyMidtransEvent, hasActionableMidtransInstructions, hasUsableMidtransRedirect, midtransIdempotencyKey, safeMidtransPaymentInstructions } from "../api/_lib/paymentState.js";
+import { classifyMidtransEvent, hasActionableMidtransInstructions, hasUsableMidtransRedirect, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions } from "../api/_lib/paymentState.js";
 
 const bni = safeMidtransPaymentInstructions({
   payment_type: "bank_transfer",
@@ -61,6 +61,18 @@ assert.equal(hasUsableMidtransRedirect("javascript:alert(1)"), false);
 assert.equal(safeMidtransPaymentInstructions({ transaction_status: "pending" }), null);
 assert.ok(midtransIdempotencyKey("order-example-12345678").length <= 46, "Midtrans must not ignore an oversized idempotency key.");
 assert.equal(midtransIdempotencyKey("order-example-12345678"), midtransIdempotencyKey("order-example-12345678"));
+
+const orderCreatedAt = Date.parse("2026-09-21T15:19:00Z");
+const reservationExpiresAt = "2026-09-21T16:19:00Z";
+const expiry = midtransExpiryForOrder(reservationExpiresAt, orderCreatedAt + 50 * 60_000);
+assert.deepEqual(expiry, { start_time: "2026-09-21 22:19:00 +0700", unit: "hour", duration: 1 });
+assert.equal(Date.parse(expiry.start_time) + 60 * 60_000, Date.parse(reservationExpiresAt), "Midtrans and the stock reservation must share the same deadline.");
+assert.deepEqual(midtransExpiryForOrder(reservationExpiresAt, orderCreatedAt + 59 * 60_000), expiry, "Choosing a payment method late must not extend its deadline.");
+assert.deepEqual(midtransExpiryForOrder("2027-01-01T00:30:00Z", Date.parse("2026-12-31T23:45:00Z")), {
+  start_time: "2027-01-01 06:30:00 +0700", unit: "hour", duration: 1
+}, "WIB formatting must remain correct across a year boundary.");
+assert.throws(() => midtransExpiryForOrder(reservationExpiresAt, Date.parse(reservationExpiresAt)), /reservation has expired/);
+assert.throws(() => midtransExpiryForOrder("invalid"), /reservation has expired/);
 
 const eventCases = [
   [{ transactionStatus: "settlement", paymentStatus: "Pending" }, "paid"],

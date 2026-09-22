@@ -56,7 +56,7 @@ const requirements = [
   [atomicReservation.includes("v_physical_quantity - v_reserved_before"), "Checkout must reserve Finance quantity minus active reservations."],
   [atomicReservation.includes("interval '1 hour'"), "Checkout and shipping quote reservations must use a one-hour payment window."],
   [atomicReservation.includes("release_order_reservations"), "Expired orders must use the Finance-aware reservation release transaction."],
-  [handlers.includes('expiry: { unit: "hour", duration: 1 }'), "Midtrans must use the same one-hour payment expiry."],
+  [handlers.includes("expiry: midtransExpiryForOrder(order.payment_expires_at)"), "Midtrans must share the stored one-hour reservation deadline."],
   [handlers.includes('"Idempotency-Key": idempotencyKey'), "Midtrans session creation must be idempotent."],
   [handlers.includes("buildMidtransItemDetails(order)"), "Midtrans item variants and totals must be validated before payment creation."],
   [handlers.includes("detailTotal !== Number(order.grand_total)"), "Midtrans item details must add up exactly to the server order total."],

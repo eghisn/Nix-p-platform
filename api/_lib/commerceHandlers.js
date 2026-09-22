@@ -15,7 +15,7 @@ import {
 import { drainNotificationOutbox } from "./emailNotifications.js";
 import { recordSystemEvent } from "./observability.js";
 import { supabaseFetch } from "./supabase.js";
-import { classifyMidtransEvent, midtransIdempotencyKey, safeMidtransPaymentInstructions } from "./paymentState.js";
+import { classifyMidtransEvent, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions } from "./paymentState.js";
 
 export async function handleMidtransToken(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
@@ -106,7 +106,7 @@ async function createMidtransPaymentSessionForOrder(order) {
         transaction_details: { order_id: order.id, gross_amount: order.grand_total },
         item_details: itemDetails,
         customer_details: { first_name: String(customer.name || "NIXP customer").slice(0, 255), email: String(customer.email || "").slice(0, 255), phone: String(customer.whatsapp || "").slice(0, 32) },
-        expiry: { unit: "hour", duration: 1 },
+        expiry: midtransExpiryForOrder(order.payment_expires_at),
         callbacks: { finish: statusUrl, error: statusUrl },
         custom_field1: order.public_reference
       })

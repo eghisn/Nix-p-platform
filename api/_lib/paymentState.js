@@ -41,6 +41,20 @@ export function midtransIdempotencyKey(orderId) {
   return `nixp-${createHash("sha256").update(`midtrans:${orderId}`).digest("hex").slice(0, 40)}`;
 }
 
+export function midtransExpiryForOrder(paymentExpiresAt, now = Date.now()) {
+  const expiresAt = new Date(paymentExpiresAt).getTime();
+  if (!Number.isFinite(expiresAt) || expiresAt <= now) {
+    throw new Error("This order reservation has expired.");
+  }
+
+  const hourMs = 60 * 60 * 1000;
+  const jakartaOffsetMs = 7 * hourMs;
+  // Midtrans expects a WIB wall time with an explicit +0700 offset.
+  const startTime = new Date(expiresAt - hourMs + jakartaOffsetMs)
+    .toISOString().slice(0, 19).replace("T", " ");
+  return { start_time: `${startTime} +0700`, unit: "hour", duration: 1 };
+}
+
 export function classifyMidtransEvent({ transactionStatus, fraudStatus, paymentStatus } = {}) {
   const status = String(transactionStatus || "").trim().toLowerCase();
   const fraud = String(fraudStatus || "").trim().toLowerCase();

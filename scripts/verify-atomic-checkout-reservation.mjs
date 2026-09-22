@@ -45,7 +45,7 @@ assert.match(expiry, /release_order_reservations/, "Expiry must use the Finance-
 assert.match(payment, /payment_expires_at \+ interval '5 minutes' <= now\(\)/, "Verified payment must accept only the narrow callback grace period.");
 assert.match(payment, /ordered_by_size/, "Settled payments must debit the matching Finance apparel size.");
 assert.match(reconciliation, /size_label = size_item\.value->>'label'/, "Reconciliation must subtract active reservations from each size.");
-assert.match(handlers, /expiry: \{ unit: "hour", duration: 1 \}/, "Midtrans must expire at the same one-hour customer deadline.");
+assert.match(handlers, /expiry: midtransExpiryForOrder\(order\.payment_expires_at\)/, "Midtrans must derive its absolute expiry from the stored reservation deadline.");
 assert.doesNotMatch(email, /two-hour payment window/i, "Current customer email copy must not advertise two hours.");
 assert.match(client, /nixp:public-commerce-refreshed/, "The public client must listen for live commerce changes.");
 assert.match(client, /setPublicProductSoldOutState/, "Live commerce changes must patch sold-out controls without a full catalog render.");
