@@ -127,11 +127,12 @@ function sendNoStoreHtml(res, document) {
 }
 
 function sendPublicSnapshotHeaders(res) {
-  // Route URLs are stable and must resolve to the active deployment. The HTML
-  // itself points at immutable, revisioned catalog and application assets.
-  res.setHeader("cache-control", "public, max-age=0, must-revalidate");
-  res.setHeader("cdn-cache-control", "public, s-maxage=0, must-revalidate");
-  res.setHeader("vercel-cdn-cache-control", "public, s-maxage=0, must-revalidate");
+  // Product URLs stay stable while their price and availability can change at
+  // any time. Never let an old rendered product page survive a catalog deploy;
+  // the referenced bundle and release snapshot remain revisioned assets.
+  res.setHeader("cache-control", "no-store, max-age=0");
+  res.setHeader("cdn-cache-control", "no-store");
+  res.setHeader("vercel-cdn-cache-control", "no-store");
 }
 
 async function productDocument(product, path, store) {
