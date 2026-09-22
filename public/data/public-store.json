@@ -73412,7 +73412,7 @@
       "color": "",
       "flaws": "",
       "image": "/public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg",
-      "label": "The Null Corporation",
+      "label": "Polydor",
       "price": 170000,
       "sizes": [],
       "stock": {
@@ -73427,7 +73427,7 @@
         "/public/uploads/products/nxp-2026-cd-0012-hesitation-marks-8456ab7d2b0227cd1b7471846c7149b5-1000x898x1-jpg-1783885202172.jpg",
         "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0012/cover.jpg"
       ],
-      "barcode": "",
+      "barcode": "6 02537 43875 4",
       "details": [
         "SKU: NXP-2026-CD-0012",
         "Format: CD",
@@ -73436,11 +73436,11 @@
         "Catalog number: halo 28v / 3744922",
         "Barcode: 602537449224"
       ],
-      "edition": "",
+      "edition": "CD, Album, Digipak",
       "category": "Records",
       "material": "",
       "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0012/cover.jpg",
-      "condition": "Used Good",
+      "condition": "Used Excellent",
       "reviewUrl": "https://thequietus.com/quietus-reviews/nine-inch-nails-hesitation-marks-review/",
       "syncAudit": [
         {
@@ -73516,6 +73516,7 @@
       "apparelType": "",
       "description": "Nine Inch Nails' 2013 Hesitation Marks is a skeletal, spare return to electronic tension, balancing jagged digital detail with Trent Reznor's industrial songwriting.",
       "reviewQuote": "most explicitly electronic album in years",
+      "editRevision": 21,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/208effc4-c555-4940-ac0f-2105cb61c328",
@@ -73765,12 +73766,12 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "3743875",
       "displayFormat": "CD",
       "homeSlideSort": 6,
       "publishStatus": "Published",
       "financeStockId": "mr6pdlg6kmo9cm",
-      "mediaCondition": "",
+      "mediaCondition": "Near Mint",
       "open_to_offers": false,
       "relatedArtists": [
         "Nine Inch Noize",
@@ -73790,17 +73791,23 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "sleeveCondition": "",
+      "sleeveCondition": "Very Good Plus",
       "autoProductPhoto": "",
       "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
       "descriptionSource": "Pitchfork / The Quietus",
       "metadataSourceUrl": "https://musicbrainz.org/release/208effc4-c555-4940-ac0f-2105cb61c328",
+      "editorialUpdatedAt": "2026-09-22T11:42:33.792+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-22",
+      "mediaConditionGrade": "Near Mint",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
       "musicBrainzReleaseId": "208effc4-c555-4940-ac0f-2105cb61c328",
+      "sleeveConditionGrade": "Very Good Plus",
       "enrichmentAttemptedAt": "2026-08-22T08:38:43.324Z",
       "enrichmentFingerprint": "nine inch nails|hesitation marks|cd||",
       "relatedArtistEvidence": [
@@ -74029,18 +74036,16 @@
         "sourceUrl": "https://musicbrainz.org/release/208effc4-c555-4940-ac0f-2105cb61c328",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 20,
-      "editorialUpdatedAt": "2026-09-22T02:01:00.505+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-22",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
