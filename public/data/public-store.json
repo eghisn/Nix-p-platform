@@ -51941,13 +51941,13 @@
         "/public/mockups/nxp-2026-cd-0029-underworld-born-slippy-disc-a.jpg",
         "/public/mockups/nxp-2026-cd-0029-underworld-born-slippy-disc-b.jpg"
       ],
-      "barcode": "",
+      "barcode": "4 520227 011222",
       "details": [
         "SKU: NXP-2026-CD-0029",
         "Format: CD",
         "Condition: New-Sealed"
       ],
-      "edition": "",
+      "edition": "CD, Maxi-Single",
       "category": "Records",
       "material": "",
       "autoCover": "",
@@ -52027,7 +52027,7 @@
       "apparelType": "",
       "description": "Underworld's Born Slippy CD single gathers one of the defining Underworld moments around the 1996 international release of the track's NUXX-era life.",
       "reviewQuote": "Born Slippy by Underworld released in 1995",
-      "editRevision": 20,
+      "editRevision": 21,
       "imageCredits": [
         {
           "url": "https://music.apple.com/us/album/born-slippy-nuxx-radio-edit-single/1444867435",
@@ -52300,7 +52300,7 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "V2CI-112 1",
       "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
@@ -52332,8 +52332,8 @@
       "enrichmentStatus": "complete-no-related-artists",
       "descriptionSource": "AllMusic / MusicBrainz",
       "metadataSourceUrl": "https://musicbrainz.org/release/f951d2f7-b59a-4678-b09d-c6290694219e",
-      "editorialUpdatedAt": "2026-09-22T02:01:17.196+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedAt": "2026-09-22T11:38:05.094+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-18",
@@ -52582,7 +52582,7 @@
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-09-19",
+        "updatedAt": "2026-09-22",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
