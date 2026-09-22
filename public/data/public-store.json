@@ -25214,7 +25214,7 @@
     },
     {
       "id": "finance-nxp-2026-vnl-0043",
-      "qty": 1,
+      "qty": 0,
       "sku": "NXP-2026-VNL-0043",
       "tags": [
         "Vinyl",
@@ -25230,7 +25230,7 @@
       "stock": {
         "sold": 0,
         "reserved": 0,
-        "available": 1
+        "available": 0
       },
       "title": "Sky City: Even In The Heart Of Heaven Angels Can Still Feel Fear",
       "artist": "Varg²™",
