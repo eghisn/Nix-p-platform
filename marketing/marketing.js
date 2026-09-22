@@ -286,7 +286,7 @@ function contentPlanPayload(form) {
     plannedAt: value("plannedAt"), campaign: value("campaign"), trackingContent: value("trackingContent"),
     destinationPath: value("destinationPath"), instagramPermalink: value("instagramPermalink"), targetReach: value("targetReach"),
     targetSavesShares: value("targetSavesShares"), targetProfileVisits: value("targetProfileVisits"), targetNewFollowers: value("targetNewFollowers"), targetBioLinkTaps: value("targetBioLinkTaps"), targetLikes: value("targetLikes"),
-    targetComments: value("targetComments"), actualProfileVisits: value("actualProfileVisits"), actualNewFollowers: value("actualNewFollowers"), actualBioLinkTaps: value("actualBioLinkTaps"), targetSessions: value("targetSessions"), targetCarts: value("targetCarts"),
+    targetComments: value("targetComments"), actualProfileVisits: value("actualProfileVisits"), actualNewFollowers: value("actualNewFollowers"), actualBioLinkTaps: value("actualBioLinkTaps"), actualCarts: value("actualCarts"), actualPaidOrders: value("actualPaidOrders"), actualRevenue: value("actualRevenue"), targetSessions: value("targetSessions"), targetCarts: value("targetCarts"),
     targetPaidOrders: value("targetPaidOrders"), targetRevenue: value("targetRevenue")
   };
 }
@@ -334,7 +334,7 @@ function editContentPlan(id) {
     title: plan.title, contentType: plan.contentType, objective: plan.objective, status: plan.status, plannedAt: plan.plannedAt || "",
     campaign: plan.campaign === plan.trackingContent ? "" : plan.campaign, trackingContent: plan.trackingContent, destinationPath: plan.destinationPath,
     instagramPermalink: plan.instagramPermalink, targetReach: plan.target.reach, targetSavesShares: plan.target.savesShares,
-    targetProfileVisits: plan.target.profileVisits, targetNewFollowers: plan.target.newFollowers, targetBioLinkTaps: plan.target.bioLinkTaps, targetLikes: plan.target.likes, targetComments: plan.target.comments, actualProfileVisits: plan.actual.profileVisits ?? "", actualNewFollowers: plan.actual.newFollowers ?? "", actualBioLinkTaps: plan.actual.bioLinkTaps ?? "", targetSessions: plan.target.sessions,
+    targetProfileVisits: plan.target.profileVisits, targetNewFollowers: plan.target.newFollowers, targetBioLinkTaps: plan.target.bioLinkTaps, targetLikes: plan.target.likes, targetComments: plan.target.comments, actualProfileVisits: plan.actual.profileVisits ?? "", actualNewFollowers: plan.actual.newFollowers ?? "", actualBioLinkTaps: plan.actual.bioLinkTaps ?? "", actualCarts: plan.manualActual?.carts ?? "", actualPaidOrders: plan.manualActual?.paidOrders ?? "", actualRevenue: plan.manualActual?.revenue ?? "", targetSessions: plan.target.sessions,
     targetCarts: plan.target.carts, targetPaidOrders: plan.target.paidOrders, targetRevenue: plan.target.revenue
   };
   Object.entries(values).forEach(([name, value]) => { if (form.elements[name]) form.elements[name].value = value; });

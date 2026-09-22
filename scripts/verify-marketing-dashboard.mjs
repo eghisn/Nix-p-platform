@@ -25,6 +25,7 @@ const dashboard = buildRollupMarketingDashboard({
     planned_at: "2026-08-29", campaign: "august-launch", tracking_content: "content-a", destination_path: "/records",
     instagram_permalink: "https://www.instagram.com/p/example/", target_reach: 100, target_saves_shares: 10, target_profile_visits: 4, target_new_followers: 2, target_bio_link_taps: 3, actual_profile_visits: 5, actual_new_followers: 1, actual_bio_link_taps: 2,
     target_likes: 10, target_comments: 2, target_sessions: 8,
+    actual_carts: 3, actual_paid_orders: 2, actual_revenue: 250000,
     target_carts: 1, target_paid_orders: 1, target_revenue: 100000
   }],
   contentPerformance: [{ tracking_content: "content-a", sessions: 8, product_views: 5, carts: 2, checkouts: 1, paid_orders: 1, revenue: 125000 }],
@@ -50,6 +51,10 @@ assert.equal(dashboard.instagram.status, "connected");
 assert.equal(dashboard.instagram.posts[0].likes, 12);
 assert.equal(dashboard.contentPlans.length, 1);
 assert.equal(dashboard.contentPlans[0].actual.sessions, 8);
+assert.equal(dashboard.contentPlans[0].actual.carts, 3, "A manually entered cart actual must override link-tracked cart events.");
+assert.equal(dashboard.contentPlans[0].actual.paidOrders, 2, "A manually entered paid-order actual must override link-tracked orders.");
+assert.equal(dashboard.contentPlans[0].actual.revenue, 250000, "A manually entered revenue actual must override link-tracked revenue.");
+assert.equal(dashboard.contentPlans[0].manualActual.revenue, 250000, "The editor must receive the saved manual revenue value.");
 assert.equal(dashboard.contentPlans[0].target.reach, 100);
 assert.equal(dashboard.contentPlans[0].target.profileVisits, 4, "A profile-visit target must remain independent from its manual actual.");
 assert.equal(dashboard.contentPlans[0].actual.reach, 100);
@@ -59,7 +64,6 @@ assert.equal(dashboard.contentPlans[0].actual.newFollowers, 1, "A manually enter
 assert.equal(dashboard.contentPlans[0].target.bioLinkTaps, 3);
 assert.equal(dashboard.contentPlans[0].actual.bioLinkTaps, 2);
 assert.equal(dashboard.contentPlans[0].instagramPostFound, true, "A saved /p/ URL must match Meta's canonical /reel/ URL for the same post.");
-assert.equal(dashboard.contentPlans[0].actual.revenue, 125000);
 assert.equal(dashboard.contentPlans[0].result, "Ahead");
 assert.match(dashboard.contentPlans[0].trackingUrl, /utm_content=content-a/);
 
@@ -70,6 +74,14 @@ const plannedContent = buildContentPlanDashboard([{
   target_sessions: 0, target_carts: 0, target_paid_orders: 0, target_revenue: 0
 }]);
 assert.equal(plannedContent[0].result, "Planned", "Planned content must not be marked as underperforming before it is published.");
+
+const trackedCommerceFallback = buildContentPlanDashboard([{
+  id: "751e214d-7702-4df6-b11b-a02352bbdd35", title: "Tracked post", content_type: "Reel", objective: "Conversion", status: "Published",
+  tracking_content: "tracked-post", destination_path: "/", campaign: "", instagram_permalink: "", target_carts: 2, target_paid_orders: 1, target_revenue: 100000
+}], [{ tracking_content: "tracked-post", sessions: 4, product_views: 2, carts: 2, checkouts: 1, paid_orders: 1, revenue: 100000 }]);
+assert.equal(trackedCommerceFallback[0].actual.carts, 2, "Blank manual carts must retain automatic tracking.");
+assert.equal(trackedCommerceFallback[0].actual.paidOrders, 1, "Blank manual paid orders must retain automatic tracking.");
+assert.equal(trackedCommerceFallback[0].actual.revenue, 100000, "Blank manual revenue must retain automatic tracking.");
 
 const validEvent = {
   eventId: "2b6f2b09-4be9-4b58-8b81-0ace022ddd84",

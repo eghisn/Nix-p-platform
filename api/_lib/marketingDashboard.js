@@ -281,6 +281,9 @@ function normalizeContentPlan(value = {}) {
     actual_profile_visits: optionalActualNumber(value.actualProfileVisits),
     actual_new_followers: optionalActualNumber(value.actualNewFollowers),
     actual_bio_link_taps: optionalActualNumber(value.actualBioLinkTaps),
+    actual_carts: optionalActualNumber(value.actualCarts),
+    actual_paid_orders: optionalActualNumber(value.actualPaidOrders),
+    actual_revenue: optionalActualNumber(value.actualRevenue),
     target_likes: targetNumber(value.targetLikes),
     target_comments: targetNumber(value.targetComments),
     target_sessions: targetNumber(value.targetSessions),
@@ -370,7 +373,12 @@ export function buildContentPlanDashboard(plans = [], performanceRows = [], inst
       // only an intentional manual value; otherwise null is not a failed zero.
       reach: nullableNumber(post?.reach), savesShares: combinedMetric(post?.saves, post?.shares), profileVisits: nullableNumber(plan.actual_profile_visits), newFollowers: nullableNumber(plan.actual_new_followers), bioLinkTaps: nullableNumber(plan.actual_bio_link_taps),
       likes: number(post?.likes), comments: number(post?.comments), sessions: number(row.sessions), productViews: number(row.product_views),
-      carts: number(row.carts), checkouts: number(row.checkouts), paidOrders: number(row.paid_orders), revenue: number(row.revenue)
+      carts: nullableNumber(plan.actual_carts) ?? number(row.carts), checkouts: number(row.checkouts), paidOrders: nullableNumber(plan.actual_paid_orders) ?? number(row.paid_orders), revenue: nullableNumber(plan.actual_revenue) ?? number(row.revenue)
+    };
+    const manualActual = {
+      carts: nullableNumber(plan.actual_carts),
+      paidOrders: nullableNumber(plan.actual_paid_orders),
+      revenue: nullableNumber(plan.actual_revenue)
     };
     const comparisons = [
       ['reach', target.reach, actual.reach], ['savesShares', target.savesShares, actual.savesShares], ['bioLinkTaps', target.bioLinkTaps, actual.bioLinkTaps], ['likes', target.likes, actual.likes], ['comments', target.comments, actual.comments], ['sessions', target.sessions, actual.sessions],
@@ -387,7 +395,7 @@ export function buildContentPlanDashboard(plans = [], performanceRows = [], inst
     return {
       id: String(plan.id || ''), title: String(plan.title || 'Untitled content'), contentType: String(plan.content_type || 'Other'),
       objective: String(plan.objective || 'Store visits'), status: String(plan.status || 'Planned'), plannedAt: plan.planned_at || null,
-      campaign, trackingContent, destinationPath: destination, instagramPermalink: String(plan.instagram_permalink || ''), target, actual,
+      campaign, trackingContent, destinationPath: destination, instagramPermalink: String(plan.instagram_permalink || ''), target, actual, manualActual,
       progress, result: plan.status === 'Planned' ? 'Planned' : progress === null ? 'Tracking' : progress >= 1 ? 'Ahead' : progress >= 0.75 ? 'On track' : 'Needs attention',
       trackingUrl: url.toString(), instagramPostFound: Boolean(post)
     };
