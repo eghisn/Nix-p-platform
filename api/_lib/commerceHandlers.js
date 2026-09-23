@@ -486,10 +486,14 @@ export async function handleAdminOrders(req, res) {
     const before = await getOrderRecord(orderId);
     const order = await supabaseFetch("rpc/admin_update_order_operation", { method: "POST", service: true, body: { p_order_id: orderId, p_fulfillment_status: body.fulfillmentStatus || null, p_shipping_status: body.shippingStatus || null, p_courier: body.courier || null, p_tracking_number: body.trackingNumber || null, p_note: body.note || null } });
     const after = await getOrderRecord(orderId);
-    if (after && (after.shipping_status !== before?.shipping_status || after.tracking_number !== before?.tracking_number)) {
-      await sendCustomerShippingNotification(after).catch((error) => console.warn("Customer shipping email not delivered", error.message));
-    }
-    return json(res, 200, { ok: true, order });
+    const shippingChanged = Boolean(after && (after.shipping_status !== before?.shipping_status || after.tracking_number !== before?.tracking_number));
+    const notification = shippingChanged
+      ? await sendCustomerShippingNotification(after).catch((error) => {
+        console.warn("Customer shipping email not delivered", error.message);
+        return { delivered: false, queued: false, reason: "shipping-notification-failed" };
+      })
+      : { delivered: false, queued: false, reason: "shipping-details-unchanged" };
+    return json(res, 200, { ok: true, order, notification });
   } catch (error) { return json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Order action failed." }); }
 }
 

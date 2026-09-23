@@ -1000,6 +1000,17 @@ export const adminStore = {
     if (!response.ok) throw new Error(payload.error || "Payment reconciliation failed.");
     return payload;
   },
+  async updateOrderOperation(data = {}) {
+    if (!canUsePrivateStore()) throw new Error("Admin access required.");
+    const response = await fetch("/api/admin/orders", {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify({ action: "update-operation", ...data })
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "Order shipping update could not be saved.");
+    return payload;
+  },
   async refreshPrivateStore({ force = false } = {}) {
     if (!canUsePrivateStore()) return this.getSnapshot();
     if (!force && activeStore && Date.now() - privateStoreRefreshedAt < 30_000) return this.getSnapshot();

@@ -3047,6 +3047,17 @@ body:has(.cart-view) .site-footer {
   overflow-wrap: anywhere;
 }
 
+.admin-order-dispatch-form {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-order-dispatch-copy {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .admin-order-detail-section address {
   display: grid;
   gap: 4px;

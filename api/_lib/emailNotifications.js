@@ -156,21 +156,19 @@ export async function sendCustomerPaymentConfirmation(order, { queueOnly = false
   }, { queueOnly });
 }
 
-export async function sendCustomerShippingNotification(order) {
+export async function sendCustomerShippingNotification(order, { queueOnly = false } = {}) {
   const customer = order?.customer || {};
   if (!customer.email) return { delivered: false, reason: "customer-email-missing" };
   const delivered = order?.shipping_status === "Delivered";
-  const message = delivered
-    ? "Your order has been marked as delivered."
-    : `Your order shipping status is now ${order?.shipping_status || "updated"}.${order?.tracking_number ? ` Tracking number: ${order.tracking_number}.` : ""}`;
+  const dispatch = renderShippingDispatchEmail(order, { delivered });
   return sendNotificationEmail({
     to: customer.email,
     subject: `NIXP ${delivered ? "order delivered" : "shipping update"}: ${orderReference(order)}`,
     replyTo: DEFAULT_TO,
-    text: statusEmailText(order, delivered ? "Order delivered" : "Shipping update", message),
-    html: statusEmailHtml(order, delivered ? "Order delivered" : "Shipping update", message),
+    text: dispatch.text,
+    html: dispatch.html,
     idempotencyKey: `customer-shipping-${order?.id}-${slug(order?.shipping_status)}-${slug(order?.tracking_number)}`
-  });
+  }, { queueOnly });
 }
 
 export async function sendCustomerCancellationNotification(order, reason = "", { queueOnly = false } = {}) {
@@ -576,6 +574,40 @@ function statusEmailText(order, title, message) {
 
 function statusEmailHtml(order, title, message) {
   return `<h1>NIXP ${escapeHtml(title)}</h1><p><strong>Order:</strong> ${escapeHtml(orderReference(order))}<br>${escapeHtml(message)}</p><p><strong>Official total:</strong> ${escapeHtml(rupiah(order?.grand_total ?? order?.total))}<br><strong>Payment:</strong> ${escapeHtml(order?.payment_status || order?.paymentStatus || "-")}<br><strong>Fulfillment:</strong> ${escapeHtml(order?.fulfillment_status || order?.fulfillmentStatus || "-")}<br><strong>Shipping:</strong> ${escapeHtml(order?.shipping_status || order?.shippingStatus || "-")}${order?.courier ? `<br><strong>Courier:</strong> ${escapeHtml(order.courier)}` : ""}${order?.tracking_number ? `<br><strong>Tracking number:</strong> ${escapeHtml(order.tracking_number)}` : ""}</p>`;
+}
+
+export function renderShippingDispatchEmail(order, { delivered = false } = {}) {
+  const customer = order?.customer || {};
+  const reference = orderReference(order);
+  const shippingStatus = String(order?.shipping_status || order?.shippingStatus || "Shipping update");
+  const courier = String(order?.courier || order?.shipping_method || order?.shippingMethod || "Courier");
+  const trackingNumber = String(order?.tracking_number || order?.trackingNumber || "");
+  const title = delivered ? "Order delivered" : "Order dispatched";
+  const introduction = delivered
+    ? "Your order has been marked as delivered."
+    : "Your order has been handed to the courier and is now on its way.";
+  const trackingLine = trackingNumber ? `Tracking number: ${trackingNumber}` : "Tracking information will be shared once available.";
+  const total = rupiah(order?.grand_total ?? order?.total);
+  const text = [
+    `NIXP ${title}`,
+    `Order: ${reference}`,
+    "",
+    `Hello ${customer.name || "there"},`,
+    introduction,
+    "",
+    `Courier: ${courier}`,
+    trackingLine,
+    `Shipping status: ${shippingStatus}`,
+    `Total paid: ${total}`,
+    "",
+    "Keep your order reference and tracking number for support."
+  ].join("\n");
+  const font = "'Founders Grotesk Web','Helvetica Neue',Arial,sans-serif";
+  const trackingRow = trackingNumber ? `<tr><td style="padding:0 0 12px;font-family:${font};font-size:10px;font-weight:700;line-height:14px;text-transform:uppercase;color:#747474;">Tracking number</td><td style="padding:0 0 12px;text-align:right;font-family:${font};font-size:14px;font-weight:700;line-height:18px;color:#292929;overflow-wrap:anywhere;">${escapeHtml(trackingNumber)}</td></tr>` : "";
+  const html = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>@font-face{font-family:'Founders Grotesk Web';src:url('https://www.nix-p.com/public/fonts/FoundersGroteskWeb-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}@font-face{font-family:'Founders Grotesk Web';src:url('https://www.nix-p.com/public/fonts/FoundersGroteskWeb-Semibold.woff2') format('woff2');font-weight:600 800;font-style:normal;font-display:swap;}</style></head>
+<body style="margin:0;padding:0;background:#f1f1f1;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;background:#f1f1f1;"><tr><td align="center" style="padding:28px 12px;"><table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:600px;background:#f1f1f1;"><tr><td style="padding:22px 24px;background:#292929;color:#f1f1f1;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td style="font-family:${font};font-size:24px;font-weight:700;line-height:24px;">NIXP</td><td align="right" style="font-family:${font};font-size:10px;font-weight:700;line-height:14px;text-transform:uppercase;">Shipping update</td></tr></table></td></tr><tr><td style="padding:32px 24px 24px;background:#f1f1f1;"><div style="font-family:${font};font-size:10px;font-weight:700;line-height:14px;text-transform:uppercase;color:#747474;">${escapeHtml(shippingStatus)}</div><div style="margin-top:8px;font-family:${font};font-size:32px;font-weight:700;line-height:34px;color:#292929;">${escapeHtml(title)}.</div><div style="margin-top:12px;font-family:${font};font-size:15px;line-height:22px;color:#292929;">Hello ${escapeHtml(customer.name || "there")}, ${escapeHtml(introduction)}</div></td></tr><tr><td style="padding:0 24px 30px;background:#f1f1f1;"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-top:1px solid #292929;border-bottom:1px solid #292929;"><tr><td style="padding:12px 0;font-family:${font};font-size:10px;font-weight:700;line-height:14px;text-transform:uppercase;color:#747474;">Order</td><td style="padding:12px 0;text-align:right;font-family:${font};font-size:13px;font-weight:700;line-height:18px;color:#292929;">${escapeHtml(reference)}</td></tr><tr><td style="padding:0 0 12px;font-family:${font};font-size:10px;font-weight:700;line-height:14px;text-transform:uppercase;color:#747474;">Courier</td><td style="padding:0 0 12px;text-align:right;font-family:${font};font-size:13px;line-height:18px;color:#292929;">${escapeHtml(courier)}</td></tr>${trackingRow}<tr><td style="padding:0 0 12px;font-family:${font};font-size:10px;font-weight:700;line-height:14px;text-transform:uppercase;color:#747474;">Delivery</td><td style="padding:0 0 12px;text-align:right;font-family:${font};font-size:13px;line-height:18px;color:#292929;">${escapeHtml(shippingStatus)}</td></tr><tr><td style="padding:0 0 12px;font-family:${font};font-size:10px;font-weight:700;line-height:14px;text-transform:uppercase;color:#747474;">Total paid</td><td style="padding:0 0 12px;text-align:right;font-family:${font};font-size:13px;font-weight:700;line-height:18px;color:#292929;">${escapeHtml(total)}</td></tr></table></td></tr><tr><td style="padding:20px 24px;background:#292929;font-family:${font};font-size:11px;line-height:17px;color:#f1f1f1;">Keep your order reference and tracking number for support.</td></tr></table></td></tr></table></body></html>`;
+  return { text, html };
 }
 
 function addressLines(address) {

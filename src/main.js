@@ -2075,6 +2075,7 @@ function adminOrderDetailMarkup(order) {
         <p>${escapeHtml(order.shippingMethod || "No shipping method")} ${order.courier ? ` / ${escapeHtml(order.courier)}` : ""}</p>
         ${order.trackingNumber ? `<p>Tracking: ${escapeHtml(order.trackingNumber)}</p>` : ""}
       </section>
+      ${adminOrderDispatchMarkup(order)}
       <section class="admin-order-detail-section">
         <h3>Items</h3>
         ${order.items?.length ? `<ul class="admin-order-detail-items">${order.items.map((item) => `<li><span>${escapeHtml([item.artist, item.title].filter(Boolean).join(" - ") || item.sku)}${item.size ? ` / ${escapeHtml(item.size)}` : ""}<small>${escapeHtml(item.sku)}</small></span><strong>x${Number(item.quantity) || 0}</strong></li>`).join("")}</ul>` : "<p>No item lines recorded.</p>"}
@@ -2082,6 +2083,30 @@ function adminOrderDetailMarkup(order) {
       </section>
     `
   };
+}
+
+function adminOrderDispatchMarkup(order) {
+  if (String(order.paymentStatus || "").toLowerCase() !== "paid") {
+    return `<section class="admin-order-detail-section"><h3>Dispatch order</h3><p>Dispatch becomes available once payment is verified.</p></section>`;
+  }
+  const shippingStatus = order.shippingStatus === "Delivered" ? "Delivered" : "In Transit";
+  const fulfillmentStatus = "Fulfilled";
+  return `
+    <section class="admin-order-detail-section">
+      <h3>Dispatch order</h3>
+      <form class="admin-order-dispatch-form" data-admin-order-dispatch-form>
+        <input type="hidden" name="orderId" value="${escapeAttr(order.id)}" />
+        <input type="hidden" name="fulfillmentStatus" value="${fulfillmentStatus}" />
+        <div class="admin-form-grid">
+          <label>Courier<input name="courier" required maxlength="80" value="${escapeAttr(order.courier || "JNE")}" placeholder="JNE" /></label>
+          <label>Tracking number<input name="trackingNumber" required maxlength="120" value="${escapeAttr(order.trackingNumber || "")}" placeholder="Enter courier tracking number" /></label>
+          <label>Delivery status<select name="shippingStatus"><option${shippingStatus === "In Transit" ? " selected" : ""}>In Transit</option><option${shippingStatus === "Delivered" ? " selected" : ""}>Delivered</option></select></label>
+          <label>Internal note<input name="note" maxlength="240" placeholder="Optional dispatch note" /></label>
+        </div>
+        <p class="admin-order-dispatch-copy">Saving sends the customer a NIXP shipping email with the courier and tracking number.</p>
+        <div class="admin-form-actions"><button class="button button-dark" type="submit">Save dispatch and send email</button><p class="admin-form-note" data-admin-order-dispatch-message aria-live="polite"></p></div>
+      </form>
+    </section>`;
 }
 
 async function cashflowPage() {
@@ -3052,6 +3077,60 @@ function bindEvents() {
     delete orderDialog.dataset.activeOrderId;
     orderDialog.querySelector("[data-admin-order-content]")?.replaceChildren();
   });
+  const renderAdminOrderDetail = async (order, notice = "", tone = "") => {
+    if (!orderDialog?.open) return;
+    const content = orderDialog.querySelector("[data-admin-order-content]");
+    if (!content) return;
+    const detail = adminOrderDetailMarkup(order);
+    content.innerHTML = detail.markup;
+    content.querySelector("[data-admin-order-copy]")?.addEventListener("click", async () => {
+      const message = content.querySelector("[data-admin-order-copy-message]");
+      try {
+        await navigator.clipboard.writeText(detail.addressText);
+        message.textContent = "Address copied.";
+      } catch {
+        message.textContent = "Could not copy automatically. Select the address above instead.";
+      }
+    });
+    const dispatchForm = content.querySelector("[data-admin-order-dispatch-form]");
+    const dispatchMessage = content.querySelector("[data-admin-order-dispatch-message]");
+    if (dispatchMessage && notice) {
+      dispatchMessage.textContent = notice;
+      dispatchMessage.dataset.tone = tone;
+    }
+    dispatchForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const submit = form.querySelector('button[type="submit"]');
+      const message = form.querySelector("[data-admin-order-dispatch-message]");
+      const data = Object.fromEntries(new FormData(form).entries());
+      const statusLabel = data.shippingStatus === "Delivered" ? "delivered" : "in transit";
+      if (!window.confirm(`Save this order as ${statusLabel} and email the customer its tracking number?`)) return;
+      submit.disabled = true;
+      if (message) message.textContent = "Saving dispatch and preparing customer email...";
+      try {
+        const result = await adminStore.updateOrderOperation(data);
+        const updated = await adminStore.orderDetail(order.id);
+        await adminStore.refreshOrders();
+        const notification = result.notification || {};
+        const notificationMessage = notification.delivered || notification.reason === "already-delivered"
+          ? "Dispatch saved and shipping email sent to the customer."
+          : notification.reason === "customer-email-missing"
+            ? "Dispatch saved. This order has no customer email, so no shipping email was sent."
+            : notification.reason === "shipping-details-unchanged"
+              ? "No dispatch detail changed, so no duplicate email was sent."
+              : "Dispatch saved. The shipping email is queued for delivery.";
+        await renderAdminOrderDetail(updated, notificationMessage, notification.delivered ? "success" : "warning");
+      } catch (error) {
+        if (message) {
+          message.textContent = error instanceof Error ? error.message : "Could not save dispatch.";
+          message.dataset.tone = "error";
+        }
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  };
   document.querySelectorAll("[data-admin-order-view]").forEach((button) => {
     button.addEventListener("click", async () => {
       if (!orderDialog) return;
@@ -3066,17 +3145,7 @@ function bindEvents() {
         const order = await adminStore.orderDetail(orderId);
         if (!orderDialog.open || orderDialog.dataset.activeOrderId !== orderId) return;
         title.textContent = order.reference || order.id;
-        const detail = adminOrderDetailMarkup(order);
-        content.innerHTML = detail.markup;
-        content.querySelector("[data-admin-order-copy]")?.addEventListener("click", async () => {
-          const message = content.querySelector("[data-admin-order-copy-message]");
-          try {
-            await navigator.clipboard.writeText(detail.addressText);
-            message.textContent = "Address copied.";
-          } catch {
-            message.textContent = "Could not copy automatically. Select the address above instead.";
-          }
-        });
+        await renderAdminOrderDetail(order);
       } catch (error) {
         if (orderDialog.open && orderDialog.dataset.activeOrderId === orderId) content.textContent = error instanceof Error ? error.message : "Could not load order details.";
       }
