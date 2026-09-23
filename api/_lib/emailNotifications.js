@@ -6,6 +6,7 @@ import { renderPaymentReceipt } from "./paymentReceipt.js";
 
 const DEFAULT_TO = "contact@nix-p.com";
 const DEFAULT_FROM = "NIXP <contact@nix-p.com>";
+const SHIPPING_FROM = "NIXP Shipping <shipping@nix-p.com>";
 
 export async function sendRequestNotification(request) {
   return sendNotificationEmail({
@@ -258,7 +259,7 @@ export async function sendOrderRefundNotification(order, refundAmount, fullRefun
 }
 
 async function sendNotificationEmail({ to, subject, replyTo, text, html, idempotencyKey }, { queueOnly = false } = {}) {
-  const from = process.env.NIXP_EMAIL_FROM || process.env.REQUEST_EMAIL_FROM || DEFAULT_FROM;
+  const from = notificationSender(idempotencyKey);
   const recipient = to || process.env.NIXP_NOTIFICATION_TO || process.env.REQUEST_NOTIFICATION_TO || DEFAULT_TO;
   const message = { recipient, replyTo, subject, text, html, idempotencyKey, from };
 
@@ -327,7 +328,7 @@ export async function drainNotificationOutbox(limit = 12) {
         text: message.text_body,
         html: message.html_body,
         idempotencyKey: message.idempotency_key,
-        from: process.env.NIXP_EMAIL_FROM || process.env.REQUEST_EMAIL_FROM || DEFAULT_FROM
+        from: notificationSender(message.idempotency_key)
       })
     )
   );
@@ -619,6 +620,16 @@ function statusEmailText(order, title, message) {
 
 function statusEmailHtml(order, title, message) {
   return `<h1>NIXP ${escapeHtml(title)}</h1><p><strong>Order:</strong> ${escapeHtml(orderReference(order))}<br>${escapeHtml(message)}</p><p><strong>Official total:</strong> ${escapeHtml(rupiah(order?.grand_total ?? order?.total))}<br><strong>Payment:</strong> ${escapeHtml(order?.payment_status || order?.paymentStatus || "-")}<br><strong>Fulfillment:</strong> ${escapeHtml(order?.fulfillment_status || order?.fulfillmentStatus || "-")}<br><strong>Shipping:</strong> ${escapeHtml(order?.shipping_status || order?.shippingStatus || "-")}${order?.courier ? `<br><strong>Courier:</strong> ${escapeHtml(order.courier)}` : ""}${order?.tracking_number ? `<br><strong>Tracking number:</strong> ${escapeHtml(order.tracking_number)}` : ""}</p>`;
+}
+
+function notificationSender(idempotencyKey) {
+  const standard = process.env.NIXP_EMAIL_FROM || process.env.REQUEST_EMAIL_FROM || DEFAULT_FROM;
+  // Gmail SMTP cannot send from an alias unless that alias is configured there.
+  if (!process.env.RESEND_API_KEY) return standard;
+  const key = String(idempotencyKey || "");
+  return key.startsWith("customer-shipping-") && !key.startsWith("customer-shipping-quote-")
+    ? SHIPPING_FROM
+    : standard;
 }
 
 export function renderShippingDispatchEmail(order, { delivered = false } = {}) {
