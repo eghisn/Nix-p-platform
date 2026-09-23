@@ -68,13 +68,13 @@ export function normalizeShippingAddress(value) {
 }
 
 export function midtransSnapBaseUrl() {
-  return String(process.env.MIDTRANS_ENV || "sandbox").toLowerCase() === "production"
+  return midtransEnvironment() === "production"
     ? "https://app.midtrans.com"
     : "https://app.sandbox.midtrans.com";
 }
 
 export function midtransApiBaseUrl() {
-  return String(process.env.MIDTRANS_ENV || "sandbox").toLowerCase() === "production"
+  return midtransEnvironment() === "production"
     ? "https://api.midtrans.com"
     : "https://api.sandbox.midtrans.com";
 }
@@ -84,15 +84,21 @@ export function isMidtransConfigured() {
 }
 
 export function midtransConfiguration() {
-  const environment = String(process.env.MIDTRANS_ENV || "sandbox").trim().toLowerCase();
+  const environment = midtransEnvironment();
   const enabled = /^(1|true|yes|on)$/i.test(String(process.env.MIDTRANS_ENABLED || ""));
   const hasServerKey = Boolean(String(process.env.MIDTRANS_SERVER_KEY || "").trim());
   const hasMerchantId = Boolean(String(process.env.MIDTRANS_MERCHANT_ID || "").trim());
   return {
     enabled,
-    environment: environment === "production" ? "production" : "sandbox",
+    environment: environment || "invalid",
+    hasValidEnvironment: Boolean(environment),
     hasServerKey,
     hasMerchantId,
-    ready: enabled && hasServerKey && hasMerchantId
+    ready: enabled && Boolean(environment) && hasServerKey && hasMerchantId
   };
+}
+
+function midtransEnvironment() {
+  const value = String(process.env.MIDTRANS_ENV || "").trim().toLowerCase();
+  return value === "production" || value === "sandbox" ? value : "";
 }

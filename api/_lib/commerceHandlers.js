@@ -365,6 +365,7 @@ export async function getCommerceHealthSnapshot() {
   const failedOutbox = (outbox || []).filter((row) => row.status === "Failed");
   const issues = [];
   if (!configuration.enabled) issues.push("Midtrans payments are disabled by the launch switch.");
+  if (configuration.enabled && !configuration.hasValidEnvironment) issues.push("Midtrans environment must be explicitly set to production or sandbox.");
   if (configuration.enabled && !configuration.hasMerchantId) issues.push("Midtrans merchant ID is missing.");
   if (configuration.enabled && !configuration.hasServerKey) issues.push("Midtrans server key is missing.");
   if (staleAttempts.length) issues.push(`${staleAttempts.length} payment attempt${staleAttempts.length === 1 ? " is" : "s are"} stuck.`);

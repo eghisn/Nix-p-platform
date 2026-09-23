@@ -20,7 +20,7 @@
     "test:home-collections": "node scripts/verify-home-collections.mjs",
     "test:home-slider-stock": "node scripts/verify-home-slider-stock-state.mjs",
     "test:blog": "node scripts/verify-public-blog.mjs",
-    "test:commerce": "node scripts/verify-commerce-contract.mjs && node scripts/verify-atomic-checkout-reservation.mjs && node scripts/verify-order-security-hardening.mjs && node scripts/verify-admin-order-detail.mjs && node scripts/verify-shipping-dispatch.mjs && node scripts/verify-customer-payment-refresh.mjs && node scripts/verify-payment-resume.mjs && node scripts/verify-payment-ui-layout.mjs && node scripts/verify-order-classification.mjs",
+    "test:commerce": "node scripts/verify-commerce-contract.mjs && node scripts/verify-atomic-checkout-reservation.mjs && node scripts/verify-order-security-hardening.mjs && node scripts/verify-admin-order-detail.mjs && node scripts/verify-shipping-dispatch.mjs && node scripts/verify-customer-payment-refresh.mjs && node scripts/verify-payment-resume.mjs && node scripts/verify-payment-ui-layout.mjs && node scripts/verify-midtrans-configuration.mjs && node scripts/verify-order-classification.mjs",
     "test:payment-receipt": "node scripts/verify-payment-receipt-email.mjs",
     "test:delivery-quote": "node scripts/verify-delivery-quote-email.mjs",
     "test:shipping-dispatch": "node scripts/verify-shipping-dispatch.mjs",
