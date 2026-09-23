@@ -1,4 +1,4 @@
-import { createHash, timingSafeEqual } from "node:crypto";
+import { createHash, randomUUID, timingSafeEqual } from "node:crypto";
 import { waitUntil } from "@vercel/functions";
 import { json, requireWorkspace } from "./auth.js";
 import { consumeCommerceRateLimit, getOrderRecord, isMidtransConfigured, midtransApiBaseUrl, midtransConfiguration, midtransSnapBaseUrl, normalizeShippingAddress, requestClientAddress } from "./commerce.js";
@@ -461,6 +461,30 @@ export async function handleAdminOrders(req, res) {
     if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
     await drainNotificationOutbox(24).catch(() => undefined);
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    if (body.action === "send-shipping-preview") {
+      const recipient = String(body.email || "").trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(recipient) || recipient.length > 254) {
+        return json(res, 400, { ok: false, error: "Enter a valid preview email address." });
+      }
+      const allowed = await consumeCommerceRateLimit("admin-shipping-preview", `${requestClientAddress(req)}:${recipient}`, { limit: 5, windowSeconds: 900 });
+      if (!allowed) return json(res, 429, { ok: false, error: "Too many preview emails. Please wait a few minutes." });
+      const preview = {
+        id: `shipping-preview-${randomUUID()}`,
+        public_reference: "NIXP-SHIPPING-PREVIEW",
+        customer: { name: "NIXP Preview", email: recipient },
+        payment_status: "Paid",
+        fulfillment_status: "Fulfilled",
+        shipping_status: "In Transit",
+        courier: "JNE",
+        tracking_number: "JNE123456789",
+        grand_total: 270000
+      };
+      const notification = await sendCustomerShippingNotification(preview);
+      if (!notification.delivered && !notification.queued) {
+        return json(res, 503, { ok: false, error: "Preview email could not be queued. Check email delivery settings before trying again." });
+      }
+      return json(res, 200, { ok: true, notification });
+    }
     if (body.action === "reconcile-payments") {
       const reconciliation = await reconcilePendingMidtransPayments({ limit: 30, source: "admin" });
       return json(res, 200, { ok: true, reconciliation, health: await getCommerceHealthSnapshot() });

@@ -27,8 +27,11 @@ const [app, store, handlers] = await Promise.all([
 ]);
 assert.match(app, /data-admin-order-dispatch-form/, "Admin order detail must offer a dispatch form.");
 assert.match(app, /Save dispatch and send email/, "Dispatch action must clearly explain its result.");
+assert.match(app, /data-admin-shipping-preview-form/, "Admin Orders must offer a non-destructive shipping email preview.");
 assert.match(store, /async updateOrderOperation\(data/, "Dispatch updates must use the Admin store boundary.");
 assert.match(handlers, /shipping-details-unchanged/, "Unchanged tracking details must not trigger duplicate shipping email.");
 assert.match(handlers, /sendCustomerShippingNotification\(after\)/, "Shipping changes must notify the customer after the order update is saved.");
+assert.match(handlers, /send-shipping-preview/, "Shipping previews must use a dedicated Admin-only action.");
+assert.match(handlers, /admin-shipping-preview/, "Shipping previews must be rate limited.");
 
 console.log("Shipping dispatch email and Admin operation flow verified.");

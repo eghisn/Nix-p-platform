@@ -3058,6 +3058,30 @@ body:has(.cart-view) .site-footer {
   line-height: 1.4;
 }
 
+.admin-shipping-preview {
+  margin-bottom: 20px;
+}
+
+.admin-shipping-preview summary {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.admin-shipping-preview form {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.admin-shipping-preview p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 .admin-order-detail-section address {
   display: grid;
   gap: 4px;

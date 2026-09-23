@@ -2011,6 +2011,14 @@ async function ordersPage({ embedded = false } = {}) {
         </div>
         <div class="admin-form-actions"><button class="button button-dark" type="submit">Send quote</button><p class="admin-form-note" data-admin-quote-message aria-live="polite"></p></div>
       </form>
+      <details class="admin-panel admin-shipping-preview" data-admin-shipping-preview>
+        <summary>Preview shipping email</summary>
+        <form data-admin-shipping-preview-form>
+          <p>Send a dummy dispatch email without changing an order, stock, or customer record.</p>
+          <div class="admin-form-grid"><label>Email address<input name="email" type="email" required maxlength="254" autocomplete="email" placeholder="you@example.com" /></label></div>
+          <div class="admin-form-actions"><button class="button" type="submit">Send preview</button><p class="admin-form-note" data-admin-shipping-preview-message aria-live="polite"></p></div>
+        </form>
+      </details>
       ${adminListControls("orders", "Search orders, SKU, artist, album", [
         ["date", "Date"],
         ["customer", "Customer"],
@@ -3965,6 +3973,36 @@ function bindEvents() {
       await render({ preserveScroll: true });
     } catch (error) {
       if (notice) notice.textContent = error instanceof Error ? error.message : "Delivery quote could not be issued.";
+    } finally {
+      button.disabled = false;
+    }
+  });
+
+  document.querySelector("[data-admin-shipping-preview-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const button = form.querySelector("button");
+    const notice = form.querySelector("[data-admin-shipping-preview-message]");
+    const email = String(new FormData(form).get("email") || "").trim();
+    button.disabled = true;
+    if (notice) notice.textContent = "Sending shipping email preview...";
+    try {
+      const response = await fetch("/api/admin/orders", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "send-shipping-preview", email })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Shipping preview could not be sent.");
+      if (notice) {
+        notice.textContent = payload.notification?.delivered ? "Preview sent. Check the inbox and spam folder." : "Preview queued for delivery. Check the inbox shortly.";
+        notice.dataset.tone = "success";
+      }
+    } catch (error) {
+      if (notice) {
+        notice.textContent = error instanceof Error ? error.message : "Shipping preview could not be sent.";
+        notice.dataset.tone = "error";
+      }
     } finally {
       button.disabled = false;
     }
