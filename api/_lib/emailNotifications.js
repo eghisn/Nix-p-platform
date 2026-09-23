@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import nodemailer from "nodemailer";
 import { isSupabaseConfigured, supabaseFetch } from "./supabase.js";
 import { renderDeliveryQuote } from "./deliveryQuote.js";
@@ -169,6 +170,50 @@ export async function sendCustomerShippingNotification(order, { queueOnly = fals
     html: dispatch.html,
     idempotencyKey: `customer-shipping-${order?.id}-${slug(order?.shipping_status)}-${slug(order?.tracking_number)}`
   }, { queueOnly });
+}
+
+export async function sendCommerceOperationalAlert({ source = "Commerce", message = "Unknown commerce failure", details = {}, dedupeKey = "" } = {}, { queueOnly = false } = {}) {
+  const safeSource = String(source || "Commerce").trim().slice(0, 80) || "Commerce";
+  const safeMessage = String(message || "Unknown commerce failure").trim().slice(0, 500);
+  const facts = Object.entries(details || {})
+    .filter(([, value]) => value !== null && value !== undefined && String(value).trim())
+    .slice(0, 8)
+    .map(([key, value]) => `${String(key).slice(0, 80)}: ${String(value).slice(0, 300)}`);
+  const fingerprint = createHash("sha256")
+    .update(`${safeSource}|${String(dedupeKey || safeMessage)}`)
+    .digest("hex")
+    .slice(0, 24);
+  const text = [
+    "NIXP commerce alert",
+    `Source: ${safeSource}`,
+    `Problem: ${safeMessage}`,
+    ...facts,
+    "Open Admin Orders and Payment Health immediately."
+  ].join("\n");
+  const htmlFacts = facts.length
+    ? `<ul>${facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul>`
+    : "";
+  const alert = {
+    subject: `NIXP commerce alert: ${safeSource}`,
+    text,
+    html: `<h1>NIXP commerce alert</h1><p><strong>Source:</strong> ${escapeHtml(safeSource)}<br><strong>Problem:</strong> ${escapeHtml(safeMessage)}</p>${htmlFacts}<p>Open Admin Orders and Payment Health immediately.</p>`,
+    idempotencyKey: `commerce-alert-${slug(safeSource).slice(0, 48)}-${fingerprint}`
+  };
+  if (!queueOnly) return sendNotificationEmail(alert);
+  try {
+    const result = await sendNotificationEmail(alert, { queueOnly: true });
+    if (result.delivered || result.queued) return result;
+  } catch (error) {
+    console.warn("Commerce alert outbox unavailable; trying direct delivery", error instanceof Error ? error.message : error);
+  }
+  return deliverEmail({
+    recipient: process.env.NIXP_NOTIFICATION_TO || process.env.REQUEST_NOTIFICATION_TO || DEFAULT_TO,
+    subject: alert.subject,
+    text: alert.text,
+    html: alert.html,
+    idempotencyKey: alert.idempotencyKey,
+    from: process.env.NIXP_EMAIL_FROM || process.env.REQUEST_EMAIL_FROM || DEFAULT_FROM
+  });
 }
 
 export async function sendCustomerCancellationNotification(order, reason = "", { queueOnly = false } = {}) {

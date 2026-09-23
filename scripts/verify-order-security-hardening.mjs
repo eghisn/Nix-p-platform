@@ -71,10 +71,19 @@ assert.match(client, /orderPaymentSupportMarkup/, "A customer must have a direct
 assert.match(client, /order-status-message/, "Payment failures must render in a dedicated non-overlapping status region.");
 assert.match(handlers, /sendOrderPaymentAssistanceNotification\(order, reason, \{ queueOnly: true \}\)/, "A payment-session failure must durably alert NIXP without delaying the customer response on email delivery.");
 assert.match(notifications, /payment-assistance-required-\$\{order\?\.id\}/, "Payment assistance alerts must be idempotent per order.");
+assert.match(notifications, /export async function sendCommerceOperationalAlert/, "Commerce failures must have a durable owner-alert path.");
+assert.match(notifications, /commerce-alert-\$\{slug\(safeSource\)/, "Operational alerts must use a deterministic idempotency key.");
+assert.match(notifications, /Commerce alert outbox unavailable; trying direct delivery/, "Operational alerts must fall back to direct email when their durable outbox is unavailable.");
+assert.match(checkout, /recordAndAlertCommerceFailure\(\{ source: "checkout-api"/, "Unexpected checkout failures must alert the owner without changing the customer response.");
+assert.match(checkout, /waitUntil\(backgroundWork\)/, "Customer-facing commerce alerts must run after the response path instead of delaying checkout.");
+assert.match(checkout, /alertSource: "Customer shipping quote"/, "Unexpected shipping-quote failures must alert the owner.");
+assert.match(checkout, /alertSource: "Commerce maintenance"/, "Failed commerce maintenance must alert the owner.");
+assert.match(handlers, /source: "Midtrans webhook"/, "Failed Midtrans webhooks must alert the owner.");
+assert.match(handlers, /source: "Midtrans reconciliation"/, "Failed provider reconciliation must alert the owner.");
 assert.match(handlers, /Provider Reversal Review/, "Late provider reversals must not silently downgrade paid orders.");
 assert.match(handlers, /stale-status-ignored/, "Out-of-order pending callbacks must not downgrade a financially final order.");
 assert.match(handlers, /paymentReviews: reviewAttempts\.length/, "Payment health must surface provider reversals and chargebacks.");
-assert.match(checkout, /level: status >= 500 \? "error"/, "Expected checkout validation failures must not be recorded as server errors.");
+assert.match(checkout, /if \(status >= 500\)[\s\S]*level: status === 429 \? "warning" : "info"/, "Expected checkout validation failures must remain info or warning events while unexpected server failures alert the owner.");
 assert.match(handlers, /activePendingOrderIds\.has\(String\(row\.order_id\)\)/, "Payment health must only flag attempts that still belong to active pending orders.");
 
 assert.match(checkout, /ORDER_ACCESS_COOKIE_NAME/, "Order access must use a dedicated HttpOnly cookie.");

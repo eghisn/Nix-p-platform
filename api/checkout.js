@@ -1,8 +1,9 @@
+import { waitUntil } from "@vercel/functions";
 import { timingSafeEqual } from "node:crypto";
 import { json } from "./_lib/auth.js";
 import { consumeCommerceRateLimit, expirePendingOrders, getOrderRecord, normalizeShippingAddress, requestClientAddress } from "./_lib/commerce.js";
 import { createMidtransPaymentSession, handleMidtransToken, handleMidtransWebhook, reconcilePendingMidtransPayments, refreshCustomerMidtransPayment } from "./_lib/commerceHandlers.js";
-import { drainNotificationOutbox, sendCustomerOrderConfirmation, sendCustomerShippingQuoteNotification, sendCustomerShippingQuoteRequest, sendOrderNotification } from "./_lib/emailNotifications.js";
+import { drainNotificationOutbox, sendCommerceOperationalAlert, sendCustomerOrderConfirmation, sendCustomerShippingQuoteNotification, sendCustomerShippingQuoteRequest, sendOrderNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, supabaseFetch } from "./_lib/supabase.js";
 import { calculateRuleShippingQuote, validateRuleShippingQuote } from "./_lib/shippingQuotes.js";
 import { runShippingMaintenance } from "./_lib/nixpShippingEngine.js";
@@ -155,7 +156,11 @@ export default async function handler(req, res) {
     const status = message.startsWith("OUT_OF_STOCK") || message.startsWith("ITEM_UNAVAILABLE") || message.startsWith("SIZE_")
       ? 409
       : Number(error?.statusCode || 500);
-    await recordSystemEvent({ level: status >= 500 ? "error" : status === 429 ? "warning" : "info", source: "checkout-api", req, error, details: { action: action || "checkout", status } });
+    if (status >= 500) {
+      await recordAndAlertCommerceFailure({ source: "checkout-api", alertSource: "Customer checkout", req, error, details: { action: action || "checkout", status } });
+    } else {
+      await recordSystemEvent({ level: status === 429 ? "warning" : "info", source: "checkout-api", req, error, details: { action: action || "checkout", status } });
+    }
     return json(res, status, { ok: false, error: friendlyError(message) });
   }
 }
@@ -183,7 +188,11 @@ async function handleRuleShippingQuote(req, res) {
     });
   } catch (error) {
     const status = Number(error?.statusCode || 500);
-    await recordSystemEvent({ level: status >= 500 ? "error" : status === 429 ? "warning" : "info", source: "shipping-quote-api", req, error, details: { status } });
+    if (status >= 500) {
+      await recordAndAlertCommerceFailure({ source: "shipping-quote-api", alertSource: "Customer shipping quote", req, error, details: { status } });
+    } else {
+      await recordSystemEvent({ level: status === 429 ? "warning" : "info", source: "shipping-quote-api", req, error, details: { status } });
+    }
     return json(res, status, { ok: false, error: friendlyError(error instanceof Error ? error.message : "Shipping quote failed.") });
   }
 }
@@ -255,7 +264,7 @@ async function handleCustomerOrderStatus(req, res) {
         try {
           refresh = await refreshCustomerMidtransPayment(orderId);
         } catch (error) {
-          await recordSystemEvent({ level: "warning", source: "customer-payment-refresh", req, error, details: { orderId } }).catch(() => undefined);
+          await recordAndAlertCommerceFailure({ level: "warning", source: "customer-payment-refresh", alertSource: "Customer payment refresh", req, error, details: { orderId } });
           return json(res, 503, { ok: false, error: "Payment provider is temporarily unavailable. Your order remains active; please try again shortly." });
         }
         const latestOrder = await getOrderRecord(orderId);
@@ -330,8 +339,28 @@ async function handleCommerceMaintenance(req, res) {
       checkedAt: new Date().toISOString()
     });
   } catch (error) {
-    await recordSystemEvent({ source: "commerce-maintenance", req, error });
+    await recordAndAlertCommerceFailure({ source: "commerce-maintenance", alertSource: "Commerce maintenance", req, error });
     return json(res, 500, { ok: false, error: error instanceof Error ? error.message : "Commerce maintenance failed." });
+  }
+}
+
+function recordAndAlertCommerceFailure({ level = "error", source, alertSource, req, error, details = {} }) {
+  const message = error instanceof Error ? error.message : String(error || "Unknown commerce failure");
+  const backgroundWork = Promise.allSettled([
+    recordSystemEvent({ level, source, req, error, details }),
+    sendCommerceOperationalAlert({
+      source: alertSource || source,
+      message,
+      details,
+      dedupeKey: `${message}-${new Date().toISOString().slice(0, 13)}`
+    }, { queueOnly: true })
+  ]).then(() => drainNotificationOutbox(8)).catch((drainError) => {
+    console.warn("Commerce alert delivery deferred", drainError instanceof Error ? drainError.message : drainError);
+  });
+  try {
+    waitUntil(backgroundWork);
+  } catch (scheduleError) {
+    console.warn("Commerce alert delivery could not be scheduled", scheduleError instanceof Error ? scheduleError.message : scheduleError);
   }
 }
 

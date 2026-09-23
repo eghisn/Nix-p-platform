@@ -8,6 +8,7 @@ import {
   sendCustomerRefundNotification,
   sendCustomerShippingQuoteNotification,
   sendCustomerShippingNotification,
+  sendCommerceOperationalAlert,
   sendOrderPaymentAssistanceNotification,
   sendOrderPaymentNotification,
   sendOrderRefundNotification
@@ -142,7 +143,17 @@ export async function handleMidtransWebhook(req, res) {
     return json(res, result.notFound ? 404 : 200, { ok: !result.notFound, ...result });
   } catch (error) {
     if (eventKey) await completeWebhookReceipt(eventKey, false, error instanceof Error ? error.message : "Midtrans webhook failed.").catch(() => undefined);
-    await recordSystemEvent({ source: "midtrans-webhook", req, error, details: { eventKey: eventKey || null } });
+    const message = error instanceof Error ? error.message : "Midtrans webhook failed.";
+    await Promise.allSettled([
+      recordSystemEvent({ source: "midtrans-webhook", req, error, details: { eventKey: eventKey || null } }),
+      sendCommerceOperationalAlert({
+        source: "Midtrans webhook",
+        message,
+        details: { eventKey: eventKey || "Unavailable" },
+        dedupeKey: eventKey || `${message}-${utcHourBucket()}`
+      }, { queueOnly: true })
+    ]);
+    scheduleNotificationOutboxDrain();
     return json(res, 500, { ok: false, error: "Midtrans webhook could not be processed." });
   }
 }
@@ -195,12 +206,21 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
       providerTransactionId: String(verified.transaction_id || ""),
       reversalReviewAt: new Date().toISOString()
     });
-    await recordSystemEvent({
-      level: "critical",
-      source: "midtrans-payment-reversal-review",
-      details: { orderId: order.id, providerStatus: status, paymentStatus: order.payment_status }
-    });
+    await Promise.allSettled([
+      recordSystemEvent({
+        level: "critical",
+        source: "midtrans-payment-reversal-review",
+        details: { orderId: order.id, providerStatus: status, paymentStatus: order.payment_status }
+      }),
+      sendCommerceOperationalAlert({
+        source: "Midtrans payment reversal",
+        message: `Provider status ${status} requires manual review.`,
+        details: { orderId: order.id, paymentStatus: order.payment_status },
+        dedupeKey: `${order.id}-${status}`
+      }, { queueOnly: true })
+    ]);
     await completeWebhookReceipt(eventKey);
+    scheduleNotificationOutboxDrain();
     return { action: "reversal-review", status };
   }
 
@@ -256,12 +276,21 @@ async function processVerifiedMidtransEvent(verified, eventKey = midtransWebhook
       providerTransactionId: String(verified.transaction_id || ""),
       chargebackReviewAt: new Date().toISOString()
     });
-    await recordSystemEvent({
-      level: "critical",
-      source: "midtrans-chargeback-review",
-      details: { orderId: order.id, providerStatus: status, paymentStatus: order.payment_status }
-    });
+    await Promise.allSettled([
+      recordSystemEvent({
+        level: "critical",
+        source: "midtrans-chargeback-review",
+        details: { orderId: order.id, providerStatus: status, paymentStatus: order.payment_status }
+      }),
+      sendCommerceOperationalAlert({
+        source: "Midtrans chargeback",
+        message: `Provider status ${status} requires manual review.`,
+        details: { orderId: order.id, paymentStatus: order.payment_status },
+        dedupeKey: `${order.id}-${status}`
+      }, { queueOnly: true })
+    ]);
     await completeWebhookReceipt(eventKey);
+    scheduleNotificationOutboxDrain();
     return { action: "chargeback-review", status };
   }
 
@@ -304,6 +333,7 @@ export async function reconcilePendingMidtransPayments({ limit = 20, source = "m
   const eligible = (Array.isArray(attempts) ? attempts : [])
     .slice(0, Math.max(1, Math.min(Number(limit) || 20, 50)));
   const summary = { configured: true, checked: 0, changed: 0, missing: 0, failed: 0, source };
+  let operationalAlertQueued = false;
 
   let nextIndex = 0;
   // A provider request may take up to four seconds. Bounded workers keep a
@@ -331,14 +361,24 @@ export async function reconcilePendingMidtransPayments({ limit = 20, source = "m
           lastReconciliationError: error instanceof Error ? error.message : "Midtrans reconciliation failed.",
           lastReconciliationAt: new Date().toISOString()
         }).catch(() => undefined);
-        await recordSystemEvent({
-          source: "midtrans-reconciliation",
-          error,
-          details: { orderId: order.id, attemptStatus: attempt.status, reconciliationSource: source }
-        });
+        const message = error instanceof Error ? error.message : "Midtrans reconciliation failed.";
+        await Promise.allSettled([
+          recordSystemEvent({
+            source: "midtrans-reconciliation",
+            error,
+            details: { orderId: order.id, attemptStatus: attempt.status, reconciliationSource: source }
+          }),
+          sendCommerceOperationalAlert({
+            source: "Midtrans reconciliation",
+            message,
+            details: { orderId: order.id, attemptStatus: attempt.status, reconciliationSource: source },
+            dedupeKey: `${order.id}-${utcHourBucket()}`
+          }, { queueOnly: true }).then(() => { operationalAlertQueued = true; })
+        ]);
       }
     }
   }));
+  if (operationalAlertQueued) scheduleNotificationOutboxDrain();
   return summary;
 }
 
@@ -619,6 +659,10 @@ function adminOrderListRow(order) {
       whatsapp: String(customer.whatsapp || "").slice(0, 48)
     }
   };
+}
+
+function utcHourBucket() {
+  return new Date().toISOString().slice(0, 13);
 }
 
 export function adminOrderDetailRow(order) {
