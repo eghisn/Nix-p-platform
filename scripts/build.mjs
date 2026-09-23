@@ -390,10 +390,12 @@ function homeAppMarkup() {
         <div class="slider-track" data-home-slider-track>
           ${slides
             .map(
-              (product, index) => `
-                <article class="slide">
+              (product, index) => {
+                const soldOut = productQuantity(product) <= 0;
+                return `
+                <article class="slide ${soldOut ? "is-sold-out" : ""}">
                   <a href="${escapeHtml(publicProductPath(product))}" data-link data-product-link data-product-id="${escapeHtml(product.id)}">
-                    <figure class="product-art slide-art"><img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" /></figure>
+                    <figure class="product-art slide-art ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>
                     <div class="slide-caption">
                       <span>${String((index % products.length) + 1).padStart(2, "0")}</span>
                       <strong>${escapeHtml(product.artist)}</strong>
@@ -401,6 +403,7 @@ function homeAppMarkup() {
                     </div>
                   </a>
                 </article>`
+              }
             )
             .join("")}
         </div>

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.mjs",
-    "build": "node scripts/build.mjs && node scripts/verify-public-release-lock.mjs && node scripts/verify-api-security-headers.mjs && node scripts/verify-jne-official-client.mjs && node scripts/verify-instagram-insights.mjs && node scripts/verify-artist-directory-consistency.mjs && node scripts/verify-home-collections.mjs && node scripts/verify-public-blog.mjs && node scripts/verify-public-request-item.mjs && node scripts/verify-public-commerce-boundary.mjs && node scripts/verify-public-product-stock-state.mjs && node scripts/verify-publishing-filter.mjs",
+    "build": "node scripts/build.mjs && node scripts/verify-public-release-lock.mjs && node scripts/verify-api-security-headers.mjs && node scripts/verify-jne-official-client.mjs && node scripts/verify-instagram-insights.mjs && node scripts/verify-artist-directory-consistency.mjs && node scripts/verify-home-collections.mjs && node scripts/verify-home-slider-stock-state.mjs && node scripts/verify-public-blog.mjs && node scripts/verify-public-request-item.mjs && node scripts/verify-public-commerce-boundary.mjs && node scripts/verify-public-product-stock-state.mjs && node scripts/verify-publishing-filter.mjs",
     "test:catalog": "node scripts/verify-catalog-integrity.mjs",
     "test:records-filter": "node scripts/verify-records-artist-filter.mjs",
     "test:labels": "node scripts/verify-label-assets.mjs",
@@ -18,6 +18,7 @@
     "test:routes": "node scripts/verify-public-routes.mjs",
     "test:request-item": "node scripts/verify-public-request-item.mjs",
     "test:home-collections": "node scripts/verify-home-collections.mjs",
+    "test:home-slider-stock": "node scripts/verify-home-slider-stock-state.mjs",
     "test:blog": "node scripts/verify-public-blog.mjs",
     "test:commerce": "node scripts/verify-commerce-contract.mjs && node scripts/verify-atomic-checkout-reservation.mjs && node scripts/verify-order-security-hardening.mjs && node scripts/verify-admin-order-detail.mjs && node scripts/verify-shipping-dispatch.mjs && node scripts/verify-customer-payment-refresh.mjs && node scripts/verify-payment-resume.mjs && node scripts/verify-payment-ui-layout.mjs && node scripts/verify-order-classification.mjs",
     "test:payment-receipt": "node scripts/verify-payment-receipt-email.mjs",

@@ -507,11 +507,14 @@ async function homePage() {
             ? `<div class="slider-track" data-home-slider-track>
                 ${loopSlides
                   .map(
-                    (product, index) => `
-                      <article class="slide">
+                    (product, index) => {
+                      const soldOut = totalProductStock(product) <= 0;
+                      return `
+                      <article class="slide ${soldOut ? "is-sold-out" : ""}">
                         <a href="${publicProductPath(product)}" data-link data-product-link data-product-id="${escapeAttr(product.id)}">
-                          <figure class="product-art slide-art">
+                          <figure class="product-art slide-art ${soldOut ? "is-sold-out" : ""}">
                             <img src="${product.image}" alt="${product.title}" />
+                            ${soldOut ? `<span class="sold-out-label">Sold out</span>` : ""}
                           </figure>
                           <div class="slide-caption">
                             <span>${String((index % slides.length) + 1).padStart(2, "0")}</span>
@@ -520,7 +523,8 @@ async function homePage() {
                           </div>
                         </a>
                       </article>
-                    `
+                    `;
+                    }
                   )
                   .join("")}
               </div>`
