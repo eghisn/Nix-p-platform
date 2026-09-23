@@ -54,8 +54,10 @@ const tokenStart = handlers.indexOf("export async function handleMidtransToken")
 const webhookStartIndex = handlers.indexOf("export async function handleMidtransWebhook");
 const paymentSession = handlers.slice(tokenStart, webhookStartIndex);
 assert.doesNotMatch(paymentSession, /drainNotificationOutbox/, "Payment session creation must not wait for email delivery.");
+assert.match(paymentSession, /scheduleNotificationOutboxDrain\(\)/, "A failed payment-session creation must dispatch its durable assistance alert immediately in the background.");
 assert.doesNotMatch(paymentSession, /expirePendingOrders/, "Payment session creation must not run catalogue or expiry maintenance.");
 assert.match(handlers, /reconcilePendingMidtransPayments/, "Pending Midtrans payments must have a provider reconciliation path.");
+assert.match(handlers, /const workerCount = Math\.min\(4, eligible\.length\)/, "Pending payment reconciliation must use bounded concurrency so a busy maintenance run remains within its function budget.");
 assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protected payment-health summary.");
 assert.match(handlers, /rpc\/merge_midtrans_payment_attempt/, "Payment updates must merge provider status without erasing the stored redirect session.");
 assert.match(retentionMigration, /payload = coalesce\(payload, '\{\}'::jsonb\) \|\| coalesce\(p_payload, '\{\}'::jsonb\)/, "Payment updates must preserve the existing token and redirect URL atomically.");

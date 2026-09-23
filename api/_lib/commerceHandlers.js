@@ -51,6 +51,9 @@ export async function createMidtransPaymentSession(orderId) {
       sendOrderPaymentAssistanceNotification(order, reason, { queueOnly: true }),
       recordSystemEvent({ level: "critical", source: "midtrans-payment-session", error, details: { orderId: order.id } })
     ]);
+    // Keep the durable queue as the source of truth, but do not make an
+    // operational payment failure wait for the next scheduled drain.
+    scheduleNotificationOutboxDrain();
     throw error;
   }
 }
@@ -302,32 +305,40 @@ export async function reconcilePendingMidtransPayments({ limit = 20, source = "m
     .slice(0, Math.max(1, Math.min(Number(limit) || 20, 50)));
   const summary = { configured: true, checked: 0, changed: 0, missing: 0, failed: 0, source };
 
-  for (const attempt of eligible) {
-    const order = await getOrderRecord(attempt.order_id);
-    if (!order || order.order_status !== "Active" || order.payment_status !== "Pending") continue;
-    summary.checked += 1;
-    try {
-      const verified = await fetchMidtransStatus(order.id, { allowMissing: true });
-      if (!verified) {
-        summary.missing += 1;
-        continue;
+  let nextIndex = 0;
+  // A provider request may take up to four seconds. Bounded workers keep a
+  // busy five-minute maintenance run inside its function budget without
+  // flooding Midtrans or changing per-order verification semantics.
+  const workerCount = Math.min(4, eligible.length);
+  await Promise.all(Array.from({ length: workerCount }, async () => {
+    while (nextIndex < eligible.length) {
+      const attempt = eligible[nextIndex++];
+      const order = await getOrderRecord(attempt.order_id);
+      if (!order || order.order_status !== "Active" || order.payment_status !== "Pending") continue;
+      summary.checked += 1;
+      try {
+        const verified = await fetchMidtransStatus(order.id, { allowMissing: true });
+        if (!verified) {
+          summary.missing += 1;
+          continue;
+        }
+        const result = await processVerifiedMidtransEvent(verified);
+        if (!["recorded", "duplicate"].includes(result.action)) summary.changed += 1;
+      } catch (error) {
+        summary.failed += 1;
+        await updateMidtransAttempt(order.id, attempt.status, {
+          ...(attempt.payload || {}),
+          lastReconciliationError: error instanceof Error ? error.message : "Midtrans reconciliation failed.",
+          lastReconciliationAt: new Date().toISOString()
+        }).catch(() => undefined);
+        await recordSystemEvent({
+          source: "midtrans-reconciliation",
+          error,
+          details: { orderId: order.id, attemptStatus: attempt.status, reconciliationSource: source }
+        });
       }
-      const result = await processVerifiedMidtransEvent(verified);
-      if (!["recorded", "duplicate"].includes(result.action)) summary.changed += 1;
-    } catch (error) {
-      summary.failed += 1;
-      await updateMidtransAttempt(order.id, attempt.status, {
-        ...(attempt.payload || {}),
-        lastReconciliationError: error instanceof Error ? error.message : "Midtrans reconciliation failed.",
-        lastReconciliationAt: new Date().toISOString()
-      }).catch(() => undefined);
-      await recordSystemEvent({
-        source: "midtrans-reconciliation",
-        error,
-        details: { orderId: order.id, attemptStatus: attempt.status, reconciliationSource: source }
-      });
     }
-  }
+  }));
   return summary;
 }
 
