@@ -153,6 +153,18 @@ function isManagedCatalogImage(value) {
   );
 }
 
+export function assertProductManagedCoverOwnership(product = {}) {
+  const expectedSku = String(product.sku || product.id || "").trim().toLowerCase();
+  if (!expectedSku) return;
+  const candidates = [product.image, ...(Array.isArray(product.images) ? product.images : [])];
+  for (const candidate of candidates) {
+    const match = String(candidate || "").match(/\/public\/covers\/(nxp-\d{4}-[a-z]+-\d{4})(?:[-.])/i);
+    if (match && match[1].toLowerCase() !== expectedSku) {
+      throw requestError(`Managed cover ${match[1].toUpperCase()} belongs to a different SKU.`, 400);
+    }
+  }
+}
+
 function snapshotOwnsEditorialFields(snapshotProduct = {}) {
   return Boolean(
     editorialProductIsComplete(snapshotProduct) &&
@@ -420,6 +432,7 @@ export async function saveAdminProduct(product, { expectedRevision = 0, actor = 
     raw: currentRow?.raw || product.raw || {}
   });
   const safeProduct = applyFinalReviewedCoverLock(applyCatalogPublicationSafety({ products: [merged] }).products[0]);
+  assertProductManagedCoverOwnership(safeProduct);
   const nextRevision = currentRow ? currentRevision + 1 : 1;
   const savedAt = new Date().toISOString();
   const row = {

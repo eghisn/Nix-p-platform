@@ -5,6 +5,7 @@ import { artistCreditNames, artistIdentityKey } from "../src/data/catalogIdentit
 import { isFinanceCatalogProduct, recordPublicationIssues } from "../src/data/catalogPublication.js";
 import { toPublicStore } from "../api/_lib/github.js";
 import { ARCHIVED_CATALOG_IMAGES } from "../api/_lib/catalogEnrichment.js";
+import { assertProductManagedCoverOwnership } from "../api/_lib/supabase.js";
 
 const root = process.cwd();
 const store = JSON.parse(await fs.readFile(path.join(root, "public", "data", "public-store.json"), "utf8"));
@@ -47,6 +48,11 @@ for (const product of publicProducts) {
   ids.add(product.id);
   if (!managedImage(product.image)) issues.push(`${product.sku || product.id}: public main image is not NIXP-managed`);
   if ((product.images || []).some((image) => !managedImage(image))) issues.push(`${product.sku || product.id}: gallery contains an external image`);
+  try {
+    assertProductManagedCoverOwnership(product);
+  } catch (error) {
+    issues.push(`${product.sku || product.id}: ${error.message}`);
+  }
   if (String(product.image || "").startsWith("/public/")) {
     const file = path.join(root, product.image.replace(/^\/public\//, "public/"));
     await fs.access(file).catch(() => issues.push(`${product.sku || product.id}: missing local image ${product.image}`));
@@ -60,6 +66,20 @@ for (const product of publicProducts) {
     }
   }
 }
+
+assertProductManagedCoverOwnership({
+  sku: "NXP-2026-CD-0003",
+  image: "/public/covers/nxp-2026-cd-0003-the-chemical-brothers-come-with-us.jpg",
+  images: ["/public/covers/nxp-2026-cd-0003-the-chemical-brothers-come-with-us.jpg"]
+});
+assert.throws(
+  () => assertProductManagedCoverOwnership({
+    sku: "NXP-2026-CD-0003",
+    image: "/public/covers/nxp-2026-cd-0004-the-chemical-brothers-further.jpg"
+  }),
+  /belongs to a different SKU/,
+  "A managed cover cannot be saved to a different SKU."
+);
 
 for (const [sku, credit] of curatedCoverSources) {
   const product = publicProducts.find((candidate) => String(candidate.sku || "").toUpperCase() === sku);
