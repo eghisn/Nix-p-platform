@@ -1,3 +1,5 @@
+import { trackMetaPageView } from "./metaPixel.js";
+
 const CONSENT_COOKIE = "nixp_cookie_consent";
 const ANALYTICS_SESSION_KEY = "nixp_analytics_session";
 const ANALYTICS_ATTRIBUTION_KEY = "nixp_analytics_attribution";
@@ -150,6 +152,7 @@ export function checkoutMarketingAttribution() {
 }
 
 export function trackCurrentPageView() {
+  trackMetaPageView(isPublicPage() && hasAnalyticsConsent());
   if (!isPublicPage() || !hasAnalyticsConsent()) return;
   const path = `${location.pathname}${location.search}`;
   if (path === lastTrackedPath) return;
