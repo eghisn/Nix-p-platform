@@ -30,8 +30,9 @@ import {
 import { recordArtistInitial, validRecordArtistInitial } from "./components/recordsPage.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
-import { checkoutMarketingAttribution, initializeAnalytics, trackAnalytics, trackCurrentPageView, trackSuccessfulAddToCart } from "./services/analytics.js";
+import { checkoutMarketingAttribution, initializeAnalytics, syncCheckoutEntry, trackAnalytics, trackCurrentPageView, trackSuccessfulAddToCart } from "./services/analytics.js";
 import { commitCartAddition } from "./services/cartAddition.js";
+import { checkoutEventPayload } from "./services/checkoutEventPayload.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup, publishingPageMarkup } from "./components/catalogPage.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "./components/labelsPage.js";
@@ -358,6 +359,7 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   else if (scrollToTop) window.scrollTo({ top: 0, behavior: "auto" });
   setupAdminOrdersLiveRefresh(path);
   trackCurrentPageView();
+  syncCheckoutEntry();
 }
 
 function updateDocumentTitle(path) {
@@ -952,6 +954,7 @@ function termsOfUsePage() {
 
 async function cartPage() {
   const { rows, total } = await cartSummary();
+  const checkoutPayload = checkoutEventPayload(rows);
   return `
     <section class="section cart-view">
       ${
@@ -963,7 +966,7 @@ async function cartPage() {
                   <p><strong>One-hour reservation</strong><span>Stock is held for one hour after checkout, then released automatically when payment is not completed.</span></p>
                   <p><strong>Delivery quote before payment</strong><span>JNE and GoSend delivery costs are confirmed from your address before payment opens. The final total always includes items and shipping.</span></p>
                 </aside>
-                <form class="checkout-form" data-checkout-form>
+                <form class="checkout-form" data-checkout-form ${checkoutPayload ? `data-meta-checkout="${escapeAttr(JSON.stringify(checkoutPayload))}"` : ""}>
                   <h2>Contact</h2>
                   <div class="admin-form-grid">
                     <label>Name<input name="name" required autocomplete="name" /></label>

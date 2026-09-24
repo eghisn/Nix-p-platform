@@ -94,3 +94,20 @@ export function trackMetaAddToCart(allowed, product, quantity) {
     num_items: quantity
   });
 }
+
+export function trackMetaInitiateCheckout(allowed, payload) {
+  if (!isStorefront() || !allowed || !consentGranted || !payload) return false;
+  const { content_ids: ids, value, num_items: quantity } = payload;
+  if (
+    !Array.isArray(ids) || !ids.length || ids.some((id) => typeof id !== "string" || !id.trim()) ||
+    !Number.isSafeInteger(value) || value <= 0 || !Number.isSafeInteger(quantity) || quantity <= 0
+  ) return false;
+  window.fbq("track", "InitiateCheckout", {
+    content_ids: ids,
+    content_type: "product",
+    value,
+    currency: "IDR",
+    num_items: quantity
+  });
+  return true;
+}

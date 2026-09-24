@@ -12,7 +12,7 @@ globalThis.window = {
   location: { hostname: "www.nix-p.com", pathname: "/records/product-a", search: "", hash: "" }
 };
 
-const { trackMetaAddToCart, trackMetaPageView, trackMetaViewContent } = await import("../src/services/metaPixel.js");
+const { trackMetaAddToCart, trackMetaInitiateCheckout, trackMetaPageView, trackMetaViewContent } = await import("../src/services/metaPixel.js");
 const calls = () => window.fbq?.queue || [];
 const count = (kind, value) => calls().filter(([name, argument]) => name === kind && argument === value).length;
 
@@ -32,6 +32,7 @@ assert.deepEqual(calls().find(([name, event]) => name === "track" && event === "
   content_ids: ["product-a"], content_type: "product"
 });
 assert.equal(count("track", "AddToCart"), 0, "Opening a product must not send AddToCart.");
+assert.equal(count("track", "InitiateCheckout"), 0, "Opening a product must not start checkout.");
 const product = { id: "product-a", artist: "Artist", title: "Title", price: 370000 };
 trackMetaAddToCart(true, product, 1);
 assert.equal(count("track", "AddToCart"), 1);
@@ -114,7 +115,7 @@ document.querySelector = (selector) => selector === "#app .product-detail[data-p
   ? { getAttribute: () => "product-c" }
   : null;
 window.innerWidth = 1200;
-const { trackCurrentPageView } = await import("../src/services/analytics.js");
+const { syncCheckoutEntry, trackCurrentPageView } = await import("../src/services/analytics.js");
 window.location.pathname = "/records/product-c";
 trackCurrentPageView();
 assert.equal(count("track", "ViewContent"), 5, "The app's page dispatcher must track visible product details.");
@@ -126,6 +127,44 @@ assert.equal(count("track", "ViewContent"), 5, "The app must not track a product
 window.location.pathname = "/admin/preview/product/product-c";
 trackCurrentPageView();
 assert.equal(count("track", "ViewContent"), 5, "Admin previews must not send ViewContent.");
+
+const checkoutPayload = {
+  content_ids: ["product-a", "product-b"], content_type: "product",
+  value: 1136000, currency: "IDR", num_items: 2
+};
+const checkoutForm = { dataset: { metaCheckout: JSON.stringify(checkoutPayload) } };
+document.querySelector = (selector) => selector === "#app [data-checkout-form][data-meta-checkout]" ? checkoutForm : null;
+window.location.pathname = "/cart";
+syncCheckoutEntry();
+assert.equal(count("track", "InitiateCheckout"), 0, "The checkout event needs active Pixel consent.");
+trackCurrentPageView();
+syncCheckoutEntry();
+assert.equal(count("track", "InitiateCheckout"), 1, "A rendered, consented checkout starts once.");
+assert.deepEqual(calls().find(([name, event]) => name === "track" && event === "InitiateCheckout")[2], checkoutPayload);
+syncCheckoutEntry();
+trackCurrentPageView();
+syncCheckoutEntry();
+assert.equal(count("track", "InitiateCheckout"), 1, "Rerenders and repeated checkout transitions must not count twice.");
+window.location.pathname = "/records";
+syncCheckoutEntry();
+window.location.pathname = "/cart";
+checkoutForm.dataset.metaCheckout = "null";
+syncCheckoutEntry();
+assert.equal(count("track", "InitiateCheckout"), 1, "An invalid cart must not initiate checkout.");
+checkoutForm.dataset.metaCheckout = JSON.stringify(checkoutPayload);
+syncCheckoutEntry();
+assert.equal(count("track", "InitiateCheckout"), 2, "A new valid checkout entry counts once.");
+window.location.pathname = "/records";
+syncCheckoutEntry();
+window.location.pathname = "/cart";
+document.querySelector = () => null;
+syncCheckoutEntry();
+assert.equal(count("track", "InitiateCheckout"), 2, "An empty checkout page must not count.");
+trackMetaInitiateCheckout(true, { ...checkoutPayload, value: 0 });
+assert.equal(count("track", "InitiateCheckout"), 2, "Invalid checkout values must not be sent.");
+trackMetaPageView(false);
+trackMetaInitiateCheckout(true, checkoutPayload);
+assert.equal(count("track", "InitiateCheckout"), 2, "Revoked consent must block checkout tracking.");
 
 const privateModule = await import("../src/services/metaPixel.js?private-host");
 window.location.hostname = "admin.nix-p.com";
@@ -156,4 +195,4 @@ const bundle = await readFile(new URL(`../dist${bundlePath}`, import.meta.url), 
 assert.equal((bundle.match(/1677704951025869/g) || []).length, 1, "The production bundle must contain one Pixel ID.");
 assert.equal((bundle.match(/connect\.facebook\.net\/en_US\/fbevents\.js/g) || []).length, 1);
 
-console.log("Meta Pixel PageView, ViewContent and AddToCart consent, payload, routing and CSP checks passed.");
+console.log("Meta Pixel PageView, ViewContent, AddToCart and InitiateCheckout consent, payload, routing and CSP checks passed.");

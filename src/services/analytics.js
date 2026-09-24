@@ -1,4 +1,4 @@
-import { trackMetaAddToCart, trackMetaPageView, trackMetaViewContent } from "./metaPixel.js";
+import { trackMetaAddToCart, trackMetaInitiateCheckout, trackMetaPageView, trackMetaViewContent } from "./metaPixel.js";
 
 const CONSENT_COOKIE = "nixp_cookie_consent";
 const ANALYTICS_SESSION_KEY = "nixp_analytics_session";
@@ -18,6 +18,7 @@ const ANALYTICS_EVENT_TYPES = new Set([
 
 let initialized = false;
 let lastTrackedPath = "";
+let checkoutEntryTracked = false;
 
 function readCookie(name) {
   const prefix = `${name}=`;
@@ -179,6 +180,22 @@ export function trackSuccessfulAddToCart(product, quantity) {
   }
 }
 
+export function syncCheckoutEntry() {
+  if (location.pathname !== "/cart") {
+    checkoutEntryTracked = false;
+    return;
+  }
+  if (checkoutEntryTracked || !isPublicPage() || !hasAnalyticsConsent()) return;
+  const form = document.querySelector("#app [data-checkout-form][data-meta-checkout]");
+  if (!form) return;
+  try {
+    const payload = JSON.parse(form.dataset.metaCheckout);
+    if (trackMetaInitiateCheckout(true, payload)) checkoutEntryTracked = true;
+  } catch {
+    // Optional tracking must never affect checkout navigation or form use.
+  }
+}
+
 export function initializeAnalytics() {
   if (initialized) return;
   initialized = true;
@@ -189,6 +206,7 @@ export function initializeAnalytics() {
       writeConsent(choice.dataset.cookieConsentChoice === "analytics" ? "analytics" : "essential");
       updateConsentBanner();
       trackCurrentPageView();
+      syncCheckoutEntry();
       return;
     }
 
