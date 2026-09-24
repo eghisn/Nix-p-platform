@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { metaPurchaseSummary } from "../api/_lib/metaPurchase.js";
 
 const order = {
-  id: "order-b92f2e7c-922a-4440-a7fd-2c2ab1aa1984",
+  id: "order-synthetic-purchase-001",
   order_class: "Customer", payment_status: "Paid", currency: "IDR",
   merchandise_total: 260000, discount_total: 0, shipping_total: 10000, grand_total: 270000,
   items: [{ product_id: "nxp-2026-cst-0005", quantity: 1, unit_price: 260000, line_total: 260000 }]
