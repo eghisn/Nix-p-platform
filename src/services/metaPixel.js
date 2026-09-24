@@ -78,3 +78,19 @@ export function trackMetaViewContent(allowed, productId) {
   lastViewedProductId = id;
   window.fbq("track", "ViewContent", { content_ids: [id], content_type: "product" });
 }
+
+export function trackMetaAddToCart(allowed, product, quantity) {
+  if (!isStorefront() || !allowed || !consentGranted || product?.open_to_offers === true) return;
+  const id = String(product?.id || "").trim();
+  const price = Number(product?.price);
+  const value = price * quantity;
+  if (!id || !Number.isSafeInteger(price) || price <= 0 || !Number.isSafeInteger(quantity) || quantity <= 0 || !Number.isSafeInteger(value)) return;
+  window.fbq("track", "AddToCart", {
+    content_ids: [id],
+    content_name: `${product.artist} \u2014 ${product.title}`,
+    content_type: "product",
+    value,
+    currency: "IDR",
+    num_items: quantity
+  });
+}

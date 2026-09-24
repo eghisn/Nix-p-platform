@@ -12,12 +12,13 @@ globalThis.window = {
   location: { hostname: "www.nix-p.com", pathname: "/records/product-a", search: "", hash: "" }
 };
 
-const { trackMetaPageView, trackMetaViewContent } = await import("../src/services/metaPixel.js");
+const { trackMetaAddToCart, trackMetaPageView, trackMetaViewContent } = await import("../src/services/metaPixel.js");
 const calls = () => window.fbq?.queue || [];
 const count = (kind, value) => calls().filter(([name, argument]) => name === kind && argument === value).length;
 
 trackMetaPageView(false);
 trackMetaViewContent(false, "product-a");
+trackMetaAddToCart(false, { id: "product-a", price: 370000 }, 1);
 assert.equal(insertedScripts.length, 0, "Pixel must not load before analytics consent.");
 
 trackMetaPageView(true);
@@ -30,6 +31,21 @@ assert.equal(count("track", "ViewContent"), 1, "A direct product load needs one 
 assert.deepEqual(calls().find(([name, event]) => name === "track" && event === "ViewContent")[2], {
   content_ids: ["product-a"], content_type: "product"
 });
+assert.equal(count("track", "AddToCart"), 0, "Opening a product must not send AddToCart.");
+const product = { id: "product-a", artist: "Artist", title: "Title", price: 370000 };
+trackMetaAddToCart(true, product, 1);
+assert.equal(count("track", "AddToCart"), 1);
+assert.deepEqual(calls().find(([name, event]) => name === "track" && event === "AddToCart")[2], {
+  content_ids: ["product-a"], content_name: "Artist \u2014 Title", content_type: "product",
+  value: 370000, currency: "IDR", num_items: 1
+});
+trackMetaAddToCart(true, product, 2);
+assert.equal(count("track", "AddToCart"), 2, "Separate successful cart actions need separate events.");
+assert.equal(calls().filter(([name, event]) => name === "track" && event === "AddToCart")[1][2].value, 740000);
+trackMetaAddToCart(false, product, 1);
+trackMetaAddToCart(true, { ...product, open_to_offers: true }, 1);
+trackMetaAddToCart(true, { ...product, price: 0 }, 1);
+assert.equal(count("track", "AddToCart"), 2, "Rejected, offer-only and invalid-price items must not send AddToCart.");
 
 trackMetaPageView(true);
 trackMetaViewContent(true, "product-a");
@@ -61,6 +77,8 @@ assert.equal(count("track", "ViewContent"), 3, "Navigating to another product ne
 
 trackMetaPageView(false);
 trackMetaViewContent(false, "product-b");
+trackMetaAddToCart(true, product, 1);
+assert.equal(count("track", "AddToCart"), 2, "Revoked consent must stop cart tracking.");
 assert.equal(count("consent", "revoke"), 1, "Rejecting optional cookies must revoke consent.");
 trackMetaPageView(true);
 trackMetaViewContent(true, "product-b");
@@ -114,11 +132,13 @@ window.location.hostname = "admin.nix-p.com";
 delete window.fbq;
 privateModule.trackMetaPageView(true);
 privateModule.trackMetaViewContent(true, "private-product");
+privateModule.trackMetaAddToCart(true, product, 1);
 assert.equal(insertedScripts.length, 1, "Private hosts must not load the Pixel.");
 
 const analyticsSource = await readFile(new URL("../src/services/analytics.js", import.meta.url), "utf8");
 assert.match(analyticsSource, /trackMetaPageView\(allowed\)/);
 assert.match(analyticsSource, /trackMetaViewContent\(allowed, productId\)/);
+assert.doesNotMatch(analyticsSource, /event\.target\.closest\("\[data-add-cart\]"\)/, "A click alone must not track AddToCart.");
 assert.match(analyticsSource, /#app \.product-detail\[data-product-id\]/);
 const config = JSON.parse(await readFile(new URL("../vercel.json", import.meta.url), "utf8"));
 const policies = config.headers.filter((entry) => entry.headers?.some((header) => header.key === "Content-Security-Policy"));
@@ -136,4 +156,4 @@ const bundle = await readFile(new URL(`../dist${bundlePath}`, import.meta.url), 
 assert.equal((bundle.match(/1677704951025869/g) || []).length, 1, "The production bundle must contain one Pixel ID.");
 assert.equal((bundle.match(/connect\.facebook\.net\/en_US\/fbevents\.js/g) || []).length, 1);
 
-console.log("Meta Pixel PageView and ViewContent consent, routing, deduplication and CSP checks passed.");
+console.log("Meta Pixel PageView, ViewContent and AddToCart consent, payload, routing and CSP checks passed.");

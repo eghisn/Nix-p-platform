@@ -1,4 +1,4 @@
-import { trackMetaPageView, trackMetaViewContent } from "./metaPixel.js";
+import { trackMetaAddToCart, trackMetaPageView, trackMetaViewContent } from "./metaPixel.js";
 
 const CONSENT_COOKIE = "nixp_cookie_consent";
 const ANALYTICS_SESSION_KEY = "nixp_analytics_session";
@@ -165,6 +165,20 @@ export function trackCurrentPageView() {
   trackAnalytics(location.pathname.match(/^\/(records|objects|apparel|accessories|publishing)\//) ? "product_view" : "page_view");
 }
 
+export function trackSuccessfulAddToCart(product, quantity) {
+  if (!isPublicPage() || !hasAnalyticsConsent()) return;
+  try {
+    trackAnalytics("add_to_cart", { productId: product.id });
+  } catch {
+    // Optional analytics must never interrupt a completed cart addition.
+  }
+  try {
+    trackMetaAddToCart(true, product, quantity);
+  } catch {
+    // Optional analytics must never interrupt a completed cart addition.
+  }
+}
+
 export function initializeAnalytics() {
   if (initialized) return;
   initialized = true;
@@ -185,11 +199,6 @@ export function initializeAnalytics() {
       return;
     }
 
-    const addToCart = event.target.closest("[data-add-cart]");
-    if (addToCart) {
-      trackAnalytics("add_to_cart", { productId: addToCart.dataset.addCart });
-      return;
-    }
     if (event.target.closest("[data-cart-open]")) {
       trackAnalytics("cart_open");
       return;

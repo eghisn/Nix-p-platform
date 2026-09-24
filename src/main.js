@@ -30,7 +30,8 @@ import {
 import { recordArtistInitial, validRecordArtistInitial } from "./components/recordsPage.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
-import { checkoutMarketingAttribution, initializeAnalytics, trackAnalytics, trackCurrentPageView } from "./services/analytics.js";
+import { checkoutMarketingAttribution, initializeAnalytics, trackAnalytics, trackCurrentPageView, trackSuccessfulAddToCart } from "./services/analytics.js";
+import { commitCartAddition } from "./services/cartAddition.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
 import { apparelPageMarkup, catalogGridPageMarkup, publishingPageMarkup } from "./components/catalogPage.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "./components/labelsPage.js";
@@ -105,8 +106,8 @@ function readCart() {
   }
 }
 
-function persistCart() {
-  localStorage.setItem("nixp-cart", JSON.stringify(state.cart));
+function persistCart(cart = state.cart) {
+  localStorage.setItem("nixp-cart", JSON.stringify(cart));
 }
 
 function syncPublicCartCount() {
@@ -3043,22 +3044,36 @@ function bindDeferredProductCardInteractions(card) {
       navigateInternal(href);
     });
   });
-  card.querySelectorAll("[data-add-cart]").forEach((button) => {
-    if (button.dataset.deferredCartBound === "true") return;
-    button.dataset.deferredCartBound = "true";
-    button.addEventListener("click", async () => {
+  card.querySelectorAll("[data-add-cart]").forEach(bindAddToCartButton);
+}
+
+function bindAddToCartButton(button) {
+  if (button.dataset.cartBound === "true") return;
+  button.dataset.cartBound = "true";
+  button.addEventListener("click", async () => {
+    if (button.dataset.cartPending === "true") return;
+    button.dataset.cartPending = "true";
+    try {
       const product = await catalogService.getProduct(button.dataset.addCart);
       const selectedSize = product?.sizes?.length ? state.selectedSizes[product.id] || defaultAvailableSize(product) : "";
       const key = cartKey(button.dataset.addCart, selectedSize);
-      const stock = productStock(product, selectedSize);
-      if (stock > 0 && cartItemQuantity(key) < stock) {
-        state.cart.push(key);
-        clearCheckoutSession();
-        persistCart();
+      const nextCart = commitCartAddition({
+        product,
+        key,
+        stock: productStock(product, selectedSize),
+        cart: state.cart,
+        clearCheckoutSession,
+        persistCart
+      });
+      if (nextCart) {
+        state.cart = nextCart;
+        trackSuccessfulAddToCart(product, 1);
       }
       state.cartOpen = true;
       render();
-    });
+    } finally {
+      delete button.dataset.cartPending;
+    }
   });
 }
 
@@ -3298,22 +3313,7 @@ function bindEvents() {
     });
   });
 
-  document.querySelectorAll("[data-add-cart]").forEach((button) => {
-    button.addEventListener("click", async () => {
-      const product = await catalogService.getProduct(button.dataset.addCart);
-      const selectedSize = product?.sizes?.length ? state.selectedSizes[product.id] || defaultAvailableSize(product) : "";
-      const key = cartKey(button.dataset.addCart, selectedSize);
-      const stock = productStock(product, selectedSize);
-      const currentQuantity = cartItemQuantity(key);
-      if (stock > 0 && currentQuantity < stock) {
-        state.cart.push(key);
-        clearCheckoutSession();
-        persistCart();
-      }
-      state.cartOpen = true;
-      render();
-    });
-  });
+  document.querySelectorAll("[data-add-cart]").forEach(bindAddToCartButton);
 
   document.querySelectorAll("[data-cart-quantity-step]").forEach((button) => {
     button.addEventListener("click", () => {

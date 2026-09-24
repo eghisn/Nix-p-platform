@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.mjs",
-    "build": "node scripts/build.mjs && node scripts/verify-meta-pixel.mjs && node scripts/verify-public-release-lock.mjs && node scripts/verify-api-security-headers.mjs && node scripts/verify-jne-official-client.mjs && node scripts/verify-instagram-insights.mjs && node scripts/verify-artist-directory-consistency.mjs && node scripts/verify-home-collections.mjs && node scripts/verify-home-slider-stock-state.mjs && node scripts/verify-public-blog.mjs && node scripts/verify-public-request-item.mjs && node scripts/verify-public-commerce-boundary.mjs && node scripts/verify-public-product-stock-state.mjs && node scripts/verify-publishing-filter.mjs",
+    "build": "node scripts/build.mjs && node scripts/verify-meta-pixel.mjs && node scripts/verify-cart-addition.mjs && node scripts/verify-public-release-lock.mjs && node scripts/verify-api-security-headers.mjs && node scripts/verify-jne-official-client.mjs && node scripts/verify-instagram-insights.mjs && node scripts/verify-artist-directory-consistency.mjs && node scripts/verify-home-collections.mjs && node scripts/verify-home-slider-stock-state.mjs && node scripts/verify-public-blog.mjs && node scripts/verify-public-request-item.mjs && node scripts/verify-public-commerce-boundary.mjs && node scripts/verify-public-product-stock-state.mjs && node scripts/verify-publishing-filter.mjs",
     "test:meta-pixel": "node scripts/verify-meta-pixel.mjs",
     "test:catalog": "node scripts/verify-catalog-integrity.mjs",
     "test:records-filter": "node scripts/verify-records-artist-filter.mjs",
