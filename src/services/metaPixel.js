@@ -4,6 +4,7 @@ const PIXEL_SCRIPT_URL = "https://connect.facebook.net/en_US/fbevents.js";
 let initialized = false;
 let consentGranted = false;
 let lastPageViewUrl = "";
+let lastViewedProductId = "";
 
 function isStorefront() {
   const host = window.location.hostname.toLowerCase();
@@ -45,6 +46,7 @@ export function trackMetaPageView(allowed) {
     if (consentGranted) window.fbq("consent", "revoke");
     consentGranted = false;
     lastPageViewUrl = "";
+    lastViewedProductId = "";
     return;
   }
 
@@ -63,4 +65,16 @@ export function trackMetaPageView(allowed) {
   if (url === lastPageViewUrl) return;
   lastPageViewUrl = url;
   window.fbq("track", "PageView");
+}
+
+export function trackMetaViewContent(allowed, productId) {
+  if (!isStorefront()) return;
+  const id = String(productId || "").trim();
+  if (!allowed || !consentGranted || !id) {
+    lastViewedProductId = "";
+    return;
+  }
+  if (id === lastViewedProductId) return;
+  lastViewedProductId = id;
+  window.fbq("track", "ViewContent", { content_ids: [id], content_type: "product" });
 }

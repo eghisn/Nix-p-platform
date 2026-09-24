@@ -1,4 +1,4 @@
-import { trackMetaPageView } from "./metaPixel.js";
+import { trackMetaPageView, trackMetaViewContent } from "./metaPixel.js";
 
 const CONSENT_COOKIE = "nixp_cookie_consent";
 const ANALYTICS_SESSION_KEY = "nixp_analytics_session";
@@ -152,8 +152,13 @@ export function checkoutMarketingAttribution() {
 }
 
 export function trackCurrentPageView() {
-  trackMetaPageView(isPublicPage() && hasAnalyticsConsent());
-  if (!isPublicPage() || !hasAnalyticsConsent()) return;
+  const allowed = isPublicPage() && hasAnalyticsConsent();
+  trackMetaPageView(allowed);
+  const productId = /^\/(records|objects|apparel|accessories|publishing)\/[^/]+$/.test(location.pathname)
+    ? document.querySelector("#app .product-detail[data-product-id]")?.getAttribute("data-product-id")
+    : "";
+  trackMetaViewContent(allowed, productId);
+  if (!allowed) return;
   const path = `${location.pathname}${location.search}`;
   if (path === lastTrackedPath) return;
   lastTrackedPath = path;
