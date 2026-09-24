@@ -14,6 +14,7 @@ import { reconcileCatalogPublicationState } from "./_lib/catalogPublicationRecon
 import { indonesiaRegencies } from "../src/data/indonesiaRegencies.js";
 import { recordSystemEvent } from "./_lib/observability.js";
 import { attachOrderMarketingAttribution } from "./_lib/orderMarketingAttribution.js";
+import { metaPurchaseSummary } from "./_lib/metaPurchase.js";
 
 const ORDER_ACCESS_COOKIE_NAME = "nixp_order_access";
 const CHECKOUT_ACCESS_COOKIE_NAME = "nixp_checkout_access";
@@ -270,7 +271,7 @@ async function handleCustomerOrderStatus(req, res) {
         const latestOrder = await getOrderRecord(orderId);
         const [quotes, payment] = await Promise.all([
           supabaseFetch(`shipping_quotes?select=courier,service,amount,eta,status,created_at,expires_at&order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc`, { service: true }),
-          customerPaymentSummary(orderId)
+          customerPaymentSummary(orderId, latestOrder || order)
         ]);
         return json(res, 200, { ok: true, refresh, order: customerOrderSummary(latestOrder || order), quotes: quotes || [], payment });
       }
@@ -285,7 +286,7 @@ async function handleCustomerOrderStatus(req, res) {
     if (suppliedOrderId && suppliedToken) setOrderAccessCookie(req, res, orderId, token);
     const [quotes, payment] = await Promise.all([
       supabaseFetch(`shipping_quotes?select=courier,service,amount,eta,status,created_at,expires_at&order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc`, { service: true }),
-      customerPaymentSummary(orderId)
+      customerPaymentSummary(orderId, order)
     ]);
     return json(res, 200, { ok: true, order: customerOrderSummary(order), quotes: quotes || [], payment });
   } catch (error) {
@@ -448,7 +449,7 @@ function customerOrderSummary(order) {
   };
 }
 
-async function customerPaymentSummary(orderId) {
+async function customerPaymentSummary(orderId, order) {
   const attempts = await supabaseFetch(`payment_attempts?select=status,payload&order_id=eq.${encodeURIComponent(orderId)}&provider=eq.Midtrans&limit=1`, { service: true });
   const attempt = Array.isArray(attempts) ? attempts[0] : null;
   let instructions = safeMidtransPaymentInstructions(attempt?.payload?.paymentInstructions || {});
@@ -464,6 +465,7 @@ async function customerPaymentSummary(orderId) {
   return {
     provider: "Midtrans",
     attemptStatus,
+    purchase: metaPurchaseSummary(order, attempt),
     resumeAvailable,
     startAvailable: !resumeAvailable && !actionableInstructions && ["Unavailable", "Creation Failed", "Pending"].includes(attemptStatus),
     assistanceRequired: !resumeAvailable && !actionableInstructions && attemptStatus === "Provider Pending",

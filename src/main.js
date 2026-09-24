@@ -30,7 +30,7 @@ import {
 import { recordArtistInitial, validRecordArtistInitial } from "./components/recordsPage.js";
 import { adminStore } from "./services/adminStore.js";
 import { catalogService } from "./services/catalogService.js";
-import { checkoutMarketingAttribution, initializeAnalytics, syncCheckoutEntry, trackAnalytics, trackCurrentPageView, trackSuccessfulAddToCart } from "./services/analytics.js";
+import { checkoutMarketingAttribution, initializeAnalytics, syncCheckoutEntry, syncPaidPurchase, trackAnalytics, trackCurrentPageView, trackSuccessfulAddToCart } from "./services/analytics.js";
 import { commitCartAddition } from "./services/cartAddition.js";
 import { checkoutEventPayload } from "./services/checkoutEventPayload.js";
 import { pageHero, productGrid, shell, table } from "./components/layout.js";
@@ -360,6 +360,7 @@ async function render({ preserveScroll = false, scrollToTop = false } = {}) {
   setupAdminOrdersLiveRefresh(path);
   trackCurrentPageView();
   syncCheckoutEntry();
+  syncPaidPurchase();
 }
 
 function updateDocumentTitle(path) {
@@ -1087,7 +1088,7 @@ async function customerOrderStatusPage() {
       `<button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button>`
     ].filter(Boolean).join("");
     return `
-      <section class="section order-status-page">
+      <section class="section order-status-page"${payment.purchase ? ` data-meta-purchase="${escapeAttr(JSON.stringify(payment.purchase))}"` : ""}>
         <div class="order-status-shell">
           <div class="order-status-heading">
             <p class="eyebrow">NIXP ORDER</p>

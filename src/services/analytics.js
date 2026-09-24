@@ -1,4 +1,4 @@
-import { trackMetaAddToCart, trackMetaInitiateCheckout, trackMetaPageView, trackMetaViewContent } from "./metaPixel.js";
+import { trackMetaAddToCart, trackMetaInitiateCheckout, trackMetaPageView, trackMetaPurchase, trackMetaViewContent } from "./metaPixel.js";
 
 const CONSENT_COOKIE = "nixp_cookie_consent";
 const ANALYTICS_SESSION_KEY = "nixp_analytics_session";
@@ -196,6 +196,17 @@ export function syncCheckoutEntry() {
   }
 }
 
+export function syncPaidPurchase() {
+  if (location.pathname !== "/order-status" || !isPublicPage() || !hasAnalyticsConsent()) return;
+  const element = document.querySelector("#app [data-meta-purchase]");
+  if (!element) return;
+  try {
+    void trackMetaPurchase(true, JSON.parse(element.dataset.metaPurchase));
+  } catch {
+    // Optional attribution cannot interrupt order status.
+  }
+}
+
 export function initializeAnalytics() {
   if (initialized) return;
   initialized = true;
@@ -207,6 +218,7 @@ export function initializeAnalytics() {
       updateConsentBanner();
       trackCurrentPageView();
       syncCheckoutEntry();
+      syncPaidPurchase();
       return;
     }
 

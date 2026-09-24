@@ -111,3 +111,43 @@ export function trackMetaInitiateCheckout(allowed, payload) {
   });
   return true;
 }
+
+const purchaseInFlight = new Set();
+
+export async function trackMetaPurchase(allowed, purchase) {
+  if (!isStorefront() || !allowed || !consentGranted || window.location.pathname !== "/order-status" || !purchase) return false;
+  const { orderId, content_ids: ids, value, num_items: quantity, contents } = purchase;
+  if (!/^order-[A-Za-z0-9_-]{8,96}$/.test(String(orderId || "")) || !Array.isArray(ids) || !ids.length ||
+      ids.some((id) => typeof id !== "string" || !id.trim()) || !Array.isArray(contents) || !contents.length ||
+      !Number.isSafeInteger(value) || value <= 0 || !Number.isSafeInteger(quantity) || quantity <= 0 ||
+      purchase.currency !== "IDR" || purchase.content_type !== "product") return false;
+
+  const key = `nixp_meta_purchase:${orderId}`;
+  if (purchaseInFlight.has(key)) return false;
+  purchaseInFlight.add(key);
+  const sendOnce = () => {
+    if (localStorage.getItem(key)) return false;
+    // Persist before queueing the optional Pixel call: a failed network request
+    // may undercount, but a refresh must never invent another purchase.
+    localStorage.setItem(key, "1");
+    window.fbq("track", "Purchase", {
+      content_ids: ids,
+      content_type: "product",
+      value,
+      currency: "IDR",
+      num_items: quantity,
+      contents
+    });
+    return true;
+  };
+  try {
+    return navigator.locks?.request
+      ? await navigator.locks.request(key, sendOnce)
+      : sendOnce();
+  } catch {
+    // Storage or Pixel failure cannot affect a paid customer's order page.
+    return false;
+  } finally {
+    purchaseInFlight.delete(key);
+  }
+}

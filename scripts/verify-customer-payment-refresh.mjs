@@ -20,7 +20,7 @@ assert.match(refreshAction, /customer-payment-refresh/, "Live provider checks mu
 assert.match(refreshAction, /limit: 12, windowSeconds: 900/, "Customer refreshes must remain practical while bounded.");
 assert.match(refreshAction, /Your order remains active; please try again shortly/, "A transient provider failure must preserve the order and give the customer a clear retry path.");
 assert.match(refreshAction, /customerOrderSummary\(latestOrder \|\| order\)/, "The response must reflect the order after a verified provider update.");
-assert.match(refreshAction, /customerPaymentSummary\(orderId\)/, "The response must return current safe payment instructions.");
+assert.match(refreshAction, /customerPaymentSummary\(orderId, latestOrder \|\| order\)/, "The response must return current safe payment instructions and use the verified order for attribution.");
 assert.doesNotMatch(refreshAction, /createMidtransPaymentSession/, "Refreshing payment status must never create a new payment session.");
 assert.match(client, /action: "refresh-payment-status"/, "The customer button must invoke live payment verification.");
 assert.match(client, /Checking payment directly with Midtrans/, "The interface must make the live check clear while it runs.");
