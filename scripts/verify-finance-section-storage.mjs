@@ -66,6 +66,8 @@ assert.equal(
 
 const financeUi = await readFile("apps/finance/index.html", "utf8");
 assert.match(financeUi, /changedSections: changedFinanceSections\(\)/);
+assert.match(financeUi, /setFormValue\(el\.stockForm, "qty", item\.qty \?\? 1\);/);
+assert.doesNotMatch(financeUi, /setFormValue\(el\.stockForm, "qty", item\.qty \|\| 1\);/);
 assert.doesNotMatch(financeUi, /Saving your latest edits/);
 assert.doesNotMatch(financeUi, /Catalog research queued/);
 assert.match(financeUi, /data-reconcile-closed-month/);
@@ -83,5 +85,11 @@ const migration = await readFile("supabase/migrations/20260830121400_finance_cat
 assert.match(migration, /finance_catalog_sync_jobs/);
 assert.match(migration, /enable row level security/);
 assert.match(migration, /service_role/);
+
+const costCorrectionMigration = await readFile("supabase/migrations/20260928130000_reconcile_paid_sale_cogs_on_stock_cost_edit.sql", "utf8");
+assert.match(costCorrectionMigration, /v_changed_cost_skus/);
+assert.match(costCorrectionMigration, /public\.order_lines/);
+assert.match(costCorrectionMigration, /v_effective_changes := jsonb_set\(v_effective_changes, '\{sales\}'/);
+assert.match(costCorrectionMigration, /quantity-only edit never enters this path/);
 
 console.log("Finance section storage contract passed.");

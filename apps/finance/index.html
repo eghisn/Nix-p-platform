@@ -3019,7 +3019,9 @@
       setApparelSizeFormValues(el.stockForm, item);
       setFormValue(el.stockForm, "source", item.source || "Business Purchase");
       setFormValue(el.stockForm, "acquisitionMonth", item.acquisitionMonth || currentMonth);
-      setFormValue(el.stockForm, "qty", item.qty || 1);
+      // Zero is a real stock value for sold inventory. Only a missing legacy
+      // value should use the new-item default of one.
+      setFormValue(el.stockForm, "qty", item.qty ?? 1);
       setFormValue(el.stockForm, "costBasis", item.costBasis);
       setFormValue(el.stockForm, "sellingPrice", item.sellingPrice);
       setFormValue(el.stockForm, "minimumAcceptableOffer", item.minimumAcceptableOffer || "");
