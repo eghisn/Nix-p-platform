@@ -2117,7 +2117,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Hyperdub",
       "fabricCare": "",
@@ -2131,10 +2131,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Doon Kanda 2018 luna ep is a verified Vinyl, 12\", 33 ⅓ RPM, Single Sided, EP edition on Hyperdub. The release is indexed under Experimental, IDM, Electronic.",
+      "description": "Luna is Jesse Kanda's second release for Hyperdub, extending his visual practice into a seven-track electronic world of mutation, friction, and uneasy detail. It is experimental music with a strong physical presence: fragmented, tactile, and deliberately disorienting.",
       "reviewQuote": "UK-based artist doon kanda, aka Arca and Björk collaborator Jesse Kanda, has unveiled a new EP for Hyperdub. Luna is",
       "sourceTitle": "luna ep",
-      "editRevision": 25,
+      "editRevision": 28,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/12421524-Doon-Kanda-Luna-EP",
@@ -2146,7 +2146,7 @@
       "reviewSource": "FACT (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://www.factmag.com/2018/04/23/doon-kanda-luna-ep-hyperdub/",
-        "description": "Doon Kanda 2018 luna ep is a verified Vinyl, 12\", 33 ⅓ RPM, Single Sided, EP edition on Hyperdub. The release is indexed under Experimental, IDM, Electronic.",
+        "description": "Luna is Jesse Kanda's second release for Hyperdub, extending his visual practice into a seven-track electronic world of mutation, friction, and uneasy detail. It is experimental music with a strong physical presence: fragmented, tactile, and deliberately disorienting.",
         "reviewQuote": "UK-based artist doon kanda, aka Arca and Björk collaborator Jesse Kanda, has unveiled a new EP for Hyperdub. Luna is",
         "reviewSource": "FACT (quoted)",
         "relatedArtists": [
@@ -2156,7 +2156,7 @@
           "Evita Manji",
           "Sega Bodega"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Hyperdub / FACT",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -2429,10 +2429,10 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Hyperdub / FACT",
       "metadataSourceUrl": "https://www.discogs.com/release/12421524-Doon-Kanda-Luna-EP",
       "editorialUpdatedAt": "2026-09-28T02:01:45.349+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
@@ -4437,7 +4437,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Third Worlds",
       "fabricCare": "",
@@ -4451,10 +4451,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Death Grips 2018 year of the snitch is a verified Vinyl, LP, Album edition on Third Worlds. The release is indexed under Experimental, Noise, Hardcore Hip-Hop.",
+      "description": "Year Of The Snitch is Death Grips at their most unstable and unpredictable: fractured rap, noise, electronics, and strange melodic fragments colliding without settling into a fixed shape. It is a record that treats disorder as its own kind of structure.",
       "reviewQuote": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
       "sourceTitle": "year of the snitch",
-      "editRevision": 29,
+      "editRevision": 32,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0078-death-grips-year-of-the-snitch-cover-art.jpg",
@@ -4466,7 +4466,7 @@
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://pitchfork.com/reviews/albums/death-grips-year-of-the-snitch/",
-        "description": "Death Grips 2018 year of the snitch is a verified Vinyl, LP, Album edition on Third Worlds. The release is indexed under Experimental, Noise, Hardcore Hip-Hop.",
+        "description": "Year Of The Snitch is Death Grips at their most unstable and unpredictable: fractured rap, noise, electronics, and strange melodic fragments colliding without settling into a fixed shape. It is a record that treats disorder as its own kind of structure.",
         "reviewQuote": "The prolific noise rap project drills down on their sonic signature and remains politically agnostic and persistently agitated.",
         "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
@@ -4476,7 +4476,7 @@
           "dälek",
           "Lil Ugly Mane"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Death Grips official / Third Worlds",
         "relatedArtistEvidence": [
           {
             "artist": "Andrew Adamson",
@@ -4749,10 +4749,10 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Death Grips official / Third Worlds",
       "metadataSourceUrl": "https://www.discogs.com/release/12485858-Death-Grips-Year-Of-The-Snitch",
       "editorialUpdatedAt": "2026-09-28T02:01:43.761+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -5130,7 +5130,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "",
       "collection": "Ipecac Recordings",
       "fabricCare": "",
@@ -5144,10 +5144,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Hella 2007 there s no 666 in outer space is a verified CD, Album edition on Ipecac Recordings. The release is indexed under Math Rock, Noise, Avantgarde.",
+      "description": "On There's No 666 In Outer Space, Hella take their precision-engineered chaos to a larger and stranger scale. Jagged riffs, abrupt turns, and dense rhythmic collisions make this a restless record for listeners who like their rock music unreasonably alive.",
       "reviewQuote": "Irony is a pale, sullen bitch with bruises all over her legs and an &#8216;insert here&#8217; tattoo above her bloated",
       "sourceTitle": "there s no 666 in outer space",
-      "editRevision": 22,
+      "editRevision": 25,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/2507875-Hella-Theres-No-666-In-Outer-Space",
@@ -5159,7 +5159,7 @@
       "reviewSource": "Tiny Mix Tapes (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://www.tinymixtapes.com/music-review/hella-there8217s-no-666-outer-space",
-        "description": "Hella 2007 there s no 666 in outer space is a verified CD, Album edition on Ipecac Recordings. The release is indexed under Math Rock, Noise, Avantgarde.",
+        "description": "On There's No 666 In Outer Space, Hella take their precision-engineered chaos to a larger and stranger scale. Jagged riffs, abrupt turns, and dense rhythmic collisions make this a restless record for listeners who like their rock music unreasonably alive.",
         "reviewQuote": "Irony is a pale, sullen bitch with bruises all over her legs and an &#8216;insert here&#8217; tattoo above her bloated",
         "reviewSource": "Tiny Mix Tapes (quoted)",
         "relatedArtists": [
@@ -5169,7 +5169,7 @@
           "Lightning Bolt",
           "Tera Melos"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Ipecac Recordings / Apple Music",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -5442,10 +5442,10 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Ipecac Recordings / Apple Music",
       "metadataSourceUrl": "https://www.discogs.com/release/2507875-Hella-Theres-No-666-In-Outer-Space",
       "editorialUpdatedAt": "2026-09-28T02:01:43.439+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
       "adminPublishOverride": null,
@@ -6484,7 +6484,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Jagjaguwar",
       "fabricCare": "",
@@ -6498,10 +6498,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Unknown Mortal Orchestra 2015 multi love is a verified Vinyl, LP, Album edition on Jagjaguwar. The release is indexed under Psychedelic, Funk, Funk / Soul.",
+      "description": "On Multi-Love, Ruban Nielson turns personal upheaval into hazy psych-pop, folding vintage synthesizers, soft-rock melodies, disco motion, and warped guitar into a record about intimacy and complication. It is one of Unknown Mortal Orchestra's warmest and most restless albums.",
       "reviewQuote": "The production on Unknown Mortal Orchestra&#x27;s third album is so central it’s almost another character on the album, corroding and",
       "sourceTitle": "multi love",
-      "editRevision": 25,
+      "editRevision": 28,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0076-unknown-mortal-orchestra-multi-love-bandcamp.jpg",
@@ -6513,7 +6513,7 @@
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://pitchfork.com/reviews/albums/20590-unknown-mortal-orchestra-multi-love/",
-        "description": "Unknown Mortal Orchestra 2015 multi love is a verified Vinyl, LP, Album edition on Jagjaguwar. The release is indexed under Psychedelic, Funk, Funk / Soul.",
+        "description": "On Multi-Love, Ruban Nielson turns personal upheaval into hazy psych-pop, folding vintage synthesizers, soft-rock melodies, disco motion, and warped guitar into a record about intimacy and complication. It is one of Unknown Mortal Orchestra's warmest and most restless albums.",
         "reviewQuote": "The production on Unknown Mortal Orchestra&#x27;s third album is so central it’s almost another character on the album, corroding and",
         "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
@@ -6523,7 +6523,7 @@
           "Crumb",
           "Temples"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Unknown Mortal Orchestra official Bandcamp / Jagjaguwar",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -6796,10 +6796,10 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Unknown Mortal Orchestra official Bandcamp / Jagjaguwar",
       "metadataSourceUrl": "https://www.discogs.com/release/27228903-Unknown-Mortal-Orchestra-Multi-Love",
       "editorialUpdatedAt": "2026-09-28T02:01:42.815+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -7874,7 +7874,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "",
       "collection": "Captured Tracks",
       "fabricCare": "",
@@ -7888,10 +7888,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "DIIV 2019 deceiver is a verified CD, Album edition on Captured Tracks. The release is indexed under Indie Rock, Shoegaze, Rock.",
+      "description": "Deceiver moves DIIV's dreamlike guitar architecture into harsher, more physical territory. Shadowed by addiction, recovery, and grief, its songs place strained vocals against dense walls of distortion without losing the band's sense of space.",
       "reviewQuote": "The shoegaze band’s third album is another portrait of addiction and recovery, but this time there’s no suggestion of a",
       "sourceTitle": "deceiver",
-      "editRevision": 22,
+      "editRevision": 25,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/14248376-DIIV-Deceiver",
@@ -7903,7 +7903,7 @@
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://pitchfork.com/reviews/albums/diiv-deceiver/",
-        "description": "DIIV 2019 deceiver is a verified CD, Album edition on Captured Tracks. The release is indexed under Indie Rock, Shoegaze, Rock.",
+        "description": "Deceiver moves DIIV's dreamlike guitar architecture into harsher, more physical territory. Shadowed by addiction, recovery, and grief, its songs place strained vocals against dense walls of distortion without losing the band's sense of space.",
         "reviewQuote": "The shoegaze band’s third album is another portrait of addiction and recovery, but this time there’s no suggestion of a",
         "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
@@ -7913,7 +7913,7 @@
           "BDRMM",
           "Nothing"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "DIIV official Bandcamp / Captured Tracks",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -8185,10 +8185,10 @@
       "catalogPriceSync": 368000,
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "DIIV official Bandcamp / Captured Tracks",
       "metadataSourceUrl": "https://www.discogs.com/release/14248376-DIIV-Deceiver",
       "editorialUpdatedAt": "2026-09-28T02:01:42.181+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
       "garmentConditionNote": "",
@@ -8549,7 +8549,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Captured Tracks",
       "fabricCare": "",
@@ -8563,10 +8563,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "DIIV 2016 is the is are is a verified Vinyl, LP, Album edition on Captured Tracks. The release is indexed under Lo-Fi, Shoegaze, Indie Rock.",
+      "description": "DIIV's second album expands the haze of Oshin into a sprawling, seventeen-track record shaped by instability, introspection, and repetition. Shimmering guitars and melodic bass carry songs that feel both euphoric and bruised.",
       "reviewQuote": "DIIV's long-awaited follow-up to Oshin is not the radical break in style that Zachary Cole Smith had promised: While it's mostly about getting high and it sounds exactly like DIIV, it finds more interesting ways to do both of those things. Call it Requiem for a Dream-pop, dedicated to a gorgeous yet unglamorous portrayal of addiction.",
       "sourceTitle": "is the is are",
-      "editRevision": 28,
+      "editRevision": 31,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/8205956-DIIV-Is-The-Is-Are",
@@ -8578,7 +8578,7 @@
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://pitchfork.com/reviews/albums/21462-is-the-is-are/",
-        "description": "DIIV 2016 is the is are is a verified Vinyl, LP, Album edition on Captured Tracks. The release is indexed under Lo-Fi, Shoegaze, Indie Rock.",
+        "description": "DIIV's second album expands the haze of Oshin into a sprawling, seventeen-track record shaped by instability, introspection, and repetition. Shimmering guitars and melodic bass carry songs that feel both euphoric and bruised.",
         "reviewQuote": "DIIV&#x27;s long-awaited follow-up to Oshin is not the radical break in style that Zachary Cole Smith had promised: While it&#x27;s",
         "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
@@ -8588,7 +8588,7 @@
           "BDRMM",
           "Nothing"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "DIIV official Bandcamp / Captured Tracks",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -8861,10 +8861,10 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "DIIV official Bandcamp / Captured Tracks",
       "metadataSourceUrl": "https://www.discogs.com/release/8205956-DIIV-Is-The-Is-Are",
       "editorialUpdatedAt": "2026-09-28T02:01:41.866+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -9239,7 +9239,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Capitol Records",
       "fabricCare": "",
@@ -9253,10 +9253,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Nine Inch Nails 2023 bad witch is a verified Vinyl, LP, Album, Reissue edition on Capitol Records. The release is indexed under Art Rock, Industrial, Avant-garde Jazz.",
+      "description": "Bad Witch closes Nine Inch Nails' 2016-2018 trilogy with a compressed, anxious mix of industrial rock, electronics, and damaged atmosphere. Its short runtime gives every shift extra force: bleak, physical, and sharply controlled.",
       "reviewQuote": "Trent Reznor’s third EP-length NIN release in the last two years is the best of the lot, with a raw",
       "sourceTitle": "bad witch",
-      "editRevision": 24,
+      "editRevision": 27,
       "imageCredits": [
         {
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
@@ -9268,7 +9268,7 @@
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://pitchfork.com/reviews/albums/nine-inch-nails-bad-witch/",
-        "description": "Nine Inch Nails 2023 bad witch is a verified Vinyl, LP, Album, Reissue edition on Capitol Records. The release is indexed under Art Rock, Industrial, Avant-garde Jazz.",
+        "description": "Bad Witch closes Nine Inch Nails' 2016-2018 trilogy with a compressed, anxious mix of industrial rock, electronics, and damaged atmosphere. Its short runtime gives every shift extra force: bleak, physical, and sharply controlled.",
         "reviewQuote": "Trent Reznor’s third EP-length NIN release in the last two years is the best of the lot, with a raw",
         "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
@@ -9278,7 +9278,7 @@
           "Skinny Puppy",
           "Orgy"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Nine Inch Nails official discography",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -9551,10 +9551,10 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Nine Inch Nails official discography",
       "metadataSourceUrl": "https://www.discogs.com/release/30000718-Nine-Inch-Nails-Bad-Witch",
       "editorialUpdatedAt": "2026-09-28T02:01:41.534+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -11173,7 +11173,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Domino",
       "fabricCare": "",
@@ -11187,10 +11187,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "These New Puritans 2008 navigate navigate is a verified Vinyl, 12\" edition on Domino. The release is indexed under Indie Rock, Rock.",
+      "description": "Recorded for Dior Homme's 2007 collection, Navigate, Navigate belongs to These New Puritans' early, disciplined world of clipped rhythm and angular tension. A small but important document of the group before their later records opened into much larger forms.",
       "reviewQuote": "A ways back we posted the centrifugal, darkly dissolving, flesh rippling video for These New Puritan’s Mark E. Smith-barked “Elvis.”",
       "sourceTitle": "navigate navigate",
-      "editRevision": 29,
+      "editRevision": 32,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
@@ -11202,7 +11202,7 @@
       "reviewSource": "Stereogum (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://www.stereogum.com/7686/new_these_new_puritans_navigate_navigate/news/",
-        "description": "These New Puritans 2008 navigate navigate is a verified Vinyl, 12\" edition on Domino. The release is indexed under Indie Rock, Rock.",
+        "description": "Recorded for Dior Homme's 2007 collection, Navigate, Navigate belongs to These New Puritans' early, disciplined world of clipped rhythm and angular tension. A small but important document of the group before their later records opened into much larger forms.",
         "reviewQuote": "A ways back we posted the centrifugal, darkly dissolving, flesh rippling video for These New Puritan’s Mark E. Smith-barked “Elvis.”",
         "reviewSource": "Stereogum (quoted)",
         "relatedArtists": [
@@ -11212,7 +11212,7 @@
           "Heartworms",
           "Wild Beasts"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Vogue / These New Puritans",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -11485,10 +11485,10 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Vogue / These New Puritans",
       "metadataSourceUrl": "https://www.discogs.com/release/1279929-These-New-Puritans-Navigate-Navigate",
       "editorialUpdatedAt": "2026-09-28T02:01:39.997+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -11853,7 +11853,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Domino",
       "fabricCare": "",
@@ -11867,10 +11867,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Protomartyr (2) 2018 protomartyr 2 consolation e p is a verified Vinyl, 12\", EP, Limited Edition edition on Domino. The release is indexed under Punk, Post-Punk, Indie Rock.",
+      "description": "Recorded with Kelley Deal of The Breeders, Consolation condenses Protomartyr's tense, literary post-punk into four direct and unsettled songs. The result is brief but substantial: dry humour, nervous guitars, and Joe Casey's voice holding the centre.",
       "reviewQuote": "The four-song EP from the Michigan post-punk band features Kelley Deal of the Breeders and some of the most pointed",
       "sourceTitle": "protomartyr 2 consolation e p",
-      "editRevision": 30,
+      "editRevision": 33,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/12129560-Protomartyr-Consolation-EP",
@@ -11882,7 +11882,7 @@
       "reviewSource": "Pitchfork (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://pitchfork.com/reviews/albums/protomartyr-consolation-ep/",
-        "description": "Protomartyr (2) 2018 protomartyr 2 consolation e p is a verified Vinyl, 12\", EP, Limited Edition edition on Domino. The release is indexed under Punk, Post-Punk, Indie Rock.",
+        "description": "Recorded with Kelley Deal of The Breeders, Consolation condenses Protomartyr's tense, literary post-punk into four direct and unsettled songs. The result is brief but substantial: dry humour, nervous guitars, and Joe Casey's voice holding the centre.",
         "reviewQuote": "The four-song EP from the Michigan post-punk band features Kelley Deal of the Breeders and some of the most pointed",
         "reviewSource": "Pitchfork (quoted)",
         "relatedArtists": [
@@ -11892,7 +11892,7 @@
           "TV Priest",
           "Gilla Band"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Domino / Protomartyr official Bandcamp",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -12165,10 +12165,10 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Domino / Protomartyr official Bandcamp",
       "metadataSourceUrl": "https://www.discogs.com/release/12129560-Protomartyr-Consolation-EP",
       "editorialUpdatedAt": "2026-09-28T02:01:39.682+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -13900,7 +13900,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "7",
       "collection": "Run For Cover Records",
       "fabricCare": "",
@@ -13914,10 +13914,10 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Creative Adult 2014 deep end b w momentary lapse is a verified Vinyl, 7\", 45 RPM edition on Run For Cover Records. The release is indexed under Psychedelic Rock, Post-Punk, Shoegaze.",
+      "description": "Taken from Creative Adult's 2014 debut Psychic Mess, Deep End pulls hardcore's blunt force into something slower, heavier, and more exposed. The song balances rough-edged guitars with a sense of emotional drift: catharsis that never fully resolves.",
       "reviewQuote": "San Fran punks Creative Adult pal around with the likes of Ceremony, Trash Talk, and Touché Amore, and Efrim Menuck",
       "sourceTitle": "deep end b w momentary lapse",
-      "editRevision": 46,
+      "editRevision": 49,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/5986176-Creative-Adult-Deep-End-bw-Momentary-Lapse",
@@ -13929,7 +13929,7 @@
       "reviewSource": "Stereogum (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://stereogum.com/1631462/creative-adult-deep-end-video-stereogum-premiere/video",
-        "description": "Creative Adult 2014 deep end b w momentary lapse is a verified Vinyl, 7\", 45 RPM edition on Run For Cover Records. The release is indexed under Psychedelic Rock, Post-Punk, Shoegaze.",
+        "description": "Taken from Creative Adult's 2014 debut Psychic Mess, Deep End pulls hardcore's blunt force into something slower, heavier, and more exposed. The song balances rough-edged guitars with a sense of emotional drift: catharsis that never fully resolves.",
         "reviewQuote": "San Fran punks Creative Adult pal around with the likes of Ceremony, Trash Talk, and Touché Amore, and Efrim Menuck",
         "reviewSource": "Stereogum (quoted)",
         "relatedArtists": [
@@ -13939,7 +13939,7 @@
           "Give",
           "The Vibrating Antennas"
         ],
-        "descriptionSource": "Verified physical-release metadata",
+        "descriptionSource": "Run For Cover Records",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -14212,10 +14212,10 @@
       "enrichmentOrigin": "discogs",
       "enrichmentStatus": "complete",
       "publicationState": "live",
-      "descriptionSource": "Verified physical-release metadata",
+      "descriptionSource": "Run For Cover Records",
       "metadataSourceUrl": "https://www.discogs.com/release/5986176-Creative-Adult-Deep-End-bw-Momentary-Lapse",
       "editorialUpdatedAt": "2026-09-28T02:01:38.722+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-09-09",
@@ -28051,7 +28051,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Elektra",
       "fabricCare": "",
@@ -28065,9 +28065,9 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Television's 1978 release Adventure is a Vinyl edition issued by Elektra, documented by MusicBrainz as cbgb scene, new wave, post-punk.",
+      "description": "Television's 1978 follow-up to Marquee Moon is more concise but no less exacting. Adventure keeps Tom Verlaine and Richard Lloyd's interlocking guitars in focus, turning New York art-rock into something fluid, melodic, and quietly restless.",
       "reviewQuote": "Adventure by Television released in 1978. Find Adventure reviews, track lists, credits, awards and more at AllMusic.",
-      "editRevision": 28,
+      "editRevision": 31,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/a672416a-005f-3dbc-8f78-952f5e18a7e0",
@@ -28084,7 +28084,7 @@
       "reviewSource": "AllMusic (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://www.allmusic.com/album/adventure-mw0000201050",
-        "description": "Television's 1978 release Adventure is a Vinyl edition issued by Elektra, documented by MusicBrainz as cbgb scene, new wave, post-punk.",
+        "description": "Television's 1978 follow-up to Marquee Moon is more concise but no less exacting. Adventure keeps Tom Verlaine and Richard Lloyd's interlocking guitars in focus, turning New York art-rock into something fluid, melodic, and quietly restless.",
         "reviewQuote": "Adventure by Television released in 1978. Find Adventure reviews, track lists, credits, awards and more at AllMusic.",
         "reviewSource": "AllMusic (quoted)",
         "relatedArtists": [
@@ -28095,7 +28095,7 @@
           "Gang of Four"
         ],
         "enrichmentStatus": "complete",
-        "descriptionSource": "MusicBrainz",
+        "descriptionSource": "Rhino",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -28355,7 +28355,7 @@
       "catalogPriceSync": 450000,
       "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
-      "descriptionSource": "MusicBrainz",
+      "descriptionSource": "Rhino",
       "metadataSourceUrl": "https://musicbrainz.org/release/a672416a-005f-3dbc-8f78-952f5e18a7e0",
       "publicationIssues": [
         "review",
@@ -28363,7 +28363,7 @@
         "related artists available in inventory"
       ],
       "editorialUpdatedAt": "2026-09-28T02:01:28.887+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-11",
@@ -28729,7 +28729,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Beggars Banquet",
       "fabricCare": "",
@@ -28743,9 +28743,9 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Bauhaus's 1982 release Kick in the Eye (Searching for Satori E.P.) is a Vinyl edition issued by Beggars Banquet, documented by MusicBrainz as dub, goth rock, gothic rock.",
+      "description": "Originally issued as an EP in 1982, Kick in the Eye (Searching for Satori) catches Bauhaus at their most agile and abrasive: sharp guitar, elastic rhythm, and Peter Murphy's vocal held in theatrical tension. A compact document of the group stretching gothic rock toward rhythm, texture, and delirium.",
       "reviewQuote": "1979-1983, Vol. 2 by Bauhaus released in 1986. Find 1979-1983, Vol. 2 reviews, track lists, credits, awards and more at",
-      "editRevision": 29,
+      "editRevision": 32,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/9a7f56ad-de7d-4ed4-9fdf-800878316a8f",
@@ -28757,7 +28757,7 @@
       "reviewSource": "AllMusic (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://www.allmusic.com/album/1979-1983-vol-2-mw0000471790",
-        "description": "Bauhaus's 1982 release Kick in the Eye (Searching for Satori E.P.) is a Vinyl edition issued by Beggars Banquet, documented by MusicBrainz as dub, goth rock, gothic rock.",
+        "description": "Originally issued as an EP in 1982, Kick in the Eye (Searching for Satori) catches Bauhaus at their most agile and abrasive: sharp guitar, elastic rhythm, and Peter Murphy's vocal held in theatrical tension. A compact document of the group stretching gothic rock toward rhythm, texture, and delirium.",
         "reviewQuote": "1979-1983, Vol. 2 by Bauhaus released in 1986. Find 1979-1983, Vol. 2 reviews, track lists, credits, awards and more at",
         "reviewSource": "AllMusic (quoted)",
         "relatedArtists": [
@@ -28768,7 +28768,7 @@
           "Specimen"
         ],
         "enrichmentStatus": "complete",
-        "descriptionSource": "MusicBrainz",
+        "descriptionSource": "Beggars Banquet / Apple Music",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -29028,7 +29028,7 @@
       "catalogPriceSync": 715000,
       "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
-      "descriptionSource": "MusicBrainz",
+      "descriptionSource": "Beggars Banquet / Apple Music",
       "metadataSourceUrl": "https://musicbrainz.org/release/9a7f56ad-de7d-4ed4-9fdf-800878316a8f",
       "publicationIssues": [
         "review",
@@ -29036,7 +29036,7 @@
         "related artists available in inventory"
       ],
       "editorialUpdatedAt": "2026-09-28T02:01:28.58+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-11",
@@ -45560,7 +45560,7 @@
           "quantity": 1
         }
       ],
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "vinylSize": "12",
       "collection": "Secretly Canadian",
       "fabricCare": "",
@@ -45574,9 +45574,9 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Suuns's release Bambi on Vinyl, issued by Secretly Canadian.",
+      "description": "Bambi captures early SUUNS at their most patient and severe, letting repetition, pressure, and guitar texture build slowly into something hypnotic. Paired with Red Song, it is a concise introduction to the Montreal group's darker, more experimental side.",
       "reviewQuote": "terrifying power",
-      "editRevision": 28,
+      "editRevision": 31,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/3255271-Suuns-Bambi",
@@ -45588,7 +45588,7 @@
       "reviewSource": "KEXP (quoted)",
       "autoEditorial": {
         "reviewUrl": "https://www.kexp.org/read/2013/3/2/album-review-suuns-images-du-futur/",
-        "description": "Suuns's release Bambi on Vinyl, issued by Secretly Canadian.",
+        "description": "Bambi captures early SUUNS at their most patient and severe, letting repetition, pressure, and guitar texture build slowly into something hypnotic. Paired with Red Song, it is a concise introduction to the Montreal group's darker, more experimental side.",
         "reviewQuote": "terrifying power",
         "reviewSource": "KEXP (quoted)",
         "relatedArtists": [
@@ -45598,7 +45598,7 @@
           "Liars",
           "Poni Hoax"
         ],
-        "descriptionSource": "MusicBrainz",
+        "descriptionSource": "SUUNS official discography / Secretly Canadian",
         "relatedArtistEvidence": [
           {
             "match": 1,
@@ -45858,10 +45858,10 @@
       "catalogPriceSync": 360000,
       "enrichmentOrigin": "curated-exact",
       "enrichmentStatus": "complete",
-      "descriptionSource": "MusicBrainz",
+      "descriptionSource": "SUUNS official discography / Secretly Canadian",
       "metadataSourceUrl": "https://www.discogs.com/release/3255271-Suuns-Bambi",
       "editorialUpdatedAt": "2026-09-28T02:01:19.596+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "editorialUpdatedBy": "nixp-curated-editorial",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-07-27",
