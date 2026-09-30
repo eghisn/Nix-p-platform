@@ -46,6 +46,13 @@ function inventoryStock(item, product) {
   );
 }
 
+export function currentInventoryRows(inventory = []) {
+  const rows = Array.isArray(inventory) ? inventory : [];
+  const currentStockRows = rows.filter((item) => item?.origin === "finance-stock");
+  if (currentStockRows.length) return currentStockRows;
+  return rows.filter((item) => item?.origin !== "finance-purchase");
+}
+
 export const catalogService = {
   async listProducts(options = {}) {
     return adminStore.listProducts(options);
@@ -124,7 +131,7 @@ export const catalogService = {
   async listInventory() {
     await adminStore.refreshInventory();
     const products = adminStore.listProducts({ includeDrafts: true });
-    return adminStore.getSnapshot().inventory.map((item) => ({
+    return currentInventoryRows(adminStore.getSnapshot().inventory).map((item) => ({
       ...item,
       product: products.find((product) => product.id === item.productId)
     })).map((item) => ({

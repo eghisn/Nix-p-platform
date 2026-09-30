@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.mjs",
-    "build": "node scripts/build.mjs && node scripts/verify-meta-pixel.mjs && node scripts/verify-purchase-pixel.mjs && node scripts/verify-cart-addition.mjs && node scripts/verify-checkout-pixel.mjs && node scripts/verify-public-release-lock.mjs && node scripts/verify-api-security-headers.mjs && node scripts/verify-jne-official-client.mjs && node scripts/verify-instagram-insights.mjs && node scripts/verify-artist-directory-consistency.mjs && node scripts/verify-home-collections.mjs && node scripts/verify-home-slider-stock-state.mjs && node scripts/verify-public-blog.mjs && node scripts/verify-public-request-item.mjs && node scripts/verify-public-commerce-boundary.mjs && node scripts/verify-public-product-stock-state.mjs && node scripts/verify-publishing-filter.mjs",
+    "build": "node scripts/build.mjs && node scripts/verify-meta-pixel.mjs && node scripts/verify-purchase-pixel.mjs && node scripts/verify-cart-addition.mjs && node scripts/verify-checkout-pixel.mjs && node scripts/verify-public-release-lock.mjs && node scripts/verify-api-security-headers.mjs && node scripts/verify-jne-official-client.mjs && node scripts/verify-instagram-insights.mjs && node scripts/verify-artist-directory-consistency.mjs && node scripts/verify-home-collections.mjs && node scripts/verify-home-slider-stock-state.mjs && node scripts/verify-public-blog.mjs && node scripts/verify-public-request-item.mjs && node scripts/verify-public-commerce-boundary.mjs && node scripts/verify-public-product-stock-state.mjs && node scripts/verify-publishing-filter.mjs && node scripts/verify-admin-inventory-metrics.mjs",
     "test:meta-pixel": "node scripts/verify-meta-pixel.mjs && node scripts/verify-purchase-pixel.mjs",
     "test:catalog": "node scripts/verify-catalog-integrity.mjs",
     "test:records-filter": "node scripts/verify-records-artist-filter.mjs",
@@ -38,7 +38,7 @@
     "test:publication-safety": "node scripts/verify-publication-safety.mjs",
     "test:related-artists": "node scripts/verify-related-artists.mjs",
     "test:research-jobs": "node scripts/verify-catalog-research-jobs.mjs",
-    "test:admin-integrity": "node scripts/verify-admin-editor-integrity.mjs",
+    "test:admin-integrity": "node scripts/verify-admin-editor-integrity.mjs && node scripts/verify-admin-inventory-metrics.mjs",
     "backfill:related-artists": "node scripts/refresh-related-artists.mjs --stale-only",
     "test:monthly-report": "node scripts/verify-monthly-report-accounting.mjs",
     "test:finance-storage": "node scripts/verify-finance-section-storage.mjs",
