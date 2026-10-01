@@ -52,6 +52,11 @@ function catalogCategoryForFinanceItem(item, fallback = "Objects") {
   return fallback;
 }
 
+function catalogApparelTypeForFinanceItem(item) {
+  if (!APPAREL_TYPES.has(item)) return "";
+  return item === "Cap" ? "Accessories" : "Tops";
+}
+
 function financeItemMetadata(stock = {}, fallback = {}) {
   const value = key => stockIdentityValue(stock, key, fallback[key]);
   return {
@@ -917,6 +922,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const itemSelection = vinylItemSelection(stock.item || row.format || "Vinyl");
   const item = itemSelection.item;
   const category = catalogCategoryForFinanceItem(item, row.category || "Objects");
+  const apparelType = catalogApparelTypeForFinanceItem(item);
   // Finance can contain a temporary placeholder while the editorial match is
   // still being completed. It must never erase a real title already stored in
   // Admin or returned by the enrichment step.
@@ -950,8 +956,8 @@ export function productRowFromFinanceStock(row, stock, quantity) {
       ...row,
       category,
       format: item || row.format,
-      apparelType: category === "Apparel" ? item : row.apparel_type,
-      apparel_type: category === "Apparel" ? item : row.apparel_type,
+      apparelType,
+      apparel_type: apparelType,
       edition: financeEdition
     }, row.raw?.shipping)
   };
@@ -987,7 +993,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
     category,
     format: item || row.format || "",
     display_format: item || row.display_format || "",
-    apparel_type: category === "Apparel" ? row.apparel_type || "Accessories" : row.apparel_type || "",
+    apparel_type: apparelType,
     sizes: financeApparelSizes,
     condition: String(stock.itemCondition || row.condition || "").trim(),
     price: catalogPrice,
@@ -1004,6 +1010,7 @@ export function productRowFromFinanceStock(row, stock, quantity) {
       category,
       format: item || raw.format || row.format || "",
       displayFormat: item || raw.displayFormat || row.display_format || "",
+      apparelType,
       condition: String(stock.itemCondition || raw.condition || row.condition || "").trim(),
       price: catalogPrice,
       // This marker makes a full Finance maintenance pass idempotent for
@@ -1100,6 +1107,7 @@ export function mergeFinanceStockIdentity(existing = {}, financeProduct = {}) {
     category: financeProduct.category,
     format: financeProduct.format,
     displayFormat: financeProduct.display_format,
+    apparelType: financeProduct.apparel_type,
     condition: financeProduct.condition,
     price: financeProduct.price,
     catalogPriceSync: financeRaw.catalogPriceSync,
@@ -1411,6 +1419,7 @@ export function draftProductFromFinanceStock(stock, quantity) {
   const itemSelection = vinylItemSelection(stock.item || "Vinyl");
   const item = itemSelection.item;
   const category = catalogCategoryForFinanceItem(item);
+  const apparelType = catalogApparelTypeForFinanceItem(item);
   const metadata = financeItemMetadata(stock);
   const id = `finance-${slugify(stock.sku)}`;
   const product = {
@@ -1419,9 +1428,9 @@ export function draftProductFromFinanceStock(stock, quantity) {
     title: String(stock.title || "Untitled inventory item").trim(),
     artist: String(stock.artist || "NIXP").trim(),
     category,
-    format: category === "Apparel" ? "Apparel" : item,
+    format: item,
     displayFormat: item,
-    apparelType: category === "Apparel" ? item : "",
+    apparelType,
     condition: String(stock.itemCondition || "").trim(),
     price: stock.listingMode === "Private Collection / Offer Only" ? 0 : Number(stock.sellingPrice || 0),
     open_to_offers: stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true,

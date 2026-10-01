@@ -209,18 +209,59 @@ const apparelStock = {
 };
 const apparelDraft = draftProductFromFinanceStock(apparelStock, 3);
 assert.equal(apparelDraft.category, "Apparel");
+assert.equal(apparelDraft.format, "T-shirt");
+assert.equal(apparelDraft.apparel_type, "Tops");
 assert.deepEqual(apparelDraft.sizes, [
   { label: "S", quantity: 1, soldOut: false },
   { label: "M", quantity: 2, soldOut: false }
 ]);
 const syncedApparel = productRowFromFinanceStock(apparelDraft, apparelStock, 3);
+assert.equal(syncedApparel.apparel_type, "Tops");
 assert.deepEqual(syncedApparel.sizes, apparelDraft.sizes);
+const legacySubtype = productRowFromFinanceStock(
+  { ...apparelDraft, apparel_type: "T-shirt", raw: { ...apparelDraft.raw, apparelType: "T-shirt" } },
+  apparelStock,
+  3
+);
+assert.equal(legacySubtype.apparel_type, "Tops");
+assert.equal(mergeFinanceStockIdentity(apparelDraft, legacySubtype).raw.apparelType, "Tops");
 const changedApparel = productRowFromFinanceStock(syncedApparel, {
   ...apparelStock,
   qty: 4,
   sizes: [...apparelStock.sizes, { label: "L", quantity: 1 }]
 }, 4);
 assert.equal(hasFinanceCatalogIdentityDrift(syncedApparel, changedApparel), true, "A per-size stock edit must synchronize to the catalog.");
+
+const recordToHoodie = productRowFromFinanceStock(
+  { ...versionedPlaceholder, category: "Records", format: "Vinyl", apparel_type: "" },
+  { ...apparelStock, item: "Hoodie" },
+  3
+);
+assert.equal(recordToHoodie.category, "Apparel");
+assert.equal(recordToHoodie.format, "Hoodie");
+assert.equal(recordToHoodie.apparel_type, "Tops");
+assert.equal(recordToHoodie.raw.apparelType, "Tops");
+assert.equal(recordToHoodie.raw.financeItemType, "Hoodie");
+const mergedHoodie = mergeFinanceStockIdentity(versionedPlaceholder, recordToHoodie);
+assert.equal(mergedHoodie.apparel_type, "Tops");
+assert.equal(mergedHoodie.raw.apparelType, "Tops");
+assert.equal(hasFinanceCatalogIdentityDrift(versionedPlaceholder, mergedHoodie), true);
+
+const hoodieToCap = productRowFromFinanceStock(mergedHoodie, {
+  ...apparelStock,
+  item: "Cap",
+  qty: 1,
+  sizes: [{ label: "One Size", quantity: 1 }]
+}, 1);
+assert.equal(hoodieToCap.format, "Cap");
+assert.equal(hoodieToCap.apparel_type, "Accessories");
+assert.equal(hoodieToCap.raw.apparelType, "Accessories");
+
+const capToRecord = productRowFromFinanceStock(hoodieToCap, completedStock, 1);
+assert.equal(capToRecord.category, "Records");
+assert.equal(capToRecord.apparel_type, "");
+assert.equal(capToRecord.raw.apparelType, "");
+assert.deepEqual(capToRecord.sizes, []);
 
 const financeUi = await readFile(new URL("../apps/finance/index.html", import.meta.url), "utf8");
 assert.match(financeUi, /field\("Title", "title", "text", "", true, "Artwork \/ item title"\)/);
