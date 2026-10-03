@@ -18,7 +18,7 @@ export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 // A versioned research request means editorial rule changes only run for an
 // item when an editor explicitly asks to research it again. This keeps a
 // deployment from silently rewriting live catalogue copy.
-export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v7";
+export const CATALOG_RESEARCH_VERSION = "official-bandcamp-musicbrainz-v8";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -56,6 +56,33 @@ function discogsHeaders() {
 // original source remains in imageCredits; this mapping prevents third-party
 // artwork URLs from becoming a storefront runtime dependency.
 export const ARCHIVED_CATALOG_IMAGES = {
+  "NXP-2026-CST-0014": {
+    sourceUrl: "https://shop.domiandjdbeck.com/products/who-asked-cassette",
+    cover: "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+    productPhoto: "/public/assets/catalog-archive/nxp-2026-cst-0014-detail-1.webp",
+    imageCredits: [
+      { image: "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp", credit: "Blue Note Records official cover artwork", url: "https://store.bluenote.com/collections/cds/products/domi-jd-beck-who-asked" },
+      { image: "/public/assets/catalog-archive/nxp-2026-cst-0014-detail-1.webp", credit: "DOMi & JD BECK official cassette mockup", url: "https://shop.domiandjdbeck.com/products/who-asked-cassette" }
+    ]
+  },
+  "NXP-2026-VNL-0109": {
+    sourceUrl: "https://shop.domiandjdbeck.com/products/who-asked-transparent-olive-green-2lp-vinyl",
+    cover: "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+    productPhoto: "/public/assets/catalog-archive/nxp-2026-vnl-0109-detail-1.webp",
+    imageCredits: [
+      { image: "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp", credit: "Blue Note Records official cover artwork", url: "https://store.bluenote.com/collections/cds/products/domi-jd-beck-who-asked" },
+      { image: "/public/assets/catalog-archive/nxp-2026-vnl-0109-detail-1.webp", credit: "DOMi & JD BECK official transparent olive green 2LP mockup", url: "https://shop.domiandjdbeck.com/products/who-asked-transparent-olive-green-2lp-vinyl" }
+    ]
+  },
+  "NXP-2026-VNL-0110": {
+    sourceUrl: "https://shop.domiandjdbeck.com/collections/catalog/products/not-tight-standard-vinyl",
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0110-cover.webp",
+    productPhoto: "/public/assets/catalog-archive/nxp-2026-vnl-0110-detail-1.webp",
+    imageCredits: [
+      { image: "/public/assets/catalog-archive/nxp-2026-vnl-0110-cover.webp", credit: "Blue Note Records official cover artwork", url: "https://store.bluenote.com/collections/all-1/products/domi-jd-beck-not-tight" },
+      { image: "/public/assets/catalog-archive/nxp-2026-vnl-0110-detail-1.webp", credit: "DOMi & JD BECK official standard vinyl mockup", url: "https://shop.domiandjdbeck.com/collections/catalog/products/not-tight-standard-vinyl" }
+    ]
+  },
   "NXP-2026-VNL-0081": {
     cover: "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg",
     imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg", credit: "Arca official Bandcamp artwork", url: "https://arca1000000.bandcamp.com/album/kick-iiii" }]
@@ -132,6 +159,7 @@ export const ARCHIVED_CATALOG_IMAGES = {
 // These covers were individually reviewed and approved after the initial
 // research imported seller scans. They are immutable storefront artwork.
 const FINAL_REVIEWED_COVER_SKUS = new Set([
+  "NXP-2026-CST-0014", "NXP-2026-VNL-0109", "NXP-2026-VNL-0110",
   "NXP-2026-VNL-0081", "NXP-2026-VNL-0080", "NXP-2026-VNL-0079",
   "NXP-2026-VNL-0078", "NXP-2026-VNL-0076", "NXP-2026-VNL-0075",
   "NXP-2026-VNL-0073", "NXP-2026-VNL-0058", "NXP-2026-VNL-0040"
@@ -145,7 +173,7 @@ export function applyFinalReviewedCoverLock(product = {}) {
   if (!FINAL_REVIEWED_COVER_SKUS.has(sku)) return product;
   const lock = ARCHIVED_CATALOG_IMAGES[sku];
   if (!lock?.cover) return product;
-  const images = [lock.cover];
+  const images = [lock.cover, lock.productPhoto].filter(Boolean);
   const imageCredits = Array.isArray(lock.imageCredits) && lock.imageCredits.length
     ? lock.imageCredits
     : Array.isArray(product.imageCredits) ? product.imageCredits : [];
@@ -159,13 +187,59 @@ export function applyFinalReviewedCoverLock(product = {}) {
     ...(Object.prototype.hasOwnProperty.call(product, "image_credits")
       ? { image_credits: imageCredits }
       : { imageCredits }),
-    raw: { ...raw, image: lock.cover, images, imageCredits, autoCover: lock.cover, autoProductPhoto: "" }
+    raw: {
+      ...raw, image: lock.cover, images, imageCredits,
+      autoCover: lock.cover, autoProductPhoto: lock.productPhoto || "",
+      ...(lock.sourceUrl ? {
+        metadataSourceUrl: lock.sourceUrl,
+        researchSources: [
+          ...(Array.isArray(raw.researchSources) ? raw.researchSources : []).filter((source) =>
+            source?.url !== lock.sourceUrl && !/(?:^|\.)discogs\.com$/i.test(safeHostname(source?.url))
+          ),
+          { source: "Official artist shop", url: lock.sourceUrl, confidence: 100 }
+        ]
+      } : {})
+    }
   };
+}
+
+function safeHostname(value) {
+  try { return new URL(String(value || "")).hostname; } catch { return ""; }
 }
 
 // Exact, reviewed matches take precedence over discovery. These records also
 // document the source used for every locally archived catalog image.
 export const CURATED_FINANCE_ENRICHMENTS = {
+  "NXP-2026-CST-0014": {
+    artist: "DOMi & JD BECK", title: "Who Asked?", year: 2026, label: "Blue Note",
+    edition: "Cassette, Album", catalogNumber: "00199957849432", barcode: "1 99957 84943 2",
+    cover: ARCHIVED_CATALOG_IMAGES["NXP-2026-CST-0014"].cover,
+    productPhoto: ARCHIVED_CATALOG_IMAGES["NXP-2026-CST-0014"].productPhoto,
+    imageCredits: ARCHIVED_CATALOG_IMAGES["NXP-2026-CST-0014"].imageCredits,
+    reviewQuote: "The virtuoso jazz-fusion duo’s second album is a dizzying whirl of drums, keyboards, and chamber orchestra, infusing easy-listening harmonies with",
+    reviewSource: "Pitchfork (quoted)", reviewUrl: "https://pitchfork.com/reviews/albums/domi-and-jd-beck-who-asked/",
+    sourceUrl: "https://shop.domiandjdbeck.com/products/who-asked-cassette"
+  },
+  "NXP-2026-VNL-0109": {
+    artist: "DOMi & JD BECK", title: "Who Asked?", year: 2026, label: "Blue Note",
+    edition: "2 x Vinyl, LP, Album, Transparent Olive Green", catalogNumber: "00199957785327", barcode: "1 99957 78532 7",
+    cover: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0109"].cover,
+    productPhoto: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0109"].productPhoto,
+    imageCredits: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0109"].imageCredits,
+    reviewQuote: "The virtuoso jazz-fusion duo’s second album is a dizzying whirl of drums, keyboards, and chamber orchestra, infusing easy-listening harmonies with",
+    reviewSource: "Pitchfork (quoted)", reviewUrl: "https://pitchfork.com/reviews/albums/domi-and-jd-beck-who-asked/",
+    sourceUrl: "https://shop.domiandjdbeck.com/products/who-asked-transparent-olive-green-2lp-vinyl"
+  },
+  "NXP-2026-VNL-0110": {
+    artist: "DOMi & JD BECK", title: "Not Tight", year: 2022, label: "Blue Note",
+    edition: "Vinyl, LP, Album, 180g", catalogNumber: "B003590801", barcode: "6 02445 90837 0",
+    cover: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0110"].cover,
+    productPhoto: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0110"].productPhoto,
+    imageCredits: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0110"].imageCredits,
+    reviewQuote: "The debut album from the virtuosic duo is undeniably accomplished, a smooth but frenetic set aimed at bringing jazz fusion",
+    reviewSource: "Pitchfork (quoted)", reviewUrl: "https://pitchfork.com/reviews/albums/domi-and-jd-beck-not-tight/",
+    sourceUrl: "https://shop.domiandjdbeck.com/collections/catalog/products/not-tight-standard-vinyl"
+  },
   "NXP-2026-VNL-0080": {
     artist: "Melvins, Napalm Death",
     title: "Savage Imperial Death March",
@@ -1912,10 +1986,14 @@ async function archiveDiscoveredImages(discovered, sku, used) {
     ...discovered,
     cover: coverResult.url,
     productPhoto: photoResult.url,
-    imageCredits: (discovered.imageCredits || []).map((credit) => ({
-      ...credit,
-      image: sourceImages.get(String(credit.image || "")) || credit.image
-    }))
+    imageCredits: (discovered.imageCredits || [])
+      .map((credit) => ({
+        ...credit,
+        image: sourceImages.has(String(credit.image || ""))
+          ? sourceImages.get(String(credit.image || ""))
+          : credit.image
+      }))
+      .filter((credit) => credit.image)
   };
 }
 
@@ -1940,25 +2018,10 @@ function applyArchivedCatalogImages(discovered, sku) {
 }
 
 async function discoverReleaseAcrossSources(stock) {
-  // Discogs records the physical edition, while Bandcamp can supply the
-  // label's original artwork and release note. MusicBrainz remains useful,
-  // but is deliberately a fallback rather than the publishing gate.
-  const [discogs, bandcamp] = await Promise.all([
-    discoverDiscogsRelease(stock),
-    discoverBandcampRelease(stock)
-  ]);
-
-  if (discogs?.needsPressingIdentifier) return discogs;
-  const externalMatch = chooseExternalReleaseCandidate([discogs, bandcamp]);
-  if (externalMatch) {
-    // A catalog-number/barcode match is authoritative for the physical
-    // object. It does not, however, make Discogs metadata a review. Retain
-    // the exact pressing cover/details and separately gather only source-
-    // backed editorial material.
-    return externalMatch.sourceType === "discogs"
-      ? enrichExactDiscogsReleaseEditorial(externalMatch, bandcamp, stock)
-      : externalMatch;
-  }
+  // Research only from the artist/label page or MusicBrainz. An uncertain
+  // physical edition stays in review rather than falling back to seller art.
+  const bandcamp = await discoverBandcampRelease(stock);
+  if (bandcamp?.cover && !bandcamp.needsPressingIdentifier) return bandcamp;
 
   const musicBrainz = await discoverMusicBrainzRelease(stock);
   if (musicBrainz) return musicBrainz;
@@ -1966,7 +2029,7 @@ async function discoverReleaseAcrossSources(stock) {
   // Do not report "no exact match" when a required source timed out or was
   // rate-limited. That is retryable infrastructure state, not bad Finance
   // data, and it must never send the editor on a false correction hunt.
-  const unavailableSources = [discogs, bandcamp]
+  const unavailableSources = [bandcamp]
     .filter((candidate) => candidate?.sourceUnavailable)
     .map((candidate) => candidate.sourceType)
     .filter(Boolean);

@@ -17,6 +17,13 @@ export async function archiveRemoteProductImage({ url, sku, role = "cover" } = {
   if (!source || isManagedProductImage(source) || !/^https?:\/\//i.test(source)) {
     return { url: source, archived: isManagedProductImage(source) };
   }
+  try {
+    if (/(?:^|\.)discogs\.com$/i.test(new URL(source).hostname)) {
+      return { url: "", archived: false, reason: "discogs-image-disallowed" };
+    }
+  } catch {
+    return { url: "", archived: false, reason: "invalid-image-url" };
+  }
   // Bandcamp exposes `_3` as a small catalogue thumbnail. It is unsuitable
   // for NIXP's storefront cover art, even though it is a valid image response.
   // Keep the item in Draft until enrichment supplies a larger source instead
@@ -28,17 +35,9 @@ export async function archiveRemoteProductImage({ url, sku, role = "cover" } = {
     return { url: source, archived: false };
   }
 
-  let isDiscogs = false;
-  try {
-    const hostname = new URL(source).hostname;
-    isDiscogs = /(?:^|\.)discogs\.com$/i.test(hostname) || /(?:^|\.)i\.discogs\.com$/i.test(hostname);
-  } catch {
-    return { url: source, archived: false };
-  }
   const downloadHeaders = {
     accept: "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
-    "user-agent": "NIXP-Catalog/2.0 (https://nix-p.com; contact@nix-p.com)",
-    ...(isDiscogs ? { referer: "https://www.discogs.com/" } : {})
+    "user-agent": "NIXP-Catalog/2.0 (https://nix-p.com; contact@nix-p.com)"
   };
   const baseUrl = process.env.SUPABASE_URL.replace(/\/$/, "");
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;

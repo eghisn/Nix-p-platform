@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { existsSync, readFileSync } from "node:fs";
 import {
   ARCHIVED_CATALOG_IMAGES,
   CURATED_EDITORIAL_OVERRIDES,
@@ -8,6 +9,7 @@ import {
   assessMusicBrainzReleaseCandidates,
   assessDiscogsReleaseCandidates,
   applyCuratedEditorialOverride,
+  applyFinalReviewedCoverLock,
   applyVerifiedReleaseDescription,
   chooseDescriptionEditorial,
   composeDiscogsEditorial,
@@ -21,6 +23,7 @@ import {
   normalizeDiscogsSearchRelease,
   selectTrustedRecordLabel
 } from "../api/_lib/catalogEnrichment.js";
+import { archiveRemoteProductImage } from "../api/_lib/productImageStorage.js";
 import {
   applyCatalogPublicationSafety,
   hasDuplicateEditorialCopy,
@@ -603,5 +606,41 @@ assert.equal(negativeLovers.edition, "12-inch EP");
 assert.match(negativeLovers.cover, /a0335934103_0\.jpg$/);
 assert.equal(isEditorialDescriptionQuality(negativeLovers.description, negativeLovers.descriptionSource), true);
 assert.equal(negativeLovers.reviewSource, "Bandcamp release note (quoted)");
+
+const publicStore = JSON.parse(readFileSync(new URL("../public/data/public-store.json", import.meta.url), "utf8"));
+for (const sku of ["NXP-2026-CST-0014", "NXP-2026-VNL-0109", "NXP-2026-VNL-0110"]) {
+  const artwork = ARCHIVED_CATALOG_IMAGES[sku];
+  const product = publicStore.products.find((entry) => entry.sku === sku);
+  assert.ok(product, `${sku} must be present in the public snapshot`);
+  assert.deepEqual(product.images, [artwork.cover, artwork.productPhoto]);
+  assert.equal(product.image, artwork.cover);
+  assert.deepEqual(applyFinalReviewedCoverLock(product), product);
+  assert.equal(product.raw.metadataSourceUrl, artwork.sourceUrl);
+  assert.ok(product.imageCredits.every((credit) => !/discogs/i.test(credit.credit + credit.url)));
+  for (const image of product.images) {
+    assert.ok(existsSync(new URL(`..${image}`, import.meta.url)), `${image} must exist locally`);
+  }
+}
+
+const originalFetch = globalThis.fetch;
+const requestedUrls = [];
+try {
+  globalThis.fetch = async (url) => {
+    requestedUrls.push(String(url));
+    return new Response("", { status: 404 });
+  };
+  const rejected = await archiveRemoteProductImage({ url: "https://i.discogs.com/seller-photo.jpeg", sku: "TEST" });
+  assert.equal(rejected.url, "");
+  assert.equal(rejected.reason, "discogs-image-disallowed");
+  const missing = await enrichFinanceCatalogProduct(
+    { id: "research-source-test", sku: "RESEARCH-SOURCE-TEST", format: "Vinyl", price: 1, raw: {} },
+    { sku: "RESEARCH-SOURCE-TEST", item: "Vinyl", artist: "Unknown Test Artist", title: "Unknown Test Release", sellingPrice: 1 }
+  );
+  assert.equal(missing.publish_status, "Draft");
+  assert.ok(requestedUrls.length > 0);
+  assert.ok(requestedUrls.every((url) => !/discogs\.com/i.test(url)), "release research must not request Discogs");
+} finally {
+  globalThis.fetch = originalFetch;
+}
 
 process.stdout.write("Finance catalog enrichment contract passed.\n");

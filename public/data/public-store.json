@@ -14,7 +14,7 @@
       "year": 2026,
       "color": "",
       "flaws": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cst-0014/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
       "label": "Blue Note",
       "price": 530000,
       "sizes": [],
@@ -27,7 +27,8 @@
       "artist": "Domi & JD Beck",
       "format": "Cassette",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cst-0014/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+        "/public/assets/catalog-archive/nxp-2026-cst-0014-detail-1.webp"
       ],
       "barcode": "1 99957 84943 2",
       "details": [
@@ -109,9 +110,14 @@
       "editRevision": 10,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/38071503-DOMi-JD-BECK-Who-Asked",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cst-0014/cover.jpg",
-          "credit": "Discogs physical-release artwork"
+          "image": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+          "credit": "Blue Note Records official cover artwork",
+          "url": "https://store.bluenote.com/collections/cds/products/domi-jd-beck-who-asked"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-cst-0014-detail-1.webp",
+          "credit": "DOMi & JD BECK official cassette mockup",
+          "url": "https://shop.domiandjdbeck.com/products/who-asked-cassette"
         }
       ],
       "originalTags": false,
@@ -669,6 +675,35 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+        "images": [
+          "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+          "/public/assets/catalog-archive/nxp-2026-cst-0014-detail-1.webp"
+        ],
+        "imageCredits": [
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+            "credit": "Blue Note Records official cover artwork",
+            "url": "https://store.bluenote.com/collections/cds/products/domi-jd-beck-who-asked"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-cst-0014-detail-1.webp",
+            "credit": "DOMi & JD BECK official cassette mockup",
+            "url": "https://shop.domiandjdbeck.com/products/who-asked-cassette"
+          }
+        ],
+        "autoCover": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-cst-0014-detail-1.webp",
+        "metadataSourceUrl": "https://shop.domiandjdbeck.com/products/who-asked-cassette",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://shop.domiandjdbeck.com/products/who-asked-cassette",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -684,7 +719,7 @@
       "year": 2022,
       "color": "",
       "flaws": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0110/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0110-cover.webp",
       "label": "Blue Note",
       "price": 860000,
       "sizes": [],
@@ -697,7 +732,8 @@
       "artist": "Domi & JD Beck",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0110/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0110-cover.webp",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0110-detail-1.webp"
       ],
       "barcode": "6 02445 90837 0",
       "details": [
@@ -774,9 +810,14 @@
       "editRevision": 9,
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/25112611-DOMi-JD-Beck-Not-Tight",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0110/cover.jpg",
-          "credit": "Discogs physical-release artwork"
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0110-cover.webp",
+          "credit": "Blue Note Records official cover artwork",
+          "url": "https://store.bluenote.com/collections/all-1/products/domi-jd-beck-not-tight"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0110-detail-1.webp",
+          "credit": "DOMi & JD BECK official standard vinyl mockup",
+          "url": "https://shop.domiandjdbeck.com/collections/catalog/products/not-tight-standard-vinyl"
         }
       ],
       "originalTags": false,
@@ -1332,6 +1373,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "heavy",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "/public/assets/catalog-archive/nxp-2026-vnl-0110-cover.webp",
+        "images": [
+          "/public/assets/catalog-archive/nxp-2026-vnl-0110-cover.webp",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0110-detail-1.webp"
+        ],
+        "imageCredits": [
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0110-cover.webp",
+            "credit": "Blue Note Records official cover artwork",
+            "url": "https://store.bluenote.com/collections/all-1/products/domi-jd-beck-not-tight"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0110-detail-1.webp",
+            "credit": "DOMi & JD BECK official standard vinyl mockup",
+            "url": "https://shop.domiandjdbeck.com/collections/catalog/products/not-tight-standard-vinyl"
+          }
+        ],
+        "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0110-cover.webp",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0110-detail-1.webp",
+        "metadataSourceUrl": "https://shop.domiandjdbeck.com/collections/catalog/products/not-tight-standard-vinyl",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://shop.domiandjdbeck.com/collections/catalog/products/not-tight-standard-vinyl",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -1347,7 +1417,7 @@
       "year": 2026,
       "color": "",
       "flaws": "",
-      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0109/cover.jpg",
+      "image": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
       "label": "Blue Note",
       "price": 1050000,
       "sizes": [],
@@ -1360,7 +1430,8 @@
       "artist": "Domi & JD Beck",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0109/cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0109-detail-1.webp"
       ],
       "barcode": "1 99957 78532 7",
       "details": [
@@ -1433,9 +1504,14 @@
       "sourceTitle": "who asked",
       "imageCredits": [
         {
-          "url": "https://www.discogs.com/release/38016294-DOMi-JD-BECK-Who-Asked",
-          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0109/cover.jpg",
-          "credit": "Discogs physical-release artwork"
+          "image": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+          "credit": "Blue Note Records official cover artwork",
+          "url": "https://store.bluenote.com/collections/cds/products/domi-jd-beck-who-asked"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0109-detail-1.webp",
+          "credit": "DOMi & JD BECK official transparent olive green 2LP mockup",
+          "url": "https://shop.domiandjdbeck.com/products/who-asked-transparent-olive-green-2lp-vinyl"
         }
       ],
       "originalTags": false,
@@ -1983,6 +2059,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+        "images": [
+          "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0109-detail-1.webp"
+        ],
+        "imageCredits": [
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+            "credit": "Blue Note Records official cover artwork",
+            "url": "https://store.bluenote.com/collections/cds/products/domi-jd-beck-who-asked"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0109-detail-1.webp",
+            "credit": "DOMi & JD BECK official transparent olive green 2LP mockup",
+            "url": "https://shop.domiandjdbeck.com/products/who-asked-transparent-olive-green-2lp-vinyl"
+          }
+        ],
+        "autoCover": "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0109-detail-1.webp",
+        "metadataSourceUrl": "https://shop.domiandjdbeck.com/products/who-asked-transparent-olive-green-2lp-vinyl",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://shop.domiandjdbeck.com/products/who-asked-transparent-olive-green-2lp-vinyl",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
