@@ -8,6 +8,8 @@ import {
   assessMusicBrainzReleaseCandidates,
   assessDiscogsReleaseCandidates,
   applyCuratedEditorialOverride,
+  applyVerifiedReleaseDescription,
+  chooseDescriptionEditorial,
   composeDiscogsEditorial,
   discogsReleaseDetailUrl,
   enrichFinanceCatalogProduct,
@@ -253,6 +255,34 @@ const discogsOnlyEditorial = composeDiscogsEditorial({
 });
 assert.equal(discogsOnlyEditorial.reviewQuote, "", "Discogs object data must never be rendered as a review.");
 assert.equal(isEditorialDescriptionQuality(discogsOnlyEditorial.description, discogsOnlyEditorial.descriptionSource), false, "Discogs metadata must not be accepted as public editorial copy.");
+assert.equal(isEditorialDescriptionQuality("DOMi & JD BECK 2026 WHO ASKED? is a verified Cassette edition on Blue Note. The release is indexed under Jazz.", "Blue Note Records"), false, "A metadata template must not pass merely because its source label changed.");
+const whoAskedDescription = applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Domi & JD Beck", title: "Who Asked?" });
+assert.match(whoAskedDescription.description, /sinfonietta/);
+assert.equal(whoAskedDescription.descriptionSource, "Blue Note Records");
+assert.equal(whoAskedDescription.researchSources.some((source) => source.url === "https://www.bluenote.com/spotlight/domi-jd-beck-who-asked/"), true);
+assert.equal(applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Domi & JD Beck", title: "Not Tight" }).descriptionSource, "Blue Note Records");
+assert.equal(applyVerifiedReleaseDescription({ needsPressingIdentifier: true }, { artist: "Domi & JD Beck", title: "Who Asked?" }).description, undefined, "Editorial must not bypass pressing identification.");
+assert.equal(applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Another Artist", title: "Who Asked?" }).description, "", "An album-title collision must not acquire another artist's copy.");
+assert.equal(applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Domi & JD Beck", title: "Unknown Album" }).description, "", "Unverified albums must wait for manual editorial instead of displaying a metadata template.");
+assert.equal(applyVerifiedReleaseDescription({ description: "A promotional excerpt copied from a release page without original editorial work.", descriptionSource: "Official Bandcamp release note" }, { artist: "Unknown", title: "Unknown" }).description, "");
+const priorAutomatic = { description: "Generic automatic copy", descriptionSource: "Verified physical-release metadata" };
+const manualEditorial = { description: "A specific, manually written account of this album's sound and context.", raw: { descriptionSource: "Blue Note Records" }, editorial_updated_by: "admin" };
+assert.deepEqual(chooseDescriptionEditorial(manualEditorial, priorAutomatic, whoAskedDescription), {
+  description: manualEditorial.description,
+  descriptionSource: "Blue Note Records"
+}, "Research must preserve both manually edited copy and its attribution.");
+assert.equal(chooseDescriptionEditorial(manualEditorial, {
+  description: whoAskedDescription.description,
+  descriptionSource: whoAskedDescription.descriptionSource
+}, whoAskedDescription).description, manualEditorial.description, "A second research pass must still preserve manual copy after the generated baseline changes.");
+assert.deepEqual(chooseDescriptionEditorial({ description: priorAutomatic.description, raw: { descriptionSource: priorAutomatic.descriptionSource } }, priorAutomatic, whoAskedDescription), {
+  description: whoAskedDescription.description,
+  descriptionSource: whoAskedDescription.descriptionSource
+}, "Research must replace a previous automatic placeholder as one editorial pair.");
+assert.deepEqual(chooseDescriptionEditorial({ description: manualEditorial.description, raw: { descriptionSource: priorAutomatic.descriptionSource } }, priorAutomatic, whoAskedDescription), {
+  description: manualEditorial.description,
+  descriptionSource: ""
+}, "Manual copy must not inherit an unrelated metadata attribution.");
 const discogsWithOfficialEditorial = composeDiscogsEditorial(discogsOnlyEditorial, {
   bandcamp: {
     description: "Creative Adult's release note describes the record's sound and origin in source-backed editorial detail.",

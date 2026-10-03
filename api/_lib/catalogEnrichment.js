@@ -18,7 +18,7 @@ export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 // A versioned research request means editorial rule changes only run for an
 // item when an editor explicitly asks to research it again. This keeps a
 // deployment from silently rewriting live catalogue copy.
-export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v6";
+export const CATALOG_RESEARCH_VERSION = "discogs-bandcamp-musicbrainz-v7";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -1421,6 +1421,39 @@ export const CURATED_FINANCE_ENRICHMENTS = {
   }
 };
 
+// Album-level editorial is shared by verified physical formats. It never
+// identifies a pressing; the release matcher must do that first.
+const VERIFIED_RELEASE_DESCRIPTIONS = new Map([
+  ["domi jd beck|who asked", {
+    description: "On WHO ASKED?, DOMi & JD BECK move beyond the guest-heavy approach of their debut, bringing their keyboards-and-drums interplay into more fully written songs. A small sinfonietta and the duo's own vocals give the 2026 album an orchestral, chamber-pop dimension without losing its restless rhythmic precision.",
+    descriptionSource: "Blue Note Records",
+    sourceUrl: "https://www.bluenote.com/spotlight/domi-jd-beck-who-asked/"
+  }],
+  ["domi jd beck|not tight", {
+    description: "DOMi & JD BECK's 2022 debut NOT TiGHT pairs Domi Louna's shimmering keyboards with JD Beck's skittering drums, joining jazz-fusion precision to a playful, fast-moving groove. Guests including Herbie Hancock, Thundercat, Mac DeMarco, and Anderson .Paak broaden the record without displacing the duo's close musical exchange.",
+    descriptionSource: "Blue Note Records",
+    sourceUrl: "https://www.bluenote.com/domi-jd-beck-announce-debut-album-not-tight/"
+  }]
+]);
+
+export function applyVerifiedReleaseDescription(discovered, { artist, title } = {}) {
+  if (!discovered) return discovered;
+  if (discovered.needsPressingIdentifier || discovered.sourceUnavailable) return discovered;
+  const sourceIsUneditedExcerpt = /^Official Bandcamp release (?:note|page)$/i.test(String(discovered.descriptionSource || "").trim());
+  if (!sourceIsUneditedExcerpt && isEditorialDescriptionQuality(discovered.description, discovered.descriptionSource)) return discovered;
+  const editorial = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(artist)}|${normalizedText(title)}`);
+  if (!editorial) return { ...discovered, description: "", descriptionSource: "" };
+  const sources = Array.isArray(discovered.researchSources) ? discovered.researchSources : [];
+  return {
+    ...discovered,
+    description: editorial.description,
+    descriptionSource: editorial.descriptionSource,
+    researchSources: sources.some((source) => source?.url === editorial.sourceUrl)
+      ? sources
+      : [...sources, { source: editorial.descriptionSource, url: editorial.sourceUrl, confidence: 100 }]
+  };
+}
+
 // Editorial overrides supplement a discovered physical release without
 // replacing its verified edition, artwork, barcode, or catalog metadata.
 // They are used when a trusted publication is not reliably crawlable from a
@@ -1640,9 +1673,12 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const editorialOverride = CURATED_EDITORIAL_OVERRIDES[sku] || {};
   let discoveredSource;
   try {
-    discoveredSource = applyCuratedEditorialOverride(
-      curated || await discoverReleaseAcrossSources({ ...stock, format, title, artist }),
-      sku
+    discoveredSource = applyVerifiedReleaseDescription(
+      applyCuratedEditorialOverride(
+        curated || await discoverReleaseAcrossSources({ ...stock, format, title, artist }),
+        sku
+      ),
+      { artist, title }
     );
   } catch (error) {
     const status = error?.code === "source-unavailable" ? "source-unavailable" : "research-unavailable";
@@ -1722,9 +1758,9 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   // never a manual editorial override, even if the old automatic baseline is
   // incomplete, so a deliberate refresh must replace both fields.
   const legacyDuplicateEditorial = hasDuplicateEditorialCopy(row.description, raw.reviewQuote);
+  const selectedDescription = chooseDescriptionEditorial(row, automatic, discovered, { legacyDuplicateEditorial });
   const editorial = removeDuplicateEditorialCopy({
-    description: chooseEditorialValue(legacyDuplicateEditorial ? "" : row.description, automatic.description, discovered.description),
-    descriptionSource: chooseEditorialValue(legacyDuplicateEditorial ? "" : raw.descriptionSource, automatic.descriptionSource, discovered.descriptionSource),
+    ...selectedDescription,
     reviewQuote: chooseEditorialValue(legacyDuplicateEditorial ? "" : raw.reviewQuote, automatic.reviewQuote, discovered.reviewQuote || ""),
     reviewSource: chooseEditorialValue(legacyDuplicateEditorial ? "" : raw.reviewSource, automatic.reviewSource, discovered.reviewSource || ""),
     reviewUrl: chooseEditorialValue(legacyDuplicateEditorial ? "" : raw.reviewUrl, automatic.reviewUrl, discovered.reviewUrl || "")
@@ -1836,8 +1872,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       autoCover: discovered.cover || previousAutoCover,
       autoProductPhoto: used ? "" : discovered.productPhoto || previousAutoProductPhoto,
       autoEditorial: {
-        description,
-        descriptionSource,
+        description: discovered.description || "",
+        descriptionSource: discovered.descriptionSource || "",
         reviewQuote,
         reviewSource,
         reviewUrl,
@@ -2927,6 +2963,7 @@ export function isEditorialDescriptionQuality(description, descriptionSource = "
   // Discogs and MusicBrainz in research evidence while requiring an official,
   // critical, or curated source before an automatic description is publishable.
   if (!text || /^(?:discogs(?:\s+release\s+data)?|musicbrainz(?:\s+catalog\s+data)?|verified physical-release metadata)$/i.test(source)) return false;
+  if (/\bis a verified\s+.+\bedition\b/i.test(text) || /\bthe release is indexed under\b/i.test(text)) return false;
   if (/^.+(?:'s|’s)\s+(?:\d{4}\s+)?release\s+.+\s+is\s+a\s+(?:Vinyl|CD|Cassette)\s+edition\s+issued\s+by\s+.+(?:,\s+documented\s+by\s+MusicBrainz\s+as\s+.+)?\.$/i.test(text)) return false;
   if (/current NIXP records selection/i.test(text)) return false;
   return true;
@@ -2954,6 +2991,27 @@ function editionMatchesFormat(edition, format) {
   if (medium === "cd") return /(\bcd\b|compact disc)/.test(value);
   if (medium === "cassette") return /(cassette|\btape\b)/.test(value);
   return true;
+}
+
+export function chooseDescriptionEditorial(row = {}, automatic = {}, discovered = {}, { legacyDuplicateEditorial = false } = {}) {
+  const current = legacyDuplicateEditorial ? "" : String(row.description || "").trim();
+  const previousAutomatic = String(automatic.description || "").trim();
+  const currentSource = String(row.raw?.descriptionSource || row.descriptionSource || "").trim();
+  const previousSource = String(automatic.descriptionSource || "").trim();
+  const editedByAdmin = Boolean(row.editorial_updated_by && !["finance-stock", "related-artists-research"].includes(row.editorial_updated_by));
+  const manual = current && isEditorialDescriptionQuality(current) && (current !== previousAutomatic || editedByAdmin);
+  if (manual) {
+    return {
+      description: current,
+      descriptionSource: currentSource === previousSource && !isEditorialDescriptionQuality(previousAutomatic, previousSource)
+        ? ""
+        : currentSource
+    };
+  }
+  return {
+    description: String(discovered.description || "").trim(),
+    descriptionSource: String(discovered.descriptionSource || "").trim()
+  };
 }
 
 function chooseEditorialValue(current, previousAutomatic, nextAutomatic) {
