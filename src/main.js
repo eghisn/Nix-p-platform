@@ -1,6 +1,7 @@
 import { requestStatuses } from "./data/sampleData.js";
 import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLabelName } from "./data/catalogIdentity.js";
 import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicProductSlug } from "./data/publicUrls.js";
+import { productDisplayHeading } from "./data/productDisplay.js";
 import { recommendedProducts } from "./data/productRecommendations.js";
 import { indonesiaRegencies } from "./data/indonesiaRegencies.js";
 import { searchCheckoutDestinations, checkoutQuoteError } from "./data/checkoutDestinations.js";
@@ -622,6 +623,7 @@ async function productDetailPage(path) {
 }
 
 async function productDetailMarkup(product) {
+  const displayHeading = productDisplayHeading(product);
   const allProducts = await catalogService.listProducts();
   const availableArtistNames = inventoryArtistNames(allProducts);
   const related = product.category === "Records" ? recommendedProducts(product, allProducts) : [];
@@ -657,8 +659,8 @@ async function productDetailMarkup(product) {
       </div>
       <aside class="detail-copy">
         <a class="back-link" href="/${publicCategoryPath(product)}" data-link>${product.category}</a>
-        <p class="eyebrow">${product.artist}</p>
-        <h1>${product.title}</h1>
+        <p class="eyebrow">${escapeHtml(displayHeading.eyebrow)}</p>
+        <h1>${escapeHtml(displayHeading.heading)}</h1>
         <div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : priceReady ? money.format(product.price) : "Price pending"}</div>
         <p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>
         ${productReviewMarkup(product)}

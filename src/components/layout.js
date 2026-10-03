@@ -1,6 +1,7 @@
 import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalLabelName } from "../data/catalogIdentity.js";
 import { publicProductPath } from "../data/publicUrls.js";
 import { productCardImageAttributes } from "../data/productThumbnails.js";
+import { productDisplayHeading } from "../data/productDisplay.js";
 import { recordDisplayFormat } from "../data/vinylSize.js";
 
 const leftPublicLinks = [
@@ -168,6 +169,7 @@ export function productGrid(products, options = {}) {
 }
 
 export function productCard(product, { hrefFor, availableArtistNames, deferCard = false } = {}) {
+  const displayHeading = productDisplayHeading(product);
   const meta = product.condition ? `${recordDisplayFormat(product)}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
   const href = hrefFor ? hrefFor(product) : publicProductPath(product);
@@ -179,7 +181,9 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
     product.category === "Records" && product.label
       ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${canonicalLabelName(product.label)}</a>`
       : "";
-  const artistMarkup = productArtistMarkup(product, availableArtistNames);
+  const artistMarkup = product.category === "Apparel" && product.artist
+    ? escapeHtml(displayHeading.eyebrow)
+    : productArtistMarkup(product, availableArtistNames);
   const imageMarkup = productCardImageMarkup(product);
   const deferredDetails = `${recordArtistTags(product, availableArtistNames)}
     ${isOfferOnly
@@ -196,7 +200,7 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
       </a>
       <div class="product-meta">
         <p class="product-artist">${artistMarkup}</p>
-        <h2><a href="${href}" data-link data-product-link data-product-id="${escapeHtml(product.id)}">${product.title}</a></h2>
+        <h2><a href="${href}" data-link data-product-link data-product-id="${escapeHtml(product.id)}">${escapeHtml(displayHeading.heading)}</a></h2>
         ${labelLink}
         <div class="row-between">
           <span>${meta}</span>
