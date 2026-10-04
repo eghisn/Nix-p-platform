@@ -5504,7 +5504,8 @@
       "artist": "Melvins, Napalm Death",
       "format": "Vinyl",
       "images": [
-        "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0080-official-mockup-20261004.webp"
       ],
       "barcode": "6 89230 02971 7",
       "details": [
@@ -5603,8 +5604,13 @@
       "editRevision": 34,
       "imageCredits": [
         {
+          "url": "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march",
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
-          "credit": "Melvins official Bandcamp artwork",
+          "credit": "Melvins official Bandcamp artwork"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
           "url": "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march"
         }
       ],
@@ -5699,17 +5705,31 @@
       "raw": {
         "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
         "images": [
-          "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg"
+          "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0080-official-mockup-20261004.webp"
         ],
         "imageCredits": [
           {
+            "url": "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march",
             "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
-            "credit": "Melvins official Bandcamp artwork",
+            "credit": "Melvins official Bandcamp artwork"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0080-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
             "url": "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march"
           }
         ],
         "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0080-bandcamp-cover.jpg",
-        "autoProductPhoto": ""
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0080-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://melvinsofficial.bandcamp.com/album/savage-imperial-death-march",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -5747,7 +5767,8 @@
       "artist": "Sam Gendel",
       "format": "Vinyl",
       "images": [
-        "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0079-official-mockup-20261004.webp"
       ],
       "barcode": "0 75597 91717 8",
       "details": [
@@ -5847,8 +5868,13 @@
       "editRevision": 30,
       "imageCredits": [
         {
+          "url": "https://samgendel.bandcamp.com/album/drm",
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
-          "credit": "Sam Gendel official Bandcamp artwork",
+          "credit": "Sam Gendel official Bandcamp artwork"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0079-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
           "url": "https://samgendel.bandcamp.com/album/drm"
         }
       ],
@@ -6405,17 +6431,31 @@
       "raw": {
         "image": "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
         "images": [
-          "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg"
+          "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0079-official-mockup-20261004.webp"
         ],
         "imageCredits": [
           {
+            "url": "https://samgendel.bandcamp.com/album/drm",
             "image": "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
-            "credit": "Sam Gendel official Bandcamp artwork",
+            "credit": "Sam Gendel official Bandcamp artwork"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0079-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
             "url": "https://samgendel.bandcamp.com/album/drm"
           }
         ],
         "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0079-sam-gendel-drm-bandcamp.jpg",
-        "autoProductPhoto": ""
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0079-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://samgendel.bandcamp.com/album/drm",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://samgendel.bandcamp.com/album/drm",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -7816,7 +7856,8 @@
       "artist": "Hella",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0077/cover.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0077/cover.jpg",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0077-official-mockup-20261004.webp"
       ],
       "barcode": "7 59656 10821 8",
       "details": [
@@ -7921,6 +7962,11 @@
           "url": "https://www.discogs.com/release/31855538-Hella-The-Devil-Isnt-Red",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0077/cover.jpg",
           "credit": "Discogs physical-release artwork"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0077-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://killrockstars.com/products/the-devil-isnt-red-20th-anniversary-remaster"
         }
       ],
       "originalTags": false,
@@ -8468,6 +8514,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0077/cover.jpg",
+        "images": [
+          "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0077/cover.jpg",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0077-official-mockup-20261004.webp"
+        ],
+        "imageCredits": [
+          {
+            "url": "https://www.discogs.com/release/31855538-Hella-The-Devil-Isnt-Red",
+            "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0077/cover.jpg",
+            "credit": "Discogs physical-release artwork"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0077-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://killrockstars.com/products/the-devil-isnt-red-20th-anniversary-remaster"
+          }
+        ],
+        "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0077/cover.jpg",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0077-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://killrockstars.com/products/the-devil-isnt-red-20th-anniversary-remaster",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://killrockstars.com/products/the-devil-isnt-red-20th-anniversary-remaster",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -9885,7 +9960,8 @@
       "artist": "DIIV",
       "format": "CD",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0051/cover.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0051/cover.jpg",
+        "/public/assets/catalog-archive/nxp-2026-cd-0051-official-mockup-20261004.webp"
       ],
       "barcode": "817949016982",
       "details": [
@@ -9986,6 +10062,11 @@
           "url": "https://www.discogs.com/release/14248376-DIIV-Deceiver",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0051/cover.jpg",
           "credit": "Discogs physical-release artwork"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-cd-0051-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://diiv.bandcamp.com/album/deceiver"
         }
       ],
       "originalTags": false,
@@ -10534,6 +10615,35 @@
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0051/cover.jpg",
+        "images": [
+          "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0051/cover.jpg",
+          "/public/assets/catalog-archive/nxp-2026-cd-0051-official-mockup-20261004.webp"
+        ],
+        "imageCredits": [
+          {
+            "url": "https://www.discogs.com/release/14248376-DIIV-Deceiver",
+            "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0051/cover.jpg",
+            "credit": "Discogs physical-release artwork"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-cd-0051-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://diiv.bandcamp.com/album/deceiver"
+          }
+        ],
+        "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0051/cover.jpg",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-cd-0051-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://diiv.bandcamp.com/album/deceiver",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://diiv.bandcamp.com/album/deceiver",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -10562,7 +10672,8 @@
       "artist": "DIIV",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0074/cover.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0074/cover.jpg",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0074-official-mockup-20261004.webp"
       ],
       "barcode": "817949011697",
       "details": [
@@ -10665,6 +10776,11 @@
           "url": "https://www.discogs.com/release/8205956-DIIV-Is-The-Is-Are",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0074/cover.jpg",
           "credit": "Discogs physical-release artwork"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0074-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://diiv.bandcamp.com/album/is-the-is-are"
         }
       ],
       "originalTags": false,
@@ -11215,6 +11331,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0074/cover.jpg",
+        "images": [
+          "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0074/cover.jpg",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0074-official-mockup-20261004.webp"
+        ],
+        "imageCredits": [
+          {
+            "url": "https://www.discogs.com/release/8205956-DIIV-Is-The-Is-Are",
+            "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0074/cover.jpg",
+            "credit": "Discogs physical-release artwork"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0074-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://diiv.bandcamp.com/album/is-the-is-are"
+          }
+        ],
+        "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0074/cover.jpg",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0074-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://diiv.bandcamp.com/album/is-the-is-are",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://diiv.bandcamp.com/album/is-the-is-are",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -11247,7 +11392,8 @@
       "artist": "Nine Inch Nails",
       "format": "Vinyl",
       "images": [
-        "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0073-official-mockup-20261004.webp"
       ],
       "barcode": "602567473367",
       "details": [
@@ -11352,9 +11498,14 @@
       "editRevision": 30,
       "imageCredits": [
         {
+          "url": "https://music.apple.com/us/album/bad-witch/1847482590",
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
-          "credit": "Apple Music / The Null Corporation artwork",
-          "url": "https://music.apple.com/us/album/bad-witch/1847482590"
+          "credit": "Apple Music / The Null Corporation artwork"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0073-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://shop.nin.com/products/bad-witch-lp"
         }
       ],
       "originalTags": false,
@@ -11909,17 +12060,31 @@
       "raw": {
         "image": "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
         "images": [
-          "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg"
+          "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0073-official-mockup-20261004.webp"
         ],
         "imageCredits": [
           {
+            "url": "https://music.apple.com/us/album/bad-witch/1847482590",
             "image": "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
-            "credit": "Apple Music / The Null Corporation artwork",
-            "url": "https://music.apple.com/us/album/bad-witch/1847482590"
+            "credit": "Apple Music / The Null Corporation artwork"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0073-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://shop.nin.com/products/bad-witch-lp"
           }
         ],
         "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0073-nine-inch-nails-bad-witch-artwork.jpg",
-        "autoProductPhoto": ""
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0073-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://shop.nin.com/products/bad-witch-lp",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://shop.nin.com/products/bad-witch-lp",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -12627,7 +12792,8 @@
       "artist": "New Order",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0071-official-mockup-20261004.webp"
       ],
       "barcode": "0 190295 665906",
       "details": [
@@ -12742,6 +12908,11 @@
           "url": "https://www.discogs.com/release/1347678-New-Order-Confusion",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg",
           "credit": "Discogs physical-release artwork"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0071-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://store.neworder.com/products/confusion-12-single"
         }
       ],
       "originalTags": false,
@@ -12882,6 +13053,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg",
+        "images": [
+          "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0071-official-mockup-20261004.webp"
+        ],
+        "imageCredits": [
+          {
+            "url": "https://www.discogs.com/release/1347678-New-Order-Confusion",
+            "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg",
+            "credit": "Discogs physical-release artwork"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0071-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://store.neworder.com/products/confusion-12-single"
+          }
+        ],
+        "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0071/cover.jpg",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0071-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://store.neworder.com/products/confusion-12-single",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://store.neworder.com/products/confusion-12-single",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -12910,7 +13110,8 @@
       "artist": "New Order",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0070/cover.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0070/cover.jpg",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0070-official-mockup-20261004.webp"
       ],
       "barcode": "0 190295 665890",
       "details": [
@@ -13023,6 +13224,11 @@
           "url": "https://www.discogs.com/release/1144914-New-Order-Thieves-Like-Us",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0070/cover.jpg",
           "credit": "Discogs physical-release artwork"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0070-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://store.neworder.com/products/thieves-like-us-12-single"
         }
       ],
       "originalTags": false,
@@ -13164,6 +13370,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0070/cover.jpg",
+        "images": [
+          "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0070/cover.jpg",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0070-official-mockup-20261004.webp"
+        ],
+        "imageCredits": [
+          {
+            "url": "https://www.discogs.com/release/1144914-New-Order-Thieves-Like-Us",
+            "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0070/cover.jpg",
+            "credit": "Discogs physical-release artwork"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0070-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://store.neworder.com/products/thieves-like-us-12-single"
+          }
+        ],
+        "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0070/cover.jpg",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0070-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://store.neworder.com/products/thieves-like-us-12-single",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://store.neworder.com/products/thieves-like-us-12-single",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -15233,7 +15468,8 @@
       "artist": "Alan Vega",
       "format": "Vinyl",
       "images": [
-        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0018/cover.jpg"
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0018/cover.jpg",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0018-official-mockup-20261004.webp"
       ],
       "barcode": "843563147245",
       "details": [
@@ -15340,6 +15576,11 @@
           "url": "https://www.discogs.com/release/22269763-Alan-Vega-Invasion-Murder-One",
           "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0018/cover.jpg",
           "credit": "Discogs physical-release artwork"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0018-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://www.sacredbonesrecords.com/products/sbr289-alan-vega-invasion-b-w-murder-one"
         }
       ],
       "originalTags": false,
@@ -15889,6 +16130,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0018/cover.jpg",
+        "images": [
+          "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0018/cover.jpg",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0018-official-mockup-20261004.webp"
+        ],
+        "imageCredits": [
+          {
+            "url": "https://www.discogs.com/release/22269763-Alan-Vega-Invasion-Murder-One",
+            "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0018/cover.jpg",
+            "credit": "Discogs physical-release artwork"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0018-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://www.sacredbonesrecords.com/products/sbr289-alan-vega-invasion-b-w-murder-one"
+          }
+        ],
+        "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0018/cover.jpg",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0018-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://www.sacredbonesrecords.com/products/sbr289-alan-vega-invasion-b-w-murder-one",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://www.sacredbonesrecords.com/products/sbr289-alan-vega-invasion-b-w-murder-one",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -50851,7 +51121,8 @@
       "artist": "Lust For Youth",
       "format": "Vinyl",
       "images": [
-        "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0022-official-mockup-20261004.webp"
       ],
       "barcode": "616892100249",
       "details": [
@@ -50948,6 +51219,11 @@
           "url": "https://musicbrainz.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f",
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
           "credit": "Cover Art Archive / MusicBrainz"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0022-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://www.sacredbonesrecords.com/products/sbr091-lust-for-youth-chasing-the-light"
         }
       ],
       "originalTags": false,
@@ -51479,6 +51755,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
+        "images": [
+          "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0022-official-mockup-20261004.webp"
+        ],
+        "imageCredits": [
+          {
+            "url": "https://musicbrainz.org/release/30e26675-c48d-4240-af33-0bccf0f4e16f",
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
+            "credit": "Cover Art Archive / MusicBrainz"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0022-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://www.sacredbonesrecords.com/products/sbr091-lust-for-youth-chasing-the-light"
+          }
+        ],
+        "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0022-cover.webp",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0022-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://www.sacredbonesrecords.com/products/sbr091-lust-for-youth-chasing-the-light",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://www.sacredbonesrecords.com/products/sbr091-lust-for-youth-chasing-the-light",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -51502,7 +51807,8 @@
       "artist": "Boards of Canada",
       "format": "Vinyl",
       "images": [
-        "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0021-official-mockup-20261004.webp"
       ],
       "barcode": "5 056818 807435 >",
       "details": [
@@ -51599,6 +51905,11 @@
           "url": "https://musicbrainz.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534",
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp",
           "credit": "Cover Art Archive / MusicBrainz"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0021-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://boardsofcanada.bandcamp.com/album/inferno"
         }
       ],
       "originalTags": false,
@@ -52132,6 +52443,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp",
+        "images": [
+          "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0021-official-mockup-20261004.webp"
+        ],
+        "imageCredits": [
+          {
+            "url": "https://musicbrainz.org/release/5d9031c6-675c-4c8d-b77d-9e90c5386534",
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp",
+            "credit": "Cover Art Archive / MusicBrainz"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0021-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://boardsofcanada.bandcamp.com/album/inferno"
+          }
+        ],
+        "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0021-cover.webp",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0021-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://boardsofcanada.bandcamp.com/album/inferno",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://boardsofcanada.bandcamp.com/album/inferno",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -52813,7 +53153,8 @@
       "artist": "Porches",
       "format": "Vinyl",
       "images": [
-        "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp"
+        "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
+        "/public/assets/catalog-archive/nxp-2026-vnl-0019-official-mockup-20261004.webp"
       ],
       "barcode": "UPC887828053117",
       "details": [
@@ -52908,6 +53249,11 @@
           "url": "https://musicbrainz.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0",
           "image": "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
           "credit": "Cover Art Archive / Domino Records"
+        },
+        {
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0019-official-mockup-20261004.webp",
+          "credit": "Official artist / label product photograph",
+          "url": "https://porchesmusic.bandcamp.com/album/shirt"
         }
       ],
       "originalTags": false,
@@ -53439,6 +53785,35 @@
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
         "manualShippingOverride": false
+      },
+      "raw": {
+        "image": "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
+        "images": [
+          "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
+          "/public/assets/catalog-archive/nxp-2026-vnl-0019-official-mockup-20261004.webp"
+        ],
+        "imageCredits": [
+          {
+            "url": "https://musicbrainz.org/release/6ae505ac-d729-4388-9c74-b9e7e041a7d0",
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
+            "credit": "Cover Art Archive / Domino Records"
+          },
+          {
+            "image": "/public/assets/catalog-archive/nxp-2026-vnl-0019-official-mockup-20261004.webp",
+            "credit": "Official artist / label product photograph",
+            "url": "https://porchesmusic.bandcamp.com/album/shirt"
+          }
+        ],
+        "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0019-cover.webp",
+        "autoProductPhoto": "/public/assets/catalog-archive/nxp-2026-vnl-0019-official-mockup-20261004.webp",
+        "metadataSourceUrl": "https://porchesmusic.bandcamp.com/album/shirt",
+        "researchSources": [
+          {
+            "source": "Official artist shop",
+            "url": "https://porchesmusic.bandcamp.com/album/shirt",
+            "confidence": 100
+          }
+        ]
       }
     },
     {
@@ -93083,5 +93458,6 @@
   "requests": [],
   "orders": [],
   "cashflow": [],
-  "inventory": []
+  "inventory": [],
+  "offers": []
 }

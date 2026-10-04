@@ -2,6 +2,7 @@ import { artistCreditNames, canonicalArtistName, canonicalLabelName, canonicalRe
 import { hasDuplicateEditorialCopy } from "../../src/data/catalogPublication.js";
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 import { archiveRemoteProductImage, isManagedProductImage } from "./productImageStorage.js";
+import approvedMockupImages from "./approvedMockupImages.json" with { type: "json" };
 
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const USED_CONDITION = /^used\b/i;
@@ -153,12 +154,14 @@ export const ARCHIVED_CATALOG_IMAGES = {
   "NXP-2026-CD-0013": { cover: "/public/covers/nxp-2026-cd-0013-senyawa-with-kazuhisa-uchihashi-bandcamp.jpg" },
   "NXP-2026-VNL-0045": { cover: "/public/covers/nxp-2026-vnl-0045-leila-ui.jpg" },
   "NXP-2026-VNL-0046": { cover: "/public/covers/nxp-2026-vnl-0046-citizens-reptile.jpg" },
-  "NXP-2026-VNL-0047": { cover: "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg" }
+  "NXP-2026-VNL-0047": { cover: "/public/covers/nxp-2026-vnl-0047-bloc-party-octopus.jpg" },
+  ...approvedMockupImages
 };
 
 // These covers were individually reviewed and approved after the initial
 // research imported seller scans. They are immutable storefront artwork.
 const FINAL_REVIEWED_COVER_SKUS = new Set([
+  ...Object.keys(approvedMockupImages),
   "NXP-2026-CST-0014", "NXP-2026-VNL-0109", "NXP-2026-VNL-0110",
   "NXP-2026-VNL-0081", "NXP-2026-VNL-0080", "NXP-2026-VNL-0079",
   "NXP-2026-VNL-0078", "NXP-2026-VNL-0076", "NXP-2026-VNL-0075",
