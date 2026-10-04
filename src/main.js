@@ -1,4 +1,5 @@
 import { requestStatuses } from "./data/sampleData.js";
+import { imageCreditMarkup } from "./components/imageCredit.js";
 import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLabelName } from "./data/catalogIdentity.js";
 import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicProductSlug } from "./data/publicUrls.js";
 import { productDisplayHeading } from "./data/productDisplay.js";
@@ -2821,16 +2822,6 @@ function productImages(product) {
     .map((image) => String(image || "").trim())
     .filter(Boolean);
   return [...new Set(images)].slice(0, 5);
-}
-
-function imageCreditMarkup(product, image) {
-  const credits = Array.isArray(product.imageCredits) ? product.imageCredits : [];
-  const credit = credits.find((item) => item.image === image || item.src === image);
-  if (!credit?.credit) return "";
-  const text = `Courtesy: ${escapeHtml(credit.credit)}`;
-  return credit.url
-    ? `<figcaption class="image-credit"><a href="${escapeAttr(credit.url)}" target="_blank" rel="noreferrer">${text}</a></figcaption>`
-    : `<figcaption class="image-credit">${text}</figcaption>`;
 }
 
 function galleryUploadFields(product = {}, title = "Upload gallery") {
