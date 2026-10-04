@@ -334,7 +334,7 @@ export async function syncFinanceInventoryToCatalog(
       }
     );
     if (!saved?.[0]) {
-      const error = new Error("Admin edited this product while catalog research was running. Research will retry without overwriting the manual edit.");
+      const error = new Error("Catalog product changed during Finance synchronization. The newer edit was preserved; catalog synchronization needs another attempt.");
       error.code = "admin-edit-conflict";
       throw error;
     }

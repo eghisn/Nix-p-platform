@@ -78,6 +78,12 @@ const requirements = [
   [vercelConfig.includes("commerce-maintenance"), "A Vercel cron must invoke commerce maintenance."],
   [vercelConfig.includes('"schedule": "*/5 * * * *"'), "Pro must run the commerce recovery fallback every five minutes."],
   [checkout.includes('scope: "commerce-recovery"'), "The five-minute cron must be limited to commerce recovery."],
+  [(() => {
+    const daily = checkout.slice(checkout.indexOf("async function handleCommerceMaintenance"), checkout.indexOf("function recordAndAlertCommerceFailure"));
+    const steps = ["processAdminFinanceSyncJobs", "readFinanceState", "syncFinanceInventoryToCatalog", "processFinanceCatalogSyncJobs", "reconcileCatalogPublicationState"];
+    const positions = steps.map((step) => daily.indexOf(step));
+    return daily.includes("Promise.allSettled") && positions.every((position, index) => position >= 0 && (!index || position > positions[index - 1]));
+  })(), "Daily maintenance must serialize all catalog writers after Admin-to-Finance synchronization."],
   [!checkout.includes("processCatalogResearchJobs"), "Background commerce maintenance must not start catalog research without an explicit request."],
   [vercelConfig.includes('"/order-status"'), "The customer order status route must resolve to the public app."]
 ];

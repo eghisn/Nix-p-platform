@@ -317,14 +317,24 @@ async function handleCommerceMaintenance(req, res) {
         checkedAt: new Date().toISOString()
       });
     }
-    const financeState = await readFinanceState();
-    const [shipping, catalog, publication, financeSync, financeCatalogSync] = await Promise.all([
+    // These jobs can all write catalog products. Run them in order so a
+    // publication revision cannot invalidate an in-flight Finance sync.
+    const [shippingResult, catalogResult] = await Promise.allSettled([
       runShippingMaintenance({ mode: "daily" }),
-      syncFinanceInventoryToCatalog(financeState, { enrich: false }).then(() => ({ inventoryStock: financeState.inventoryStock?.length || 0 })),
-      reconcileCatalogPublicationState(),
-      processAdminFinanceSyncJobs({ limit: 10 }),
-      processFinanceCatalogSyncJobs({ limit: 10 })
+      (async () => {
+        const financeSync = await processAdminFinanceSyncJobs({ limit: 10 });
+        const financeState = await readFinanceState();
+        await syncFinanceInventoryToCatalog(financeState, { enrich: false });
+        const catalog = { inventoryStock: financeState.inventoryStock?.length || 0 };
+        const financeCatalogSync = await processFinanceCatalogSyncJobs({ limit: 10 });
+        const publication = await reconcileCatalogPublicationState();
+        return { catalog, publication, financeSync, financeCatalogSync };
+      })()
     ]);
+    if (catalogResult.status === "rejected") throw catalogResult.reason;
+    if (shippingResult.status === "rejected") throw shippingResult.reason;
+    const shipping = shippingResult.value;
+    const { catalog, publication, financeSync, financeCatalogSync } = catalogResult.value;
     return json(res, 200, {
       ok: true,
       scope: "daily-operations",
