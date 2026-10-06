@@ -16,6 +16,17 @@ assert.doesNotMatch(commerceBoundary, /publishStatus|publish_status|visibility/,
 assert.match(serverSource, /select=id,price,qty,sizes&id=in/, "The prices endpoint must only fetch live commerce fields.");
 assert.doesNotMatch(serverSource, /select=id,price,qty,sizes,publish_status,visibility/, "The prices endpoint must not expose catalog publication state.");
 
+const initializeStart = clientSource.indexOf("async initialize() {");
+const initializeEnd = clientSource.indexOf("async refresh() {", initializeStart);
+assert.ok(initializeStart >= 0 && initializeEnd > initializeStart, "Could not locate public store initialization.");
+const initialize = clientSource.slice(initializeStart, initializeEnd);
+assert.ok(
+  initialize.indexOf("fetchVerifiedCommerce(initialCommerceIds)") >= 0 &&
+    initialize.indexOf("fetchVerifiedCommerce(initialCommerceIds)") < initialize.indexOf("await fetch(filePath"),
+  "Live stock validation must start before awaiting the deployed editorial snapshot."
+);
+assert.match(initialize, /initialCommercePromise\.then\(\(verified\) =>[\s\S]*?mergeVerifiedCommerce\(activeStore, verified\)/, "Live stock must merge into the existing store after either request resolves, without replacing the editorial snapshot.");
+
 const publicProduct = { publishStatus: "Published", visibility: "Public" };
 const draftProduct = { publishStatus: "Draft", visibility: "Private" };
 assert.equal(publicCatalogAction(publicProduct, draftProduct), "unpublish");

@@ -360,6 +360,11 @@ async function fetchVerifiedCommerce(ids = []) {
 async function reconcilePublicCommerce(store) {
   const products = store?.products || [];
   const verified = await fetchVerifiedCommerce(products.map((product) => product.id));
+  return mergeVerifiedCommerce(store, verified);
+}
+
+function mergeVerifiedCommerce(store, verified = []) {
+  const products = store?.products || [];
   if (!verified.length) return store;
   const byId = new Map(verified.map((row) => [row.id, row]));
   return {
@@ -375,6 +380,15 @@ async function reconcilePublicCommerce(store) {
       };
     })
   };
+}
+
+function renderedPublicProductIds() {
+  if (typeof document === "undefined") return [];
+  return [...new Set(
+    [...document.querySelectorAll("#app [data-product-id]")]
+      .map((node) => String(node.getAttribute("data-product-id") || "").trim())
+      .filter(Boolean)
+  )];
 }
 
 function nullableNumber(value) {
@@ -890,6 +904,13 @@ export const adminStore = {
       // Supabase catalog here would make remote-only products or newer fields
       // appear after the initial HTML and create an old/new flash on refresh.
       const filePath = publicOnly ? deployedPublicStorePath() : ADMIN_STORE_PATH;
+      // Stock and price are independent of editorial JSON. Start validating the
+      // products already rendered on this page in parallel so the catalog
+      // download does not add another network round trip before live stock.
+      const initialCommerceIds = publicOnly ? renderedPublicProductIds() : [];
+      const initialCommercePromise = initialCommerceIds.length
+        ? fetchVerifiedCommerce(initialCommerceIds)
+        : null;
       // The public store is a deploy-owned editorial revision. Do not append a
       // timestamp here: it turns one immutable snapshot into a fresh cache key
       // on every refresh and makes the first interactive render needlessly late.
@@ -903,7 +924,17 @@ export const adminStore = {
         mergeStore(seed({ publicOnly }), fileStore, { publicOnly }),
         browserStore
       );
-      if (publicOnly) refreshPublicCommerceInBackground(activeStore);
+      if (publicOnly && initialCommercePromise) {
+        initialCommercePromise.then((verified) => {
+          if (activeStoreScope !== "public" || !activeStore) return;
+          activeStore = mergeVerifiedCommerce(activeStore, verified);
+          if (verified.length && typeof window !== "undefined") {
+            window.dispatchEvent(new CustomEvent("nixp:public-commerce-refreshed"));
+          }
+        });
+      } else if (publicOnly) {
+        refreshPublicCommerceInBackground(activeStore);
+      }
       activeStoreScope = scope;
       privateStoreRefreshedAt = publicOnly ? privateStoreRefreshedAt : Date.now();
       if (!publicOnly) localStorage.setItem(STORAGE_KEY, JSON.stringify(activeStore));
