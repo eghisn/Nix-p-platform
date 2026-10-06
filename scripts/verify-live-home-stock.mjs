@@ -45,7 +45,7 @@ process.env.SUPABASE_SERVICE_ROLE_KEY = "test-only";
 process.env.VERCEL_GIT_COMMIT_SHA = "local";
 globalThis.fetch = async (input) => {
   const url = new URL(String(input));
-  if (url.pathname === snapshotUrl) {
+  if (url.pathname.startsWith("/public/data/releases/")) {
     return new Response(JSON.stringify(snapshot), { status: 200 });
   }
   if (url.pathname.endsWith("/rest/v1/products")) {
