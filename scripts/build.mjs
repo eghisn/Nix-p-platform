@@ -9,7 +9,7 @@ import { apparelPageMarkup, catalogGridPageMarkup, publishingPageMarkup } from "
 import { recordsPageMarkup } from "../src/components/recordsPage.js";
 import { artistCreditNames, productArtistCreditNames, canonicalLabelName } from "../src/data/catalogIdentity.js";
 import { publicCategoryPath, publicProductPath } from "../src/data/publicUrls.js";
-import { isRecentReleaseProduct, recentReleaseSortComparator } from "../src/data/homeCollections.js";
+import { homeAppMarkup } from "../src/components/homePage.js";
 import { recommendedProducts } from "../src/data/productRecommendations.js";
 import { termsOfUseContent } from "../src/data/termsOfUse.js";
 import { privacyPolicyContent } from "../src/data/privacyPolicy.js";
@@ -60,7 +60,7 @@ await build({
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 
-for (const entry of ["index.html", "public", "marketing", "vercel.json"]) {
+for (const entry of ["public", "marketing", "vercel.json"]) {
   if (existsSync(`${root}/${entry}`)) {
     await cp(`${root}/${entry}`, `${dist}/${entry}`, { recursive: true });
   }
@@ -120,7 +120,7 @@ const releaseMeta = [
   `    <meta name="nixp-catalog-snapshot" content="${releasedPublicStoreUrl}" />`,
   `    <link rel="modulepreload" href="${bundleUrl}" />`
 ].join("\n");
-const indexHtml = (await readFile(`${dist}/index.html`, "utf8"))
+const indexHtml = (await readFile(`${root}/index.html`, "utf8"))
   .replace(
     /<script\s+type="module"\s+src="\/src\/main\.js[^"]*"><\/script>/i,
     `<script type="module" src="${bundleUrl}"></script>`
@@ -336,7 +336,7 @@ function homeDocument() {
     description: siteDescription,
     url: `${siteOrigin}/`,
     image: siteImage,
-    appMarkup: homeAppMarkup(),
+    appMarkup: homeAppMarkup(publicProducts),
     structuredData: {
       "@context": "https://schema.org",
       "@graph": [
@@ -362,60 +362,6 @@ function homeDocument() {
       ]
     }
   });
-}
-
-function homeAppMarkup() {
-  const products = publicProducts
-    .filter(isRecentReleaseProduct)
-    .filter((product) => product.image && !product.image.includes("nixp-product-example"))
-    .sort(recentReleaseSortComparator);
-  const slides = [...products, ...products];
-  const collections = [
-    ["recent-releases", "Recent Releases"],
-    ["nixp-selection", "NIXP Selection"],
-    ["back-in-stock", "Back in Stock"],
-    ["limited-pressing", "Limited Pressing"],
-    ["private-collection", "Private Collection"]
-  ];
-  const content = `
-    <section class="home-slider" aria-label="Product slider">
-      <div class="home-collections" role="group" aria-label="Home collections">
-        ${collections
-          .map(
-            ([id, label], index) =>
-              `<button class="home-collection-button ${index === 0 ? "is-active" : ""}" type="button" data-home-collection="${id}">${label}</button>`
-          )
-          .join("")}
-      </div>
-      <div class="slider-viewport" data-home-slider-viewport aria-roledescription="carousel" aria-label="Automatic product slider. Drag or swipe to browse.">
-        <div class="slider-track" data-home-slider-track>
-          ${slides
-            .map(
-              (product, index) => {
-                const soldOut = productQuantity(product) <= 0;
-                return `
-                <article class="slide ${soldOut ? "is-sold-out" : ""}">
-                  <a href="${escapeHtml(publicProductPath(product))}" data-link data-product-link data-product-id="${escapeHtml(product.id)}">
-                    <figure class="product-art slide-art ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>
-                    <div class="slide-caption">
-                      <span>${String((index % products.length) + 1).padStart(2, "0")}</span>
-                      <strong>${escapeHtml(product.artist)}</strong>
-                      <em>${escapeHtml(product.title)}</em>
-                    </div>
-                  </a>
-                </article>`
-              }
-            )
-            .join("")}
-        </div>
-      </div>
-      <div class="slider-scrollbar" aria-label="Catalogue navigation">
-        <button class="slider-scroll-button" type="button" aria-label="Previous catalogue items" data-home-slider-previous>&larr;</button>
-        <div class="slider-scroll-rail" data-home-slider-control role="slider" aria-label="Browse catalogue" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0" tabindex="0"><span class="slider-scroll-thumb" data-home-slider-thumb></span></div>
-        <button class="slider-scroll-button" type="button" aria-label="Next catalogue items" data-home-slider-next>&rarr;</button>
-      </div>
-    </section>`;
-  return shell(content, "/", 0);
 }
 
 function staticProductDetailMarkup(product) {
@@ -745,7 +691,7 @@ function productQuantity(product = {}) {
   return Math.max(0, Number(product.qty ?? 1) || 0);
 }
 
-await writeFile(`${dist}/index.html`, homeDocument());
+await writeFile(`${dist}/home-fallback.html`, homeDocument());
 
 const productRoutes = new Map();
 for (const product of publicProducts) {
@@ -814,7 +760,7 @@ if (missingRoutes.length) {
 
 // Structured data is the sole SEO catalog representation. A visually hidden
 // HTML catalog can be exposed by mobile renderers, so block it at build time.
-const generatedHtmlPaths = [`${dist}/index.html`, ...generatedRoutes.map((route) => `${dist}/${route}/index.html`)];
+const generatedHtmlPaths = [`${dist}/home-fallback.html`, ...generatedRoutes.map((route) => `${dist}/${route}/index.html`)];
 for (const path of generatedHtmlPaths) {
   const html = await readFile(path, "utf8");
   if (html.includes('aria-label="Catalog summary"')) {

@@ -907,7 +907,9 @@ export const adminStore = {
       // Stock and price are independent of editorial JSON. Start validating the
       // products already rendered on this page in parallel so the catalog
       // download does not add another network round trip before live stock.
-      const initialCommerceIds = publicOnly ? renderedPublicProductIds() : [];
+      const serverCommerceVerified = publicOnly &&
+        document.querySelector('meta[name="nixp-commerce-verified"]')?.getAttribute("content") === "true";
+      const initialCommerceIds = publicOnly && !serverCommerceVerified ? renderedPublicProductIds() : [];
       const initialCommercePromise = initialCommerceIds.length
         ? fetchVerifiedCommerce(initialCommerceIds)
         : null;

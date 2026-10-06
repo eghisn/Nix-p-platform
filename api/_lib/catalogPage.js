@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { imageCreditMarkup } from "../../src/components/imageCredit.js";
+import { homeAppMarkup } from "../../src/components/homePage.js";
 import { join } from "node:path";
 import { productGrid, shell } from "../../src/components/layout.js";
 import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalLabelName } from "../../src/data/catalogIdentity.js";
@@ -9,7 +10,7 @@ import { labelEntries, labelSlug, productMatchesLabel } from "../../src/data/lab
 import { labelLogoAvailable } from "../../src/data/labelLogoManifest.js";
 import { labelProductsPageMarkup, labelsPageMarkup } from "../../src/components/labelsPage.js";
 import { needsRecordConditionDetails, recordConditionDisplayValue, recordMetadataValue, recordNotes } from "../../src/data/recordMetadata.js";
-import { loadStore } from "./supabase.js";
+import { loadStore, verifiedPrices } from "./supabase.js";
 import { recordDisplayFormat } from "../../src/data/vinylSize.js";
 
 const ORIGIN = "https://www.nix-p.com";
@@ -19,6 +20,71 @@ const RELEASE_REVISION = String(process.env.VERCEL_GIT_COMMIT_SHA || process.env
   .slice(0, 16) || "local";
 const BUNDLE_URL = `/assets/app-${RELEASE_REVISION}.js`;
 const PUBLIC_SNAPSHOT_URL = `/public/data/releases/${RELEASE_REVISION}.json`;
+
+export async function renderHomePage(req, res) {
+  const protocol = String(req.headers?.["x-forwarded-proto"] || "https").split(",")[0];
+  const host = String(req.headers?.host || "www.nix-p.com").split(",")[0];
+  const store = await loadStore({ publicSnapshotUrl: `${protocol}://${host}${PUBLIC_SNAPSHOT_URL}` });
+  const products = store.products || [];
+  let commerceVerified = false;
+  try {
+    const verified = await verifiedPrices(products.map((product) => product.id));
+    const liveById = new Map(verified.map((row) => [String(row.id), row]));
+    store.products = products.map((product) => {
+      const live = liveById.get(String(product.id));
+      if (!live) return product;
+      return {
+        ...product,
+        ...(live.price === null || live.price === undefined ? {} : { price: live.price }),
+        ...(live.qty === null || live.qty === undefined ? {} : { qty: live.qty }),
+        ...(live.sizes === null || live.sizes === undefined ? {} : { sizes: live.sizes })
+      };
+    });
+    commerceVerified = verified.length === products.length;
+  } catch {
+    // Keep the homepage available from its released snapshot during a temporary
+    // Supabase outage; the browser will retry live commerce after hydration.
+  }
+
+  const catalogProducts = store.products.filter((product) =>
+    product.image &&
+    !(product.category === "Records" && product.image.includes("nixp-product-example"))
+  );
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Store",
+        "@id": `${ORIGIN}/#store`,
+        name: "NIXP",
+        url: `${ORIGIN}/`,
+        image: `${ORIGIN}/public/assets/nixp-logo.png`,
+        description: "A shifting selection of records, objects, publishing and apparel."
+      },
+      {
+        "@type": "ItemList",
+        name: "NIXP catalog",
+        numberOfItems: catalogProducts.length,
+        itemListElement: catalogProducts.map((product, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `${ORIGIN}${publicProductPath(product)}`,
+          name: `${product.artist} - ${product.title}`
+        }))
+      }
+    ]
+  };
+  const document = await pageDocument({
+    title: "NIXP",
+    description: "A shifting selection of records, objects, publishing and apparel.",
+    canonicalUrl: `${ORIGIN}/`,
+    image: `${ORIGIN}/public/assets/nixp-logo.png`,
+    appMarkup: homeAppMarkup(catalogProducts),
+    structuredData,
+    commerceVerified
+  });
+  sendNoStoreHtml(res, document);
+}
 
 export async function renderCatalogPage(req, res, url) {
   try {
@@ -157,7 +223,7 @@ async function productDocument(product, path, store) {
   });
 }
 
-async function pageDocument({ title, description, canonicalUrl, image, type = "website", appMarkup }) {
+async function pageDocument({ title, description, canonicalUrl, image, type = "website", appMarkup, structuredData, commerceVerified = false }) {
   let template = await readFile(join(process.cwd(), "index.html"), "utf8");
   template = template.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`);
   template = replaceMeta(template, "name", "description", description);
@@ -177,8 +243,12 @@ async function pageDocument({ title, description, canonicalUrl, image, type = "w
   template = template.replace(/\/src\/styles\/base\.css\?v=[^"]+/i, `/src/styles/base.css?v=${RELEASE_REVISION}`);
   template = template.replace(
     "</head>",
-    `    <meta name="nixp-release-revision" content="${RELEASE_REVISION}" />\n    <meta name="nixp-catalog-snapshot" content="${PUBLIC_SNAPSHOT_URL}" />\n    <link rel="modulepreload" href="${BUNDLE_URL}" />\n  </head>`
+    `    <meta name="nixp-release-revision" content="${RELEASE_REVISION}" />\n    <meta name="nixp-catalog-snapshot" content="${PUBLIC_SNAPSHOT_URL}" />\n    ${commerceVerified ? '<meta name="nixp-commerce-verified" content="true" />\n    ' : ""}<link rel="modulepreload" href="${BUNDLE_URL}" />\n  </head>`
   );
+  if (structuredData) {
+    const json = JSON.stringify(structuredData).replaceAll("<", "\\u003c");
+    template = template.replace("</head>", `    <script type="application/ld+json">${json}</script>\n  </head>`);
+  }
   template = template.replace("<!-- NIXP_APP_MARKER -->", appMarkup);
   return template;
 }

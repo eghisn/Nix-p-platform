@@ -11,7 +11,7 @@ function productQuantity(product = {}) {
 
 const [clientSource, buildSource] = await Promise.all([
   readFile(new URL("../src/main.js", import.meta.url), "utf8"),
-  readFile(new URL("./build.mjs", import.meta.url), "utf8")
+  readFile(new URL("../src/components/homePage.js", import.meta.url), "utf8")
 ]);
 
 assert.match(clientSource, /const soldOut = totalProductStock\(product\) <= 0;/, "Client slider must use the same total-stock rule as product pages.");
@@ -25,7 +25,7 @@ assert.match(buildSource, /soldOut \? '<span class="sold-out-label">Sold out<\/s
 
 const [storeSource, homeDocument] = await Promise.all([
   readFile(new URL("../public/data/public-store.json", import.meta.url), "utf8"),
-  readFile(new URL("../dist/index.html", import.meta.url), "utf8")
+  readFile(new URL("../dist/home-fallback.html", import.meta.url), "utf8")
 ]);
 const store = JSON.parse(storeSource);
 const soldOutRecentRelease = (store.products || []).find((product) => isRecentReleaseProduct(product) && productQuantity(product) === 0);

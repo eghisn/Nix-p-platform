@@ -2,7 +2,7 @@ import { getSession, json } from "./_lib/auth.js";
 import { sendCustomerOfferConfirmation, sendCustomerRequestConfirmation, sendOfferNotification, sendRequestNotification } from "./_lib/emailNotifications.js";
 import { isSupabaseConfigured, loadStore, supabaseFetch, upsertRawRows } from "./_lib/supabase.js";
 import { publicProductPath } from "../src/data/publicUrls.js";
-import { renderCatalogPage } from "./_lib/catalogPage.js";
+import { renderCatalogPage, renderHomePage } from "./_lib/catalogPage.js";
 import { recordSystemEvent } from "./_lib/observability.js";
 import { handleAnalyticsEvent } from "./_lib/analytics.js";
 import { handleMarketingDashboard } from "./_lib/marketingDashboard.js";
@@ -11,6 +11,9 @@ import { consumeCommerceRateLimit, requestClientAddress } from "./_lib/commerce.
 export default async function handler(req, res) {
   try {
     const url = new URL(req.url, "https://nix-p.com");
+    if (req.method === "GET" && url.searchParams.get("action") === "home-page") {
+      return await renderHomePage(req, res);
+    }
     if (req.method === "GET" && url.searchParams.get("action") === "product-redirect") {
       return await handleLegacyProductRedirect(req, res, url.searchParams.get("id"));
     }

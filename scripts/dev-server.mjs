@@ -457,7 +457,7 @@ createServer(async (req, res) => {
       }
     }
 
-    const indexPath = join(root, "index.html");
+    const indexPath = join(root, existsSync(join(root, "home-fallback.html")) ? "home-fallback.html" : "index.html");
     const html = await readFile(indexPath, "utf8");
     res.writeHead(200, { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" });
     res.end(html);

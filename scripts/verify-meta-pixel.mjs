@@ -187,7 +187,7 @@ assert.match(csp(policies[0]), /img-src[^;]*https:\/\/www\.facebook\.com/);
 assert.match(csp(policies[0]), /connect-src[^;]*https:\/\/www\.facebook\.com/);
 for (const privatePolicy of policies.slice(1)) assert.doesNotMatch(csp(privatePolicy), /facebook\.com|facebook\.net/);
 
-const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
+const html = await readFile(new URL("../dist/home-fallback.html", import.meta.url), "utf8");
 assert.equal((html.match(/<script type="module"/g) || []).length, 1, "The root shell must have one app entrypoint.");
 assert.doesNotMatch(html, /fbevents\.js|facebook\.com\/tr/, "No consent-bypassing inline or noscript Pixel is allowed.");
 const bundlePath = html.match(/<script type="module" src="([^"]+)"/)[1];
