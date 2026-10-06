@@ -28,7 +28,10 @@ assert.match(zeroStockMarkup, /data-product-id="nixp-test-zero"[\s\S]*?<span cla
 const availableMarkup = homeAppMarkup([{ ...product, qty: 1 }]);
 assert.doesNotMatch(availableMarkup, /class="slide is-sold-out"/, "In-stock products must not be marked Sold Out.");
 
-const snapshot = JSON.parse(await readFile(new URL("../dist/public/data/releases/local.json", import.meta.url), "utf8"));
+const homeDocument = await readFile(new URL("../dist/home-fallback.html", import.meta.url), "utf8");
+const snapshotUrl = homeDocument.match(/<meta name="nixp-catalog-snapshot" content="([^"]+)"/i)?.[1];
+assert.ok(snapshotUrl, "The built homepage must reference its release snapshot.");
+const snapshot = JSON.parse(await readFile(new URL(`../dist${snapshotUrl}`, import.meta.url), "utf8"));
 const target = snapshot.products.find((item) => item.sku === "NXP-2026-VNL-0109");
 assert.ok(target && target.qty > 0, "The regression fixture must reproduce the stale Domi & JD Beck snapshot.");
 const originalFetch = globalThis.fetch;
@@ -42,7 +45,7 @@ process.env.SUPABASE_SERVICE_ROLE_KEY = "test-only";
 process.env.VERCEL_GIT_COMMIT_SHA = "local";
 globalThis.fetch = async (input) => {
   const url = new URL(String(input));
-  if (url.pathname.endsWith("/public/data/releases/local.json")) {
+  if (url.pathname === snapshotUrl) {
     return new Response(JSON.stringify(snapshot), { status: 200 });
   }
   if (url.pathname.endsWith("/rest/v1/products")) {
