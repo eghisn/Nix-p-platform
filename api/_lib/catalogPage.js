@@ -107,10 +107,29 @@ export async function renderCatalogPage(req, res, url) {
     const product = (store.products || []).find((item) => publicProductPath(item) === requestedPath);
     if (!product) return notFound(res);
 
+    let renderedProduct = product;
+    let commerceVerified = false;
+    try {
+      const verified = await verifiedPrices([product.id]);
+      const live = verified.find((row) => String(row.id) === String(product.id));
+      if (live) {
+        renderedProduct = {
+          ...product,
+          ...(live.price === null || live.price === undefined ? {} : { price: live.price }),
+          ...(live.qty === null || live.qty === undefined ? {} : { qty: live.qty }),
+          ...(live.sizes === null || live.sizes === undefined ? {} : { sizes: live.sizes })
+        };
+        store.products = store.products.map((item) => item.id === product.id ? renderedProduct : item);
+        commerceVerified = true;
+      }
+    } catch {
+      // Keep the released page available; the client will retry commerce data after hydration.
+    }
+
     res.statusCode = 200;
     res.setHeader("content-type", "text/html; charset=utf-8");
     sendPublicSnapshotHeaders(res);
-    res.end(await productDocument(product, requestedPath, store));
+    res.end(await productDocument(renderedProduct, requestedPath, store, commerceVerified));
   } catch {
     notFound(res);
   }
@@ -203,7 +222,7 @@ function sendPublicSnapshotHeaders(res) {
   res.setHeader("vercel-cdn-cache-control", "no-store");
 }
 
-async function productDocument(product, path, store) {
+async function productDocument(product, path, store, commerceVerified = false) {
   const title = `${product.artist} - ${product.title} | NIXP`;
   const format = recordDisplayFormat(product);
   const price = formatPrice(product.price);
@@ -219,7 +238,8 @@ async function productDocument(product, path, store) {
     canonicalUrl,
     image,
     type: "product",
-    appMarkup: shell(productMarkup(product, store), path, 0)
+    appMarkup: shell(productMarkup(product, store), path, 0),
+    commerceVerified
   });
 }
 

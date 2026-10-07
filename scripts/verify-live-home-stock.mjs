@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { homeAppMarkup } from "../src/components/homePage.js";
+import { publicProductPath } from "../src/data/publicUrls.js";
 
 const [catalogApi, catalogPage, storeClient, config] = await Promise.all([
   readFile(new URL("../api/catalog.js", import.meta.url), "utf8"),
@@ -59,17 +60,28 @@ globalThis.fetch = async (input) => {
 };
 
 try {
-  const { renderHomePage } = await import("../api/_lib/catalogPage.js");
-  const response = {
+  const { renderCatalogPage, renderHomePage } = await import("../api/_lib/catalogPage.js");
+  const createResponse = () => ({
     headers: {},
     setHeader(name, value) { this.headers[name] = value; },
     end(body) { this.body = body; }
-  };
-  await renderHomePage({ headers: { host: "nixp.test", "x-forwarded-proto": "https" } }, response);
-  assert.equal(response.statusCode, 200);
-  assert.match(response.body, /<meta name="nixp-commerce-verified" content="true"/);
+  });
+  const request = { headers: { host: "nixp.test", "x-forwarded-proto": "https" } };
+  const homeResponse = createResponse();
+  await renderHomePage(request, homeResponse);
+  assert.equal(homeResponse.statusCode, 200);
+  assert.match(homeResponse.body, /<meta name="nixp-commerce-verified" content="true"/);
   const escapedTargetId = target.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  assert.match(response.body, new RegExp(`data-product-id="${escapedTargetId}"[\\s\\S]{0,500}<span class="sold-out-label">Sold out</span>`));
+  assert.match(homeResponse.body, new RegExp(`data-product-id="${escapedTargetId}"[\\s\\S]{0,500}<span class="sold-out-label">Sold out</span>`));
+
+  const productResponse = createResponse();
+  const productUrl = new URL("https://nixp.test/api/catalog");
+  productUrl.searchParams.set("catalogPath", publicProductPath(target));
+  await renderCatalogPage(request, productResponse, productUrl);
+  assert.equal(productResponse.statusCode, 200);
+  assert.match(productResponse.body, /<meta name="nixp-commerce-verified" content="true"/);
+  assert.match(productResponse.body, new RegExp(`data-add-cart="${escapedTargetId}" disabled[^>]*>Sold out</`));
+  assert.doesNotMatch(productResponse.body, new RegExp(`data-add-cart="${escapedTargetId}"[^>]*>Add to cart</`));
 } finally {
   globalThis.fetch = originalFetch;
   for (const [key, value] of [["SUPABASE_URL", previousEnv.url], ["SUPABASE_SERVICE_ROLE_KEY", previousEnv.key], ["VERCEL_GIT_COMMIT_SHA", previousEnv.revision]]) {
@@ -82,4 +94,4 @@ if (existsSync(new URL("../dist/index.html", import.meta.url))) {
   throw new Error("A static dist/index.html would bypass Vercel's live-stock homepage rewrite.");
 }
 
-console.log("Live homepage stock rendering contract passed.");
+console.log("Live homepage and product stock rendering contracts passed.");
