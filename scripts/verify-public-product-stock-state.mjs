@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { productMarkup } from "../api/_lib/catalogPage.js";
 
 const product = {
@@ -22,5 +23,10 @@ const inStockMarkup = productMarkup({ ...product, qty: 1 });
 assert.match(inStockMarkup, /<figure class="product-art product-art-large\s"><img/, "In-stock product artwork must retain its normal appearance.");
 assert.doesNotMatch(inStockMarkup, /class="product-art product-art-large is-sold-out"/, "In-stock product artwork must not be dimmed.");
 assert.match(inStockMarkup, /data-add-cart="stock-zero-test" >Add to cart<\/button>/, "In-stock product pages must remain purchasable.");
+
+const commerceStore = readFileSync(new URL("../src/services/adminStore.js", import.meta.url), "utf8");
+const commerceClient = readFileSync(new URL("../src/main.js", import.meta.url), "utf8");
+assert.match(commerceStore, /if \(!verifiedIds\.size\) return currentStore;[\s\S]*?detail: \{ productIds: \[\.\.\.verifiedIds\] \}/, "Failed or incomplete commerce verification must not broadcast stale snapshot stock to the page.");
+assert.match(commerceClient, /function applyPublicCommerceStateToDom\(event\)[\s\S]*?if \(!verifiedIds\.has\(String\(product\.id\)\)\) continue;/, "The page may patch stock styling only for products explicitly confirmed by the live commerce API.");
 
 console.log("Public product stock state contract passed.");

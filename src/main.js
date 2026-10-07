@@ -2612,9 +2612,12 @@ function setPublicProductSoldOutState(product) {
   }
 }
 
-function applyPublicCommerceStateToDom() {
+function applyPublicCommerceStateToDom(event) {
   if (workspaceForPath(normalizePath(location.pathname)) || workspaceForHost()) return;
+  const verifiedIds = new Set((event?.detail?.productIds || []).map(String));
+  if (!verifiedIds.size) return;
   for (const product of adminStore.getSnapshot().products || []) {
+    if (!verifiedIds.has(String(product.id))) continue;
     setPublicProductSoldOutState(product);
   }
 }

@@ -357,12 +357,6 @@ async function fetchVerifiedCommerce(ids = []) {
   }
 }
 
-async function reconcilePublicCommerce(store) {
-  const products = store?.products || [];
-  const verified = await fetchVerifiedCommerce(products.map((product) => product.id));
-  return mergeVerifiedCommerce(store, verified);
-}
-
 function mergeVerifiedCommerce(store, verified = []) {
   const products = store?.products || [];
   if (!verified.length) return store;
@@ -738,20 +732,27 @@ function refreshPublicCommerceInBackground(store, ids = []) {
     ? { ...currentStore, products: products.filter((product) => requestedIdSet.has(String(product.id))) }
     : currentStore;
   if (publicCommerceRefreshPromise) return publicCommerceRefreshPromise;
-  publicCommerceRefreshPromise = reconcilePublicCommerce(scopedStore)
-    .then((nextStore) => {
+  publicCommerceRefreshPromise = fetchVerifiedCommerce((scopedStore.products || []).map((product) => product.id))
+    .then((verified) => {
+      const verifiedIds = new Set(verified.map((row) => row.id).filter((id) => requestedIdSet.size === 0 || requestedIdSet.has(id)));
+      if (!verifiedIds.size) return currentStore;
+      const nextStore = mergeVerifiedCommerce(scopedStore, verified);
       if (requestedIds.length) {
         const liveById = new Map((nextStore.products || []).map((product) => [String(product.id), product]));
         activeStore = {
           ...currentStore,
-          products: products.map((product) => liveById.get(String(product.id)) || product)
+          products: products.map((product) => verifiedIds.has(String(product.id))
+            ? liveById.get(String(product.id)) || product
+            : product)
         };
       } else {
         activeStore = nextStore;
       }
       activeStoreScope = "public";
       if (typeof window !== "undefined") {
-        window.dispatchEvent(new CustomEvent("nixp:public-commerce-refreshed"));
+        window.dispatchEvent(new CustomEvent("nixp:public-commerce-refreshed", {
+          detail: { productIds: [...verifiedIds] }
+        }));
       }
       return activeStore;
     })
@@ -931,7 +932,9 @@ export const adminStore = {
           if (activeStoreScope !== "public" || !activeStore) return;
           activeStore = mergeVerifiedCommerce(activeStore, verified);
           if (verified.length && typeof window !== "undefined") {
-            window.dispatchEvent(new CustomEvent("nixp:public-commerce-refreshed"));
+            window.dispatchEvent(new CustomEvent("nixp:public-commerce-refreshed", {
+              detail: { productIds: verified.map((row) => row.id) }
+            }));
           }
         });
       } else if (publicOnly) {
