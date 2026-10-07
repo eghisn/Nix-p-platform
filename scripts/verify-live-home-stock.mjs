@@ -80,6 +80,7 @@ try {
   await renderCatalogPage(request, productResponse, productUrl);
   assert.equal(productResponse.statusCode, 200);
   assert.match(productResponse.body, /<meta name="nixp-commerce-verified" content="true"/);
+  assert.match(productResponse.body, /<figure class="product-art product-art-large is-sold-out"><img[^>]+><span class="sold-out-label">Sold out<\/span>/);
   assert.match(productResponse.body, new RegExp(`data-add-cart="${escapedTargetId}" disabled[^>]*>Sold out</`));
   assert.doesNotMatch(productResponse.body, new RegExp(`data-add-cart="${escapedTargetId}"[^>]*>Add to cart</`));
 } finally {
