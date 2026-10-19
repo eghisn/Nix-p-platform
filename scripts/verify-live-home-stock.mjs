@@ -33,8 +33,11 @@ const homeDocument = await readFile(new URL("../dist/home-fallback.html", import
 const snapshotUrl = homeDocument.match(/<meta name="nixp-catalog-snapshot" content="([^"]+)"/i)?.[1];
 assert.ok(snapshotUrl, "The built homepage must reference its release snapshot.");
 const snapshot = JSON.parse(await readFile(new URL(`../dist${snapshotUrl}`, import.meta.url), "utf8"));
-const target = snapshot.products.find((item) => item.sku === "NXP-2026-VNL-0109");
-assert.ok(target && target.qty > 0, "The regression fixture must reproduce the stale Domi & JD Beck snapshot.");
+const featuredId = homeAppMarkup(snapshot.products).match(/data-product-id="([^"]+)"/)?.[1];
+const target = snapshot.products.find((item) => item.id === featuredId);
+assert.ok(target, "The stock regression fixture needs a product shown on the homepage.");
+// Simulate a stale release snapshot without depending on any real item's stock.
+target.qty = 1;
 const originalFetch = globalThis.fetch;
 const previousEnv = {
   url: process.env.SUPABASE_URL,
