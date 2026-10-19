@@ -66869,6 +66869,664 @@
       }
     },
     {
+      "id": "nxp-2026-cd-0015",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0015",
+      "tags": [
+        "CD",
+        "NXP-2026-CD-0015"
+      ],
+      "year": 2008,
+      "color": "",
+      "flaws": "",
+      "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+      "label": "Nuclear Blast",
+      "price": 250000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Obzen",
+      "artist": "Meshuggah",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CD-0015",
+        "Format: CD",
+        "Condition: Used Good"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "autoCover": "",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
+      "syncAudit": [
+        {
+          "at": "2026-10-19T02:00:46.831Z",
+          "sku": "NXP-2026-CD-0015",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-18T02:00:47.000Z",
+          "sku": "NXP-2026-CD-0015",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-17T02:00:47.451Z",
+          "sku": "NXP-2026-CD-0015",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-16T02:00:47.520Z",
+          "sku": "NXP-2026-CD-0015",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-15T02:00:46.705Z",
+          "sku": "NXP-2026-CD-0015",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-14T02:00:47.556Z",
+          "sku": "NXP-2026-CD-0015",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-13T02:00:47.858Z",
+          "sku": "NXP-2026-CD-0015",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-12T02:00:47.447Z",
+          "sku": "NXP-2026-CD-0015",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-10-19",
+      "vinylSize": "",
+      "collection": "NIXP Selection",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-10-19T02:00:46.831Z",
+        "sku": "NXP-2026-CD-0015",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Meshuggah's 2008 Nuclear Blast album obZen compresses technical precision, polyrhythmic weight and brooding reflection into one of the band's defining records.",
+      "reviewQuote": "magic combination of its earlier freneticism",
+      "editRevision": 47,
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen",
+          "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
+          "credit": "Discogs / Nuclear Blast"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
+        "description": "Meshuggah's 2008 Nuclear Blast album obZen compresses technical precision, polyrhythmic weight and brooding reflection into one of the band's defining records.",
+        "reviewQuote": "magic combination of its earlier freneticism",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Car Bomb",
+          "Animals as Leaders",
+          "Vildhjarta",
+          "Gojira",
+          "Fredrik Thordendal's Special Defects"
+        ],
+        "enrichmentStatus": "complete-no-related-artists",
+        "descriptionSource": "AllMusic / Pitchfork",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Car Bomb",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.939227,
+            "artist": "Animals as Leaders",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 0.939227,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.886191,
+            "artist": "Vildhjarta",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 0.886191,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.716898,
+            "artist": "Gojira",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 0.716898,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.573736,
+            "artist": "Fredrik Thordendal's Special Defects",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 0.573736,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Car Bomb",
+              "Animals as Leaders",
+              "Vildhjarta",
+              "Gojira",
+              "Fredrik Thordendal's Special Defects",
+              "Periphery",
+              "TesseracT",
+              "Textures",
+              "Humanity's Last Breath",
+              "Mastodon"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Car Bomb",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.939227,
+                "artist": "Animals as Leaders",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 0.939227,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.886191,
+                "artist": "Vildhjarta",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 0.886191,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.716898,
+                "artist": "Gojira",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 0.716898,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.573736,
+                "artist": "Fredrik Thordendal's Special Defects",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 0.573736,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.568617,
+                "artist": "Periphery",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 0.568617,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.561557,
+                "artist": "TesseracT",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 0.561557,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.504566,
+                "artist": "Textures",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 0.504566,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.470412,
+                "artist": "Humanity's Last Breath",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 0.470412,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.455553,
+                "artist": "Mastodon",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Meshuggah",
+                "confidence": 0.455553,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Car Bomb",
+            "Animals as Leaders",
+            "Vildhjarta",
+            "Gojira",
+            "Fredrik Thordendal's Special Defects"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Car Bomb",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.939227,
+              "artist": "Animals as Leaders",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.939227,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.886191,
+              "artist": "Vildhjarta",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.886191,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.716898,
+              "artist": "Gojira",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.716898,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.573736,
+              "artist": "Fredrik Thordendal's Special Defects",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.573736,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "0340731f-2d26-4b18-97a6-4a4908ab01ad",
+          "sourceUrl": "https://musicbrainz.org/release/0340731f-2d26-4b18-97a6-4a4908ab01ad",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "",
+      "displayFormat": "CD",
+      "homeSlideSort": 2,
+      "publishStatus": "Published",
+      "financeStockId": "mr6qoels96nchg",
+      "mediaCondition": "Very Good Plus",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Car Bomb",
+        "Animals as Leaders",
+        "Vildhjarta",
+        "Gojira",
+        "Fredrik Thordendal's Special Defects"
+      ],
+      "financeItemType": "CD",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "sleeveCondition": "Very Good Plus",
+      "autoProductPhoto": "",
+      "catalogPriceSync": 250000,
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "AllMusic / Pitchfork",
+      "metadataSourceUrl": "https://www.discogs.com/release/2608192-Meshuggah-obZen",
+      "editorialUpdatedAt": "2026-10-19T20:14:10.86+00:00",
+      "editorialUpdatedBy": "operatorwebsite",
+      "mediaConditionNote": "",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-08-18",
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "0340731f-2d26-4b18-97a6-4a4908ab01ad",
+      "sleeveConditionGrade": "Very Good Plus",
+      "enrichmentAttemptedAt": "2026-08-18T16:56:28.655Z",
+      "enrichmentFingerprint": "meshuggah|obzen|cd||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Car Bomb",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Meshuggah",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.939227,
+          "artist": "Animals as Leaders",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Meshuggah",
+          "confidence": 0.939227,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.886191,
+          "artist": "Vildhjarta",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Meshuggah",
+          "confidence": 0.886191,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.716898,
+          "artist": "Gojira",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Meshuggah",
+          "confidence": 0.716898,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.573736,
+          "artist": "Fredrik Thordendal's Special Defects",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Meshuggah",
+          "confidence": 0.573736,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Car Bomb",
+            "Animals as Leaders",
+            "Vildhjarta",
+            "Gojira",
+            "Fredrik Thordendal's Special Defects",
+            "Periphery",
+            "TesseracT",
+            "Textures",
+            "Humanity's Last Breath",
+            "Mastodon"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Car Bomb",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.939227,
+              "artist": "Animals as Leaders",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.939227,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.886191,
+              "artist": "Vildhjarta",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.886191,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.716898,
+              "artist": "Gojira",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.716898,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.573736,
+              "artist": "Fredrik Thordendal's Special Defects",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.573736,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.568617,
+              "artist": "Periphery",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.568617,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.561557,
+              "artist": "TesseracT",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.561557,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.504566,
+              "artist": "Textures",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.504566,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.470412,
+              "artist": "Humanity's Last Breath",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.470412,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.455553,
+              "artist": "Mastodon",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Meshuggah",
+              "confidence": 0.455553,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Meshuggah"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Car Bomb",
+          "Animals as Leaders",
+          "Vildhjarta",
+          "Gojira",
+          "Fredrik Thordendal's Special Defects"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Car Bomb",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.939227,
+            "artist": "Animals as Leaders",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 0.939227,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.886191,
+            "artist": "Vildhjarta",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 0.886191,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.716898,
+            "artist": "Gojira",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 0.716898,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.573736,
+            "artist": "Fredrik Thordendal's Special Defects",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Meshuggah",
+            "confidence": 0.573736,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "0340731f-2d26-4b18-97a6-4a4908ab01ad",
+        "sourceUrl": "https://musicbrainz.org/release/0340731f-2d26-4b18-97a6-4a4908ab01ad",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-10-19",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "nxp-2026-app-0003-preform-tee",
       "qty": 21,
       "sku": "NXP-2026-APP-0003",
@@ -67173,659 +67831,6 @@
         "weightGrams": 360,
         "shippingClass": "apparel-soft-zip-lock-wrap",
         "packagingGroup": "SOFT_APPAREL",
-        "vinylWeightClass": "",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "nxp-2026-cd-0015",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0015",
-      "tags": [
-        "CD",
-        "NXP-2026-CD-0015"
-      ],
-      "year": 2008,
-      "color": "",
-      "flaws": "",
-      "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
-      "label": "Nuclear Blast",
-      "price": 250000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "Obzen",
-      "artist": "Meshuggah",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0015",
-        "Format: CD",
-        "Condition: Used Good"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "",
-      "condition": "Used Good",
-      "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
-      "syncAudit": [
-        {
-          "at": "2026-10-19T02:00:46.831Z",
-          "sku": "NXP-2026-CD-0015",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-10-18T02:00:47.000Z",
-          "sku": "NXP-2026-CD-0015",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-10-17T02:00:47.451Z",
-          "sku": "NXP-2026-CD-0015",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-10-16T02:00:47.520Z",
-          "sku": "NXP-2026-CD-0015",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-10-15T02:00:46.705Z",
-          "sku": "NXP-2026-CD-0015",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-10-14T02:00:47.556Z",
-          "sku": "NXP-2026-CD-0015",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-10-13T02:00:47.858Z",
-          "sku": "NXP-2026-CD-0015",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-10-12T02:00:47.447Z",
-          "sku": "NXP-2026-CD-0015",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-10-19",
-      "vinylSize": "",
-      "collection": "NIXP Selection",
-      "fabricCare": "",
-      "syncStatus": {
-        "at": "2026-10-19T02:00:46.831Z",
-        "sku": "NXP-2026-CD-0015",
-        "action": "Inventory identity synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "alterations": "",
-      "apparelType": "",
-      "description": "Meshuggah's 2008 Nuclear Blast album obZen compresses technical precision, polyrhythmic weight and brooding reflection into one of the band's defining records.",
-      "reviewQuote": "magic combination of its earlier freneticism",
-      "imageCredits": [
-        {
-          "url": "https://www.discogs.com/release/2608192-Meshuggah-obZen",
-          "image": "/public/covers/nxp-2026-cd-0015-meshuggah-obzen-discogs-2608192.jpg",
-          "credit": "Discogs / Nuclear Blast"
-        }
-      ],
-      "originalTags": false,
-      "reviewSource": "Pitchfork (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/22142-25-years-of-musical-deviance/",
-        "description": "Meshuggah's 2008 Nuclear Blast album obZen compresses technical precision, polyrhythmic weight and brooding reflection into one of the band's defining records.",
-        "reviewQuote": "magic combination of its earlier freneticism",
-        "reviewSource": "Pitchfork (quoted)",
-        "relatedArtists": [
-          "Car Bomb",
-          "Animals as Leaders",
-          "Vildhjarta",
-          "Gojira",
-          "Fredrik Thordendal's Special Defects"
-        ],
-        "enrichmentStatus": "complete-no-related-artists",
-        "descriptionSource": "AllMusic / Pitchfork",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Car Bomb",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.939227,
-            "artist": "Animals as Leaders",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 0.939227,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.886191,
-            "artist": "Vildhjarta",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 0.886191,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.716898,
-            "artist": "Gojira",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 0.716898,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.573736,
-            "artist": "Fredrik Thordendal's Special Defects",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 0.573736,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Car Bomb",
-              "Animals as Leaders",
-              "Vildhjarta",
-              "Gojira",
-              "Fredrik Thordendal's Special Defects",
-              "Periphery",
-              "TesseracT",
-              "Textures",
-              "Humanity's Last Breath",
-              "Mastodon"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Car Bomb",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.939227,
-                "artist": "Animals as Leaders",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 0.939227,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.886191,
-                "artist": "Vildhjarta",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 0.886191,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.716898,
-                "artist": "Gojira",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 0.716898,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.573736,
-                "artist": "Fredrik Thordendal's Special Defects",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 0.573736,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.568617,
-                "artist": "Periphery",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 0.568617,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.561557,
-                "artist": "TesseracT",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 0.561557,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.504566,
-                "artist": "Textures",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 0.504566,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.470412,
-                "artist": "Humanity's Last Breath",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 0.470412,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.455553,
-                "artist": "Mastodon",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Meshuggah",
-                "confidence": 0.455553,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Car Bomb",
-            "Animals as Leaders",
-            "Vildhjarta",
-            "Gojira",
-            "Fredrik Thordendal's Special Defects"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Car Bomb",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.939227,
-              "artist": "Animals as Leaders",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.939227,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.886191,
-              "artist": "Vildhjarta",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.886191,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.716898,
-              "artist": "Gojira",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.716898,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.573736,
-              "artist": "Fredrik Thordendal's Special Defects",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.573736,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "0340731f-2d26-4b18-97a6-4a4908ab01ad",
-          "sourceUrl": "https://musicbrainz.org/release/0340731f-2d26-4b18-97a6-4a4908ab01ad",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": 2,
-      "publishStatus": "Published",
-      "financeStockId": "mr6qoels96nchg",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Car Bomb",
-        "Animals as Leaders",
-        "Vildhjarta",
-        "Gojira",
-        "Fredrik Thordendal's Special Defects"
-      ],
-      "financeItemType": "CD",
-      "financeMetadata": {
-        "isbn": "",
-        "pages": "",
-        "binding": "",
-        "language": "",
-        "publisher": "",
-        "dimensions": "",
-        "printDetails": ""
-      },
-      "homeCollections": [
-        "nixp-selection"
-      ],
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "catalogPriceSync": 250000,
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "AllMusic / Pitchfork",
-      "metadataSourceUrl": "https://www.discogs.com/release/2608192-Meshuggah-obZen",
-      "apparelMeasurements": {},
-      "enrichmentUpdatedAt": "2026-08-18",
-      "garmentConditionNote": "",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "0340731f-2d26-4b18-97a6-4a4908ab01ad",
-      "enrichmentAttemptedAt": "2026-08-18T16:56:28.655Z",
-      "enrichmentFingerprint": "meshuggah|obzen|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Car Bomb",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Meshuggah",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.939227,
-          "artist": "Animals as Leaders",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Meshuggah",
-          "confidence": 0.939227,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.886191,
-          "artist": "Vildhjarta",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Meshuggah",
-          "confidence": 0.886191,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.716898,
-          "artist": "Gojira",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Meshuggah",
-          "confidence": 0.716898,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.573736,
-          "artist": "Fredrik Thordendal's Special Defects",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Meshuggah",
-          "confidence": 0.573736,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Car Bomb",
-            "Animals as Leaders",
-            "Vildhjarta",
-            "Gojira",
-            "Fredrik Thordendal's Special Defects",
-            "Periphery",
-            "TesseracT",
-            "Textures",
-            "Humanity's Last Breath",
-            "Mastodon"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Car Bomb",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.939227,
-              "artist": "Animals as Leaders",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.939227,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.886191,
-              "artist": "Vildhjarta",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.886191,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.716898,
-              "artist": "Gojira",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.716898,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.573736,
-              "artist": "Fredrik Thordendal's Special Defects",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.573736,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.568617,
-              "artist": "Periphery",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.568617,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.561557,
-              "artist": "TesseracT",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.561557,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.504566,
-              "artist": "Textures",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.504566,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.470412,
-              "artist": "Humanity's Last Breath",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.470412,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.455553,
-              "artist": "Mastodon",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Meshuggah",
-              "confidence": 0.455553,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Meshuggah"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Car Bomb",
-          "Animals as Leaders",
-          "Vildhjarta",
-          "Gojira",
-          "Fredrik Thordendal's Special Defects"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Car Bomb",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.939227,
-            "artist": "Animals as Leaders",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 0.939227,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.886191,
-            "artist": "Vildhjarta",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 0.886191,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.716898,
-            "artist": "Gojira",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 0.716898,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.573736,
-            "artist": "Fredrik Thordendal's Special Defects",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Meshuggah",
-            "confidence": 0.573736,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "0340731f-2d26-4b18-97a6-4a4908ab01ad",
-        "sourceUrl": "https://musicbrainz.org/release/0340731f-2d26-4b18-97a6-4a4908ab01ad",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 46,
-      "editorialUpdatedAt": "2026-10-19T02:00:57.553+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
         "manualShippingOverride": false
       }
