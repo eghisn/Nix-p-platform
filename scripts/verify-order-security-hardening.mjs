@@ -59,6 +59,8 @@ assert.doesNotMatch(paymentSession, /expirePendingOrders/, "Payment session crea
 assert.match(handlers, /reconcilePendingMidtransPayments/, "Pending Midtrans payments must have a provider reconciliation path.");
 assert.match(handlers, /shouldReleaseMissingProviderOrder\(order\.payment_expires_at, attempt\.payload\?\.lastProviderMissingAt\)/, "A provider 404 must be confirmed twice after expiry before stock is released.");
 assert.match(handlers, /shouldRecordMissingProviderCheck\(order\.payment_expires_at, attempt\.payload\?\.lastProviderMissingAt\)/, "The first provider 404 must be persisted even when the timestamp is null.");
+assert.match(handlers, /isMissingMidtransTransaction\(response\.status, payload\)/, "Provider 404 payloads must be recognized even when their HTTP status is 200.");
+assert.match(handlers, /if \(!payload\.order_id \|\| !payload\.transaction_status\) throw/, "Malformed provider status responses must not silently leave orders pending.");
 assert.match(handlers, /rpc\/release_order_reservations/, "Confirmed uncharged, expired orders must release their stock through the atomic transition.");
 assert.match(handlers, /const workerCount = Math\.min\(4, eligible\.length\)/, "Pending payment reconciliation must use bounded concurrency so a busy maintenance run remains within its function budget.");
 assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protected payment-health summary.");

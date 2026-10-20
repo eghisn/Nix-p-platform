@@ -16,7 +16,7 @@ import {
 import { drainNotificationOutbox } from "./emailNotifications.js";
 import { recordSystemEvent } from "./observability.js";
 import { supabaseFetch } from "./supabase.js";
-import { classifyMidtransEvent, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldRecordMissingProviderCheck, shouldReleaseMissingProviderOrder } from "./paymentState.js";
+import { classifyMidtransEvent, isMissingMidtransTransaction, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldRecordMissingProviderCheck, shouldReleaseMissingProviderOrder } from "./paymentState.js";
 
 export async function handleMidtransToken(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
@@ -624,8 +624,9 @@ async function fetchMidtransStatus(orderId, { allowMissing = false } = {}) {
     signal: AbortSignal.timeout(4_000)
   });
   const payload = await response.json().catch(() => ({}));
-  if (allowMissing && response.status === 404) return null;
+  if (allowMissing && isMissingMidtransTransaction(response.status, payload)) return null;
   if (!response.ok) throw new Error(payload.status_message || "Could not verify the Midtrans transaction.");
+  if (!payload.order_id || !payload.transaction_status) throw new Error("Midtrans status response is missing transaction identity or status.");
   return payload;
 }
 

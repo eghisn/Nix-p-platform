@@ -71,6 +71,13 @@ export function shouldRecordMissingProviderCheck(paymentExpiresAt, lastProviderM
     && (!Number.isFinite(firstMissingAt) || firstMissingAt < expiresAt + 5 * 60_000);
 }
 
+export function isMissingMidtransTransaction(httpStatus, payload) {
+  return httpStatus === 404
+    || (httpStatus >= 200 && httpStatus < 300
+      && String(payload?.status_code || "") === "404"
+      && !payload?.transaction_status);
+}
+
 export function classifyMidtransEvent({ transactionStatus, fraudStatus, paymentStatus } = {}) {
   const status = String(transactionStatus || "").trim().toLowerCase();
   const fraud = String(fraudStatus || "").trim().toLowerCase();

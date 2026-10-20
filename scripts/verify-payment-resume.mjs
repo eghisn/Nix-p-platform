@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { classifyMidtransEvent, hasActionableMidtransInstructions, hasUsableMidtransRedirect, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldRecordMissingProviderCheck, shouldReleaseMissingProviderOrder } from "../api/_lib/paymentState.js";
+import { classifyMidtransEvent, hasActionableMidtransInstructions, hasUsableMidtransRedirect, isMissingMidtransTransaction, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldRecordMissingProviderCheck, shouldReleaseMissingProviderOrder } from "../api/_lib/paymentState.js";
 
 const bni = safeMidtransPaymentInstructions({
   payment_type: "bank_transfer",
@@ -83,6 +83,11 @@ assert.equal(shouldRecordMissingProviderCheck("2026-10-20T00:00:00Z", null), tru
 assert.equal(shouldRecordMissingProviderCheck("2026-10-20T00:00:00Z", undefined), true, "An absent first-check timestamp must be recorded.");
 assert.equal(shouldRecordMissingProviderCheck("2026-10-20T00:00:00Z", "2026-10-20T00:04:59Z"), true, "A premature first check must be replaced after callback grace.");
 assert.equal(shouldRecordMissingProviderCheck("2026-10-20T00:00:00Z", "2026-10-20T00:05:00Z"), false, "A valid first check must remain unchanged until release is safe.");
+assert.equal(isMissingMidtransTransaction(404, { status_code: "404" }), true);
+assert.equal(isMissingMidtransTransaction(200, { status_code: "404" }), true, "A Midtrans 404 body must be treated as missing even with HTTP 200.");
+assert.equal(isMissingMidtransTransaction(401, { status_code: "404" }), false, "Authentication failures must never be treated as missing transactions.");
+assert.equal(isMissingMidtransTransaction(200, { status_code: "404", transaction_status: "pending" }), false, "A transaction-bearing response must not release stock.");
+assert.equal(isMissingMidtransTransaction(200, { status_code: "200", transaction_status: "settlement" }), false, "Paid transactions must not be treated as missing.");
 
 const eventCases = [
   [{ transactionStatus: "settlement", paymentStatus: "Pending" }, "paid"],
