@@ -428,6 +428,9 @@ function setOrderAccessCookie(req, res, orderId, token) {
 
 function setCheckoutAccessCookie(req, res, orderId, token) {
   setAccessCookie(req, res, CHECKOUT_ACCESS_COOKIE_NAME, "/api/checkout", orderId, token);
+  // Snap can return without the URL fragment. Keep the same HttpOnly access
+  // credential available to the order-status endpoint on this device.
+  setOrderAccessCookie(req, res, orderId, token);
 }
 
 function setAccessCookie(req, res, name, path, orderId, token) {
@@ -435,10 +438,11 @@ function setAccessCookie(req, res, name, path, orderId, token) {
   const host = String(req.headers.host || "");
   const proto = String(req.headers["x-forwarded-proto"] || "");
   const secure = proto === "https" || (!host.includes("localhost") && !host.startsWith("127.0.0.1"));
-  res.setHeader(
-    "Set-Cookie",
-    `${name}=${payload}; Path=${path}; Max-Age=${ORDER_ACCESS_MAX_AGE_SECONDS}; HttpOnly; ${secure ? "Secure; " : ""}SameSite=Lax`
-  );
+  const cookie = `${name}=${payload}; Path=${path}; Max-Age=${ORDER_ACCESS_MAX_AGE_SECONDS}; HttpOnly; ${secure ? "Secure; " : ""}SameSite=Lax`;
+  const existing = res.getHeader("Set-Cookie");
+  const cookies = (Array.isArray(existing) ? existing : existing ? [existing] : [])
+    .filter((entry) => !String(entry).startsWith(`${name}=`));
+  res.setHeader("Set-Cookie", [...cookies, cookie]);
 }
 
 function hasCheckoutOrderAccess(req, providedToken, order) {

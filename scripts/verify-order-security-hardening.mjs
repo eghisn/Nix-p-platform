@@ -64,6 +64,8 @@ assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protect
 assert.match(handlers, /rpc\/merge_midtrans_payment_attempt/, "Payment updates must merge provider status without erasing the stored redirect session.");
 assert.match(retentionMigration, /payload = coalesce\(payload, '\{\}'::jsonb\) \|\| coalesce\(p_payload, '\{\}'::jsonb\)/, "Payment updates must preserve the existing token and redirect URL atomically.");
 assert.match(checkout, /customerPaymentSummary/, "The protected customer order response must include resumability and safe payment instructions.");
+assert.match(checkout, /function setCheckoutAccessCookie[\s\S]*?setOrderAccessCookie\(req, res, orderId, token\)/, "Returning from Snap must retain protected order access even if the URL fragment is lost.");
+assert.match(checkout, /res\.getHeader\("Set-Cookie"\)/, "Checkout and order-status access cookies must be appended, not overwrite one another.");
 assert.match(checkout, /hasUsableMidtransRedirect\(attempt\?\.payload\?\.redirectUrl, process\.env\.MIDTRANS_ENV\)/, "Customer payment recovery must match the active Midtrans environment.");
 assert.match(checkout, /startAvailable: canPay && !resumeAvailable && !actionableInstructions/, "A failed pre-payment session must remain safely retryable only while the reservation is payable.");
 assert.match(client, /payment\.resumeAvailable \|\| payment\.startAvailable/, "The payment CTA must only render for a stored redirect or a safe pre-payment retry.");
