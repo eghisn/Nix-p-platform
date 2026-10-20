@@ -55,6 +55,15 @@ export function midtransExpiryForOrder(paymentExpiresAt, now = Date.now()) {
   return { start_time: `${startTime} +0700`, unit: "hour", duration: 1 };
 }
 
+export function shouldReleaseMissingProviderOrder(paymentExpiresAt, lastProviderMissingAt, now = Date.now()) {
+  const expiresAt = new Date(paymentExpiresAt).getTime();
+  const firstMissingAt = new Date(lastProviderMissingAt).getTime();
+  const graceMs = 5 * 60_000;
+  return Number.isFinite(expiresAt) && Number.isFinite(firstMissingAt)
+    && firstMissingAt >= expiresAt + graceMs
+    && now >= firstMissingAt + graceMs;
+}
+
 export function classifyMidtransEvent({ transactionStatus, fraudStatus, paymentStatus } = {}) {
   const status = String(transactionStatus || "").trim().toLowerCase();
   const fraud = String(fraudStatus || "").trim().toLowerCase();

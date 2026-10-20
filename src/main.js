@@ -1096,7 +1096,7 @@ async function customerOrderStatusPage() {
           <div class="order-status-heading">
             <p class="eyebrow">NIXP ORDER</p>
             <h1>${escapeHtml(order.reference || order.id)}</h1>
-            <p>${quotePending ? "Delivery details received. NIXP is preparing your shipping quote." : paymentPending ? "Your delivery quote is ready. Payment is secured through Midtrans." : "This page reflects the latest verified order status."}</p>
+            <p>${quotePending ? "Delivery details received. NIXP is preparing your shipping quote." : paymentPending && payment.expired ? "The payment window for this order has ended. Contact NIXP for help before trying again." : paymentPending ? "Your delivery quote is ready. Payment is secured through Midtrans." : "This page reflects the latest verified order status."}</p>
           </div>
           <div class="order-status-grid">
             <div class="order-status-lines">
@@ -1113,7 +1113,7 @@ async function customerOrderStatusPage() {
               ${order.trackingNumber ? `<p><span>Tracking</span><strong>${escapeHtml(order.trackingNumber)}</strong></p>` : ""}
             </div>
           </div>
-          ${paymentPending ? `<div class="order-status-payment"><p class="order-status-note">Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${orderPaymentSupportMarkup(order.reference || order.id)}<p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div><p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p>`}
+          ${paymentPending ? `<div class="order-status-payment"><p class="order-status-note">${payment.expired ? "This payment link has expired. Do not use an old QR code or transfer instruction." : `Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.`}</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${orderPaymentSupportMarkup(order.reference || order.id)}<p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div><p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p>`}
         </div>
       </section>
     `;
@@ -2411,7 +2411,7 @@ function orderPaymentInstructionsMarkup(instructions, total) {
 function orderPaymentSupportMarkup(reference) {
   const subject = encodeURIComponent(`Payment assistance for ${reference}`);
   const message = encodeURIComponent(`Hello NIXP, I need payment assistance for order ${reference}.`);
-  return `<aside class="order-payment-support" role="status"><strong>Need payment assistance?</strong><p>Your order remains reserved until the time shown above. Contact NIXP directly from here; you do not need to find us on Instagram.</p><div><a class="button button-dark" href="https://wa.me/6282122876289?text=${message}" target="_blank" rel="noreferrer">WhatsApp NIXP</a><a class="button button-outline" href="mailto:orders@nix-p.com?subject=${subject}">Email NIXP</a></div></aside>`;
+  return `<aside class="order-payment-support" role="status"><strong>Need payment assistance?</strong><p>Contact NIXP directly from here; you do not need to find us on Instagram.</p><div><a class="button button-dark" href="https://wa.me/6282122876289?text=${message}" target="_blank" rel="noreferrer">WhatsApp NIXP</a><a class="button button-outline" href="mailto:orders@nix-p.com?subject=${subject}">Email NIXP</a></div></aside>`;
 }
 
 function apparelConditionEditorFields(product = {}, visible = false) {

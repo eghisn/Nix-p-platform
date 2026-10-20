@@ -16,7 +16,7 @@ import {
 import { drainNotificationOutbox } from "./emailNotifications.js";
 import { recordSystemEvent } from "./observability.js";
 import { supabaseFetch } from "./supabase.js";
-import { classifyMidtransEvent, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions } from "./paymentState.js";
+import { classifyMidtransEvent, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldReleaseMissingProviderOrder } from "./paymentState.js";
 
 export async function handleMidtransToken(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
@@ -350,6 +350,28 @@ export async function reconcilePendingMidtransPayments({ limit = 20, source = "m
         const verified = await fetchMidtransStatus(order.id, { allowMissing: true });
         if (!verified) {
           summary.missing += 1;
+          // A Snap token can exist without a selected payment method. Never
+          // release on a single 404: require two provider checks after the
+          // shared Midtrans/stock deadline and its callback grace period.
+          if (["Creating", "Creation Failed", "Pending"].includes(attempt.status)
+            && Date.now() >= new Date(order.payment_expires_at).getTime() + 5 * 60_000) {
+            if (shouldReleaseMissingProviderOrder(order.payment_expires_at, attempt.payload?.lastProviderMissingAt)) {
+              await supabaseFetch("rpc/release_order_reservations", {
+                method: "POST",
+                service: true,
+                body: {
+                  p_order_id: order.id,
+                  p_order_status: "Expired",
+                  p_payment_status: "Expired",
+                  p_reason: "The payment window ended and two Midtrans checks found no transaction; reserved stock released."
+                }
+              });
+              summary.changed += 1;
+            } else if (!Number.isFinite(Date.parse(attempt.payload?.lastProviderMissingAt))
+              || Date.parse(attempt.payload.lastProviderMissingAt) < new Date(order.payment_expires_at).getTime() + 5 * 60_000) {
+              await updateMidtransAttempt(order.id, attempt.status, { lastProviderMissingAt: new Date().toISOString() });
+            }
+          }
           continue;
         }
         const result = await processVerifiedMidtransEvent(verified);

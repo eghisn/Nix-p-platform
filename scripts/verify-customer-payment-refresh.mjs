@@ -11,6 +11,8 @@ const refreshStart = checkout.indexOf('if (body.action === "refresh-payment-stat
 const refreshEnd = checkout.indexOf('if (body.action !== "start-payment")', refreshStart);
 assert(refreshStart >= 0 && refreshEnd > refreshStart, "Customer payment refresh must be an explicit, separate action.");
 const refreshAction = checkout.slice(refreshStart, refreshEnd);
+const statusGet = checkout.slice(checkout.indexOf('if (req.method !== "GET") return json(res, 405', refreshEnd), checkout.indexOf('} catch (error) {\n    return json(res, Number(error?.statusCode || 500)', refreshEnd));
+const paymentSummary = checkout.slice(checkout.indexOf('async function customerPaymentSummary'), checkout.indexOf('\nfunction parseBody', checkout.indexOf('async function customerPaymentSummary')));
 
 assert.match(handlers, /export async function refreshCustomerMidtransPayment/, "A customer refresh must use a server-side provider verification path.");
 assert.match(handlers, /fetchMidtransStatus\(order\.id, \{ allowMissing: true \}\)/, "The refresh must query Midtrans by the stored order ID.");
@@ -25,5 +27,12 @@ assert.doesNotMatch(refreshAction, /createMidtransPaymentSession/, "Refreshing p
 assert.match(client, /action: "refresh-payment-status"/, "The customer button must invoke live payment verification.");
 assert.match(client, /Checking payment directly with Midtrans/, "The interface must make the live check clear while it runs.");
 assert.match(client, /customerPaymentRefreshMessage/, "The interface must explain a checked or unavailable provider state.");
+assert.match(statusGet, /!hasActionableMidtransInstructions\(payment\.instructions\)/, "The order page must detect missing QRIS or payment instructions.");
+assert.match(statusGet, /refreshCustomerMidtransPayment\(orderId\)/, "Returning from Snap must verify provider instructions before rendering the order page.");
+assert.match(statusGet, /latestOrder = await getOrderRecord\(orderId\)/, "A provider transition must update the order page from canonical order state.");
+assert.match(statusGet, /catch \(error\)/, "A provider timeout must not hide the order page or its recovery actions.");
+assert.match(paymentSummary, /const canPay = .*order\.payment_status === "Pending" && !expired/, "Expired reservations must not offer an old payment link.");
+assert.match(paymentSummary, /instructions: canPay && actionableInstructions/, "Expired QRIS instructions must not be displayed as payable.");
+assert.match(client, /This payment link has expired/, "The customer must see a clear expired-payment explanation.");
 
 console.log("Customer live payment-status refresh contract passed.");

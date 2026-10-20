@@ -57,13 +57,15 @@ assert.doesNotMatch(paymentSession, /drainNotificationOutbox/, "Payment session 
 assert.match(paymentSession, /scheduleNotificationOutboxDrain\(\)/, "A failed payment-session creation must dispatch its durable assistance alert immediately in the background.");
 assert.doesNotMatch(paymentSession, /expirePendingOrders/, "Payment session creation must not run catalogue or expiry maintenance.");
 assert.match(handlers, /reconcilePendingMidtransPayments/, "Pending Midtrans payments must have a provider reconciliation path.");
+assert.match(handlers, /shouldReleaseMissingProviderOrder\(order\.payment_expires_at, attempt\.payload\?\.lastProviderMissingAt\)/, "A provider 404 must be confirmed twice after expiry before stock is released.");
+assert.match(handlers, /rpc\/release_order_reservations/, "Confirmed uncharged, expired orders must release their stock through the atomic transition.");
 assert.match(handlers, /const workerCount = Math\.min\(4, eligible\.length\)/, "Pending payment reconciliation must use bounded concurrency so a busy maintenance run remains within its function budget.");
 assert.match(handlers, /getCommerceHealthSnapshot/, "Admin must expose a protected payment-health summary.");
 assert.match(handlers, /rpc\/merge_midtrans_payment_attempt/, "Payment updates must merge provider status without erasing the stored redirect session.");
 assert.match(retentionMigration, /payload = coalesce\(payload, '\{\}'::jsonb\) \|\| coalesce\(p_payload, '\{\}'::jsonb\)/, "Payment updates must preserve the existing token and redirect URL atomically.");
 assert.match(checkout, /customerPaymentSummary/, "The protected customer order response must include resumability and safe payment instructions.");
 assert.match(checkout, /hasUsableMidtransRedirect\(attempt\?\.payload\?\.redirectUrl, process\.env\.MIDTRANS_ENV\)/, "Customer payment recovery must match the active Midtrans environment.");
-assert.match(checkout, /startAvailable: !resumeAvailable && !actionableInstructions/, "A failed pre-payment session must remain safely retryable without duplicating an actionable payment.");
+assert.match(checkout, /startAvailable: canPay && !resumeAvailable && !actionableInstructions/, "A failed pre-payment session must remain safely retryable only while the reservation is payable.");
 assert.match(client, /payment\.resumeAvailable \|\| payment\.startAvailable/, "The payment CTA must only render for a stored redirect or a safe pre-payment retry.");
 assert.match(client, /data-copy-payment-code/, "Bank-transfer orders must retain a customer-usable payment instruction path.");
 assert.match(client, /payment-session-preparing/, "A customer must get an automatic retry while the secure payment session is still being created.");

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { classifyMidtransEvent, hasActionableMidtransInstructions, hasUsableMidtransRedirect, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions } from "../api/_lib/paymentState.js";
+import { classifyMidtransEvent, hasActionableMidtransInstructions, hasUsableMidtransRedirect, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldReleaseMissingProviderOrder } from "../api/_lib/paymentState.js";
 
 const bni = safeMidtransPaymentInstructions({
   payment_type: "bank_transfer",
@@ -73,6 +73,10 @@ assert.deepEqual(midtransExpiryForOrder("2027-01-01T00:30:00Z", Date.parse("2026
 }, "WIB formatting must remain correct across a year boundary.");
 assert.throws(() => midtransExpiryForOrder(reservationExpiresAt, Date.parse(reservationExpiresAt)), /reservation has expired/);
 assert.throws(() => midtransExpiryForOrder("invalid"), /reservation has expired/);
+assert.equal(shouldReleaseMissingProviderOrder("2026-10-20T00:00:00Z", "2026-10-20T00:04:59Z", Date.parse("2026-10-20T00:20:00Z")), false, "A check before callback grace must not release stock.");
+assert.equal(shouldReleaseMissingProviderOrder("2026-10-20T00:00:00Z", "2026-10-20T00:05:00Z", Date.parse("2026-10-20T00:09:59Z")), false, "One missing provider response must not release stock.");
+assert.equal(shouldReleaseMissingProviderOrder("2026-10-20T00:00:00Z", "2026-10-20T00:05:00Z", Date.parse("2026-10-20T00:10:00Z")), true, "A second missing provider response after grace can release an uncharged reservation.");
+assert.equal(shouldReleaseMissingProviderOrder("invalid", "2026-10-20T00:05:00Z"), false);
 
 const eventCases = [
   [{ transactionStatus: "settlement", paymentStatus: "Pending" }, "paid"],

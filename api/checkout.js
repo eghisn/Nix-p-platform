@@ -284,11 +284,28 @@ async function handleCustomerOrderStatus(req, res) {
     // Compatibility for old email links. New links place credentials after #,
     // so browsers do not send them to Vercel, logs, analytics, or referrers.
     if (suppliedOrderId && suppliedToken) setOrderAccessCookie(req, res, orderId, token);
-    const [quotes, payment] = await Promise.all([
+    let latestOrder = order;
+    let [quotes, payment] = await Promise.all([
       supabaseFetch(`shipping_quotes?select=courier,service,amount,eta,status,created_at,expires_at&order_id=eq.${encodeURIComponent(orderId)}&order=created_at.desc`, { service: true }),
       customerPaymentSummary(orderId, order)
     ]);
-    return json(res, 200, { ok: true, order: customerOrderSummary(order), quotes: quotes || [], payment });
+    // Snap can return to the finish URL as soon as a QR or payment code is
+    // generated. Fetch the provider state before this page renders so that
+    // the customer does not lose the instructions while the webhook is pending.
+    if (order.order_status === "Active" && order.payment_status === "Pending" && !hasActionableMidtransInstructions(payment.instructions)) {
+      try {
+        const refresh = await refreshCustomerMidtransPayment(orderId);
+        if (refresh.checked) {
+          latestOrder = await getOrderRecord(orderId) || order;
+          payment = await customerPaymentSummary(orderId, latestOrder);
+        }
+      } catch (error) {
+        // A transient provider error must not hide the secure order page or
+        // its existing resume and assistance actions.
+        console.warn("Order payment status could not be checked", { orderId, reason: error instanceof Error ? error.message : "unknown" });
+      }
+    }
+    return json(res, 200, { ok: true, order: customerOrderSummary(latestOrder), quotes: quotes || [], payment });
   } catch (error) {
     return json(res, Number(error?.statusCode || 500), { ok: false, error: error instanceof Error ? error.message : "Order status is unavailable." });
   }
@@ -469,7 +486,10 @@ async function customerPaymentSummary(orderId, order) {
     instructions = safeMidtransPaymentInstructions(Array.isArray(receipts) ? receipts[0]?.payload : null);
   }
 
-  const resumeAvailable = hasUsableMidtransRedirect(attempt?.payload?.redirectUrl, process.env.MIDTRANS_ENV);
+  const expired = order.order_status === "Active" && order.payment_status === "Pending"
+    && new Date(order.payment_expires_at).getTime() <= Date.now();
+  const canPay = order.order_status === "Active" && order.payment_status === "Pending" && !expired;
+  const resumeAvailable = canPay && hasUsableMidtransRedirect(attempt?.payload?.redirectUrl, process.env.MIDTRANS_ENV);
   const actionableInstructions = hasActionableMidtransInstructions(instructions);
   const attemptStatus = attempt?.status || "Unavailable";
   return {
@@ -477,9 +497,10 @@ async function customerPaymentSummary(orderId, order) {
     attemptStatus,
     purchase: metaPurchaseSummary(order, attempt),
     resumeAvailable,
-    startAvailable: !resumeAvailable && !actionableInstructions && ["Unavailable", "Creation Failed", "Pending"].includes(attemptStatus),
+    startAvailable: canPay && !resumeAvailable && !actionableInstructions && ["Unavailable", "Creation Failed", "Pending"].includes(attemptStatus),
     assistanceRequired: !resumeAvailable && !actionableInstructions && attemptStatus === "Provider Pending",
-    instructions: actionableInstructions ? instructions : null
+    expired,
+    instructions: canPay && actionableInstructions ? instructions : null
   };
 }
 
