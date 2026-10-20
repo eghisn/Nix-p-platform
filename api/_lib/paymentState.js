@@ -57,11 +57,18 @@ export function midtransExpiryForOrder(paymentExpiresAt, now = Date.now()) {
 
 export function shouldReleaseMissingProviderOrder(paymentExpiresAt, lastProviderMissingAt, now = Date.now()) {
   const expiresAt = new Date(paymentExpiresAt).getTime();
-  const firstMissingAt = new Date(lastProviderMissingAt).getTime();
+  const firstMissingAt = Date.parse(String(lastProviderMissingAt || ""));
   const graceMs = 5 * 60_000;
   return Number.isFinite(expiresAt) && Number.isFinite(firstMissingAt)
     && firstMissingAt >= expiresAt + graceMs
     && now >= firstMissingAt + graceMs;
+}
+
+export function shouldRecordMissingProviderCheck(paymentExpiresAt, lastProviderMissingAt) {
+  const expiresAt = new Date(paymentExpiresAt).getTime();
+  const firstMissingAt = Date.parse(String(lastProviderMissingAt || ""));
+  return Number.isFinite(expiresAt)
+    && (!Number.isFinite(firstMissingAt) || firstMissingAt < expiresAt + 5 * 60_000);
 }
 
 export function classifyMidtransEvent({ transactionStatus, fraudStatus, paymentStatus } = {}) {

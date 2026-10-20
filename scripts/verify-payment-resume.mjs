@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { classifyMidtransEvent, hasActionableMidtransInstructions, hasUsableMidtransRedirect, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldReleaseMissingProviderOrder } from "../api/_lib/paymentState.js";
+import { classifyMidtransEvent, hasActionableMidtransInstructions, hasUsableMidtransRedirect, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldRecordMissingProviderCheck, shouldReleaseMissingProviderOrder } from "../api/_lib/paymentState.js";
 
 const bni = safeMidtransPaymentInstructions({
   payment_type: "bank_transfer",
@@ -76,7 +76,13 @@ assert.throws(() => midtransExpiryForOrder("invalid"), /reservation has expired/
 assert.equal(shouldReleaseMissingProviderOrder("2026-10-20T00:00:00Z", "2026-10-20T00:04:59Z", Date.parse("2026-10-20T00:20:00Z")), false, "A check before callback grace must not release stock.");
 assert.equal(shouldReleaseMissingProviderOrder("2026-10-20T00:00:00Z", "2026-10-20T00:05:00Z", Date.parse("2026-10-20T00:09:59Z")), false, "One missing provider response must not release stock.");
 assert.equal(shouldReleaseMissingProviderOrder("2026-10-20T00:00:00Z", "2026-10-20T00:05:00Z", Date.parse("2026-10-20T00:10:00Z")), true, "A second missing provider response after grace can release an uncharged reservation.");
+assert.equal(shouldReleaseMissingProviderOrder("2026-10-20T00:00:00Z", null, Date.parse("2026-10-20T00:20:00Z")), false, "Missing first-check timestamps must never release stock.");
+assert.equal(shouldReleaseMissingProviderOrder("2026-10-20T00:00:00Z", undefined, Date.parse("2026-10-20T00:20:00Z")), false, "Absent first-check timestamps must never release stock.");
 assert.equal(shouldReleaseMissingProviderOrder("invalid", "2026-10-20T00:05:00Z"), false);
+assert.equal(shouldRecordMissingProviderCheck("2026-10-20T00:00:00Z", null), true, "A null first-check timestamp must be recorded.");
+assert.equal(shouldRecordMissingProviderCheck("2026-10-20T00:00:00Z", undefined), true, "An absent first-check timestamp must be recorded.");
+assert.equal(shouldRecordMissingProviderCheck("2026-10-20T00:00:00Z", "2026-10-20T00:04:59Z"), true, "A premature first check must be replaced after callback grace.");
+assert.equal(shouldRecordMissingProviderCheck("2026-10-20T00:00:00Z", "2026-10-20T00:05:00Z"), false, "A valid first check must remain unchanged until release is safe.");
 
 const eventCases = [
   [{ transactionStatus: "settlement", paymentStatus: "Pending" }, "paid"],

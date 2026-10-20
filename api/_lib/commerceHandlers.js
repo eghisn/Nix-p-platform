@@ -16,7 +16,7 @@ import {
 import { drainNotificationOutbox } from "./emailNotifications.js";
 import { recordSystemEvent } from "./observability.js";
 import { supabaseFetch } from "./supabase.js";
-import { classifyMidtransEvent, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldReleaseMissingProviderOrder } from "./paymentState.js";
+import { classifyMidtransEvent, midtransExpiryForOrder, midtransIdempotencyKey, safeMidtransPaymentInstructions, shouldRecordMissingProviderCheck, shouldReleaseMissingProviderOrder } from "./paymentState.js";
 
 export async function handleMidtransToken(req, res) {
   if (req.method !== "POST") return json(res, 405, { ok: false, error: "Method not allowed" });
@@ -367,8 +367,7 @@ export async function reconcilePendingMidtransPayments({ limit = 20, source = "m
                 }
               });
               summary.changed += 1;
-            } else if (!Number.isFinite(Date.parse(attempt.payload?.lastProviderMissingAt))
-              || Date.parse(attempt.payload.lastProviderMissingAt) < new Date(order.payment_expires_at).getTime() + 5 * 60_000) {
+            } else if (shouldRecordMissingProviderCheck(order.payment_expires_at, attempt.payload?.lastProviderMissingAt)) {
               await updateMidtransAttempt(order.id, attempt.status, { lastProviderMissingAt: new Date().toISOString() });
             }
           }
