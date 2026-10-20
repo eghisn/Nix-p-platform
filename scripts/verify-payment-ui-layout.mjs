@@ -15,6 +15,8 @@ assert.doesNotMatch(orderStatusPage, /admin-form-note/, "Order status must not r
 assert.match(orderStatusPage, /order-status-payment/, "Pending payment content must have a dedicated layout container.");
 assert.match(orderStatusPage, /order-status-message/, "Payment feedback must render in its own status region.");
 assert.match(orderStatusPage, /orderPaymentSupportMarkup/, "Payment recovery must retain direct customer support actions.");
+assert.match(orderStatusPage, /Reopen QRIS \/ payment/, "A returned QRIS customer must have a clearly named reopen action.");
+assert.match(orderStatusPage, /paymentRecoveryNote/, "A returned customer must be told that reopening does not create another order.");
 assert.match(client, /order-payment-qr/, "Pending QRIS payments must render a recoverable QR code.");
 
 assert.match(styles, /\.order-status-payment\s*\{[^}]*display:\s*grid;[^}]*gap:\s*18px;/s, "Payment controls must keep stable vertical spacing.");

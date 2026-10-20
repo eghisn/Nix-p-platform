@@ -1085,11 +1085,15 @@ async function customerOrderStatusPage() {
     const quotePending = order.shippingStatus === "Awaiting Quote";
     const expiresAt = order.paymentExpiresAt ? new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(new Date(order.paymentExpiresAt)) : "";
     const paymentInstructions = orderPaymentInstructionsMarkup(payment.instructions, order.total);
-    const paymentActionAvailable = payment.resumeAvailable || payment.startAvailable;
     const pendingPaymentActions = [
-      paymentActionAvailable ? `<button class="button button-dark" type="button" data-order-pay>${payment.resumeAvailable ? "Continue to payment" : "Open secure payment"}</button>` : "",
+      payment.resumeAvailable && payment.resumeUrl
+        ? `<a class="button button-dark" href="${escapeAttr(payment.resumeUrl)}" referrerpolicy="no-referrer">Reopen QRIS / payment</a>`
+        : payment.startAvailable ? `<button class="button button-dark" type="button" data-order-pay>Open secure payment</button>` : "",
       `<button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button>`
     ].filter(Boolean).join("");
+    const paymentRecoveryNote = payment.resumeUrl && !paymentInstructions
+      ? `<p class="order-status-note">If the QR disappeared before you paid, reopen the same Midtrans session below. You do not need to place another order.</p>`
+      : "";
     return `
       <section class="section order-status-page"${payment.purchase ? ` data-meta-purchase="${escapeAttr(JSON.stringify(payment.purchase))}"` : ""}>
         <div class="order-status-shell">
@@ -1113,7 +1117,7 @@ async function customerOrderStatusPage() {
               ${order.trackingNumber ? `<p><span>Tracking</span><strong>${escapeHtml(order.trackingNumber)}</strong></p>` : ""}
             </div>
           </div>
-          ${paymentPending ? `<div class="order-status-payment"><p class="order-status-note">${payment.expired ? "This payment link has expired. Do not use an old QR code or transfer instruction." : `Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.`}</p>${paymentInstructions}<div class="order-status-actions">${pendingPaymentActions}</div>${orderPaymentSupportMarkup(order.reference || order.id)}<p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div><p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p>`}
+          ${paymentPending ? `<div class="order-status-payment"><p class="order-status-note">${payment.expired ? "This payment link has expired. Do not use an old QR code or transfer instruction." : `Payment reservation ends ${escapeHtml(expiresAt)}. NIXP only marks payment as paid after provider verification.`}</p>${paymentInstructions}${paymentRecoveryNote}<div class="order-status-actions">${pendingPaymentActions}</div>${orderPaymentSupportMarkup(order.reference || order.id)}<p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p></div>` : `<div class="order-status-actions"><button class="button button-outline" type="button" data-order-status-refresh>Refresh status</button><button class="button button-outline" type="button" data-order-return-cart>Back to cart</button></div><p class="order-status-message" data-order-status-message data-tone="${escapeAttr(state.orderStatusNoticeTone)}" aria-live="polite">${escapeHtml(state.orderStatusNotice)}</p>`}
         </div>
       </section>
     `;

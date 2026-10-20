@@ -71,7 +71,10 @@ assert.match(checkout, /function setCheckoutAccessCookie[\s\S]*?setOrderAccessCo
 assert.match(checkout, /res\.getHeader\("Set-Cookie"\)/, "Checkout and order-status access cookies must be appended, not overwrite one another.");
 assert.match(checkout, /hasUsableMidtransRedirect\(attempt\?\.payload\?\.redirectUrl, process\.env\.MIDTRANS_ENV\)/, "Customer payment recovery must match the active Midtrans environment.");
 assert.match(checkout, /startAvailable: canPay && !resumeAvailable && !actionableInstructions/, "A failed pre-payment session must remain safely retryable only while the reservation is payable.");
-assert.match(client, /payment\.resumeAvailable \|\| payment\.startAvailable/, "The payment CTA must only render for a stored redirect or a safe pre-payment retry.");
+assert.match(checkout, /resumeUrl: resumeAvailable \? attempt\.payload\.redirectUrl : null/, "Only a validated, unexpired Snap session may be exposed for direct resume.");
+assert.match(client, /payment\.resumeAvailable && payment\.resumeUrl/, "The direct payment link must require a resumable Snap session.");
+assert.match(client, /href="\$\{escapeAttr\(payment\.resumeUrl\)\}" referrerpolicy="no-referrer"/, "A returning customer must reopen the stored Snap URL without a second backend request.");
+assert.match(client, /payment\.startAvailable \? `<button[^`]*data-order-pay/, "Orders without a session must retain their existing secure start-payment action.");
 assert.match(client, /data-copy-payment-code/, "Bank-transfer orders must retain a customer-usable payment instruction path.");
 assert.match(client, /payment-session-preparing/, "A customer must get an automatic retry while the secure payment session is still being created.");
 assert.match(client, /orderPaymentSupportMarkup/, "A customer must have a direct support path when provider recovery is unavailable.");

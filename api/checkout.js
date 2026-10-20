@@ -501,6 +501,7 @@ async function customerPaymentSummary(orderId, order) {
     attemptStatus,
     purchase: metaPurchaseSummary(order, attempt),
     resumeAvailable,
+    resumeUrl: resumeAvailable ? attempt.payload.redirectUrl : null,
     startAvailable: canPay && !resumeAvailable && !actionableInstructions && ["Unavailable", "Creation Failed", "Pending"].includes(attemptStatus),
     assistanceRequired: !resumeAvailable && !actionableInstructions && attemptStatus === "Provider Pending",
     expired,
