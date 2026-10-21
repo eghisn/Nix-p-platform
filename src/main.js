@@ -1577,9 +1577,12 @@ async function adminHomeSliderPage({ embedded = false } = {}) {
 
 function adminResearchReferencesMarkup(product) {
   const raw = product.raw || {};
+  const researchSources = Array.isArray(product.researchSources) && product.researchSources.length
+    ? product.researchSources
+    : raw.researchSources;
   const candidates = [
-    ...(Array.isArray(raw.researchSources) ? raw.researchSources : []),
-    { source: "Release reference", url: raw.metadataSourceUrl }
+    ...(Array.isArray(researchSources) ? researchSources : []),
+    { source: "Release reference", url: product.metadataSourceUrl || raw.metadataSourceUrl }
   ];
   const seen = new Set();
   const links = candidates.flatMap((source) => {

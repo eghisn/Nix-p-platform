@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { comparePublicCatalogRevision } from "../api/_lib/publicCatalogDeployment.js";
 import { publicProductFingerprint } from "../api/_lib/publicCatalogRevision.js";
+import { fromProductRow } from "../api/_lib/supabase.js";
 
 const baseProduct = {
   id: "record-1",
@@ -32,6 +33,17 @@ const baseProduct = {
   publishStatus: "Published",
   visibility: "Public"
 };
+
+const researchedProduct = fromProductRow({
+  ...baseProduct,
+  publish_status: "Draft",
+  raw: {
+    researchSources: [{ source: "Official artist", url: "https://artist.example/release" }],
+    metadataSourceUrl: "https://musicbrainz.org/release/example"
+  }
+}, { privateScope: true, compactAdmin: true });
+assert.equal(researchedProduct.researchSources[0].source, "Official artist");
+assert.equal(researchedProduct.metadataSourceUrl, "https://musicbrainz.org/release/example");
 
 assert.equal(
   comparePublicCatalogRevision([baseProduct], [baseProduct]).confirmed,
@@ -69,6 +81,9 @@ assert.equal(
 );
 
 const adminStoreSource = await readFile(new URL("../src/services/adminStore.js", import.meta.url), "utf8");
+const adminUiSource = await readFile(new URL("../src/main.js", import.meta.url), "utf8");
+assert.match(adminUiSource, /Array\.isArray\(product\.researchSources\)/, "Admin source links must read flattened research data.");
+assert.match(adminUiSource, /product\.metadataSourceUrl \|\| raw\.metadataSourceUrl/);
 const saveProductSource = adminStoreSource.slice(
   adminStoreSource.indexOf("async saveProduct(data)"),
   adminStoreSource.indexOf("updateProductStatus", adminStoreSource.indexOf("async saveProduct(data)"))
