@@ -19,7 +19,7 @@ export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 // A versioned research request means editorial rule changes only run for an
 // item when an editor explicitly asks to research it again. This keeps a
 // deployment from silently rewriting live catalogue copy.
-export const CATALOG_RESEARCH_VERSION = "official-bandcamp-musicbrainz-v8";
+export const CATALOG_RESEARCH_VERSION = "official-bandcamp-musicbrainz-v9";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -1501,6 +1501,11 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // Album-level editorial is shared by verified physical formats. It never
 // identifies a pressing; the release matcher must do that first.
 const VERIFIED_RELEASE_DESCRIPTIONS = new Map([
+  ["jenny hval|the long sleep", {
+    description: "The Long Sleep, Jenny Hval's 2018 four-track EP, moves away from the tightly framed concepts of Blood Bitch toward a more instinctive way of writing. Recurring motifs take different shapes as Hval works with Håvard Volden, Lasse Marhaug, and a group of jazz musicians, giving the songs an open, improvisatory feel.",
+    descriptionSource: "Jenny Hval / Sacred Bones Records",
+    sourceUrl: "https://jennyhval.bandcamp.com/album/the-long-sleep-ep"
+  }],
   ["domi jd beck|who asked", {
     description: "On WHO ASKED?, DOMi & JD BECK move beyond the guest-heavy approach of their debut, bringing their keyboards-and-drums interplay into more fully written songs. A small sinfonietta and the duo's own vocals give the 2026 album an orchestral, chamber-pop dimension without losing its restless rhythmic precision.",
     descriptionSource: "Blue Note Records",

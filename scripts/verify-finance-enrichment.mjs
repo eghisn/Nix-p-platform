@@ -264,12 +264,20 @@ assert.match(whoAskedDescription.description, /sinfonietta/);
 assert.equal(whoAskedDescription.descriptionSource, "Blue Note Records");
 assert.equal(whoAskedDescription.researchSources.some((source) => source.url === "https://www.bluenote.com/spotlight/domi-jd-beck-who-asked/"), true);
 assert.equal(applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Domi & JD Beck", title: "Not Tight" }).descriptionSource, "Blue Note Records");
+const longSleepDescription = applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Jenny Hval", title: "The Long Sleep" });
+assert.equal(longSleepDescription.descriptionSource, "Jenny Hval / Sacred Bones Records");
+assert.match(longSleepDescription.description, /Recurring motifs/);
+assert.equal(longSleepDescription.researchSources.some((source) => source.url === "https://jennyhval.bandcamp.com/album/the-long-sleep-ep"), true);
+assert.equal(isEditorialDescriptionQuality(longSleepDescription.description, longSleepDescription.descriptionSource), true);
+assert.equal(applyVerifiedReleaseDescription({ needsPressingIdentifier: true }, { artist: "Jenny Hval", title: "The Long Sleep" }).description, undefined);
+assert.equal(applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Another Artist", title: "The Long Sleep" }).description, "");
 assert.equal(applyVerifiedReleaseDescription({ needsPressingIdentifier: true }, { artist: "Domi & JD Beck", title: "Who Asked?" }).description, undefined, "Editorial must not bypass pressing identification.");
 assert.equal(applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Another Artist", title: "Who Asked?" }).description, "", "An album-title collision must not acquire another artist's copy.");
 assert.equal(applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Domi & JD Beck", title: "Unknown Album" }).description, "", "Unverified albums must wait for manual editorial instead of displaying a metadata template.");
 assert.equal(applyVerifiedReleaseDescription({ description: "A promotional excerpt copied from a release page without original editorial work.", descriptionSource: "Official Bandcamp release note" }, { artist: "Unknown", title: "Unknown" }).description, "");
 const priorAutomatic = { description: "Generic automatic copy", descriptionSource: "Verified physical-release metadata" };
 const manualEditorial = { description: "A specific, manually written account of this album's sound and context.", raw: { descriptionSource: "Blue Note Records" }, editorial_updated_by: "admin" };
+assert.equal(chooseDescriptionEditorial(manualEditorial, priorAutomatic, longSleepDescription).description, manualEditorial.description);
 assert.deepEqual(chooseDescriptionEditorial(manualEditorial, priorAutomatic, whoAskedDescription), {
   description: manualEditorial.description,
   descriptionSource: "Blue Note Records"

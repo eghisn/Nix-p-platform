@@ -1653,6 +1653,9 @@ async function adminProductsPage({ embedded = false } = {}) {
           ${select("visibility", "Visibility", ["Public", "Hidden"], product.visibility || "Public")}
         </div>
         <label>Description<textarea name="description" rows="4">${escapeHtml(product.description || "")}</textarea></label>
+        ${editing && productCategory === "Records" && !String(product.description || "").trim() && (product.enrichmentStatus || product.raw?.enrichmentStatus) === "needs-editorial-quality"
+          ? `<p class="admin-form-note" data-tone="warning">The exact release was matched, but catalog metadata and the review quote are not a product description. Write original copy from a trusted artist, label, or editorial source; this item stays Draft until you publish it.</p>`
+          : ""}
         <label data-admin-record-editorial-field ${productCategory === "Records" ? "" : "hidden"}>Description source<input name="descriptionSource" value="${escapeAttr(product.descriptionSource || "")}" placeholder="Official artist / label / release page" /></label>
         <label data-admin-record-editorial-field ${productCategory === "Records" ? "" : "hidden"}>Review quote<textarea name="reviewQuote" rows="3" placeholder="Optional short quote, under 25 words">${escapeHtml(product.reviewQuote || "")}</textarea></label>
         <div class="admin-form-grid" data-admin-record-editorial-field ${productCategory === "Records" ? "" : "hidden"}>
@@ -1772,6 +1775,15 @@ function adminProductsCatalogMarkup(products) {
             const publishNotice = item.publishStatus === "Published" && !publicationPending && !storedPublishNotice.busy
               ? {}
               : storedPublishNotice;
+            const needsEditorialCopy = item.category === "Records" && item.publishStatus !== "Published" &&
+              !String(item.description || "").trim() && (item.enrichmentStatus || item.raw?.enrichmentStatus) === "needs-editorial-quality";
+            const noticeMessage = publishNotice.message || (needsEditorialCopy
+              ? "Exact release matched. Add an original, source-backed description before publishing."
+              : "");
+            const noticeTone = publishNotice.tone || (needsEditorialCopy ? "warning" : "");
+            const noticeHeading = publishNotice.busy
+              ? publishNotice.action === "Research" ? "Researching" : "Updating"
+              : needsEditorialCopy ? "Description needed" : noticeTone === "error" ? "Action failed" : noticeTone === "warning" ? "Review result" : "Update saved";
             return [
               statusPill(productPublicationLabel(item)),
               escapeHtml(item.sku || "-"),
@@ -1782,10 +1794,10 @@ function adminProductsCatalogMarkup(products) {
               Number(item.qty || 0).toString(),
               money.format(item.price || 0),
               item.updatedAt || "-",
-              `<button class="link-button" type="button" data-admin-edit-product="${item.id}">Edit</button>
+              `<div class="admin-product-actions"><button class="link-button" type="button" data-admin-edit-product="${item.id}" ${needsEditorialCopy ? 'data-focus-description="true"' : ""}>${needsEditorialCopy ? "Edit description" : "Edit"}</button>
                ${item.category === "Records" ? `<button class="link-button" type="button" data-admin-complete-product="${item.id}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy && publishNotice.action === "Research" ? "Researching..." : item.publishStatus === "Published" ? "Refresh Research" : "Research & Complete"}</button>` : ""}
-               <button class="link-button" type="button" data-admin-product-status="${item.id}" data-status="${item.publishStatus === "Published" ? "Draft" : "Published"}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy && publishNotice.action !== "Research" ? (publishNotice.action === "Published" ? "Publishing..." : "Unpublishing...") : (item.publishStatus === "Published" ? "Unpublish" : "Publish")}</button>
-               <span class="admin-publish-status" data-tone="${escapeAttr(publishNotice.tone || "")}" aria-live="polite">${escapeHtml(publishNotice.message || "")}</span>`
+               <button class="link-button" type="button" data-admin-product-status="${item.id}" data-status="${item.publishStatus === "Published" ? "Draft" : "Published"}" ${publishNotice.busy ? "disabled" : ""}>${publishNotice.busy && publishNotice.action !== "Research" ? (publishNotice.action === "Published" ? "Publishing..." : "Unpublishing...") : (item.publishStatus === "Published" ? "Unpublish" : "Publish")}</button></div>
+               ${noticeMessage ? `<details class="admin-publish-status" data-tone="${escapeAttr(noticeTone)}" aria-live="polite" ${publishNotice.busy ? "open" : ""}><summary>${escapeHtml(noticeHeading)}</summary><p>${escapeHtml(noticeMessage)}</p></details>` : ""}`
             ];
           })
         )}
@@ -4251,10 +4263,16 @@ function bindEvents() {
 
 function bindAdminListControls(root = document) {
   root.querySelectorAll("[data-admin-edit-product]").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
+      const focusDescription = button.dataset.focusDescription === "true";
       state.adminEditingProductId = button.dataset.adminEditProduct;
-      window.scrollTo({ top: 0, behavior: "auto" });
-      render();
+      if (!focusDescription) window.scrollTo({ top: 0, behavior: "auto" });
+      await render();
+      if (focusDescription) {
+        const description = document.querySelector('[data-admin-product-form] textarea[name="description"]');
+        description?.scrollIntoView({ block: "center", behavior: "auto" });
+        description?.focus({ preventScroll: true });
+      }
     });
   });
 

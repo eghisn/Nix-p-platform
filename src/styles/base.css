@@ -637,13 +637,53 @@ body:has(.finance-workspace) {
 
 .admin-publish-status {
   display: block;
-  max-width: 230px;
+  max-width: 220px;
   margin-top: 8px;
   color: var(--muted);
   font-size: 0.64rem;
   font-weight: 760;
   line-height: 1.35;
   text-transform: uppercase;
+}
+
+[data-admin-products-catalog] table {
+  min-width: 1200px;
+}
+
+[data-admin-products-catalog] th:nth-child(3),
+[data-admin-products-catalog] td:nth-child(3) {
+  min-width: 180px;
+}
+
+[data-admin-products-catalog] th:last-child,
+[data-admin-products-catalog] td:last-child {
+  min-width: 220px;
+  width: 220px;
+}
+
+.admin-product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 7px 12px;
+}
+
+.admin-product-actions .link-button {
+  margin-right: 0;
+  text-align: left;
+}
+
+.admin-publish-status summary {
+  cursor: pointer;
+}
+
+.admin-publish-status p {
+  margin: 6px 0 0;
+  overflow-wrap: anywhere;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-transform: none;
 }
 
 .admin-publish-help {
