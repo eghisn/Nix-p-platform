@@ -221,6 +221,8 @@ assert.equal(discogsSearchFallback.catalogNumber, "RFC097");
 assert.equal(discogsSearchFallback.cover, "https://example.test/deep-end.jpg");
 assert.equal(discogsSearchFallback.matchConfidence, 100);
 assert.match(discogsSearchFallback.sourceUrl, /5986176/);
+assert.equal(discogsSearchFallback.description, "", "Physical release metadata must not create storefront copy.");
+assert.equal(discogsSearchFallback.descriptionSource, "");
 assert.equal(
   selectTrustedRecordLabel([
     { name: "Ipecac Recordings", catno: "IPC-123" },
@@ -248,6 +250,7 @@ const discogsMergedEvidence = mergeExactDiscogsEvidence({
 assert.equal(discogsMergedEvidence.cover, "https://example.test/deep-end.jpg", "An exact search cover must survive a detail response without images.");
 assert.equal(discogsMergedEvidence.label, "Run For Cover Records");
 assert.equal(discogsMergedEvidence.catalogNumber, "RFC097");
+assert.equal(discogsMergedEvidence.description, "", "Merging physical release evidence must not restore metadata prose.");
 const discogsOnlyEditorial = composeDiscogsEditorial({
   description: "Exact physical-release metadata.",
   descriptionSource: "Discogs release data",
@@ -257,6 +260,7 @@ const discogsOnlyEditorial = composeDiscogsEditorial({
   researchSources: [{ source: "Discogs", url: "https://www.discogs.com/release/5986176", confidence: 95 }]
 });
 assert.equal(discogsOnlyEditorial.reviewQuote, "", "Discogs object data must never be rendered as a review.");
+assert.equal(discogsOnlyEditorial.description, "", "Metadata must remain separate from editorial copy.");
 assert.equal(isEditorialDescriptionQuality(discogsOnlyEditorial.description, discogsOnlyEditorial.descriptionSource), false, "Discogs metadata must not be accepted as public editorial copy.");
 assert.equal(isEditorialDescriptionQuality("DOMi & JD BECK 2026 WHO ASKED? is a verified Cassette edition on Blue Note. The release is indexed under Jazz.", "Blue Note Records"), false, "A metadata template must not pass merely because its source label changed.");
 const whoAskedDescription = applyVerifiedReleaseDescription(discogsOnlyEditorial, { artist: "Domi & JD Beck", title: "Who Asked?" });
@@ -290,6 +294,10 @@ assert.deepEqual(chooseDescriptionEditorial({ description: priorAutomatic.descri
   description: whoAskedDescription.description,
   descriptionSource: whoAskedDescription.descriptionSource
 }, "Research must replace a previous automatic placeholder as one editorial pair.");
+assert.deepEqual(chooseDescriptionEditorial({ description: priorAutomatic.description, raw: { descriptionSource: priorAutomatic.descriptionSource } }, priorAutomatic, {
+  description: "Another verified physical-release metadata template.",
+  descriptionSource: "Verified physical-release metadata"
+}), { description: "", descriptionSource: "" }, "An unmatched metadata-only release must not retain old generic copy.");
 assert.deepEqual(chooseDescriptionEditorial({ description: manualEditorial.description, raw: { descriptionSource: priorAutomatic.descriptionSource } }, priorAutomatic, whoAskedDescription), {
   description: manualEditorial.description,
   descriptionSource: ""
@@ -304,8 +312,16 @@ const discogsWithOfficialEditorial = composeDiscogsEditorial(discogsOnlyEditoria
     researchSources: [{ source: "Bandcamp", url: "https://creativeadult.bandcamp.com/album/deep-end", confidence: 80 }]
   }
 });
-assert.equal(discogsWithOfficialEditorial.descriptionSource, "Official Bandcamp release page");
+assert.equal(discogsWithOfficialEditorial.description, "", "An unedited official-page excerpt must remain research evidence, not product copy.");
 assert.equal(discogsWithOfficialEditorial.reviewQuote, "", "Editorial copy is not silently promoted to a review without an explicit source selection.");
+const discogsWithReviewedEditorial = composeDiscogsEditorial(discogsOnlyEditorial, {
+  bandcamp: {
+    description: "A reviewed, original description of this specific release and its music.",
+    descriptionSource: "Verified label editorial"
+  }
+});
+assert.match(discogsWithReviewedEditorial.description, /reviewed, original/);
+assert.equal(discogsWithReviewedEditorial.descriptionSource, "Verified label editorial");
 const discogsWithVerifiedReview = composeDiscogsEditorial(discogsOnlyEditorial, {
   review: {
     quote: "A concise source-backed description from an independently verified review.",
@@ -313,8 +329,8 @@ const discogsWithVerifiedReview = composeDiscogsEditorial(discogsOnlyEditorial, 
     url: "https://stereogum.com/example"
   }
 });
-assert.equal(discogsWithVerifiedReview.descriptionSource, "Discogs release data", "A review must never be reused as product-description copy.");
-assert.equal(discogsWithVerifiedReview.description, "Exact physical-release metadata.");
+assert.equal(discogsWithVerifiedReview.descriptionSource, "", "A review must never be reused as product-description copy.");
+assert.equal(discogsWithVerifiedReview.description, "");
 assert.equal(discogsWithVerifiedReview.reviewQuote, "A concise source-backed description from an independently verified review.");
 assert.equal(discogsWithVerifiedReview.researchSources.every((source) => !Array.isArray(source)), true, "Research evidence must remain a flat list of source objects.");
 const duplicateEditorial = removeDuplicateEditorialCopy({
@@ -647,6 +663,37 @@ try {
   assert.equal(missing.publish_status, "Draft");
   assert.ok(requestedUrls.length > 0);
   assert.ok(requestedUrls.every((url) => !/discogs\.com/i.test(url)), "release research must not request Discogs");
+
+  globalThis.fetch = async (url) => {
+    const address = String(url);
+    if (address.includes("/ws/2/release/?query=")) {
+      return Response.json({ releases: [{
+        id: "c6ff3cf5-33ea-4268-b523-4e0fdd702f93",
+        title: "Unwritten Test Release",
+        score: 100,
+        date: "2024-01-01",
+        barcode: "1234567890123",
+        "artist-credit": [{ name: "Unwritten Test Artist" }],
+        media: [{ format: "Vinyl" }],
+        "label-info": [{ "catalog-number": "TEST-123", label: { name: "Test Label" } }],
+        "release-group": { id: "2f6a2c3c-acfa-47f9-a44c-36da42d52dca" }
+      }] });
+    }
+    if (address.startsWith("https://coverartarchive.org/release/")) {
+      return Response.json({ images: [{ front: true, image: "/public/test.jpg" }] });
+    }
+    return new Response("", { status: 404 });
+  };
+  const metadataOnly = await enrichFinanceCatalogProduct(
+    { id: "metadata-only-test", sku: "NXP-TEST-VNL-9999", category: "Records", format: "Vinyl", price: 1000, raw: {} },
+    { sku: "NXP-TEST-VNL-9999", item: "Vinyl", artist: "Unwritten Test Artist", title: "Unwritten Test Release", barcode: "1234567890123", catalogNumber: "TEST-123", sellingPrice: 1000 }
+  );
+  assert.equal(metadataOnly.raw.musicBrainzReleaseId, "c6ff3cf5-33ea-4268-b523-4e0fdd702f93");
+  assert.equal(metadataOnly.raw.catalogNumber, "TEST-123");
+  assert.equal(metadataOnly.description, "", "An exact MusicBrainz match must not generate generic product copy.");
+  assert.equal(metadataOnly.raw.autoEditorial.description, "");
+  assert.equal(metadataOnly.raw.enrichmentStatus, "needs-editorial-quality");
+  assert.equal(metadataOnly.publish_status, "Draft");
 } finally {
   globalThis.fetch = originalFetch;
 }

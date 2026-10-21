@@ -1575,6 +1575,24 @@ async function adminHomeSliderPage({ embedded = false } = {}) {
   `;
 }
 
+function adminResearchReferencesMarkup(product) {
+  const raw = product.raw || {};
+  const candidates = [
+    ...(Array.isArray(raw.researchSources) ? raw.researchSources : []),
+    { source: "Release reference", url: raw.metadataSourceUrl }
+  ];
+  const seen = new Set();
+  const links = candidates.flatMap((source) => {
+    const candidate = typeof source?.url === "string" ? source.url.trim() : "";
+    if (!/^https:\/\//i.test(candidate)) return [];
+    const url = safeExternalUrl(candidate);
+    if (!url || /(^|\.)discogs\.com$/i.test(new URL(url).hostname) || seen.has(url)) return [];
+    seen.add(url);
+    return [`<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(String(source?.source || "Release reference").trim().slice(0, 80))}</a>`];
+  }).slice(0, 3);
+  return links.length ? `<p class="admin-research-references">Research references: ${links.join(" / ")}</p>` : "";
+}
+
 async function adminProductsPage({ embedded = false } = {}) {
   const products = await catalogService.listAllProducts();
   const editing = state.adminEditingProductId
@@ -1654,7 +1672,7 @@ async function adminProductsPage({ embedded = false } = {}) {
         </div>
         <label>Description<textarea name="description" rows="4">${escapeHtml(product.description || "")}</textarea></label>
         ${editing && productCategory === "Records" && !String(product.description || "").trim() && (product.enrichmentStatus || product.raw?.enrichmentStatus) === "needs-editorial-quality"
-          ? `<p class="admin-form-note" data-tone="warning">The exact release was matched, but catalog metadata and the review quote are not a product description. Write original copy from a trusted artist, label, or editorial source; this item stays Draft until you publish it.</p>`
+          ? `<p class="admin-form-note" data-tone="warning">The exact release was matched, but no verified editorial description is available. Catalog metadata and review quotes stay separate. Write original copy from a trusted source; this item stays Draft until you publish it.</p>${adminResearchReferencesMarkup(product)}`
           : ""}
         <label data-admin-record-editorial-field ${productCategory === "Records" ? "" : "hidden"}>Description source<input name="descriptionSource" value="${escapeAttr(product.descriptionSource || "")}" placeholder="Official artist / label / release page" /></label>
         <label data-admin-record-editorial-field ${productCategory === "Records" ? "" : "hidden"}>Review quote<textarea name="reviewQuote" rows="3" placeholder="Optional short quote, under 25 words">${escapeHtml(product.reviewQuote || "")}</textarea></label>

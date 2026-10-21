@@ -240,6 +240,20 @@
   color: #9a5b00;
 }
 
+.admin-research-references {
+  margin: -2px 0 12px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.admin-research-references a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .admin-gallery-fieldset {
   display: grid;
   gap: 12px;

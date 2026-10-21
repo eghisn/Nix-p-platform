@@ -2079,7 +2079,9 @@ async function enrichExactDiscogsReleaseEditorial(discogs, bandcamp, stock) {
 }
 
 export function composeDiscogsEditorial(discogs = {}, { bandcamp = null, review = null } = {}) {
-  const officialDescription = bandcamp && isEditorialDescriptionQuality(bandcamp.description, bandcamp.descriptionSource)
+  const officialDescription = bandcamp &&
+    !/^Official Bandcamp release (?:note|page)$/i.test(String(bandcamp.descriptionSource || "").trim()) &&
+    isEditorialDescriptionQuality(bandcamp.description, bandcamp.descriptionSource)
     ? { description: bandcamp.description, descriptionSource: bandcamp.descriptionSource }
     : null;
   const sources = [
@@ -2098,7 +2100,8 @@ export function composeDiscogsEditorial(discogs = {}, { bandcamp = null, review 
   }
   return removeDuplicateEditorialCopy({
     ...discogs,
-    ...(officialDescription || {}),
+    description: officialDescription?.description || "",
+    descriptionSource: officialDescription?.descriptionSource || "",
     // No source-backed review is preferable to a fabricated one. This keeps
     // the public-facing quotation block honest when a review cannot be found.
     reviewQuote: String(review?.quote || "").trim(),
@@ -2266,7 +2269,6 @@ function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
     .filter(Boolean)).join(" / ");
   const format = unique((release.formats || []).flatMap((entry) => [entry?.name, ...(entry?.descriptions || [])])).join(", ");
   const styles = unique([...(release.styles || []), ...(release.genres || [])]);
-  const tracks = (release.tracklist || []).filter((track) => track?.type_ !== "heading" && track?.title).map((track) => track.title);
   const image = (release.images || []).find((entry) => entry?.type === "primary") || (release.images || [])[0] || {};
   const cover = String(image.uri || image.uri150 || "").trim();
   const artist = unique((release.artists || []).map((entry) => entry?.name?.replace(/\s*\(\d+\)$/, ""))).join(" / ") || stock.artist;
@@ -2284,8 +2286,8 @@ function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
     cover,
     productPhoto: "",
     imageCredits: cover ? [{ image: cover, credit: "Discogs physical-release artwork", url: sourceUrl }] : [],
-    description: physicalReleaseDescription({ artist, title, year, format, label, tracks, styles, fallbackFormat: stock.item }),
-    descriptionSource: "Verified physical-release metadata",
+    description: "",
+    descriptionSource: "",
     reviewQuote: "",
     reviewSource: "",
     reviewUrl: "",
@@ -2325,17 +2327,6 @@ async function discoverBandcampRelease(stock) {
     const year = bandcampReleaseYear(pageHtml);
     const label = String(pageTitle || "").split("|").map((value) => value.trim()).filter(Boolean).at(-1) || "";
     const title = String(pageTitle || "").split("|")[0]?.trim() || stock.title;
-    // The page title, artist and edition are already visible around the
-    // description in the storefront. Let an official release note carry the
-    // editorial voice instead of wrapping it in another generic template.
-    const description = releaseNote || physicalReleaseDescription({
-      artist: stock.artist,
-      title,
-      year,
-      format: stock.item || stock.format,
-      label,
-      fallbackFormat: stock.item || stock.format
-    });
     return {
       title,
       artist: stock.artist,
@@ -2345,8 +2336,8 @@ async function discoverBandcampRelease(stock) {
       cover,
       productPhoto: "",
       imageCredits: [{ image: cover, credit: "Official Bandcamp release artwork", url }],
-      description,
-      descriptionSource: releaseNote ? "Official Bandcamp release note" : "Official Bandcamp release page",
+      description: "",
+      descriptionSource: "",
       reviewQuote: releaseNote,
       reviewSource: releaseNote ? "Bandcamp release note (quoted)" : "",
       reviewUrl: releaseNote ? url : "",
@@ -2395,18 +2386,6 @@ export function selectTrustedRecordLabel(entries = [], expectedCatalogNumber = "
     if (matched) return matched.name;
   }
   return candidates[0].name;
-}
-
-function physicalReleaseDescription({ artist, title, year, format, label, tracks = [], styles = [], fallbackFormat = "" } = {}) {
-  const edition = String(format || fallbackFormat || "physical release").replace(/\s+/g, " ").trim();
-  const release = [String(artist || "").trim(), year ? String(year) : "", String(title || "").trim()].filter(Boolean).join(" ").trim();
-  const facts = [];
-  if (tracks.length) {
-    const examples = tracks.slice(0, 3).join(", ");
-    facts.push(`The pressing carries ${tracks.length} track${tracks.length === 1 ? "" : "s"}${examples ? `, including ${examples}` : ""}`);
-  }
-  if (styles.length) facts.push(`The release is indexed under ${styles.slice(0, 3).join(", ")}`);
-  return `${release || "This release"} is a verified ${edition}${label ? ` edition on ${label}` : ""}.${facts.length ? ` ${facts.join(". ")}.` : ""}`.replace(/\s+/g, " ").trim();
 }
 
 function discogsReleaseTitle(value, artist) {
@@ -2519,11 +2498,6 @@ async function discoverMusicBrainzRelease(stock) {
     (await discoverTrustedReviewSearch({ artist: stock.artist, title: release.title })) ||
     (await discoverOfficialEditorial(releaseGroup?.officialUrl, { artist: stock.artist, title: release.title }));
   const tags = unique([...(releaseGroup?.tags || []), ...(release["release-group"]?.tags || []).map((tag) => tag.name)]);
-  const genreText = tags.slice(0, 3).join(", ");
-  const description = `${stock.artist}'s ${year || ""} release ${release.title} is documented by MusicBrainz with catalog number ${catalogNumbers.join(" / ") || String(stock.catalogNumber || "").trim()} as a ${stock.format || stock.item}${
-    label ? ` edition issued by ${label}` : " edition"
-  }${genreText ? `, documented by MusicBrainz as ${genreText}` : ""}.`.replace(/\s+/g, " ");
-
   return {
     title: release.title,
     year,
@@ -2545,8 +2519,8 @@ async function discoverMusicBrainzRelease(stock) {
         url: `${MUSICBRAINZ_ORIGIN}/release/${release.id}`
       } : null
     ].filter(Boolean)),
-    description,
-    descriptionSource: "MusicBrainz catalog data",
+    description: "",
+    descriptionSource: "",
     reviewQuote: review?.quote || "",
     reviewSource: review?.source || "",
     reviewUrl: review?.url || "",
@@ -2593,8 +2567,8 @@ export function normalizeDiscogsSearchRelease(release, stock, matchConfidence = 
     cover,
     productPhoto: "",
     imageCredits: cover ? [{ image: cover, credit: "Discogs physical-release artwork", url: sourceUrl }] : [],
-    description: physicalReleaseDescription({ artist, title, year, format, label, styles, fallbackFormat: stock.item }),
-    descriptionSource: "Verified physical-release metadata",
+    description: "",
+    descriptionSource: "",
     reviewQuote: "",
     reviewSource: "",
     reviewUrl: "",
@@ -2630,8 +2604,8 @@ export function mergeExactDiscogsEvidence(detail = {}, search = {}) {
     cover,
     productPhoto: String(detail.productPhoto || search.productPhoto || "").trim(),
     imageCredits,
-    description: String(detail.description || search.description || "").trim(),
-    descriptionSource: String(detail.descriptionSource || search.descriptionSource || "").trim(),
+    description: "",
+    descriptionSource: "",
     sourceUrl: String(detail.sourceUrl || search.sourceUrl || "").trim(),
     sourceType: "discogs",
     matchConfidence: Math.max(Number(detail.matchConfidence || 0), Number(search.matchConfidence || 0)),
@@ -3079,10 +3053,12 @@ export function chooseDescriptionEditorial(row = {}, automatic = {}, discovered 
         : currentSource
     };
   }
-  return {
-    description: String(discovered.description || "").trim(),
-    descriptionSource: String(discovered.descriptionSource || "").trim()
-  };
+  return isEditorialDescriptionQuality(discovered.description, discovered.descriptionSource)
+    ? {
+        description: String(discovered.description || "").trim(),
+        descriptionSource: String(discovered.descriptionSource || "").trim()
+      }
+    : { description: "", descriptionSource: "" };
 }
 
 function chooseEditorialValue(current, previousAutomatic, nextAutomatic) {

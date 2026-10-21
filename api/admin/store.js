@@ -397,7 +397,7 @@ function researchFailureIssues(status, publicationIssues = []) {
     "needs-cover-art": "Exact release matched, but no verified cover artwork was found",
     "needs-cover-archive": "Verified cover found, but NIXP could not archive it to managed storage",
     "needs-editorial-metadata": "Exact release matched, but the source description could not be prepared",
-    "needs-editorial-quality": "Exact release matched, but the description is only generic release metadata and needs editorial copy",
+    "needs-editorial-quality": "Exact release matched, but no verified editorial description is available. Use the research sources to write original copy before publishing",
     "needs-related-artist-research": "Exact release matched, but related-artist research returned no verified result",
     "metadata-complete-needs-editorial-review": "Exact release matched, but no trusted review source was available",
     "source-unavailable": "A release source was temporarily unavailable. The item was not changed and can be retried safely.",
