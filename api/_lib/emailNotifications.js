@@ -579,7 +579,7 @@ function orderEmailHtml(order, customer) {
   return `<h1>New NIXP order</h1><p><strong>Order ID:</strong> ${escapeHtml(order.id)}<br><strong>Status:</strong> ${escapeHtml(order.status)}<br><strong>Official total:</strong> ${escapeHtml(rupiah(order.total))}</p><h2>Customer</h2><p><strong>Name:</strong> ${escapeHtml(customer.name || "Not provided")}<br><strong>Email:</strong> ${escapeHtml(customer.email || "Not provided")}<br><strong>WhatsApp:</strong> ${escapeHtml(customer.whatsapp || "Not provided")}<br><strong>Notes:</strong> ${escapeHtml(customer.notes || "None")}</p><h2>Items</h2><ul>${orderItems(order).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 }
 
-function customerOrderText(order, customer, delivery) {
+export function customerOrderText(order, customer, delivery) {
   const address = delivery.shippingAddress || {};
   return [
     "NIXP order received",
@@ -587,6 +587,7 @@ function customerOrderText(order, customer, delivery) {
     `Official total: ${rupiah(order.total ?? order.grand_total)}`,
     `Payment: ${order.paymentStatus || order.payment_status || "Pending"}`,
     `Payment expires: ${formatDate(order.paymentExpiresAt || order.payment_expires_at)}`,
+    ...(delivery.statusUrl ? [`View order and payment: ${delivery.statusUrl}`] : []),
     "",
     `Customer: ${customer.name}`,
     `Shipping method: ${delivery.shippingMethod || order.shipping_method || "Not selected"}`,
@@ -599,9 +600,10 @@ function customerOrderText(order, customer, delivery) {
   ].join("\n");
 }
 
-function customerOrderHtml(order, customer, delivery) {
+export function customerOrderHtml(order, customer, delivery) {
   const address = delivery.shippingAddress || {};
-  return `<h1>NIXP order received</h1><p><strong>Order:</strong> ${escapeHtml(orderReference(order))}<br><strong>Official total:</strong> ${escapeHtml(rupiah(order.total ?? order.grand_total))}<br><strong>Payment:</strong> ${escapeHtml(order.paymentStatus || order.payment_status || "Pending")}<br><strong>Payment expires:</strong> ${escapeHtml(formatDate(order.paymentExpiresAt || order.payment_expires_at))}</p><h2>Delivery</h2><p><strong>Customer:</strong> ${escapeHtml(customer.name)}<br><strong>Shipping method:</strong> ${escapeHtml(delivery.shippingMethod || order.shipping_method || "Not selected")}<br>${addressLines(address).map(escapeHtml).join("<br>")}</p><h2>Items</h2><ul>${orderItems(order).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul><p>NIXP will only mark payment as paid after secure provider verification.</p>`;
+  const statusLink = delivery.statusUrl ? `<p><a href="${escapeHtml(delivery.statusUrl)}">View order and payment</a></p>` : "";
+  return `<h1>NIXP order received</h1><p><strong>Order:</strong> ${escapeHtml(orderReference(order))}<br><strong>Official total:</strong> ${escapeHtml(rupiah(order.total ?? order.grand_total))}<br><strong>Payment:</strong> ${escapeHtml(order.paymentStatus || order.payment_status || "Pending")}<br><strong>Payment expires:</strong> ${escapeHtml(formatDate(order.paymentExpiresAt || order.payment_expires_at))}</p>${statusLink}<h2>Delivery</h2><p><strong>Customer:</strong> ${escapeHtml(customer.name)}<br><strong>Shipping method:</strong> ${escapeHtml(delivery.shippingMethod || order.shipping_method || "Not selected")}<br>${addressLines(address).map(escapeHtml).join("<br>")}</p><h2>Items</h2><ul>${orderItems(order).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul><p>NIXP will only mark payment as paid after secure provider verification.</p>`;
 }
 
 function statusEmailText(order, title, message) {

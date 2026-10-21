@@ -115,7 +115,7 @@ export default async function handler(req, res) {
         ? sendCustomerShippingQuoteRequest(currentOrder || order, notificationCustomer, statusUrl)
         : shippingMethod === "JNE"
           ? sendCustomerShippingQuoteNotification(currentOrder || order, statusUrl)
-          : sendCustomerOrderConfirmation(currentOrder || order, notificationCustomer, { shippingMethod, shippingAddress })
+          : sendCustomerOrderConfirmation(currentOrder || order, notificationCustomer, { shippingMethod, shippingAddress, statusUrl })
       ).catch(emailResult("customer"))
     ]);
     const notification = { internal, customer: customerConfirmation };

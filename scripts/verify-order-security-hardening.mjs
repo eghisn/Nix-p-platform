@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { customerOrderHtml, customerOrderText } from "../api/_lib/emailNotifications.js";
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 const [checkout, client, handlers, notifications, financeApp, marketing, vercel, migration, retentionMigration] = await Promise.all([
@@ -69,6 +70,14 @@ assert.match(retentionMigration, /payload = coalesce\(payload, '\{\}'::jsonb\) \
 assert.match(checkout, /customerPaymentSummary/, "The protected customer order response must include resumability and safe payment instructions.");
 assert.match(checkout, /function setCheckoutAccessCookie[\s\S]*?setOrderAccessCookie\(req, res, orderId, token\)/, "Returning from Snap must retain protected order access even if the URL fragment is lost.");
 assert.match(checkout, /res\.getHeader\("Set-Cookie"\)/, "Checkout and order-status access cookies must be appended, not overwrite one another.");
+assert.match(checkout, /sendCustomerOrderConfirmation\(currentOrder \|\| order, notificationCustomer, \{ shippingMethod, shippingAddress, statusUrl \}\)/, "The standard order email must include a way back to the same protected order after Snap returns.");
+assert.match(notifications, /View order and payment: \$\{delivery\.statusUrl\}/, "Plain-text order emails must carry the payment recovery link.");
+assert.match(notifications, /href="\$\{escapeHtml\(delivery\.statusUrl\)\}">View order and payment/, "HTML order emails must carry the escaped payment recovery link.");
+const confirmationOrder = { id: "order-example-12345678", public_reference: "NXP-ORDER-001", grand_total: 270000, payment_expires_at: "2026-10-21T17:00:00Z", items: [] };
+const confirmationCustomer = { name: "Customer", email: "customer@example.com" };
+const confirmationDelivery = { shippingMethod: "JNE", statusUrl: "https://www.nix-p.com/order-status#order=order-example-12345678&token=abc123" };
+assert.match(customerOrderText(confirmationOrder, confirmationCustomer, confirmationDelivery), /View order and payment: https:\/\/www\.nix-p\.com\/order-status#order=order-example-12345678&token=abc123/, "A customer must be able to recover the order from the plain-text email.");
+assert.match(customerOrderHtml(confirmationOrder, confirmationCustomer, confirmationDelivery), /href="https:\/\/www\.nix-p\.com\/order-status#order=order-example-12345678&amp;token=abc123"/, "The HTML email must preserve the protected order link while escaping its attribute.");
 assert.match(checkout, /hasUsableMidtransRedirect\(attempt\?\.payload\?\.redirectUrl, process\.env\.MIDTRANS_ENV\)/, "Customer payment recovery must match the active Midtrans environment.");
 assert.match(checkout, /startAvailable: canPay && !resumeAvailable && !actionableInstructions/, "A failed pre-payment session must remain safely retryable only while the reservation is payable.");
 assert.match(checkout, /resumeUrl: resumeAvailable \? attempt\.payload\.redirectUrl : null/, "Only a validated, unexpired Snap session may be exposed for direct resume.");
