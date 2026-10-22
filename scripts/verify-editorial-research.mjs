@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { editorialSource, editorialPageMatches, fetchEditorialPage, readHtmlMetadata } from "../api/_lib/catalogEditorialSources.js";
-import { applyVerifiedReleaseDescription, chooseDescriptionEditorial, excludeDatabaseEditorial, matchBandcampPhysicalRelease } from "../api/_lib/catalogEnrichment.js";
+import { applyVerifiedReleaseDescription, chooseDescriptionEditorial, excludeDatabaseEditorial, inventoryFingerprint, matchBandcampPhysicalRelease, reuseVerifiedReleaseCover } from "../api/_lib/catalogEnrichment.js";
 
 for (const url of [
   "https://musicbrainz.org/release/example", "https://www.discogs.com/release/example",
@@ -69,4 +69,9 @@ for (const [artist, title, source] of [
 assert.equal(applyVerifiedReleaseDescription({ description: "", year: 2026 }, { artist: "Unknown", title: "Unknown" }).description, "", "No generic metadata fallback.");
 const existing = { description: "Previously verified editorial copy.", raw: { descriptionSource: "Pitchfork" } };
 assert.equal(chooseDescriptionEditorial(existing, { description: existing.description }, { description: "" }).description, existing.description, "A missing new result must not erase good automatic copy.");
+const archivedRow = { raw: { autoCover: "/public/verified-cover.jpg", musicBrainzReleaseId: "exact-release", enrichmentFingerprint: inventoryFingerprint(stock) } };
+assert.equal(reuseVerifiedReleaseCover({ musicBrainzReleaseId: "exact-release", cover: "" }, archivedRow, stock).cover, "/public/verified-cover.jpg");
+assert.equal(reuseVerifiedReleaseCover({ musicBrainzReleaseId: "other-edition", cover: "" }, archivedRow, stock).cover, "");
+assert.equal(reuseVerifiedReleaseCover({ musicBrainzReleaseId: "exact-release", cover: "" }, archivedRow, { ...stock, barcode: "different" }).cover, "");
+assert.equal(reuseVerifiedReleaseCover({ sourceUnavailable: true }, archivedRow, stock).cover, undefined);
 console.log("Editorial source, redirect, identity, physical-edition, reviewed-copy and preservation checks passed.");

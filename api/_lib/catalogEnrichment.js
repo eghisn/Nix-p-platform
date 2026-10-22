@@ -1808,7 +1808,10 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       enrichmentAttemptedAt: new Date().toISOString()
     });
   }
-  const discovered = await archiveDiscoveredImages(applyArchivedCatalogImages(discoveredSource, sku), sku, usedCondition(stock.itemCondition || row.condition));
+  const discovered = await archiveDiscoveredImages(
+    applyArchivedCatalogImages(reuseVerifiedReleaseCover(discoveredSource, row, { ...stock, artist, title, format }), sku),
+    sku, usedCondition(stock.itemCondition || row.condition)
+  );
   if (!discovered) {
     return finalizeStatus(row, {
       publishable: false,
@@ -2003,6 +2006,20 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     publishable: hasCatalogCore(product) && ["complete", "complete-no-related-artists"].includes(product.raw.enrichmentStatus),
     status: product.raw.enrichmentStatus
   });
+}
+
+export function reuseVerifiedReleaseCover(discovered, row = {}, stock = {}) {
+  if (!discovered || discovered.sourceUnavailable || discovered.needsPressingIdentifier) return discovered;
+  const raw = row.raw || {};
+  if (!isManagedProductImage(raw.autoCover) || raw.enrichmentFingerprint !== inventoryFingerprint(stock)) return discovered;
+  const sameRelease = Boolean(raw.musicBrainzReleaseId && raw.musicBrainzReleaseId === discovered.musicBrainzReleaseId);
+  const sameOfficialPage = Boolean(editorialSource(discovered.sourceUrl, { official: true }) && raw.metadataSourceUrl === discovered.sourceUrl);
+  if (!sameRelease && !sameOfficialPage) return discovered;
+  return {
+    ...discovered,
+    cover: raw.autoCover,
+    imageCredits: mergeCredits(row.image_credits || raw.imageCredits, discovered.imageCredits)
+  };
 }
 
 async function archiveDiscoveredImages(discovered, sku, used) {
@@ -2557,16 +2574,21 @@ async function discoverMusicBrainzRelease(stock) {
   const edition = unique([
     ...(catalogFormatFallback ? [stock.format || stock.item] : [release.packaging, ...(release.media || []).map((medium) => medium.format)])
   ]).join(" / ");
+  const reviewedEditorial = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(stock.artist)}|${normalizedText(stock.title)}`);
   const [releaseGroup, pitchforkReview, relatedArtistResearch] = await Promise.all([
     discoverReleaseGroup(release["release-group"]?.id),
-    discoverPitchforkReview({ artist: stock.artist, title: release.title }),
+    reviewedEditorial
+      ? discoverLinkedReview([reviewedEditorial.sourceUrl], { artist: stock.artist, title: stock.title })
+      : discoverPitchforkReview({ artist: stock.artist, title: release.title }),
     researchRelatedArtists({ artist: stock.artist, title: release.title, format, releaseId: release.id })
   ]);
-  const review =
-    pitchforkReview ||
-    (await discoverLinkedReview(releaseGroup?.reviewUrls, { artist: stock.artist, title: release.title })) ||
-    (await discoverTrustedReviewSearch({ artist: stock.artist, title: release.title })) ||
-    (await discoverOfficialEditorial(releaseGroup?.officialUrl, { artist: stock.artist, title: release.title }));
+  // A reviewed release already has an exact editorial source. Check that
+  // source directly instead of spending the request budget rediscovering it.
+  const review = pitchforkReview || (reviewedEditorial
+    ? await discoverOfficialEditorial(reviewedEditorial.sourceUrl, { artist: stock.artist, title: stock.title })
+    : (await discoverLinkedReview(releaseGroup?.reviewUrls, { artist: stock.artist, title: release.title })) ||
+      (await discoverTrustedReviewSearch({ artist: stock.artist, title: release.title })) ||
+      (await discoverOfficialEditorial(releaseGroup?.officialUrl, { artist: stock.artist, title: release.title })));
   const tags = unique([...(releaseGroup?.tags || []), ...(release["release-group"]?.tags || []).map((tag) => tag.name)]);
   return {
     title: release.title,
