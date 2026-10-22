@@ -20,14 +20,13 @@ Supabase, GitHub, Vercel, and the public storefront.
 1. A purchase creates or updates one inventory stock row by normalized SKU.
 2. After title and selling price exist, the server synchronizes the SKU to Admin.
 3. Exact reviewed matches use the curated enrichment registry.
-4. Other record releases use Discogs as the exact physical-pressing source,
-   queried first by barcode or catalog number when supplied. Bandcamp and
-   trusted review sources supply official release notes and editorial evidence;
-   MusicBrainz and Cover Art Archive remain a narrowly verified fallback, not
-   the publishing gate. Production uses a server-only `DISCOGS_TOKEN` so its
-   exact-release research does not depend on the shared anonymous API quota.
-   The matched cover is copied into NIXP's Supabase Storage before it is used
-   publicly.
+4. Other record releases use official Bandcamp physical-package data and
+   MusicBrainz release identity. A supplied barcode/catalog number must match;
+   a digital release, artist name, or a format mentioned elsewhere on a page
+   is not evidence of the physical edition. Discogs discovery is disabled.
+   Cover Art Archive can provide verified release artwork, but neither it nor
+   MusicBrainz supplies description or review prose. Covers are copied into
+   NIXP's Supabase Storage before public use.
 5. Edition, barcode, and catalog number should be entered whenever known. They
    are required to distinguish pressings that share artist, title, and format.
 6. A release is public only when it has artist, title, label, release year,
@@ -38,6 +37,24 @@ Supabase, GitHub, Vercel, and the public storefront.
    descriptive copy, and clickable catalog relationships when a verified artist
    relationship exists. Source-backed review quotes remain editorial: the system
    never invents a quote or attribution.
+
+## Editorial Research
+
+- Descriptions use the reviewed original-copy registry after release matching.
+  Registry entries are release-level, not pressing-level, and include an
+  official label/artist or music-publication source URL. They never change the
+  matched barcode, edition, stock, or price.
+- There is no paid writing API and no general-purpose automatic prose writer.
+  An unreviewed release stays `needs-editorial-quality`, with discovered source
+  links available to the editor. Do not turn metadata, search snippets, track
+  counts, or copied label paragraphs into a purported original description.
+- Review discovery admits only approved music publications; official release
+  notes are separately labeled. URLs, redirects and artist/release identity
+  are validated. Discogs and MusicBrainz links cannot be editorial fallbacks.
+- Manual descriptions remain authoritative. A failed/missing new editorial
+  result must not erase previously verified copy. Research remains SKU-scoped
+  and preserves the existing publication state; completing a draft is not an
+  instruction to publish it.
 
 ## Image Rules
 

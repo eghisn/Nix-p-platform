@@ -34,7 +34,7 @@
     "test:shipping-integration": "node scripts/verify-shipping-integration.mjs",
     "test:shipping-catalog": "node scripts/verify-shipping-catalog.mjs",
     "test:shipping-profiles": "node scripts/verify-shipping-profiles.mjs",
-    "test:enrichment": "node scripts/verify-finance-enrichment.mjs",
+    "test:enrichment": "node scripts/verify-editorial-research.mjs && node scripts/verify-finance-enrichment.mjs",
     "test:publication-safety": "node scripts/verify-publication-safety.mjs",
     "test:related-artists": "node scripts/verify-related-artists.mjs",
     "test:research-jobs": "node scripts/verify-catalog-research-jobs.mjs",
@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@vercel/functions": "^3.9.5",
+    "linkedom": "0.18.14",
     "nodemailer": "^9.1.1"
   },
   "devDependencies": {

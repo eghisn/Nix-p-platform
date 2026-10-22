@@ -3,6 +3,8 @@ import { hasDuplicateEditorialCopy } from "../../src/data/catalogPublication.js"
 import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 import { archiveRemoteProductImage, isManagedProductImage } from "./productImageStorage.js";
 import approvedMockupImages from "./approvedMockupImages.json" with { type: "json" };
+import { parseHTML } from "linkedom";
+import { editorialSource, editorialPageMatches, fetchEditorialPage, readHtmlMetadata } from "./catalogEditorialSources.js";
 
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const USED_CONDITION = /^used\b/i;
@@ -19,7 +21,7 @@ export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 // A versioned research request means editorial rule changes only run for an
 // item when an editor explicitly asks to research it again. This keeps a
 // deployment from silently rewriting live catalogue copy.
-export const CATALOG_RESEARCH_VERSION = "official-bandcamp-musicbrainz-v9";
+export const CATALOG_RESEARCH_VERSION = "official-editorial-v10";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -31,18 +33,6 @@ let lastMusicBrainzRequestAt = 0;
 let lastFmQueue = Promise.resolve();
 let lastLastFmRequestAt = 0;
 const externalSourceHealth = new Map();
-const TRUSTED_REVIEW_SOURCES = new Map([
-  ["pitchfork.com", "Pitchfork (quoted)"],
-  ["thequietus.com", "The Quietus (quoted)"],
-  ["theguardian.com", "The Guardian (quoted)"],
-  ["thewire.co.uk", "The Wire (quoted)"],
-  ["allmusic.com", "AllMusic (quoted)"],
-  ["residentadvisor.net", "Resident Advisor (quoted)"],
-  ["stereogum.com", "Stereogum (quoted)"],
-  ["tinymixtapes.com", "Tiny Mix Tapes (quoted)"],
-  ["boomkat.com", "Boomkat (quoted)"],
-  ["factmag.com", "FACT (quoted)"]
-]);
 
 function discogsHeaders() {
   const token = String(process.env.DISCOGS_TOKEN || "").trim();
@@ -425,8 +415,8 @@ export const CURATED_FINANCE_ENRICHMENTS = {
       }
     ],
     description:
-      "Gorguts' 2016 EP Pleiades' Dust is a single thirty-three-minute composition in seven movements, using the rise and destruction of Baghdad's House of Wisdom as the frame for the band's dissonant, progressive death metal.",
-    descriptionSource: "Season of Mist / MusicBrainz",
+      "Gorguts' 2016 EP Pleiades' Dust is a single thirty-three-minute composition, using the rise and destruction of Baghdad's House of Wisdom as the frame for the band's dissonant, progressive death metal.",
+    descriptionSource: "Season of Mist",
     reviewQuote: "music and narrative intertwine themselves flawlessly",
     reviewSource: "Sputnikmusic (quoted)",
     reviewUrl: "https://www.sputnikmusic.com/review/71492/Gorguts-Pleiades-Dust/",
@@ -1501,6 +1491,22 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // Album-level editorial is shared by verified physical formats. It never
 // identifies a pressing; the release matcher must do that first.
 const VERIFIED_RELEASE_DESCRIPTIONS = new Map([
+  ["fucked up|year of the ox", {
+    description: "Fucked Up give their Zodiac series room to stretch on Year of the Ox. Recorded with Jon Drew in Toronto, the title track builds patiently around a guest vocal from Zola Jesus and the strings of New Strings Old Puppets. On the other side, Solomon's Song turns toward gothic romance, with Aerin Fogel's extended saxophone passage and synthesizers from Trust.",
+    descriptionSource: "Merge Records",
+    sourceUrl: "https://mergerecords.com/products/fucked-up-year-of-the-ox"
+  }],
+  ["savages|fuckers dream baby dream", {
+    description: "A year after Silence Yourself, Savages followed their debut with a release built around performance rather than another studio statement. Fuckers / Dream Baby Dream pairs a live recording of their own Fuckers with a version of Suicide's Dream Baby Dream. Issued in 2014 by Matador and Pop Noire, the two-track record places the band's material alongside an earlier point of reference.",
+    descriptionSource: "Pitchfork",
+    sourceUrl: "https://pitchfork.com/news/53999-savages-to-release-new-12-featuring-suicide-cover-new-song-fuckers/"
+  }],
+  ["nilufer yanya|do you like pain", {
+    description: "Do You Like Pain? brings two early Nilufer Yanya songs into dialogue with their remixes. Baby Luv is reworked by ALASKALASKA, while Jazzi Bobbi draws out the darker side of Thanks 4 Nothing, processing its drums and turning fragments of Yanya's voice into percussion. The original Thanks 4 Nothing centres on a relationship beyond repair; its remix gives that unease a different rhythmic shape.",
+    descriptionSource: "ATO Records",
+    sourceUrl: "https://atorecords.com/featured/nilufer-yanyas-new-single-and-video-thanks-4-nothing-out-now/",
+    bandcampUrl: "https://niluferyanya.bandcamp.com/album/do-you-like-pain-ep"
+  }],
   ["jenny hval|the long sleep", {
     description: "The Long Sleep, Jenny Hval's 2018 four-track EP, moves away from the tightly framed concepts of Blood Bitch toward a more instinctive way of writing. Recurring motifs take different shapes as Hval works with Håvard Volden, Lasse Marhaug, and a group of jazz musicians, giving the songs an open, improvisatory feel.",
     descriptionSource: "Jenny Hval / Sacred Bones Records",
@@ -1521,6 +1527,7 @@ const VERIFIED_RELEASE_DESCRIPTIONS = new Map([
 export function applyVerifiedReleaseDescription(discovered, { artist, title } = {}) {
   if (!discovered) return discovered;
   if (discovered.needsPressingIdentifier || discovered.sourceUnavailable) return discovered;
+  discovered = excludeDatabaseEditorial(discovered);
   const sourceIsUneditedExcerpt = /^Official Bandcamp release (?:note|page)$/i.test(String(discovered.descriptionSource || "").trim());
   if (!sourceIsUneditedExcerpt && isEditorialDescriptionQuality(discovered.description, discovered.descriptionSource)) return discovered;
   const editorial = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(artist)}|${normalizedText(title)}`);
@@ -1534,6 +1541,25 @@ export function applyVerifiedReleaseDescription(discovered, { artist, title } = 
       ? sources
       : [...sources, { source: editorial.descriptionSource, url: editorial.sourceUrl, confidence: 100 }]
   };
+}
+
+export function excludeDatabaseEditorial(discovered = {}) {
+  const result = { ...discovered };
+  if (/\b(?:musicbrainz|discogs)\b/i.test(String(result.descriptionSource || ""))) {
+    result.description = "";
+    result.descriptionSource = "";
+  }
+  let databaseReviewUrl = false;
+  try {
+    const host = new URL(result.reviewUrl).hostname;
+    databaseReviewUrl = ["musicbrainz.org", "discogs.com"].some((domain) => host === domain || host.endsWith(`.${domain}`));
+  } catch { /* Missing URLs are handled by the existing review validator. */ }
+  if (databaseReviewUrl || /\b(?:musicbrainz|discogs)\b/i.test(String(result.reviewSource || ""))) {
+    result.reviewQuote = "";
+    result.reviewSource = "";
+    result.reviewUrl = "";
+  }
+  return result;
 }
 
 // Editorial overrides supplement a discovered physical release without
@@ -2032,12 +2058,12 @@ async function discoverReleaseAcrossSources(stock) {
   if (bandcamp?.cover && !bandcamp.needsPressingIdentifier) return bandcamp;
 
   const musicBrainz = await discoverMusicBrainzRelease(stock);
-  if (musicBrainz) return musicBrainz;
+  if (musicBrainz && !musicBrainz.sourceUnavailable) return musicBrainz;
 
   // Do not report "no exact match" when a required source timed out or was
   // rate-limited. That is retryable infrastructure state, not bad Finance
   // data, and it must never send the editor on a false correction hunt.
-  const unavailableSources = [bandcamp]
+  const unavailableSources = [bandcamp, musicBrainz]
     .filter((candidate) => candidate?.sourceUnavailable)
     .map((candidate) => candidate.sourceType)
     .filter(Boolean);
@@ -2300,39 +2326,50 @@ function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
 }
 
 async function discoverBandcampRelease(stock) {
-  const query = `site:bandcamp.com/album \"${stock.artist}\" \"${stock.title}\"`;
-  const response = await fetchWithTimeout(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, {
-    headers: { accept: "text/html", "user-agent": USER_AGENT }
-  }, 7000, "bandcamp-search");
-  if (!response) return { sourceUnavailable: true, sourceType: "bandcamp" };
-  if (!response?.ok) return null;
-  const html = await response.text();
-  const urls = unique(
-    [...html.matchAll(/href=["']([^"']+)["']/gi)]
-      .map((match) => duckDuckGoResultUrl(decodeHtml(match[1])))
-      .filter((value) => /https:\/\/[^/]+\.bandcamp\.com\/album\//i.test(value))
-  ).slice(0, 4);
+  const reviewed = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(stock.artist)}|${normalizedText(stock.title)}`);
+  let urls = reviewed?.bandcampUrl ? [reviewed.bandcampUrl] : [];
+  if (!urls.length) {
+    const query = `site:bandcamp.com/album \"${stock.artist}\" \"${stock.title}\"`;
+    const response = await fetchWithTimeout(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, {
+      headers: { accept: "text/html", "user-agent": USER_AGENT }
+    }, 7000, "bandcamp-search");
+    if (!response || isExternalSourceUnavailable(response)) return { sourceUnavailable: true, sourceType: "bandcamp" };
+    if (!response.ok) return null;
+    const html = await response.text();
+    urls = unique(
+      [...html.matchAll(/href=["']([^"']+)["']/gi)]
+        .map((match) => duckDuckGoResultUrl(decodeHtml(match[1])))
+        .filter((value) => {
+          const source = editorialSource(value, { official: true });
+          if (!source) return false;
+          const url = new URL(source.url);
+          return url.hostname.endsWith(".bandcamp.com") && url.pathname.startsWith("/album/");
+        })
+    ).slice(0, 4);
+  }
   for (const url of urls) {
-    const page = await fetchWithTimeout(url, { headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "bandcamp");
+    const page = await fetchWithTimeout(url, { redirect: "error", headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "bandcamp");
     if (!page) return { sourceUnavailable: true, sourceType: "bandcamp" };
     if (!page?.ok) continue;
     const pageHtml = await page.text();
-    const pageTitle = metaContent(pageHtml, "og:title") || titleText(pageHtml);
-    if (!bandcampReleaseMatches(pageTitle, stock)) continue;
-    const hasRequestedFormat = bandcampFormatMatches(pageHtml, stock.item || stock.format);
-    if (!hasRequestedFormat) continue;
+    const matched = matchBandcampPhysicalRelease(pageHtml, stock);
+    if (!matched) continue;
     const cover = highResolutionBandcampImage(metaContent(pageHtml, "og:image"));
     if (!cover) continue;
-    const releaseNote = conciseQuote(metaContent(pageHtml, "description") || metaContent(pageHtml, "og:description"));
-    const year = bandcampReleaseYear(pageHtml);
-    const label = String(pageTitle || "").split("|").map((value) => value.trim()).filter(Boolean).at(-1) || "";
-    const title = String(pageTitle || "").split("|")[0]?.trim() || stock.title;
+    // Bandcamp's meta description is often just a track count/date. It is not
+    // an editorial review and must never populate the quote block.
+    const releaseNote = "";
+    const year = matched.year || bandcampReleaseYear(pageHtml);
+    const label = matched.label || "";
+    const title = matched.title || stock.title;
     return {
       title,
       artist: stock.artist,
       year,
       label,
-      edition: stock.item || stock.format,
+      edition: matched.edition,
+      barcode: matched.barcode,
+      catalogNumber: matched.catalogNumber,
       cover,
       productPhoto: "",
       imageCredits: [{ image: cover, credit: "Official Bandcamp release artwork", url }],
@@ -2344,11 +2381,41 @@ async function discoverBandcampRelease(stock) {
       tags: [],
       sourceUrl: url,
       sourceType: "bandcamp",
-      matchConfidence: 80,
-      researchSources: [{ source: "Bandcamp", url, confidence: 80 }]
+      matchConfidence: matched.confidence,
+      researchSources: [{ source: "Official Bandcamp physical release", url, confidence: matched.confidence }]
     };
   }
   return null;
+}
+
+export function matchBandcampPhysicalRelease(html, stock) {
+  try {
+    const { document } = parseHTML(String(html || ""));
+    const data = JSON.parse(document.querySelector("[data-tralbum]")?.getAttribute("data-tralbum") || "null");
+    if (!data || !bandcampReleaseMatches(`${data.current?.title || ""}|${data.artist || ""}`, stock)) return null;
+    if (normalizedText(canonicalArtistName(data.artist)) !== normalizedText(canonicalArtistName(stock.artist))) return null;
+    const barcode = String(stock.barcode || "").replace(/\D/g, "");
+    const catalogNumber = normalizedText(stock.catalogNumber);
+    const packages = (Array.isArray(data.packages) ? data.packages : []).filter((item) => {
+      if (item.private || !bandcampFormatMatches(`${item.type_name || ""} ${item.title || ""}`, stock.item || stock.format)) return false;
+      const upc = String(item.upc || "").replace(/\D/g, "");
+      const catno = normalizedText(item.catalog_number || "");
+      if (barcode && upc && barcode !== upc) return false;
+      if (catalogNumber && catno && catalogNumber !== catno) return false;
+      if (barcode || catalogNumber) return Boolean((barcode && barcode === upc) || (catalogNumber && catalogNumber === catno));
+      return true;
+    });
+    if (packages.length !== 1) return null;
+    const item = packages[0];
+    return {
+      title: data.current.title, label: String(item.label || ""),
+      year: new Date(data.album_release_date || data.current.release_date || "").getUTCFullYear() || 0,
+      edition: `${stock.item || stock.format} / ${item.title || item.type_name}`,
+      barcode: String(item.upc || "").replace(/\D/g, ""),
+      catalogNumber: String(item.catalog_number || ""),
+      confidence: barcode || catalogNumber ? 100 : 80
+    };
+  } catch { return null; }
 }
 
 const NON_LABEL_COMPANY_PATTERN = /\b(?:retail(?:er)?|store|shop|marketplace|mail[ -]?order|distribution|distributor|manufactur(?:er|ing)?|press(?:ing)?|master(?:ing|ed)?|plating|duplication|webstore|presents)\b/i;
@@ -2439,6 +2506,7 @@ async function discoverMusicBrainzRelease(stock) {
   );
 
   let release = null;
+  let sourceUnavailable = false;
   let exactAlbumWithDifferentFormat = false;
   let catalogFormatFallback = false;
   for (const [index, query] of queries.entries()) {
@@ -2446,6 +2514,7 @@ async function discoverMusicBrainzRelease(stock) {
       `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=${index === 0 && catalogNumber ? 50 : 25}&inc=labels+artist-credits+media+release-groups`
     );
     if (!response?.ok) {
+      sourceUnavailable ||= isExternalSourceUnavailable(response);
       console.warn("Catalog research source unavailable", {
         source: "musicbrainz-release",
         status: Number(response?.status || 0),
@@ -2465,6 +2534,7 @@ async function discoverMusicBrainzRelease(stock) {
     }
   }
   if (!release) {
+    if (sourceUnavailable) return { sourceUnavailable: true, sourceType: "musicbrainz" };
     // With no Finance-side pressing identifier, an artist/title match that
     // conflicts only on medium is actionable input, not a failed search.
     // A supplied catalog number or barcode must still match a source exactly.
@@ -2524,6 +2594,11 @@ async function discoverMusicBrainzRelease(stock) {
     reviewQuote: review?.quote || "",
     reviewSource: review?.source || "",
     reviewUrl: review?.url || "",
+    researchSources: [
+      { source: "MusicBrainz release identity (not editorial)", url: `${MUSICBRAINZ_ORIGIN}/release/${release.id}`, confidence: 95 },
+      ...(review?.url ? [{ source: review.source, url: review.url, confidence: 90 }] : []),
+      ...(editorialSource(releaseGroup?.officialUrl, { official: true }) ? [{ source: "Official release page", url: releaseGroup.officialUrl, confidence: 85 }] : [])
+    ],
     relatedArtists: relatedArtistResearch.artists,
     relatedArtistEvidence: relatedArtistResearch.evidence,
     relatedArtistResearch,
@@ -2749,7 +2824,7 @@ function uniqueCredits(credits = []) {
 
 async function discoverReleaseGroup(releaseGroupId) {
   if (!releaseGroupId) return null;
-  const response = await fetch(
+  const response = await fetchWithTimeout(
     `${MUSICBRAINZ_ORIGIN}/ws/2/release-group/${releaseGroupId}?inc=url-rels+tags+artists&fmt=json`,
     { headers: { accept: "application/json", "user-agent": USER_AGENT } }
   ).catch(() => null);
@@ -2757,7 +2832,8 @@ async function discoverReleaseGroup(releaseGroupId) {
   const payload = await response.json().catch(() => ({}));
   const relations = Array.isArray(payload.relations) ? payload.relations : [];
   const officialRelation = relations.find((relation) =>
-    ["bandcamp", "official homepage", "purchase for download", "purchase for mail-order"].includes(String(relation?.type || "").toLowerCase())
+    ["bandcamp", "official homepage", "purchase for download", "purchase for mail-order"].includes(String(relation?.type || "").toLowerCase()) &&
+    editorialSource(relation?.url?.resource, { official: true })
   );
   return {
     tags: unique((payload.tags || []).map((tag) => tag.name)),
@@ -2771,28 +2847,11 @@ async function discoverReleaseGroup(releaseGroupId) {
 }
 
 async function discoverLinkedReview(urls = [], { artist, title } = {}) {
-  for (const value of unique(urls).slice(0, 4)) {
-    let url;
-    try {
-      url = new URL(value);
-    } catch {
-      continue;
-    }
-    const hostname = url.hostname.toLowerCase().replace(/^www\./, "");
-    const source = trustedReviewSource(hostname);
-    if (!source) continue;
-    const response = await fetchWithTimeout(url, {
-      headers: { accept: "text/html", "user-agent": USER_AGENT }
-    });
-    if (!response?.ok) continue;
-    const html = await response.text();
-    const pageTitle = metaContent(html, "og:title") || titleText(html);
-    const normalizedPageTitle = normalizedText(pageTitle);
-    const titleMatches = normalizedPageTitle.includes(normalizedText(title));
-    const artistMatches = normalizedPageTitle.includes(normalizedText(artist));
-    if (!titleMatches || !artistMatches) continue;
-    const quote = conciseQuote(metaContent(html, "description") || metaContent(html, "og:description"));
-    if (quote) return { quote, source, url: url.toString() };
+  for (const value of unique(urls).filter((url) => editorialSource(url)).slice(0, 4)) {
+    const page = await fetchEditorialPage(value);
+    if (!page || !editorialPageMatches(page.title, { artist, title })) continue;
+    const quote = conciseQuote(page.description);
+    if (quote) return { quote, source: `${page.source} (quoted)`, url: page.url };
   }
   return null;
 }
@@ -2840,33 +2899,22 @@ async function discoverBraveReviewSearch({ artist, title } = {}) {
 }
 
 async function discoverOfficialEditorial(value, { artist, title } = {}) {
-  if (!value) return null;
-  let url;
-  try {
-    url = new URL(value);
-  } catch {
-    return null;
-  }
-  const response = await fetchWithTimeout(url, {
-    headers: { accept: "text/html", "user-agent": USER_AGENT }
-  });
-  if (!response?.ok) return null;
-  const html = await response.text();
-  const pageTitle = metaContent(html, "og:title") || titleText(html);
-  const normalizedPageTitle = normalizedText(pageTitle);
-  if (!normalizedPageTitle.includes(normalizedText(title)) && !normalizedPageTitle.includes(normalizedText(artist))) return null;
-  const quote = conciseQuote(metaContent(html, "description") || metaContent(html, "og:description"));
+  const page = await fetchEditorialPage(value, { official: true });
+  if (!page || !editorialPageMatches(page.title, { artist, title })) return null;
+  // Track/date summaries are catalog metadata, not a label's editorial note.
+  if (/^\s*\d+\s+track[s]?\b|\b(?:buy|download|stream) (?:the )?(?:album|ep|single)\b/i.test(page.description)) return null;
+  const quote = conciseQuote(page.description);
   if (!quote) return null;
-  const hostname = url.hostname.toLowerCase().replace(/^www\./, "");
   return {
     quote,
-    source: `${editorialSourceName(hostname)} release note (quoted)`,
-    url: url.toString()
+    source: `${page.source} release note (quoted)`,
+    url: page.url
   };
 }
 
 function trustedReviewSource(hostname) {
-  return [...TRUSTED_REVIEW_SOURCES].find(([domain]) => hostname === domain || hostname.endsWith(`.${domain}`))?.[1] || "";
+  const source = editorialSource(`https://${hostname}`);
+  return source ? `${source.name} (quoted)` : "";
 }
 
 function duckDuckGoResultUrl(value) {
@@ -2928,30 +2976,14 @@ async function discoverPitchforkReview({ artist, title }) {
   ).slice(0, 5);
   for (const path of paths) {
     const url = new URL(path, "https://pitchfork.com").toString();
-    const page = await fetchWithTimeout(url, { headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "pitchfork");
-    if (!page?.ok) continue;
-    const html = await page.text();
-    const pageTitle = metaContent(html, "og:title") || titleText(html);
-    if (!normalizedText(pageTitle).includes(normalizedText(title)) || !normalizedText(pageTitle).includes(normalizedText(artist))) continue;
-    const description = metaContent(html, "description") || metaContent(html, "og:description");
-    const quote = conciseQuote(description);
-    if (!quote) continue;
-    return { quote, source: "Pitchfork (quoted)", url };
+    const review = await discoverLinkedReview([url], { artist, title });
+    if (review) return review;
   }
   return null;
 }
 
 function metaContent(html, name) {
-  const escaped = String(name).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const patterns = [
-    new RegExp(`<meta[^>]+(?:name|property)=["']${escaped}["'][^>]+content=["']([^"']+)["'][^>]*>`, "i"),
-    new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+(?:name|property)=["']${escaped}["'][^>]*>`, "i")
-  ];
-  for (const pattern of patterns) {
-    const match = String(html || "").match(pattern);
-    if (match?.[1]) return decodeHtml(match[1]);
-  }
-  return "";
+  return readHtmlMetadata(html, name);
 }
 
 function titleText(html) {
@@ -3058,7 +3090,9 @@ export function chooseDescriptionEditorial(row = {}, automatic = {}, discovered 
         description: String(discovered.description || "").trim(),
         descriptionSource: String(discovered.descriptionSource || "").trim()
       }
-    : { description: "", descriptionSource: "" };
+    : isEditorialDescriptionQuality(current, currentSource)
+      ? { description: current, descriptionSource: currentSource }
+      : { description: "", descriptionSource: "" };
 }
 
 function chooseEditorialValue(current, previousAutomatic, nextAutomatic) {
