@@ -204,6 +204,18 @@ function safeHostname(value) {
 // Exact, reviewed matches take precedence over discovery. These records also
 // document the source used for every locally archived catalog image.
 export const CURATED_FINANCE_ENRICHMENTS = {
+  "NXP-2026-VNL-0096": {
+    artist: "Massive Attack, Tom Waits", title: "Boots On The Ground", year: 2026,
+    label: "Play It Again Sam", edition: 'Vinyl, 12", 45 RPM, Single, Limited Edition, Random Colors, 180g, EcoSonic',
+    catalogNumber: "PIASR1700PS", barcode: "5400863210090",
+    verifiedCatalogNumber: "PIASR1700PS", verifiedBarcode: "5400863210090",
+    reuseManagedCover: true,
+    sourceUrl: "https://store.massiveattack.co.uk/format/1947562-boots-on-the-ground",
+    researchSources: [
+      { source: "Massive Attack official 12-inch release", url: "https://store.massiveattack.co.uk/format/1947562-boots-on-the-ground", confidence: 100 },
+      { source: "International 12-inch barcode (Head Records)", url: "https://headrecords.co.uk/rock/pop/boots-on-ground-massive-attack-tom-waits/p-piasr1700ps", confidence: 95 }
+    ]
+  },
   "NXP-2026-CST-0014": {
     artist: "DOMi & JD BECK", title: "Who Asked?", year: 2026, label: "Blue Note",
     edition: "Cassette, Album", catalogNumber: "00199957849432", barcode: "1 99957 84943 2",
@@ -1831,12 +1843,23 @@ export function applyCuratedEditorialOverride(discovered, sku) {
   };
 }
 
+export function selectCuratedFinanceEnrichment(entry, stock = {}, row = {}) {
+  if (!entry) return null;
+  const { verifiedBarcode, verifiedCatalogNumber, reuseManagedCover, ...release } = entry;
+  if (verifiedBarcode && String(stock.barcode || "").replace(/\D/g, "") !== verifiedBarcode) return null;
+  if (verifiedCatalogNumber && !catalogNumberMatches(stock.catalogNumber, verifiedCatalogNumber)) return null;
+  if (!reuseManagedCover) return release;
+  const cover = row.raw?.autoCover || row.image;
+  if (!isManagedProductImage(cover)) return null;
+  return { ...release, cover, imageCredits: row.image_credits || row.raw?.imageCredits || [] };
+}
+
 export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArtists = [] } = {}) {
   const format = String(stock.item || row.format || "").trim();
   const submittedTitle = String(stock.title || "").trim();
   const title = (isPlaceholderInventoryTitle(submittedTitle) ? String(row.title || "") : submittedTitle).trim();
   const sku = String(stock.sku || row.sku || "").trim().toUpperCase();
-  const curated = CURATED_FINANCE_ENRICHMENTS[sku];
+  const curated = selectCuratedFinanceEnrichment(CURATED_FINANCE_ENRICHMENTS[sku], stock, row);
   const artist = canonicalArtistName(curated?.artist || stock.artist || row.artist || "");
   const price = Number(stock.sellingPrice || row.price || 0);
   const openToOffers = stock.listingMode === "Private Collection / Offer Only" || stock.open_to_offers === true || row.open_to_offers === true;
@@ -1932,14 +1955,18 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   const savedEdition = String(raw.edition || "").trim();
   const edition = editionMatchesFormat(savedEdition, format) ? savedEdition || discovered.edition || "" : discovered.edition || savedEdition;
   const replaceStoredEdition = Boolean(savedEdition && discovered.edition && !editionMatchesFormat(savedEdition, format));
+  const barcode = String(stock.barcode || raw.barcode || discovered.barcode || "").trim();
+  const catalogNumber = String(stock.catalogNumber || raw.catalogNumber || discovered.catalogNumber || "").trim();
   const details = unique([
-    ...(Array.isArray(row.details) ? row.details : []).filter((detail) => !replaceStoredEdition || !String(detail).startsWith("Edition:")),
+    ...(Array.isArray(row.details) ? row.details : []).filter((detail) =>
+      !/^(?:Barcode|Catalog number):/i.test(String(detail)) &&
+      (!replaceStoredEdition || !String(detail).startsWith("Edition:"))),
     `SKU: ${sku}`,
     `Format: ${format}`,
     stock.itemCondition ? `Condition: ${stock.itemCondition}` : "",
     edition ? `Edition: ${edition}` : "",
-    discovered.catalogNumber ? `Catalog number: ${discovered.catalogNumber}` : "",
-    discovered.barcode ? `Barcode: ${discovered.barcode}` : ""
+    catalogNumber ? `Catalog number: ${catalogNumber}` : "",
+    barcode ? `Barcode: ${barcode}` : ""
   ]).filter((detail) => detail && !detail.startsWith("Created from finance inventory"));
   const automatic = raw.autoEditorial || {};
   // Legacy data could contain a review quote copied into Description. It is
@@ -2043,8 +2070,8 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       details,
       description,
       edition,
-      barcode: raw.barcode || discovered.barcode || "",
-      catalogNumber: raw.catalogNumber || discovered.catalogNumber || "",
+      barcode,
+      catalogNumber,
       relatedArtists,
       manualRelatedArtists,
       manualRelatedArtistsOverride,

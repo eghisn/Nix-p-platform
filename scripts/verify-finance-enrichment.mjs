@@ -21,7 +21,8 @@ import {
   removeDuplicateEditorialCopy,
   mergeExactDiscogsEvidence,
   normalizeDiscogsSearchRelease,
-  selectTrustedRecordLabel
+  selectTrustedRecordLabel,
+  selectCuratedFinanceEnrichment
 } from "../api/_lib/catalogEnrichment.js";
 import { archiveRemoteProductImage } from "../api/_lib/productImageStorage.js";
 import {
@@ -163,6 +164,34 @@ const catalogExactAcrossMusicBrainzMedia = assessMusicBrainzReleaseCandidates([{
 });
 assert.equal(catalogExactAcrossMusicBrainzMedia.release.id, "2f6a2c3c-acfa-47f9-a44c-36da42d52dca");
 assert.equal(catalogExactAcrossMusicBrainzMedia.catalogFormatFallback, true, "An exact catalog number may bridge a source's digital-only medium record without changing Finance's physical format.");
+const massiveAttackCurated = CURATED_FINANCE_ENRICHMENTS["NXP-2026-VNL-0096"];
+const massiveAttackRow = {
+  image: "https://example.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0096/cover.jpg",
+  image_credits: [{ image: "https://example.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0096/cover.jpg", credit: "Cover Art Archive", url: "https://musicbrainz.org/release/example" }],
+  raw: {}
+};
+const internationalStock = { barcode: "5400863210090", catalogNumber: "PIASR1700PS" };
+assert.equal(selectCuratedFinanceEnrichment(massiveAttackCurated, { ...internationalStock, barcode: "4526180760559" }, massiveAttackRow), null);
+assert.equal(selectCuratedFinanceEnrichment(massiveAttackCurated, { ...internationalStock, catalogNumber: "PIASR1700PSJ" }, massiveAttackRow), null);
+assert.equal(selectCuratedFinanceEnrichment(massiveAttackCurated, internationalStock, { raw: {} }), null);
+const internationalRelease = selectCuratedFinanceEnrichment(massiveAttackCurated, internationalStock, massiveAttackRow);
+assert.equal(internationalRelease.cover, massiveAttackRow.image);
+assert.equal(internationalRelease.barcode, internationalStock.barcode);
+assert.match(applyVerifiedReleaseDescription(internationalRelease, { artist: "Massive Attack, Tom Waits", title: "Boots On The Ground" }).description, /The Fly/);
+const repairedMassiveAttack = await enrichFinanceCatalogProduct({
+  ...massiveAttackRow,
+  id: "finance-nxp-2026-vnl-0096", sku: "NXP-2026-VNL-0096", format: "Vinyl", price: 650000,
+  details: ["Barcode: 5400863210106", "Catalog number: PIASR1700PSJ", "Original sleeve included"],
+  raw: { barcode: internationalStock.barcode, catalogNumber: internationalStock.catalogNumber, autoCover: massiveAttackRow.image }
+}, {
+  sku: "NXP-2026-VNL-0096", item: "Vinyl", itemCondition: "New-Sealed", artist: "Massive Attack, Tom Waits",
+  title: "Boots On The Ground", sellingPrice: 650000, ...internationalStock
+});
+assert.equal(repairedMassiveAttack.raw.barcode, internationalStock.barcode);
+assert.deepEqual(repairedMassiveAttack.details.filter((detail) => detail.startsWith("Barcode:")), [`Barcode: ${internationalStock.barcode}`]);
+assert.deepEqual(repairedMassiveAttack.details.filter((detail) => detail.startsWith("Catalog number:")), [`Catalog number: ${internationalStock.catalogNumber}`]);
+assert.ok(repairedMassiveAttack.details.includes("Original sleeve included"));
+assert.match(repairedMassiveAttack.description, /The Fly/);
 const conflictingMassiveAttackRelease = [{
   title: "Boots on the Ground", score: 100,
   "artist-credit": [{ name: "Massive Attack" }, { name: "Tom Waits" }],
