@@ -59,7 +59,7 @@ export async function searchCatalogSources({ artist, title, kind = "review", fet
         chunks.push(value);
       }
       const html = Buffer.concat(chunks).toString("utf8");
-      if (/anomaly\.js|anomaly-modal|captcha-container|verify you are human/i.test(html)) {
+      if (/anomaly\.js|anomaly-modal|captcha-container|verify you are human|<title>Client Challenge<\/title>|_fs-ch-/i.test(html)) {
         attempts.push({ source, status: "unavailable", reason: "challenge" });
         continue;
       }

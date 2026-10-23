@@ -99,6 +99,10 @@ assert.equal(found.unavailable, false);
 assert.deepEqual(researchResultUrls('<a href="https://discogs.com/release/1">x</a><a href="https://pitchfork.com.evil.test/reviews/x">y</a>', "https://search.brave.com", "review"), []);
 const unavailable = await searchCatalogSources({ artist: "Test", title: "Album", fetcher: async () => new Response("", { status: 429 }) });
 assert.equal(unavailable.unavailable, true);
+const challenge = await searchCatalogSources({ artist: "Test", title: "Album", kind: "bandcamp", fetcher: async () => new Response("<title>Client Challenge</title>") });
+assert.equal(challenge.urls.length, 0);
+assert.equal(challenge.unavailable, true);
+assert.equal(challenge.attempts[0].status, "unavailable");
 
 for (const sourceType of ["bandcamp", "musicbrainz", "verified-release-cache"]) {
   let searches = 0;

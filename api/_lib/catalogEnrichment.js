@@ -2155,7 +2155,21 @@ async function discoverReleaseAcrossSources(stock) {
   if (bandcamp?.cover && !bandcamp.needsPressingIdentifier) return bandcamp;
 
   const musicBrainz = await discoverMusicBrainzRelease(stock);
-  if (musicBrainz && !musicBrainz.sourceUnavailable) return musicBrainz;
+  if (musicBrainz && !musicBrainz.sourceUnavailable) {
+    const officialAlbum = (musicBrainz.researchSources || [])
+      .find((source) => {
+        try {
+          const url = new URL(source.url);
+          return editorialSource(url.href, { official: true }) &&
+            url.hostname.endsWith(".bandcamp.com") && /^\/album\/[^/]+\/?$/.test(url.pathname);
+        } catch { return false; }
+      })?.url;
+    if (officialAlbum) {
+      const official = await discoverBandcampRelease({ ...stock, researchUrls: [officialAlbum] });
+      if (official?.cover && !official.needsPressingIdentifier) return official;
+    }
+    return musicBrainz;
+  }
 
   // Do not report "no exact match" when a required source timed out or was
   // rate-limited. That is retryable infrastructure state, not bad Finance
