@@ -1700,6 +1700,10 @@ async function adminProductsPage({ embedded = false } = {}) {
 function productSyncMarkup(product = {}) {
   const sync = product.syncStatus || {};
   const enrichment = String(product.enrichmentStatus || "").trim();
+  const reviewResearch = product.reviewResearch || product.raw?.reviewResearch;
+  const reviewStatus = reviewResearch?.status === "verified" ? "Review: verified"
+    : reviewResearch?.status === "source-unavailable" ? "Review: source unavailable"
+    : reviewResearch?.status === "not-found" ? "Review: no matching article found" : "";
   if (!sync?.at && !enrichment) return "";
   const timestamp = sync?.at ? new Date(sync.at) : null;
   const date = !timestamp || Number.isNaN(timestamp.valueOf())
@@ -1714,6 +1718,7 @@ function productSyncMarkup(product = {}) {
   return `
     <p class="admin-sync-status" aria-live="polite">
       ${enrichment ? `<span>Enrichment: ${escapeHtml(enrichment.replaceAll("-", " "))}</span>` : ""}
+      ${reviewStatus ? `<span>${escapeHtml(reviewStatus)}</span>` : ""}
       <strong>${escapeHtml(sync.source || "System")} sync</strong>
       <span>${escapeHtml(sync.action || "Catalog synchronized")} · ${escapeHtml(date)}</span>
     </p>
@@ -4368,10 +4373,13 @@ function bindAdminListControls(root = document) {
       try {
         const result = await adminStore.completeProduct(id);
         if (result.item?.researchReady) {
+          const reviewPending = result.item.reviewResearch && result.item.reviewResearch.status !== "verified";
           state.adminProductPublishNotices[id] = {
-            tone: "success",
+            tone: reviewPending ? "warning" : "success",
             busy: false,
-            message: wasPublished
+            message: reviewPending
+              ? `Catalog data saved. ${result.item.reviewResearch.status === "source-unavailable" ? "Review sources could not be reached." : "No matching review article was found in the searched sources."} The review field remains incomplete; existing copy is preserved.`
+              : wasPublished
               ? "Research refreshed verified release data. Review it, then Deploy when you are ready to update the public listing."
               : "Research saved verified release data. Review it, then use Publish when you are ready."
           };

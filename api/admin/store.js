@@ -349,7 +349,7 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
   const items = candidates.map((product) => {
     const publicationIssues = catalogPublicationIssues(product);
     const enrichmentStatus = product.enrichmentStatus || product.raw?.enrichmentStatus || "";
-    const issues = researchFailureIssues(enrichmentStatus, publicationIssues);
+    const issues = researchFailureIssues(enrichmentStatus, publicationIssues, product.researchFailure || product.raw?.researchFailure);
     const researchReady = isResearchPublicationReady(product);
     const partialResearch = String(product.category || "").toLowerCase() === "records" && product.raw?.publishAfterResearch === true && researchReady;
     const published = product.publishStatus === "Published" && product.visibility === "Public" && (!issues.length || partialResearch);
@@ -362,6 +362,7 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
       researchReady,
       publishedAfterResearch: partialResearch && issues.length > 0,
       enrichmentStatus,
+      reviewResearch: product.reviewResearch || product.raw?.reviewResearch || null,
       issues
     };
   });
@@ -388,7 +389,7 @@ function catalogCompletionReport(products = [], requestedSkus = []) {
   };
 }
 
-function researchFailureIssues(status, publicationIssues = []) {
+function researchFailureIssues(status, publicationIssues = [], failure = null) {
   const code = String(status || "").trim().toLowerCase();
   const specific = {
     "needs-finance-data": "Finance identity is incomplete: title, artist, format, condition, or price",
@@ -403,7 +404,7 @@ function researchFailureIssues(status, publicationIssues = []) {
     "source-unavailable": "A release source was temporarily unavailable. The item was not changed and can be retried safely.",
     "research-unavailable": "Research could not finish because an external source failed unexpectedly. The item was not changed and can be retried safely."
   }[code];
-  return specific ? [specific] : publicationIssues;
+  return specific ? [failure?.message ? `${specific} Source detail: ${failure.message}` : specific] : publicationIssues;
 }
 
 async function handleAdminShipping(req, res) {

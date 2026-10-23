@@ -11,7 +11,7 @@
       "includeFiles": "index.html"
     },
     "api/admin/store.js": {
-      "maxDuration": 60
+      "maxDuration": 120
     },
     "api/checkout.js": {
       "maxDuration": 90

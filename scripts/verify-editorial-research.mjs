@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
-import { editorialSource, editorialPageMatches, fetchEditorialPage, readHtmlMetadata } from "../api/_lib/catalogEditorialSources.js";
-import { applyVerifiedReleaseDescription, chooseDescriptionEditorial, excludeDatabaseEditorial, inventoryFingerprint, matchBandcampPhysicalRelease, reuseVerifiedReleaseCover } from "../api/_lib/catalogEnrichment.js";
+import { editorialSource, editorialPageMatches, fetchEditorialPage, readHtmlMetadata, isReviewArticle, editorialReviewQuote } from "../api/_lib/catalogEditorialSources.js";
+import { researchResultUrls, searchCatalogSources } from "../api/_lib/catalogSourceSearch.js";
+import { applyVerifiedReleaseDescription, chooseDescriptionEditorial, excludeDatabaseEditorial, enrichDiscoveredReview, inventoryFingerprint, matchBandcampPhysicalRelease, reuseVerifiedReleaseCover, reuseVerifiedReleaseMetadata } from "../api/_lib/catalogEnrichment.js";
 
 for (const url of [
   "https://musicbrainz.org/release/example", "https://www.discogs.com/release/example",
@@ -75,3 +76,57 @@ assert.equal(reuseVerifiedReleaseCover({ musicBrainzReleaseId: "other-edition", 
 assert.equal(reuseVerifiedReleaseCover({ musicBrainzReleaseId: "exact-release", cover: "" }, archivedRow, { ...stock, barcode: "different" }).cover, "");
 assert.equal(reuseVerifiedReleaseCover({ sourceUnavailable: true }, archivedRow, stock).cover, undefined);
 console.log("Editorial source, redirect, identity, physical-edition, reviewed-copy and preservation checks passed.");
+
+const reviewed = applyVerifiedReleaseDescription({ cover: "/public/cover.jpg" }, { artist: "Nilufer Yanya", title: "Do You Like Pain?" });
+assert.equal(reviewed.reviewResearch.scope, "track");
+assert.match(reviewed.reviewSource, /Baby Luv/);
+assert.equal((await enrichDiscoveredReview(reviewed, stock, { searcher: async () => { throw new Error("Must not rediscover a reviewed source"); } })).reviewQuote, reviewed.reviewQuote);
+assert.equal(isReviewArticle("https://pitchfork.com/news/album-announcement/"), false);
+assert.equal(isReviewArticle("https://pitchfork.com/reviews/tracks/test/"), true);
+assert.equal(editorialReviewQuote("4 tracks, released 2018"), "");
+assert.ok(editorialReviewQuote("word ".repeat(40)).endsWith("..."));
+
+const fallbackCalls = [];
+const found = await searchCatalogSources({ artist: "Test Artist", title: "Exact Album", kind: "bandcamp", fetcher: async (url) => {
+  fallbackCalls.push(url);
+  if (fallbackCalls.length === 1) return new Response("challenge", { status: 202 });
+  if (fallbackCalls.length === 2) throw new Error("timeout");
+  return new Response('<a href="https://testartist.bandcamp.com/album/exact-album?from=search">album</a>');
+} });
+assert.equal(fallbackCalls.length, 3);
+assert.deepEqual(found.urls, ["https://testartist.bandcamp.com/album/exact-album"]);
+assert.equal(found.unavailable, false);
+assert.deepEqual(researchResultUrls('<a href="https://discogs.com/release/1">x</a><a href="https://pitchfork.com.evil.test/reviews/x">y</a>', "https://search.brave.com", "review"), []);
+const unavailable = await searchCatalogSources({ artist: "Test", title: "Album", fetcher: async () => new Response("", { status: 429 }) });
+assert.equal(unavailable.unavailable, true);
+
+for (const sourceType of ["bandcamp", "musicbrainz", "verified-release-cache"]) {
+  let searches = 0;
+  const result = await enrichDiscoveredReview({ sourceType, description: "Existing original description." }, { artist: "Test Artist", title: "Exact Album" }, {
+    searcher: async () => { searches += 1; return { urls: ["https://pitchfork.com/reviews/albums/test/"], attempts: [], unavailable: false }; },
+    pageFetcher: async (url) => ({ url, title: "Test Artist: Exact Album Review", source: "Pitchfork", description: "A restless record that makes space for quiet detail." })
+  });
+  assert.equal(searches, 1, `${sourceType} must not bypass review research.`);
+  assert.equal(result.reviewResearch.status, "verified");
+  assert.equal(result.description, "Existing original description.");
+}
+const newsResult = await enrichDiscoveredReview({}, { artist: "Test Artist", title: "Exact Album" }, {
+  searcher: async () => ({ urls: ["https://pitchfork.com/news/announcement/"], attempts: [], unavailable: false }),
+  pageFetcher: async (url) => ({ url, title: "Test Artist: Exact Album", source: "Pitchfork", description: "A new record will be released next month." })
+});
+assert.equal(newsResult.reviewQuote, "", "News must not masquerade as criticism.");
+
+const moonStock = { artist: "Moon Diagrams", title: "Trappy Bats", item: "Vinyl", catalogNumber: "GN54", edition: 'Vinyl, LP, Mini-Album, Limited Edition, Purple / Black Split' };
+const moonEvidence = { catalogNumber: "GN54", format: "Vinyl", edition: moonStock.edition, packageTitle: "Limited Edition Black & Purple Vinyl", evidenceUrl: "https://www.geographic-north.com/" };
+const moonHtml = documentFor({ artist: "Moon Diagrams", current: { title: "Trappy Bats" }, album_release_date: "02 Aug 2019", packages: [{ type_name: "Vinyl LP", title: moonEvidence.packageTitle, sku: "MD-TB-LEBP", label: "Geographic North" }] });
+assert.equal(matchBandcampPhysicalRelease(moonHtml, moonStock), null, "Merchant SKU does not prove GN54.");
+assert.equal(matchBandcampPhysicalRelease(moonHtml, moonStock, moonEvidence).catalogNumber, "GN54");
+assert.equal(matchBandcampPhysicalRelease(moonHtml, { ...moonStock, edition: "Yellow vinyl" }, moonEvidence), null);
+assert.equal(matchBandcampPhysicalRelease(moonHtml, { ...moonStock, catalogNumber: "SCR127" }, moonEvidence), null);
+assert.equal(matchBandcampPhysicalRelease(moonHtml, { ...moonStock, item: "CD" }, moonEvidence), null);
+const cacheRow = { label: "Geographic North", year: 2019, title: "Trappy Bats", description: "Manual text", raw: { edition: moonStock.edition, catalogNumber: "GN54", enrichmentStatus: "complete", enrichmentFingerprint: inventoryFingerprint(moonStock), autoCover: "/public/cover.jpg", metadataSourceUrl: "https://moondiagrams.bandcamp.com/album/trappy-bats" } };
+assert.ok(reuseVerifiedReleaseMetadata(cacheRow, moonStock));
+assert.equal(reuseVerifiedReleaseMetadata(cacheRow, moonStock).description, "", "Manual copy must not become the automatic baseline.");
+assert.equal(reuseVerifiedReleaseMetadata(cacheRow, { ...moonStock, catalogNumber: "OTHER" }), null);
+assert.equal(reuseVerifiedReleaseMetadata(cacheRow, { ...moonStock, edition: "Yellow vinyl" }), null);
+console.log("Independent review, scoped quotes, search fallback, exact pressing and verified-cache checks passed.");

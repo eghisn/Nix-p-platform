@@ -3,7 +3,9 @@ import { supabaseFetch } from "./supabase.js";
 
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const ACTIVE_STATUSES = new Set(["queued", "processing", "retry", "ready", "deployment_pending"]);
-const RESEARCH_LEASE_MS = 2 * 60 * 1000;
+// Longer than the Admin function's 120-second ceiling, so a second click
+// cannot reclaim a job while its original request is still running.
+const RESEARCH_LEASE_MS = 3 * 60 * 1000;
 
 function now() {
   return new Date().toISOString();

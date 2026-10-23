@@ -51,6 +51,16 @@ Supabase, GitHub, Vercel, and the public storefront.
 - Review discovery admits only approved music publications; official release
   notes are separately labeled. URLs, redirects and artist/release identity
   are validated. Discogs and MusicBrainz links cannot be editorial fallbacks.
+- Review discovery runs independently of the release metadata provider. A
+  Bandcamp match or an existing reviewed description must not bypass reviews.
+  Search uses bounded provider fallbacks; saved verified release identity can
+  be reused only when its identifiers and edition still match Finance.
+- Reviewed track excerpts identify the actual song in the source label; they
+  are not presented as a review of the entire EP. News announcements and label
+  sales copy do not qualify as automatically discovered critical reviews.
+- Review status and source failures are retained separately from publication
+  readiness. An incomplete review is visible in Admin and does not silently
+  become a successful all-fields-complete result or unpublish a live product.
 - Manual descriptions remain authoritative. A failed/missing new editorial
   result must not erase previously verified copy. Research remains SKU-scoped
   and preserves the existing publication state; completing a draft is not an

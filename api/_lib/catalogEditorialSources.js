@@ -7,7 +7,8 @@ const REVIEW_SOURCES = new Map([
   ["ra.co", "Resident Advisor"], ["stereogum.com", "Stereogum"],
   ["tinymixtapes.com", "Tiny Mix Tapes"], ["boomkat.com", "Boomkat"],
   ["factmag.com", "FACT"], ["thelineofbestfit.com", "The Line of Best Fit"],
-  ["undertheradarmag.com", "Under the Radar"], ["loudandquiet.com", "Loud and Quiet"]
+  ["undertheradarmag.com", "Under the Radar"], ["loudandquiet.com", "Loud and Quiet"],
+  ["avclub.com", "The A.V. Club"], ["theneedledrop.com", "The Needle Drop"]
 ]);
 const OFFICIAL_SOURCES = new Map([
   ["bandcamp.com", "Bandcamp"], ["matadorrecords.com", "Matador Records"],
@@ -17,7 +18,7 @@ const OFFICIAL_SOURCES = new Map([
   ["ninjatune.net", "Ninja Tune"], ["4ad.com", "4AD"],
   ["subpop.com", "Sub Pop"], ["dominomusic.com", "Domino"],
   ["thrilljockey.com", "Thrill Jockey"], ["kranky.net", "Kranky"],
-  ["season-of-mist.com", "Season of Mist"]
+  ["season-of-mist.com", "Season of Mist"], ["geographic-north.com", "Geographic North"]
 ]);
 
 export function editorialSource(value, { official = false } = {}) {
@@ -44,6 +45,22 @@ export function editorialPageMatches(pageTitle, { artist, title } = {}) {
   const artistKey = normalized(artist);
   const titleKey = normalized(title).replace(/\s+(ep|lp|single|album)$/, "");
   return Boolean(artistKey && titleKey && page.includes(` ${artistKey} `) && page.includes(` ${titleKey} `));
+}
+
+export function isReviewArticle(url, { reviewType = false } = {}) {
+  if (!editorialSource(url)) return false;
+  const path = new URL(url).pathname;
+  if (/\/(?:news|features|live-reviews|interviews|search)(?:\/|$)/i.test(path)) return false;
+  return reviewType || /\/(?:reviews?|album-reviews|track-reviews)(?:\/|$)/i.test(path);
+}
+
+export function editorialReviewQuote(value) {
+  const text = String(value || "").replace(/\s+/g, " ").trim();
+  if (/^\d+ tracks?\b|subscribe|sign in|cookie policy|buy (?:the )?(?:album|vinyl)/i.test(text)) return "";
+  const sentence = text.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim();
+  if (sentence && sentence.split(/\s+/).length >= 5 && sentence.split(/\s+/).length <= 25) return sentence;
+  const words = text.split(/\s+/);
+  return words.length < 5 ? "" : words.length <= 25 ? text : `${words.slice(0, 20).join(" ").replace(/[,;:]$/, "")}...`;
 }
 
 // Redirects are checked before following them: an approved publisher cannot
@@ -85,10 +102,22 @@ export async function fetchEditorialPage(value, { official = false, fetcher = fe
       const { document } = parseHTML(html);
       const meta = (name) => [...document.querySelectorAll("meta")].find((node) =>
         (node.getAttribute("property") || node.getAttribute("name")) === name)?.getAttribute("content") || "";
+      const schemas = [];
+      const collect = (value) => {
+        if (Array.isArray(value)) { value.forEach(collect); return; }
+        if (!value || typeof value !== "object") return;
+        schemas.push(value);
+        if (value["@graph"]) collect(value["@graph"]);
+      };
+      for (const node of document.querySelectorAll('script[type="application/ld+json"]')) {
+        try { collect(JSON.parse(node.textContent)); } catch { /* Ignore malformed optional schema. */ }
+      }
+      const reviewSchema = schemas.find((value) => /^(?:Review|CriticReview|MusicReview)$/.test(String(value["@type"])));
       return {
         source: source.name, url: source.url,
         title: meta("og:title") || document.querySelector("title")?.textContent || "",
-        description: meta("description") || meta("og:description")
+        description: reviewSchema?.reviewBody || meta("description") || meta("og:description"),
+        reviewType: Boolean(reviewSchema)
       };
     }
   } catch { /* An unavailable editorial page never blocks metadata research. */ }

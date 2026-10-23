@@ -654,8 +654,8 @@ export async function processCatalogResearchJobs({ limit = 1, skus = [], force =
         } else {
           await jobsApi.retryCatalogResearchJob(job, {
             code: status,
-            message: issues.join("; ") || "Exact release research is incomplete.",
-            source: "catalog-enrichment",
+            message: product?.raw?.researchFailure?.message || issues.join("; ") || "Exact release research is incomplete.",
+            source: product?.raw?.researchFailure?.sources?.join(", ") || "catalog-enrichment",
             result
           });
           results.push({ sku: job.sku, id: product?.id || null, status: "retry", issues });
@@ -730,6 +730,7 @@ function preserveCompletedCatalogData(latest, next, stock = {}) {
     reviewQuote: latestRaw.reviewQuote,
     reviewSource: latestRaw.reviewSource,
     reviewUrl: latestRaw.reviewUrl,
+    reviewResearch: latestRaw.reviewResearch,
     metadataSourceUrl: latestRaw.metadataSourceUrl,
     musicBrainzReleaseId: latestRaw.musicBrainzReleaseId,
     enrichmentFingerprint: latestRaw.enrichmentFingerprint,

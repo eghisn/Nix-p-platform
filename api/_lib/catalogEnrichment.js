@@ -4,7 +4,8 @@ import { referenceShippingProfile } from "../../src/data/shippingProfiles.js";
 import { archiveRemoteProductImage, isManagedProductImage } from "./productImageStorage.js";
 import approvedMockupImages from "./approvedMockupImages.json" with { type: "json" };
 import { parseHTML } from "linkedom";
-import { editorialSource, editorialPageMatches, fetchEditorialPage, readHtmlMetadata } from "./catalogEditorialSources.js";
+import { editorialSource, editorialPageMatches, fetchEditorialPage, readHtmlMetadata, isReviewArticle, editorialReviewQuote } from "./catalogEditorialSources.js";
+import { searchCatalogSources } from "./catalogSourceSearch.js";
 
 const RECORD_FORMATS = new Set(["Vinyl", "CD", "Cassette"]);
 const USED_CONDITION = /^used\b/i;
@@ -21,7 +22,7 @@ export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 // A versioned research request means editorial rule changes only run for an
 // item when an editor explicitly asks to research it again. This keeps a
 // deployment from silently rewriting live catalogue copy.
-export const CATALOG_RESEARCH_VERSION = "official-editorial-v10";
+export const CATALOG_RESEARCH_VERSION = "official-editorial-v11";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -1491,21 +1492,53 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // Album-level editorial is shared by verified physical formats. It never
 // identifies a pressing; the release matcher must do that first.
 const VERIFIED_RELEASE_DESCRIPTIONS = new Map([
+  ["moon diagrams|trappy bats", {
+    description: "Moon Diagrams' Trappy Bats begins with music Moses John Archuleta recorded largely in a single night. Its three originals move between patient club rhythms, blurred piano loops and submerged pop, then open outward through reworks by Shigeto, Deradoorian and Jefre Cantu-Ledesma. Rather than separating songs from remixes, the six-track sequence lets those different perspectives reshape the record as it unfolds.",
+    descriptionSource: "Geographic North",
+    sourceUrl: "https://www.geographic-north.com/",
+    bandcampUrl: "https://moondiagrams.bandcamp.com/album/trappy-bats",
+    physicalRelease: {
+      catalogNumber: "GN54", format: "Vinyl",
+      edition: 'Vinyl, LP, Mini-Album, Limited Edition, Purple / Black Split',
+      packageTitle: "Limited Edition Black & Purple Vinyl",
+      evidenceUrl: "https://www.geographic-north.com/"
+    },
+    review: {
+      quote: 'Detroit producer Shigeto puts an atmospheric, jacking take on "Trappy Bats,"',
+      source: 'Resident Advisor on "Trappy Bats Meets Shigeto" (quoted)',
+      url: "https://ra.co/reviews/33123", scope: "track", title: "Trappy Bats Meets Shigeto", verifiedAt: "2026-10-23"
+    }
+  }],
   ["fucked up|year of the ox", {
     description: "Fucked Up give their Zodiac series room to stretch on Year of the Ox. Recorded with Jon Drew in Toronto, the title track builds patiently around a guest vocal from Zola Jesus and the strings of New Strings Old Puppets. On the other side, Solomon's Song turns toward gothic romance, with Aerin Fogel's extended saxophone passage and synthesizers from Trust.",
     descriptionSource: "Merge Records",
-    sourceUrl: "https://mergerecords.com/products/fucked-up-year-of-the-ox"
+    sourceUrl: "https://mergerecords.com/products/fucked-up-year-of-the-ox",
+    review: {
+      quote: "If there were any barriers left for Fucked Up to break, consider them now broken.",
+      source: "The A.V. Club (quoted)", url: "https://www.avclub.com/fucked-up-year-of-the-ox-1798166058",
+      scope: "release", title: "Year Of The Ox", verifiedAt: "2026-10-23"
+    }
   }],
   ["savages|fuckers dream baby dream", {
     description: "A year after Silence Yourself, Savages followed their debut with a release built around performance rather than another studio statement. Fuckers / Dream Baby Dream pairs a live recording of their own Fuckers with a version of Suicide's Dream Baby Dream. Issued in 2014 by Matador and Pop Noire, the two-track record places the band's material alongside an earlier point of reference.",
     descriptionSource: "Pitchfork",
-    sourceUrl: "https://pitchfork.com/news/53999-savages-to-release-new-12-featuring-suicide-cover-new-song-fuckers/"
+    sourceUrl: "https://pitchfork.com/news/53999-savages-to-release-new-12-featuring-suicide-cover-new-song-fuckers/",
+    review: {
+      quote: "The atmosphere is so incredibly sinister, and the visuals only lend power to that sensation.",
+      source: 'The Needle Drop on the "Fuckers" live video (quoted)', url: "https://theneedledrop.com/2014-05-savages-fuckers/",
+      scope: "track", title: "Fuckers", verifiedAt: "2026-10-23"
+    }
   }],
   ["nilufer yanya|do you like pain", {
     description: "Do You Like Pain? brings two early Nilufer Yanya songs into dialogue with their remixes. Baby Luv is reworked by ALASKALASKA, while Jazzi Bobbi draws out the darker side of Thanks 4 Nothing, processing its drums and turning fragments of Yanya's voice into percussion. The original Thanks 4 Nothing centres on a relationship beyond repair; its remix gives that unease a different rhythmic shape.",
     descriptionSource: "ATO Records",
     sourceUrl: "https://atorecords.com/featured/nilufer-yanyas-new-single-and-video-thanks-4-nothing-out-now/",
-    bandcampUrl: "https://niluferyanya.bandcamp.com/album/do-you-like-pain-ep"
+    bandcampUrl: "https://niluferyanya.bandcamp.com/album/do-you-like-pain-ep",
+    review: {
+      quote: "The London artist's new track is a raw love song",
+      source: 'Pitchfork on "Baby Luv" (quoted)', url: "https://pitchfork.com/reviews/tracks/nilufer-yanya-baby-luv/",
+      scope: "track", title: "Baby Luv", verifiedAt: "2026-10-23"
+    }
   }],
   ["jenny hval|the long sleep", {
     description: "The Long Sleep, Jenny Hval's 2018 four-track EP, moves away from the tightly framed concepts of Blood Bitch toward a more instinctive way of writing. Recurring motifs take different shapes as Hval works with Håvard Volden, Lasse Marhaug, and a group of jazz musicians, giving the songs an open, improvisatory feel.",
@@ -1528,9 +1561,22 @@ export function applyVerifiedReleaseDescription(discovered, { artist, title } = 
   if (!discovered) return discovered;
   if (discovered.needsPressingIdentifier || discovered.sourceUnavailable) return discovered;
   discovered = excludeDatabaseEditorial(discovered);
+  const editorial = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(artist)}|${normalizedText(title)}`);
+  if (editorial?.review && editorialSource(editorial.review.url)) {
+    discovered = {
+      ...discovered,
+      reviewQuote: editorial.review.quote,
+      reviewSource: editorial.review.source,
+      reviewUrl: editorial.review.url,
+      reviewResearch: { status: "verified", ...editorial.review },
+      researchSources: [
+        ...(discovered.researchSources || []).filter((source) => source.url !== editorial.review.url),
+        { source: editorial.review.source, url: editorial.review.url, confidence: 100 }
+      ]
+    };
+  }
   const sourceIsUneditedExcerpt = /^Official Bandcamp release (?:note|page)$/i.test(String(discovered.descriptionSource || "").trim());
   if (!sourceIsUneditedExcerpt && isEditorialDescriptionQuality(discovered.description, discovered.descriptionSource)) return discovered;
-  const editorial = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(artist)}|${normalizedText(title)}`);
   if (!editorial) return { ...discovered, description: "", descriptionSource: "" };
   const sources = Array.isArray(discovered.researchSources) ? discovered.researchSources : [];
   return {
@@ -1783,7 +1829,10 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
   try {
     discoveredSource = applyVerifiedReleaseDescription(
       applyCuratedEditorialOverride(
-        curated || await discoverReleaseAcrossSources({ ...stock, format, title, artist }),
+        curated || reuseVerifiedReleaseMetadata(row, { ...stock, format, title, artist }) || await discoverReleaseAcrossSources({
+          ...stock, format, title, artist,
+          researchUrls: unique([row.raw?.metadataSourceUrl, ...(row.raw?.researchSources || []).map((source) => source.url)])
+        }),
         sku
       ),
       { artist, title }
@@ -1793,6 +1842,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
     return finalizeStatus(row, {
       publishable: false,
       status,
+      researchFailure: { code: status, message: error.message, sources: error.sources || [], at: new Date().toISOString() },
       enrichmentFingerprint: inventoryFingerprint({ ...stock, artist, title, format }),
       enrichmentAttemptedAt: new Date().toISOString()
     });
@@ -1807,6 +1857,11 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       enrichmentFingerprint: inventoryFingerprint({ ...stock, artist, title, format }),
       enrichmentAttemptedAt: new Date().toISOString()
     });
+  }
+  // Editorial research is independent of the physical metadata provider.
+  // Bandcamp and reviewed descriptions must not skip the review pipeline.
+  if (discoveredSource && !curated) {
+    discoveredSource = await enrichDiscoveredReview(discoveredSource, { artist, title });
   }
   const discovered = await archiveDiscoveredImages(
     applyArchivedCatalogImages(reuseVerifiedReleaseCover(discoveredSource, row, { ...stock, artist, title, format }), sku),
@@ -1978,6 +2033,10 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
       reviewQuote,
       reviewSource,
       reviewUrl,
+      reviewResearch: reviewQuote && reviewUrl
+        ? { ...(discovered.reviewResearch || {}), status: "verified", url: reviewUrl, source: reviewSource }
+        : discovered.reviewResearch || { status: "not-found" },
+      researchFailure: null,
       metadataSourceUrl: discovered.sourceUrl || "",
       musicBrainzReleaseId: discovered.musicBrainzReleaseId || "",
       autoCover: discovered.cover || previousAutoCover,
@@ -2019,6 +2078,27 @@ export function reuseVerifiedReleaseCover(discovered, row = {}, stock = {}) {
     ...discovered,
     cover: raw.autoCover,
     imageCredits: mergeCredits(row.image_credits || raw.imageCredits, discovered.imageCredits)
+  };
+}
+
+export function reuseVerifiedReleaseMetadata(row, stock) {
+  const raw = row.raw || {};
+  if (!/^(?:complete|complete-no-related-artists|needs-editorial-quality)$/.test(raw.enrichmentStatus || "")) return null;
+  if (raw.enrichmentFingerprint !== inventoryFingerprint(stock) || !isManagedProductImage(raw.autoCover)) return null;
+  if (!String(stock.barcode || stock.catalogNumber || "").trim() || !row.label || !row.year) return null;
+  if (normalizedText(raw.edition) !== normalizedText(stock.edition)) return null;
+  const official = editorialSource(raw.metadataSourceUrl, { official: true });
+  if (!official && !raw.musicBrainzReleaseId) return null;
+  return {
+    artist: stock.artist, title: raw.sourceTitle || row.title, label: row.label, year: row.year,
+    edition: raw.edition, barcode: raw.barcode || "", catalogNumber: raw.catalogNumber || "",
+    cover: raw.autoCover, productPhoto: raw.autoProductPhoto || "", imageCredits: row.image_credits || raw.imageCredits || [],
+    sourceUrl: raw.metadataSourceUrl, musicBrainzReleaseId: raw.musicBrainzReleaseId || "",
+    sourceType: "verified-release-cache", researchSources: raw.researchSources || [],
+    description: raw.autoEditorial?.description || "", descriptionSource: raw.autoEditorial?.descriptionSource || "",
+    reviewQuote: raw.reviewQuote || "", reviewSource: raw.reviewSource || "", reviewUrl: raw.reviewUrl || "",
+    reviewResearch: raw.reviewResearch,
+    reviewUrls: (raw.researchSources || []).map((source) => source.url).filter((url) => editorialSource(url))
   };
 }
 
@@ -2087,6 +2167,7 @@ async function discoverReleaseAcrossSources(stock) {
   if (unavailableSources.length) {
     const error = new Error(`${unavailableSources.join(" and ")} is temporarily unavailable.`);
     error.code = "source-unavailable";
+    error.sources = unavailableSources;
     throw error;
   }
 
@@ -2344,32 +2425,23 @@ function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
 
 async function discoverBandcampRelease(stock) {
   const reviewed = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(stock.artist)}|${normalizedText(stock.title)}`);
-  let urls = reviewed?.bandcampUrl ? [reviewed.bandcampUrl] : [];
+  let urls = unique([reviewed?.bandcampUrl, ...(stock.researchUrls || [])]).filter((value) => {
+    if (!editorialSource(value, { official: true })) return false;
+    const url = new URL(value);
+    return url.hostname.endsWith(".bandcamp.com") && /^\/album\/[^/]+\/?$/.test(url.pathname);
+  });
   if (!urls.length) {
-    const query = `site:bandcamp.com/album \"${stock.artist}\" \"${stock.title}\"`;
-    const response = await fetchWithTimeout(`https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, {
-      headers: { accept: "text/html", "user-agent": USER_AGENT }
-    }, 7000, "bandcamp-search");
-    if (!response || isExternalSourceUnavailable(response)) return { sourceUnavailable: true, sourceType: "bandcamp" };
-    if (!response.ok) return null;
-    const html = await response.text();
-    urls = unique(
-      [...html.matchAll(/href=["']([^"']+)["']/gi)]
-        .map((match) => duckDuckGoResultUrl(decodeHtml(match[1])))
-        .filter((value) => {
-          const source = editorialSource(value, { official: true });
-          if (!source) return false;
-          const url = new URL(source.url);
-          return url.hostname.endsWith(".bandcamp.com") && url.pathname.startsWith("/album/");
-        })
-    ).slice(0, 4);
+    const search = await searchCatalogSources({ artist: stock.artist, title: stock.title, kind: "bandcamp" });
+    urls = search.urls;
+    if (!urls.length && search.unavailable) return { sourceUnavailable: true, sourceType: "bandcamp-search" };
   }
+  let unavailable = false;
   for (const url of urls) {
     const page = await fetchWithTimeout(url, { redirect: "error", headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "bandcamp");
-    if (!page) return { sourceUnavailable: true, sourceType: "bandcamp" };
+    if (!page || isExternalSourceUnavailable(page)) { unavailable = true; continue; }
     if (!page?.ok) continue;
     const pageHtml = await page.text();
-    const matched = matchBandcampPhysicalRelease(pageHtml, stock);
+    const matched = matchBandcampPhysicalRelease(pageHtml, stock, url === reviewed?.bandcampUrl ? reviewed?.physicalRelease : null);
     if (!matched) continue;
     const cover = highResolutionBandcampImage(metaContent(pageHtml, "og:image"));
     if (!cover) continue;
@@ -2395,17 +2467,21 @@ async function discoverBandcampRelease(stock) {
       reviewQuote: releaseNote,
       reviewSource: releaseNote ? "Bandcamp release note (quoted)" : "",
       reviewUrl: releaseNote ? url : "",
+      reviewUrls: (stock.researchUrls || []).filter((value) => editorialSource(value)),
       tags: [],
       sourceUrl: url,
       sourceType: "bandcamp",
       matchConfidence: matched.confidence,
-      researchSources: [{ source: "Official Bandcamp physical release", url, confidence: matched.confidence }]
+      researchSources: [
+        { source: "Official Bandcamp physical release", url, confidence: matched.confidence },
+        ...(matched.evidenceUrl ? [{ source: "Official label pressing evidence", url: matched.evidenceUrl, confidence: 100 }] : [])
+      ]
     };
   }
-  return null;
+  return unavailable ? { sourceUnavailable: true, sourceType: "bandcamp" } : null;
 }
 
-export function matchBandcampPhysicalRelease(html, stock) {
+export function matchBandcampPhysicalRelease(html, stock, verifiedPhysical = null) {
   try {
     const { document } = parseHTML(String(html || ""));
     const data = JSON.parse(document.querySelector("[data-tralbum]")?.getAttribute("data-tralbum") || "null");
@@ -2416,7 +2492,13 @@ export function matchBandcampPhysicalRelease(html, stock) {
     const packages = (Array.isArray(data.packages) ? data.packages : []).filter((item) => {
       if (item.private || !bandcampFormatMatches(`${item.type_name || ""} ${item.title || ""}`, stock.item || stock.format)) return false;
       const upc = String(item.upc || "").replace(/\D/g, "");
-      const catno = normalizedText(item.catalog_number || "");
+      const verifiedPackage = verifiedPhysical &&
+        editorialSource(verifiedPhysical.evidenceUrl, { official: true }) &&
+        normalizedText(verifiedPhysical.format) === normalizedText(stock.item || stock.format) &&
+        normalizedText(verifiedPhysical.edition) === normalizedText(stock.edition) &&
+        normalizedText(verifiedPhysical.packageTitle) === normalizedText(item.title) &&
+        normalizedText(verifiedPhysical.catalogNumber) === catalogNumber;
+      const catno = normalizedText(item.catalog_number || (verifiedPackage ? verifiedPhysical.catalogNumber : ""));
       if (barcode && upc && barcode !== upc) return false;
       if (catalogNumber && catno && catalogNumber !== catno) return false;
       if (barcode || catalogNumber) return Boolean((barcode && barcode === upc) || (catalogNumber && catalogNumber === catno));
@@ -2424,12 +2506,19 @@ export function matchBandcampPhysicalRelease(html, stock) {
     });
     if (packages.length !== 1) return null;
     const item = packages[0];
+    const verifiedPackage = verifiedPhysical &&
+      editorialSource(verifiedPhysical.evidenceUrl, { official: true }) &&
+      normalizedText(verifiedPhysical.format) === normalizedText(stock.item || stock.format) &&
+      normalizedText(verifiedPhysical.edition) === normalizedText(stock.edition) &&
+      normalizedText(verifiedPhysical.packageTitle) === normalizedText(item.title) &&
+      normalizedText(verifiedPhysical.catalogNumber) === catalogNumber;
     return {
       title: data.current.title, label: String(item.label || ""),
       year: new Date(data.album_release_date || data.current.release_date || "").getUTCFullYear() || 0,
       edition: `${stock.item || stock.format} / ${item.title || item.type_name}`,
       barcode: String(item.upc || "").replace(/\D/g, ""),
-      catalogNumber: String(item.catalog_number || ""),
+      catalogNumber: String(item.catalog_number || (verifiedPackage ? verifiedPhysical.catalogNumber : "")),
+      evidenceUrl: verifiedPackage ? verifiedPhysical.evidenceUrl : "",
       confidence: barcode || catalogNumber ? 100 : 80
     };
   } catch { return null; }
@@ -2574,21 +2663,10 @@ async function discoverMusicBrainzRelease(stock) {
   const edition = unique([
     ...(catalogFormatFallback ? [stock.format || stock.item] : [release.packaging, ...(release.media || []).map((medium) => medium.format)])
   ]).join(" / ");
-  const reviewedEditorial = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(stock.artist)}|${normalizedText(stock.title)}`);
-  const [releaseGroup, pitchforkReview, relatedArtistResearch] = await Promise.all([
+  const [releaseGroup, relatedArtistResearch] = await Promise.all([
     discoverReleaseGroup(release["release-group"]?.id),
-    reviewedEditorial
-      ? discoverLinkedReview([reviewedEditorial.sourceUrl], { artist: stock.artist, title: stock.title })
-      : discoverPitchforkReview({ artist: stock.artist, title: release.title }),
     researchRelatedArtists({ artist: stock.artist, title: release.title, format, releaseId: release.id })
   ]);
-  // A reviewed release already has an exact editorial source. Check that
-  // source directly instead of spending the request budget rediscovering it.
-  const review = pitchforkReview || (reviewedEditorial
-    ? await discoverOfficialEditorial(reviewedEditorial.sourceUrl, { artist: stock.artist, title: stock.title })
-    : (await discoverLinkedReview(releaseGroup?.reviewUrls, { artist: stock.artist, title: release.title })) ||
-      (await discoverTrustedReviewSearch({ artist: stock.artist, title: release.title })) ||
-      (await discoverOfficialEditorial(releaseGroup?.officialUrl, { artist: stock.artist, title: release.title })));
   const tags = unique([...(releaseGroup?.tags || []), ...(release["release-group"]?.tags || []).map((tag) => tag.name)]);
   return {
     title: release.title,
@@ -2613,12 +2691,12 @@ async function discoverMusicBrainzRelease(stock) {
     ].filter(Boolean)),
     description: "",
     descriptionSource: "",
-    reviewQuote: review?.quote || "",
-    reviewSource: review?.source || "",
-    reviewUrl: review?.url || "",
+    reviewQuote: "",
+    reviewSource: "",
+    reviewUrl: "",
+    reviewUrls: unique([...(releaseGroup?.reviewUrls || []), ...(stock.researchUrls || []).filter((url) => editorialSource(url))]),
     researchSources: [
       { source: "MusicBrainz release identity (not editorial)", url: `${MUSICBRAINZ_ORIGIN}/release/${release.id}`, confidence: 95 },
-      ...(review?.url ? [{ source: review.source, url: review.url, confidence: 90 }] : []),
       ...(editorialSource(releaseGroup?.officialUrl, { official: true }) ? [{ source: "Official release page", url: releaseGroup.officialUrl, confidence: 85 }] : [])
     ],
     relatedArtists: relatedArtistResearch.artists,
@@ -2868,14 +2946,43 @@ async function discoverReleaseGroup(releaseGroupId) {
   };
 }
 
-async function discoverLinkedReview(urls = [], { artist, title } = {}) {
-  for (const value of unique(urls).filter((url) => editorialSource(url)).slice(0, 4)) {
-    const page = await fetchEditorialPage(value);
-    if (!page || !editorialPageMatches(page.title, { artist, title })) continue;
-    const quote = conciseQuote(page.description);
+async function discoverLinkedReview(urls = [], { artist, title } = {}, pageFetcher = fetchEditorialPage) {
+  const pages = await Promise.all(unique(urls).filter((url) => editorialSource(url)).slice(0, 8).map((url) => pageFetcher(url)));
+  for (const page of pages) {
+    if (!page || !isReviewArticle(page.url, page) || !editorialPageMatches(page.title, { artist, title })) continue;
+    const quote = editorialReviewQuote(page.description);
     if (quote) return { quote, source: `${page.source} (quoted)`, url: page.url };
   }
   return null;
+}
+
+export async function enrichDiscoveredReview(discovered, identity, { searcher = searchCatalogSources, pageFetcher = fetchEditorialPage } = {}) {
+  if (!discovered || discovered.sourceUnavailable || discovered.needsPressingIdentifier) return discovered;
+  if (discovered.reviewQuote && discovered.reviewUrl && editorialSource(discovered.reviewUrl)) return discovered;
+  let pageUnavailable = false;
+  const checkedUrls = [];
+  const checkedFetcher = async (url) => {
+    checkedUrls.push(url);
+    const page = await pageFetcher(url);
+    pageUnavailable ||= !page;
+    return page;
+  };
+  const directUrls = unique([...(discovered.reviewUrls || []), ...(discovered.researchSources || []).map((source) => source.url)]).filter((url) => editorialSource(url));
+  let review = await discoverLinkedReview(directUrls, identity, checkedFetcher);
+  let search = { attempts: [], unavailable: false };
+  if (!review) {
+    search = await searcher({ ...identity, kind: "review" });
+    review = await discoverLinkedReview((search.urls || []).filter((url) => !checkedUrls.includes(url)), identity, checkedFetcher);
+  }
+  const reviewResearch = { status: review ? "verified" : search.unavailable || pageUnavailable ? "source-unavailable" : "not-found", attempts: search.attempts, checkedUrls, checkedAt: new Date().toISOString(), scope: "release" };
+  return {
+    ...discovered,
+    reviewQuote: review?.quote || "",
+    reviewSource: review?.source || "",
+    reviewUrl: review?.url || "",
+    reviewResearch,
+    researchSources: review ? [...(discovered.researchSources || []), { source: review.source, url: review.url, confidence: 95 }] : discovered.researchSources || []
+  };
 }
 
 async function discoverTrustedReviewSearch({ artist, title } = {}) {
@@ -3027,7 +3134,7 @@ function decodeHtml(value) {
     .replace(/&gt;/gi, ">");
 }
 
-function finalizeStatus(row, { publishable, status, enrichmentFingerprint = "", enrichmentAttemptedAt = "" }) {
+function finalizeStatus(row, { publishable, status, enrichmentFingerprint = "", enrichmentAttemptedAt = "", researchFailure }) {
   const raw = {
     ...(row.raw || {}),
     enrichmentStatus: status,
@@ -3036,6 +3143,7 @@ function finalizeStatus(row, { publishable, status, enrichmentFingerprint = "", 
   };
   if (enrichmentFingerprint) raw.enrichmentFingerprint = enrichmentFingerprint;
   if (enrichmentAttemptedAt) raw.enrichmentAttemptedAt = enrichmentAttemptedAt;
+  if (researchFailure !== undefined) raw.researchFailure = researchFailure;
   return {
     ...row,
     publish_status: publishable ? "Published" : "Draft",
