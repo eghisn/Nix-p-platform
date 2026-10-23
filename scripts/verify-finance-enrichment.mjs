@@ -163,6 +163,20 @@ const catalogExactAcrossMusicBrainzMedia = assessMusicBrainzReleaseCandidates([{
 });
 assert.equal(catalogExactAcrossMusicBrainzMedia.release.id, "2f6a2c3c-acfa-47f9-a44c-36da42d52dca");
 assert.equal(catalogExactAcrossMusicBrainzMedia.catalogFormatFallback, true, "An exact catalog number may bridge a source's digital-only medium record without changing Finance's physical format.");
+const conflictingMassiveAttackRelease = [{
+  title: "Boots on the Ground", score: 100,
+  "artist-credit": [{ name: "Massive Attack" }, { name: "Tom Waits" }],
+  media: [{ format: "12\" Vinyl" }], barcode: "5400863210106",
+  "label-info": [{ "catalog-number": "PIASR1700PS" }]
+}];
+assert.equal(assessMusicBrainzReleaseCandidates(conflictingMassiveAttackRelease, {
+  stock: { artist: "Massive Attack, Tom Waits" }, expectedTitle: "boots on the ground",
+  format: "vinyl", barcode: "4526180760559", catalogNumber: "piasr1700ps"
+}).release, null, "A matching catalog number must not hide a conflicting physical barcode.");
+assert.equal(assessMusicBrainzReleaseCandidates([{ ...conflictingMassiveAttackRelease[0], barcode: "4526180760559", "label-info": [{ "catalog-number": "PIASR1700PSJ" }] }], {
+  stock: { artist: "Massive Attack, Tom Waits" }, expectedTitle: "boots on the ground",
+  format: "vinyl", barcode: "4526180760559", catalogNumber: "piasr1700ps"
+}).release, null, "A matching barcode must not hide a conflicting catalog number.");
 
 const negativeLoversDiscogs = [{
   id: 9967524,

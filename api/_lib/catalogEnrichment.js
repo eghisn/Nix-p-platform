@@ -1492,6 +1492,17 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // Album-level editorial is shared by verified physical formats. It never
 // identifies a pressing; the release matcher must do that first.
 const VERIFIED_RELEASE_DESCRIPTIONS = new Map([
+  ["massive attack tom waits|boots on the ground", {
+    description: "Massive Attack and Tom Waits make Boots on the Ground a slow, unsettling protest song. A lurching beat and spare piano leave room for Waits's ragged vocal, while the accompanying film connects images of war with policing and state violence in the United States. The 12-inch pairs the collaboration with The Fly, a sardonic spoken-word piece by Waits, and uses recycled EcoSonic vinyl for its pressing.",
+    descriptionSource: "Massive Attack / Pitchfork",
+    sourceUrl: "https://store.massiveattack.co.uk/format/1947562-boots-on-the-ground",
+    review: {
+      quote: "that stumbling trash-can beat, those brooding piano chords",
+      source: 'Pitchfork on "Boots on the Ground" (quoted)',
+      url: "https://pitchfork.com/reviews/tracks/massive-attack-tom-waits-boots-on-the-ground/",
+      scope: "track", title: "Boots on the Ground", verifiedAt: "2026-10-24"
+    }
+  }],
   ["rs tangent|crinkle", {
     description: "On Crinkle, RS Tangent pulls dub techno away from its familiar haze and into a more physical, off-centre space. Robin Stewart builds Stomach from uneven drums and heavy low frequencies, while Compact tightens the pulse. The title track turns delayed fragments into rhythms of their own. Across four pieces, the effects do more than colour the tracks: they keep changing the shape of the beat.",
     descriptionSource: "Boomkat / RS Tangent",
@@ -2850,9 +2861,13 @@ export function assessMusicBrainzReleaseCandidates(releases = [], { stock = {}, 
       const formats = (release.media || []).map((medium) => normalizedText(medium.format));
       const formatMatches = !format || !formats.length || formats.some((candidate) => candidate.includes(normalizedText(format)));
       const releaseBarcode = String(release.barcode || "").replace(/\D/g, "");
-      const releaseCatalogNumbers = (release["label-info"] || []).map((label) => normalizedText(label["catalog-number"]));
+      const releaseCatalogNumbers = (release["label-info"] || []).map((label) => normalizedText(label["catalog-number"])).filter(Boolean);
       const barcodeExact = Boolean(barcode && releaseBarcode && releaseBarcode === barcode);
       const catalogExact = Boolean(catalogNumber && releaseCatalogNumbers.some((value) => catalogNumberMatches(value, catalogNumber)));
+      // A known conflicting pressing identifier outweighs an artist/title
+      // match. Missing source identifiers may still be resolved by the other.
+      if ((barcode && releaseBarcode && !barcodeExact) ||
+          (catalogNumber && releaseCatalogNumbers.length && !catalogExact)) return null;
       const exactTitle = title === expectedTitle;
       const titleCompatible = exactTitle || compatibleReleaseTitle(expectedTitle, title);
       const artistMatches = musicBrainzArtistMatches(release, stock.artist);

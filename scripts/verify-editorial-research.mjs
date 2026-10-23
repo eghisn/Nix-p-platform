@@ -61,6 +61,13 @@ assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), { ...rsStock, 
 assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), { ...rsStock, artist: "Other Artist" }), null);
 assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), { ...rsStock, item: "CD" }), null);
 assert.match(applyVerifiedReleaseDescription({ cover: "/public/test.jpg" }, rsStock).reviewSource, /Boomkat/);
+const massiveAttackStock = { artist: "Massive Attack, Tom Waits", title: "Boots On The Ground" };
+const massiveAttackEditorial = applyVerifiedReleaseDescription({ cover: "/public/test.jpg", catalogNumber: "PIASR1700PS", barcode: "4526180760559" }, massiveAttackStock);
+assert.match(massiveAttackEditorial.description, /The Fly/);
+assert.equal(massiveAttackEditorial.reviewResearch.scope, "track");
+assert.equal(massiveAttackEditorial.catalogNumber, "PIASR1700PS");
+assert.equal(massiveAttackEditorial.barcode, "4526180760559");
+assert.equal(applyVerifiedReleaseDescription({ needsPressingIdentifier: true }, massiveAttackStock).description, undefined);
 const oversizedBandcampCover = "https://f4.bcbits.com/img/a1899538574_0.jpg";
 const sizedBandcampCover = "https://f4.bcbits.com/img/a1899538574_10.jpg";
 assert.equal(bandcampArchiveFallback(oversizedBandcampCover), sizedBandcampCover);
