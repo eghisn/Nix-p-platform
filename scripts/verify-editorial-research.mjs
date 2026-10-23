@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { editorialSource, editorialPageMatches, fetchEditorialPage, readHtmlMetadata, isReviewArticle, editorialReviewQuote } from "../api/_lib/catalogEditorialSources.js";
 import { researchResultUrls, searchCatalogSources } from "../api/_lib/catalogSourceSearch.js";
-import { applyVerifiedReleaseDescription, chooseDescriptionEditorial, excludeDatabaseEditorial, enrichDiscoveredReview, inventoryFingerprint, matchBandcampPhysicalRelease, reuseVerifiedReleaseCover, reuseVerifiedReleaseMetadata } from "../api/_lib/catalogEnrichment.js";
+import { applyVerifiedReleaseDescription, bandcampAlbumGuess, chooseDescriptionEditorial, excludeDatabaseEditorial, enrichDiscoveredReview, inventoryFingerprint, matchBandcampPhysicalRelease, reuseVerifiedReleaseCover, reuseVerifiedReleaseMetadata } from "../api/_lib/catalogEnrichment.js";
 
 for (const url of [
   "https://musicbrainz.org/release/example", "https://www.discogs.com/release/example",
@@ -52,6 +52,14 @@ assert.equal(matchBandcampPhysicalRelease(documentFor({ ...release, packages: []
 assert.equal(matchBandcampPhysicalRelease(documentFor({ ...release, packages: [{ ...packageData, catalog_number: "WRONG" }] }), stock), null);
 assert.equal(matchBandcampPhysicalRelease(documentFor({ ...release, packages: [packageData, packageData] }), stock), null);
 assert.equal(matchBandcampPhysicalRelease(documentFor(release), { ...stock, barcode: "" }), null, "Do not match an unspecified catalog number against a merchant SKU.");
+const rsStock = { artist: "RS Tangent", title: "Crinkle", item: "Vinyl", catalogNumber: "TTT111" };
+const rsRelease = { artist: "RS Tangent", current: { title: "Crinkle" }, packages: [{ type_name: "Vinyl LP", title: 'Limited edition 12" vinyl', sku: "TTT111", label: "The Trilogy Tapes" }] };
+assert.equal(bandcampAlbumGuess(rsStock), "https://rstangent.bandcamp.com/album/crinkle");
+assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), rsStock).catalogNumber, "TTT111");
+assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), { ...rsStock, catalogNumber: "WRONG" }), null);
+assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), { ...rsStock, artist: "Other Artist" }), null);
+assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), { ...rsStock, item: "CD" }), null);
+assert.match(applyVerifiedReleaseDescription({ cover: "/public/test.jpg" }, rsStock).reviewSource, /Boomkat/);
 
 for (const [artist, title, source] of [
   ["Fucked Up", "Year Of The Ox", "Merge Records"],

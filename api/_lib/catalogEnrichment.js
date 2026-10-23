@@ -1492,6 +1492,17 @@ export const CURATED_FINANCE_ENRICHMENTS = {
 // Album-level editorial is shared by verified physical formats. It never
 // identifies a pressing; the release matcher must do that first.
 const VERIFIED_RELEASE_DESCRIPTIONS = new Map([
+  ["rs tangent|crinkle", {
+    description: "On Crinkle, RS Tangent pulls dub techno away from its familiar haze and into a more physical, off-centre space. Robin Stewart builds Stomach from uneven drums and heavy low frequencies, while Compact tightens the pulse. The title track turns delayed fragments into rhythms of their own. Across four pieces, the effects do more than colour the tracks: they keep changing the shape of the beat.",
+    descriptionSource: "Boomkat / RS Tangent",
+    sourceUrl: "https://boomkat.com/products/crinkle",
+    bandcampUrl: "https://rstangent.bandcamp.com/album/crinkle",
+    review: {
+      quote: "a set of twisted warehouse melters that apply advanced dub logic to pointillistic technoid rhythms.",
+      source: "Boomkat product review (quoted)", url: "https://boomkat.com/products/crinkle",
+      scope: "release", title: "Crinkle", verifiedAt: "2026-10-24"
+    }
+  }],
   ["moon diagrams|trappy bats", {
     description: "Moon Diagrams' Trappy Bats begins with music Moses John Archuleta recorded largely in a single night. Its three originals move between patient club rhythms, blurred piano loops and submerged pop, then open outward through reworks by Shigeto, Deradoorian and Jefre Cantu-Ledesma. Rather than separating songs from remixes, the six-track sequence lets those different perspectives reshape the record as it unfolds.",
     descriptionSource: "Geographic North",
@@ -2439,18 +2450,22 @@ function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
 
 async function discoverBandcampRelease(stock) {
   const reviewed = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(stock.artist)}|${normalizedText(stock.title)}`);
-  let urls = unique([reviewed?.bandcampUrl, ...(stock.researchUrls || [])]).filter((value) => {
+  let urls = unique([reviewed?.bandcampUrl, ...(stock.researchUrls || []), bandcampAlbumGuess(stock)]).filter((value) => {
     if (!editorialSource(value, { official: true })) return false;
     const url = new URL(value);
     return url.hostname.endsWith(".bandcamp.com") && /^\/album\/[^/]+\/?$/.test(url.pathname);
   });
-  if (!urls.length) {
-    const search = await searchCatalogSources({ artist: stock.artist, title: stock.title, kind: "bandcamp" });
-    urls = search.urls;
-    if (!urls.length && search.unavailable) return { sourceUnavailable: true, sourceType: "bandcamp-search" };
-  }
   let unavailable = false;
-  for (const url of urls) {
+  let searched = false;
+  for (let index = 0; index < urls.length || !searched;) {
+    if (index >= urls.length) {
+      searched = true;
+      const search = await searchCatalogSources({ artist: stock.artist, title: stock.title, kind: "bandcamp" });
+      unavailable ||= search.unavailable;
+      urls = unique([...urls, ...search.urls]);
+      continue;
+    }
+    const url = urls[index++];
     const page = await fetchWithTimeout(url, { redirect: "error", headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "bandcamp");
     if (!page || isExternalSourceUnavailable(page)) { unavailable = true; continue; }
     if (!page?.ok) continue;
@@ -2492,7 +2507,14 @@ async function discoverBandcampRelease(stock) {
       ]
     };
   }
-  return unavailable ? { sourceUnavailable: true, sourceType: "bandcamp" } : null;
+  return unavailable ? { sourceUnavailable: true, sourceType: searched ? "bandcamp-search" : "bandcamp" } : null;
+}
+
+export function bandcampAlbumGuess({ artist, title } = {}) {
+  const artistSlug = normalizedText(artist).replace(/\s+/g, "");
+  const titleSlug = normalizedText(title).replace(/\s+/g, "-");
+  if (!artistSlug || artistSlug.length > 63 || !titleSlug || titleSlug.length > 100) return "";
+  return `https://${artistSlug}.bandcamp.com/album/${titleSlug}`;
 }
 
 export function matchBandcampPhysicalRelease(html, stock, verifiedPhysical = null) {
@@ -2512,10 +2534,15 @@ export function matchBandcampPhysicalRelease(html, stock, verifiedPhysical = nul
         normalizedText(verifiedPhysical.edition) === normalizedText(stock.edition) &&
         normalizedText(verifiedPhysical.packageTitle) === normalizedText(item.title) &&
         normalizedText(verifiedPhysical.catalogNumber) === catalogNumber;
-      const catno = normalizedText(item.catalog_number || (verifiedPackage ? verifiedPhysical.catalogNumber : ""));
+      const explicitCatno = normalizedText(item.catalog_number);
+      const merchantSku = normalizedText(item.sku);
+      const verifiedCatno = verifiedPackage ? normalizedText(verifiedPhysical.catalogNumber) : "";
       if (barcode && upc && barcode !== upc) return false;
-      if (catalogNumber && catno && catalogNumber !== catno) return false;
-      if (barcode || catalogNumber) return Boolean((barcode && barcode === upc) || (catalogNumber && catalogNumber === catno));
+      if (catalogNumber && explicitCatno && catalogNumber !== explicitCatno) return false;
+      if (barcode || catalogNumber) return Boolean(
+        (barcode && barcode === upc) ||
+        (catalogNumber && [explicitCatno, merchantSku, verifiedCatno].includes(catalogNumber))
+      );
       return true;
     });
     if (packages.length !== 1) return null;
@@ -2531,7 +2558,7 @@ export function matchBandcampPhysicalRelease(html, stock, verifiedPhysical = nul
       year: new Date(data.album_release_date || data.current.release_date || "").getUTCFullYear() || 0,
       edition: `${stock.item || stock.format} / ${item.title || item.type_name}`,
       barcode: String(item.upc || "").replace(/\D/g, ""),
-      catalogNumber: String(item.catalog_number || (verifiedPackage ? verifiedPhysical.catalogNumber : "")),
+      catalogNumber: String(item.catalog_number || (catalogNumber && normalizedText(item.sku) === catalogNumber ? item.sku : "") || (verifiedPackage ? verifiedPhysical.catalogNumber : "")),
       evidenceUrl: verifiedPackage ? verifiedPhysical.evidenceUrl : "",
       confidence: barcode || catalogNumber ? 100 : 80
     };
