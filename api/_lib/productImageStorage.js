@@ -9,6 +9,16 @@ export function isManagedProductImage(value) {
   );
 }
 
+export function bandcampArchiveFallback(value) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || !/^f\d+\.bcbits\.com$/i.test(url.hostname)) return "";
+    if (!/^\/img\/a\d+_0\.(?:jpe?g|png|webp)$/i.test(url.pathname)) return "";
+    url.pathname = url.pathname.replace(/_0(\.[^.]+)$/i, "_10$1");
+    return url.href;
+  } catch { return ""; }
+}
+
 // Keeps third-party cover URLs out of the live product record. Failed archival
 // deliberately returns the source URL so enrichment can still be reviewed in
 // Admin rather than losing a valid release match.
@@ -42,25 +52,36 @@ export async function archiveRemoteProductImage({ url, sku, role = "cover" } = {
   const baseUrl = process.env.SUPABASE_URL.replace(/\/$/, "");
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const safeSku = String(sku || "catalog-item").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "catalog-item";
+  let downloadUrl = source;
+  const smallerBandcampCover = bandcampArchiveFallback(source);
 
   // Remote artwork hosts occasionally return a transient 403/5xx from a
   // serverless region. Retry the download and upload once, but never return a
   // remote URL as if it were a managed NIXP asset.
   for (let attempt = 0; attempt < 2; attempt += 1) {
     try {
-      const downloaded = await fetch(source, {
+      const downloaded = await fetch(downloadUrl, {
         redirect: "follow",
         headers: downloadHeaders,
         signal: AbortSignal.timeout(12000)
       });
       const contentType = String(downloaded.headers.get("content-type") || "").split(";")[0].toLowerCase();
       const contentLength = Number(downloaded.headers.get("content-length") || 0);
+      if (contentLength && contentLength > MAX_REMOTE_IMAGE_BYTES && smallerBandcampCover && downloadUrl === source) {
+        await downloaded.body?.cancel();
+        downloadUrl = smallerBandcampCover;
+        continue;
+      }
       if (!downloaded.ok || !contentType.startsWith("image/") || (contentLength && contentLength > MAX_REMOTE_IMAGE_BYTES)) {
         if (attempt === 0) continue;
         return { url: source, archived: false };
       }
       const buffer = Buffer.from(await downloaded.arrayBuffer());
       if (!buffer.length || buffer.length > MAX_REMOTE_IMAGE_BYTES) {
+        if (buffer.length > MAX_REMOTE_IMAGE_BYTES && smallerBandcampCover && downloadUrl === source) {
+          downloadUrl = smallerBandcampCover;
+          continue;
+        }
         if (attempt === 0) continue;
         return { url: source, archived: false };
       }

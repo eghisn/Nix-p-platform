@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { editorialSource, editorialPageMatches, fetchEditorialPage, readHtmlMetadata, isReviewArticle, editorialReviewQuote } from "../api/_lib/catalogEditorialSources.js";
 import { researchResultUrls, searchCatalogSources } from "../api/_lib/catalogSourceSearch.js";
+import { archiveRemoteProductImage, bandcampArchiveFallback } from "../api/_lib/productImageStorage.js";
 import { applyVerifiedReleaseDescription, bandcampAlbumGuess, chooseDescriptionEditorial, excludeDatabaseEditorial, enrichDiscoveredReview, inventoryFingerprint, matchBandcampPhysicalRelease, reuseVerifiedReleaseCover, reuseVerifiedReleaseMetadata } from "../api/_lib/catalogEnrichment.js";
 
 for (const url of [
@@ -60,6 +61,32 @@ assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), { ...rsStock, 
 assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), { ...rsStock, artist: "Other Artist" }), null);
 assert.equal(matchBandcampPhysicalRelease(documentFor(rsRelease), { ...rsStock, item: "CD" }), null);
 assert.match(applyVerifiedReleaseDescription({ cover: "/public/test.jpg" }, rsStock).reviewSource, /Boomkat/);
+const oversizedBandcampCover = "https://f4.bcbits.com/img/a1899538574_0.jpg";
+const sizedBandcampCover = "https://f4.bcbits.com/img/a1899538574_10.jpg";
+assert.equal(bandcampArchiveFallback(oversizedBandcampCover), sizedBandcampCover);
+assert.equal(bandcampArchiveFallback("https://f4.bcbits.com.evil.example/img/a1899538574_0.jpg"), "");
+const priorFetch = globalThis.fetch;
+const priorUrl = process.env.SUPABASE_URL;
+const priorKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+try {
+  process.env.SUPABASE_URL = "https://example.supabase.co";
+  process.env.SUPABASE_SERVICE_ROLE_KEY = "test-service-key";
+  const requested = [];
+  globalThis.fetch = async (url) => {
+    requested.push(url);
+    if (url === oversizedBandcampCover) return new Response("x", { headers: { "content-type": "image/png", "content-length": "10382340" } });
+    if (url === sizedBandcampCover) return new Response(new Uint8Array([255, 216, 255]), { headers: { "content-type": "image/jpeg" } });
+    if (url === "https://example.supabase.co/storage/v1/object/product-images/catalog/test-sku/cover.jpg") return new Response("{}", { status: 200 });
+    throw new Error(`Unexpected archive request: ${url}`);
+  };
+  const archived = await archiveRemoteProductImage({ url: oversizedBandcampCover, sku: "TEST-SKU" });
+  assert.equal(archived.archived, true);
+  assert.deepEqual(requested, [oversizedBandcampCover, sizedBandcampCover, "https://example.supabase.co/storage/v1/object/product-images/catalog/test-sku/cover.jpg"]);
+} finally {
+  globalThis.fetch = priorFetch;
+  if (priorUrl === undefined) delete process.env.SUPABASE_URL; else process.env.SUPABASE_URL = priorUrl;
+  if (priorKey === undefined) delete process.env.SUPABASE_SERVICE_ROLE_KEY; else process.env.SUPABASE_SERVICE_ROLE_KEY = priorKey;
+}
 
 for (const [artist, title, source] of [
   ["Fucked Up", "Year Of The Ox", "Merge Records"],
