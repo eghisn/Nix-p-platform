@@ -164,6 +164,22 @@ const catalogExactAcrossMusicBrainzMedia = assessMusicBrainzReleaseCandidates([{
 });
 assert.equal(catalogExactAcrossMusicBrainzMedia.release.id, "2f6a2c3c-acfa-47f9-a44c-36da42d52dca");
 assert.equal(catalogExactAcrossMusicBrainzMedia.catalogFormatFallback, true, "An exact catalog number may bridge a source's digital-only medium record without changing Finance's physical format.");
+const driveLikeJehuCurated = CURATED_FINANCE_ENRICHMENTS["NXP-2026-VNL-0099"];
+const driveStock = {
+  sku: "NXP-2026-VNL-0099", item: "Vinyl", artist: "Drive Like Jehu", title: "Drive Like Jehu",
+  edition: "Vinyl, LP, Album, Reissue (2014, US)", barcode: "7 2324-82207-1 8",
+  catalogNumber: "HEADHUNTER 008", itemCondition: "New-Sealed", sellingPrice: 710000
+};
+assert.equal(selectCuratedFinanceEnrichment(driveLikeJehuCurated, { ...driveStock, edition: "1992 white vinyl" }), null);
+assert.equal(selectCuratedFinanceEnrichment(driveLikeJehuCurated, driveStock)?.barcode, "723248220718");
+assert.equal(isEditorialDescriptionQuality(driveLikeJehuCurated.description, driveLikeJehuCurated.descriptionSource), true);
+const researchedDrive = await enrichFinanceCatalogProduct({
+  id: "finance-nxp-2026-vnl-0099", sku: driveStock.sku, format: "Vinyl", price: 710000, raw: {}
+}, driveStock);
+assert.match(researchedDrive.description, /O Pencil Sharp/);
+assert.equal(researchedDrive.raw.reviewSource, "AllMusic (quoted)");
+assert.equal(researchedDrive.raw.enrichmentStatus, "needs-cover-art");
+assert.equal(researchedDrive.publish_status, "Draft", "Missing verified artwork must not publish a researched release.");
 const massiveAttackCurated = CURATED_FINANCE_ENRICHMENTS["NXP-2026-VNL-0096"];
 const massiveAttackRow = {
   image: "https://example.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0096/cover.jpg",
@@ -206,6 +222,23 @@ assert.equal(assessMusicBrainzReleaseCandidates([{ ...conflictingMassiveAttackRe
   stock: { artist: "Massive Attack, Tom Waits" }, expectedTitle: "boots on the ground",
   format: "vinyl", barcode: "4526180760559", catalogNumber: "piasr1700ps"
 }).release, null, "A matching barcode must not hide a conflicting catalog number.");
+const sharedPressingIdentifiers = ["1992", "2014"].map((year) => ({
+  id: `drive-like-jehu-${year}`, title: "Drive Like Jehu", date: `${year}-01-01`, score: 100,
+  "artist-credit": [{ name: "Drive Like Jehu" }], media: [{ format: "12\" Vinyl" }],
+  barcode: "723248220718", "label-info": [{ "catalog-number": "HEADHUNTER 008" }]
+}));
+const ambiguousPressing = assessMusicBrainzReleaseCandidates(sharedPressingIdentifiers, {
+  stock: { artist: "Drive Like Jehu", edition: "" }, expectedTitle: "drive like jehu",
+  format: "vinyl", barcode: "723248220718", catalogNumber: "headhunter 008"
+});
+assert.equal(ambiguousPressing.release, null);
+assert.equal(ambiguousPressing.needsPressingIdentifier, true);
+const identifiedPressing = assessMusicBrainzReleaseCandidates(sharedPressingIdentifiers, {
+  stock: { artist: "Drive Like Jehu", edition: "Vinyl, LP, Album, Reissue (2014, US)" },
+  expectedTitle: "drive like jehu", format: "vinyl", barcode: "723248220718", catalogNumber: "headhunter 008"
+});
+assert.equal(identifiedPressing.release?.id, "drive-like-jehu-2014");
+assert.equal(identifiedPressing.needsPressingIdentifier, false);
 
 const negativeLoversDiscogs = [{
   id: 9967524,
@@ -707,9 +740,11 @@ try {
   assert.ok(requestedUrls.length > 0);
   assert.ok(requestedUrls.every((url) => !/discogs\.com/i.test(url)), "release research must not request Discogs");
 
+  const metadataRequestedUrls = [];
   globalThis.fetch = async (url) => {
     const address = String(url);
     if (address.includes("/ws/2/release/?query=")) {
+      metadataRequestedUrls.push(address);
       return Response.json({ releases: [{
         id: "c6ff3cf5-33ea-4268-b523-4e0fdd702f93",
         title: "Unwritten Test Release",
@@ -732,6 +767,7 @@ try {
     { sku: "NXP-TEST-VNL-9999", item: "Vinyl", artist: "Unwritten Test Artist", title: "Unwritten Test Release", barcode: "1234567890123", catalogNumber: "TEST-123", sellingPrice: 1000 }
   );
   assert.equal(metadataOnly.raw.musicBrainzReleaseId, "c6ff3cf5-33ea-4268-b523-4e0fdd702f93");
+  assert.match(decodeURIComponent(metadataRequestedUrls[0]), /query=barcode:"1234567890123"/, "The exact barcode must be searched before title or catalog number.");
   assert.equal(metadataOnly.raw.catalogNumber, "TEST-123");
   assert.equal(metadataOnly.description, "", "An exact MusicBrainz match must not generate generic product copy.");
   assert.equal(metadataOnly.raw.autoEditorial.description, "");

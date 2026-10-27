@@ -216,6 +216,25 @@ export const CURATED_FINANCE_ENRICHMENTS = {
       { source: "International 12-inch barcode (Head Records)", url: "https://headrecords.co.uk/rock/pop/boots-on-ground-massive-attack-tom-waits/p-piasr1700ps", confidence: 95 }
     ]
   },
+  "NXP-2026-VNL-0099": {
+    artist: "Drive Like Jehu", title: "Drive Like Jehu", year: 2014,
+    label: "Headhunter Records", edition: "Vinyl, LP, Album, Reissue (2014, US)",
+    catalogNumber: "HEADHUNTER 008", barcode: "723248220718",
+    verifiedCatalogNumber: "HEADHUNTER 008", verifiedBarcode: "723248220718",
+    verifiedEdition: "Vinyl, LP, Album, Reissue (2014, US)",
+    cover: "", productPhoto: "", imageCredits: [],
+    description: "Before Yank Crime, Drive Like Jehu's self-titled debut put Rick Froberg and John Reis's guitars against Mike Kennedy's bass and Mark Trombino's drums. Across nine tracks, Caress and Spikes to You introduce the quartet's volatile interplay, while O Pencil Sharp and Turn It Off stretch their fractured post-hardcore into longer forms. This Headhunter LP is the 2014 US reissue of that debut.",
+    descriptionSource: "Cobraside / AllMusic",
+    reviewQuote: "made the newer group a quantum leap forward, as this gripping album demonstrates",
+    reviewSource: "AllMusic (quoted)",
+    reviewUrl: "https://www.allmusic.com/album/drive-like-jehu-mw0000074156",
+    sourceUrl: "https://cobrasiderecords.com/collections/whats-hot/products/drive-like-jehu-drive-like-jehu",
+    researchSources: [
+      { source: "2014 US Headhunter LP identity", url: "https://www.groovespin.com/album/drive-like-jehu-drive-like-jehu-46588", confidence: 95 },
+      { source: "Cobraside album and track listing", url: "https://cobrasiderecords.com/collections/whats-hot/products/drive-like-jehu-drive-like-jehu", confidence: 90 },
+      { source: "AllMusic album review", url: "https://www.allmusic.com/album/drive-like-jehu-mw0000074156", confidence: 90 }
+    ]
+  },
   "NXP-2026-CST-0014": {
     artist: "DOMi & JD BECK", title: "Who Asked?", year: 2026, label: "Blue Note",
     edition: "Cassette, Album", catalogNumber: "00199957849432", barcode: "1 99957 84943 2",
@@ -1845,9 +1864,10 @@ export function applyCuratedEditorialOverride(discovered, sku) {
 
 export function selectCuratedFinanceEnrichment(entry, stock = {}, row = {}) {
   if (!entry) return null;
-  const { verifiedBarcode, verifiedCatalogNumber, reuseManagedCover, ...release } = entry;
+  const { verifiedBarcode, verifiedCatalogNumber, verifiedEdition, reuseManagedCover, ...release } = entry;
   if (verifiedBarcode && String(stock.barcode || "").replace(/\D/g, "") !== verifiedBarcode) return null;
   if (verifiedCatalogNumber && !catalogNumberMatches(stock.catalogNumber, verifiedCatalogNumber)) return null;
+  if (verifiedEdition && normalizedText(stock.edition) !== normalizedText(verifiedEdition)) return null;
   if (!reuseManagedCover) return release;
   const cover = row.raw?.autoCover || row.image;
   if (!isManagedProductImage(cover)) return null;
@@ -2680,23 +2700,26 @@ async function discoverMusicBrainzRelease(stock) {
   const barcode = String(stock.barcode || "").replace(/\D/g, "");
   const catalogNumber = normalizedText(stock.catalogNumber);
   const queries = [];
+  if (barcode) {
+    queries.push({ kind: "barcode", query: `barcode:"${barcode}"`, limit: 50 });
+  }
   if (catalogNumber) {
     // Catalog number is the strongest Finance-side identity. Search it first;
     // MusicBrainz documents catno as an exact release catalog-number field.
-    queries.push(`catno:"${escapeQuery(stock.catalogNumber)}" AND artist:"${escapeQuery(stock.artist)}"`);
+    queries.push({ kind: "catalog-number", query: `catno:"${escapeQuery(stock.catalogNumber)}" AND artist:"${escapeQuery(stock.artist)}"`, limit: 50 });
   }
   queries.push(
-    `artist:"${escapeQuery(stock.artist)}" AND release:"${escapeQuery(stock.title)}"`,
-    `release:"${escapeQuery(stock.title)}"`
+    { kind: "artist-title", query: `artist:"${escapeQuery(stock.artist)}" AND release:"${escapeQuery(stock.title)}"`, limit: 25 },
+    { kind: "title", query: `release:"${escapeQuery(stock.title)}"`, limit: 25 }
   );
 
   let release = null;
   let sourceUnavailable = false;
   let exactAlbumWithDifferentFormat = false;
   let catalogFormatFallback = false;
-  for (const [index, query] of queries.entries()) {
+  for (const { kind, query, limit } of queries) {
     const response = await musicBrainzFetch(
-      `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=${index === 0 && catalogNumber ? 50 : 25}&inc=labels+artist-credits+media+release-groups`
+      `${MUSICBRAINZ_ORIGIN}/ws/2/release/?query=${encodeURIComponent(query)}&fmt=json&limit=${limit}&inc=labels+artist-credits+media+release-groups`
     );
     if (!response?.ok) {
       sourceUnavailable ||= isExternalSourceUnavailable(response);
@@ -2704,14 +2727,16 @@ async function discoverMusicBrainzRelease(stock) {
         source: "musicbrainz-release",
         status: Number(response?.status || 0),
         sku: String(stock.sku || ""),
-        query: index === 0 && catalogNumber ? "catalog-number" : "artist-title"
+        query: kind
       });
+      if (sourceUnavailable) break;
       continue;
     }
     const payload = await jsonObject(response);
     const releases = Array.isArray(payload.releases) ? payload.releases : [];
     const candidateAssessment = assessMusicBrainzReleaseCandidates(releases, { stock, expectedTitle, format, barcode, catalogNumber });
     exactAlbumWithDifferentFormat ||= candidateAssessment.exactAlbumWithDifferentFormat;
+    if (candidateAssessment.needsPressingIdentifier) return { needsPressingIdentifier: true };
     release = candidateAssessment.release;
     if (release) {
       catalogFormatFallback = candidateAssessment.catalogFormatFallback === true;
@@ -2917,6 +2942,8 @@ export function assessMusicBrainzReleaseCandidates(releases = [], { stock = {}, 
       return {
         release,
         catalogFormatFallback,
+        barcodeExact,
+        catalogExact,
         score: Number(release.score || 0) +
           (catalogExact ? 100 : 0) +
           (barcodeExact ? 90 : 0) +
@@ -2927,10 +2954,32 @@ export function assessMusicBrainzReleaseCandidates(releases = [], { stock = {}, 
     })
     .filter(Boolean)
     .sort((a, b) => b.score - a.score);
+  const exactPhysicalMatches = candidates.filter((candidate) => candidate.barcodeExact && candidate.catalogExact);
+  const pressingSignatures = new Set(exactPhysicalMatches.map(({ release }) => [
+    String(release.date || "").slice(0, 4),
+    normalizedText(release.disambiguation),
+    normalizedText(release.packaging),
+    (release.media || []).map((medium) => normalizedText(medium.format)).join("/")
+  ].join("|")));
+  let selected = candidates[0] || null;
+  let needsPressingIdentifier = false;
+  if (pressingSignatures.size > 1) {
+    const edition = normalizedText(stock.edition);
+    const year = edition.match(/\b(?:19|20)\d{2}\b/)?.[0] || "";
+    const variantWords = edition.match(/\b(?:white|clear|black|orange|red|blue|green|aqua|marigold|splatter|marbled)\b/g) || [];
+    const matches = exactPhysicalMatches.filter(({ release }) => {
+      const variant = normalizedText(`${release.disambiguation || ""} ${release.packaging || ""} ${(release.media || []).map((medium) => medium.format).join(" ")}`);
+      return (!year || String(release.date || "").startsWith(year)) &&
+        variantWords.every((word) => variant.split(" ").includes(word));
+    });
+    if (matches.length === 1 && (year || variantWords.length)) selected = matches[0];
+    else needsPressingIdentifier = true;
+  }
   return {
-    release: candidates[0]?.release || null,
+    release: needsPressingIdentifier ? null : selected?.release || null,
     exactAlbumWithDifferentFormat,
-    catalogFormatFallback: candidates[0]?.catalogFormatFallback === true
+    catalogFormatFallback: selected?.catalogFormatFallback === true,
+    needsPressingIdentifier
   };
 }
 
