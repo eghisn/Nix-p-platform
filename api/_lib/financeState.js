@@ -609,6 +609,10 @@ async function queueFinanceCatalogSync(previousState, nextState, changes) {
 // Server-side, resumable catalog research. A job is claimed in Supabase before
 // external calls begin, so a browser refresh or function timeout cannot make
 // Finance data disappear or leave Admin guessing whether work was saved.
+export function researchNeedsManualInput(status) {
+  return ["needs-finance-data", "needs-pressing-identifier", "needs-release-match", "needs-editorial-quality", "needs-editorial-metadata", "needs-cover-art"].includes(status);
+}
+
 export async function processCatalogResearchJobs({ limit = 1, skus = [], force = false, publishAfterResearch = false, requestedBy = "admin" } = {}) {
   const jobsApi = await import("./catalogResearchJobs.js");
   const state = await readFinanceState();
@@ -641,8 +645,8 @@ export async function processCatalogResearchJobs({ limit = 1, skus = [], force =
       } else {
         const status = String(product?.raw?.enrichmentStatus || "needs-release-match");
         const result = { productId: product?.id || null, issues };
-        if (["needs-finance-data", "needs-pressing-identifier", "needs-release-match", "needs-editorial-quality", "needs-editorial-metadata"].includes(status)) {
-          // These states need a human correction in Finance, so retries only
+        if (researchNeedsManualInput(status)) {
+          // These states need corrected release data or verified artwork, so retries only
           // repeat the same work and make the queue look unreliable. A source
           // outage and cover archival failure remain retryable below.
           await jobsApi.completeCatalogResearchJob(job, {

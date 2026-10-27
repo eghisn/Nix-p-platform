@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, publicationJobsForProducts, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
 import { CATALOG_RESEARCH_VERSION } from "../api/_lib/catalogEnrichment.js";
-import { draftProductFromFinanceStock, preserveResearchPublicationState, productRowForPersistence, researchCatalogSyncOptions } from "../api/_lib/financeState.js";
+import { draftProductFromFinanceStock, preserveResearchPublicationState, productRowForPersistence, researchCatalogSyncOptions, researchNeedsManualInput } from "../api/_lib/financeState.js";
 import { applyFinalReviewedCoverLock, normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
 
 const completeRecord = {
@@ -31,6 +31,9 @@ assert.notEqual(job.research_version, legacyRulesetJob.research_version);
 assert.equal(retryDelaySeconds(1), 30);
 assert.equal(retryDelaySeconds(5), 480);
 assert.equal(retryDelaySeconds(99), 3600);
+assert.equal(researchNeedsManualInput("needs-cover-art"), true, "Missing verified artwork must stop instead of retrying the same source endlessly.");
+assert.equal(researchNeedsManualInput("source-unavailable"), false, "Transient source failures must remain retryable.");
+assert.equal(researchNeedsManualInput("needs-cover-archive"), false, "A temporary archive failure may be retried.");
 
 const publicationJobs = publicationJobsForProducts([
   { id: "old-job", sku: completeRecord.sku, request_fingerprint: "old-release", status: "ready" },
