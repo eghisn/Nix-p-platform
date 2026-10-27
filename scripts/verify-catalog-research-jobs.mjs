@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, publicationJobsForProducts, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
+import { catalogResearchRequest, enqueueCatalogResearchJobs, isResearchableCatalogStock, publicationJobsForProducts, researchJobClaimOrder, retryDelaySeconds } from "../api/_lib/catalogResearchJobs.js";
 import { CATALOG_RESEARCH_VERSION } from "../api/_lib/catalogEnrichment.js";
 import { draftProductFromFinanceStock, preserveResearchPublicationState, productRowForPersistence, researchCatalogSyncOptions, researchNeedsManualInput } from "../api/_lib/financeState.js";
 import { applyFinalReviewedCoverLock, normalizeRelatedArtistsPayload } from "../api/_lib/catalogEnrichment.js";
@@ -22,6 +22,9 @@ assert.equal(job.sku, "NXP-2026-VNL-TEST");
 assert.equal(job.status, "queued");
 assert.equal(job.research_version, CATALOG_RESEARCH_VERSION, "A research job must carry the release-matching ruleset version.");
 assert.ok(job.request_fingerprint, "A durable job must have an input fingerprint.");
+const changedEditionJob = catalogResearchRequest({ ...completeRecord, edition: "2014 US reissue" }, { requestedBy: "test" });
+assert.notEqual(changedEditionJob.request_fingerprint, job.request_fingerprint, "A different pressing must receive a new research identity.");
+assert.notEqual(changedEditionJob.id, job.id);
 const legacyRulesetJob = catalogResearchRequest(completeRecord, {
   requestedBy: "test",
   researchVersion: "musicbrainz-lastfm-v2"
@@ -31,6 +34,8 @@ assert.notEqual(job.research_version, legacyRulesetJob.research_version);
 assert.equal(retryDelaySeconds(1), 30);
 assert.equal(retryDelaySeconds(5), 480);
 assert.equal(retryDelaySeconds(99), 3600);
+assert.equal(researchJobClaimOrder([completeRecord.sku]), "desc", "An explicit SKU request must run its newest pressing research first.");
+assert.equal(researchJobClaimOrder([]), "asc", "Background work must continue draining old requests fairly.");
 assert.equal(researchNeedsManualInput("needs-cover-art"), true, "Missing verified artwork must stop instead of retrying the same source endlessly.");
 assert.equal(researchNeedsManualInput("source-unavailable"), false, "Transient source failures must remain retryable.");
 assert.equal(researchNeedsManualInput("needs-cover-archive"), false, "A temporary archive failure may be retried.");

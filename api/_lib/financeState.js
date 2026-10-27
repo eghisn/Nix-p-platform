@@ -3,6 +3,7 @@ import {
   applyFinalReviewedCoverLock,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
+  matchesInventoryFingerprint,
   isEditorialDescriptionQuality,
   isExplicitManualRelatedArtistsOverride,
   normalizeRelatedArtistsPayload,
@@ -1217,8 +1218,8 @@ export function needsFinanceEnrichment(row = {}, stock = {}) {
     Boolean(row.raw?.enrichmentStatus);
   if (!financeOrigin) return false;
   const previousFingerprint = String(row.raw?.enrichmentFingerprint || "");
-  const currentFingerprint = inventoryFingerprint(stock);
-  const fingerprintChanged = Boolean(previousFingerprint) && currentFingerprint !== previousFingerprint;
+  const fingerprintChanged = Boolean(previousFingerprint) &&
+    !matchesInventoryFingerprint(previousFingerprint, stock, row.raw?.edition);
   const status = String(row.raw?.enrichmentStatus || "").toLowerCase();
   const recordFormat = RECORD_FORMATS.has(String(stock.item || row.format || "").trim());
   const researchVersionChanged = recordFormat &&

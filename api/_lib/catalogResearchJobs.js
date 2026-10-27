@@ -76,9 +76,31 @@ export async function enqueueCatalogResearchJobs(stockRows = [], { requestedBy =
     .map((stock) => catalogResearchRequest(stock, { requestedBy }));
   if (!jobs.length) return { queued: 0, jobs: [] };
 
+  await supabaseFetch("catalog_research_jobs?on_conflict=sku,request_fingerprint,research_version", {
+    method: "POST",
+    service: true,
+    body: jobs,
+    prefer: "resolution=ignore-duplicates,return=minimal"
+  });
+
+  for (const job of jobs) {
+    await supabaseFetch(`catalog_research_jobs?sku=eq.${encodeURIComponent(job.sku)}&id=neq.${encodeURIComponent(job.id)}&status=in.(queued,retry)`, {
+      method: "PATCH",
+      service: true,
+      body: {
+        status: "cancelled",
+        stage: "complete",
+        completed_at: now(),
+        result: { reason: "Superseded by a newer research request for this SKU." },
+        updated_at: now()
+      },
+      prefer: "return=minimal"
+    });
+  }
+
   if (force) {
     for (const job of jobs) {
-      await supabaseFetch(`catalog_research_jobs?sku=eq.${encodeURIComponent(job.sku)}&research_version=eq.${encodeURIComponent(job.research_version)}`, {
+      await supabaseFetch(`catalog_research_jobs?id=eq.${encodeURIComponent(job.id)}&status=in.(queued,retry,ready,failed,cancelled)`, {
         method: "PATCH",
         service: true,
         body: {
@@ -98,13 +120,11 @@ export async function enqueueCatalogResearchJobs(stockRows = [], { requestedBy =
     }
   }
 
-  await supabaseFetch("catalog_research_jobs?on_conflict=sku,request_fingerprint,research_version", {
-    method: "POST",
-    service: true,
-    body: jobs,
-    prefer: "resolution=ignore-duplicates,return=minimal"
-  });
   return { queued: jobs.length, jobs };
+}
+
+export function researchJobClaimOrder(targets = []) {
+  return targets.length ? "desc" : "asc";
 }
 
 export async function claimCatalogResearchJobs({ limit = 1, skus = [] } = {}) {
@@ -113,8 +133,9 @@ export async function claimCatalogResearchJobs({ limit = 1, skus = [] } = {}) {
   await recoverExpiredCatalogResearchJobs({ skus: targets });
   const nowValue = encodeURIComponent(now());
   const filter = targets.length ? `&sku=in.(${quoteList(targets)})` : "";
+  const order = researchJobClaimOrder(targets);
   const rows = await supabaseFetch(
-    `catalog_research_jobs?select=*&status=in.(queued,retry)&next_retry_at=lte.${nowValue}${filter}&order=created_at.asc&limit=${safeLimit * 3}`,
+    `catalog_research_jobs?select=*&status=in.(queued,retry)&next_retry_at=lte.${nowValue}${filter}&order=created_at.${order}&limit=${safeLimit * 3}`,
     { service: true }
   );
   const claimed = [];

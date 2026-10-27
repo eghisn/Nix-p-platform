@@ -16,6 +16,7 @@ import {
   discogsReleaseDetailUrl,
   enrichFinanceCatalogProduct,
   inventoryFingerprint,
+  matchesInventoryFingerprint,
   isExactDiscogsSearchEvidence,
   isEditorialDescriptionQuality,
   removeDuplicateEditorialCopy,
@@ -103,6 +104,13 @@ assert.equal(needsFinanceEnrichment({
   raw: { ...enriched.raw, relatedArtistResearchVersion: "legacy-related-artists-engine" }
 }, stock), true);
 assert.equal(enriched.raw.enrichmentFingerprint, inventoryFingerprint(stock));
+const editionStock = { ...stock, edition: "CD, Reissue (2014, US)" };
+assert.notEqual(inventoryFingerprint(editionStock), inventoryFingerprint(stock));
+assert.equal(matchesInventoryFingerprint(inventoryFingerprint(stock), editionStock, editionStock.edition), true,
+  "Legacy fingerprints must remain valid when the stored edition is unchanged.");
+assert.equal(matchesInventoryFingerprint(inventoryFingerprint(stock), editionStock, "1992 pressing"), false);
+assert.equal(needsFinanceEnrichment({ ...enriched, raw: { ...enriched.raw, edition: editionStock.edition } }, editionStock), false);
+assert.equal(needsFinanceEnrichment({ ...enriched, raw: { ...enriched.raw, edition: "1992 pressing" } }, editionStock), true);
 assert.equal(enriched.raw.shipping.packagingGroup, "SMALL_MEDIA");
 assert.equal(enriched.raw.shipping.weightGrams, 120);
 

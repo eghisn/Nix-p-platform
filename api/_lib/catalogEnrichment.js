@@ -22,7 +22,7 @@ export const RELATED_ARTIST_RESEARCH_VERSION = "musicbrainz-lastfm-v2";
 // A versioned research request means editorial rule changes only run for an
 // item when an editor explicitly asks to research it again. This keeps a
 // deployment from silently rewriting live catalogue copy.
-export const CATALOG_RESEARCH_VERSION = "official-editorial-v13";
+export const CATALOG_RESEARCH_VERSION = "official-editorial-v14";
 const RELATED_ARTIST_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const MUSICBRAINZ_REQUEST_INTERVAL_MS = 1100;
 const LASTFM_REQUEST_INTERVAL_MS = 700;
@@ -2139,7 +2139,7 @@ export async function enrichFinanceCatalogProduct(row, stock = {}, { catalogArti
 export function reuseVerifiedReleaseCover(discovered, row = {}, stock = {}) {
   if (!discovered || discovered.sourceUnavailable || discovered.needsPressingIdentifier) return discovered;
   const raw = row.raw || {};
-  if (!isManagedProductImage(raw.autoCover) || raw.enrichmentFingerprint !== inventoryFingerprint(stock)) return discovered;
+  if (!isManagedProductImage(raw.autoCover) || !matchesInventoryFingerprint(raw.enrichmentFingerprint, stock, raw.edition)) return discovered;
   const sameRelease = Boolean(raw.musicBrainzReleaseId && raw.musicBrainzReleaseId === discovered.musicBrainzReleaseId);
   const sameOfficialPage = Boolean(editorialSource(discovered.sourceUrl, { official: true }) && raw.metadataSourceUrl === discovered.sourceUrl);
   if (!sameRelease && !sameOfficialPage) return discovered;
@@ -2153,7 +2153,7 @@ export function reuseVerifiedReleaseCover(discovered, row = {}, stock = {}) {
 export function reuseVerifiedReleaseMetadata(row, stock) {
   const raw = row.raw || {};
   if (!/^(?:complete|complete-no-related-artists|needs-editorial-quality)$/.test(raw.enrichmentStatus || "")) return null;
-  if (raw.enrichmentFingerprint !== inventoryFingerprint(stock) || !isManagedProductImage(raw.autoCover)) return null;
+  if (!matchesInventoryFingerprint(raw.enrichmentFingerprint, stock, raw.edition) || !isManagedProductImage(raw.autoCover)) return null;
   if (!String(stock.barcode || stock.catalogNumber || "").trim() || !row.label || !row.year) return null;
   if (normalizedText(raw.edition) !== normalizedText(stock.edition)) return null;
   const official = editorialSource(raw.metadataSourceUrl, { official: true });
@@ -3285,9 +3285,18 @@ function finalizeStatus(row, { publishable, status, enrichmentFingerprint = "", 
 }
 
 export function inventoryFingerprint(stock = {}) {
-  return [stock.artist, stock.title, stock.format || stock.item, stock.barcode, stock.catalogNumber]
+  const identity = [stock.artist, stock.title, stock.format || stock.item, stock.barcode, stock.catalogNumber]
     .map(normalizedText)
     .join("|");
+  const edition = normalizedText(stock.edition);
+  return edition ? `${identity}|edition:${edition}` : identity;
+}
+
+export function matchesInventoryFingerprint(saved, stock = {}, storedEdition = "") {
+  if (saved === inventoryFingerprint(stock)) return true;
+  const legacy = inventoryFingerprint({ ...stock, edition: "" });
+  return saved === legacy && (!normalizedText(stock.edition) ||
+    normalizedText(storedEdition) === normalizedText(stock.edition));
 }
 
 function usedCondition(value) {
