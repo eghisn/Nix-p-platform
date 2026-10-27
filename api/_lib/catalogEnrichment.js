@@ -75,6 +75,14 @@ export const ARCHIVED_CATALOG_IMAGES = {
       { image: "/public/assets/catalog-archive/nxp-2026-vnl-0110-detail-1.webp", credit: "DOMi & JD BECK official standard vinyl mockup", url: "https://shop.domiandjdbeck.com/collections/catalog/products/not-tight-standard-vinyl" }
     ]
   },
+  "NXP-2026-VNL-0104": {
+    edition: 'Vinyl, 12", Single, Limited Edition, Picture Disc, Unofficial Release',
+    catalogNumber: "FF476",
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0104-picture-disc.webp",
+    imageCredits: [
+      { image: "/public/assets/catalog-archive/nxp-2026-vnl-0104-picture-disc.webp", credit: "City Noise Records / Fractured France picture disc photograph", url: "https://citynoiserecords.com/cdn/shop/files/s-l1200.jpg?v=1690245798&width=1946" }
+    ]
+  },
   "NXP-2026-VNL-0081": {
     cover: "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg",
     imageCredits: [{ image: "/public/assets/catalog-archive/nxp-2026-vnl-0081-arca-kick-iiii-bandcamp.jpg", credit: "Arca official Bandcamp artwork", url: "https://arca1000000.bandcamp.com/album/kick-iiii" }]
@@ -153,7 +161,7 @@ export const ARCHIVED_CATALOG_IMAGES = {
 // research imported seller scans. They are immutable storefront artwork.
 const FINAL_REVIEWED_COVER_SKUS = new Set([
   ...Object.keys(approvedMockupImages),
-  "NXP-2026-CST-0014", "NXP-2026-VNL-0109", "NXP-2026-VNL-0110",
+  "NXP-2026-CST-0014", "NXP-2026-VNL-0109", "NXP-2026-VNL-0110", "NXP-2026-VNL-0104",
   "NXP-2026-VNL-0081", "NXP-2026-VNL-0080", "NXP-2026-VNL-0079",
   "NXP-2026-VNL-0078", "NXP-2026-VNL-0076", "NXP-2026-VNL-0075",
   "NXP-2026-VNL-0073", "NXP-2026-VNL-0058", "NXP-2026-VNL-0040"
@@ -167,11 +175,13 @@ export function applyFinalReviewedCoverLock(product = {}) {
   if (!FINAL_REVIEWED_COVER_SKUS.has(sku)) return product;
   const lock = ARCHIVED_CATALOG_IMAGES[sku];
   if (!lock?.cover) return product;
+  const raw = product.raw && typeof product.raw === "object" ? product.raw : {};
+  if (lock.edition && normalizedText(raw.edition) !== normalizedText(lock.edition)) return product;
+  if (lock.catalogNumber && normalizedText(raw.catalogNumber) !== normalizedText(lock.catalogNumber)) return product;
   const images = [lock.cover, lock.productPhoto].filter(Boolean);
   const imageCredits = Array.isArray(lock.imageCredits) && lock.imageCredits.length
     ? lock.imageCredits
     : Array.isArray(product.imageCredits) ? product.imageCredits : [];
-  const raw = product.raw && typeof product.raw === "object" ? product.raw : {};
   return {
     ...product,
     image: lock.cover,
@@ -2506,66 +2516,76 @@ function normalizeDiscogsRelease(release, stock, matchConfidence = 0) {
   };
 }
 
-async function discoverBandcampRelease(stock) {
+export async function discoverBandcampRelease(stock) {
   const reviewed = VERIFIED_RELEASE_DESCRIPTIONS.get(`${normalizedText(stock.artist)}|${normalizedText(stock.title)}`);
   let urls = unique([reviewed?.bandcampUrl, ...(stock.researchUrls || []), bandcampAlbumGuess(stock)]).filter((value) => {
     if (!editorialSource(value, { official: true })) return false;
     const url = new URL(value);
     return url.hostname.endsWith(".bandcamp.com") && /^\/album\/[^/]+\/?$/.test(url.pathname);
   });
-  let unavailable = false;
+  let searchUnavailable = false;
+  let searchedCandidateUnavailable = false;
+  let reviewedPageUnavailable = false;
+  let fetchedCandidate = false;
   let searched = false;
   for (let index = 0; index < urls.length || !searched;) {
     if (index >= urls.length) {
       searched = true;
       const search = await searchCatalogSources({ artist: stock.artist, title: stock.title, kind: "bandcamp" });
-      unavailable ||= search.unavailable;
+      searchUnavailable = search.unavailable;
       urls = unique([...urls, ...search.urls]);
       continue;
     }
-    const url = urls[index++];
-    const page = await fetchWithTimeout(url, { redirect: "error", headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "bandcamp");
-    if (!page || isExternalSourceUnavailable(page)) { unavailable = true; continue; }
-    if (!page?.ok) continue;
-    const pageHtml = await page.text();
-    const matched = matchBandcampPhysicalRelease(pageHtml, stock, url === reviewed?.bandcampUrl ? reviewed?.physicalRelease : null);
-    if (!matched) continue;
-    const cover = highResolutionBandcampImage(metaContent(pageHtml, "og:image"));
-    if (!cover) continue;
-    // Bandcamp's meta description is often just a track count/date. It is not
-    // an editorial review and must never populate the quote block.
-    const releaseNote = "";
-    const year = matched.year || bandcampReleaseYear(pageHtml);
-    const label = matched.label || "";
-    const title = matched.title || stock.title;
-    return {
-      title,
-      artist: stock.artist,
-      year,
-      label,
-      edition: matched.edition,
-      barcode: matched.barcode,
-      catalogNumber: matched.catalogNumber,
-      cover,
-      productPhoto: "",
-      imageCredits: [{ image: cover, credit: "Official Bandcamp release artwork", url }],
-      description: "",
-      descriptionSource: "",
-      reviewQuote: releaseNote,
-      reviewSource: releaseNote ? "Bandcamp release note (quoted)" : "",
-      reviewUrl: releaseNote ? url : "",
-      reviewUrls: (stock.researchUrls || []).filter((value) => editorialSource(value)),
-      tags: [],
-      sourceUrl: url,
-      sourceType: "bandcamp",
-      matchConfidence: matched.confidence,
-      researchSources: [
-        { source: "Official Bandcamp physical release", url, confidence: matched.confidence },
-        ...(matched.evidenceUrl ? [{ source: "Official label pressing evidence", url: matched.evidenceUrl, confidence: 100 }] : [])
-      ]
-    };
+    const batch = urls.slice(index, index + 4);
+    index += batch.length;
+    const candidates = await Promise.all(batch.map(async (url) => {
+      const page = await fetchWithTimeout(url, { redirect: "error", headers: { accept: "text/html", "user-agent": USER_AGENT } }, 7000, "bandcamp");
+      if (!page || isExternalSourceUnavailable(page)) return { url, unavailable: true };
+      if (!page.ok) { await page.body?.cancel(); return { url }; }
+      const pageHtml = await page.text();
+      const matched = matchBandcampPhysicalRelease(pageHtml, stock, url === reviewed?.bandcampUrl ? reviewed?.physicalRelease : null);
+      const cover = matched ? highResolutionBandcampImage(metaContent(pageHtml, "og:image")) : "";
+      return { url, matched, cover, year: matched ? matched.year || bandcampReleaseYear(pageHtml) : 0, fetched: true };
+    }));
+    for (const candidate of candidates) {
+      if (candidate.unavailable) {
+        if (candidate.url === reviewed?.bandcampUrl) reviewedPageUnavailable = true;
+        if (searched) searchedCandidateUnavailable = true;
+      }
+      fetchedCandidate ||= candidate.fetched === true;
+      if (!candidate.matched || !candidate.cover) continue;
+      const { url, matched, cover, year } = candidate;
+      return {
+        title: matched.title || stock.title,
+        artist: stock.artist,
+        year,
+        label: matched.label || "",
+        edition: matched.edition,
+        barcode: matched.barcode,
+        catalogNumber: matched.catalogNumber,
+        cover,
+        productPhoto: "",
+        imageCredits: [{ image: cover, credit: "Official Bandcamp release artwork", url }],
+        description: "",
+        descriptionSource: "",
+        reviewQuote: "",
+        reviewSource: "",
+        reviewUrl: "",
+        reviewUrls: (stock.researchUrls || []).filter((value) => editorialSource(value)),
+        tags: [],
+        sourceUrl: url,
+        sourceType: "bandcamp",
+        matchConfidence: matched.confidence,
+        researchSources: [
+          { source: "Official Bandcamp physical release", url, confidence: matched.confidence },
+          ...(matched.evidenceUrl ? [{ source: "Official label pressing evidence", url: matched.evidenceUrl, confidence: 100 }] : [])
+        ]
+      };
+    }
   }
-  return unavailable ? { sourceUnavailable: true, sourceType: searched ? "bandcamp-search" : "bandcamp" } : null;
+  return searchUnavailable || reviewedPageUnavailable || (searchedCandidateUnavailable && !fetchedCandidate)
+    ? { sourceUnavailable: true, sourceType: "bandcamp-search" }
+    : null;
 }
 
 export function bandcampAlbumGuess({ artist, title } = {}) {

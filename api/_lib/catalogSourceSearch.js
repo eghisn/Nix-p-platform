@@ -37,15 +37,12 @@ export async function searchCatalogSources({ artist, title, kind = "review", fet
         ["DuckDuckGo", `https://html.duckduckgo.com/html/?q=${encodeURIComponent(`${phrase} review`)}`],
         ["Brave", `https://search.brave.com/search?q=${encodeURIComponent(`${phrase} review`)}&source=web`]
       ];
-  const attempts = [];
-  const collected = new Set();
-  for (const [source, url] of endpoints) {
+  const results = await Promise.all(endpoints.map(async ([source, url]) => {
     try {
       const response = await fetcher(url, { redirect: "error", signal: AbortSignal.timeout(5000), headers: { accept: "text/html", "user-agent": USER_AGENT } });
       if (!response.ok || response.status === 202) {
-        attempts.push({ source, status: "unavailable", httpStatus: response.status });
         await response.body?.cancel();
-        continue;
+        return { attempt: { source, status: "unavailable", httpStatus: response.status }, urls: [] };
       }
       const reader = response.body?.getReader();
       if (!reader) throw new Error("empty response");
@@ -60,15 +57,15 @@ export async function searchCatalogSources({ artist, title, kind = "review", fet
       }
       const html = Buffer.concat(chunks).toString("utf8");
       if (/anomaly\.js|anomaly-modal|captcha-container|verify you are human|<title>Client Challenge<\/title>|_fs-ch-/i.test(html)) {
-        attempts.push({ source, status: "unavailable", reason: "challenge" });
-        continue;
+        return { attempt: { source, status: "unavailable", reason: "challenge" }, urls: [] };
       }
       const urls = researchResultUrls(html, url, kind);
-      attempts.push({ source, status: urls.length ? "found" : "no-results" });
-      for (const result of urls.slice(0, 4)) collected.add(result);
+      return { attempt: { source, status: urls.length ? "found" : "no-results" }, urls: urls.slice(0, 4) };
     } catch {
-      attempts.push({ source, status: "unavailable", reason: "request-failed" });
+      return { attempt: { source, status: "unavailable", reason: "request-failed" }, urls: [] };
     }
-  }
-  return { urls: [...collected].slice(0, 12), attempts, unavailable: collected.size === 0 && attempts.some((attempt) => attempt.status === "unavailable") };
+  }));
+  const attempts = results.map((result) => result.attempt);
+  const urls = [...new Set(results.flatMap((result) => result.urls))].slice(0, 12);
+  return { urls, attempts, unavailable: !urls.length && attempts.every((attempt) => attempt.status === "unavailable") };
 }

@@ -652,6 +652,20 @@ for (const [sku, source] of [
   assert.equal(artwork.imageCredits?.[0]?.credit, source);
 }
 
+const transmissionArtwork = ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0104"];
+assert.ok(existsSync(new URL(`..${transmissionArtwork.cover}`, import.meta.url)));
+assert.match(transmissionArtwork.imageCredits[0].credit, /picture disc photograph/);
+const transmissionProduct = {
+  sku: "NXP-2026-VNL-0104",
+  image: "",
+  images: [],
+  raw: { edition: transmissionArtwork.edition, catalogNumber: transmissionArtwork.catalogNumber }
+};
+assert.equal(applyFinalReviewedCoverLock(transmissionProduct).image, transmissionArtwork.cover);
+assert.equal(applyFinalReviewedCoverLock({
+  ...transmissionProduct, raw: { ...transmissionProduct.raw, catalogNumber: "FAC 13" }
+}).image, "", "a different pressing must not inherit the picture-disc artwork");
+
 for (const [sku, sourceDomain] of [
   ["NXP-2026-VNL-0080", "thequietus.com"],
   ["NXP-2026-VNL-0079", "boomkat.com"],

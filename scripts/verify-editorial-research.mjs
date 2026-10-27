@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { editorialSource, editorialPageMatches, fetchEditorialPage, readHtmlMetadata, isReviewArticle, editorialReviewQuote } from "../api/_lib/catalogEditorialSources.js";
 import { researchResultUrls, searchCatalogSources } from "../api/_lib/catalogSourceSearch.js";
 import { archiveRemoteProductImage, bandcampArchiveFallback } from "../api/_lib/productImageStorage.js";
-import { applyVerifiedReleaseDescription, bandcampAlbumGuess, chooseDescriptionEditorial, excludeDatabaseEditorial, enrichDiscoveredReview, inventoryFingerprint, matchBandcampPhysicalRelease, reuseVerifiedReleaseCover, reuseVerifiedReleaseMetadata } from "../api/_lib/catalogEnrichment.js";
+import { applyVerifiedReleaseDescription, bandcampAlbumGuess, chooseDescriptionEditorial, discoverBandcampRelease, excludeDatabaseEditorial, enrichDiscoveredReview, inventoryFingerprint, matchBandcampPhysicalRelease, reuseVerifiedReleaseCover, reuseVerifiedReleaseMetadata } from "../api/_lib/catalogEnrichment.js";
 
 for (const url of [
   "https://musicbrainz.org/release/example", "https://www.discogs.com/release/example",
@@ -141,6 +141,45 @@ assert.equal(found.unavailable, false);
 assert.deepEqual(researchResultUrls('<a href="https://discogs.com/release/1">x</a><a href="https://pitchfork.com.evil.test/reviews/x">y</a>', "https://search.brave.com", "review"), []);
 const unavailable = await searchCatalogSources({ artist: "Test", title: "Album", fetcher: async () => new Response("", { status: 429 }) });
 assert.equal(unavailable.unavailable, true);
+const partiallyAvailable = await searchCatalogSources({ artist: "Test", title: "Album", fetcher: async (url) =>
+  url.includes("duckduckgo") ? new Response("", { status: 429 }) : new Response("<html><body>No matching review</body></html>")
+});
+assert.equal(partiallyAvailable.unavailable, false, "A blocked search endpoint must not disguise successful no-result searches as an outage.");
+assert.equal(partiallyAvailable.attempts.filter((attempt) => attempt.status === "no-results").length, 1);
+let activeSearches = 0;
+let peakSearches = 0;
+await searchCatalogSources({ artist: "Test", title: "Album", kind: "bandcamp", fetcher: async () => {
+  activeSearches += 1;
+  peakSearches = Math.max(peakSearches, activeSearches);
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  activeSearches -= 1;
+  return new Response("<html></html>");
+} });
+assert.equal(peakSearches, 3, "Independent search endpoints should share one bounded wait window.");
+const priorBandcampFetch = globalThis.fetch;
+try {
+  let activeCandidates = 0;
+  let peakCandidates = 0;
+  const exactPage = `<meta property="og:image" content="https://f4.bcbits.com/img/a1234567890_10.jpg">${documentFor({
+    artist: "Test Artist", current: { title: "Exact Album" }, packages: [{ type_name: "Vinyl LP", title: "12-inch vinyl", upc: "1234567890123", catalog_number: "CAT1" }]
+  })}`;
+  globalThis.fetch = async (url) => {
+    activeCandidates += 1;
+    peakCandidates = Math.max(peakCandidates, activeCandidates);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    activeCandidates -= 1;
+    return new Response(url.includes("correct.bandcamp.com") ? exactPage : "<html></html>");
+  };
+  const candidate = await discoverBandcampRelease({
+    artist: "Test Artist", title: "Exact Album", item: "Vinyl", barcode: "1234567890123", catalogNumber: "CAT1",
+    researchUrls: ["https://wrong.bandcamp.com/album/exact-album", "https://correct.bandcamp.com/album/exact-album"]
+  });
+  assert.equal(peakCandidates, 3, "Candidate release pages should be checked in one bounded batch.");
+  assert.equal(candidate.sourceUrl, "https://correct.bandcamp.com/album/exact-album");
+  assert.equal(candidate.barcode, "1234567890123");
+} finally {
+  globalThis.fetch = priorBandcampFetch;
+}
 const challenge = await searchCatalogSources({ artist: "Test", title: "Album", kind: "bandcamp", fetcher: async () => new Response("<title>Client Challenge</title>") });
 assert.equal(challenge.urls.length, 0);
 assert.equal(challenge.unavailable, true);
