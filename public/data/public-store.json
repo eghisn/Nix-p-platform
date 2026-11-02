@@ -2832,6 +2832,666 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0094",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0094",
+      "tags": [
+        "lo-fi",
+        "surf rock",
+        "indie rock"
+      ],
+      "year": 2010,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0094-official-cover.webp",
+      "label": "Fat Possum Records",
+      "price": 810000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "King Of The Beach",
+      "artist": "Wavves",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0094-official-cover.webp"
+      ],
+      "barcode": "767981122410",
+      "details": [],
+      "edition": "12-inch Vinyl LP",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0094-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.theguardian.com/music/2010/aug/01/wavves-king-of-the-beach-review",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.788Z",
+          "sku": "NXP-2026-VNL-0094",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.792Z",
+          "sku": "NXP-2026-VNL-0094",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.562Z",
+          "sku": "NXP-2026-VNL-0094",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.348Z",
+          "sku": "NXP-2026-VNL-0094",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.436Z",
+          "sku": "NXP-2026-VNL-0094",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.816Z",
+          "sku": "NXP-2026-VNL-0094",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.491Z",
+          "sku": "NXP-2026-VNL-0094",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.302Z",
+          "sku": "NXP-2026-VNL-0094",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.788Z",
+        "sku": "NXP-2026-VNL-0094",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "On King of the Beach, Nathan Williams lets Wavves' songs come through the noise with unusually clear, direct hooks. The title track, 'Idiot' and 'Post Acid' keep the guitars rough while the rhythm section gives the record a harder push than its home-recorded predecessors. This is the 2010 Fat Possum LP with the original illustrated cat sleeve, not the later alternate-art pressing.",
+      "reviewQuote": "a more polished, coherent Wavves",
+      "imageCredits": [
+        {
+          "url": "https://wavvesband.bandcamp.com/album/king-of-the-beach",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0094-official-cover.webp",
+          "credit": "Wavves official Bandcamp artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "The Guardian (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.theguardian.com/music/2010/aug/01/wavves-king-of-the-beach-review",
+        "description": "On King of the Beach, Nathan Williams lets Wavves' songs come through the noise with unusually clear, direct hooks. The title track, 'Idiot' and 'Post Acid' keep the guitars rough while the rhythm section gives the record a harder push than its home-recorded predecessors. This is the 2010 Fat Possum LP with the original illustrated cat sleeve, not the later alternate-art pressing.",
+        "reviewQuote": "a more polished, coherent Wavves",
+        "reviewSource": "The Guardian (quoted)",
+        "relatedArtists": [
+          "FIDLAR",
+          "Bass Drum of Death",
+          "together PANGEA",
+          "Cloud Nothings",
+          "Surfer Blood"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Wavves official Bandcamp / The Guardian",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "FIDLAR",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.778058,
+            "artist": "Bass Drum of Death",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 0.778058,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.76645,
+            "artist": "together PANGEA",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 0.76645,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.662992,
+            "artist": "Cloud Nothings",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 0.662992,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.602804,
+            "artist": "Surfer Blood",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 0.602804,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "FIDLAR",
+              "Bass Drum of Death",
+              "together PANGEA",
+              "Cloud Nothings",
+              "Surfer Blood",
+              "The Orwells",
+              "Best Coast",
+              "No Age",
+              "Ty Segall",
+              "Jay Reatard"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "FIDLAR",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.778058,
+                "artist": "Bass Drum of Death",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 0.778058,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.76645,
+                "artist": "together PANGEA",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 0.76645,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.662992,
+                "artist": "Cloud Nothings",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 0.662992,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.602804,
+                "artist": "Surfer Blood",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 0.602804,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.511075,
+                "artist": "The Orwells",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 0.511075,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.452505,
+                "artist": "Best Coast",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 0.452505,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.368092,
+                "artist": "No Age",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 0.368092,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.354654,
+                "artist": "Ty Segall",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 0.354654,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.340549,
+                "artist": "Jay Reatard",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Wavves",
+                "confidence": 0.340549,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "FIDLAR",
+            "Bass Drum of Death",
+            "together PANGEA",
+            "Cloud Nothings",
+            "Surfer Blood"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "FIDLAR",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.778058,
+              "artist": "Bass Drum of Death",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.778058,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.76645,
+              "artist": "together PANGEA",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.76645,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.662992,
+              "artist": "Cloud Nothings",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.662992,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.602804,
+              "artist": "Surfer Blood",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.602804,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "FP1224-1",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mua59di5et71ju",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "FIDLAR",
+        "Bass Drum of Death",
+        "together PANGEA",
+        "Cloud Nothings",
+        "Surfer Blood"
+      ],
+      "reviewResearch": {
+        "url": "https://www.theguardian.com/music/2010/aug/01/wavves-king-of-the-beach-review",
+        "scope": "release",
+        "source": "The Guardian (quoted)",
+        "status": "verified"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://wavvesband.bandcamp.com/album/king-of-the-beach",
+          "source": "Wavves official Bandcamp / The Guardian",
+          "confidence": 100
+        },
+        {
+          "url": "https://www.theguardian.com/music/2010/aug/01/wavves-king-of-the-beach-review",
+          "source": "The Guardian (quoted)",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": null,
+      "catalogPriceSync": 810000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Wavves official Bandcamp / The Guardian",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "FIDLAR",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Wavves",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.778058,
+          "artist": "Bass Drum of Death",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Wavves",
+          "confidence": 0.778058,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.76645,
+          "artist": "together PANGEA",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Wavves",
+          "confidence": 0.76645,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.662992,
+          "artist": "Cloud Nothings",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Wavves",
+          "confidence": 0.662992,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.602804,
+          "artist": "Surfer Blood",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Wavves",
+          "confidence": 0.602804,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "FIDLAR",
+            "Bass Drum of Death",
+            "together PANGEA",
+            "Cloud Nothings",
+            "Surfer Blood",
+            "The Orwells",
+            "Best Coast",
+            "No Age",
+            "Ty Segall",
+            "Jay Reatard"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "FIDLAR",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.778058,
+              "artist": "Bass Drum of Death",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.778058,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.76645,
+              "artist": "together PANGEA",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.76645,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.662992,
+              "artist": "Cloud Nothings",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.662992,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.602804,
+              "artist": "Surfer Blood",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.602804,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.511075,
+              "artist": "The Orwells",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.511075,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.452505,
+              "artist": "Best Coast",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.452505,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.368092,
+              "artist": "No Age",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.368092,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.354654,
+              "artist": "Ty Segall",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.354654,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.340549,
+              "artist": "Jay Reatard",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Wavves",
+              "confidence": 0.340549,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Wavves"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "FIDLAR",
+          "Bass Drum of Death",
+          "together PANGEA",
+          "Cloud Nothings",
+          "Surfer Blood"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "FIDLAR",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.778058,
+            "artist": "Bass Drum of Death",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 0.778058,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.76645,
+            "artist": "together PANGEA",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 0.76645,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.662992,
+            "artist": "Cloud Nothings",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 0.662992,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.602804,
+            "artist": "Surfer Blood",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Wavves",
+            "confidence": 0.602804,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 45,
+      "editorialUpdatedAt": "2026-11-02T07:14:10.806+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0093",
       "qty": 1,
       "sku": "NXP-2026-VNL-0093",
@@ -3465,8 +4125,8 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 44,
-      "editorialUpdatedAt": "2026-11-02T07:13:06.899+00:00",
+      "editRevision": 45,
+      "editorialUpdatedAt": "2026-11-02T07:13:41.325+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
