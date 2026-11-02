@@ -2832,6 +2832,186 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0089",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0089",
+      "tags": [],
+      "year": 2012,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0089-user-cover.webp",
+      "label": "R&S Records",
+      "price": 300000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "SAY ARR EE",
+      "artist": "Bullion",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0089-user-cover.webp"
+      ],
+      "barcode": "5055274701615",
+      "details": [],
+      "edition": "Vinyl, 10\", 45 RPM",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0089-user-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://inverted-audio.com/review/bullion-say-arr-ee/",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.787Z",
+          "sku": "NXP-2026-VNL-0089",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.792Z",
+          "sku": "NXP-2026-VNL-0089",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.561Z",
+          "sku": "NXP-2026-VNL-0089",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.348Z",
+          "sku": "NXP-2026-VNL-0089",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.436Z",
+          "sku": "NXP-2026-VNL-0089",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.816Z",
+          "sku": "NXP-2026-VNL-0089",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.491Z",
+          "sku": "NXP-2026-VNL-0089",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.301Z",
+          "sku": "NXP-2026-VNL-0089",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "10",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.787Z",
+        "sku": "NXP-2026-VNL-0089",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "On this two-track R&S single, Bullion moves his own voice to the front of music that had previously leaned on samples. 'Say Arr Ee' folds layered singing and guitar into a brisk, psychedelic rhythm; the B-side 'What Does She Know' makes a more direct song from the same off-centre electronic palette. Issued as a 10-inch in 2012, it captures Nathan Jenkins between the cut-up experiments of You Drive Me to Plastic and the pop songwriting that followed.",
+      "reviewQuote": "The title track sees Bullion using his voice more like an instrument",
+      "editRevision": 44,
+      "imageCredits": [
+        {
+          "url": "",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0089-user-cover.webp",
+          "credit": "NIXP owner-provided R&S Records label artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Inverted Audio (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://inverted-audio.com/review/bullion-say-arr-ee/",
+        "description": "On this two-track R&S single, Bullion moves his own voice to the front of music that had previously leaned on samples. 'Say Arr Ee' folds layered singing and guitar into a brisk, psychedelic rhythm; the B-side 'What Does She Know' makes a more direct song from the same off-centre electronic palette. Issued as a 10-inch in 2012, it captures Nathan Jenkins between the cut-up experiments of You Drive Me to Plastic and the pop songwriting that followed.",
+        "reviewQuote": "The title track sees Bullion using his voice more like an instrument",
+        "reviewSource": "Inverted Audio (quoted)",
+        "descriptionSource": "R&S release information / Inverted Audio"
+      },
+      "catalogNumber": "RS 1201",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mu8ry3ad1f4qgo",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://inverted-audio.com/review/bullion-say-arr-ee/",
+          "source": "Inverted Audio original review (quoted)",
+          "confidence": 100
+        },
+        {
+          "url": "https://wordandsound.net/presales/2039/-1405",
+          "source": "Word and Sound distributor RS1201 / barcode 5055274701615",
+          "confidence": 95
+        }
+      ],
+      "catalogPriceSync": 300000,
+      "enrichmentOrigin": "owner-approved",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "R&S release information / Inverted Audio",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-10-28 16:23:08.216603+00",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "publishAfterResearch": false,
+      "minimumAcceptableOffer": 0,
+      "editorialUpdatedAt": "2026-11-02T06:24:30.028+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "manualRelatedArtists": [],
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-19",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0088",
       "qty": 1,
       "sku": "NXP-2026-VNL-0088",
@@ -2997,8 +3177,8 @@
       "garmentConditionNote": "",
       "publishAfterResearch": false,
       "minimumAcceptableOffer": 0,
-      "editRevision": 43,
-      "editorialUpdatedAt": "2026-11-02T06:23:23.079+00:00",
+      "editRevision": 44,
+      "editorialUpdatedAt": "2026-11-02T06:24:00.083+00:00",
       "editorialUpdatedBy": "admin-publication",
       "manualRelatedArtists": [],
       "relatedArtistsResearch": null,
