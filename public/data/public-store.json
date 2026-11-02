@@ -4844,6 +4844,191 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0085",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0085",
+      "tags": [],
+      "year": 2014,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0085-official-label.webp",
+      "label": "R&S Records",
+      "price": 315000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Mountain Divide",
+      "artist": "Lakker",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0085-official-label.webp"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "Vinyl, 12\", 45 RPM, EP",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0085-official-label.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://ra.co/reviews/15725",
+      "syncAudit": [
+        {
+          "at": "2026-11-02T05:17:55.749Z",
+          "sku": "NXP-2026-VNL-0085",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-02T02:00:46.624Z",
+          "sku": "NXP-2026-VNL-0085",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.781Z",
+          "sku": "NXP-2026-VNL-0085",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-31T02:00:47.138Z",
+          "sku": "NXP-2026-VNL-0085",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.778Z",
+          "sku": "NXP-2026-VNL-0085",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.559Z",
+          "sku": "NXP-2026-VNL-0085",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.346Z",
+          "sku": "NXP-2026-VNL-0085",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.434Z",
+          "sku": "NXP-2026-VNL-0085",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-02T05:17:55.749Z",
+        "sku": "NXP-2026-VNL-0085",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Lakker's second 12-inch for R&S turns the pressure inward. The eight-minute title track lets a buried melody emerge through waves of distortion, while 'Mathfall' balances heavy low end against fractured rhythm; the brief 'Monla' closes the three-track EP. Mastered by Matt Colton, Mountain Divide was issued in 2014.",
+      "reviewQuote": "a new high-water mark for Lakker in both scale and sound design",
+      "imageCredits": [
+        {
+          "url": "https://lakker.bandcamp.com/album/mountain-divide",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0085-official-label.webp",
+          "credit": "Lakker / R&S official 12-inch label artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Resident Advisor (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://ra.co/reviews/15725",
+        "description": "Lakker's second 12-inch for R&S turns the pressure inward. The eight-minute title track lets a buried melody emerge through waves of distortion, while 'Mathfall' balances heavy low end against fractured rhythm; the brief 'Monla' closes the three-track EP. Mastered by Matt Colton, Mountain Divide was issued in 2014.",
+        "reviewQuote": "a new high-water mark for Lakker in both scale and sound design",
+        "reviewSource": "Resident Advisor (quoted)",
+        "descriptionSource": "Lakker official Bandcamp / Resident Advisor"
+      },
+      "catalogNumber": "RS 1409",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mtvsxxb80b2r11",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "reviewResearch": {
+        "url": "https://ra.co/reviews/15725",
+        "scope": "release",
+        "source": "Resident Advisor (quoted)",
+        "status": "verified"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://lakker.bandcamp.com/album/mountain-divide",
+          "source": "Lakker official Bandcamp / Resident Advisor",
+          "confidence": 100
+        },
+        {
+          "url": "https://ra.co/reviews/15725",
+          "source": "Resident Advisor (quoted)",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": null,
+      "catalogPriceSync": 315000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Lakker official Bandcamp / Resident Advisor",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "publishAfterResearch": false,
+      "minimumAcceptableOffer": 0,
+      "editRevision": 52,
+      "editorialUpdatedAt": "2026-11-02T05:19:27.526+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "manualRelatedArtists": [],
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-10",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0084",
       "qty": 1,
       "sku": "NXP-2026-VNL-0084",
@@ -5136,7 +5321,7 @@
       "apparelType": "",
       "description": "Spectres' original 'The Sky Of All Places' appeared in the Too Pure Singles Club in 2014, before the band re-recorded it for Dying. The numbered seven-inch pairs its slow-building A-side with the shorter, more volatile 'Sooky Eyeball.' The band says only 250 copies of this first single were made.",
       "reviewQuote": "a medium paced, grubby trawl through the indie-psych world",
-      "editRevision": 53,
+      "editRevision": 55,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/5290166-Spectres-The-Sky-Of-All-Places",
@@ -5184,7 +5369,7 @@
       "catalogPriceSync": 305000,
       "enrichmentOrigin": "owner-approved",
       "enrichmentStatus": "complete",
-      "publicationState": "deployment_pending",
+      "publicationState": "live",
       "descriptionSource": "Spectres official Bandcamp / Isolation Records",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-10-28 16:23:08.216603+00",
@@ -5192,8 +5377,8 @@
       "garmentConditionNote": "",
       "publishAfterResearch": false,
       "minimumAcceptableOffer": 0,
-      "editorialUpdatedAt": "2026-11-02T05:16:27.189+00:00",
-      "editorialUpdatedBy": "admin-publication",
+      "editorialUpdatedAt": "2026-11-02T05:18:40.363+00:00",
+      "editorialUpdatedBy": "publication-reconciliation",
       "manualRelatedArtists": [],
       "relatedArtistsResearch": null,
       "shipping": {
@@ -25511,7 +25696,7 @@
       "apparelType": "",
       "description": "Drawn from Factory Floor's live score for Fritz Lang's Metropolis at London's Science Museum, 'Heart of Data' and 'Babel' are two soundtrack edits issued on the duo's own H/O/D Records imprint in 2018. Nik Colk Void and Gabriel Gurnsey let modular rhythms and changing synth textures carry the first side; the longer 'Babel' turns toward a looser, more meditative pulse.",
       "reviewQuote": "a sleeker new sound here, easing off the brittleness of their earlier releases",
-      "editRevision": 55,
+      "editRevision": 56,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
@@ -25811,11 +25996,11 @@
       "catalogPriceSync": 380000,
       "enrichmentOrigin": "owner-approved",
       "enrichmentStatus": "complete",
-      "publicationState": "deployment_pending",
+      "publicationState": "live",
       "descriptionSource": "Factory Floor / H/O/D release reporting / Boomkat",
       "metadataSourceUrl": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
-      "editorialUpdatedAt": "2026-11-02T05:15:29.952+00:00",
-      "editorialUpdatedBy": "admin-publication",
+      "editorialUpdatedAt": "2026-11-02T05:18:41.258+00:00",
+      "editorialUpdatedBy": "publication-reconciliation",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-10-28 16:23:08.216603+00",
       "adminPublishOverride": "Published",
