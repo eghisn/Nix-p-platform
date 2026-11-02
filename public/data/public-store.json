@@ -2147,6 +2147,705 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0107",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0107",
+      "tags": [
+        "indie pop",
+        "alternative pop"
+      ],
+      "year": 2018,
+      "color": "",
+      "flaws": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0107/cover.jpg",
+      "label": "ATO",
+      "price": 425000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Do You Like Pain?",
+      "artist": "Nilufer Yanya",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0107/cover.jpg"
+      ],
+      "barcode": "5 051083 129756",
+      "details": [
+        "SKU: NXP-2026-VNL-0107",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: Vinyl",
+        "12\"",
+        "45 RPM",
+        "EP",
+        "Red",
+        "Barcode: 5051083129756",
+        "Catalog number: BFM005",
+        "Barcode: 5 051083 129756"
+      ],
+      "edition": "Vinyl, 12\", 45 RPM, EP, Red",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0107/cover.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.normanrecords.com/records/170442-nil-fer-yanya-do-you-like-pain",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.790Z",
+          "sku": "NXP-2026-VNL-0107",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.794Z",
+          "sku": "NXP-2026-VNL-0107",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.564Z",
+          "sku": "NXP-2026-VNL-0107",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.351Z",
+          "sku": "NXP-2026-VNL-0107",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.437Z",
+          "sku": "NXP-2026-VNL-0107",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.492Z",
+          "sku": "NXP-2026-VNL-0107",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-23T19:51:01.473Z",
+          "sku": "NXP-2026-VNL-0107",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T17:01:47.801Z",
+          "sku": "NXP-2026-VNL-0107",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "ATO",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.790Z",
+        "sku": "NXP-2026-VNL-0107",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Do You Like Pain? brings two early Nilufer Yanya songs into dialogue with their remixes. Baby Luv is reworked by ALASKALASKA, while Jazzi Bobbi draws out the darker side of Thanks 4 Nothing, processing its drums and turning fragments of Yanya's voice into percussion. The original Thanks 4 Nothing centres on a relationship beyond repair; its remix gives that unease a different rhythmic shape.",
+      "reviewQuote": "these songs feel busy with life and narrative",
+      "sourceTitle": "Do You Like Pain EP",
+      "editRevision": 41,
+      "imageCredits": [
+        {
+          "url": "https://niluferyanya.bandcamp.com/album/do-you-like-pain-ep",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0107/cover.jpg",
+          "credit": "Official Bandcamp release artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Norman Records Do You Like Pain? staff review (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.normanrecords.com/records/170442-nil-fer-yanya-do-you-like-pain",
+        "description": "Do You Like Pain? brings two early Nilufer Yanya songs into dialogue with their remixes. Baby Luv is reworked by ALASKALASKA, while Jazzi Bobbi draws out the darker side of Thanks 4 Nothing, processing its drums and turning fragments of Yanya's voice into percussion. The original Thanks 4 Nothing centres on a relationship beyond repair; its remix gives that unease a different rhythmic shape.",
+        "reviewQuote": "these songs feel busy with life and narrative",
+        "reviewSource": "Norman Records Do You Like Pain? staff review (quoted)",
+        "relatedArtists": [
+          "Kaeto",
+          "Aya",
+          "Little Dragon",
+          "Eric Hilton",
+          "Lamb"
+        ],
+        "descriptionSource": "ATO Records",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Kaeto",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.832151,
+            "artist": "Aya",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 0.832151,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.782861,
+            "artist": "Little Dragon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 0.782861,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.73502,
+            "artist": "Eric Hilton",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 0.73502,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.601269,
+            "artist": "Lamb",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 0.601269,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Kaeto",
+              "Aya",
+              "Little Dragon",
+              "Eric Hilton",
+              "Lamb",
+              "Skinshape",
+              "Beth Gibbons",
+              "a.s.o.",
+              "Quantic",
+              "Gotan Project"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Kaeto",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.832151,
+                "artist": "Aya",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 0.832151,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.782861,
+                "artist": "Little Dragon",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 0.782861,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.73502,
+                "artist": "Eric Hilton",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 0.73502,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.601269,
+                "artist": "Lamb",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 0.601269,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.529505,
+                "artist": "Skinshape",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 0.529505,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.502605,
+                "artist": "Beth Gibbons",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 0.502605,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.498568,
+                "artist": "a.s.o.",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 0.498568,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.461973,
+                "artist": "Quantic",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 0.461973,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.438595,
+                "artist": "Gotan Project",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+                "confidence": 0.438595,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Kaeto",
+            "Aya",
+            "Little Dragon",
+            "Eric Hilton",
+            "Lamb"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Kaeto",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.832151,
+              "artist": "Aya",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.832151,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.782861,
+              "artist": "Little Dragon",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.782861,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.73502,
+              "artist": "Eric Hilton",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.73502,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.601269,
+              "artist": "Lamb",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.601269,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "BFM005",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "mua75l8svincse",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Kaeto",
+        "Aya",
+        "Little Dragon",
+        "Eric Hilton",
+        "Lamb"
+      ],
+      "reviewResearch": {
+        "url": "https://pitchfork.com/reviews/tracks/nilufer-yanya-baby-luv/",
+        "quote": "The London artist's new track is a raw love song",
+        "scope": "track",
+        "title": "Baby Luv",
+        "source": "Pitchfork on \"Baby Luv\" (quoted)",
+        "status": "verified",
+        "verifiedAt": "2026-10-23"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "researchFailure": null,
+      "researchSources": [
+        {
+          "url": "https://niluferyanya.bandcamp.com/album/do-you-like-pain-ep",
+          "source": "Official Bandcamp physical release",
+          "confidence": 100
+        },
+        {
+          "url": "https://atorecords.com/featured/nilufer-yanyas-new-single-and-video-thanks-4-nothing-out-now/",
+          "source": "ATO Records",
+          "confidence": 100
+        },
+        {
+          "url": "https://pitchfork.com/reviews/tracks/nilufer-yanya-baby-luv/",
+          "source": "Pitchfork on \"Baby Luv\" (quoted)",
+          "confidence": 100
+        },
+        {
+          "url": "https://www.normanrecords.com/records/170442-nil-fer-yanya-do-you-like-pain",
+          "source": "Norman Records Do You Like Pain? staff review (quoted)",
+          "confidence": 100
+        }
+      ],
+      "sleeveCondition": "",
+      "autoProductPhoto": "",
+      "catalogPriceSync": 425000,
+      "enrichmentOrigin": "verified-release-cache",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "ATO Records",
+      "metadataSourceUrl": "https://niluferyanya.bandcamp.com/album/do-you-like-pain-ep",
+      "editorialUpdatedAt": "2026-11-02T08:02:51.52+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "mediaConditionNote": "",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-10-23",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
+      "enrichmentAttemptedAt": "2026-10-23T19:51:01.473Z",
+      "enrichmentFingerprint": "nilufer yanya|do you like pain|vinyl|5 051083 129756|bfm005",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Kaeto",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.832151,
+          "artist": "Aya",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+          "confidence": 0.832151,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.782861,
+          "artist": "Little Dragon",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+          "confidence": 0.782861,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.73502,
+          "artist": "Eric Hilton",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+          "confidence": 0.73502,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.601269,
+          "artist": "Lamb",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+          "confidence": 0.601269,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Kaeto",
+            "Aya",
+            "Little Dragon",
+            "Eric Hilton",
+            "Lamb",
+            "Skinshape",
+            "Beth Gibbons",
+            "a.s.o.",
+            "Quantic",
+            "Gotan Project"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Kaeto",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.832151,
+              "artist": "Aya",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.832151,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.782861,
+              "artist": "Little Dragon",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.782861,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.73502,
+              "artist": "Eric Hilton",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.73502,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.601269,
+              "artist": "Lamb",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.601269,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.529505,
+              "artist": "Skinshape",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.529505,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.502605,
+              "artist": "Beth Gibbons",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.502605,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.498568,
+              "artist": "a.s.o.",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.498568,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.461973,
+              "artist": "Quantic",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.461973,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.438595,
+              "artist": "Gotan Project",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+              "confidence": 0.438595,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Kaeto",
+          "Aya",
+          "Little Dragon",
+          "Eric Hilton",
+          "Lamb"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Kaeto",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.832151,
+            "artist": "Aya",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 0.832151,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.782861,
+            "artist": "Little Dragon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 0.782861,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.73502,
+            "artist": "Eric Hilton",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 0.73502,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.601269,
+            "artist": "Lamb",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nilufer%20Yanya",
+            "confidence": 0.601269,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-10-23",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0106",
       "qty": 1,
       "sku": "NXP-2026-VNL-0106",
@@ -2814,8 +3513,8 @@
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 41,
-      "editorialUpdatedAt": "2026-11-02T07:59:24.583+00:00",
+      "editRevision": 42,
+      "editorialUpdatedAt": "2026-11-02T07:59:59.621+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
