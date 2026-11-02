@@ -224,7 +224,7 @@ function safeHostname(value) {
 export const CURATED_FINANCE_ENRICHMENTS = {
   "NXP-2026-VNL-0091": {
     artist: "Various Artists", title: "Serie A", year: 2017,
-    label: "Public Possession", edition: 'Vinyl, 12", Compilation',
+    label: "Public Possession", edition: 'Vinyl, 12", 33 ⅓ RPM, Compilation',
     catalogNumber: "PP022", verifiedCatalogNumber: "PP022",
     cover: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0091"].cover,
     imageCredits: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0091"].imageCredits,
@@ -235,6 +235,7 @@ export const CURATED_FINANCE_ENRICHMENTS = {
     sourceUrl: "https://publicpossession.bandcamp.com/album/serie-a-compilation",
     researchSources: [
       { source: "Public Possession official Bandcamp release and artwork", url: "https://publicpossession.bandcamp.com/album/serie-a-compilation", confidence: 100 },
+      { source: "Exact physical release format (Discogs release 10624649)", url: "https://www.discogs.com/release/10624649-Various-Serie-A", confidence: 95 },
       { source: "PP022 physical format and label release copy", url: "https://yoyaku.io/jp/release/pp022/", confidence: 95 }
     ]
   },
