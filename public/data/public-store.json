@@ -2936,7 +2936,7 @@
       "apparelType": "",
       "description": "On this two-track R&S single, Bullion moves his own voice to the front of music that had previously leaned on samples. 'Say Arr Ee' folds layered singing and guitar into a brisk, psychedelic rhythm; the B-side 'What Does She Know' makes a more direct song from the same off-centre electronic palette. Issued as a 10-inch in 2012, it captures Nathan Jenkins between the cut-up experiments of You Drive Me to Plastic and the pop songwriting that followed.",
       "reviewQuote": "The title track sees Bullion using his voice more like an instrument",
-      "editRevision": 44,
+      "editRevision": 47,
       "imageCredits": [
         {
           "url": "",
@@ -2951,14 +2951,256 @@
         "description": "On this two-track R&S single, Bullion moves his own voice to the front of music that had previously leaned on samples. 'Say Arr Ee' folds layered singing and guitar into a brisk, psychedelic rhythm; the B-side 'What Does She Know' makes a more direct song from the same off-centre electronic palette. Issued as a 10-inch in 2012, it captures Nathan Jenkins between the cut-up experiments of You Drive Me to Plastic and the pop songwriting that followed.",
         "reviewQuote": "The title track sees Bullion using his voice more like an instrument",
         "reviewSource": "Inverted Audio (quoted)",
-        "descriptionSource": "R&S release information / Inverted Audio"
+        "relatedArtists": [
+          "Hudson Mohawke",
+          "Erykah Badu & The Alchemist",
+          "Onra",
+          "Paul White",
+          "Lone"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "R&S release information / Inverted Audio",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Hudson Mohawke",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.823992,
+            "artist": "Erykah Badu & The Alchemist",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 0.823992,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.767835,
+            "artist": "Onra",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 0.767835,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725576,
+            "artist": "Paul White",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 0.725576,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.723634,
+            "artist": "Lone",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 0.723634,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Hudson Mohawke",
+              "Erykah Badu & The Alchemist",
+              "Onra",
+              "Paul White",
+              "Lone",
+              "Baths",
+              "Dabrye",
+              "Vegyn",
+              "Letherette",
+              "Nosaj Thing"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Hudson Mohawke",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.823992,
+                "artist": "Erykah Badu & The Alchemist",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 0.823992,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.767835,
+                "artist": "Onra",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 0.767835,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.725576,
+                "artist": "Paul White",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 0.725576,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.723634,
+                "artist": "Lone",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 0.723634,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.612716,
+                "artist": "Baths",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 0.612716,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.606104,
+                "artist": "Dabrye",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 0.606104,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.53995,
+                "artist": "Vegyn",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 0.53995,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.539935,
+                "artist": "Letherette",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 0.539935,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.511033,
+                "artist": "Nosaj Thing",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Bullion",
+                "confidence": 0.511033,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Hudson Mohawke",
+            "Erykah Badu & The Alchemist",
+            "Onra",
+            "Paul White",
+            "Lone"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Hudson Mohawke",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.823992,
+              "artist": "Erykah Badu & The Alchemist",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.823992,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.767835,
+              "artist": "Onra",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.767835,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725576,
+              "artist": "Paul White",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.725576,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.723634,
+              "artist": "Lone",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.723634,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "RS 1201",
       "displayFormat": "Vinyl",
       "publishStatus": "Published",
       "financeStockId": "mu8ry3ad1f4qgo",
       "open_to_offers": false,
-      "relatedArtists": [],
+      "relatedArtists": [
+        "Hudson Mohawke",
+        "Erykah Badu & The Alchemist",
+        "Onra",
+        "Paul White",
+        "Lone"
+      ],
       "financeItemType": "Vinyl",
       "financeMetadata": {
         "isbn": "",
@@ -2984,18 +3226,247 @@
       "catalogPriceSync": 300000,
       "enrichmentOrigin": "owner-approved",
       "enrichmentStatus": "complete",
-      "publicationState": "deployment_pending",
+      "publicationState": "live",
       "descriptionSource": "R&S release information / Inverted Audio",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-10-28 16:23:08.216603+00",
       "adminPublishOverride": "Published",
       "garmentConditionNote": "",
-      "publishAfterResearch": false,
-      "minimumAcceptableOffer": 0,
-      "editorialUpdatedAt": "2026-11-02T06:24:30.028+00:00",
-      "editorialUpdatedBy": "admin-publication",
       "manualRelatedArtists": [],
-      "relatedArtistsResearch": null,
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Hudson Mohawke",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bullion",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.823992,
+          "artist": "Erykah Badu & The Alchemist",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bullion",
+          "confidence": 0.823992,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.767835,
+          "artist": "Onra",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bullion",
+          "confidence": 0.767835,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.725576,
+          "artist": "Paul White",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bullion",
+          "confidence": 0.725576,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.723634,
+          "artist": "Lone",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bullion",
+          "confidence": 0.723634,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Hudson Mohawke",
+            "Erykah Badu & The Alchemist",
+            "Onra",
+            "Paul White",
+            "Lone",
+            "Baths",
+            "Dabrye",
+            "Vegyn",
+            "Letherette",
+            "Nosaj Thing"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Hudson Mohawke",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.823992,
+              "artist": "Erykah Badu & The Alchemist",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.823992,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.767835,
+              "artist": "Onra",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.767835,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.725576,
+              "artist": "Paul White",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.725576,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.723634,
+              "artist": "Lone",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.723634,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.612716,
+              "artist": "Baths",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.612716,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.606104,
+              "artist": "Dabrye",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.606104,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.53995,
+              "artist": "Vegyn",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.53995,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.539935,
+              "artist": "Letherette",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.539935,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.511033,
+              "artist": "Nosaj Thing",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Bullion",
+              "confidence": 0.511033,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Bullion"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Hudson Mohawke",
+          "Erykah Badu & The Alchemist",
+          "Onra",
+          "Paul White",
+          "Lone"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Hudson Mohawke",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.823992,
+            "artist": "Erykah Badu & The Alchemist",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 0.823992,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.767835,
+            "artist": "Onra",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 0.767835,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.725576,
+            "artist": "Paul White",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 0.725576,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.723634,
+            "artist": "Lone",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Bullion",
+            "confidence": 0.723634,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editorialUpdatedAt": "2026-11-02T06:34:12.313+00:00",
+      "editorialUpdatedBy": "related-artists-research",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
@@ -3130,14 +3601,256 @@
         "description": "White Lung's third album compresses ten songs into roughly 22 minutes, with Mish Way's voice cutting through Kenneth William's fast, treble-heavy guitars. Issued by Domino in 2014, Deep Fantasy makes speed and melody inseparable: 'Drown With the Monster' and 'Down It Goes' set the pace before the record has time to settle.",
         "reviewQuote": "22 vicious, compact minutes of melodic punk",
         "reviewSource": "Pitchfork (quoted)",
-        "descriptionSource": "White Lung official Bandcamp / Pitchfork"
+        "relatedArtists": [
+          "Screaming Females",
+          "Savages",
+          "Perfect Pussy",
+          "The Coathangers",
+          "Single Mothers"
+        ],
+        "enrichmentStatus": "needs-edition-verification",
+        "descriptionSource": "White Lung official Bandcamp / Pitchfork",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Screaming Females",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.970983,
+            "artist": "Savages",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 0.970983,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.960079,
+            "artist": "Perfect Pussy",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 0.960079,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.761524,
+            "artist": "The Coathangers",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 0.761524,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.694334,
+            "artist": "Single Mothers",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 0.694334,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Screaming Females",
+              "Savages",
+              "Perfect Pussy",
+              "The Coathangers",
+              "Single Mothers",
+              "Priests",
+              "Fucked Up",
+              "Hot Snakes",
+              "The Distillers",
+              "Beach Slang"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Screaming Females",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.970983,
+                "artist": "Savages",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 0.970983,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.960079,
+                "artist": "Perfect Pussy",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 0.960079,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.761524,
+                "artist": "The Coathangers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 0.761524,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.694334,
+                "artist": "Single Mothers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 0.694334,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.685937,
+                "artist": "Priests",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 0.685937,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.6548,
+                "artist": "Fucked Up",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 0.6548,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.619296,
+                "artist": "Hot Snakes",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 0.619296,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.613075,
+                "artist": "The Distillers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 0.613075,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.539376,
+                "artist": "Beach Slang",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/White%20Lung",
+                "confidence": 0.539376,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Screaming Females",
+            "Savages",
+            "Perfect Pussy",
+            "The Coathangers",
+            "Single Mothers"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Screaming Females",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.970983,
+              "artist": "Savages",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.970983,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.960079,
+              "artist": "Perfect Pussy",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.960079,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.761524,
+              "artist": "The Coathangers",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.761524,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.694334,
+              "artist": "Single Mothers",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.694334,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "462444ef-98c0-40d4-8b22-e089ed44b63b",
+          "sourceUrl": "https://musicbrainz.org/release/462444ef-98c0-40d4-8b22-e089ed44b63b",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "WIGLP335",
       "displayFormat": "Vinyl",
       "publishStatus": "Published",
       "financeStockId": "mu8r8aqrxh7sia",
       "open_to_offers": false,
-      "relatedArtists": [],
+      "relatedArtists": [
+        "Screaming Females",
+        "Savages",
+        "Perfect Pussy",
+        "The Coathangers",
+        "Single Mothers"
+      ],
       "reviewResearch": {
         "url": "https://pitchfork.com/reviews/albums/19460-white-lung-deep-fantasy/",
         "scope": "release",
@@ -3170,18 +3883,247 @@
       "autoProductPhoto": null,
       "catalogPriceSync": 360000,
       "enrichmentStatus": "needs-edition-verification",
-      "publicationState": "deployment_pending",
+      "publicationState": "live",
       "descriptionSource": "White Lung official Bandcamp / Pitchfork",
       "apparelMeasurements": {},
       "adminPublishOverride": "Published",
       "garmentConditionNote": "",
-      "publishAfterResearch": false,
-      "minimumAcceptableOffer": 0,
-      "editRevision": 44,
-      "editorialUpdatedAt": "2026-11-02T06:24:00.083+00:00",
-      "editorialUpdatedBy": "admin-publication",
       "manualRelatedArtists": [],
-      "relatedArtistsResearch": null,
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Screaming Females",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/White%20Lung",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.970983,
+          "artist": "Savages",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/White%20Lung",
+          "confidence": 0.970983,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.960079,
+          "artist": "Perfect Pussy",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/White%20Lung",
+          "confidence": 0.960079,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.761524,
+          "artist": "The Coathangers",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/White%20Lung",
+          "confidence": 0.761524,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.694334,
+          "artist": "Single Mothers",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/White%20Lung",
+          "confidence": 0.694334,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Screaming Females",
+            "Savages",
+            "Perfect Pussy",
+            "The Coathangers",
+            "Single Mothers",
+            "Priests",
+            "Fucked Up",
+            "Hot Snakes",
+            "The Distillers",
+            "Beach Slang"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Screaming Females",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.970983,
+              "artist": "Savages",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.970983,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.960079,
+              "artist": "Perfect Pussy",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.960079,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.761524,
+              "artist": "The Coathangers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.761524,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.694334,
+              "artist": "Single Mothers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.694334,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.685937,
+              "artist": "Priests",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.685937,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.6548,
+              "artist": "Fucked Up",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.6548,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.619296,
+              "artist": "Hot Snakes",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.619296,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.613075,
+              "artist": "The Distillers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.613075,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.539376,
+              "artist": "Beach Slang",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/White%20Lung",
+              "confidence": 0.539376,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/White%20Lung"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Screaming Females",
+          "Savages",
+          "Perfect Pussy",
+          "The Coathangers",
+          "Single Mothers"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Screaming Females",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.970983,
+            "artist": "Savages",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 0.970983,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.960079,
+            "artist": "Perfect Pussy",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 0.960079,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.761524,
+            "artist": "The Coathangers",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 0.761524,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.694334,
+            "artist": "Single Mothers",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/White%20Lung",
+            "confidence": 0.694334,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "462444ef-98c0-40d4-8b22-e089ed44b63b",
+        "sourceUrl": "https://musicbrainz.org/release/462444ef-98c0-40d4-8b22-e089ed44b63b",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 46,
+      "editorialUpdatedAt": "2026-11-02T06:34:05.472+00:00",
+      "editorialUpdatedBy": "related-artists-research",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
@@ -5328,14 +6270,256 @@
         "description": "On Dracula, Nurses bring their off-kilter pop into a more spacious, rhythmic frame. The Portland trio keep the unstable textures and Aaron Chapman's unmistakable voice, but 'Fever Dreams' and 'Trying to Reach You' find sharper melodies inside the drift. The record feels densely built without losing its sense of open air.",
         "reviewQuote": "It's a densely layered yet wide-open record",
         "reviewSource": "Willamette Week (quoted)",
-        "descriptionSource": "Nurses official Bandcamp / Willamette Week"
+        "relatedArtists": [
+          "Foreign Born",
+          "Blind Man's Colour",
+          "Suckers",
+          "Keepaway",
+          "Ganglians"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Nurses official Bandcamp / Willamette Week",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Foreign Born",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.952741,
+            "artist": "Blind Man's Colour",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 0.952741,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.942247,
+            "artist": "Suckers",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 0.942247,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.884886,
+            "artist": "Keepaway",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 0.884886,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.845166,
+            "artist": "Ganglians",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 0.845166,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Foreign Born",
+              "Blind Man's Colour",
+              "Suckers",
+              "Keepaway",
+              "Ganglians",
+              "Sister Suvi",
+              "Holiday Shores",
+              "Lackthereof",
+              "Pill Wonder",
+              "Au"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Foreign Born",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.952741,
+                "artist": "Blind Man's Colour",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 0.952741,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.942247,
+                "artist": "Suckers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 0.942247,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.884886,
+                "artist": "Keepaway",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 0.884886,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.845166,
+                "artist": "Ganglians",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 0.845166,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.831484,
+                "artist": "Sister Suvi",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 0.831484,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.778423,
+                "artist": "Holiday Shores",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 0.778423,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.765983,
+                "artist": "Lackthereof",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 0.765983,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.735287,
+                "artist": "Pill Wonder",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 0.735287,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.666311,
+                "artist": "Au",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Nurses",
+                "confidence": 0.666311,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Foreign Born",
+            "Blind Man's Colour",
+            "Suckers",
+            "Keepaway",
+            "Ganglians"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Foreign Born",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.952741,
+              "artist": "Blind Man's Colour",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.952741,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.942247,
+              "artist": "Suckers",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.942247,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.884886,
+              "artist": "Keepaway",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.884886,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.845166,
+              "artist": "Ganglians",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.845166,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "DOC043",
       "displayFormat": "Vinyl",
       "publishStatus": "Published",
       "financeStockId": "mtvt3gh9a2lbh4",
       "open_to_offers": false,
-      "relatedArtists": [],
+      "relatedArtists": [
+        "Foreign Born",
+        "Blind Man's Colour",
+        "Suckers",
+        "Keepaway",
+        "Ganglians"
+      ],
       "reviewResearch": {
         "url": "https://www.wweek.com/portland/article-17979-album-review-nurses.html",
         "scope": "release",
@@ -5368,18 +6552,247 @@
       "autoProductPhoto": null,
       "catalogPriceSync": 305000,
       "enrichmentStatus": "complete",
-      "publicationState": "deployment_pending",
+      "publicationState": "live",
       "descriptionSource": "Nurses official Bandcamp / Willamette Week",
       "apparelMeasurements": {},
       "adminPublishOverride": "Published",
       "garmentConditionNote": "",
-      "publishAfterResearch": false,
-      "minimumAcceptableOffer": 0,
-      "editRevision": 51,
-      "editorialUpdatedAt": "2026-11-02T05:21:17.356+00:00",
-      "editorialUpdatedBy": "admin-publication",
       "manualRelatedArtists": [],
-      "relatedArtistsResearch": null,
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Foreign Born",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nurses",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.952741,
+          "artist": "Blind Man's Colour",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nurses",
+          "confidence": 0.952741,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.942247,
+          "artist": "Suckers",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nurses",
+          "confidence": 0.942247,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.884886,
+          "artist": "Keepaway",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nurses",
+          "confidence": 0.884886,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.845166,
+          "artist": "Ganglians",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nurses",
+          "confidence": 0.845166,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Foreign Born",
+            "Blind Man's Colour",
+            "Suckers",
+            "Keepaway",
+            "Ganglians",
+            "Sister Suvi",
+            "Holiday Shores",
+            "Lackthereof",
+            "Pill Wonder",
+            "Au"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Foreign Born",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.952741,
+              "artist": "Blind Man's Colour",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.952741,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.942247,
+              "artist": "Suckers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.942247,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.884886,
+              "artist": "Keepaway",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.884886,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.845166,
+              "artist": "Ganglians",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.845166,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.831484,
+              "artist": "Sister Suvi",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.831484,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.778423,
+              "artist": "Holiday Shores",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.778423,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.765983,
+              "artist": "Lackthereof",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.765983,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.735287,
+              "artist": "Pill Wonder",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.735287,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.666311,
+              "artist": "Au",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Nurses",
+              "confidence": 0.666311,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Nurses"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Foreign Born",
+          "Blind Man's Colour",
+          "Suckers",
+          "Keepaway",
+          "Ganglians"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Foreign Born",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.952741,
+            "artist": "Blind Man's Colour",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 0.952741,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.942247,
+            "artist": "Suckers",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 0.942247,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.884886,
+            "artist": "Keepaway",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 0.884886,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.845166,
+            "artist": "Ganglians",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Nurses",
+            "confidence": 0.845166,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 53,
+      "editorialUpdatedAt": "2026-11-02T06:33:57.313+00:00",
+      "editorialUpdatedBy": "related-artists-research",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
@@ -5514,14 +6927,256 @@
         "description": "Lakker's second 12-inch for R&S turns the pressure inward. The eight-minute title track lets a buried melody emerge through waves of distortion, while 'Mathfall' balances heavy low end against fractured rhythm; the brief 'Monla' closes the three-track EP. Mastered by Matt Colton, Mountain Divide was issued in 2014.",
         "reviewQuote": "a new high-water mark for Lakker in both scale and sound design",
         "reviewSource": "Resident Advisor (quoted)",
-        "descriptionSource": "Lakker official Bandcamp / Resident Advisor"
+        "relatedArtists": [
+          "SHXCXCHCXSH",
+          "Ancient Methods",
+          "Emptyset",
+          "Andy Stott",
+          "Rrose"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Lakker official Bandcamp / Resident Advisor",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "SHXCXCHCXSH",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.636449,
+            "artist": "Ancient Methods",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 0.636449,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.59074,
+            "artist": "Emptyset",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 0.59074,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.585301,
+            "artist": "Andy Stott",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 0.585301,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.55244,
+            "artist": "Rrose",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 0.55244,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "SHXCXCHCXSH",
+              "Ancient Methods",
+              "Emptyset",
+              "Andy Stott",
+              "Rrose",
+              "Container",
+              "Silent Servant",
+              "Shed",
+              "Martyn",
+              "Sandwell District"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "SHXCXCHCXSH",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.636449,
+                "artist": "Ancient Methods",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 0.636449,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.59074,
+                "artist": "Emptyset",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 0.59074,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.585301,
+                "artist": "Andy Stott",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 0.585301,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.55244,
+                "artist": "Rrose",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 0.55244,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.54226,
+                "artist": "Container",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 0.54226,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.474746,
+                "artist": "Silent Servant",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 0.474746,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.46009,
+                "artist": "Shed",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 0.46009,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.445682,
+                "artist": "Martyn",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 0.445682,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.429369,
+                "artist": "Sandwell District",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lakker",
+                "confidence": 0.429369,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "SHXCXCHCXSH",
+            "Ancient Methods",
+            "Emptyset",
+            "Andy Stott",
+            "Rrose"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "SHXCXCHCXSH",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.636449,
+              "artist": "Ancient Methods",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.636449,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.59074,
+              "artist": "Emptyset",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.59074,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.585301,
+              "artist": "Andy Stott",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.585301,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.55244,
+              "artist": "Rrose",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.55244,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "RS 1409",
       "displayFormat": "Vinyl",
       "publishStatus": "Published",
       "financeStockId": "mtvsxxb80b2r11",
       "open_to_offers": false,
-      "relatedArtists": [],
+      "relatedArtists": [
+        "SHXCXCHCXSH",
+        "Ancient Methods",
+        "Emptyset",
+        "Andy Stott",
+        "Rrose"
+      ],
       "reviewResearch": {
         "url": "https://ra.co/reviews/15725",
         "scope": "release",
@@ -5553,18 +7208,247 @@
       "autoProductPhoto": null,
       "catalogPriceSync": 315000,
       "enrichmentStatus": "complete",
-      "publicationState": "deployment_pending",
+      "publicationState": "live",
       "descriptionSource": "Lakker official Bandcamp / Resident Advisor",
       "apparelMeasurements": {},
       "adminPublishOverride": "Published",
       "garmentConditionNote": "",
-      "publishAfterResearch": false,
-      "minimumAcceptableOffer": 0,
-      "editRevision": 53,
-      "editorialUpdatedAt": "2026-11-02T05:20:02.743+00:00",
-      "editorialUpdatedBy": "admin-publication",
       "manualRelatedArtists": [],
-      "relatedArtistsResearch": null,
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "SHXCXCHCXSH",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lakker",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.636449,
+          "artist": "Ancient Methods",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lakker",
+          "confidence": 0.636449,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.59074,
+          "artist": "Emptyset",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lakker",
+          "confidence": 0.59074,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.585301,
+          "artist": "Andy Stott",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lakker",
+          "confidence": 0.585301,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.55244,
+          "artist": "Rrose",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lakker",
+          "confidence": 0.55244,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "SHXCXCHCXSH",
+            "Ancient Methods",
+            "Emptyset",
+            "Andy Stott",
+            "Rrose",
+            "Container",
+            "Silent Servant",
+            "Shed",
+            "Martyn",
+            "Sandwell District"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "SHXCXCHCXSH",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.636449,
+              "artist": "Ancient Methods",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.636449,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.59074,
+              "artist": "Emptyset",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.59074,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.585301,
+              "artist": "Andy Stott",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.585301,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.55244,
+              "artist": "Rrose",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.55244,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.54226,
+              "artist": "Container",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.54226,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.474746,
+              "artist": "Silent Servant",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.474746,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.46009,
+              "artist": "Shed",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.46009,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.445682,
+              "artist": "Martyn",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.445682,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.429369,
+              "artist": "Sandwell District",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lakker",
+              "confidence": 0.429369,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lakker"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "SHXCXCHCXSH",
+          "Ancient Methods",
+          "Emptyset",
+          "Andy Stott",
+          "Rrose"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "SHXCXCHCXSH",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.636449,
+            "artist": "Ancient Methods",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 0.636449,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.59074,
+            "artist": "Emptyset",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 0.59074,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.585301,
+            "artist": "Andy Stott",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 0.585301,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.55244,
+            "artist": "Rrose",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lakker",
+            "confidence": 0.55244,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 55,
+      "editorialUpdatedAt": "2026-11-02T06:33:50.959+00:00",
+      "editorialUpdatedBy": "related-artists-research",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
@@ -5685,7 +7569,7 @@
       "apparelType": "",
       "description": "The first Less Artists More Condos split puts two related strands of noise-rock on opposite sides of a seven-inch: A Place To Bury Strangers' 'Burning Plastic' and Ceremony's 'Send Me Your Dreams.' Famous Class launched the series in memory of promoter Ariel Panero, with the A-side artist selecting the B-side act. This 2012 entry carries catalog number FC014.",
       "reviewQuote": "a gorgeous, weirdly propulsive bit of gloom-kraut garage",
-      "editRevision": 54,
+      "editRevision": 56,
       "imageCredits": [
         {
           "url": "https://famousclass.bandcamp.com/album/lamc-1",
@@ -5700,7 +7584,243 @@
         "description": "The first Less Artists More Condos split puts two related strands of noise-rock on opposite sides of a seven-inch: A Place To Bury Strangers' 'Burning Plastic' and Ceremony's 'Send Me Your Dreams.' Famous Class launched the series in memory of promoter Ariel Panero, with the A-side artist selecting the B-side act. This 2012 entry carries catalog number FC014.",
         "reviewQuote": "a gorgeous, weirdly propulsive bit of gloom-kraut garage",
         "reviewSource": "Aquarius Records archival review (quoted)",
-        "descriptionSource": "Famous Class official Bandcamp / Bandcamp Daily"
+        "relatedArtists": [
+          "The KVB",
+          "Skywave",
+          "The Soft Moon",
+          "Crystal Stilts",
+          "METZ"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Famous Class official Bandcamp / Bandcamp Daily",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "The KVB",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.876903,
+            "artist": "Skywave",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 0.876903,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.73108,
+            "artist": "The Soft Moon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 0.73108,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.711176,
+            "artist": "Crystal Stilts",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 0.711176,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.673553,
+            "artist": "METZ",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 0.673553,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "The KVB",
+              "Skywave",
+              "The Soft Moon",
+              "Crystal Stilts",
+              "METZ",
+              "Just Mustard",
+              "Medicine",
+              "Ringo Deathstarr",
+              "The Jesus and Mary Chain",
+              "The Horrors"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "The KVB",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.876903,
+                "artist": "Skywave",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 0.876903,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.73108,
+                "artist": "The Soft Moon",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 0.73108,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.711176,
+                "artist": "Crystal Stilts",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 0.711176,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.673553,
+                "artist": "METZ",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 0.673553,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.630456,
+                "artist": "Just Mustard",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 0.630456,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.62504,
+                "artist": "Medicine",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 0.62504,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.618307,
+                "artist": "Ringo Deathstarr",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 0.618307,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.611641,
+                "artist": "The Jesus and Mary Chain",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 0.611641,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.60642,
+                "artist": "The Horrors",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+                "confidence": 0.60642,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "The KVB",
+            "Skywave",
+            "The Soft Moon",
+            "Crystal Stilts",
+            "METZ"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "The KVB",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.876903,
+              "artist": "Skywave",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.876903,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.73108,
+              "artist": "The Soft Moon",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.73108,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.711176,
+              "artist": "Crystal Stilts",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.711176,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.673553,
+              "artist": "METZ",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.673553,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "FC014",
       "displayFormat": "Vinyl",
@@ -5709,7 +7829,13 @@
       "financeStockId": "mtvssu9ubnwtmj",
       "mediaCondition": "",
       "open_to_offers": false,
-      "relatedArtists": [],
+      "relatedArtists": [
+        "The KVB",
+        "Skywave",
+        "The Soft Moon",
+        "Crystal Stilts",
+        "METZ"
+      ],
       "financeItemType": "Vinyl",
       "financeMetadata": {
         "isbn": "",
@@ -5738,8 +7864,8 @@
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Famous Class official Bandcamp / Bandcamp Daily",
-      "editorialUpdatedAt": "2026-11-02T05:14:23.17+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "editorialUpdatedAt": "2026-11-02T06:39:52.759+00:00",
+      "editorialUpdatedBy": "related-artists-research",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "mediaConditionGrade": "",
@@ -5749,9 +7875,236 @@
       "manualRelatedArtists": [],
       "publishAfterResearch": false,
       "sleeveConditionGrade": "",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "The KVB",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.876903,
+          "artist": "Skywave",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+          "confidence": 0.876903,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.73108,
+          "artist": "The Soft Moon",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+          "confidence": 0.73108,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.711176,
+          "artist": "Crystal Stilts",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+          "confidence": 0.711176,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.673553,
+          "artist": "METZ",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+          "confidence": 0.673553,
+          "relationType": "artist-similarity"
+        }
+      ],
       "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": null,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "The KVB",
+            "Skywave",
+            "The Soft Moon",
+            "Crystal Stilts",
+            "METZ",
+            "Just Mustard",
+            "Medicine",
+            "Ringo Deathstarr",
+            "The Jesus and Mary Chain",
+            "The Horrors"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "The KVB",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.876903,
+              "artist": "Skywave",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.876903,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.73108,
+              "artist": "The Soft Moon",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.73108,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.711176,
+              "artist": "Crystal Stilts",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.711176,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.673553,
+              "artist": "METZ",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.673553,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.630456,
+              "artist": "Just Mustard",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.630456,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.62504,
+              "artist": "Medicine",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.62504,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.618307,
+              "artist": "Ringo Deathstarr",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.618307,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.611641,
+              "artist": "The Jesus and Mary Chain",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.611641,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.60642,
+              "artist": "The Horrors",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+              "confidence": 0.60642,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "The KVB",
+          "Skywave",
+          "The Soft Moon",
+          "Crystal Stilts",
+          "METZ"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "The KVB",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.876903,
+            "artist": "Skywave",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 0.876903,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.73108,
+            "artist": "The Soft Moon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 0.73108,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.711176,
+            "artist": "Crystal Stilts",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 0.711176,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.673553,
+            "artist": "METZ",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/A%20Place%20To%20Bury%20Strangers",
+            "confidence": 0.673553,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
       "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
@@ -5873,7 +8226,7 @@
       "apparelType": "",
       "description": "Spectres' original 'The Sky Of All Places' appeared in the Too Pure Singles Club in 2014, before the band re-recorded it for Dying. The numbered seven-inch pairs its slow-building A-side with the shorter, more volatile 'Sooky Eyeball.' The band says only 250 copies of this first single were made.",
       "reviewQuote": "a medium paced, grubby trawl through the indie-psych world",
-      "editRevision": 55,
+      "editRevision": 56,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/5290166-Spectres-The-Sky-Of-All-Places",
@@ -5888,14 +8241,256 @@
         "description": "Spectres' original 'The Sky Of All Places' appeared in the Too Pure Singles Club in 2014, before the band re-recorded it for Dying. The numbered seven-inch pairs its slow-building A-side with the shorter, more volatile 'Sooky Eyeball.' The band says only 250 copies of this first single were made.",
         "reviewQuote": "a medium paced, grubby trawl through the indie-psych world",
         "reviewSource": "Isolation Records (original single review, quoted)",
-        "descriptionSource": "Spectres official Bandcamp / Isolation Records"
+        "relatedArtists": [
+          "Actors",
+          "Bootblacks",
+          "Body Maintenance",
+          "The Foreign Resort",
+          "Night Sins"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Spectres official Bandcamp / Isolation Records",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Actors",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.931589,
+            "artist": "Bootblacks",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 0.931589,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.838281,
+            "artist": "Body Maintenance",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 0.838281,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.803845,
+            "artist": "The Foreign Resort",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 0.803845,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.779125,
+            "artist": "Night Sins",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 0.779125,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Actors",
+              "Bootblacks",
+              "Body Maintenance",
+              "The Foreign Resort",
+              "Night Sins",
+              "Fotocrime",
+              "Hangwire",
+              "Lathe of Heaven",
+              "For Against",
+              "Disappears"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Actors",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.931589,
+                "artist": "Bootblacks",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 0.931589,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.838281,
+                "artist": "Body Maintenance",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 0.838281,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.803845,
+                "artist": "The Foreign Resort",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 0.803845,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.779125,
+                "artist": "Night Sins",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 0.779125,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.66579,
+                "artist": "Fotocrime",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 0.66579,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.644503,
+                "artist": "Hangwire",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 0.644503,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.563208,
+                "artist": "Lathe of Heaven",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 0.563208,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.551446,
+                "artist": "For Against",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 0.551446,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.545346,
+                "artist": "Disappears",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Spectres",
+                "confidence": 0.545346,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Actors",
+            "Bootblacks",
+            "Body Maintenance",
+            "The Foreign Resort",
+            "Night Sins"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Actors",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.931589,
+              "artist": "Bootblacks",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.931589,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.838281,
+              "artist": "Body Maintenance",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.838281,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.803845,
+              "artist": "The Foreign Resort",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.803845,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.779125,
+              "artist": "Night Sins",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.779125,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
       "catalogNumber": "PURE 301S",
       "displayFormat": "Vinyl",
       "publishStatus": "Published",
       "financeStockId": "mtvsojbt5g1t1o",
       "open_to_offers": false,
-      "relatedArtists": [],
+      "relatedArtists": [
+        "Actors",
+        "Bootblacks",
+        "Body Maintenance",
+        "The Foreign Resort",
+        "Night Sins"
+      ],
       "financeItemType": "Vinyl",
       "financeMetadata": {
         "isbn": "",
@@ -5927,12 +8522,241 @@
       "enrichmentUpdatedAt": "2026-10-28 16:23:08.216603+00",
       "adminPublishOverride": "Published",
       "garmentConditionNote": "",
-      "publishAfterResearch": false,
-      "minimumAcceptableOffer": 0,
-      "editorialUpdatedAt": "2026-11-02T05:18:40.363+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
       "manualRelatedArtists": [],
-      "relatedArtistsResearch": null,
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Actors",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Spectres",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.931589,
+          "artist": "Bootblacks",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Spectres",
+          "confidence": 0.931589,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.838281,
+          "artist": "Body Maintenance",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Spectres",
+          "confidence": 0.838281,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.803845,
+          "artist": "The Foreign Resort",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Spectres",
+          "confidence": 0.803845,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.779125,
+          "artist": "Night Sins",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Spectres",
+          "confidence": 0.779125,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Actors",
+            "Bootblacks",
+            "Body Maintenance",
+            "The Foreign Resort",
+            "Night Sins",
+            "Fotocrime",
+            "Hangwire",
+            "Lathe of Heaven",
+            "For Against",
+            "Disappears"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Actors",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.931589,
+              "artist": "Bootblacks",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.931589,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.838281,
+              "artist": "Body Maintenance",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.838281,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.803845,
+              "artist": "The Foreign Resort",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.803845,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.779125,
+              "artist": "Night Sins",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.779125,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.66579,
+              "artist": "Fotocrime",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.66579,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.644503,
+              "artist": "Hangwire",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.644503,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.563208,
+              "artist": "Lathe of Heaven",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.563208,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.551446,
+              "artist": "For Against",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.551446,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.545346,
+              "artist": "Disappears",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Spectres",
+              "confidence": 0.545346,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Spectres"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Actors",
+          "Bootblacks",
+          "Body Maintenance",
+          "The Foreign Resort",
+          "Night Sins"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Actors",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.931589,
+            "artist": "Bootblacks",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 0.931589,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.838281,
+            "artist": "Body Maintenance",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 0.838281,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.803845,
+            "artist": "The Foreign Resort",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 0.803845,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.779125,
+            "artist": "Night Sins",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Spectres",
+            "confidence": 0.779125,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editorialUpdatedAt": "2026-11-02T06:33:20.424+00:00",
+      "editorialUpdatedBy": "related-artists-research",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
