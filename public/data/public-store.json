@@ -2147,6 +2147,682 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0099",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0099",
+      "tags": [
+        "post-hardcore",
+        "noise rock"
+      ],
+      "year": 2014,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0099-user-cover.webp",
+      "label": "Headhunter Records",
+      "price": 710000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Drive Like Jehu",
+      "artist": "Drive Like Jehu",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0099-user-cover.webp"
+      ],
+      "barcode": "7 2324-82207-1 8",
+      "details": [
+        "SKU: NXP-2026-VNL-0099",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: Vinyl, LP, Album, Reissue (2014, US)",
+        "Catalog number: HEADHUNTER 008",
+        "Barcode: 7 2324-82207-1 8"
+      ],
+      "edition": "Vinyl, LP, Album, Reissue (2014, US)",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0099-user-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.allmusic.com/album/drive-like-jehu-mw0000074156",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.789Z",
+          "sku": "NXP-2026-VNL-0099",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.793Z",
+          "sku": "NXP-2026-VNL-0099",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.562Z",
+          "sku": "NXP-2026-VNL-0099",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.349Z",
+          "sku": "NXP-2026-VNL-0099",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-27T13:41:28.201Z",
+          "sku": "NXP-2026-VNL-0099",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-27T13:33:42.917Z",
+          "sku": "NXP-2026-VNL-0099",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-27T13:30:33.219Z",
+          "sku": "NXP-2026-VNL-0099",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-27T13:21:46.375Z",
+          "sku": "NXP-2026-VNL-0099",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "Headhunter Records",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.789Z",
+        "sku": "NXP-2026-VNL-0099",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Before Yank Crime, Drive Like Jehu's self-titled debut put Rick Froberg and John Reis's guitars against Mike Kennedy's bass and Mark Trombino's drums. Across nine tracks, Caress and Spikes to You introduce the quartet's volatile interplay, while O Pencil Sharp and Turn It Off stretch their fractured post-hardcore into longer forms. This Headhunter LP is the 2014 US reissue of that debut.",
+      "reviewQuote": "made the newer group a quantum leap forward, as this gripping album demonstrates",
+      "sourceTitle": "Drive Like Jehu",
+      "editRevision": 47,
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/6428728-Drive-Like-Jehu-Drive-Like-Jehu",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0099-user-cover.webp",
+          "credit": "NIXP owner-approved release artwork (Discogs database)"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "AllMusic (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.allmusic.com/album/drive-like-jehu-mw0000074156",
+        "description": "Before Yank Crime, Drive Like Jehu's self-titled debut put Rick Froberg and John Reis's guitars against Mike Kennedy's bass and Mark Trombino's drums. Across nine tracks, Caress and Spikes to You introduce the quartet's volatile interplay, while O Pencil Sharp and Turn It Off stretch their fractured post-hardcore into longer forms. This Headhunter LP is the 2014 US reissue of that debut.",
+        "reviewQuote": "made the newer group a quantum leap forward, as this gripping album demonstrates",
+        "reviewSource": "AllMusic (quoted)",
+        "relatedArtists": [
+          "Unwound",
+          "Shellac",
+          "Fugazi",
+          "At the Drive-In",
+          "Faraquet"
+        ],
+        "descriptionSource": "Cobraside / AllMusic",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Unwound",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.572718,
+            "artist": "Shellac",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 0.572718,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.561349,
+            "artist": "Fugazi",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 0.561349,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.516716,
+            "artist": "At the Drive-In",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 0.516716,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.49053,
+            "artist": "Faraquet",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 0.49053,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Unwound",
+              "Shellac",
+              "Fugazi",
+              "At the Drive-In",
+              "Faraquet",
+              "Polvo",
+              "Hot Snakes",
+              "The Nation of Ulysses",
+              "Moss Icon",
+              "Big Black"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Unwound",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.572718,
+                "artist": "Shellac",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 0.572718,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.561349,
+                "artist": "Fugazi",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 0.561349,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.516716,
+                "artist": "At the Drive-In",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 0.516716,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.49053,
+                "artist": "Faraquet",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 0.49053,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.48975,
+                "artist": "Polvo",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 0.48975,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.488442,
+                "artist": "Hot Snakes",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 0.488442,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.466081,
+                "artist": "The Nation of Ulysses",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 0.466081,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.462929,
+                "artist": "Moss Icon",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 0.462929,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.428514,
+                "artist": "Big Black",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+                "confidence": 0.428514,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Unwound",
+            "Shellac",
+            "Fugazi",
+            "At the Drive-In",
+            "Faraquet"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Unwound",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.572718,
+              "artist": "Shellac",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.572718,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.561349,
+              "artist": "Fugazi",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.561349,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.516716,
+              "artist": "At the Drive-In",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.516716,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.49053,
+              "artist": "Faraquet",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.49053,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "HEADHUNTER 008",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mua5wdgf7ywjux",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Unwound",
+        "Shellac",
+        "Fugazi",
+        "At the Drive-In",
+        "Faraquet"
+      ],
+      "reviewResearch": {
+        "url": "https://www.allmusic.com/album/drive-like-jehu-mw0000074156",
+        "source": "AllMusic (quoted)",
+        "status": "verified"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchFailure": null,
+      "researchSources": [
+        {
+          "url": "https://www.groovespin.com/album/drive-like-jehu-drive-like-jehu-46588",
+          "source": "2014 US Headhunter LP identity",
+          "confidence": 95
+        },
+        {
+          "url": "https://cobrasiderecords.com/collections/whats-hot/products/drive-like-jehu-drive-like-jehu",
+          "source": "Cobraside album and track listing",
+          "confidence": 90
+        },
+        {
+          "url": "https://www.allmusic.com/album/drive-like-jehu-mw0000074156",
+          "source": "AllMusic album review",
+          "confidence": 90
+        }
+      ],
+      "autoProductPhoto": "",
+      "catalogPriceSync": 710000,
+      "enrichmentOrigin": "owner-approved",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Cobraside / AllMusic",
+      "metadataSourceUrl": "https://cobrasiderecords.com/collections/whats-hot/products/drive-like-jehu-drive-like-jehu",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-10-28 16:23:08.216603+00",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-10-27T13:41:28.200Z",
+      "enrichmentFingerprint": "drive like jehu|drive like jehu|vinyl|7 2324 82207 1 8|headhunter 008|edition:vinyl lp album reissue 2014 us",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Unwound",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.572718,
+          "artist": "Shellac",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+          "confidence": 0.572718,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.561349,
+          "artist": "Fugazi",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+          "confidence": 0.561349,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.516716,
+          "artist": "At the Drive-In",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+          "confidence": 0.516716,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.49053,
+          "artist": "Faraquet",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+          "confidence": 0.49053,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Unwound",
+            "Shellac",
+            "Fugazi",
+            "At the Drive-In",
+            "Faraquet",
+            "Polvo",
+            "Hot Snakes",
+            "The Nation of Ulysses",
+            "Moss Icon",
+            "Big Black"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Unwound",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.572718,
+              "artist": "Shellac",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.572718,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.561349,
+              "artist": "Fugazi",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.561349,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.516716,
+              "artist": "At the Drive-In",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.516716,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.49053,
+              "artist": "Faraquet",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.49053,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.48975,
+              "artist": "Polvo",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.48975,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.488442,
+              "artist": "Hot Snakes",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.488442,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.466081,
+              "artist": "The Nation of Ulysses",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.466081,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.462929,
+              "artist": "Moss Icon",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.462929,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.428514,
+              "artist": "Big Black",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+              "confidence": 0.428514,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Unwound",
+          "Shellac",
+          "Fugazi",
+          "At the Drive-In",
+          "Faraquet"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Unwound",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.572718,
+            "artist": "Shellac",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 0.572718,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.561349,
+            "artist": "Fugazi",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 0.561349,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.516716,
+            "artist": "At the Drive-In",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 0.516716,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.49053,
+            "artist": "Faraquet",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Drive%20Like%20Jehu",
+            "confidence": 0.49053,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editorialUpdatedAt": "2026-11-02T07:17:51.94+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0098",
       "qty": 1,
       "sku": "NXP-2026-VNL-0098",
@@ -2635,8 +3311,8 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 43,
-      "editorialUpdatedAt": "2026-11-02T07:16:39.484+00:00",
+      "editRevision": 44,
+      "editorialUpdatedAt": "2026-11-02T07:17:15.329+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
