@@ -2147,6 +2147,646 @@
       }
     },
     {
+      "id": "finance-nxp-2026-cst-0013",
+      "qty": 1,
+      "sku": "NXP-2026-CST-0013",
+      "tags": [
+        "noise",
+        "experimental"
+      ],
+      "year": 2021,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-cst-0013-official-cover.webp",
+      "label": "Dinzu Artefacts",
+      "price": 295000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Kazakiribane",
+      "artist": "Merzbow",
+      "format": "Cassette",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-cst-0013-official-cover.webp"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-cst-0013-official-cover.webp",
+      "condition": "New-Sealed",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.790Z",
+          "sku": "NXP-2026-CST-0013",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.793Z",
+          "sku": "NXP-2026-CST-0013",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.563Z",
+          "sku": "NXP-2026-CST-0013",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.350Z",
+          "sku": "NXP-2026-CST-0013",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.437Z",
+          "sku": "NXP-2026-CST-0013",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.492Z",
+          "sku": "NXP-2026-CST-0013",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.302Z",
+          "sku": "NXP-2026-CST-0013",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-21T02:00:47.079Z",
+          "sku": "NXP-2026-CST-0013",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.790Z",
+        "sku": "NXP-2026-CST-0013",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Kazakiribane divides a February 2021 Munemihouse session into two roughly thirteen-minute pieces. Masami Akita builds dense, pulsing noise across 'Part I' and 'Part II' rather than a conventional song sequence. Dinzu Artefacts issued the work on cassette as DNZ63 in June 2021.",
+      "imageCredits": [
+        {
+          "url": "https://dinzuartefacts.bandcamp.com/album/kazakiribane",
+          "image": "/public/assets/catalog-archive/nxp-2026-cst-0013-official-cover.webp",
+          "credit": "Dinzu Artefacts official cover art"
+        }
+      ],
+      "originalTags": false,
+      "autoEditorial": {
+        "description": "Kazakiribane divides a February 2021 Munemihouse session into two roughly thirteen-minute pieces. Masami Akita builds dense, pulsing noise across 'Part I' and 'Part II' rather than a conventional song sequence. Dinzu Artefacts issued the work on cassette as DNZ63 in June 2021.",
+        "relatedArtists": [
+          "Masonna",
+          "Incapacitants",
+          "C.C.C.C.",
+          "Prurient",
+          "The Rita"
+        ],
+        "enrichmentStatus": "needs-review-and-edition-verification",
+        "descriptionSource": "Dinzu Artefacts official release / Bandcamp",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Masonna",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.715296,
+            "artist": "Incapacitants",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 0.715296,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.689609,
+            "artist": "C.C.C.C.",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 0.689609,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.612794,
+            "artist": "Prurient",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 0.612794,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.600559,
+            "artist": "The Rita",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 0.600559,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Masonna",
+              "Incapacitants",
+              "C.C.C.C.",
+              "Prurient",
+              "The Rita",
+              "The Gerogerigegege",
+              "Boris with Merzbow",
+              "Aube",
+              "Hanatarash",
+              "Hijokaidan"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Masonna",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.715296,
+                "artist": "Incapacitants",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 0.715296,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.689609,
+                "artist": "C.C.C.C.",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 0.689609,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.612794,
+                "artist": "Prurient",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 0.612794,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.600559,
+                "artist": "The Rita",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 0.600559,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.5927,
+                "artist": "The Gerogerigegege",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 0.5927,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.560147,
+                "artist": "Boris with Merzbow",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 0.560147,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.533175,
+                "artist": "Aube",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 0.533175,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.527534,
+                "artist": "Hanatarash",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 0.527534,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.512261,
+                "artist": "Hijokaidan",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Merzbow",
+                "confidence": 0.512261,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Masonna",
+            "Incapacitants",
+            "C.C.C.C.",
+            "Prurient",
+            "The Rita"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Masonna",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.715296,
+              "artist": "Incapacitants",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.715296,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.689609,
+              "artist": "C.C.C.C.",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.689609,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.612794,
+              "artist": "Prurient",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.612794,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.600559,
+              "artist": "The Rita",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.600559,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "89f3acdb-4710-487f-bd14-d773ae7656b6",
+          "sourceUrl": "https://musicbrainz.org/release/89f3acdb-4710-487f-bd14-d773ae7656b6",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "DNZ63",
+      "displayFormat": "Cassette",
+      "publishStatus": "Published",
+      "financeStockId": "mua6e51ep8byda",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Masonna",
+        "Incapacitants",
+        "C.C.C.C.",
+        "Prurient",
+        "The Rita"
+      ],
+      "financeItemType": "Cassette",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://dinzuartefacts.bandcamp.com/album/kazakiribane",
+          "source": "Dinzu Artefacts official release / Bandcamp",
+          "confidence": 100
+        }
+      ],
+      "catalogPriceSync": 295000,
+      "enrichmentStatus": "needs-review-and-edition-verification",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Dinzu Artefacts official release / Bandcamp",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Masonna",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Merzbow",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.715296,
+          "artist": "Incapacitants",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Merzbow",
+          "confidence": 0.715296,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.689609,
+          "artist": "C.C.C.C.",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Merzbow",
+          "confidence": 0.689609,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.612794,
+          "artist": "Prurient",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Merzbow",
+          "confidence": 0.612794,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.600559,
+          "artist": "The Rita",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Merzbow",
+          "confidence": 0.600559,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Masonna",
+            "Incapacitants",
+            "C.C.C.C.",
+            "Prurient",
+            "The Rita",
+            "The Gerogerigegege",
+            "Boris with Merzbow",
+            "Aube",
+            "Hanatarash",
+            "Hijokaidan"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Masonna",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.715296,
+              "artist": "Incapacitants",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.715296,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.689609,
+              "artist": "C.C.C.C.",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.689609,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.612794,
+              "artist": "Prurient",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.612794,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.600559,
+              "artist": "The Rita",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.600559,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.5927,
+              "artist": "The Gerogerigegege",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.5927,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.560147,
+              "artist": "Boris with Merzbow",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.560147,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.533175,
+              "artist": "Aube",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.533175,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.527534,
+              "artist": "Hanatarash",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.527534,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.512261,
+              "artist": "Hijokaidan",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Merzbow",
+              "confidence": 0.512261,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Merzbow"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Masonna",
+          "Incapacitants",
+          "C.C.C.C.",
+          "Prurient",
+          "The Rita"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Masonna",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.715296,
+            "artist": "Incapacitants",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 0.715296,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.689609,
+            "artist": "C.C.C.C.",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 0.689609,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.612794,
+            "artist": "Prurient",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 0.612794,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.600559,
+            "artist": "The Rita",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Merzbow",
+            "confidence": 0.600559,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "89f3acdb-4710-487f-bd14-d773ae7656b6",
+        "sourceUrl": "https://musicbrainz.org/release/89f3acdb-4710-487f-bd14-d773ae7656b6",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 40,
+      "editorialUpdatedAt": "2026-11-02T07:20:46.502+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 12,
+        "heightCm": 8,
+        "lengthCm": 16,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 90,
+        "shippingClass": "small-media-cassette-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0100",
       "qty": 1,
       "sku": "NXP-2026-VNL-0100",
@@ -2803,8 +3443,8 @@
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 40,
-      "editorialUpdatedAt": "2026-11-02T07:19:06.855+00:00",
+      "editRevision": 41,
+      "editorialUpdatedAt": "2026-11-02T07:19:43.221+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
