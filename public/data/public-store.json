@@ -2832,6 +2832,665 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0090",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0090",
+      "tags": [
+        "indie rock",
+        "alternative rock"
+      ],
+      "year": 2014,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0090-official-cover.webp",
+      "label": "Carpark Records",
+      "price": 320000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Real Hair",
+      "artist": "Speedy Ortiz",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0090-official-cover.webp"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "12-inch Vinyl EP",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0090-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/18935-speedy-ortiz-real-hair-ep/",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.787Z",
+          "sku": "NXP-2026-VNL-0090",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.792Z",
+          "sku": "NXP-2026-VNL-0090",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.561Z",
+          "sku": "NXP-2026-VNL-0090",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.348Z",
+          "sku": "NXP-2026-VNL-0090",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.436Z",
+          "sku": "NXP-2026-VNL-0090",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.816Z",
+          "sku": "NXP-2026-VNL-0090",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.491Z",
+          "sku": "NXP-2026-VNL-0090",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.302Z",
+          "sku": "NXP-2026-VNL-0090",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.787Z",
+        "sku": "NXP-2026-VNL-0090",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Recorded at Sonelab with Paul Q. Kolderie, Real Hair condenses Speedy Ortiz's knotty guitar writing into four tracks. Sadie Dupuis's words turn conversational and evasive by turns, while 'American Horror' and 'Shine Theory' put sharp choruses inside the band's carefully loose arrangements. Issued by Carpark in 2014, the EP is small in scale but full of detail.",
+      "reviewQuote": "These songs are easy to like, but they're even better when you lean in close.",
+      "imageCredits": [
+        {
+          "url": "https://speedyortiz.bandcamp.com/album/real-hair",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0090-official-cover.webp",
+          "credit": "Speedy Ortiz official Bandcamp artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/18935-speedy-ortiz-real-hair-ep/",
+        "description": "Recorded at Sonelab with Paul Q. Kolderie, Real Hair condenses Speedy Ortiz's knotty guitar writing into four tracks. Sadie Dupuis's words turn conversational and evasive by turns, while 'American Horror' and 'Shine Theory' put sharp choruses inside the band's carefully loose arrangements. Issued by Carpark in 2014, the EP is small in scale but full of detail.",
+        "reviewQuote": "These songs are easy to like, but they're even better when you lean in close.",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Bully",
+          "Palehound",
+          "Charly Bliss",
+          "Cloud Nothings",
+          "Swearin'"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Speedy Ortiz official Bandcamp / Carpark Records",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Bully",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.870823,
+            "artist": "Palehound",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 0.870823,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.85461,
+            "artist": "Charly Bliss",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 0.85461,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.781192,
+            "artist": "Cloud Nothings",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 0.781192,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.767455,
+            "artist": "Swearin'",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 0.767455,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Bully",
+              "Palehound",
+              "Charly Bliss",
+              "Cloud Nothings",
+              "Swearin'",
+              "illuminati hotties",
+              "Momma",
+              "Hop Along",
+              "Remember Sports",
+              "Titus Andronicus"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Bully",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.870823,
+                "artist": "Palehound",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 0.870823,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.85461,
+                "artist": "Charly Bliss",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 0.85461,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.781192,
+                "artist": "Cloud Nothings",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 0.781192,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.767455,
+                "artist": "Swearin'",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 0.767455,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.763937,
+                "artist": "illuminati hotties",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 0.763937,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.701439,
+                "artist": "Momma",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 0.701439,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.689052,
+                "artist": "Hop Along",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 0.689052,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.676218,
+                "artist": "Remember Sports",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 0.676218,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.655082,
+                "artist": "Titus Andronicus",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+                "confidence": 0.655082,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Bully",
+            "Palehound",
+            "Charly Bliss",
+            "Cloud Nothings",
+            "Swearin'"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Bully",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.870823,
+              "artist": "Palehound",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.870823,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.85461,
+              "artist": "Charly Bliss",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.85461,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.781192,
+              "artist": "Cloud Nothings",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.781192,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.767455,
+              "artist": "Swearin'",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.767455,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "b1b2b691-5c29-4215-bf37-7ea9f1ee7bc3",
+          "sourceUrl": "https://musicbrainz.org/release/b1b2b691-5c29-4215-bf37-7ea9f1ee7bc3",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "CAK93",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mu8s4hmmc1ps7m",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Bully",
+        "Palehound",
+        "Charly Bliss",
+        "Cloud Nothings",
+        "Swearin'"
+      ],
+      "reviewResearch": {
+        "url": "https://pitchfork.com/reviews/albums/18935-speedy-ortiz-real-hair-ep/",
+        "scope": "release",
+        "source": "Pitchfork (quoted)",
+        "status": "verified"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://speedyortiz.bandcamp.com/album/real-hair",
+          "source": "Speedy Ortiz official Bandcamp / Carpark Records",
+          "confidence": 100
+        },
+        {
+          "url": "https://pitchfork.com/reviews/albums/18935-speedy-ortiz-real-hair-ep/",
+          "source": "Pitchfork (quoted)",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": null,
+      "catalogPriceSync": 320000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Speedy Ortiz official Bandcamp / Carpark Records",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Bully",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.870823,
+          "artist": "Palehound",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+          "confidence": 0.870823,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.85461,
+          "artist": "Charly Bliss",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+          "confidence": 0.85461,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.781192,
+          "artist": "Cloud Nothings",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+          "confidence": 0.781192,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.767455,
+          "artist": "Swearin'",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+          "confidence": 0.767455,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Bully",
+            "Palehound",
+            "Charly Bliss",
+            "Cloud Nothings",
+            "Swearin'",
+            "illuminati hotties",
+            "Momma",
+            "Hop Along",
+            "Remember Sports",
+            "Titus Andronicus"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Bully",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.870823,
+              "artist": "Palehound",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.870823,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.85461,
+              "artist": "Charly Bliss",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.85461,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.781192,
+              "artist": "Cloud Nothings",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.781192,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.767455,
+              "artist": "Swearin'",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.767455,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.763937,
+              "artist": "illuminati hotties",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.763937,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.701439,
+              "artist": "Momma",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.701439,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.689052,
+              "artist": "Hop Along",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.689052,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.676218,
+              "artist": "Remember Sports",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.676218,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.655082,
+              "artist": "Titus Andronicus",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+              "confidence": 0.655082,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Bully",
+          "Palehound",
+          "Charly Bliss",
+          "Cloud Nothings",
+          "Swearin'"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Bully",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.870823,
+            "artist": "Palehound",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 0.870823,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.85461,
+            "artist": "Charly Bliss",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 0.85461,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.781192,
+            "artist": "Cloud Nothings",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 0.781192,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.767455,
+            "artist": "Swearin'",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Speedy%20Ortiz",
+            "confidence": 0.767455,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "b1b2b691-5c29-4215-bf37-7ea9f1ee7bc3",
+        "sourceUrl": "https://musicbrainz.org/release/b1b2b691-5c29-4215-bf37-7ea9f1ee7bc3",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 46,
+      "editorialUpdatedAt": "2026-11-02T07:01:58.513+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-19",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0089",
       "qty": 1,
       "sku": "NXP-2026-VNL-0089",
