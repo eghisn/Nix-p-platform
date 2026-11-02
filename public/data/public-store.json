@@ -2,6 +2,667 @@
   "version": "supabase-live-2026-07-13",
   "products": [
     {
+      "id": "finance-nxp-2026-vnl-0113",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0113",
+      "tags": [
+        "experimental",
+        "industrial",
+        "electronic"
+      ],
+      "year": 2022,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0113-official-cover.webp",
+      "label": "PAN",
+      "price": 690000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Tissues",
+      "artist": "Pan Daijing",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0113-official-cover.webp"
+      ],
+      "barcode": "756029612761",
+      "details": [],
+      "edition": "2 x Vinyl, LP, Album, Red",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0113-official-cover.webp",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/pan-daijing-tissues/",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.791Z",
+          "sku": "NXP-2026-VNL-0113",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.565Z",
+          "sku": "NXP-2026-VNL-0113",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.351Z",
+          "sku": "NXP-2026-VNL-0113",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.438Z",
+          "sku": "NXP-2026-VNL-0113",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.493Z",
+          "sku": "NXP-2026-VNL-0113",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.304Z",
+          "sku": "NXP-2026-VNL-0113",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-21T15:28:33.561Z",
+          "sku": "NXP-2026-VNL-0113",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-21T12:29:03.366Z",
+          "sku": "NXP-2026-VNL-0113",
+          "action": "Inventory created catalog item",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.791Z",
+        "sku": "NXP-2026-VNL-0113",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Originally staged in Tate Modern's Tanks in 2019, Pan Daijing's Tissues survives on this PAN double LP as an hour-long, studio-recorded excerpt. Four sections move between operatic voices, industrial textures and electronic pressure, giving the performance's conflict between body and sound a life beyond the stage.",
+      "reviewQuote": "charged with resonant beauty and keen-eyed focus",
+      "imageCredits": [
+        {
+          "url": "https://p-a-n.org/release/pan-daijing-tissues-pan-118/",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0113-official-cover.webp",
+          "credit": "PAN official Tissues artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/pan-daijing-tissues/",
+        "description": "Originally staged in Tate Modern's Tanks in 2019, Pan Daijing's Tissues survives on this PAN double LP as an hour-long, studio-recorded excerpt. Four sections move between operatic voices, industrial textures and electronic pressure, giving the performance's conflict between body and sound a life beyond the stage.",
+        "reviewQuote": "charged with resonant beauty and keen-eyed focus",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Puce Mary",
+          "otay:onii",
+          "Pharmakon",
+          "Uboa",
+          "Lana Del Rabies"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "PAN official release / Pitchfork",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Puce Mary",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.609284,
+            "artist": "otay:onii",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 0.609284,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.547508,
+            "artist": "Pharmakon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 0.547508,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.452987,
+            "artist": "Uboa",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 0.452987,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.422398,
+            "artist": "Lana Del Rabies",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 0.422398,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Puce Mary",
+              "otay:onii",
+              "Pharmakon",
+              "Uboa",
+              "Lana Del Rabies",
+              "Croatian Amor",
+              "Prurient",
+              "Nurse With Wound",
+              "Tzusing",
+              "Dreamcrusher"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Puce Mary",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.609284,
+                "artist": "otay:onii",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 0.609284,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.547508,
+                "artist": "Pharmakon",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 0.547508,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.452987,
+                "artist": "Uboa",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 0.452987,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.422398,
+                "artist": "Lana Del Rabies",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 0.422398,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.335415,
+                "artist": "Croatian Amor",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 0.335415,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.259619,
+                "artist": "Prurient",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 0.259619,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.258458,
+                "artist": "Nurse With Wound",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 0.258458,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.256414,
+                "artist": "Tzusing",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 0.256414,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.244684,
+                "artist": "Dreamcrusher",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+                "confidence": 0.244684,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Puce Mary",
+            "otay:onii",
+            "Pharmakon",
+            "Uboa",
+            "Lana Del Rabies"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Puce Mary",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.609284,
+              "artist": "otay:onii",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.609284,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.547508,
+              "artist": "Pharmakon",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.547508,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.452987,
+              "artist": "Uboa",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.452987,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.422398,
+              "artist": "Lana Del Rabies",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.422398,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "PAN 118",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mvi2o8dyxbqkax",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Puce Mary",
+        "otay:onii",
+        "Pharmakon",
+        "Uboa",
+        "Lana Del Rabies"
+      ],
+      "reviewResearch": {
+        "url": "https://pitchfork.com/reviews/albums/pan-daijing-tissues/",
+        "scope": "release",
+        "source": "Pitchfork (quoted)",
+        "status": "verified",
+        "checkedAt": "2026-10-27T18:46:15.322Z"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://pitchfork.com/reviews/albums/pan-daijing-tissues/",
+          "source": "Pitchfork (quoted)",
+          "confidence": 100
+        },
+        {
+          "url": "https://p-a-n.org/release/pan-daijing-tissues-pan-118/",
+          "source": "PAN official release / Pitchfork",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": null,
+      "catalogPriceSync": 690000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "PAN official release / Pitchfork",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Puce Mary",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.609284,
+          "artist": "otay:onii",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+          "confidence": 0.609284,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.547508,
+          "artist": "Pharmakon",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+          "confidence": 0.547508,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.452987,
+          "artist": "Uboa",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+          "confidence": 0.452987,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.422398,
+          "artist": "Lana Del Rabies",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+          "confidence": 0.422398,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Puce Mary",
+            "otay:onii",
+            "Pharmakon",
+            "Uboa",
+            "Lana Del Rabies",
+            "Croatian Amor",
+            "Prurient",
+            "Nurse With Wound",
+            "Tzusing",
+            "Dreamcrusher"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Puce Mary",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.609284,
+              "artist": "otay:onii",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.609284,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.547508,
+              "artist": "Pharmakon",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.547508,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.452987,
+              "artist": "Uboa",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.452987,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.422398,
+              "artist": "Lana Del Rabies",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.422398,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.335415,
+              "artist": "Croatian Amor",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.335415,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.259619,
+              "artist": "Prurient",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.259619,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.258458,
+              "artist": "Nurse With Wound",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.258458,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.256414,
+              "artist": "Tzusing",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.256414,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.244684,
+              "artist": "Dreamcrusher",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+              "confidence": 0.244684,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Pan%20Daijing"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Puce Mary",
+          "otay:onii",
+          "Pharmakon",
+          "Uboa",
+          "Lana Del Rabies"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Puce Mary",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.609284,
+            "artist": "otay:onii",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 0.609284,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.547508,
+            "artist": "Pharmakon",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 0.547508,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.452987,
+            "artist": "Uboa",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 0.452987,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.422398,
+            "artist": "Lana Del Rabies",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Pan%20Daijing",
+            "confidence": 0.422398,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 13,
+      "editorialUpdatedAt": "2026-11-02T08:39:32.47+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-10-21",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0112",
       "qty": 1,
       "sku": "NXP-2026-VNL-0112",
@@ -109,7 +770,7 @@
       "apparelType": "",
       "description": "Peter Murphy began his solo discography with a reworking of Pere Ubu's 'Final Solution' in 1985. The Beggars Banquet twelve-inch BEG 143 T stretches the song across a Club Mix and Full Version, backed with 'The Answer Is Clear.' Its stark urgency made an early bridge from his Bauhaus years toward his own voice.",
       "reviewQuote": "not losing an iota of its menacing shock",
-      "editRevision": 15,
+      "editRevision": 16,
       "imageCredits": [
         {
           "url": "",
@@ -406,7 +1067,7 @@
       "enrichmentStatus": "complete",
       "publicationState": "deployment_pending",
       "descriptionSource": "AllMusic / Beggars Banquet catalog BEG 143 T",
-      "editorialUpdatedAt": "2026-11-02T08:21:51.462+00:00",
+      "editorialUpdatedAt": "2026-11-02T08:22:26.946+00:00",
       "editorialUpdatedBy": "admin-publication",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
@@ -108039,96 +108700,96 @@
       }
     },
     {
-      "id": "nxp-2026-vnl-0002",
+      "id": "nxp-2026-vnl-0011",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0002",
+      "sku": "NXP-2026-VNL-0011",
       "tags": [
         "Vinyl 12\"",
-        "NXP-2026-VNL-0002"
+        "NXP-2026-VNL-0011"
       ],
-      "year": 2024,
+      "year": 2026,
       "color": "",
       "flaws": "",
-      "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
-      "label": "A-Zap",
-      "price": 750000,
+      "image": "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
+      "label": "Stroom",
+      "price": 850000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "3+5",
-      "artist": "Melt-Banana",
+      "title": "Duori",
+      "artist": "Heith & Tarawangsawelas",
       "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
-        "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
+        "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
+        "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg"
       ],
-      "barcode": "6 57628 44481 7",
+      "barcode": "",
       "details": [
-        "SKU: NXP-2026-VNL-0002",
+        "SKU: NXP-2026-VNL-0011",
         "Format: Vinyl 12\"",
         "Condition: New-Sealed"
       ],
-      "edition": "Vinyl, LP, Silver Metallic",
+      "edition": "",
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
-      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
+      "reviewUrl": "https://www.mindies.es/review/heith-tarawangsawelas-duori-critica-de-su-disco-conjunto/",
       "syncAudit": [
         {
-          "at": "2026-11-02T02:00:46.602Z",
-          "sku": "NXP-2026-VNL-0002",
+          "at": "2026-11-02T02:00:46.605Z",
+          "sku": "NXP-2026-VNL-0011",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-11-01T02:00:46.736Z",
-          "sku": "NXP-2026-VNL-0002",
+          "at": "2026-11-01T02:00:46.759Z",
+          "sku": "NXP-2026-VNL-0011",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-31T02:00:47.099Z",
-          "sku": "NXP-2026-VNL-0002",
+          "at": "2026-10-31T02:00:47.105Z",
+          "sku": "NXP-2026-VNL-0011",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-30T02:00:47.714Z",
-          "sku": "NXP-2026-VNL-0002",
+          "at": "2026-10-30T02:00:47.717Z",
+          "sku": "NXP-2026-VNL-0011",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-29T02:00:47.540Z",
-          "sku": "NXP-2026-VNL-0002",
+          "at": "2026-10-29T02:00:47.543Z",
+          "sku": "NXP-2026-VNL-0011",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-28T02:00:47.319Z",
-          "sku": "NXP-2026-VNL-0002",
+          "at": "2026-10-28T02:00:47.322Z",
+          "sku": "NXP-2026-VNL-0011",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-27T02:00:47.541Z",
-          "sku": "NXP-2026-VNL-0002",
+          "at": "2026-10-27T02:00:47.551Z",
+          "sku": "NXP-2026-VNL-0011",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-26T02:00:47.395Z",
-          "sku": "NXP-2026-VNL-0002",
+          "at": "2026-10-26T02:00:47.398Z",
+          "sku": "NXP-2026-VNL-0011",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -108139,8 +108800,8 @@
       "collection": "NIXP Selection",
       "fabricCare": "",
       "syncStatus": {
-        "at": "2026-11-02T02:00:46.602Z",
-        "sku": "NXP-2026-VNL-0002",
+        "at": "2026-11-02T02:00:46.605Z",
+        "sku": "NXP-2026-VNL-0011",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
@@ -108148,81 +108809,80 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
-      "reviewQuote": "frantic sensibilities",
-      "editRevision": 61,
+      "description": "Heith and Tarawangsawelas' 2026 Duori documents a long-distance collaboration shaped by Sundanese ritual, jaipong club culture, low-fidelity exchange and electronic sound design.",
+      "reviewQuote": "a digital magical realism",
       "imageCredits": [
         {
-          "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp",
-          "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
-          "credit": "Turntable Lab"
+          "url": "https://meditations.jp/products/heith-tarawangsawelas-duori-lp",
+          "image": "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg",
+          "credit": "Meditations"
         }
       ],
       "originalTags": false,
-      "reviewSource": "The Quietus (quoted)",
+      "reviewSource": "Mindies (quoted, translated)",
       "autoEditorial": {
         "relatedArtists": [
-          "Lightning Bolt",
-          "Boredoms",
-          "Ruins",
-          "OOIOO",
-          "Otoboke Beaver"
+          "oxhy",
+          "julek ploski",
+          "Perila",
+          "Kara-Lis Coverdale",
+          "Abul Mogard"
         ],
         "enrichmentStatus": "complete",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Lightning Bolt",
+            "artist": "oxhy",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "sourceUrl": "https://www.last.fm/music/Heith",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.631121,
-            "artist": "Boredoms",
+            "match": 0.895344,
+            "artist": "julek ploski",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.631121,
+            "sourceUrl": "https://www.last.fm/music/Heith",
+            "confidence": 0.895344,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.598863,
-            "artist": "Ruins",
+            "match": 0.633436,
+            "artist": "Perila",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.598863,
+            "sourceUrl": "https://www.last.fm/music/Heith",
+            "confidence": 0.633436,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.568415,
-            "artist": "OOIOO",
+            "match": 0.604058,
+            "artist": "Kara-Lis Coverdale",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.568415,
+            "sourceUrl": "https://www.last.fm/music/Heith",
+            "confidence": 0.604058,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.554159,
-            "artist": "Otoboke Beaver",
+            "match": 0.583232,
+            "artist": "Abul Mogard",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.554159,
+            "sourceUrl": "https://www.last.fm/music/Heith",
+            "confidence": 0.583232,
             "relationType": "artist-similarity"
           }
         ],
@@ -108231,164 +108891,164 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Lightning Bolt",
-              "Boredoms",
-              "Ruins",
-              "OOIOO",
-              "Otoboke Beaver",
-              "Black Eyes",
-              "Hella",
-              "Big Black",
-              "Boris",
-              "The Locust"
+              "oxhy",
+              "julek ploski",
+              "Perila",
+              "Kara-Lis Coverdale",
+              "Abul Mogard",
+              "7038634357",
+              "Purelink",
+              "Voice Actor",
+              "Hesaitix",
+              "Lucrecia Dalt"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Lightning Bolt",
+                "artist": "oxhy",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "sourceUrl": "https://www.last.fm/music/Heith",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.631121,
-                "artist": "Boredoms",
+                "match": 0.895344,
+                "artist": "julek ploski",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.631121,
+                "sourceUrl": "https://www.last.fm/music/Heith",
+                "confidence": 0.895344,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.598863,
-                "artist": "Ruins",
+                "match": 0.633436,
+                "artist": "Perila",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.598863,
+                "sourceUrl": "https://www.last.fm/music/Heith",
+                "confidence": 0.633436,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.568415,
-                "artist": "OOIOO",
+                "match": 0.604058,
+                "artist": "Kara-Lis Coverdale",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.568415,
+                "sourceUrl": "https://www.last.fm/music/Heith",
+                "confidence": 0.604058,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.554159,
-                "artist": "Otoboke Beaver",
+                "match": 0.583232,
+                "artist": "Abul Mogard",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.554159,
+                "sourceUrl": "https://www.last.fm/music/Heith",
+                "confidence": 0.583232,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.545315,
-                "artist": "Black Eyes",
+                "match": 0.54541,
+                "artist": "7038634357",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.545315,
+                "sourceUrl": "https://www.last.fm/music/Heith",
+                "confidence": 0.54541,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.538107,
-                "artist": "Hella",
+                "match": 0.500607,
+                "artist": "Purelink",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.538107,
+                "sourceUrl": "https://www.last.fm/music/Heith",
+                "confidence": 0.500607,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.528056,
-                "artist": "Big Black",
+                "match": 0.472637,
+                "artist": "Voice Actor",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.528056,
+                "sourceUrl": "https://www.last.fm/music/Heith",
+                "confidence": 0.472637,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.524238,
-                "artist": "Boris",
+                "match": 0.4719,
+                "artist": "Hesaitix",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.524238,
+                "sourceUrl": "https://www.last.fm/music/Heith",
+                "confidence": 0.4719,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.507644,
-                "artist": "The Locust",
+                "match": 0.469771,
+                "artist": "Lucrecia Dalt",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-                "confidence": 0.507644,
+                "sourceUrl": "https://www.last.fm/music/Heith",
+                "confidence": 0.469771,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana"
+            "sourceUrl": "https://www.last.fm/music/Heith"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Lightning Bolt",
-            "Boredoms",
-            "Ruins",
-            "OOIOO",
-            "Otoboke Beaver"
+            "oxhy",
+            "julek ploski",
+            "Perila",
+            "Kara-Lis Coverdale",
+            "Abul Mogard"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Lightning Bolt",
+              "artist": "oxhy",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "sourceUrl": "https://www.last.fm/music/Heith",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.631121,
-              "artist": "Boredoms",
+              "match": 0.895344,
+              "artist": "julek ploski",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.631121,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.895344,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.598863,
-              "artist": "Ruins",
+              "match": 0.633436,
+              "artist": "Perila",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.598863,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.633436,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.568415,
-              "artist": "OOIOO",
+              "match": 0.604058,
+              "artist": "Kara-Lis Coverdale",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.568415,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.604058,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.554159,
-              "artist": "Otoboke Beaver",
+              "match": 0.583232,
+              "artist": "Abul Mogard",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.554159,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.583232,
               "relationType": "artist-similarity"
             }
           ],
@@ -108398,19 +109058,19 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "AZLP-0011",
+      "catalogNumber": "",
       "displayFormat": "Vinyl",
-      "homeSlideSort": 24,
+      "homeSlideSort": 41,
       "publishStatus": "Published",
-      "financeStockId": "mr6ja47v7cvrh3",
+      "financeStockId": "mrfb3xt9y714xm",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Lightning Bolt",
-        "Boredoms",
-        "Ruins",
-        "OOIOO",
-        "Otoboke Beaver"
+        "oxhy",
+        "julek ploski",
+        "Perila",
+        "Kara-Lis Coverdale",
+        "Abul Mogard"
       ],
       "financeItemType": "Vinyl",
       "financeMetadata": {
@@ -108423,73 +109083,73 @@
         "printDetails": ""
       },
       "homeCollections": [
+        "recent-releases",
+        "nixp-selection",
         "limited-pressing"
       ],
       "sleeveCondition": "",
-      "catalogPriceSync": 750000,
+      "catalogPriceSync": 850000,
       "enrichmentStatus": "complete",
-      "descriptionSource": "The Quietus / AllMusic",
-      "editorialUpdatedAt": "2026-11-02T02:00:57.569+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "descriptionSource": "Mindies / STROOM",
       "apparelMeasurements": {},
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:56:07.703Z",
-      "enrichmentFingerprint": "melt banana|3 5|vinyl||",
+      "enrichmentAttemptedAt": "2026-08-18T16:58:26.330Z",
+      "enrichmentFingerprint": "heith tarawangsawelas|duori|vinyl||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Lightning Bolt",
+          "artist": "oxhy",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "sourceUrl": "https://www.last.fm/music/Heith",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.631121,
-          "artist": "Boredoms",
+          "match": 0.895344,
+          "artist": "julek ploski",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.631121,
+          "sourceUrl": "https://www.last.fm/music/Heith",
+          "confidence": 0.895344,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.598863,
-          "artist": "Ruins",
+          "match": 0.633436,
+          "artist": "Perila",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.598863,
+          "sourceUrl": "https://www.last.fm/music/Heith",
+          "confidence": 0.633436,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.568415,
-          "artist": "OOIOO",
+          "match": 0.604058,
+          "artist": "Kara-Lis Coverdale",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.568415,
+          "sourceUrl": "https://www.last.fm/music/Heith",
+          "confidence": 0.604058,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.554159,
-          "artist": "Otoboke Beaver",
+          "match": 0.583232,
+          "artist": "Abul Mogard",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-          "confidence": 0.554159,
+          "sourceUrl": "https://www.last.fm/music/Heith",
+          "confidence": 0.583232,
           "relationType": "artist-similarity"
         }
       ],
@@ -108499,164 +109159,164 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Lightning Bolt",
-            "Boredoms",
-            "Ruins",
-            "OOIOO",
-            "Otoboke Beaver",
-            "Black Eyes",
-            "Hella",
-            "Big Black",
-            "Boris",
-            "The Locust"
+            "oxhy",
+            "julek ploski",
+            "Perila",
+            "Kara-Lis Coverdale",
+            "Abul Mogard",
+            "7038634357",
+            "Purelink",
+            "Voice Actor",
+            "Hesaitix",
+            "Lucrecia Dalt"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Lightning Bolt",
+              "artist": "oxhy",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "sourceUrl": "https://www.last.fm/music/Heith",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.631121,
-              "artist": "Boredoms",
+              "match": 0.895344,
+              "artist": "julek ploski",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.631121,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.895344,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.598863,
-              "artist": "Ruins",
+              "match": 0.633436,
+              "artist": "Perila",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.598863,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.633436,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.568415,
-              "artist": "OOIOO",
+              "match": 0.604058,
+              "artist": "Kara-Lis Coverdale",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.568415,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.604058,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.554159,
-              "artist": "Otoboke Beaver",
+              "match": 0.583232,
+              "artist": "Abul Mogard",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.554159,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.583232,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.545315,
-              "artist": "Black Eyes",
+              "match": 0.54541,
+              "artist": "7038634357",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.545315,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.54541,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.538107,
-              "artist": "Hella",
+              "match": 0.500607,
+              "artist": "Purelink",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.538107,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.500607,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.528056,
-              "artist": "Big Black",
+              "match": 0.472637,
+              "artist": "Voice Actor",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.528056,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.472637,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.524238,
-              "artist": "Boris",
+              "match": 0.4719,
+              "artist": "Hesaitix",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.524238,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.4719,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.507644,
-              "artist": "The Locust",
+              "match": 0.469771,
+              "artist": "Lucrecia Dalt",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-              "confidence": 0.507644,
+              "sourceUrl": "https://www.last.fm/music/Heith",
+              "confidence": 0.469771,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Melt-Banana"
+          "sourceUrl": "https://www.last.fm/music/Heith"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Lightning Bolt",
-          "Boredoms",
-          "Ruins",
-          "OOIOO",
-          "Otoboke Beaver"
+          "oxhy",
+          "julek ploski",
+          "Perila",
+          "Kara-Lis Coverdale",
+          "Abul Mogard"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Lightning Bolt",
+            "artist": "oxhy",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "sourceUrl": "https://www.last.fm/music/Heith",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.631121,
-            "artist": "Boredoms",
+            "match": 0.895344,
+            "artist": "julek ploski",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.631121,
+            "sourceUrl": "https://www.last.fm/music/Heith",
+            "confidence": 0.895344,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.598863,
-            "artist": "Ruins",
+            "match": 0.633436,
+            "artist": "Perila",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.598863,
+            "sourceUrl": "https://www.last.fm/music/Heith",
+            "confidence": 0.633436,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.568415,
-            "artist": "OOIOO",
+            "match": 0.604058,
+            "artist": "Kara-Lis Coverdale",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.568415,
+            "sourceUrl": "https://www.last.fm/music/Heith",
+            "confidence": 0.604058,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.554159,
-            "artist": "Otoboke Beaver",
+            "match": 0.583232,
+            "artist": "Abul Mogard",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
-            "confidence": 0.554159,
+            "sourceUrl": "https://www.last.fm/music/Heith",
+            "confidence": 0.583232,
             "relationType": "artist-similarity"
           }
         ],
@@ -108664,16 +109324,17 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 60,
+      "editorialUpdatedAt": "2026-11-02T02:01:15.518+00:00",
+      "editorialUpdatedBy": "finance-stock",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-09-08",
+        "updatedAt": "2026-08-11",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
@@ -109332,96 +109993,96 @@
       }
     },
     {
-      "id": "nxp-2026-vnl-0011",
+      "id": "nxp-2026-vnl-0002",
       "qty": 1,
-      "sku": "NXP-2026-VNL-0011",
+      "sku": "NXP-2026-VNL-0002",
       "tags": [
         "Vinyl 12\"",
-        "NXP-2026-VNL-0011"
+        "NXP-2026-VNL-0002"
       ],
-      "year": 2026,
+      "year": 2024,
       "color": "",
       "flaws": "",
-      "image": "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
-      "label": "Stroom",
-      "price": 850000,
+      "image": "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+      "label": "A-Zap",
+      "price": 750000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Duori",
-      "artist": "Heith & Tarawangsawelas",
+      "title": "3+5",
+      "artist": "Melt-Banana",
       "format": "Vinyl",
       "images": [
-        "/public/covers/nxp-2026-vnl-0011-heith-tarawangsawelas-duori.jpg",
-        "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg"
+        "/public/covers/nxp-2026-vnl-0002-melt-banana-35.jpg",
+        "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg"
       ],
-      "barcode": "",
+      "barcode": "6 57628 44481 7",
       "details": [
-        "SKU: NXP-2026-VNL-0011",
+        "SKU: NXP-2026-VNL-0002",
         "Format: Vinyl 12\"",
         "Condition: New-Sealed"
       ],
-      "edition": "",
+      "edition": "Vinyl, LP, Silver Metallic",
       "category": "Records",
       "material": "",
       "condition": "New-Sealed",
-      "reviewUrl": "https://www.mindies.es/review/heith-tarawangsawelas-duori-critica-de-su-disco-conjunto/",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/melt-banana-35-review/",
       "syncAudit": [
         {
-          "at": "2026-11-02T02:00:46.605Z",
-          "sku": "NXP-2026-VNL-0011",
+          "at": "2026-11-02T02:00:46.602Z",
+          "sku": "NXP-2026-VNL-0002",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-11-01T02:00:46.759Z",
-          "sku": "NXP-2026-VNL-0011",
+          "at": "2026-11-01T02:00:46.736Z",
+          "sku": "NXP-2026-VNL-0002",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-31T02:00:47.105Z",
-          "sku": "NXP-2026-VNL-0011",
+          "at": "2026-10-31T02:00:47.099Z",
+          "sku": "NXP-2026-VNL-0002",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-30T02:00:47.717Z",
-          "sku": "NXP-2026-VNL-0011",
+          "at": "2026-10-30T02:00:47.714Z",
+          "sku": "NXP-2026-VNL-0002",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-29T02:00:47.543Z",
-          "sku": "NXP-2026-VNL-0011",
+          "at": "2026-10-29T02:00:47.540Z",
+          "sku": "NXP-2026-VNL-0002",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-28T02:00:47.322Z",
-          "sku": "NXP-2026-VNL-0011",
+          "at": "2026-10-28T02:00:47.319Z",
+          "sku": "NXP-2026-VNL-0002",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-27T02:00:47.551Z",
-          "sku": "NXP-2026-VNL-0011",
+          "at": "2026-10-27T02:00:47.541Z",
+          "sku": "NXP-2026-VNL-0002",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-26T02:00:47.398Z",
-          "sku": "NXP-2026-VNL-0011",
+          "at": "2026-10-26T02:00:47.395Z",
+          "sku": "NXP-2026-VNL-0002",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -109432,8 +110093,8 @@
       "collection": "NIXP Selection",
       "fabricCare": "",
       "syncStatus": {
-        "at": "2026-11-02T02:00:46.605Z",
-        "sku": "NXP-2026-VNL-0011",
+        "at": "2026-11-02T02:00:46.602Z",
+        "sku": "NXP-2026-VNL-0002",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
@@ -109441,80 +110102,81 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Heith and Tarawangsawelas' 2026 Duori documents a long-distance collaboration shaped by Sundanese ritual, jaipong club culture, low-fidelity exchange and electronic sound design.",
-      "reviewQuote": "a digital magical realism",
+      "description": "Melt-Banana's 2024 3+5 is a nine-track burst of Japanese hardcore and noise-rock, using electronic accents and abrupt shifts to keep the duo's attack in motion.",
+      "reviewQuote": "frantic sensibilities",
+      "editRevision": 61,
       "imageCredits": [
         {
-          "url": "https://meditations.jp/products/heith-tarawangsawelas-duori-lp",
-          "image": "/public/mockups/nxp-2026-vnl-0011-heith-tarawangsawelas-duori-vinyl.jpg",
-          "credit": "Meditations"
+          "url": "https://www.turntablelab.com/products/melt-banana-3-5-colored-vinyl-vinyl-lp",
+          "image": "/public/mockups/nxp-2026-vnl-0002-melt-banana-3-5-vinyl.jpg",
+          "credit": "Turntable Lab"
         }
       ],
       "originalTags": false,
-      "reviewSource": "Mindies (quoted, translated)",
+      "reviewSource": "The Quietus (quoted)",
       "autoEditorial": {
         "relatedArtists": [
-          "oxhy",
-          "julek ploski",
-          "Perila",
-          "Kara-Lis Coverdale",
-          "Abul Mogard"
+          "Lightning Bolt",
+          "Boredoms",
+          "Ruins",
+          "OOIOO",
+          "Otoboke Beaver"
         ],
         "enrichmentStatus": "complete",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "oxhy",
+            "artist": "Lightning Bolt",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.895344,
-            "artist": "julek ploski",
+            "match": 0.631121,
+            "artist": "Boredoms",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
-            "confidence": 0.895344,
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.631121,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.633436,
-            "artist": "Perila",
+            "match": 0.598863,
+            "artist": "Ruins",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
-            "confidence": 0.633436,
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.598863,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.604058,
-            "artist": "Kara-Lis Coverdale",
+            "match": 0.568415,
+            "artist": "OOIOO",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
-            "confidence": 0.604058,
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.568415,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.583232,
-            "artist": "Abul Mogard",
+            "match": 0.554159,
+            "artist": "Otoboke Beaver",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
-            "confidence": 0.583232,
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.554159,
             "relationType": "artist-similarity"
           }
         ],
@@ -109523,164 +110185,164 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "oxhy",
-              "julek ploski",
-              "Perila",
-              "Kara-Lis Coverdale",
-              "Abul Mogard",
-              "7038634357",
-              "Purelink",
-              "Voice Actor",
-              "Hesaitix",
-              "Lucrecia Dalt"
+              "Lightning Bolt",
+              "Boredoms",
+              "Ruins",
+              "OOIOO",
+              "Otoboke Beaver",
+              "Black Eyes",
+              "Hella",
+              "Big Black",
+              "Boris",
+              "The Locust"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "oxhy",
+                "artist": "Lightning Bolt",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.895344,
-                "artist": "julek ploski",
+                "match": 0.631121,
+                "artist": "Boredoms",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
-                "confidence": 0.895344,
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.631121,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.633436,
-                "artist": "Perila",
+                "match": 0.598863,
+                "artist": "Ruins",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
-                "confidence": 0.633436,
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.598863,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.604058,
-                "artist": "Kara-Lis Coverdale",
+                "match": 0.568415,
+                "artist": "OOIOO",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
-                "confidence": 0.604058,
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.568415,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.583232,
-                "artist": "Abul Mogard",
+                "match": 0.554159,
+                "artist": "Otoboke Beaver",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
-                "confidence": 0.583232,
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.554159,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.54541,
-                "artist": "7038634357",
+                "match": 0.545315,
+                "artist": "Black Eyes",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
-                "confidence": 0.54541,
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.545315,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.500607,
-                "artist": "Purelink",
+                "match": 0.538107,
+                "artist": "Hella",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
-                "confidence": 0.500607,
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.538107,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.472637,
-                "artist": "Voice Actor",
+                "match": 0.528056,
+                "artist": "Big Black",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
-                "confidence": 0.472637,
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.528056,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.4719,
-                "artist": "Hesaitix",
+                "match": 0.524238,
+                "artist": "Boris",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
-                "confidence": 0.4719,
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.524238,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.469771,
-                "artist": "Lucrecia Dalt",
+                "match": 0.507644,
+                "artist": "The Locust",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Heith",
-                "confidence": 0.469771,
+                "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+                "confidence": 0.507644,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith"
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "oxhy",
-            "julek ploski",
-            "Perila",
-            "Kara-Lis Coverdale",
-            "Abul Mogard"
+            "Lightning Bolt",
+            "Boredoms",
+            "Ruins",
+            "OOIOO",
+            "Otoboke Beaver"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "oxhy",
+              "artist": "Lightning Bolt",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Heith",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.895344,
-              "artist": "julek ploski",
+              "match": 0.631121,
+              "artist": "Boredoms",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.895344,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.631121,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.633436,
-              "artist": "Perila",
+              "match": 0.598863,
+              "artist": "Ruins",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.633436,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.598863,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.604058,
-              "artist": "Kara-Lis Coverdale",
+              "match": 0.568415,
+              "artist": "OOIOO",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.604058,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.568415,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.583232,
-              "artist": "Abul Mogard",
+              "match": 0.554159,
+              "artist": "Otoboke Beaver",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.583232,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.554159,
               "relationType": "artist-similarity"
             }
           ],
@@ -109690,19 +110352,19 @@
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "AZLP-0011",
       "displayFormat": "Vinyl",
-      "homeSlideSort": 41,
+      "homeSlideSort": 24,
       "publishStatus": "Published",
-      "financeStockId": "mrfb3xt9y714xm",
+      "financeStockId": "mr6ja47v7cvrh3",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "oxhy",
-        "julek ploski",
-        "Perila",
-        "Kara-Lis Coverdale",
-        "Abul Mogard"
+        "Lightning Bolt",
+        "Boredoms",
+        "Ruins",
+        "OOIOO",
+        "Otoboke Beaver"
       ],
       "financeItemType": "Vinyl",
       "financeMetadata": {
@@ -109715,73 +110377,73 @@
         "printDetails": ""
       },
       "homeCollections": [
-        "recent-releases",
-        "nixp-selection",
         "limited-pressing"
       ],
       "sleeveCondition": "",
-      "catalogPriceSync": 850000,
+      "catalogPriceSync": 750000,
       "enrichmentStatus": "complete",
-      "descriptionSource": "Mindies / STROOM",
+      "descriptionSource": "The Quietus / AllMusic",
+      "editorialUpdatedAt": "2026-11-02T02:00:57.569+00:00",
+      "editorialUpdatedBy": "finance-stock",
       "apparelMeasurements": {},
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:58:26.330Z",
-      "enrichmentFingerprint": "heith tarawangsawelas|duori|vinyl||",
+      "enrichmentAttemptedAt": "2026-08-18T16:56:07.703Z",
+      "enrichmentFingerprint": "melt banana|3 5|vinyl||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "oxhy",
+          "artist": "Lightning Bolt",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Heith",
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.895344,
-          "artist": "julek ploski",
+          "match": 0.631121,
+          "artist": "Boredoms",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Heith",
-          "confidence": 0.895344,
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.631121,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.633436,
-          "artist": "Perila",
+          "match": 0.598863,
+          "artist": "Ruins",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Heith",
-          "confidence": 0.633436,
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.598863,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.604058,
-          "artist": "Kara-Lis Coverdale",
+          "match": 0.568415,
+          "artist": "OOIOO",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Heith",
-          "confidence": 0.604058,
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.568415,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.583232,
-          "artist": "Abul Mogard",
+          "match": 0.554159,
+          "artist": "Otoboke Beaver",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Heith",
-          "confidence": 0.583232,
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+          "confidence": 0.554159,
           "relationType": "artist-similarity"
         }
       ],
@@ -109791,164 +110453,164 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "oxhy",
-            "julek ploski",
-            "Perila",
-            "Kara-Lis Coverdale",
-            "Abul Mogard",
-            "7038634357",
-            "Purelink",
-            "Voice Actor",
-            "Hesaitix",
-            "Lucrecia Dalt"
+            "Lightning Bolt",
+            "Boredoms",
+            "Ruins",
+            "OOIOO",
+            "Otoboke Beaver",
+            "Black Eyes",
+            "Hella",
+            "Big Black",
+            "Boris",
+            "The Locust"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "oxhy",
+              "artist": "Lightning Bolt",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.895344,
-              "artist": "julek ploski",
+              "match": 0.631121,
+              "artist": "Boredoms",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.895344,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.631121,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.633436,
-              "artist": "Perila",
+              "match": 0.598863,
+              "artist": "Ruins",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.633436,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.598863,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.604058,
-              "artist": "Kara-Lis Coverdale",
+              "match": 0.568415,
+              "artist": "OOIOO",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.604058,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.568415,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.583232,
-              "artist": "Abul Mogard",
+              "match": 0.554159,
+              "artist": "Otoboke Beaver",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.583232,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.554159,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.54541,
-              "artist": "7038634357",
+              "match": 0.545315,
+              "artist": "Black Eyes",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.54541,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.545315,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.500607,
-              "artist": "Purelink",
+              "match": 0.538107,
+              "artist": "Hella",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.500607,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.538107,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.472637,
-              "artist": "Voice Actor",
+              "match": 0.528056,
+              "artist": "Big Black",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.472637,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.528056,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.4719,
-              "artist": "Hesaitix",
+              "match": 0.524238,
+              "artist": "Boris",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.4719,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.524238,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.469771,
-              "artist": "Lucrecia Dalt",
+              "match": 0.507644,
+              "artist": "The Locust",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Heith",
-              "confidence": 0.469771,
+              "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+              "confidence": 0.507644,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Heith"
+          "sourceUrl": "https://www.last.fm/music/Melt-Banana"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "oxhy",
-          "julek ploski",
-          "Perila",
-          "Kara-Lis Coverdale",
-          "Abul Mogard"
+          "Lightning Bolt",
+          "Boredoms",
+          "Ruins",
+          "OOIOO",
+          "Otoboke Beaver"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "oxhy",
+            "artist": "Lightning Bolt",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.895344,
-            "artist": "julek ploski",
+            "match": 0.631121,
+            "artist": "Boredoms",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
-            "confidence": 0.895344,
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.631121,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.633436,
-            "artist": "Perila",
+            "match": 0.598863,
+            "artist": "Ruins",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
-            "confidence": 0.633436,
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.598863,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.604058,
-            "artist": "Kara-Lis Coverdale",
+            "match": 0.568415,
+            "artist": "OOIOO",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
-            "confidence": 0.604058,
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.568415,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.583232,
-            "artist": "Abul Mogard",
+            "match": 0.554159,
+            "artist": "Otoboke Beaver",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Heith",
-            "confidence": 0.583232,
+            "sourceUrl": "https://www.last.fm/music/Melt-Banana",
+            "confidence": 0.554159,
             "relationType": "artist-similarity"
           }
         ],
@@ -109956,17 +110618,16 @@
         "sourceUrl": "",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 60,
-      "editorialUpdatedAt": "2026-11-02T02:01:15.518+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 34,
         "heightCm": 4,
         "lengthCm": 34,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-08",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
