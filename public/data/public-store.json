@@ -7554,7 +7554,7 @@
         }
       ],
       "updatedAt": "2026-11-02",
-      "vinylSize": "",
+      "vinylSize": "7",
       "collection": "Famous Class",
       "fabricCare": "",
       "syncStatus": {
@@ -7569,7 +7569,7 @@
       "apparelType": "",
       "description": "The first Less Artists More Condos split puts two related strands of noise-rock on opposite sides of a seven-inch: A Place To Bury Strangers' 'Burning Plastic' and Ceremony's 'Send Me Your Dreams.' Famous Class launched the series in memory of promoter Ariel Panero, with the A-side artist selecting the B-side act. This 2012 entry carries catalog number FC014.",
       "reviewQuote": "a gorgeous, weirdly propulsive bit of gloom-kraut garage",
-      "editRevision": 56,
+      "editRevision": 57,
       "imageCredits": [
         {
           "url": "https://famousclass.bandcamp.com/album/lamc-1",
@@ -7864,8 +7864,8 @@
       "enrichmentStatus": "complete",
       "publicationState": "live",
       "descriptionSource": "Famous Class official Bandcamp / Bandcamp Daily",
-      "editorialUpdatedAt": "2026-11-02T06:39:52.759+00:00",
-      "editorialUpdatedBy": "related-artists-research",
+      "editorialUpdatedAt": "2026-11-02T06:45:05.302799+00:00",
+      "editorialUpdatedBy": "catalog-size-backfill",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
       "mediaConditionGrade": "",
@@ -8211,7 +8211,7 @@
         }
       ],
       "updatedAt": "2026-11-02",
-      "vinylSize": "",
+      "vinylSize": "7",
       "collection": "",
       "fabricCare": "",
       "syncStatus": {
@@ -8226,7 +8226,7 @@
       "apparelType": "",
       "description": "Spectres' original 'The Sky Of All Places' appeared in the Too Pure Singles Club in 2014, before the band re-recorded it for Dying. The numbered seven-inch pairs its slow-building A-side with the shorter, more volatile 'Sooky Eyeball.' The band says only 250 copies of this first single were made.",
       "reviewQuote": "a medium paced, grubby trawl through the indie-psych world",
-      "editRevision": 56,
+      "editRevision": 57,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/5290166-Spectres-The-Sky-Of-All-Places",
@@ -8755,8 +8755,8 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editorialUpdatedAt": "2026-11-02T06:33:20.424+00:00",
-      "editorialUpdatedBy": "related-artists-research",
+      "editorialUpdatedAt": "2026-11-02T06:45:05.301394+00:00",
+      "editorialUpdatedBy": "catalog-size-backfill",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
@@ -29057,7 +29057,7 @@
         }
       ],
       "updatedAt": "2026-11-02",
-      "vinylSize": "",
+      "vinylSize": "12",
       "collection": "H/O/D Records",
       "fabricCare": "",
       "syncStatus": {
@@ -29072,7 +29072,7 @@
       "apparelType": "",
       "description": "Drawn from Factory Floor's live score for Fritz Lang's Metropolis at London's Science Museum, 'Heart of Data' and 'Babel' are two soundtrack edits issued on the duo's own H/O/D Records imprint in 2018. Nik Colk Void and Gabriel Gurnsey let modular rhythms and changing synth textures carry the first side; the longer 'Babel' turns toward a looser, more meditative pulse.",
       "reviewQuote": "a sleeker new sound here, easing off the brittleness of their earlier releases",
-      "editRevision": 56,
+      "editRevision": 57,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
@@ -29375,8 +29375,8 @@
       "publicationState": "live",
       "descriptionSource": "Factory Floor / H/O/D release reporting / Boomkat",
       "metadataSourceUrl": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
-      "editorialUpdatedAt": "2026-11-02T05:18:41.258+00:00",
-      "editorialUpdatedBy": "publication-reconciliation",
+      "editorialUpdatedAt": "2026-11-02T06:45:05.293076+00:00",
+      "editorialUpdatedBy": "catalog-size-backfill",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-10-28 16:23:08.216603+00",
       "adminPublishOverride": "Published",
