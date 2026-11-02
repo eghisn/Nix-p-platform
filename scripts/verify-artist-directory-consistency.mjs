@@ -6,6 +6,10 @@ const root = process.cwd();
 const store = JSON.parse(await fs.readFile(path.join(root, "public", "data", "public-store.json"), "utf8"));
 const records = (store.products || []).filter((product) => product.category === "Records" && product.publishStatus === "Published" && product.visibility === "Public");
 const fordLopatin = records.find((product) => product.artist === "Ford & Lopatin");
+const domiReleases = records.filter((product) => productArtistCreditNames(product).includes("Domi & JD Beck"));
+if (!domiReleases.length || JSON.stringify(artistCreditNames("Domi & JD Beck")) !== JSON.stringify(["Domi & JD Beck"])) {
+  throw new Error("Domi & JD Beck must be one artist identity across their releases.");
+}
 if (!fordLopatin) throw new Error("Ford & Lopatin product credit is missing from the public catalogue.");
 if (JSON.stringify(artistCreditNames(fordLopatin.artist)) !== JSON.stringify(["Ford", "Daniel Lopatin"])) {
   throw new Error("Ford & Lopatin does not resolve to Ford and Daniel Lopatin without changing the product credit.");
@@ -25,6 +29,9 @@ if (JSON.stringify(actual) !== JSON.stringify(expected)) {
   throw new Error(`Generated artist directory differs from the public record credits (${actual.length} rendered, ${expected.length} expected).`);
 }
 if (actual.includes("Lopatin")) throw new Error("The legacy Lopatin artist identity is still publicly listed.");
+if (actual.includes("Domi") || actual.includes("JD Beck") || !actual.includes("Domi & JD Beck")) {
+  throw new Error("The Domi & JD Beck duo must have one directory entry, not two solo entries.");
+}
 if (!actual.includes("Daniel Lopatin")) throw new Error("Daniel Lopatin is missing from the public artist directory.");
 if (!actual.includes("Ford")) throw new Error("Ford is missing from the public artist directory.");
 

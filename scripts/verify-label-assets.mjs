@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
-import { labelEntries } from "../src/data/labelCatalog.js";
+import { labelEntries, labelParts } from "../src/data/labelCatalog.js";
 import { verifiedLabelLogos } from "../src/data/labelLogoManifest.js";
 
 const root = process.cwd();
@@ -10,6 +10,9 @@ const publicStore = JSON.parse(fs.readFileSync(path.join(root, "public", "data",
 const placeholderSignature = /viewBox=["']0 0 240 120["'][\s\S]*?<circle cx=["']120["'] cy=["']60["']/i;
 const forbiddenExtensions = new Set(["gif", "jpg", "jpeg"]);
 const failures = [];
+if (JSON.stringify(labelParts("H/O/D Records")) !== JSON.stringify(["H/O/D Records"])) {
+  failures.push("H/O/D Records must remain one label identity.");
+}
 
 for (const [slug, logo] of Object.entries(verifiedLabelLogos)) {
   const assetPath = path.join(assetDirectory, `${logo.assetSlug || slug}.${logo.extension}`);

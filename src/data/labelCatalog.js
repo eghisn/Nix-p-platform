@@ -3,6 +3,7 @@ import { slugifyPublic } from "./publicUrls.js";
 import { verifiedLabelLogos } from "./labelLogoManifest.js";
 
 export function labelParts(value) {
+  if (String(value || "").trim().toLowerCase() === "h/o/d records") return ["H/O/D Records"];
   return [...new Set(
     String(value || "")
       .split(/\s*\/\s*/)

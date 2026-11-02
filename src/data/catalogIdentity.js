@@ -1,4 +1,6 @@
 const ARTIST_CREDIT_ALIASES = new Map([
+  ["domi & jd beck", ["Domi & JD Beck"]],
+  ["domi and jd beck", ["Domi & JD Beck"]],
   ["amnesia scanner & bill kouligas", ["Amnesia Scanner", "Bill Kouligas"]],
   ["ford & lopatin", ["Ford", "Daniel Lopatin"]],
   ["heith & tarawangsawelas", ["Heith", "Tarawangsawelas"]],
@@ -19,6 +21,8 @@ const ARTIST_CREDIT_ALIASES = new Map([
 ]);
 
 const ARTIST_CANONICAL_NAMES = new Map([
+  ["domi & jd beck", "Domi & JD Beck"],
+  ["domi and jd beck", "Domi & JD Beck"],
   ["prodigy", "The Prodigy"],
   ["the prodigy", "The Prodigy"],
   ["soft moon", "The Soft Moon"],
@@ -105,6 +109,7 @@ export function canonicalLabelName(value) {
   if (lower.includes("jagjaguwar")) return "Jagjaguwar";
   if (lower.includes("warp")) return "Warp Records";
   if (lower === "p2") return "Dense(s) Records";
+  if (lower === "public possessions") return "Public Possession";
   return label;
 }
 
