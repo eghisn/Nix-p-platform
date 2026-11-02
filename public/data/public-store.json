@@ -5032,6 +5032,186 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0083",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0083",
+      "tags": [],
+      "year": 2014,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0083-user-cover.webp",
+      "label": "Too Pure",
+      "price": 305000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "The Sky Of All Places",
+      "artist": "Spectres",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0083-user-cover.webp"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "Vinyl, 7\", Single, 45 RPM, Limited Edition, Numbered, Lime Green",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0083-user-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://isolationrecords.co.uk/2014%20reviews1.html",
+      "syncAudit": [
+        {
+          "at": "2026-11-02T02:00:46.623Z",
+          "sku": "NXP-2026-VNL-0083",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.780Z",
+          "sku": "NXP-2026-VNL-0083",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-31T02:00:47.138Z",
+          "sku": "NXP-2026-VNL-0083",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.778Z",
+          "sku": "NXP-2026-VNL-0083",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.559Z",
+          "sku": "NXP-2026-VNL-0083",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.346Z",
+          "sku": "NXP-2026-VNL-0083",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-27T02:00:47.584Z",
+          "sku": "NXP-2026-VNL-0083",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.434Z",
+          "sku": "NXP-2026-VNL-0083",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-02T02:00:46.623Z",
+        "sku": "NXP-2026-VNL-0083",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Spectres' original 'The Sky Of All Places' appeared in the Too Pure Singles Club in 2014, before the band re-recorded it for Dying. The numbered seven-inch pairs its slow-building A-side with the shorter, more volatile 'Sooky Eyeball.' The band says only 250 copies of this first single were made.",
+      "reviewQuote": "a medium paced, grubby trawl through the indie-psych world",
+      "editRevision": 53,
+      "imageCredits": [
+        {
+          "url": "https://www.discogs.com/release/5290166-Spectres-The-Sky-Of-All-Places",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0083-user-cover.webp",
+          "credit": "NIXP owner-provided release artwork (Discogs database)"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Isolation Records (original single review, quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://isolationrecords.co.uk/2014%20reviews1.html",
+        "description": "Spectres' original 'The Sky Of All Places' appeared in the Too Pure Singles Club in 2014, before the band re-recorded it for Dying. The numbered seven-inch pairs its slow-building A-side with the shorter, more volatile 'Sooky Eyeball.' The band says only 250 copies of this first single were made.",
+        "reviewQuote": "a medium paced, grubby trawl through the indie-psych world",
+        "reviewSource": "Isolation Records (original single review, quoted)",
+        "descriptionSource": "Spectres official Bandcamp / Isolation Records"
+      },
+      "catalogNumber": "PURE 301S",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mtvsojbt5g1t1o",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://wearespectres.bandcamp.com/album/debridement",
+          "source": "Spectres official Bandcamp / Isolation Records",
+          "confidence": 100
+        },
+        {
+          "url": "https://isolationrecords.co.uk/2014%20reviews1.html",
+          "source": "Isolation Records (original single review, quoted)",
+          "confidence": 100
+        }
+      ],
+      "catalogPriceSync": 305000,
+      "enrichmentOrigin": "owner-approved",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Spectres official Bandcamp / Isolation Records",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-10-28 16:23:08.216603+00",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "publishAfterResearch": false,
+      "minimumAcceptableOffer": 0,
+      "editorialUpdatedAt": "2026-11-02T05:16:27.189+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "manualRelatedArtists": [],
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-10",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0082",
       "qty": 1,
       "sku": "NXP-2026-VNL-0082",
@@ -25331,7 +25511,7 @@
       "apparelType": "",
       "description": "Drawn from Factory Floor's live score for Fritz Lang's Metropolis at London's Science Museum, 'Heart of Data' and 'Babel' are two soundtrack edits issued on the duo's own H/O/D Records imprint in 2018. Nik Colk Void and Gabriel Gurnsey let modular rhythms and changing synth textures carry the first side; the longer 'Babel' turns toward a looser, more meditative pulse.",
       "reviewQuote": "a sleeker new sound here, easing off the brittleness of their earlier releases",
-      "editRevision": 54,
+      "editRevision": 55,
       "imageCredits": [
         {
           "url": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
@@ -25634,7 +25814,7 @@
       "publicationState": "deployment_pending",
       "descriptionSource": "Factory Floor / H/O/D release reporting / Boomkat",
       "metadataSourceUrl": "https://www.discogs.com/release/11538086-Factory-Floor-Heart-Of-Data",
-      "editorialUpdatedAt": "2026-11-02T05:14:55.278+00:00",
+      "editorialUpdatedAt": "2026-11-02T05:15:29.952+00:00",
       "editorialUpdatedBy": "admin-publication",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-10-28 16:23:08.216603+00",
