@@ -2,6 +2,676 @@
   "version": "supabase-live-2026-07-13",
   "products": [
     {
+      "id": "finance-nxp-2026-vnl-0114",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0114",
+      "tags": [
+        "art rock",
+        "experimental rock",
+        "alternative rock"
+      ],
+      "year": 2021,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0114-official-cover.webp",
+      "label": "Warp Records",
+      "price": 690000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "The Asymptotical World",
+      "artist": "Yves Tumor",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0114-official-cover.webp"
+      ],
+      "barcode": "801061945718",
+      "details": [],
+      "edition": "Vinyl, 12\", EP, Stereo, Mono",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0114-official-cover.webp",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://ra.co/reviews/34123",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.792Z",
+          "sku": "NXP-2026-VNL-0114",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.565Z",
+          "sku": "NXP-2026-VNL-0114",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.352Z",
+          "sku": "NXP-2026-VNL-0114",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-27T17:10:34.301Z",
+          "sku": "NXP-2026-VNL-0114",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.438Z",
+          "sku": "NXP-2026-VNL-0114",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.493Z",
+          "sku": "NXP-2026-VNL-0114",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.304Z",
+          "sku": "NXP-2026-VNL-0114",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-21T15:33:41.047Z",
+          "sku": "NXP-2026-VNL-0114",
+          "action": "Inventory created catalog item",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.792Z",
+        "sku": "NXP-2026-VNL-0114",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Across six songs, The Asymptotical World pulls Yves Tumor's bruised romantic writing toward guitars with greater bite. 'Jackie' opens with a compressed rush, while 'Crushed Velvet' and 'Secrecy Is Incredibly Important To The Both of Them' turn uneasy intimacy into wide, volatile rock arrangements. Warp issued the EP in 2021 as a 12-inch, distinct from the separate three-disc 7-inch box.",
+      "reviewQuote": "A dazzling EP of emotional, out-of-this-world love songs.",
+      "imageCredits": [
+        {
+          "url": "https://yves-tumor.bandcamp.com/album/the-asymptotical-world-ep",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0114-official-cover.webp",
+          "credit": "Yves Tumor / Warp official Bandcamp artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Resident Advisor (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://ra.co/reviews/34123",
+        "description": "Across six songs, The Asymptotical World pulls Yves Tumor's bruised romantic writing toward guitars with greater bite. 'Jackie' opens with a compressed rush, while 'Crushed Velvet' and 'Secrecy Is Incredibly Important To The Both of Them' turn uneasy intimacy into wide, volatile rock arrangements. Warp issued the EP in 2021 as a 12-inch, distinct from the separate three-disc 7-inch box.",
+        "reviewQuote": "A dazzling EP of emotional, out-of-this-world love songs.",
+        "reviewSource": "Resident Advisor (quoted)",
+        "relatedArtists": [
+          "Eartheater",
+          "Dean Blunt",
+          "Mount Kimbie",
+          "Bar Italia",
+          "Arca"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Warp official release / Yves Tumor Bandcamp / Resident Advisor",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Eartheater",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.916536,
+            "artist": "Dean Blunt",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 0.916536,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.890215,
+            "artist": "Mount Kimbie",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 0.890215,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.793253,
+            "artist": "Bar Italia",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 0.793253,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.783928,
+            "artist": "Arca",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 0.783928,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Eartheater",
+              "Dean Blunt",
+              "Mount Kimbie",
+              "Bar Italia",
+              "Arca",
+              "George Clanton",
+              "Oneohtrix Point Never",
+              "James K",
+              "L'Rain",
+              "ML Buch"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Eartheater",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.916536,
+                "artist": "Dean Blunt",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 0.916536,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.890215,
+                "artist": "Mount Kimbie",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 0.890215,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.793253,
+                "artist": "Bar Italia",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 0.793253,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.783928,
+                "artist": "Arca",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 0.783928,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.774437,
+                "artist": "George Clanton",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 0.774437,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.767483,
+                "artist": "Oneohtrix Point Never",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 0.767483,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.76478,
+                "artist": "James K",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 0.76478,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.701963,
+                "artist": "L'Rain",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 0.701963,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.691719,
+                "artist": "ML Buch",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+                "confidence": 0.691719,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Eartheater",
+            "Dean Blunt",
+            "Mount Kimbie",
+            "Bar Italia",
+            "Arca"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Eartheater",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.916536,
+              "artist": "Dean Blunt",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.916536,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.890215,
+              "artist": "Mount Kimbie",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.890215,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.793253,
+              "artist": "Bar Italia",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.793253,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.783928,
+              "artist": "Arca",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.783928,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "WAP457",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mvi9s3jvq5kxsz",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Eartheater",
+        "Dean Blunt",
+        "Mount Kimbie",
+        "Bar Italia",
+        "Arca"
+      ],
+      "reviewResearch": {
+        "url": "https://ra.co/reviews/34123",
+        "scope": "release",
+        "source": "Resident Advisor (quoted)",
+        "status": "verified"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchFailure": {
+        "at": "2026-10-27T17:10:34.301Z",
+        "code": "source-unavailable",
+        "message": "bandcamp-search is temporarily unavailable.",
+        "sources": [
+          "bandcamp-search"
+        ]
+      },
+      "researchSources": [
+        {
+          "url": "https://yves-tumor.bandcamp.com/album/the-asymptotical-world-ep",
+          "source": "Warp official release / Yves Tumor Bandcamp / Resident Advisor",
+          "confidence": 100
+        },
+        {
+          "url": "https://ra.co/reviews/34123",
+          "source": "Resident Advisor (quoted)",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": null,
+      "catalogPriceSync": 690000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Warp official release / Yves Tumor Bandcamp / Resident Advisor",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-10-27T17:10:34.301Z",
+      "enrichmentFingerprint": "yves tumor|the asymptotical world|vinyl|801061945718|wap457|edition:vinyl 12 ep stereo mono",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Eartheater",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.916536,
+          "artist": "Dean Blunt",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+          "confidence": 0.916536,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.890215,
+          "artist": "Mount Kimbie",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+          "confidence": 0.890215,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.793253,
+          "artist": "Bar Italia",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+          "confidence": 0.793253,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.783928,
+          "artist": "Arca",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+          "confidence": 0.783928,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Eartheater",
+            "Dean Blunt",
+            "Mount Kimbie",
+            "Bar Italia",
+            "Arca",
+            "George Clanton",
+            "Oneohtrix Point Never",
+            "James K",
+            "L'Rain",
+            "ML Buch"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Eartheater",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.916536,
+              "artist": "Dean Blunt",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.916536,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.890215,
+              "artist": "Mount Kimbie",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.890215,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.793253,
+              "artist": "Bar Italia",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.793253,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.783928,
+              "artist": "Arca",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.783928,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.774437,
+              "artist": "George Clanton",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.774437,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.767483,
+              "artist": "Oneohtrix Point Never",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.767483,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.76478,
+              "artist": "James K",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.76478,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.701963,
+              "artist": "L'Rain",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.701963,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.691719,
+              "artist": "ML Buch",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+              "confidence": 0.691719,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Yves%20Tumor"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Eartheater",
+          "Dean Blunt",
+          "Mount Kimbie",
+          "Bar Italia",
+          "Arca"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Eartheater",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.916536,
+            "artist": "Dean Blunt",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 0.916536,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.890215,
+            "artist": "Mount Kimbie",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 0.890215,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.793253,
+            "artist": "Bar Italia",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 0.793253,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.783928,
+            "artist": "Arca",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Yves%20Tumor",
+            "confidence": 0.783928,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 13,
+      "editorialUpdatedAt": "2026-11-02T08:45:13.959+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-10-21",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0113",
       "qty": 1,
       "sku": "NXP-2026-VNL-0113",
@@ -644,8 +1314,8 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 13,
-      "editorialUpdatedAt": "2026-11-02T08:39:32.47+00:00",
+      "editRevision": 14,
+      "editorialUpdatedAt": "2026-11-02T08:40:08.353+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
