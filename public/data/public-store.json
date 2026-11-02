@@ -2147,6 +2147,707 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0102",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0102",
+      "tags": [
+        "dub techno",
+        "techno",
+        "experimental electronic"
+      ],
+      "year": 2025,
+      "color": "",
+      "flaws": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0102/cover.jpg",
+      "label": "The Trilogy Tapes",
+      "price": 650000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Crinkle",
+      "artist": "RS Tangent",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0102/cover.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-VNL-0102",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: Vinyl",
+        "12\"",
+        "33 ⅓ RPM",
+        "Catalog number: TTT111"
+      ],
+      "edition": "Vinyl, 12\", 33 ⅓ RPM",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0102/cover.jpg",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://boomkat.com/products/crinkle",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.790Z",
+          "sku": "NXP-2026-VNL-0102",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.794Z",
+          "sku": "NXP-2026-VNL-0102",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.564Z",
+          "sku": "NXP-2026-VNL-0102",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.350Z",
+          "sku": "NXP-2026-VNL-0102",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.437Z",
+          "sku": "NXP-2026-VNL-0102",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.492Z",
+          "sku": "NXP-2026-VNL-0102",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-23T20:12:29.143Z",
+          "sku": "NXP-2026-VNL-0102",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-23T20:08:04.295Z",
+          "sku": "NXP-2026-VNL-0102",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "The Trilogy Tapes",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.790Z",
+        "sku": "NXP-2026-VNL-0102",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "On Crinkle, RS Tangent pulls dub techno away from its familiar haze and into a more physical, off-centre space. Robin Stewart builds Stomach from uneven drums and heavy low frequencies, while Compact tightens the pulse. The title track turns delayed fragments into rhythms of their own. Across four pieces, the effects do more than colour the tracks: they keep changing the shape of the beat.",
+      "reviewQuote": "a set of twisted warehouse melters that apply advanced dub logic to pointillistic technoid rhythms.",
+      "sourceTitle": "Crinkle",
+      "editRevision": 41,
+      "imageCredits": [
+        {
+          "url": "https://rstangent.bandcamp.com/album/crinkle",
+          "image": "https://f4.bcbits.com/img/a1899538574_0.jpg",
+          "credit": "Official Bandcamp release artwork"
+        },
+        {
+          "url": "https://rstangent.bandcamp.com/album/crinkle",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0102/cover.jpg",
+          "credit": "Official Bandcamp release artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Boomkat (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://boomkat.com/products/crinkle",
+        "description": "On Crinkle, RS Tangent pulls dub techno away from its familiar haze and into a more physical, off-centre space. Robin Stewart builds Stomach from uneven drums and heavy low frequencies, while Compact tightens the pulse. The title track turns delayed fragments into rhythms of their own. Across four pieces, the effects do more than colour the tracks: they keep changing the shape of the beat.",
+        "reviewQuote": "a set of twisted warehouse melters that apply advanced dub logic to pointillistic technoid rhythms.",
+        "reviewSource": "Boomkat product review (quoted)",
+        "relatedArtists": [
+          "Simo Cell",
+          "Gamma Intel",
+          "Myriad Myriads",
+          "Brassfoot",
+          "Carrier"
+        ],
+        "descriptionSource": "Boomkat / RS Tangent",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Simo Cell",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.410762,
+            "artist": "Gamma Intel",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 0.410762,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.190419,
+            "artist": "Myriad Myriads",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 0.190419,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.09674,
+            "artist": "Brassfoot",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 0.09674,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.086644,
+            "artist": "Carrier",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 0.086644,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Simo Cell",
+              "Gamma Intel",
+              "Myriad Myriads",
+              "Brassfoot",
+              "Carrier",
+              "Saint Abdullah & Eomac",
+              "Rezzett",
+              "Torn Hawk",
+              "A LARGE SHEET OF MUSCLE",
+              "Memotone"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Simo Cell",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.410762,
+                "artist": "Gamma Intel",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 0.410762,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.190419,
+                "artist": "Myriad Myriads",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 0.190419,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.09674,
+                "artist": "Brassfoot",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 0.09674,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.086644,
+                "artist": "Carrier",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 0.086644,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.082279,
+                "artist": "Saint Abdullah & Eomac",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 0.082279,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.080013,
+                "artist": "Rezzett",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 0.080013,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.077909,
+                "artist": "Torn Hawk",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 0.077909,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.070449,
+                "artist": "A LARGE SHEET OF MUSCLE",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 0.070449,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.064411,
+                "artist": "Memotone",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+                "confidence": 0.064411,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Simo Cell",
+            "Gamma Intel",
+            "Myriad Myriads",
+            "Brassfoot",
+            "Carrier"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Simo Cell",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.410762,
+              "artist": "Gamma Intel",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.410762,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.190419,
+              "artist": "Myriad Myriads",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.190419,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.09674,
+              "artist": "Brassfoot",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.09674,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.086644,
+              "artist": "Carrier",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.086644,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "TTT111",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "mua6o1mbdfk61p",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Giant Swan",
+        "Simo Cell",
+        "Gamma Intel",
+        "Myriad Myriads",
+        "Brassfoot",
+        "Carrier"
+      ],
+      "reviewResearch": {
+        "url": "https://boomkat.com/products/crinkle",
+        "quote": "a set of twisted warehouse melters that apply advanced dub logic to pointillistic technoid rhythms.",
+        "scope": "release",
+        "title": "Crinkle",
+        "source": "Boomkat product review (quoted)",
+        "status": "verified",
+        "verifiedAt": "2026-10-24"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [
+        "recent-releases"
+      ],
+      "researchFailure": null,
+      "researchSources": [
+        {
+          "url": "https://rstangent.bandcamp.com/album/crinkle",
+          "source": "Official Bandcamp physical release",
+          "confidence": 100
+        },
+        {
+          "url": "https://boomkat.com/products/crinkle",
+          "source": "Boomkat product review (quoted)",
+          "confidence": 100
+        }
+      ],
+      "sleeveCondition": "",
+      "autoProductPhoto": "",
+      "catalogPriceSync": 650000,
+      "enrichmentOrigin": "bandcamp",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Boomkat / RS Tangent",
+      "metadataSourceUrl": "https://rstangent.bandcamp.com/album/crinkle",
+      "editorialUpdatedAt": "2026-11-02T07:30:35.757+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "mediaConditionNote": "",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-10-23",
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [
+        "Giant Swan",
+        "Simo Cell",
+        "Gamma Intel",
+        "Myriad Myriads",
+        "Brassfoot",
+        "Carrier"
+      ],
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
+      "enrichmentAttemptedAt": "2026-10-23T20:12:29.142Z",
+      "enrichmentFingerprint": "rs tangent|crinkle|vinyl||ttt111",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Simo Cell",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.410762,
+          "artist": "Gamma Intel",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+          "confidence": 0.410762,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.190419,
+          "artist": "Myriad Myriads",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+          "confidence": 0.190419,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.09674,
+          "artist": "Brassfoot",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+          "confidence": 0.09674,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.086644,
+          "artist": "Carrier",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+          "confidence": 0.086644,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Simo Cell",
+            "Gamma Intel",
+            "Myriad Myriads",
+            "Brassfoot",
+            "Carrier",
+            "Saint Abdullah & Eomac",
+            "Rezzett",
+            "Torn Hawk",
+            "A LARGE SHEET OF MUSCLE",
+            "Memotone"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Simo Cell",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.410762,
+              "artist": "Gamma Intel",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.410762,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.190419,
+              "artist": "Myriad Myriads",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.190419,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.09674,
+              "artist": "Brassfoot",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.09674,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.086644,
+              "artist": "Carrier",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.086644,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.082279,
+              "artist": "Saint Abdullah & Eomac",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.082279,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.080013,
+              "artist": "Rezzett",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.080013,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.077909,
+              "artist": "Torn Hawk",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.077909,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.070449,
+              "artist": "A LARGE SHEET OF MUSCLE",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.070449,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.064411,
+              "artist": "Memotone",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+              "confidence": 0.064411,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/RS%20Tangent"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Simo Cell",
+          "Gamma Intel",
+          "Myriad Myriads",
+          "Brassfoot",
+          "Carrier"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Simo Cell",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.410762,
+            "artist": "Gamma Intel",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 0.410762,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.190419,
+            "artist": "Myriad Myriads",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 0.190419,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.09674,
+            "artist": "Brassfoot",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 0.09674,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.086644,
+            "artist": "Carrier",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/RS%20Tangent",
+            "confidence": 0.086644,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "admin",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-11-02",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0101",
       "qty": 1,
       "sku": "NXP-2026-VNL-0101",
@@ -2266,7 +2967,7 @@
       "description": "Moon Diagrams' Trappy Bats begins with music Moses John Archuleta recorded largely in a single night. Its three originals move between patient club rhythms, blurred piano loops and submerged pop, then open outward through reworks by Shigeto, Deradoorian and Jefre Cantu-Ledesma. Rather than separating songs from remixes, the six-track sequence lets those different perspectives reshape the record as it unfolds.",
       "reviewQuote": "Detroit producer Shigeto puts an atmospheric, jacking take on \"Trappy Bats,\"",
       "sourceTitle": "Trappy Bats",
-      "editRevision": 40,
+      "editRevision": 41,
       "imageCredits": [
         {
           "url": "https://moondiagrams.bandcamp.com/album/trappy-bats",
@@ -2578,7 +3279,7 @@
       "publicationState": "deployment_pending",
       "descriptionSource": "Geographic North",
       "metadataSourceUrl": "https://moondiagrams.bandcamp.com/album/trappy-bats",
-      "editorialUpdatedAt": "2026-11-02T07:22:16.718+00:00",
+      "editorialUpdatedAt": "2026-11-02T07:22:51.49+00:00",
       "editorialUpdatedBy": "admin-publication",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
