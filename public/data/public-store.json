@@ -2147,6 +2147,513 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0098",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0098",
+      "tags": [
+        "dance-punk",
+        "post-punk",
+        "noise rock"
+      ],
+      "year": 2025,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0098-official-cover.webp",
+      "label": "Dirty Hit",
+      "price": 805000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Pirouette",
+      "artist": "Model Actriz",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0098-official-cover.webp"
+      ],
+      "barcode": "850068999453",
+      "details": [],
+      "edition": "Vinyl, LP, Album",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0098-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.788Z",
+          "sku": "NXP-2026-VNL-0098",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.793Z",
+          "sku": "NXP-2026-VNL-0098",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.562Z",
+          "sku": "NXP-2026-VNL-0098",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.349Z",
+          "sku": "NXP-2026-VNL-0098",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.436Z",
+          "sku": "NXP-2026-VNL-0098",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.817Z",
+          "sku": "NXP-2026-VNL-0098",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.492Z",
+          "sku": "NXP-2026-VNL-0098",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-23T20:41:10.564Z",
+          "sku": "NXP-2026-VNL-0098",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.788Z",
+        "sku": "NXP-2026-VNL-0098",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "On Pirouette, Model/Actriz turns the confrontational energy of Dogsbody toward brighter, sharper club textures without losing its physical urgency. Cole Haden's lyrics return to the unstable space between desire and being watched; the closing 'Baton' makes that self-consciousness the album's final question. Released in 2025, this is the band's second album, issued on vinyl through Dirty Hit.",
+      "reviewQuote": "strikingly honest about its own self-consciousness",
+      "imageCredits": [
+        {
+          "url": "https://modelactriz.bandcamp.com/album/pirouette",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0098-official-cover.webp",
+          "credit": "Model/Actriz official Bandcamp cover"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Pitchfork (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
+        "description": "On Pirouette, Model/Actriz turns the confrontational energy of Dogsbody toward brighter, sharper club textures without losing its physical urgency. Cole Haden's lyrics return to the unstable space between desire and being watched; the closing 'Baton' makes that self-consciousness the album's final question. Released in 2025, this is the band's second album, issued on vinyl through Dirty Hit.",
+        "reviewQuote": "strikingly honest about its own self-consciousness",
+        "reviewSource": "Pitchfork (quoted)",
+        "relatedArtists": [
+          "Quintron",
+          "Sugar",
+          "Jenny Hval",
+          "Drahla"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Model/Actriz official Bandcamp / Dirty Hit / Pitchfork",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Quintron",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.87489,
+            "artist": "Sugar",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.87489,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.441572,
+            "artist": "Jenny Hval",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.441572,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.428048,
+            "artist": "Drahla",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.428048,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Quintron",
+              "Sugar",
+              "Jenny Hval",
+              "Drahla"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Quintron",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.87489,
+                "artist": "Sugar",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 0.87489,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.441572,
+                "artist": "Jenny Hval",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 0.441572,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.428048,
+                "artist": "Drahla",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+                "confidence": 0.428048,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Quintron",
+            "Sugar",
+            "Jenny Hval",
+            "Drahla"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Quintron",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.87489,
+              "artist": "Sugar",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.87489,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.441572,
+              "artist": "Jenny Hval",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.441572,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.428048,
+              "artist": "Drahla",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.428048,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "DH02198",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mua5ro4vd7nacg",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Quintron",
+        "Sugar",
+        "Jenny Hval",
+        "Drahla"
+      ],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchFailure": {
+        "at": "2026-10-23T20:41:10.564Z",
+        "code": "source-unavailable",
+        "message": "bandcamp-search is temporarily unavailable.",
+        "sources": [
+          "bandcamp-search"
+        ]
+      },
+      "researchSources": [
+        {
+          "url": "https://modelactriz.bandcamp.com/album/pirouette",
+          "source": "Model/Actriz official Bandcamp / Dirty Hit / Pitchfork",
+          "confidence": 100
+        },
+        {
+          "url": "https://pitchfork.com/reviews/albums/model-actriz-pirouette/",
+          "source": "Pitchfork (quoted)",
+          "confidence": 100
+        }
+      ],
+      "catalogPriceSync": 805000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Model/Actriz official Bandcamp / Dirty Hit / Pitchfork",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-10-23T20:41:10.564Z",
+      "enrichmentFingerprint": "model actriz|pirouette|vinyl|850068999453|dh02198",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Quintron",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.87489,
+          "artist": "Sugar",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 0.87489,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.441572,
+          "artist": "Jenny Hval",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 0.441572,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.428048,
+          "artist": "Drahla",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+          "confidence": 0.428048,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Quintron",
+            "Sugar",
+            "Jenny Hval",
+            "Drahla"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Quintron",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.87489,
+              "artist": "Sugar",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.87489,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.441572,
+              "artist": "Jenny Hval",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.441572,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.428048,
+              "artist": "Drahla",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+              "confidence": 0.428048,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Model%20Actriz"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Quintron",
+          "Sugar",
+          "Jenny Hval",
+          "Drahla"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Quintron",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.87489,
+            "artist": "Sugar",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.87489,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.441572,
+            "artist": "Jenny Hval",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.441572,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.428048,
+            "artist": "Drahla",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Model%20Actriz",
+            "confidence": 0.428048,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 43,
+      "editorialUpdatedAt": "2026-11-02T07:16:39.484+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0097",
       "qty": 1,
       "sku": "NXP-2026-VNL-0097",
@@ -2788,8 +3295,8 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 43,
-      "editorialUpdatedAt": "2026-11-02T07:15:16.002+00:00",
+      "editRevision": 44,
+      "editorialUpdatedAt": "2026-11-02T07:15:51.199+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
