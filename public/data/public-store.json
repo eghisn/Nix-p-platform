@@ -2147,6 +2147,692 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0106",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0106",
+      "tags": [
+        "post-punk",
+        "rock"
+      ],
+      "year": 2014,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0106-official-cover.webp",
+      "label": "Pop Noire / Matador",
+      "price": 365000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Fuckers / Dream Baby Dream",
+      "artist": "Savages",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0106-official-cover.webp"
+      ],
+      "barcode": "7 44861 10601 2",
+      "details": [
+        "SKU: NXP-2026-VNL-0106",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: Vinyl, 12\", EP, 33 ⅓ RPM, Limited Edition",
+        "Catalog number: OLE-1060-1",
+        "Barcode: 744861106012",
+        "Barcode: 7 44861 10601 2"
+      ],
+      "edition": "Vinyl, 12\", EP, 33 ⅓ RPM, Limited Edition",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0106-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.isolationrecords.co.uk/2014%20reviews2.html",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.790Z",
+          "sku": "NXP-2026-VNL-0106",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.794Z",
+          "sku": "NXP-2026-VNL-0106",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.564Z",
+          "sku": "NXP-2026-VNL-0106",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.351Z",
+          "sku": "NXP-2026-VNL-0106",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.437Z",
+          "sku": "NXP-2026-VNL-0106",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.492Z",
+          "sku": "NXP-2026-VNL-0106",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-23T19:50:13.101Z",
+          "sku": "NXP-2026-VNL-0106",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T17:01:03.576Z",
+          "sku": "NXP-2026-VNL-0106",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "Pop Noire / Matador",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.790Z",
+        "sku": "NXP-2026-VNL-0106",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "A year after Silence Yourself, Savages followed their debut with a release built around performance rather than another studio statement. Fuckers / Dream Baby Dream pairs a live recording of their own Fuckers with a version of Suicide's Dream Baby Dream. Issued in 2014 by Matador and Pop Noire, the two-track record places the band's material alongside an earlier point of reference.",
+      "reviewQuote": "the instruments and vocals sharp and the live power of the band is captured",
+      "sourceTitle": "Fuckers / Dream Baby Dream",
+      "imageCredits": [
+        {
+          "url": "https://savages.bandcamp.com/album/fuckers-dream-baby-dream",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0106-official-cover.webp",
+          "credit": "Savages / Bandcamp official artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Isolation Records (2014 single review, quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.isolationrecords.co.uk/2014%20reviews2.html",
+        "description": "A year after Silence Yourself, Savages followed their debut with a release built around performance rather than another studio statement. Fuckers / Dream Baby Dream pairs a live recording of their own Fuckers with a version of Suicide's Dream Baby Dream. Issued in 2014 by Matador and Pop Noire, the two-track record places the band's material alongside an earlier point of reference.",
+        "reviewQuote": "the instruments and vocals sharp and the live power of the band is captured",
+        "reviewSource": "Isolation Records (2014 single review, quoted)",
+        "relatedArtists": [
+          "Jehnny Beth",
+          "White Lung",
+          "Preoccupations",
+          "Priests",
+          "Algiers"
+        ],
+        "descriptionSource": "Pitchfork",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Jehnny Beth",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.646843,
+            "artist": "White Lung",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 0.646843,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.453441,
+            "artist": "Preoccupations",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 0.453441,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.447779,
+            "artist": "Priests",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 0.447779,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.425285,
+            "artist": "Algiers",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 0.425285,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Jehnny Beth",
+              "White Lung",
+              "Preoccupations",
+              "Priests",
+              "Algiers",
+              "Ought",
+              "Sprints",
+              "Protomartyr",
+              "Iceage",
+              "The Slits"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Jehnny Beth",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.646843,
+                "artist": "White Lung",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 0.646843,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.453441,
+                "artist": "Preoccupations",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 0.453441,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.447779,
+                "artist": "Priests",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 0.447779,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.425285,
+                "artist": "Algiers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 0.425285,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.385463,
+                "artist": "Ought",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 0.385463,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.384704,
+                "artist": "Sprints",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 0.384704,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.37613,
+                "artist": "Protomartyr",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 0.37613,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.35864,
+                "artist": "Iceage",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 0.35864,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.349921,
+                "artist": "The Slits",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Savages",
+                "confidence": 0.349921,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Jehnny Beth",
+            "White Lung",
+            "Preoccupations",
+            "Priests",
+            "Algiers"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Jehnny Beth",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.646843,
+              "artist": "White Lung",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.646843,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.453441,
+              "artist": "Preoccupations",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.453441,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.447779,
+              "artist": "Priests",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.447779,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.425285,
+              "artist": "Algiers",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.425285,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "9fe3448c-9b15-4488-8f18-a5ca96eba49a",
+          "sourceUrl": "https://musicbrainz.org/release/9fe3448c-9b15-4488-8f18-a5ca96eba49a",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "OLE-1060-1",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mua71wb9h0t4zj",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Jehnny Beth",
+        "White Lung",
+        "Preoccupations",
+        "Priests",
+        "Algiers"
+      ],
+      "reviewResearch": {
+        "url": "https://theneedledrop.com/2014-05-savages-fuckers/",
+        "quote": "The atmosphere is so incredibly sinister, and the visuals only lend power to that sensation.",
+        "scope": "track",
+        "title": "Fuckers",
+        "source": "The Needle Drop on the \"Fuckers\" live video (quoted)",
+        "status": "verified",
+        "verifiedAt": "2026-10-23"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchFailure": null,
+      "researchSources": [
+        {
+          "url": "https://musicbrainz.org/release/9fe3448c-9b15-4488-8f18-a5ca96eba49a",
+          "source": "MusicBrainz release identity (not editorial)",
+          "confidence": 95
+        },
+        {
+          "url": "https://pitchfork.com/news/53999-savages-to-release-new-12-featuring-suicide-cover-new-song-fuckers/",
+          "source": "Pitchfork",
+          "confidence": 100
+        },
+        {
+          "url": "https://theneedledrop.com/2014-05-savages-fuckers/",
+          "source": "The Needle Drop on the \"Fuckers\" live video (quoted)",
+          "confidence": 100
+        },
+        {
+          "url": "https://www.isolationrecords.co.uk/2014%20reviews2.html",
+          "source": "Isolation Records original 2014 single review (quoted)",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": "",
+      "catalogPriceSync": 365000,
+      "enrichmentOrigin": "verified-release-cache",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Pitchfork",
+      "metadataSourceUrl": "https://musicbrainz.org/release/9fe3448c-9b15-4488-8f18-a5ca96eba49a",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-10-23",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "9fe3448c-9b15-4488-8f18-a5ca96eba49a",
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-10-23T19:50:13.101Z",
+      "enrichmentFingerprint": "savages|fuckers dream baby dream|vinyl|7 44861 10601 2|ole 1060 1",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Jehnny Beth",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Savages",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.646843,
+          "artist": "White Lung",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Savages",
+          "confidence": 0.646843,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.453441,
+          "artist": "Preoccupations",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Savages",
+          "confidence": 0.453441,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.447779,
+          "artist": "Priests",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Savages",
+          "confidence": 0.447779,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.425285,
+          "artist": "Algiers",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Savages",
+          "confidence": 0.425285,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Jehnny Beth",
+            "White Lung",
+            "Preoccupations",
+            "Priests",
+            "Algiers",
+            "Ought",
+            "Sprints",
+            "Protomartyr",
+            "Iceage",
+            "The Slits"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Jehnny Beth",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.646843,
+              "artist": "White Lung",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.646843,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.453441,
+              "artist": "Preoccupations",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.453441,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.447779,
+              "artist": "Priests",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.447779,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.425285,
+              "artist": "Algiers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.425285,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.385463,
+              "artist": "Ought",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.385463,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.384704,
+              "artist": "Sprints",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.384704,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.37613,
+              "artist": "Protomartyr",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.37613,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.35864,
+              "artist": "Iceage",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.35864,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.349921,
+              "artist": "The Slits",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Savages",
+              "confidence": 0.349921,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Savages"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Jehnny Beth",
+          "White Lung",
+          "Preoccupations",
+          "Priests",
+          "Algiers"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Jehnny Beth",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.646843,
+            "artist": "White Lung",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 0.646843,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.453441,
+            "artist": "Preoccupations",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 0.453441,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.447779,
+            "artist": "Priests",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 0.447779,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.425285,
+            "artist": "Algiers",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Savages",
+            "confidence": 0.425285,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "9fe3448c-9b15-4488-8f18-a5ca96eba49a",
+        "sourceUrl": "https://musicbrainz.org/release/9fe3448c-9b15-4488-8f18-a5ca96eba49a",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 41,
+      "editorialUpdatedAt": "2026-11-02T07:59:24.583+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0105",
       "qty": 1,
       "sku": "NXP-2026-VNL-0105",
@@ -2810,8 +3496,8 @@
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 39,
-      "editorialUpdatedAt": "2026-11-02T07:58:20.812+00:00",
+      "editRevision": 40,
+      "editorialUpdatedAt": "2026-11-02T07:58:55.64+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
