@@ -2787,8 +2787,8 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 39,
-      "editorialUpdatedAt": "2026-11-02T07:33:12.078+00:00",
+      "editRevision": 40,
+      "editorialUpdatedAt": "2026-11-02T07:33:45.869+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
@@ -10663,6 +10663,272 @@
         "heightCm": 4,
         "lengthCm": 34,
         "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0091",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0091",
+      "tags": [
+        "electro",
+        "house",
+        "acid house",
+        "compilation"
+      ],
+      "year": 2017,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0091-public-possession-official-cover.webp",
+      "label": "Public Possession",
+      "price": 450000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Serie A",
+      "artist": "Various Artists",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0091-public-possession-official-cover.webp"
+      ],
+      "barcode": "",
+      "details": [
+        "Catalog number: PP022",
+        "Edition: Vinyl, 12\", 33 ⅓ RPM, Compilation",
+        "A1 Tambien - Collagelinger",
+        "A2 Rhode & Brown - Black Cardigan",
+        "B1 Mr. Tophat - Taxi Tbilisi",
+        "B2 Obalski - Achim"
+      ],
+      "edition": "Vinyl, 12\", 33 ⅓ RPM, Compilation",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0091-public-possession-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-11-02T07:07:30.037Z",
+          "sku": "NXP-2026-VNL-0091",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.788Z",
+          "sku": "NXP-2026-VNL-0091",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.792Z",
+          "sku": "NXP-2026-VNL-0091",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.561Z",
+          "sku": "NXP-2026-VNL-0091",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.348Z",
+          "sku": "NXP-2026-VNL-0091",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.436Z",
+          "sku": "NXP-2026-VNL-0091",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.816Z",
+          "sku": "NXP-2026-VNL-0091",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.491Z",
+          "sku": "NXP-2026-VNL-0091",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "Public Possession",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-02T07:07:30.037Z",
+        "sku": "NXP-2026-VNL-0091",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Four producers, two sides, and no single mood: Public Possession's Serie A places Tambien's Collagelinger beside Rhode & Brown's Black Cardigan, then turns to Mr. Tophat's Taxi Tbilisi and Obalski's Achim. The Munich label presents the sequence as a move between collage, pop build-up, a telephone homage and a heavier acid piece. Issued as PP022 in 2017, the twelve-inch maps a broad stretch of the label's dance-floor interests without forcing the four tracks into one style.",
+      "reviewQuote": "",
+      "imageCredits": [
+        {
+          "url": "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0091-public-possession-official-cover.webp",
+          "credit": "Public Possession official Bandcamp artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "",
+      "autoEditorial": {
+        "reviewUrl": "",
+        "description": "Four producers, two sides, and no single mood: Public Possession's Serie A places Tambien's Collagelinger beside Rhode & Brown's Black Cardigan, then turns to Mr. Tophat's Taxi Tbilisi and Obalski's Achim. The Munich label presents the sequence as a move between collage, pop build-up, a telephone homage and a heavier acid piece. Issued as PP022 in 2017, the twelve-inch maps a broad stretch of the label's dance-floor interests without forcing the four tracks into one style.",
+        "reviewQuote": "",
+        "reviewSource": "",
+        "relatedArtists": [
+          "Tambien",
+          "Rhode & Brown",
+          "Mr. Tophat",
+          "Obalski"
+        ],
+        "descriptionSource": "Public Possession official Bandcamp / label release copy",
+        "relatedArtistEvidence": [
+          {
+            "source": "Public Possession official Bandcamp tracklist",
+            "sourceUrl": "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+            "confidence": "verified",
+            "relationType": "compilation-contributor"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "source": "Public Possession exact release credits",
+          "status": "curated-exact-artist-relationships",
+          "artists": [
+            "Tambien",
+            "Rhode & Brown",
+            "Mr. Tophat",
+            "Obalski"
+          ],
+          "evidence": [
+            {
+              "source": "Public Possession official Bandcamp tracklist",
+              "sourceUrl": "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+              "confidence": "verified",
+              "relationType": "compilation-contributor"
+            }
+          ]
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "PP022",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mu8s8yg6z947rz",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Tambien",
+        "Rhode & Brown",
+        "Mr. Tophat",
+        "Obalski"
+      ],
+      "reviewResearch": {
+        "status": "not-found"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+          "source": "Public Possession official Bandcamp release and artwork",
+          "confidence": 100
+        },
+        {
+          "url": "https://www.discogs.com/release/10624649-Various-Serie-A",
+          "source": "Exact physical release format (Discogs release 10624649)",
+          "confidence": 95
+        },
+        {
+          "url": "https://yoyaku.io/jp/release/pp022/",
+          "source": "PP022 physical format and label release copy",
+          "confidence": 95
+        }
+      ],
+      "autoProductPhoto": "",
+      "catalogPriceSync": 450000,
+      "enrichmentOrigin": "curated-exact",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Public Possession official Bandcamp / label release copy",
+      "metadataSourceUrl": "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-11-02",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "source": "Public Possession official Bandcamp tracklist",
+          "sourceUrl": "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+          "confidence": "verified",
+          "relationType": "compilation-contributor"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "source": "Public Possession exact release credits",
+        "status": "curated-exact-artist-relationships",
+        "artists": [
+          "Tambien",
+          "Rhode & Brown",
+          "Mr. Tophat",
+          "Obalski"
+        ],
+        "evidence": [
+          {
+            "source": "Public Possession official Bandcamp tracklist",
+            "sourceUrl": "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+            "confidence": "verified",
+            "relationType": "compilation-contributor"
+          }
+        ]
+      },
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 45,
+      "editorialUpdatedAt": "2026-11-02T07:57:19.329+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "manualRelatedArtists": [],
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-19",
         "packageType": "bubble-wrap-corrugated-vinyl-mailer",
         "weightGrams": 550,
         "shippingClass": "vinyl-cardboard-bubble",
