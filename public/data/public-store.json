@@ -2,6 +2,679 @@
   "version": "supabase-live-2026-07-13",
   "products": [
     {
+      "id": "finance-nxp-2026-vnl-0111",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0111",
+      "tags": [
+        "noise rock",
+        "experimental rock"
+      ],
+      "year": 2020,
+      "color": "",
+      "flaws": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0111/cover.jpg",
+      "label": "Thrill Jockey Records",
+      "price": 730000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Ride The Skies",
+      "artist": "Lightning Bolt",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0111/cover.jpg"
+      ],
+      "barcode": "7 90377 04991 6",
+      "details": [
+        "SKU: NXP-2026-VNL-0111",
+        "Format: Vinyl",
+        "Condition: Used Excellent",
+        "Edition: Vinyl, LP, Album, Reissue",
+        "Catalog number: THRILL 499",
+        "Barcode: 7 90377 04991 6"
+      ],
+      "edition": "Vinyl, LP, Album, Reissue",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0111/cover.jpg",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://www.allmusic.com/album/ride-the-skies-mw0000019011",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.791Z",
+          "sku": "NXP-2026-VNL-0111",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.794Z",
+          "sku": "NXP-2026-VNL-0111",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.565Z",
+          "sku": "NXP-2026-VNL-0111",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.351Z",
+          "sku": "NXP-2026-VNL-0111",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-27T13:37:56.611Z",
+          "sku": "NXP-2026-VNL-0111",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.438Z",
+          "sku": "NXP-2026-VNL-0111",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.493Z",
+          "sku": "NXP-2026-VNL-0111",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.303Z",
+          "sku": "NXP-2026-VNL-0111",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "Thrill Jockey Records",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.791Z",
+        "sku": "NXP-2026-VNL-0111",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "First released in 2001, Ride the Skies pushes Brian Gibson's distorted bass and Brian Chippendale's drums into faster, more tightly shaped collisions. This Thrill Jockey vinyl reissue brings the album back with new jacket art by Chippendale, retaining the force of 'Forcefield' and '13 Monsters'.",
+      "reviewQuote": "It's explosive, heavy, exciting, and rushed",
+      "sourceTitle": "Ride the Skies",
+      "imageCredits": [
+        {
+          "url": "https://lightningbolt.bandcamp.com/album/ride-the-skies",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0111/cover.jpg",
+          "credit": "Official Bandcamp release artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "AllMusic (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.allmusic.com/album/ride-the-skies-mw0000019011",
+        "description": "First released in 2001, Ride the Skies pushes Brian Gibson's distorted bass and Brian Chippendale's drums into faster, more tightly shaped collisions. This Thrill Jockey vinyl reissue brings the album back with new jacket art by Chippendale, retaining the force of 'Forcefield' and '13 Monsters'.",
+        "reviewQuote": "It's explosive, heavy, exciting, and rushed",
+        "reviewSource": "AllMusic (quoted)",
+        "relatedArtists": [
+          "Black Pus",
+          "Hella",
+          "Melt-Banana",
+          "Zach Hill",
+          "OOIOO"
+        ],
+        "descriptionSource": "Thrill Jockey official release / AllMusic",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Black Pus",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.764257,
+            "artist": "Hella",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 0.764257,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.621445,
+            "artist": "Melt-Banana",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 0.621445,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.543111,
+            "artist": "Zach Hill",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 0.543111,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.43987,
+            "artist": "OOIOO",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 0.43987,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Black Pus",
+              "Hella",
+              "Melt-Banana",
+              "Zach Hill",
+              "OOIOO",
+              "Pissed Jeans",
+              "Big Black",
+              "Ruins",
+              "Shellac",
+              "Mindflayer"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Black Pus",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.764257,
+                "artist": "Hella",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 0.764257,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.621445,
+                "artist": "Melt-Banana",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 0.621445,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.543111,
+                "artist": "Zach Hill",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 0.543111,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.43987,
+                "artist": "OOIOO",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 0.43987,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.439125,
+                "artist": "Pissed Jeans",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 0.439125,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.392452,
+                "artist": "Big Black",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 0.392452,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.379681,
+                "artist": "Ruins",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 0.379681,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.378723,
+                "artist": "Shellac",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 0.378723,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.35433,
+                "artist": "Mindflayer",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+                "confidence": 0.35433,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Black Pus",
+            "Hella",
+            "Melt-Banana",
+            "Zach Hill",
+            "OOIOO"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Black Pus",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.764257,
+              "artist": "Hella",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.764257,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.621445,
+              "artist": "Melt-Banana",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.621445,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.543111,
+              "artist": "Zach Hill",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.543111,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.43987,
+              "artist": "OOIOO",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.43987,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "9662167c-bd10-4e12-bd57-b31f618edae7",
+          "sourceUrl": "https://musicbrainz.org/release/9662167c-bd10-4e12-bd57-b31f618edae7",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "THRILL 499",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mvi24evnwpn4so",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Black Pus",
+        "Hella",
+        "Melt-Banana",
+        "Zach Hill",
+        "OOIOO"
+      ],
+      "reviewResearch": {
+        "url": "https://www.allmusic.com/album/ride-the-skies-mw0000019011",
+        "scope": "release",
+        "source": "AllMusic (quoted)",
+        "status": "verified",
+        "checkedAt": "2026-10-27T18:46:15.843Z"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchFailure": null,
+      "researchSources": [
+        {
+          "url": "https://www.allmusic.com/album/ride-the-skies-mw0000019011",
+          "source": "AllMusic (quoted)",
+          "confidence": 100
+        },
+        {
+          "url": "https://www.thrilljockey.com/products/ride-the-skies",
+          "source": "Thrill Jockey official release / AllMusic",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": "",
+      "catalogPriceSync": 730000,
+      "enrichmentOrigin": "bandcamp",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Thrill Jockey official release / AllMusic",
+      "metadataSourceUrl": "https://lightningbolt.bandcamp.com/album/ride-the-skies",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-10-27",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "",
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-10-27T13:37:56.610Z",
+      "enrichmentFingerprint": "lightning bolt|ride the skies|vinyl|7 90377 04991 6|thrill 499",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Black Pus",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.764257,
+          "artist": "Hella",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+          "confidence": 0.764257,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.621445,
+          "artist": "Melt-Banana",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+          "confidence": 0.621445,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.543111,
+          "artist": "Zach Hill",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+          "confidence": 0.543111,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.43987,
+          "artist": "OOIOO",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+          "confidence": 0.43987,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Black Pus",
+            "Hella",
+            "Melt-Banana",
+            "Zach Hill",
+            "OOIOO",
+            "Pissed Jeans",
+            "Big Black",
+            "Ruins",
+            "Shellac",
+            "Mindflayer"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Black Pus",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.764257,
+              "artist": "Hella",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.764257,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.621445,
+              "artist": "Melt-Banana",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.621445,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.543111,
+              "artist": "Zach Hill",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.543111,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.43987,
+              "artist": "OOIOO",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.43987,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.439125,
+              "artist": "Pissed Jeans",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.439125,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.392452,
+              "artist": "Big Black",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.392452,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.379681,
+              "artist": "Ruins",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.379681,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.378723,
+              "artist": "Shellac",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.378723,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.35433,
+              "artist": "Mindflayer",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+              "confidence": 0.35433,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Black Pus",
+          "Hella",
+          "Melt-Banana",
+          "Zach Hill",
+          "OOIOO"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Black Pus",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.764257,
+            "artist": "Hella",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 0.764257,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.621445,
+            "artist": "Melt-Banana",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 0.621445,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.543111,
+            "artist": "Zach Hill",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 0.543111,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.43987,
+            "artist": "OOIOO",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Lightning%20Bolt",
+            "confidence": 0.43987,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "9662167c-bd10-4e12-bd57-b31f618edae7",
+        "sourceUrl": "https://musicbrainz.org/release/9662167c-bd10-4e12-bd57-b31f618edae7",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 14,
+      "editorialUpdatedAt": "2026-11-02T08:07:03.903+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-10-21",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-cst-0014",
       "qty": 1,
       "sku": "NXP-2026-CST-0014",
@@ -2267,7 +2940,7 @@
       "description": "The Long Sleep, Jenny Hval's 2018 four-track EP, moves away from the tightly framed concepts of Blood Bitch toward a more instinctive way of writing. Recurring motifs take different shapes as Hval works with Håvard Volden, Lasse Marhaug, and a group of jazz musicians, giving the songs an open, improvisatory feel.",
       "reviewQuote": "The experimental songwriter abandons the conceptual rigor of her recent albums, collaborating with a handful of jazz musicians on a loose, ambiguous EP where repetition induces a state of déjà vu.",
       "sourceTitle": "The Long Sleep",
-      "editRevision": 39,
+      "editRevision": 40,
       "imageCredits": [
         {
           "url": "https://www.sacredbonesrecords.com/products/sbr199-jenny-hval-the-long-sleep-ep",
@@ -2559,7 +3232,7 @@
       "publicationState": "deployment_pending",
       "descriptionSource": "Jenny Hval / Sacred Bones Records",
       "metadataSourceUrl": "https://musicbrainz.org/release/c6ff3cf5-33ea-4268-b523-4e0fdd702f93",
-      "editorialUpdatedAt": "2026-11-02T08:06:04.291+00:00",
+      "editorialUpdatedAt": "2026-11-02T08:06:39.809+00:00",
       "editorialUpdatedBy": "admin-publication",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
@@ -72715,94 +73388,93 @@
       }
     },
     {
-      "id": "finance-nxp-2026-cd-0030",
+      "id": "finance-nxp-2026-cd-0034",
       "qty": 1,
-      "sku": "NXP-2026-CD-0030",
+      "sku": "NXP-2026-CD-0034",
       "tags": [],
-      "year": 1999,
+      "year": 2018,
       "color": "",
       "flaws": "",
-      "image": "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
-      "label": "Relapse Records",
-      "price": 185000,
+      "image": "/public/covers/nxp-2026-cd-0034-suuns-felt.jpg",
+      "label": "Secretly Canadian",
+      "price": 215000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "Calculating Infinity",
-      "artist": "The Dillinger Escape Plan",
+      "title": "Felt",
+      "artist": "Suuns",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
-        "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-disc.jpg",
-        "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-tray.jpg"
+        "/public/covers/nxp-2026-cd-0034-suuns-felt.jpg"
       ],
-      "barcode": "",
+      "barcode": "656605036021",
       "details": [
-        "SKU: NXP-2026-CD-0030",
+        "SKU: NXP-2026-CD-0034",
         "Format: CD",
         "Condition: Used Excellent"
       ],
-      "edition": "",
+      "edition": "CD, Album",
       "category": "Records",
       "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0034/cover.jpg",
       "condition": "Used Excellent",
       "reviewUrl": "",
       "syncAudit": [
         {
-          "at": "2026-11-02T02:00:46.610Z",
-          "sku": "NXP-2026-CD-0030",
+          "at": "2026-11-02T02:00:46.611Z",
+          "sku": "NXP-2026-CD-0034",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-11-01T02:00:46.769Z",
-          "sku": "NXP-2026-CD-0030",
+          "sku": "NXP-2026-CD-0034",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-10-31T02:00:47.123Z",
-          "sku": "NXP-2026-CD-0030",
+          "sku": "NXP-2026-CD-0034",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-10-30T02:00:47.735Z",
-          "sku": "NXP-2026-CD-0030",
+          "sku": "NXP-2026-CD-0034",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-29T02:00:47.548Z",
-          "sku": "NXP-2026-CD-0030",
+          "at": "2026-10-29T02:00:47.549Z",
+          "sku": "NXP-2026-CD-0034",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-28T02:00:47.332Z",
-          "sku": "NXP-2026-CD-0030",
+          "at": "2026-10-28T02:00:47.333Z",
+          "sku": "NXP-2026-CD-0034",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-10-27T02:00:47.569Z",
-          "sku": "NXP-2026-CD-0030",
+          "sku": "NXP-2026-CD-0034",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-10-26T02:00:47.417Z",
-          "sku": "NXP-2026-CD-0030",
+          "sku": "NXP-2026-CD-0034",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -72810,11 +73482,11 @@
       ],
       "updatedAt": "2026-11-02",
       "vinylSize": "",
-      "collection": "Relapse Records",
+      "collection": "Secretly Canadian",
       "fabricCare": "",
       "syncStatus": {
-        "at": "2026-11-02T02:00:46.610Z",
-        "sku": "NXP-2026-CD-0030",
+        "at": "2026-11-02T02:00:46.611Z",
+        "sku": "NXP-2026-CD-0034",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
@@ -72822,90 +73494,85 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "The Dillinger Escape Plan's Calculating Infinity is the 1999 Relapse full-length that pushed mathcore into jagged rhythmic extremity and technical collapse.",
-      "reviewQuote": "dizzying skill and originality",
+      "description": "Suuns' Felt is the 2018 Secretly Canadian album where the Montreal group bends its art-rock minimalism toward synth-led grooves and low-lit rhythmic tension.",
+      "reviewQuote": "subdued and low-key in comparison to their earlier work",
+      "editRevision": 61,
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
-          "image": "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
-        },
-        {
-          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
-          "image": "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-disc.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
-        },
-        {
-          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
-          "image": "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-tray.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
+          "url": "https://musicbrainz.org/release/425234c3-e9cc-40d3-87c8-786a4aa299a9",
+          "image": "/public/covers/nxp-2026-cd-0034-suuns-felt.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release 425234c3"
         }
       ],
       "originalTags": false,
-      "reviewSource": "Treble (quoted)",
+      "reviewSource": "The Skinny (quoted)",
       "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/suuns-felt/",
+        "description": "Suuns' Felt is the 2018 Secretly Canadian album where the Montreal group bends its art-rock minimalism toward synth-led grooves and low-lit rhythmic tension.",
+        "reviewQuote": "subdued and low-key in comparison to their earlier work",
+        "reviewSource": "The Skinny (quoted)",
         "relatedArtists": [
-          "Botch",
-          "Converge",
-          "Better Lovers",
-          "Car Bomb",
-          "Frontierer"
+          "Beak>",
+          "Clinic",
+          "Holy Fuck",
+          "Liars",
+          "Poni Hoax"
         ],
-        "enrichmentStatus": "complete",
+        "descriptionSource": "Secretly Canadian / The Skinny",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Botch",
+            "artist": "Beak>",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "sourceUrl": "https://www.last.fm/music/Suuns",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.954871,
-            "artist": "Converge",
+            "match": 0.812149,
+            "artist": "Clinic",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-            "confidence": 0.954871,
+            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "confidence": 0.812149,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.908735,
-            "artist": "Better Lovers",
+            "match": 0.549906,
+            "artist": "Holy Fuck",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-            "confidence": 0.908735,
+            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "confidence": 0.549906,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.834146,
-            "artist": "Car Bomb",
+            "match": 0.519989,
+            "artist": "Liars",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-            "confidence": 0.834146,
+            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "confidence": 0.519989,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.783983,
-            "artist": "Frontierer",
+            "match": 0.488843,
+            "artist": "Poni Hoax",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-            "confidence": 0.783983,
+            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "confidence": 0.488843,
             "relationType": "artist-similarity"
           }
         ],
@@ -72914,186 +73581,186 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Botch",
-              "Converge",
-              "Better Lovers",
-              "Car Bomb",
-              "Frontierer",
-              "The Tony Danza Tapdance Extravaganza",
-              "Greg Puciato",
-              "The Chariot",
-              "Every Time I Die",
-              "The Number Twelve Looks Like You"
+              "Beak>",
+              "Clinic",
+              "Holy Fuck",
+              "Liars",
+              "Poni Hoax",
+              "Anika",
+              "Django Django",
+              "Fuck Buttons",
+              "Moon Duo",
+              "Yeasayer"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Botch",
+                "artist": "Beak>",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "sourceUrl": "https://www.last.fm/music/Suuns",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.954871,
-                "artist": "Converge",
+                "match": 0.812149,
+                "artist": "Clinic",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-                "confidence": 0.954871,
+                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "confidence": 0.812149,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.908735,
-                "artist": "Better Lovers",
+                "match": 0.549906,
+                "artist": "Holy Fuck",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-                "confidence": 0.908735,
+                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "confidence": 0.549906,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.834146,
-                "artist": "Car Bomb",
+                "match": 0.519989,
+                "artist": "Liars",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-                "confidence": 0.834146,
+                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "confidence": 0.519989,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.783983,
-                "artist": "Frontierer",
+                "match": 0.488843,
+                "artist": "Poni Hoax",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-                "confidence": 0.783983,
+                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "confidence": 0.488843,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.651645,
-                "artist": "The Tony Danza Tapdance Extravaganza",
+                "match": 0.428563,
+                "artist": "Anika",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-                "confidence": 0.651645,
+                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "confidence": 0.428563,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.642978,
-                "artist": "Greg Puciato",
+                "match": 0.399993,
+                "artist": "Django Django",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-                "confidence": 0.642978,
+                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "confidence": 0.399993,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.604425,
-                "artist": "The Chariot",
+                "match": 0.384519,
+                "artist": "Fuck Buttons",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-                "confidence": 0.604425,
+                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "confidence": 0.384519,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.602513,
-                "artist": "Every Time I Die",
+                "match": 0.381747,
+                "artist": "Moon Duo",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-                "confidence": 0.602513,
+                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "confidence": 0.381747,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.571882,
-                "artist": "The Number Twelve Looks Like You",
+                "match": 0.369565,
+                "artist": "Yeasayer",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-                "confidence": 0.571882,
+                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "confidence": 0.369565,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan"
+            "sourceUrl": "https://www.last.fm/music/Suuns"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Botch",
-            "Converge",
-            "Better Lovers",
-            "Car Bomb",
-            "Frontierer"
+            "Beak>",
+            "Clinic",
+            "Holy Fuck",
+            "Liars",
+            "Poni Hoax"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Botch",
+              "artist": "Beak>",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "sourceUrl": "https://www.last.fm/music/Suuns",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.954871,
-              "artist": "Converge",
+              "match": 0.812149,
+              "artist": "Clinic",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.954871,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.812149,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.908735,
-              "artist": "Better Lovers",
+              "match": 0.549906,
+              "artist": "Holy Fuck",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.908735,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.549906,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.834146,
-              "artist": "Car Bomb",
+              "match": 0.519989,
+              "artist": "Liars",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.834146,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.519989,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.783983,
-              "artist": "Frontierer",
+              "match": 0.488843,
+              "artist": "Poni Hoax",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.783983,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.488843,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "246e573d-84b5-4fba-9128-ae993daed6bf",
-          "sourceUrl": "https://musicbrainz.org/release/246e573d-84b5-4fba-9128-ae993daed6bf",
+          "releaseId": "425234c3-e9cc-40d3-87c8-786a4aa299a9",
+          "sourceUrl": "https://musicbrainz.org/release/425234c3-e9cc-40d3-87c8-786a4aa299a9",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "",
+      "catalogNumber": "SC360",
       "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1tynew19foeg",
-      "mediaCondition": "",
+      "financeStockId": "ms1u3tbk3fmxr8",
+      "mediaCondition": "Very Good Plus",
       "open_to_offers": false,
       "relatedArtists": [
-        "Botch",
-        "Converge",
-        "Better Lovers",
-        "Car Bomb",
-        "Frontierer"
+        "Beak>",
+        "Clinic",
+        "Holy Fuck",
+        "Liars",
+        "Poni Hoax"
       ],
       "financeItemType": "CD",
       "financeMetadata": {
@@ -73105,74 +73772,82 @@
         "dimensions": "",
         "printDetails": ""
       },
-      "homeCollections": [
-        "nixp-selection"
-      ],
-      "reviewSourceUrl": "https://www.treblezine.com/the-dillinger-escape-plan-calculating-infinity/",
-      "sleeveCondition": "",
-      "catalogPriceSync": 185000,
+      "homeCollections": [],
+      "reviewSourceUrl": "https://www.theskinny.co.uk/music/reviews/albums/suuns-felt",
+      "sleeveCondition": "Near Mint",
+      "autoProductPhoto": "",
+      "catalogPriceSync": 215000,
+      "enrichmentOrigin": "musicbrainz",
       "enrichmentStatus": "complete",
-      "descriptionSource": "Relapse / Treble",
+      "descriptionSource": "Secretly Canadian / The Skinny",
+      "metadataSourceUrl": "https://musicbrainz.org/release/425234c3-e9cc-40d3-87c8-786a4aa299a9",
+      "editorialUpdatedAt": "2026-11-02T02:01:29.357+00:00",
+      "editorialUpdatedBy": "finance-stock",
+      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-18",
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
-      "enrichmentAttemptedAt": "2026-08-18T16:51:29.928Z",
-      "enrichmentFingerprint": "the dillinger escape plan|calculating infinity|cd||",
+      "musicBrainzReleaseId": "425234c3-e9cc-40d3-87c8-786a4aa299a9",
+      "sleeveConditionGrade": "Near Mint",
+      "enrichmentAttemptedAt": "2026-08-18T16:49:33.183Z",
+      "enrichmentFingerprint": "suuns|felt|cd||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Botch",
+          "artist": "Beak>",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+          "sourceUrl": "https://www.last.fm/music/Suuns",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.954871,
-          "artist": "Converge",
+          "match": 0.812149,
+          "artist": "Clinic",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-          "confidence": 0.954871,
+          "sourceUrl": "https://www.last.fm/music/Suuns",
+          "confidence": 0.812149,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.908735,
-          "artist": "Better Lovers",
+          "match": 0.549906,
+          "artist": "Holy Fuck",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-          "confidence": 0.908735,
+          "sourceUrl": "https://www.last.fm/music/Suuns",
+          "confidence": 0.549906,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.834146,
-          "artist": "Car Bomb",
+          "match": 0.519989,
+          "artist": "Liars",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-          "confidence": 0.834146,
+          "sourceUrl": "https://www.last.fm/music/Suuns",
+          "confidence": 0.519989,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.783983,
-          "artist": "Frontierer",
+          "match": 0.488843,
+          "artist": "Poni Hoax",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-          "confidence": 0.783983,
+          "sourceUrl": "https://www.last.fm/music/Suuns",
+          "confidence": 0.488843,
           "relationType": "artist-similarity"
         }
       ],
@@ -73182,182 +73857,181 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Botch",
-            "Converge",
-            "Better Lovers",
-            "Car Bomb",
-            "Frontierer",
-            "The Tony Danza Tapdance Extravaganza",
-            "Greg Puciato",
-            "The Chariot",
-            "Every Time I Die",
-            "The Number Twelve Looks Like You"
+            "Beak>",
+            "Clinic",
+            "Holy Fuck",
+            "Liars",
+            "Poni Hoax",
+            "Anika",
+            "Django Django",
+            "Fuck Buttons",
+            "Moon Duo",
+            "Yeasayer"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Botch",
+              "artist": "Beak>",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "sourceUrl": "https://www.last.fm/music/Suuns",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.954871,
-              "artist": "Converge",
+              "match": 0.812149,
+              "artist": "Clinic",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.954871,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.812149,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.908735,
-              "artist": "Better Lovers",
+              "match": 0.549906,
+              "artist": "Holy Fuck",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.908735,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.549906,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.834146,
-              "artist": "Car Bomb",
+              "match": 0.519989,
+              "artist": "Liars",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.834146,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.519989,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.783983,
-              "artist": "Frontierer",
+              "match": 0.488843,
+              "artist": "Poni Hoax",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.783983,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.488843,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.651645,
-              "artist": "The Tony Danza Tapdance Extravaganza",
+              "match": 0.428563,
+              "artist": "Anika",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.651645,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.428563,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.642978,
-              "artist": "Greg Puciato",
+              "match": 0.399993,
+              "artist": "Django Django",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.642978,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.399993,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.604425,
-              "artist": "The Chariot",
+              "match": 0.384519,
+              "artist": "Fuck Buttons",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.604425,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.384519,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.602513,
-              "artist": "Every Time I Die",
+              "match": 0.381747,
+              "artist": "Moon Duo",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.602513,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.381747,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.571882,
-              "artist": "The Number Twelve Looks Like You",
+              "match": 0.369565,
+              "artist": "Yeasayer",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-              "confidence": 0.571882,
+              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "confidence": 0.369565,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan"
+          "sourceUrl": "https://www.last.fm/music/Suuns"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Botch",
-          "Converge",
-          "Better Lovers",
-          "Car Bomb",
-          "Frontierer"
+          "Beak>",
+          "Clinic",
+          "Holy Fuck",
+          "Liars",
+          "Poni Hoax"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Botch",
+            "artist": "Beak>",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "sourceUrl": "https://www.last.fm/music/Suuns",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.954871,
-            "artist": "Converge",
+            "match": 0.812149,
+            "artist": "Clinic",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-            "confidence": 0.954871,
+            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "confidence": 0.812149,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.908735,
-            "artist": "Better Lovers",
+            "match": 0.549906,
+            "artist": "Holy Fuck",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-            "confidence": 0.908735,
+            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "confidence": 0.549906,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.834146,
-            "artist": "Car Bomb",
+            "match": 0.519989,
+            "artist": "Liars",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-            "confidence": 0.834146,
+            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "confidence": 0.519989,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.783983,
-            "artist": "Frontierer",
+            "match": 0.488843,
+            "artist": "Poni Hoax",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
-            "confidence": 0.783983,
+            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "confidence": 0.488843,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "246e573d-84b5-4fba-9128-ae993daed6bf",
-        "sourceUrl": "https://musicbrainz.org/release/246e573d-84b5-4fba-9128-ae993daed6bf",
+        "releaseId": "425234c3-e9cc-40d3-87c8-786a4aa299a9",
+        "sourceUrl": "https://musicbrainz.org/release/425234c3-e9cc-40d3-87c8-786a4aa299a9",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
+      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 60,
-      "editorialUpdatedAt": "2026-11-02T02:01:28.746+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-08-11",
+        "updatedAt": "2026-09-22",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
@@ -74020,93 +74694,94 @@
       }
     },
     {
-      "id": "finance-nxp-2026-cd-0027",
+      "id": "finance-nxp-2026-cd-0030",
       "qty": 1,
-      "sku": "NXP-2026-CD-0027",
+      "sku": "NXP-2026-CD-0030",
       "tags": [],
-      "year": 2009,
+      "year": 1999,
       "color": "",
       "flaws": "",
-      "image": "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg",
-      "label": "Epitaph",
-      "price": 215000,
+      "image": "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
+      "label": "Relapse Records",
+      "price": 185000,
       "sizes": [],
       "stock": {
         "sold": 0,
         "reserved": 0,
         "available": 1
       },
-      "title": "New Junk Aesthetic",
-      "artist": "Every Time I Die",
+      "title": "Calculating Infinity",
+      "artist": "The Dillinger Escape Plan",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg"
+        "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
+        "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-disc.jpg",
+        "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-tray.jpg"
       ],
-      "barcode": "4547366049602",
+      "barcode": "",
       "details": [
-        "SKU: NXP-2026-CD-0027",
+        "SKU: NXP-2026-CD-0030",
         "Format: CD",
         "Condition: Used Excellent"
       ],
-      "edition": "CD, Album, Stereo",
+      "edition": "",
       "category": "Records",
       "material": "",
-      "autoCover": "",
       "condition": "Used Excellent",
       "reviewUrl": "",
       "syncAudit": [
         {
           "at": "2026-11-02T02:00:46.610Z",
-          "sku": "NXP-2026-CD-0027",
+          "sku": "NXP-2026-CD-0030",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-11-01T02:00:46.769Z",
-          "sku": "NXP-2026-CD-0027",
+          "sku": "NXP-2026-CD-0030",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-31T02:00:47.122Z",
-          "sku": "NXP-2026-CD-0027",
+          "at": "2026-10-31T02:00:47.123Z",
+          "sku": "NXP-2026-CD-0030",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-30T02:00:47.734Z",
-          "sku": "NXP-2026-CD-0027",
+          "at": "2026-10-30T02:00:47.735Z",
+          "sku": "NXP-2026-CD-0030",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-10-29T02:00:47.548Z",
-          "sku": "NXP-2026-CD-0027",
+          "sku": "NXP-2026-CD-0030",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-10-28T02:00:47.332Z",
-          "sku": "NXP-2026-CD-0027",
+          "sku": "NXP-2026-CD-0030",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-27T02:00:47.568Z",
-          "sku": "NXP-2026-CD-0027",
+          "at": "2026-10-27T02:00:47.569Z",
+          "sku": "NXP-2026-CD-0030",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-26T02:00:47.403Z",
-          "sku": "NXP-2026-CD-0027",
+          "at": "2026-10-26T02:00:47.417Z",
+          "sku": "NXP-2026-CD-0030",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -74114,11 +74789,11 @@
       ],
       "updatedAt": "2026-11-02",
       "vinylSize": "",
-      "collection": "Epitaph",
+      "collection": "Relapse Records",
       "fabricCare": "",
       "syncStatus": {
         "at": "2026-11-02T02:00:46.610Z",
-        "sku": "NXP-2026-CD-0027",
+        "sku": "NXP-2026-CD-0030",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
@@ -74126,86 +74801,90 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Every Time I Die's New Junk Aesthetic is the band's 2009 Epitaph album, tightening their hardcore, southern rock, and metalcore instincts into a compact, volatile run.",
-      "reviewQuote": "energized and passionate",
-      "editRevision": 61,
+      "description": "The Dillinger Escape Plan's Calculating Infinity is the 1999 Relapse full-length that pushed mathcore into jagged rhythmic extremity and technical collapse.",
+      "reviewQuote": "dizzying skill and originality",
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/9fc2e27a-8a6b-494f-b70d-fd5009bd73c9",
-          "image": "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release 9fc2e27a"
+          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
+          "image": "/public/covers/nxp-2026-cd-0030-the-dillinger-escape-plan-calculating-infinity.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
+        },
+        {
+          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
+          "image": "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-disc.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
+        },
+        {
+          "url": "https://musicbrainz.org/release/b37590d5-8bb9-456f-944d-a92251a70a00",
+          "image": "/public/mockups/nxp-2026-cd-0030-dillinger-calculating-infinity-tray.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release b37590d5"
         }
       ],
       "originalTags": false,
-      "reviewSource": "AllMusic (quoted)",
+      "reviewSource": "Treble (quoted)",
       "autoEditorial": {
-        "reviewUrl": "",
-        "description": "Every Time I Die's New Junk Aesthetic is the band's 2009 Epitaph album, tightening their hardcore, southern rock, and metalcore instincts into a compact, volatile run.",
-        "reviewQuote": "energized and passionate",
-        "reviewSource": "AllMusic (quoted)",
         "relatedArtists": [
+          "Botch",
+          "Converge",
           "Better Lovers",
-          "Many Eyes",
-          "The Chariot",
-          "Norma Jean",
-          "He Is Legend"
+          "Car Bomb",
+          "Frontierer"
         ],
-        "enrichmentStatus": "complete-no-related-artists",
-        "descriptionSource": "Epitaph / AllMusic",
+        "enrichmentStatus": "complete",
         "relatedArtistEvidence": [
           {
             "match": 1,
+            "artist": "Botch",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.954871,
+            "artist": "Converge",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 0.954871,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.908735,
             "artist": "Better Lovers",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 1,
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 0.908735,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.816418,
-            "artist": "Many Eyes",
+            "match": 0.834146,
+            "artist": "Car Bomb",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 0.816418,
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 0.834146,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.7962,
-            "artist": "The Chariot",
+            "match": 0.783983,
+            "artist": "Frontierer",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 0.7962,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.74922,
-            "artist": "Norma Jean",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 0.74922,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.6517,
-            "artist": "He Is Legend",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 0.6517,
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 0.783983,
             "relationType": "artist-similarity"
           }
         ],
@@ -74214,186 +74893,186 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
+              "Botch",
+              "Converge",
               "Better Lovers",
-              "Many Eyes",
+              "Car Bomb",
+              "Frontierer",
+              "The Tony Danza Tapdance Extravaganza",
+              "Greg Puciato",
               "The Chariot",
-              "Norma Jean",
-              "He Is Legend",
-              "Johnny Booth",
-              "Poison the Well",
-              "Greyhaven",
-              "The Callous Daoboys",
-              "Converge"
+              "Every Time I Die",
+              "The Number Twelve Looks Like You"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Better Lovers",
+                "artist": "Botch",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.816418,
-                "artist": "Many Eyes",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-                "confidence": 0.816418,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.7962,
-                "artist": "The Chariot",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-                "confidence": 0.7962,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.74922,
-                "artist": "Norma Jean",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-                "confidence": 0.74922,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.6517,
-                "artist": "He Is Legend",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-                "confidence": 0.6517,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.587421,
-                "artist": "Johnny Booth",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-                "confidence": 0.587421,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.57895,
-                "artist": "Poison the Well",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-                "confidence": 0.57895,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.508489,
-                "artist": "Greyhaven",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-                "confidence": 0.508489,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.490056,
-                "artist": "The Callous Daoboys",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-                "confidence": 0.490056,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.469738,
+                "match": 0.954871,
                 "artist": "Converge",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-                "confidence": 0.469738,
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "confidence": 0.954871,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.908735,
+                "artist": "Better Lovers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "confidence": 0.908735,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.834146,
+                "artist": "Car Bomb",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "confidence": 0.834146,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.783983,
+                "artist": "Frontierer",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "confidence": 0.783983,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.651645,
+                "artist": "The Tony Danza Tapdance Extravaganza",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "confidence": 0.651645,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.642978,
+                "artist": "Greg Puciato",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "confidence": 0.642978,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.604425,
+                "artist": "The Chariot",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "confidence": 0.604425,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.602513,
+                "artist": "Every Time I Die",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "confidence": 0.602513,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.571882,
+                "artist": "The Number Twelve Looks Like You",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+                "confidence": 0.571882,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die"
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
+            "Botch",
+            "Converge",
             "Better Lovers",
-            "Many Eyes",
-            "The Chariot",
-            "Norma Jean",
-            "He Is Legend"
+            "Car Bomb",
+            "Frontierer"
           ],
           "evidence": [
             {
               "match": 1,
+              "artist": "Botch",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.954871,
+              "artist": "Converge",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.954871,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.908735,
               "artist": "Better Lovers",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 1,
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.908735,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.816418,
-              "artist": "Many Eyes",
+              "match": 0.834146,
+              "artist": "Car Bomb",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.816418,
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.834146,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.7962,
-              "artist": "The Chariot",
+              "match": 0.783983,
+              "artist": "Frontierer",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.7962,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.74922,
-              "artist": "Norma Jean",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.74922,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.6517,
-              "artist": "He Is Legend",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.6517,
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.783983,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "dcce4a72-d61e-4163-b23c-7073d5c51390",
-          "sourceUrl": "https://musicbrainz.org/release/dcce4a72-d61e-4163-b23c-7073d5c51390",
+          "releaseId": "246e573d-84b5-4fba-9128-ae993daed6bf",
+          "sourceUrl": "https://musicbrainz.org/release/246e573d-84b5-4fba-9128-ae993daed6bf",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "EICP-1270",
+      "catalogNumber": "",
       "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1t1g1kas1r2f",
+      "financeStockId": "ms1tynew19foeg",
       "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
+        "Botch",
+        "Converge",
         "Better Lovers",
-        "Many Eyes",
-        "The Chariot",
-        "Norma Jean",
-        "He Is Legend"
+        "Car Bomb",
+        "Frontierer"
       ],
       "financeItemType": "CD",
       "financeMetadata": {
@@ -74405,78 +75084,74 @@
         "dimensions": "",
         "printDetails": ""
       },
-      "homeCollections": [],
-      "reviewSourceUrl": "https://www.allmusic.com/album/new-junk-aesthetic-mw0000824190",
+      "homeCollections": [
+        "nixp-selection"
+      ],
+      "reviewSourceUrl": "https://www.treblezine.com/the-dillinger-escape-plan-calculating-infinity/",
       "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "catalogPriceSync": 215000,
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete-no-related-artists",
-      "descriptionSource": "Epitaph / AllMusic",
-      "metadataSourceUrl": "https://musicbrainz.org/release/dcce4a72-d61e-4163-b23c-7073d5c51390",
-      "editorialUpdatedAt": "2026-11-02T02:01:26.125+00:00",
-      "editorialUpdatedBy": "finance-stock",
+      "catalogPriceSync": 185000,
+      "enrichmentStatus": "complete",
+      "descriptionSource": "Relapse / Treble",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-18",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "dcce4a72-d61e-4163-b23c-7073d5c51390",
-      "enrichmentAttemptedAt": "2026-08-18T16:51:29.751Z",
-      "enrichmentFingerprint": "every time i die|new junk aesthetic|cd||",
+      "enrichmentAttemptedAt": "2026-08-18T16:51:29.928Z",
+      "enrichmentFingerprint": "the dillinger escape plan|calculating infinity|cd||",
       "relatedArtistEvidence": [
         {
           "match": 1,
+          "artist": "Botch",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.954871,
+          "artist": "Converge",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+          "confidence": 0.954871,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.908735,
           "artist": "Better Lovers",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-          "confidence": 1,
+          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+          "confidence": 0.908735,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.816418,
-          "artist": "Many Eyes",
+          "match": 0.834146,
+          "artist": "Car Bomb",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-          "confidence": 0.816418,
+          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+          "confidence": 0.834146,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.7962,
-          "artist": "The Chariot",
+          "match": 0.783983,
+          "artist": "Frontierer",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-          "confidence": 0.7962,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.74922,
-          "artist": "Norma Jean",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-          "confidence": 0.74922,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.6517,
-          "artist": "He Is Legend",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-          "confidence": 0.6517,
+          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+          "confidence": 0.783983,
           "relationType": "artist-similarity"
         }
       ],
@@ -74486,181 +75161,182 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
+            "Botch",
+            "Converge",
             "Better Lovers",
-            "Many Eyes",
+            "Car Bomb",
+            "Frontierer",
+            "The Tony Danza Tapdance Extravaganza",
+            "Greg Puciato",
             "The Chariot",
-            "Norma Jean",
-            "He Is Legend",
-            "Johnny Booth",
-            "Poison the Well",
-            "Greyhaven",
-            "The Callous Daoboys",
-            "Converge"
+            "Every Time I Die",
+            "The Number Twelve Looks Like You"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Better Lovers",
+              "artist": "Botch",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.816418,
-              "artist": "Many Eyes",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.816418,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.7962,
-              "artist": "The Chariot",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.7962,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.74922,
-              "artist": "Norma Jean",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.74922,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.6517,
-              "artist": "He Is Legend",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.6517,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.587421,
-              "artist": "Johnny Booth",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.587421,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.57895,
-              "artist": "Poison the Well",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.57895,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.508489,
-              "artist": "Greyhaven",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.508489,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.490056,
-              "artist": "The Callous Daoboys",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.490056,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.469738,
+              "match": 0.954871,
               "artist": "Converge",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-              "confidence": 0.469738,
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.954871,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.908735,
+              "artist": "Better Lovers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.908735,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.834146,
+              "artist": "Car Bomb",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.834146,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.783983,
+              "artist": "Frontierer",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.783983,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.651645,
+              "artist": "The Tony Danza Tapdance Extravaganza",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.651645,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.642978,
+              "artist": "Greg Puciato",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.642978,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.604425,
+              "artist": "The Chariot",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.604425,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.602513,
+              "artist": "Every Time I Die",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.602513,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.571882,
+              "artist": "The Number Twelve Looks Like You",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+              "confidence": 0.571882,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die"
+          "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
+          "Botch",
+          "Converge",
           "Better Lovers",
-          "Many Eyes",
-          "The Chariot",
-          "Norma Jean",
-          "He Is Legend"
+          "Car Bomb",
+          "Frontierer"
         ],
         "evidence": [
           {
             "match": 1,
+            "artist": "Botch",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.954871,
+            "artist": "Converge",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 0.954871,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.908735,
             "artist": "Better Lovers",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 1,
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 0.908735,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.816418,
-            "artist": "Many Eyes",
+            "match": 0.834146,
+            "artist": "Car Bomb",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 0.816418,
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 0.834146,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.7962,
-            "artist": "The Chariot",
+            "match": 0.783983,
+            "artist": "Frontierer",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 0.7962,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.74922,
-            "artist": "Norma Jean",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 0.74922,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.6517,
-            "artist": "He Is Legend",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
-            "confidence": 0.6517,
+            "sourceUrl": "https://www.last.fm/music/The%20Dillinger%20Escape%20Plan",
+            "confidence": 0.783983,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "dcce4a72-d61e-4163-b23c-7073d5c51390",
-        "sourceUrl": "https://musicbrainz.org/release/dcce4a72-d61e-4163-b23c-7073d5c51390",
+        "releaseId": "246e573d-84b5-4fba-9128-ae993daed6bf",
+        "sourceUrl": "https://musicbrainz.org/release/246e573d-84b5-4fba-9128-ae993daed6bf",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
-      "manualRelatedArtistsOverride": true,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 60,
+      "editorialUpdatedAt": "2026-11-02T02:01:28.746+00:00",
+      "editorialUpdatedBy": "finance-stock",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-09-16",
+        "updatedAt": "2026-08-11",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
@@ -77289,15 +77965,15 @@
       }
     },
     {
-      "id": "finance-nxp-2026-cd-0034",
+      "id": "finance-nxp-2026-cd-0027",
       "qty": 1,
-      "sku": "NXP-2026-CD-0034",
+      "sku": "NXP-2026-CD-0027",
       "tags": [],
-      "year": 2018,
+      "year": 2009,
       "color": "",
       "flaws": "",
-      "image": "/public/covers/nxp-2026-cd-0034-suuns-felt.jpg",
-      "label": "Secretly Canadian",
+      "image": "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg",
+      "label": "Epitaph",
       "price": 215000,
       "sizes": [],
       "stock": {
@@ -77305,77 +77981,77 @@
         "reserved": 0,
         "available": 1
       },
-      "title": "Felt",
-      "artist": "Suuns",
+      "title": "New Junk Aesthetic",
+      "artist": "Every Time I Die",
       "format": "CD",
       "images": [
-        "/public/covers/nxp-2026-cd-0034-suuns-felt.jpg"
+        "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg"
       ],
-      "barcode": "656605036021",
+      "barcode": "4547366049602",
       "details": [
-        "SKU: NXP-2026-CD-0034",
+        "SKU: NXP-2026-CD-0027",
         "Format: CD",
         "Condition: Used Excellent"
       ],
-      "edition": "CD, Album",
+      "edition": "CD, Album, Stereo",
       "category": "Records",
       "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0034/cover.jpg",
+      "autoCover": "",
       "condition": "Used Excellent",
       "reviewUrl": "",
       "syncAudit": [
         {
-          "at": "2026-11-02T02:00:46.611Z",
-          "sku": "NXP-2026-CD-0034",
+          "at": "2026-11-02T02:00:46.610Z",
+          "sku": "NXP-2026-CD-0027",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
           "at": "2026-11-01T02:00:46.769Z",
-          "sku": "NXP-2026-CD-0034",
+          "sku": "NXP-2026-CD-0027",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-31T02:00:47.123Z",
-          "sku": "NXP-2026-CD-0034",
+          "at": "2026-10-31T02:00:47.122Z",
+          "sku": "NXP-2026-CD-0027",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-30T02:00:47.735Z",
-          "sku": "NXP-2026-CD-0034",
+          "at": "2026-10-30T02:00:47.734Z",
+          "sku": "NXP-2026-CD-0027",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-29T02:00:47.549Z",
-          "sku": "NXP-2026-CD-0034",
+          "at": "2026-10-29T02:00:47.548Z",
+          "sku": "NXP-2026-CD-0027",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-28T02:00:47.333Z",
-          "sku": "NXP-2026-CD-0034",
+          "at": "2026-10-28T02:00:47.332Z",
+          "sku": "NXP-2026-CD-0027",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-27T02:00:47.569Z",
-          "sku": "NXP-2026-CD-0034",
+          "at": "2026-10-27T02:00:47.568Z",
+          "sku": "NXP-2026-CD-0027",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
         },
         {
-          "at": "2026-10-26T02:00:47.417Z",
-          "sku": "NXP-2026-CD-0034",
+          "at": "2026-10-26T02:00:47.403Z",
+          "sku": "NXP-2026-CD-0027",
           "action": "Inventory identity synchronized to catalog",
           "source": "Finance",
           "quantity": 1
@@ -77383,11 +78059,11 @@
       ],
       "updatedAt": "2026-11-02",
       "vinylSize": "",
-      "collection": "Secretly Canadian",
+      "collection": "Epitaph",
       "fabricCare": "",
       "syncStatus": {
-        "at": "2026-11-02T02:00:46.611Z",
-        "sku": "NXP-2026-CD-0034",
+        "at": "2026-11-02T02:00:46.610Z",
+        "sku": "NXP-2026-CD-0027",
         "action": "Inventory identity synchronized to catalog",
         "source": "Finance",
         "quantity": 1
@@ -77395,85 +78071,86 @@
       "visibility": "Public",
       "alterations": "",
       "apparelType": "",
-      "description": "Suuns' Felt is the 2018 Secretly Canadian album where the Montreal group bends its art-rock minimalism toward synth-led grooves and low-lit rhythmic tension.",
-      "reviewQuote": "subdued and low-key in comparison to their earlier work",
+      "description": "Every Time I Die's New Junk Aesthetic is the band's 2009 Epitaph album, tightening their hardcore, southern rock, and metalcore instincts into a compact, volatile run.",
+      "reviewQuote": "energized and passionate",
       "editRevision": 61,
       "imageCredits": [
         {
-          "url": "https://musicbrainz.org/release/425234c3-e9cc-40d3-87c8-786a4aa299a9",
-          "image": "/public/covers/nxp-2026-cd-0034-suuns-felt.jpg",
-          "credit": "Cover Art Archive / MusicBrainz release 425234c3"
+          "url": "https://musicbrainz.org/release/9fc2e27a-8a6b-494f-b70d-fd5009bd73c9",
+          "image": "/public/covers/nxp-2026-cd-0027-every-time-i-die-new-junk-aesthetic.jpg",
+          "credit": "Cover Art Archive / MusicBrainz release 9fc2e27a"
         }
       ],
       "originalTags": false,
-      "reviewSource": "The Skinny (quoted)",
+      "reviewSource": "AllMusic (quoted)",
       "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/suuns-felt/",
-        "description": "Suuns' Felt is the 2018 Secretly Canadian album where the Montreal group bends its art-rock minimalism toward synth-led grooves and low-lit rhythmic tension.",
-        "reviewQuote": "subdued and low-key in comparison to their earlier work",
-        "reviewSource": "The Skinny (quoted)",
+        "reviewUrl": "",
+        "description": "Every Time I Die's New Junk Aesthetic is the band's 2009 Epitaph album, tightening their hardcore, southern rock, and metalcore instincts into a compact, volatile run.",
+        "reviewQuote": "energized and passionate",
+        "reviewSource": "AllMusic (quoted)",
         "relatedArtists": [
-          "Beak>",
-          "Clinic",
-          "Holy Fuck",
-          "Liars",
-          "Poni Hoax"
+          "Better Lovers",
+          "Many Eyes",
+          "The Chariot",
+          "Norma Jean",
+          "He Is Legend"
         ],
-        "descriptionSource": "Secretly Canadian / The Skinny",
+        "enrichmentStatus": "complete-no-related-artists",
+        "descriptionSource": "Epitaph / AllMusic",
         "relatedArtistEvidence": [
           {
             "match": 1,
-            "artist": "Beak>",
+            "artist": "Better Lovers",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.812149,
-            "artist": "Clinic",
+            "match": 0.816418,
+            "artist": "Many Eyes",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
-            "confidence": 0.812149,
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+            "confidence": 0.816418,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.549906,
-            "artist": "Holy Fuck",
+            "match": 0.7962,
+            "artist": "The Chariot",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
-            "confidence": 0.549906,
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+            "confidence": 0.7962,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.519989,
-            "artist": "Liars",
+            "match": 0.74922,
+            "artist": "Norma Jean",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
-            "confidence": 0.519989,
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+            "confidence": 0.74922,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.488843,
-            "artist": "Poni Hoax",
+            "match": 0.6517,
+            "artist": "He Is Legend",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
-            "confidence": 0.488843,
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+            "confidence": 0.6517,
             "relationType": "artist-similarity"
           }
         ],
@@ -77482,186 +78159,186 @@
             "source": "Last.fm",
             "status": "available",
             "artists": [
-              "Beak>",
-              "Clinic",
-              "Holy Fuck",
-              "Liars",
-              "Poni Hoax",
-              "Anika",
-              "Django Django",
-              "Fuck Buttons",
-              "Moon Duo",
-              "Yeasayer"
+              "Better Lovers",
+              "Many Eyes",
+              "The Chariot",
+              "Norma Jean",
+              "He Is Legend",
+              "Johnny Booth",
+              "Poison the Well",
+              "Greyhaven",
+              "The Callous Daoboys",
+              "Converge"
             ],
             "evidence": [
               {
                 "match": 1,
-                "artist": "Beak>",
+                "artist": "Better Lovers",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
                 "confidence": 1,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.812149,
-                "artist": "Clinic",
+                "match": 0.816418,
+                "artist": "Many Eyes",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
-                "confidence": 0.812149,
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "confidence": 0.816418,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.549906,
-                "artist": "Holy Fuck",
+                "match": 0.7962,
+                "artist": "The Chariot",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
-                "confidence": 0.549906,
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "confidence": 0.7962,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.519989,
-                "artist": "Liars",
+                "match": 0.74922,
+                "artist": "Norma Jean",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
-                "confidence": 0.519989,
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "confidence": 0.74922,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.488843,
-                "artist": "Poni Hoax",
+                "match": 0.6517,
+                "artist": "He Is Legend",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
-                "confidence": 0.488843,
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "confidence": 0.6517,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.428563,
-                "artist": "Anika",
+                "match": 0.587421,
+                "artist": "Johnny Booth",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
-                "confidence": 0.428563,
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "confidence": 0.587421,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.399993,
-                "artist": "Django Django",
+                "match": 0.57895,
+                "artist": "Poison the Well",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
-                "confidence": 0.399993,
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "confidence": 0.57895,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.384519,
-                "artist": "Fuck Buttons",
+                "match": 0.508489,
+                "artist": "Greyhaven",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
-                "confidence": 0.384519,
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "confidence": 0.508489,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.381747,
-                "artist": "Moon Duo",
+                "match": 0.490056,
+                "artist": "The Callous Daoboys",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
-                "confidence": 0.381747,
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "confidence": 0.490056,
                 "relationType": "artist-similarity"
               },
               {
-                "match": 0.369565,
-                "artist": "Yeasayer",
+                "match": 0.469738,
+                "artist": "Converge",
                 "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Suuns",
-                "confidence": 0.369565,
+                "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+                "confidence": 0.469738,
                 "relationType": "artist-similarity"
               }
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns"
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die"
           },
           "source": "Last.fm",
           "status": "lastfm",
           "artists": [
-            "Beak>",
-            "Clinic",
-            "Holy Fuck",
-            "Liars",
-            "Poni Hoax"
+            "Better Lovers",
+            "Many Eyes",
+            "The Chariot",
+            "Norma Jean",
+            "He Is Legend"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Beak>",
+              "artist": "Better Lovers",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.812149,
-              "artist": "Clinic",
+              "match": 0.816418,
+              "artist": "Many Eyes",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.812149,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.816418,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.549906,
-              "artist": "Holy Fuck",
+              "match": 0.7962,
+              "artist": "The Chariot",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.549906,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.7962,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.519989,
-              "artist": "Liars",
+              "match": 0.74922,
+              "artist": "Norma Jean",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.519989,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.74922,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.488843,
-              "artist": "Poni Hoax",
+              "match": 0.6517,
+              "artist": "He Is Legend",
               "source": "Last.fm similar artist",
               "sources": [
                 "Last.fm"
               ],
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.488843,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.6517,
               "relationType": "artist-similarity"
             }
           ],
-          "releaseId": "425234c3-e9cc-40d3-87c8-786a4aa299a9",
-          "sourceUrl": "https://musicbrainz.org/release/425234c3-e9cc-40d3-87c8-786a4aa299a9",
+          "releaseId": "dcce4a72-d61e-4163-b23c-7073d5c51390",
+          "sourceUrl": "https://musicbrainz.org/release/dcce4a72-d61e-4163-b23c-7073d5c51390",
           "engineVersion": "musicbrainz-lastfm-v2"
         },
         "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
       },
-      "catalogNumber": "SC360",
+      "catalogNumber": "EICP-1270",
       "displayFormat": "CD",
       "homeSlideSort": null,
       "publishStatus": "Published",
-      "financeStockId": "ms1u3tbk3fmxr8",
-      "mediaCondition": "Very Good Plus",
+      "financeStockId": "ms1t1g1kas1r2f",
+      "mediaCondition": "",
       "open_to_offers": false,
       "relatedArtists": [
-        "Beak>",
-        "Clinic",
-        "Holy Fuck",
-        "Liars",
-        "Poni Hoax"
+        "Better Lovers",
+        "Many Eyes",
+        "The Chariot",
+        "Norma Jean",
+        "He Is Legend"
       ],
       "financeItemType": "CD",
       "financeMetadata": {
@@ -77674,81 +78351,77 @@
         "printDetails": ""
       },
       "homeCollections": [],
-      "reviewSourceUrl": "https://www.theskinny.co.uk/music/reviews/albums/suuns-felt",
-      "sleeveCondition": "Near Mint",
+      "reviewSourceUrl": "https://www.allmusic.com/album/new-junk-aesthetic-mw0000824190",
+      "sleeveCondition": "",
       "autoProductPhoto": "",
       "catalogPriceSync": 215000,
       "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "Secretly Canadian / The Skinny",
-      "metadataSourceUrl": "https://musicbrainz.org/release/425234c3-e9cc-40d3-87c8-786a4aa299a9",
-      "editorialUpdatedAt": "2026-11-02T02:01:29.357+00:00",
+      "enrichmentStatus": "complete-no-related-artists",
+      "descriptionSource": "Epitaph / AllMusic",
+      "metadataSourceUrl": "https://musicbrainz.org/release/dcce4a72-d61e-4163-b23c-7073d5c51390",
+      "editorialUpdatedAt": "2026-11-02T02:01:26.125+00:00",
       "editorialUpdatedBy": "finance-stock",
-      "mediaConditionNote": "",
       "apparelMeasurements": {},
       "enrichmentUpdatedAt": "2026-08-18",
-      "mediaConditionGrade": "Very Good Plus",
-      "sleeveConditionNote": "",
       "garmentConditionNote": "",
       "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "425234c3-e9cc-40d3-87c8-786a4aa299a9",
-      "sleeveConditionGrade": "Near Mint",
-      "enrichmentAttemptedAt": "2026-08-18T16:49:33.183Z",
-      "enrichmentFingerprint": "suuns|felt|cd||",
+      "musicBrainzReleaseId": "dcce4a72-d61e-4163-b23c-7073d5c51390",
+      "enrichmentAttemptedAt": "2026-08-18T16:51:29.751Z",
+      "enrichmentFingerprint": "every time i die|new junk aesthetic|cd||",
       "relatedArtistEvidence": [
         {
           "match": 1,
-          "artist": "Beak>",
+          "artist": "Better Lovers",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suuns",
+          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
           "confidence": 1,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.812149,
-          "artist": "Clinic",
+          "match": 0.816418,
+          "artist": "Many Eyes",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suuns",
-          "confidence": 0.812149,
+          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+          "confidence": 0.816418,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.549906,
-          "artist": "Holy Fuck",
+          "match": 0.7962,
+          "artist": "The Chariot",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suuns",
-          "confidence": 0.549906,
+          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+          "confidence": 0.7962,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.519989,
-          "artist": "Liars",
+          "match": 0.74922,
+          "artist": "Norma Jean",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suuns",
-          "confidence": 0.519989,
+          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+          "confidence": 0.74922,
           "relationType": "artist-similarity"
         },
         {
-          "match": 0.488843,
-          "artist": "Poni Hoax",
+          "match": 0.6517,
+          "artist": "He Is Legend",
           "source": "Last.fm similar artist",
           "sources": [
             "Last.fm"
           ],
-          "sourceUrl": "https://www.last.fm/music/Suuns",
-          "confidence": 0.488843,
+          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+          "confidence": 0.6517,
           "relationType": "artist-similarity"
         }
       ],
@@ -77758,169 +78431,169 @@
           "source": "Last.fm",
           "status": "available",
           "artists": [
-            "Beak>",
-            "Clinic",
-            "Holy Fuck",
-            "Liars",
-            "Poni Hoax",
-            "Anika",
-            "Django Django",
-            "Fuck Buttons",
-            "Moon Duo",
-            "Yeasayer"
+            "Better Lovers",
+            "Many Eyes",
+            "The Chariot",
+            "Norma Jean",
+            "He Is Legend",
+            "Johnny Booth",
+            "Poison the Well",
+            "Greyhaven",
+            "The Callous Daoboys",
+            "Converge"
           ],
           "evidence": [
             {
               "match": 1,
-              "artist": "Beak>",
+              "artist": "Better Lovers",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
               "confidence": 1,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.812149,
-              "artist": "Clinic",
+              "match": 0.816418,
+              "artist": "Many Eyes",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.812149,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.816418,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.549906,
-              "artist": "Holy Fuck",
+              "match": 0.7962,
+              "artist": "The Chariot",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.549906,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.7962,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.519989,
-              "artist": "Liars",
+              "match": 0.74922,
+              "artist": "Norma Jean",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.519989,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.74922,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.488843,
-              "artist": "Poni Hoax",
+              "match": 0.6517,
+              "artist": "He Is Legend",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.488843,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.6517,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.428563,
-              "artist": "Anika",
+              "match": 0.587421,
+              "artist": "Johnny Booth",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.428563,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.587421,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.399993,
-              "artist": "Django Django",
+              "match": 0.57895,
+              "artist": "Poison the Well",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.399993,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.57895,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.384519,
-              "artist": "Fuck Buttons",
+              "match": 0.508489,
+              "artist": "Greyhaven",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.384519,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.508489,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.381747,
-              "artist": "Moon Duo",
+              "match": 0.490056,
+              "artist": "The Callous Daoboys",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.381747,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.490056,
               "relationType": "artist-similarity"
             },
             {
-              "match": 0.369565,
-              "artist": "Yeasayer",
+              "match": 0.469738,
+              "artist": "Converge",
               "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Suuns",
-              "confidence": 0.369565,
+              "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+              "confidence": 0.469738,
               "relationType": "artist-similarity"
             }
           ],
-          "sourceUrl": "https://www.last.fm/music/Suuns"
+          "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die"
         },
         "source": "Last.fm",
         "status": "lastfm",
         "artists": [
-          "Beak>",
-          "Clinic",
-          "Holy Fuck",
-          "Liars",
-          "Poni Hoax"
+          "Better Lovers",
+          "Many Eyes",
+          "The Chariot",
+          "Norma Jean",
+          "He Is Legend"
         ],
         "evidence": [
           {
             "match": 1,
-            "artist": "Beak>",
+            "artist": "Better Lovers",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
             "confidence": 1,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.812149,
-            "artist": "Clinic",
+            "match": 0.816418,
+            "artist": "Many Eyes",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
-            "confidence": 0.812149,
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+            "confidence": 0.816418,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.549906,
-            "artist": "Holy Fuck",
+            "match": 0.7962,
+            "artist": "The Chariot",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
-            "confidence": 0.549906,
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+            "confidence": 0.7962,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.519989,
-            "artist": "Liars",
+            "match": 0.74922,
+            "artist": "Norma Jean",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
-            "confidence": 0.519989,
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+            "confidence": 0.74922,
             "relationType": "artist-similarity"
           },
           {
-            "match": 0.488843,
-            "artist": "Poni Hoax",
+            "match": 0.6517,
+            "artist": "He Is Legend",
             "source": "Last.fm similar artist",
             "sources": [
               "Last.fm"
             ],
-            "sourceUrl": "https://www.last.fm/music/Suuns",
-            "confidence": 0.488843,
+            "sourceUrl": "https://www.last.fm/music/Every%20Time%20I%20Die",
+            "confidence": 0.6517,
             "relationType": "artist-similarity"
           }
         ],
-        "releaseId": "425234c3-e9cc-40d3-87c8-786a4aa299a9",
-        "sourceUrl": "https://musicbrainz.org/release/425234c3-e9cc-40d3-87c8-786a4aa299a9",
+        "releaseId": "dcce4a72-d61e-4163-b23c-7073d5c51390",
+        "sourceUrl": "https://musicbrainz.org/release/dcce4a72-d61e-4163-b23c-7073d5c51390",
         "engineVersion": "musicbrainz-lastfm-v2"
       },
       "manualRelatedArtistsOverride": true,
@@ -77932,7 +78605,7 @@
         "widthCm": 16,
         "heightCm": 6,
         "lengthCm": 18,
-        "updatedAt": "2026-09-22",
+        "updatedAt": "2026-09-16",
         "packageType": "bubble-wrap-corrugated-small-media",
         "weightGrams": 120,
         "shippingClass": "small-media-cd-bubble",
