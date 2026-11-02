@@ -653,8 +653,8 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 13,
-      "editorialUpdatedAt": "2026-11-02T08:45:13.959+00:00",
+      "editRevision": 14,
+      "editorialUpdatedAt": "2026-11-02T08:45:49.36+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
@@ -11583,6 +11583,178 @@
         "shippingClass": "vinyl-cardboard-bubble",
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-app-0012",
+      "qty": 1,
+      "sku": "NXP-2026-APP-0012",
+      "tags": [],
+      "year": 2026,
+      "color": "White",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-app-0012-jesu-terminus-display.webp",
+      "label": "NIXP Selection",
+      "price": 665000,
+      "sizes": [
+        {
+          "label": "XL",
+          "soldOut": false,
+          "quantity": 1
+        }
+      ],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Terminus",
+      "artist": "Jesu",
+      "format": "Apparel",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-app-0012-jesu-terminus-display.webp"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "",
+      "category": "Apparel",
+      "material": "",
+      "condition": "New With Tags",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.789Z",
+          "sku": "NXP-2026-APP-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.793Z",
+          "sku": "NXP-2026-APP-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.563Z",
+          "sku": "NXP-2026-APP-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.349Z",
+          "sku": "NXP-2026-APP-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.437Z",
+          "sku": "NXP-2026-APP-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.817Z",
+          "sku": "NXP-2026-APP-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.492Z",
+          "sku": "NXP-2026-APP-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.302Z",
+          "sku": "NXP-2026-APP-0012",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "",
+      "collection": "Jesu",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.789Z",
+        "sku": "NXP-2026-APP-0012",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "Tops",
+      "description": "",
+      "reviewQuote": "",
+      "editRevision": 44,
+      "imageCredits": [],
+      "listingImage": "/public/assets/catalog-archive/nxp-2026-app-0012-jesu-terminus-listing-v2.webp",
+      "originalTags": false,
+      "reviewSource": "",
+      "catalogNumber": "",
+      "displayFormat": "T-shirt",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "mua62e1420ejr0",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "financeItemType": "T-shirt",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "sleeveCondition": "",
+      "catalogPriceSync": 665000,
+      "publicationState": "deployment_pending",
+      "descriptionSource": "",
+      "imagePresentation": "Digital apparel presentation based on Eyesore Merch source photograph",
+      "editorialUpdatedAt": "2026-11-02T15:16:53.304+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "mediaConditionNote": "",
+      "apparelMeasurements": {
+        "length": "79",
+        "pitToPit": "59"
+      },
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": null,
+      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 28,
+        "heightCm": 3,
+        "lengthCm": 36,
+        "updatedAt": "2026-11-02",
+        "packageType": "zip-lock-polybag-shipping-wrap",
+        "weightGrams": 280,
+        "shippingClass": "apparel-soft-zip-lock-wrap",
+        "packagingGroup": "SOFT_APPAREL",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
