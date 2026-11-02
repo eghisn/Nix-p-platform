@@ -15,7 +15,7 @@ function productCardSource(product = {}) {
 }
 
 export function canGenerateProductCardThumbnail(product = {}) {
-  return LOCAL_RASTER_IMAGE.test(productCardSource(product));
+  return product.category === "Records" && LOCAL_RASTER_IMAGE.test(productCardSource(product));
 }
 
 export function productCardThumbnailUrl(product, width) {
