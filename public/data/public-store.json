@@ -2147,6 +2147,665 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0104",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0104",
+      "tags": [
+        "post-punk",
+        "new wave"
+      ],
+      "year": 2021,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0104-picture-disc.webp",
+      "label": "Fractured France",
+      "price": 580000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Transmission",
+      "artist": "Joy Division",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0104-picture-disc.webp"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "Vinyl, 12\", Single, Limited Edition, Picture Disc, Unofficial Release",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0104-picture-disc.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.theguardian.com/culture/2020/jul/17/joy-division-all-of-their-songs-ranked",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.790Z",
+          "sku": "NXP-2026-VNL-0104",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.794Z",
+          "sku": "NXP-2026-VNL-0104",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.564Z",
+          "sku": "NXP-2026-VNL-0104",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.350Z",
+          "sku": "NXP-2026-VNL-0104",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.437Z",
+          "sku": "NXP-2026-VNL-0104",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.492Z",
+          "sku": "NXP-2026-VNL-0104",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.303Z",
+          "sku": "NXP-2026-VNL-0104",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-21T02:00:47.080Z",
+          "sku": "NXP-2026-VNL-0104",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.790Z",
+        "sku": "NXP-2026-VNL-0104",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "'Transmission' first appeared as a Joy Division single in 1979, its spare bass figure, synthesizer drone and Ian Curtis's voice building toward a sudden release of tension. This later 12-inch picture disc pairs it with 'Novelty'. It is a limited French fan-club pressing on Fractured France, not an official Factory Records edition.",
+      "reviewQuote": "the sheer power it builds up over the course of four minutes is extraordinary",
+      "imageCredits": [
+        {
+          "url": "https://citynoiserecords.com/cdn/shop/files/s-l1200.jpg?v=1690245798&width=1946",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0104-picture-disc.webp",
+          "credit": "City Noise Records / Fractured France picture disc photograph"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "The Guardian (song commentary, quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.theguardian.com/culture/2020/jul/17/joy-division-all-of-their-songs-ranked",
+        "description": "'Transmission' first appeared as a Joy Division single in 1979, its spare bass figure, synthesizer drone and Ian Curtis's voice building toward a sudden release of tension. This later 12-inch picture disc pairs it with 'Novelty'. It is a limited French fan-club pressing on Fractured France, not an official Factory Records edition.",
+        "reviewQuote": "the sheer power it builds up over the course of four minutes is extraordinary",
+        "reviewSource": "The Guardian (song commentary, quoted)",
+        "relatedArtists": [
+          "New Order",
+          "Bauhaus",
+          "The Cure",
+          "The Sound",
+          "Echo & the Bunnymen"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Sister Ray / The Guardian",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "New Order",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.435062,
+            "artist": "Bauhaus",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 0.435062,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.432817,
+            "artist": "The Cure",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 0.432817,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.427593,
+            "artist": "The Sound",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 0.427593,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.364518,
+            "artist": "Echo & the Bunnymen",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 0.364518,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "New Order",
+              "Bauhaus",
+              "The Cure",
+              "The Sound",
+              "Echo & the Bunnymen",
+              "Siouxsie And The Banshees",
+              "The Smiths",
+              "The Chameleons",
+              "Gang of Four",
+              "Sad Lovers and Giants"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "New Order",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.435062,
+                "artist": "Bauhaus",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 0.435062,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.432817,
+                "artist": "The Cure",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 0.432817,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.427593,
+                "artist": "The Sound",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 0.427593,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.364518,
+                "artist": "Echo & the Bunnymen",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 0.364518,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.357013,
+                "artist": "Siouxsie And The Banshees",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 0.357013,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.354384,
+                "artist": "The Smiths",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 0.354384,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.336586,
+                "artist": "The Chameleons",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 0.336586,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.296484,
+                "artist": "Gang of Four",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 0.296484,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.292967,
+                "artist": "Sad Lovers and Giants",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+                "confidence": 0.292967,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "New Order",
+            "Bauhaus",
+            "The Cure",
+            "The Sound",
+            "Echo & the Bunnymen"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "New Order",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.435062,
+              "artist": "Bauhaus",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.435062,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.432817,
+              "artist": "The Cure",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.432817,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.427593,
+              "artist": "The Sound",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.427593,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.364518,
+              "artist": "Echo & the Bunnymen",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.364518,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "FF476",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mua6umhftmrpjv",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "New Order",
+        "Bauhaus",
+        "The Cure",
+        "The Sound",
+        "Echo & the Bunnymen"
+      ],
+      "reviewResearch": {
+        "url": "https://www.theguardian.com/culture/2020/jul/17/joy-division-all-of-their-songs-ranked",
+        "scope": "song",
+        "source": "The Guardian (song commentary, quoted)",
+        "status": "verified"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://sisterray.co.uk/products/transmission-novelty-picture-disc",
+          "source": "Sister Ray (pressing identity)",
+          "confidence": 95
+        },
+        {
+          "url": "https://www.theguardian.com/culture/2020/jul/17/joy-division-all-of-their-songs-ranked",
+          "source": "The Guardian (song commentary, quoted)",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": "",
+      "catalogPriceSync": 580000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Sister Ray / The Guardian",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "New Order",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.435062,
+          "artist": "Bauhaus",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+          "confidence": 0.435062,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.432817,
+          "artist": "The Cure",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+          "confidence": 0.432817,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.427593,
+          "artist": "The Sound",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+          "confidence": 0.427593,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.364518,
+          "artist": "Echo & the Bunnymen",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+          "confidence": 0.364518,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "New Order",
+            "Bauhaus",
+            "The Cure",
+            "The Sound",
+            "Echo & the Bunnymen",
+            "Siouxsie And The Banshees",
+            "The Smiths",
+            "The Chameleons",
+            "Gang of Four",
+            "Sad Lovers and Giants"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "New Order",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.435062,
+              "artist": "Bauhaus",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.435062,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.432817,
+              "artist": "The Cure",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.432817,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.427593,
+              "artist": "The Sound",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.427593,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.364518,
+              "artist": "Echo & the Bunnymen",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.364518,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.357013,
+              "artist": "Siouxsie And The Banshees",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.357013,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.354384,
+              "artist": "The Smiths",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.354384,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.336586,
+              "artist": "The Chameleons",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.336586,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.296484,
+              "artist": "Gang of Four",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.296484,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.292967,
+              "artist": "Sad Lovers and Giants",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+              "confidence": 0.292967,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Joy%20Division"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "New Order",
+          "Bauhaus",
+          "The Cure",
+          "The Sound",
+          "Echo & the Bunnymen"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "New Order",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.435062,
+            "artist": "Bauhaus",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 0.435062,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.432817,
+            "artist": "The Cure",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 0.432817,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.427593,
+            "artist": "The Sound",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 0.427593,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.364518,
+            "artist": "Echo & the Bunnymen",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Joy%20Division",
+            "confidence": 0.364518,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 39,
+      "editorialUpdatedAt": "2026-11-02T07:33:12.078+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0103",
       "qty": 1,
       "sku": "NXP-2026-VNL-0103",
@@ -2785,8 +3444,8 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 39,
-      "editorialUpdatedAt": "2026-11-02T07:31:56.379+00:00",
+      "editRevision": 40,
+      "editorialUpdatedAt": "2026-11-02T07:32:31.728+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
