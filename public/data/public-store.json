@@ -4844,6 +4844,192 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0087",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0087",
+      "tags": [],
+      "year": 2011,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0087-official-cover.webp",
+      "label": "Dead Oceans",
+      "price": 305000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Dracula",
+      "artist": "Nurses",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0087-official-cover.webp"
+      ],
+      "barcode": "656605134314",
+      "details": [],
+      "edition": "Vinyl, LP, Album",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0087-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.wweek.com/portland/article-17979-album-review-nurses.html",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.781Z",
+          "sku": "NXP-2026-VNL-0087",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-31T02:00:47.138Z",
+          "sku": "NXP-2026-VNL-0087",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.778Z",
+          "sku": "NXP-2026-VNL-0087",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.559Z",
+          "sku": "NXP-2026-VNL-0087",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.346Z",
+          "sku": "NXP-2026-VNL-0087",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.434Z",
+          "sku": "NXP-2026-VNL-0087",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.814Z",
+          "sku": "NXP-2026-VNL-0087",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.490Z",
+          "sku": "NXP-2026-VNL-0087",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.781Z",
+        "sku": "NXP-2026-VNL-0087",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "On Dracula, Nurses bring their off-kilter pop into a more spacious, rhythmic frame. The Portland trio keep the unstable textures and Aaron Chapman's unmistakable voice, but 'Fever Dreams' and 'Trying to Reach You' find sharper melodies inside the drift. The record feels densely built without losing its sense of open air.",
+      "reviewQuote": "It's a densely layered yet wide-open record",
+      "imageCredits": [
+        {
+          "url": "https://nurses.bandcamp.com/album/dracula",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0087-official-cover.webp",
+          "credit": "Nurses official Bandcamp artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Willamette Week (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.wweek.com/portland/article-17979-album-review-nurses.html",
+        "description": "On Dracula, Nurses bring their off-kilter pop into a more spacious, rhythmic frame. The Portland trio keep the unstable textures and Aaron Chapman's unmistakable voice, but 'Fever Dreams' and 'Trying to Reach You' find sharper melodies inside the drift. The record feels densely built without losing its sense of open air.",
+        "reviewQuote": "It's a densely layered yet wide-open record",
+        "reviewSource": "Willamette Week (quoted)",
+        "descriptionSource": "Nurses official Bandcamp / Willamette Week"
+      },
+      "catalogNumber": "DOC043",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mtvt3gh9a2lbh4",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "reviewResearch": {
+        "url": "https://www.wweek.com/portland/article-17979-album-review-nurses.html",
+        "scope": "release",
+        "source": "Willamette Week (quoted)",
+        "status": "verified",
+        "checkedAt": "2026-10-27T18:46:13.771Z"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://www.wweek.com/portland/article-17979-album-review-nurses.html",
+          "source": "Willamette Week (quoted)",
+          "confidence": 100
+        },
+        {
+          "url": "https://nurses.bandcamp.com/album/dracula",
+          "source": "Nurses official Bandcamp / Willamette Week",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": null,
+      "catalogPriceSync": 305000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Nurses official Bandcamp / Willamette Week",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "publishAfterResearch": false,
+      "minimumAcceptableOffer": 0,
+      "editRevision": 50,
+      "editorialUpdatedAt": "2026-11-02T05:20:43.36+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "manualRelatedArtists": [],
+      "relatedArtistsResearch": null,
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-10",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0085",
       "qty": 1,
       "sku": "NXP-2026-VNL-0085",
@@ -5008,8 +5194,8 @@
       "garmentConditionNote": "",
       "publishAfterResearch": false,
       "minimumAcceptableOffer": 0,
-      "editRevision": 52,
-      "editorialUpdatedAt": "2026-11-02T05:19:27.526+00:00",
+      "editRevision": 53,
+      "editorialUpdatedAt": "2026-11-02T05:20:02.743+00:00",
       "editorialUpdatedBy": "admin-publication",
       "manualRelatedArtists": [],
       "relatedArtistsResearch": null,
