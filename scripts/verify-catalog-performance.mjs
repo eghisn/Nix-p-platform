@@ -6,7 +6,7 @@ import { canGenerateProductCardThumbnail, productCardImageAttributes, productCar
 const apparelListing = {
   category: "Apparel",
   image: "/public/assets/catalog-archive/nxp-2026-app-0012-jesu-terminus-display.webp",
-  listingImage: "/public/assets/catalog-archive/nxp-2026-app-0012-jesu-terminus-listing.webp"
+  listingImage: "/public/assets/catalog-archive/nxp-2026-app-0012-jesu-terminus-listing-v2.webp"
 };
 assert(!canGenerateProductCardThumbnail(apparelListing), "Apparel must not request record-only thumbnails.");
 assert(productCardImageAttributes(apparelListing).src === apparelListing.listingImage, "Apparel must render its listing image directly.");
