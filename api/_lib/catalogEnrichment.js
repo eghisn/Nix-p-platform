@@ -48,6 +48,14 @@ function discogsHeaders() {
 // original source remains in imageCredits; this mapping prevents third-party
 // artwork URLs from becoming a storefront runtime dependency.
 export const ARCHIVED_CATALOG_IMAGES = {
+  "NXP-2026-VNL-0091": {
+    sourceUrl: "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+    catalogNumber: "PP022",
+    cover: "/public/assets/catalog-archive/nxp-2026-vnl-0091-public-possession-official-cover.webp",
+    imageCredits: [
+      { image: "/public/assets/catalog-archive/nxp-2026-vnl-0091-public-possession-official-cover.webp", credit: "Public Possession official Bandcamp artwork", url: "https://publicpossession.bandcamp.com/album/serie-a-compilation" }
+    ]
+  },
   "NXP-2026-CST-0014": {
     sourceUrl: "https://shop.domiandjdbeck.com/products/who-asked-cassette",
     cover: "/public/assets/catalog-archive/nxp-2026-domi-who-asked-cover.webp",
@@ -214,6 +222,22 @@ function safeHostname(value) {
 // Exact, reviewed matches take precedence over discovery. These records also
 // document the source used for every locally archived catalog image.
 export const CURATED_FINANCE_ENRICHMENTS = {
+  "NXP-2026-VNL-0091": {
+    artist: "Various Artists", title: "Serie A", year: 2017,
+    label: "Public Possession", edition: 'Vinyl, 12", Compilation',
+    catalogNumber: "PP022", verifiedCatalogNumber: "PP022",
+    cover: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0091"].cover,
+    imageCredits: ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0091"].imageCredits,
+    description: "Four producers, two sides, and no single mood: Public Possession's Serie A places Tambien's Collagelinger beside Rhode & Brown's Black Cardigan, then turns to Mr. Tophat's Taxi Tbilisi and Obalski's Achim. The Munich label presents the sequence as a move between collage, pop build-up, a telephone homage and a heavier acid piece. Issued as PP022 in 2017, the twelve-inch maps a broad stretch of the label's dance-floor interests without forcing the four tracks into one style.",
+    descriptionSource: "Public Possession official Bandcamp / label release copy",
+    relatedArtists: ["Tambien", "Rhode & Brown", "Mr. Tophat", "Obalski"],
+    tags: ["electro", "house", "acid house", "compilation"],
+    sourceUrl: "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+    researchSources: [
+      { source: "Public Possession official Bandcamp release and artwork", url: "https://publicpossession.bandcamp.com/album/serie-a-compilation", confidence: 100 },
+      { source: "PP022 physical format and label release copy", url: "https://yoyaku.io/jp/release/pp022/", confidence: 95 }
+    ]
+  },
   "NXP-2026-VNL-0096": {
     artist: "Massive Attack, Tom Waits", title: "Boots On The Ground", year: 2026,
     label: "Play It Again Sam", edition: 'Vinyl, 12", 45 RPM, Single, Limited Edition, Random Colors, 180g, EcoSonic',
@@ -1835,6 +1859,18 @@ export const CURATED_EDITORIAL_OVERRIDES = {
 // of member projects that source discovery can otherwise pollute with aliases
 // or compilation credits.
 export const CURATED_RELATED_ARTIST_OVERRIDES = {
+  "NXP-2026-VNL-0091": {
+    source: "Public Possession exact release credits",
+    artists: ["Tambien", "Rhode & Brown", "Mr. Tophat", "Obalski"],
+    evidence: [
+      {
+        source: "Public Possession official Bandcamp tracklist",
+        sourceUrl: "https://publicpossession.bandcamp.com/album/serie-a-compilation",
+        confidence: "verified",
+        relationType: "compilation-contributor"
+      }
+    ]
+  },
   "NXP-2026-VNL-0071": {
     source: "NIXP verified New Order member projects",
     artists: ["Joy Division", "Electronic", "The Other Two", "Monaco"],

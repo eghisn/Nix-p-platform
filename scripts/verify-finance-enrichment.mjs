@@ -63,6 +63,17 @@ const draft = {
   raw: {}
 };
 
+const serieA = CURATED_FINANCE_ENRICHMENTS["NXP-2026-VNL-0091"];
+const serieAArtwork = ARCHIVED_CATALOG_IMAGES["NXP-2026-VNL-0091"];
+assert.equal(selectCuratedFinanceEnrichment(serieA, { catalogNumber: "PP022" })?.year, 2017);
+assert.equal(selectCuratedFinanceEnrichment(serieA, { catalogNumber: "PP023" }), null);
+assert.equal(serieA.cover, serieAArtwork.cover);
+assert.equal(serieAArtwork.imageCredits[0].url, "https://publicpossession.bandcamp.com/album/serie-a-compilation");
+assert.deepEqual(CURATED_RELATED_ARTIST_OVERRIDES["NXP-2026-VNL-0091"].artists, [
+  "Tambien", "Rhode & Brown", "Mr. Tophat", "Obalski"
+]);
+assert.equal(isEditorialDescriptionQuality(serieA.description, serieA.descriptionSource), true);
+
 function assertPublishedOrWaitsForSource(product) {
   if (product.raw.relatedArtistsResearch?.status === "source-unavailable") {
     assert.equal(product.publish_status, "Draft");
