@@ -2147,6 +2147,666 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0097",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0097",
+      "tags": [
+        "art pop",
+        "experimental pop",
+        "electronic"
+      ],
+      "year": 2024,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0097-official-cover.webp",
+      "label": "untitled (recs)",
+      "price": 836000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Winterreise",
+      "artist": "Jerskin Fendrix",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0097-official-cover.webp"
+      ],
+      "barcode": "5 070002 115366",
+      "details": [],
+      "edition": "Vinyl, LP, Album, Reissue",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0097-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://thequietus.com/quietus-reviews/jerskin-fendrix-winterreise-review/",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.788Z",
+          "sku": "NXP-2026-VNL-0097",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.792Z",
+          "sku": "NXP-2026-VNL-0097",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.562Z",
+          "sku": "NXP-2026-VNL-0097",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.349Z",
+          "sku": "NXP-2026-VNL-0097",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.436Z",
+          "sku": "NXP-2026-VNL-0097",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.816Z",
+          "sku": "NXP-2026-VNL-0097",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.491Z",
+          "sku": "NXP-2026-VNL-0097",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.302Z",
+          "sku": "NXP-2026-VNL-0097",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.788Z",
+        "sku": "NXP-2026-VNL-0097",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "First released in 2020, Jerskin Fendrix's Winterreise moves restlessly between piano-led song, pitched vocals, electronics and abrupt guitar noise. 'Manhattan' keeps changing shape, while 'Onigiri' and 'Black Hair' turn unstable arrangements into striking pop moments. This vinyl reissue brings the debut back with a lyric-and-art booklet and tear-out poster.",
+      "reviewQuote": "His beat-making is unique, his instrumentation prolific, and his lyric-writing witty and rich.",
+      "imageCredits": [
+        {
+          "url": "https://jerskinfendrix.bandcamp.com/album/winterreise",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0097-official-cover.webp",
+          "credit": "Jerskin Fendrix official Bandcamp artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "The Quietus (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://thequietus.com/quietus-reviews/jerskin-fendrix-winterreise-review/",
+        "description": "First released in 2020, Jerskin Fendrix's Winterreise moves restlessly between piano-led song, pitched vocals, electronics and abrupt guitar noise. 'Manhattan' keeps changing shape, while 'Onigiri' and 'Black Hair' turn unstable arrangements into striking pop moments. This vinyl reissue brings the debut back with a lyric-and-art booklet and tear-out poster.",
+        "reviewQuote": "His beat-making is unique, his instrumentation prolific, and his lyric-writing witty and rich.",
+        "reviewSource": "The Quietus (quoted)",
+        "relatedArtists": [
+          "Jonny Greenwood",
+          "Jockstrap",
+          "Ethan P. Flynn",
+          "SMERZ",
+          "Ninush"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Jerskin Fendrix official Bandcamp / The Quietus",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Jonny Greenwood",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.887475,
+            "artist": "Jockstrap",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 0.887475,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.518624,
+            "artist": "Ethan P. Flynn",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 0.518624,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.341338,
+            "artist": "SMERZ",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 0.341338,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.326332,
+            "artist": "Ninush",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 0.326332,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Jonny Greenwood",
+              "Jockstrap",
+              "Ethan P. Flynn",
+              "SMERZ",
+              "Ninush",
+              "Hen Ogledd",
+              "ANOHNI",
+              "Micachu",
+              "Jennifer Walton",
+              "James K"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Jonny Greenwood",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.887475,
+                "artist": "Jockstrap",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 0.887475,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.518624,
+                "artist": "Ethan P. Flynn",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 0.518624,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.341338,
+                "artist": "SMERZ",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 0.341338,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.326332,
+                "artist": "Ninush",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 0.326332,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.29803,
+                "artist": "Hen Ogledd",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 0.29803,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.286459,
+                "artist": "ANOHNI",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 0.286459,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.284608,
+                "artist": "Micachu",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 0.284608,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.27499,
+                "artist": "Jennifer Walton",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 0.27499,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.272964,
+                "artist": "James K",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+                "confidence": 0.272964,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Jonny Greenwood",
+            "Jockstrap",
+            "Ethan P. Flynn",
+            "SMERZ",
+            "Ninush"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Jonny Greenwood",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.887475,
+              "artist": "Jockstrap",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.887475,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.518624,
+              "artist": "Ethan P. Flynn",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.518624,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.341338,
+              "artist": "SMERZ",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.341338,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.326332,
+              "artist": "Ninush",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.326332,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "u(r)005",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mua5ofh3phozfo",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Jonny Greenwood",
+        "Jockstrap",
+        "Ethan P. Flynn",
+        "SMERZ",
+        "Ninush"
+      ],
+      "reviewResearch": {
+        "url": "https://thequietus.com/quietus-reviews/jerskin-fendrix-winterreise-review/",
+        "scope": "release",
+        "source": "The Quietus (quoted)",
+        "status": "verified"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://jerskinfendrix.bandcamp.com/album/winterreise",
+          "source": "Jerskin Fendrix official Bandcamp / The Quietus",
+          "confidence": 100
+        },
+        {
+          "url": "https://thequietus.com/quietus-reviews/jerskin-fendrix-winterreise-review/",
+          "source": "The Quietus (quoted)",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": null,
+      "catalogPriceSync": 836000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Jerskin Fendrix official Bandcamp / The Quietus",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Jonny Greenwood",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.887475,
+          "artist": "Jockstrap",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+          "confidence": 0.887475,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.518624,
+          "artist": "Ethan P. Flynn",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+          "confidence": 0.518624,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.341338,
+          "artist": "SMERZ",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+          "confidence": 0.341338,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.326332,
+          "artist": "Ninush",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+          "confidence": 0.326332,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Jonny Greenwood",
+            "Jockstrap",
+            "Ethan P. Flynn",
+            "SMERZ",
+            "Ninush",
+            "Hen Ogledd",
+            "ANOHNI",
+            "Micachu",
+            "Jennifer Walton",
+            "James K"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Jonny Greenwood",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.887475,
+              "artist": "Jockstrap",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.887475,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.518624,
+              "artist": "Ethan P. Flynn",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.518624,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.341338,
+              "artist": "SMERZ",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.341338,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.326332,
+              "artist": "Ninush",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.326332,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.29803,
+              "artist": "Hen Ogledd",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.29803,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.286459,
+              "artist": "ANOHNI",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.286459,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.284608,
+              "artist": "Micachu",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.284608,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.27499,
+              "artist": "Jennifer Walton",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.27499,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.272964,
+              "artist": "James K",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+              "confidence": 0.272964,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Jonny Greenwood",
+          "Jockstrap",
+          "Ethan P. Flynn",
+          "SMERZ",
+          "Ninush"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Jonny Greenwood",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.887475,
+            "artist": "Jockstrap",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 0.887475,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.518624,
+            "artist": "Ethan P. Flynn",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 0.518624,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.341338,
+            "artist": "SMERZ",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 0.341338,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.326332,
+            "artist": "Ninush",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Jerskin%20Fendrix",
+            "confidence": 0.326332,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 43,
+      "editorialUpdatedAt": "2026-11-02T07:15:16.002+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0096",
       "qty": 1,
       "sku": "NXP-2026-VNL-0096",
@@ -3473,8 +4133,8 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 45,
-      "editorialUpdatedAt": "2026-11-02T07:14:10.806+00:00",
+      "editRevision": 46,
+      "editorialUpdatedAt": "2026-11-02T07:14:44.704+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
