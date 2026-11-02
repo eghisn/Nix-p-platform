@@ -2147,6 +2147,688 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0105",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0105",
+      "tags": [
+        "hardcore punk",
+        "punk",
+        "rock"
+      ],
+      "year": 2010,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0105-official-cover.webp",
+      "label": "Matador",
+      "price": 320000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Year Of The Ox",
+      "artist": "Fucked Up",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0105-official-cover.webp"
+      ],
+      "barcode": "7 44861 09471 5",
+      "details": [
+        "SKU: NXP-2026-VNL-0105",
+        "Format: Vinyl",
+        "Condition: New-Sealed",
+        "Edition: Vinyl, 12\", 33 ⅓ RPM, Stereo",
+        "Catalog number: OLE 947-1",
+        "Barcode: 744861094715",
+        "Barcode: 7 44861 09471 5"
+      ],
+      "edition": "Vinyl, 12\", 33 ⅓ RPM, Stereo",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0105-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.avclub.com/fucked-up-year-of-the-ox-1798166058",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.790Z",
+          "sku": "NXP-2026-VNL-0105",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.794Z",
+          "sku": "NXP-2026-VNL-0105",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.564Z",
+          "sku": "NXP-2026-VNL-0105",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.350Z",
+          "sku": "NXP-2026-VNL-0105",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.437Z",
+          "sku": "NXP-2026-VNL-0105",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.492Z",
+          "sku": "NXP-2026-VNL-0105",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-23T19:49:40.673Z",
+          "sku": "NXP-2026-VNL-0105",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T17:00:20.891Z",
+          "sku": "NXP-2026-VNL-0105",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "Matador",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.790Z",
+        "sku": "NXP-2026-VNL-0105",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Fucked Up give their Zodiac series room to stretch on Year of the Ox. Recorded with Jon Drew in Toronto, the title track builds patiently around a guest vocal from Zola Jesus and the strings of New Strings Old Puppets. On the other side, Solomon's Song turns toward gothic romance, with Aerin Fogel's extended saxophone passage and synthesizers from Trust.",
+      "reviewQuote": "If there were any barriers left for Fucked Up to break, consider them now broken.",
+      "sourceTitle": "Year of the Ox",
+      "imageCredits": [
+        {
+          "url": "https://fuckedup.bandcamp.com/album/year-of-the-ox",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0105-official-cover.webp",
+          "credit": "Fucked Up / Bandcamp official artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "The A.V. Club (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.avclub.com/fucked-up-year-of-the-ox-1798166058",
+        "description": "Fucked Up give their Zodiac series room to stretch on Year of the Ox. Recorded with Jon Drew in Toronto, the title track builds patiently around a guest vocal from Zola Jesus and the strings of New Strings Old Puppets. On the other side, Solomon's Song turns toward gothic romance, with Aerin Fogel's extended saxophone passage and synthesizers from Trust.",
+        "reviewQuote": "If there were any barriers left for Fucked Up to break, consider them now broken.",
+        "reviewSource": "The A.V. Club (quoted)",
+        "relatedArtists": [
+          "Paint It Black",
+          "Ceremony",
+          "Drug Church",
+          "Career Suicide",
+          "The Bronx"
+        ],
+        "descriptionSource": "Merge Records",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Paint It Black",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.98668,
+            "artist": "Ceremony",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 0.98668,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.898224,
+            "artist": "Drug Church",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 0.898224,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.8391,
+            "artist": "Career Suicide",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 0.8391,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.829934,
+            "artist": "The Bronx",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 0.829934,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Paint It Black",
+              "Ceremony",
+              "Drug Church",
+              "Career Suicide",
+              "The Bronx",
+              "Gallows",
+              "Pissed Jeans",
+              "Single Mothers",
+              "Propagandhi",
+              "Samiam"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Paint It Black",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.98668,
+                "artist": "Ceremony",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 0.98668,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.898224,
+                "artist": "Drug Church",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 0.898224,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.8391,
+                "artist": "Career Suicide",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 0.8391,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.829934,
+                "artist": "The Bronx",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 0.829934,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.815811,
+                "artist": "Gallows",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 0.815811,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.764219,
+                "artist": "Pissed Jeans",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 0.764219,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.762736,
+                "artist": "Single Mothers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 0.762736,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.754893,
+                "artist": "Propagandhi",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 0.754893,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.707692,
+                "artist": "Samiam",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+                "confidence": 0.707692,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Paint It Black",
+            "Ceremony",
+            "Drug Church",
+            "Career Suicide",
+            "The Bronx"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Paint It Black",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.98668,
+              "artist": "Ceremony",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.98668,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.898224,
+              "artist": "Drug Church",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.898224,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.8391,
+              "artist": "Career Suicide",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.8391,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.829934,
+              "artist": "The Bronx",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.829934,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "94f8a05f-93d7-4185-b61e-937aa2857490",
+          "sourceUrl": "https://musicbrainz.org/release/94f8a05f-93d7-4185-b61e-937aa2857490",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "OLE 947-1",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mua6z1wzcm1p4b",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Paint It Black",
+        "Ceremony",
+        "Drug Church",
+        "Career Suicide",
+        "The Bronx"
+      ],
+      "reviewResearch": {
+        "url": "https://www.avclub.com/fucked-up-year-of-the-ox-1798166058",
+        "quote": "If there were any barriers left for Fucked Up to break, consider them now broken.",
+        "scope": "release",
+        "title": "Year Of The Ox",
+        "source": "The A.V. Club (quoted)",
+        "status": "verified",
+        "verifiedAt": "2026-10-23"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchFailure": null,
+      "researchSources": [
+        {
+          "url": "https://musicbrainz.org/release/94f8a05f-93d7-4185-b61e-937aa2857490",
+          "source": "MusicBrainz release identity (not editorial)",
+          "confidence": 95
+        },
+        {
+          "url": "https://mergerecords.com/products/fucked-up-year-of-the-ox",
+          "source": "Merge Records release note (quoted)",
+          "confidence": 90
+        },
+        {
+          "url": "https://www.avclub.com/fucked-up-year-of-the-ox-1798166058",
+          "source": "The A.V. Club (quoted)",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-vnl-0105/detail-1.jpg",
+      "catalogPriceSync": 320000,
+      "enrichmentOrigin": "verified-release-cache",
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Merge Records",
+      "metadataSourceUrl": "https://musicbrainz.org/release/94f8a05f-93d7-4185-b61e-937aa2857490",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-10-23",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "94f8a05f-93d7-4185-b61e-937aa2857490",
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-10-23T19:49:40.673Z",
+      "enrichmentFingerprint": "fucked up|year of the ox|vinyl|7 44861 09471 5|ole 947 1",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Paint It Black",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.98668,
+          "artist": "Ceremony",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+          "confidence": 0.98668,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.898224,
+          "artist": "Drug Church",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+          "confidence": 0.898224,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.8391,
+          "artist": "Career Suicide",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+          "confidence": 0.8391,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.829934,
+          "artist": "The Bronx",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+          "confidence": 0.829934,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Paint It Black",
+            "Ceremony",
+            "Drug Church",
+            "Career Suicide",
+            "The Bronx",
+            "Gallows",
+            "Pissed Jeans",
+            "Single Mothers",
+            "Propagandhi",
+            "Samiam"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Paint It Black",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.98668,
+              "artist": "Ceremony",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.98668,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.898224,
+              "artist": "Drug Church",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.898224,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.8391,
+              "artist": "Career Suicide",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.8391,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.829934,
+              "artist": "The Bronx",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.829934,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.815811,
+              "artist": "Gallows",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.815811,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.764219,
+              "artist": "Pissed Jeans",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.764219,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.762736,
+              "artist": "Single Mothers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.762736,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.754893,
+              "artist": "Propagandhi",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.754893,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.707692,
+              "artist": "Samiam",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+              "confidence": 0.707692,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Fucked%20Up"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Paint It Black",
+          "Ceremony",
+          "Drug Church",
+          "Career Suicide",
+          "The Bronx"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Paint It Black",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.98668,
+            "artist": "Ceremony",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 0.98668,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.898224,
+            "artist": "Drug Church",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 0.898224,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.8391,
+            "artist": "Career Suicide",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 0.8391,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.829934,
+            "artist": "The Bronx",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Fucked%20Up",
+            "confidence": 0.829934,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "94f8a05f-93d7-4185-b61e-937aa2857490",
+        "sourceUrl": "https://musicbrainz.org/release/94f8a05f-93d7-4185-b61e-937aa2857490",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 39,
+      "editorialUpdatedAt": "2026-11-02T07:58:20.812+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0104",
       "qty": 1,
       "sku": "NXP-2026-VNL-0104",
@@ -10918,8 +11600,8 @@
         ]
       },
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 45,
-      "editorialUpdatedAt": "2026-11-02T07:57:19.329+00:00",
+      "editRevision": 46,
+      "editorialUpdatedAt": "2026-11-02T07:57:53.861+00:00",
       "editorialUpdatedBy": "admin-publication",
       "manualRelatedArtists": [],
       "shipping": {
