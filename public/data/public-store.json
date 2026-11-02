@@ -2147,6 +2147,663 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0103",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0103",
+      "tags": [
+        "house",
+        "electronic"
+      ],
+      "year": 2013,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0103-official-label.webp",
+      "label": "Hyperdub",
+      "price": 320000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Beach Mode (Keep It Simple)",
+      "artist": "Ikonika",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0103-official-label.webp"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "Vinyl, 12\"",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0103-official-label.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/18304-ikonika-aerotropolis/",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.790Z",
+          "sku": "NXP-2026-VNL-0103",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.794Z",
+          "sku": "NXP-2026-VNL-0103",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.564Z",
+          "sku": "NXP-2026-VNL-0103",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.350Z",
+          "sku": "NXP-2026-VNL-0103",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.437Z",
+          "sku": "NXP-2026-VNL-0103",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.492Z",
+          "sku": "NXP-2026-VNL-0103",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.303Z",
+          "sku": "NXP-2026-VNL-0103",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-21T02:00:47.080Z",
+          "sku": "NXP-2026-VNL-0103",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.790Z",
+        "sku": "NXP-2026-VNL-0103",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Jessy Lanza's voice gives Ikonika's 'Beach Mode (Keep It Simple)' a human center without flattening its restless, house-leaning pulse. Hyperdub's HDB074 12-inch pairs the vocal track with a dub and a stripped 'Percapella,' letting the same motif move between song and club tool. The single preceded Ikonika's Aerotropolis in 2013.",
+      "reviewQuote": "the coolly haunted tone it sets is immediately resonant",
+      "imageCredits": [
+        {
+          "url": "https://ikonika.bandcamp.com/album/beach-mode-keep-it-simple",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0103-official-label.webp",
+          "credit": "Ikonika / Hyperdub official 12-inch label artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Pitchfork Aerotropolis review on Beach Mode (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/18304-ikonika-aerotropolis/",
+        "description": "Jessy Lanza's voice gives Ikonika's 'Beach Mode (Keep It Simple)' a human center without flattening its restless, house-leaning pulse. Hyperdub's HDB074 12-inch pairs the vocal track with a dub and a stripped 'Percapella,' letting the same motif move between song and club tool. The single preceded Ikonika's Aerotropolis in 2013.",
+        "reviewQuote": "the coolly haunted tone it sets is immediately resonant",
+        "reviewSource": "Pitchfork Aerotropolis review on Beach Mode (quoted)",
+        "relatedArtists": [
+          "Cooly G",
+          "Kode9",
+          "Zomby",
+          "King Midas Sound",
+          "Shackleton"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Hyperdub / Ikonika official Bandcamp / Pitchfork",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Cooly G",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.841072,
+            "artist": "Kode9",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 0.841072,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.745935,
+            "artist": "Zomby",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 0.745935,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.689276,
+            "artist": "King Midas Sound",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 0.689276,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.658634,
+            "artist": "Shackleton",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 0.658634,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Cooly G",
+              "Kode9",
+              "Zomby",
+              "King Midas Sound",
+              "Shackleton",
+              "Kode9 & The Spaceape",
+              "Martyn",
+              "Mala",
+              "Blawan",
+              "The Bug"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Cooly G",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.841072,
+                "artist": "Kode9",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 0.841072,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.745935,
+                "artist": "Zomby",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 0.745935,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.689276,
+                "artist": "King Midas Sound",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 0.689276,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.658634,
+                "artist": "Shackleton",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 0.658634,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.605873,
+                "artist": "Kode9 & The Spaceape",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 0.605873,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.52344,
+                "artist": "Martyn",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 0.52344,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.520987,
+                "artist": "Mala",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 0.520987,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.50706,
+                "artist": "Blawan",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 0.50706,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.505767,
+                "artist": "The Bug",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Ikonika",
+                "confidence": 0.505767,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Cooly G",
+            "Kode9",
+            "Zomby",
+            "King Midas Sound",
+            "Shackleton"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Cooly G",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.841072,
+              "artist": "Kode9",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.841072,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.745935,
+              "artist": "Zomby",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.745935,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.689276,
+              "artist": "King Midas Sound",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.689276,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.658634,
+              "artist": "Shackleton",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.658634,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "28defe21-21c5-448d-9bd7-56bdbc2454d4",
+          "sourceUrl": "https://musicbrainz.org/release/28defe21-21c5-448d-9bd7-56bdbc2454d4",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "HDB074",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mua6rkfvbqq194",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Cooly G",
+        "Kode9",
+        "Zomby",
+        "King Midas Sound",
+        "Shackleton"
+      ],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://ikonika.bandcamp.com/album/beach-mode-keep-it-simple",
+          "source": "Hyperdub / Ikonika official Bandcamp / Pitchfork",
+          "confidence": 100
+        },
+        {
+          "url": "https://thequietus.com/interviews/ikonika-interview-aerotropolis/",
+          "source": "The Quietus (quoted)",
+          "confidence": 100
+        },
+        {
+          "url": "https://pitchfork.com/reviews/albums/18304-ikonika-aerotropolis/",
+          "source": "Pitchfork Aerotropolis review on Beach Mode (quoted)",
+          "confidence": 100
+        }
+      ],
+      "catalogPriceSync": 320000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Hyperdub / Ikonika official Bandcamp / Pitchfork",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Cooly G",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Ikonika",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.841072,
+          "artist": "Kode9",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Ikonika",
+          "confidence": 0.841072,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.745935,
+          "artist": "Zomby",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Ikonika",
+          "confidence": 0.745935,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.689276,
+          "artist": "King Midas Sound",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Ikonika",
+          "confidence": 0.689276,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.658634,
+          "artist": "Shackleton",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Ikonika",
+          "confidence": 0.658634,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Cooly G",
+            "Kode9",
+            "Zomby",
+            "King Midas Sound",
+            "Shackleton",
+            "Kode9 & The Spaceape",
+            "Martyn",
+            "Mala",
+            "Blawan",
+            "The Bug"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Cooly G",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.841072,
+              "artist": "Kode9",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.841072,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.745935,
+              "artist": "Zomby",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.745935,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.689276,
+              "artist": "King Midas Sound",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.689276,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.658634,
+              "artist": "Shackleton",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.658634,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.605873,
+              "artist": "Kode9 & The Spaceape",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.605873,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.52344,
+              "artist": "Martyn",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.52344,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.520987,
+              "artist": "Mala",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.520987,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.50706,
+              "artist": "Blawan",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.50706,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.505767,
+              "artist": "The Bug",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Ikonika",
+              "confidence": 0.505767,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Ikonika"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Cooly G",
+          "Kode9",
+          "Zomby",
+          "King Midas Sound",
+          "Shackleton"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Cooly G",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.841072,
+            "artist": "Kode9",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 0.841072,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.745935,
+            "artist": "Zomby",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 0.745935,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.689276,
+            "artist": "King Midas Sound",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 0.689276,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.658634,
+            "artist": "Shackleton",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Ikonika",
+            "confidence": 0.658634,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "28defe21-21c5-448d-9bd7-56bdbc2454d4",
+        "sourceUrl": "https://musicbrainz.org/release/28defe21-21c5-448d-9bd7-56bdbc2454d4",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 39,
+      "editorialUpdatedAt": "2026-11-02T07:31:56.379+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0102",
       "qty": 1,
       "sku": "NXP-2026-VNL-0102",
@@ -2264,7 +2921,7 @@
       "description": "On Crinkle, RS Tangent pulls dub techno away from its familiar haze and into a more physical, off-centre space. Robin Stewart builds Stomach from uneven drums and heavy low frequencies, while Compact tightens the pulse. The title track turns delayed fragments into rhythms of their own. Across four pieces, the effects do more than colour the tracks: they keep changing the shape of the beat.",
       "reviewQuote": "a set of twisted warehouse melters that apply advanced dub logic to pointillistic technoid rhythms.",
       "sourceTitle": "Crinkle",
-      "editRevision": 41,
+      "editRevision": 42,
       "imageCredits": [
         {
           "url": "https://rstangent.bandcamp.com/album/crinkle",
@@ -2579,7 +3236,7 @@
       "publicationState": "deployment_pending",
       "descriptionSource": "Boomkat / RS Tangent",
       "metadataSourceUrl": "https://rstangent.bandcamp.com/album/crinkle",
-      "editorialUpdatedAt": "2026-11-02T07:30:35.757+00:00",
+      "editorialUpdatedAt": "2026-11-02T07:31:10.223+00:00",
       "editorialUpdatedBy": "admin-publication",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
