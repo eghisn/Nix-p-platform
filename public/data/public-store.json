@@ -2813,8 +2813,8 @@
       },
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 44,
-      "editorialUpdatedAt": "2026-11-02T05:06:11.259+00:00",
+      "editRevision": 45,
+      "editorialUpdatedAt": "2026-11-02T05:06:46.19+00:00",
       "editorialUpdatedBy": "admin-publication",
       "shipping": {
         "source": "NIXP packaging rules v1",
@@ -4840,6 +4840,194 @@
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0084",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0084",
+      "tags": [],
+      "year": 2012,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0084-official-cover.webp",
+      "label": "Famous Class",
+      "price": 320000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Less Artists More Condos Series #1",
+      "artist": "A Place To Bury Strangers / Ceremony",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0084-official-cover.webp"
+      ],
+      "barcode": "0 20286 19869 7",
+      "details": [],
+      "edition": "Vinyl, 7\", 45 RPM, Single",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0084-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://itcamefromaquariusrecords.org/browse/cat/alphabet/a/",
+      "syncAudit": [
+        {
+          "at": "2026-11-02T02:00:46.624Z",
+          "sku": "NXP-2026-VNL-0084",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.781Z",
+          "sku": "NXP-2026-VNL-0084",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-31T02:00:47.138Z",
+          "sku": "NXP-2026-VNL-0084",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.778Z",
+          "sku": "NXP-2026-VNL-0084",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.559Z",
+          "sku": "NXP-2026-VNL-0084",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.346Z",
+          "sku": "NXP-2026-VNL-0084",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.434Z",
+          "sku": "NXP-2026-VNL-0084",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.814Z",
+          "sku": "NXP-2026-VNL-0084",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "",
+      "collection": "Famous Class",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-02T02:00:46.624Z",
+        "sku": "NXP-2026-VNL-0084",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "The first Less Artists More Condos split puts two related strands of noise-rock on opposite sides of a seven-inch: A Place To Bury Strangers' 'Burning Plastic' and Ceremony's 'Send Me Your Dreams.' Famous Class launched the series in memory of promoter Ariel Panero, with the A-side artist selecting the B-side act. This 2012 entry carries catalog number FC014.",
+      "reviewQuote": "a gorgeous, weirdly propulsive bit of gloom-kraut garage",
+      "editRevision": 52,
+      "imageCredits": [
+        {
+          "url": "https://famousclass.bandcamp.com/album/lamc-1",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0084-official-cover.webp",
+          "credit": "Famous Class Records official LAMC #1 cover"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Aquarius Records archival review (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://itcamefromaquariusrecords.org/browse/cat/alphabet/a/",
+        "description": "The first Less Artists More Condos split puts two related strands of noise-rock on opposite sides of a seven-inch: A Place To Bury Strangers' 'Burning Plastic' and Ceremony's 'Send Me Your Dreams.' Famous Class launched the series in memory of promoter Ariel Panero, with the A-side artist selecting the B-side act. This 2012 entry carries catalog number FC014.",
+        "reviewQuote": "a gorgeous, weirdly propulsive bit of gloom-kraut garage",
+        "reviewSource": "Aquarius Records archival review (quoted)",
+        "descriptionSource": "Famous Class official Bandcamp / Bandcamp Daily"
+      },
+      "catalogNumber": "FC014",
+      "displayFormat": "Vinyl",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "mtvssu9ubnwtmj",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "researchSources": [
+        {
+          "url": "https://famousclass.bandcamp.com/album/lamc-1",
+          "source": "Famous Class official Bandcamp / Bandcamp Daily",
+          "confidence": 100
+        },
+        {
+          "url": "https://itcamefromaquariusrecords.org/browse/cat/alphabet/a/",
+          "source": "Aquarius Records archival review (quoted)",
+          "confidence": 100
+        }
+      ],
+      "sleeveCondition": "",
+      "catalogPriceSync": 320000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Famous Class official Bandcamp / Bandcamp Daily",
+      "editorialUpdatedAt": "2026-11-02T05:10:06.309+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "mediaConditionNote": "",
+      "apparelMeasurements": {},
+      "mediaConditionGrade": "",
+      "sleeveConditionNote": "",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "sleeveConditionGrade": "",
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": null,
+      "manualRelatedArtistsOverride": false,
+      "manualRelatedArtistsOverrideSource": "",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-11-02",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
@@ -93985,27 +94173,6 @@
       "status": "Published"
     },
     {
-      "id": "ford-lopatin",
-      "bio": "",
-      "name": "Ford & Lopatin",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "hella",
-      "bio": "",
-      "name": "Hella",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "alan-vega",
-      "bio": "",
-      "name": "Alan Vega",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
       "id": "moon-diagrams",
       "bio": "",
       "name": "Moon Diagrams",
@@ -94013,9 +94180,9 @@
       "status": "Published"
     },
     {
-      "id": "domi-jd-beck",
+      "id": "alan-vega",
       "bio": "",
-      "name": "Domi & JD Beck",
+      "name": "Alan Vega",
       "sort": 9999,
       "status": "Published"
     },
@@ -94034,9 +94201,16 @@
       "status": "Published"
     },
     {
-      "id": "sam-gendel",
+      "id": "varg",
       "bio": "",
-      "name": "Sam Gendel",
+      "name": "Varg²™",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "senyawa-stephen-o-malley",
+      "bio": "",
+      "name": "Senyawa & Stephen O' Malley",
       "sort": 9999,
       "status": "Published"
     },
@@ -94062,16 +94236,9 @@
       "status": "Published"
     },
     {
-      "id": "melvins-napalm-death",
+      "id": "a-place-to-bury-strangers-ceremony",
       "bio": "",
-      "name": "Melvins, Napalm Death",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "skudge-san-proper",
-      "bio": "",
-      "name": "Skudge / San Proper",
+      "name": "A Place To Bury Strangers / Ceremony",
       "sort": 9999,
       "status": "Published"
     },
@@ -94090,6 +94257,41 @@
       "status": "Published"
     },
     {
+      "id": "skudge-san-proper",
+      "bio": "",
+      "name": "Skudge / San Proper",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "sam-gendel",
+      "bio": "",
+      "name": "Sam Gendel",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "domi-jd-beck",
+      "bio": "",
+      "name": "Domi & JD Beck",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "hella",
+      "bio": "",
+      "name": "Hella",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
+      "id": "ford-lopatin",
+      "bio": "",
+      "name": "Ford & Lopatin",
+      "sort": 9999,
+      "status": "Published"
+    },
+    {
       "id": "chapterhouse",
       "bio": "",
       "name": "Chapterhouse",
@@ -94097,16 +94299,9 @@
       "status": "Published"
     },
     {
-      "id": "senyawa-stephen-o-malley",
+      "id": "melvins-napalm-death",
       "bio": "",
-      "name": "Senyawa & Stephen O' Malley",
-      "sort": 9999,
-      "status": "Published"
-    },
-    {
-      "id": "varg",
-      "bio": "",
-      "name": "Varg²™",
+      "name": "Melvins, Napalm Death",
       "sort": 9999,
       "status": "Published"
     },
