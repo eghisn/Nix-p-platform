@@ -1,5 +1,12 @@
 import assert from "node:assert/strict";
 import { combineRelatedArtistEvidence, isExplicitManualRelatedArtistsOverride, resolveRelatedArtistDisplay } from "../api/_lib/catalogEnrichment.js";
+import { artistCreditNames } from "../src/data/catalogIdentity.js";
+
+assert.deepEqual(
+  artistCreditNames("A Place To Bury Strangers / Ceremony"),
+  ["A Place To Bury Strangers", "Ceremony"],
+  "The split release must research its credited artists separately."
+);
 
 const musicBrainz = [
   { artist: "Artist One", source: "MusicBrainz release relationship" },

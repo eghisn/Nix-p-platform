@@ -7,6 +7,7 @@ const ARTIST_CREDIT_ALIASES = new Map([
   ["jk flesh, gothtrad", ["JK Flesh", "Gothtrad"]],
   ["jk flesh & gothtrad", ["JK Flesh", "Gothtrad"]],
   ["skudge / san proper", ["Skudge", "San Proper"]],
+  ["a place to bury strangers / ceremony", ["A Place To Bury Strangers", "Ceremony"]],
   // Siouxsie and the Banshees is a single artist name, not a collaboration.
   // Keep common ampersand/spelling variants on the same artist page.
   ["siouxsie & the banshees", ["Siouxsie And The Banshees"]],
