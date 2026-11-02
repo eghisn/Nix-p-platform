@@ -2832,6 +2832,666 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0092",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0092",
+      "tags": [
+        "math rock",
+        "post-rock",
+        "instrumental rock"
+      ],
+      "year": 2017,
+      "color": "",
+      "flaws": "",
+      "image": "/public/assets/catalog-archive/nxp-2026-vnl-0092-official-cover.webp",
+      "label": "Touch and Go Records",
+      "price": 600000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Singles Breaking Up (Vol. 1)",
+      "artist": "Don Caballero",
+      "format": "Vinyl",
+      "images": [
+        "/public/assets/catalog-archive/nxp-2026-vnl-0092-official-cover.webp"
+      ],
+      "barcode": "0 36172 08841 6",
+      "details": [],
+      "edition": "Vinyl, LP, Compilation, Limited Edition, Reissue, Clear",
+      "category": "Records",
+      "material": "",
+      "autoCover": "/public/assets/catalog-archive/nxp-2026-vnl-0092-official-cover.webp",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://www.washingtonpost.com/archive/lifestyle/1999/03/12/don-caballero-singles-breaking-up-vol-1/bd94132a-746c-4f5b-b428-ab4970ad375e/",
+      "syncAudit": [
+        {
+          "at": "2026-11-01T02:00:46.788Z",
+          "sku": "NXP-2026-VNL-0092",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.792Z",
+          "sku": "NXP-2026-VNL-0092",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.561Z",
+          "sku": "NXP-2026-VNL-0092",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.348Z",
+          "sku": "NXP-2026-VNL-0092",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.436Z",
+          "sku": "NXP-2026-VNL-0092",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-25T02:00:47.816Z",
+          "sku": "NXP-2026-VNL-0092",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.491Z",
+          "sku": "NXP-2026-VNL-0092",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-22T02:00:48.302Z",
+          "sku": "NXP-2026-VNL-0092",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-02",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-01T02:00:46.788Z",
+        "sku": "NXP-2026-VNL-0092",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Originally compiled in 1999 from Don Caballero's early singles, compilation appearances and one previously unheard track, Singles Breaking Up (Vol. 1) traces the Pittsburgh band's instrumental music before and beyond its first albums. Touch and Go brought the collection to vinyl in 2017; this clear pressing was limited to 500 copies. 'Lucky Father Brown' and 'Puddin' in My Eye' show how intricate guitar patterns and Damon Che's drums could pull in different directions without losing force.",
+      "reviewQuote": "intricate guitar interplay sometimes suggests jazzy prog-rockers",
+      "imageCredits": [
+        {
+          "url": "https://doncaballero.bandcamp.com/album/singles-breaking-up",
+          "image": "/public/assets/catalog-archive/nxp-2026-vnl-0092-official-cover.webp",
+          "credit": "Don Caballero / Touch and Go official Bandcamp artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "The Washington Post (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://www.washingtonpost.com/archive/lifestyle/1999/03/12/don-caballero-singles-breaking-up-vol-1/bd94132a-746c-4f5b-b428-ab4970ad375e/",
+        "description": "Originally compiled in 1999 from Don Caballero's early singles, compilation appearances and one previously unheard track, Singles Breaking Up (Vol. 1) traces the Pittsburgh band's instrumental music before and beyond its first albums. Touch and Go brought the collection to vinyl in 2017; this clear pressing was limited to 500 copies. 'Lucky Father Brown' and 'Puddin' in My Eye' show how intricate guitar patterns and Damon Che's drums could pull in different directions without losing force.",
+        "reviewQuote": "intricate guitar interplay sometimes suggests jazzy prog-rockers",
+        "reviewSource": "The Washington Post (quoted)",
+        "relatedArtists": [
+          "Tera Melos",
+          "Faraquet",
+          "Hella",
+          "Storm and Stress",
+          "Piglet"
+        ],
+        "enrichmentStatus": "complete",
+        "descriptionSource": "Touch and Go official 2017 vinyl release / Don Caballero Bandcamp",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Tera Melos",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.955837,
+            "artist": "Faraquet",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 0.955837,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.929748,
+            "artist": "Hella",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 0.929748,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.924166,
+            "artist": "Storm and Stress",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 0.924166,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.904917,
+            "artist": "Piglet",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 0.904917,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Tera Melos",
+              "Faraquet",
+              "Hella",
+              "Storm and Stress",
+              "Piglet",
+              "Battles",
+              "Polvo",
+              "June of 44",
+              "37500 Yens",
+              "U.S. Maple"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Tera Melos",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.955837,
+                "artist": "Faraquet",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 0.955837,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.929748,
+                "artist": "Hella",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 0.929748,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.924166,
+                "artist": "Storm and Stress",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 0.924166,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.904917,
+                "artist": "Piglet",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 0.904917,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.761904,
+                "artist": "Battles",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 0.761904,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.707374,
+                "artist": "Polvo",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 0.707374,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.645105,
+                "artist": "June of 44",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 0.645105,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.610499,
+                "artist": "37500 Yens",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 0.610499,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.582961,
+                "artist": "U.S. Maple",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+                "confidence": 0.582961,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Tera Melos",
+            "Faraquet",
+            "Hella",
+            "Storm and Stress",
+            "Piglet"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tera Melos",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.955837,
+              "artist": "Faraquet",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.955837,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.929748,
+              "artist": "Hella",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.929748,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.924166,
+              "artist": "Storm and Stress",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.924166,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.904917,
+              "artist": "Piglet",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.904917,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "",
+          "sourceUrl": "",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "TG184LP",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mua51q7avc36l2",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Tera Melos",
+        "Faraquet",
+        "Hella",
+        "Storm and Stress",
+        "Piglet"
+      ],
+      "reviewResearch": {
+        "url": "https://www.washingtonpost.com/archive/lifestyle/1999/03/12/don-caballero-singles-breaking-up-vol-1/bd94132a-746c-4f5b-b428-ab4970ad375e/",
+        "scope": "release",
+        "source": "The Washington Post (quoted)",
+        "status": "verified"
+      },
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://doncaballero.bandcamp.com/album/singles-breaking-up",
+          "source": "Touch and Go official 2017 vinyl release / Don Caballero Bandcamp",
+          "confidence": 100
+        },
+        {
+          "url": "https://www.washingtonpost.com/archive/lifestyle/1999/03/12/don-caballero-singles-breaking-up-vol-1/bd94132a-746c-4f5b-b428-ab4970ad375e/",
+          "source": "The Washington Post (quoted)",
+          "confidence": 100
+        }
+      ],
+      "autoProductPhoto": null,
+      "catalogPriceSync": 600000,
+      "enrichmentStatus": "complete",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Touch and Go official 2017 vinyl release / Don Caballero Bandcamp",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "publishAfterResearch": false,
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Tera Melos",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.955837,
+          "artist": "Faraquet",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+          "confidence": 0.955837,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.929748,
+          "artist": "Hella",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+          "confidence": 0.929748,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.924166,
+          "artist": "Storm and Stress",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+          "confidence": 0.924166,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.904917,
+          "artist": "Piglet",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+          "confidence": 0.904917,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Tera Melos",
+            "Faraquet",
+            "Hella",
+            "Storm and Stress",
+            "Piglet",
+            "Battles",
+            "Polvo",
+            "June of 44",
+            "37500 Yens",
+            "U.S. Maple"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Tera Melos",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.955837,
+              "artist": "Faraquet",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.955837,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.929748,
+              "artist": "Hella",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.929748,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.924166,
+              "artist": "Storm and Stress",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.924166,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.904917,
+              "artist": "Piglet",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.904917,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.761904,
+              "artist": "Battles",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.761904,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.707374,
+              "artist": "Polvo",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.707374,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.645105,
+              "artist": "June of 44",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.645105,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.610499,
+              "artist": "37500 Yens",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.610499,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.582961,
+              "artist": "U.S. Maple",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+              "confidence": 0.582961,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Don%20Caballero"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Tera Melos",
+          "Faraquet",
+          "Hella",
+          "Storm and Stress",
+          "Piglet"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Tera Melos",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.955837,
+            "artist": "Faraquet",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 0.955837,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.929748,
+            "artist": "Hella",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 0.929748,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.924166,
+            "artist": "Storm and Stress",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 0.924166,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.904917,
+            "artist": "Piglet",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Don%20Caballero",
+            "confidence": 0.904917,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "",
+        "sourceUrl": "",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
+      "editRevision": 44,
+      "editorialUpdatedAt": "2026-11-02T07:11:08.492+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-09-20",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0090",
       "qty": 1,
       "sku": "NXP-2026-VNL-0090",
@@ -3234,7 +3894,7 @@
       "autoProductPhoto": null,
       "catalogPriceSync": 320000,
       "enrichmentStatus": "complete",
-      "publicationState": "deployment_pending",
+      "publicationState": "live",
       "descriptionSource": "Speedy Ortiz official Bandcamp / Carpark Records",
       "apparelMeasurements": {},
       "adminPublishOverride": "Published",
@@ -3472,9 +4132,9 @@
       "manualRelatedArtistsOverride": false,
       "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
       "manualRelatedArtistsOverrideSource": "",
-      "editRevision": 46,
-      "editorialUpdatedAt": "2026-11-02T07:01:58.513+00:00",
-      "editorialUpdatedBy": "admin-publication",
+      "editRevision": 48,
+      "editorialUpdatedAt": "2026-11-02T07:07:46.53+00:00",
+      "editorialUpdatedBy": "publication-reconciliation",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
