@@ -18,10 +18,12 @@ assert.match(clientSource, /const soldOut = totalProductStock\(product\) <= 0;/,
 assert.match(clientSource, /class="slide \$\{soldOut \? "is-sold-out" : ""\}"/, "Client slider must expose its sold-out state.");
 assert.match(clientSource, /class="product-art slide-art \$\{soldOut \? "is-sold-out" : ""\}"/, "Client slider artwork must dim when unavailable.");
 assert.match(clientSource, /\$\{soldOut \? `<span class="sold-out-label">Sold out<\/span>` : ""\}/, "Client slider must render the Sold out label.");
+assert.doesNotMatch(clientSource, /slide-caption">\s*<span>/, "Client slider captions must not render sequence numbers.");
 
 assert.match(buildSource, /const soldOut = productQuantity\(product\) <= 0;/, "Server-rendered home slider must use the catalog quantity.");
 assert.match(buildSource, /class="product-art slide-art \$\{soldOut \? "is-sold-out" : ""\}"/, "Server-rendered slider artwork must dim when unavailable.");
 assert.match(buildSource, /soldOut \? '<span class="sold-out-label">Sold out<\/span>' : ""/, "Server-rendered home slider must include the Sold out label.");
+assert.doesNotMatch(buildSource, /slide-caption">\s*<span>/, "Server-rendered slider captions must not render sequence numbers.");
 
 const [storeSource, homeDocument] = await Promise.all([
   readFile(new URL("../public/data/public-store.json", import.meta.url), "utf8"),
@@ -36,5 +38,6 @@ assert.match(
   new RegExp(`data-product-id="${productId}"[\\s\\S]{0,700}<span class="sold-out-label">Sold out</span>`),
   "Generated home HTML must label a sold-out slider item before client JavaScript runs."
 );
+assert.doesNotMatch(homeDocument, /class="slide-caption">\s*<span>/, "Initial home HTML must not flash slider sequence numbers.");
 
 console.log("Home slider sold-out state contract passed.");

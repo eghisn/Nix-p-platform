@@ -500,7 +500,7 @@ async function homePage() {
         ${homeCollectionOptions
           .map(
             ([id, label]) => `
-              <button class="home-collection-button ${selectedCollection === id ? "is-active" : ""}" type="button" data-home-collection="${id}">
+              <button class="home-collection-button ${selectedCollection === id ? "is-active" : ""}" type="button" data-home-collection="${id}" aria-pressed="${selectedCollection === id}">
                 ${label}
               </button>
             `
@@ -513,7 +513,7 @@ async function homePage() {
             ? `<div class="slider-track" data-home-slider-track>
                 ${loopSlides
                   .map(
-                    (product, index) => {
+                    (product) => {
                       const soldOut = totalProductStock(product) <= 0;
                       return `
                       <article class="slide ${soldOut ? "is-sold-out" : ""}">
@@ -523,7 +523,6 @@ async function homePage() {
                             ${soldOut ? `<span class="sold-out-label">Sold out</span>` : ""}
                           </figure>
                           <div class="slide-caption">
-                            <span>${String((index % slides.length) + 1).padStart(2, "0")}</span>
                             <strong>${product.artist}</strong>
                             <em>${product.title}</em>
                           </div>

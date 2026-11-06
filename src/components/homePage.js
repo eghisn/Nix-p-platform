@@ -21,21 +21,20 @@ export function homeAppMarkup(publicProducts = []) {
         ${collections
           .map(
             ([id, label], index) =>
-              `<button class="home-collection-button ${index === 0 ? "is-active" : ""}" type="button" data-home-collection="${id}">${label}</button>`
+              `<button class="home-collection-button ${index === 0 ? "is-active" : ""}" type="button" data-home-collection="${id}" aria-pressed="${index === 0}">${label}</button>`
           )
           .join("")}
       </div>
       <div class="slider-viewport" data-home-slider-viewport aria-roledescription="carousel" aria-label="Automatic product slider. Drag or swipe to browse.">
         <div class="slider-track" data-home-slider-track>
           ${slides
-            .map((product, index) => {
+            .map((product) => {
               const soldOut = productQuantity(product) <= 0;
               return `
                 <article class="slide ${soldOut ? "is-sold-out" : ""}">
                   <a href="${escapeHtml(publicProductPath(product))}" data-link data-product-link data-product-id="${escapeHtml(product.id)}">
                     <figure class="product-art slide-art ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}</figure>
                     <div class="slide-caption">
-                      <span>${String((index % products.length) + 1).padStart(2, "0")}</span>
                       <strong>${escapeHtml(product.artist)}</strong>
                       <em>${escapeHtml(product.title)}</em>
                     </div>
