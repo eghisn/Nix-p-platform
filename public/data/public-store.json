@@ -1165,7 +1165,7 @@
       "apparelType": "",
       "description": "On Draft 7.30, Autechre let more of the beat show through without simplifying the machinery around it. Xylin Room pushes clipped percussion against fragments of melody, while the long Surripere stretches a pulse through metallic flutter and disruption. Issued in 2003, the album makes its densely programmed rhythms feel physical rather than merely abstract.",
       "reviewQuote": "bits of melody that, rather than obscured behind nine layers of software, are often heard in broad daylight",
-      "editRevision": 13,
+      "editRevision": 14,
       "imageCredits": [
         {
           "url": "https://autechre.bandcamp.com/album/draft-730",
@@ -1212,7 +1212,7 @@
       "catalogPriceSync": 250000,
       "publicationState": "deployment_pending",
       "descriptionSource": "Autechre official Bandcamp / Pitchfork",
-      "editorialUpdatedAt": "2026-11-06T07:57:06.481+00:00",
+      "editorialUpdatedAt": "2026-11-06T07:57:40.828+00:00",
       "editorialUpdatedBy": "admin-publication",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
@@ -1225,6 +1225,207 @@
       ],
       "publishAfterResearch": false,
       "sleeveConditionGrade": "Very Good Plus",
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": null,
+      "manualRelatedArtistsOverride": true,
+      "manualRelatedArtistsOverrideSource": "admin",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-11-06",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-cd-0056",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0056",
+      "tags": [],
+      "year": 2008,
+      "color": "",
+      "flaws": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-cd-0056-1793947589126-nixp-four-tet-research.jpg",
+      "label": "Domino",
+      "price": 215000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Ringer",
+      "artist": "Four Tet",
+      "format": "CD",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-cd-0056-1793947589126-nixp-four-tet-research.jpg"
+      ],
+      "barcode": "",
+      "details": [],
+      "edition": "CD, Mini-Album, Promo",
+      "category": "Records",
+      "material": "",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/11505-ringer/",
+      "syncAudit": [
+        {
+          "at": "2026-11-06T02:00:48.113Z",
+          "sku": "NXP-2026-CD-0056",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-05T17:18:00.631Z",
+          "sku": "NXP-2026-CD-0056",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-05T02:00:46.667Z",
+          "sku": "NXP-2026-CD-0056",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-03T02:00:47.569Z",
+          "sku": "NXP-2026-CD-0056",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.792Z",
+          "sku": "NXP-2026-CD-0056",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.565Z",
+          "sku": "NXP-2026-CD-0056",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.352Z",
+          "sku": "NXP-2026-CD-0056",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.438Z",
+          "sku": "NXP-2026-CD-0056",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-06",
+      "vinylSize": "",
+      "collection": "Domino",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-06T02:00:48.113Z",
+        "sku": "NXP-2026-CD-0056",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Four Tet's four-track Ringer moves Kieran Hebden's sample collage toward a steadier pulse without losing its elusiveness. The title piece keeps suggesting a house beat that never fully arrives; Ribbons opens the rhythm out in flashes, before Swimmer and Wing Body Wing pull it back into taut repetition. The original four-track mini-album appeared on Domino in 2008.",
+      "reviewQuote": "Ringer unfolds with inexorable logic.",
+      "editRevision": 16,
+      "imageCredits": [
+        {
+          "url": "https://fourtet.bandcamp.com/album/ringer",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-cd-0056-1793947589126-nixp-four-tet-research.jpg",
+          "credit": "Four Tet official Bandcamp artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Pitchfork (quoted)",
+      "catalogNumber": "RUG295CDP",
+      "displayFormat": "CD",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "mvjerrppjflu7j",
+      "mediaCondition": "Very Good Plus",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Fridge",
+        "Kieran Hebden & Steve Reid"
+      ],
+      "financeItemType": "CD",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "researchFailure": {
+        "at": "2026-11-05T17:18:00.631Z",
+        "code": "source-unavailable",
+        "message": "bandcamp-search is temporarily unavailable.",
+        "sources": [
+          "bandcamp-search"
+        ]
+      },
+      "researchSources": [
+        {
+          "url": "https://fourtet.bandcamp.com/album/ringer",
+          "source": "Four Tet official Bandcamp / Domino / Pitchfork",
+          "confidence": 100
+        },
+        {
+          "url": "https://www.dominomusic.com/releases/four-tet/ringer/cd",
+          "source": "Four Tet official Bandcamp / Domino / Pitchfork",
+          "confidence": 100
+        },
+        {
+          "url": "https://pitchfork.com/reviews/albums/11505-ringer/",
+          "source": "Four Tet official Bandcamp / Domino / Pitchfork",
+          "confidence": 100
+        }
+      ],
+      "sleeveCondition": "Very Good Plus",
+      "catalogPriceSync": 215000,
+      "enrichmentStatus": "source-unavailable",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Four Tet official Bandcamp / Domino / Pitchfork",
+      "editorialUpdatedAt": "2026-11-06T07:58:43.04+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "mediaConditionNote": "",
+      "apparelMeasurements": {},
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [
+        "Fridge",
+        "Kieran Hebden & Steve Reid"
+      ],
+      "publishAfterResearch": false,
+      "sleeveConditionGrade": "Very Good Plus",
+      "enrichmentAttemptedAt": "2026-11-05T17:18:00.631Z",
+      "enrichmentFingerprint": "four tet|ringer|cd||rug292cdp|edition:cd mini album promo",
       "minimumAcceptableOffer": 0,
       "relatedArtistsResearch": null,
       "manualRelatedArtistsOverride": true,
