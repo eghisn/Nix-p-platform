@@ -300,7 +300,7 @@
       "description": "Our Puzzling Encounters Considered makes its jigsaw-cover motif structural: Chris Arp's dissonant guitar figures keep splintering songs just as they find a shape. The 2007 Metal Blade CD offsets the vocal and rhythmic collisions of The Pig Keeper's Daughter and Insects with the instrumental Imogen's Puzzle, Pt. 2 and the more spacious Siobhan's Song. Each abrupt change feels like another piece being forced into place.",
       "reviewQuote": "their chaotic, fragmented brand of arty math-metal",
       "sourceTitle": "Our Puzzling Encounters Considered",
-      "editRevision": 14,
+      "editRevision": 15,
       "imageCredits": [
         {
           "url": "https://musicbrainz.org/release/f3ab6bf4-40ec-4533-9e27-0076d6cb020b",
@@ -611,7 +611,7 @@
       "publicationState": "deployment_pending",
       "descriptionSource": "Metal Blade release / AllMusic",
       "metadataSourceUrl": "https://musicbrainz.org/release/f3ab6bf4-40ec-4533-9e27-0076d6cb020b",
-      "editorialUpdatedAt": "2026-11-06T07:51:20.795+00:00",
+      "editorialUpdatedAt": "2026-11-06T07:51:56.461+00:00",
       "editorialUpdatedBy": "admin-publication",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
@@ -869,6 +869,195 @@
         "shippingClass": "small-media-cd-bubble",
         "packagingGroup": "SMALL_MEDIA",
         "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-vnl-0116",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0116",
+      "tags": [],
+      "year": 2002,
+      "color": "",
+      "flaws": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0116-1793947681090-nixp-neubauten-research.jpg",
+      "label": "Potomak",
+      "price": 850000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Zeichnungen Des Patienten O.T. (Drawings Of Patient O.T.)",
+      "artist": "Einsturzende Neubauten",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0116-1793947681090-nixp-neubauten-research.jpg"
+      ],
+      "barcode": "4 015698 199017",
+      "details": [],
+      "edition": "Vinyl, LP, Album, Reissue, Remastered",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://theshfl.com/album/Zeichnungen-des-Patienten-OT",
+      "syncAudit": [
+        {
+          "at": "2026-11-06T02:00:48.113Z",
+          "sku": "NXP-2026-VNL-0116",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-05T17:19:43.904Z",
+          "sku": "NXP-2026-VNL-0116",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-05T02:00:46.667Z",
+          "sku": "NXP-2026-VNL-0116",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-03T02:00:47.569Z",
+          "sku": "NXP-2026-VNL-0116",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.792Z",
+          "sku": "NXP-2026-VNL-0116",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.566Z",
+          "sku": "NXP-2026-VNL-0116",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.352Z",
+          "sku": "NXP-2026-VNL-0116",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.438Z",
+          "sku": "NXP-2026-VNL-0116",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-06",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-06T02:00:48.113Z",
+        "sku": "NXP-2026-VNL-0116",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Originally released in 1983, Zeichnungen des Patienten O.T. finds Einsturzende Neubauten shaping metal, machinery and voice into something more deliberate than the wreckage of Kollaps. Vanadium-I-Ching and Abfackeln! preserve the group's impact, while Armenia opens a colder, mournful space. This Potomak vinyl reissue dates to 2002 and retains the original thirteen-track sequence.",
+      "reviewQuote": "the Neubauten DNA is fully imprinted here",
+      "editRevision": 13,
+      "imageCredits": [
+        {
+          "url": "https://shop-neubauten.org/produkt/zeichnungen-des-patienten-o-t-vinyl/",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0116-1793947681090-nixp-neubauten-research.jpg",
+          "credit": "Einsturzende Neubauten official shop artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "The SHFL (quoted)",
+      "catalogNumber": "LP 19901",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mvjf2f5c5gv2jp",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Blixa Bargeld",
+        "F.M. Einheit"
+      ],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchFailure": {
+        "at": "2026-11-05T17:19:43.903Z",
+        "code": "source-unavailable",
+        "message": "bandcamp-search and musicbrainz is temporarily unavailable.",
+        "sources": [
+          "bandcamp-search",
+          "musicbrainz"
+        ]
+      },
+      "researchSources": [
+        {
+          "url": "https://shop-neubauten.org/produkt/zeichnungen-des-patienten-o-t-vinyl/",
+          "source": "Einsturzende Neubauten official shop / SHFL",
+          "confidence": 100
+        },
+        {
+          "url": "https://theshfl.com/album/Zeichnungen-des-Patienten-OT",
+          "source": "Einsturzende Neubauten official shop / SHFL",
+          "confidence": 100
+        }
+      ],
+      "catalogPriceSync": 850000,
+      "enrichmentStatus": "source-unavailable",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Einsturzende Neubauten official shop / SHFL",
+      "editorialUpdatedAt": "2026-11-06T07:54:28.212+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [
+        "Blixa Bargeld",
+        "F.M. Einheit"
+      ],
+      "publishAfterResearch": false,
+      "enrichmentAttemptedAt": "2026-11-05T17:19:43.903Z",
+      "enrichmentFingerprint": "einsturzende neubauten|zeichnungen des patienten o t drawings of patient o t|vinyl|4 015698 199017|lp 19901|edition:vinyl lp album reissue remastered",
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": null,
+      "manualRelatedArtistsOverride": true,
+      "manualRelatedArtistsOverrideSource": "admin",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-10-22",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
         "manualShippingOverride": false
       }
     },
