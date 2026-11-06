@@ -105,7 +105,7 @@
       "apparelType": "",
       "description": "Recorded at Hamburg's Klecks Theatre on 16 September 1984, Ov Power catches Psychic TV in a harsh live configuration with Genesis P-Orridge, Alex Fergusson, John Gosling and Paul Reeson. Cold Spring's 2012 CD remasters and expands a performance first circulated as a limited 1985 bootleg LP. Seven long pieces, from Turn the Golden Thread to the twenty-minute Shango and Come Back!, move through ritual repetition and blown-out industrial noise.",
       "reviewQuote": "",
-      "editRevision": 13,
+      "editRevision": 14,
       "imageCredits": [
         {
           "url": "https://coldspring.bandcamp.com/album/ov-power-csr160cd",
@@ -148,7 +148,7 @@
       "catalogPriceSync": 250000,
       "publicationState": "deployment_pending",
       "descriptionSource": "Cold Spring official release",
-      "editorialUpdatedAt": "2026-11-06T07:49:53.192+00:00",
+      "editorialUpdatedAt": "2026-11-06T07:50:29.015+00:00",
       "editorialUpdatedBy": "admin-publication",
       "mediaConditionNote": "",
       "apparelMeasurements": {},
@@ -166,6 +166,697 @@
       "relatedArtistsResearch": null,
       "manualRelatedArtistsOverride": true,
       "manualRelatedArtistsOverrideSource": "admin",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-11-06",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-cd-0058",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0058",
+      "tags": [
+        "grindcore",
+        "math rock",
+        "mathcore",
+        "rock"
+      ],
+      "year": 2007,
+      "color": "",
+      "flaws": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0058/cover.jpg",
+      "label": "Metal Blade Records",
+      "price": 350000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Our Puzzling Encounters Considered",
+      "artist": "Psyopus",
+      "format": "CD",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0058/cover.jpg"
+      ],
+      "barcode": "0 3984-14602-2 3",
+      "details": [
+        "SKU: NXP-2026-CD-0058",
+        "Format: CD",
+        "Condition: Used Excellent",
+        "Edition: CD",
+        "Album",
+        "Catalog number: 3984-14602-2",
+        "Barcode: 0 3984-14602-2 3"
+      ],
+      "edition": "CD, Album",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0058/cover.jpg",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://www.allmusic.com/album/our-puzzling-encounters-considered-mw0000774065",
+      "syncAudit": [
+        {
+          "at": "2026-11-06T02:00:48.113Z",
+          "sku": "NXP-2026-CD-0058",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-05T17:26:39.253Z",
+          "sku": "NXP-2026-CD-0058",
+          "action": "Inventory synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-05T02:00:46.667Z",
+          "sku": "NXP-2026-CD-0058",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-03T02:00:47.569Z",
+          "sku": "NXP-2026-CD-0058",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.792Z",
+          "sku": "NXP-2026-CD-0058",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.566Z",
+          "sku": "NXP-2026-CD-0058",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.352Z",
+          "sku": "NXP-2026-CD-0058",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.438Z",
+          "sku": "NXP-2026-CD-0058",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-06",
+      "vinylSize": "",
+      "collection": "Metal Blade Records",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-06T02:00:48.113Z",
+        "sku": "NXP-2026-CD-0058",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Our Puzzling Encounters Considered makes its jigsaw-cover motif structural: Chris Arp's dissonant guitar figures keep splintering songs just as they find a shape. The 2007 Metal Blade CD offsets the vocal and rhythmic collisions of The Pig Keeper's Daughter and Insects with the instrumental Imogen's Puzzle, Pt. 2 and the more spacious Siobhan's Song. Each abrupt change feels like another piece being forced into place.",
+      "reviewQuote": "their chaotic, fragmented brand of arty math-metal",
+      "sourceTitle": "Our Puzzling Encounters Considered",
+      "editRevision": 14,
+      "imageCredits": [
+        {
+          "url": "https://musicbrainz.org/release/f3ab6bf4-40ec-4533-9e27-0076d6cb020b",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0058/cover.jpg",
+          "credit": "Cover Art Archive / MusicBrainz front artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "AllMusic (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "",
+        "description": "",
+        "reviewQuote": "",
+        "reviewSource": "",
+        "relatedArtists": [
+          "Ion Dissonance",
+          "The Number Twelve Looks Like You",
+          "See You Next Tuesday",
+          "Heavy Heavy Low Low",
+          "Ed Gein"
+        ],
+        "descriptionSource": "",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Ion Dissonance",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.943669,
+            "artist": "The Number Twelve Looks Like You",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 0.943669,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.918967,
+            "artist": "See You Next Tuesday",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 0.918967,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.864694,
+            "artist": "Heavy Heavy Low Low",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 0.864694,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.726465,
+            "artist": "Ed Gein",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 0.726465,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Ion Dissonance",
+              "The Number Twelve Looks Like You",
+              "See You Next Tuesday",
+              "Heavy Heavy Low Low",
+              "Ed Gein",
+              "Car Bomb",
+              "The Tony Danza Tapdance Extravaganza",
+              "Destroyer Destroyer",
+              "As The Sun Sets",
+              "The Heartland"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Ion Dissonance",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.943669,
+                "artist": "The Number Twelve Looks Like You",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 0.943669,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.918967,
+                "artist": "See You Next Tuesday",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 0.918967,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.864694,
+                "artist": "Heavy Heavy Low Low",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 0.864694,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.726465,
+                "artist": "Ed Gein",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 0.726465,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.713015,
+                "artist": "Car Bomb",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 0.713015,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.706609,
+                "artist": "The Tony Danza Tapdance Extravaganza",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 0.706609,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.670121,
+                "artist": "Destroyer Destroyer",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 0.670121,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.599539,
+                "artist": "As The Sun Sets",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 0.599539,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.556746,
+                "artist": "The Heartland",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Psyopus",
+                "confidence": 0.556746,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Ion Dissonance",
+            "The Number Twelve Looks Like You",
+            "See You Next Tuesday",
+            "Heavy Heavy Low Low",
+            "Ed Gein"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Ion Dissonance",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.943669,
+              "artist": "The Number Twelve Looks Like You",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.943669,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.918967,
+              "artist": "See You Next Tuesday",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.918967,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.864694,
+              "artist": "Heavy Heavy Low Low",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.864694,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.726465,
+              "artist": "Ed Gein",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.726465,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "f3ab6bf4-40ec-4533-9e27-0076d6cb020b",
+          "sourceUrl": "https://musicbrainz.org/release/f3ab6bf4-40ec-4533-9e27-0076d6cb020b",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "3984-14602-2",
+      "displayFormat": "CD",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "mvjoq1utjjz83g",
+      "mediaCondition": "Very Good Plus",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Ion Dissonance",
+        "The Number Twelve Looks Like You",
+        "See You Next Tuesday",
+        "Heavy Heavy Low Low",
+        "Ed Gein"
+      ],
+      "reviewResearch": {
+        "scope": "release",
+        "status": "source-unavailable",
+        "attempts": [
+          {
+            "source": "DuckDuckGo",
+            "status": "unavailable",
+            "httpStatus": 403
+          },
+          {
+            "source": "Brave",
+            "status": "unavailable",
+            "httpStatus": 429
+          }
+        ],
+        "checkedAt": "2026-11-05T17:26:36.403Z",
+        "checkedUrls": []
+      },
+      "financeItemType": "CD",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "researchFailure": null,
+      "researchSources": [
+        {
+          "url": "https://www.allmusic.com/album/our-puzzling-encounters-considered-mw0000774065",
+          "source": "Metal Blade release / AllMusic",
+          "confidence": 100
+        }
+      ],
+      "sleeveCondition": "Very Good Plus",
+      "autoProductPhoto": "",
+      "catalogPriceSync": 350000,
+      "enrichmentOrigin": "unknown",
+      "enrichmentStatus": "needs-editorial-quality",
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Metal Blade release / AllMusic",
+      "metadataSourceUrl": "https://musicbrainz.org/release/f3ab6bf4-40ec-4533-9e27-0076d6cb020b",
+      "editorialUpdatedAt": "2026-11-06T07:51:20.795+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "mediaConditionNote": "",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-11-05",
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "f3ab6bf4-40ec-4533-9e27-0076d6cb020b",
+      "publishAfterResearch": false,
+      "sleeveConditionGrade": "Very Good Plus",
+      "enrichmentAttemptedAt": "2026-11-05T17:26:39.253Z",
+      "enrichmentFingerprint": "psyopus|our puzzling encounters considered|cd|0 3984 14602 2 3|3984 14602 2|edition:cd album",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Ion Dissonance",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Psyopus",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.943669,
+          "artist": "The Number Twelve Looks Like You",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Psyopus",
+          "confidence": 0.943669,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.918967,
+          "artist": "See You Next Tuesday",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Psyopus",
+          "confidence": 0.918967,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.864694,
+          "artist": "Heavy Heavy Low Low",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Psyopus",
+          "confidence": 0.864694,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.726465,
+          "artist": "Ed Gein",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Psyopus",
+          "confidence": 0.726465,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Ion Dissonance",
+            "The Number Twelve Looks Like You",
+            "See You Next Tuesday",
+            "Heavy Heavy Low Low",
+            "Ed Gein",
+            "Car Bomb",
+            "The Tony Danza Tapdance Extravaganza",
+            "Destroyer Destroyer",
+            "As The Sun Sets",
+            "The Heartland"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Ion Dissonance",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.943669,
+              "artist": "The Number Twelve Looks Like You",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.943669,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.918967,
+              "artist": "See You Next Tuesday",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.918967,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.864694,
+              "artist": "Heavy Heavy Low Low",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.864694,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.726465,
+              "artist": "Ed Gein",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.726465,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.713015,
+              "artist": "Car Bomb",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.713015,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.706609,
+              "artist": "The Tony Danza Tapdance Extravaganza",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.706609,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.670121,
+              "artist": "Destroyer Destroyer",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.670121,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.599539,
+              "artist": "As The Sun Sets",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.599539,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.556746,
+              "artist": "The Heartland",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Psyopus",
+              "confidence": 0.556746,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Psyopus"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Ion Dissonance",
+          "The Number Twelve Looks Like You",
+          "See You Next Tuesday",
+          "Heavy Heavy Low Low",
+          "Ed Gein"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Ion Dissonance",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.943669,
+            "artist": "The Number Twelve Looks Like You",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 0.943669,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.918967,
+            "artist": "See You Next Tuesday",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 0.918967,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.864694,
+            "artist": "Heavy Heavy Low Low",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 0.864694,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.726465,
+            "artist": "Ed Gein",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Psyopus",
+            "confidence": 0.726465,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "f3ab6bf4-40ec-4533-9e27-0076d6cb020b",
+        "sourceUrl": "https://musicbrainz.org/release/f3ab6bf4-40ec-4533-9e27-0076d6cb020b",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": true,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "manualRelatedArtistsOverrideSource": "",
       "shipping": {
         "source": "NIXP packaging rules v1",
         "status": "format_reference",
