@@ -976,7 +976,7 @@
       "apparelType": "",
       "description": "Originally released in 1983, Zeichnungen des Patienten O.T. finds Einsturzende Neubauten shaping metal, machinery and voice into something more deliberate than the wreckage of Kollaps. Vanadium-I-Ching and Abfackeln! preserve the group's impact, while Armenia opens a colder, mournful space. This Potomak vinyl reissue dates to 2002 and retains the original thirteen-track sequence.",
       "reviewQuote": "the Neubauten DNA is fully imprinted here",
-      "editRevision": 13,
+      "editRevision": 14,
       "imageCredits": [
         {
           "url": "https://shop-neubauten.org/produkt/zeichnungen-des-patienten-o-t-vinyl/",
@@ -1030,7 +1030,7 @@
       "enrichmentStatus": "source-unavailable",
       "publicationState": "deployment_pending",
       "descriptionSource": "Einsturzende Neubauten official shop / SHFL",
-      "editorialUpdatedAt": "2026-11-06T07:54:28.212+00:00",
+      "editorialUpdatedAt": "2026-11-06T07:55:03.62+00:00",
       "editorialUpdatedBy": "admin-publication",
       "apparelMeasurements": {},
       "adminPublishOverride": "Published",
@@ -1058,6 +1058,189 @@
         "shippingClass": "vinyl-cardboard-bubble",
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
+      "id": "finance-nxp-2026-cd-0057",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0057",
+      "tags": [],
+      "year": 2003,
+      "color": "",
+      "flaws": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-cd-0057-1793947608878-nixp-autechre-research.jpg",
+      "label": "Warp Records",
+      "price": 250000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Draft 7.30",
+      "artist": "Autechre",
+      "format": "CD",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-cd-0057-1793947608878-nixp-autechre-research.jpg"
+      ],
+      "barcode": "4523132112671",
+      "details": [],
+      "edition": "CD, Album",
+      "category": "Records",
+      "material": "",
+      "condition": "Used Excellent",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/364-draft-730/",
+      "syncAudit": [
+        {
+          "at": "2026-11-06T02:00:48.113Z",
+          "sku": "NXP-2026-CD-0057",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-05T02:00:46.667Z",
+          "sku": "NXP-2026-CD-0057",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-03T02:00:47.569Z",
+          "sku": "NXP-2026-CD-0057",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.792Z",
+          "sku": "NXP-2026-CD-0057",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.565Z",
+          "sku": "NXP-2026-CD-0057",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.352Z",
+          "sku": "NXP-2026-CD-0057",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.438Z",
+          "sku": "NXP-2026-CD-0057",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-24T02:00:47.493Z",
+          "sku": "NXP-2026-CD-0057",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-06",
+      "vinylSize": "",
+      "collection": "Warp Records",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-06T02:00:48.113Z",
+        "sku": "NXP-2026-CD-0057",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "On Draft 7.30, Autechre let more of the beat show through without simplifying the machinery around it. Xylin Room pushes clipped percussion against fragments of melody, while the long Surripere stretches a pulse through metallic flutter and disruption. Issued in 2003, the album makes its densely programmed rhythms feel physical rather than merely abstract.",
+      "reviewQuote": "bits of melody that, rather than obscured behind nine layers of software, are often heard in broad daylight",
+      "editRevision": 13,
+      "imageCredits": [
+        {
+          "url": "https://autechre.bandcamp.com/album/draft-730",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-cd-0057-1793947608878-nixp-autechre-research.jpg",
+          "credit": "Autechre / Warp official Bandcamp artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Pitchfork (quoted)",
+      "catalogNumber": "BRC-67",
+      "displayFormat": "CD",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "mvjew67aqe4yqy",
+      "mediaCondition": "Very Good Plus",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Gescom"
+      ],
+      "financeItemType": "CD",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "researchSources": [
+        {
+          "url": "https://autechre.bandcamp.com/album/draft-730",
+          "source": "Autechre official Bandcamp / Pitchfork",
+          "confidence": 100
+        },
+        {
+          "url": "https://pitchfork.com/reviews/albums/364-draft-730/",
+          "source": "Autechre official Bandcamp / Pitchfork",
+          "confidence": 100
+        }
+      ],
+      "sleeveCondition": "Very Good Plus",
+      "catalogPriceSync": 250000,
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Autechre official Bandcamp / Pitchfork",
+      "editorialUpdatedAt": "2026-11-06T07:57:06.481+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "mediaConditionNote": "",
+      "apparelMeasurements": {},
+      "mediaConditionGrade": "Very Good Plus",
+      "sleeveConditionNote": "",
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [
+        "Gescom"
+      ],
+      "publishAfterResearch": false,
+      "sleeveConditionGrade": "Very Good Plus",
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": null,
+      "manualRelatedArtistsOverride": true,
+      "manualRelatedArtistsOverrideSource": "admin",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-11-06",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
@@ -79254,6 +79437,654 @@
       }
     },
     {
+      "id": "finance-nxp-2026-cd-0028",
+      "qty": 1,
+      "sku": "NXP-2026-CD-0028",
+      "tags": [],
+      "year": 2002,
+      "color": "",
+      "flaws": "",
+      "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
+      "label": "V2 / Junior Boy's Own",
+      "price": 125000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "A Hundred Days Off",
+      "artist": "Underworld",
+      "format": "CD",
+      "images": [
+        "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg"
+      ],
+      "barcode": "",
+      "details": [
+        "SKU: NXP-2026-CD-0028",
+        "Format: CD",
+        "Condition: Used Good"
+      ],
+      "edition": "",
+      "category": "Records",
+      "material": "",
+      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0028/cover.jpg",
+      "condition": "Used Good",
+      "reviewUrl": "",
+      "syncAudit": [
+        {
+          "at": "2026-11-06T02:00:48.087Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-05T02:00:46.649Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-04T02:00:47.216Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-03T02:00:47.542Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-02T02:00:46.610Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.769Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-31T02:00:47.123Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-30T02:00:47.735Z",
+          "sku": "NXP-2026-CD-0028",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-06",
+      "vinylSize": "",
+      "collection": "V2 / Junior Boy's Own",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-06T02:00:48.087Z",
+        "sku": "NXP-2026-CD-0028",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
+      "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
+      "imageCredits": [
+        {
+          "url": "https://music.apple.com/us/album/a-hundred-days-off/1440856881",
+          "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
+          "credit": "Apple Music artwork / V2"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "AllMusic (quoted)",
+      "autoEditorial": {
+        "reviewUrl": "https://pitchfork.com/reviews/albums/8350-a-hundred-days-off/",
+        "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
+        "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
+        "reviewSource": "AllMusic (quoted)",
+        "relatedArtists": [
+          "Orbital",
+          "Leftfield",
+          "The Orb",
+          "Fluke",
+          "System 7"
+        ],
+        "descriptionSource": "AllMusic / MusicBrainz",
+        "relatedArtistEvidence": [
+          {
+            "match": 1,
+            "artist": "Orbital",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.958347,
+            "artist": "Leftfield",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.958347,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.73428,
+            "artist": "The Orb",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.73428,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.618522,
+            "artist": "Fluke",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.618522,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.612107,
+            "artist": "System 7",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.612107,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "relatedArtistsResearch": {
+          "lastFm": {
+            "source": "Last.fm",
+            "status": "available",
+            "artists": [
+              "Orbital",
+              "Leftfield",
+              "The Orb",
+              "Fluke",
+              "System 7",
+              "The Chemical Brothers",
+              "808 State",
+              "The Future Sound of London",
+              "Sasha",
+              "The KLF"
+            ],
+            "evidence": [
+              {
+                "match": 1,
+                "artist": "Orbital",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 1,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.958347,
+                "artist": "Leftfield",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.958347,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.73428,
+                "artist": "The Orb",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.73428,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.618522,
+                "artist": "Fluke",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.618522,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.612107,
+                "artist": "System 7",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.612107,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.606556,
+                "artist": "The Chemical Brothers",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.606556,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.567863,
+                "artist": "808 State",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.567863,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.524434,
+                "artist": "The Future Sound of London",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.524434,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.42185,
+                "artist": "Sasha",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.42185,
+                "relationType": "artist-similarity"
+              },
+              {
+                "match": 0.409601,
+                "artist": "The KLF",
+                "source": "Last.fm similar artist",
+                "sourceUrl": "https://www.last.fm/music/Underworld",
+                "confidence": 0.409601,
+                "relationType": "artist-similarity"
+              }
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld"
+          },
+          "source": "Last.fm",
+          "status": "lastfm",
+          "artists": [
+            "Orbital",
+            "Leftfield",
+            "The Orb",
+            "Fluke",
+            "System 7"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Orbital",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.958347,
+              "artist": "Leftfield",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.958347,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.73428,
+              "artist": "The Orb",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.73428,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.618522,
+              "artist": "Fluke",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.618522,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.612107,
+              "artist": "System 7",
+              "source": "Last.fm similar artist",
+              "sources": [
+                "Last.fm"
+              ],
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.612107,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
+          "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+          "engineVersion": "musicbrainz-lastfm-v2"
+        },
+        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
+      },
+      "catalogNumber": "",
+      "displayFormat": "CD",
+      "homeSlideSort": null,
+      "publishStatus": "Published",
+      "financeStockId": "ms1t6rhsto1tce",
+      "mediaCondition": "",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Orbital",
+        "Leftfield",
+        "The Orb",
+        "Fluke",
+        "System 7"
+      ],
+      "financeItemType": "CD",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "homeCollections": [],
+      "reviewSourceUrl": "https://www.allmusic.com/album/a-hundred-days-off-mw0000223914",
+      "sleeveCondition": "",
+      "autoProductPhoto": "",
+      "catalogPriceSync": 125000,
+      "enrichmentOrigin": "musicbrainz",
+      "enrichmentStatus": "complete",
+      "descriptionSource": "AllMusic / MusicBrainz",
+      "metadataSourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+      "apparelMeasurements": {},
+      "enrichmentUpdatedAt": "2026-08-18",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [],
+      "musicBrainzReleaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
+      "enrichmentAttemptedAt": "2026-08-18T16:49:54.069Z",
+      "enrichmentFingerprint": "underworld|a hundred days off|cd||",
+      "relatedArtistEvidence": [
+        {
+          "match": 1,
+          "artist": "Orbital",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 1,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.958347,
+          "artist": "Leftfield",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.958347,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.73428,
+          "artist": "The Orb",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.73428,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.618522,
+          "artist": "Fluke",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.618522,
+          "relationType": "artist-similarity"
+        },
+        {
+          "match": 0.612107,
+          "artist": "System 7",
+          "source": "Last.fm similar artist",
+          "sources": [
+            "Last.fm"
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld",
+          "confidence": 0.612107,
+          "relationType": "artist-similarity"
+        }
+      ],
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": {
+        "lastFm": {
+          "source": "Last.fm",
+          "status": "available",
+          "artists": [
+            "Orbital",
+            "Leftfield",
+            "The Orb",
+            "Fluke",
+            "System 7",
+            "The Chemical Brothers",
+            "808 State",
+            "The Future Sound of London",
+            "Sasha",
+            "The KLF"
+          ],
+          "evidence": [
+            {
+              "match": 1,
+              "artist": "Orbital",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 1,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.958347,
+              "artist": "Leftfield",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.958347,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.73428,
+              "artist": "The Orb",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.73428,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.618522,
+              "artist": "Fluke",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.618522,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.612107,
+              "artist": "System 7",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.612107,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.606556,
+              "artist": "The Chemical Brothers",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.606556,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.567863,
+              "artist": "808 State",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.567863,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.524434,
+              "artist": "The Future Sound of London",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.524434,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.42185,
+              "artist": "Sasha",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.42185,
+              "relationType": "artist-similarity"
+            },
+            {
+              "match": 0.409601,
+              "artist": "The KLF",
+              "source": "Last.fm similar artist",
+              "sourceUrl": "https://www.last.fm/music/Underworld",
+              "confidence": 0.409601,
+              "relationType": "artist-similarity"
+            }
+          ],
+          "sourceUrl": "https://www.last.fm/music/Underworld"
+        },
+        "source": "Last.fm",
+        "status": "lastfm",
+        "artists": [
+          "Orbital",
+          "Leftfield",
+          "The Orb",
+          "Fluke",
+          "System 7"
+        ],
+        "evidence": [
+          {
+            "match": 1,
+            "artist": "Orbital",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 1,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.958347,
+            "artist": "Leftfield",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.958347,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.73428,
+            "artist": "The Orb",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.73428,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.618522,
+            "artist": "Fluke",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.618522,
+            "relationType": "artist-similarity"
+          },
+          {
+            "match": 0.612107,
+            "artist": "System 7",
+            "source": "Last.fm similar artist",
+            "sources": [
+              "Last.fm"
+            ],
+            "sourceUrl": "https://www.last.fm/music/Underworld",
+            "confidence": 0.612107,
+            "relationType": "artist-similarity"
+          }
+        ],
+        "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
+        "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
+        "engineVersion": "musicbrainz-lastfm-v2"
+      },
+      "manualRelatedArtistsOverride": false,
+      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
+      "editRevision": 64,
+      "editorialUpdatedAt": "2026-11-06T02:01:19.041+00:00",
+      "editorialUpdatedBy": "finance-stock",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 16,
+        "heightCm": 6,
+        "lengthCm": 18,
+        "updatedAt": "2026-08-11",
+        "packageType": "bubble-wrap-corrugated-small-media",
+        "weightGrams": 120,
+        "shippingClass": "small-media-cd-bubble",
+        "packagingGroup": "SMALL_MEDIA",
+        "vinylWeightClass": "",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0017",
       "qty": 1,
       "sku": "NXP-2026-VNL-0017",
@@ -79911,654 +80742,6 @@
         "shippingClass": "vinyl-cardboard-bubble",
         "packagingGroup": "VINYL",
         "vinylWeightClass": "standard",
-        "manualShippingOverride": false
-      }
-    },
-    {
-      "id": "finance-nxp-2026-cd-0028",
-      "qty": 1,
-      "sku": "NXP-2026-CD-0028",
-      "tags": [],
-      "year": 2002,
-      "color": "",
-      "flaws": "",
-      "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
-      "label": "V2 / Junior Boy's Own",
-      "price": 125000,
-      "sizes": [],
-      "stock": {
-        "sold": 0,
-        "reserved": 0,
-        "available": 1
-      },
-      "title": "A Hundred Days Off",
-      "artist": "Underworld",
-      "format": "CD",
-      "images": [
-        "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg"
-      ],
-      "barcode": "",
-      "details": [
-        "SKU: NXP-2026-CD-0028",
-        "Format: CD",
-        "Condition: Used Good"
-      ],
-      "edition": "",
-      "category": "Records",
-      "material": "",
-      "autoCover": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/catalog/nxp-2026-cd-0028/cover.jpg",
-      "condition": "Used Good",
-      "reviewUrl": "",
-      "syncAudit": [
-        {
-          "at": "2026-11-06T02:00:48.087Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-11-05T02:00:46.649Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-11-04T02:00:47.216Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-11-03T02:00:47.542Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-11-02T02:00:46.610Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-11-01T02:00:46.769Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-10-31T02:00:47.123Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        },
-        {
-          "at": "2026-10-30T02:00:47.735Z",
-          "sku": "NXP-2026-CD-0028",
-          "action": "Inventory identity synchronized to catalog",
-          "source": "Finance",
-          "quantity": 1
-        }
-      ],
-      "updatedAt": "2026-11-06",
-      "vinylSize": "",
-      "collection": "V2 / Junior Boy's Own",
-      "fabricCare": "",
-      "syncStatus": {
-        "at": "2026-11-06T02:00:48.087Z",
-        "sku": "NXP-2026-CD-0028",
-        "action": "Inventory identity synchronized to catalog",
-        "source": "Finance",
-        "quantity": 1
-      },
-      "visibility": "Public",
-      "alterations": "",
-      "apparelType": "",
-      "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
-      "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
-      "imageCredits": [
-        {
-          "url": "https://music.apple.com/us/album/a-hundred-days-off/1440856881",
-          "image": "/public/covers/nxp-2026-cd-0028-underworld-a-hundred-days-off.jpg",
-          "credit": "Apple Music artwork / V2"
-        }
-      ],
-      "originalTags": false,
-      "reviewSource": "AllMusic (quoted)",
-      "autoEditorial": {
-        "reviewUrl": "https://pitchfork.com/reviews/albums/8350-a-hundred-days-off/",
-        "description": "Underworld's A Hundred Days Off is the 2002 album that followed Beaucoup Fish, continuing Karl Hyde and Rick Smith's widescreen electronic language after Darren Emerson's departure.",
-        "reviewQuote": "A Hundred Days Off by Underworld released in 2002",
-        "reviewSource": "AllMusic (quoted)",
-        "relatedArtists": [
-          "Orbital",
-          "Leftfield",
-          "The Orb",
-          "Fluke",
-          "System 7"
-        ],
-        "descriptionSource": "AllMusic / MusicBrainz",
-        "relatedArtistEvidence": [
-          {
-            "match": 1,
-            "artist": "Orbital",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.958347,
-            "artist": "Leftfield",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.958347,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.73428,
-            "artist": "The Orb",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.73428,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.618522,
-            "artist": "Fluke",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.618522,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.612107,
-            "artist": "System 7",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.612107,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "relatedArtistsResearch": {
-          "lastFm": {
-            "source": "Last.fm",
-            "status": "available",
-            "artists": [
-              "Orbital",
-              "Leftfield",
-              "The Orb",
-              "Fluke",
-              "System 7",
-              "The Chemical Brothers",
-              "808 State",
-              "The Future Sound of London",
-              "Sasha",
-              "The KLF"
-            ],
-            "evidence": [
-              {
-                "match": 1,
-                "artist": "Orbital",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 1,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.958347,
-                "artist": "Leftfield",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.958347,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.73428,
-                "artist": "The Orb",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.73428,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.618522,
-                "artist": "Fluke",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.618522,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.612107,
-                "artist": "System 7",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.612107,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.606556,
-                "artist": "The Chemical Brothers",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.606556,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.567863,
-                "artist": "808 State",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.567863,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.524434,
-                "artist": "The Future Sound of London",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.524434,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.42185,
-                "artist": "Sasha",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.42185,
-                "relationType": "artist-similarity"
-              },
-              {
-                "match": 0.409601,
-                "artist": "The KLF",
-                "source": "Last.fm similar artist",
-                "sourceUrl": "https://www.last.fm/music/Underworld",
-                "confidence": 0.409601,
-                "relationType": "artist-similarity"
-              }
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld"
-          },
-          "source": "Last.fm",
-          "status": "lastfm",
-          "artists": [
-            "Orbital",
-            "Leftfield",
-            "The Orb",
-            "Fluke",
-            "System 7"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Orbital",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.958347,
-              "artist": "Leftfield",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.958347,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.73428,
-              "artist": "The Orb",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.73428,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.618522,
-              "artist": "Fluke",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.618522,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.612107,
-              "artist": "System 7",
-              "source": "Last.fm similar artist",
-              "sources": [
-                "Last.fm"
-              ],
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.612107,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
-          "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
-          "engineVersion": "musicbrainz-lastfm-v2"
-        },
-        "relatedArtistResearchVersion": "musicbrainz-lastfm-v2"
-      },
-      "catalogNumber": "",
-      "displayFormat": "CD",
-      "homeSlideSort": null,
-      "publishStatus": "Published",
-      "financeStockId": "ms1t6rhsto1tce",
-      "mediaCondition": "",
-      "open_to_offers": false,
-      "relatedArtists": [
-        "Orbital",
-        "Leftfield",
-        "The Orb",
-        "Fluke",
-        "System 7"
-      ],
-      "financeItemType": "CD",
-      "financeMetadata": {
-        "isbn": "",
-        "pages": "",
-        "binding": "",
-        "language": "",
-        "publisher": "",
-        "dimensions": "",
-        "printDetails": ""
-      },
-      "homeCollections": [],
-      "reviewSourceUrl": "https://www.allmusic.com/album/a-hundred-days-off-mw0000223914",
-      "sleeveCondition": "",
-      "autoProductPhoto": "",
-      "catalogPriceSync": 125000,
-      "enrichmentOrigin": "musicbrainz",
-      "enrichmentStatus": "complete",
-      "descriptionSource": "AllMusic / MusicBrainz",
-      "metadataSourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
-      "apparelMeasurements": {},
-      "enrichmentUpdatedAt": "2026-08-18",
-      "garmentConditionNote": "",
-      "manualRelatedArtists": [],
-      "musicBrainzReleaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
-      "enrichmentAttemptedAt": "2026-08-18T16:49:54.069Z",
-      "enrichmentFingerprint": "underworld|a hundred days off|cd||",
-      "relatedArtistEvidence": [
-        {
-          "match": 1,
-          "artist": "Orbital",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 1,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.958347,
-          "artist": "Leftfield",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.958347,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.73428,
-          "artist": "The Orb",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.73428,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.618522,
-          "artist": "Fluke",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.618522,
-          "relationType": "artist-similarity"
-        },
-        {
-          "match": 0.612107,
-          "artist": "System 7",
-          "source": "Last.fm similar artist",
-          "sources": [
-            "Last.fm"
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld",
-          "confidence": 0.612107,
-          "relationType": "artist-similarity"
-        }
-      ],
-      "minimumAcceptableOffer": 0,
-      "relatedArtistsResearch": {
-        "lastFm": {
-          "source": "Last.fm",
-          "status": "available",
-          "artists": [
-            "Orbital",
-            "Leftfield",
-            "The Orb",
-            "Fluke",
-            "System 7",
-            "The Chemical Brothers",
-            "808 State",
-            "The Future Sound of London",
-            "Sasha",
-            "The KLF"
-          ],
-          "evidence": [
-            {
-              "match": 1,
-              "artist": "Orbital",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 1,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.958347,
-              "artist": "Leftfield",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.958347,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.73428,
-              "artist": "The Orb",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.73428,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.618522,
-              "artist": "Fluke",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.618522,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.612107,
-              "artist": "System 7",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.612107,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.606556,
-              "artist": "The Chemical Brothers",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.606556,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.567863,
-              "artist": "808 State",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.567863,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.524434,
-              "artist": "The Future Sound of London",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.524434,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.42185,
-              "artist": "Sasha",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.42185,
-              "relationType": "artist-similarity"
-            },
-            {
-              "match": 0.409601,
-              "artist": "The KLF",
-              "source": "Last.fm similar artist",
-              "sourceUrl": "https://www.last.fm/music/Underworld",
-              "confidence": 0.409601,
-              "relationType": "artist-similarity"
-            }
-          ],
-          "sourceUrl": "https://www.last.fm/music/Underworld"
-        },
-        "source": "Last.fm",
-        "status": "lastfm",
-        "artists": [
-          "Orbital",
-          "Leftfield",
-          "The Orb",
-          "Fluke",
-          "System 7"
-        ],
-        "evidence": [
-          {
-            "match": 1,
-            "artist": "Orbital",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 1,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.958347,
-            "artist": "Leftfield",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.958347,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.73428,
-            "artist": "The Orb",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.73428,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.618522,
-            "artist": "Fluke",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.618522,
-            "relationType": "artist-similarity"
-          },
-          {
-            "match": 0.612107,
-            "artist": "System 7",
-            "source": "Last.fm similar artist",
-            "sources": [
-              "Last.fm"
-            ],
-            "sourceUrl": "https://www.last.fm/music/Underworld",
-            "confidence": 0.612107,
-            "relationType": "artist-similarity"
-          }
-        ],
-        "releaseId": "7d162bab-16e3-3cea-87c0-589d246a3972",
-        "sourceUrl": "https://musicbrainz.org/release/7d162bab-16e3-3cea-87c0-589d246a3972",
-        "engineVersion": "musicbrainz-lastfm-v2"
-      },
-      "manualRelatedArtistsOverride": false,
-      "relatedArtistResearchVersion": "musicbrainz-lastfm-v2",
-      "editRevision": 64,
-      "editorialUpdatedAt": "2026-11-06T02:01:19.041+00:00",
-      "editorialUpdatedBy": "finance-stock",
-      "shipping": {
-        "source": "NIXP packaging rules v1",
-        "status": "format_reference",
-        "widthCm": 16,
-        "heightCm": 6,
-        "lengthCm": 18,
-        "updatedAt": "2026-08-11",
-        "packageType": "bubble-wrap-corrugated-small-media",
-        "weightGrams": 120,
-        "shippingClass": "small-media-cd-bubble",
-        "packagingGroup": "SMALL_MEDIA",
-        "vinylWeightClass": "",
         "manualShippingOverride": false
       }
     },
