@@ -5,6 +5,7 @@ import {
   catalogPriceForFinanceStock,
   draftProductFromFinanceStock,
   financePriceMayUpdateCatalog,
+  financeItemForProduct,
   financeSellingPriceForAdminProduct,
   hasFinanceCatalogIdentityDrift,
   mergeFinanceStockIdentity,
@@ -225,6 +226,19 @@ const legacySubtype = productRowFromFinanceStock(
 );
 assert.equal(legacySubtype.apparel_type, "Tops");
 assert.equal(mergeFinanceStockIdentity(apparelDraft, legacySubtype).raw.apparelType, "Tops");
+const descriptiveStock = { ...apparelStock, item: "Flesh Knitsweater", title: "Flesh Knitsweater" };
+const classifiedTop = {
+  ...syncedApparel,
+  apparel_type: "Tops",
+  raw: { ...syncedApparel.raw, apparelType: "Tops", financeItemType: descriptiveStock.item }
+};
+const preservedTop = productRowFromFinanceStock(classifiedTop, descriptiveStock, 3);
+assert.equal(preservedTop.apparel_type, "Tops", "A descriptive Finance item must not erase an explicit Apparel classification.");
+assert.equal(preservedTop.raw.apparelType, "Tops");
+assert.equal(financeItemForProduct({ category: "Apparel", apparelType: "Tops", raw: { financeItemType: descriptiveStock.item } }, descriptiveStock), descriptiveStock.item);
+assert.equal(financeItemForProduct({ category: "Apparel", apparelType: "Longsleeve", raw: { financeItemType: descriptiveStock.item } }, descriptiveStock), "Longsleeve");
+assert.equal(productRowFromFinanceStock(classifiedTop, { ...descriptiveStock, item: "Cap" }, 3).apparel_type, "Accessories");
+assert.equal(productRowFromFinanceStock(classifiedTop, { ...descriptiveStock, item: "Vinyl" }, 3).apparel_type, "");
 const changedApparel = productRowFromFinanceStock(syncedApparel, {
   ...apparelStock,
   qty: 4,

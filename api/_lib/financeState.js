@@ -928,7 +928,10 @@ export function productRowFromFinanceStock(row, stock, quantity) {
   const itemSelection = vinylItemSelection(stock.item || row.format || "Vinyl");
   const item = itemSelection.item;
   const category = catalogCategoryForFinanceItem(item, row.category || "Objects");
-  const apparelType = catalogApparelTypeForFinanceItem(item);
+  const existingApparelType = String(row.apparel_type || row.raw?.apparelType || "").trim();
+  const apparelType = catalogApparelTypeForFinanceItem(item)
+    || (category === "Apparel" && row.category === "Apparel"
+      && ["Tops", "Bottoms", "Accessories"].includes(existingApparelType) ? existingApparelType : "");
   // Finance can contain a temporary placeholder while the editorial match is
   // still being completed. It must never erase a real title already stored in
   // Admin or returned by the enrichment step.
@@ -1338,7 +1341,7 @@ export async function syncAdminCatalogInventory(products = []) {
       ...existing,
       id: existing.id || `catalog-${product.id}`,
       sku,
-      item: financeItemForProduct(product),
+      item: financeItemForProduct(product, existing),
       itemCondition: product.condition || existing.itemCondition || "New-Sealed",
       artist: product.artist || existing.artist || "",
       title: product.title || existing.title || "",
@@ -1549,11 +1552,12 @@ function financeStockRow(item, productIdBySku) {
   };
 }
 
-function financeItemForProduct(product) {
+export function financeItemForProduct(product, existing = {}) {
   const rememberedItem = String(product.raw?.financeItemType || "").trim();
   if (FINANCE_ITEM_TYPES.has(rememberedItem)) return rememberedItem;
   if (product.category === "Records") return product.format || "Vinyl";
   if (product.category === "Apparel") {
+    if (product.apparelType === "Tops" && existing.item === rememberedItem && rememberedItem) return rememberedItem;
     return APPAREL_TYPES.has(product.apparelType)
       ? product.apparelType
       : product.apparelType === "Accessories" ? "Cap" : "T-shirt";
