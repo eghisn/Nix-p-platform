@@ -1454,6 +1454,188 @@
       }
     },
     {
+      "id": "finance-nxp-2026-vnl-0115",
+      "qty": 1,
+      "sku": "NXP-2026-VNL-0115",
+      "tags": [],
+      "year": 2020,
+      "color": "",
+      "flaws": "",
+      "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0115-1793947665277-nixp-gulch-research.jpg",
+      "label": "Closed Casket Activities",
+      "price": 750000,
+      "sizes": [],
+      "stock": {
+        "sold": 0,
+        "reserved": 0,
+        "available": 1
+      },
+      "title": "Impenetrable Cerebral Fortress",
+      "artist": "Gulch",
+      "format": "Vinyl",
+      "images": [
+        "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0115-1793947665277-nixp-gulch-research.jpg"
+      ],
+      "barcode": "K15904949",
+      "details": [],
+      "edition": "Vinyl, LP,",
+      "category": "Records",
+      "material": "",
+      "condition": "New-Sealed",
+      "reviewUrl": "https://pitchfork.com/reviews/albums/gulch-impenetrable-cerebral-fortress/",
+      "syncAudit": [
+        {
+          "at": "2026-11-07T02:00:47.394Z",
+          "sku": "NXP-2026-VNL-0115",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-06T02:00:48.113Z",
+          "sku": "NXP-2026-VNL-0115",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-05T02:00:46.667Z",
+          "sku": "NXP-2026-VNL-0115",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-03T02:00:47.569Z",
+          "sku": "NXP-2026-VNL-0115",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-11-01T02:00:46.792Z",
+          "sku": "NXP-2026-VNL-0115",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-29T02:00:47.565Z",
+          "sku": "NXP-2026-VNL-0115",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-28T02:00:47.352Z",
+          "sku": "NXP-2026-VNL-0115",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        },
+        {
+          "at": "2026-10-26T02:00:47.438Z",
+          "sku": "NXP-2026-VNL-0115",
+          "action": "Inventory identity synchronized to catalog",
+          "source": "Finance",
+          "quantity": 1
+        }
+      ],
+      "updatedAt": "2026-11-07",
+      "vinylSize": "12",
+      "collection": "",
+      "fabricCare": "",
+      "syncStatus": {
+        "at": "2026-11-07T02:00:47.394Z",
+        "sku": "NXP-2026-VNL-0115",
+        "action": "Inventory identity synchronized to catalog",
+        "source": "Finance",
+        "quantity": 1
+      },
+      "visibility": "Public",
+      "alterations": "",
+      "apparelType": "",
+      "description": "Eight songs in roughly fifteen minutes, Impenetrable Cerebral Fortress compresses Gulch's hardcore into sharply timed bursts. Jack Shirley's production gives the guitars and feedback their own edges, while Boone Naka's cover art sets an eerie counterpoint to the music inside. The sequence closes with the band's take on Siouxsie and the Banshees' Sin in My Heart.",
+      "reviewQuote": "Gulch elevate traditional hardcore signifiers into killer hooks",
+      "editRevision": 13,
+      "imageCredits": [
+        {
+          "url": "https://gulch.bandcamp.com/album/impenetrable-cerebral-fortress",
+          "image": "https://ozxkbmexuiuuhjvohxbb.supabase.co/storage/v1/object/public/product-images/products/nxp-2026-vnl-0115-1793947665277-nixp-gulch-research.jpg",
+          "credit": "Gulch / Closed Casket Activities official artwork"
+        }
+      ],
+      "originalTags": false,
+      "reviewSource": "Pitchfork (quoted)",
+      "catalogNumber": "CLCR077",
+      "displayFormat": "Vinyl",
+      "publishStatus": "Published",
+      "financeStockId": "mvjem9mzxsfofd",
+      "open_to_offers": false,
+      "relatedArtists": [
+        "Sunami",
+        "Drain"
+      ],
+      "financeItemType": "Vinyl",
+      "financeMetadata": {
+        "isbn": "",
+        "pages": "",
+        "binding": "",
+        "language": "",
+        "publisher": "",
+        "dimensions": "",
+        "printDetails": ""
+      },
+      "researchSources": [
+        {
+          "url": "https://gulch.bandcamp.com/album/impenetrable-cerebral-fortress",
+          "source": "Gulch official Bandcamp / Closed Casket Activities / Pitchfork",
+          "confidence": 100
+        },
+        {
+          "url": "https://closedcasketactivities.com/products/gulch-impenetrable-cerebral-fortress",
+          "source": "Gulch official Bandcamp / Closed Casket Activities / Pitchfork",
+          "confidence": 100
+        },
+        {
+          "url": "https://pitchfork.com/reviews/albums/gulch-impenetrable-cerebral-fortress/",
+          "source": "Gulch official Bandcamp / Closed Casket Activities / Pitchfork",
+          "confidence": 100
+        }
+      ],
+      "catalogPriceSync": 750000,
+      "publicationState": "deployment_pending",
+      "descriptionSource": "Gulch official Bandcamp / Closed Casket Activities / Pitchfork",
+      "editorialUpdatedAt": "2026-11-07T11:45:47.225+00:00",
+      "editorialUpdatedBy": "admin-publication",
+      "apparelMeasurements": {},
+      "adminPublishOverride": "Published",
+      "garmentConditionNote": "",
+      "manualRelatedArtists": [
+        "Sunami",
+        "Drain"
+      ],
+      "publishAfterResearch": false,
+      "minimumAcceptableOffer": 0,
+      "relatedArtistsResearch": null,
+      "manualRelatedArtistsOverride": true,
+      "manualRelatedArtistsOverrideSource": "admin",
+      "shipping": {
+        "source": "NIXP packaging rules v1",
+        "status": "format_reference",
+        "widthCm": 34,
+        "heightCm": 4,
+        "lengthCm": 34,
+        "updatedAt": "2026-10-22",
+        "packageType": "bubble-wrap-corrugated-vinyl-mailer",
+        "weightGrams": 550,
+        "shippingClass": "vinyl-cardboard-bubble",
+        "packagingGroup": "VINYL",
+        "vinylWeightClass": "standard",
+        "manualShippingOverride": false
+      }
+    },
+    {
       "id": "finance-nxp-2026-vnl-0114",
       "qty": 1,
       "sku": "NXP-2026-VNL-0114",
