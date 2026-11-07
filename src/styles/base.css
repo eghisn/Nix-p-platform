@@ -2292,6 +2292,12 @@ tr:last-child td {
   gap: 14px;
 }
 
+.related-artist-section {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+}
+
 .related-artist-tags {
   display: flex;
   flex-wrap: wrap;
@@ -2299,8 +2305,12 @@ tr:last-child td {
   margin-top: 14px;
 }
 
+.related-artist-section .related-artist-tags {
+  margin-top: 0;
+}
+
 .related-artist-heading {
-  margin: 18px 0 0;
+  margin: 0;
   color: var(--muted);
   font-size: 10px;
   font-weight: 760;

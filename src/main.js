@@ -2793,6 +2793,7 @@ function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
   const artists = productRelatedArtists(product);
   if (!artists.length) return "";
   return `
+    <div class="related-artist-section">
     <p class="related-artist-heading">Related Artists</p>
     <div class="related-artist-tags" aria-label="Related artists">
       ${artists
@@ -2805,6 +2806,7 @@ function recordRelatedArtistsMarkup(product, availableArtistNames = new Set()) {
             : `<span>${escapeHtml(artist)}</span>`;
         })
         .join("")}
+    </div>
     </div>
   `;
 }

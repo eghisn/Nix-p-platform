@@ -24,6 +24,10 @@ assert.match(inStockMarkup, /<figure class="product-art product-art-large\s"><im
 assert.doesNotMatch(inStockMarkup, /class="product-art product-art-large is-sold-out"/, "In-stock product artwork must not be dimmed.");
 assert.match(inStockMarkup, /data-add-cart="stock-zero-test" >Add to cart<\/button>/, "In-stock product pages must remain purchasable.");
 
+const relatedMarkup = productMarkup({ ...product, category: "Records", relatedArtists: ["The KVB"] });
+assert.match(relatedMarkup, /<\/dl><div class="related-artist-section"><p class="related-artist-heading">Related Artists<\/p><div class="related-artist-tags"/,
+  "Server-rendered related artists must keep heading and links together after product details.");
+
 const commerceStore = readFileSync(new URL("../src/services/adminStore.js", import.meta.url), "utf8");
 const commerceClient = readFileSync(new URL("../src/main.js", import.meta.url), "utf8");
 assert.match(commerceStore, /if \(!verifiedIds\.size\) return currentStore;[\s\S]*?detail: \{ productIds: \[\.\.\.verifiedIds\] \}/, "Failed or incomplete commerce verification must not broadcast stale snapshot stock to the page.");

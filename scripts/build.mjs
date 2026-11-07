@@ -373,10 +373,9 @@ function staticProductDetailMarkup(product) {
   const isOfferOnly = product.open_to_offers === true;
   const availableArtistNames = inventoryArtistMap(publicProducts);
   const relatedMarkup = product.category === "Records" && Array.isArray(product.relatedArtists) && product.relatedArtists.length
-    ? `<div class="related-artist-tags" aria-label="Related artists">${product.relatedArtists
+    ? `<div class="related-artist-section"><p class="related-artist-heading">Related Artists</p><div class="related-artist-tags" aria-label="Related artists">${product.relatedArtists
         .map((artist) => String(artist || "").trim())
         .filter(Boolean)
-        .slice(0, 3)
         .map((artist) => {
           const inventoryArtist = resolveInventoryArtist(artist, availableArtistNames);
           const relatedSlug = inventoryArtist ? artistSlug(inventoryArtist) : "";
@@ -384,7 +383,7 @@ function staticProductDetailMarkup(product) {
             ? `<a href="/artists/${relatedSlug}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
             : `<span>${escapeHtml(artist)}</span>`;
         })
-        .join("")}</div>`
+        .join("")}</div></div>`
     : "";
   const review = product.reviewQuote
     ? `<blockquote class="product-review"><p>&quot;${escapeHtml(product.reviewQuote)}&quot;</p><cite>${reviewSourceMarkup(product)}</cite></blockquote>`
@@ -399,7 +398,7 @@ function staticProductDetailMarkup(product) {
   const recommended = isRecord ? recommendedProducts(product, publicProducts) : [];
   const detail = `<section class="product-detail" data-product-id="${escapeHtml(product.id)}"><div class="detail-gallery">${images
     .map((image, index) => `<figure class="product-art product-art-large ${isApparel ? "product-art-apparel" : ""} ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}${imageCreditMarkup(product, image)}</figure>`)
-    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}${relatedMarkup}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeHtml(product.id)}" ${soldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${soldOut ? "Sold out" : "Make an Offer"}</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button><a class="button button-outline" href="/request-item">Request similar</a>`}</div><dl class="detail-list">${details}</dl></aside></section>`;
+    .join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}">${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(product.artist)}</p><h1>${escapeHtml(product.title)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeHtml(product.id)}" ${soldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${soldOut ? "Sold out" : "Make an Offer"}</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button><a class="button button-outline" href="/request-item">Request similar</a>`}</div><dl class="detail-list">${details}</dl>${relatedMarkup}</aside></section>`;
   return `${detail}${recommended.length ? `<section class="section shop-section">${productGrid(recommended, { availableArtistNames })}</section>` : ""}`;
 }
 

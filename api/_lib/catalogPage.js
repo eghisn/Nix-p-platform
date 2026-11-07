@@ -299,14 +299,14 @@ export function productMarkup(product, store = {}) {
     ? product.relatedArtists.filter(Boolean)
     : [];
   const relatedMarkup = relatedArtists.length
-    ? `<p class="related-artist-heading">Related Artists</p><div class="related-artist-tags" aria-label="Related artists">${relatedArtists.map((artist) => {
+    ? `<div class="related-artist-section"><p class="related-artist-heading">Related Artists</p><div class="related-artist-tags" aria-label="Related artists">${relatedArtists.map((artist) => {
         const available = artistCreditNames(artist)
           .map((name) => availableArtists.get(artistIdentityKey(name)))
           .find(Boolean);
         return available
           ? `<a href="/artists/${slugify(available)}" data-link data-related-artist-link>${escapeHtml(artist)}</a>`
           : `<span>${escapeHtml(artist)}</span>`;
-      }).join("")}</div>`
+      }).join("")}</div></div>`
     : "";
   return `<section class="product-detail" data-product-id="${escapeHtml(product.id)}"><div class="detail-gallery">${images.map((image, index) => `<figure class="product-art product-art-large ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}${imageCreditMarkup(product, image)}</figure>`).join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(displayHeading.eyebrow)}</p><h1>${escapeHtml(displayHeading.heading)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeHtml(product.id)}" ${soldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${soldOut ? "Sold out" : "Make an Offer"}</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>`}</div><dl class="detail-list">${details}</dl>${relatedMarkup}</aside></section>`;
 }
