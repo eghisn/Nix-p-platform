@@ -712,6 +712,7 @@ export function adminOrderDetailRow(order) {
       artist: String(item.artist || ""),
       title: String(item.title || ""),
       size: String(item.size_label || ""),
+      sizeRequired: item.products?.category === "Apparel" && item.products?.apparel_type === "Tops",
       quantity: Number(item.quantity || 0)
     }))
   };

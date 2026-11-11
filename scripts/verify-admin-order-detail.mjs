@@ -27,12 +27,27 @@ assert.equal(row.items[0].title, "Album");
 assert.equal(row.paymentStatus, "Paid");
 assert(!JSON.stringify(row).includes("must-not-leak"), "The admin detail response must not expose tokens or unrelated private payloads.");
 
+const missingSize = adminOrderDetailRow({
+  id: "order-apparel",
+  items: [{ sku: "NXP-2026-APP-0007", title: "T-shirt", size_label: null, quantity: 1, products: { category: "Apparel", apparel_type: "Tops" } }]
+});
+assert.equal(missingSize.items[0].size, "");
+assert.equal(missingSize.items[0].sizeRequired, true);
+const sized = adminOrderDetailRow({
+  id: "order-sized",
+  items: [{ sku: "NXP-2026-APP-0007", title: "T-shirt", size_label: "M", quantity: 1, products: { category: "Apparel", apparel_type: "Tops" } }]
+});
+assert.equal(sized.items[0].size, "M");
+assert.equal(sized.items[0].sizeRequired, true);
+
 const app = await readFile(new URL("../src/main.js", import.meta.url), "utf8");
 const store = await readFile(new URL("../src/services/adminStore.js", import.meta.url), "utf8");
 const handlers = await readFile(new URL("../api/_lib/commerceHandlers.js", import.meta.url), "utf8");
 assert.match(app, /data-admin-order-view/, "Orders must have a visible detail action.");
 assert.match(app, /data-admin-order-dialog/, "Order details must open without navigating away.");
 assert.match(app, /Delivery address/, "The detail view must surface the shipping address.");
+assert.match(app, /Confirm size before dispatch/, "Paid apparel orders without a recorded size must be flagged in the order list.");
+assert.match(app, /Confirm apparel size with the customer before dispatch/, "The order detail must not silently omit a missing size.");
 assert.match(store, /async orderDetail\(orderId\)/, "The address must be fetched on demand, outside the saved admin snapshot.");
 assert.match(handlers, /requireWorkspace\(req, res, "admin"\)/, "The order detail endpoint must require Admin access.");
 assert.match(handlers, /order: adminOrderDetailRow\(order\)/, "The endpoint must return only the explicit detail shape.");

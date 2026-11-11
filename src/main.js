@@ -2139,7 +2139,8 @@ function adminOrderDetailMarkup(order) {
       ${adminOrderDispatchMarkup(order)}
       <section class="admin-order-detail-section">
         <h3>Items</h3>
-        ${order.items?.length ? `<ul class="admin-order-detail-items">${order.items.map((item) => `<li><span>${escapeHtml([item.artist, item.title].filter(Boolean).join(" - ") || item.sku)}${item.size ? ` / ${escapeHtml(item.size)}` : ""}<small>${escapeHtml(item.sku)}</small></span><strong>x${Number(item.quantity) || 0}</strong></li>`).join("")}</ul>` : "<p>No item lines recorded.</p>"}
+        ${order.items?.length ? `<ul class="admin-order-detail-items">${order.items.map((item) => `<li><span>${escapeHtml([item.artist, item.title].filter(Boolean).join(" - ") || item.sku)}${item.size ? ` / Size ${escapeHtml(item.size)}` : item.sizeRequired ? " / Size not recorded" : ""}<small>${escapeHtml(item.sku)}</small></span><strong>x${Number(item.quantity) || 0}</strong></li>`).join("")}</ul>` : "<p>No item lines recorded.</p>"}
+        ${order.items?.some((item) => item.sizeRequired && !item.size) ? "<p>Confirm apparel size with the customer before dispatch.</p>" : ""}
         <p class="admin-order-detail-total"><span>Total</span><strong>${money.format(order.total)}</strong></p>
       </section>
     `
@@ -2362,19 +2363,33 @@ function statusBadge(value) {
 }
 
 function orderItemSummary(order = {}) {
-  const productTitles = Array.isArray(order.products)
-    ? order.products.map((product) => [product.artist, product.title].filter(Boolean).join(" / ")).filter(Boolean)
-    : [];
-  if (productTitles.length) return productTitles.join(", ");
   const lineItems = Array.isArray(order.lineItems) ? order.lineItems : [];
   const lineTitles = lineItems
     .map((item) => {
       const title = [item.artist, item.title].filter(Boolean).join(" / ") || item.sku || item.productId || "Item";
+      const size = String(item.size || item.size_label || "").trim();
+      const product = (order.products || []).find((entry) => entry.id === item.productId || entry.sku === item.sku);
+      const sizeLabel = size ? ` / Size ${size}` : isTopApparel(product) ? " / SIZE NOT RECORDED" : "";
       const quantity = Number(item.quantity || 0);
-      return quantity > 1 ? `${title} x${quantity}` : title;
+      return `${title}${sizeLabel}${quantity > 1 ? ` x${quantity}` : ""}`;
     })
     .filter(Boolean);
-  return lineTitles.length ? lineTitles.join(", ") : "-";
+  if (lineTitles.length) return lineTitles.join(", ");
+  const productTitles = Array.isArray(order.products)
+    ? order.products.map((product) => [product.artist, product.title].filter(Boolean).join(" / ")).filter(Boolean)
+    : [];
+  return productTitles.length ? productTitles.join(", ") : "-";
+}
+
+function isTopApparel(product) {
+  return product?.category === "Apparel" && product?.apparelType === "Tops";
+}
+
+function orderHasMissingTopSize(order) {
+  return (order.lineItems || []).some((item) => {
+    const product = (order.products || []).find((entry) => entry.id === item.productId || entry.sku === item.sku);
+    return isTopApparel(product) && !String(item.size || item.size_label || "").trim();
+  });
 }
 
 function orderActionRequired(order) {
@@ -2383,6 +2398,7 @@ function orderActionRequired(order) {
   const shipping = String(order.shippingStatus || "").toLowerCase();
   if (payment === "pending" || payment === "unpaid") return "Awaiting payment";
   if (payment === "refund pending") return "Refund required";
+  if (payment === "paid" && orderHasMissingTopSize(order)) return "Confirm size before dispatch";
   if (fulfillment === "processing" || fulfillment === "stock reserved") return "Pack order";
   if (fulfillment === "packed" && shipping === "awaiting pickup") return "Hand to courier";
   if (shipping === "delivery failed") return "Delivery follow-up";
