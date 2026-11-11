@@ -65,11 +65,10 @@ export async function sendProductStatusNotification(product, previousStatus = ""
 }
 
 export async function sendOrderNotification(order, customer = {}) {
+  const notification = renderOrderNotification(order, customer);
   return sendNotificationEmail({
-    subject: `NIXP order: ${order.id} - ${rupiah(order.total)}`,
+    ...notification,
     replyTo: customer.email,
-    text: orderEmailText(order, customer),
-    html: orderEmailHtml(order, customer),
     idempotencyKey: `order-notification-${order.id}`
   });
 }
@@ -557,12 +556,25 @@ function productStatusHtml(product, previous, status) {
   return `<h1>NIXP product status changed</h1><p><strong>Product:</strong> ${escapeHtml(product.artist || "Untitled")} - ${escapeHtml(product.title || "Untitled")}<br><strong>SKU:</strong> ${escapeHtml(product.sku || "Not provided")}<br><strong>Status:</strong> ${escapeHtml(previous || "New")} &rarr; ${escapeHtml(status)}<br><strong>Visibility:</strong> ${escapeHtml(product.visibility || "Not provided")}<br><strong>Product ID:</strong> ${escapeHtml(product.id || "Not provided")}</p>`;
 }
 
-function orderEmailText(order, customer) {
+export function renderOrderNotification(order, customer = {}) {
+  const status = order.order_status || order.orderStatus || order.status || "Unknown";
+  const total = order.grand_total ?? order.total;
+  const formattedTotal = total === null || total === undefined || !Number.isFinite(Number(total))
+    ? "Total unavailable"
+    : rupiah(total);
+  return {
+    subject: `NIXP order: ${order.id} - ${formattedTotal}`,
+    text: orderEmailText(order, customer, status, formattedTotal),
+    html: orderEmailHtml(order, customer, status, formattedTotal)
+  };
+}
+
+function orderEmailText(order, customer, status, formattedTotal) {
   return [
     "New NIXP order",
     `Order ID: ${order.id}`,
-    `Status: ${order.status}`,
-    `Official total: ${rupiah(order.total)}`,
+    `Status: ${status}`,
+    `Official total: ${formattedTotal}`,
     "",
     "Customer",
     `Name: ${customer.name || "Not provided"}`,
@@ -575,8 +587,8 @@ function orderEmailText(order, customer) {
   ].join("\n");
 }
 
-function orderEmailHtml(order, customer) {
-  return `<h1>New NIXP order</h1><p><strong>Order ID:</strong> ${escapeHtml(order.id)}<br><strong>Status:</strong> ${escapeHtml(order.status)}<br><strong>Official total:</strong> ${escapeHtml(rupiah(order.total))}</p><h2>Customer</h2><p><strong>Name:</strong> ${escapeHtml(customer.name || "Not provided")}<br><strong>Email:</strong> ${escapeHtml(customer.email || "Not provided")}<br><strong>WhatsApp:</strong> ${escapeHtml(customer.whatsapp || "Not provided")}<br><strong>Notes:</strong> ${escapeHtml(customer.notes || "None")}</p><h2>Items</h2><ul>${orderItems(order).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+function orderEmailHtml(order, customer, status, formattedTotal) {
+  return `<h1>New NIXP order</h1><p><strong>Order ID:</strong> ${escapeHtml(order.id)}<br><strong>Status:</strong> ${escapeHtml(status)}<br><strong>Official total:</strong> ${escapeHtml(formattedTotal)}</p><h2>Customer</h2><p><strong>Name:</strong> ${escapeHtml(customer.name || "Not provided")}<br><strong>Email:</strong> ${escapeHtml(customer.email || "Not provided")}<br><strong>WhatsApp:</strong> ${escapeHtml(customer.whatsapp || "Not provided")}<br><strong>Notes:</strong> ${escapeHtml(customer.notes || "None")}</p><h2>Items</h2><ul>${orderItems(order).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 }
 
 export function customerOrderText(order, customer, delivery) {
