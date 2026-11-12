@@ -141,6 +141,15 @@ export async function writeFinanceState(state, { syncCatalog = true, expectedUpd
     throw error;
   }
   const changes = changedFinanceSections(previous.state, normalized, changedSections);
+  const removedOrderIds = removedWebsiteSaleOrderIds(previous.state.sales, changes.sales);
+  if (removedOrderIds.length) {
+    const matchingOrders = await supabaseFetch(`order_records?select=id,payment_status&id=in.(${removedOrderIds.join(",")})`);
+    if (matchingOrders.some((order) => order.payment_status === "Paid")) {
+      const error = new Error("A paid website sale cannot be removed from Daily Sales. Reload Finance before saving.");
+      error.statusCode = 409;
+      throw error;
+    }
+  }
   if (Object.keys(changes).length) {
     try {
       await supabaseFetch("rpc/write_finance_state_sections", {
@@ -1790,6 +1799,14 @@ export function changedFinanceSections(previous = EMPTY_FINANCE_STATE, next = EM
       .filter((section) => JSON.stringify(previous[section]) !== JSON.stringify(next[section]))
       .map((section) => [section, next[section]])
   );
+}
+
+export function removedWebsiteSaleOrderIds(previousSales = [], nextSales = null) {
+  if (!Array.isArray(nextSales)) return [];
+  const retained = new Set(nextSales.map((sale) => String(sale?.invoice || "").trim()));
+  return [...new Set(previousSales
+    .map((sale) => String(sale?.invoice || "").trim())
+    .filter((invoice) => /^order-[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(invoice) && !retained.has(invoice)))];
 }
 
 async function readRemoteSectionsWithVersion() {

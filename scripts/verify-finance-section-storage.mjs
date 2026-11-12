@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { changedFinanceSections, financeCatalogSyncRequest } from "../api/_lib/financeState.js";
+import { changedFinanceSections, financeCatalogSyncRequest, removedWebsiteSaleOrderIds, writeFinanceState } from "../api/_lib/financeState.js";
 import { readFile } from "node:fs/promises";
 
 const base = {
@@ -9,6 +9,10 @@ const base = {
 assert.deepEqual(changedFinanceSections(base, { ...base, expenses: [{ id: "expense-1", amount: 1 }] }), {
   expenses: [{ id: "expense-1", amount: 1 }]
 });
+const paidSale = { id: "sale-order-c950e51f-035a-4790-bc9d-ba767f0c9149", invoice: "order-c950e51f-035a-4790-bc9d-ba767f0c9149", revenue: 350000 };
+assert.deepEqual(removedWebsiteSaleOrderIds([paidSale], []), [paidSale.invoice]);
+assert.deepEqual(removedWebsiteSaleOrderIds([paidSale], [{ ...paidSale, revenue: 340000 }]), []);
+assert.deepEqual(removedWebsiteSaleOrderIds([paidSale], null), []);
 assert.deepEqual(changedFinanceSections(base, { ...base, expenses: [{ id: "expense-1" }], inventoryStock: [{ sku: "NXP-1" }] }, ["expenses"]), {
   expenses: [{ id: "expense-1" }]
 });
@@ -65,6 +69,7 @@ assert.equal(
 );
 
 const financeUi = await readFile("apps/finance/index.html", "utf8");
+assert.doesNotMatch(financeUi, /removeLegacy350kEntries|isLegacy350kDailySale|isLegacy350kGeneralIncome/);
 assert.match(financeUi, /changedSections: changedFinanceSections\(\)/);
 assert.match(financeUi, /setFormValue\(el\.stockForm, "qty", item\.qty \?\? 1\);/);
 assert.doesNotMatch(financeUi, /setFormValue\(el\.stockForm, "qty", item\.qty \|\| 1\);/);
@@ -91,5 +96,37 @@ assert.match(costCorrectionMigration, /v_changed_cost_skus/);
 assert.match(costCorrectionMigration, /public\.order_lines/);
 assert.match(costCorrectionMigration, /v_effective_changes := jsonb_set\(v_effective_changes, '\{sales\}'/);
 assert.match(costCorrectionMigration, /quantity-only edit never enters this path/);
+
+const originalFetch = globalThis.fetch;
+const originalUrl = process.env.SUPABASE_URL;
+const originalKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+let attemptedWrite = false;
+try {
+  process.env.SUPABASE_URL = "https://example.supabase.co";
+  process.env.SUPABASE_SERVICE_ROLE_KEY = "test-key";
+  globalThis.fetch = async (url) => {
+    const path = String(url);
+    if (path.includes("finance_state_sections?")) {
+      return Response.json(Object.entries({ ...base, sales: [paidSale] })
+        .map(([section, payload]) => ({ section, payload, revision: 1, updated_at: "2026-11-11T08:07:22Z" })));
+    }
+    if (path.includes("order_records?")) {
+      return Response.json([{ id: paidSale.invoice, payment_status: "Paid" }]);
+    }
+    attemptedWrite = true;
+    throw new Error(`Unexpected finance write: ${path}`);
+  };
+  await assert.rejects(
+    writeFinanceState({ ...base, sales: [] }, { changedSections: ["sales"], expectedSectionVersions: { sales: 1 }, syncCatalog: false }),
+    (error) => error.statusCode === 409 && /paid website sale/i.test(error.message)
+  );
+  assert.equal(attemptedWrite, false);
+} finally {
+  globalThis.fetch = originalFetch;
+  if (originalUrl === undefined) delete process.env.SUPABASE_URL;
+  else process.env.SUPABASE_URL = originalUrl;
+  if (originalKey === undefined) delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+  else process.env.SUPABASE_SERVICE_ROLE_KEY = originalKey;
+}
 
 console.log("Finance section storage contract passed.");
