@@ -927,6 +927,14 @@ export const adminStore = {
         mergeStore(seed({ publicOnly }), fileStore, { publicOnly }),
         browserStore
       );
+      if (publicOnly && serverCommerceVerified) {
+        try {
+          const initial = JSON.parse(document.getElementById("nixp-initial-commerce")?.textContent || "[]");
+          if (Array.isArray(initial)) activeStore = mergeVerifiedCommerce(activeStore, initial.map(normalizeVerifiedCommerce).filter((row) => row.id));
+        } catch {
+          // An absent or invalid bootstrap falls back to the normal refresh.
+        }
+      }
       if (publicOnly && initialCommercePromise) {
         initialCommercePromise.then((verified) => {
           if (activeStoreScope !== "public" || !activeStore) return;

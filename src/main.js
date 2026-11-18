@@ -1,5 +1,6 @@
 import { requestStatuses } from "./data/sampleData.js";
 import { imageCreditMarkup } from "./components/imageCredit.js";
+import { requiresApparelSize, sizePickerMarkup } from "./components/sizePicker.js";
 import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalArtistName, canonicalLabelName } from "./data/catalogIdentity.js";
 import { parsePublicProductPath, publicCategoryPath, publicProductPath, publicProductSlug } from "./data/publicUrls.js";
 import { productDisplayHeading } from "./data/productDisplay.js";
@@ -636,10 +637,8 @@ async function productDetailMarkup(product) {
   const isOfferOnly = product.open_to_offers === true;
   const galleryImages = productImages(product);
   const isSizedProduct = (product.category === "Apparel" || product.category === "Objects") && product.sizes?.length;
-  const selectedSize =
-    state.selectedSizes[product.id] ||
-    product.sizes?.find((size) => !isSizeSoldOut(size))?.label ||
-    "";
+  const rememberedSize = product.sizes?.find((size) => size.label === state.selectedSizes[product.id] && !isSizeSoldOut(size))?.label || "";
+  const selectedSize = rememberedSize || (isApparel ? "" : product.sizes?.find((size) => !isSizeSoldOut(size))?.label || "");
   const priceReady = Number.isInteger(Number(product.price)) && Number(product.price) > 0;
 
   return `
@@ -665,35 +664,12 @@ async function productDetailMarkup(product) {
         <p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>
         ${productReviewMarkup(product)}
         ${
-          isSizedProduct
-            ? `<div class="size-picker" aria-label="Available sizes">
-                ${product.sizes
-                  .map(
-                    (size) => `
-                      <button
-                        type="button"
-                        data-size-option="${product.id}"
-                        data-size-value="${size.label}"
-                        ${isSizeSoldOut(size) ? "disabled" : ""}
-                        class="${[
-                          isSizeSoldOut(size) ? "is-sold-out" : "",
-                          selectedSize === size.label ? "is-selected" : ""
-                        ]
-                          .filter(Boolean)
-                          .join(" ")}"
-                      >
-                        ${size.label}
-                      </button>
-                    `
-                  )
-                  .join("")}
-              </div>`
-            : ""
+          isSizedProduct ? sizePickerMarkup(product, selectedSize) : ""
         }
         <div class="detail-actions">
           ${isOfferOnly
             ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeAttr(product.id)}" ${isSoldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${isSoldOut ? "Sold out" : "Make an Offer"}</a>`
-            : `<button class="button button-dark" type="button" data-add-cart="${product.id}" ${isSoldOut || !priceReady ? "disabled" : ""}>${isSoldOut ? "Sold out" : !priceReady ? "Unavailable" : "Add to cart"}</button>
+            : `<button class="button button-dark" type="button" data-add-cart="${product.id}" ${isSoldOut || !priceReady || (requiresApparelSize(product) && !selectedSize) ? "disabled" : ""}>${isSoldOut ? "Sold out" : !priceReady ? "Unavailable" : requiresApparelSize(product) && !selectedSize ? (isSizedProduct ? "Select a size" : "Sizes unavailable") : "Add to cart"}</button>
                <a class="button button-outline" href="/request-item" data-link>Request similar</a>`}
         </div>
         <dl class="detail-list">
@@ -957,6 +933,9 @@ function termsOfUsePage() {
 
 async function cartPage() {
   const { rows, total } = await cartSummary();
+  if (rows.some((row) => row.missingSize)) {
+    return `<section class="section cart-view"><h1>Choose a size</h1>${rows.filter((row) => row.missingSize).map((row) => `<p>${escapeHtml(row.product.title)}: <a href="${escapeAttr(publicProductPath(row.product))}" data-link>Choose a size on the product page</a>, then remove the previous item from your cart.</p><button class="button" type="button" data-remove-cart="${escapeAttr(row.id)}">Remove previous item</button>`).join("")}</section>`;
+  }
   const checkoutPayload = checkoutEventPayload(rows);
   return `
     <section class="section cart-view">
@@ -1138,10 +1117,11 @@ async function cartSummary({ verifyPrices = true } = {}) {
     .map(([key, requestedQuantity]) => {
       const parsed = parseCartKey(key);
       const product = products.find((item) => item.id === parsed.productId);
-      const size = parsed.size || defaultAvailableSize(product);
+      const missingSize = Boolean(requiresApparelSize(product) && !parsed.size);
+      const size = missingSize ? "" : parsed.size || defaultAvailableSize(product);
       const nextKey = size ? cartKey(parsed.productId, size) : parsed.productId;
       const price = priceById.has(parsed.productId) ? priceById.get(parsed.productId) : product?.price;
-      const knownStock = productStock(product, size);
+      const knownStock = missingSize ? totalProductStock(product) : productStock(product, size);
       // The first shell render must not discard a locally stored cart while the
       // public commerce snapshot is still being verified in the background.
       const stock = verifyPrices ? knownStock : Math.max(requestedQuantity, knownStock);
@@ -1152,6 +1132,7 @@ async function cartSummary({ verifyPrices = true } = {}) {
             productId: parsed.productId,
             product: { ...product, price },
             size,
+            missingSize,
             stock,
             quantity,
             lineTotal: price * quantity
@@ -1222,6 +1203,7 @@ async function cartDrawer() {
                         <div>
                           <strong>${row.product.title}</strong>
                           <span>${row.product.format} / ${row.product.artist}${row.size ? ` / ${escapeHtml(row.size)}` : ""}</span>
+                          ${row.missingSize ? "<small>Size not selected</small>" : ""}
                           <small>${row.quantity} x ${money.format(row.product.price)}</small>
                           ${cartQuantityControl(row)}
                         </div>
@@ -2604,10 +2586,25 @@ function publicProductRoots(productId) {
 function setPublicProductSoldOutState(product) {
   const soldOut = totalProductStock(product) <= 0;
   const unavailable = product.open_to_offers !== true && !(Number.isInteger(Number(product.price)) && Number(product.price) > 0);
+  if (product.category === "Apparel" && product.sizes?.length && !product.sizes.some((size) => size.label === state.selectedSizes[product.id] && !isSizeSoldOut(size))) {
+    delete state.selectedSizes[product.id];
+  }
   const roots = publicProductRoots(String(product.id));
   if (!roots.length) return;
 
   for (const root of roots) {
+    if (root.classList.contains("product-detail") && product.category === "Apparel" && product.sizes?.length && !root.querySelector(".size-picker")) {
+      const actions = root.querySelector(".detail-actions");
+      if (actions) {
+        actions.insertAdjacentHTML("beforebegin", sizePickerMarkup(product));
+        root.querySelectorAll("[data-size-option]").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.selectedSizes[button.dataset.sizeOption] = button.dataset.sizeValue;
+            render();
+          });
+        });
+      }
+    }
     root.classList.toggle("is-sold-out", soldOut);
     root.querySelectorAll(".product-art").forEach((art) => {
       art.classList.toggle("is-sold-out", soldOut);
@@ -2624,8 +2621,9 @@ function setPublicProductSoldOutState(product) {
 
     root.querySelectorAll("[data-add-cart]").forEach((button) => {
       if (button.getAttribute("data-add-cart") !== String(product.id)) return;
-      button.disabled = soldOut || unavailable;
-      button.textContent = soldOut ? "Sold out" : unavailable ? "Unavailable" : "Add to cart";
+      const needsSize = root.classList.contains("product-detail") && requiresApparelSize(product) && !state.selectedSizes[product.id];
+      button.disabled = soldOut || unavailable || Boolean(needsSize);
+      button.textContent = soldOut ? "Sold out" : unavailable ? "Unavailable" : needsSize ? (product.sizes?.length ? "Select a size" : "Sizes unavailable") : "Add to cart";
     });
 
     root.querySelectorAll("[data-offer-product]").forEach((action) => {
@@ -2657,7 +2655,7 @@ function setPublicProductSoldOutState(product) {
       const selected = sizeButtons.find((button) => button.classList.contains("is-selected"));
       if (selected?.disabled) {
         selected.classList.remove("is-selected");
-        const available = sizeButtons.find((button) => !button.disabled);
+        const available = product.category === "Apparel" ? null : sizeButtons.find((button) => !button.disabled);
         if (available) {
           available.classList.add("is-selected");
           state.selectedSizes[product.id] = available.getAttribute("data-size-value");
@@ -3114,6 +3112,11 @@ function bindAddToCartButton(button) {
     button.dataset.cartPending = "true";
     try {
       const product = await catalogService.getProduct(button.dataset.addCart);
+      if (requiresApparelSize(product) && !button.closest(".product-detail")) {
+        navigateInternal(publicProductPath(product));
+        return;
+      }
+      if (requiresApparelSize(product) && !state.selectedSizes[product.id]) return;
       const selectedSize = product?.sizes?.length ? state.selectedSizes[product.id] || defaultAvailableSize(product) : "";
       const key = cartKey(button.dataset.addCart, selectedSize);
       const nextCart = commitCartAddition({

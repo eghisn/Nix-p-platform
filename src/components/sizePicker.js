@@ -1,0 +1,20 @@
+function escape(value) {
+  return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+}
+
+export function sizeIsSoldOut(size = {}) {
+  return Boolean(size.soldOut) || Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1)) <= 0;
+}
+
+export function requiresApparelSize(product = {}) {
+  return product?.category === "Apparel" && (Boolean(product.sizes?.length) || String(product.sku || "").trim().toUpperCase() === "NXP-2026-APP-0007");
+}
+
+export function sizePickerMarkup(product, selected = "") {
+  if (!Array.isArray(product.sizes) || !product.sizes.length) return "";
+  return `<div class="size-picker" aria-label="Available sizes">${product.sizes.map((size) => {
+    const disabled = sizeIsSoldOut(size);
+    const classes = [disabled ? "is-sold-out" : "", !disabled && selected === size.label ? "is-selected" : ""].filter(Boolean).join(" ");
+    return `<button type="button" data-size-option="${escape(product.id)}" data-size-value="${escape(size.label)}" ${disabled ? "disabled" : ""} class="${classes}">${escape(size.label)}</button>`;
+  }).join("")}</div>`;
+}

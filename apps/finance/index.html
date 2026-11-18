@@ -2005,7 +2005,7 @@
           <label>Available size quantities</label>
           <p class="tiny">Enter stock per size. When any size is set, the total must equal Qty.</p>
           <div class="fields">
-            ${apparelSizeLabels.map(label => field(label, `apparelSize:${label}`, "number", "0", false, "0", "1")).join("")}
+            ${apparelSizeLabels.map(label => field(label, `apparelSize:${label}`, "number", "", false, "0", "1")).join("")}
           </div>
         </div>
       `;
@@ -2737,8 +2737,9 @@
       const values = Array.isArray(value) ? value : [];
       return apparelSizeLabels.map(label => {
         const match = values.find(size => String(size?.label || "").trim() === label);
+        if (!match) return null;
         const quantity = Math.max(0, Math.floor(Number(match?.quantity ?? match?.qty ?? 0) || 0));
-        return quantity ? { label, quantity, soldOut: false } : null;
+        return { label, quantity, soldOut: quantity <= 0 };
       }).filter(Boolean);
     }
 
@@ -2749,10 +2750,10 @@
         if (!raw) return null;
         const quantity = Number(raw);
         if (!Number.isInteger(quantity) || quantity < 0) throw new Error("Apparel size quantities must be whole numbers.");
-        return quantity ? { label, quantity, soldOut: false } : null;
+        return { label, quantity, soldOut: quantity <= 0 };
       }).filter(Boolean);
       const total = sizes.reduce((sum, size) => sum + size.quantity, 0);
-      if (total && total !== qty) throw new Error("Apparel size quantities must equal Qty before saving.");
+      if (sizes.length && total !== qty) throw new Error("Apparel size quantities must equal Qty before saving.");
       return sizes;
     }
 
@@ -2829,7 +2830,7 @@
         ...item,
         qty,
         itemCondition: normalizeItemCondition(item.itemCondition, item.item),
-        sizes: apparelItemTypes.includes(vinylItemSelection(item.item).item) ? normalizeApparelSizes(item.sizes) : [],
+        sizes: apparelItemTypes.includes(vinylItemSelection(item.item).item) || item.inventoryFamily === "Apparel" ? normalizeApparelSizes(item.sizes) : [],
         vinylSize: normalizeVinylSize(item.vinylSize),
         costBasis,
         sellingPrice: numeric(item.sellingPrice),
@@ -2965,7 +2966,7 @@
 
     function setApparelSizeFormValues(form, item) {
       const sizes = new Map(normalizeApparelSizes(item.sizes).map(size => [size.label, size.quantity]));
-      apparelSizeLabels.forEach(label => setFormValue(form, `apparelSize:${label}`, sizes.get(label) || 0));
+      apparelSizeLabels.forEach(label => setFormValue(form, `apparelSize:${label}`, sizes.has(label) ? sizes.get(label) : ""));
     }
 
     function resetInventoryEditMode() {

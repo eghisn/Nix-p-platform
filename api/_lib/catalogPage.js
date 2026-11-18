@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { imageCreditMarkup } from "../../src/components/imageCredit.js";
+import { requiresApparelSize, sizePickerMarkup } from "../../src/components/sizePicker.js";
 import { homeAppMarkup } from "../../src/components/homePage.js";
 import { join } from "node:path";
 import { productGrid, shell } from "../../src/components/layout.js";
@@ -231,6 +232,9 @@ async function productDocument(product, path, store, commerceVerified = false) {
     : `${product.artist} - ${product.title}. ${format}${product.condition ? ` / ${product.condition}` : ""}. ${price}.`;
   const image = absoluteUrl(product.image || product.images?.[0]);
   const canonicalUrl = `${ORIGIN}${path}`;
+  const initialCommerce = commerceVerified
+    ? `<script type="application/json" id="nixp-initial-commerce">${JSON.stringify([{ id: product.id, price: product.price, qty: product.qty, sizes: product.sizes }]).replaceAll("<", "\\u003c")}</script>`
+    : "";
 
   return pageDocument({
     title,
@@ -238,7 +242,7 @@ async function productDocument(product, path, store, commerceVerified = false) {
     canonicalUrl,
     image,
     type: "product",
-    appMarkup: shell(productMarkup(product, store), path, 0),
+    appMarkup: shell(productMarkup(product, store) + initialCommerce, path, 0),
     commerceVerified
   });
 }
@@ -308,7 +312,9 @@ export function productMarkup(product, store = {}) {
           : `<span>${escapeHtml(artist)}</span>`;
       }).join("")}</div></div>`
     : "";
-  return `<section class="product-detail" data-product-id="${escapeHtml(product.id)}"><div class="detail-gallery">${images.map((image, index) => `<figure class="product-art product-art-large ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}${imageCreditMarkup(product, image)}</figure>`).join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(displayHeading.eyebrow)}</p><h1>${escapeHtml(displayHeading.heading)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeHtml(product.id)}" ${soldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${soldOut ? "Sold out" : "Make an Offer"}</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut ? "disabled" : ""}>${soldOut ? "Sold out" : "Add to cart"}</button>`}</div><dl class="detail-list">${details}</dl>${relatedMarkup}</aside></section>`;
+  const needsSize = requiresApparelSize(product);
+  const picker = product.category === "Apparel" ? sizePickerMarkup(product) : "";
+  return `<section class="product-detail" data-product-id="${escapeHtml(product.id)}"><div class="detail-gallery">${images.map((image, index) => `<figure class="product-art product-art-large ${soldOut ? "is-sold-out" : ""}"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.title)}${images.length > 1 ? ` image ${index + 1}` : ""}" />${soldOut ? '<span class="sold-out-label">Sold out</span>' : ""}${imageCreditMarkup(product, image)}</figure>`).join("")}</div><aside class="detail-copy"><a class="back-link" href="/${publicCategoryPath(product)}" data-link>${escapeHtml(product.category)}</a><p class="eyebrow">${escapeHtml(displayHeading.eyebrow)}</p><h1>${escapeHtml(displayHeading.heading)}</h1><div class="detail-price">${isOfferOnly ? "Private Collection / Offer Only" : escapeHtml(formatPrice(product.price))}</div><p class="product-description">${escapeHtml(product.description || "").replaceAll("\n", "<br />")}</p>${review}${picker}<div class="detail-actions">${isOfferOnly ? `<a class="button button-dark" href="/make-an-offer?product=${encodeURIComponent(product.id)}" data-link data-offer-product="${escapeHtml(product.id)}" ${soldOut ? "aria-disabled=\"true\" tabindex=\"-1\"" : ""}>${soldOut ? "Sold out" : "Make an Offer"}</a>` : `<button class="button button-dark" type="button" data-add-cart="${escapeHtml(product.id)}" ${soldOut || needsSize ? "disabled" : ""}>${soldOut ? "Sold out" : needsSize ? (picker ? "Select a size" : "Sizes unavailable") : "Add to cart"}</button>`}</div><dl class="detail-list">${details}</dl>${relatedMarkup}</aside></section>`;
 }
 
 function productQuantity(product = {}) {

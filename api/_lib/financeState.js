@@ -90,8 +90,8 @@ function normalizeApparelSizes(sizes = []) {
     quantities.set(label, quantity);
   }
   return [...APPAREL_SIZE_LABELS]
-    .map((label) => ({ label, quantity: quantities.get(label) || 0, soldOut: (quantities.get(label) || 0) <= 0 }))
-    .filter((size) => size.quantity > 0);
+    .filter((label) => quantities.has(label))
+    .map((label) => ({ label, quantity: quantities.get(label) || 0, soldOut: (quantities.get(label) || 0) <= 0 }));
 }
 
 function financeApparelSizesForStock(stock = {}, category = "", fallback = []) {
