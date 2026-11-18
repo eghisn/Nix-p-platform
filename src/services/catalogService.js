@@ -3,6 +3,7 @@ import { productArtistCreditNames, canonicalArtistName, canonicalLabelName, arti
 import { publicCategoryPath, publicProductSlug } from "../data/publicUrls.js";
 import { labelEntries, productMatchesLabel } from "../data/labelCatalog.js";
 import { labelLogoAvailable } from "../data/labelLogoManifest.js";
+import { apparelCollection } from "../data/apparelCategory.js";
 
 // Replace this module with Supabase queries when the project receives credentials.
 const hiddenPublicArtists = new Set(["motorith", "nixp publishing", "publishing", "sample artist", "tida lek"]);
@@ -92,10 +93,11 @@ export const catalogService = {
   async listProductsByLabel(slug) {
     return adminStore.listProducts().filter((product) => productMatchesLabel(product, slug));
   },
-  async listApparel(type = "All Apparel") {
+  async listApparel(type = "All Apparel", collection = "") {
     return adminStore.listProducts().filter((product) => {
       const isApparel = product.category === "Apparel";
-      return type === "All Apparel" ? isApparel : isApparel && normalizeApparelType(product.apparelType) === type;
+      return isApparel && (type === "All Apparel" || normalizeApparelType(product.apparelType) === type)
+        && (!collection || apparelCollection(product) === collection);
     });
   },
   async listPublishing(type = "All") {

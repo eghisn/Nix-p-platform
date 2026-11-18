@@ -60,6 +60,7 @@ const state = {
   recordsSort: "artist-asc",
   homeCollectionFilter: "recent-releases",
   apparelFilter: "All Apparel",
+  apparelCollection: "",
   publishingFilter: "All",
   cart: readCart(),
   requests: [],
@@ -608,8 +609,8 @@ function categoryPage(category, title, text) {
 
 async function apparelPage(filter = state.apparelFilter) {
   const activeFilter = filter || "All Apparel";
-  const apparel = await catalogService.listApparel(activeFilter);
-  return apparelPageMarkup(apparel, activeFilter);
+  const apparel = await catalogService.listApparel(activeFilter, state.apparelCollection);
+  return apparelPageMarkup(apparel, activeFilter, state.apparelCollection);
 }
 
 async function productDetailPage(path) {
@@ -3358,6 +3359,14 @@ function bindEvents() {
     button.addEventListener("click", () => {
       state.apparelFilter = button.dataset.apparelFilter;
       render();
+    });
+  });
+
+  document.querySelectorAll("[data-apparel-collection]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const collection = button.dataset.apparelCollection;
+      state.apparelCollection = state.apparelCollection === collection ? "" : collection;
+      render({ preserveScroll: true });
     });
   });
 

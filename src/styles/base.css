@@ -1611,6 +1611,29 @@ body:has(.about-page, .contact-page) #app > main {
   margin-bottom: clamp(28px, 4vw, 52px);
 }
 
+.apparel-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(28px, 4vw, 52px);
+}
+
+.apparel-toolbar-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.apparel-types {
+  justify-content: flex-end;
+}
+
+@media (max-width: 720px) {
+  .apparel-toolbar { flex-wrap: wrap; gap: 8px; }
+  .apparel-toolbar-group { width: 100%; }
+}
+
 .chip {
   min-height: 40px;
   border: 0;
