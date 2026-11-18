@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { productCard } from "../src/components/layout.js";
-import { apparelCardType, productDisplayHeading } from "../src/data/productDisplay.js";
+import { apparelCardHeading, apparelCardType, productDisplayHeading } from "../src/data/productDisplay.js";
 import { productMarkup } from "../api/_lib/catalogPage.js";
 
 const apparel = {
@@ -33,6 +33,20 @@ assert.equal(apparelCardType({ title: "Mesh Black Longsleeve" }), "Longsleeve");
 assert.equal(apparelCardType({ title: "Mood Valiant", description: "Cotton T-shirt" }), "T-shirt");
 assert.equal(apparelCardType({ title: "Mood Valiant", sku: "NXP-2026-APP-0011", description: "Cotton T-shirt" }), "Mood Valiant");
 assert.equal(apparelCardType({ title: "Unknown item" }), "Unknown item");
+for (const [sku, eyebrow, heading] of [
+  ["NXP-2023-APP-0001", "Crewneck Sweatshirt", "Motorith"],
+  ["NXP-2026-APP-0002", "Knitsweater", "Flesh"],
+  ["NXP-2026-APP-0003", "T-shirt", "Preform"],
+  ["NXP-2026-APP-0004", "Longsleeve", "Mesh"],
+  ["NXP-2026-APP-0009", "Cap", "Lattice"],
+  ["NXP-2026-APP-0010", "Nylon Cap", "Osculum"]
+]) {
+  const item = { ...apparel, sku };
+  assert.deepEqual(apparelCardHeading(item), { eyebrow, heading });
+  const card = productCard(item);
+  assert.ok(card.includes(`<p class="product-artist">${eyebrow}</p>`));
+  assert.ok(card.includes(`>${heading}</a></h2>`));
+}
 
 const record = { ...apparel, id: "record-test", category: "Records", artist: "Bauhaus", title: "Kick in the Eye" };
 assert.deepEqual(productDisplayHeading(record), { eyebrow: "Bauhaus", heading: "Kick in the Eye" });

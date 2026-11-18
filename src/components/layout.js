@@ -1,7 +1,7 @@
 import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalLabelName } from "../data/catalogIdentity.js";
 import { publicProductPath } from "../data/publicUrls.js";
 import { productCardImageAttributes } from "../data/productThumbnails.js";
-import { apparelCardType, productDisplayHeading } from "../data/productDisplay.js";
+import { apparelCardHeading, productDisplayHeading } from "../data/productDisplay.js";
 import { recordDisplayFormat } from "../data/vinylSize.js";
 
 const leftPublicLinks = [
@@ -169,7 +169,7 @@ export function productGrid(products, options = {}) {
 }
 
 export function productCard(product, { hrefFor, availableArtistNames, deferCard = false } = {}) {
-  const displayHeading = productDisplayHeading(product);
+  const displayHeading = product.category === "Apparel" && product.artist ? apparelCardHeading(product) : productDisplayHeading(product);
   const meta = product.condition ? `${recordDisplayFormat(product)}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
   const href = hrefFor ? hrefFor(product) : publicProductPath(product);
@@ -182,7 +182,7 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
       ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${canonicalLabelName(product.label)}</a>`
       : "";
   const artistMarkup = product.category === "Apparel" && product.artist
-    ? escapeHtml(apparelCardType(product))
+    ? escapeHtml(displayHeading.eyebrow)
     : productArtistMarkup(product, availableArtistNames);
   const imageMarkup = productCardImageMarkup(product);
   const deferredDetails = `${recordArtistTags(product, availableArtistNames)}

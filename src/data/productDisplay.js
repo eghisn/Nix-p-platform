@@ -23,3 +23,17 @@ export function apparelCardType(product = {}) {
   }
   return String(product.title || "").trim();
 }
+
+const apparelCardLabels = {
+  "NXP-2023-APP-0001": { eyebrow: "Crewneck Sweatshirt", heading: "Motorith" },
+  "NXP-2026-APP-0002": { eyebrow: "Knitsweater", heading: "Flesh" },
+  "NXP-2026-APP-0003": { eyebrow: "T-shirt", heading: "Preform" },
+  "NXP-2026-APP-0004": { eyebrow: "Longsleeve", heading: "Mesh" },
+  "NXP-2026-APP-0009": { eyebrow: "Cap", heading: "Lattice" },
+  "NXP-2026-APP-0010": { eyebrow: "Nylon Cap", heading: "Osculum" }
+};
+
+export function apparelCardHeading(product = {}) {
+  const sku = String(product.sku || "").trim().toUpperCase();
+  return apparelCardLabels[sku] || { eyebrow: apparelCardType(product), heading: productDisplayHeading(product).heading };
+}
