@@ -7,7 +7,7 @@ export function catalogGridPageMarkup(products, options = {}) {
 export function apparelPageMarkup(apparel, activeFilter = "All Apparel") {
   const filters = ["All Apparel", "Tops", "Bottoms", "Accessories"];
   return `
-    <section class="section shop-section">
+    <section class="section shop-section apparel-shop-section">
       <div class="toolbar" role="group" aria-label="Apparel filters">
         ${filters
           .map(

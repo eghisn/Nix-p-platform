@@ -1331,6 +1331,31 @@ p {
   transform: rotate(var(--product-rotate)) scale(calc(var(--product-scale) * 1.015));
 }
 
+.apparel-shop-section .product-art:has(img[src*="nxp-2026-app-0011-1787468874103"]),
+.apparel-shop-section .product-art:has(img[src="/public/uploads/products/nxp-2026-app-0010-osculum-cap-1.jpg"]),
+.apparel-shop-section .product-art:has(img[src="/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg"]),
+.apparel-shop-section .product-art:has(img[src*="nxp-2023-app-0001-1788407154777-motorith-crewneck-listing.png"]),
+.apparel-shop-section .product-art:has(img[src="/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08833j-jpg-1783936858741.jpg"]),
+.apparel-shop-section .product-art:has(img[src="/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg"]) {
+  background: #dedede;
+}
+
+.apparel-shop-section .product-art img[src*="nxp-2026-app-0011-1787468874103"],
+.apparel-shop-section .product-art img[src="/public/uploads/products/nxp-2026-app-0010-osculum-cap-1.jpg"],
+.apparel-shop-section .product-art img[src="/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg"],
+.apparel-shop-section .product-art img[src*="nxp-2023-app-0001-1788407154777-motorith-crewneck-listing.png"],
+.apparel-shop-section .product-art img[src="/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08833j-jpg-1783936858741.jpg"],
+.apparel-shop-section .product-art img[src="/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg"] {
+  mix-blend-mode: darken;
+}
+
+.apparel-shop-section .product-art img[src*="nxp-2026-app-0011-1787468874103"] { --product-scale: 0.84; }
+.apparel-shop-section .product-art img[src="/public/uploads/products/nxp-2026-app-0010-osculum-cap-1.jpg"] { --product-scale: 0.9; }
+.apparel-shop-section .product-art img[src="/public/uploads/products/nxp-2026-app-0002-flesh-knitsweater-dsc08780j-jpg-1783845639835.jpg"] { --product-scale: 0.77; }
+.apparel-shop-section .product-art img[src*="nxp-2023-app-0001-1788407154777-motorith-crewneck-listing.png"] { --product-scale: 0.86; }
+.apparel-shop-section .product-art img[src="/public/uploads/products/nxp-2026-app-0003-preform-tee-dsc08833j-jpg-1783936858741.jpg"] { --product-scale: 0.78; }
+.apparel-shop-section .product-art img[src="/public/uploads/products/nxp-2026-app-0004-mesh-black-longsleeve-dsc08837j-jpg-1783936997921.jpg"] { --product-scale: 0.78; }
+
 .record-label-link {
   display: inline-block;
   color: inherit;
