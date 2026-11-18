@@ -6,7 +6,7 @@ export function sizeIsSoldOut(size = {}) {
   return Boolean(size.soldOut) || Number(size.quantity ?? size.qty ?? (size.soldOut ? 0 : 1)) <= 0;
 }
 
-const SIZE_REQUIRED_SKUS = new Set(["NXP-2023-APP-0001", "NXP-2026-APP-0003", "NXP-2026-APP-0004", "NXP-2026-APP-0007"]);
+const SIZE_REQUIRED_SKUS = new Set(["NXP-2023-APP-0001", "NXP-2026-APP-0003", "NXP-2026-APP-0004", "NXP-2026-APP-0006", "NXP-2026-APP-0007"]);
 
 export function requiresApparelSize(product = {}) {
   return product?.category === "Apparel" && (Boolean(product.sizes?.length) || SIZE_REQUIRED_SKUS.has(String(product.sku || "").trim().toUpperCase()));

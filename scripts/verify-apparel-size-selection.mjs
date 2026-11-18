@@ -23,6 +23,7 @@ assert.equal(requiresApparelSize({ sku: "NXP-2026-APP-0007", category: "Apparel"
 assert.equal(requiresApparelSize({ sku: "NXP-2026-APP-0003", category: "Apparel", sizes: [] }), true);
 assert.equal(requiresApparelSize({ sku: "NXP-2026-APP-0004", category: "Apparel", sizes: [] }), true);
 assert.equal(requiresApparelSize({ sku: "NXP-2023-APP-0001", category: "Apparel", sizes: [] }), true);
+assert.equal(requiresApparelSize({ sku: "NXP-2026-APP-0006", category: "Apparel", sizes: [] }), true);
 const row = productRowFromFinanceStock({ category: "Apparel", apparel_type: "Tops", qty: 11, raw: {} }, { item: "T-shirt", sizes }, 11);
 assert.deepEqual(row.sizes, sizes);
 const main = await readFile("src/main.js", "utf8");
