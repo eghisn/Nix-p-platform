@@ -20,6 +20,7 @@ assert.match(html, /data-size-value="M"\s+disabled/);
 assert.match(html, /data-add-cart="size-test"\s+disabled>Select a size/);
 assert.equal(requiresApparelSize(null), false);
 assert.equal(requiresApparelSize({ sku: "NXP-2026-APP-0007", category: "Apparel", sizes: [] }), true);
+assert.equal(requiresApparelSize({ sku: "NXP-2026-APP-0003", category: "Apparel", sizes: [] }), true);
 const row = productRowFromFinanceStock({ category: "Apparel", apparel_type: "Tops", qty: 11, raw: {} }, { item: "T-shirt", sizes }, 11);
 assert.deepEqual(row.sizes, sizes);
 const main = await readFile("src/main.js", "utf8");
