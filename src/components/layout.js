@@ -1,7 +1,7 @@
 import { artistCreditNames, productArtistCreditNames, artistIdentityKey, canonicalLabelName } from "../data/catalogIdentity.js";
 import { publicProductPath } from "../data/publicUrls.js";
 import { productCardImageAttributes } from "../data/productThumbnails.js";
-import { productDisplayHeading } from "../data/productDisplay.js";
+import { apparelCardType, productDisplayHeading } from "../data/productDisplay.js";
 import { recordDisplayFormat } from "../data/vinylSize.js";
 
 const leftPublicLinks = [
@@ -182,7 +182,7 @@ export function productCard(product, { hrefFor, availableArtistNames, deferCard 
       ? `<a class="record-label-link" href="/records?label=${encodeURIComponent(canonicalLabelName(product.label))}" data-link>${canonicalLabelName(product.label)}</a>`
       : "";
   const artistMarkup = product.category === "Apparel" && product.artist
-    ? escapeHtml(displayHeading.eyebrow)
+    ? escapeHtml(apparelCardType(product))
     : productArtistMarkup(product, availableArtistNames);
   const imageMarkup = productCardImageMarkup(product);
   const deferredDetails = `${recordArtistTags(product, availableArtistNames)}

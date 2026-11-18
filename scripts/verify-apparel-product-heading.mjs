@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { productCard } from "../src/components/layout.js";
-import { productDisplayHeading } from "../src/data/productDisplay.js";
+import { apparelCardType, productDisplayHeading } from "../src/data/productDisplay.js";
 import { productMarkup } from "../api/_lib/catalogPage.js";
 
 const apparel = {
@@ -20,13 +20,19 @@ assert.deepEqual(productDisplayHeading(apparel), {
 });
 
 const apparelCard = productCard(apparel);
-assert.match(apparelCard, /<p class="product-artist">Crewneck Sweatshirt<\/p>/);
+assert.match(apparelCard, /<p class="product-artist">Sweatshirt<\/p>/);
 assert.match(apparelCard, /<h2><a[^>]+>Motorith<\/a><\/h2>/);
 assert.match(apparelCard, /Rp\s*470\.000/);
 assert.match(apparelCard, /data-add-cart="motorith-crewneck-test"[^>]*>Add to cart<\/button>/);
 
 const apparelDetail = productMarkup(apparel);
 assert.match(apparelDetail, /<p class="eyebrow">Crewneck Sweatshirt<\/p><h1>Motorith<\/h1>/);
+assert.equal(apparelCardType({ title: "Paranoiac Odyssey T-shirt" }), "T-shirt");
+assert.equal(apparelCardType({ title: "Cold Metal Breathes Too T-shirt" }), "T-shirt");
+assert.equal(apparelCardType({ title: "Mesh Black Longsleeve" }), "Longsleeve");
+assert.equal(apparelCardType({ title: "Mood Valiant", description: "Cotton T-shirt" }), "T-shirt");
+assert.equal(apparelCardType({ title: "Mood Valiant", sku: "NXP-2026-APP-0011", description: "Cotton T-shirt" }), "Mood Valiant");
+assert.equal(apparelCardType({ title: "Unknown item" }), "Unknown item");
 
 const record = { ...apparel, id: "record-test", category: "Records", artist: "Bauhaus", title: "Kick in the Eye" };
 assert.deepEqual(productDisplayHeading(record), { eyebrow: "Bauhaus", heading: "Kick in the Eye" });
