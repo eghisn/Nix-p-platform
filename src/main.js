@@ -933,10 +933,10 @@ function termsOfUsePage() {
 
 async function cartPage() {
   const { rows, total } = await cartSummary();
+  const checkoutPayload = checkoutEventPayload(rows);
   if (rows.some((row) => row.missingSize)) {
     return `<section class="section cart-view"><h1>Choose a size</h1>${rows.filter((row) => row.missingSize).map((row) => `<p>${escapeHtml(row.product.title)}: <a href="${escapeAttr(publicProductPath(row.product))}" data-link>Choose a size on the product page</a>, then remove the previous item from your cart.</p><button class="button" type="button" data-remove-cart="${escapeAttr(row.id)}">Remove previous item</button>`).join("")}</section>`;
   }
-  const checkoutPayload = checkoutEventPayload(rows);
   return `
     <section class="section cart-view">
       ${
