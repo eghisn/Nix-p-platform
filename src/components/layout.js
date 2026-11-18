@@ -170,7 +170,10 @@ export function productGrid(products, options = {}) {
 
 export function productCard(product, { hrefFor, availableArtistNames, deferCard = false } = {}) {
   const displayHeading = product.category === "Apparel" && product.artist ? apparelCardHeading(product) : productDisplayHeading(product);
-  const meta = product.condition ? `${recordDisplayFormat(product)}/${product.condition}` : product.year;
+  const cardFormat = product.category === "Apparel" && String(product.sku || "").trim().toUpperCase() === "NXP-2023-APP-0001"
+    ? "Crewneck Sweatshirt"
+    : recordDisplayFormat(product);
+  const meta = product.condition ? `${cardFormat}/${product.condition}` : product.year;
   const artClass = product.category === "Apparel" ? "product-art product-art-apparel" : "product-art";
   const href = hrefFor ? hrefFor(product) : publicProductPath(product);
   const soldOut = productQuantity(product) <= 0;

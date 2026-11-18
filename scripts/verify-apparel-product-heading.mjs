@@ -46,6 +46,7 @@ for (const [sku, eyebrow, heading] of [
   const card = productCard(item);
   assert.ok(card.includes(`<p class="product-artist">${eyebrow}</p>`));
   assert.ok(card.includes(`>${heading}</a></h2>`));
+  if (sku === "NXP-2023-APP-0001") assert.ok(card.includes("Crewneck Sweatshirt/New With Tags"));
 }
 
 const record = { ...apparel, id: "record-test", category: "Records", artist: "Bauhaus", title: "Kick in the Eye" };
