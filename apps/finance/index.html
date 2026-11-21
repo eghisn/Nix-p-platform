@@ -1113,6 +1113,7 @@
                       <th data-sort-section="sales" data-sort-key="salesChannel">Channel</th>
                       <th data-sort-section="sales" data-sort-key="orderClass">Record</th>
                       <th data-sort-section="sales" data-sort-key="sku">SKU</th>
+                      <th data-sort-section="sales" data-sort-key="size">Size</th>
                       <th class="money" data-sort-section="sales" data-sort-key="qty">Qty</th>
                       <th class="money" data-sort-section="sales" data-sort-key="revenue">Revenue</th>
                       <th class="money" data-sort-section="sales" data-sort-key="discount">Discount %</th>
@@ -1478,6 +1479,7 @@
         salesChannel: { type: "text", value: item => item.salesChannel },
         orderClass: { type: "text", value: item => item.orderClass },
         sku: { type: "text", value: item => item.sku },
+        size: { type: "text", value: item => saleRecordedSize(item) },
         qty: { type: "number", value: item => item.qty },
         revenue: { type: "number", value: item => item.revenue },
         discount: { type: "number", value: item => item.discount },
@@ -1821,6 +1823,7 @@
           ${selectField("Sales channel", "salesChannel", ["Website", "Instagram", "WhatsApp", "Marketplace", "Offline", "Other"], true, "Other")}
           ${selectField("Record class", "orderClass", ["Customer", "Test"], true, "Customer")}
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
+          ${selectField("Size sold", "size", ["", "S", "M", "L", "XL", "XXL", "One Size"], false, "", 'data-sales-size-field hidden')}
           ${field("Qty", "qty", "number", "1", true, "", "0.01")}
           ${field("Revenue", "revenue", "number", "", true, "0", "1")}
           ${field("Discount %", "discount", "number", "0", false, "0", "0.01")}
@@ -2232,7 +2235,11 @@
         const editId = data.editId;
         if (editId) {
           const index = state.sales.findIndex(item => item.id === editId);
-          if (index >= 0) state.sales[index] = { ...sale, id: editId };
+          if (index >= 0) {
+            const previous = state.sales[index];
+            const clearOldSize = previous.sku !== sale.sku && !isSingleApparelSaleSku(sale.sku);
+            state.sales[index] = { ...previous, ...sale, ...(clearOldSize ? { size: "" } : {}), id: editId };
+          }
         } else {
           state.sales.push({ ...sale, id: uid() });
         }
@@ -2241,6 +2248,8 @@
         resetTableSort("sales");
         commitState();
       });
+
+      el.salesForm.querySelector('[name="sku"]').addEventListener("input", syncSalesSizeField);
 
       el.expenseForm.addEventListener("submit", event => {
         event.preventDefault();
@@ -2454,6 +2463,7 @@
       if (dateInput) dateInput.value = todayISO;
       if (qtyInput) qtyInput.value = "1";
       if (form === el.stockForm) syncItemTypeFields(form, "item");
+      if (form === el.salesForm) syncSalesSizeField();
       if (form === el.generalForm) syncGeneralInvestorFields();
     }
 
@@ -2581,6 +2591,7 @@
         salesChannel: saleChannel({ salesChannel: data.salesChannel }),
         orderClass: saleOrderClass({ orderClass: data.orderClass }),
         sku: data.sku.trim(),
+        ...(isSingleApparelSaleSku(data.sku) ? { size: saleRecordedSize({ sku: data.sku }) || String(data.size || "").trim() } : {}),
         qty: numeric(data.qty),
         revenue,
         discount,
@@ -2589,6 +2600,34 @@
         grossProfit: revenue - (revenue * discount / 100) - cogs,
         paymentMethod: data.paymentMethod
       };
+    }
+
+    function isSingleApparelSaleSku(value) {
+      return /^NXP-\d{4}-APP-\d+(?:\/(?:S|M|L|XL|XXL|One Size))?$/i.test(String(value || "").trim());
+    }
+
+    function saleRecordedSize(item = {}) {
+      const sku = String(item.sku || "").trim();
+      const match = sku.match(/^NXP-\d{4}-APP-\d+\/(S|M|L|XL|XXL|One Size)$/i);
+      if (match) return match[1].toUpperCase() === "ONE SIZE" ? "One Size" : match[1].toUpperCase();
+      if (sku.includes(",")) {
+        const sizes = sku.split(",").map((part) => part.trim().match(/^(NXP-\d{4}-APP-\d+)\/(S|M|L|XL|XXL|One Size)$/i)).filter(Boolean);
+        if (sizes.length) return sizes.map((entry) => `${entry[1]}: ${entry[2].toUpperCase() === "ONE SIZE" ? "One Size" : entry[2].toUpperCase()}`).join(", ");
+      }
+      return String(item.size || "").trim();
+    }
+
+    function syncSalesSizeField() {
+      const field = el.salesForm.querySelector("[data-sales-size-field]");
+      const select = el.salesForm.querySelector('[name="size"]');
+      const sku = el.salesForm.querySelector('[name="sku"]')?.value;
+      const show = isSingleApparelSaleSku(sku);
+      const encodedSize = show ? saleRecordedSize({ sku }) : "";
+      field.hidden = !show;
+      select.disabled = !show || Boolean(encodedSize);
+      if (encodedSize) select.value = encodedSize;
+      else if (!show || field.dataset.encodedSize) select.value = "";
+      field.dataset.encodedSize = encodedSize;
     }
 
     function expensePayload(data) {
@@ -2860,6 +2899,8 @@
       setFormValue(el.salesForm, "salesChannel", saleChannel(item));
       setFormValue(el.salesForm, "orderClass", saleOrderClass(item));
       setFormValue(el.salesForm, "sku", item.sku);
+      syncSalesSizeField();
+      setFormValue(el.salesForm, "size", saleRecordedSize(item));
       setFormValue(el.salesForm, "qty", item.qty);
       setFormValue(el.salesForm, "revenue", item.revenue);
       setFormValue(el.salesForm, "discount", item.discount || 0);
@@ -3203,6 +3244,7 @@
         item.salesChannel,
         item.orderClass,
         item.sku,
+        saleRecordedSize(item),
         item.qty,
         item.revenue,
         item.discountContext,
@@ -3221,6 +3263,7 @@
           <td>${escapeHTML(saleChannel(item))}</td>
           <td>${escapeHTML(saleOrderClass(item))}</td>
           <td>${escapeHTML(item.sku)}</td>
+          <td>${escapeHTML(saleRecordedSize(item) || "-")}</td>
           <td class="money">${item.qty}</td>
           <td class="money">${rupiah(item.revenue)}</td>
           <td class="money">${formatPercent(item.discount)}</td>
@@ -3230,7 +3273,7 @@
           <td>${escapeHTML(item.paymentMethod)}</td>
           <td class="row-actions">${editButton("sales", item.id)} ${deleteButton("sales", item.id)}</td>
         </tr>
-      `).join("") : emptyRow(14, "No sales entries yet.");
+      `).join("") : emptyRow(15, "No sales entries yet.");
       const totals = rows.filter(item => !isTestSale(item)).reduce((total, item) => ({
         qty: total.qty + numeric(item.qty),
         revenue: total.revenue + numeric(item.revenue),
@@ -3239,7 +3282,7 @@
       }), { qty: 0, revenue: 0, cogs: 0, grossProfit: 0 });
       el.salesTotals.innerHTML = `
         <tr>
-          <td colspan="6">Customer total</td>
+          <td colspan="7">Customer total</td>
           <td class="money">${totals.qty}</td>
           <td class="money">${rupiah(totals.revenue)}</td>
           <td></td>
@@ -4032,7 +4075,7 @@
       const rows = [
         ["Section", "Date/Month", "Invoice/Supplier/Vendor", "Type", "Category/Source", "Item", "Item Condition", "Artist Name", "Title", "Qty", "Income", "Outcome", "Discount (%)", "Discount Context", "Cashflow Impact", "Cost Basis", "Selling Price", "Sold Price", "Gross Profit", "Margin (%)", "Fixed/Variable", "Payment Method", "Money Sent To", "Notes"],
         ...[...state.general].sort(byDateAsc).map(item => ["General", item.date, item.invoice, item.type, item.category, item.sku, "", "", "", item.qty, item.type === "Income" ? item.amount : "", item.type === "Outcome" ? item.amount : "", "", "", "", "", "", "", "", "", "", item.paymentMethod, item.moneySentTo || "", item.notes]),
-        ...[...state.sales].sort(byDateAsc).map(item => ["Sales", item.date, item.invoice, "Income", item.category, item.sku, "", "", "", item.qty, item.revenue, item.cogs, item.discount, item.discountContext, "", "", "", "", item.grossProfit, "", "", item.paymentMethod, "", `Channel: ${saleChannel(item)} / Record: ${saleOrderClass(item)} / Gross profit: ${item.grossProfit}`]),
+        ...[...state.sales].sort(byDateAsc).map(item => ["Sales", item.date, item.invoice, "Income", item.category, item.sku, "", "", "", item.qty, item.revenue, item.cogs, item.discount, item.discountContext, "", "", "", "", item.grossProfit, "", "", item.paymentMethod, "", `Channel: ${saleChannel(item)} / Record: ${saleOrderClass(item)}${saleRecordedSize(item) ? ` / Size: ${saleRecordedSize(item)}` : ""} / Gross profit: ${item.grossProfit}`]),
         ...[...state.expenses].sort(byDateAsc).map(item => ["Expenses", item.date, item.vendor, "Outcome", item.category, item.expense, "", "", "", "", "", item.amount, "", "", "", "", "", "", "", "", item.costType, item.paymentMethod, "", item.notes]),
         ...[...state.inventory].sort(byDateAsc).map(item => ["Inventory Purchase", item.date, item.supplier, "Outcome", item.source || "Business Purchase", item.itemType || "Vinyl", item.itemCondition || "New-Sealed", item.artistName || "", "SKU: " + item.sku, item.qty, "", item.totalCost, "", "", inventoryCashflow(item), "", "", "", "", "", "", item.paymentMethod, "", "Unit cost: " + item.unitCost]),
         ...[...state.inventoryStock].sort((a, b) => String(a.acquisitionMonth).localeCompare(String(b.acquisitionMonth))).map(item => ["Inventory Stock", item.acquisitionMonth, "", "", item.source, item.item, item.itemCondition || "New-Sealed", item.artist, item.title, item.qty, "", "", "", "", "", item.costBasis, item.sellingPrice, item.soldPrice, item.grossProfit, formatMargin(item.margin), "", "", "", "SKU: " + item.sku]),

@@ -1,0 +1,26 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import vm from "node:vm";
+
+const source = await readFile("apps/finance/index.html", "utf8");
+const start = source.indexOf("    function isSingleApparelSaleSku(value) {");
+const end = source.indexOf("    function syncSalesSizeField() {", start);
+assert.ok(start >= 0 && end > start);
+const context = vm.createContext({});
+vm.runInContext(`${source.slice(start, end)}; this.isApparel = isSingleApparelSaleSku; this.recordedSize = saleRecordedSize;`, context);
+assert.equal(context.isApparel("NXP-2026-APP-0007"), true);
+assert.equal(context.isApparel("nxp-2023-app-0001/XL"), true);
+assert.equal(context.isApparel("NXP-2026-VNL-0001"), false);
+assert.equal(context.isApparel("NXP-2026-APP-0007/L, NXP-2026-APP-0003/S"), false);
+assert.equal(context.recordedSize({ size: "XL", sku: "NXP-2026-APP-0007" }), "XL");
+assert.equal(context.recordedSize({ sku: "NXP-2026-APP-0007/l" }), "L");
+assert.equal(context.recordedSize({ sku: "NXP-2026-APP-0007/l", size: "XL" }), "L");
+assert.equal(context.recordedSize({ sku: "NXP-2026-APP-0007/One Size" }), "One Size");
+assert.equal(context.recordedSize({ sku: "NXP-2026-APP-0007" }), "");
+assert.equal(context.recordedSize({ sku: "NXP-2026-VNL-0001/L" }), "");
+assert.equal(context.recordedSize({ sku: "NXP-2026-APP-0007/L, NXP-2026-APP-0003/S" }), "NXP-2026-APP-0007: L, NXP-2026-APP-0003: S");
+assert.match(source, /\.\.\.previous, \.\.\.sale, \.\.\.\(clearOldSize/);
+assert.match(source, /data-sales-size-field hidden/);
+assert.match(source, /if \(form === el\.salesForm\) syncSalesSizeField\(\)/);
+assert.match(source, /saleRecordedSize\(item\) \|\| "-"/);
+console.log("Finance sales apparel size capture and metadata preservation passed.");
