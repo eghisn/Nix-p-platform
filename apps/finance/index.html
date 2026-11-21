@@ -1103,6 +1103,10 @@
                 <label for="salesSearch">Search daily sales</label>
                 <input id="salesSearch" type="search" placeholder="Invoice, SKU, channel, class, payment">
               </div>
+              <div class="ledger-search">
+                <label for="salesMonthFilter">Invoice month</label>
+                <select id="salesMonthFilter"><option value="">All months</option></select>
+              </div>
               <div class="table-wrap">
                 <table>
                   <thead>
@@ -1552,6 +1556,7 @@
       stockTotals: document.getElementById("stockTotals"),
       ownerDueBody: document.getElementById("ownerDueBody"),
       salesSearch: document.getElementById("salesSearch"),
+      salesMonthFilter: document.getElementById("salesMonthFilter"),
       expenseSearch: document.getElementById("expenseSearch"),
       inventorySearch: document.getElementById("inventorySearch"),
       stockSearch: document.getElementById("stockSearch"),
@@ -2188,7 +2193,7 @@
         });
       });
 
-      [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.salesSearch, el.expenseSearch, el.inventorySearch, el.stockSearch, el.pnlMonth, el.reportMonth].forEach(input => {
+      [el.yearFilter, el.ownerDueYearFilter, el.dashboardTypeFilter, el.dashboardCategoryFilter, el.dashboardSearch, el.salesSearch, el.salesMonthFilter, el.expenseSearch, el.inventorySearch, el.stockSearch, el.pnlMonth, el.reportMonth].forEach(input => {
         input.addEventListener("input", render);
       });
       el.reportOpeningCash?.addEventListener("change", async event => {
@@ -3235,9 +3240,22 @@
       `;
     }
 
+    function salesMonth(item) {
+      const invoice = String(item.invoice || "").trim();
+      const match = invoice.match(/^NXP-[A-Z]+-?(\d{4})(\d{2})(\d{2})-\d+$/i);
+      const date = match ? `${match[1]}-${match[2]}-${match[3]}` : String(item.date || "");
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return "unknown";
+      const parsed = new Date(`${date}T00:00:00Z`);
+      return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === date ? date.slice(0, 7) : "unknown";
+    }
+
     function renderSales() {
+      const selectedMonth = el.salesMonthFilter.value;
+      const months = [...new Set(state.sales.map(salesMonth))].sort((a, b) => b.localeCompare(a));
+      el.salesMonthFilter.innerHTML = '<option value="">All months</option>' + months.map(month => `<option value="${month}">${month === "unknown" ? "Unknown date" : month}</option>`).join("");
+      el.salesMonthFilter.value = months.includes(selectedMonth) ? selectedMonth : "";
       const query = searchQuery(el.salesSearch);
-      const rows = sortRows("sales", filterRows(state.sales, query, item => [
+      const rows = sortRows("sales", filterRows(state.sales.filter(item => !el.salesMonthFilter.value || salesMonth(item) === el.salesMonthFilter.value), query, item => [
         item.date,
         item.invoice,
         item.category,
