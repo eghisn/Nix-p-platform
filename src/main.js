@@ -721,10 +721,12 @@ async function publishingPage(filter = state.publishingFilter) {
 }
 
 function financeItemMetadataMarkup(product = {}) {
-  const metadata = product.raw?.financeMetadata || {};
+  const metadata = product.financeMetadata || product.raw?.financeMetadata || {};
   const item = String(product.raw?.financeItemType || product.format || "").trim();
   const rows = item === "Poster"
     ? [["Dimensions", metadata.dimensions], ["Print details", metadata.printDetails]]
+    : product.category === "Objects"
+      ? [["Object type", metadata.objectType], ["Material", metadata.objectMaterial], ["Finish / color", metadata.objectFinish], ["Dimensions", metadata.objectDimensions], ["Product weight", metadata.objectWeight], ["Availability", metadata.objectAvailability], ["Production lead time", metadata.objectLeadTime], ["Load capacity", metadata.objectLoadCapacity], ["Care / safety", metadata.objectCare]]
     : ["Book", "Zine", "Magazine"].includes(item)
       ? [["Publisher", metadata.publisher], ["ISBN / ISSN", metadata.isbn], ["Pages", metadata.pages], ["Binding", metadata.binding], ["Language", metadata.language]]
       : [];
@@ -1627,6 +1629,17 @@ async function adminProductsPage({ embedded = false } = {}) {
               ${select("apparelType", "Apparel type", ["", "T-shirt", "Longsleeve", "Crewneck", "Hoodie", "Cap", "Ring", "Jacket", "Shirt", "Tops", "Bottoms", "Accessories", "Other"], product.apparelType === "Accesories" ? "Accessories" : product.apparelType || "")}
             </div>
             ${sizeInventoryFields(product)}
+          </div>
+          <div class="admin-product-fields" data-admin-object-fields ${productCategory === "Objects" ? "" : "hidden"}>
+            ${select("objectType", "Object type", ["", "Furniture", "Keychain", "Toy", "Other"], (product.financeMetadata || product.raw?.financeMetadata || {}).objectType || "")}
+            ${input("objectMaterial", "Object material", (product.financeMetadata || product.raw?.financeMetadata || {}).objectMaterial || "", "Materials")}
+            ${input("objectFinish", "Finish / color", (product.financeMetadata || product.raw?.financeMetadata || {}).objectFinish || "", "Finish and color")}
+            ${input("objectDimensions", "Product dimensions", (product.financeMetadata || product.raw?.financeMetadata || {}).objectDimensions || "", "L x W x H, with units")}
+            ${input("objectWeight", "Product weight", (product.financeMetadata || product.raw?.financeMetadata || {}).objectWeight || "", "Weight, with units")}
+            ${select("objectAvailability", "Availability", ["", "Ready stock", "Made to order"], (product.financeMetadata || product.raw?.financeMetadata || {}).objectAvailability || "")}
+            ${input("objectLeadTime", "Production lead time", (product.financeMetadata || product.raw?.financeMetadata || {}).objectLeadTime || "", "e.g. 3-4 weeks")}
+            ${input("objectLoadCapacity", "Load capacity", (product.financeMetadata || product.raw?.financeMetadata || {}).objectLoadCapacity || "", "Only if verified")}
+            ${input("objectCare", "Care / safety notes", (product.financeMetadata || product.raw?.financeMetadata || {}).objectCare || "", "Care or safety information")}
           </div>
           <div data-admin-condition-field>
             ${select("condition", productCategory === "Apparel" ? "Garment condition" : "Condition", productCategory === "Apparel" ? apparelConditionOptions(product.condition) : ["", "New-Sealed", "New-Unsealed", "Used Mint", "Used Excellent", "Used Excellence", "Used Good", "Used Fair", "Used Poor"], product.condition || "")}
@@ -3805,6 +3818,7 @@ function bindEvents() {
     const isApparel = event.currentTarget.value === "Apparel";
     form.querySelector("[data-admin-record-fields]").hidden = isProductCategory;
     form.querySelector("[data-admin-product-fields]").hidden = !isProductCategory;
+    form.querySelector("[data-admin-object-fields]").hidden = event.currentTarget.value !== "Objects";
     form.querySelector("[data-admin-apparel-field]").hidden = event.currentTarget.value !== "Apparel";
     form.querySelector("[data-admin-edition-field]").hidden = !isRecord;
     form.querySelector("[data-admin-vinyl-size-field]").hidden = !isVinylRecord({ category: event.currentTarget.value, format: form.elements.format.value });

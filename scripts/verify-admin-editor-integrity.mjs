@@ -59,7 +59,8 @@ for (const [field, value] of [
   ["sleeveConditionNote", "Spine wear"],
   ["description", "Different editorial copy."],
   ["relatedArtists", ["Different Artist"]],
-  ["images", ["/public/different.jpg"]]
+  ["images", ["/public/different.jpg"]],
+  ["financeMetadata", { objectAvailability: "Made to order", objectLeadTime: "3-4 weeks" }]
 ]) {
   const changed = { ...baseProduct, [field]: value };
   assert.notEqual(publicProductFingerprint(changed), publicProductFingerprint(baseProduct));

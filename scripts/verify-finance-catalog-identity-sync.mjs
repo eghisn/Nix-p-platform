@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { fromProductRow } from "../api/_lib/supabase.js";
 import {
   canCreateFinanceCatalogDraft,
   catalogPriceForFinanceStock,
@@ -192,6 +193,30 @@ assert.equal(bookDraft.category, "Publishing");
 assert.equal(bookDraft.format, "Book");
 assert.equal(bookDraft.raw.financeMetadata.publisher, "NIXP Publishing");
 assert.match(bookDraft.details.join(" "), /ISBN \/ ISSN/);
+
+const objectStock = {
+  id: "stock-object", sku: "NXP-2026-OBJ-9999", item: "Object", itemCondition: "New-Sealed",
+  artist: "NIXP", title: "Sample stool", qty: 1, sellingPrice: 100000,
+  objectType: "Furniture", objectMaterial: "Steel", objectFinish: "Red",
+  objectDimensions: "50 x 45 x 80 cm", objectWeight: "12 kg", objectAvailability: "Made to order",
+  objectLeadTime: "3-4 weeks", objectLoadCapacity: "", objectCare: "Dry cloth"
+};
+const objectDraft = draftProductFromFinanceStock(objectStock, 1);
+assert.equal(objectDraft.category, "Objects");
+assert.equal(objectDraft.publish_status, "Draft");
+assert.equal(objectDraft.raw.financeMetadata.objectAvailability, "Made to order");
+assert.equal(objectDraft.raw.financeMetadata.objectLeadTime, "3-4 weeks");
+assert.equal(objectDraft.raw.financeMetadata.objectDimensions, "50 x 45 x 80 cm");
+assert.notEqual(objectDraft.raw.shipping?.weightGrams, 12000);
+const objectSynced = productRowFromFinanceStock(objectDraft, { ...objectStock, objectLeadTime: "4 weeks" }, 1);
+assert.equal(objectSynced.raw.financeMetadata.objectLeadTime, "4 weeks");
+assert.equal(objectSynced.raw.financeMetadata.objectMaterial, "Steel");
+assert.equal(objectSynced.publish_status, "Draft");
+assert.equal(fromProductRow(objectSynced, { privateScope: true }).financeMetadata.objectLeadTime, "4 weeks");
+for (const objectType of ["Keychain", "Toy"]) {
+  const draft = draftProductFromFinanceStock({ ...objectStock, objectType }, 1);
+  assert.equal(draft.raw.financeMetadata.objectType, objectType);
+}
 
 const apparelStock = {
   id: "stock-apparel",

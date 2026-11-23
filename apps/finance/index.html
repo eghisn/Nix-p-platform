@@ -1871,6 +1871,7 @@
           ${selectField("Source", "source", inventorySources, true, "Business Purchase")}
           ${selectField("Item Type", "itemType", itemTypes, true, "Vinyl")}
           ${selectField("Vinyl Size", "vinylSize", ["", "12\"", "10\"", "7\""], false, "", "data-vinyl-size-field")}
+          ${objectSpecificationFields()}
           <div class="field full" data-finance-poster-fields hidden>
             <div class="fields">
               ${field("Dimensions", "dimensions", "text", "", false, "A2 / 42 x 59.4 cm")}
@@ -1911,6 +1912,7 @@
           ${field("SKU", "sku", "text", "", true, "SKU-001")}
           ${selectField("Item", "item", itemTypes, true, "Vinyl")}
           ${selectField("Vinyl Size", "vinylSize", ["", "12\"", "10\"", "7\""], false, "", "data-vinyl-size-field")}
+          ${objectSpecificationFields()}
           <div class="field full" data-finance-poster-fields hidden>
             <div class="fields">
               ${field("Dimensions", "dimensions", "text", "", false, "A2 / 42 x 59.4 cm")}
@@ -2051,10 +2053,25 @@
       if (!isVinyl) form.elements.vinylSize.value = "";
     }
 
+    function objectSpecificationFields() {
+      return `<div class="field full" data-finance-object-fields hidden><div class="fields">
+        ${selectField("Object type", "objectType", ["", "Furniture", "Keychain", "Toy", "Other"], false, "")}
+        ${field("Material", "objectMaterial", "text", "", false, "Materials")}
+        ${field("Finish / color", "objectFinish", "text", "", false, "Finish and color")}
+        ${field("Product dimensions", "objectDimensions", "text", "", false, "L x W x H, with units")}
+        ${field("Product weight", "objectWeight", "text", "", false, "Weight, with units")}
+        ${selectField("Availability", "objectAvailability", ["", "Ready stock", "Made to order"], false, "")}
+        ${field("Production lead time", "objectLeadTime", "text", "", false, "e.g. 3-4 weeks")}
+        ${field("Load capacity", "objectLoadCapacity", "text", "", false, "Only if verified")}
+        ${field("Care / safety notes", "objectCare", "text", "", false, "Care or safety information")}
+      </div></div>`;
+    }
+
     function syncItemTypeFields(form, itemField) {
       syncVinylSizeField(form, itemField);
       const itemInput = form?.elements.namedItem(itemField);
       const item = vinylItemSelection(itemInput?.value).item;
+      form?.querySelectorAll("[data-finance-object-fields]").forEach(wrapper => { wrapper.hidden = item !== "Object"; });
       syncConditionField(form, item);
       const isApparel = apparelItemTypes.includes(item);
       form?.querySelectorAll("[data-finance-apparel-fields]").forEach(wrapper => {
@@ -2712,8 +2729,11 @@
 
     function itemTypeMetadata(data, item) {
       const value = name => String(data[name] || "").trim();
+      const objectFields = ["objectType", "objectMaterial", "objectFinish", "objectDimensions", "objectWeight", "objectAvailability", "objectLeadTime", "objectLoadCapacity", "objectCare"];
+      const objectMetadata = Object.fromEntries(objectFields.map(name => [name, item === "Object" ? value(name) : ""]));
       if (item === "Poster") {
         return {
+          ...objectMetadata,
           dimensions: value("dimensions"),
           printDetails: value("printDetails"),
           publisher: "",
@@ -2725,6 +2745,7 @@
       }
       if (["Book", "Zine", "Magazine"].includes(item)) {
         return {
+          ...objectMetadata,
           dimensions: "",
           printDetails: "",
           publisher: value("publisher"),
@@ -2735,6 +2756,7 @@
         };
       }
       return {
+        ...objectMetadata,
         dimensions: "",
         printDetails: "",
         publisher: "",
@@ -2832,6 +2854,7 @@
         catalogNumber: existing.catalogNumber || "",
         sizes: Array.isArray(purchase.sizes) ? purchase.sizes : existing.sizes || [],
         vinylSize: normalizeVinylSize(purchase.vinylSize) || normalizeVinylSize(existing.vinylSize),
+        ...Object.fromEntries(["objectType", "objectMaterial", "objectFinish", "objectDimensions", "objectWeight", "objectAvailability", "objectLeadTime", "objectLoadCapacity", "objectCare"].map(key => [key, purchase[key] ?? existing[key] ?? ""])),
         dimensions: purchase.dimensions ?? existing.dimensions ?? "",
         printDetails: purchase.printDetails ?? existing.printDetails ?? "",
         publisher: purchase.publisher ?? existing.publisher ?? "",
@@ -2966,6 +2989,7 @@
       setFormValue(el.inventoryForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.inventoryForm, "sku", item.sku);
       setFormValue(el.inventoryForm, "artistName", item.artistName);
+      ["objectType", "objectMaterial", "objectFinish", "objectDimensions", "objectWeight", "objectAvailability", "objectLeadTime", "objectLoadCapacity", "objectCare"].forEach(key => setFormValue(el.inventoryForm, key, item[key] || ""));
       setFormValue(el.inventoryForm, "dimensions", item.dimensions || "");
       setFormValue(el.inventoryForm, "printDetails", item.printDetails || "");
       setFormValue(el.inventoryForm, "publisher", item.publisher || "");
@@ -3035,6 +3059,7 @@
       setFormValue(el.stockForm, "listingMode", item.listingMode || "Standard Sale");
       setFormValue(el.stockForm, "artist", item.artist);
       setFormValue(el.stockForm, "title", item.title);
+      ["objectType", "objectMaterial", "objectFinish", "objectDimensions", "objectWeight", "objectAvailability", "objectLeadTime", "objectLoadCapacity", "objectCare"].forEach(key => setFormValue(el.stockForm, key, item[key] || ""));
       setFormValue(el.stockForm, "edition", item.edition || "");
       setFormValue(el.stockForm, "barcode", item.barcode || "");
       setFormValue(el.stockForm, "catalogNumber", item.catalogNumber || "");

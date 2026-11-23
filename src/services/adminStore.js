@@ -1431,6 +1431,10 @@ export const adminStore = {
       collection,
       color: data.color?.trim() || "",
       material: data.material?.trim() || "",
+      ...(category === "Objects" ? { financeMetadata: {
+        ...(existing?.financeMetadata || existing?.raw?.financeMetadata || {}),
+        ...Object.fromEntries(["objectType", "objectMaterial", "objectFinish", "objectDimensions", "objectWeight", "objectAvailability", "objectLeadTime", "objectLoadCapacity", "objectCare"].map(key => [key, data[key] === undefined ? String((existing?.financeMetadata || existing?.raw?.financeMetadata || {})[key] || "") : String(data[key]).trim()]))
+      } } : {}),
       image: primaryImage,
       images: normalizeImages({
         images: data.images || existing?.images,

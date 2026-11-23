@@ -67,7 +67,8 @@ function financeItemMetadata(stock = {}, fallback = {}) {
     isbn: value("isbn"),
     pages: value("pages"),
     binding: value("binding"),
-    language: value("language")
+    language: value("language"),
+    ...Object.fromEntries(["objectType", "objectMaterial", "objectFinish", "objectDimensions", "objectWeight", "objectAvailability", "objectLeadTime", "objectLoadCapacity", "objectCare"].map(key => [key, value(key)]))
   };
 }
 
@@ -1359,7 +1360,8 @@ export async function syncAdminCatalogInventory(products = []) {
       catalogNumber: product.catalogNumber ?? existing.catalogNumber ?? "",
       vinylSize: normalizeVinylSize(product.vinylSize) || normalizeVinylSize(existing.vinylSize),
       sizes: product.category === "Apparel" ? normalizeApparelSizes(product.sizes) : [],
-      dimensions: product.raw?.financeMetadata?.dimensions ?? existing.dimensions ?? "",
+      ...Object.fromEntries(["objectType", "objectMaterial", "objectFinish", "objectDimensions", "objectWeight", "objectAvailability", "objectLeadTime", "objectLoadCapacity", "objectCare"].map(key => [key, product.financeMetadata?.[key] ?? product.raw?.financeMetadata?.[key] ?? existing[key] ?? ""])),
+      dimensions: product.financeMetadata?.dimensions ?? product.raw?.financeMetadata?.dimensions ?? existing.dimensions ?? "",
       printDetails: product.raw?.financeMetadata?.printDetails ?? existing.printDetails ?? "",
       publisher: product.raw?.financeMetadata?.publisher ?? existing.publisher ?? "",
       isbn: product.raw?.financeMetadata?.isbn ?? existing.isbn ?? "",

@@ -6,7 +6,7 @@ const PUBLIC_EDITORIAL_FIELDS = [
   "mediaConditionGrade", "mediaConditionNote", "sleeveConditionGrade", "sleeveConditionNote",
   "garmentConditionNote", "apparelMeasurements", "originalTags", "alterations", "flaws", "fabricCare",
   "year", "label", "collection", "color", "material", "image", "images", "imageCredits",
-  "tags", "details", "sizes", "description", "descriptionSource", "reviewQuote", "reviewSource",
+  "tags", "details", "sizes", "financeMetadata", "description", "descriptionSource", "reviewQuote", "reviewSource",
   "reviewUrl", "relatedArtists", "homeCollections", "homeSlideSort", "open_to_offers",
   "publishStatus", "visibility"
 ];
